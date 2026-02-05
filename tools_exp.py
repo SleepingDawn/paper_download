@@ -237,14 +237,25 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
                 //a[contains(@class, 'pdf') or contains(@title, 'Download') or contains(text(), 'View PDF') or contains(text(), 'Download PDF')] |
                 //button[contains(text(), 'View PDF') or contains(text(), 'Download')] |
                 //span[contains(text(), 'View PDF') or contains(text(), 'Download')] |
-                //a[contains(@href, '.pdf')]
+                
+                //a[contains(@href, '.pdf')] |
+                
+                //button[@aria-label='Download'] | 
+                //button[@aria-label='Download this article'] |
+                //a[@title='Download this article'] |
+                //button[@title='Download this article'] |
+                //a[@aria-label='Download this article'] |
+                //*[@id='pdf-download-icon']
             """
             buttons = driver.find_elements(By.XPATH, button_xpath)
             
             clicked = False
             for btn in buttons:
                 if btn.is_displayed():
-                    logger.info(f"      👆 버튼 발견: {btn.text.strip()[:20]}... 클릭 시도")
+                    btn_info = btn.text.strip()
+                    if not btn_info:
+                        btn_info = btn.get_attribute("title") or btn.get_attribute("aria-label") or "ICON"
+                    logger.info(f"         버튼 발견: {btn_info[:20]}... 클릭 시도")
                     
                     # [Plan A] 물리적 마우스 클릭 (ActionChains)
                     try:
@@ -275,8 +286,11 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
             logger.info(f"      ✅ 다운로드 성공: {os.path.basename(new_file_path)}")
             return new_file_path
         else:
+            # 실패 시 원인 로그 구체화
             if "Forbidden" in driver.page_source or "Access Denied" in driver.page_source:
                 logger.warning("      ⛔ 403 Forbidden 감지됨")
+            elif "challenge" in driver.page_source:
+                logger.warning("      ⛔ 캡차 화면 감지됨")
             else:
                 logger.warning("      ⚠️ 파일 생성 안됨 (타임아웃)")
             return None

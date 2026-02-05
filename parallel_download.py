@@ -156,12 +156,18 @@ def download_process_worker(row_data, final_save_path, default_download_path):
             "--disable-dev-shm-usage",
             "--disable-gpu",
             "--hide-scrollbars",
-            "--mute-audio"
+            "--mute-audio",
+            "--disable-infobars",
+            "--disable-popup-blocking",
+            "--disable-extensions",
+            "--disable-notifications",
+            "--disable-web-security",
         ]
         chromium_arg_str = " ".join(my_args)
 
         sb_options = { 
-            "uc": True,             
+            "uc": True,
+            "headless" : False,             
             "headless2": True,
             "incognito": False,     
             "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
