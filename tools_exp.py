@@ -384,130 +384,133 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None):
 # 2. DrissionPage 크롤러
 # =======================================================
 def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=3):
-    save_path = os.path.join(save_dir, filename)
+    # DrissionPage 4.x 버전에서는 path 인자에 '폴더 경로'를 넣어야 합니다.
+    # filename은 rename 인자로 전달합니다.
     
-    # 폴더/파일 초기화
-    if os.path.exists(save_path):
-        try: os.remove(save_path)
+    # 폴더 생성 및 기존 파일 정리
+    os.makedirs(save_dir, exist_ok=True)
+    full_save_path = os.path.join(save_dir, filename)
+    if os.path.exists(full_save_path):
+        try: os.remove(full_save_path)
         except: pass
 
-    # --- [수정] 멀티프로세싱 완벽 격리 설정 ---
+    # --- 옵션 설정 ---
     co = ChromiumOptions()
     co.set_browser_path(chrome_path)
+    co.auto_port() # 포트 자동 할당
     
-    # 1. 포트 자동 할당
-    co.auto_port()
-    
-    # 2. [핵심] 사용자 데이터 폴더 격리 (Process ID 기반)
-    # 각 프로세스가 서로 다른 폴더를 쓰게 하여 충돌(Handshake 404) 방지
+    # 사용자 데이터 폴더 격리 (프로세스별 독립)
     user_data_dir = os.path.join(tempfile.gettempdir(), f"drission_profile_{os.getpid()}")
     co.set_user_data_path(user_data_dir)
 
-    # 3. 브라우저 옵션 최적화
     co.headless(True)           
     co.no_imgs(True)            
     co.mute(True)               
-    
     co.set_argument('--no-sandbox')
     co.set_argument('--disable-gpu')
     co.set_argument('--disable-dev-shm-usage')
     
-    # User-Agent 설정
     my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     co.set_user_agent(my_ua)
     
-    # 다운로드 경로 설정
+    # 기본 다운로드 경로 설정
     co.set_download_path(save_dir)
 
     page = None
-    try:
-        # 페이지 객체 생성
-        page = ChromiumPage(co) 
-        
-        for attempt in range(1, max_attempts + 1):
+    
+    # [수정] 재시도 로직 강화: 연결 끊김 대비 브라우저 재생성 포함
+    for attempt in range(1, max_attempts + 1):
+        try:
             print(f"   🚀 [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
             
-            try:
-                # 페이지 접속
-                page.get(doi_url, retry=2, interval=1, timeout=20)
-                
-                # --- CAPTCHA/Cloudflare 우회 ---
-                if page.ele('@id=turnstile-wrapper') or "cloudflare" in page.title.lower():
-                    print("      🛡️ Cloudflare 감지.")
-                    time.sleep(3)
-
-                # --- PDF 링크 탐색 ---
-                pdf_url = None
-                
-                # 1. Meta 태그
-                meta = page.ele('xpath://meta[@name="citation_pdf_url"]')
-                if meta: pdf_url = meta.attr('content')
-                
-                # 2. 버튼/링크 패턴 매칭
-                if not pdf_url:
-                    btn = page.ele('tag:a@@text():PDF') or \
-                          page.ele('tag:a@@title:PDF') or \
-                          page.ele('css:a[href*=".pdf"]') or \
-                          page.ele('text:Download PDF') 
-                    
-                    if btn: pdf_url = btn.attr('href')
-
-                # 3. Iframe
-                if not pdf_url:
-                    iframe = page.ele('tag:iframe@@src:.pdf')
-                    if iframe: pdf_url = iframe.attr('src')
-
-                # --- 다운로드 실행 ---
-                if pdf_url:
-                    if not pdf_url.startswith('http'):
-                        from urllib.parse import urljoin
-                        pdf_url = urljoin(page.url, pdf_url)
-                    
-                    print(f"      🔎 PDF 링크 발견: {pdf_url}")
-
-                    # 1순위: CFFI
-                    current_cookies = page.cookies.as_dict()
-                    if download_with_cffi(pdf_url, save_path, referer=page.url, cookies=current_cookies, ua=my_ua):
-                        return True
-                    
-                    # 2순위: Drission 자체 다운로드
-                    print("      ⚠️ CFFI 실패 -> Drission 자체 다운로드 시도")
-                    try:
-                        clean_name = filename.replace('.pdf', '') if filename.lower().endswith('.pdf') else filename
-                        
-                        # 파일명에 특수문자가 많으면 다운로드 실패할 수 있으므로 간단히 처리 가능하면 좋음
-                        page.download(pdf_url, save_path, rename=clean_name, file_exists='overwrite')
-                        
-                        # 대기
-                        wait_time = 0
-                        while wait_time < 30:
-                            if os.path.exists(save_path) and os.path.getsize(save_path) > 1024:
-                                print(f"      ✅ [Drission] 다운로드 성공")
-                                return True
-                            time.sleep(1)
-                            wait_time += 1
-                        
-                    except Exception as e:
-                        print(f"      ❌ 자체 다운로드 실패: {e}")
-
-                else:
-                    print("      ❌ PDF 링크 미발견")
-
-            except Exception as e:
-                print(f"      ⚠️ 에러 발생: {e}")
+            # 페이지 객체 생성 (매 시도마다 새로 생성하여 연결 끊김 방지)
+            if page is None:
+                page = ChromiumPage(co)
             
-            time.sleep(2)
+            # 페이지 접속 (타임아웃 20초)
+            page.get(doi_url, retry=1, interval=1, timeout=20)
+            
+            # Cloudflare / CAPTCHA 대기
+            if page.ele('@id=turnstile-wrapper') or "cloudflare" in page.title.lower():
+                print("      🛡️ Cloudflare 감지 (3초 대기)")
+                time.sleep(3)
 
-        return False
+            # --- PDF 링크 탐색 ---
+            pdf_url = None
+            
+            # 1. Meta 태그
+            meta = page.ele('xpath://meta[@name="citation_pdf_url"]')
+            if meta: pdf_url = meta.attr('content')
+            
+            # 2. 버튼/링크 패턴 매칭 (문법 단순화)
+            if not pdf_url:
+                # text:PDF 방식이 가장 호환성이 좋습니다.
+                btn = page.ele('text:Download PDF') or \
+                      page.ele('text:PDF') or \
+                      page.ele('tag:a@@title:PDF') or \
+                      page.ele('css:a[href*=".pdf"]')
+                
+                if btn: pdf_url = btn.attr('href')
 
-    except Exception as e:
-        print(f"      ❌ 치명적 오류: {e}")
-        return False
-    finally:
-        if page:
-            try: 
-                page.quit()
-            except: pass
+            # 3. Iframe
+            if not pdf_url:
+                iframe = page.ele('tag:iframe@@src:.pdf')
+                if iframe: pdf_url = iframe.attr('src')
+
+            # --- 다운로드 실행 ---
+            if pdf_url:
+                if not pdf_url.startswith('http'):
+                    from urllib.parse import urljoin
+                    pdf_url = urljoin(page.url, pdf_url)
+                
+                print(f"      🔎 PDF 링크 발견: {pdf_url}")
+
+                # 1순위: CFFI
+                current_cookies = page.cookies.as_dict()
+                if download_with_cffi(pdf_url, full_save_path, referer=page.url, cookies=current_cookies, ua=my_ua):
+                    if page: page.quit() # 성공 시 종료
+                    return True
+                
+                # 2순위: Drission 자체 다운로드
+                print("      ⚠️ CFFI 실패 -> Drission 자체 다운로드 시도")
+                try:
+                    # [핵심 수정] path에는 폴더 경로(save_dir), rename에는 파일명(filename) 전달
+                    # file_exists='overwrite'로 중복 덮어쓰기
+                    page.download(pdf_url, path=save_dir, rename=filename, file_exists='overwrite')
+                    
+                    # 파일 생성 대기 (최대 30초)
+                    wait_time = 0
+                    while wait_time < 30:
+                        if os.path.exists(full_save_path) and os.path.getsize(full_save_path) > 1024:
+                            print(f"      ✅ [Drission] 다운로드 성공")
+                            if page: page.quit()
+                            return True
+                        time.sleep(1)
+                        wait_time += 1
+                    print("      ❌ 자체 다운로드 타임아웃")
+                    
+                except Exception as e:
+                    print(f"      ❌ 자체 다운로드 실패: {e}")
+
+            else:
+                print("      ❌ PDF 링크 미발견")
+
+        except Exception as e:
+            print(f"      ⚠️ 시도 {attempt} 에러: {e}")
+            # 에러 발생 시 브라우저 강제 종료 후 다음 시도에서 재생성 유도
+            if page:
+                try: page.quit()
+                except: pass
+                page = None
+        
+        time.sleep(2) # 재시도 전 대기
+
+    # 모든 시도 실패 시
+    if page:
+        try: page.quit()
+        except: pass
+        
+    return False
 
 
 # =======================================================
