@@ -384,12 +384,11 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None):
 # 2. DrissionPage 크롤러
 # =======================================================
 def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=3):
-    # DrissionPage 4.x 버전에서는 path 인자에 '폴더 경로'를 넣어야 합니다.
-    # filename은 rename 인자로 전달합니다.
-    
-    # 폴더 생성 및 기존 파일 정리
+    # 폴더 생성
     os.makedirs(save_dir, exist_ok=True)
     full_save_path = os.path.join(save_dir, filename)
+    
+    # 기존 파일 정리
     if os.path.exists(full_save_path):
         try: os.remove(full_save_path)
         except: pass
@@ -397,15 +396,16 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     # --- 옵션 설정 ---
     co = ChromiumOptions()
     co.set_browser_path(chrome_path)
-    co.auto_port() # 포트 자동 할당
     
-    # 사용자 데이터 폴더 격리 (프로세스별 독립)
-    user_data_dir = os.path.join(tempfile.gettempdir(), f"drission_profile_{os.getpid()}")
-    co.set_user_data_path(user_data_dir)
-
+    # [핵심 수정] set_user_data_path 삭제하고 auto_port만 사용
+    # auto_port()가 자동으로 독립된 포트와 사용자 폴더를 관리합니다.
+    co.auto_port() 
+    
     co.headless(True)           
     co.no_imgs(True)            
     co.mute(True)               
+    
+    # 리눅스/Docker 환경 필수 옵션
     co.set_argument('--no-sandbox')
     co.set_argument('--disable-gpu')
     co.set_argument('--disable-dev-shm-usage')
@@ -418,19 +418,18 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
 
     page = None
     
-    # [수정] 재시도 로직 강화: 연결 끊김 대비 브라우저 재생성 포함
     for attempt in range(1, max_attempts + 1):
         try:
             print(f"   🚀 [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
             
-            # 페이지 객체 생성 (매 시도마다 새로 생성하여 연결 끊김 방지)
+            # 페이지 객체 생성
             if page is None:
                 page = ChromiumPage(co)
             
-            # 페이지 접속 (타임아웃 20초)
+            # 페이지 접속
             page.get(doi_url, retry=1, interval=1, timeout=20)
             
-            # Cloudflare / CAPTCHA 대기
+            # Cloudflare 감지 시 대기
             if page.ele('@id=turnstile-wrapper') or "cloudflare" in page.title.lower():
                 print("      🛡️ Cloudflare 감지 (3초 대기)")
                 time.sleep(3)
@@ -442,9 +441,9 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             meta = page.ele('xpath://meta[@name="citation_pdf_url"]')
             if meta: pdf_url = meta.attr('content')
             
-            # 2. 버튼/링크 패턴 매칭 (문법 단순화)
+            # 2. 버튼/링크 패턴 매칭
             if not pdf_url:
-                # text:PDF 방식이 가장 호환성이 좋습니다.
+                # 텍스트나 속성으로 PDF 링크 찾기
                 btn = page.ele('text:Download PDF') or \
                       page.ele('text:PDF') or \
                       page.ele('tag:a@@title:PDF') or \
@@ -459,26 +458,28 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
 
             # --- 다운로드 실행 ---
             if pdf_url:
+                # 상대 경로를 절대 경로로 변환
                 if not pdf_url.startswith('http'):
                     from urllib.parse import urljoin
                     pdf_url = urljoin(page.url, pdf_url)
                 
                 print(f"      🔎 PDF 링크 발견: {pdf_url}")
 
-                # 1순위: CFFI
+                # 1순위: CFFI (빠름)
                 current_cookies = page.cookies.as_dict()
                 if download_with_cffi(pdf_url, full_save_path, referer=page.url, cookies=current_cookies, ua=my_ua):
-                    if page: page.quit() # 성공 시 종료
+                    if page: page.quit()
                     return True
                 
-                # 2순위: Drission 자체 다운로드
+                # 2순위: Drission 자체 다운로드 (안정성)
                 print("      ⚠️ CFFI 실패 -> Drission 자체 다운로드 시도")
                 try:
-                    # [핵심 수정] path에는 폴더 경로(save_dir), rename에는 파일명(filename) 전달
-                    # file_exists='overwrite'로 중복 덮어쓰기
-                    page.download(pdf_url, path=save_dir, rename=filename, file_exists='overwrite')
+                    # [수정] path=폴더경로, rename=파일명 (확장자 포함 가능)
+                    # file_exists='overwrite'로 중복 시 덮어쓰기
+                    clean_name = filename # 파일명 그대로 사용
+                    page.download(pdf_url, path=save_dir, rename=clean_name, file_exists='overwrite')
                     
-                    # 파일 생성 대기 (최대 30초)
+                    # 파일 생성 확인 대기 (최대 30초)
                     wait_time = 0
                     while wait_time < 30:
                         if os.path.exists(full_save_path) and os.path.getsize(full_save_path) > 1024:
@@ -488,7 +489,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                         time.sleep(1)
                         wait_time += 1
                     print("      ❌ 자체 다운로드 타임아웃")
-                    
+
                 except Exception as e:
                     print(f"      ❌ 자체 다운로드 실패: {e}")
 
@@ -497,7 +498,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
 
         except Exception as e:
             print(f"      ⚠️ 시도 {attempt} 에러: {e}")
-            # 에러 발생 시 브라우저 강제 종료 후 다음 시도에서 재생성 유도
+            # 에러 발생 시 브라우저 닫고 초기화 (다음 시도에서 재생성)
             if page:
                 try: page.quit()
                 except: pass
@@ -505,11 +506,11 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
         
         time.sleep(2) # 재시도 전 대기
 
-    # 모든 시도 실패 시
+    # 모든 시도 실패 시 브라우저 종료
     if page:
         try: page.quit()
         except: pass
-        
+    _safe_screenshot(page, os.path.join(save_dir, f"drission_failure_{filename}.png"))
     return False
 
 
