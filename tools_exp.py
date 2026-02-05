@@ -393,6 +393,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     # --- [수정] 최신 DrissionPage(v4.x) 문법 적용 ---
     co = ChromiumOptions()
     co.set_browser_path(chrome_path)
+    co.auto_port()
     
     # 메서드 이름 변경됨 (set_ 접두사 제거)
     co.headless(True)           # 기존 set_headless(True)
@@ -401,6 +402,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     
     co.set_argument('--no-sandbox')
     co.set_argument('--disable-gpu')
+    co.set_argument('--disable-dev-shm-usage')
     
     # User-Agent 설정
     my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
