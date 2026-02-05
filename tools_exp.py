@@ -284,7 +284,7 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
             logger.warning(f"      ⚠️ 버튼 클릭 로직 에러 (무시): {e}")
 
         # 3. 파일 생성 대기 (타임아웃 45초)
-        new_file_path = _wait_for_new_file_diff(download_dir, initial_files, timeout_s)
+        new_file_path = _wait_for_new_file_diff(download_dir, initial_files, timeout_s, logger=logger)
         
         if new_file_path:
             logger.info(f"      ✅ 다운로드 성공: {os.path.basename(new_file_path)}")
