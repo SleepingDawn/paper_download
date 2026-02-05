@@ -222,6 +222,10 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
     """
     브라우저 네비게이션 -> GUI 클릭(Plan A) -> JS 클릭(Plan B) 순차 시도
     """
+    if logger is None:
+        import logging
+        logger = logging.getLogger("SafetyLogger")
+        logger.setLevel(logging.INFO)
     logger.info(f"   ⚓ [Hybrid] 브라우저 네비게이션 다운로드 시도: {url}")
     try:
         initial_files = _get_current_files(download_dir)
@@ -353,15 +357,20 @@ def analyze_html_structure(driver, logger):
         # 현재 URL이 이미 /pdfft (PDF 직접 링크)가 아니라면 변환 시도
         if "/pdfft" not in current_url:
             # URL 예: .../article/pii/S0016003256911577?via=ihub
-            # 목표:   .../article/pii/S0016003256911577/pdfft
+            # 목표:   .../article/pii/S0016003256911577/pdfft?pid=1-s2.0-S0016003256911577-main.pdf
             
             # 1. 쿼리 파라미터(?via=...) 제거
             clean_url = current_url.split("?")[0]
             
-            # 2. /pdfft 붙이기
-            pdf_heuristic_url = clean_url.rstrip("/") + "/pdfft"
-            logger.info(f"        ScienceDirect PII 감지 -> PDF 링크 추정: {pdf_heuristic_url}")
-            return pdf_heuristic_url
+            # 2. "/pii/XXXX" 부분 추출
+            pii_match = re.search(r"/pii/([^/?]+)", clean_url)
+            if pii_match:
+                pii_code = pii_match.group(1)
+                clean_url = clean_url.split("/pii/")[0] + f"/pii/{pii_code}"
+                # 3. /pdfft 및 pid 파라미터 추가
+                pdf_heuristic_url = f"{clean_url}/pdfft?pid=1-s2.0-{pii_code}-main.pdf"
+                logger.info(f"        ScienceDirect PII 감지 -> PDF 링크 추정: {pdf_heuristic_url}")
+                return pdf_heuristic_url
 
     # 1. Iframe / Embed / Object (일반)
     try:
@@ -851,6 +860,8 @@ def download_via_springerpdf(doi: str, output_path: str):
         "Referer": f"https://link.springer.com/article/{doi}"
     }
     return _download_file(pdf_url, output_path, headers=headers)
+
+
 
 def download_using_api(doi: str, output_path: str, publisher: str):
     """
