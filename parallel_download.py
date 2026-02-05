@@ -145,6 +145,9 @@ def download_process_worker(row_data, final_save_path, default_download_path):
     # 4. Selenium Crawling
     try:
         # Driver 설정
+        user_data_dir = os.path.abspath(f"./chrome_profiles/worker_{os.getpid()}")
+        os.makedirs(user_data_dir, exist_ok=True)
+
         my_args = [
             "--disable-blink-features=AutomationControlled",
             "--window-size=1920,1080",
@@ -159,12 +162,13 @@ def download_process_worker(row_data, final_save_path, default_download_path):
 
         sb_options = { 
             "uc": True,             
-            "headless2": True,      # [필수] 서버에서는 무조건 True여야 합니다!
-            "incognito": True,      
+            "headless2": True,
+            "incognito": False,     
             "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
             "extension_dir": None,
-            # [핵심] 리스트(arguments)가 아니라 문자열(chromium_arg)로 전달
-            "chromium_arg": chromium_arg_str
+            "chromium_arg": chromium_arg_str,
+            # 사용자 데이터 폴더 지정 
+            "user_data_dir": user_data_dir 
         }
         
         
