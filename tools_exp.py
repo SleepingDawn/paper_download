@@ -412,9 +412,20 @@ def download_paper_pdf(doi_url, final_save_dir, default_download_dir, driver, ma
     logger.info(f"작업 시작: {doi_url}")
 
     try:
-        driver.get(doi_url)
-        driver.uc_gui_click_captcha()
-        time.sleep(5)
+        # DOI 페이지 접속
+        try: 
+            driver.uc_open_with_reconnect(doi_url, reconnect_time = 4)
+        except Exception as e:
+            driver.get(doi_url)
+            
+        # captcha 처리 시도
+        try : 
+            if driver.is_element_visible('iframe[src*="challenge"]', timeout=3) or \
+               driver.is_element_visible('iframe[title*="captcha"]', timeout=3):
+                driver.uc_click_captcha()
+                time.sleep(3)
+        except Exception as e:
+            pass
         
         # [Wiley/Elsevier 전용 URL 보정
         curr_url = driver.current_url
