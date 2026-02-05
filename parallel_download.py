@@ -203,6 +203,7 @@ def download_process_worker(row_data, final_save_path, default_download_path):
             driver.quit()
             
     except Exception as e_crawl:
+        print(f"   크롤링 중 오류 발생 (DOI: {doi}): {e_crawl}")
         result['status'] = f'Failed (Crawling Exception: {str(e_crawl)})'
 
     return result
@@ -210,10 +211,10 @@ def download_process_worker(row_data, final_save_path, default_download_path):
 # -----------------------------------------------------------
 # Main 실행부
 # -----------------------------------------------------------
-def main():
-    MAX_NUM = 1000
-    CITATION_PERCENTILE = 0.99
-    final_save_path = os.path.abspath("./Solid_State_Electrolyte_Battery_Li_Papers")
+def main(max_num=1000, citation_percentile=0.99, query=None, output_dir="./Solid_State_Electrolyte_Battery_Li_Papers"):
+    MAX_NUM = max_num
+    CITATION_PERCENTILE = citation_percentile
+    final_save_path = os.path.abspath(output_dir)
     OA_save_path = os.path.join(final_save_path, "Open_Access")
     CA_save_path = os.path.join(final_save_path, "Closed_Access")
     os.makedirs(final_save_path, exist_ok=True)
@@ -224,7 +225,7 @@ def main():
     os.makedirs(default_download_path, exist_ok=True)
     
     # 쿼리 설정 
-    TA_QUERY = "('solid-state electrolyte' OR 'solid electrolyte') AND 'battery' AND 'Li' NOT ('review' OR 'opinion' OR 'perspective' OR 'survey' OR 'commentary')"
+    TA_QUERY = "('solid-state electrolyte' OR 'solid electrolyte') AND 'battery' AND 'Li' NOT ('review' OR 'opinion' OR 'perspective' OR 'survey' OR 'commentary')" if query is None else query
     
     # OpenAlex 검색 
     # df = OpenAlex_search(pdf_save_dir=final_save_path, csv_name="temp_search_results.csv", query=TA_QUERY)
