@@ -1,0 +1,26 @@
+# 가상환경 폴더 제외
+.venv/
+venv/
+ENV/
+
+# 크롬 바이너리 제외 (용량 큼)
+chrome-linux64/
+chrome-linux64.zip
+
+# 파이썬 캐시 파일 제외
+__pycache__/
+*.pyc
+
+# 다운로드된 데이터 파일 제외 (필요시)
+downloaded_files/
+*.tar
+*.zip
+*.pdf
+*.png
+
+# 로그 파일 제외
+logs/
+*.log
+
+# 맥북 시스템 파일
+.DS_Store

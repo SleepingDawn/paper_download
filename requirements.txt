@@ -1,0 +1,7 @@
+pandas
+requests
+tqdm
+beautifulsoup4
+seleniumbase
+webdriver_manager
+matplotlib
