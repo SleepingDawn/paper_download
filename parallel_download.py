@@ -165,7 +165,7 @@ def download_process_worker(row_data, final_save_path, default_download_path):
 # -----------------------------------------------------------
 # Main 실행부
 # -----------------------------------------------------------
-def main(max_num=1000, citation_percentile=0.99, query=None, output_dir="./Solid_State_Electrolyte_Battery_Li_Papers"):
+def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, output_dir="./Solid_State_Electrolyte_Battery_Li_Papers"):
     MAX_NUM = max_num
     CITATION_PERCENTILE = citation_percentile
     final_save_path = os.path.abspath(output_dir)
@@ -208,7 +208,7 @@ def main(max_num=1000, citation_percentile=0.99, query=None, output_dir="./Solid
     # --- 멀티 프로세싱 설정 ---
     # max_workers: 동시에 띄울 프로세스 수. 
     #  MAX_WORKERS = max(os.cpu_count() // 2 , 2)
-    MAX_WORKERS = 4
+    MAX_WORKERS = max_workers
 
     # 데이터 준비: 함수에 넘길 인자들을 리스트로 변환
     rows = [row for _, row in df.iterrows()]

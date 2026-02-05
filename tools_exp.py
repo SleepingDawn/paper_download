@@ -9,7 +9,7 @@ import random
 
 from typing import Set
 from datetime import datetime
-from urllib.parse import urljoin
+from urllib.parse import urljoin, quote
 from selenium.webdriver.common.by import By
 from seleniumbase import Driver
 from bs4 import BeautifulSoup
@@ -95,12 +95,34 @@ def _wait_for_new_file_diff(download_dir: str, initial_files: Set[str], timeout_
     logger.info("      ❌ 파일 감지 타임아웃")
     return None
 
-def _safe_screenshot(driver, path: str, logger=None):
+def _safe_screenshot(driver_or_page, path: str, logger=None):
+    """
+    Selenium Driver 또는 DrissionPage 객체를 받아 안전하게 스크린샷을 저장합니다.
+    """
     try:
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        driver.save_screenshot(path)
-        if logger: logger.info(f"  스크린샷 저장: {path}")
-    except: pass
+        
+        # 1. DrissionPage 객체인 경우
+        if hasattr(driver_or_page, 'get_screenshot'):
+            # full_page=True 옵션으로 전체 화면 캡처
+            driver_or_page.get_screenshot(path=path, full_page=True)
+            
+        # 2. Selenium Driver인 경우 (기존 호환성 유지)
+        elif hasattr(driver_or_page, 'save_screenshot'):
+            driver_or_page.save_screenshot(path)
+            
+        msg = f"📸 스크린샷 저장 완료: {path}"
+        if logger: 
+            logger.info(msg)
+        else:
+            print(f"      {msg}")
+            
+    except Exception as e:
+        err_msg = f"⚠️ 스크린샷 저장 실패: {e}"
+        if logger:
+            logger.warning(err_msg)
+        else:
+            print(f"      {err_msg}")
 
 
 
@@ -307,122 +329,155 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
 
 # ======================================================
 # DrissonPage 다운로드 시도
-def download_with_drission(doi_url, save_dir, filename, chrome_path):
-    """
-    Selenium 대신 DrissionPage를 사용하여 Cloudflare를 우회하고 PDF를 다운로드
-    """
+def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=3):
     save_path = os.path.join(save_dir, filename)
     
     # 옵션 설정
     co = ChromiumOptions()
     co.set_browser_path(chrome_path)
-    co.headless(True)
+    co.headless(True)            
     co.set_argument('--no-sandbox')
     co.set_argument('--disable-gpu')
-    co.set_argument('--disable-dev-shm-usage')
+    co.auto_port()               
     
-    co.auto_port()
-    co.set_user_agent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-    
+    my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    co.set_user_agent(my_ua)
+
+    page = None
     try:
         page = ChromiumPage(co)
-        print(f"   🚀 [Drission] 접속 시도: {doi_url}")
-        page.get(doi_url)
         
-        # 1. Cloudflare / 보안 챌린지 자동 처리
-        # DrissionPage는 Shadow DOM 내부도 쉽게 접근 가능
-        if page.ele('@id=turnstile-wrapper', timeout=2):
-            print("      🛡️ Cloudflare 감지! 자동 처리 시도...")
-            # 챌린지 요소가 있으면 클릭 (DrissionPage는 봇 탐지를 우회하는 클릭 방식을 내장)
-            # 보통 페이지 로딩만으로 통과되거나, 특정 클릭이 필요함.
-            time.sleep(3) 
-        
-        # 페이지 로딩 대기 (네트워크 유휴 상태 대기)
-        page.wait.load_start()
-        
-        # 2. PDF 링크 찾기 (휴리스틱)
-        # 다양한 패턴으로 PDF 링크를 찾습니다.
-        pdf_url = None
-        
-        # 패턴 A: meta 태그
-        meta = page.ele('xpath://meta[@name="citation_pdf_url"]')
-        if meta: pdf_url = meta.attr('content')
-        
-        # 패턴 B: 일반적인 PDF 버튼 (href에 .pdf가 있거나 텍스트에 PDF가 있는 경우)
-        if not pdf_url:
-            # 'pdf'라는 텍스트를 포함하거나 href에 'pdf'가 포함된 a 태그 검색
-            btn = page.ele('tag:a@@text():PDF') or page.ele('tag:a@@text():pdf') or page.ele('css:a[href$=".pdf"]')
-            if btn:
-                pdf_url = btn.attr('href')
-
-        # 패턴 C: Iframe 내부 (IEEE 등)
-        if not pdf_url:
-            iframe = page.ele('tag:iframe')
-            if iframe and '.pdf' in str(iframe.attr('src')):
-                pdf_url = iframe.attr('src')
-
-        if pdf_url:
-            # 절대 경로 변환
-            if not pdf_url.startswith('http'):
-                from urllib.parse import urljoin
-                pdf_url = urljoin(page.url, pdf_url)
+        # --- 재시도 루프 ---
+        for attempt in range(1, max_attempts + 1):
+            print(f"   🚀 [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
+            
+            try:
+                page.get(doi_url)
                 
-            print(f"      🔎 PDF 링크 발견: {pdf_url}")
-            
-            # 3. 발견한 링크를 curl_cffi로 다운로드 (가장 빠름)
-            if download_with_cffi(pdf_url, save_path, referer=page.url):
-                print("      ✅ [CFFI] 다운로드 성공")
-                return True
-            
-            # 4. 실패 시 DrissionPage 자체 다운로드 기능 사용
-            print("      ⚠️ CFFI 실패 -> Drission 직접 다운로드 시도")
-            page.download(pdf_url, save_path) 
-            # (파일 이름 처리가 필요할 수 있어 위 CFFI 방식을 권장)
-            return True
-            
-        else:
-            print("      ❌ PDF 링크를 찾지 못했습니다.")
-            return False
+                # Cloudflare 대응
+                if page.ele('@id=turnstile-wrapper', timeout=2):
+                    print("      🛡️ Cloudflare 감지, 대기...")
+                    time.sleep(4)
+                
+                page.wait.load_start()
+                
+                # PDF 링크 탐색 (패턴 A, B, C)
+                pdf_url = None
+                
+                # (A) Meta
+                meta = page.ele('xpath://meta[@name="citation_pdf_url"]')
+                if meta: pdf_url = meta.attr('content')
+                
+                # (B) 버튼
+                if not pdf_url:
+                    btn = page.ele('tag:a@@text():PDF') or \
+                          page.ele('tag:a@@text():pdf') or \
+                          page.ele('css:a[href*="/pdf/"]') or \
+                          page.ele('css:a[title="High-Res PDF"]') 
+                    if btn: pdf_url = btn.attr('href')
+
+                # (C) Iframe
+                if not pdf_url:
+                    iframe = page.ele('tag:iframe')
+                    if iframe:
+                        src = iframe.attr('src')
+                        if src and ('.pdf' in src or 'stamp.jsp' in src):
+                            pdf_url = src
+
+                if pdf_url:
+                    if not pdf_url.startswith('http'):
+                        pdf_url = urljoin(page.url, pdf_url)
+                    
+                    print(f"      🔎 PDF 링크 발견: {pdf_url}")
+                    
+                    # 쿠키 추출 후 CFFI 시도
+                    current_cookies = page.get_cookies(as_dict=True)
+                    current_url = page.url 
+
+                    if download_with_cffi(pdf_url, save_path, referer=current_url, cookies=current_cookies, ua=my_ua):
+                        return True
+                    
+                    # CFFI 실패 시 직접 다운로드
+                    print("      ⚠️ CFFI 실패 -> Drission 직접 다운로드 시도")
+                    page.download.set_path(save_dir)
+                    page.download.set_rename(filename)
+                    page(pdf_url)
+                    
+                    if page.wait.download_finish(timeout=60):
+                        print("      ✅ [Drission] 직접 다운로드 성공")
+                        return True
+                else:
+                    print("      ❌ PDF 링크 미발견")
+
+            except Exception as e:
+                print(f"      ⚠️ 시도 {attempt} 중 에러: {e}")
+
+            # 재시도 대기 (마지막 시도 제외)
+            if attempt < max_attempts:
+                time.sleep(random.uniform(3, 5))
+
+        # --- 모든 시도 실패 시 ---
+        print("      ❌ 최종 실패. 스크린샷을 저장합니다.")
+        safe_name = filename.replace(".pdf", "").replace(".", "_")
+        screenshot_path = os.path.join(save_dir, "logs", "screenshots", f"fail_{safe_name}.png")
+        
+        # [핵심] 기존 함수 재활용
+        _safe_screenshot(page, screenshot_path)
+        
+        return False
 
     except Exception as e:
-        print(f"      ❌ Drission 에러: {e}")
+        print(f"      ❌ Drission 치명적 오류: {e}")
         return False
     finally:
-        try:
-            if 'page' in locals():
-                page.quit()
-        except:
-            pass
+        if page:
+            try: page.quit()
+            except: pass
         
 # ======================================================
 # TLS Fingerprint 우회 다운로드 시도
 # ======================================================
-def download_with_cffi(url, save_path, referer=None):
-    """
-    일반 requests 대신 curl_cffi를 사용하여 브라우저처럼 위장하고 다운로드
-    """
+def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None):
     try:
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-        }
-        if referer:
-            headers["Referer"] = referer
+        if not ua:
+            ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
-        # impersonate="chrome120"이 핵심: 크롬 120 버전의 TLS 지문을 흉내냄
+        headers = {
+            "User-Agent": ua,
+            "Referer": referer if referer else "https://www.google.com",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        }
+
+        # DrissionPage에서 가져온 쿠키 주입
+        msg = f"📡 [CFFI] 다운로드 시도 (쿠키: {len(cookies) if cookies else 0}개)"
+        print(f"      {msg}")
+
         response = cffi_requests.get(
             url, 
             headers=headers, 
+            cookies=cookies, 
             impersonate="chrome120", 
-            timeout=30
+            timeout=60,
+            allow_redirects=True
         )
         
-        if response.status_code == 200 and b'%PDF' in response.content[:1024]:
+        if response.status_code != 200:
+            print(f"      ⚠️ [CFFI] 실패 (Status: {response.status_code})")
+            return False
+
+        # PDF 유효성 검사
+        content_type = response.headers.get('Content-Type', '').lower()
+        if 'pdf' in content_type or response.content.startswith(b'%PDF'):
             with open(save_path, 'wb') as f:
                 f.write(response.content)
+            print(f"      ✅ [CFFI] 다운로드 성공! ({len(response.content)} bytes)")
             return True
-        return False
+        else:
+            print(f"      ⚠️ [CFFI] 내용물이 PDF가 아님 (Type: {content_type})")
+            return False
+
     except Exception as e:
-        print(f"   [CFFI] 다운로드 실패: {e}")
+        print(f"      ❌ [CFFI] 에러: {e}")
         return False
 
 
