@@ -325,7 +325,7 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
             
     except Exception as e:
         logger.error(f"      ❌ 네비게이션 다운로드 중 에러: {e}")
-        return None\
+        return None
 
 # ======================================================
 # DrissonPage 다운로드 시도
@@ -390,8 +390,22 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     
                     print(f"      🔎 PDF 링크 발견: {pdf_url}")
                     
-                    # 쿠키 추출 후 CFFI 시도
-                    current_cookies = page.get_cookies(as_dict=True)
+                    # -----------------------------------------------------------------
+                    # [핵심 수정] 쿠키 추출 방식 변경 (get_cookies() -> cookies 속성)
+                    # -----------------------------------------------------------------
+                    try:
+                        # 최신 DrissionPage는 cookies 속성을 사용합니다.
+                        # cookies 속성이 딕셔너리가 아닌 객체(CookiesList)일 경우 as_dict() 호출
+                        raw_cookies = page.cookies
+                        if hasattr(raw_cookies, 'as_dict'):
+                            current_cookies = raw_cookies.as_dict()
+                        else:
+                            current_cookies = raw_cookies # 이미 딕셔너리거나 호환 객체
+                            
+                    except Exception as e_cookie:
+                        print(f"      ⚠️ 쿠키 추출 중 경고: {e_cookie}")
+                        current_cookies = {}
+
                     current_url = page.url 
 
                     if download_with_cffi(pdf_url, save_path, referer=current_url, cookies=current_cookies, ua=my_ua):
@@ -421,7 +435,6 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
         safe_name = filename.replace(".pdf", "").replace(".", "_")
         screenshot_path = os.path.join(save_dir, "logs", "screenshots", f"fail_{safe_name}.png")
         
-        # [핵심] 기존 함수 재활용
         _safe_screenshot(page, screenshot_path)
         
         return False
@@ -448,9 +461,15 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None):
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
         }
 
-        # DrissionPage에서 가져온 쿠키 주입
-        msg = f"📡 [CFFI] 다운로드 시도 (쿠키: {len(cookies) if cookies else 0}개)"
-        print(f"      {msg}")
+        # 쿠키 개수 확인 (로그용)
+        cookie_count = 0
+        if cookies:
+            if isinstance(cookies, dict):
+                cookie_count = len(cookies)
+            else:
+                cookie_count = len(cookies) # 리스트인 경우
+
+        print(f"      📡 [CFFI] 다운로드 시도 (쿠키: {cookie_count}개)")
 
         response = cffi_requests.get(
             url, 
