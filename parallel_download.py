@@ -167,12 +167,12 @@ def download_process_worker(row_data, final_save_path, default_download_path):
             "chromium_arg": chromium_arg_str
         }
         
-        driver = Driver(**sb_options)
         
         chrome_path = "/home/yongyong0206/chrome-linux64/chrome"
         if os.path.exists(chrome_path):
             sb_options["binary_location"] = chrome_path
         
+        driver = Driver(**sb_options)
         # Temp 폴더 설정
         pid = os.getpid()
         unique_temp_dir = os.path.join(default_download_path, f"temp_worker_{pid}")
