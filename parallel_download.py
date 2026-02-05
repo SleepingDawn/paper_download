@@ -169,7 +169,7 @@ def download_process_worker(row_data, final_save_path, default_download_path):
         
         driver = Driver(**sb_options)
         
-        chrome_path = "/home/yongyong0206/chrome_bin/chrome-linux64/chrome"
+        chrome_path = "/home/yongyong0206/chrome-linux64/chrome"
         if os.path.exists(chrome_path):
             sb_options["binary_location"] = chrome_path
         
