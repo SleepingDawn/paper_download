@@ -382,9 +382,9 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None):
 # =======================================================
 # 2. DrissionPage 크롤러
 # =======================================================
-def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=3):
+def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=5):
     save_path = os.path.join(save_dir, filename)
-    
+    logger = setup_logger(save_dir, filename)
     # 폴더 충돌 방지
     if os.path.isdir(save_path):
         try: shutil.rmtree(save_path)
@@ -441,7 +441,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                 page.wait.load_start()
 
                 # --- PDF 링크 탐색 ---
-                pdf_url = None
+                pdf_url = analyze_html_structure(page, logger=None)
                 
                 # (A) Meta
                 meta = page.ele('xpath://meta[@name="citation_pdf_url"]')
