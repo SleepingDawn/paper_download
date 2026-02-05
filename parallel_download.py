@@ -231,7 +231,7 @@ def main():
     # --- 멀티 프로세싱 설정 ---
     # max_workers: 동시에 띄울 프로세스 수. 
     #  MAX_WORKERS = max(os.cpu_count() // 2 , 2)
-    MAX_WORKERS = 8
+    MAX_WORKERS = 4
 
     # 데이터 준비: 함수에 넘길 인자들을 리스트로 변환
     rows = [row for _, row in df.iterrows()]

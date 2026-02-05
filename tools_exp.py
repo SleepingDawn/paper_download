@@ -465,7 +465,14 @@ def download_paper_pdf(doi_url, final_save_dir, default_download_dir, driver, ma
 # sci-hub download
 def try_manual_scihub(doi: str, pdf_dir: str) -> bool:
     """보내주신 HTML 구조(div.download, div.pdf object)를 바탕으로 다운로드합니다."""
-    mirrors = ["https://sci-hub.se", "https://sci-hub.st", "https://sci-hub.ru", "https://sci-hub.box", "https://sci-hub.red"]
+    mirrors = [
+               "https://sci-hub.red"
+               "https://sci-hub.box", 
+               "https://sci-hub.st", 
+               "https://sci-hub.ru", 
+               "https://www.sci-hub.in",
+                "https://sci-hub.se", 
+               ]
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Referer': 'https://sci-hub.se/'
