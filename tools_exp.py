@@ -331,10 +331,9 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
 # 1. CFFI 다운로더
 # =======================================================
 def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None):
-    # [에러 방지] 저장 경로에 같은 이름의 폴더가 있으면 삭제
     if os.path.isdir(save_path):
-        print(f"      🗑️ 잘못된 폴더 감지됨. 삭제 중: {save_path}")
-        shutil.rmtree(save_path)
+        try: shutil.rmtree(save_path)
+        except: pass
 
     try:
         if not ua:
@@ -346,7 +345,6 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None):
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
         }
 
-        # 쿠키 개수 로깅
         cookie_count = 0
         if cookies:
             if isinstance(cookies, dict): cookie_count = len(cookies)
@@ -382,12 +380,12 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None):
         return False
 
 # =======================================================
-# 2. DrissionPage 크롤러 (CAPTCHA 클릭 강화)
+# 2. DrissionPage 크롤러
 # =======================================================
 def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=3):
     save_path = os.path.join(save_dir, filename)
     
-    # [에러 방지] 저장 경로가 폴더면 삭제
+    # 폴더 충돌 방지
     if os.path.isdir(save_path):
         try: shutil.rmtree(save_path)
         except: pass
@@ -401,6 +399,9 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     
     my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     co.set_user_agent(my_ua)
+    
+    # [핵심] 브라우저 시작 시 다운로드 경로 미리 설정 (최신 버전 호환)
+    co.set_download_path(save_dir) 
 
     page = None
     try:
@@ -412,55 +413,42 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             try:
                 page.get(doi_url)
                 
-                # ============================================================
-                # 🛡️ CAPTCHA / Cloudflare / hCaptcha 처리 로직 (강화됨)
-                # ============================================================
-                time.sleep(2) # 기본 로딩 대기
+                # --- CAPTCHA 처리 ---
+                time.sleep(2)
                 
-                # 1. Cloudflare (ScienceDirect 등)
+                # Cloudflare
                 if page.ele('@id=turnstile-wrapper') or "cloudflare" in page.title.lower():
-                    print("      🛡️ Cloudflare 감지. 해결 시도...")
+                    print("      🛡️ Cloudflare 감지.")
                     try:
-                        # Shadow DOM 내부의 버튼 클릭 시도
                         challenge = page.ele('@id=challenge-stage', timeout=2)
                         if challenge:
-                            # 좌표 클릭 (Shadow DOM 우회)
                             rect = challenge.rect
-                            if rect:
-                                x, y = rect.location
-                                page.click(x + 10, y + 10)
+                            page.click(rect.location[0] + 10, rect.location[1] + 10)
                     except: pass
                     time.sleep(4)
 
-                # 2. hCaptcha (IOP Publishing 등)
+                # hCaptcha
                 if page.ele('tag:iframe@@src:hcaptcha') or "human" in page.html.lower():
-                    print("      🛡️ hCaptcha/보안체크 감지. 체크박스 탐색...")
+                    print("      🛡️ hCaptcha 감지.")
                     try:
-                        # hCaptcha 체크박스 iframe 찾기
                         iframe = page.get_frame('@src^https://newassets.hcaptcha.com/captcha')
                         if iframe:
-                            checkbox = iframe.ele('@id=checkbox')
-                            if checkbox:
-                                checkbox.click()
-                                print("      👉 hCaptcha 체크박스 클릭함")
-                                time.sleep(4)
+                            iframe.ele('@id=checkbox').click()
+                            print("      👉 체크박스 클릭")
+                            time.sleep(4)
                     except: pass
                 
-                # 페이지 로딩 완료 대기
                 page.wait.load_start()
 
-                # ============================================================
-                # 🔎 PDF 링크 탐색
-                # ============================================================
+                # --- PDF 링크 탐색 ---
                 pdf_url = None
                 
-                # (A) Meta Tag
+                # (A) Meta
                 meta = page.ele('xpath://meta[@name="citation_pdf_url"]')
                 if meta: pdf_url = meta.attr('content')
                 
-                # (B) 버튼/링크 텍스트
+                # (B) Buttons
                 if not pdf_url:
-                    # 다양한 PDF 버튼 패턴
                     patterns = [
                         'tag:a@@text():PDF', 'tag:a@@text():pdf', 'tag:a@@text():Download PDF',
                         'css:a[href*="/pdf/"]', 'css:a[title="High-Res PDF"]', 
@@ -472,7 +460,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                             pdf_url = btn.attr('href')
                             break
 
-                # (C) Iframe 내부 (IEEE, ScienceDirect 뷰어 등)
+                # (C) Iframe
                 if not pdf_url:
                     iframe = page.ele('tag:iframe')
                     if iframe:
@@ -486,32 +474,38 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     
                     print(f"      🔎 PDF 링크 발견: {pdf_url}")
                     
-                    # ============================================================
-                    # 🍪 쿠키 추출 (버전 호환성 수정 완료)
-                    # ============================================================
-                    try:
-                        # 최신 버전은 page.cookies 속성 사용
-                        current_cookies = page.cookies.as_dict()
-                    except:
-                        # 구버전 호환 (혹시 모를 대비)
+                    # 쿠키 추출
+                    try: current_cookies = page.cookies.as_dict()
+                    except: 
                         try: current_cookies = page.get_cookies(as_dict=True)
                         except: current_cookies = {}
 
                     current_url = page.url 
 
-                    # 1순위: CFFI로 다운로드
+                    # 1순위: CFFI
                     if download_with_cffi(pdf_url, save_path, referer=current_url, cookies=current_cookies, ua=my_ua):
                         return True
                     
-                    # 2순위: Drission 직접 다운로드
+                    # 2순위: Drission 직접 다운로드 (수정됨)
                     print("      ⚠️ CFFI 실패 -> Drission 직접 다운로드 시도")
-                    page.download.set_path(save_dir)
-                    page.download.set_rename(filename)
-                    page(pdf_url)
                     
-                    if page.wait.download_finish(timeout=60):
-                        print("      ✅ [Drission] 직접 다운로드 성공")
+                    # [수정] 다운로드 경로 설정 (버전 호환성 확보)
+                    try:
+                        # 최신 버전: page.set.download_path 또는 download_set 사용 권장
+                        # 하지만 가장 안전한 방법은 시작 시 co.set_download_path()를 쓰는 것입니다.
+                        # 여기서는 파일명 변경을 위해 download 메서드의 인자를 활용합니다.
+                        page.download(pdf_url, save_path, filename) 
                         return True
+                    except:
+                        # 구버전 방식 시도 (혹시 모를 대비)
+                        try:
+                            page.download.set_path(save_dir)
+                            page.download.set_rename(filename)
+                            page(pdf_url)
+                            if page.wait.download_finish(timeout=60): return True
+                        except Exception as e_down:
+                             print(f"      ❌ 직접 다운로드 에러: {e_down}")
+
                 else:
                     print("      ❌ PDF 링크 미발견")
 
@@ -521,12 +515,10 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             if attempt < max_attempts:
                 time.sleep(random.uniform(3, 5))
 
-        # 최종 실패 시 스크린샷
         print("      ❌ 최종 실패. 스크린샷 저장.")
         safe_name = filename.replace(".pdf", "").replace(".", "_")
         screenshot_path = os.path.join(save_dir, "logs", "screenshots", f"fail_{safe_name}.png")
         _safe_screenshot(page, screenshot_path)
-        
         return False
 
     except Exception as e:
