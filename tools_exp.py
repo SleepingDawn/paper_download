@@ -481,7 +481,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     # [수정] path=폴더경로, rename=파일명 (확장자 포함 가능)
                     # file_exists='overwrite'로 중복 시 덮어쓰기
                     clean_name = filename # 파일명 그대로 사용
-                    page.download(pdf_url, path=save_dir, rename=clean_name, file_exists='overwrite')
+                    page.download(pdf_url, goal_path=save_dir, rename=clean_name, file_exists='overwrite')
                     
                     # 파일 생성 확인 대기 (최대 30초)
                     wait_time = 0
@@ -514,7 +514,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     if page:
         try: page.quit()
         except: pass
-    _safe_screenshot(page, os.path.join(save_dir, f"drission_failure_{filename}.png"))
+    _safe_screenshot(page, os.path.join(save_dir, "logs", "screenshots", f"final_fail_capture_{filename}.png"))
     return False
 
 
