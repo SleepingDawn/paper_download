@@ -218,7 +218,7 @@ def force_download_with_requests(driver, pdf_url, referer_url, save_path, logger
     except Exception as e:
         logger.error(f"requests 오류: {e}")
         
-def download_pdf_via_navigation(driver, url, download_dir, logger):
+def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 30):
     """
     브라우저 네비게이션 -> GUI 클릭(Plan A) -> JS 클릭(Plan B) 순차 시도
     """
@@ -269,7 +269,7 @@ def download_pdf_via_navigation(driver, url, download_dir, logger):
             logger.warning(f"      ⚠️ 버튼 클릭 로직 에러 (무시): {e}")
 
         # 3. 파일 생성 대기 (타임아웃 45초)
-        new_file_path = _wait_for_new_file_diff(download_dir, initial_files, timeout_s=45)
+        new_file_path = _wait_for_new_file_diff(download_dir, initial_files, timeout_s)
         
         if new_file_path:
             logger.info(f"      ✅ 다운로드 성공: {os.path.basename(new_file_path)}")
