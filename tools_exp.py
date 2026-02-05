@@ -15,8 +15,8 @@ from seleniumbase import Driver
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import ElementClickInterceptedException, MoveTargetOutOfBoundsException
+from curl_cffi import requests as cffi_requests # 이름 충돌 방지
 from DrissionPage import ChromiumPage, ChromiumOptions
-from curl_cffi import requests
 
 DEFAULT_DOWNLOAD_PATH = os.path.abspath("./downloaded_files")
 # =======================================================
