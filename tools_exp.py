@@ -5,7 +5,8 @@ import shutil
 import logging
 import requests
 import base64
-import random 
+import random
+import tempfile  
 
 from typing import Set
 from datetime import datetime
@@ -390,15 +391,22 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
         try: os.remove(save_path)
         except: pass
 
-    # --- [수정] 최신 DrissionPage(v4.x) 문법 적용 ---
+    # --- [수정] 멀티프로세싱 완벽 격리 설정 ---
     co = ChromiumOptions()
     co.set_browser_path(chrome_path)
+    
+    # 1. 포트 자동 할당
     co.auto_port()
     
-    # 메서드 이름 변경됨 (set_ 접두사 제거)
-    co.headless(True)           # 기존 set_headless(True)
-    co.no_imgs(True)            # 기존 set_no_imgs(True)
-    co.mute(True)               # 기존 set_mute(True)
+    # 2. [핵심] 사용자 데이터 폴더 격리 (Process ID 기반)
+    # 각 프로세스가 서로 다른 폴더를 쓰게 하여 충돌(Handshake 404) 방지
+    user_data_dir = os.path.join(tempfile.gettempdir(), f"drission_profile_{os.getpid()}")
+    co.set_user_data_path(user_data_dir)
+
+    # 3. 브라우저 옵션 최적화
+    co.headless(True)           
+    co.no_imgs(True)            
+    co.mute(True)               
     
     co.set_argument('--no-sandbox')
     co.set_argument('--disable-gpu')
@@ -420,8 +428,8 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             print(f"   🚀 [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
             
             try:
-                # 페이지 접속 (재시도/타임아웃 설정)
-                page.get(doi_url, retry=2, interval=1)
+                # 페이지 접속
+                page.get(doi_url, retry=2, interval=1, timeout=20)
                 
                 # --- CAPTCHA/Cloudflare 우회 ---
                 if page.ele('@id=turnstile-wrapper') or "cloudflare" in page.title.lower():
@@ -437,7 +445,6 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                 
                 # 2. 버튼/링크 패턴 매칭
                 if not pdf_url:
-                    # '@@' 속성 매칭, 'text:' 텍스트 매칭 활용
                     btn = page.ele('tag:a@@text():PDF') or \
                           page.ele('tag:a@@title:PDF') or \
                           page.ele('css:a[href*=".pdf"]') or \
@@ -452,7 +459,6 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
 
                 # --- 다운로드 실행 ---
                 if pdf_url:
-                    # 절대 경로 변환
                     if not pdf_url.startswith('http'):
                         from urllib.parse import urljoin
                         pdf_url = urljoin(page.url, pdf_url)
@@ -467,12 +473,12 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     # 2순위: Drission 자체 다운로드
                     print("      ⚠️ CFFI 실패 -> Drission 자체 다운로드 시도")
                     try:
-                        # 확장자(.pdf)를 제거한 순수 파일명만 rename 인자에 전달
                         clean_name = filename.replace('.pdf', '') if filename.lower().endswith('.pdf') else filename
                         
+                        # 파일명에 특수문자가 많으면 다운로드 실패할 수 있으므로 간단히 처리 가능하면 좋음
                         page.download(pdf_url, save_path, rename=clean_name, file_exists='overwrite')
                         
-                        # 다운로드 완료 대기 (파일 생성 확인)
+                        # 대기
                         wait_time = 0
                         while wait_time < 30:
                             if os.path.exists(save_path) and os.path.getsize(save_path) > 1024:
@@ -490,7 +496,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             except Exception as e:
                 print(f"      ⚠️ 에러 발생: {e}")
             
-            time.sleep(2) # 재시도 대기
+            time.sleep(2)
 
         return False
 
@@ -499,7 +505,9 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
         return False
     finally:
         if page:
-            page.quit()
+            try: 
+                page.quit()
+            except: pass
 
 
 # =======================================================
@@ -742,7 +750,7 @@ def download_paper_pdf(doi_url, final_save_dir, default_download_dir, driver, ma
 def try_manual_scihub(doi: str, pdf_dir: str) -> bool:
     """보내주신 HTML 구조(div.download, div.pdf object)를 바탕으로 다운로드합니다."""
     mirrors = [
-               "https://sci-hub.red"
+               "https://sci-hub.red",
                "https://sci-hub.box", 
                "https://sci-hub.st", 
                "https://sci-hub.ru", 
