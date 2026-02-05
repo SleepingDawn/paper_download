@@ -315,19 +315,17 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path):
     
     # 옵션 설정
     co = ChromiumOptions()
-    co.set_argument('--no-sandbox')
-    co.set_argument('--headless=new') # 탐지가 매우 어려운 최신 헤드리스
-    # co.set_argument('--headless=False') # 디버깅 필요 시 주석 해제 (Xvfb 필요 없음)
-    
-    # 사용자 지정 크롬 경로
     co.set_browser_path(chrome_path)
+    co.headless(True)
+    co.set_argument('--no-sandbox')
+    co.set_argument('--disable-gpu')
+    co.set_argument('--disable-dev-shm-usage')
     
-    # UserPath 설정 (쿠키/세션 유지를 위해 고정된 경로 사용 추천)
-    # co.set_user_data_path("./chrome_profiles/drission_profile") 
-
-    page = ChromiumPage(co)
+    co.auto_port()
+    co.set_user_agent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
     
     try:
+        page = ChromiumPage(co)
         print(f"   🚀 [Drission] 접속 시도: {doi_url}")
         page.get(doi_url)
         
@@ -390,8 +388,11 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path):
         print(f"      ❌ Drission 에러: {e}")
         return False
     finally:
-        # 탭 닫기 (브라우저를 닫고 싶으면 page.quit() 사용)
-        page.quit()
+        try:
+            if 'page' in locals():
+                page.quit()
+        except:
+            pass
         
 # ======================================================
 # TLS Fingerprint 우회 다운로드 시도
