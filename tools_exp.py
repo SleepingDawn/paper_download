@@ -13,7 +13,8 @@ from urllib.parse import urljoin
 from selenium.webdriver.common.by import By
 from seleniumbase import Driver
 from bs4 import BeautifulSoup
-from selenium.webdriver.common.action_chains import ActionChains 
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import ElementClickInterceptedException, MoveTargetOutOfBoundsException
 
 DEFAULT_DOWNLOAD_PATH = os.path.abspath("./downloaded_files")
 # =======================================================
@@ -218,64 +219,70 @@ def force_download_with_requests(driver, pdf_url, referer_url, save_path, logger
         logger.error(f"requests 오류: {e}")
         
 def download_pdf_via_navigation(driver, url, download_dir, logger):
-    logger.info(f"   ⚓ [Interactive] 브라우저 네비게이션 및 상호작용 시도: {url}")
+    """
+    브라우저 네비게이션 -> GUI 클릭(Plan A) -> JS 클릭(Plan B) 순차 시도
+    """
+    logger.info(f"   ⚓ [Hybrid] 브라우저 네비게이션 다운로드 시도: {url}")
     try:
         initial_files = _get_current_files(download_dir)
         
         # 1. 페이지 이동
         driver.get(url)
+        time.sleep(random.uniform(4, 7)) # 로딩 대기
         
-        # 2. [핵심] 인간적인 척하기 (Human-like Behavior)
-        # 로딩 대기 (랜덤하게)
-        time.sleep(random.uniform(3, 5))
-        
-        # 마우스 조금 움직이기 (봇 탐지 무력화)
-        actions = ActionChains(driver)
-        actions.move_by_offset(random.randint(10, 100), random.randint(10, 100)).perform()
-        
-        # 스크롤 살짝 내리기 (Lazy Loading 및 활동 감지 트리거)
-        driver.execute_script(f"window.scrollTo(0, {random.randint(100, 500)});")
-        time.sleep(2)
-
-        # 3. "View PDF" 또는 "Download" 버튼 찾아서 클릭하기
-        # URL 변환보다 버튼 클릭이 403 우회 성공률이 훨씬 높습니다.
+        # 2. 버튼 찾기 및 클릭
         try:
-            # ScienceDirect, Wiley 등 공통적인 다운로드 버튼 찾기
+            # 다양한 다운로드 버튼 후보군
             button_xpath = """
                 //a[contains(@class, 'pdf') or contains(@title, 'Download') or contains(text(), 'View PDF') or contains(text(), 'Download PDF')] |
-                //button[contains(text(), 'View PDF')] |
-                //span[contains(text(), 'View PDF')]
+                //button[contains(text(), 'View PDF') or contains(text(), 'Download')] |
+                //span[contains(text(), 'View PDF') or contains(text(), 'Download')] |
+                //a[contains(@href, '.pdf')]
             """
             buttons = driver.find_elements(By.XPATH, button_xpath)
             
+            clicked = False
             for btn in buttons:
                 if btn.is_displayed():
-                    logger.info(f"      👆 다운로드 버튼 발견 및 클릭 시도: {btn.text.strip()[:20]}")
+                    logger.info(f"      👆 버튼 발견: {btn.text.strip()[:20]}... 클릭 시도")
                     
-                    # 마우스를 버튼 위로 가져가서(Hover) 클릭
-                    actions.move_to_element(btn).pause(0.5).click().perform()
-                    time.sleep(3) # 클릭 후 반응 대기
-                    break
-        except Exception:
-            # 버튼을 못 찾아도, URL 이동만으로 다운로드가 시작될 수 있으므로 패스
-            pass
+                    # [Plan A] 물리적 마우스 클릭 (ActionChains)
+                    try:
+                        actions = ActionChains(driver)
+                        actions.move_to_element(btn).pause(0.5).click().perform()
+                        logger.info("      🖱️ [Plan A] GUI 클릭 성공")
+                        clicked = True
+                    except (MoveTargetOutOfBoundsException, Exception):
+                        # [Plan B] 화면 밖이거나 가려져 있으면 JS 강제 클릭
+                        logger.warning("      ⚠️ GUI 클릭 실패 -> [Plan B] JS 클릭 시도")
+                        driver.execute_script("arguments[0].click();", btn)
+                        clicked = True
+                    
+                    if clicked:
+                        time.sleep(5)
+                        break
+            
+            if not clicked:
+                logger.warning("      ⚠️ 클릭할 버튼을 못 찾음 (이미 다운로드 시작됐을 수도 있음)")
 
-        # 4. 파일 생성 대기 (타임아웃 45초)
+        except Exception as e:
+            logger.warning(f"      ⚠️ 버튼 클릭 로직 에러 (무시): {e}")
+
+        # 3. 파일 생성 대기 (타임아웃 45초)
         new_file_path = _wait_for_new_file_diff(download_dir, initial_files, timeout_s=45)
         
         if new_file_path:
             logger.info(f"      ✅ 다운로드 성공: {os.path.basename(new_file_path)}")
             return new_file_path
         else:
-            # 실패 시 최후의 수단: 현재 페이지 소스에서 403 텍스트 확인
             if "Forbidden" in driver.page_source or "Access Denied" in driver.page_source:
-                logger.warning("      ⛔ 여전히 403 차단됨 (IP 평판 문제 가능성)")
+                logger.warning("      ⛔ 403 Forbidden 감지됨")
             else:
-                logger.warning("      ⚠️ 파일 생성 안됨 (타임아웃).")
+                logger.warning("      ⚠️ 파일 생성 안됨 (타임아웃)")
             return None
             
     except Exception as e:
-        logger.error(f"      ❌ 상호작용 다운로드 중 에러: {e}")
+        logger.error(f"      ❌ 네비게이션 다운로드 중 에러: {e}")
         return None
         
 # =======================================================

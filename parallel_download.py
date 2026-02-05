@@ -152,12 +152,12 @@ def download_process_worker(row_data, final_save_path, default_download_path):
             "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
             "extension_dir": None,
             #  자동화 탐지 방지 플래그 추가
-            "arguments": [
-                "--disable-blink-features=AutomationControlled", 
-                "--disable-gpu",
-                "--no-sandbox",
-                "--disable-dev-shm-usage"
-            ]
+            # "arguments": [
+            #     "--disable-blink-features=AutomationControlled", 
+            #     "--disable-gpu",
+            #     "--no-sandbox",
+            #     "--disable-dev-shm-usage"
+            # ]
         }
         
         # binary_location은 서버 환경에 맞게 유지하거나 제거 
@@ -172,6 +172,8 @@ def download_process_worker(row_data, final_save_path, default_download_path):
                 });
             """
         })
+        driver.set_window_size(1920, 1080)
+        driver.maximize_window()
         
         
         # Temp 폴더 설정
