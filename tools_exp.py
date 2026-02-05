@@ -466,7 +466,11 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                 print(f"      🔎 PDF 링크 발견: {pdf_url}")
 
                 # 1순위: CFFI (빠름)
-                current_cookies = page.cookies(as_dict=True)
+                # 1. 쿠키 리스트 가져오기 (인자 없이 호출)
+                cookies_list = page.cookies()
+
+                # 2. 리스트를 딕셔너리 {name: value} 형태로 변환
+                current_cookies = {c['name']: c['value'] for c in cookies_list}
                 if download_with_cffi(pdf_url, full_save_path, referer=page.url, cookies=current_cookies, ua=my_ua):
                     if page: page.quit()
                     return True
