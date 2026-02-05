@@ -145,35 +145,27 @@ def download_process_worker(row_data, final_save_path, default_download_path):
     # 4. Selenium Crawling
     try:
         # Driver 설정
-        sb_options = { 
-            "uc": True,             # Undetected Chrome 모드 활성화
-            "headless2": True,      # New Headless )
-            "incognito": True,      # 시크릿 모드 
-            "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-            "extension_dir": None,
-            #  자동화 탐지 방지 플래그 추가
-            # "arguments": [
-            #     "--disable-blink-features=AutomationControlled", 
-            #     "--disable-gpu",
-            #     "--no-sandbox",
-            #     "--disable-dev-shm-usage"
-            # ]
-        }
-        
-        # binary_location은 서버 환경에 맞게 유지하거나 제거 
-        if os.path.exists("/home/yongyong0206/chrome-linux64/chrome"):
-             sb_options["binary_location"] = "/home/yongyong0206/chrome-linux64/chrome"
+        my_args = [
+            "--disable-blink-features=AutomationControlled",
+            "--window-size=1920,1080",
+            "--start-maximized",
+            "--no-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-gpu",
+            "--hide-scrollbars",
+            "--mute-audio"
+        ]
+        chromium_arg_str = " ".join(my_args)
 
-        driver = Driver(**sb_options)
-        driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-            "source": """
-                Object.defineProperty(navigator, 'webdriver', {
-                    get: () => undefined
-                });
-            """
-        })
-        driver.set_window_size(1920, 1080)
-        driver.maximize_window()
+        sb_options = { 
+            "uc": True,             
+            "headless2": True,      # [필수] 서버에서는 무조건 True여야 합니다!
+            "incognito": True,      
+            "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+            "extension_dir": None,
+            # [핵심] 리스트(arguments)가 아니라 문자열(chromium_arg)로 전달
+            "chromium_arg": chromium_arg_str
+        }
         
         
         # Temp 폴더 설정
