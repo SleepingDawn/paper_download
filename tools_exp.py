@@ -390,12 +390,15 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
         try: os.remove(save_path)
         except: pass
 
-    # 옵션 설정
+    # --- [수정] 최신 DrissionPage(v4.x) 문법 적용 ---
     co = ChromiumOptions()
     co.set_browser_path(chrome_path)
-    co.set_headless(True)           # [cite: 147]
-    co.set_no_imgs(True)            # [cite: 147]
-    co.set_mute(True)               # [cite: 145]
+    
+    # 메서드 이름 변경됨 (set_ 접두사 제거)
+    co.headless(True)           # 기존 set_headless(True)
+    co.no_imgs(True)            # 기존 set_no_imgs(True)
+    co.mute(True)               # 기존 set_mute(True)
+    
     co.set_argument('--no-sandbox')
     co.set_argument('--disable-gpu')
     
@@ -403,8 +406,8 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     co.set_user_agent(my_ua)
     
-    # [중요] 다운로드 경로 설정
-    co.set_download_path(save_dir) # [cite: 71]
+    # 다운로드 경로 설정
+    co.set_download_path(save_dir)
 
     page = None
     try:
@@ -415,25 +418,24 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             print(f"   🚀 [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
             
             try:
-                # 페이지 접속 (재시도/타임아웃 설정 가능)
-                page.get(doi_url, retry=2, interval=1) # [cite: 93]
+                # 페이지 접속 (재시도/타임아웃 설정)
+                page.get(doi_url, retry=2, interval=1)
                 
-                # --- CAPTCHA/Cloudflare 우회 (Drission 문법 활용) ---
+                # --- CAPTCHA/Cloudflare 우회 ---
                 if page.ele('@id=turnstile-wrapper') or "cloudflare" in page.title.lower():
                     print("      🛡️ Cloudflare 감지.")
                     time.sleep(3)
-                    # 필요한 경우 클릭 로직 추가
 
-                # --- PDF 링크 탐색 (간소화된 로직) ---
+                # --- PDF 링크 탐색 ---
                 pdf_url = None
                 
                 # 1. Meta 태그
                 meta = page.ele('xpath://meta[@name="citation_pdf_url"]')
-                if meta: pdf_url = meta.attr('content') # [cite: 118]
+                if meta: pdf_url = meta.attr('content')
                 
                 # 2. 버튼/링크 패턴 매칭
                 if not pdf_url:
-                    # '@@' 속성 매칭, 'text:' 텍스트 매칭 활용 [cite: 112]
+                    # '@@' 속성 매칭, 'text:' 텍스트 매칭 활용
                     btn = page.ele('tag:a@@text():PDF') or \
                           page.ele('tag:a@@title:PDF') or \
                           page.ele('css:a[href*=".pdf"]') or \
@@ -443,7 +445,6 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
 
                 # 3. Iframe
                 if not pdf_url:
-                    # Iframe 내부 요소 탐색 불가능시 src만 체크
                     iframe = page.ele('tag:iframe@@src:.pdf')
                     if iframe: pdf_url = iframe.attr('src')
 
@@ -456,18 +457,28 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     
                     print(f"      🔎 PDF 링크 발견: {pdf_url}")
 
-                    # 1순위: CFFI (기존 유지 - 속도가 빠름)
-                    current_cookies = page.cookies.as_dict() # [cite: 228]
+                    # 1순위: CFFI
+                    current_cookies = page.cookies.as_dict()
                     if download_with_cffi(pdf_url, save_path, referer=page.url, cookies=current_cookies, ua=my_ua):
                         return True
                     
-                    # 2순위: DrissionPage 자체 다운로드 (안정성)
+                    # 2순위: Drission 자체 다운로드
                     print("      ⚠️ CFFI 실패 -> Drission 자체 다운로드 시도")
                     try:
-                        # rename 인자에 확장자를 뺀 파일명을 넣으면 자동으로 붙여줌 [cite: 141, 142]
-                        # file_exists='overwrite'로 중복 처리 [cite: 262]
-                        page.download(pdf_url, save_path, rename=filename.replace('.pdf',''), file_exists='overwrite')
-                        return True
+                        # 확장자(.pdf)를 제거한 순수 파일명만 rename 인자에 전달
+                        clean_name = filename.replace('.pdf', '') if filename.lower().endswith('.pdf') else filename
+                        
+                        page.download(pdf_url, save_path, rename=clean_name, file_exists='overwrite')
+                        
+                        # 다운로드 완료 대기 (파일 생성 확인)
+                        wait_time = 0
+                        while wait_time < 30:
+                            if os.path.exists(save_path) and os.path.getsize(save_path) > 1024:
+                                print(f"      ✅ [Drission] 다운로드 성공")
+                                return True
+                            time.sleep(1)
+                            wait_time += 1
+                        
                     except Exception as e:
                         print(f"      ❌ 자체 다운로드 실패: {e}")
 
@@ -486,7 +497,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
         return False
     finally:
         if page:
-            page.quit() # 브라우저 종료 [cite: 215]
+            page.quit()
 
 
 # =======================================================
