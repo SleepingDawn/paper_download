@@ -9,7 +9,7 @@ from tqdm import tqdm  # 진행률 표시를 위해 추가 (pip install tqdm)
 from bs4 import BeautifulSoup
 from typing import Dict, List, Optional, Iterable, Any
 from seleniumbase import Driver
-from tools_exp import download_paper_pdf, get_publisher_from_doi_prefix, download_using_api, try_manual_scihub
+from tools_exp import download_with_cffi, download_with_drission, get_publisher_from_doi_prefix, try_manual_scihub, download_using_api, download_paper_pdf
 from openalex_search import main_search
 
 # --- OpenAlex  ---
@@ -142,79 +142,23 @@ def download_process_worker(row_data, final_save_path, default_download_path):
     except Exception:
         pass
 
-    # 4. Selenium Crawling
+    # 4. DrissionPage 크롤링 시도
     try:
-        # Driver 설정
-        user_data_dir = os.path.abspath(f"./chrome_profiles/worker_{os.getpid()}")
-        os.makedirs(user_data_dir, exist_ok=True)
-
-        my_args = [
-            "--disable-blink-features=AutomationControlled",
-            "--window-size=1920,1080",
-            "--start-maximized",
-            "--no-sandbox",
-            "--disable-dev-shm-usage",
-            "--disable-gpu",
-            "--hide-scrollbars",
-            "--mute-audio",
-            "--disable-infobars",
-            "--disable-popup-blocking",
-            "--disable-extensions",
-            "--disable-notifications",
-            "--disable-web-security",
-        ]
-        chromium_arg_str = " ".join(my_args)
-
-        sb_options = { 
-            "uc": True,
-            "headless" : False,             
-            "headless2": True,
-            "incognito": False,     
-            "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-            "extension_dir": None,
-            "chromium_arg": chromium_arg_str,
-            # 사용자 데이터 폴더 지정 
-            "user_data_dir": user_data_dir 
-        }
-        
-        
+        # 크롬 경로 지정
+        filename = doi.replace('/', '_').replace(':', '-') + ".pdf"
         chrome_path = "/home/yongyong0206/chrome-linux64/chrome"
-        if os.path.exists(chrome_path):
-            sb_options["binary_location"] = chrome_path
+        doi_url = "https://doi.org/" + doi
         
-        driver = Driver(**sb_options)
-        # Temp 폴더 설정
-        pid = os.getpid()
-        unique_temp_dir = os.path.join(default_download_path, f"temp_worker_{pid}")
-        os.makedirs(unique_temp_dir, exist_ok=True)
-        
-        # Temp 다운로드 폴더로 설정
-        driver.execute_cdp_cmd("Page.setDownloadBehavior", {
-            "behavior": "allow",
-            "downloadPath": os.path.abspath(unique_temp_dir)
-        })
-        
-        driver.execute_cdp_cmd("Browser.setDownloadBehavior", {
-            "behavior": "allow",
-            "downloadPath": os.path.abspath(unique_temp_dir),
-            "eventsEnabled": True
-        })
-        
-        try:
-            doi_url = "https://doi.org/" + doi
-            if download_paper_pdf(doi_url, final_save_path, unique_temp_dir, driver, max_attempts=3):
-                result['status'] = 'Success (Crawling)'
-                result['method'] = 'crawling'
-            else:
-                result['status'] = 'Failed (Crawling Timeout or Error)'
-
-        finally:
-            # [Step 4] 다운로드가 완벽히 끝난 후 브라우저 종료
-            driver.quit()
+        # DrissionPage 함수 호출
+        if download_with_drission(doi_url, final_save_path, filename, chrome_path):
+            result['status'] = 'Success (Drission)'
+            result['method'] = 'crawling'
+        else:
+            result['status'] = 'Failed (Not Found)'
             
-    except Exception as e_crawl:
-        print(f"   크롤링 중 오류 발생 (DOI: {doi}): {e_crawl}")
-        result['status'] = f'Failed (Crawling Exception: {str(e_crawl)})'
+    except Exception as e:
+        print(f"   Drission 크롤링 중 오류: {e}")
+        result['status'] = f'Failed (Error: {str(e)})'
 
     return result
 

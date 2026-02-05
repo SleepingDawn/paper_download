@@ -15,6 +15,8 @@ from seleniumbase import Driver
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import ElementClickInterceptedException, MoveTargetOutOfBoundsException
+from DrissionPage import ChromiumPage, ChromiumOptions
+from curl_cffi import requests
 
 DEFAULT_DOWNLOAD_PATH = os.path.abspath("./downloaded_files")
 # =======================================================
@@ -301,8 +303,128 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
             
     except Exception as e:
         logger.error(f"      ❌ 네비게이션 다운로드 중 에러: {e}")
-        return None
+        return None\
+
+# ======================================================
+# DrissonPage 다운로드 시도
+def download_with_drission(doi_url, save_dir, filename, chrome_path):
+    """
+    Selenium 대신 DrissionPage를 사용하여 Cloudflare를 우회하고 PDF를 다운로드
+    """
+    save_path = os.path.join(save_dir, filename)
+    
+    # 옵션 설정
+    co = ChromiumOptions()
+    co.set_argument('--no-sandbox')
+    co.set_argument('--headless=new') # 탐지가 매우 어려운 최신 헤드리스
+    # co.set_argument('--headless=False') # 디버깅 필요 시 주석 해제 (Xvfb 필요 없음)
+    
+    # 사용자 지정 크롬 경로
+    co.set_browser_path(chrome_path)
+    
+    # UserPath 설정 (쿠키/세션 유지를 위해 고정된 경로 사용 추천)
+    # co.set_user_data_path("./chrome_profiles/drission_profile") 
+
+    page = ChromiumPage(co)
+    
+    try:
+        print(f"   🚀 [Drission] 접속 시도: {doi_url}")
+        page.get(doi_url)
         
+        # 1. Cloudflare / 보안 챌린지 자동 처리
+        # DrissionPage는 Shadow DOM 내부도 쉽게 접근 가능
+        if page.ele('@id=turnstile-wrapper', timeout=2):
+            print("      🛡️ Cloudflare 감지! 자동 처리 시도...")
+            # 챌린지 요소가 있으면 클릭 (DrissionPage는 봇 탐지를 우회하는 클릭 방식을 내장)
+            # 보통 페이지 로딩만으로 통과되거나, 특정 클릭이 필요함.
+            time.sleep(3) 
+        
+        # 페이지 로딩 대기 (네트워크 유휴 상태 대기)
+        page.wait.load_start()
+        
+        # 2. PDF 링크 찾기 (휴리스틱)
+        # 다양한 패턴으로 PDF 링크를 찾습니다.
+        pdf_url = None
+        
+        # 패턴 A: meta 태그
+        meta = page.ele('xpath://meta[@name="citation_pdf_url"]')
+        if meta: pdf_url = meta.attr('content')
+        
+        # 패턴 B: 일반적인 PDF 버튼 (href에 .pdf가 있거나 텍스트에 PDF가 있는 경우)
+        if not pdf_url:
+            # 'pdf'라는 텍스트를 포함하거나 href에 'pdf'가 포함된 a 태그 검색
+            btn = page.ele('tag:a@@text():PDF') or page.ele('tag:a@@text():pdf') or page.ele('css:a[href$=".pdf"]')
+            if btn:
+                pdf_url = btn.attr('href')
+
+        # 패턴 C: Iframe 내부 (IEEE 등)
+        if not pdf_url:
+            iframe = page.ele('tag:iframe')
+            if iframe and '.pdf' in str(iframe.attr('src')):
+                pdf_url = iframe.attr('src')
+
+        if pdf_url:
+            # 절대 경로 변환
+            if not pdf_url.startswith('http'):
+                from urllib.parse import urljoin
+                pdf_url = urljoin(page.url, pdf_url)
+                
+            print(f"      🔎 PDF 링크 발견: {pdf_url}")
+            
+            # 3. 발견한 링크를 curl_cffi로 다운로드 (가장 빠름)
+            if download_with_cffi(pdf_url, save_path, referer=page.url):
+                print("      ✅ [CFFI] 다운로드 성공")
+                return True
+            
+            # 4. 실패 시 DrissionPage 자체 다운로드 기능 사용
+            print("      ⚠️ CFFI 실패 -> Drission 직접 다운로드 시도")
+            page.download(pdf_url, save_path) 
+            # (파일 이름 처리가 필요할 수 있어 위 CFFI 방식을 권장)
+            return True
+            
+        else:
+            print("      ❌ PDF 링크를 찾지 못했습니다.")
+            return False
+
+    except Exception as e:
+        print(f"      ❌ Drission 에러: {e}")
+        return False
+    finally:
+        # 탭 닫기 (브라우저를 닫고 싶으면 page.quit() 사용)
+        page.quit()
+        
+# ======================================================
+# TLS Fingerprint 우회 다운로드 시도
+# ======================================================
+def download_with_cffi(url, save_path, referer=None):
+    """
+    일반 requests 대신 curl_cffi를 사용하여 브라우저처럼 위장하고 다운로드
+    """
+    try:
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+        if referer:
+            headers["Referer"] = referer
+
+        # impersonate="chrome120"이 핵심: 크롬 120 버전의 TLS 지문을 흉내냄
+        response = cffi_requests.get(
+            url, 
+            headers=headers, 
+            impersonate="chrome120", 
+            timeout=30
+        )
+        
+        if response.status_code == 200 and b'%PDF' in response.content[:1024]:
+            with open(save_path, 'wb') as f:
+                f.write(response.content)
+            return True
+        return False
+    except Exception as e:
+        print(f"   [CFFI] 다운로드 실패: {e}")
+        return False
+
+
 # =======================================================
 # [핵심] 일반론적 HTML 구조 분석 (IEEE 로직 대폭 강화)
 # =======================================================
@@ -801,7 +923,8 @@ def download_via_acspdf(doi: str, output_path: str) -> bool:
         "User-Agent": "Mozilla/5.0",
         "Referer": f"https://pubs.acs.org/doi/{doi_q}",
     }
-    return _download_file(pdf_url, output_path, headers=headers)
+    referer = headers["Referer"]
+    download_with_cffi(pdf_url, output_path, referer)
 
 
 def download_via_aippdf(doi: str, output_path: str) -> bool:
@@ -811,13 +934,14 @@ def download_via_aippdf(doi: str, output_path: str) -> bool:
         "User-Agent": "Mozilla/5.0",
         "Referer": f"https://aip.scitation.org/doi/{doi_q}",
     }
+    referer = headers["Referer"]
 
     url1 = f"https://aip.scitation.org/doi/pdf/{doi_q}"
-    if _download_file(url1, output_path, headers=headers):
+    if download_with_cffi(url1, output_path, referer):
         return True
 
     url2 = f"https://aip.scitation.org/doi/pdf/{doi_q}?download=true"
-    return _download_file(url2, output_path, headers=headers)
+    return download_with_cffi(url2, output_path, referer)
 
 
 def download_via_ioppdf(doi: str, output_path: str) -> bool:
@@ -827,7 +951,8 @@ def download_via_ioppdf(doi: str, output_path: str) -> bool:
         "User-Agent": "Mozilla/5.0",
         "Referer": f"https://iopscience.iop.org/article/{doi_q}",
     }
-    return _download_file(pdf_url, output_path, headers=headers)
+    referer = headers["Referer"]
+    download_with_cffi(pdf_url, output_path, referer)
 
 
 def download_via_wiley(doi: str, output_path: str):
@@ -859,7 +984,8 @@ def download_via_springerpdf(doi: str, output_path: str):
         "User-Agent": "Mozilla/5.0",
         "Referer": f"https://link.springer.com/article/{doi}"
     }
-    return _download_file(pdf_url, output_path, headers=headers)
+    referer = headers["Referer"]
+    download_with_cffi(pdf_url, output_path, referer)
 
 
 
