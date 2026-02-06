@@ -86,7 +86,7 @@ def _wait_for_new_file_diff(download_dir: str, initial_files: Set[str], timeout_
                         prev_size = curr
                         if stable_count >= 2:
                             if _is_valid_pdf(full_path):
-                                logger.infof("        정상 PDF 확인 완료 (크기: {curr} bytes): {pdf}")
+                                logger.infof(f"        정상 PDF 확인 완료 (크기: {curr} bytes): {pdf}")
                                 return full_path
                             else:
                                 pass
@@ -251,7 +251,7 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
         import logging
         logger = logging.getLogger("SafetyLogger")
         logger.setLevel(logging.INFO)
-    logger.info(f"   ⚓ [Hybrid] 브라우저 네비게이션 다운로드 시도: {url}")
+    logger.info(f"     [Hybrid] 브라우저 네비게이션 다운로드 시도: {url}")
     try:
         initial_files = _get_current_files(download_dir)
         
@@ -290,11 +290,11 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
                     try:
                         actions = ActionChains(driver)
                         actions.move_to_element(btn).pause(0.5).click().perform()
-                        logger.info("      🖱️ [Plan A] GUI 클릭 성공")
+                        logger.info("        [Plan A] GUI 클릭 성공")
                         clicked = True
                     except (MoveTargetOutOfBoundsException, Exception):
                         # [Plan B] 화면 밖이거나 가려져 있으면 JS 강제 클릭
-                        logger.warning("      ⚠️ GUI 클릭 실패 -> [Plan B] JS 클릭 시도")
+                        logger.warning("        GUI 클릭 실패 -> [Plan B] JS 클릭 시도")
                         driver.execute_script("arguments[0].click();", btn)
                         clicked = True
                     
@@ -303,10 +303,10 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
                         break
             
             if not clicked:
-                logger.warning("      ⚠️ 클릭할 버튼을 못 찾음 (이미 다운로드 시작됐을 수도 있음)")
+                logger.warning("        클릭할 버튼을 못 찾음 (이미 다운로드 시작됐을 수도 있음)")
 
         except Exception as e:
-            logger.warning(f"      ⚠️ 버튼 클릭 로직 에러 (무시): {e}")
+            logger.warning(f"        버튼 클릭 로직 에러 (무시): {e}")
 
         # 3. 파일 생성 대기 (타임아웃 45초)
         new_file_path = _wait_for_new_file_diff(download_dir, initial_files, timeout_s, logger=logger)
@@ -317,15 +317,15 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
         else:
             # 실패 시 원인 로그 구체화
             if "Forbidden" in driver.page_source or "Access Denied" in driver.page_source:
-                logger.warning("      ⛔ 403 Forbidden 감지됨")
+                logger.warning("        403 Forbidden 감지됨")
             elif "challenge" in driver.page_source:
-                logger.warning("      ⛔ 캡차 화면 감지됨")
+                logger.warning("        캡차 화면 감지됨")
             else:
-                logger.warning("      ⚠️ 파일 생성 안됨 (타임아웃)")
+                logger.warning("        파일 생성 안됨 (타임아웃)")
             return None
             
     except Exception as e:
-        logger.error(f"      ❌ 네비게이션 다운로드 중 에러: {e}")
+        logger.error(f"        네비게이션 다운로드 중 에러: {e}")
         return None
 
 # =======================================================
@@ -351,7 +351,7 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
             if isinstance(cookies, dict): cookie_count = len(cookies)
             else: cookie_count = len(cookies)
 
-        logger.info(f"      📡 [CFFI] 다운로드 시도 (쿠키: {cookie_count}개)")
+        logger.info(f"        [CFFI] 다운로드 시도 (쿠키: {cookie_count}개)")
 
         response = cffi_requests.get(
             url, 
@@ -363,17 +363,17 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
         )
         
         if response.status_code != 200:
-            logger.warning(f"      ⚠️ [CFFI] 실패 (Status: {response.status_code})")
+            logger.warning(f"        [CFFI] 실패 (Status: {response.status_code})")
             return False
 
         content_type = response.headers.get('Content-Type', '').lower()
         if 'pdf' in content_type or response.content.startswith(b'%PDF'):
             with open(save_path, 'wb') as f:
                 f.write(response.content)
-            logger.info(f"      ✅ [CFFI] 다운로드 성공! ({len(response.content)} bytes)")
+            logger.info(f"        [CFFI] 다운로드 성공! ({len(response.content)} bytes)")
             return True
         else:
-            logger.warning(f"      ⚠️ [CFFI] 내용물이 PDF가 아님 (Type: {content_type})")
+            logger.warning(f"        [CFFI] 내용물이 PDF가 아님 (Type: {content_type})")
             return False
 
     except Exception as e:
@@ -397,7 +397,6 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     co = ChromiumOptions()
     co.set_browser_path(chrome_path)
     
-    # [핵심 수정] set_user_data_path 삭제하고 auto_port만 사용
     # auto_port()가 자동으로 독립된 포트와 사용자 폴더를 관리합니다.
     co.auto_port() 
     
@@ -420,7 +419,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     
     for attempt in range(1, max_attempts + 1):
         try:
-            logger.info(f"   🚀 [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
+            logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
             
             # 페이지 객체 생성
             if page is None:
@@ -431,7 +430,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             
             # Cloudflare 감지 시 대기
             if page.ele('@id=turnstile-wrapper') or "cloudflare" in page.title.lower():
-                logger.info("      🛡️ Cloudflare 감지 (3초 대기)")
+                logger.info("        Cloudflare 감지 (3초 대기)")
                 time.sleep(3)
 
             # --- PDF 링크 탐색 ---
@@ -463,7 +462,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     from urllib.parse import urljoin
                     pdf_url = urljoin(page.url, pdf_url)
                 
-                logger.info(f"      🔎 PDF 링크 발견: {pdf_url}")
+                logger.info(f"        PDF 링크 발견: {pdf_url}")
 
                 # 1순위: CFFI (빠름)
                 # 1. 쿠키 리스트 가져오기 (인자 없이 호출)
@@ -476,7 +475,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     return True
                 
                 # 2순위: Drission 자체 다운로드 (안정성)
-                logger.info("      ⚠️ CFFI 실패 -> Drission 자체 다운로드 시도")
+                logger.info("        CFFI 실패 -> Drission 자체 다운로드 시도")
                 try:
                     # [수정] path=폴더경로, rename=파일명 (확장자 포함 가능)
                     # file_exists='overwrite'로 중복 시 덮어쓰기
@@ -487,21 +486,21 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     wait_time = 0
                     while wait_time < 30:
                         if os.path.exists(full_save_path) and os.path.getsize(full_save_path) > 1024:
-                            logger.info(f"      ✅ [Drission] 다운로드 성공")
+                            logger.info(f"        [Drission] 다운로드 성공")
                             if page: page.quit()
                             return True
                         time.sleep(1)
                         wait_time += 1
-                    logger.info("      ❌ 자체 다운로드 타임아웃")
+                    logger.info("        자체 다운로드 타임아웃")
 
                 except Exception as e:
-                    logger.warning(f"      ❌ 자체 다운로드 실패: {e}")
+                    logger.warning(f"        자체 다운로드 실패: {e}")
 
             else:
-                logger.warning("      ❌ PDF 링크 미발견")
+                logger.warning("        PDF 링크 미발견")
 
         except Exception as e:
-            logger.warning(f"      ⚠️ 시도 {attempt} 에러: {e}")
+            logger.warning(f"        시도 {attempt} 에러: {e}")
             # 에러 발생 시 브라우저 닫고 초기화 (다음 시도에서 재생성)
             if page:
                 try: page.quit()
@@ -677,11 +676,7 @@ def download_paper_pdf(doi_url, final_save_dir, default_download_dir, driver, ma
         if "challenge" in driver.title.lower() or "captcha" in driver.page_source.lower() or "security" in driver.title.lower():
             logger.warning("CAPTCHA/보안화면 감지! 10초 대기")
             time.sleep(5) 
-            
-            # # 대기 후 여전히 캡차인지 확인
-            # if "challenge" in driver.title.lower():
-            #      logger.warning("   ⚠️ 여전히 캡차 화면입니다. 10초 더 대기...")
-            #      time.sleep(10)
+
 
         article_page_url = driver.current_url
         
@@ -1107,5 +1102,5 @@ def download_using_api(doi: str, output_path: str, publisher: str, logger = None
         logger.info("Trying download using api or url")
         return download_func(doi, filepath)
     else:
-        logger.warning("No download method available for publisher: {publisher}")
+        logger.warning(f"No download method available for publisher: {publisher}")
         raise Exception(f"No download method available for publisher: {publisher}")
