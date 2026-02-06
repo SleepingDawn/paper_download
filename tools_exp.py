@@ -98,9 +98,12 @@ def _safe_screenshot(page, path: str, logger=None):
         os.makedirs(os.path.dirname(path), exist_ok=True)
         page.screenshot(path)
         if logger: logger.info(f"  스크린샷 저장: {path}")
-    except: pass
+    except Exception as e:
+        raise Exception(f"  스크린샷 저장 실패 : {e}")
 
 
+# =======================================================
+# Download Logics
 # =======================================================
 # 1. JS Injection (DrissionPage 버전)
 # =======================================================
@@ -258,7 +261,7 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
         import logging
         logger = logging.getLogger("SafetyLogger")
     
-    logger.info(f"     [Hybrid] 브라우저 네비게이션 다운로드 시도: {url}")
+    logger.info(f"     브라우저 네비게이션 다운로드 시도: {url}")
     
     try:
         # tools_exp.py에 정의된 유틸리티 함수 사용
@@ -344,7 +347,7 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
         return None
 
 # =======================================================
-# 1. CFFI 다운로더
+# 4. CFFI 다운로더
 # =======================================================
 def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logger=None):
     if os.path.isdir(save_path):
@@ -396,7 +399,81 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
         return False
 
 # =======================================================
-# 2. DrissionPage 크롤러
+# DrissionPage cloudflare turnstile bypasser
+# =======================================================
+# tools_exp.py 에 추가
+
+def solve_captcha_drission(page, logger):
+    # 1. 캡차/보안 페이지인지 감지
+    # 학술 사이트에서 주로 뜨는 키워드들
+    suspicious_keywords = ["just a moment", "security check", "challenge", "attention needed", "access denied", "cloudflare"]
+    title_lower = page.title.lower()
+    
+    # 제목이나 본문에 키워드가 없으면 빠르게 리턴
+    if not any(k in title_lower for k in suspicious_keywords):
+        # 혹시 제목엔 없지만 iframe이 있는 경우를 대비해 살짝 체크
+        if not page.ele('css:iframe[src*="turnstile"]', timeout=0.1):
+            return
+
+    logger.warning("           보안/캡차 화면 감지! 우회 시도 중...")
+
+    start_time = time.time()
+    # 최대 15초간 시도
+    while time.time() - start_time < 10:
+        
+        # --- 해결 시도 ---
+        # DrissionPage는 Shadow DOM 내부를 'ele'로 바로 찾을 수 있습니다.
+        # 여러 종류의 체크박스/버튼을 순차적으로 탐색합니다.
+
+        target_ele = None
+        
+        # (A) Cloudflare Turnstile (가장 흔함)
+        if not target_ele:
+            # 1. 일반적인 쉐도우 돔 내부 체크박스
+            target_ele = page.ele('@@type=checkbox@@name=cf-turnstile-response')
+        
+        if not target_ele:
+            # 2. iframe 내부로 깊숙이 숨은 경우
+            iframe = page.ele('css:iframe[src*="turnstile"]')
+            if iframe:
+                # iframe 내부의 body -> input[checkbox] 탐색
+                target_ele = iframe.ele('css:input[type="checkbox"]', timeout=1)
+
+        # (B) "Verify you are human" 텍스트 버튼 (IEEE 등)
+        if not target_ele:
+            target_ele = page.ele('text:Verify you are human') or \
+                         page.ele('text:사람임을 확인합니다')
+
+        # (C) Google reCAPTCHA v2 (혹시 나온다면 체크박스만)
+        if not target_ele:
+            target_ele = page.ele('css:.recaptcha-checkbox-border')
+
+        # --- 요소 발견 시 클릭 ---
+        if target_ele:
+            logger.info("          캡차/버튼 발견! 클릭 시도...")
+            try:
+                # 1차: 일반 클릭
+                target_ele.click()
+            except:
+                # 2차: JS 강제 클릭
+                target_ele.click(by_js=True)
+            
+            # 클릭 후 3초 대기 (페이지 리로드 기다림)
+            time.sleep(3)
+            
+            # 성공 여부 확인: 타이틀이 바뀌었거나 캡차 프레임이 사라졌는지
+            if not any(k in page.title.lower() for k in suspicious_keywords):
+                logger.info("          캡차 우회 성공 (페이지 진입)")
+                return
+        
+        time.sleep(1)
+
+    logger.warning("        ⚠️ 캡차 자동 해결 실패 (수동 개입 필요하거나 IP 차단됨)")
+
+
+
+# =======================================================
+# DrissionPage 크롤러
 # =======================================================
 def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=3, logger = None):
     # 폴더 생성
@@ -442,6 +519,10 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             
             # 페이지 접속
             page.get(doi_url, retry=1, interval=1, timeout=20)
+            
+            # turnstile 풀기 시도
+            solve_captcha_drission(page, logger)
+            
             referer_url = page.url
             
             # Cloudflare 감지 시 대기
@@ -550,7 +631,9 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
         try: 
             _safe_screenshot(page, os.path.join(save_dir, "logs", "screenshots", f"final_fail_capture_{filename}.png"), logger)
             page.quit()
-        except: pass
+        except Exception as e: 
+            logger.warning(f"can't take screeenshot error : {e}")
+            pass
     return False
 
 
