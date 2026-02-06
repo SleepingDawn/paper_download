@@ -6,18 +6,14 @@ import logging
 import requests
 import base64
 import random
-import tempfile  
 
 from typing import Set
-from datetime import datetime
 from urllib.parse import urljoin, quote
-from selenium.webdriver.common.by import By
 from seleniumbase import Driver
 from bs4 import BeautifulSoup
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.common.exceptions import ElementClickInterceptedException, MoveTargetOutOfBoundsException
 from curl_cffi import requests as cffi_requests # 이름 충돌 방지
 from DrissionPage import ChromiumPage, ChromiumOptions
+from DrissionPage.common import Keys
 
 DEFAULT_DOWNLOAD_PATH = os.path.abspath("./downloaded_files")
 # =======================================================
@@ -97,102 +93,126 @@ def _wait_for_new_file_diff(download_dir: str, initial_files: Set[str], timeout_
     logger.info("       파일 감지 타임아웃")
     return None
 
-def _safe_screenshot(driver, path: str, logger=None):
+def _safe_screenshot(page, path: str, logger=None):
     try:
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        driver.save_screenshot(path)
+        page.screenshot(path)
         if logger: logger.info(f"  스크린샷 저장: {path}")
     except: pass
 
 
-
-
 # =======================================================
-# JS Injection
+# 1. JS Injection (DrissionPage 버전)
 # =======================================================
 
-def download_pdf_via_js_injection(driver, url, filename, save_dir, logger):
-    logger.info(f"  JS Fetch & Base64 Return 시도: {url[:80]}...")
+def download_pdf_via_js_injection(page, url, filename, save_dir, logger):
+    """
+    DrissionPage의 run_js를 사용하여 비동기 fetch 수행 후 Base64 데이터 반환
+    """
+    logger.info(f"  [Drission] JS Fetch & Base64 Return 시도: {url[:80]}...")
     
-    # 변경된 JS 스크립트: 다운로드가 아닌 데이터를 Base64로 리턴함
+    # DrissionPage는 run_js에 인자를 전달하면 자동으로 함수로 래핑하여 실행합니다.
+    # Promise를 리턴하면 Python에서 await되어 결과값을 받을 수 있습니다.
     js_script = """
-        var url = arguments[0];
-        var callback = arguments[arguments.length - 1];
-
-        // 뷰어 내부라면 src 사용
-        if (url === window.location.href) {
-            var embed = document.querySelector('embed[type="application/pdf"]');
-            if (embed && embed.src) url = embed.src;
-        }
-
-        fetch(url)
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok: ' + response.status);
-            var ctype = response.headers.get('content-type');
-            
-            if (ctype && (ctype.includes('text/html') || ctype.includes('application/json'))) {
-                throw new Error('DETECTED_HTML_OR_JSON');
+        var targetUrl = arguments[0];
+        
+        // async 함수 정의 및 즉시 실행하여 Promise 반환
+        return (async function(url) {
+            // 뷰어 내부라면 src 사용 보정
+            if (url === window.location.href) {
+                var embed = document.querySelector('embed[type="application/pdf"]');
+                if (embed && embed.src) url = embed.src;
             }
-            return response.blob();
-        })
-        .then(blob => {
-            if (blob.size < 2000) throw new Error('TOO_SMALL');
-            
-            // Blob을 Base64 문자열로 변환
-            var reader = new FileReader();
-            reader.readAsDataURL(blob); 
-            reader.onloadend = function() {
-                // "data:application/pdf;base64,....." 형태의 문자열 반환
-                callback(reader.result);
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Network response was not ok: ' + response.status);
+                
+                var ctype = response.headers.get('content-type');
+                if (ctype && (ctype.includes('text/html') || ctype.includes('application/json'))) {
+                    throw new Error('DETECTED_HTML_OR_JSON');
+                }
+                
+                const blob = await response.blob();
+                if (blob.size < 2000) throw new Error('TOO_SMALL');
+                
+                // Blob -> Base64 변환
+                return await new Promise((resolve, reject) => {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(blob); 
+                    reader.onloadend = function() {
+                        resolve(reader.result); // 성공 시 데이터 리턴
+                    };
+                    reader.onerror = function(err) {
+                        reject("FAILED: " + err.message);
+                    };
+                });
+
+            } catch (error) {
+                if (error.message === 'DETECTED_HTML_OR_JSON') return "DETECTED_HTML_OR_JSON";
+                return "FAILED: " + error.message;
             }
-        })
-        .catch(error => {
-            callback("FAILED: " + error.message);
-        });
+        })(targetUrl);
     """
     
     try:
-        driver.set_script_timeout(60)
-        # JS 실행 결과(Base64 문자열 혹은 에러 메시지)를 받음
-        result = driver.execute_async_script(js_script, url)
+        # 60초 타임아웃 설정은 DrissionPage 옵션이나 로직으로 처리 필요하지만, 
+        # run_js 자체는 동기적으로 결과를 기다림 (내부적으로 CDP awaitPromise 사용)
+        result = page.run_js(js_script, url)
         
         # 1. 실패/에러 케이스 처리
         if not result or str(result).startswith("FAILED"):
             logger.warning(f"     JS Fetch 실패: {result}")
-            return str(result) # FAILED 메시지 반환
+            return False
         
         if str(result) == "DETECTED_HTML_OR_JSON":
             logger.warning("     JS HTML 감지됨")
-            return "DETECTED_HTML_OR_JSON"
+            return False
 
         # 2. 성공 케이스 (Base64 데이터 수신)
         if str(result).startswith("data:"):
             # "data:application/pdf;base64," 헤더 제거
-            header, encoded = str(result).split(",", 1)
-            data = base64.b64decode(encoded)
-            
-            # Python이 직접 파일을 씀 (경로 문제 해결)
-            file_path = os.path.join(save_dir, filename)
-            with open(file_path, "wb") as f:
-                f.write(data)
+            try:
+                header, encoded = str(result).split(",", 1)
+                data = base64.b64decode(encoded)
                 
-            logger.info(f"     JS 데이터 수신 및 파일 저장 완료: {file_path}")
-            return "SUCCESS"
+                # 파일 저장
+                file_path = os.path.join(save_dir, filename)
+                with open(file_path, "wb") as f:
+                    f.write(data)
+                    
+                logger.info(f"     JS 데이터 수신 및 파일 저장 완료: {file_path}")
+                return True
+            except Exception as e:
+                logger.error(f"     Base64 디코딩/저장 실패: {e}")
+                return False
             
-        return "ERROR: Unknown response"
+        return False
 
     except Exception as e:
         logger.error(f"     JS 실행 중 파이썬 에러: {e}")
-        return "ERROR"
+        return False
 
-def force_download_with_requests(driver, pdf_url, referer_url, save_path, logger):
+
+# =======================================================
+# 2. Requests Force Download (DrissionPage 연동)
+# =======================================================
+
+def force_download_with_requests(page, pdf_url, referer_url, save_path, logger):
+    """
+    DrissionPage의 쿠키와 User-Agent를 가져와 requests로 다운로드 시도
+    """
     try:
         logger.info(f"requests 시도 (Referer: {referer_url})")
-        selenium_cookies = driver.get_cookies()
+        
+        # DrissionPage에서 쿠키 가져오기 (dict 형태)
+        cookies = page.cookies(as_dict=True)
+        
         session = requests.Session()
-        for cookie in selenium_cookies:
-            session.cookies.set(cookie["name"], cookie["value"])
-        user_agent = driver.execute_script("return navigator.userAgent;")
+        session.cookies.update(cookies)
+        
+        # User-Agent 가져오기
+        user_agent = page.user_agent
         
         headers = {
             "User-Agent": user_agent,
@@ -201,6 +221,7 @@ def force_download_with_requests(driver, pdf_url, referer_url, save_path, logger
         }
         
         response = session.get(pdf_url, headers=headers, stream=True, timeout=30)
+        
         if response.status_code == 200:
             ctype = response.headers.get("Content-Type", "").lower()
             if "html" in ctype or "json" in ctype:
@@ -211,36 +232,45 @@ def force_download_with_requests(driver, pdf_url, referer_url, save_path, logger
                 for chunk in response.iter_content(chunk_size=8192):
                     f.write(chunk)
             
-            if _is_valid_pdf(save_path):
+            if _is_valid_pdf(save_path): # _is_valid_pdf는 tools_exp.py 내부에 정의된 함수 사용
                 logger.info("  requests 다운로드 성공 (유효한 PDF)")
                 return True
             else:
                 logger.error("  requests 실패: 파일 손상/HTML 감지")
-                os.remove(save_path)
+                if os.path.exists(save_path):
+                    os.remove(save_path)
                 return False
         return False
     except Exception as e:
         logger.error(f"requests 오류: {e}")
-        
-def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 30):
+        return False
+
+
+# =======================================================
+# 3. Navigation Download (DrissionPage 버전)
+# =======================================================
+
+def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
     """
     브라우저 네비게이션 -> GUI 클릭(Plan A) -> JS 클릭(Plan B) 순차 시도
     """
     if logger is None:
         import logging
         logger = logging.getLogger("SafetyLogger")
-        logger.setLevel(logging.INFO)
+    
     logger.info(f"     [Hybrid] 브라우저 네비게이션 다운로드 시도: {url}")
+    
     try:
+        # tools_exp.py에 정의된 유틸리티 함수 사용
         initial_files = _get_current_files(download_dir)
         
         # 1. 페이지 이동
-        driver.get(url)
+        page.get(url)
         time.sleep(random.uniform(4, 7)) # 로딩 대기
         
         # 2. 버튼 찾기 및 클릭
         try:
-            # 다양한 다운로드 버튼 후보군
+            # 다양한 다운로드 버튼 후보군 XPath
             button_xpath = """
                 //a[contains(@class, 'pdf') or contains(@title, 'Download') or contains(text(), 'View PDF') or contains(text(), 'Download PDF')] |
                 //button[contains(text(), 'View PDF') or contains(text(), 'Download')] |
@@ -255,26 +285,30 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
                 //a[@aria-label='Download this article'] |
                 //*[@id='pdf-download-icon']
             """
-            buttons = driver.find_elements(By.XPATH, button_xpath)
+            
+            # DrissionPage: eles()로 여러 요소 찾기
+            buttons = page.eles(f'xpath:{button_xpath}')
             
             clicked = False
             for btn in buttons:
-                if btn.is_displayed():
+                # DrissionPage Element의 가시성 확인 (Selenium의 is_displayed()와 유사)
+                # states.is_displayed 속성 사용
+                if btn.states.is_displayed:
                     btn_info = btn.text.strip()
                     if not btn_info:
-                        btn_info = btn.get_attribute("title") or btn.get_attribute("aria-label") or "ICON"
+                        btn_info = btn.attr("title") or btn.attr("aria-label") or "ICON"
+                    
                     logger.info(f"         버튼 발견: {btn_info[:20]}... 클릭 시도")
                     
-                    # [Plan A] 물리적 마우스 클릭 (ActionChains)
+                    # [Plan A] DrissionPage Native 클릭 (시뮬레이션)
                     try:
-                        actions = ActionChains(driver)
-                        actions.move_to_element(btn).pause(0.5).click().perform()
+                        btn.click()
                         logger.info("        [Plan A] GUI 클릭 성공")
                         clicked = True
-                    except (MoveTargetOutOfBoundsException, Exception):
-                        # [Plan B] 화면 밖이거나 가려져 있으면 JS 강제 클릭
+                    except Exception:
+                        # [Plan B] JS 강제 클릭
                         logger.warning("        GUI 클릭 실패 -> [Plan B] JS 클릭 시도")
-                        driver.execute_script("arguments[0].click();", btn)
+                        btn.click(by_js=True)
                         clicked = True
                     
                     if clicked:
@@ -287,17 +321,19 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
         except Exception as e:
             logger.warning(f"        버튼 클릭 로직 에러 (무시): {e}")
 
-        # 3. 파일 생성 대기 (타임아웃 45초)
+        # 3. 파일 생성 대기
+        # _wait_for_new_file_diff 함수는 기존과 동일하게 사용 (파일 시스템 감시이므로)
         new_file_path = _wait_for_new_file_diff(download_dir, initial_files, timeout_s, logger=logger)
         
         if new_file_path:
-            logger.info(f"      ✅ 다운로드 성공: {os.path.basename(new_file_path)}")
+            logger.info(f"        다운로드 성공: {os.path.basename(new_file_path)}")
             return new_file_path
         else:
-            # 실패 시 원인 로그 구체화
-            if "Forbidden" in driver.page_source or "Access Denied" in driver.page_source:
+            # 실패 시 원인 로그 구체화 (Page Source 검사)
+            page_src = page.html
+            if "Forbidden" in page_src or "Access Denied" in page_src:
                 logger.warning("        403 Forbidden 감지됨")
-            elif "challenge" in driver.page_source:
+            elif "challenge" in page_src:
                 logger.warning("        캡차 화면 감지됨")
             else:
                 logger.warning("        파일 생성 안됨 (타임아웃)")
@@ -406,6 +442,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             
             # 페이지 접속
             page.get(doi_url, retry=1, interval=1, timeout=20)
+            referer_url = page.url
             
             # Cloudflare 감지 시 대기
             if page.ele('@id=turnstile-wrapper') or "cloudflare" in page.title.lower():
@@ -453,9 +490,26 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
 
                 # 2. 리스트를 딕셔너리 {name: value} 형태로 변환
                 current_cookies = {c['name']: c['value'] for c in cookies_list}
-                if download_with_cffi(pdf_url, full_save_path, referer=page.url, cookies=current_cookies, ua=my_ua, logger=logger):
-                    if page: page.quit()
-                    return True
+                try : 
+                    if download_with_cffi(pdf_url, full_save_path, referer=page.url, cookies=current_cookies, ua=my_ua, logger=logger):
+                        if page: page.quit()
+                        return True
+                except : pass
+                
+                try : 
+                    if download_pdf_via_js_injection(page, pdf_url, filename, save_dir, logger):
+                        return True
+                except : pass
+                
+                try : 
+                    if force_download_with_requests(page, pdf_url, referer_url, save_dir, logger):
+                        return True
+                except: pass
+                
+                try : 
+                    if download_pdf_via_navigation(page, pdf_url, save_dir, logger, timeout_s = 10):
+                        return True
+                except : pass
                 
                 # 2순위: Drission 자체 다운로드 (안정성)
                 logger.info("        CFFI 실패 -> Drission 자체 다운로드 시도")
@@ -478,6 +532,8 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
 
                 except Exception as e:
                     logger.warning(f"        자체 다운로드 실패: {e}")
+            else :
+                logger.warning(f"        pdf 링크 미발견 : {doi_url}")
 
         except Exception as e:
             logger.warning(f"        시도 {attempt} 에러: {e}")
