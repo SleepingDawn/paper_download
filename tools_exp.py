@@ -433,6 +433,10 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             if not pdf_url:
                 iframe = page.ele('tag:iframe@@src:.pdf')
                 if iframe: pdf_url = iframe.attr('src')
+            
+            # 4. analyze_html
+            if not pdf_url:
+                pdf_url = _analyze_html_structure_drission(page, logger)
 
             # --- 다운로드 실행 ---
             if pdf_url:
@@ -475,9 +479,6 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                 except Exception as e:
                     logger.warning(f"        자체 다운로드 실패: {e}")
 
-            else:
-                logger.warning("        PDF 링크 미발견")
-
         except Exception as e:
             logger.warning(f"        시도 {attempt} 에러: {e}")
             # 에러 발생 시 브라우저 닫고 초기화 (다음 시도에서 재생성)
@@ -500,77 +501,84 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
 # =======================================================
 # [핵심] 일반론적 HTML 구조 분석 (IEEE 로직 대폭 강화)
 # =======================================================
-def analyze_html_structure(driver, logger):
-    current_url = driver.current_url
-    page_source = driver.page_source
-    logger.info("     HTML 구조 정밀 분석 중...")
+def _analyze_html_structure_drission(page, logger):
+    """
+    DrissionPage 객체를 받아 HTML 구조를 분석하여 PDF 링크를 추출하는 함수
+    (기존 Selenium analyze_html_structure의 DrissionPage 이식 버전)
+    """
+    current_url = page.url
+    page_source = page.html
+    logger.info("     [Drission] HTML 구조 정밀 분석 중...")
 
-    # [IEEE 전용] stamp.jsp 페이지라면 iframe 로딩을 아주 끈질기게 기다림
+    # -------------------------------------------------------
+    # 1. [IEEE 전용] stamp.jsp 페이지 처리
+    # -------------------------------------------------------
     if "ieeexplore.ieee.org" in current_url and "stamp.jsp" in current_url:
         logger.info("        IEEE Stamp 페이지 감지. Iframe 로딩 대기중 (최대 60초)...")
-        try:
-            from selenium.webdriver.support.ui import WebDriverWait
-            
-            # 디버깅용: "발견"된 모든 iframe src를 기록
-            def debug_and_find_iframe(d):
-                frames = d.find_elements(By.TAG_NAME, "iframe")
-                found_srcs = []
-                target = None
-                
+        
+        start_time = time.time()
+        found_src = None
+        
+        while time.time() - start_time < 60:
+            try:
+                # iframe 태그들 찾기
+                frames = page.eles('tag:iframe')
                 for f in frames:
-                    s = f.get_attribute("src")
+                    s = f.attr('src')
                     if s:
-                        found_srcs.append(s)
                         # 조건: ielx7(전형적 패턴), .pdf, 또는 pdf가 포함된 긴 주소
                         if ("ielx7" in s or ".pdf" in s.lower() or "pdf" in s.lower()):
-                            target = s
+                            found_src = s
                             break
                 
-                if target: return target
+                if found_src:
+                    break
                 
-                # 못 찾았으면 현재 발견된 것들 출력(디버깅) 후 False 리턴 (계속 대기)
-                # (로그가 너무 많아질 수 있으니 5초에 한번씩만 찍히게 할 수도 있지만 여기선 생략)
-                return False
+                time.sleep(1) # 1초 대기 후 재시도
+            except Exception:
+                time.sleep(1)
 
-            # 최대 60초 동안 유효한 iframe을 기다림 (사람이 CAPTCHA 풀 시간 확보)
-            found_src = WebDriverWait(driver, 60).until(debug_and_find_iframe)
-            
-            if found_src:
-                if not found_src.startswith("http"):
-                    found_src = urljoin(current_url, found_src)
-                logger.info(f"        IEEE Iframe SRC 발견: {found_src}")
-                return found_src
-                
-        except Exception as e:
-            # 타임아웃 시, 현재 있는 iframe이라도 다 긁어서 보여줌 (디버깅)
-            frames = driver.find_elements(By.TAG_NAME, "iframe")
-            logger.warning(f"        IEEE Iframe 로딩 실패. 발견된 iframe들: {[f.get_attribute('src') for f in frames]}")
-            
-    # Science direct 전용 로직
+        if found_src:
+            if not found_src.startswith("http"):
+                found_src = urljoin(current_url, found_src)
+            logger.info(f"        IEEE Iframe SRC 발견: {found_src}")
+            return found_src
+        else:
+            # 타임아웃 시 디버깅용 로그
+            frames = page.eles('tag:iframe')
+            src_list = [f.attr('src') for f in frames]
+            logger.warning(f"        IEEE Iframe 로딩 실패. 발견된 iframe들: {src_list}")
+
+    # -------------------------------------------------------
+    # 2. ScienceDirect 전용 로직
+    # -------------------------------------------------------
     if "sciencedirect.com" in current_url and "/pii/" in current_url:
-        # 현재 URL이 이미 /pdfft (PDF 직접 링크)가 아니라면 변환 시도
         if "/pdfft" not in current_url:
-            # URL 예: .../article/pii/S0016003256911577?via=ihub
-            # 목표:   .../article/pii/S0016003256911577/pdfft?pid=1-s2.0-S0016003256911577-main.pdf
-            
-            # 1. 쿼리 파라미터(?via=...) 제거
-            clean_url = current_url.split("?")[0]
-            
-            # 2. "/pii/XXXX" 부분 추출
-            pii_match = re.search(r"/pii/([^/?]+)", clean_url)
-            if pii_match:
-                pii_code = pii_match.group(1)
-                clean_url = clean_url.split("/pii/")[0] + f"/pii/{pii_code}"
-                # 3. /pdfft 및 pid 파라미터 추가
-                pdf_heuristic_url = f"{clean_url}/pdfft?pid=1-s2.0-{pii_code}-main.pdf"
-                logger.info(f"        ScienceDirect PII 감지 -> PDF 링크 추정: {pdf_heuristic_url}")
-                return pdf_heuristic_url
+            try:
+                clean_url = current_url.split("?")[0]
+                pii_match = re.search(r"/pii/([^/?]+)", clean_url)
+                if pii_match:
+                    pii_code = pii_match.group(1)
+                    # PII 코드를 이용해 PDF 직접 링크 생성
+                    # pid 파라미터 구성은 경험적 패턴 적용
+                    pdf_heuristic_url = f"https://www.sciencedirect.com/science/article/pii/{pii_code}/pdfft?pid=1-s2.0-{pii_code}-main.pdf"
+                    logger.info(f"        ScienceDirect PII 감지 -> PDF 링크 추정: {pdf_heuristic_url}")
+                    return pdf_heuristic_url
+            except Exception:
+                pass
 
-    # 1. Iframe / Embed / Object (일반)
+    # -------------------------------------------------------
+    # 3. Iframe / Embed / Object (일반)
+    # -------------------------------------------------------
     try:
-        frames = driver.find_elements(By.CSS_SELECTOR, "iframe, embed, object")
+        # css selector로 여러 태그 동시 검색
+        frames = page.eles('css:iframe, embed, object')
         for frame in frames:
-            src = frame.get_attribute("src")
+            src = frame.attr("src")
+            if not src:
+                # object 태그의 경우 data 속성을 사용하기도 함
+                src = frame.attr("data")
+            
             if src:
                 src_lower = src.lower()
                 if (".pdf" in src_lower or "pdfdirect" in src_lower or "ielx7" in src_lower or "blob:" in src_lower):
@@ -578,155 +586,62 @@ def analyze_html_structure(driver, logger):
                         src = urljoin(current_url, src)
                     logger.info(f"        [Frame/Embed] 발견: {src}")
                     return src
-    except: pass
+    except Exception: 
+        pass
 
-    # 2. Meta Tag
+    # -------------------------------------------------------
+    # 4. Meta Tag
+    # -------------------------------------------------------
     try:
-        meta_pdf = driver.find_element(By.CSS_SELECTOR, 'meta[name="citation_pdf_url"]')
-        content = meta_pdf.get_attribute("content")
-        if content and content != current_url:
-            logger.info(f"        [Meta Tag] 발견: {content}")
-            return content
-    except: pass
+        # citation_pdf_url 메타 태그 검색
+        meta_pdf = page.ele('css:meta[name="citation_pdf_url"]')
+        if meta_pdf:
+            content = meta_pdf.attr("content")
+            if content and content != current_url:
+                logger.info(f"        [Meta Tag] 발견: {content}")
+                return content
+    except Exception: 
+        pass
 
-    # 3. Regex
+    # -------------------------------------------------------
+    # 5. Regex (페이지 소스 텍스트 검색)
+    # -------------------------------------------------------
     patterns = [r'"pdfUrl":"([^"]+)"', r'"pdfPath":"([^"]+)"', r'content="([^"]+\.pdf)"', r'src="([^"]+\.pdf)"']
     for pat in patterns:
         match = re.search(pat, page_source, re.IGNORECASE)
         if match:
             url = match.group(1)
-            url = url.encode().decode('unicode-escape') if "\\" in url else url
-            if not url.startswith("http"): url = urljoin(current_url, url)
+            # 유니코드 이스케이프 (\u002F -> /) 처리
+            if "\\" in url:
+                try: url = url.encode().decode('unicode-escape')
+                except: pass
+            
+            if not url.startswith("http"): 
+                url = urljoin(current_url, url)
+                
             if len(url) > 10 and url != current_url:
                 logger.info(f"        [Regex] 발견: {url}")
                 return url
 
-    # 4. Links
+    # -------------------------------------------------------
+    # 6. Links (XPath 활용)
+    # -------------------------------------------------------
     try:
         xpath_query = "//a[contains(translate(text(), 'PDF', 'pdf'), 'pdf') or contains(@href, '/pdf') or contains(@href, 'download=true')]"
-        links = driver.find_elements(By.XPATH, xpath_query)
+        links = page.eles(f'xpath:{xpath_query}')
         for link in links:
-            href = link.get_attribute("href")
+            href = link.attr("href")
+            # javascript: 링크나 현재 페이지 링크 제외
             if href and "javascript" not in href and href != current_url:
+                if not href.startswith("http"):
+                    href = urljoin(current_url, href)
                 logger.info(f"        [Link] 발견: {href}")
                 return href
-    except: pass
+    except Exception: 
+        pass
 
     return None
 
-# =======================================================
-# Main Logic (CAPTCHA 대기 강화)
-# =======================================================
-def download_paper_pdf(doi_url, final_save_dir, default_download_dir, driver, max_attempts=3, logger = None):
-    safe_filename = _sanitize_doi_to_filename(doi_url)
-    final_file_path = os.path.join(final_save_dir, safe_filename)
-
-    if os.path.exists(final_file_path) and _is_valid_pdf(final_file_path):
-        logger.info(f"  [Skip] 정상 파일 존재: {safe_filename}")
-        return True
-
-    logger.info(f"작업 시작: {doi_url}")
-
-    try:
-        # DOI 페이지 접속
-        try: 
-            driver.uc_open_with_reconnect(doi_url, reconnect_time = 4)
-        except Exception as e:
-            driver.get(doi_url)
-            
-        # captcha 처리 시도
-        try : 
-            if driver.is_element_visible('iframe[src*="challenge"]', timeout=3) or \
-               driver.is_element_visible('iframe[title*="captcha"]', timeout=3):
-                driver.uc_click_captcha()
-                time.sleep(3)
-        except Exception as e:
-            pass
-        
-        # [Wiley/Elsevier 전용 URL 보정
-        curr_url = driver.current_url
-        if "wiley.com" in curr_url and "/epdf/" in curr_url:
-            # ePDF 뷰어는 다운로드가 어려우므로 바로 PDF URL로 변환 시도
-            pdf_direct_url = curr_url.replace("/epdf/", "/pdf/")
-            logger.info(f"  Wiley ePDF 감지 -> PDF 직접 링크로 변환: {pdf_direct_url}")
-            driver.get(pdf_direct_url)
-            time.sleep(3)
-        
-        # CAPTCHA 감지 시 대기
-        if "challenge" in driver.title.lower() or "captcha" in driver.page_source.lower() or "security" in driver.title.lower():
-            logger.warning("CAPTCHA/보안화면 감지! 10초 대기")
-            time.sleep(5) 
-
-
-        article_page_url = driver.current_url
-        
-        # html 구조 분석
-        pdf_url = analyze_html_structure(driver, logger)
-        if not pdf_url: pdf_url = driver.current_url
-        
-        logger.info(f"  초기 타겟 URL: {pdf_url}")
-
-        attempt = 0
-        
-        while attempt < max_attempts:
-            attempt += 1
-            logger.info(f"  다운로드 시도 ({attempt}/{max_attempts}) : {pdf_url}")
-            timeout_s = 10 
-            if attempt == max_attempts:
-                timeout_s = 30  # 마지막 시도는 좀 더 길게 대기
-
-            # JS Fetch Injection 
-            # -------------------------------------------------------
-            js_result = download_pdf_via_js_injection(driver, pdf_url, safe_filename, default_download_dir, logger)
-            
-            if js_result == "SUCCESS":
-                src = os.path.join(default_download_dir, safe_filename)
-                if os.path.exists(src) and _is_valid_pdf(src):
-                    shutil.move(src, final_file_path)
-                    logger.info(f"    [JS] 다운로드 및 이동 완료")
-                    return True
-            
-            # JS가 403이나 HTML을 뱉으면, 브라우저가 직접 이동하게 함
-            # -------------------------------------------------------
-            elif "FAILED" in js_result or "DETECTED_HTML" in js_result:
-                logger.warning("    JS 방식 실패 -> 브라우저 네비게이션 방식 시도")
-                
-                # 만약 URL이 html 페이지 같다면 다시 분석
-                if "DETECTED_HTML" in js_result:
-                     new_url = analyze_html_structure(driver, logger)
-                     if new_url and new_url != pdf_url:
-                         pdf_url = new_url # 링크 갱신 후 다음 루프/네비게이션에서 사용
-                
-                downloaded_file = download_pdf_via_navigation(driver, pdf_url, default_download_dir, logger, timeout_s)
-                
-                if downloaded_file:
-                    shutil.move(downloaded_file, final_file_path)
-                    logger.info(f"   [Nav] 다운로드 및 이동 완료")
-                    return True
-                else:
-                    logger.warning("    네비게이션 방식도 실패.")
-
-            # 재시도 
-            if attempt < max_attempts:
-                logger.info("  링크 재탐색 및 재시도...")
-                time.sleep(2)
-                # 링크를 다시 찾아보기
-                new_url_scan = analyze_html_structure(driver, logger)
-                if new_url_scan: pdf_url = new_url_scan
-
-        logger.info(" 브라우저 다운로드 실패 -> requests 시도")
-        if force_download_with_requests(driver, pdf_url, article_page_url, final_file_path, logger):
-            return True
-        os.makedirs(os.path.join(final_save_dir, "logs", "screenshots"), exist_ok=True)
-        _safe_screenshot(driver, os.path.join(final_save_dir, "logs", "screenshots", f"final_fail_capture_{safe_filename}.png"), logger)
-
-        logger.error("❌ 최종 실패")
-        return False
-
-    except Exception as e:
-        _safe_screenshot(driver, os.path.join(final_save_dir, "logs", "screenshots", f"final_fail_capture_{safe_filename}.png"), logger)
-        logger.error(f"에러: {e}")
-        return False
 # ======================================================
 # sci-hub download
 def try_manual_scihub(doi: str, pdf_dir: str, logger = None) -> bool:

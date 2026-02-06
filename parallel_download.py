@@ -9,7 +9,7 @@ from tqdm import tqdm  # 진행률 표시를 위해 추가 (pip install tqdm)
 from bs4 import BeautifulSoup
 from typing import Dict, List, Optional, Iterable, Any
 from seleniumbase import Driver
-from tools_exp import download_with_cffi, download_with_drission, get_publisher_from_doi_prefix, try_manual_scihub, download_using_api, download_paper_pdf, setup_logger
+from tools_exp import download_with_cffi, download_with_drission, get_publisher_from_doi_prefix, try_manual_scihub, download_using_api, setup_logger
 from openalex_search import main_search
 
 # --- OpenAlex  ---
