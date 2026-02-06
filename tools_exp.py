@@ -86,14 +86,14 @@ def _wait_for_new_file_diff(download_dir: str, initial_files: Set[str], timeout_
                         prev_size = curr
                         if stable_count >= 2:
                             if _is_valid_pdf(full_path):
-                                logger.infof(f"        정상 PDF 확인 완료 (크기: {curr} bytes): {pdf}")
+                                logger.info(f"        정상 PDF 확인 완료 (크기: {curr} bytes): {pdf}")
                                 return full_path
                             else:
                                 pass
                         time.sleep(0.5)
             time.sleep(1)
         except Exception: time.sleep(1)
-    logger.info("      ❌ 파일 감지 타임아웃")
+    logger.info("       파일 감지 타임아웃")
     return None
 
 def _safe_screenshot(driver_or_page, path: str, logger=None):
