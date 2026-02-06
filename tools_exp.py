@@ -97,34 +97,12 @@ def _wait_for_new_file_diff(download_dir: str, initial_files: Set[str], timeout_
     logger.info("       파일 감지 타임아웃")
     return None
 
-def _safe_screenshot(driver_or_page, path: str, logger=None):
-    """
-    Selenium Driver 또는 DrissionPage 객체를 받아 안전하게 스크린샷을 저장합니다.
-    """
+def _safe_screenshot(driver, path: str, logger=None):
     try:
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        
-        # 1. DrissionPage 객체인 경우
-        if hasattr(driver_or_page, 'get_screenshot'):
-            # full_page=True 옵션으로 전체 화면 캡처
-            driver_or_page.get_screenshot(path=path, full_page=True)
-            
-        # 2. Selenium Driver인 경우 (기존 호환성 유지)
-        elif hasattr(driver_or_page, 'save_screenshot'):
-            driver_or_page.save_screenshot(path)
-            
-        msg = f" 스크린샷 저장 완료: {path}"
-        if logger: 
-            logger.info(msg)
-        else:
-            print(f"      {msg}")
-            
-    except Exception as e:
-        err_msg = f"⚠️ 스크린샷 저장 실패: {e}"
-        if logger:
-            logger.warning(err_msg)
-        else:
-            print(f"      {err_msg}")
+        driver.save_screenshot(path)
+        if logger: logger.info(f"  스크린샷 저장: {path}")
+    except: pass
 
 
 
@@ -512,9 +490,10 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
 
     # 모든 시도 실패 시 브라우저 종료
     if page:
-        try: page.quit()
+        try: 
+            _safe_screenshot(page, os.path.join(save_dir, "logs", "screenshots", f"final_fail_capture_{filename}.png"), logger)
+            page.quit()
         except: pass
-    _safe_screenshot(page, os.path.join(save_dir, "logs", "screenshots", f"final_fail_capture_{filename}.png"), logger)
     return False
 
 
