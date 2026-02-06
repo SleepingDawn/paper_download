@@ -205,8 +205,8 @@ def force_download_with_requests(page, pdf_url, referer_url, save_path, logger):
     try:
         logger.info(f"requests 시도 (Referer: {referer_url})")
         
-        # DrissionPage에서 쿠키 가져오기 (dict 형태)
-        cookies = page.cookies(as_dict=True)
+        # DrissionPage에서 쿠키 가져오기 page.cookies -> [dict, list]
+        cookies = page.cookies()[0]
         
         session = requests.Session()
         session.cookies.update(cookies)
