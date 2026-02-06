@@ -93,10 +93,11 @@ def _wait_for_new_file_diff(download_dir: str, initial_files: Set[str], timeout_
     logger.info("       파일 감지 타임아웃")
     return None
 
-def _safe_screenshot(page, path: str, logger=None):
+def _safe_screenshot(page, path: str, name:str, logger=None):
     try:
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        page.screenshot(path)
+        
+        page.get_screenshot(path,name,full_page =True )
         if logger: logger.info(f"  스크린샷 저장: {path}")
     except Exception as e:
         raise Exception(f"  스크린샷 저장 실패 : {e}")
@@ -629,7 +630,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     # 모든 시도 실패 시 브라우저 종료
     if page:
         try: 
-            _safe_screenshot(page, os.path.join(save_dir, "logs", "screenshots", f"final_fail_capture_{filename}.png"), logger)
+            _safe_screenshot(page, os.path.join(save_dir, "logs", "screenshots"), f"final_fail_capture_{filename}.png", logger)
             page.quit()
         except Exception as e: 
             logger.warning(f"can't take screeenshot error : {e}")
