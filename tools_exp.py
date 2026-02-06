@@ -514,7 +514,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     if page:
         try: page.quit()
         except: pass
-    _safe_screenshot(page, os.path.join(save_dir, "logs", "screenshots", f"final_fail_capture_{filename}.png"))
+    _safe_screenshot(page, os.path.join(save_dir, "logs", "screenshots", f"final_fail_capture_{filename}.png"), logger)
     return False
 
 
