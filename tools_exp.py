@@ -24,6 +24,7 @@ DEFAULT_DOWNLOAD_PATH = os.path.abspath("./downloaded_files")
 # Logger
 # =======================================================
 def setup_logger(save_dir: str, filename: str) -> logging.Logger:
+    filename = _sanitize_doi_to_filename(filename) if filename else "unknown"
     log_dir = os.path.join(save_dir, "logs")
     os.makedirs(log_dir, exist_ok=True)
     log_filename = f"download_log_{filename}.txt"
@@ -377,7 +378,7 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
             return False
 
     except Exception as e:
-        logger.warning(f"      ❌ [CFFI] 에러: {e}")
+        logger.warning(f"        ₩[CFFI] 에러: {e}")
         return False
 
 # =======================================================
