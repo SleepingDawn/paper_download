@@ -112,7 +112,7 @@ def _safe_screenshot(driver_or_page, path: str, logger=None):
         elif hasattr(driver_or_page, 'save_screenshot'):
             driver_or_page.save_screenshot(path)
             
-        msg = f"📸 스크린샷 저장 완료: {path}"
+        msg = f" 스크린샷 저장 완료: {path}"
         if logger: 
             logger.info(msg)
         else:
@@ -331,7 +331,7 @@ def download_pdf_via_navigation(driver, url, download_dir, logger, timeout_s = 3
 # =======================================================
 # 1. CFFI 다운로더
 # =======================================================
-def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None):
+def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logger=None):
     if os.path.isdir(save_path):
         try: shutil.rmtree(save_path)
         except: pass
@@ -351,7 +351,7 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None):
             if isinstance(cookies, dict): cookie_count = len(cookies)
             else: cookie_count = len(cookies)
 
-        print(f"      📡 [CFFI] 다운로드 시도 (쿠키: {cookie_count}개)")
+        logger.info(f"      📡 [CFFI] 다운로드 시도 (쿠키: {cookie_count}개)")
 
         response = cffi_requests.get(
             url, 
@@ -363,27 +363,27 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None):
         )
         
         if response.status_code != 200:
-            print(f"      ⚠️ [CFFI] 실패 (Status: {response.status_code})")
+            logger.warning(f"      ⚠️ [CFFI] 실패 (Status: {response.status_code})")
             return False
 
         content_type = response.headers.get('Content-Type', '').lower()
         if 'pdf' in content_type or response.content.startswith(b'%PDF'):
             with open(save_path, 'wb') as f:
                 f.write(response.content)
-            print(f"      ✅ [CFFI] 다운로드 성공! ({len(response.content)} bytes)")
+            logger.info(f"      ✅ [CFFI] 다운로드 성공! ({len(response.content)} bytes)")
             return True
         else:
-            print(f"      ⚠️ [CFFI] 내용물이 PDF가 아님 (Type: {content_type})")
+            logger.warning(f"      ⚠️ [CFFI] 내용물이 PDF가 아님 (Type: {content_type})")
             return False
 
     except Exception as e:
-        print(f"      ❌ [CFFI] 에러: {e}")
+        logger.warning(f"      ❌ [CFFI] 에러: {e}")
         return False
 
 # =======================================================
 # 2. DrissionPage 크롤러
 # =======================================================
-def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=3):
+def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=3, logger = None):
     # 폴더 생성
     os.makedirs(save_dir, exist_ok=True)
     full_save_path = os.path.join(save_dir, filename)
@@ -420,7 +420,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     
     for attempt in range(1, max_attempts + 1):
         try:
-            print(f"   🚀 [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
+            logger.info(f"   🚀 [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
             
             # 페이지 객체 생성
             if page is None:
@@ -431,7 +431,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             
             # Cloudflare 감지 시 대기
             if page.ele('@id=turnstile-wrapper') or "cloudflare" in page.title.lower():
-                print("      🛡️ Cloudflare 감지 (3초 대기)")
+                logger.info("      🛡️ Cloudflare 감지 (3초 대기)")
                 time.sleep(3)
 
             # --- PDF 링크 탐색 ---
@@ -463,7 +463,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     from urllib.parse import urljoin
                     pdf_url = urljoin(page.url, pdf_url)
                 
-                print(f"      🔎 PDF 링크 발견: {pdf_url}")
+                logger.info(f"      🔎 PDF 링크 발견: {pdf_url}")
 
                 # 1순위: CFFI (빠름)
                 # 1. 쿠키 리스트 가져오기 (인자 없이 호출)
@@ -471,12 +471,12 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
 
                 # 2. 리스트를 딕셔너리 {name: value} 형태로 변환
                 current_cookies = {c['name']: c['value'] for c in cookies_list}
-                if download_with_cffi(pdf_url, full_save_path, referer=page.url, cookies=current_cookies, ua=my_ua):
+                if download_with_cffi(pdf_url, full_save_path, referer=page.url, cookies=current_cookies, ua=my_ua, logger=logger):
                     if page: page.quit()
                     return True
                 
                 # 2순위: Drission 자체 다운로드 (안정성)
-                print("      ⚠️ CFFI 실패 -> Drission 자체 다운로드 시도")
+                logger.info("      ⚠️ CFFI 실패 -> Drission 자체 다운로드 시도")
                 try:
                     # [수정] path=폴더경로, rename=파일명 (확장자 포함 가능)
                     # file_exists='overwrite'로 중복 시 덮어쓰기
@@ -487,21 +487,21 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     wait_time = 0
                     while wait_time < 30:
                         if os.path.exists(full_save_path) and os.path.getsize(full_save_path) > 1024:
-                            print(f"      ✅ [Drission] 다운로드 성공")
+                            logger.info(f"      ✅ [Drission] 다운로드 성공")
                             if page: page.quit()
                             return True
                         time.sleep(1)
                         wait_time += 1
-                    print("      ❌ 자체 다운로드 타임아웃")
+                    logger.info("      ❌ 자체 다운로드 타임아웃")
 
                 except Exception as e:
-                    print(f"      ❌ 자체 다운로드 실패: {e}")
+                    logger.warning(f"      ❌ 자체 다운로드 실패: {e}")
 
             else:
-                print("      ❌ PDF 링크 미발견")
+                logger.warning("      ❌ PDF 링크 미발견")
 
         except Exception as e:
-            print(f"      ⚠️ 시도 {attempt} 에러: {e}")
+            logger.warning(f"      ⚠️ 시도 {attempt} 에러: {e}")
             # 에러 발생 시 브라우저 닫고 초기화 (다음 시도에서 재생성)
             if page:
                 try: page.quit()
@@ -638,9 +638,8 @@ def analyze_html_structure(driver, logger):
 # =======================================================
 # Main Logic (CAPTCHA 대기 강화)
 # =======================================================
-def download_paper_pdf(doi_url, final_save_dir, default_download_dir, driver, max_attempts=3):
+def download_paper_pdf(doi_url, final_save_dir, default_download_dir, driver, max_attempts=3, logger = None):
     safe_filename = _sanitize_doi_to_filename(doi_url)
-    logger = setup_logger(final_save_dir, safe_filename)
     final_file_path = os.path.join(final_save_dir, safe_filename)
 
     if os.path.exists(final_file_path) and _is_valid_pdf(final_file_path):
@@ -755,7 +754,7 @@ def download_paper_pdf(doi_url, final_save_dir, default_download_dir, driver, ma
         return False
 # ======================================================
 # sci-hub download
-def try_manual_scihub(doi: str, pdf_dir: str) -> bool:
+def try_manual_scihub(doi: str, pdf_dir: str, logger = None) -> bool:
     """보내주신 HTML 구조(div.download, div.pdf object)를 바탕으로 다운로드합니다."""
     mirrors = [
                "https://sci-hub.red",
@@ -774,7 +773,7 @@ def try_manual_scihub(doi: str, pdf_dir: str) -> bool:
     filepath = os.path.join(pdf_dir, filename)
 
     if os.path.exists(filepath):
-        print(f"  - 이미 파일이 존재합니다: {filename}")
+        logger.info(f"  - 이미 파일이 존재합니다: {filename}")
         return True
 
     for mirror in mirrors:
@@ -805,7 +804,7 @@ def try_manual_scihub(doi: str, pdf_dir: str) -> bool:
                 elif pdf_url.startswith('/'): pdf_url = mirror + pdf_url
                 pdf_url = pdf_url.split('#')[0]
 
-                print(f"  - PDF 주소 추출 성공: {pdf_url}")
+                logger.info(f"  - PDF 주소 추출 성공: {pdf_url}")
                 
                 # 실제 파일 다운로드
                 pdf_content = requests.get(pdf_url, headers=headers, timeout=60)
@@ -814,7 +813,7 @@ def try_manual_scihub(doi: str, pdf_dir: str) -> bool:
                         f.write(pdf_content.content)
                     return True
         except Exception as e:
-            print(f"  - 미러 {mirror} 시도 중 오류: {e}")
+            logger.warning(f"  - 미러 {mirror} 시도 중 오류: {e}")
             continue
     
     return False
@@ -1082,7 +1081,7 @@ def download_via_springerpdf(doi: str, output_path: str):
 
 
 
-def download_using_api(doi: str, output_path: str, publisher: str):
+def download_using_api(doi: str, output_path: str, publisher: str, logger = None):
     """
     Attempt to download the article PDF using publisher-specific API methods.
     Raises an Exception if no suitable method is found or if the download fails.
@@ -1099,11 +1098,14 @@ def download_using_api(doi: str, output_path: str, publisher: str):
     filepath = os.path.join(output_path, filename)
 
     if not publisher :
+        logger.warning("Publisher is Not recognized or Not supported, cannot use API method.")
         raise Exception("Publisher is Not recognized or Not supported, cannot use API method.")
     
     publisher_key = publisher.lower().replace(" ", "")
     if publisher_key in TOOL_FUNCTIONS:
         download_func = TOOL_FUNCTIONS[publisher_key]
+        logger.info("Trying download using api or url")
         return download_func(doi, filepath)
     else:
+        logger.warning("No download method available for publisher: {publisher}")
         raise Exception(f"No download method available for publisher: {publisher}")

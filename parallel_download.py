@@ -9,7 +9,7 @@ from tqdm import tqdm  # 진행률 표시를 위해 추가 (pip install tqdm)
 from bs4 import BeautifulSoup
 from typing import Dict, List, Optional, Iterable, Any
 from seleniumbase import Driver
-from tools_exp import download_with_cffi, download_with_drission, get_publisher_from_doi_prefix, try_manual_scihub, download_using_api, download_paper_pdf
+from tools_exp import download_with_cffi, download_with_drission, get_publisher_from_doi_prefix, try_manual_scihub, download_using_api, download_paper_pdf, setup_logger
 from openalex_search import main_search
 
 # --- OpenAlex  ---
@@ -103,6 +103,7 @@ def download_process_worker(row_data, final_save_path, default_download_path):
     """
     doi = str(row_data['doi'])
     pdf_url_oa = str(row_data['pdf_url']).lower()
+    filename = doi.replace('/', '_').replace(':', '-') + ".pdf"
     
     # 결과 반환용 딕셔너리
     result = {
@@ -116,6 +117,8 @@ def download_process_worker(row_data, final_save_path, default_download_path):
         return result
 
     publisher = get_publisher_from_doi_prefix(doi)
+    # logger setting
+    logger = setup_logger(final_save_path, filename)
 
     # 1. ArXiv, Conference Paper(ECS Meetings) Skip
     if publisher == 'arxiv' or "arxiv.org" in pdf_url_oa or doi.strip().lower().startswith("10.1149/ma"):
@@ -124,7 +127,7 @@ def download_process_worker(row_data, final_save_path, default_download_path):
 
     # 2. API Download 
     try:
-        if download_using_api(doi, final_save_path, publisher):
+        if download_using_api(doi, final_save_path, publisher, logger):
             result['status'] = 'Success (API)'
             result['method'] = 'api'
             return result
@@ -133,7 +136,7 @@ def download_process_worker(row_data, final_save_path, default_download_path):
 
     # 3. Sci-Hub Manual Download
     try:
-        if try_manual_scihub(doi, final_save_path):
+        if try_manual_scihub(doi, final_save_path, logger):
             result['status'] = 'Success (Sci-Hub)'
             result['method'] = 'scihub'
             # 병렬 처리 시 너무 빠른 연속 요청 방지를 위한 짧은 슬립
@@ -145,19 +148,19 @@ def download_process_worker(row_data, final_save_path, default_download_path):
     # 4. DrissionPage 크롤링 시도
     try:
         # 크롬 경로 지정
-        filename = doi.replace('/', '_').replace(':', '-') + ".pdf"
+        
         chrome_path = "/home/yongyong0206/chrome-linux64/chrome"
         doi_url = "https://doi.org/" + doi
         
         # DrissionPage 함수 호출
-        if download_with_drission(doi_url, final_save_path, filename, chrome_path):
+        if download_with_drission(doi_url, final_save_path, filename, chrome_path, logger):
             result['status'] = 'Success (Drission)'
             result['method'] = 'crawling'
         else:
             result['status'] = 'Failed (Not Found)'
             
     except Exception as e:
-        print(f"   Drission 크롤링 중 오류: {e}")
+        logger.warning(f"   Drission 크롤링 중 오류: {e}")
         result['status'] = f'Failed (Error: {str(e)})'
 
     return result
