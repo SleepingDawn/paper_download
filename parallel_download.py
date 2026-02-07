@@ -186,7 +186,7 @@ def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, ou
     
     # OpenAlex 검색 
     # df = OpenAlex_search(pdf_save_dir=final_save_path, csv_name="temp_search_results.csv", query=TA_QUERY)
-    csv_path = main_search(final_save_path, "Searched_DOIs.csv", TA_QUERY, max_num=1000, citation_percentile=CITATION_PERCENTILE)
+    csv_path = main_search(final_save_path, "Searched_DOIs.csv", TA_QUERY, max_num=MAX_NUM, citation_percentile=CITATION_PERCENTILE)
     df = pd.read_csv(csv_path)
     
     # 중복 DOI 제거
