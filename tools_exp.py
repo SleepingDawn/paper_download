@@ -689,23 +689,23 @@ def _analyze_html_structure_drission(page, logger):
             src_list = [f.attr('src') for f in frames]
             logger.warning(f"        IEEE Iframe 로딩 실패. 발견된 iframe들: {src_list}")
 
-    # -------------------------------------------------------
-    # 2. ScienceDirect 전용 로직
-    # -------------------------------------------------------
-    if "sciencedirect.com" in current_url and "/pii/" in current_url:
-        if "/pdfft" not in current_url:
-            try:
-                clean_url = current_url.split("?")[0]
-                pii_match = re.search(r"/pii/([^/?]+)", clean_url)
-                if pii_match:
-                    pii_code = pii_match.group(1)
-                    # PII 코드를 이용해 PDF 직접 링크 생성
-                    # pid 파라미터 구성은 경험적 패턴 적용
-                    pdf_heuristic_url = f"https://www.sciencedirect.com/science/article/pii/{pii_code}/pdfft?pid=1-s2.0-{pii_code}-main.pdf"
-                    logger.info(f"        ScienceDirect PII 감지 -> PDF 링크 추정: {pdf_heuristic_url}")
-                    return pdf_heuristic_url
-            except Exception:
-                pass
+    # # -------------------------------------------------------
+    # # 2. ScienceDirect 전용 로직 -> 403 error을 불러 일으키는 듯
+    # # -------------------------------------------------------
+    # if "sciencedirect.com" in current_url and "/pii/" in current_url:
+    #     if "/pdfft" not in current_url:
+    #         try:
+    #             clean_url = current_url.split("?")[0]
+    #             pii_match = re.search(r"/pii/([^/?]+)", clean_url)
+    #             if pii_match:
+    #                 pii_code = pii_match.group(1)
+    #                 # PII 코드를 이용해 PDF 직접 링크 생성
+    #                 # pid 파라미터 구성은 경험적 패턴 적용
+    #                 pdf_heuristic_url = f"https://www.sciencedirect.com/science/article/pii/{pii_code}/pdfft?pid=1-s2.0-{pii_code}-main.pdf"
+    #                 logger.info(f"        ScienceDirect PII 감지 -> PDF 링크 추정: {pdf_heuristic_url}")
+    #                 return pdf_heuristic_url
+    #         except Exception:
+    #             pass
 
     # -------------------------------------------------------
     # 3. Iframe / Embed / Object (일반)
