@@ -93,14 +93,40 @@ def _wait_for_new_file_diff(download_dir: str, initial_files: Set[str], timeout_
     logger.info("       파일 감지 타임아웃")
     return None
 
-def _safe_screenshot(page, path: str, name:str, logger=None):
+def _safe_screenshot(page, path: str, name: str, logger=None):
+    """
+    DrissionPage의 get_screenshot 메서드를 사용하여 스크린샷을 저장합니다.
+    path: 저장할 폴더 경로 (예: ./logs/screenshots)
+    name: 파일명 (예: capture.png)
+    """
     try:
-        os.makedirs(os.path.dirname(path), exist_ok=True)
+        # [수정 1] 폴더 생성 로직 변경
+        # 넘어온 path가 이미 '폴더 경로'이므로 dirname을 쓰지 않고 직접 생성해야 합니다.
+        if not os.path.exists(path):
+            os.makedirs(path, exist_ok=True)
         
-        page.get_screenshot(path,name,full_page =True )
-        if logger: logger.info(f"  스크린샷 저장: {path}")
+        # [수정 2] DrissionPage get_screenshot 호출
+        # 명시적으로 인자 이름(path, name, full_page)을 지정하여 호출합니다.
+        # full_page=True는 전체 페이지 스크롤 캡처를 시도합니다.
+        saved_path = page.get_screenshot(path=path, name=name, full_page=True)
+        
+        if logger: 
+            logger.info(f"  스크린샷 저장 성공: {saved_path}")
+
     except Exception as e:
-        raise Exception(f"  스크린샷 저장 실패 : {e}")
+        # 전체 페이지 캡처 실패 시 (메모리 부족, 무한 스크롤 등), 보이는 화면(Viewport)만 재시도
+        try:
+            if logger: 
+                logger.warning(f"  전체 페이지 스크린샷 실패 ({e}), 보이는 화면만 캡처 시도...")
+            
+            # 파일명에 visible_ 접두사를 붙여 재시도
+            retry_name = "visible_" + name
+            page.get_screenshot(path=path, name=retry_name, full_page=False)
+            
+        except Exception as e2:
+            # 재시도마저 실패한 경우
+            pass
+            # if logger: logger.warning(f"  스크린샷 저장 최종 실패 : {e2}")
 
 
 # =======================================================
