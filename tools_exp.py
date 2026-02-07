@@ -100,14 +100,11 @@ def _safe_screenshot(page, path: str, name: str, logger=None):
     name: 파일명 (예: capture.png)
     """
     try:
-        # [수정 1] 폴더 생성 로직 변경
-        # 넘어온 path가 이미 '폴더 경로'이므로 dirname을 쓰지 않고 직접 생성해야 합니다.
+        # 폴더 생성
         if not os.path.exists(path):
             os.makedirs(path, exist_ok=True)
         
-        # [수정 2] DrissionPage get_screenshot 호출
-        # 명시적으로 인자 이름(path, name, full_page)을 지정하여 호출합니다.
-        # full_page=True는 전체 페이지 스크롤 캡처를 시도합니다.
+        #  DrissionPage get_screenshot 호출
         saved_path = page.get_screenshot(path=path, name=name, full_page=True)
         
         if logger: 
@@ -519,7 +516,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     # auto_port()가 자동으로 독립된 포트와 사용자 폴더를 관리합니다.
     co.auto_port() 
     
-    co.headless(True)           
+    co.set_argument('--headless=new') # New headless mode for chromium           
     co.no_imgs(True)            
     co.mute(True)               
     
@@ -528,11 +525,14 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     co.set_argument('--disable-gpu')
     co.set_argument('--disable-dev-shm-usage')
     
-    my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
     co.set_user_agent(my_ua)
     
-    # 기본 다운로드 경로 설정
-    co.set_download_path(save_dir)
+    # 다운로드 설정
+    co.set_pref('download.default_directory', save_dir) # 다운로드 경로 지정
+    co.set_pref('download.prompt_for_download', False)  # 저장 여부 묻지 않기
+    co.set_pref('plugins.always_open_pdf_externally', True) # PDF를 브라우저에서 열지 않고 다운로드
+    co.set_pref('profile.default_content_settings.popups', 0) # 팝업 차단 해제
 
     page = None
     
@@ -587,16 +587,35 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             if pdf_url:
                 # 상대 경로를 절대 경로로 변환
                 if not pdf_url.startswith('http'):
-                    from urllib.parse import urljoin
                     pdf_url = urljoin(page.url, pdf_url)
                 
                 logger.info(f"        PDF 링크 발견: {pdf_url}")
+                
+                # Drissionpage 자체 다운로드 먼저 시도
+                logger.info("        1. Drission 자체 다운로드 시도")
+                try:
+                    # [수정] path=폴더경로, rename=파일명 (확장자 포함 가능)
+                    # file_exists='overwrite'로 중복 시 덮어쓰기
+                    clean_name = filename # 파일명 그대로 사용
+                    page.download(pdf_url, goal_path=save_dir, rename=clean_name, file_exists='overwrite')
+                    
+                    # 파일 생성 확인 대기 (최대 30초)
+                    wait_time = 0
+                    while wait_time < 30:
+                        if os.path.exists(full_save_path) and os.path.getsize(full_save_path) > 1024:
+                            logger.info(f"        [Drission] 다운로드 성공")
+                            if page: page.quit()
+                            return True
+                        time.sleep(1)
+                        wait_time += 1
+                    logger.info("        자체 다운로드 타임아웃")
 
-                # 1순위: CFFI (빠름)
+                except Exception as e:
+                    logger.warning(f"        자체 다운로드 실패: {e}")
+                    pass
+
                 # 1. 쿠키 리스트 가져오기 (인자 없이 호출)
                 cookies_list = page.cookies()
-
-                # 2. 리스트를 딕셔너리 {name: value} 형태로 변환
                 current_cookies = {c['name']: c['value'] for c in cookies_list}
                 try : 
                     if download_with_cffi(pdf_url, full_save_path, referer=page.url, cookies=current_cookies, ua=my_ua, logger=logger):
@@ -619,27 +638,6 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                         return True
                 except : pass
                 
-                # 2순위: Drission 자체 다운로드 (안정성)
-                logger.info("        CFFI 실패 -> Drission 자체 다운로드 시도")
-                try:
-                    # [수정] path=폴더경로, rename=파일명 (확장자 포함 가능)
-                    # file_exists='overwrite'로 중복 시 덮어쓰기
-                    clean_name = filename # 파일명 그대로 사용
-                    page.download(pdf_url, goal_path=save_dir, rename=clean_name, file_exists='overwrite')
-                    
-                    # 파일 생성 확인 대기 (최대 30초)
-                    wait_time = 0
-                    while wait_time < 30:
-                        if os.path.exists(full_save_path) and os.path.getsize(full_save_path) > 1024:
-                            logger.info(f"        [Drission] 다운로드 성공")
-                            if page: page.quit()
-                            return True
-                        time.sleep(1)
-                        wait_time += 1
-                    logger.info("        자체 다운로드 타임아웃")
-
-                except Exception as e:
-                    logger.warning(f"        자체 다운로드 실패: {e}")
             else :
                 logger.warning(f"        pdf 링크 미발견 : {doi_url}")
 
