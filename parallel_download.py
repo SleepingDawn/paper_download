@@ -169,7 +169,7 @@ def download_process_worker(row_data, final_save_path, default_download_path):
 # -----------------------------------------------------------
 # Main 실행부
 # -----------------------------------------------------------
-def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, output_dir="./Solid_State_Electrolyte_Battery_Li_Papers"):
+def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, output_dir="./Solid_State_Electrolyte_Battery_Li_Papers", doi_path = None):
     MAX_NUM = max_num
     CITATION_PERCENTILE = citation_percentile
     final_save_path = os.path.abspath(output_dir)
@@ -187,7 +187,11 @@ def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, ou
     
     # OpenAlex 검색 
     # df = OpenAlex_search(pdf_save_dir=final_save_path, csv_name="temp_search_results.csv", query=TA_QUERY)
-    csv_path = main_search(final_save_path, "Searched_DOIs.csv", TA_QUERY, max_num=MAX_NUM, citation_percentile=CITATION_PERCENTILE)
+    csv_path = None
+    if doi_path:
+        csv_path = doi_path
+    else:
+        csv_path = main_search(final_save_path, "Searched_DOIs.csv", TA_QUERY, max_num=MAX_NUM, citation_percentile=CITATION_PERCENTILE)
     df = pd.read_csv(csv_path)
     
     # 중복 DOI 제거

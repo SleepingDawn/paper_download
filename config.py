@@ -28,6 +28,10 @@ def get_config():
     
     parser.add_argument("--output_dir", type=str, default=DEFAULT_OUTPUT_DIR,
                         help=f"결과 저장 경로 (기본값: {DEFAULT_OUTPUT_DIR})")
+    
+    # 외부 doi list import
+    parser.add_argument("--doi_path", type=str, default = None,
+                        help ="doi리스트 경로")
 
     args = parser.parse_args()
     return args
