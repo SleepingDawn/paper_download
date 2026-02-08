@@ -443,7 +443,7 @@ def solve_captcha_drission(page, logger):
 
     start_time = time.time()
     # 최대 15초간 시도
-    while time.time() - start_time < 10:
+    while time.time() - start_time < 30:
         
         # --- 해결 시도 ---
         # DrissionPage는 Shadow DOM 내부를 'ele'로 바로 찾을 수 있습니다.
