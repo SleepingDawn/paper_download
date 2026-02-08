@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 from curl_cffi import requests as cffi_requests # 이름 충돌 방지
 from DrissionPage import ChromiumPage, ChromiumOptions
 from DrissionPage.common import Keys
+from config import WILEY_API_KEY
 
 DEFAULT_DOWNLOAD_PATH = os.path.abspath("./downloaded_files")
 # =======================================================
@@ -1106,7 +1107,7 @@ def download_via_wiley(doi: str, output_path: str):
     Download the PDF of a Wiley article via the Wiley TDM API.
     Requires a Wiley API key.
     """
-    api_key = "b4b01dd9-bf66-4a57-a791-0e7f3ff95a39"
+    api_key = WILEY_API_KEY
     if not api_key:
         raise Exception(
             "WILEY_API_KEY is not set. Please configure your Wiley API key.")

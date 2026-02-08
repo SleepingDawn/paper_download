@@ -11,6 +11,7 @@ from typing import Dict, List, Optional, Iterable, Any
 from seleniumbase import Driver
 from tools_exp import download_with_cffi, download_with_drission, get_publisher_from_doi_prefix, try_manual_scihub, download_using_api, setup_logger
 from openalex_search import main_search
+from config import get_config
 
 # --- OpenAlex  ---
 OPENALEX_ENDPOINT = "https://api.openalex.org/works"
@@ -339,4 +340,5 @@ def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, ou
     print("="*50)
 
 if __name__ == "__main__":
-    main()
+    config = get_config
+    main(config)
