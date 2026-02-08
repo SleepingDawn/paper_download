@@ -344,5 +344,12 @@ def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, ou
     print("="*50)
 
 if __name__ == "__main__":
-    config = get_config
-    main(config)
+    args = get_config()
+    main(
+        max_num=args.max_num,
+        citation_percentile=args.citation_percentile,
+        query=args.query,
+        max_workers=args.max_workers,
+        output_dir=args.output_dir,
+        doi_path=args.doi_path
+    )
