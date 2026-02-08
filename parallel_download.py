@@ -244,27 +244,9 @@ def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, ou
                 df.at[idx, 'download_status'] = f'Failed (System Error: {str(e)})'
                 stats['failed'] += 1
 
-    # 시간 계산
-    end_time = time.time()
-    elapsed_seconds = end_time - start_time
-    hours = int(elapsed_seconds // 3600)
-    minutes = int((elapsed_seconds % 3600) // 60)
-    seconds = int(elapsed_seconds % 60)
-
-    # 결과 저장
-    print("\n>> 결과 저장 중...")
-    full_csv_name = "openalex_search_results_parallel.csv"
-    full_csv_path = os.path.join(final_save_path, full_csv_name)
-    df.to_csv(full_csv_path, index=False, encoding='utf-8-sig')
-    
-    # 실패 목록 저장
-    failed_df = df[df['download_status'].str.contains('Failed', case=False, na=False)]
-    if not failed_df.empty:
-        failed_csv_path = os.path.join(final_save_path, "failed_papers.csv")
-        failed_df.to_csv(failed_csv_path, index=False, encoding='utf-8-sig')
         
     # 실패한 논문 재시도(IEEE 등 같은 저널 방문시 차단되는 경우 방지)
-    failed_indices = df[~df['download_status'].str.contains('Success', case=False, na=False)].index
+    failed_indices = df[~df['download_status'].str.contains('Success|Skipped', case=False, na=False)].index
     
     if len(failed_indices) > 0:
         print(f"\n" + "="*50)
@@ -296,9 +278,16 @@ def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, ou
                 if 'Success' in new_status:
                     method = result.get('method', 'unknown')
                     stats[method] = stats.get(method, 0) + 1
+                    
+                    new_status_str = f"Success (Retry, {method})"
+                    df.at[idx, 'download_status'] = new_status_str
+                    
                     # 기존 failed 카운트 하나 줄임
+                    stats[method] = stats.get(method, 0) + 1
                     stats['failed'] -= 1
                     print(f"   --> 재시도 성공: {doi}")
+                else:
+                    df.at[idx, 'download_status'] = result['status']
                 
             except Exception as e:
                 print(f"   --> 재시도 에러 ({doi}): {e}")
@@ -308,6 +297,31 @@ def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, ou
     else:
         print("\n✨ 모든 다운로드가 1차 시도에서 성공했거나 실패 건이 없습니다.")
 
+    # 시간 계산
+    end_time = time.time()
+    elapsed_seconds = end_time - start_time
+    hours = int(elapsed_seconds // 3600)
+    minutes = int((elapsed_seconds % 3600) // 60)
+    seconds = int(elapsed_seconds % 60)
+
+    # 결과 저장
+    print("\n>> 결과 저장 중...")
+    full_csv_name = "openalex_search_results_parallel.csv"
+    full_csv_path = os.path.join(final_save_path, full_csv_name)
+    df.to_csv(full_csv_path, index=False, encoding='utf-8-sig')
+    
+    # 최종 실패 목록 저장
+    failed_df = df[df['download_status'].str.contains('Failed', case=False, na=False)]
+    if not failed_df.empty:
+        failed_csv_path = os.path.join(final_save_path, "failed_papers.csv")
+        failed_df.to_csv(failed_csv_path, index=False, encoding='utf-8-sig')
+    else:
+        failed_csv_path = os.path.join(final_save_path, "failed_papers.csv")
+        if os.path.exists(failed_csv_path):
+            try: os.remove(failed_csv_path)
+            except: pass
+        print("   모든 논문 다운로드 성공 (실패 목록 없음)")
+        
     # 최종 리포트
     print("="*50)
     print(f"       [병렬 작업 완료 리포트]")
