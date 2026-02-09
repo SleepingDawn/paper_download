@@ -7,4 +7,3 @@ webdriver_manager
 matplotlib
 DrissionPage
 curl_cffi
-pyvirtualdisplay

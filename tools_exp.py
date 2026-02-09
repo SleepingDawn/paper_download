@@ -542,8 +542,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     co.set_browser_path(chrome_path)
     co.auto_port() 
     
-    # 가상 디스플레이 설정시 headless를 꺼서 bot detection 피해보자
-    # co.set_argument('--headless=new') # New headless mode for chromium           
+    co.set_argument('--headless=new') # New headless mode for chromium           
     co.no_imgs(True)            
     co.mute(True)               
     
@@ -551,6 +550,10 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     co.set_argument('--no-sandbox')
     co.set_argument('--disable-gpu')
     co.set_argument('--disable-dev-shm-usage')
+    co.set_argument('--window-size=1920,1080')
+    co.set_argument('--start-maximized')
+    co.set_argument('--lang=ko_KR,ko;q=0.9,en-US;q=0.8,en;q=0.7')
+    co.set_argument('--disable-blink-features=AutomationControlled')
     
     my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
     co.set_user_agent(my_ua)

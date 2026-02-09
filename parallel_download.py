@@ -12,7 +12,6 @@ from seleniumbase import Driver
 from tools_exp import download_with_cffi, download_with_drission, normalize_publisher_label, try_manual_scihub, download_using_api, setup_logger, _sanitize_doi_to_filename
 from openalex_search import main_search
 from config import get_config
-from pyvirtualdisplay import Display
 
 # --- OpenAlex  ---
 OPENALEX_ENDPOINT = "https://api.openalex.org/works"
@@ -234,11 +233,6 @@ def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, ou
 
     # 데이터 준비: 함수에 넘길 인자들을 리스트로 변환
     rows = [row for _, row in df.iterrows()]
-    
-    # 가상 디스플레이 설정
-    display = Display(visible=0, size=(1920, 1080))
-    display.start()
-    print("가상 디스플레이 실행")
     
     # ProcessPoolExecutor 시작
     with ProcessPoolExecutor(max_workers=MAX_WORKERS) as executor:
