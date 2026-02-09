@@ -876,7 +876,7 @@ def try_manual_scihub(doi: str, pdf_dir: str, logger = None) -> bool:
         try:
             target_url = f"{mirror}/{doi}"
             # print(f"  - Sci-Hub 접속 시도: {target_url}")
-            resp = requests.get(target_url, headers=headers, timeout=20)
+            resp = requests.get(target_url, headers=headers, timeout=20, verify=False)
             
             if resp.status_code != 200: continue
             
