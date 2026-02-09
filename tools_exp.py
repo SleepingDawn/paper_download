@@ -430,52 +430,60 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
 
 def solve_captcha_drission(page, logger):
     # 1. 캡차/보안 페이지인지 감지
-    # 학술 사이트에서 주로 뜨는 키워드들
-    suspicious_keywords = ["just a moment", "security check", "challenge", "attention needed", "access denied", "cloudflare"]
+    # 학술 사이트에서 주로 뜨는 키워드들 + "bot", "human" 등 추가
+    suspicious_keywords = [
+        "just a moment", "security check", "challenge", "attention needed", 
+        "access denied", "cloudflare", "verify", "human", "turnstile"
+    ]
     title_lower = page.title.lower()
     
     # 제목이나 본문에 키워드가 없으면 빠르게 리턴
+    # (단, iframe이 있는 경우는 제목에 없어도 검사)
     if not any(k in title_lower for k in suspicious_keywords):
-        # 혹시 제목엔 없지만 iframe이 있는 경우를 대비해 살짝 체크
         if not page.ele('css:iframe[src*="turnstile"]', timeout=0.1):
             return
 
     logger.warning("           보안/캡차 화면 감지! 우회 시도 중...")
 
     start_time = time.time()
-    # 최대 15초간 시도
-    while time.time() - start_time < 30:
+    # 최대 20초간 시도 (시간을 조금 늘림)
+    while time.time() - start_time < 20:
         
-        # --- 해결 시도 ---
-        # DrissionPage는 Shadow DOM 내부를 'ele'로 바로 찾을 수 있습니다.
-        # 여러 종류의 체크박스/버튼을 순차적으로 탐색합니다.
-
         target_ele = None
         
         # (A) Cloudflare Turnstile (가장 흔함)
         if not target_ele:
-            # 1. 일반적인 쉐도우 돔 내부 체크박스
+            # 1. Shadow DOM 내부 체크박스
             target_ele = page.ele('@@type=checkbox@@name=cf-turnstile-response')
         
         if not target_ele:
-            # 2. iframe 내부로 깊숙이 숨은 경우
+            # 2. iframe 내부 체크박스
             iframe = page.ele('css:iframe[src*="turnstile"]')
             if iframe:
-                # iframe 내부의 body -> input[checkbox] 탐색
                 target_ele = iframe.ele('css:input[type="checkbox"]', timeout=1)
 
-        # (B) "Verify you are human" 텍스트 버튼 (IEEE 등)
+        # (B) "Verify you are human" 텍스트 기반 버튼
         if not target_ele:
             target_ele = page.ele('text:Verify you are human') or \
-                         page.ele('text:사람임을 확인합니다')
+                         page.ele('text:사람임을 확인합니다') or \
+                         page.ele('text:Verify you are not a robot')
 
-        # (C) Google reCAPTCHA v2 (혹시 나온다면 체크박스만)
+        # (C) [추가됨] Submit / Continue / Proceed 버튼
+        # 보안 페이지라고 확신이 든 상태이므로, 이런 버튼이 있으면 진행 버튼일 확률이 높음
+        if not target_ele:
+            target_ele = page.ele('text:Submit') or \
+                         page.ele('text:Continue') or \
+                         page.ele('text:Proceed') or \
+                         page.ele('xpath://input[@type="submit"]') or \
+                         page.ele('xpath://button[@type="submit"]')
+
+        # (D) Google reCAPTCHA v2 (혹시 나온다면 체크박스만)
         if not target_ele:
             target_ele = page.ele('css:.recaptcha-checkbox-border')
 
         # --- 요소 발견 시 클릭 ---
         if target_ele:
-            logger.info("          캡차/버튼 발견! 클릭 시도...")
+            logger.info(f"          보안 해제 요소 발견 ({target_ele.text if target_ele.text else 'Checkbox'})! 클릭 시도...")
             try:
                 # 1차: 일반 클릭
                 target_ele.click()
@@ -483,18 +491,20 @@ def solve_captcha_drission(page, logger):
                 # 2차: JS 강제 클릭
                 target_ele.click(by_js=True)
             
-            # 클릭 후 3초 대기 (페이지 리로드 기다림)
+            # 클릭 후 대기 (페이지 리로드 기다림)
             time.sleep(3)
             
-            # 성공 여부 확인: 타이틀이 바뀌었거나 캡차 프레임이 사라졌는지
-            if not any(k in page.title.lower() for k in suspicious_keywords):
-                logger.info("          캡차 우회 성공 (페이지 진입)")
+            # 성공 여부 확인: 타이틀이 바뀌었거나, 보안 키워드가 사라졌는지
+            new_title = page.title.lower()
+            if not any(k in new_title for k in suspicious_keywords):
+                logger.info("          캡차/보안 우회 성공 (페이지 진입)")
                 return
+            else:
+                logger.info("          클릭했으나 아직 보안 페이지임. 재시도...")
         
         time.sleep(1)
 
     logger.warning("        ⚠️ 캡차 자동 해결 실패 (수동 개입 필요하거나 IP 차단됨)")
-
 
 
 # =======================================================
