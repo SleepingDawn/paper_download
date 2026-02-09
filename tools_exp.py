@@ -810,7 +810,6 @@ def _analyze_html_structure_drission(page, logger):
 # ======================================================
 # sci-hub download
 def try_manual_scihub(doi: str, pdf_dir: str, logger = None) -> bool:
-    """보내주신 HTML 구조(div.download, div.pdf object)를 바탕으로 다운로드합니다."""
     mirrors = [
                 "https://sci-hub.al",
                 "https://sci-hub.mk",
@@ -820,12 +819,12 @@ def try_manual_scihub(doi: str, pdf_dir: str, logger = None) -> bool:
                "https://sci-hub.red",
                "https://sci-hub.box", 
                "https://sci-hub.ru", 
-               "https://www.sci-hub.in",
+               "https://sci-hub.in",
                 "https://sci-hub.se", 
                ]
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Referer': 'https://sci-hub.se/'
+        # 'Referer': 'https://sci-hub.se/'
     }
 
     filename = _sanitize_doi_to_filename(doi)
