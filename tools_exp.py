@@ -460,9 +460,6 @@ def solve_captcha_drission(page, logger):
     target_ele = None
     
     # (A) Cloudflare Turnstile (가장 흔함)
-    if not target_ele:
-        # 1. Shadow DOM 내부 체크박스
-        target_ele = page.ele('@@type=checkbox@@name=cf-turnstile-response')
     
     # idea from https://blog.csdn.net/qq_59095456/article/details/149053014
     # https://github.com/chromedp/chromedp/issues/1608
@@ -480,9 +477,13 @@ def solve_captcha_drission(page, logger):
                     target_ele = iframe_body.sr('css:input[type="checkbox"]')
                     
                     if target_ele:
-                        logger.info("          중첩된 Shadow DOM 내부 체크박스 발견!")
+                        logger.info("          Cloudflare turnstile 발견!")
         except Exception:
             pass
+        
+    if not target_ele:
+        # 1. Shadow DOM 내부 체크박스
+        target_ele = page.ele('@@type=checkbox@@name=cf-turnstile-response')
 
     # (B) "Verify you are human" 텍스트 기반 버튼
     if not target_ele:
@@ -507,9 +508,10 @@ def solve_captcha_drission(page, logger):
     if target_ele:
         logger.info(f"          보안 해제 요소 발견 ({target_ele.text if target_ele.text else 'Checkbox'})! 클릭 시도...")
         try:
-            page.actions.move_to(target_ele) # 요소 위로 이동
+            # page.actions.move_to(target_ele) # 요소 위로 이동
             time.sleep(random.uniform(0.1, 0.5)) # 0.1~0.5초 망설임
-            page.actions.click() # 클릭
+            # page.actions.click() # 클릭
+            target_ele.click()
         except:
             target_ele.click(by_js=True) # 실패 시 JS 클릭
         
@@ -521,6 +523,7 @@ def solve_captcha_drission(page, logger):
         if not any(k in new_title for k in suspicious_keywords):
             logger.info("          캡차/보안 우회 성공 (페이지 진입)")
             return
+    
 
 
     logger.warning("        ⚠️ 캡차 자동 해결 실패 ")
