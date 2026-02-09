@@ -470,15 +470,16 @@ def solve_captcha_drission(page, logger):
         
         # idea from https://blog.csdn.net/qq_59095456/article/details/149053014
         # https://github.com/chromedp/chromedp/issues/1608
-        cf_iframe = page.get_frame('@src:challenges.cloudflare.com')
+        iframe_ele = page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=2)
+        if iframe_ele : cf_iframe = page.get_frame(iframe_ele)
         if cf_iframe:
             # Turnstile 구조: iframe -> body -> #shadow-root -> div (wrapper)
             btn = None
             try:
-                body = cf_iframe.ele('tag:body')
+                body = cf_iframe.ele('tag:body', timeout=2)
                 if body and body.shadow_root:
                     # Shadow Root 내부 탐색
-                    btn = body.shadow_root.ele('tag:input[@type="checkbox"]')
+                    btn = body.shadow_root.ele('css:input[type="checkbox"]')
                     if not btn: 
                         # input이 안 잡히면 스타일링된 컨테이너 시도
                         btn = body.shadow_root.ele('css:.ct-checkbox-label') or \
