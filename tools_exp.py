@@ -1155,8 +1155,12 @@ def download_via_wiley(doi: str, output_path: str):
     base_url = "https://api.wiley.com/onlinelibrary/tdm/v1/articles/"
     url = base_url + doi
     headers = {"Wiley-TDM-Client-Token": api_key}
+    response = requests.get(url, headers=headers)
     try:
-        return _download_file(url, output_path, headers=headers)
+        if response.status_code == 200:
+            with open(output_path, 'wb') as file:
+                file.write(response.content)
+            print(f'{doi} downloaded successfully')
     except Exception as e:
         # Provide a more specific hint on failure
         raise Exception(
@@ -1167,10 +1171,10 @@ def download_via_springerpdf(doi: str, output_path: str):
     Download the PDF of a Springer article (including Nature) by constructing the direct PDF URL.
     Note: This method mimics a browser and may not work for bulk or for closed-access content.
     """
-    pdf_url = f"https://link.springer.com/content/pdf/{doi}.pdf"
+    pdf_url = f"https://nature.com/articles/{doi}.pdf"
     headers = {
         "User-Agent": "Mozilla/5.0",
-        "Referer": f"https://link.springer.com/article/{doi}"
+        "Referer": f"https://nature.com/articles/{doi}"
     }
     referer = headers["Referer"]
     download_with_cffi(pdf_url, output_path, referer)
