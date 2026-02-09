@@ -440,16 +440,6 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
 # =======================================================
 # DrissionPage cloudflare turnstile bypasser
 # =======================================================
-# tools_exp.py 에 추가
-
-def human_mouse_move(page):
-    """사람처럼 마우스를 부들부들 떨며 움직임"""
-    x, y = random.randint(100, 500), random.randint(100, 500)
-    page.scroll.to_location(x, y) # 스크롤도 한번 해주고
-    
-    # 마우스를 랜덤하게 조금씩 움직임
-    for _ in range(5):
-        page.actions.move(random.randint(-10, 10), random.randint(-10, 10), duration=0.1)
 
 def solve_captcha_drission(page, logger):
     # 1. 캡차/보안 페이지인지 감지
@@ -517,7 +507,6 @@ def solve_captcha_drission(page, logger):
     if target_ele:
         logger.info(f"          보안 해제 요소 발견 ({target_ele.text if target_ele.text else 'Checkbox'})! 클릭 시도...")
         try:
-            human_mouse_move(page)
             page.actions.move_to(target_ele) # 요소 위로 이동
             time.sleep(random.uniform(0.1, 0.5)) # 0.1~0.5초 망설임
             page.actions.click() # 클릭
