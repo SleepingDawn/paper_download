@@ -463,71 +463,78 @@ def solve_captcha_drission(page, logger):
     logger.warning("           보안/캡차 화면 감지! 우회 시도 중...")
     target_ele = None
     
-    # (A) Cloudflare Turnstile (가장 흔함)
-    
-    # idea from https://blog.csdn.net/qq_59095456/article/details/149053014
-    # https://github.com/chromedp/chromedp/issues/1608
-    if not target_ele:
-        try:
-            # 1. Turnstile Iframe 찾기
-            iframe = page.ele('css:iframe[src*="turnstile"]', timeout=2)
-            
-            if iframe:
-                # 2. Iframe 내부의 Body 요소 가져오기
-                iframe_body = iframe.ele('tag:body', timeout=2).sr
-                
-                if iframe_body:
-                    # 블로그에서 강조한 포인트: 그냥 ele가 아니라 .sr()을 써야 함
-                    target_ele = iframe_body.ele('css:input[type="checkbox"]')
+    start_time = time.time()
+    while time.time() - start_time < 30: # 시간 좀 더 넉넉히 (30초)
+        target_ele = None
+        # (A) Cloudflare Turnstile (가장 흔함)
+        
+        # idea from https://blog.csdn.net/qq_59095456/article/details/149053014
+        # https://github.com/chromedp/chromedp/issues/1608
+        if not target_ele:
+            try:
+                # 1. Turnstile Iframe 찾기
+                iframe = page.ele('css:iframe[src*="cloudflare"]', timeout=2)
+                if not iframe:
+                    iframe = page.ele('@@tag:iframe@@src:cloudflare', timeout=2)
+                if iframe:
+                    # 2. Iframe 내부의 Body 요소 가져오기
+                    iframe_body = iframe.ele('tag:body', timeout=2)
                     
-                    if target_ele:
-                        logger.info("          Cloudflare turnstile 발견!")
-        except Exception:
-            pass
-        
-    if not target_ele:
-        # 1. Shadow DOM 내부 체크박스
-        target_ele = page.ele('@@type=checkbox@@name=cf-turnstile-response')
+                    if iframe_body:
+                        # 블로그에서 강조한 포인트: 그냥 ele가 아니라 .sr()을 써야 함
+                        inner_shadow = iframe_body.sr
+                        if inner_shadow:
+                            target_ele = inner_shadow.ele('css:input[type="checkbox"]', timeout=1)
+                            if target_ele:
+                                logger.info("          Cloudflare turnstile 발견!")
+                        else :
+                            target_ele = iframe_body.ele('css:input[type="checkbox"]', timeout=1)
+            except Exception:
+                pass
+            
+        if not target_ele:
+            # 1. Shadow DOM 내부 체크박스
+            target_ele = page.ele('@@type=checkbox@@name=cf-turnstile-response')
 
-    # (B) "Verify you are human" 텍스트 기반 버튼
-    if not target_ele:
-        target_ele = page.ele('text:Verify you are human') or \
-                        page.ele('text:사람임을 확인합니다') or \
-                        page.ele('text:Verify you are not a robot')
+        # (B) "Verify you are human" 텍스트 기반 버튼
+        if not target_ele:
+            target_ele = page.ele('text:Verify you are human') or \
+                            page.ele('text:사람임을 확인합니다') or \
+                            page.ele('text:Verify you are not a robot')
 
-    # (C) [추가됨] Submit / Continue / Proceed 버튼
-    # 보안 페이지라고 확신이 든 상태이므로, 이런 버튼이 있으면 진행 버튼일 확률이 높음
-    if not target_ele:
-        target_ele = page.ele('text:Submit') or \
-                        page.ele('text:Continue') or \
-                        page.ele('text:Proceed') or \
-                        page.ele('xpath://input[@type="submit"]') or \
-                        page.ele('xpath://button[@type="submit"]')
+        # (C) [추가됨] Submit / Continue / Proceed 버튼
+        # 보안 페이지라고 확신이 든 상태이므로, 이런 버튼이 있으면 진행 버튼일 확률이 높음
+        if not target_ele:
+            target_ele = page.ele('text:Submit') or \
+                            page.ele('text:Continue') or \
+                            page.ele('text:Proceed') or \
+                            page.ele('xpath://input[@type="submit"]') or \
+                            page.ele('xpath://button[@type="submit"]')
 
-    # (D) Google reCAPTCHA v2 (혹시 나온다면 체크박스만)
-    if not target_ele:
-        target_ele = page.ele('css:.recaptcha-checkbox-border')
+        # (D) Google reCAPTCHA v2 (혹시 나온다면 체크박스만)
+        if not target_ele:
+            target_ele = page.ele('css:.recaptcha-checkbox-border')
 
-    # --- 요소 발견 시 클릭 ---
-    if target_ele:
-        logger.info(f"          보안 해제 요소 발견 ({target_ele.text if target_ele.text else 'Checkbox'})! 클릭 시도...")
-        try:
-            rect = target_ele.rect
-            page.actions.move_to(target_ele, duration=random.uniform(0.2, 0.6)) # 요소 위로 이동
-            time.sleep(random.uniform(0.1, 0.3)) # 0.1~0.3초 망설임
-            page.actions.click() # 클릭
-            target_ele.click()
-        except:
-            target_ele.click(by_js=True) # 실패 시 JS 클릭
-        
-        # 클릭 후 대기 (페이지 리로드 기다림)
-        time.sleep(3)
-        
-        # 성공 여부 확인: 타이틀이 바뀌었거나, 보안 키워드가 사라졌는지
-        new_title = page.title.lower()
-        if not any(k in new_title for k in suspicious_keywords):
-            logger.info("          캡차/보안 우회 성공 (페이지 진입)")
-            return
+        # --- 요소 발견 시 클릭 ---
+        if target_ele:
+            logger.info(f"          보안 해제 요소 발견 ({target_ele.text if target_ele.text else 'Checkbox'})! 클릭 시도...")
+            try:
+                rect = target_ele.rect
+                page.actions.move_to(target_ele, duration=random.uniform(0.2, 0.6)) # 요소 위로 이동
+                time.sleep(random.uniform(0.1, 0.3)) # 0.1~0.3초 망설임
+                page.actions.click() # 클릭
+                target_ele.click()
+            except:
+                target_ele.click(by_js=True) # 실패 시 JS 클릭
+            
+            # 클릭 후 대기 (페이지 리로드 기다림)
+            time.sleep(3)
+            
+            # 성공 여부 확인: 타이틀이 바뀌었거나, 보안 키워드가 사라졌는지
+            new_title = page.title.lower()
+            if not any(k in new_title for k in suspicious_keywords):
+                logger.info("          캡차/보안 우회 성공 (페이지 진입)")
+                return
     
 
 
@@ -563,7 +570,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     co.set_argument('--disable-dev-shm-usage')
     co.set_argument('--window-size=1920,1080')
     co.set_argument('--start-maximized')
-    co.set_argument('--lang=ko_KR,ko;q=0.9,en-US;q=0.8,en;q=0.7')
+    # co.set_argument('--lang=ko_KR,ko;q=0.9,en-US;q=0.8,en;q=0.7')
     co.set_argument('--disable-blink-features=AutomationControlled')
     
     my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
