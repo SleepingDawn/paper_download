@@ -6,6 +6,7 @@ import logging
 import requests
 import base64
 import random
+import json
 
 from typing import Set
 from urllib.parse import urljoin, quote
@@ -523,7 +524,7 @@ def solve_captcha_drission(page, logger):
 # =======================================================
 # DrissionPage 크롤러
 # =======================================================
-def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=3, logger = None):
+def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=2, logger = None):
     # 폴더 생성
     os.makedirs(save_dir, exist_ok=True)
     full_save_path = os.path.join(save_dir, filename)
@@ -559,6 +560,30 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     co.set_pref('profile.default_content_settings.popups', 0) # 팝업 차단 해제
 
     page = None
+    for init_attempt in range(3): # 최대 3번 브라우저 실행 시도
+        try:
+            page = ChromiumPage(co)
+            break # 성공하면 루프 탈출
+        except Exception as e:
+            if logger: logger.warning(f"     [Drission] 브라우저 실행 실패({init_attempt+1}/3): {e} -> 재시도 중...")
+            time.sleep(2) # 2초 대기 후 재시도
+            
+    if page is None:
+        if logger: logger.error(f"     [Drission] 브라우저 초기화 최종 실패. 이 논문은 스킵합니다.")
+        return False
+    
+    # stealth.min.js 이용(https://github.com/requireCool/stealth.min.js/blob/main/stealth.min.js)
+    stealth_js_path = os.path.join(os.path.dirname(__file__), 'stealth.min.js')
+    stealth_code = None
+    
+    if os.path.exists(stealth_js_path):
+        with open(stealth_js_path, 'r', encoding='utf-8') as f:
+            stealth_code = f.read()
+    else:
+        if logger: logger.warning("     [Warning] stealth.min.js 파일을 찾을 수 없습니다! (일반 모드로 동작)")
+        
+    # 쿠키 저장
+    cookie_file = os.path.join(os.path.dirname(__file__), 'cf_cookies.json')
     
     for attempt in range(1, max_attempts + 1):
         try:
@@ -567,12 +592,31 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             # 페이지 객체 생성
             if page is None:
                 page = ChromiumPage(co)
+                
+            if os.path.exists(cookie_file):
+                try:
+                    with open(cookie_file, 'r', encoding='utf-8') as f:
+                        saved_cookies = json.load(f)
+                        # DrissionPage에 쿠키 주입
+                        page.set.cookies(saved_cookies)
+                    if logger: logger.info("        쿠키 로딩 성공")
+                except Exception as e:
+                    logger.warning(f"       쿠키 로딩 실패 :{e}")
             
             # 페이지 접속
             page.get(doi_url, retry=1, interval=1, timeout=20)
             
             # turnstile 풀기 시도
             solve_captcha_drission(page, logger)
+            
+            #쿠키 저장 시도
+            try:
+                current_cookies = page.cookies(as_dict=True)
+                # 'cf_clearance' 쿠키가 있는지 확인 (
+                if 'cf_clearance' in current_cookies:
+                    with open(cookie_file, 'w', encoding='utf-8') as f:
+                        json.dump(current_cookies, f)
+            except Exception as e:  pass
             
             referer_url = page.url
             
@@ -1238,6 +1282,8 @@ def download_via_sciencedirect(doi: str, output_path: str, logger=None) -> bool:
             "User-Agent": user_agent,
             "Referer": current_url, # 현재 페이지
             "Accept": "application/pdf,application/x-pdf,*/*",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Connection": "keep-alive",
             "Host": "www.sciencedirect.com" # 호스트 명시 권장
         }
         
@@ -1247,7 +1293,7 @@ def download_via_sciencedirect(doi: str, output_path: str, logger=None) -> bool:
             pdf_url,
             headers=headers,
             cookies=cookies, # 브라우저 쿠키 주입
-            impersonate="chrome120", # TLS Fingerprint 맞춤
+            impersonate="chrome110", # TLS Fingerprint 맞춤
             timeout=60,
             allow_redirects=True
         )
