@@ -474,11 +474,25 @@ def solve_captcha_drission(page, logger):
         # 1. Shadow DOM 내부 체크박스
         target_ele = page.ele('@@type=checkbox@@name=cf-turnstile-response')
     
+    # idea from https://blog.csdn.net/qq_59095456/article/details/149053014
+    # https://github.com/chromedp/chromedp/issues/1608
     if not target_ele:
-        # 2. iframe 내부 체크박스
-        iframe = page.ele('css:iframe[src*="turnstile"]')
-        if iframe:
-            target_ele = iframe.ele('css:input[type="checkbox"]', timeout=1)
+        try:
+            # 1. Turnstile Iframe 찾기
+            iframe = page.ele('css:iframe[src*="turnstile"]', timeout=2)
+            
+            if iframe:
+                # 2. Iframe 내부의 Body 요소 가져오기
+                iframe_body = iframe.ele('t:body', timeout=2)
+                
+                if iframe_body:
+                    # 블로그에서 강조한 포인트: 그냥 ele가 아니라 .sr()을 써야 함
+                    target_ele = iframe_body.sr('css:input[type="checkbox"]')
+                    
+                    if target_ele:
+                        logger.info("          중첩된 Shadow DOM 내부 체크박스 발견!")
+        except Exception:
+            pass
 
     # (B) "Verify you are human" 텍스트 기반 버튼
     if not target_ele:
@@ -511,7 +525,7 @@ def solve_captcha_drission(page, logger):
             target_ele.click(by_js=True) # 실패 시 JS 클릭
         
         # 클릭 후 대기 (페이지 리로드 기다림)
-        time.sleep(3)
+        time.sleep(5)
         
         # 성공 여부 확인: 타이틀이 바뀌었거나, 보안 키워드가 사라졌는지
         new_title = page.title.lower()
@@ -520,7 +534,7 @@ def solve_captcha_drission(page, logger):
             return
 
 
-    logger.warning("        ⚠️ 캡차 자동 해결 실패 (수동 개입 필요하거나 IP 차단됨)")
+    logger.warning("        ⚠️ 캡차 자동 해결 실패 ")
     return
 
 
@@ -584,6 +598,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
         with open(stealth_js_path, 'r', encoding='utf-8') as f:
             stealth_code = f.read()
         page.add_init_js(stealth_code)
+        page.add_init_js(MOUSE_PATCH_JS)
         logger.info("stealth.min.js 사용")
     else:
         if logger: logger.warning("     [Warning] stealth.min.js 파일을 찾을 수 없습니다! (일반 모드로 동작)")
@@ -595,11 +610,6 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     for attempt in range(1, max_attempts + 1):
         try:
             logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
-            
-            # 페이지 객체 생성
-            if page is None:
-                page = ChromiumPage(co)
-                
             if os.path.exists(cookie_file):
                 try:
                     with open(cookie_file, 'r', encoding='utf-8') as f:
@@ -1352,3 +1362,13 @@ def download_using_api(doi: str, output_path: str, publisher: str, logger = None
     else:
         logger.warning(f"No download method available for publisher: {publisher}")
         raise Exception(f"No download method available for publisher: {publisher}")
+
+MOUSE_PATCH_JS =  """
+function getRandomInt(min, max) {
+return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+let screenX = getRandomInt(800, 1200);
+let screenY = getRandomInt(400, 600);
+Object.defineProperty(MouseEvent.prototype, 'screenX', { value: screenX });
+Object.defineProperty(MouseEvent.prototype, 'screenY', { value: screenY });
+"""
