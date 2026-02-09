@@ -167,7 +167,7 @@ def download_process_worker(row_data, final_save_path, default_download_path):
         doi_url = "https://doi.org/" + doi
         
         # DrissionPage 함수 호출
-        if download_with_drission(doi_url, final_save_path, filename, chrome_path, max_attempts=3, logger= logger):
+        if download_with_drission(doi_url, final_save_path, filename, chrome_path, max_attempts=1, logger= logger):
             result['status'] = 'Success (Drission)'
             result['method'] = 'crawling'
         else:
