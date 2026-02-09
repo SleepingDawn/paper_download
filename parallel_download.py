@@ -9,7 +9,7 @@ from tqdm import tqdm  # 진행률 표시를 위해 추가 (pip install tqdm)
 from bs4 import BeautifulSoup
 from typing import Dict, List, Optional, Iterable, Any
 from seleniumbase import Driver
-from tools_exp import download_with_cffi, download_with_drission, get_publisher_from_doi_prefix, try_manual_scihub, download_using_api, setup_logger
+from tools_exp import download_with_cffi, download_with_drission, get_publisher_from_doi_prefix, try_manual_scihub, download_using_api, setup_logger, _sanitize_doi_to_filename
 from openalex_search import main_search
 from config import get_config
 
@@ -104,7 +104,8 @@ def download_process_worker(row_data, final_save_path, default_download_path):
     """
     doi = str(row_data['doi'])
     pdf_url_oa = str(row_data['pdf_url']).lower()
-    filename = doi.replace('/', '_').replace(':', '-') + ".pdf"
+    filename = _sanitize_doi_to_filename(doi)
+    full_path = os.path.join(final_save_path,filename)
     
     # 결과 반환용 딕셔너리
     result = {
@@ -124,7 +125,7 @@ def download_process_worker(row_data, final_save_path, default_download_path):
     # 0. pd_url_oa 시도
     if pdf_url_oa and len(pdf_url_oa) > 10 and pdf_url_oa.lower() != 'nan' and pdf_url_oa.lower() != 'none':
         try:
-            if download_with_cffi(pdf_url_oa, final_save_path, logger=logger):
+            if download_with_cffi(pdf_url_oa, full_path, logger=logger):
                 result['status'] = 'Success (Direct OA)'
                 result['method'] = 'api' # 통계상 api/direct 카테고리로 분류
                 return result

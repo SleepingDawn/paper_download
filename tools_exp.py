@@ -354,8 +354,21 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
         new_file_path = _wait_for_new_file_diff(download_dir, initial_files, timeout_s, logger=logger)
         
         if new_file_path:
-            logger.info(f"        다운로드 성공: {os.path.basename(new_file_path)}")
-            return new_file_path
+            final_path = download_dir
+        
+            # 윈도우/리눅스 파일 덮어쓰기 문제 방지
+            if os.path.exists(final_path):
+                try: os.remove(final_path)
+                except: pass
+                
+            try:
+                os.rename(new_file_path, final_path)
+                logger.info(f"        파일명 변경 완료: {os.path.basename(new_file_path)} -> {final_path}")
+                return final_path
+            except Exception as e:
+                logger.warning(f"        파일명 변경 실패 (그대로 유지): {e}")
+                return new_file_path
+            
         else:
             # 실패 시 원인 로그 구체화 (Page Source 검사)
             page_src = page.html
@@ -655,12 +668,12 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                 except : pass
                 
                 try : 
-                    if force_download_with_requests(page, pdf_url, referer_url, save_dir, logger):
+                    if force_download_with_requests(page, pdf_url, referer_url, full_save_path, logger):
                         return True
                 except: pass
                 
                 try : 
-                    if download_pdf_via_navigation(page, pdf_url, save_dir, logger, timeout_s = 10):
+                    if download_pdf_via_navigation(page, pdf_url, full_save_path, logger, timeout_s = 10):
                         return True
                 except : pass
                 
@@ -845,7 +858,7 @@ def try_manual_scihub(doi: str, pdf_dir: str, logger = None) -> bool:
                "https://sci-hub.box", 
                "https://sci-hub.ru", 
                "https://sci-hub.in",
-                "https://sci-hub.se", 
+                # "https://sci-hub.se", 
                ]
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
