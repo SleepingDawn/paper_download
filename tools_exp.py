@@ -1105,11 +1105,10 @@ def _doi_prefix(doi: str) -> Optional[str]:
 
 
 def download_via_acspdf(doi: str, output_path: str) -> bool:
-    doi_q = _quote_doi_for_path(doi)
-    pdf_url = f"https://pubs.acs.org/doi/pdf/{doi_q}"
+    pdf_url = f"https://pubs.acs.org/doi/pdf/{doi}"
     headers = {
         "User-Agent": "Mozilla/5.0",
-        "Referer": f"https://pubs.acs.org/doi/{doi_q}",
+        "Referer": f"https://pubs.acs.org/doi/{doi}",
     }
     referer = headers["Referer"]
     download_with_cffi(pdf_url, output_path, referer)
@@ -1133,11 +1132,10 @@ def download_via_aippdf(doi: str, output_path: str) -> bool:
 
 
 def download_via_ioppdf(doi: str, output_path: str) -> bool:
-    doi_q = _quote_doi_for_path(doi)
-    pdf_url = f"https://iopscience.iop.org/article/{doi_q}/pdf"
+    pdf_url = f"https://iopscience.iop.org/article/{doi}/pdf"
     headers = {
         "User-Agent": "Mozilla/5.0",
-        "Referer": f"https://iopscience.iop.org/article/{doi_q}",
+        "Referer": f"https://iopscience.iop.org/article/{doi}",
     }
     referer = headers["Referer"]
     download_with_cffi(pdf_url, output_path, referer)
