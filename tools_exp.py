@@ -464,17 +464,17 @@ def solve_captcha_drission(page, logger):
         return
 
     logger.warning("           보안/캡차 화면 감지! 우회 시도 중...")
-    # 먼저 https://github.com/gua12345/CloudflareBypassForScraping 사용해보기
-    try:
-        bypass = CloudflareBypasser(page)
-        bypass.bypass()
-        time.sleep(2)
-        if not page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=1):
-            logger.info("           CloudflareBypasser 우회 성공!")
-            return
+    # 먼저 https://github.com/gua12345/CloudflareBypassForScraping 사용해보기 ... 효과 없더라
+    # try:
+    #     bypass = CloudflareBypasser(page)
+    #     bypass.bypass()
+    #     time.sleep(2)
+    #     if not page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=1):
+    #         logger.info("           CloudflareBypasser 우회 성공!")
+    #         return
 
-    except Exception as e:
-        logger.error(f"           ❌ CloudflareBypasser 실행 중 에러: {e}")
+    # except Exception as e:
+    #     logger.error(f"           CloudflareBypasser 실행 중 에러: {e}")
     
     target_ele = None
     
