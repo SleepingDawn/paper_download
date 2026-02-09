@@ -529,10 +529,14 @@ def solve_captcha_drission(page, logger):
             except:
                 target_ele.click(by_js=True) # 실패 시 JS 클릭
             
-            # 클릭 후 대기 (페이지 리로드 기다림)
             time.sleep(3)
             
-            # 성공 여부 확인: 타이틀이 바뀌었거나, 보안 키워드가 사라졌는지
+            # 성공 여부 확인
+            if not page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=1):
+                logger.info("          캡차/보안 우회 성공 (Iframe 사라짐)")
+                return
+            
+            # 혹은 제목이 변경되었는지 확인
             new_title = page.title.lower()
             if not any(k in new_title for k in suspicious_keywords):
                 logger.info("          캡차/보안 우회 성공 (페이지 진입)")
