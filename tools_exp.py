@@ -584,15 +584,30 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                       page.ele('css:a[href*=".pdf"]')
                 
                 if btn: pdf_url = btn.attr('href')
+            # 3. analyze_html
+            if not pdf_url:
+                pdf_url = _analyze_html_structure_drission(page, logger)
+                if pdf_url and "stamp.jsp" in pdf_url:
+                    logger.info("        [IEEE] Stamp 링크 감지 -> 실제 PDF 주소 추출 시도")
+                    
+                    # 1. 해당 뷰어 페이지(stamp.jsp)로 이동
+                    page.get(pdf_url)
+                    time.sleep(2) # 로딩 대기
+                    
+                    # 2.   _analyze_html_structure_drission 재호출
+                    real_url = _analyze_html_structure_drission(page, logger)
+                    
+                    if real_url and "stamp.jsp" not in real_url:
+                        pdf_url = real_url
+                        logger.info(f"        [IEEE] Real URL 교체 완료: {pdf_url}")
+                    else:
+                        logger.warning("        [IEEE] Real URL 추출 실패 (기본 링크 사용)")
 
-            # 3. Iframe
+            # 4. Iframe
             if not pdf_url:
                 iframe = page.ele('tag:iframe@@src:.pdf')
                 if iframe: pdf_url = iframe.attr('src')
             
-            # 4. analyze_html
-            if not pdf_url:
-                pdf_url = _analyze_html_structure_drission(page, logger)
 
             # --- 다운로드 실행 ---
             if pdf_url:
