@@ -464,33 +464,34 @@ def solve_captcha_drission(page, logger):
     target_ele = None
     
     start_time = time.time()
-    while time.time() - start_time < 30: # 시간 좀 더 넉넉히 (30초)
+    while time.time() - start_time < 20: # 시간 좀 더 넉넉히 (30초)
         target_ele = None
         # (A) Cloudflare Turnstile (가장 흔함)
         
         # idea from https://blog.csdn.net/qq_59095456/article/details/149053014
         # https://github.com/chromedp/chromedp/issues/1608
-        if not target_ele:
+        cf_iframe = page.get_frame('@src:challenges.cloudflare.com')
+        if cf_iframe:
+            # Turnstile 구조: iframe -> body -> #shadow-root -> div (wrapper)
+            btn = None
             try:
-                # 1. Turnstile Iframe 찾기
-                iframe = page.ele('css:iframe[src*="cloudflare"]', timeout=2)
-                if not iframe:
-                    iframe = page.ele('@@tag:iframe@@src:cloudflare', timeout=2)
-                if iframe:
-                    # 2. Iframe 내부의 Body 요소 가져오기
-                    iframe_body = iframe.ele('tag:body', timeout=2)
-                    
-                    if iframe_body:
-                        # 블로그에서 강조한 포인트: 그냥 ele가 아니라 .sr()을 써야 함
-                        inner_shadow = iframe_body.sr
-                        if inner_shadow:
-                            target_ele = inner_shadow.ele('css:input[type="checkbox"]', timeout=1)
-                            if target_ele:
-                                logger.info("          Cloudflare turnstile 발견!")
-                        else :
-                            target_ele = iframe_body.ele('css:input[type="checkbox"]', timeout=1)
-            except Exception:
+                body = cf_iframe.ele('tag:body')
+                if body and body.shadow_root:
+                    # Shadow Root 내부 탐색
+                    btn = body.shadow_root.ele('tag:input[@type="checkbox"]')
+                    if not btn: 
+                        # input이 안 잡히면 스타일링된 컨테이너 시도
+                        btn = body.shadow_root.ele('css:.ct-checkbox-label') or \
+                                body.shadow_root.ele('css:label')
+            except:
                 pass
+
+            if btn:
+                logger.info("          --> Turnstile 체크박스 요소 발견 (Inside Iframe)")
+                page.actions.move_to(btn, duration=random.uniform(0.5, 1.2))
+                time.sleep(random.uniform(0.1, 0.3))
+                page.actions.click() # 액션 체인 클릭
+                time.sleep(3)
             
         if not target_ele:
             # 1. Shadow DOM 내부 체크박스
