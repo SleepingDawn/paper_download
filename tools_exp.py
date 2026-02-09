@@ -1279,10 +1279,10 @@ def download_using_api(doi: str, output_path: str, publisher: str, logger = None
         logger.warning("Publisher is Not recognized or Not supported, cannot use API method.")
         raise Exception("Publisher is Not recognized or Not supported, cannot use API method.")
     
-    publisher_key = publisher.lower().replace(" ", "")
+    publisher_key = publisher.lower()
     if publisher_key in TOOL_FUNCTIONS:
         download_func = TOOL_FUNCTIONS[publisher_key]
-        logger.info("Trying download using api or url")
+        logger.info(f"Trying download using api or url for publisher : {publisher_key}")
         return download_func(doi, filepath)
     else:
         logger.warning(f"No download method available for publisher: {publisher}")
