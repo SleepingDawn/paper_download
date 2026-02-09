@@ -304,9 +304,8 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
                 //a[contains(@class, 'pdf') or contains(@title, 'Download') or contains(text(), 'View PDF') or contains(text(), 'Download PDF')] |
                 //button[contains(text(), 'View PDF') or contains(text(), 'Download')] |
                 //span[contains(text(), 'View PDF') or contains(text(), 'Download')] |
-                
+                //a[contains(text(), 'Open')] | //button[contains(text(), 'Open')] |
                 //a[contains(@href, '.pdf')] |
-                
                 //button[@aria-label='Download'] | 
                 //button[@aria-label='Download this article'] |
                 //a[@title='Download this article'] |
@@ -357,7 +356,6 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
         if new_file_path:
             final_path = download_dir
         
-            # 윈도우/리눅스 파일 덮어쓰기 문제 방지
             if os.path.exists(final_path):
                 try: os.remove(final_path)
                 except: pass
@@ -470,11 +468,11 @@ def solve_captcha_drission(page, logger):
             
             if iframe:
                 # 2. Iframe 내부의 Body 요소 가져오기
-                iframe_body = iframe.ele('t:body', timeout=2)
+                iframe_body = iframe.ele('tag:body', timeout=2).sr
                 
                 if iframe_body:
                     # 블로그에서 강조한 포인트: 그냥 ele가 아니라 .sr()을 써야 함
-                    target_ele = iframe_body.sr('css:input[type="checkbox"]')
+                    target_ele = iframe_body.ele('css:input[type="checkbox"]')
                     
                     if target_ele:
                         logger.info("          Cloudflare turnstile 발견!")
@@ -508,15 +506,16 @@ def solve_captcha_drission(page, logger):
     if target_ele:
         logger.info(f"          보안 해제 요소 발견 ({target_ele.text if target_ele.text else 'Checkbox'})! 클릭 시도...")
         try:
-            # page.actions.move_to(target_ele) # 요소 위로 이동
-            time.sleep(random.uniform(0.1, 0.5)) # 0.1~0.5초 망설임
-            # page.actions.click() # 클릭
+            rect = target_ele.rect
+            page.actions.move_to(target_ele, duration=random.uniform(0.2, 0.6)) # 요소 위로 이동
+            time.sleep(random.uniform(0.1, 0.3)) # 0.1~0.3초 망설임
+            page.actions.click() # 클릭
             target_ele.click()
         except:
             target_ele.click(by_js=True) # 실패 시 JS 클릭
         
         # 클릭 후 대기 (페이지 리로드 기다림)
-        time.sleep(5)
+        time.sleep(3)
         
         # 성공 여부 확인: 타이틀이 바뀌었거나, 보안 키워드가 사라졌는지
         new_title = page.title.lower()
