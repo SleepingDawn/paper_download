@@ -450,15 +450,17 @@ def solve_captcha_drission(page, logger):
     # 학술 사이트에서 주로 뜨는 키워드들 + "bot", "human" 등 추가
     suspicious_keywords = [
         "just a moment", "security check", "challenge", "attention needed", 
-        "access denied", "cloudflare", "verify", "human", "turnstile"
+        "access denied", "cloudflare", "verify", "human", "turnstile", 
+        "are you a robot", "robot" # 이미지의 H1 텍스트 반영
     ]
-    title_lower = page.title.lower()
     
-    # 제목이나 본문에 키워드가 없으면 빠르게 리턴
-    # (단, iframe이 있는 경우는 제목에 없어도 검사)
-    if not any(k in title_lower for k in suspicious_keywords):
-        if not page.ele('css:iframe[src*="turnstile"]', timeout=0.1):
-            return
+    current_title = page.title.lower()
+    
+    # 제목에 키워드가 없더라도, Turnstile iframe이 존재하면 캡차로 간주
+    iframe_exists = page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=0.5)
+    
+    if not any(k in current_title for k in suspicious_keywords) and not iframe_exists:
+        return
 
     logger.warning("           보안/캡차 화면 감지! 우회 시도 중...")
     target_ele = None
@@ -467,32 +469,30 @@ def solve_captcha_drission(page, logger):
     while time.time() - start_time < 20: # 시간 좀 더 넉넉히 (30초)
         target_ele = None
         # (A) Cloudflare Turnstile (가장 흔함)
-        
         # idea from https://blog.csdn.net/qq_59095456/article/details/149053014
         # https://github.com/chromedp/chromedp/issues/1608
+        # Turnstile 구조: iframe -> body -> #shadow-root -> div (wrapper)
+        
         iframe_ele = page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=2)
-        if iframe_ele : cf_iframe = page.get_frame(iframe_ele)
-        if cf_iframe:
-            # Turnstile 구조: iframe -> body -> #shadow-root -> div (wrapper)
-            btn = None
-            try:
-                body = cf_iframe.ele('tag:body', timeout=2)
-                if body and body.shadow_root:
-                    # Shadow Root 내부 탐색
-                    btn = body.shadow_root.ele('css:input[type="checkbox"]')
-                    if not btn: 
-                        # input이 안 잡히면 스타일링된 컨테이너 시도
-                        btn = body.shadow_root.ele('css:.ct-checkbox-label') or \
-                                body.shadow_root.ele('css:label')
-            except:
-                pass
-
-            if btn:
-                logger.info("          --> Turnstile 체크박스 요소 발견 (Inside Iframe)")
-                page.actions.move_to(btn, duration=random.uniform(0.5, 1.2))
-                time.sleep(random.uniform(0.1, 0.3))
-                page.actions.click() # 액션 체인 클릭
-                time.sleep(3)
+        
+        if iframe_ele:
+            cf_frame = page.get_frame(iframe_ele)
+            if cf_frame:
+                try:
+                    # Body의 Shadow Root 접근
+                    body = cf_frame.ele('tag:body', timeout=2)
+                    if body and body.shadow_root:
+                        sr = body.shadow_root
+                        target_ele = sr.ele('css:label.cb-lb') or \
+                                     sr.ele('css:span.cb-i') or \
+                                     sr.ele('css:input[type="checkbox"]') or \
+                                     sr.ele('css:.ct-checkbox-label') # 구버전 대비
+                        
+                        if target_ele:
+                            logger.info(f"          --> Turnstile 요소 발견: {target_ele.tag} (Shadow DOM)")
+                except Exception as e:
+                    # Shadow root 접근 실패 시 무시
+                    pass
             
         if not target_ele:
             # 1. Shadow DOM 내부 체크박스
@@ -615,6 +615,25 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     
     for attempt in range(1, max_attempts + 1):
         try:
+            if page is None:
+                for init_try in range(3):
+                    try:
+                        page = ChromiumPage(co)
+                        # stealth 적용
+                        if stealth_code:
+                            page.add_init_js(stealth_code)
+                            page.add_init_js(MOUSE_PATCH_JS)
+                        else:
+                            page.add_init_js("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+                        break
+                    except Exception as e:
+                        time.sleep(2)
+                
+                if page is None:
+                    if logger: logger.error(f"     [Drission] 브라우저 생성 실패 (재시도 {attempt}). 다음 시도로 넘어갑니다.")
+                    continue
+            
+            
             logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
             if os.path.exists(cookie_file):
                 try:
