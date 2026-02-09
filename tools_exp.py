@@ -575,10 +575,10 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     # stealth.min.js 이용(https://github.com/requireCool/stealth.min.js/blob/main/stealth.min.js)
     stealth_js_path = os.path.join(os.path.dirname(__file__), 'stealth.min.js')
     stealth_code = None
-    
     if os.path.exists(stealth_js_path):
         with open(stealth_js_path, 'r', encoding='utf-8') as f:
             stealth_code = f.read()
+        page.add_init_js(stealth_code)
     else:
         if logger: logger.warning("     [Warning] stealth.min.js 파일을 찾을 수 없습니다! (일반 모드로 동작)")
         
