@@ -940,19 +940,19 @@ def normalize_publisher_label(raw_name: str, prefix: Optional[str] = None) -> Op
     raw_name: Crossref /prefixes/{prefix} 응답의 message.name (등록자/스튜어드 이름)
     prefix: (선택) prefix를 같이 주면 보조 규칙에 활용
     """
-    if not raw_name:
+    if not raw_name or str(raw_name) == 'non':
         return None
 
-    n = raw_name.strip().lower()
+    n = raw_name.lower().strip()
 
     # Nature 계열: "Springer Nature" 같이 넓은 이름이 나오는 케이스가 있어, prefix 기반 보조룰 포함
     if prefix == "10.1038":
         return "Nature"
-    if ("springer nature" in n) or ("nature publishing" in n) or ("nature portfolio" in n) or ("npg" in n):
+    if ("nature" in n) or ("springer" in n) or ("npg" in n):
         return "Nature"
 
     # ACS
-    if ("american chemical society" in n) or re.search(r"\bacs\b", n):
+    if ("american chemical society" in n) or ('acs' in n) or re.search(r"\bacs\b", n):
         return "ACS"
 
     # RSC
@@ -960,7 +960,7 @@ def normalize_publisher_label(raw_name: str, prefix: Optional[str] = None) -> Op
         return "RSC"
 
     # AIP (AIP Publishing / American Institute of Physics 등 변형 흡수)
-    if ("aip publishing" in n) or ("american institute of physics" in n) or re.search(r"\baip\b", n):
+    if ("aip" in n) or ("american institute of physics" in n) or re.search(r"\baip\b", n):
         return "AIP"
 
     # IOP (IOP Publishing / Institute of Physics 등 변형 흡수)
@@ -976,7 +976,7 @@ def normalize_publisher_label(raw_name: str, prefix: Optional[str] = None) -> Op
         return "ELSEVIER"
 
     # WILEY
-    if ("wiley" in n) or ("wiley-blackwell" in n) or ("john wiley" in n):
+    if ("wiley" in n) or ("advanced materials" in n):
         return "WILEY"
 
     # CELL (Cell Press 등)

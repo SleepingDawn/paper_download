@@ -57,9 +57,16 @@ def extract_row(work: Dict[str, Any]) -> Dict[str, Any]:
     citation_normalized_percentile = work.get("citation_normalized_percentile") or {}
     open_access_loc = work.get("open_access") or {}
 
+    # 1순위: 호스트 조직 이름 (예: Elsevier BV)
+    publisher = source.get("host_organization_name")
+    # 2순위: 없는 경우 저널/소스 이름 (예: Nature Communications)
+    if not publisher:
+        publisher = source.get("display_name")
+
     return {
         "doi": doi.replace("https://doi.org/", "") if doi else None,
         "title": work.get("title"),
+        "publisher" : publisher,
         "publication_year": work.get("publication_year"),
         "cited_by_count": work.get("cited_by_count"),
         "citation_normalized_percentile": citation_normalized_percentile.get("value") if citation_normalized_percentile else None,
