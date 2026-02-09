@@ -312,6 +312,12 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
                 //button[@title='Download this article'] |
                 //a[@aria-label='Download this article'] |
                 //*[@id='pdf-download-icon']
+                
+                //a[contains(text(), '원문보기')] | 
+                //a[contains(text(), 'PDF 다운로드')] |
+                //a[contains(@title, '원문보기')] |
+                //img[contains(@alt, 'PDF')] |
+                //a[contains(@href, 'down') and contains(@href, 'pdf')]
             """
             
             # DrissionPage: eles()로 여러 요소 찾기
