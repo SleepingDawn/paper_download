@@ -16,7 +16,7 @@ from curl_cffi import requests as cffi_requests # 이름 충돌 방지
 from DrissionPage import ChromiumPage, ChromiumOptions
 from DrissionPage.common import Keys
 from config import WILEY_API_KEY
-from CloudflareBypasser import CloudflareBypasser
+# from CloudflareBypasser import CloudflareBypasser
 
 DEFAULT_DOWNLOAD_PATH = os.path.abspath("./downloaded_files")
 # =======================================================
