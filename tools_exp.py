@@ -853,6 +853,7 @@ def try_manual_scihub(doi: str, pdf_dir: str, logger = None) -> bool:
                 "https://sci-hub.mk",
                 "https://sci-hub.ee",
                 "https://sci-hub.vg",
+                "https://sci-hub.kr",
                "https://sci-hub.st", 
                "https://sci-hub.red",
                "https://sci-hub.box", 
@@ -862,7 +863,6 @@ def try_manual_scihub(doi: str, pdf_dir: str, logger = None) -> bool:
                ]
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        # 'Referer': 'https://sci-hub.se/'
     }
 
     filename = _sanitize_doi_to_filename(doi)
@@ -880,38 +880,64 @@ def try_manual_scihub(doi: str, pdf_dir: str, logger = None) -> bool:
             
             if resp.status_code != 200: continue
             
+            content_type = resp.headers.get('Content-Type', '').lower()
+            if 'application/pdf' in content_type or resp.content.startswith(b'%PDF'):
+                with open(filepath, 'wb') as f:
+                    f.write(resp.content)
+                if logger: 
+                    logger.info("Sci-Hub로 다운로드 성공!!!")
+                return True
+            
             soup = BeautifulSoup(resp.text, 'html.parser')
             pdf_url = None
 
-            # 1. <div class="download"> 내부의 <a> 태그 (직접 다운로드 링크)
-            download_div = soup.find('div', class_='download')
-            if download_div and download_div.find('a'):
-                pdf_url = download_div.find('a').get('href')
-
-            # 2. <div class="pdf"> 내부의 <object> 태그 (임베드 데이터)
+            # 1. Iframe 
+            iframe = soup.select_one('iframe#pdf')
+            if iframe:
+                pdf_url = iframe.get('src')
+            
+            # 2. Embed 태그
             if not pdf_url:
-                pdf_obj = soup.select_one('div.pdf object')
-                if pdf_obj:
-                    pdf_url = pdf_obj.get('data')
+                embed = soup.select_one('embed[type="application/pdf"]')
+                if embed:
+                    pdf_url = embed.get('src')
+            
+            # 3. 'save' 버튼 또는 링크
+            if not pdf_url:
+                save_btn = soup.select_one('div#buttons a[onclick]')
+                if save_btn:
+                    onclick_text = save_btn.get('onclick', '')
+                    if "location.href" in onclick_text:
+                        # location.href='url' 파싱
+                        pdf_url = onclick_text.split("'")[1]
+            
+            # 4. div.download
+            if not pdf_url:
+                download_div = soup.find('div', class_='download')
+                if download_div and download_div.find('a'):
+                    pdf_url = download_div.find('a').get('href')
 
             if pdf_url:
                 # URL 정규화
                 if pdf_url.startswith('//'): pdf_url = 'https:' + pdf_url
-                elif pdf_url.startswith('/'): pdf_url = mirror + pdf_url
+                else: pdf_url = urljoin(mirror,pdf_url)
                 pdf_url = pdf_url.split('#')[0]
 
                 logger.info(f"  - PDF 주소 추출 성공: {pdf_url}")
                 
                 # 실제 파일 다운로드
-                pdf_content = requests.get(pdf_url, headers=headers, timeout=60)
+                pdf_content = requests.get(pdf_url, headers=headers, timeout=60, verify = False)
                 if pdf_content.status_code == 200 and b'%PDF' in pdf_content.content[:1024]:
                     with open(filepath, 'wb') as f:
                         f.write(pdf_content.content)
+                    logger.info("Sci-Hub로 다운로드 성공!!!")
                     return True
         except Exception as e:
             logger.warning(f"  - 미러 {mirror} 시도 중 오류: {e}")
+            time.sleep(1)
             continue
     
+    logger.warning("Sci-hub 방법 전부 실패")
     return False
 
     
@@ -1086,22 +1112,7 @@ def _download_file(url: str, output_path: str, headers=None, session=None):
 
 import re
 from typing import Optional
-from urllib.parse import quote
 
-
-def _quote_doi_for_path(doi: str) -> str:
-    # DOI는 path에 들어가므로 특수문자 대비 (슬래시는 유지)
-    return quote(doi.strip(), safe="/")
-
-
-def _doi_suffix(doi: str) -> str:
-    # 10.1038/s41586-... -> s41586-...
-    return doi.split("/", 1)[1].strip() if "/" in doi else doi.strip()
-
-
-def _doi_prefix(doi: str) -> Optional[str]:
-    m = re.search(r"(10\.\d{4,9})", doi or "")
-    return m.group(1) if m else None
 
 
 def download_via_acspdf(doi: str, output_path: str) -> bool:
@@ -1115,19 +1126,18 @@ def download_via_acspdf(doi: str, output_path: str) -> bool:
 
 
 def download_via_aippdf(doi: str, output_path: str) -> bool:
-    doi_q = _quote_doi_for_path(doi)
     # 케이스에 따라 download=true가 더 잘 먹는 경우가 있어 2개를 순차 시도
     headers = {
         "User-Agent": "Mozilla/5.0",
-        "Referer": f"https://aip.scitation.org/doi/{doi_q}",
+        "Referer": f"https://aip.scitation.org/doi/{doi}",
     }
     referer = headers["Referer"]
 
-    url1 = f"https://aip.scitation.org/doi/pdf/{doi_q}"
+    url1 = f"https://aip.scitation.org/doi/pdf/{doi}"
     if download_with_cffi(url1, output_path, referer):
         return True
 
-    url2 = f"https://aip.scitation.org/doi/pdf/{doi_q}?download=true"
+    url2 = f"https://aip.scitation.org/doi/pdf/{doi}?download=true"
     return download_with_cffi(url2, output_path, referer)
 
 
@@ -1284,7 +1294,7 @@ def download_using_api(doi: str, output_path: str, publisher: str, logger = None
     publisher_key = publisher.lower()
     if publisher_key in TOOL_FUNCTIONS:
         download_func = TOOL_FUNCTIONS[publisher_key]
-        logger.info(f"Trying download using api or url for publisher : {publisher_key}")
+        logger.info(f"Trying download using api or url for publisher : {publisher_key}, doi : {doi}")
         return download_func(doi, filepath)
     else:
         logger.warning(f"No download method available for publisher: {publisher}")
