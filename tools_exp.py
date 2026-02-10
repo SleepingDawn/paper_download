@@ -654,16 +654,15 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             page.get(doi_url, retry=1, interval=1, timeout=20)
             
             # turnstile 풀기 시도
-            solve_captcha_drission(page, logger)
-            
-            #쿠키 저장 시도
-            try:
-                current_cookies = page.cookies(as_dict=True)
-                # 'cf_clearance' 쿠키가 있는지 확인 (
-                if 'cf_clearance' in current_cookies:
-                    with open(cookie_file, 'w', encoding='utf-8') as f:
-                        json.dump(current_cookies, f)
-            except Exception as e:  pass
+            if solve_captcha_drission(page, logger):
+                #쿠키 저장 시도
+                try:
+                    current_cookies = page.cookies(as_dict=True)
+                    # 'cf_clearance' 쿠키가 있는지 확인 (
+                    if 'cf_clearance' in current_cookies:
+                        with open(cookie_file, 'w', encoding='utf-8') as f:
+                            json.dump(current_cookies, f)
+                except Exception as e:  pass
             
             referer_url = page.url
             
