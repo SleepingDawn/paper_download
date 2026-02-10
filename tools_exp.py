@@ -464,18 +464,6 @@ def solve_captcha_drission(page, logger):
         return
 
     logger.warning("           보안/캡차 화면 감지! 우회 시도 중...")
-    # 먼저 https://github.com/gua12345/CloudflareBypassForScraping 사용해보기 ... 효과 없더라
-    # try:
-    #     bypass = CloudflareBypasser(page)
-    #     bypass.bypass()
-    #     time.sleep(2)
-    #     if not page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=1):
-    #         logger.info("           CloudflareBypasser 우회 성공!")
-    #         return
-
-    # except Exception as e:
-    #     logger.error(f"           CloudflareBypasser 실행 중 에러: {e}")
-    
     target_ele = None
     
     start_time = time.time()
@@ -503,61 +491,61 @@ def solve_captcha_drission(page, logger):
                         
                         if target_ele:
                             logger.info(f"          --> Turnstile 요소 발견: {target_ele.tag} (Shadow DOM)")
+                            page.actions.move_to(target_ele, duration=random.uniform(0.2, 0.6)).click().perform()
                 except Exception as e:
                     # Shadow root 접근 실패 시 무시
                     pass
-            
-        if not target_ele:
-            # 1. Shadow DOM 내부 체크박스
-            target_ele = page.ele('@@type=checkbox@@name=cf-turnstile-response')
 
-        # (B) "Verify you are human" 텍스트 기반 버튼
-        if not target_ele:
-            target_ele = page.ele('text:Verify you are human') or \
-                            page.ele('text:사람임을 확인합니다') or \
-                            page.ele('text:Verify you are not a robot')
-
-        # (C) [추가됨] Submit / Continue / Proceed 버튼
-        # 보안 페이지라고 확신이 든 상태이므로, 이런 버튼이 있으면 진행 버튼일 확률이 높음
-        if not target_ele:
-            target_ele = page.ele('text:Submit') or \
-                            page.ele('text:Continue') or \
-                            page.ele('text:Proceed') or \
-                            page.ele('xpath://input[@type="submit"]') or \
-                            page.ele('xpath://button[@type="submit"]')
-
-        # (D) Google reCAPTCHA v2 (혹시 나온다면 체크박스만)
-        if not target_ele:
-            target_ele = page.ele('css:.recaptcha-checkbox-border')
-
-        # --- 요소 발견 시 클릭 ---
-        if target_ele:
-            logger.info(f"          보안 해제 요소 발견 ({target_ele.text if target_ele.text else 'Checkbox'})! 클릭 시도...")
+        # (B) h captcha
+        hc_iframe = page.ele('css:iframe[src*="hcaptcha.com"]', timeout=0.5) or \
+                    page.ele('css:iframe[src*="botdetection.com"]', timeout=0.5)
+        if hc_iframe:
+            logger.info("           Detected: hCaptcha")
             try:
-                rect = target_ele.rect
-                page.actions.move_to(target_ele, duration=random.uniform(0.2, 0.6)).click().perform() # 요소 위로 이동
-                time.sleep(random.uniform(0.1, 0.3)) # 0.1~0.3초 망설임
-                # page.actions.click() # 클릭
-                # target_ele.click()
+                frame = page.get_frame(hc_iframe)
+                if frame:
+                    # hCaptcha 체크박스 (id='checkbox' 또는 id='anchor')
+                    target = frame.ele('css:#checkbox') or frame.ele('css:.h-captcha')
+                    if target:
+                        target.click()
+                        time.sleep(2)
             except:
-                target_ele.click(by_js=True) # 실패 시 JS 클릭
+                pass
+
+        # (c)  Springer Nature verifying your browser" 화면은 클릭할 게 없고 기다려야 함
+        if "verifying your browser" in page.html.lower():
+            logger.info("           Detected: Browser Verification (Waiting...)")
+            time.sleep(5) 
+
+        # 캡차를 풀고 나서 수동으로 'Submit'을 눌러야 하는 경우
+        submit_btn = page.ele('css:input[type="submit"]', timeout=0.5) or \
+                     page.ele('xpath://button[contains(text(), "Submit")]', timeout=0.5) or \
+                     page.ele('xpath://button[contains(text(), "Verify")]', timeout=0.5)
+        
+        if submit_btn:
+            logger.info("           Clicking Submit/Verify Button...")
+            try:
+                submit_btn.click()
+                time.sleep(3)
+            except:
+                pass
+
+        # --- [성공 확인] ---
+        # iframe들이 모두 사라지고, 타이틀이 정상이면 리턴
+        if not page.ele('css:iframe[src*="cloudflare"]', timeout=0.1) and \
+           not page.ele('css:iframe[src*="hcaptcha"]', timeout=0.1) and \
+           not "verifying" in page.html.lower():
             
-            time.sleep(3)
-            
-            # 성공 여부 확인
-            if not page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=1):
-                logger.info("          캡차/보안 우회 성공 (Iframe 사라짐)")
+            # 타이틀 재검사
+            if not any(k in page.title.lower() for k in suspicious_keywords):
+                logger.info("             캡차 우회 성공 (페이지 진입 완료)")
                 return True
-            
-            # 혹은 제목이 변경되었는지 확인
-            new_title = page.title.lower()
-            if not any(k in new_title for k in suspicious_keywords):
-                logger.info("          캡차/보안 우회 성공 (페이지 진입)")
-                return True
+
+    logger.error("             캡차 해결 실패 (시간 초과)")
     
 
 
-    logger.warning("        ⚠️ 캡차 자동 해결 실패 ")
+    logger.warning("        !! 캡차 자동 해결 실패 ")
     return False
 
 
