@@ -496,9 +496,9 @@ def solve_captcha_drission(page, logger):
                     body = cf_frame.ele('tag:body', timeout=2)
                     if body and body.shadow_root:
                         sr = body.shadow_root
-                        target_ele = sr.ele('css:label.cb-lb') or \
+                        target_ele = sr.ele('css:input[type="checkbox"]') or \
+                                     sr.ele('css:label.cb-lb') or \
                                      sr.ele('css:span.cb-i') or \
-                                     sr.ele('css:input[type="checkbox"]') or \
                                      sr.ele('css:.ct-checkbox-label') # 구버전 대비
                         
                         if target_ele:
@@ -535,10 +535,10 @@ def solve_captcha_drission(page, logger):
             logger.info(f"          보안 해제 요소 발견 ({target_ele.text if target_ele.text else 'Checkbox'})! 클릭 시도...")
             try:
                 rect = target_ele.rect
-                page.actions.move_to(target_ele, duration=random.uniform(0.2, 0.6)) # 요소 위로 이동
+                page.actions.move_to(target_ele, duration=random.uniform(0.2, 0.6)).click().perform() # 요소 위로 이동
                 time.sleep(random.uniform(0.1, 0.3)) # 0.1~0.3초 망설임
-                page.actions.click() # 클릭
-                target_ele.click()
+                # page.actions.click() # 클릭
+                # target_ele.click()
             except:
                 target_ele.click(by_js=True) # 실패 시 JS 클릭
             
@@ -547,18 +547,18 @@ def solve_captcha_drission(page, logger):
             # 성공 여부 확인
             if not page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=1):
                 logger.info("          캡차/보안 우회 성공 (Iframe 사라짐)")
-                return
+                return True
             
             # 혹은 제목이 변경되었는지 확인
             new_title = page.title.lower()
             if not any(k in new_title for k in suspicious_keywords):
                 logger.info("          캡차/보안 우회 성공 (페이지 진입)")
-                return
+                return True
     
 
 
     logger.warning("        ⚠️ 캡차 자동 해결 실패 ")
-    return
+    return False
 
 
 # =======================================================
