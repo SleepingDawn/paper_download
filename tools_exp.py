@@ -575,9 +575,9 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     co.set_argument('--no-sandbox')
     co.set_argument('--disable-gpu')
     co.set_argument('--disable-dev-shm-usage')
-    co.set_argument('--window-size=1920,1080')
+    # co.set_argument('--window-size=1920,1080')
     co.set_argument('--start-maximized')
-    # co.set_argument('--lang=ko_KR,ko;q=0.9,en-US;q=0.8,en;q=0.7')
+    co.set_argument('--lang=ko_KR,ko;q=0.9,en-US;q=0.8,en;q=0.7')
     co.set_argument('--disable-blink-features=AutomationControlled')
     
     my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
