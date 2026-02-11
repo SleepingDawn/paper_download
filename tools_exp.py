@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 from curl_cffi import requests as cffi_requests # 이름 충돌 방지
 from DrissionPage import ChromiumPage, ChromiumOptions
 from DrissionPage.common import Keys
-from config import WILEY_API_KEY
+from config import WILEY_API_KEY, MOUSE_PATCH_JS, COMMON_UA, CHROME_PATH, DEFAULT_OUTPUT_DIR
 # from CloudflareBypasser import CloudflareBypasser
 
 DEFAULT_DOWNLOAD_PATH = os.path.abspath("./downloaded_files")
@@ -400,7 +400,7 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
 
     try:
         if not ua:
-            ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            ua = COMMON_UA
 
         headers = {
             "User-Agent": ua,
@@ -441,6 +441,31 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
     except Exception as e:
         logger.warning(f"        [CFFI] 에러: {e}")
         return False
+    
+# =======================================================
+# Chromiumpage 생성
+# =======================================================
+def get_chromiumpage(chrome_path = CHROME_PATH, save_dir = DEFAULT_OUTPUT_DIR):
+    co = ChromiumOptions() 
+    chrome_path = "/home/yongyong0206/chrome-linux64/chrome"
+    co.set_browser_path(chrome_path)
+    co.auto_port() 
+    co.no_imgs(True)            
+    co.mute(True)                  
+    co.set_argument('--no-sandbox')
+    co.set_argument('--disable-dev-shm-usage')
+    co.set_argument('--window-size=1920,1080')
+    co.set_argument('--start-maximized')
+    co.set_argument('--lang=ko_KR,ko;q=0.9,en-US;q=0.8,en;q=0.7')
+    co.set_user_agent(COMMON_UA)
+    
+    # 다운로드 설정
+    co.set_pref('download.default_directory', save_dir) # 다운로드 경로 지정
+    co.set_pref('download.prompt_for_download', False)  # 저장 여부 묻지 않기
+    co.set_pref('plugins.always_open_pdf_externally', True) # PDF를 브라우저에서 열지 않고 다운로드
+    co.set_pref('profile.default_content_settings.popups', 0) # 팝업 차단 해제
+    page  = ChromiumPage(co)
+    return page
 
 # =======================================================
 # DrissionPage cloudflare turnstile bypasser
@@ -552,7 +577,7 @@ def solve_captcha_drission(page, logger):
 # =======================================================
 # DrissionPage 크롤러
 # =======================================================
-def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=2, logger = None):
+def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=2, logger = None, page = None):
     # 폴더 생성
     os.makedirs(save_dir, exist_ok=True)
     full_save_path = os.path.join(save_dir, filename)
@@ -561,113 +586,51 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     if os.path.exists(full_save_path):
         try: os.remove(full_save_path)
         except: pass
-
-    # --- 옵션 설정 ---
-    co = ChromiumOptions()
-    co.set_browser_path(chrome_path)
-    co.auto_port() 
     
-    co.set_argument('--headless=new') # New headless mode for chromium           
-    co.no_imgs(True)            
-    co.mute(True)               
-    
-    # 리눅스/Docker 환경 필수 옵션
-    co.set_argument('--no-sandbox')
-    co.set_argument('--disable-gpu')
-    co.set_argument('--disable-dev-shm-usage')
-    # co.set_argument('--window-size=1920,1080')
-    co.set_argument('--start-maximized')
-    co.set_argument('--lang=ko_KR,ko;q=0.9,en-US;q=0.8,en;q=0.7')
-    co.set_argument('--disable-blink-features=AutomationControlled')
-    
-    my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
-    co.set_user_agent(my_ua)
-    
-    # 다운로드 설정
-    co.set_pref('download.default_directory', save_dir) # 다운로드 경로 지정
-    co.set_pref('download.prompt_for_download', False)  # 저장 여부 묻지 않기
-    co.set_pref('plugins.always_open_pdf_externally', True) # PDF를 브라우저에서 열지 않고 다운로드
-    co.set_pref('profile.default_content_settings.popups', 0) # 팝업 차단 해제
-
-    page = None
-    for init_attempt in range(3): # 최대 3번 브라우저 실행 시도
-        try:
-            page = ChromiumPage(co)
-            break # 성공하면 루프 탈출
-        except Exception as e:
-            if logger: logger.warning(f"     [Drission] 브라우저 실행 실패({init_attempt+1}/3): {e} -> 재시도 중...")
-            time.sleep(2) # 2초 대기 후 재시도
-            
+    driver_created_internally = False        
     if page is None:
-        if logger: logger.error(f"     [Drission] 브라우저 초기화 최종 실패. 이 논문은 스킵합니다.")
-        return False
-    
-    # stealth.min.js 이용(https://github.com/requireCool/stealth.min.js/blob/main/stealth.min.js)
-    stealth_js_path = os.path.join(os.path.dirname(__file__), 'stealth.min.js')
-    stealth_code = None
-    if os.path.exists(stealth_js_path):
-        with open(stealth_js_path, 'r', encoding='utf-8') as f:
-            stealth_code = f.read()
-        page.add_init_js(stealth_code)
+        for init_attempt in range(3): # 최대 3번 브라우저 실행 시도
+            try:
+                page = get_chromiumpage(save_dir=save_dir)
+                break # 성공하면 루프 탈출
+            except Exception as e:
+                if logger: logger.warning(f"     [Drission] 브라우저 실행 실패({init_attempt+1}/3): {e} -> 재시도 중...")
+                time.sleep(2) # 2초 대기 후 재시도
+        if page is None:
+            if logger: logger.error(f"     [Drission] 브라우저 초기화 최종 실패. 이 논문은 스킵합니다.")
+            return False
         page.add_init_js(MOUSE_PATCH_JS)
-        logger.info("stealth.min.js 사용")
-    else:
-        if logger: logger.warning("     [Warning] stealth.min.js 파일을 찾을 수 없습니다! (일반 모드로 동작)")
         page.add_init_js("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+        driver_created_internally = True
         
-    # 쿠키 저장
-    cookie_file = os.path.join(os.path.dirname(__file__), 'cf_cookies.json')
     
     for attempt in range(1, max_attempts + 1):
         try:
-            if page is None:
-                for init_try in range(3):
-                    try:
-                        page = ChromiumPage(co)
-                        # stealth 적용
-                        if stealth_code:
-                            page.add_init_js(stealth_code)
-                            page.add_init_js(MOUSE_PATCH_JS)
-                        else:
-                            page.add_init_js("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-                        break
-                    except Exception as e:
-                        time.sleep(2)
-                
-                if page is None:
-                    if logger: logger.error(f"     [Drission] 브라우저 생성 실패 (재시도 {attempt}). 다음 시도로 넘어갑니다.")
-                    continue
-            
-            
             logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
-            if os.path.exists(cookie_file):
-                try:
-                    with open(cookie_file, 'r', encoding='utf-8') as f:
-                        saved_cookies = json.load(f)
-                        # DrissionPage에 쿠키 주입
-                        page.set.cookies(saved_cookies)
-                    if logger: logger.info("        쿠키 로딩 성공")
-                except Exception as e:
-                    logger.warning(f"       쿠키 로딩 실패 :{e}")
-            
+            if not driver_created_internally:
+                tab = page.open_new_tab()
+            else:
+                tab = page
+            current_page = tab
             # 페이지 접속
-            page.get(doi_url, retry=1, interval=1, timeout=20)
+            current_page.get(doi_url, retry=1, interval=1, timeout=20)
             
             # turnstile 풀기 시도
-            if solve_captcha_drission(page, logger):
-                #쿠키 저장 시도
-                try:
-                    current_cookies = page.cookies(as_dict=True)
-                    # 'cf_clearance' 쿠키가 있는지 확인 (
-                    if 'cf_clearance' in current_cookies:
-                        with open(cookie_file, 'w', encoding='utf-8') as f:
-                            json.dump(current_cookies, f)
-                except Exception as e:  pass
+            if not solve_captcha_drission(current_page, logger):
+                # #쿠키 저장 시도
+                # try:
+                #     current_cookies = page.cookies(as_dict=True)
+                #     # 'cf_clearance' 쿠키가 있는지 확인 (
+                #     if 'cf_clearance' in current_cookies:
+                #         with open(cookie_file, 'w', encoding='utf-8') as f:
+                #             json.dump(current_cookies, f)
+                # except Exception as e:  pass
+                return False
             
-            referer_url = page.url
+            referer_url = current_page.url
             
             # Cloudflare 감지 시 대기
-            if page.ele('@id=turnstile-wrapper') or "cloudflare" in page.title.lower():
+            if current_page.ele('@id=turnstile-wrapper') or "cloudflare" in current_page.title.lower():
                 logger.info("        Cloudflare 감지 (3초 대기)")
                 time.sleep(3)
 
@@ -681,24 +644,24 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             # 2. 버튼/링크 패턴 매칭
             if not pdf_url:
                 # 텍스트나 속성으로 PDF 링크 찾기
-                btn = page.ele('text:Download PDF') or \
-                      page.ele('text:PDF') or \
-                      page.ele('tag:a@@title:PDF') or \
-                      page.ele('css:a[href*=".pdf"]')
+                btn = current_page.ele('text:Download PDF') or \
+                      current_page.ele('text:PDF') or \
+                      current_page.ele('tag:a@@title:PDF') or \
+                      current_page.ele('css:a[href*=".pdf"]')
                 
                 if btn: pdf_url = btn.attr('href')
             # 3. analyze_html
             if not pdf_url:
-                pdf_url = _analyze_html_structure_drission(page, logger)
+                pdf_url = _analyze_html_structure_drission(current_page, logger)
                 if pdf_url and "stamp.jsp" in pdf_url:
                     logger.info("        [IEEE] Stamp 링크 감지 -> 실제 PDF 주소 추출 시도")
                     
                     # 1. 해당 뷰어 페이지(stamp.jsp)로 이동
-                    page.get(pdf_url)
+                    current_page.get(pdf_url)
                     time.sleep(2) # 로딩 대기
                     
                     # 2.   _analyze_html_structure_drission 재호출
-                    real_url = _analyze_html_structure_drission(page, logger)
+                    real_url = _analyze_html_structure_drission(current_page, logger)
                     
                     if real_url and "stamp.jsp" not in real_url:
                         pdf_url = real_url
@@ -708,7 +671,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
 
             # 4. Iframe
             if not pdf_url:
-                iframe = page.ele('tag:iframe@@src:.pdf')
+                iframe = current_page.ele('tag:iframe@@src:.pdf')
                 if iframe: pdf_url = iframe.attr('src')
             
             
@@ -717,24 +680,24 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             if pdf_url:
                 # 상대 경로를 절대 경로로 변환
                 if not pdf_url.startswith('http'):
-                    pdf_url = urljoin(page.url, pdf_url)
+                    pdf_url = urljoin(current_page.url, pdf_url)
                 
                 logger.info(f"        PDF 링크 발견: {pdf_url}")
                 
-                # Drissionpage 자체 다운로드 먼저 시도
+                # Drissioncurrent_page 자체 다운로드 먼저 시도
                 logger.info("        1. Drission 자체 다운로드 시도")
                 try:
                     # [수정] path=폴더경로, rename=파일명 (확장자 포함 가능)
                     # file_exists='overwrite'로 중복 시 덮어쓰기
                     clean_name = filename # 파일명 그대로 사용
-                    page.download(pdf_url, goal_path=save_dir, rename=clean_name, file_exists='overwrite')
+                    current_page.download(pdf_url, goal_path=save_dir, rename=clean_name, file_exists='overwrite')
                     
                     # 파일 생성 확인 대기 (최대 30초)
                     wait_time = 0
                     while wait_time < 30:
                         if os.path.exists(full_save_path) and os.path.getsize(full_save_path) > 1024:
                             logger.info(f"        [Drission] 다운로드 성공")
-                            if page: page.quit()
+                            if current_page: current_page.quit()
                             return True
                         time.sleep(1)
                         wait_time += 1
@@ -745,26 +708,26 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     pass
 
                 # 1. 쿠키 리스트 가져오기 (인자 없이 호출)
-                cookies_list = page.cookies()
+                cookies_list = current_page.cookies()
                 current_cookies = {c['name']: c['value'] for c in cookies_list}
                 try : 
-                    if download_with_cffi(pdf_url, full_save_path, referer=page.url, cookies=current_cookies, ua=my_ua, logger=logger):
-                        if page: page.quit()
+                    if download_with_cffi(pdf_url, full_save_path, referer=current_page.url, cookies=current_cookies, ua=my_ua, logger=logger):
+                        if current_page: current_page.quit()
                         return True
                 except : pass
                 
                 try : 
-                    if download_pdf_via_js_injection(page, pdf_url, filename, save_dir, logger):
+                    if download_pdf_via_js_injection(current_page, pdf_url, filename, save_dir, logger):
                         return True
                 except : pass
                 
                 try : 
-                    if force_download_with_requests(page, pdf_url, referer_url, full_save_path, logger):
+                    if force_download_with_requests(current_page, pdf_url, referer_url, full_save_path, logger):
                         return True
                 except: pass
                 
                 try : 
-                    if download_pdf_via_navigation(page, pdf_url, full_save_path, logger, timeout_s = 10):
+                    if download_pdf_via_navigation(current_page, pdf_url, full_save_path, logger, timeout_s = 10):
                         return True
                 except : pass
                 
@@ -774,18 +737,23 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
         except Exception as e:
             logger.warning(f"        시도 {attempt} 에러: {e}")
             # 에러 발생 시 브라우저 닫고 초기화 (다음 시도에서 재생성)
-            if page:
-                try: page.quit()
-                except: pass
-                page = None
+        
+        finally :
+            if not driver_created_internally:
+                try : tab.close()
+                except:pass
+            else:
+                if 'current_page' in locals() and current_page:
+                    try : current_page.quit()
+                    except: pass
         
         time.sleep(2) # 재시도 전 대기
 
     # 모든 시도 실패 시 브라우저 종료
-    if page:
+    if current_page:
         try: 
-            _safe_screenshot(page, os.path.join(save_dir, "logs", "screenshots"), f"final_fail_capture_{filename}.png", logger)
-            page.quit()
+            _safe_screenshot(current_page, os.path.join(save_dir, "logs", "screenshots"), f"final_fail_capture_{filename}.png", logger)
+            current_page.quit()
         except Exception as e: 
             logger.warning(f"can't take screeenshot error : {e}")
             pass
@@ -1162,46 +1130,6 @@ def get_publisher_from_doi_prefix(
 
     return raw_name if (return_raw_if_unmapped and raw_name) else None
 
-
-    
-# url로 직접 requests 다운로드 (PDF 유효성 검사 포함)
-def _download_file(url: str, output_path: str, headers=None, session=None):
-    req = session.get if session else requests.get
-    
-    try:
-        response = req(url, headers=headers, stream=True, timeout=20) 
-    except Exception as e:
-        raise Exception(f"Request error for {url}: {e}")
-        
-    if response.status_code != 200:
-        raise Exception(f"Failed to download {url} (status code: {response.status_code})")
-        
-    try:
-        # 1. 일단 파일 쓰기
-        with open(output_path, "wb") as f:
-            for chunk in response.iter_content(chunk_size=8192):
-                if chunk:
-                    f.write(chunk)
-
-        # 2. 파일이 유효한 PDF인지 검사
-        if _is_valid_pdf(output_path):
-            return True # 성공 시 True 반환
-        else:
-            # 유효하지 않다면(HTML 등) 파일 삭제 후 에러 발생 -> Worker가 다음 단계로 넘어가게 유도
-            if os.path.exists(output_path):
-                os.remove(output_path)
-            raise Exception("Downloaded file content is NOT a valid PDF (likely HTML or corrupted).")
-            
-    except Exception as e:
-        # 쓰기 중 에러나 유효성 검사 실패 시 청소
-        if os.path.exists(output_path):
-            try: os.remove(output_path)
-            except: pass
-        raise Exception(f"Error validating/writing file {output_path}: {e}")
-
-
-import re
-from typing import Optional
 
 
 

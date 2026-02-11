@@ -6,12 +6,11 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from tqdm import tqdm  # 진행률 표시를 위해 추가 (pip install tqdm)
 
 # 기존 라이브러리 임포트
-from bs4 import BeautifulSoup
 from typing import Dict, List, Optional, Iterable, Any
-from seleniumbase import Driver
-from tools_exp import download_with_cffi, download_with_drission, normalize_publisher_label, try_manual_scihub, download_using_api, setup_logger, _sanitize_doi_to_filename
+from tools_exp import download_with_cffi, download_with_drission, normalize_publisher_label, try_manual_scihub, download_using_api, setup_logger, _sanitize_doi_to_filename, get_chromiumpage
 from openalex_search import main_search
 from config import get_config
+from DrissionPage import ChromiumPage, ChromiumOptions
 
 # --- OpenAlex  ---
 OPENALEX_ENDPOINT = "https://api.openalex.org/works"
@@ -159,23 +158,24 @@ def download_process_worker(row_data, final_save_path, default_download_path):
     except Exception:
         pass
 
-    # 4. DrissionPage 크롤링 시도
-    try:
-        # 크롬 경로 지정
+    # 4. DrissionPage 크롤링 시도는 worker 밖에서 순차적으로만 시도
+    # try:
+    #     # 크롬 경로 지정
         
-        chrome_path = "/home/yongyong0206/chrome-linux64/chrome"
-        doi_url = "https://doi.org/" + doi
+    #     chrome_path = "/home/yongyong0206/chrome-linux64/chrome"
+    #     doi_url = "https://doi.org/" + doi
         
-        # DrissionPage 함수 호출
-        if download_with_drission(doi_url, final_save_path, filename, chrome_path, max_attempts=2, logger= logger):
-            result['status'] = 'Success (Drission)'
-            result['method'] = 'crawling'
-        else:
-            result['status'] = 'Failed (Not Found)'
+    #     # DrissionPage 함수 호출
+    #     if download_with_drission(doi_url, final_save_path, filename, chrome_path, max_attempts=2, logger= logger):
+    #         result['status'] = 'Success (Drission)'
+    #         result['method'] = 'crawling'
+    #     else:
+    #         result['status'] = 'Failed (Not Found)'
             
-    except Exception as e:
-        logger.warning(f"   Drission 크롤링 중 오류: {e}")
-        result['status'] = f'Failed (Error: {str(e)})'
+    # except Exception as e:
+    #     logger.warning(f"   Drission 크롤링 중 오류: {e}")
+    #     result['status'] = f'Failed (Error: {str(e)})'
+    result['status'] = 'NeedCrawling'
 
     return result
 
@@ -262,6 +262,59 @@ def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, ou
                 df.at[idx, 'download_status'] = f'Failed (System Error: {str(e)})'
                 stats['failed'] += 1
 
+    # 크롤링을 다음으로 처리
+    crawling_candidates = df[df['download_status'] == 'NeedCrawling']
+    
+    if not crawling_candidates.empty:
+        print(f"\n[2차 단계] 크롤링 필요한 {len(crawling_candidates)}건을 순차 처리합니다 (브라우저 재사용)...")
+        
+        # 브라우저 단 한 번만 생성 
+        page = get_chromiumpage(save_dir = output_dir)
+        page.get("https://www.google.com")
+        
+        # 2. 순차 반복
+        count = 0
+        for idx, row in tqdm(crawling_candidates.iterrows(), total=len(crawling_candidates), desc="Crawling"):
+            doi = row['doi']
+            # OA 여부에 따라 경로 설정
+            save_dir = OA_save_path if row['open_access'] else CA_save_path
+            if page : page.set.download_path(save_dir)
+            filename = _sanitize_doi_to_filename(doi)
+            doi_url = "https://doi.org/" + doi
+            
+            # 로거 생성
+            logger = setup_logger(save_dir, filename)
+            try:
+                # 여기서 tools_exp의 수정된 함수 호출
+                if download_with_drission(doi_url, save_dir, filename, page=page, logger=logger):
+                     df.at[idx, 'download_status'] = 'Success (Crawling)'
+                     stats['crawling'] += 1
+                else:
+                     df.at[idx, 'download_status'] = 'Failed (Crawling)'
+                     stats['failed'] += 1
+            except Exception as e:
+                df.at[idx, 'download_status'] = f'Failed (Error: {e})'
+                stats['failed'] += 1
+                logger.warning(f"Failed using drissionpage with error {e}")
+                
+            time.sleep(3) # 3초 정도 쉬어줍니다.
+            count += 1
+            
+            # 50개마다 브라우저 새로고침 (메모리 누수 방지)
+            if count % 50 == 0:
+                try: 
+                    page.quit()
+                    time.sleep(2)
+                    page = get_chromiumpage(save_dir = output_dir)
+                except: pass
+
+        # 3. 종료
+        try: page.quit()
+        except: pass
+        
+    else:
+        print("\n[2차 단계] 크롤링 대상이 없습니다.")
+    
         
     # 실패한 논문 재시도(IEEE 등 같은 저널 방문시 차단되는 경우 방지)
     failed_indices = df[~df['download_status'].str.contains('Success|Skipped', case=False, na=False)].index
