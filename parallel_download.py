@@ -103,7 +103,6 @@ def download_process_worker(row_data, final_save_path, default_download_path):
     """
     doi = str(row_data['doi'])
     pdf_url_oa = str(row_data['pdf_url']).lower()
-    if not pdf_url_oa : pdf_url_oa = str(row_data['pdf']).lower()
     filename = _sanitize_doi_to_filename(doi)
     full_path = os.path.join(final_save_path,filename)
     
