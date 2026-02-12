@@ -319,54 +319,54 @@ def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, ou
     # 실패한 논문 재시도(IEEE 등 같은 저널 방문시 차단되는 경우 방지)
     failed_indices = df[~df['download_status'].str.contains('Success|Skipped', case=False, na=False)].index
     
-    if len(failed_indices) > 0:
-        print(f"\n" + "="*50)
-        print(f"   실패한 {len(failed_indices)}건을 재시도합니다.")
-        print(f"   60초간 대기 후, 5초 간격으로 순차 실행.")
-        print("="*50)
+    # if len(failed_indices) > 0:
+    #     print(f"\n" + "="*50)
+    #     print(f"   실패한 {len(failed_indices)}건을 재시도합니다.")
+    #     print(f"   60초간 대기 후, 5초 간격으로 순차 실행.")
+    #     print("="*50)
         
-        # 1분 쿨다운 
-        time.sleep(60)  
+    #     # 1분 쿨다운 
+    #     time.sleep(60)  
 
-        # 재시도는 순차적으로 처리
-        for idx in tqdm(failed_indices, desc="Retrying Failed Papers"):
-            row = df.loc[idx]
-            doi = row['doi']
+    #     # 재시도는 순차적으로 처리
+    #     for idx in tqdm(failed_indices, desc="Retrying Failed Papers"):
+    #         row = df.loc[idx]
+    #         doi = row['doi']
             
-            # skipped 된 건은 재시도하지 않음
-            if "Skipped" in str(row['download_status']):
-                continue
+    #         # skipped 된 건은 재시도하지 않음
+    #         if "Skipped" in str(row['download_status']):
+    #             continue
 
-            try:
-                # worker 함수를 직접 호출 (순차 실행)
-                result = download_process_worker(row, OA_save_path if row['open_access'] else CA_save_path, default_download_path)
+    #         try:
+    #             # worker 함수를 직접 호출 (순차 실행)
+    #             result = download_process_worker(row, OA_save_path if row['open_access'] else CA_save_path, default_download_path)
                 
-                # 결과 업데이트
-                new_status = result['status']
-                df.at[idx, 'download_status'] = f"{new_status} (Retry)"
+    #             # 결과 업데이트
+    #             new_status = result['status']
+    #             df.at[idx, 'download_status'] = f"{new_status} (Retry)"
                 
-                # 통계 업데이트 (성공한 경우만)
-                if 'Success' in new_status:
-                    method = result.get('method', 'unknown')
-                    stats[method] = stats.get(method, 0) + 1
+    #             # 통계 업데이트 (성공한 경우만)
+    #             if 'Success' in new_status:
+    #                 method = result.get('method', 'unknown')
+    #                 stats[method] = stats.get(method, 0) + 1
                     
-                    new_status_str = f"Success (Retry, {method})"
-                    df.at[idx, 'download_status'] = new_status_str
+    #                 new_status_str = f"Success (Retry, {method})"
+    #                 df.at[idx, 'download_status'] = new_status_str
                     
-                    # 기존 failed 카운트 하나 줄임
-                    stats[method] = stats.get(method, 0) + 1
-                    stats['failed'] -= 1
-                    print(f"   --> 재시도 성공: {doi}")
-                else:
-                    df.at[idx, 'download_status'] = result['status']
+    #                 # 기존 failed 카운트 하나 줄임
+    #                 stats[method] = stats.get(method, 0) + 1
+    #                 stats['failed'] -= 1
+    #                 print(f"   --> 재시도 성공: {doi}")
+    #             else:
+    #                 df.at[idx, 'download_status'] = result['status']
                 
-            except Exception as e:
-                print(f"   --> 재시도 에러 ({doi}): {e}")
+    #         except Exception as e:
+    #             print(f"   --> 재시도 에러 ({doi}): {e}")
 
-            time.sleep(5) 
+    #         time.sleep(5) 
 
-    else:
-        print("\n✨ 모든 다운로드가 1차 시도에서 성공했거나 실패 건이 없습니다.")
+    # else:
+    #     print("\n✨ 모든 다운로드가 1차 시도에서 성공했거나 실패 건이 없습니다.")
 
     # 시간 계산
     end_time = time.time()

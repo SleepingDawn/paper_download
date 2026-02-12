@@ -450,13 +450,14 @@ def get_chromiumpage(chrome_path = CHROME_PATH, save_dir = DEFAULT_OUTPUT_DIR):
     chrome_path = "/home/yongyong0206/chrome-linux64/chrome"
     co.set_browser_path(chrome_path)
     co.auto_port() 
-    co.no_imgs(True)            
+    # co.no_imgs(True)            
     co.mute(True)                  
     co.set_argument('--no-sandbox')
     co.set_argument('--disable-dev-shm-usage')
     co.set_argument('--window-size=1920,1080')
     co.set_argument('--start-maximized')
     co.set_argument('--lang=ko_KR,ko;q=0.9,en-US;q=0.8,en;q=0.7')
+    co.set_argument('--headless=new')
     co.set_user_agent(COMMON_UA)
     
     # 다운로드 설정
@@ -577,7 +578,7 @@ def solve_captcha_drission(page, logger):
 # =======================================================
 # DrissionPage 크롤러
 # =======================================================
-def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=2, logger = None, page = None):
+def download_with_drission(doi_url, save_dir, filename, chrome_path = CHROME_PATH, max_attempts=2, logger = None, page = None):
     # 폴더 생성
     os.makedirs(save_dir, exist_ok=True)
     full_save_path = os.path.join(save_dir, filename)
@@ -810,23 +811,6 @@ def _analyze_html_structure_drission(page, logger):
             frames = page.eles('tag:iframe')
             src_list = [f.attr('src') for f in frames]
             logger.warning(f"        IEEE Iframe 로딩 실패. 발견된 iframe들: {src_list}")
-
-    # # # -------------------------------------------------------
-    # # # 2. ScienceDirect 전용 로직 -> new 시도
-    # # # -------------------------------------------------------
-    # if "sciencedirect.com" in page.url:
-    #     import re
-    #     current_url = page.url
-    #     # URL에서 PII 추출 (예: /pii/S002195172030005X)
-    #     match = re.search(r'/pii/([A-Z0-9]+)', current_url, re.IGNORECASE)
-        
-    #     if match:
-    #         pii_code = match.group(1)
-    #         # 이 URL 패턴이 403을 가장 잘 우회하는 "순수 PDF API" 형식입니다.
-    #         # download=true 파라미터가 핵심입니다.
-    #         pdf_heuristic_url = f"https://www.sciencedirect.com/science/article/pii/{pii_code}/pdfft?isDTM=true&download=true"
-    #         logger.info(f"        [ScienceDirect] trying new url : {pdf_heuristic_url}")
-    #         return pdf_heuristic_url
 
     # -------------------------------------------------------
     # 3. Iframe / Embed / Object (일반)
@@ -1204,90 +1188,6 @@ def download_via_springerpdf(doi: str, output_path: str, logger = None):
     }
     referer = headers["Referer"]
     download_with_cffi(pdf_url, output_path, referer)
-    
-# tools_exp.py 에 추가
-
-def download_via_sciencedirect(doi: str, output_path: str, logger=None) -> bool:
-    # 1. 브라우저 세팅
-    co = ChromiumOptions()
-    co.auto_port()
-    co.set_argument('--headless=new')
-    co.set_argument('--no-sandbox')
-    page = ChromiumPage(co)
-    
-    try:
-        # 2. Abstract 페이지 접속 
-        target_url = f"https://doi.org/{doi}"
-        if logger: logger.info(f"        [ScienceDirect] 페이지 접속 시도: {target_url}")
-        
-        page.get(target_url)
-        
-        # 3. Cloudflare/Turnstile 우회 시도 
-        solve_captcha_drission(page, logger)
-        
-        # 4. ScienceDirect URL 확인
-        current_url = page.url
-        if "sciencedirect.com" not in current_url:
-            if logger: logger.warning("        [ScienceDirect] 리다이렉트 실패 (다른 사이트?)")
-            return False
-
-        # 5. PDF 링크 찾기 (메타 태그 우선)
-        pdf_url = None
-        meta_pdf = page.ele('css:meta[name="citation_pdf_url"]')
-        if meta_pdf:
-            pdf_url = meta_pdf.attr("content")
-        
-        if not pdf_url:
-            # URL에서 PII 추출 (예: /science/article/pii/S002195172030005X)
-            match = re.search(r'/pii/([A-Z0-9]+)', current_url, re.IGNORECASE)
-            if match:
-                pii = match.group(1)
-                pdf_url = f"https://www.sciencedirect.com/science/article/pii/{pii}/pdfft?isDTM=true&download=true"
-        
-        if not pdf_url:
-            if logger: logger.warning("        [ScienceDirect] PDF 링크를 찾을 수 없음")
-            return False
-
-        # 헤더 설정
-        cookies = page.cookies(as_dict=True) # 딕셔너리 형태로 추출
-        user_agent = page.user_agent
-        
-        headers = {
-            "User-Agent": user_agent,
-            "Referer": current_url, # 현재 페이지
-            "Accept": "application/pdf,application/x-pdf,*/*",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Connection": "keep-alive",
-            "Host": "www.sciencedirect.com" # 호스트 명시 권장
-        }
-        
-        if logger: logger.info(f"        [ScienceDirect] CFFI 다운로드 시도 (Referer: {current_url})")
-        
-        response = cffi_requests.get(
-            pdf_url,
-            headers=headers,
-            cookies=cookies, # 브라우저 쿠키 주입
-            impersonate="chrome110", # TLS Fingerprint 맞춤
-            timeout=60,
-            allow_redirects=True
-        )
-        
-        if response.status_code == 200 and b'%PDF' in response.content[:100]:
-            with open(output_path, 'wb') as f:
-                f.write(response.content)
-            if logger: logger.info("        [ScienceDirect] 다운로드 성공")
-            return True
-        else:
-            if logger: logger.warning(f"        [ScienceDirect] 실패 (Status: {response.status_code})")
-            return False
-            
-    except Exception as e:
-        if logger: logger.error(f"        [ScienceDirect] 에러: {e}")
-        return False
-        
-    finally:
-        page.quit()
-
 
 
 def download_using_api(doi: str, output_path: str, publisher: str, logger = None):
@@ -1301,7 +1201,6 @@ def download_using_api(doi: str, output_path: str, publisher: str, logger = None
         "acs": download_via_acspdf,
         "aip": download_via_aippdf,
         "iop": download_via_ioppdf,
-        "elsevier" : download_via_sciencedirect,
     }
     
     filename = _sanitize_doi_to_filename(doi)
@@ -1319,13 +1218,3 @@ def download_using_api(doi: str, output_path: str, publisher: str, logger = None
     else:
         logger.warning(f"No download method available for publisher: {publisher}")
         raise Exception(f"No download method available for publisher: {publisher}")
-
-MOUSE_PATCH_JS =  """
-function getRandomInt(min, max) {
-return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-let screenX = getRandomInt(800, 1200);
-let screenY = getRandomInt(400, 600);
-Object.defineProperty(MouseEvent.prototype, 'screenX', { value: screenX });
-Object.defineProperty(MouseEvent.prototype, 'screenY', { value: screenY });
-"""
