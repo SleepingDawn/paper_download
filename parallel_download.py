@@ -103,6 +103,7 @@ def download_process_worker(row_data, final_save_path, default_download_path):
     """
     doi = str(row_data['doi'])
     pdf_url_oa = str(row_data['pdf_url']).lower()
+    if not pdf_url_oa : pdf_url_oa = str(row_data['pdf']).lower()
     filename = _sanitize_doi_to_filename(doi)
     full_path = os.path.join(final_save_path,filename)
     
@@ -133,6 +134,7 @@ def download_process_worker(row_data, final_save_path, default_download_path):
         except Exception as e:
             logger.warning(f"   Direct OA 다운로드 실패: {e}")
 
+    
     # 1. ArXiv, Conference Paper(ECS Meetings) Skip
     if publisher == 'arxiv' or "arxiv.org" in pdf_url_oa or doi.strip().lower().startswith("10.1149/ma"):
         result['status'] = 'Skipped (arXiv or Conference Paper)'
