@@ -7,14 +7,14 @@ import requests
 import base64
 import random
 import json
+import re
+import requests
 
-from typing import Set
-from urllib.parse import urljoin, quote
-from seleniumbase import Driver
+from typing import Set, Optional
+from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 from curl_cffi import requests as cffi_requests # 이름 충돌 방지
 from DrissionPage import ChromiumPage, ChromiumOptions
-from DrissionPage.common import Keys
 from config import WILEY_API_KEY, MOUSE_PATCH_JS, COMMON_UA, CHROME_PATH, DEFAULT_OUTPUT_DIR
 # from CloudflareBypasser import CloudflareBypasser
 
@@ -608,11 +608,9 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path = CHROME_PAT
     for attempt in range(1, max_attempts + 1):
         try:
             logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
+            current_page = page
             if not driver_created_internally:
-                tab = page.open_new_tab()
-            else:
-                tab = page
-            current_page = tab
+                current_page = page.new_tab()
             # 페이지 접속
             current_page.get(doi_url, retry=1, interval=1, timeout=20)
             
@@ -985,22 +983,6 @@ def try_manual_scihub(doi: str, pdf_dir: str, logger = None) -> bool:
     
     
 # =======================================================
-import re
-from typing import Optional, Dict
-import requests
-
-PREFIX_EXACT_MAP: Dict[str, str] = {
-    "10.1038": "Nature",
-    "10.1021": "ACS",
-    "10.1039": "RSC",
-    "10.1063": "AIP",
-    "10.1088": "IOP",
-    "10.1109": "IEEE",
-    "10.1016": "ELSEVIER",
-    "10.1002": "WILEY",
-    "10.1111": "WILEY",
-    # CELL은 DOI prefix만으로 ELSEVIER(10.1016)와 분리가 어려움
-}
 
 # 2) Crossref가 돌려주는 registrant(스튜어드) name의 변형들을 "원하는 라벨"로 통일
 def normalize_publisher_label(raw_name: str, prefix: Optional[str] = None) -> Optional[str]:
@@ -1052,68 +1034,6 @@ def normalize_publisher_label(raw_name: str, prefix: Optional[str] = None) -> Op
         return "CELL"
 
     return None
-
-
-def extract_doi_prefix(prefix_or_doi: str) -> Optional[str]:
-    """
-    입력이 '10.1016' 같은 prefix일 수도 있고, '10.1016/j.xxx...' 같은 DOI일 수도 있으니 prefix만 추출.
-    """
-    if not prefix_or_doi:
-        return None
-    m = re.search(r"(10\.\d{4,9})", prefix_or_doi.strip())
-    return m.group(1) if m else None
-
-
-def get_publisher_from_doi_prefix(
-    prefix_or_doi: str,
-    *,
-    mailto: Optional[str] = None,
-    timeout: float = 20.0,
-    return_raw_if_unmapped: bool = False,
-) -> Optional[str]:
-    """
-    Crossref REST API /prefixes/{prefix}를 이용해 prefix의 steward(등록자) 이름을 받고,
-    이를 사용자가 원하는 퍼블리셔 라벨로 정규화해 반환.
-
-    - 반환 예: "Nature", "ACS", "RSC", "AIP", "IOP", "IEEE", "ELSEVIER", "WILEY", "CELL"
-    - 매핑 실패 시: None (혹은 return_raw_if_unmapped=True면 raw registrant name)
-    """
-    prefix = extract_doi_prefix(prefix_or_doi)
-    if not prefix:
-        return None
-
-    # 1) prefix만으로 확정 가능한 경우 즉시 반환
-    if prefix in PREFIX_EXACT_MAP:
-        return PREFIX_EXACT_MAP[prefix]
-
-    # 2) Crossref /prefixes/{prefix} 호출
-    #    이 엔드포인트는 steward name과 member ID를 돌려줍니다. :contentReference[oaicite:1]{index=1}
-    url = f"https://api.crossref.org/prefixes/{prefix}"
-    params = {}
-    if mailto:
-        params["mailto"] = mailto  # polite pool 사용 권장 패턴에 부합 :contentReference[oaicite:2]{index=2}
-
-    try:
-        r = requests.get(url, params=params, timeout=timeout, headers={"Accept": "application/json"})
-        if r.status_code == 404:
-            return None
-        r.raise_for_status()
-        data = r.json()
-    except requests.RequestException:
-        return None
-    except ValueError:
-        return None
-
-    msg = data.get("message") or {}
-    raw_name = msg.get("name") or ""
-
-    # 3) raw registrant name -> 원하는 라벨로 정규화
-    label = normalize_publisher_label(raw_name, prefix=prefix)
-    if label:
-        return label
-
-    return raw_name if (return_raw_if_unmapped and raw_name) else None
-
 
 
 
