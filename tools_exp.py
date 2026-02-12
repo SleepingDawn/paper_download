@@ -9,6 +9,7 @@ import random
 import json
 import re
 import requests
+import urllib3
 
 from typing import Set, Optional
 from urllib.parse import urljoin
@@ -487,7 +488,7 @@ def solve_captcha_drission(page, logger):
     iframe_exists = page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=0.5)
     
     if not any(k in current_title for k in suspicious_keywords) and not iframe_exists:
-        return
+        return True
 
     logger.warning("           보안/캡차 화면 감지! 우회 시도 중...")
     target_ele = None
@@ -916,6 +917,7 @@ def try_manual_scihub(doi: str, pdf_dir: str, logger = None) -> bool:
         try:
             target_url = f"{mirror}/{doi}"
             # print(f"  - Sci-Hub 접속 시도: {target_url}")
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
             resp = requests.get(target_url, headers=headers, timeout=20, verify=False)
             
             if resp.status_code != 200: continue
