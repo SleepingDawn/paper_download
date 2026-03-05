@@ -33,5 +33,18 @@ def get_config():
     parser.add_argument("--doi_path", type=str, default = None,
                         help ="doi리스트 경로")
 
+    parser.add_argument(
+        "--after-first-pass",
+        type=str,
+        choices=["stop", "deep"],
+        default="stop",
+        help="1차 패스 후 동작: stop(종료) 또는 deep(실패 건 심화 재시도). 기본값: stop",
+    )
+    parser.add_argument(
+        "--non-interactive",
+        action="store_true",
+        help="입력 프롬프트 없이 --after-first-pass 값으로 실행",
+    )
+
     args = parser.parse_args()
     return args

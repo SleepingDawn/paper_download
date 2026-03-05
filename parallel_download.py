@@ -1,360 +1,617 @@
+import json
 import os
-import pandas as pd
 import time
-import requests
 from concurrent.futures import ProcessPoolExecutor, as_completed
-from tqdm import tqdm  # 진행률 표시를 위해 추가 (pip install tqdm)
+from typing import Any, Dict, List, Optional
 
-# 기존 라이브러리 임포트
-from bs4 import BeautifulSoup
-from typing import Dict, List, Optional, Iterable, Any
-from seleniumbase import Driver
-from tools_exp import download_with_cffi, download_with_drission, normalize_publisher_label, try_manual_scihub, download_using_api, setup_logger, _sanitize_doi_to_filename
-from openalex_search import main_search
+import pandas as pd
+from tqdm import tqdm
+
 from config import get_config
+from openalex_search import main_search
+from tools_exp import (
+    _sanitize_doi_to_filename,
+    download_using_api,
+    download_with_cffi,
+    download_with_drission,
+    normalize_publisher_label,
+    setup_logger,
+    try_manual_scihub,
+)
 
-# --- OpenAlex  ---
-OPENALEX_ENDPOINT = "https://api.openalex.org/works"
+REASON_SUCCESS = "SUCCESS"
+REASON_FAIL_CAPTCHA = "FAIL_CAPTCHA"
+REASON_FAIL_BLOCK = "FAIL_BLOCK"
+REASON_FAIL_WRONG_MIME = "FAIL_WRONG_MIME"
+REASON_FAIL_VIEWER_HTML = "FAIL_VIEWER_HTML"
+REASON_FAIL_HTTP_STATUS = "FAIL_HTTP_STATUS"
+REASON_FAIL_TIMEOUT_NETWORK = "FAIL_TIMEOUT/NETWORK"
+REASON_FAIL_PDF_MAGIC = "FAIL_PDF_MAGIC"
+REASON_FAIL_TOO_SMALL = "FAIL_TOO_SMALL"
+REASON_FAIL_NO_CANDIDATE = "FAIL_NO_CANDIDATE"
+REASON_FAIL_REDIRECT_LOOP = "FAIL_REDIRECT_LOOP"
+REASON_FAIL_UNKNOWN = "FAIL_UNKNOWN"
 
-def iter_openalex_works(
-    search: Optional[str] = None,
-    filter_str: Optional[str] = None,
-    select_fields: Optional[List[str]] = None,
-    sort: Optional[str] = None,
-    per_page: int = 200,
-    mailto: Optional[str] = None,
-    max_records: Optional[int] = None,
-    sleep_sec: float = 0.15,
-) -> Iterable[Dict[str, Any]]:
-    session = requests.Session()
-    params = {"per-page": max(1, min(per_page, 200)), "cursor": "*"}
-    if mailto: params["mailto"] = mailto
-    if search: params["search"] = search
-    if filter_str: params["filter"] = filter_str
-    if sort: params["sort"] = sort
-    if select_fields: params["select"] = ",".join(select_fields)
+FAILURE_REASON_ORDER = [
+    REASON_FAIL_CAPTCHA,
+    REASON_FAIL_BLOCK,
+    REASON_FAIL_WRONG_MIME,
+    REASON_FAIL_VIEWER_HTML,
+    REASON_FAIL_HTTP_STATUS,
+    REASON_FAIL_TIMEOUT_NETWORK,
+    REASON_FAIL_PDF_MAGIC,
+    REASON_FAIL_TOO_SMALL,
+    REASON_FAIL_NO_CANDIDATE,
+    REASON_FAIL_REDIRECT_LOOP,
+    REASON_FAIL_UNKNOWN,
+]
 
-    fetched = 0
-    while True:
-        r = session.get(OPENALEX_ENDPOINT, params=params, timeout=60)
-        if r.status_code != 200:
-            raise RuntimeError(f"OpenAlex HTTP {r.status_code}: {r.text[:300]}")
-        data = r.json()
-        results = data.get("results", [])
-        for work in results:
-            yield work
-            fetched += 1
-            if max_records is not None and fetched >= max_records: return
-        next_cursor = (data.get("meta") or {}).get("next_cursor")
-        if not next_cursor: return
-        params["cursor"] = next_cursor
-        time.sleep(sleep_sec)
 
-def extract_row(work: Dict[str, Any]) -> Dict[str, Any]:
-    doi = work.get("doi")
-    if not doi:
-        doi = (work.get("ids") or {}).get("doi")
-    
-    primary_loc = work.get("primary_location") or {}
-    open_access_loc = work.get("open_access") or {}
-    
+def _domain_from_url(url: str) -> str:
+    if not url:
+        return ""
+    try:
+        from urllib.parse import urlparse
+
+        return (urlparse(url).netloc or "").lower()
+    except Exception:
+        return ""
+
+
+def _result_template(doi: str, attempt: int, mode: str) -> Dict[str, Any]:
     return {
-        "doi": doi.replace("https://doi.org/", "") if doi else None,
-        "title": work.get("title"),
-        "publication_year": work.get("publication_year"),
-        "cited_by_count": work.get("cited_by_count"),
-        "pdf_url": primary_loc.get("pdf_url"), 
-        "open_access": open_access_loc.get("is_oa"),
+        "doi": doi,
+        "attempt": attempt,
+        "mode": mode,
+        "status": "Failed",
+        "reason": REASON_FAIL_UNKNOWN,
+        "method": None,
+        "evidence": [],
+        "stage": "init",
+        "domain": "",
+        "http_status": None,
+        "success": False,
     }
 
-def OpenAlex_search(pdf_save_dir="./downloaded_pdfs", csv_name="search_results.csv", query=None):
-    # 기존 로직 유지
-    PDF_SAVE_DIR = pdf_save_dir
-    CSV_NAME = os.path.join(pdf_save_dir, csv_name)
-    os.makedirs(PDF_SAVE_DIR, exist_ok=True)
 
-    TA_QUERY = query if query else "IGZO TFT"
-    print(f"검색 필터:\n{TA_QUERY}\n")
-    FILTER = f'type:article,title_and_abstract.search:({TA_QUERY})'
-    SELECT = ["id", "doi", "title", "publication_year", "cited_by_count", "primary_location", "ids", "open_access"]
+def _status_text(result: Dict[str, Any]) -> str:
+    if result.get("success"):
+        method = result.get("method") or "unknown"
+        return f"Success ({method})"
+    return result.get("reason", REASON_FAIL_UNKNOWN)
 
-    print("OpenAlex에서 데이터를 수집 중입니다...")
-    works_data = []
-    for w in iter_openalex_works(
-        filter_str=FILTER,
-        sort="cited_by_count:desc",
-        select_fields=SELECT,
-        mailto="yongyong0206@snu.ac.kr", 
-        max_records=500
-    ):
-        works_data.append(extract_row(w))
 
-    df = pd.DataFrame(works_data)
-    df.to_csv(CSV_NAME, index=False, encoding='utf-8-sig')
-    print(f"메타데이터 저장 완료: {CSV_NAME}")
-    return df
+def _normalize_reason(reason: Optional[str], http_status: Optional[int] = None) -> str:
+    if not reason:
+        return REASON_FAIL_UNKNOWN
+    if reason == "FAIL_NETWORK":
+        return REASON_FAIL_TIMEOUT_NETWORK
+    if reason == "FAIL_PARSE":
+        return REASON_FAIL_NO_CANDIDATE
+    if reason == "FAIL_BLOCK":
+        return REASON_FAIL_HTTP_STATUS if http_status else REASON_FAIL_BLOCK
+    return reason
 
-# -----------------------------------------------------------
-# 병렬 처리를 위한 단위 작업(Worker) 함수
-# -----------------------------------------------------------
-def download_process_worker(row_data, final_save_path, default_download_path):
-    """
-    개별 논문 하나를 처리하는 함수입니다.
-    이 함수는 각 프로세스(Process)에서 독립적으로 실행됩니다.
-    """
-    doi = str(row_data['doi'])
-    pdf_url_oa = str(row_data['pdf_url']).lower()
+
+def _append_failed_jsonl(path: str, record: Dict[str, Any], dedupe_keys: set) -> None:
+    key = (
+        str(record.get("doi")),
+        int(record.get("attempt", 0)),
+        str(record.get("reason")),
+        str(record.get("stage")),
+        str(record.get("domain")),
+    )
+    if key in dedupe_keys:
+        return
+
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    dedupe_keys.add(key)
+
+
+def _load_failed_dedupe_keys(path: str) -> set:
+    keys = set()
+    if not os.path.exists(path):
+        return keys
+
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                rec = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            key = (
+                str(rec.get("doi")),
+                int(rec.get("attempt", 0)),
+                str(rec.get("reason")),
+                str(rec.get("stage")),
+                str(rec.get("domain")),
+            )
+            keys.add(key)
+    return keys
+
+
+def _summarize_failures(results: List[Dict[str, Any]]) -> Dict[str, int]:
+    summary = {k: 0 for k in FAILURE_REASON_ORDER}
+    for r in results:
+        if r.get("success"):
+            continue
+        reason = _normalize_reason(r.get("reason"), r.get("http_status"))
+        summary[reason] = summary.get(reason, 0) + 1
+    return summary
+
+
+def _backoff_sleep(base: int, attempt_idx: int) -> None:
+    time.sleep(base * (2 ** attempt_idx))
+
+
+def _single_download_attempt(
+    row_data: Dict[str, Any],
+    save_dir: str,
+    attempt: int,
+    mode: str,
+) -> Dict[str, Any]:
+    doi = str(row_data.get("doi", "")).strip()
+    result = _result_template(doi=doi, attempt=attempt, mode=mode)
+
+    if not doi or doi.lower() == "none" or doi.lower() == "nan":
+        result["reason"] = REASON_FAIL_NO_CANDIDATE
+        result["stage"] = "input"
+        result["evidence"] = ["missing_doi"]
+        return result
+
+    publisher = normalize_publisher_label(str(row_data.get("publisher", "")))
+    pdf_url_oa = str(row_data.get("pdf_url", "")).strip()
     filename = _sanitize_doi_to_filename(doi)
-    full_path = os.path.join(final_save_path,filename)
-    
-    # 결과 반환용 딕셔너리
-    result = {
-        'doi': doi,
-        'status': 'Pending',
-        'method': None
+    full_path = os.path.join(save_dir, filename)
+
+    logger = setup_logger(save_dir, filename)
+    attempt_trace: List[Dict[str, Any]] = []
+
+    if publisher == "arxiv" or "arxiv.org" in pdf_url_oa.lower() or doi.lower().startswith("10.1149/ma"):
+        return {
+            **result,
+            "status": "Skipped",
+            "reason": REASON_SUCCESS,
+            "method": "skip",
+            "success": True,
+            "stage": "skip",
+        }
+
+    if pdf_url_oa and pdf_url_oa.lower() not in ("none", "nan") and len(pdf_url_oa) > 10:
+        cffi = download_with_cffi(
+            pdf_url_oa,
+            full_path,
+            logger=logger,
+            return_detail=True,
+            timeout=120 if mode == "deep" else 60,
+        )
+        if cffi.get("ok"):
+            return {
+                **result,
+                "status": "Success",
+                "reason": REASON_SUCCESS,
+                "method": "direct_oa",
+                "success": True,
+                "stage": "direct_oa",
+                "domain": _domain_from_url(pdf_url_oa),
+            }
+        attempt_trace.append(
+            {
+                "strategy": "direct_oa_cffi",
+                "reason": _normalize_reason(cffi.get("reason"), cffi.get("http_status")),
+                "http_status": cffi.get("http_status"),
+                "evidence": cffi.get("evidence", []),
+            }
+        )
+        if cffi.get("reason") in (REASON_FAIL_CAPTCHA, REASON_FAIL_BLOCK):
+            return {
+                **result,
+                "reason": _normalize_reason(cffi.get("reason"), cffi.get("http_status")),
+                "stage": "direct_oa",
+                "evidence": cffi.get("evidence", []) + [json.dumps({"trace": attempt_trace}, ensure_ascii=False)],
+                "domain": _domain_from_url(pdf_url_oa),
+                "http_status": cffi.get("http_status"),
+            }
+
+    try:
+        if download_using_api(doi, save_dir, publisher, logger):
+            return {
+                **result,
+                "status": "Success",
+                "reason": REASON_SUCCESS,
+                "method": "api",
+                "success": True,
+                "stage": "api",
+            }
+    except Exception as e:
+        logger.warning(f"   API 다운로드 에러: {e}")
+        attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
+
+    try:
+        if try_manual_scihub(doi, save_dir, logger):
+            return {
+                **result,
+                "status": "Success",
+                "reason": REASON_SUCCESS,
+                "method": "scihub",
+                "success": True,
+                "stage": "scihub",
+            }
+    except Exception as e:
+        logger.warning(f"   Sci-Hub 다운로드 에러: {e}")
+        attempt_trace.append({"strategy": "scihub", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
+
+    chrome_path = os.environ.get("CHROME_PATH", "/home/yongyong0206/chrome-linux64/chrome")
+    drission = download_with_drission(
+        f"https://doi.org/{doi}",
+        save_dir,
+        filename,
+        chrome_path,
+        max_attempts=3 if mode == "deep" else 2,
+        logger=logger,
+        mode=mode,
+        return_detail=True,
+    )
+
+    if drission.get("ok"):
+        return {
+            **result,
+            "status": "Success",
+            "reason": REASON_SUCCESS,
+            "method": "drission",
+            "success": True,
+            "stage": drission.get("stage", "drission"),
+            "domain": drission.get("domain", ""),
+        }
+
+    return {
+        **result,
+        "reason": _normalize_reason(drission.get("reason"), drission.get("http_status")),
+        "stage": drission.get("stage", "drission"),
+        "evidence": drission.get("evidence", ["download_failed"]) + [json.dumps({"trace": attempt_trace}, ensure_ascii=False)],
+        "domain": drission.get("domain", ""),
+        "http_status": drission.get("http_status"),
     }
 
-    if not doi or doi == 'None':
-        result['status'] = 'Failed (No DOI)'
-        return result
 
-    publisher = str(row_data['publisher'])
-    publisher = normalize_publisher_label(publisher)
-    
-    # logger setting
-    logger = setup_logger(final_save_path, filename)
-    
-    # 0. pd_url_oa 시도
-    if pdf_url_oa and len(pdf_url_oa) > 10 and pdf_url_oa.lower() != 'nan' and pdf_url_oa.lower() != 'none':
-        try:
-            if download_with_cffi(pdf_url_oa, full_path, logger=logger):
-                result['status'] = 'Success (Direct OA)'
-                result['method'] = 'api' # 통계상 api/direct 카테고리로 분류
-                return result
-        except Exception as e:
-            logger.warning(f"   Direct OA 다운로드 실패: {e}")
+def download_process_worker(row_data, final_save_path, attempt=1, mode="first"):
+    network_retry_limit = 1 if mode == "first" else 2
+    base_backoff = 2 if mode == "first" else 5
 
-    # 1. ArXiv, Conference Paper(ECS Meetings) Skip
-    if publisher == 'arxiv' or "arxiv.org" in pdf_url_oa or doi.strip().lower().startswith("10.1149/ma"):
-        result['status'] = 'Skipped (arXiv or Conference Paper)'
-        return result
+    last_result = None
+    for network_try in range(network_retry_limit + 1):
+        last_result = _single_download_attempt(row_data, final_save_path, attempt=attempt, mode=mode)
 
-    # 2. API Download 
-    try:
-        if download_using_api(doi, final_save_path, publisher, logger):
-            result['status'] = 'Success (API)'
-            result['method'] = 'api'
-            return result
-    except Exception:
-        pass # 실패 시 다음 단계로
+        if last_result.get("success"):
+            return last_result
 
-    # 3. Sci-Hub Manual Download
-    try:
-        if try_manual_scihub(doi, final_save_path, logger):
-            result['status'] = 'Success (Sci-Hub)'
-            result['method'] = 'scihub'
-            # 병렬 처리 시 너무 빠른 연속 요청 방지를 위한 짧은 슬립
-            time.sleep(1) 
-            return result
-    except Exception:
-        pass
+        reason = last_result.get("reason")
+        if reason in (REASON_FAIL_CAPTCHA, REASON_FAIL_BLOCK):
+            return last_result
 
-    # 4. DrissionPage 크롤링 시도
-    try:
-        # 크롬 경로 지정
-        
-        chrome_path = "/home/yongyong0206/chrome-linux64/chrome"
-        doi_url = "https://doi.org/" + doi
-        
-        # DrissionPage 함수 호출
-        if download_with_drission(doi_url, final_save_path, filename, chrome_path, max_attempts=2, logger= logger):
-            result['status'] = 'Success (Drission)'
-            result['method'] = 'crawling'
-        else:
-            result['status'] = 'Failed (Not Found)'
-            
-    except Exception as e:
-        logger.warning(f"   Drission 크롤링 중 오류: {e}")
-        result['status'] = f'Failed (Error: {str(e)})'
+        if reason == REASON_FAIL_TIMEOUT_NETWORK and network_try < network_retry_limit:
+            retry_after_sec = None
+            for ev in last_result.get("evidence", []):
+                if str(ev).startswith("retry_after="):
+                    try:
+                        retry_after_sec = int(str(ev).split("=", 1)[1])
+                    except Exception:
+                        retry_after_sec = None
+                    break
 
-    return result
+            if retry_after_sec is not None:
+                time.sleep(max(1, retry_after_sec))
+            else:
+                _backoff_sleep(base_backoff, network_try)
+            continue
 
-# -----------------------------------------------------------
-# Main 실행부
-# -----------------------------------------------------------
-def main(max_num=1000, citation_percentile=0.99, query=None, max_workers = 4, output_dir="./Solid_State_Electrolyte_Battery_Li_Papers", doi_path = None):
-    MAX_NUM = max_num
-    CITATION_PERCENTILE = citation_percentile
-    final_save_path = os.path.abspath(output_dir)
-    OA_save_path = os.path.join(final_save_path, "Open_Access")
-    CA_save_path = os.path.join(final_save_path, "Closed_Access")
-    os.makedirs(final_save_path, exist_ok=True)
-    os.makedirs(OA_save_path, exist_ok=True)    
-    os.makedirs(CA_save_path, exist_ok=True)    
-    
-    default_download_path = os.path.abspath("./downloaded_files")
-    os.makedirs(default_download_path, exist_ok=True)
-    
-    # 쿼리 설정 
-    TA_QUERY = "('solid-state electrolyte' OR 'solid electrolyte') AND 'battery' AND 'Li' NOT ('review' OR 'opinion' OR 'perspective' OR 'survey' OR 'commentary')" if query is None else query
-    
-    # OpenAlex 검색 
-    # df = OpenAlex_search(pdf_save_dir=final_save_path, csv_name="temp_search_results.csv", query=TA_QUERY)
-    csv_path = None
-    if doi_path:
-        csv_path = doi_path
-    else:
-        csv_path = main_search(final_save_path, "Searched_DOIs.csv", TA_QUERY, max_num=MAX_NUM, citation_percentile=CITATION_PERCENTILE)
-    df = pd.read_csv(csv_path)
-    
-    # 중복 DOI 제거
-    print(f"\n중복 및 doi 누락 제거 전 논문 수: {len(df)}건")
-    df['doi_lower'] = df['doi'].astype(str).str.lower().str.strip()
-    # df = df.drop(df['doi_lower'] == '')
-    df = df.dropna(subset=['doi_lower'])
-    df = df.drop_duplicates(subset=['doi_lower'])
-    df = df.drop(columns=['doi_lower'])
-    print(f"전처리 후 남은 전체 논문 수: {len(df)}건")
-    print(f"Open Access 논문 수: {len(df[df['open_access'] == True])}건")
-    print(f"Closed Access 논문 수: {len(df[df['open_access'] == False])}건")
-    
-    df['download_status'] = 'Pending'
-    
-    print("\nPDF 다운로드를 병렬로 시작합니다 (arXiv 제외)...")
-    start_time = time.time()
-    
-    # 통계용 카운터
-    stats = {'api': 0, 'scihub': 0, 'crawling': 0, 'failed': 0, 'skipped': 0}
+        return last_result
 
-    # --- 멀티 프로세싱 설정 ---
-    # max_workers: 동시에 띄울 프로세스 수. 
-    #  MAX_WORKERS = max(os.cpu_count() // 2 , 2)
-    MAX_WORKERS = max_workers
+    return last_result
 
-    # 데이터 준비: 함수에 넘길 인자들을 리스트로 변환
+
+def _first_pass(df: pd.DataFrame, oa_dir: str, ca_dir: str, max_workers: int) -> List[Dict[str, Any]]:
     rows = [row for _, row in df.iterrows()]
-    
-    # ProcessPoolExecutor 시작
-    with ProcessPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        # future 객체들을 담을 딕셔너리 (Future -> 원본 row index 매핑용)
+    results: List[Dict[str, Any]] = [None] * len(rows)
+
+    with ProcessPoolExecutor(max_workers=max_workers) as executor:
         future_to_index = {
-            executor.submit(download_process_worker, row, OA_save_path if row['open_access'] else CA_save_path, default_download_path): i
+            executor.submit(
+                download_process_worker,
+                row,
+                oa_dir if row["open_access"] else ca_dir,
+                1,
+                "first",
+            ): i
             for i, row in enumerate(rows)
         }
-        
-        # as_completed: 작업이 끝나는 순서대로 처리
-        for future in tqdm(as_completed(future_to_index), total=len(rows), desc="Processing Papers"):
+
+        for future in tqdm(as_completed(future_to_index), total=len(rows), desc="First Pass"):
             idx = future_to_index[future]
             try:
-                result = future.result()
-                
-                # 결과 DF에 반영
-                df.at[idx, 'download_status'] = result['status']
-                
-                # 통계 업데이트
-                if result['method'] == 'api': stats['api'] += 1
-                elif result['method'] == 'scihub': stats['scihub'] += 1
-                elif result['method'] == 'crawling': stats['crawling'] += 1
-                elif 'Skipped' in result['status']: stats['skipped'] += 1
-                else: stats['failed'] += 1
-                
+                results[idx] = future.result()
             except Exception as e:
-                df.at[idx, 'download_status'] = f'Failed (System Error: {str(e)})'
-                stats['failed'] += 1
+                doi = str(rows[idx].get("doi", ""))
+                results[idx] = {
+                    **_result_template(doi=doi, attempt=1, mode="first"),
+                    "reason": REASON_FAIL_TIMEOUT_NETWORK,
+                    "stage": "worker",
+                    "evidence": [str(e)],
+                }
 
-        
-    # 실패한 논문 재시도(IEEE 등 같은 저널 방문시 차단되는 경우 방지)
-    failed_indices = df[~df['download_status'].str.contains('Success|Skipped', case=False, na=False)].index
-    
-    if len(failed_indices) > 0:
-        print(f"\n" + "="*50)
-        print(f"   실패한 {len(failed_indices)}건을 재시도합니다.")
-        print(f"   60초간 대기 후, 5초 간격으로 순차 실행.")
-        print("="*50)
-        
-        # 1분 쿨다운 
-        time.sleep(60)  
+    return results
 
-        # 재시도는 순차적으로 처리
-        for idx in tqdm(failed_indices, desc="Retrying Failed Papers"):
-            row = df.loc[idx]
-            doi = row['doi']
-            
-            # skipped 된 건은 재시도하지 않음
-            if "Skipped" in str(row['download_status']):
-                continue
 
-            try:
-                # worker 함수를 직접 호출 (순차 실행)
-                result = download_process_worker(row, OA_save_path if row['open_access'] else CA_save_path, default_download_path)
-                
-                # 결과 업데이트
-                new_status = result['status']
-                df.at[idx, 'download_status'] = f"{new_status} (Retry)"
-                
-                # 통계 업데이트 (성공한 경우만)
-                if 'Success' in new_status:
-                    method = result.get('method', 'unknown')
-                    stats[method] = stats.get(method, 0) + 1
-                    
-                    new_status_str = f"Success (Retry, {method})"
-                    df.at[idx, 'download_status'] = new_status_str
-                    
-                    # 기존 failed 카운트 하나 줄임
-                    stats[method] = stats.get(method, 0) + 1
-                    stats['failed'] -= 1
-                    print(f"   --> 재시도 성공: {doi}")
-                else:
-                    df.at[idx, 'download_status'] = result['status']
-                
-            except Exception as e:
-                print(f"   --> 재시도 에러 ({doi}): {e}")
+def _deep_retry(
+    df: pd.DataFrame,
+    first_pass_results: List[Dict[str, Any]],
+    oa_dir: str,
+    ca_dir: str,
+) -> List[Dict[str, Any]]:
+    failed_indices = [i for i, r in enumerate(first_pass_results) if not r.get("success")]
+    deep_results: List[Dict[str, Any]] = []
 
-            time.sleep(5) 
+    if not failed_indices:
+        return deep_results
 
-    else:
-        print("\n✨ 모든 다운로드가 1차 시도에서 성공했거나 실패 건이 없습니다.")
+    print("\n" + "=" * 60)
+    print(f"Deep retry 시작: 실패 {len(failed_indices)}건 (동시성=1, 보수적 딜레이)")
+    print("=" * 60)
 
-    # 시간 계산
-    end_time = time.time()
-    elapsed_seconds = end_time - start_time
-    hours = int(elapsed_seconds // 3600)
-    minutes = int((elapsed_seconds % 3600) // 60)
-    seconds = int(elapsed_seconds % 60)
+    for idx in tqdm(failed_indices, desc="Deep Retry"):
+        row = df.iloc[idx]
+        save_dir = oa_dir if row["open_access"] else ca_dir
+        result = download_process_worker(row, save_dir, attempt=2, mode="deep")
+        deep_results.append({"index": idx, **result})
 
-    # 결과 저장
-    print("\n>> 결과 저장 중...")
-    full_csv_name = "openalex_search_results_parallel.csv"
-    full_csv_path = os.path.join(final_save_path, full_csv_name)
-    df.to_csv(full_csv_path, index=False, encoding='utf-8-sig')
-    
-    # 최종 실패 목록 저장
-    failed_df = df[df['download_status'].str.contains('Failed', case=False, na=False)]
-    if not failed_df.empty:
-        failed_csv_path = os.path.join(final_save_path, "failed_papers.csv")
-        failed_df.to_csv(failed_csv_path, index=False, encoding='utf-8-sig')
-    else:
-        failed_csv_path = os.path.join(final_save_path, "failed_papers.csv")
-        if os.path.exists(failed_csv_path):
-            try: os.remove(failed_csv_path)
-            except: pass
-        print("   모든 논문 다운로드 성공 (실패 목록 없음)")
-        
-    # 최종 리포트
-    print("="*50)
-    print(f"       [병렬 작업 완료 리포트]")
-    print("="*50)
-    print(f"총 처리 문서 수 : {len(df)} 건")
-    print(f"성공 (API)      : {stats['api']} 건")
-    print(f"성공 (Sci-Hub)  : {stats['scihub']} 건")
-    print(f"성공 (Crawling) : {stats['crawling']} 건")
-    print(f"실패           : {stats['failed']} 건")
-    print(f"스킵 (arXiv)    : {stats['skipped']} 건")
-    print("-" * 50)
-    print(f"총 소요 시간    : {hours}시간 {minutes}분 {seconds}초")
-    print(f"평균 처리 시간   : {elapsed_seconds / len(df):.2f} 초/문서")
-    print(f"사용 프로세스 수 : {MAX_WORKERS}")
-    print("="*50)
+        if result.get("reason") in (REASON_FAIL_HTTP_STATUS, REASON_FAIL_BLOCK) and result.get("http_status") == 429:
+            retry_after = None
+            for ev in result.get("evidence", []):
+                if str(ev).startswith("retry_after="):
+                    try:
+                        retry_after = int(str(ev).split("=", 1)[1])
+                    except Exception:
+                        retry_after = None
+                    break
+            time.sleep(max(2, retry_after or 10))
+        else:
+            time.sleep(5)
+
+    return deep_results
+
+
+def _resolve_decision(non_interactive: bool, after_first_pass: str, failed_count: int) -> str:
+    if failed_count == 0:
+        return "stop"
+    if non_interactive:
+        return after_first_pass
+
+    print("\n1차 패스 실패 요약 확인 후 진행 방식을 선택하세요.")
+    print("  - stop: 지금 종료 + 요약 저장")
+    print("  - deep: 실패 논문 deep retry 진행")
+    user_in = input(f"선택 [stop/deep] (기본: {after_first_pass}): ").strip().lower()
+    if user_in not in ("stop", "deep"):
+        return after_first_pass
+    return user_in
+
+
+def _summarize_live_attempt_metrics(attempts_jsonl_path: str, out_path: str) -> Dict[str, Any]:
+    records = []
+    if os.path.exists(attempts_jsonl_path):
+        with open(attempts_jsonl_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    records.append(json.loads(line))
+                except json.JSONDecodeError:
+                    continue
+
+    def _med(vals):
+        if not vals:
+            return 0
+        vals = sorted(vals)
+        n = len(vals)
+        return vals[n // 2] if n % 2 else int((vals[n // 2 - 1] + vals[n // 2]) / 2)
+
+    reason_dist: Dict[str, int] = {}
+    by_strategy: Dict[str, Dict[str, Any]] = {}
+    by_domain: Dict[str, Dict[str, Any]] = {}
+
+    for r in records:
+        reason = r.get("reason", REASON_FAIL_UNKNOWN)
+        reason_dist[reason] = reason_dist.get(reason, 0) + 1
+
+    for key, target in (("strategy", by_strategy), ("domain", by_domain)):
+        groups: Dict[str, List[Dict[str, Any]]] = {}
+        for r in records:
+            gk = str(r.get(key, "unknown"))
+            groups.setdefault(gk, []).append(r)
+        for gk, vals in groups.items():
+            lat = [int(v.get("elapsed_ms", 0) or 0) for v in vals]
+            succ = sum(1 for v in vals if bool(v.get("success")))
+            target[gk] = {
+                "count": len(vals),
+                "success_rate": round(succ / len(vals), 4) if vals else 0,
+                "median_latency_ms": _med(lat),
+            }
+
+    lat_all = [int(r.get("elapsed_ms", 0) or 0) for r in records]
+    payload = {
+        "count": len(records),
+        "success_rate": round(sum(1 for r in records if bool(r.get("success"))) / len(records), 4) if records else 0.0,
+        "median_latency_ms": _med(lat_all),
+        "reason_distribution": reason_dist,
+        "by_strategy": by_strategy,
+        "by_domain": by_domain,
+    }
+
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    return payload
+
+
+def main(
+    max_num=1000,
+    citation_percentile=0.99,
+    query=None,
+    max_workers=4,
+    output_dir="./Solid_State_Electrolyte_Battery_Li_Papers",
+    doi_path=None,
+    after_first_pass="stop",
+    non_interactive=False,
+):
+    start_time = time.time()
+
+    final_save_path = os.path.abspath(output_dir)
+    oa_dir = os.path.join(final_save_path, "Open_Access")
+    ca_dir = os.path.join(final_save_path, "Closed_Access")
+    os.makedirs(final_save_path, exist_ok=True)
+    os.makedirs(oa_dir, exist_ok=True)
+    os.makedirs(ca_dir, exist_ok=True)
+
+    outputs_dir = os.path.abspath("outputs")
+    failed_jsonl_path = os.path.join(outputs_dir, "failed_papers.jsonl")
+    summary_json_path = os.path.join(outputs_dir, "summary.json")
+    attempts_jsonl_path = os.path.join(outputs_dir, "download_attempts.jsonl")
+    attempts_summary_path = os.path.join(outputs_dir, "download_attempts_summary.json")
+    os.makedirs(outputs_dir, exist_ok=True)
+    failed_dedupe_keys = _load_failed_dedupe_keys(failed_jsonl_path)
+
+    ta_query = (
+        "('solid-state electrolyte' OR 'solid electrolyte') AND 'battery' AND 'Li' "
+        "NOT ('review' OR 'opinion' OR 'perspective' OR 'survey' OR 'commentary')"
+        if query is None
+        else query
+    )
+
+    csv_path = doi_path or main_search(
+        final_save_path,
+        "Searched_DOIs.csv",
+        ta_query,
+        max_num=max_num,
+        citation_percentile=citation_percentile,
+    )
+    df = pd.read_csv(csv_path)
+
+    print(f"\n중복 및 doi 누락 제거 전 논문 수: {len(df)}건")
+    df["doi_lower"] = df["doi"].astype(str).str.lower().str.strip()
+    df = df.dropna(subset=["doi_lower"]).drop_duplicates(subset=["doi_lower"]).drop(columns=["doi_lower"])
+    print(f"전처리 후 남은 전체 논문 수: {len(df)}건")
+
+    first_results = _first_pass(df, oa_dir, ca_dir, max_workers=max_workers)
+
+    df["download_status"] = [_status_text(r) for r in first_results]
+
+    first_failures = [r for r in first_results if not r.get("success")]
+    for fail in first_failures:
+        _append_failed_jsonl(
+            failed_jsonl_path,
+            {
+                "timestamp": int(time.time()),
+                "attempt": 1,
+                "doi": fail.get("doi"),
+                "reason": fail.get("reason"),
+                "stage": fail.get("stage"),
+                "domain": fail.get("domain"),
+                "http_status": fail.get("http_status"),
+                "evidence": fail.get("evidence", []),
+                "mode": "first",
+            },
+            failed_dedupe_keys,
+        )
+
+    first_summary = _summarize_failures(first_results)
+    print("\n[1차 패스 실패 요약]")
+    for reason in FAILURE_REASON_ORDER:
+        print(f"  - {reason}: {first_summary.get(reason, 0)}")
+
+    decision = _resolve_decision(non_interactive, after_first_pass, len(first_failures))
+
+    deep_results: List[Dict[str, Any]] = []
+    if decision == "deep":
+        deep_results = _deep_retry(df, first_results, oa_dir, ca_dir)
+
+        for item in deep_results:
+            idx = item["index"]
+            if item.get("success"):
+                df.at[idx, "download_status"] = _status_text(item)
+            else:
+                _append_failed_jsonl(
+                    failed_jsonl_path,
+                    {
+                        "timestamp": int(time.time()),
+                        "attempt": 2,
+                        "doi": item.get("doi"),
+                        "reason": item.get("reason"),
+                        "stage": item.get("stage"),
+                        "domain": item.get("domain"),
+                        "http_status": item.get("http_status"),
+                        "evidence": item.get("evidence", []),
+                        "mode": "deep",
+                    },
+                    failed_dedupe_keys,
+                )
+
+    elapsed_seconds = time.time() - start_time
+
+    full_csv_path = os.path.join(final_save_path, "openalex_search_results_parallel.csv")
+    df.to_csv(full_csv_path, index=False, encoding="utf-8-sig")
+
+    failed_df = df[~df["download_status"].str.contains("Success", case=False, na=False)]
+    failed_csv_path = os.path.join(final_save_path, "failed_papers.csv")
+    failed_df.to_csv(failed_csv_path, index=False, encoding="utf-8-sig")
+
+    live_metrics = _summarize_live_attempt_metrics(attempts_jsonl_path, attempts_summary_path)
+
+    summary_payload = {
+        "generated_at": int(time.time()),
+        "total_papers": int(len(df)),
+        "after_first_pass": decision,
+        "non_interactive": bool(non_interactive),
+        "first_pass": {
+            "success": int(sum(1 for r in first_results if r.get("success"))),
+            "failed": int(sum(1 for r in first_results if not r.get("success"))),
+            "fail_reasons": first_summary,
+        },
+        "deep_retry": {
+            "executed": decision == "deep",
+            "total": int(len(deep_results)),
+            "success": int(sum(1 for r in deep_results if r.get("success"))),
+            "failed": int(sum(1 for r in deep_results if not r.get("success"))),
+            "fail_reasons": _summarize_failures(deep_results),
+        },
+        "elapsed_seconds": round(elapsed_seconds, 2),
+        "live_attempt_metrics": live_metrics,
+        "artifacts": {
+            "results_csv": full_csv_path,
+            "failed_csv": failed_csv_path,
+            "failed_jsonl": failed_jsonl_path,
+            "attempts_jsonl": attempts_jsonl_path,
+            "attempts_summary_json": attempts_summary_path,
+            "summary_json": summary_json_path,
+        },
+    }
+
+    with open(summary_json_path, "w", encoding="utf-8") as f:
+        json.dump(summary_payload, f, ensure_ascii=False, indent=2)
+
+    print("\n" + "=" * 60)
+    print("[작업 완료]")
+    print(f"총 논문 수: {len(df)}")
+    print(f"성공: {sum(df['download_status'].str.contains('Success', case=False, na=False))}")
+    print(f"실패: {len(failed_df)}")
+    print(f"의사결정: {decision}")
+    print(f"실패 로그(JSONL): {failed_jsonl_path}")
+    print(f"요약(JSON): {summary_json_path}")
+    print("=" * 60)
+
 
 if __name__ == "__main__":
     args = get_config()
@@ -364,5 +621,7 @@ if __name__ == "__main__":
         query=args.query,
         max_workers=args.max_workers,
         output_dir=args.output_dir,
-        doi_path=args.doi_path
+        doi_path=args.doi_path,
+        after_first_pass=args.after_first_pass,
+        non_interactive=args.non_interactive,
     )

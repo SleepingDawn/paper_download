@@ -16,6 +16,13 @@ from curl_cffi import requests as cffi_requests # 이름 충돌 방지
 from DrissionPage import ChromiumPage, ChromiumOptions
 from DrissionPage.common import Keys
 from config import WILEY_API_KEY
+from pdf_pipeline import (
+    REASON_FAIL_HTTP_STATUS,
+    REASON_FAIL_REDIRECT_LOOP,
+    REASON_FAIL_TIMEOUT_NETWORK,
+    append_metrics_jsonl,
+    download_pdf,
+)
 # from CloudflareBypasser import CloudflareBypasser
 
 DEFAULT_DOWNLOAD_PATH = os.path.abspath("./downloaded_files")
@@ -127,6 +134,80 @@ def _safe_screenshot(page, path: str, name: str, logger=None):
             # 재시도마저 실패한 경우
             pass
             # if logger: logger.warning(f"  스크린샷 저장 최종 실패 : {e2}")
+
+
+def _extract_domain(url: str) -> str:
+    if not url:
+        return ""
+    try:
+        from urllib.parse import urlparse
+        return (urlparse(url).netloc or "").lower()
+    except Exception:
+        return ""
+
+
+def detect_access_issue(title: str = "", html: str = "", http_status: int = None):
+    """
+    캡차/차단 신호를 감지해 (reason, evidence)를 반환.
+    reason: FAIL_CAPTCHA | FAIL_BLOCK | None
+    """
+    t = (title or "").lower()
+    h = (html or "").lower()
+    evidence = []
+
+    captcha_keywords = [
+        "turnstile",
+        "recaptcha",
+        "hcaptcha",
+        "captcha",
+        "are you human",
+        "are you a robot",
+        "verify you are human",
+    ]
+    block_keywords = [
+        "access denied",
+        "forbidden",
+        "request blocked",
+        "too many requests",
+        "bot detected",
+        "security check",
+        "attention required",
+        "cloudflare",
+    ]
+
+    if http_status in (403, 429):
+        evidence.append(f"http_status={http_status}")
+        return "FAIL_BLOCK", evidence
+
+    for kw in captcha_keywords:
+        if kw in t or kw in h:
+            evidence.append(f"keyword={kw}")
+            return "FAIL_CAPTCHA", evidence
+
+    for kw in block_keywords:
+        if kw in t or kw in h:
+            evidence.append(f"keyword={kw}")
+            return "FAIL_BLOCK", evidence
+
+    return None, evidence
+
+
+def _resolve_pdf_pipeline_mode() -> str:
+    env_mode = os.getenv("PDF_PIPELINE_MODE", "").strip().lower()
+    if env_mode in ("baseline", "candidate"):
+        return env_mode
+
+    report_path = os.path.abspath(os.path.join("outputs", "benchmark_report.json"))
+    if os.path.exists(report_path):
+        try:
+            with open(report_path, "r", encoding="utf-8") as f:
+                report = json.load(f)
+            if ((report.get("gate") or {}).get("passed")) is True:
+                return "candidate"
+        except Exception:
+            pass
+
+    return "baseline"
 
 
 # =======================================================
@@ -393,7 +474,7 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
 # =======================================================
 # 4. CFFI 다운로더
 # =======================================================
-def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logger=None):
+def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logger=None, return_detail=False, timeout=60):
     if os.path.isdir(save_path):
         try: shutil.rmtree(save_path)
         except: pass
@@ -413,33 +494,74 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
             if isinstance(cookies, dict): cookie_count = len(cookies)
             else: cookie_count = len(cookies)
 
-        logger.info(f"        [CFFI] 다운로드 시도 (쿠키: {cookie_count}개)")
+        if logger:
+            logger.info(f"        [CFFI] 다운로드 시도 (쿠키: {cookie_count}개)")
 
-        response = cffi_requests.get(
-            url, 
-            headers=headers, 
-            cookies=cookies, 
-            impersonate="chrome120", 
-            timeout=60,
-            allow_redirects=True
+        pipeline_mode = _resolve_pdf_pipeline_mode()
+
+        attempt = download_pdf(
+            url,
+            save_path,
+            strategy_mode=pipeline_mode,
+            timeout=timeout,
+            min_size=1024,
+            headers=headers,
+            cookies=cookies,
+            strategy_name=f"cffi_{pipeline_mode}",
+            phase="direct",
         )
-        
-        if response.status_code != 200:
-            logger.warning(f"        [CFFI] 실패 (Status: {response.status_code})")
-            return False
 
-        content_type = response.headers.get('Content-Type', '').lower()
-        if 'pdf' in content_type or response.content.startswith(b'%PDF'):
-            with open(save_path, 'wb') as f:
-                f.write(response.content)
-            logger.info(f"        [CFFI] 다운로드 성공! ({len(response.content)} bytes)")
-            return True
-        else:
-            logger.warning(f"        [CFFI] 내용물이 PDF가 아님 (Type: {content_type})")
-            return False
+        # 계측 누적 (append-only)
+        metrics_path = os.path.abspath(os.path.join("outputs", "download_attempts.jsonl"))
+        append_metrics_jsonl(metrics_path, attempt)
+
+        if logger:
+            if attempt.success:
+                logger.info(
+                    f"        [CFFI] 다운로드 성공! "
+                    f"(status={attempt.status_code}, elapsed={attempt.elapsed_ms}ms, mode={pipeline_mode})"
+                )
+            else:
+                logger.warning(
+                    f"        [CFFI] 실패 reason={attempt.reason}, "
+                    f"status={attempt.status_code}, elapsed={attempt.elapsed_ms}ms, mode={pipeline_mode}"
+                )
+
+        if return_detail:
+            evidence = [
+                f"status_code={attempt.status_code}",
+                f"content_type={attempt.content_type}",
+                f"content_disposition={attempt.content_disposition}",
+                f"content_length={attempt.content_length}",
+                f"redirect_chain={' -> '.join(attempt.redirect_chain)}",
+                f"first_bytes={attempt.first_bytes}",
+                f"elapsed_ms={attempt.elapsed_ms}",
+                f"strategy={attempt.strategy}",
+                f"phase={attempt.phase}",
+            ]
+            # 429 Retry-After 보강
+            if attempt.reason == REASON_FAIL_HTTP_STATUS and attempt.status_code == 429:
+                retry_after = attempt.evidence.get("retry_after") if isinstance(attempt.evidence, dict) else None
+                if retry_after:
+                    evidence.append(f"retry_after={retry_after}")
+
+            return {
+                "ok": attempt.success,
+                "reason": attempt.reason if not attempt.success else "SUCCESS",
+                "evidence": evidence,
+                "http_status": attempt.status_code,
+            }
+
+        return attempt.success
 
     except Exception as e:
-        logger.warning(f"        [CFFI] 에러: {e}")
+        if logger:
+            logger.warning(f"        [CFFI] 에러: {e}")
+        if return_detail:
+            reason = REASON_FAIL_TIMEOUT_NETWORK
+            if "redirect" in str(e).lower():
+                reason = REASON_FAIL_REDIRECT_LOOP
+            return {"ok": False, "reason": reason, "evidence": [str(e)], "http_status": None}
         return False
 
 # =======================================================
@@ -447,112 +569,26 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
 # =======================================================
 
 def solve_captcha_drission(page, logger):
-    # 1. 캡차/보안 페이지인지 감지
-    # 학술 사이트에서 주로 뜨는 키워드들 + "bot", "human" 등 추가
-    suspicious_keywords = [
-        "just a moment", "security check", "challenge", "attention needed", 
-        "access denied", "cloudflare", "verify", "human", "turnstile", 
-        "are you a robot", "robot" # 이미지의 H1 텍스트 반영
-    ]
-    
-    current_title = page.title.lower()
-    
-    # 제목에 키워드가 없더라도, Turnstile iframe이 존재하면 캡차로 간주
-    iframe_exists = page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=0.5)
-    
-    if not any(k in current_title for k in suspicious_keywords) and not iframe_exists:
-        return
-
-    logger.warning("           보안/캡차 화면 감지! 우회 시도 중...")
-    target_ele = None
-    
-    start_time = time.time()
-    while time.time() - start_time < 20: # 시간 좀 더 넉넉히 (30초)
-        target_ele = None
-        # (A) Cloudflare Turnstile (가장 흔함)
-        # idea from https://blog.csdn.net/qq_59095456/article/details/149053014
-        # https://github.com/chromedp/chromedp/issues/1608
-        # Turnstile 구조: iframe -> body -> #shadow-root -> div (wrapper)
-        
-        iframe_ele = page.ele('css:iframe[src*="challenges.cloudflare.com"]', timeout=2)
-        
-        if iframe_ele:
-            cf_frame = page.get_frame(iframe_ele)
-            if cf_frame:
-                try:
-                    # Body의 Shadow Root 접근
-                    body = cf_frame.ele('tag:body', timeout=2)
-                    if body and body.shadow_root:
-                        sr = body.shadow_root
-                        target_ele = sr.ele('css:input[type="checkbox"]') or \
-                                     sr.ele('css:label.cb-lb') or \
-                                     sr.ele('css:span.cb-i') or \
-                                     sr.ele('css:.ct-checkbox-label') # 구버전 대비
-                        
-                        if target_ele:
-                            logger.info(f"          --> Turnstile 요소 발견: {target_ele.tag} (Shadow DOM)")
-                            page.actions.move_to(target_ele, duration=random.uniform(0.2, 0.6)).click().perform()
-                except Exception as e:
-                    # Shadow root 접근 실패 시 무시
-                    pass
-
-        # (B) h captcha
-        hc_iframe = page.ele('css:iframe[src*="hcaptcha.com"]', timeout=0.5) or \
-                    page.ele('css:iframe[src*="botdetection.com"]', timeout=0.5)
-        if hc_iframe:
-            logger.info("           Detected: hCaptcha")
-            try:
-                frame = page.get_frame(hc_iframe)
-                if frame:
-                    # hCaptcha 체크박스 (id='checkbox' 또는 id='anchor')
-                    target = frame.ele('css:#checkbox') or frame.ele('css:.h-captcha')
-                    if target:
-                        target.click()
-                        time.sleep(2)
-            except:
-                pass
-
-        # (c)  Springer Nature verifying your browser" 화면은 클릭할 게 없고 기다려야 함
-        if "verifying your browser" in page.html.lower():
-            logger.info("           Detected: Browser Verification (Waiting...)")
-            time.sleep(5) 
-
-        # 캡차를 풀고 나서 수동으로 'Submit'을 눌러야 하는 경우
-        submit_btn = page.ele('css:input[type="submit"]', timeout=0.5) or \
-                     page.ele('xpath://button[contains(text(), "Submit")]', timeout=0.5) or \
-                     page.ele('xpath://button[contains(text(), "Verify")]', timeout=0.5)
-        
-        if submit_btn:
-            logger.info("           Clicking Submit/Verify Button...")
-            try:
-                submit_btn.click()
-                time.sleep(3)
-            except:
-                pass
-
-        # --- [성공 확인] ---
-        # iframe들이 모두 사라지고, 타이틀이 정상이면 리턴
-        if not page.ele('css:iframe[src*="cloudflare"]', timeout=0.1) and \
-           not page.ele('css:iframe[src*="hcaptcha"]', timeout=0.1) and \
-           not "verifying" in page.html.lower():
-            
-            # 타이틀 재검사
-            if not any(k in page.title.lower() for k in suspicious_keywords):
-                logger.info("             캡차 우회 성공 (페이지 진입 완료)")
-                return True
-
-    logger.error("             캡차 해결 실패 (시간 초과)")
-    
-
-
-    logger.warning("        !! 캡차 자동 해결 실패 ")
+    issue, evidence = detect_access_issue(title=page.title, html=page.html)
+    if issue == "FAIL_CAPTCHA":
+        logger.warning(f"        캡차 감지됨. 즉시 중단합니다. evidence={evidence}")
+        return True
     return False
 
 
 # =======================================================
 # DrissionPage 크롤러
 # =======================================================
-def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempts=2, logger = None):
+def download_with_drission(
+    doi_url,
+    save_dir,
+    filename,
+    chrome_path,
+    max_attempts=2,
+    logger=None,
+    mode="first",
+    return_detail=False,
+):
     # 폴더 생성
     os.makedirs(save_dir, exist_ok=True)
     full_save_path = os.path.join(save_dir, filename)
@@ -578,8 +614,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
     # co.set_argument('--window-size=1920,1080')
     co.set_argument('--start-maximized')
     co.set_argument('--lang=ko_KR,ko;q=0.9,en-US;q=0.8,en;q=0.7')
-    co.set_argument('--disable-blink-features=AutomationControlled')
-    
+
     my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
     co.set_user_agent(my_ua)
     
@@ -600,23 +635,30 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             
     if page is None:
         if logger: logger.error(f"     [Drission] 브라우저 초기화 최종 실패. 이 논문은 스킵합니다.")
+        if return_detail:
+            return {
+                "ok": False,
+                "reason": "FAIL_NETWORK",
+                "evidence": ["browser_init_failed"],
+                "stage": "drission-init",
+                "domain": _extract_domain(doi_url),
+                "http_status": None,
+            }
         return False
     
-    # stealth.min.js 이용(https://github.com/requireCool/stealth.min.js/blob/main/stealth.min.js)
-    stealth_js_path = os.path.join(os.path.dirname(__file__), 'stealth.min.js')
-    stealth_code = None
-    if os.path.exists(stealth_js_path):
-        with open(stealth_js_path, 'r', encoding='utf-8') as f:
-            stealth_code = f.read()
-        page.add_init_js(stealth_code)
-        page.add_init_js(MOUSE_PATCH_JS)
-        logger.info("stealth.min.js 사용")
-    else:
-        if logger: logger.warning("     [Warning] stealth.min.js 파일을 찾을 수 없습니다! (일반 모드로 동작)")
-        page.add_init_js("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-        
-    # 쿠키 저장
-    cookie_file = os.path.join(os.path.dirname(__file__), 'cf_cookies.json')
+    per_attempt_timeout = 30 if mode == "deep" else 20
+    per_attempt_sleep = 4 if mode == "deep" else 2
+
+    def _detail(ok, reason, evidence=None, stage="drission", http_status=None):
+        payload = {
+            "ok": ok,
+            "reason": reason,
+            "evidence": evidence or [],
+            "stage": stage,
+            "domain": _extract_domain(doi_url),
+            "http_status": http_status,
+        }
+        return payload if return_detail else ok
     
     for attempt in range(1, max_attempts + 1):
         try:
@@ -624,12 +666,6 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                 for init_try in range(3):
                     try:
                         page = ChromiumPage(co)
-                        # stealth 적용
-                        if stealth_code:
-                            page.add_init_js(stealth_code)
-                            page.add_init_js(MOUSE_PATCH_JS)
-                        else:
-                            page.add_init_js("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
                         break
                     except Exception as e:
                         time.sleep(2)
@@ -640,36 +676,21 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
             
             
             logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
-            if os.path.exists(cookie_file):
-                try:
-                    with open(cookie_file, 'r', encoding='utf-8') as f:
-                        saved_cookies = json.load(f)
-                        # DrissionPage에 쿠키 주입
-                        page.set.cookies(saved_cookies)
-                    if logger: logger.info("        쿠키 로딩 성공")
-                except Exception as e:
-                    logger.warning(f"       쿠키 로딩 실패 :{e}")
             
             # 페이지 접속
-            page.get(doi_url, retry=1, interval=1, timeout=20)
-            
-            # turnstile 풀기 시도
-            if solve_captcha_drission(page, logger):
-                #쿠키 저장 시도
-                try:
-                    current_cookies = page.cookies(as_dict=True)
-                    # 'cf_clearance' 쿠키가 있는지 확인 (
-                    if 'cf_clearance' in current_cookies:
-                        with open(cookie_file, 'w', encoding='utf-8') as f:
-                            json.dump(current_cookies, f)
-                except Exception as e:  pass
+            page.get(doi_url, retry=1, interval=1, timeout=per_attempt_timeout)
+
+            issue, evidence = detect_access_issue(title=page.title, html=page.html)
+            if issue == "FAIL_CAPTCHA":
+                if logger:
+                    logger.warning(f"        캡차 감지로 즉시 중단: {evidence}")
+                return _detail(False, "FAIL_CAPTCHA", evidence, stage="landing")
+            if issue == "FAIL_BLOCK":
+                if logger:
+                    logger.warning(f"        차단 페이지 감지로 즉시 중단: {evidence}")
+                return _detail(False, "FAIL_BLOCK", evidence, stage="landing")
             
             referer_url = page.url
-            
-            # Cloudflare 감지 시 대기
-            if page.ele('@id=turnstile-wrapper') or "cloudflare" in page.title.lower():
-                logger.info("        Cloudflare 감지 (3초 대기)")
-                time.sleep(3)
 
             # --- PDF 링크 탐색 ---
             pdf_url = None
@@ -706,6 +727,12 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                     else:
                         logger.warning("        [IEEE] Real URL 추출 실패 (기본 링크 사용)")
 
+            issue, evidence = detect_access_issue(title=page.title, html=page.html)
+            if issue == "FAIL_CAPTCHA":
+                return _detail(False, "FAIL_CAPTCHA", evidence, stage="pdf-discovery")
+            if issue == "FAIL_BLOCK":
+                return _detail(False, "FAIL_BLOCK", evidence, stage="pdf-discovery")
+
             # 4. Iframe
             if not pdf_url:
                 iframe = page.ele('tag:iframe@@src:.pdf')
@@ -735,7 +762,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                         if os.path.exists(full_save_path) and os.path.getsize(full_save_path) > 1024:
                             logger.info(f"        [Drission] 다운로드 성공")
                             if page: page.quit()
-                            return True
+                            return _detail(True, "SUCCESS", stage="drission-download")
                         time.sleep(1)
                         wait_time += 1
                     logger.info("        자체 다운로드 타임아웃")
@@ -748,24 +775,42 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                 cookies_list = page.cookies()
                 current_cookies = {c['name']: c['value'] for c in cookies_list}
                 try : 
-                    if download_with_cffi(pdf_url, full_save_path, referer=page.url, cookies=current_cookies, ua=my_ua, logger=logger):
+                    cffi_result = download_with_cffi(
+                        pdf_url,
+                        full_save_path,
+                        referer=page.url,
+                        cookies=current_cookies,
+                        ua=my_ua,
+                        logger=logger,
+                        return_detail=True,
+                        timeout=120 if mode == "deep" else 60,
+                    )
+                    if cffi_result.get("ok"):
                         if page: page.quit()
-                        return True
+                        return _detail(True, "SUCCESS", stage="cffi-download")
+                    if cffi_result.get("reason") in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
+                        return _detail(
+                            False,
+                            cffi_result.get("reason"),
+                            cffi_result.get("evidence", []),
+                            stage="cffi-download",
+                            http_status=cffi_result.get("http_status"),
+                        )
                 except : pass
                 
                 try : 
                     if download_pdf_via_js_injection(page, pdf_url, filename, save_dir, logger):
-                        return True
+                        return _detail(True, "SUCCESS", stage="js-download")
                 except : pass
                 
                 try : 
                     if force_download_with_requests(page, pdf_url, referer_url, full_save_path, logger):
-                        return True
+                        return _detail(True, "SUCCESS", stage="requests-download")
                 except: pass
                 
                 try : 
                     if download_pdf_via_navigation(page, pdf_url, full_save_path, logger, timeout_s = 10):
-                        return True
+                        return _detail(True, "SUCCESS", stage="navigation-download")
                 except : pass
                 
             else :
@@ -778,8 +823,10 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
                 try: page.quit()
                 except: pass
                 page = None
+            if attempt >= max_attempts:
+                return _detail(False, "FAIL_NETWORK", [str(e)], stage="drission")
         
-        time.sleep(2) # 재시도 전 대기
+        time.sleep(per_attempt_sleep) # 재시도 전 대기
 
     # 모든 시도 실패 시 브라우저 종료
     if page:
@@ -789,7 +836,7 @@ def download_with_drission(doi_url, save_dir, filename, chrome_path, max_attempt
         except Exception as e: 
             logger.warning(f"can't take screeenshot error : {e}")
             pass
-    return False
+    return _detail(False, "FAIL_PARSE", ["pdf_link_not_found_or_download_failed"], stage="drission")
 
 
 # =======================================================
@@ -1294,8 +1341,12 @@ def download_via_sciencedirect(doi: str, output_path: str, logger=None) -> bool:
         
         page.get(target_url)
         
-        # 3. Cloudflare/Turnstile 우회 시도 
-        solve_captcha_drission(page, logger)
+        # 3. 캡차/차단 감지 시 즉시 중단 (우회/자동 풀이 없음)
+        issue, evidence = detect_access_issue(title=page.title, html=page.html)
+        if issue in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
+            if logger:
+                logger.warning(f"        [ScienceDirect] {issue} 감지: {evidence}")
+            return False
         
         # 4. ScienceDirect URL 확인
         current_url = page.url

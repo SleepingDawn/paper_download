@@ -1,0 +1,405 @@
+{
+  "version": "v2",
+  "default": {
+    "concurrency": 1,
+    "base_delay": 0.08,
+    "jitter": 0.06,
+    "cooldown_block": 1.0,
+    "cooldown_captcha": 1.2,
+    "cooldown_429": 4.0,
+    "max_attempts_per_domain_per_run": 9999,
+    "circuit_breaker_threshold": {
+      "window": 4,
+      "min_samples": 3,
+      "bad_ratio": 0.67,
+      "open_for_sec": 7200.0
+    }
+  },
+  "domains": {
+    "pubs.aip.org": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "advanced.onlinelibrary.wiley.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "pubs.acs.org": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "onlinelibrary.wiley.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "www.mdpi.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "validate.perfdrive.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "www.tandfonline.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "www.chinesechemsoc.org": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "www.spiedigitallibrary.org": {
+      "concurrency": 1,
+      "base_delay": 0.08,
+      "jitter": 0.08,
+      "cooldown_block": 1.0,
+      "cooldown_captcha": 1.2,
+      "cooldown_429": 3.0,
+      "max_attempts_per_domain_per_run": 4,
+      "circuit_breaker_threshold": {
+        "window": 6,
+        "min_samples": 4,
+        "bad_ratio": 0.67,
+        "open_for_sec": 3600
+      },
+      "reason": "high bad rate (1.00) on AccessDenied"
+    },
+    "chemistry-europe.onlinelibrary.wiley.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "www.powdermat.org": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "www.science.org": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "www.hindawi.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "sid.onlinelibrary.wiley.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "scijournals.onlinelibrary.wiley.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "www.emerald.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "www.ingentaconnect.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "link.aps.org": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "www.eurekaselect.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "research.tue.nl": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "royalsocietypublishing.org": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "anatomypubs.onlinelibrary.wiley.com": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "www.annualreviews.org": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    },
+    "journals.tubitak.gov.tr": {
+      "concurrency": 1,
+      "base_delay": 0.12,
+      "jitter": 0.08,
+      "cooldown_block": 1.5,
+      "cooldown_captcha": 2.0,
+      "cooldown_429": 8.0,
+      "max_attempts_per_domain_per_run": 2,
+      "circuit_breaker_threshold": {
+        "window": 3,
+        "min_samples": 2,
+        "bad_ratio": 0.5,
+        "open_for_sec": 12000.0
+      },
+      "reason": "tuned_for_low_block_captcha_rate"
+    }
+  },
+  "generated_at": 1772712264
+}
