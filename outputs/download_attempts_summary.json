@@ -1,0 +1,111 @@
+{
+  "count": 252,
+  "success_rate": 0.1587,
+  "median_latency_ms": 700,
+  "reason_distribution": {
+    "FAIL_WRONG_MIME": 136,
+    "FAIL_TIMEOUT/NETWORK": 33,
+    "SUCCESS": 40,
+    "FAIL_NO_CANDIDATE": 33,
+    "FAIL_VIEWER_HTML": 10
+  },
+  "by_strategy": {
+    "cffi_candidate": {
+      "count": 205,
+      "success_rate": 0.1756,
+      "median_latency_ms": 693
+    },
+    "cffi_baseline": {
+      "count": 47,
+      "success_rate": 0.0851,
+      "median_latency_ms": 715
+    }
+  },
+  "by_domain": {
+    "ars.els-cdn.com": {
+      "count": 18,
+      "success_rate": 0.0,
+      "median_latency_ms": 87
+    },
+    "pubs.acs.org": {
+      "count": 110,
+      "success_rate": 0.0545,
+      "median_latency_ms": 686
+    },
+    "www.nature.com": {
+      "count": 28,
+      "success_rate": 1.0,
+      "median_latency_ms": 1931
+    },
+    "onlinelibrary.wiley.com": {
+      "count": 33,
+      "success_rate": 0.0,
+      "median_latency_ms": 810
+    },
+    "www.sciencedirect.com": {
+      "count": 10,
+      "success_rate": 0.0,
+      "median_latency_ms": 122
+    },
+    "advanced.onlinelibrary.wiley.com": {
+      "count": 1,
+      "success_rate": 0.0,
+      "median_latency_ms": 658
+    },
+    "pubs.aip.org": {
+      "count": 2,
+      "success_rate": 0.0,
+      "median_latency_ms": 67
+    },
+    "aip.scitation.org": {
+      "count": 26,
+      "success_rate": 0.0,
+      "median_latency_ms": 618
+    },
+    "pubs.rsc.org": {
+      "count": 2,
+      "success_rate": 1.0,
+      "median_latency_ms": 22261
+    },
+    "www.mdpi.com": {
+      "count": 5,
+      "success_rate": 0.0,
+      "median_latency_ms": 60
+    },
+    "validate.perfdrive.com": {
+      "count": 8,
+      "success_rate": 0.0,
+      "median_latency_ms": 1896
+    },
+    "pub.confit.atlas.jp": {
+      "count": 1,
+      "success_rate": 0.0,
+      "median_latency_ms": 472
+    },
+    "nature.com": {
+      "count": 4,
+      "success_rate": 0.0,
+      "median_latency_ms": 4097
+    },
+    "image.innovationforever.com": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 1264
+    },
+    "ieeexplore.ieee.org": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 6307
+    },
+    "wulixb.iphy.ac.cn": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 2269
+    },
+    "watermark02.silverchair.com": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 56972
+    }
+  }
+}

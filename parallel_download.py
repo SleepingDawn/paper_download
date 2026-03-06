@@ -31,6 +31,7 @@ REASON_FAIL_TOO_SMALL = "FAIL_TOO_SMALL"
 REASON_FAIL_NO_CANDIDATE = "FAIL_NO_CANDIDATE"
 REASON_FAIL_REDIRECT_LOOP = "FAIL_REDIRECT_LOOP"
 REASON_FAIL_UNKNOWN = "FAIL_UNKNOWN"
+SAFE_MAX_WORKERS = 5
 
 FAILURE_REASON_ORDER = [
     REASON_FAIL_CAPTCHA,
@@ -182,13 +183,30 @@ def _single_download_attempt(
             "stage": "skip",
         }
 
+    # 사용자 요청: Sci-Hub를 항상 최우선(1순위)으로 시도.
+    try:
+        scihub_budget = int(os.getenv("SCIHUB_MAX_TOTAL_S", "20"))
+        if try_manual_scihub(doi, save_dir, logger, max_total_s=scihub_budget):
+            return {
+                **result,
+                "status": "Success",
+                "reason": REASON_SUCCESS,
+                "method": "scihub",
+                "success": True,
+                "stage": "scihub",
+            }
+    except Exception as e:
+        logger.warning(f"   Sci-Hub 다운로드 에러: {e}")
+        attempt_trace.append({"strategy": "scihub", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
+
     if pdf_url_oa and pdf_url_oa.lower() not in ("none", "nan") and len(pdf_url_oa) > 10:
+        cffi_timeout = int(os.getenv("DIRECT_OA_CFFI_TIMEOUT_S", "12"))
         cffi = download_with_cffi(
             pdf_url_oa,
             full_path,
             logger=logger,
             return_detail=True,
-            timeout=120 if mode == "deep" else 60,
+            timeout=cffi_timeout,
         )
         if cffi.get("ok"):
             return {
@@ -218,69 +236,62 @@ def _single_download_attempt(
                 "http_status": cffi.get("http_status"),
             }
 
-    try:
-        if download_using_api(doi, save_dir, publisher, logger):
+    def _run_drission_result() -> Dict[str, Any]:
+        chrome_path = os.environ.get("CHROME_PATH", "/home/yongyong0206/chrome-linux64/chrome")
+        dr = download_with_drission(
+            f"https://doi.org/{doi}",
+            save_dir,
+            filename,
+            chrome_path,
+            max_attempts=2 if mode == "deep" else 1,
+            logger=logger,
+            mode=mode,
+            return_detail=True,
+        )
+        if dr.get("ok"):
             return {
                 **result,
                 "status": "Success",
                 "reason": REASON_SUCCESS,
-                "method": "api",
+                "method": "drission",
                 "success": True,
-                "stage": "api",
+                "stage": dr.get("stage", "drission"),
+                "domain": dr.get("domain", ""),
             }
-    except Exception as e:
-        logger.warning(f"   API 다운로드 에러: {e}")
-        attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
-
-    try:
-        if try_manual_scihub(doi, save_dir, logger):
-            return {
-                **result,
-                "status": "Success",
-                "reason": REASON_SUCCESS,
-                "method": "scihub",
-                "success": True,
-                "stage": "scihub",
-            }
-    except Exception as e:
-        logger.warning(f"   Sci-Hub 다운로드 에러: {e}")
-        attempt_trace.append({"strategy": "scihub", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
-
-    chrome_path = os.environ.get("CHROME_PATH", "/home/yongyong0206/chrome-linux64/chrome")
-    drission = download_with_drission(
-        f"https://doi.org/{doi}",
-        save_dir,
-        filename,
-        chrome_path,
-        max_attempts=3 if mode == "deep" else 2,
-        logger=logger,
-        mode=mode,
-        return_detail=True,
-    )
-
-    if drission.get("ok"):
         return {
             **result,
-            "status": "Success",
-            "reason": REASON_SUCCESS,
-            "method": "drission",
-            "success": True,
-            "stage": drission.get("stage", "drission"),
-            "domain": drission.get("domain", ""),
+            "reason": _normalize_reason(dr.get("reason"), dr.get("http_status")),
+            "stage": dr.get("stage", "drission"),
+            "evidence": dr.get("evidence", ["download_failed"]) + [json.dumps({"trace": attempt_trace}, ensure_ascii=False)],
+            "domain": dr.get("domain", ""),
+            "http_status": dr.get("http_status"),
         }
 
-    return {
-        **result,
-        "reason": _normalize_reason(drission.get("reason"), drission.get("http_status")),
-        "stage": drission.get("stage", "drission"),
-        "evidence": drission.get("evidence", ["download_failed"]) + [json.dumps({"trace": attempt_trace}, ensure_ascii=False)],
-        "domain": drission.get("domain", ""),
-        "http_status": drission.get("http_status"),
-    }
+    publisher_key = (publisher or "").lower()
+    # Elsevier API 경로는 실효성이 낮고 브라우저 경로와 중복 비용이 커서 생략.
+    skip_api = publisher_key in {"elsevier"}
+    if not skip_api:
+        try:
+            if download_using_api(doi, save_dir, publisher, logger):
+                return {
+                    **result,
+                    "status": "Success",
+                    "reason": REASON_SUCCESS,
+                    "method": "api",
+                    "success": True,
+                    "stage": "api",
+                }
+        except Exception as e:
+            logger.warning(f"   API 다운로드 에러: {e}")
+            attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
+    else:
+        attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_NO_CANDIDATE, "evidence": ["skipped_elsevier_api"]})
+
+    return _run_drission_result()
 
 
 def download_process_worker(row_data, final_save_path, attempt=1, mode="first"):
-    network_retry_limit = 1 if mode == "first" else 2
+    network_retry_limit = 0 if mode == "first" else 2
     base_backoff = 2 if mode == "first" else 5
 
     last_result = None
@@ -461,13 +472,14 @@ def main(
     max_num=1000,
     citation_percentile=0.99,
     query=None,
-    max_workers=4,
+    max_workers=1,
     output_dir="./Solid_State_Electrolyte_Battery_Li_Papers",
     doi_path=None,
     after_first_pass="stop",
     non_interactive=False,
 ):
     start_time = time.time()
+    max_workers = max(1, min(int(max_workers), SAFE_MAX_WORKERS))
 
     final_save_path = os.path.abspath(output_dir)
     oa_dir = os.path.join(final_save_path, "Open_Access")
@@ -504,6 +516,7 @@ def main(
     df["doi_lower"] = df["doi"].astype(str).str.lower().str.strip()
     df = df.dropna(subset=["doi_lower"]).drop_duplicates(subset=["doi_lower"]).drop(columns=["doi_lower"])
     print(f"전처리 후 남은 전체 논문 수: {len(df)}건")
+    print(f"다운로드 동시성(max_workers): {max_workers} (상한={SAFE_MAX_WORKERS})")
 
     first_results = _first_pass(df, oa_dir, ca_dir, max_workers=max_workers)
 

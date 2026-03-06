@@ -23,8 +23,8 @@ def get_config():
                         help="인용 상위 퍼센트 필터 (기본값: 0.99)")
     
     # 시스템 설정
-    parser.add_argument("--max_workers", type=int, default=4,
-                        help="병렬 다운로드 프로세스 수 (기본값: 4)")
+    parser.add_argument("--max_workers", type=int, default=1,
+                        help="병렬 다운로드 프로세스 수 (기본값: 1)")
     
     parser.add_argument("--output_dir", type=str, default=DEFAULT_OUTPUT_DIR,
                         help=f"결과 저장 경로 (기본값: {DEFAULT_OUTPUT_DIR})")
