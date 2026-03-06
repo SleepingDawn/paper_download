@@ -149,6 +149,8 @@ def _maybe_apply_system_chrome_profile(co: ChromiumOptions, doi_url: str, logger
 def _apply_best_browser_profile(co: ChromiumOptions) -> None:
     headless = os.getenv("PDF_BROWSER_HEADLESS", "0").strip().lower() in ("1", "true", "yes")
     no_sandbox = os.getenv("PDF_BROWSER_NO_SANDBOX", "0").strip().lower() in ("1", "true", "yes")
+    server_tuned = os.getenv("PDF_BROWSER_SERVER_TUNED", "0").strip().lower() in ("1", "true", "yes")
+    single_process = os.getenv("PDF_BROWSER_SINGLE_PROCESS", "0").strip().lower() in ("1", "true", "yes")
 
     if headless:
         co.set_argument("--headless=new")
@@ -165,6 +167,19 @@ def _apply_best_browser_profile(co: ChromiumOptions) -> None:
     co.set_pref("credentials_enable_service", False)
     co.set_pref("profile.password_manager_enabled", False)
     co.set_argument("--start-maximized")
+    co.set_argument("--disable-extensions")
+    co.set_argument("--password-store=basic")
+    co.set_argument("--use-mock-keychain")
+    if server_tuned:
+        co.set_argument("--disable-background-networking")
+        co.set_argument("--disable-component-update")
+        co.set_argument("--disable-domain-reliability")
+        co.set_argument("--metrics-recording-only")
+        co.set_argument("--disable-sync")
+        co.set_argument("--disable-features=MediaRouter,OptimizationHints")
+    if single_process:
+        co.set_argument("--single-process")
+        co.set_argument("--no-zygote")
     try:
         co.set_load_mode("eager")
     except Exception:

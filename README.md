@@ -33,10 +33,12 @@ python3 -u landing_access_repro.py \
   --timeout-sec 20 \
   --headless 1 \
   --no-sandbox 1 \
+  --server-tuned 1 \
+  --single-process 0 \
   --profile-mode auto \
   --profile-name Default \
   --persistent-profile-dir outputs/.chrome_user_data \
-  --worker-profile-root outputs/.chrome_user_data/landing_worker_profiles \
+  --worker-profile-root "${SLURM_TMPDIR:-/tmp/$USER}/landing_worker_profiles" \
   --clean-worker-profiles 1 \
   --capture-fail-artifacts 1 \
   --artifact-dir outputs/landing_access_artifacts \
@@ -211,6 +213,8 @@ Drission 내부 전략:
   - `--worker-profile-root`를 지정해 워커별 프로필 분리
   - `--clean-worker-profiles 1`로 stale lock 제거
   - `--startup-retries 3` 이상 사용
+- 실행 전에 Chrome 스모크 체크를 수행하며, 실패하면 `outputs/landing_access_artifacts/chrome_smoke_fail.json`에 stderr를 남깁니다.
+- 스모크 체크는 `single-process` fallback을 자동 시도합니다.
 - 여전히 실패하면 먼저 `--workers 1`로 단건 검증 후 병렬 수를 올리세요.
 
 ---

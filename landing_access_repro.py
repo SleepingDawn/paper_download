@@ -4,6 +4,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import time
 from collections import Counter, defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
@@ -123,6 +124,58 @@ def _resolve_browser_path(preferred_path: str) -> str:
         if os.path.isfile(p) and os.access(p, os.X_OK):
             return p
     return ""
+
+
+def _run_chrome_smoke(chrome_path: str, profile_root: str, no_sandbox: bool, single_process: bool) -> Dict[str, str]:
+    smoke_dir = os.path.join(profile_root, "_smoke")
+    shutil.rmtree(smoke_dir, ignore_errors=True)
+    os.makedirs(smoke_dir, exist_ok=True)
+
+    cmd = [
+        chrome_path,
+        "--headless=new",
+        "--disable-gpu",
+        "--disable-dev-shm-usage",
+        "--no-first-run",
+        "--no-default-browser-check",
+        "--disable-background-networking",
+        "--disable-component-update",
+        "--disable-domain-reliability",
+        "--disable-sync",
+        "--disable-extensions",
+        "--metrics-recording-only",
+        "--disable-features=MediaRouter,OptimizationHints",
+        f"--user-data-dir={smoke_dir}",
+        "--dump-dom",
+        "data:text/html,<html><body>ok</body></html>",
+    ]
+    if no_sandbox:
+        cmd.append("--no-sandbox")
+    if single_process:
+        cmd.extend(["--single-process", "--no-zygote"])
+
+    try:
+        proc = subprocess.run(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            timeout=30,
+            check=False,
+        )
+    except Exception as e:
+        return {"ok": "0", "stderr": str(e), "stdout": "", "mode": "single" if single_process else "normal"}
+
+    out = proc.stdout or ""
+    err = proc.stderr or ""
+    ok = (proc.returncode == 0) and ("ok" in out.lower())
+    return {
+        "ok": "1" if ok else "0",
+        "stderr": err[-2000:],
+        "stdout": out[-500:],
+        "mode": "single" if single_process else "normal",
+        "returncode": str(proc.returncode),
+    }
 
 
 def _save_failure_artifacts(
@@ -373,6 +426,8 @@ def main() -> None:
     p.add_argument("--chrome-path", type=str, default=os.environ.get("CHROME_PATH", ""))
     p.add_argument("--headless", type=int, default=1, choices=[0, 1])
     p.add_argument("--no-sandbox", type=int, default=1, choices=[0, 1])
+    p.add_argument("--server-tuned", type=int, default=1, choices=[0, 1])
+    p.add_argument("--single-process", type=int, default=0, choices=[0, 1])
     p.add_argument("--profile-mode", type=str, default="auto")
     p.add_argument("--profile-name", type=str, default="Default")
     p.add_argument("--persistent-profile-dir", type=str, default="outputs/.chrome_user_data")
@@ -397,15 +452,17 @@ def main() -> None:
 
     os.environ["PDF_BROWSER_HEADLESS"] = "1" if int(args.headless) == 1 else "0"
     os.environ["PDF_BROWSER_NO_SANDBOX"] = "1" if int(args.no_sandbox) == 1 else "0"
+    os.environ["PDF_BROWSER_SERVER_TUNED"] = "1" if int(args.server_tuned) == 1 else "0"
+    os.environ["PDF_BROWSER_SINGLE_PROCESS"] = "1" if int(args.single_process) == 1 else "0"
     os.environ["PDF_BROWSER_PROFILE_MODE"] = str(args.profile_mode or "auto").strip()
     os.environ["PDF_BROWSER_PROFILE_NAME"] = str(args.profile_name or "Default").strip() or "Default"
     os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = os.path.abspath(str(args.persistent_profile_dir))
     worker_profile_root = str(args.worker_profile_root or "").strip()
     if not worker_profile_root:
-        worker_profile_root = os.path.join(
-            os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"],
-            "landing_worker_profiles",
-        )
+        run_base = os.environ.get("SLURM_TMPDIR", "").strip()
+        if not run_base:
+            run_base = os.path.join("/tmp", os.environ.get("USER", "user"))
+        worker_profile_root = os.path.join(run_base, "landing_worker_profiles")
     worker_profile_root = os.path.abspath(worker_profile_root)
     if int(args.clean_worker_profiles) == 1 and os.path.isdir(worker_profile_root):
         shutil.rmtree(worker_profile_root, ignore_errors=True)
@@ -431,6 +488,37 @@ def main() -> None:
 
     print(json.dumps({"resolved_chrome_path": chrome_path}, ensure_ascii=False), flush=True)
     print(json.dumps({"worker_profile_root": worker_profile_root}, ensure_ascii=False), flush=True)
+
+    smoke_normal = _run_chrome_smoke(
+        chrome_path=chrome_path,
+        profile_root=worker_profile_root,
+        no_sandbox=bool(int(args.no_sandbox)),
+        single_process=False,
+    )
+    if smoke_normal.get("ok") != "1":
+        smoke_single = _run_chrome_smoke(
+            chrome_path=chrome_path,
+            profile_root=worker_profile_root,
+            no_sandbox=bool(int(args.no_sandbox)),
+            single_process=True,
+        )
+        if smoke_single.get("ok") == "1":
+            os.environ["PDF_BROWSER_SINGLE_PROCESS"] = "1"
+            print(json.dumps({"chrome_smoke": "single-process-fallback-ok"}, ensure_ascii=False), flush=True)
+        else:
+            artifact_smoke = os.path.abspath(os.path.join(args.artifact_dir, "chrome_smoke_fail.json"))
+            os.makedirs(args.artifact_dir, exist_ok=True)
+            with open(artifact_smoke, "w", encoding="utf-8") as f:
+                json.dump(
+                    {"normal": smoke_normal, "single": smoke_single, "chrome_path": chrome_path},
+                    f,
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            raise RuntimeError(f"chrome_smoke_failed: {artifact_smoke}")
+    else:
+        print(json.dumps({"chrome_smoke": "ok"}, ensure_ascii=False), flush=True)
+
     all_records = []
     with ProcessPoolExecutor(max_workers=workers) as ex:
         futs = []
@@ -473,6 +561,8 @@ def main() -> None:
         "workers": workers,
         "headless": bool(int(args.headless)),
         "no_sandbox": bool(int(args.no_sandbox)),
+        "server_tuned": bool(int(args.server_tuned)),
+        "single_process": os.environ.get("PDF_BROWSER_SINGLE_PROCESS", "0"),
         "startup_retries": int(args.startup_retries),
         "profile_mode": os.environ.get("PDF_BROWSER_PROFILE_MODE", ""),
         "profile_name": os.environ.get("PDF_BROWSER_PROFILE_NAME", ""),
