@@ -7,6 +7,7 @@ import shutil
 import socket
 import subprocess
 import time
+import zipfile
 from collections import Counter, defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from statistics import median
@@ -222,6 +223,44 @@ def _run_chrome_smoke(chrome_path: str, profile_root: str, no_sandbox: bool, sin
         "mode": "single" if single_process else "normal",
         "returncode": str(proc.returncode if proc is not None and proc.returncode is not None else -1),
     }
+
+
+def _build_failure_artifact_zip(records: List[Dict], artifact_dir: str, zip_path: str) -> str:
+    fail_records = [r for r in records if (r.get("outcome") != OUT_SUCCESS_ACCESS)]
+    if not fail_records:
+        return ""
+
+    abs_artifact_dir = os.path.abspath(artifact_dir)
+    zip_path = os.path.abspath(zip_path)
+    os.makedirs(os.path.dirname(zip_path) or ".", exist_ok=True)
+
+    manifest = []
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        for rec in fail_records:
+            row = {
+                "doi": rec.get("doi", ""),
+                "outcome": rec.get("outcome", ""),
+                "resolved_url": rec.get("resolved_url", ""),
+                "evidence": rec.get("evidence", []),
+                "screenshot_path": rec.get("screenshot_path", ""),
+                "html_path": rec.get("html_path", ""),
+                "meta_path": rec.get("meta_path", ""),
+            }
+            manifest.append(row)
+
+            for key in ("screenshot_path", "html_path", "meta_path"):
+                p = str(rec.get(key, "") or "").strip()
+                if not p or (not os.path.isfile(p)):
+                    continue
+                if p.startswith(abs_artifact_dir):
+                    rel = os.path.relpath(p, start=abs_artifact_dir)
+                    arc = os.path.join("artifacts", rel)
+                else:
+                    arc = os.path.join("artifacts", os.path.basename(p))
+                zf.write(p, arcname=arc)
+
+        zf.writestr("manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2))
+    return zip_path
 
 
 def _save_failure_artifacts(
@@ -474,6 +513,7 @@ def main() -> None:
     p.add_argument("--no-sandbox", type=int, default=1, choices=[0, 1])
     p.add_argument("--server-tuned", type=int, default=1, choices=[0, 1])
     p.add_argument("--single-process", type=int, default=0, choices=[0, 1])
+    p.add_argument("--assume-institution-access", type=int, default=1, choices=[0, 1])
     p.add_argument("--profile-mode", type=str, default="auto")
     p.add_argument("--profile-name", type=str, default="Default")
     p.add_argument("--persistent-profile-dir", type=str, default="outputs/.chrome_user_data")
@@ -481,6 +521,8 @@ def main() -> None:
     p.add_argument("--clean-worker-profiles", type=int, default=1, choices=[0, 1])
     p.add_argument("--capture-fail-artifacts", type=int, default=1, choices=[0, 1])
     p.add_argument("--artifact-dir", type=str, default="outputs/landing_access_artifacts")
+    p.add_argument("--zip-fail-artifacts", type=int, default=1, choices=[0, 1])
+    p.add_argument("--artifact-zip", type=str, default="outputs/landing_access_failures.zip")
     p.add_argument("--output-jsonl", type=str, default="outputs/landing_access_repro.jsonl")
     p.add_argument("--report", type=str, default="outputs/landing_access_repro_report.json")
     args = p.parse_args()
@@ -500,6 +542,7 @@ def main() -> None:
     os.environ["PDF_BROWSER_NO_SANDBOX"] = "1" if int(args.no_sandbox) == 1 else "0"
     os.environ["PDF_BROWSER_SERVER_TUNED"] = "1" if int(args.server_tuned) == 1 else "0"
     os.environ["PDF_BROWSER_SINGLE_PROCESS"] = "1" if int(args.single_process) == 1 else "0"
+    os.environ["PDF_ASSUME_INSTITUTION_ACCESS"] = "1" if int(args.assume_institution_access) == 1 else "0"
     os.environ["PDF_BROWSER_PROFILE_MODE"] = str(args.profile_mode or "auto").strip()
     os.environ["PDF_BROWSER_PROFILE_NAME"] = str(args.profile_name or "Default").strip() or "Default"
     os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = os.path.abspath(str(args.persistent_profile_dir))
@@ -601,6 +644,14 @@ def main() -> None:
                     out_f.write(line)
 
     summary = _summarize(all_records)
+    failure_artifact_zip = ""
+    if int(args.capture_fail_artifacts) == 1 and int(args.zip_fail_artifacts) == 1:
+        failure_artifact_zip = _build_failure_artifact_zip(
+            records=all_records,
+            artifact_dir=args.artifact_dir,
+            zip_path=args.artifact_zip,
+        )
+
     report = {
         "generated_at": int(time.time()),
         "input_csv": os.path.abspath(args.input),
@@ -609,6 +660,7 @@ def main() -> None:
         "no_sandbox": bool(int(args.no_sandbox)),
         "server_tuned": bool(int(args.server_tuned)),
         "single_process": os.environ.get("PDF_BROWSER_SINGLE_PROCESS", "0"),
+        "assume_institution_access": bool(int(args.assume_institution_access)),
         "startup_retries": int(args.startup_retries),
         "profile_mode": os.environ.get("PDF_BROWSER_PROFILE_MODE", ""),
         "profile_name": os.environ.get("PDF_BROWSER_PROFILE_NAME", ""),
@@ -620,6 +672,7 @@ def main() -> None:
         "summary": summary,
         "output_jsonl": os.path.abspath(args.output_jsonl),
         "artifact_dir": os.path.abspath(args.artifact_dir) if int(args.capture_fail_artifacts) == 1 else "",
+        "failure_artifact_zip": failure_artifact_zip,
     }
 
     os.makedirs(os.path.dirname(args.report), exist_ok=True)
@@ -634,6 +687,7 @@ def main() -> None:
                 "success_ratio": summary["success_ratio"],
                 "block_captcha_rate": summary["block_captcha_rate"],
                 "report": os.path.abspath(args.report),
+                "failure_artifact_zip": failure_artifact_zip,
             },
             ensure_ascii=False,
             indent=2,

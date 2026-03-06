@@ -1218,11 +1218,56 @@ def _has_auth_required_signal(title: str = "", html: str = "") -> bool:
     return ("authenticate" in blob or "authentication required" in blob) and ("password" in blob)
 
 
-def _has_access_rights_required_signal(title: str = "", html: str = "") -> bool:
+def _classify_access_gate(title: str = "", html: str = "") -> str:
     blob = f"{title or ''} {html or ''}".lower()
-    strong_markers = (
+    article_like = _has_article_signal(title=title, html=html)
+    pdf_action_like = _has_pdf_action_signal(title=title, html=html)
+
+    safe_markers = (
+        "open pdf",
+        "download pdf",
+        "open access",
+        "free access",
+        "free full text",
+        "author version (pdf)",
+    )
+    if any(m in blob for m in safe_markers):
+        return "none"
+
+    hard_rights_markers = (
+        "401 - unauthorized",
+        "access is denied due to invalid credentials",
+        "do not have permission to view this directory or page",
+        "password required",
+        "password protected",
+        "authenticated access only",
+    )
+    if any(m in blob for m in hard_rights_markers):
+        return "hard_rights"
+
+    bot_like_markers = (
+        "validate user",
+        "unusual traffic",
+        "security check",
+        "request blocked",
+        "too many requests",
+        "access denied",
+        "forbidden",
+        "verify you are human",
+        "are you a robot",
+    )
+    if any(m in blob for m in bot_like_markers):
+        return "bot_like"
+
+    login_markers = (
         "institutional login",
+        "sign in through your institution",
         "log in to wiley online library",
+        "access through your institution",
+        "shibboleth",
+        "openathens",
+    )
+    paywall_markers = (
         "purchase instant access",
         "purchase article",
         "buy this article",
@@ -1231,26 +1276,25 @@ def _has_access_rights_required_signal(title: str = "", html: str = "") -> bool:
         "subscription required",
         "pay per view",
         "rent this article",
-        "401 - unauthorized",
-        "access is denied due to invalid credentials",
-        "do not have permission to view this directory or page",
     )
-    if any(m in blob for m in strong_markers):
-        return True
-    # 명시적 OA/PDF 액션이 있으면 권한 실패로 보지 않음 (오탐 방지)
-    safe_markers = (
-        "open pdf",
-        "download pdf",
-        "open access",
-        "free access",
-        "free full text",
-    )
-    if any(m in blob for m in safe_markers):
-        return False
-    # 약한 신호는 조합으로만 판단
-    has_login = ("institution" in blob and "login" in blob) or ("log in" in blob and "online library" in blob)
-    has_paywall = ("purchase" in blob and "access" in blob) or ("subscribe" in blob and "article" in blob)
-    return has_login and has_paywall
+    login_hit = any(m in blob for m in login_markers)
+    paywall_hits = sum(1 for m in paywall_markers if m in blob)
+
+    # 기사/DOI/PDF 시그널이 있는 정상 랜딩에서 네비 메뉴 문구만으로 권한 실패를 내지 않도록 보수 처리
+    if article_like or pdf_action_like:
+        if login_hit and paywall_hits >= 2:
+            return "soft_gate"
+        return "none"
+
+    if login_hit and paywall_hits >= 1:
+        return "soft_gate"
+    if paywall_hits >= 2:
+        return "soft_gate"
+    return "none"
+
+
+def _has_access_rights_required_signal(title: str = "", html: str = "") -> bool:
+    return _classify_access_gate(title=title, html=html) in ("hard_rights", "soft_gate")
 
 
 def _force_accept_cookie_banner(page, logger=None) -> bool:
@@ -1483,14 +1527,24 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
     pdf_action_like = _has_pdf_action_signal(title=title, html=html)
     consent_like = _has_cookie_or_consent_signal(title=title, html=html)
     auth_required_like = _has_auth_required_signal(title=title, html=html)
-    access_rights_like = _has_access_rights_required_signal(title=title, html=html)
+    access_gate = _classify_access_gate(title=title, html=html)
+    assume_inst_access = os.getenv("PDF_ASSUME_INSTITUTION_ACCESS", "0").strip().lower() in ("1", "true", "yes")
 
     if auth_required_like:
         evidence.append("keyword=auth_required")
         return "FAIL_ACCESS_RIGHTS", evidence
-    if access_rights_like:
-        evidence.append("keyword=access_rights_required")
+    if access_gate == "hard_rights":
+        evidence.append("keyword=access_rights_required_hard")
         return "FAIL_ACCESS_RIGHTS", evidence
+    if access_gate == "soft_gate":
+        evidence.append("keyword=access_gate_soft")
+        if assume_inst_access:
+            evidence.append("policy=assume_institution_access")
+            return "FAIL_BLOCK", evidence
+        return "FAIL_ACCESS_RIGHTS", evidence
+    if access_gate == "bot_like":
+        evidence.append("keyword=access_gate_bot_like")
+        return "FAIL_BLOCK", evidence
 
     # Cookie/consent overlay가 뜬 정상 페이지를 차단으로 오판하지 않도록 우선 예외처리
     if consent_like and (article_like or pdf_action_like):

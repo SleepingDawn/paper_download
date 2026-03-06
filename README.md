@@ -35,6 +35,7 @@ python3 -u landing_access_repro.py \
   --no-sandbox 1 \
   --server-tuned 1 \
   --single-process 0 \
+  --assume-institution-access 1 \
   --profile-mode auto \
   --profile-name Default \
   --persistent-profile-dir outputs/.chrome_user_data \
@@ -42,6 +43,8 @@ python3 -u landing_access_repro.py \
   --clean-worker-profiles 1 \
   --capture-fail-artifacts 1 \
   --artifact-dir outputs/landing_access_artifacts \
+  --zip-fail-artifacts 1 \
+  --artifact-zip outputs/landing_access_failures.zip \
   --output-jsonl outputs/landing_access_repro.top100.jsonl \
   --report outputs/landing_access_repro.top100.report.json
 ```
@@ -52,6 +55,7 @@ python3 -u landing_access_repro.py \
 - `outputs/landing_access_artifacts/landing_fail_*.png`
 - `outputs/landing_access_artifacts/landing_fail_*.html`
 - `outputs/landing_access_artifacts/landing_fail_*.json`
+- `outputs/landing_access_failures.zip` (실패 케이스 묶음, `manifest.json` 포함)
 
 ### 2-1. DOI CSV로 바로 다운로드
 
@@ -215,6 +219,7 @@ Drission 내부 전략:
   - `--startup-retries 3` 이상 사용
 - 실행 전에 Chrome 스모크 체크를 수행하며, 실패하면 `outputs/landing_access_artifacts/chrome_smoke_fail.json`에 stderr를 남깁니다.
 - 스모크 체크는 `single-process` fallback을 자동 시도합니다.
+- `--assume-institution-access 1`이면 soft login/paywall gate를 권한 실패 대신 bot/challenge 의심(`FAIL_BLOCK`)으로 분류합니다.
 - 여전히 실패하면 먼저 `--workers 1`로 단건 검증 후 병렬 수를 올리세요.
 
 ---
