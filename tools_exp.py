@@ -1297,10 +1297,6 @@ def _classify_access_gate(title: str = "", html: str = "") -> str:
         "forbidden",
         "verify you are human",
         "are you a robot",
-        "checking your browser before accessing",
-        "__cf_chl_opt",
-        "cf-browser-verification",
-        "cf challenge",
     )
     if any(m in blob for m in bot_like_markers):
         return "bot_like"
@@ -1628,7 +1624,6 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
         "are you a robot",
         "i am not a robot",
         "validate user",
-        "checking your browser before accessing",
     ]
     title_block_keywords = [
         "attention required",
@@ -1645,9 +1640,6 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
         "validate user",
         "verify you are human",
         "are you a robot",
-        "__cf_chl_opt",
-        "cf-browser-verification",
-        "cf challenge",
     ]
     html_block_markers = [
         "error code 1020",

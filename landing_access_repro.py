@@ -290,7 +290,6 @@ def _verify_landing_success(
     low_url = str(url or "").lower()
     low_domain = str(domain or "").lower()
     low_title = str(title or "").strip().lower()
-    low_html = str(html or "").lower()
 
     if (not low_domain) or low_domain.endswith("doi.org"):
         return False
@@ -302,11 +301,8 @@ def _verify_landing_success(
         "/cdn-cgi/l/chk_captcha",
         "challenges.cloudflare.com",
         "validate.perfdrive.com",
-        "cf-turnstile",
-        "__cf_chl_opt",
-        "checking your browser before accessing",
     )
-    if any(m in low_url or m in low_html or m in low_title for m in challenge_markers):
+    if any(m in low_url for m in challenge_markers):
         return False
     if ("pubs.aip.org" in low_domain) and ("__cf_chl_rt_tk=" in low_url):
         return False
@@ -318,8 +314,6 @@ def _verify_landing_success(
     if low_title in ("redirecting", "redirecting...", "redirect"):
         return False
     if len(low_title) < 12:
-        return False
-    if len(low_html) < 600:
         return False
     return True
 
@@ -467,18 +461,14 @@ def _probe_one(
                 evidence = (evidence or []) + ["unverified_landing"]
                 low_url = str(final_url or "").lower()
                 low_title = str(title or "").lower()
-                low_html = str(html or "").lower()
                 if any(
-                    m in low_url or m in low_title or m in low_html
+                    m in low_url
                     for m in (
                         "__cf_chl_rt_tk=",
                         "/cdn-cgi/challenge",
                         "/cdn-cgi/l/chk_captcha",
                         "challenges.cloudflare.com",
                         "validate.perfdrive.com",
-                        "cf-turnstile",
-                        "__cf_chl_opt",
-                        "checking your browser before accessing",
                     )
                 ):
                     evidence.append("verify=challenge_marker")
@@ -486,8 +476,6 @@ def _probe_one(
                     evidence.append("verify=elsevier_not_sciencedirect")
                 if str(domain or "").lower().endswith("doi.org"):
                     evidence.append("verify=still_on_doi_domain")
-                if (len(low_html) < 600) and (not article_signal) and (not pdf_action_signal):
-                    evidence.append("verify=thin_html_no_article_signal")
                 if _is_elsevier_retrieve_url(final_url):
                     evidence.append("elsevier_retrieve_stuck")
     except Exception as e:
