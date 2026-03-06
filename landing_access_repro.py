@@ -4,6 +4,7 @@ import json
 import os
 import re
 import shutil
+import socket
 import subprocess
 import time
 from collections import Counter, defaultdict
@@ -11,6 +12,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from statistics import median
 from typing import Dict, List
 from urllib.parse import urlparse
+from urllib.request import urlopen
 
 from DrissionPage import ChromiumOptions, ChromiumPage
 
@@ -126,10 +128,19 @@ def _resolve_browser_path(preferred_path: str) -> str:
     return ""
 
 
+def _pick_free_local_port() -> int:
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind(("127.0.0.1", 0))
+    port = int(s.getsockname()[1])
+    s.close()
+    return port
+
+
 def _run_chrome_smoke(chrome_path: str, profile_root: str, no_sandbox: bool, single_process: bool) -> Dict[str, str]:
     smoke_dir = os.path.join(profile_root, "_smoke")
     shutil.rmtree(smoke_dir, ignore_errors=True)
     os.makedirs(smoke_dir, exist_ok=True)
+    port = _pick_free_local_port()
 
     cmd = [
         chrome_path,
@@ -146,35 +157,70 @@ def _run_chrome_smoke(chrome_path: str, profile_root: str, no_sandbox: bool, sin
         "--metrics-recording-only",
         "--disable-features=MediaRouter,OptimizationHints",
         f"--user-data-dir={smoke_dir}",
-        "--dump-dom",
-        "data:text/html,<html><body>ok</body></html>",
+        f"--remote-debugging-port={port}",
+        "--remote-debugging-address=127.0.0.1",
+        "about:blank",
     ]
     if no_sandbox:
         cmd.append("--no-sandbox")
     if single_process:
         cmd.extend(["--single-process", "--no-zygote"])
 
+    proc = None
     try:
-        proc = subprocess.run(
+        proc = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
-            timeout=30,
-            check=False,
         )
+        deadline = time.time() + 25
+        version_body = ""
+        while time.time() < deadline:
+            if proc.poll() is not None:
+                break
+            try:
+                with urlopen(f"http://127.0.0.1:{port}/json/version", timeout=1.2) as resp:
+                    version_body = (resp.read() or b"").decode("utf-8", errors="ignore")
+                if version_body:
+                    return {
+                        "ok": "1",
+                        "stderr": "",
+                        "stdout": version_body[-500:],
+                        "mode": "single" if single_process else "normal",
+                        "returncode": "0",
+                    }
+            except Exception:
+                time.sleep(0.5)
     except Exception as e:
         return {"ok": "0", "stderr": str(e), "stdout": "", "mode": "single" if single_process else "normal"}
+    finally:
+        if proc is not None:
+            try:
+                proc.terminate()
+            except Exception:
+                pass
+            try:
+                proc.wait(timeout=3)
+            except Exception:
+                try:
+                    proc.kill()
+                except Exception:
+                    pass
 
-    out = proc.stdout or ""
-    err = proc.stderr or ""
-    ok = (proc.returncode == 0) and ("ok" in out.lower())
+    out = ""
+    err = ""
+    if proc is not None:
+        try:
+            out, err = proc.communicate(timeout=1)
+        except Exception:
+            pass
     return {
-        "ok": "1" if ok else "0",
-        "stderr": err[-2000:],
-        "stdout": out[-500:],
+        "ok": "0",
+        "stderr": (err or "")[-2000:],
+        "stdout": (out or "")[-500:],
         "mode": "single" if single_process else "normal",
-        "returncode": str(proc.returncode),
+        "returncode": str(proc.returncode if proc is not None and proc.returncode is not None else -1),
     }
 
 
