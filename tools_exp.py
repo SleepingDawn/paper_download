@@ -60,6 +60,42 @@ AUTO_PROFILE_DOI_PREFIXES = (
 )
 
 
+def resolve_browser_executable(preferred_path: str = "", logger=None) -> str:
+    candidates = []
+    if preferred_path:
+        candidates.append(preferred_path)
+    env_path = str(os.environ.get("CHROME_PATH", "")).strip()
+    if env_path:
+        candidates.append(env_path)
+    for name in ("google-chrome", "google-chrome-stable", "chromium-browser", "chromium", "chrome"):
+        p = shutil.which(name)
+        if p:
+            candidates.append(p)
+    candidates.extend(
+        [
+            "/usr/bin/google-chrome",
+            "/usr/bin/google-chrome-stable",
+            "/usr/bin/chromium-browser",
+            "/usr/bin/chromium",
+            "/opt/google/chrome/chrome",
+            "/usr/local/bin/chrome",
+            "/home/yongyong0206/chrome-linux64/chrome",
+            "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        ]
+    )
+    seen = set()
+    for path in candidates:
+        p = str(path or "").strip()
+        if not p or p in seen:
+            continue
+        seen.add(p)
+        if os.path.isfile(p) and os.access(p, os.X_OK):
+            if logger:
+                logger.info(f"     [Drission] 브라우저 실행 파일: {p}")
+            return p
+    return ""
+
+
 def _find_system_chrome_user_data_dir(profile_name: str = "Default") -> str:
     candidates = [
         os.path.expanduser("~/Library/Application Support/Google/Chrome"),
@@ -1967,10 +2003,22 @@ def download_with_drission(
 
     doi_norm_preview = _doi_from_doi_url(doi_url)
     is_elsevier_preview = doi_norm_preview.startswith("10.1016")
+    resolved_browser = resolve_browser_executable(chrome_path, logger=logger)
+    if not resolved_browser:
+        if return_detail:
+            return {
+                "ok": False,
+                "reason": "FAIL_NETWORK",
+                "evidence": ["browser_executable_not_found"],
+                "stage": "drission-init",
+                "domain": _extract_domain(doi_url),
+                "http_status": None,
+            }
+        return False
 
     # --- 옵션 설정 ---
     co = ChromiumOptions()
-    co.set_browser_path(chrome_path)
+    co.set_browser_path(resolved_browser)
     _maybe_apply_system_chrome_profile(co, doi_url, logger=logger)
     co.auto_port()
     _apply_best_browser_profile(co)
@@ -3070,6 +3118,12 @@ def download_via_springerpdf(doi: str, output_path: str, logger = None):
 def download_via_sciencedirect(doi: str, output_path: str, logger=None) -> bool:
     # 1. 브라우저 세팅
     co = ChromiumOptions()
+    browser_path = resolve_browser_executable("", logger=logger)
+    if not browser_path:
+        if logger:
+            logger.warning("        [ScienceDirect] 브라우저 실행 파일을 찾지 못해 중단")
+        return False
+    co.set_browser_path(browser_path)
     co.auto_port()
     _apply_best_browser_profile(co)
     page = None

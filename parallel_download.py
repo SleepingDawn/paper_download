@@ -15,6 +15,7 @@ from tools_exp import (
     download_with_cffi,
     download_with_drission,
     normalize_publisher_label,
+    resolve_browser_executable,
     setup_logger,
     try_manual_scihub,
 )
@@ -241,7 +242,7 @@ def _single_download_attempt(
             }
 
     def _run_drission_result() -> Dict[str, Any]:
-        chrome_path = os.environ.get("CHROME_PATH", "/home/yongyong0206/chrome-linux64/chrome")
+        chrome_path = resolve_browser_executable(os.environ.get("CHROME_PATH", ""), logger=logger)
         dr = download_with_drission(
             f"https://doi.org/{doi}",
             save_dir,

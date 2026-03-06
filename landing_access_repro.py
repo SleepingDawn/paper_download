@@ -3,6 +3,7 @@ import csv
 import json
 import os
 import re
+import shutil
 import time
 from collections import Counter, defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
@@ -55,13 +56,73 @@ def load_dois(csv_path: str) -> List[str]:
     return out
 
 
-def _browser_for_worker(chrome_path: str) -> ChromiumPage:
-    co = ChromiumOptions()
-    if chrome_path and os.path.exists(chrome_path):
-        co.set_browser_path(chrome_path)
-    co.auto_port()
-    _apply_best_browser_profile(co)
-    return ChromiumPage(co)
+def _browser_for_worker(
+    chrome_path: str,
+    worker_idx: int,
+    worker_profile_root: str,
+    startup_retries: int = 3,
+    retry_sleep_sec: float = 1.5,
+) -> ChromiumPage:
+    startup_retries = max(1, int(startup_retries))
+    worker_profile_root = os.path.abspath(worker_profile_root)
+    os.makedirs(worker_profile_root, exist_ok=True)
+    worker_profile_name = f"worker_{int(worker_idx)}"
+
+    last_err = None
+    for _ in range(startup_retries):
+        co = ChromiumOptions()
+        if chrome_path and os.path.exists(chrome_path):
+            co.set_browser_path(chrome_path)
+        co.set_user_data_path(worker_profile_root)
+        co.set_user(worker_profile_name)
+        co.auto_port()
+        _apply_best_browser_profile(co)
+        try:
+            return ChromiumPage(co)
+        except Exception as e:
+            last_err = e
+            time.sleep(max(0.3, float(retry_sleep_sec)))
+
+    raise RuntimeError(
+        f"browser_init_failed(worker={worker_idx}, chrome_path={chrome_path}, "
+        f"profile_root={worker_profile_root}, profile={worker_profile_name}): {last_err}"
+    )
+
+
+def _resolve_browser_path(preferred_path: str) -> str:
+    candidates = []
+    if preferred_path:
+        candidates.append(preferred_path)
+    env_path = str(os.environ.get("CHROME_PATH", "")).strip()
+    if env_path:
+        candidates.append(env_path)
+
+    for name in ("google-chrome", "google-chrome-stable", "chromium-browser", "chromium", "chrome"):
+        p = shutil.which(name)
+        if p:
+            candidates.append(p)
+
+    candidates.extend(
+        [
+            "/usr/bin/google-chrome",
+            "/usr/bin/google-chrome-stable",
+            "/usr/bin/chromium-browser",
+            "/usr/bin/chromium",
+            "/opt/google/chrome/chrome",
+            "/usr/local/bin/chrome",
+            "/home/yongyong0206/chrome-linux64/chrome",
+        ]
+    )
+
+    seen = set()
+    for path in candidates:
+        p = str(path or "").strip()
+        if not p or p in seen:
+            continue
+        seen.add(p)
+        if os.path.isfile(p) and os.access(p, os.X_OK):
+            return p
+    return ""
 
 
 def _save_failure_artifacts(
@@ -187,12 +248,19 @@ def _worker_run(
     dois: List[str],
     out_jsonl: str,
     chrome_path: str,
+    worker_profile_root: str,
+    startup_retries: int,
     timeout_sec: float,
     progress_every: int,
     capture_fail_artifacts: bool,
     artifact_dir: str,
 ) -> Dict:
-    page = _browser_for_worker(chrome_path=chrome_path)
+    page = _browser_for_worker(
+        chrome_path=chrome_path,
+        worker_idx=worker_idx,
+        worker_profile_root=worker_profile_root,
+        startup_retries=startup_retries,
+    )
     records = []
     done = 0
     success = 0
@@ -299,6 +367,7 @@ def main() -> None:
     p.add_argument("--input", type=str, default="ready_to_download.csv")
     p.add_argument("--max-dois", type=int, default=0)
     p.add_argument("--workers", type=int, default=5)
+    p.add_argument("--startup-retries", type=int, default=3)
     p.add_argument("--timeout-sec", type=float, default=20.0)
     p.add_argument("--progress-every", type=int, default=50)
     p.add_argument("--chrome-path", type=str, default=os.environ.get("CHROME_PATH", ""))
@@ -307,6 +376,8 @@ def main() -> None:
     p.add_argument("--profile-mode", type=str, default="auto")
     p.add_argument("--profile-name", type=str, default="Default")
     p.add_argument("--persistent-profile-dir", type=str, default="outputs/.chrome_user_data")
+    p.add_argument("--worker-profile-root", type=str, default="")
+    p.add_argument("--clean-worker-profiles", type=int, default=1, choices=[0, 1])
     p.add_argument("--capture-fail-artifacts", type=int, default=1, choices=[0, 1])
     p.add_argument("--artifact-dir", type=str, default="outputs/landing_access_artifacts")
     p.add_argument("--output-jsonl", type=str, default="outputs/landing_access_repro.jsonl")
@@ -329,6 +400,16 @@ def main() -> None:
     os.environ["PDF_BROWSER_PROFILE_MODE"] = str(args.profile_mode or "auto").strip()
     os.environ["PDF_BROWSER_PROFILE_NAME"] = str(args.profile_name or "Default").strip() or "Default"
     os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = os.path.abspath(str(args.persistent_profile_dir))
+    worker_profile_root = str(args.worker_profile_root or "").strip()
+    if not worker_profile_root:
+        worker_profile_root = os.path.join(
+            os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"],
+            "landing_worker_profiles",
+        )
+    worker_profile_root = os.path.abspath(worker_profile_root)
+    if int(args.clean_worker_profiles) == 1 and os.path.isdir(worker_profile_root):
+        shutil.rmtree(worker_profile_root, ignore_errors=True)
+    os.makedirs(worker_profile_root, exist_ok=True)
 
     os.makedirs(os.path.dirname(args.output_jsonl) or ".", exist_ok=True)
     if int(args.capture_fail_artifacts) == 1:
@@ -340,7 +421,16 @@ def main() -> None:
         except FileNotFoundError:
             pass
 
-    chrome_path = str(args.chrome_path or "").strip()
+    chrome_path = _resolve_browser_path(str(args.chrome_path or "").strip())
+    if not chrome_path:
+        raise RuntimeError(
+            "Chrome/Chromium executable not found. "
+            "Set --chrome-path or CHROME_PATH. "
+            "Tried commands: google-chrome, google-chrome-stable, chromium-browser, chromium, chrome."
+        )
+
+    print(json.dumps({"resolved_chrome_path": chrome_path}, ensure_ascii=False), flush=True)
+    print(json.dumps({"worker_profile_root": worker_profile_root}, ensure_ascii=False), flush=True)
     all_records = []
     with ProcessPoolExecutor(max_workers=workers) as ex:
         futs = []
@@ -352,6 +442,8 @@ def main() -> None:
                     chunk,
                     worker_files[i],
                     chrome_path,
+                    worker_profile_root,
+                    int(args.startup_retries),
                     float(args.timeout_sec),
                     int(args.progress_every),
                     bool(int(args.capture_fail_artifacts)),
@@ -381,9 +473,11 @@ def main() -> None:
         "workers": workers,
         "headless": bool(int(args.headless)),
         "no_sandbox": bool(int(args.no_sandbox)),
+        "startup_retries": int(args.startup_retries),
         "profile_mode": os.environ.get("PDF_BROWSER_PROFILE_MODE", ""),
         "profile_name": os.environ.get("PDF_BROWSER_PROFILE_NAME", ""),
         "persistent_profile_dir": os.environ.get("PDF_BROWSER_PERSISTENT_PROFILE_DIR", ""),
+        "worker_profile_root": worker_profile_root,
         "timeout_sec": float(args.timeout_sec),
         "total_valid": len(dois),
         "criteria": "SUCCESS_ACCESS if page loaded and detect_access_issue is not FAIL_CAPTCHA/FAIL_BLOCK",

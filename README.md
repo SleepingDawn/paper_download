@@ -18,17 +18,26 @@ python3 -m pip install -r requirements.txt
 
 `landing_access_repro.py`는 DOI 랜딩 성공 여부만 검사하고, 실패 시 스크린샷/HTML/메타 로그를 남깁니다.
 
+먼저 서버에서 브라우저 경로를 확인하세요:
+
+```bash
+which google-chrome || which google-chrome-stable || which chromium-browser || which chromium || which chrome
+```
+
 ```bash
 python3 -u landing_access_repro.py \
   --input ready_to_download.csv \
   --max-dois 100 \
   --workers 5 \
+  --startup-retries 3 \
   --timeout-sec 20 \
   --headless 1 \
   --no-sandbox 1 \
   --profile-mode auto \
   --profile-name Default \
   --persistent-profile-dir outputs/.chrome_user_data \
+  --worker-profile-root outputs/.chrome_user_data/landing_worker_profiles \
+  --clean-worker-profiles 1 \
   --capture-fail-artifacts 1 \
   --artifact-dir outputs/landing_access_artifacts \
   --output-jsonl outputs/landing_access_repro.top100.jsonl \
@@ -195,6 +204,14 @@ Drission 내부 전략:
 - `PDF_BROWSER_HEADLESS=1`
 - `max_workers`를 1~4 수준으로 제한
 - 서버 환경이면 `PDF_BROWSER_NO_SANDBOX=1` 검토
+
+### `BrowserConnectError`가 날 때
+
+- 워커 충돌 가능성이 높으므로:
+  - `--worker-profile-root`를 지정해 워커별 프로필 분리
+  - `--clean-worker-profiles 1`로 stale lock 제거
+  - `--startup-retries 3` 이상 사용
+- 여전히 실패하면 먼저 `--workers 1`로 단건 검증 후 병렬 수를 올리세요.
 
 ---
 
