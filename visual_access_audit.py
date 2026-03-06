@@ -154,7 +154,7 @@ def _probe_one(
         domain = (urlparse(final_url).netloc or "").lower()
         title = page.title or ""
         html = page.html or ""
-        html_issue, html_evidence = detect_access_issue(title=title, html=html)
+        html_issue, html_evidence = detect_access_issue(title=title, html=html, url=final_url, domain=domain)
 
         image_name = _safe_image_name(idx=idx, doi=doi)
         screenshot_path = os.path.join(screenshot_dir, image_name)

@@ -35,6 +35,7 @@ python3 -u landing_access_repro.py \
   --no-sandbox 1 \
   --server-tuned 1 \
   --single-process 0 \
+  --humanized-browser 1 \
   --assume-institution-access 1 \
   --profile-mode auto \
   --profile-name Default \
@@ -67,6 +68,7 @@ python3 -u landing_access_repro.py \
 참고:
 - Elsevier `linkinghub/.../retrieve/pii/...` + 제목 `Redirecting` 상태는 성공으로 보지 않습니다.
 - 스크립트가 handoff 이동을 1회 시도한 뒤에도 retrieve에 머무르면 `FAIL_BLOCK`으로 기록합니다.
+- AIP URL에 `__cf_chl_rt_tk` 또는 Cloudflare challenge 토큰이 있으면 `FAIL_BLOCK`으로 기록합니다.
 
 ### 2-1. DOI CSV로 바로 다운로드
 
@@ -145,7 +147,7 @@ Drission 내부 전략:
 핵심은 “사람 브라우저처럼 보이되, 실패 시 빠르게 포기”입니다.
 
 - 브라우저 프로파일 보정
-  - 고정 UA, 언어/윈도우 크기, `AutomationControlled` 비활성화
+  - OS/헤드리스 환경에 맞는 UA 자동 선택, 언어/윈도우 크기, `AutomationControlled` 비활성화
   - `eager` load mode
   - `auto` 프로필 모드에서 고마찰 DOI(Elsevier/AIP/RSC/MDPI)는 시스템 프로필 우선 사용
   - 시스템 프로필이 없으면 `outputs/.chrome_user_data` 지속 프로필로 자동 fallback
@@ -154,6 +156,7 @@ Drission 내부 전략:
 - 접근 판정 로직
   - `detect_access_issue()`로 `FAIL_CAPTCHA/FAIL_BLOCK` 판단
   - 쿠키/동의 오버레이는 차단으로 오판하지 않도록 soft 처리
+  - URL에 challenge 토큰(`__cf_chl_rt_tk`, `/cdn-cgi/challenge` 등)이 있으면 성공으로 보지 않음
   - `validate user` 페이지는 우회 클릭 없이 차단으로 즉시 분류
   - `authenticate/password required` 페이지는 즉시 중단
 - 도메인 특화 처리
@@ -176,6 +179,8 @@ Drission 내부 전략:
 
 - `PDF_BROWSER_HEADLESS=1` : 헤드리스 실행
 - `PDF_BROWSER_NO_SANDBOX=1` : 서버 컨테이너에서 필요할 수 있음
+- `PDF_BROWSER_HUMANIZED=1` : 과도한 `--disable-*` 플래그를 줄여 사람 브라우저 지문을 우선
+- `PDF_BROWSER_UA_PLATFORM=linux|mac` : UA 플랫폼 강제(기본은 자동)
 - `CHROME_PATH=/path/to/chrome` : 브라우저 실행 파일 경로
 - `PDF_BROWSER_PROFILE_MODE=auto|temp` : 브라우저 프로필 전략 (`auto` 권장)
 - `PDF_BROWSER_PROFILE_NAME=Default` : 시스템 프로필 이름

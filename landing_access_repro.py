@@ -278,20 +278,48 @@ def _build_artifact_zip(records: List[Dict], artifact_dir: str, zip_path: str, t
     return zip_path
 
 
-def _verify_landing_success(url: str, domain: str, title: str, article_signal: bool, pdf_action_signal: bool) -> bool:
+def _verify_landing_success(
+    doi: str,
+    url: str,
+    domain: str,
+    title: str,
+    html: str,
+    article_signal: bool,
+    pdf_action_signal: bool,
+) -> bool:
     low_url = str(url or "").lower()
     low_domain = str(domain or "").lower()
     low_title = str(title or "").strip().lower()
+    low_html = str(html or "").lower()
 
     if (not low_domain) or low_domain.endswith("doi.org"):
         return False
     if _is_elsevier_retrieve_url(low_url):
+        return False
+    challenge_markers = (
+        "__cf_chl_rt_tk=",
+        "/cdn-cgi/challenge",
+        "/cdn-cgi/l/chk_captcha",
+        "challenges.cloudflare.com",
+        "validate.perfdrive.com",
+        "cf-turnstile",
+        "__cf_chl_opt",
+        "checking your browser before accessing",
+    )
+    if any(m in low_url or m in low_html or m in low_title for m in challenge_markers):
+        return False
+    if ("pubs.aip.org" in low_domain) and ("__cf_chl_rt_tk=" in low_url):
+        return False
+    doi_norm = str(doi or "").strip().lower()
+    if doi_norm.startswith("10.1016") and ("sciencedirect.com" not in low_domain):
         return False
     if article_signal or pdf_action_signal:
         return True
     if low_title in ("redirecting", "redirecting...", "redirect"):
         return False
     if len(low_title) < 12:
+        return False
+    if len(low_html) < 600:
         return False
     return True
 
@@ -406,7 +434,7 @@ def _probe_one(
         article_signal = bool(_has_article_signal(title=title, html=html))
         pdf_action_signal = bool(_has_pdf_action_signal(title=title, html=html))
         consent_signal = bool(_has_cookie_or_consent_signal(title=title, html=html))
-        issue, evidence = detect_access_issue(title=title, html=html)
+        issue, evidence = detect_access_issue(title=title, html=html, url=final_url, domain=domain)
         unexpected_landing = (
             (not domain)
             or ("google." in domain)
@@ -424,9 +452,11 @@ def _probe_one(
             outcome = OUT_FAIL_ACCESS_RIGHTS
         else:
             verified_success = _verify_landing_success(
+                doi=doi,
                 url=final_url,
                 domain=domain,
                 title=title,
+                html=html,
                 article_signal=article_signal,
                 pdf_action_signal=pdf_action_signal,
             )
@@ -435,6 +465,29 @@ def _probe_one(
             else:
                 outcome = OUT_FAIL_BLOCK
                 evidence = (evidence or []) + ["unverified_landing"]
+                low_url = str(final_url or "").lower()
+                low_title = str(title or "").lower()
+                low_html = str(html or "").lower()
+                if any(
+                    m in low_url or m in low_title or m in low_html
+                    for m in (
+                        "__cf_chl_rt_tk=",
+                        "/cdn-cgi/challenge",
+                        "/cdn-cgi/l/chk_captcha",
+                        "challenges.cloudflare.com",
+                        "validate.perfdrive.com",
+                        "cf-turnstile",
+                        "__cf_chl_opt",
+                        "checking your browser before accessing",
+                    )
+                ):
+                    evidence.append("verify=challenge_marker")
+                if str(doi or "").strip().lower().startswith("10.1016") and ("sciencedirect.com" not in str(domain or "").lower()):
+                    evidence.append("verify=elsevier_not_sciencedirect")
+                if str(domain or "").lower().endswith("doi.org"):
+                    evidence.append("verify=still_on_doi_domain")
+                if (len(low_html) < 600) and (not article_signal) and (not pdf_action_signal):
+                    evidence.append("verify=thin_html_no_article_signal")
                 if _is_elsevier_retrieve_url(final_url):
                     evidence.append("elsevier_retrieve_stuck")
     except Exception as e:
@@ -625,6 +678,7 @@ def main() -> None:
     p.add_argument("--no-sandbox", type=int, default=1, choices=[0, 1])
     p.add_argument("--server-tuned", type=int, default=1, choices=[0, 1])
     p.add_argument("--single-process", type=int, default=0, choices=[0, 1])
+    p.add_argument("--humanized-browser", type=int, default=1, choices=[0, 1])
     p.add_argument("--assume-institution-access", type=int, default=1, choices=[0, 1])
     p.add_argument("--profile-mode", type=str, default="auto")
     p.add_argument("--profile-name", type=str, default="Default")
@@ -658,6 +712,7 @@ def main() -> None:
     os.environ["PDF_BROWSER_NO_SANDBOX"] = "1" if int(args.no_sandbox) == 1 else "0"
     os.environ["PDF_BROWSER_SERVER_TUNED"] = "1" if int(args.server_tuned) == 1 else "0"
     os.environ["PDF_BROWSER_SINGLE_PROCESS"] = "1" if int(args.single_process) == 1 else "0"
+    os.environ["PDF_BROWSER_HUMANIZED"] = "1" if int(args.humanized_browser) == 1 else "0"
     os.environ["PDF_ASSUME_INSTITUTION_ACCESS"] = "1" if int(args.assume_institution_access) == 1 else "0"
     os.environ["PDF_BROWSER_PROFILE_MODE"] = str(args.profile_mode or "auto").strip()
     os.environ["PDF_BROWSER_PROFILE_NAME"] = str(args.profile_name or "Default").strip() or "Default"
@@ -794,6 +849,7 @@ def main() -> None:
         "no_sandbox": bool(int(args.no_sandbox)),
         "server_tuned": bool(int(args.server_tuned)),
         "single_process": os.environ.get("PDF_BROWSER_SINGLE_PROCESS", "0"),
+        "humanized_browser": os.environ.get("PDF_BROWSER_HUMANIZED", "1"),
         "assume_institution_access": bool(int(args.assume_institution_access)),
         "capture_success_artifacts": bool(int(args.capture_success_artifacts)),
         "capture_success_html": bool(int(args.capture_success_html)),
@@ -804,7 +860,7 @@ def main() -> None:
         "worker_profile_root": worker_profile_root,
         "timeout_sec": float(args.timeout_sec),
         "total_valid": len(dois),
-        "criteria": "SUCCESS_ACCESS if page loaded and detect_access_issue is not FAIL_CAPTCHA/FAIL_BLOCK",
+        "criteria": "SUCCESS_ACCESS if no access issue and landing verification passes (non-challenge URL/domain/title/html)",
         "summary": summary,
         "output_jsonl": os.path.abspath(args.output_jsonl),
         "artifact_dir": os.path.abspath(args.artifact_dir) if int(args.capture_fail_artifacts) == 1 else "",

@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 import time
 import shutil
 import logging
@@ -35,10 +36,16 @@ DEFAULT_DOWNLOAD_PATH = os.path.abspath("./downloaded_files")
 BEST_BROWSER_LANG = "en-US"
 BEST_BROWSER_LANG_PREF = "en-US,en"
 BEST_BROWSER_ACCEPT_LANGUAGE = "en-US,en;q=0.9"
-BEST_BROWSER_UA = (
+BEST_BROWSER_UA_MAC = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    "(KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
 )
+BEST_BROWSER_UA_LINUX = (
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+)
+# Backward-compat constant. Runtime selection is done by _resolve_best_browser_ua().
+BEST_BROWSER_UA = BEST_BROWSER_UA_LINUX
 BEST_BROWSER_WINDOW = "1728,1117"
 MAX_ACTION_WAIT_S = int(os.getenv("PDF_ACTION_MAX_WAIT_S", "60"))
 HIGH_FRICTION_DOMAINS = (
@@ -58,6 +65,23 @@ AUTO_PROFILE_DOI_PREFIXES = (
     "10.1039",  # RSC
     "10.3390",  # MDPI
 )
+
+
+def _resolve_best_browser_ua() -> str:
+    override = os.getenv("PDF_BROWSER_UA", "").strip()
+    if override:
+        return override
+
+    forced = os.getenv("PDF_BROWSER_UA_PLATFORM", "").strip().lower()
+    if forced in ("mac", "macos", "darwin"):
+        return BEST_BROWSER_UA_MAC
+    if forced in ("linux", "server"):
+        return BEST_BROWSER_UA_LINUX
+
+    headless = os.getenv("PDF_BROWSER_HEADLESS", "0").strip().lower() in ("1", "true", "yes")
+    if sys.platform == "darwin" and not headless:
+        return BEST_BROWSER_UA_MAC
+    return BEST_BROWSER_UA_LINUX
 
 
 def resolve_browser_executable(preferred_path: str = "", logger=None) -> str:
@@ -151,6 +175,7 @@ def _apply_best_browser_profile(co: ChromiumOptions) -> None:
     no_sandbox = os.getenv("PDF_BROWSER_NO_SANDBOX", "0").strip().lower() in ("1", "true", "yes")
     server_tuned = os.getenv("PDF_BROWSER_SERVER_TUNED", "0").strip().lower() in ("1", "true", "yes")
     single_process = os.getenv("PDF_BROWSER_SINGLE_PROCESS", "0").strip().lower() in ("1", "true", "yes")
+    humanized = os.getenv("PDF_BROWSER_HUMANIZED", "1").strip().lower() in ("1", "true", "yes")
 
     if headless:
         co.set_argument("--headless=new")
@@ -167,16 +192,18 @@ def _apply_best_browser_profile(co: ChromiumOptions) -> None:
     co.set_pref("credentials_enable_service", False)
     co.set_pref("profile.password_manager_enabled", False)
     co.set_argument("--start-maximized")
-    co.set_argument("--disable-extensions")
     co.set_argument("--password-store=basic")
     co.set_argument("--use-mock-keychain")
     if server_tuned:
-        co.set_argument("--disable-background-networking")
-        co.set_argument("--disable-component-update")
-        co.set_argument("--disable-domain-reliability")
-        co.set_argument("--metrics-recording-only")
-        co.set_argument("--disable-sync")
-        co.set_argument("--disable-features=MediaRouter,OptimizationHints")
+        # 지문 일관성을 우선한다. 강한 disable 플래그는 opt-out일 때만 사용.
+        co.set_argument("--disable-dev-shm-usage")
+        if not humanized:
+            co.set_argument("--disable-background-networking")
+            co.set_argument("--disable-component-update")
+            co.set_argument("--disable-domain-reliability")
+            co.set_argument("--metrics-recording-only")
+            co.set_argument("--disable-sync")
+            co.set_argument("--disable-features=MediaRouter,OptimizationHints")
     if single_process:
         co.set_argument("--single-process")
         co.set_argument("--no-zygote")
@@ -187,7 +214,7 @@ def _apply_best_browser_profile(co: ChromiumOptions) -> None:
     if no_sandbox:
         co.set_argument("--no-sandbox")
         co.set_argument("--disable-dev-shm-usage")
-    co.set_user_agent(BEST_BROWSER_UA)
+    co.set_user_agent(_resolve_best_browser_ua())
 # =======================================================
 # Logger
 # =======================================================
@@ -679,7 +706,7 @@ def _resolve_doi_redirect_target(doi_url: str, logger=None) -> str:
     if not raw:
         return ""
     headers = {
-        "User-Agent": BEST_BROWSER_UA,
+        "User-Agent": _resolve_best_browser_ua(),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": BEST_BROWSER_ACCEPT_LANGUAGE,
     }
@@ -1145,19 +1172,33 @@ def _attempt_elsevier_two_step_click_download(
 def _has_article_signal(title: str = "", html: str = "") -> bool:
     t = (title or "").lower()
     h = (html or "").lower()
+    hard_block_title = (
+        "just a moment",
+        "attention required",
+        "validate user",
+        "verify you are human",
+        "redirecting",
+        "are you a robot",
+    )
     markers = (
         "name=\"citation_title\"",
         "name='citation_title'",
         "name=\"citation_doi\"",
         "name='citation_doi'",
         "name=\"citation_pdf_url\"",
+        "name='citation_pdf_url'",
+        "name=\"dc.identifier\"",
+        "name='dc.identifier'",
+        "\"@type\":\"scholarlyarticle\"",
+        "\"@type\": \"scholarlyarticle\"",
+        "schema.org/scholarlyarticle",
+        "og:type\" content=\"article\"",
+        "article-header",
+        "article-title",
         "/doi/pdf/",
         "/pdfft?",
-        "article",
-        "abstract",
-        "references",
     )
-    if len(t) >= 35 and not any(k in t for k in ("just a moment", "attention required", "validate user")):
+    if len(t) >= 35 and not any(k in t for k in hard_block_title):
         return True
     return any(m in h for m in markers)
 
@@ -1168,10 +1209,11 @@ def _has_pdf_action_signal(title: str = "", html: str = "") -> bool:
         "view pdf",
         "open pdf",
         "download pdf",
-        "open",
         "/pdfft",
         "citation_pdf_url",
         "article-pdf",
+        "downloadarticlepdf",
+        ".pdf",
     )
     return any(m in blob for m in markers)
 
@@ -1255,6 +1297,10 @@ def _classify_access_gate(title: str = "", html: str = "") -> str:
         "forbidden",
         "verify you are human",
         "are you a robot",
+        "checking your browser before accessing",
+        "__cf_chl_opt",
+        "cf-browser-verification",
+        "cf challenge",
     )
     if any(m in blob for m in bot_like_markers):
         return "bot_like"
@@ -1485,6 +1531,11 @@ def _should_soft_continue_issue(
 ) -> bool:
     if issue not in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
         return False
+    ev = [str(x).lower() for x in (evidence or [])]
+    if any("url_marker=challenge_or_bot" in e for e in ev):
+        return False
+    if any("keyword=access_gate_bot_like" in e for e in ev):
+        return False
     if _has_auth_required_signal(title=title, html=html):
         return False
     if not _is_high_friction_domain(domain):
@@ -1507,7 +1558,6 @@ def _should_soft_continue_issue(
     if any(k in t for k in hard_title_markers):
         return False
 
-    ev = [str(x).lower() for x in (evidence or [])]
     soft_markers = ("keyword=too many requests", "keyword=/cdn-cgi/challenge")
     if any(m in ev_item for ev_item in ev for m in soft_markers):
         return _has_article_signal(title=title, html=html) or _has_pdf_action_signal(title=title, html=html)
@@ -1515,13 +1565,17 @@ def _should_soft_continue_issue(
     return False
 
 
-def detect_access_issue(title: str = "", html: str = "", http_status: int = None):
+def detect_access_issue(title: str = "", html: str = "", http_status: int = None, url: str = "", domain: str = ""):
     """
     캡차/차단 신호를 감지해 (reason, evidence)를 반환.
     reason: FAIL_CAPTCHA | FAIL_BLOCK | FAIL_ACCESS_RIGHTS | None
     """
     t = (title or "").lower()
     h = (html or "").lower()
+    u = (url or "").lower()
+    d = (domain or "").lower()
+    if (not d) and u:
+        d = _extract_domain(u)
     evidence = []
     article_like = _has_article_signal(title=title, html=html)
     pdf_action_like = _has_pdf_action_signal(title=title, html=html)
@@ -1529,6 +1583,20 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
     auth_required_like = _has_auth_required_signal(title=title, html=html)
     access_gate = _classify_access_gate(title=title, html=html)
     assume_inst_access = os.getenv("PDF_ASSUME_INSTITUTION_ACCESS", "0").strip().lower() in ("1", "true", "yes")
+    challenge_url_markers = (
+        "__cf_chl_rt_tk=",
+        "/cdn-cgi/challenge",
+        "/cdn-cgi/l/chk_captcha",
+        "challenges.cloudflare.com",
+        "validate.perfdrive.com",
+        "/captcha/",
+    )
+    if any(m in u for m in challenge_url_markers):
+        evidence.append("url_marker=challenge_or_bot")
+        return "FAIL_BLOCK", evidence
+    if ("pubs.aip.org" in d) and ("__cf_chl_rt_tk=" in u):
+        evidence.append("url_marker=aip_cloudflare_challenge")
+        return "FAIL_BLOCK", evidence
 
     if auth_required_like:
         evidence.append("keyword=auth_required")
@@ -1560,6 +1628,7 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
         "are you a robot",
         "i am not a robot",
         "validate user",
+        "checking your browser before accessing",
     ]
     title_block_keywords = [
         "attention required",
@@ -1576,6 +1645,9 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
         "validate user",
         "verify you are human",
         "are you a robot",
+        "__cf_chl_opt",
+        "cf-browser-verification",
+        "cf challenge",
     ]
     html_block_markers = [
         "error code 1020",
@@ -1942,7 +2014,7 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
     try:
         timeout = max(2, min(int(timeout), MAX_ACTION_WAIT_S))
         if not ua:
-            ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            ua = _resolve_best_browser_ua()
 
         headers = {
             "User-Agent": ua,
@@ -2031,7 +2103,12 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
 # =======================================================
 
 def solve_captcha_drission(page, logger):
-    issue, evidence = detect_access_issue(title=page.title, html=page.html)
+    issue, evidence = detect_access_issue(
+        title=page.title,
+        html=page.html,
+        url=getattr(page, "url", "") or "",
+        domain=_extract_domain(getattr(page, "url", "") or ""),
+    )
     if issue == "FAIL_CAPTCHA":
         logger.warning(f"        캡차 감지됨. 즉시 중단합니다. evidence={evidence}")
         return True
@@ -2320,7 +2397,12 @@ def download_with_drission(
             if (not current_domain) or ("google." in current_domain) or page.url.startswith("chrome://") or page.url.startswith("about:blank"):
                 return _ret(False, "FAIL_NETWORK", [f"unexpected_landing_page={page.url}"], stage="landing")
 
-            issue, evidence = detect_access_issue(title=page_title, html=page_html)
+            issue, evidence = detect_access_issue(
+                title=page_title,
+                html=page_html,
+                url=page.url or "",
+                domain=current_domain,
+            )
             # 요청사항 반영:
             # hard-fail 판단은 landing 단계에서만 수행하고, 이후 단계는 다운로드 시도까지 진행한다.
             if issue == "FAIL_ACCESS_RIGHTS":
@@ -2416,7 +2498,12 @@ def download_with_drission(
 
             page_title = page.title or ""
             page_html = page.html or ""
-            issue, evidence = detect_access_issue(title=page_title, html=page_html)
+            issue, evidence = detect_access_issue(
+                title=page_title,
+                html=page_html,
+                url=page.url or "",
+                domain=current_domain,
+            )
             if issue == "FAIL_ACCESS_RIGHTS":
                 return _ret(False, issue, evidence, stage="pdf-discovery")
             if issue in ("FAIL_CAPTCHA", "FAIL_BLOCK") and logger:
@@ -2561,7 +2648,7 @@ def download_with_drission(
                         full_save_path,
                         referer=page.url,
                         cookies=current_cookies,
-                        ua=BEST_BROWSER_UA,
+                        ua=_resolve_best_browser_ua(),
                         logger=logger,
                         return_detail=True,
                         timeout=12,
@@ -2609,7 +2696,7 @@ def download_with_drission(
                         full_save_path,
                         referer=page.url,
                         cookies=current_cookies,
-                        ua=BEST_BROWSER_UA,
+                        ua=_resolve_best_browser_ua(),
                         logger=logger,
                         return_detail=True,
                         timeout=120 if mode == "deep" else 60,
@@ -3209,7 +3296,12 @@ def download_via_sciencedirect(doi: str, output_path: str, logger=None) -> bool:
         current_domain = _extract_domain(page.url)
         
         # 3. 캡차/차단 감지 시 즉시 중단 (우회/자동 풀이 없음)
-        issue, evidence = detect_access_issue(title=page_title, html=page_html)
+        issue, evidence = detect_access_issue(
+            title=page_title,
+            html=page_html,
+            url=page.url or "",
+            domain=current_domain,
+        )
         if issue in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
             if _should_soft_continue_issue(issue, evidence, page_title, page_html, current_domain):
                 if logger:
