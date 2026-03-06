@@ -17,7 +17,16 @@ from urllib.request import urlopen
 
 from DrissionPage import ChromiumOptions, ChromiumPage
 
-from tools_exp import _apply_best_browser_profile, _sanitize_doi_to_filename, detect_access_issue
+from tools_exp import (
+    _apply_best_browser_profile,
+    _extract_elsevier_retrieve_handoff_url,
+    _has_article_signal,
+    _has_cookie_or_consent_signal,
+    _has_pdf_action_signal,
+    _is_elsevier_retrieve_url,
+    _sanitize_doi_to_filename,
+    detect_access_issue,
+)
 
 OUT_SUCCESS_ACCESS = "SUCCESS_ACCESS"
 OUT_FAIL_CAPTCHA = "FAIL_CAPTCHA"
@@ -225,9 +234,15 @@ def _run_chrome_smoke(chrome_path: str, profile_root: str, no_sandbox: bool, sin
     }
 
 
-def _build_failure_artifact_zip(records: List[Dict], artifact_dir: str, zip_path: str) -> str:
-    fail_records = [r for r in records if (r.get("outcome") != OUT_SUCCESS_ACCESS)]
-    if not fail_records:
+def _build_artifact_zip(records: List[Dict], artifact_dir: str, zip_path: str, target: str) -> str:
+    target = str(target or "").strip().lower()
+    if target == "success":
+        target_records = [r for r in records if (r.get("outcome") == OUT_SUCCESS_ACCESS)]
+    else:
+        target = "fail"
+        target_records = [r for r in records if (r.get("outcome") != OUT_SUCCESS_ACCESS)]
+
+    if not target_records:
         return ""
 
     abs_artifact_dir = os.path.abspath(artifact_dir)
@@ -236,7 +251,7 @@ def _build_failure_artifact_zip(records: List[Dict], artifact_dir: str, zip_path
 
     manifest = []
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-        for rec in fail_records:
+        for rec in target_records:
             row = {
                 "doi": rec.get("doi", ""),
                 "outcome": rec.get("outcome", ""),
@@ -259,40 +274,64 @@ def _build_failure_artifact_zip(records: List[Dict], artifact_dir: str, zip_path
                     arc = os.path.join("artifacts", os.path.basename(p))
                 zf.write(p, arcname=arc)
 
-        zf.writestr("manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2))
+        zf.writestr(f"manifest_{target}.json", json.dumps(manifest, ensure_ascii=False, indent=2))
     return zip_path
 
 
-def _save_failure_artifacts(
+def _verify_landing_success(url: str, domain: str, title: str, article_signal: bool, pdf_action_signal: bool) -> bool:
+    low_url = str(url or "").lower()
+    low_domain = str(domain or "").lower()
+    low_title = str(title or "").strip().lower()
+
+    if (not low_domain) or low_domain.endswith("doi.org"):
+        return False
+    if _is_elsevier_retrieve_url(low_url):
+        return False
+    if article_signal or pdf_action_signal:
+        return True
+    if low_title in ("redirecting", "redirecting...", "redirect"):
+        return False
+    if len(low_title) < 12:
+        return False
+    return True
+
+
+def _save_probe_artifacts(
     page: ChromiumPage,
     doi: str,
     artifact_dir: str,
     title: str,
     html: str,
     final_url: str,
+    outcome: str,
+    include_html: bool,
 ) -> Dict[str, str]:
     out = {"screenshot": "", "html": "", "meta": ""}
     if page is None or not artifact_dir:
         return out
+    bucket = "success" if outcome == OUT_SUCCESS_ACCESS else "fail"
+    artifact_dir = os.path.abspath(os.path.join(artifact_dir, bucket))
     os.makedirs(artifact_dir, exist_ok=True)
     safe = _sanitize_doi_to_filename(doi).replace(".pdf", "")
     ts = int(time.time() * 1000)
-    ss_name = f"landing_fail_{safe}_{ts}.png"
-    html_name = f"landing_fail_{safe}_{ts}.html"
-    meta_name = f"landing_fail_{safe}_{ts}.json"
+    prefix = "landing_success" if outcome == OUT_SUCCESS_ACCESS else "landing_fail"
+    ss_name = f"{prefix}_{safe}_{ts}.png"
+    html_name = f"{prefix}_{safe}_{ts}.html"
+    meta_name = f"{prefix}_{safe}_{ts}.json"
 
     try:
         page.get_screenshot(path=artifact_dir, name=ss_name, full_page=False)
         out["screenshot"] = os.path.abspath(os.path.join(artifact_dir, ss_name))
     except Exception:
         pass
-    try:
-        html_path = os.path.abspath(os.path.join(artifact_dir, html_name))
-        with open(html_path, "w", encoding="utf-8") as f:
-            f.write(html or "")
-        out["html"] = html_path
-    except Exception:
-        pass
+    if include_html:
+        try:
+            html_path = os.path.abspath(os.path.join(artifact_dir, html_name))
+            with open(html_path, "w", encoding="utf-8") as f:
+                f.write(html or "")
+            out["html"] = html_path
+        except Exception:
+            pass
     try:
         meta_path = os.path.abspath(os.path.join(artifact_dir, meta_name))
         with open(meta_path, "w", encoding="utf-8") as f:
@@ -300,6 +339,7 @@ def _save_failure_artifacts(
                 {
                     "doi": doi,
                     "captured_at_ms": ts,
+                    "outcome": outcome,
                     "final_url": final_url,
                     "title": (title or "")[:400],
                     "html_len": len(html or ""),
@@ -319,6 +359,8 @@ def _probe_one(
     doi: str,
     timeout_sec: float,
     capture_fail_artifacts: bool,
+    capture_success_artifacts: bool,
+    capture_success_html: bool,
     artifact_dir: str,
 ) -> Dict:
     started = time.perf_counter()
@@ -326,8 +368,13 @@ def _probe_one(
     final_url = ""
     domain = ""
     title = ""
+    html = ""
     issue = None
     evidence = []
+    article_signal = False
+    pdf_action_signal = False
+    consent_signal = False
+    verified_success = False
 
     try:
         page.get(doi_url, retry=1, interval=1, timeout=timeout_sec)
@@ -335,6 +382,30 @@ def _probe_one(
         domain = (urlparse(final_url).netloc or "").lower()
         title = page.title or ""
         html = page.html or ""
+
+        # Elsevier는 retrieve 랜딩에서 "Redirecting" 상태로 멈출 수 있어 1회 handoff 보정
+        if _is_elsevier_retrieve_url(final_url):
+            time.sleep(2.2)
+            final_url = page.url or final_url
+            domain = (urlparse(final_url).netloc or "").lower()
+            title = page.title or ""
+            html = page.html or ""
+            if _is_elsevier_retrieve_url(final_url):
+                handoff = _extract_elsevier_retrieve_handoff_url(final_url, html)
+                if handoff:
+                    try:
+                        page.get(handoff, retry=0, interval=0.5, timeout=min(timeout_sec, 12))
+                        time.sleep(1.0)
+                    except Exception:
+                        pass
+                final_url = page.url or final_url
+                domain = (urlparse(final_url).netloc or "").lower()
+                title = page.title or ""
+                html = page.html or ""
+
+        article_signal = bool(_has_article_signal(title=title, html=html))
+        pdf_action_signal = bool(_has_pdf_action_signal(title=title, html=html))
+        consent_signal = bool(_has_cookie_or_consent_signal(title=title, html=html))
         issue, evidence = detect_access_issue(title=title, html=html)
         unexpected_landing = (
             (not domain)
@@ -352,7 +423,20 @@ def _probe_one(
         elif issue == OUT_FAIL_ACCESS_RIGHTS:
             outcome = OUT_FAIL_ACCESS_RIGHTS
         else:
-            outcome = OUT_SUCCESS_ACCESS
+            verified_success = _verify_landing_success(
+                url=final_url,
+                domain=domain,
+                title=title,
+                article_signal=article_signal,
+                pdf_action_signal=pdf_action_signal,
+            )
+            if verified_success:
+                outcome = OUT_SUCCESS_ACCESS
+            else:
+                outcome = OUT_FAIL_BLOCK
+                evidence = (evidence or []) + ["unverified_landing"]
+                if _is_elsevier_retrieve_url(final_url):
+                    evidence.append("elsevier_retrieve_stuck")
     except Exception as e:
         outcome = OUT_FAIL_NETWORK
         evidence = [str(e)[:300]]
@@ -361,8 +445,26 @@ def _probe_one(
 
     elapsed_ms = int((time.perf_counter() - started) * 1000)
     artifacts = {"screenshot": "", "html": "", "meta": ""}
-    if capture_fail_artifacts and outcome != OUT_SUCCESS_ACCESS:
-        artifacts = _save_failure_artifacts(page, doi, artifact_dir, title, html, final_url)
+    should_capture = (
+        (capture_fail_artifacts and outcome != OUT_SUCCESS_ACCESS)
+        or (capture_success_artifacts and outcome == OUT_SUCCESS_ACCESS)
+    )
+    if should_capture:
+        artifacts = _save_probe_artifacts(
+            page=page,
+            doi=doi,
+            artifact_dir=artifact_dir,
+            title=title,
+            html=html,
+            final_url=final_url,
+            outcome=outcome,
+            include_html=(outcome != OUT_SUCCESS_ACCESS) or bool(capture_success_html),
+        )
+
+    verification_level = "n/a"
+    if outcome == OUT_SUCCESS_ACCESS:
+        verification_level = "high" if (article_signal or pdf_action_signal) else "low"
+
     return {
         "doi": doi,
         "doi_url": doi_url,
@@ -372,6 +474,12 @@ def _probe_one(
         "outcome": outcome,
         "issue": issue or "",
         "evidence": evidence,
+        "article_signal": article_signal,
+        "pdf_action_signal": pdf_action_signal,
+        "consent_signal": consent_signal,
+        "verification_level": verification_level,
+        "verified_success": bool(verified_success),
+        "is_elsevier_retrieve": bool(_is_elsevier_retrieve_url(final_url)),
         "screenshot_path": artifacts.get("screenshot", ""),
         "html_path": artifacts.get("html", ""),
         "meta_path": artifacts.get("meta", ""),
@@ -391,6 +499,8 @@ def _worker_run(
     timeout_sec: float,
     progress_every: int,
     capture_fail_artifacts: bool,
+    capture_success_artifacts: bool,
+    capture_success_html: bool,
     artifact_dir: str,
 ) -> Dict:
     page = _browser_for_worker(
@@ -410,6 +520,8 @@ def _worker_run(
                     doi,
                     timeout_sec=timeout_sec,
                     capture_fail_artifacts=capture_fail_artifacts,
+                    capture_success_artifacts=capture_success_artifacts,
+                    capture_success_html=capture_success_html,
                     artifact_dir=artifact_dir,
                 )
                 f.write(json.dumps(rec, ensure_ascii=False) + "\n")
@@ -520,9 +632,13 @@ def main() -> None:
     p.add_argument("--worker-profile-root", type=str, default="")
     p.add_argument("--clean-worker-profiles", type=int, default=1, choices=[0, 1])
     p.add_argument("--capture-fail-artifacts", type=int, default=1, choices=[0, 1])
+    p.add_argument("--capture-success-artifacts", type=int, default=1, choices=[0, 1])
+    p.add_argument("--capture-success-html", type=int, default=0, choices=[0, 1])
     p.add_argument("--artifact-dir", type=str, default="outputs/landing_access_artifacts")
     p.add_argument("--zip-fail-artifacts", type=int, default=1, choices=[0, 1])
     p.add_argument("--artifact-zip", type=str, default="outputs/landing_access_failures.zip")
+    p.add_argument("--zip-success-artifacts", type=int, default=1, choices=[0, 1])
+    p.add_argument("--success-artifact-zip", type=str, default="outputs/landing_access_successes.zip")
     p.add_argument("--output-jsonl", type=str, default="outputs/landing_access_repro.jsonl")
     p.add_argument("--report", type=str, default="outputs/landing_access_repro_report.json")
     args = p.parse_args()
@@ -624,6 +740,8 @@ def main() -> None:
                     float(args.timeout_sec),
                     int(args.progress_every),
                     bool(int(args.capture_fail_artifacts)),
+                    bool(int(args.capture_success_artifacts)),
+                    bool(int(args.capture_success_html)),
                     os.path.abspath(args.artifact_dir),
                 )
             )
@@ -645,12 +763,28 @@ def main() -> None:
 
     summary = _summarize(all_records)
     failure_artifact_zip = ""
+    success_artifact_zip = ""
     if int(args.capture_fail_artifacts) == 1 and int(args.zip_fail_artifacts) == 1:
-        failure_artifact_zip = _build_failure_artifact_zip(
+        failure_artifact_zip = _build_artifact_zip(
             records=all_records,
             artifact_dir=args.artifact_dir,
             zip_path=args.artifact_zip,
+            target="fail",
         )
+    if int(args.capture_success_artifacts) == 1 and int(args.zip_success_artifacts) == 1:
+        success_artifact_zip = _build_artifact_zip(
+            records=all_records,
+            artifact_dir=args.artifact_dir,
+            zip_path=args.success_artifact_zip,
+            target="success",
+        )
+
+    success_artifact_count = sum(
+        1 for r in all_records if (r.get("outcome") == OUT_SUCCESS_ACCESS and str(r.get("screenshot_path", "")).strip())
+    )
+    fail_artifact_count = sum(
+        1 for r in all_records if (r.get("outcome") != OUT_SUCCESS_ACCESS and str(r.get("screenshot_path", "")).strip())
+    )
 
     report = {
         "generated_at": int(time.time()),
@@ -661,6 +795,8 @@ def main() -> None:
         "server_tuned": bool(int(args.server_tuned)),
         "single_process": os.environ.get("PDF_BROWSER_SINGLE_PROCESS", "0"),
         "assume_institution_access": bool(int(args.assume_institution_access)),
+        "capture_success_artifacts": bool(int(args.capture_success_artifacts)),
+        "capture_success_html": bool(int(args.capture_success_html)),
         "startup_retries": int(args.startup_retries),
         "profile_mode": os.environ.get("PDF_BROWSER_PROFILE_MODE", ""),
         "profile_name": os.environ.get("PDF_BROWSER_PROFILE_NAME", ""),
@@ -673,6 +809,11 @@ def main() -> None:
         "output_jsonl": os.path.abspath(args.output_jsonl),
         "artifact_dir": os.path.abspath(args.artifact_dir) if int(args.capture_fail_artifacts) == 1 else "",
         "failure_artifact_zip": failure_artifact_zip,
+        "success_artifact_zip": success_artifact_zip,
+        "artifact_counts": {
+            "success_screenshots": success_artifact_count,
+            "fail_screenshots": fail_artifact_count,
+        },
     }
 
     os.makedirs(os.path.dirname(args.report), exist_ok=True)
@@ -688,6 +829,11 @@ def main() -> None:
                 "block_captcha_rate": summary["block_captcha_rate"],
                 "report": os.path.abspath(args.report),
                 "failure_artifact_zip": failure_artifact_zip,
+                "success_artifact_zip": success_artifact_zip,
+                "artifact_counts": {
+                    "success_screenshots": success_artifact_count,
+                    "fail_screenshots": fail_artifact_count,
+                },
             },
             ensure_ascii=False,
             indent=2,

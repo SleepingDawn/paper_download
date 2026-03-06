@@ -42,9 +42,13 @@ python3 -u landing_access_repro.py \
   --worker-profile-root "${SLURM_TMPDIR:-/tmp/$USER}/landing_worker_profiles" \
   --clean-worker-profiles 1 \
   --capture-fail-artifacts 1 \
+  --capture-success-artifacts 1 \
+  --capture-success-html 0 \
   --artifact-dir outputs/landing_access_artifacts \
   --zip-fail-artifacts 1 \
   --artifact-zip outputs/landing_access_failures.zip \
+  --zip-success-artifacts 1 \
+  --success-artifact-zip outputs/landing_access_successes.zip \
   --output-jsonl outputs/landing_access_repro.top100.jsonl \
   --report outputs/landing_access_repro.top100.report.json
 ```
@@ -52,10 +56,17 @@ python3 -u landing_access_repro.py \
 산출물:
 - `outputs/landing_access_repro.*.jsonl`
 - `outputs/landing_access_repro.*.report.json`
-- `outputs/landing_access_artifacts/landing_fail_*.png`
-- `outputs/landing_access_artifacts/landing_fail_*.html`
-- `outputs/landing_access_artifacts/landing_fail_*.json`
-- `outputs/landing_access_failures.zip` (실패 케이스 묶음, `manifest.json` 포함)
+- `outputs/landing_access_artifacts/fail/landing_fail_*.png`
+- `outputs/landing_access_artifacts/fail/landing_fail_*.html`
+- `outputs/landing_access_artifacts/fail/landing_fail_*.json`
+- `outputs/landing_access_artifacts/success/landing_success_*.png`
+- `outputs/landing_access_artifacts/success/landing_success_*.json`
+- `outputs/landing_access_failures.zip` (실패 케이스 묶음, `manifest_fail.json` 포함)
+- `outputs/landing_access_successes.zip` (성공 케이스 묶음, `manifest_success.json` 포함)
+
+참고:
+- Elsevier `linkinghub/.../retrieve/pii/...` + 제목 `Redirecting` 상태는 성공으로 보지 않습니다.
+- 스크립트가 handoff 이동을 1회 시도한 뒤에도 retrieve에 머무르면 `FAIL_BLOCK`으로 기록합니다.
 
 ### 2-1. DOI CSV로 바로 다운로드
 
