@@ -22,6 +22,7 @@ from tools_exp import (
 REASON_SUCCESS = "SUCCESS"
 REASON_FAIL_CAPTCHA = "FAIL_CAPTCHA"
 REASON_FAIL_BLOCK = "FAIL_BLOCK"
+REASON_FAIL_ACCESS_RIGHTS = "FAIL_ACCESS_RIGHTS"
 REASON_FAIL_WRONG_MIME = "FAIL_WRONG_MIME"
 REASON_FAIL_VIEWER_HTML = "FAIL_VIEWER_HTML"
 REASON_FAIL_HTTP_STATUS = "FAIL_HTTP_STATUS"
@@ -36,6 +37,7 @@ SAFE_MAX_WORKERS = 5
 FAILURE_REASON_ORDER = [
     REASON_FAIL_CAPTCHA,
     REASON_FAIL_BLOCK,
+    REASON_FAIL_ACCESS_RIGHTS,
     REASON_FAIL_WRONG_MIME,
     REASON_FAIL_VIEWER_HTML,
     REASON_FAIL_HTTP_STATUS,
@@ -89,6 +91,8 @@ def _normalize_reason(reason: Optional[str], http_status: Optional[int] = None) 
         return REASON_FAIL_TIMEOUT_NETWORK
     if reason == "FAIL_PARSE":
         return REASON_FAIL_NO_CANDIDATE
+    if reason == "FAIL_ACCESS_RIGHTS":
+        return REASON_FAIL_ACCESS_RIGHTS
     if reason == "FAIL_BLOCK":
         return REASON_FAIL_HTTP_STATUS if http_status else REASON_FAIL_BLOCK
     return reason
@@ -226,7 +230,7 @@ def _single_download_attempt(
                 "evidence": cffi.get("evidence", []),
             }
         )
-        if cffi.get("reason") in (REASON_FAIL_CAPTCHA, REASON_FAIL_BLOCK):
+        if cffi.get("reason") in (REASON_FAIL_CAPTCHA, REASON_FAIL_BLOCK, REASON_FAIL_ACCESS_RIGHTS):
             return {
                 **result,
                 "reason": _normalize_reason(cffi.get("reason"), cffi.get("http_status")),
@@ -302,7 +306,7 @@ def download_process_worker(row_data, final_save_path, attempt=1, mode="first"):
             return last_result
 
         reason = last_result.get("reason")
-        if reason in (REASON_FAIL_CAPTCHA, REASON_FAIL_BLOCK):
+        if reason in (REASON_FAIL_CAPTCHA, REASON_FAIL_BLOCK, REASON_FAIL_ACCESS_RIGHTS):
             return last_result
 
         if reason == REASON_FAIL_TIMEOUT_NETWORK and network_try < network_retry_limit:

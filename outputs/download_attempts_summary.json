@@ -1,13 +1,13 @@
 {
-  "count": 252,
-  "success_rate": 0.1587,
-  "median_latency_ms": 700,
+  "count": 478,
+  "success_rate": 0.1192,
+  "median_latency_ms": 739,
   "reason_distribution": {
-    "FAIL_WRONG_MIME": 136,
-    "FAIL_TIMEOUT/NETWORK": 33,
-    "SUCCESS": 40,
+    "FAIL_WRONG_MIME": 205,
+    "FAIL_TIMEOUT/NETWORK": 58,
+    "SUCCESS": 57,
     "FAIL_NO_CANDIDATE": 33,
-    "FAIL_VIEWER_HTML": 10
+    "FAIL_VIEWER_HTML": 125
   },
   "by_strategy": {
     "cffi_candidate": {
@@ -16,36 +16,36 @@
       "median_latency_ms": 693
     },
     "cffi_baseline": {
-      "count": 47,
-      "success_rate": 0.0851,
-      "median_latency_ms": 715
+      "count": 273,
+      "success_rate": 0.0769,
+      "median_latency_ms": 756
     }
   },
   "by_domain": {
     "ars.els-cdn.com": {
-      "count": 18,
+      "count": 24,
       "success_rate": 0.0,
-      "median_latency_ms": 87
+      "median_latency_ms": 88
     },
     "pubs.acs.org": {
-      "count": 110,
-      "success_rate": 0.0545,
-      "median_latency_ms": 686
+      "count": 159,
+      "success_rate": 0.0503,
+      "median_latency_ms": 691
     },
     "www.nature.com": {
-      "count": 28,
+      "count": 36,
       "success_rate": 1.0,
-      "median_latency_ms": 1931
+      "median_latency_ms": 1949
     },
     "onlinelibrary.wiley.com": {
-      "count": 33,
+      "count": 126,
       "success_rate": 0.0,
-      "median_latency_ms": 810
+      "median_latency_ms": 803
     },
     "www.sciencedirect.com": {
-      "count": 10,
+      "count": 26,
       "success_rate": 0.0,
-      "median_latency_ms": 122
+      "median_latency_ms": 130
     },
     "advanced.onlinelibrary.wiley.com": {
       "count": 1,
@@ -53,29 +53,29 @@
       "median_latency_ms": 658
     },
     "pubs.aip.org": {
-      "count": 2,
+      "count": 9,
       "success_rate": 0.0,
-      "median_latency_ms": 67
+      "median_latency_ms": 581
     },
     "aip.scitation.org": {
-      "count": 26,
+      "count": 42,
       "success_rate": 0.0,
-      "median_latency_ms": 618
+      "median_latency_ms": 624
     },
     "pubs.rsc.org": {
-      "count": 2,
+      "count": 6,
       "success_rate": 1.0,
-      "median_latency_ms": 22261
+      "median_latency_ms": 15521
     },
     "www.mdpi.com": {
-      "count": 5,
+      "count": 13,
       "success_rate": 0.0,
-      "median_latency_ms": 60
+      "median_latency_ms": 63
     },
     "validate.perfdrive.com": {
-      "count": 8,
+      "count": 24,
       "success_rate": 0.0,
-      "median_latency_ms": 1896
+      "median_latency_ms": 1635
     },
     "pub.confit.atlas.jp": {
       "count": 1,
@@ -88,9 +88,9 @@
       "median_latency_ms": 4097
     },
     "image.innovationforever.com": {
-      "count": 1,
+      "count": 3,
       "success_rate": 1.0,
-      "median_latency_ms": 1264
+      "median_latency_ms": 1177
     },
     "ieeexplore.ieee.org": {
       "count": 1,
@@ -98,9 +98,9 @@
       "median_latency_ms": 6307
     },
     "wulixb.iphy.ac.cn": {
-      "count": 1,
+      "count": 2,
       "success_rate": 1.0,
-      "median_latency_ms": 2269
+      "median_latency_ms": 2193
     },
     "watermark02.silverchair.com": {
       "count": 1,

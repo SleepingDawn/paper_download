@@ -1,21 +1,22 @@
 {
-  "generated_at": 1772786615,
-  "total_papers": 1,
+  "generated_at": 1772797612,
+  "total_papers": 50,
   "after_first_pass": "stop",
   "non_interactive": true,
   "first_pass": {
-    "success": 1,
-    "failed": 0,
+    "success": 30,
+    "failed": 20,
     "fail_reasons": {
-      "FAIL_CAPTCHA": 0,
+      "FAIL_CAPTCHA": 2,
       "FAIL_BLOCK": 0,
+      "FAIL_ACCESS_RIGHTS": 13,
       "FAIL_WRONG_MIME": 0,
       "FAIL_VIEWER_HTML": 0,
       "FAIL_HTTP_STATUS": 0,
       "FAIL_TIMEOUT/NETWORK": 0,
       "FAIL_PDF_MAGIC": 0,
       "FAIL_TOO_SMALL": 0,
-      "FAIL_NO_CANDIDATE": 0,
+      "FAIL_NO_CANDIDATE": 5,
       "FAIL_REDIRECT_LOOP": 0,
       "FAIL_UNKNOWN": 0
     }
@@ -28,6 +29,7 @@
     "fail_reasons": {
       "FAIL_CAPTCHA": 0,
       "FAIL_BLOCK": 0,
+      "FAIL_ACCESS_RIGHTS": 0,
       "FAIL_WRONG_MIME": 0,
       "FAIL_VIEWER_HTML": 0,
       "FAIL_HTTP_STATUS": 0,
@@ -39,17 +41,17 @@
       "FAIL_UNKNOWN": 0
     }
   },
-  "elapsed_seconds": 10.38,
+  "elapsed_seconds": 1619.38,
   "live_attempt_metrics": {
-    "count": 252,
-    "success_rate": 0.1587,
-    "median_latency_ms": 700,
+    "count": 478,
+    "success_rate": 0.1192,
+    "median_latency_ms": 739,
     "reason_distribution": {
-      "FAIL_WRONG_MIME": 136,
-      "FAIL_TIMEOUT/NETWORK": 33,
-      "SUCCESS": 40,
+      "FAIL_WRONG_MIME": 205,
+      "FAIL_TIMEOUT/NETWORK": 58,
+      "SUCCESS": 57,
       "FAIL_NO_CANDIDATE": 33,
-      "FAIL_VIEWER_HTML": 10
+      "FAIL_VIEWER_HTML": 125
     },
     "by_strategy": {
       "cffi_candidate": {
@@ -58,36 +60,36 @@
         "median_latency_ms": 693
       },
       "cffi_baseline": {
-        "count": 47,
-        "success_rate": 0.0851,
-        "median_latency_ms": 715
+        "count": 273,
+        "success_rate": 0.0769,
+        "median_latency_ms": 756
       }
     },
     "by_domain": {
       "ars.els-cdn.com": {
-        "count": 18,
+        "count": 24,
         "success_rate": 0.0,
-        "median_latency_ms": 87
+        "median_latency_ms": 88
       },
       "pubs.acs.org": {
-        "count": 110,
-        "success_rate": 0.0545,
-        "median_latency_ms": 686
+        "count": 159,
+        "success_rate": 0.0503,
+        "median_latency_ms": 691
       },
       "www.nature.com": {
-        "count": 28,
+        "count": 36,
         "success_rate": 1.0,
-        "median_latency_ms": 1931
+        "median_latency_ms": 1949
       },
       "onlinelibrary.wiley.com": {
-        "count": 33,
+        "count": 126,
         "success_rate": 0.0,
-        "median_latency_ms": 810
+        "median_latency_ms": 803
       },
       "www.sciencedirect.com": {
-        "count": 10,
+        "count": 26,
         "success_rate": 0.0,
-        "median_latency_ms": 122
+        "median_latency_ms": 130
       },
       "advanced.onlinelibrary.wiley.com": {
         "count": 1,
@@ -95,29 +97,29 @@
         "median_latency_ms": 658
       },
       "pubs.aip.org": {
-        "count": 2,
+        "count": 9,
         "success_rate": 0.0,
-        "median_latency_ms": 67
+        "median_latency_ms": 581
       },
       "aip.scitation.org": {
-        "count": 26,
+        "count": 42,
         "success_rate": 0.0,
-        "median_latency_ms": 618
+        "median_latency_ms": 624
       },
       "pubs.rsc.org": {
-        "count": 2,
+        "count": 6,
         "success_rate": 1.0,
-        "median_latency_ms": 22261
+        "median_latency_ms": 15521
       },
       "www.mdpi.com": {
-        "count": 5,
+        "count": 13,
         "success_rate": 0.0,
-        "median_latency_ms": 60
+        "median_latency_ms": 63
       },
       "validate.perfdrive.com": {
-        "count": 8,
+        "count": 24,
         "success_rate": 0.0,
-        "median_latency_ms": 1896
+        "median_latency_ms": 1635
       },
       "pub.confit.atlas.jp": {
         "count": 1,
@@ -130,9 +132,9 @@
         "median_latency_ms": 4097
       },
       "image.innovationforever.com": {
-        "count": 1,
+        "count": 3,
         "success_rate": 1.0,
-        "median_latency_ms": 1264
+        "median_latency_ms": 1177
       },
       "ieeexplore.ieee.org": {
         "count": 1,
@@ -140,9 +142,9 @@
         "median_latency_ms": 6307
       },
       "wulixb.iphy.ac.cn": {
-        "count": 1,
+        "count": 2,
         "success_rate": 1.0,
-        "median_latency_ms": 2269
+        "median_latency_ms": 2193
       },
       "watermark02.silverchair.com": {
         "count": 1,
@@ -152,8 +154,8 @@
     }
   },
   "artifacts": {
-    "results_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/one_acs_speedcheck_run3/openalex_search_results_parallel.csv",
-    "failed_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/one_acs_speedcheck_run3/failed_papers.csv",
+    "results_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/bench_top50_oa_20260306/openalex_search_results_parallel.csv",
+    "failed_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/bench_top50_oa_20260306/failed_papers.csv",
     "failed_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/failed_papers.jsonl",
     "attempts_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/download_attempts.jsonl",
     "attempts_summary_json": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/download_attempts_summary.json",

@@ -14,6 +14,34 @@ python3 -m pip install -r requirements.txt
 
 ## 2. 빠른 실행 예시
 
+### 2-0. 서버(Linux CLI)에서 랜딩만 검사 (다운로드 없음)
+
+`landing_access_repro.py`는 DOI 랜딩 성공 여부만 검사하고, 실패 시 스크린샷/HTML/메타 로그를 남깁니다.
+
+```bash
+python3 -u landing_access_repro.py \
+  --input ready_to_download.csv \
+  --max-dois 100 \
+  --workers 5 \
+  --timeout-sec 20 \
+  --headless 1 \
+  --no-sandbox 1 \
+  --profile-mode auto \
+  --profile-name Default \
+  --persistent-profile-dir outputs/.chrome_user_data \
+  --capture-fail-artifacts 1 \
+  --artifact-dir outputs/landing_access_artifacts \
+  --output-jsonl outputs/landing_access_repro.top100.jsonl \
+  --report outputs/landing_access_repro.top100.report.json
+```
+
+산출물:
+- `outputs/landing_access_repro.*.jsonl`
+- `outputs/landing_access_repro.*.report.json`
+- `outputs/landing_access_artifacts/landing_fail_*.png`
+- `outputs/landing_access_artifacts/landing_fail_*.html`
+- `outputs/landing_access_artifacts/landing_fail_*.json`
+
 ### 2-1. DOI CSV로 바로 다운로드
 
 ```bash
@@ -93,11 +121,14 @@ Drission 내부 전략:
 - 브라우저 프로파일 보정
   - 고정 UA, 언어/윈도우 크기, `AutomationControlled` 비활성화
   - `eager` load mode
+  - `auto` 프로필 모드에서 고마찰 DOI(Elsevier/AIP/RSC/MDPI)는 시스템 프로필 우선 사용
+  - 시스템 프로필이 없으면 `outputs/.chrome_user_data` 지속 프로필로 자동 fallback
 - 동의/쿠키 배너 자동 처리
   - `accept/reject/continue`류 버튼 자동 클릭
 - 접근 판정 로직
   - `detect_access_issue()`로 `FAIL_CAPTCHA/FAIL_BLOCK` 판단
   - 쿠키/동의 오버레이는 차단으로 오판하지 않도록 soft 처리
+  - `validate user` 페이지는 우회 클릭 없이 차단으로 즉시 분류
   - `authenticate/password required` 페이지는 즉시 중단
 - 도메인 특화 처리
   - Elsevier 추천 논문 오클릭 방지: DOI/PII 컨텍스트 가드
@@ -120,6 +151,9 @@ Drission 내부 전략:
 - `PDF_BROWSER_HEADLESS=1` : 헤드리스 실행
 - `PDF_BROWSER_NO_SANDBOX=1` : 서버 컨테이너에서 필요할 수 있음
 - `CHROME_PATH=/path/to/chrome` : 브라우저 실행 파일 경로
+- `PDF_BROWSER_PROFILE_MODE=auto|temp` : 브라우저 프로필 전략 (`auto` 권장)
+- `PDF_BROWSER_PROFILE_NAME=Default` : 시스템 프로필 이름
+- `PDF_BROWSER_PERSISTENT_PROFILE_DIR=outputs/.chrome_user_data` : 시스템 프로필 미존재 시 fallback 프로필 경로
 - `PDF_ACTION_MAX_WAIT_S=60` : 액션 단위 최대 대기(초)
 - `SCIHUB_MAX_TOTAL_S=20` : Sci-Hub 전체 시도 예산(초)
 - `DIRECT_OA_CFFI_TIMEOUT_S=12` : direct OA CFFI timeout(초)
