@@ -1,5 +1,7 @@
 import json
 import os
+import subprocess
+import sys
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from typing import Any, Dict, List, Optional
@@ -34,6 +36,8 @@ REASON_FAIL_NO_CANDIDATE = "FAIL_NO_CANDIDATE"
 REASON_FAIL_REDIRECT_LOOP = "FAIL_REDIRECT_LOOP"
 REASON_FAIL_UNKNOWN = "FAIL_UNKNOWN"
 SAFE_MAX_WORKERS = 5
+LANDING_SUCCESS_OUTCOME = "SUCCESS_ACCESS"
+LANDING_ACCESS_RIGHTS_OUTCOME = "FAIL_ACCESS_RIGHTS"
 
 FAILURE_REASON_ORDER = [
     REASON_FAIL_CAPTCHA,
@@ -473,6 +477,114 @@ def _summarize_live_attempt_metrics(attempts_jsonl_path: str, out_path: str) -> 
     return payload
 
 
+def _run_landing_precheck(
+    df: pd.DataFrame,
+    final_save_path: str,
+    max_workers: int,
+) -> tuple[pd.DataFrame, Dict[str, Any]]:
+    precheck_dir = os.path.join(final_save_path, "landing_precheck")
+    os.makedirs(precheck_dir, exist_ok=True)
+
+    landing_input_csv = os.path.join(precheck_dir, "landing_input.csv")
+    landing_output_jsonl = os.path.join(precheck_dir, "landing_results.jsonl")
+    landing_report_json = os.path.join(precheck_dir, "landing_report.json")
+    landing_report_md = os.path.join(precheck_dir, "landing_report.md")
+    landing_artifact_dir = os.path.join(precheck_dir, "artifacts")
+
+    df.to_csv(landing_input_csv, index=False, encoding="utf-8-sig")
+
+    cmd = [
+        sys.executable,
+        "-u",
+        "landing_access_repro.py",
+        "--input",
+        landing_input_csv,
+        "--workers",
+        str(max(1, min(int(max_workers), 2))),
+        "--headless",
+        "1" if os.environ.get("PDF_BROWSER_HEADLESS", "0").strip().lower() in ("1", "true", "yes") else "0",
+        "--progress-every",
+        "100",
+        "--capture-fail-artifacts",
+        "0",
+        "--capture-success-artifacts",
+        "0",
+        "--zip-fail-artifacts",
+        "0",
+        "--zip-success-artifacts",
+        "0",
+        "--artifact-dir",
+        landing_artifact_dir,
+        "--output-jsonl",
+        landing_output_jsonl,
+        "--report",
+        landing_report_json,
+        "--report-md",
+        landing_report_md,
+    ]
+
+    started = time.time()
+    subprocess.run(cmd, check=True)
+    elapsed = round(time.time() - started, 2)
+
+    landing_report = {}
+    if os.path.exists(landing_report_json):
+        with open(landing_report_json, "r", encoding="utf-8") as f:
+            landing_report = json.load(f)
+
+    records: List[Dict[str, Any]] = []
+    if os.path.exists(landing_output_jsonl):
+        with open(landing_output_jsonl, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    records.append(json.loads(line))
+                except json.JSONDecodeError:
+                    continue
+
+    by_doi = {str(r.get("doi") or "").strip().lower(): r for r in records}
+    total_input = int(len(df))
+    success_dois = {
+        doi
+        for doi, rec in by_doi.items()
+        if str(rec.get("outcome") or "") == LANDING_SUCCESS_OUTCOME
+    }
+    access_rights = sum(
+        1 for rec in records if str(rec.get("outcome") or "") == LANDING_ACCESS_RIGHTS_OUTCOME
+    )
+    success = len(success_dois)
+    eligible_df = df[df["doi"].astype(str).str.lower().isin(success_dois)].copy()
+    eligible_df["landing_precheck_outcome"] = eligible_df["doi"].astype(str).str.lower().map(
+        lambda doi: str((by_doi.get(doi) or {}).get("outcome") or "")
+    )
+    eligible_df["landing_precheck_state"] = eligible_df["doi"].astype(str).str.lower().map(
+        lambda doi: str((by_doi.get(doi) or {}).get("classifier_state") or "")
+    )
+
+    adjusted_denominator = max(0, total_input - access_rights)
+    metrics = {
+        "executed": True,
+        "elapsed_seconds": elapsed,
+        "total_input": total_input,
+        "landing_success": success,
+        "access_rights_failures": access_rights,
+        "eligible_for_download": int(len(eligible_df)),
+        "adjusted_denominator": adjusted_denominator,
+        "raw_success_rate": round(success / total_input, 4) if total_input else 0.0,
+        "adjusted_success_rate": round(success / adjusted_denominator, 4) if adjusted_denominator else 0.0,
+        "artifacts": {
+            "input_csv": landing_input_csv,
+            "results_jsonl": landing_output_jsonl,
+            "report_json": landing_report_json,
+            "report_md": landing_report_md,
+        },
+        "report_summary": landing_report.get("summary", {}),
+    }
+    return eligible_df, metrics
+
+
 def main(
     max_num=1000,
     citation_percentile=0.99,
@@ -482,6 +594,7 @@ def main(
     doi_path=None,
     after_first_pass="stop",
     non_interactive=False,
+    precheck_landing=False,
 ):
     start_time = time.time()
     max_workers = max(1, min(int(max_workers), SAFE_MAX_WORKERS))
@@ -522,6 +635,23 @@ def main(
     df = df.dropna(subset=["doi_lower"]).drop_duplicates(subset=["doi_lower"]).drop(columns=["doi_lower"])
     print(f"전처리 후 남은 전체 논문 수: {len(df)}건")
     print(f"다운로드 동시성(max_workers): {max_workers} (상한={SAFE_MAX_WORKERS})")
+
+    input_total_before_precheck = int(len(df))
+    landing_precheck_metrics: Dict[str, Any] = {"executed": False}
+    if precheck_landing:
+        print("\n" + "=" * 60)
+        print("Landing precheck 시작")
+        print("=" * 60)
+        df, landing_precheck_metrics = _run_landing_precheck(
+            df=df,
+            final_save_path=final_save_path,
+            max_workers=max_workers,
+        )
+        print(
+            f"Landing precheck 완료: 성공={landing_precheck_metrics.get('landing_success', 0)} / "
+            f"권한없음={landing_precheck_metrics.get('access_rights_failures', 0)} / "
+            f"다운로드 투입={landing_precheck_metrics.get('eligible_for_download', 0)}"
+        )
 
     first_results = _first_pass(df, oa_dir, ca_dir, max_workers=max_workers)
 
@@ -590,9 +720,12 @@ def main(
 
     summary_payload = {
         "generated_at": int(time.time()),
+        "input_total_before_precheck": input_total_before_precheck,
         "total_papers": int(len(df)),
         "after_first_pass": decision,
         "non_interactive": bool(non_interactive),
+        "precheck_landing": bool(precheck_landing),
+        "landing_precheck": landing_precheck_metrics,
         "first_pass": {
             "success": int(sum(1 for r in first_results if r.get("success"))),
             "failed": int(sum(1 for r in first_results if not r.get("success"))),
@@ -607,6 +740,27 @@ def main(
         },
         "elapsed_seconds": round(elapsed_seconds, 2),
         "live_attempt_metrics": live_metrics,
+        "effective_rates": {
+            "download_raw_success_rate": round(
+                sum(1 for r in first_results if r.get("success")) / len(df), 4
+            )
+            if len(df)
+            else 0.0,
+            "download_adjusted_success_rate": round(
+                sum(1 for r in first_results if r.get("success"))
+                / max(1, len(df) - int(first_summary.get(REASON_FAIL_ACCESS_RIGHTS, 0))),
+                4,
+            )
+            if (len(df) - int(first_summary.get(REASON_FAIL_ACCESS_RIGHTS, 0))) > 0
+            else 0.0,
+            "end_to_end_adjusted_success_rate": round(
+                sum(1 for r in first_results if r.get("success"))
+                / max(1, int(landing_precheck_metrics.get("adjusted_denominator", len(df)) or len(df))),
+                4,
+            )
+            if int(landing_precheck_metrics.get("adjusted_denominator", len(df)) or len(df)) > 0
+            else 0.0,
+        },
         "artifacts": {
             "results_csv": full_csv_path,
             "failed_csv": failed_csv_path,
@@ -642,4 +796,5 @@ if __name__ == "__main__":
         doi_path=args.doi_path,
         after_first_pass=args.after_first_pass,
         non_interactive=args.non_interactive,
+        precheck_landing=bool(int(args.precheck_landing)),
     )

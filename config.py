@@ -45,6 +45,13 @@ def get_config():
         action="store_true",
         help="입력 프롬프트 없이 --after-first-pass 값으로 실행",
     )
+    parser.add_argument(
+        "--precheck-landing",
+        type=int,
+        default=0,
+        choices=[0, 1],
+        help="다운로드 전 landing_access_repro.py로 랜딩 성공 여부를 먼저 확인하고, 성공 DOI만 다운로드에 투입",
+    )
 
     args = parser.parse_args()
     return args

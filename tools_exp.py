@@ -78,8 +78,7 @@ def _resolve_best_browser_ua() -> str:
     if forced in ("linux", "server"):
         return BEST_BROWSER_UA_LINUX
 
-    headless = os.getenv("PDF_BROWSER_HEADLESS", "0").strip().lower() in ("1", "true", "yes")
-    if sys.platform == "darwin" and not headless:
+    if sys.platform == "darwin":
         return BEST_BROWSER_UA_MAC
     return BEST_BROWSER_UA_LINUX
 
@@ -398,6 +397,74 @@ def _finalize_downloaded_file(downloaded_path: str, target_path: str, logger=Non
         if logger:
             logger.warning(f"        파일 정리 실패: {e}")
         return False
+
+
+def _pick_valid_downloaded_pdf(
+    download_dir: str,
+    initial_files: Set[str] = None,
+    tmp_target_path: str = "",
+):
+    if tmp_target_path and _is_valid_pdf(tmp_target_path):
+        return tmp_target_path
+
+    try:
+        current_files = _get_current_files(download_dir)
+    except Exception:
+        return None
+
+    candidate_groups = []
+    if initial_files is not None:
+        candidate_groups.append(current_files - initial_files)
+    candidate_groups.append(current_files)
+
+    for names in candidate_groups:
+        pdf_candidates = []
+        for name in names:
+            if not str(name).lower().endswith(".pdf"):
+                continue
+            candidate = os.path.join(download_dir, name)
+            if _is_valid_pdf(candidate):
+                pdf_candidates.append(candidate)
+        if pdf_candidates:
+            pdf_candidates.sort(key=lambda p: os.path.getmtime(p), reverse=True)
+            return pdf_candidates[0]
+    return None
+
+
+def _capture_direct_downloaded_pdf(
+    download_dir: str,
+    initial_files: Set[str],
+    tmp_target_path: str,
+    final_target_path: str,
+    logger=None,
+    timeout_s: int = 6,
+    context: str = "direct-download",
+) -> bool:
+    downloaded_path = _pick_valid_downloaded_pdf(
+        download_dir=download_dir,
+        initial_files=initial_files,
+        tmp_target_path=tmp_target_path,
+    )
+    if not downloaded_path and timeout_s > 0:
+        downloaded_path = _wait_for_new_file_diff(download_dir, initial_files, timeout_s=timeout_s, logger=logger)
+    if not downloaded_path:
+        downloaded_path = _pick_valid_downloaded_pdf(
+            download_dir=download_dir,
+            initial_files=initial_files,
+            tmp_target_path=tmp_target_path,
+        )
+
+    if not downloaded_path:
+        return False
+
+    if not _finalize_downloaded_file(downloaded_path, tmp_target_path, logger=logger):
+        return False
+    if not _finalize_downloaded_file(tmp_target_path, final_target_path, logger=logger):
+        return False
+
+    if logger:
+        logger.info(f"        [{context}] DOI 직행 PDF 다운로드 성공")
+    return True
 
 
 def _looks_like_pdf_link(url: str) -> bool:
@@ -865,6 +932,7 @@ def _click_once_wait_file(
     post_click_guard=None,
     downloaded_file_guard=None,
     fast_exit_on_new_tab: bool = False,
+    allow_js_fallback: bool = True,
 ) -> bool:
     if page is None or el is None:
         return False
@@ -876,8 +944,15 @@ def _click_once_wait_file(
             before_tab_ids = set()
         initial_files = _get_current_files(tmp_dir)
         try:
+            try:
+                el.scroll.to_see()
+                time.sleep(0.25)
+            except Exception:
+                pass
             el.click()
         except Exception:
+            if not allow_js_fallback:
+                raise
             el.click(by_js=True)
         if post_click_guard:
             try:
@@ -982,6 +1057,63 @@ def _wait_for_elsevier_article_ready(page, target_doi: str = "", logger=None, ti
         logger.info("        [Elsevier] article page hydrate 대기 타임아웃(계속 진행)")
 
 
+def _looks_like_elsevier_signed_pdf_url(url: str) -> bool:
+    parsed = urlparse(str(url or ""))
+    host = (parsed.netloc or "").lower()
+    path = (parsed.path or "").lower()
+    return host.endswith("pdf.sciencedirectassets.com") and path.endswith(".pdf")
+
+
+def _wait_for_elsevier_viewer_ready(page, logger=None, timeout_s: int = 6) -> str:
+    if page is None:
+        return ""
+    deadline = time.time() + max(1, int(timeout_s))
+    while time.time() < deadline:
+        try:
+            current_url = str(getattr(page, "url", "") or "")
+            if _looks_like_elsevier_signed_pdf_url(current_url):
+                if logger:
+                    logger.info("        [Elsevier] signed PDF viewer 도달")
+                time.sleep(0.6)
+                return "signed_pdf"
+            has_download = bool(
+                _ele_quick(page, 'css:button[aria-label*="Download"]', timeout=0.2)
+                or _ele_quick(page, 'css:button[title*="Download"]', timeout=0.2)
+                or _ele_quick(page, 'css:a[download]', timeout=0.2)
+            )
+            if has_download:
+                if logger:
+                    logger.info("        [Elsevier] viewer toolbar 준비 완료")
+                time.sleep(0.6)
+                return "viewer"
+        except Exception:
+            pass
+        time.sleep(0.5)
+    if logger:
+        logger.info("        [Elsevier] viewer 준비 대기 타임아웃(계속 진행)")
+    return ""
+
+
+def _download_elsevier_signed_pdf_from_viewer(page, tmp_path: str, referer_url: str = "", logger=None) -> bool:
+    current_url = str(getattr(page, "url", "") or "").strip()
+    if not _looks_like_elsevier_signed_pdf_url(current_url):
+        return False
+    cookies = None
+    try:
+        cookies = {c.get("name"): c.get("value") for c in (page.cookies() or []) if c.get("name")}
+    except Exception:
+        cookies = None
+    if not download_with_cffi(
+        current_url,
+        tmp_path,
+        referer=referer_url or current_url,
+        cookies=cookies,
+        logger=logger,
+    ):
+        return False
+    return _is_valid_pdf(tmp_path)
+
+
 def _attempt_elsevier_two_step_click_download(
     page,
     doi: str,
@@ -1021,6 +1153,10 @@ def _attempt_elsevier_two_step_click_download(
     if target_pii:
         token_candidates.append(f"/pii/{target_pii.lower()}")
         token_candidates.append(target_pii.lower())
+
+    _wait_for_elsevier_article_ready(page, doi_norm, logger=logger, timeout_s=8)
+    time.sleep(0.6)
+    article_referer = str(getattr(page, "url", "") or "")
 
     # 사용자 관찰 반영:
     # 복구(sciencedirect) 후 DOI 링크를 다시 타면 쿠키/버튼 플로우가 정상화되는 케이스가 있다.
@@ -1077,7 +1213,6 @@ def _attempt_elsevier_two_step_click_download(
         'css:[id*="viewpdf"]',
         'css:[aria-label*="View PDF"]',
         'css:[aria-label*="view pdf"]',
-        'css:a[href*="/pdfft"]',
     ]
     step1 = None
     for loc in quick_locators:
@@ -1093,7 +1228,6 @@ def _attempt_elsevier_two_step_click_download(
         "//button[contains(translate(normalize-space(string(.)),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'open pdf')]",
         "//button[contains(translate(normalize-space(string(.)),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'view pdf')]",
         "//button[contains(translate(normalize-space(string(.)),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'download pdf')]",
-        "//a[contains(@href,'/pdfft') or contains(@href,'.pdf')]",
     ]
     if not step1:
         for _ in range(8):
@@ -1119,6 +1253,7 @@ def _attempt_elsevier_two_step_click_download(
         post_click_guard=_context_guard,
         downloaded_file_guard=_file_guard,
         fast_exit_on_new_tab=True,
+        allow_js_fallback=False,
     ):
         if logger:
             logger.info(f"        [Elsevier] 1단계 클릭으로 다운로드 성공: {doi}")
@@ -1131,6 +1266,16 @@ def _attempt_elsevier_two_step_click_download(
     # View PDF가 새 탭으로 열리는 케이스 대응
     page = _adopt_latest_tab(page, logger=logger)
     _dismiss_cookie_or_consent_banner(page, logger=logger)
+    viewer_state = _wait_for_elsevier_viewer_ready(page, logger=logger, timeout_s=6)
+    if viewer_state == "signed_pdf" and _download_elsevier_signed_pdf_from_viewer(
+        page,
+        tmp_path,
+        referer_url=article_referer,
+        logger=logger,
+    ):
+        if logger:
+            logger.info(f"        [Elsevier] signed PDF viewer URL 다운로드 성공: {doi}")
+        return True
 
     # 2) viewer/pdfft 상태라면 Download 버튼 한 번 더 클릭
     current_url = str(page.url or "").lower()
@@ -1144,7 +1289,7 @@ def _attempt_elsevier_two_step_click_download(
             "//button[contains(translate(@aria-label,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'download')]",
             "//button[contains(translate(normalize-space(string(.)),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'download pdf')]",
             "//button[contains(translate(normalize-space(string(.)),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'download')]",
-            "//a[contains(@download,'.pdf') or contains(@href,'.pdf')]",
+            "//a[contains(@download,'.pdf')]",
         ]
         step2 = _select_best_clickable_pdf_element(page, viewer_xpaths, logger=logger, must_tokens=token_candidates)
         if not step2:
@@ -1158,6 +1303,7 @@ def _attempt_elsevier_two_step_click_download(
             logger=logger,
             post_click_guard=_context_guard,
             downloaded_file_guard=_file_guard,
+            allow_js_fallback=False,
         ):
             if logger:
                 logger.info(f"        [Elsevier] 2단계 클릭으로 다운로드 성공: {doi}")
@@ -1261,9 +1407,12 @@ def _has_auth_required_signal(title: str = "", html: str = "") -> bool:
 
 
 def _classify_access_gate(title: str = "", html: str = "") -> str:
-    blob = f"{title or ''} {html or ''}".lower()
+    title_blob = (title or "").lower()
+    html_blob = (html or "").lower()
+    blob = f"{title_blob} {html_blob}"
     article_like = _has_article_signal(title=title, html=html)
     pdf_action_like = _has_pdf_action_signal(title=title, html=html)
+    consent_like = _has_cookie_or_consent_signal(title=title, html=html)
 
     safe_markers = (
         "open pdf",
@@ -1287,18 +1436,27 @@ def _classify_access_gate(title: str = "", html: str = "") -> str:
     if any(m in blob for m in hard_rights_markers):
         return "hard_rights"
 
-    bot_like_markers = (
+    strong_bot_like_markers = (
         "validate user",
         "unusual traffic",
-        "security check",
         "request blocked",
-        "too many requests",
-        "access denied",
-        "forbidden",
         "verify you are human",
         "are you a robot",
     )
-    if any(m in blob for m in bot_like_markers):
+    weak_bot_like_markers = (
+        "security check",
+        "too many requests",
+        "access denied",
+        "forbidden",
+    )
+    if any(m in blob for m in strong_bot_like_markers):
+        return "bot_like"
+    weak_hits = [m for m in weak_bot_like_markers if m in blob]
+    if weak_hits:
+        if any(m in title_blob for m in weak_bot_like_markers):
+            return "bot_like"
+        if (article_like or pdf_action_like or consent_like) and len(weak_hits) < 2:
+            return "none"
         return "bot_like"
 
     login_markers = (
@@ -1579,6 +1737,7 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
     auth_required_like = _has_auth_required_signal(title=title, html=html)
     access_gate = _classify_access_gate(title=title, html=html)
     assume_inst_access = os.getenv("PDF_ASSUME_INSTITUTION_ACCESS", "0").strip().lower() in ("1", "true", "yes")
+    rich_article_abstract = article_like and ("citation_doi" in h or "citation_title" in h) and ("abstract" in h)
     challenge_url_markers = (
         "__cf_chl_rt_tk=",
         "/cdn-cgi/challenge",
@@ -1595,6 +1754,9 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
         return "FAIL_BLOCK", evidence
 
     if auth_required_like:
+        if rich_article_abstract or (article_like and pdf_action_like):
+            evidence.append("soft=auth_header_present_on_article")
+            return None, evidence
         evidence.append("keyword=auth_required")
         return "FAIL_ACCESS_RIGHTS", evidence
     if access_gate == "hard_rights":
@@ -2091,23 +2253,6 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
         return False
 
 # =======================================================
-# DrissionPage cloudflare turnstile bypasser
-# =======================================================
-
-def solve_captcha_drission(page, logger):
-    issue, evidence = detect_access_issue(
-        title=page.title,
-        html=page.html,
-        url=getattr(page, "url", "") or "",
-        domain=_extract_domain(getattr(page, "url", "") or ""),
-    )
-    if issue == "FAIL_CAPTCHA":
-        logger.warning(f"        캡차 감지됨. 즉시 중단합니다. evidence={evidence}")
-        return True
-    return False
-
-
-# =======================================================
 # DrissionPage 크롤러
 # =======================================================
 def download_with_drission(
@@ -2171,7 +2316,7 @@ def download_with_drission(
     # 다운로드 설정
     co.set_pref('download.default_directory', browser_tmp_dir) # 다운로드 경로 지정(doi 단위 임시 디렉터리)
     co.set_pref('download.prompt_for_download', False)  # 저장 여부 묻지 않기
-    co.set_pref('plugins.always_open_pdf_externally', True) # PDF를 브라우저에서 열지 않고 다운로드
+    co.set_pref('plugins.always_open_pdf_externally', not is_elsevier_preview) # Elsevier는 viewer-first 경로 유지
     co.set_pref('profile.default_content_settings.popups', 0) # 팝업 차단 해제
 
     page = None
@@ -2256,12 +2401,23 @@ def download_with_drission(
             logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
             
             # 페이지 접속
+            landing_initial_files = _get_current_files(browser_tmp_dir)
             page.get(doi_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
             _dismiss_cookie_or_consent_banner(page, logger=logger)
             current_domain = _extract_domain(page.url)
             referer_url = page.url
             page_title = page.title or ""
             page_html = page.html or ""
+            if _capture_direct_downloaded_pdf(
+                download_dir=browser_tmp_dir,
+                initial_files=landing_initial_files,
+                tmp_target_path=tmp_save_path,
+                final_target_path=full_save_path,
+                logger=logger,
+                timeout_s=0,
+                context="doi-direct-download-immediate",
+            ):
+                return _ret(True, "SUCCESS", stage="doi-direct-download")
             unexpected_landing = (
                 (not current_domain)
                 or ("google." in current_domain)
@@ -2269,14 +2425,52 @@ def download_with_drission(
                 or page.url.startswith("about:blank")
             )
             if unexpected_landing:
+                direct_wait_s = 10 if mode == "deep" else 6
+                if _capture_direct_downloaded_pdf(
+                    download_dir=browser_tmp_dir,
+                    initial_files=landing_initial_files,
+                    tmp_target_path=tmp_save_path,
+                    final_target_path=full_save_path,
+                    logger=logger,
+                    timeout_s=direct_wait_s,
+                    context="doi-direct-download",
+                ):
+                    return _ret(True, "SUCCESS", stage="doi-direct-download")
                 logger.info(f"        [Drission] 예상외 랜딩({page.url}) 감지 -> DOI 재요청 1회")
                 try:
+                    retry_initial_files = _get_current_files(browser_tmp_dir)
                     page.get(doi_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
                     _dismiss_cookie_or_consent_banner(page, logger=logger)
                     current_domain = _extract_domain(page.url)
                     referer_url = page.url
                     page_title = page.title or ""
                     page_html = page.html or ""
+                    if _capture_direct_downloaded_pdf(
+                        download_dir=browser_tmp_dir,
+                        initial_files=retry_initial_files,
+                        tmp_target_path=tmp_save_path,
+                        final_target_path=full_save_path,
+                        logger=logger,
+                        timeout_s=0,
+                        context="doi-direct-download-retry-immediate",
+                    ):
+                        return _ret(True, "SUCCESS", stage="doi-direct-download")
+                    retry_unexpected = (
+                        (not current_domain)
+                        or ("google." in current_domain)
+                        or page.url.startswith("chrome://")
+                        or page.url.startswith("about:blank")
+                    )
+                    if retry_unexpected and _capture_direct_downloaded_pdf(
+                        download_dir=browser_tmp_dir,
+                        initial_files=retry_initial_files,
+                        tmp_target_path=tmp_save_path,
+                        final_target_path=full_save_path,
+                        logger=logger,
+                        timeout_s=direct_wait_s,
+                        context="doi-direct-download-retry",
+                    ):
+                        return _ret(True, "SUCCESS", stage="doi-direct-download")
                 except Exception:
                     pass
             doi_norm = _doi_from_doi_url(doi_url)
@@ -2387,6 +2581,16 @@ def download_with_drission(
                             logger.info(f"        [Elsevier] article URL 복구 이동 실패(계속 진행): {e}")
 
             if (not current_domain) or ("google." in current_domain) or page.url.startswith("chrome://") or page.url.startswith("about:blank"):
+                if _capture_direct_downloaded_pdf(
+                    download_dir=browser_tmp_dir,
+                    initial_files=set(),
+                    tmp_target_path=tmp_save_path,
+                    final_target_path=full_save_path,
+                    logger=logger,
+                    timeout_s=3,
+                    context="doi-direct-download-final-check",
+                ):
+                    return _ret(True, "SUCCESS", stage="doi-direct-download")
                 return _ret(False, "FAIL_NETWORK", [f"unexpected_landing_page={page.url}"], stage="landing")
 
             issue, evidence = detect_access_issue(
@@ -3132,44 +3336,6 @@ def get_publisher_from_doi_prefix(
 
     return raw_name if (return_raw_if_unmapped and raw_name) else None
 
-
-    
-# url로 직접 requests 다운로드 (PDF 유효성 검사 포함)
-def _download_file(url: str, output_path: str, headers=None, session=None):
-    req = session.get if session else requests.get
-    
-    try:
-        response = req(url, headers=headers, stream=True, timeout=20) 
-    except Exception as e:
-        raise Exception(f"Request error for {url}: {e}")
-        
-    if response.status_code != 200:
-        raise Exception(f"Failed to download {url} (status code: {response.status_code})")
-        
-    try:
-        # 1. 일단 파일 쓰기
-        with open(output_path, "wb") as f:
-            for chunk in response.iter_content(chunk_size=8192):
-                if chunk:
-                    f.write(chunk)
-
-        # 2. 파일이 유효한 PDF인지 검사
-        if _is_valid_pdf(output_path):
-            return True # 성공 시 True 반환
-        else:
-            # 유효하지 않다면(HTML 등) 파일 삭제 후 에러 발생 -> Worker가 다음 단계로 넘어가게 유도
-            if os.path.exists(output_path):
-                os.remove(output_path)
-            raise Exception("Downloaded file content is NOT a valid PDF (likely HTML or corrupted).")
-            
-    except Exception as e:
-        # 쓰기 중 에러나 유효성 검사 실패 시 청소
-        if os.path.exists(output_path):
-            try: os.remove(output_path)
-            except: pass
-        raise Exception(f"Error validating/writing file {output_path}: {e}")
-
-
 import re
 from typing import Optional
 
@@ -3261,121 +3427,6 @@ def download_via_springerpdf(doi: str, output_path: str, logger = None):
     referer = headers["Referer"]
     return bool(download_with_cffi(pdf_url, output_path, referer, logger=logger))
     
-# tools_exp.py 에 추가
-
-def download_via_sciencedirect(doi: str, output_path: str, logger=None) -> bool:
-    # 1. 브라우저 세팅
-    co = ChromiumOptions()
-    browser_path = resolve_browser_executable("", logger=logger)
-    if not browser_path:
-        if logger:
-            logger.warning("        [ScienceDirect] 브라우저 실행 파일을 찾지 못해 중단")
-        return False
-    co.set_browser_path(browser_path)
-    co.auto_port()
-    _apply_best_browser_profile(co)
-    page = None
-
-    try:
-        page = ChromiumPage(co)
-        # 2. Abstract 페이지 접속 
-        target_url = f"https://doi.org/{doi}"
-        if logger: logger.info(f"        [ScienceDirect] 페이지 접속 시도: {target_url}")
-        
-        page.get(target_url, retry=0, interval=0.5, timeout=10)
-        page_title = page.title or ""
-        page_html = page.html or ""
-        current_domain = _extract_domain(page.url)
-        
-        # 3. 캡차/차단 감지 시 즉시 중단 (우회/자동 풀이 없음)
-        issue, evidence = detect_access_issue(
-            title=page_title,
-            html=page_html,
-            url=page.url or "",
-            domain=current_domain,
-        )
-        if issue in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
-            if _should_soft_continue_issue(issue, evidence, page_title, page_html, current_domain):
-                if logger:
-                    logger.info(f"        [ScienceDirect] soft-continue: {evidence}")
-            else:
-                if logger:
-                    logger.warning(f"        [ScienceDirect] {issue} 감지: {evidence}")
-                return False
-        
-        # 4. ScienceDirect URL 확인
-        current_url = page.url
-        if "sciencedirect.com" not in current_url:
-            if logger: logger.warning("        [ScienceDirect] 리다이렉트 실패 (다른 사이트?)")
-            return False
-
-        # 5. PDF 링크 찾기 (메타 태그 우선)
-        pdf_url = None
-        meta_pdf = page.ele('css:meta[name="citation_pdf_url"]')
-        if meta_pdf:
-            pdf_url = meta_pdf.attr("content")
-        
-        if not pdf_url:
-            # URL에서 PII 추출 (예: /science/article/pii/S002195172030005X)
-            match = re.search(r'/pii/([A-Z0-9]+)', current_url, re.IGNORECASE)
-            if match:
-                pii = match.group(1)
-                pdf_url = f"https://www.sciencedirect.com/science/article/pii/{pii}/pdfft?isDTM=true&download=true"
-        
-        if not pdf_url:
-            if logger: logger.warning("        [ScienceDirect] PDF 링크를 찾을 수 없음")
-            return False
-
-        # 헤더 설정
-        cookies_list = page.cookies()
-        cookies = {c.get("name"): c.get("value") for c in cookies_list if c.get("name")}
-        user_agent = page.user_agent
-        
-        headers = {
-            "User-Agent": user_agent,
-            "Referer": current_url, # 현재 페이지
-            "Accept": "application/pdf,application/x-pdf,*/*",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Connection": "keep-alive",
-        }
-        
-        if logger: logger.info(f"        [ScienceDirect] CFFI 다운로드 시도 (Referer: {current_url})")
-        
-        response = cffi_requests.get(
-            pdf_url,
-            headers=headers,
-            cookies=cookies, # 브라우저 쿠키 주입
-            impersonate="chrome110", # TLS Fingerprint 맞춤
-            timeout=12,
-            allow_redirects=True
-        )
-        
-        if response.status_code == 200 and b'%PDF' in response.content[:100]:
-            with open(output_path, 'wb') as f:
-                f.write(response.content)
-            if logger: logger.info("        [ScienceDirect] 다운로드 성공")
-            return True
-        else:
-            if logger:
-                body_hint = ""
-                try:
-                    body_hint = (response.text or "")[:180].replace("\n", " ").replace("\r", " ")
-                except Exception:
-                    body_hint = ""
-                logger.warning(
-                    f"        [ScienceDirect] 실패 (Status: {response.status_code}, hint: {body_hint})"
-                )
-            return False
-            
-    except Exception as e:
-        if logger: logger.error(f"        [ScienceDirect] 에러: {e}")
-        return False
-        
-    finally:
-        _close_page_safely(page, logger=logger)
-
-
-
 def download_using_api(doi: str, output_path: str, publisher: str, logger = None):
     """
     Attempt to download the article PDF using publisher-specific API methods.

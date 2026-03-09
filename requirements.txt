@@ -1,7 +1,7 @@
 pandas
 requests
 tqdm
-beautifulsoup4
+beautifulsoup4==4.14.3
 seleniumbase
 webdriver_manager
 matplotlib

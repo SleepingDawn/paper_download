@@ -16,7 +16,10 @@ python3 -m pip install -r requirements.txt
 
 ### 2-0. 서버(Linux CLI)에서 랜딩만 검사 (다운로드 없음)
 
-`landing_access_repro.py`는 DOI 랜딩 성공 여부만 검사하고, 실패 시 스크린샷/HTML/메타 로그를 남깁니다.
+`landing_access_repro.py`는 DOI 랜딩 성공 여부만 검사하고, 실패 시 HTML/메타 로그를 남깁니다. 실패 스크린샷은 `--capture-fail-screenshot 1`일 때만 저장됩니다.
+새 분류기는 `success_landing`, `challenge_detected`, `blank_or_incomplete`, `consent_or_interstitial_block`, `broken_js_shell`, `domain_mismatch`, `publisher_error`, `timeout`, `network_error`, `unknown_non_success` 상태를 기록합니다.
+기본 probe 모드는 실험상 더 안정적이었던 `reuse_page`이며, `fresh_tab`은 A/B 비교용으로만 남겨두었습니다.
+현재 기본 실행값은 로컬 랜딩 성공 우선 기준으로 `--workers 1`, `--headless 0`입니다.
 
 먼저 서버에서 브라우저 경로를 확인하세요:
 
@@ -28,10 +31,16 @@ which google-chrome || which google-chrome-stable || which chromium-browser || w
 python3 -u landing_access_repro.py \
   --input ready_to_download.csv \
   --max-dois 100 \
-  --workers 5 \
+  --workers 1 \
   --startup-retries 3 \
-  --timeout-sec 20 \
-  --headless 1 \
+  --timeout-sec 18 \
+  --per-doi-deadline-sec 75 \
+  --max-nav-attempts 2 \
+  --publisher-cooldown-sec 7 \
+  --global-start-spacing-sec 1.5 \
+  --jitter-min-sec 0.7 \
+  --jitter-max-sec 1.8 \
+  --headless 0 \
   --no-sandbox 1 \
   --server-tuned 1 \
   --single-process 0 \
@@ -43,6 +52,7 @@ python3 -u landing_access_repro.py \
   --worker-profile-root "${SLURM_TMPDIR:-/tmp/$USER}/landing_worker_profiles" \
   --clean-worker-profiles 1 \
   --capture-fail-artifacts 1 \
+  --capture-fail-screenshot 0 \
   --capture-success-artifacts 1 \
   --capture-success-html 0 \
   --artifact-dir outputs/landing_access_artifacts \
@@ -50,25 +60,49 @@ python3 -u landing_access_repro.py \
   --artifact-zip outputs/landing_access_failures.zip \
   --zip-success-artifacts 1 \
   --success-artifact-zip outputs/landing_access_successes.zip \
+  --probe-page-mode reuse_page \
   --output-jsonl outputs/landing_access_repro.top100.jsonl \
-  --report outputs/landing_access_repro.top100.report.json
+  --report outputs/landing_access_repro.top100.report.json \
+  --report-md outputs/landing_access_repro.top100.report.md
 ```
 
 산출물:
 - `outputs/landing_access_repro.*.jsonl`
 - `outputs/landing_access_repro.*.report.json`
-- `outputs/landing_access_artifacts/fail/landing_fail_*.png`
+- `outputs/landing_access_repro.*.report.md`
 - `outputs/landing_access_artifacts/fail/landing_fail_*.html`
 - `outputs/landing_access_artifacts/fail/landing_fail_*.json`
+- `outputs/landing_access_artifacts/fail/landing_fail_*.png` (`--capture-fail-screenshot 1`일 때만 생성)
 - `outputs/landing_access_artifacts/success/landing_success_*.png`
 - `outputs/landing_access_artifacts/success/landing_success_*.json`
 - `outputs/landing_access_failures.zip` (실패 케이스 묶음, `manifest_fail.json` 포함)
 - `outputs/landing_access_successes.zip` (성공 케이스 묶음, `manifest_success.json` 포함)
 
 참고:
+- 로컬 성공 우선 기본값은 `workers=1`, `headless=0`, `probe_page_mode=reuse_page`입니다.
+- 실패 스크린샷 기본값은 `--capture-fail-screenshot 0`입니다. 실패 HTML/JSON만 남기고 싶으면 그대로 두고, PNG까지 필요할 때만 `1`로 켜면 됩니다.
+- 워커 수는 안전상 최대 2로 제한됩니다. 같은 퍼블리셔는 전역 cooldown/jitter를 두고 순차적으로 시작합니다.
+- DOI당 전체 시간은 `--per-doi-deadline-sec`로 하드캡되며 2분 미만으로 유지됩니다.
+- 결과 JSONL/메타에는 `worker_idx`, `probe_page_mode`, `scheduled_start_ms`, `actual_start_ms`, `pacing_wait_ms`, `timing_breakdown`, `attempt_history`가 함께 기록됩니다.
+- `challenge_detected`가 뜬 퍼블리셔는 같은 워커/세션에서 곧바로 다시 두드리지 않도록 추가 holdoff를 둡니다.
 - Elsevier `linkinghub/.../retrieve/pii/...` + 제목 `Redirecting` 상태는 성공으로 보지 않습니다.
-- 스크립트가 handoff 이동을 1회 시도한 뒤에도 retrieve에 머무르면 `FAIL_BLOCK`으로 기록합니다.
-- AIP URL에 `__cf_chl_rt_tk` 또는 Cloudflare challenge 토큰이 있으면 `FAIL_BLOCK`으로 기록합니다.
+- 스크립트는 DOI/interstitial 페이지에서 추출 가능한 canonical/article URL이 있으면 같은 시도 안에서 1회만 더 따라가고, 그 뒤에도 retrieve/interstitial에 머무르면 비성공으로 기록합니다.
+- `validate.perfdrive.com` 같은 벤더 스크립트 참조만으로는 challenge로 보지 않고, 실제 challenge UI/문구/URL 신호가 있을 때만 `challenge_detected`로 기록합니다.
+- JS shell이 깨져 기사 본문이 렌더링되지 않으면 `broken_js_shell`, publisher metadata와 실제 기사 도메인 계열이 어긋나면 `domain_mismatch`로 별도 기록합니다.
+- `institutional login`, `shibboleth`, `openathens` 같은 내비게이션 문구가 있어도 실제 article metadata와 본문이 충분하면 성공으로 인정합니다. 반대로 본문을 가리는 consent/login/paywall은 계속 비성공으로 유지합니다.
+
+실험 비교 예시:
+
+```bash
+python3 -u landing_experiment_compare.py \
+  --baseline-label baseline_20260308 \
+  --baseline-report outputs/landing_exp_20260308/report.json \
+  --baseline-results outputs/landing_exp_20260308/results.jsonl \
+  --candidate classifier_only=outputs/landing_exp_20260308_batch1/report.json:outputs/landing_exp_20260308_batch1/results.jsonl \
+  --candidate fresh_tab=outputs/landing_exp_20260308_batch2/report.json:outputs/landing_exp_20260308_batch2/results.jsonl \
+  --output-json outputs/landing_exp_20260308_compare/comparison.json \
+  --output-md outputs/landing_exp_20260308_compare/comparison.md
+```
 
 ### 2-1. DOI CSV로 바로 다운로드
 
@@ -78,10 +112,13 @@ CHROME_PATH=/usr/bin/google-chrome \
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
   --max_workers 4 \
+  --precheck-landing 0 \
   --output_dir outputs/run_ready_w4 \
   --after-first-pass stop \
   --non-interactive
 ```
+
+랜딩 선확인이 필요하면 `--precheck-landing 1`을 추가합니다. 이 옵션은 다운로드 전에 `landing_access_repro.py`를 먼저 실행해 `SUCCESS_ACCESS`로 판정된 DOI만 다운로드 큐에 넣습니다.
 
 ### 2-2. 검색 + 다운로드(OpenAlex)
 
@@ -91,6 +128,7 @@ python3 -u parallel_download.py \
   --query "('solid-state electrolyte' OR 'solid electrolyte') AND battery AND Li" \
   --max_num 300 \
   --max_workers 2 \
+  --precheck-landing 0 \
   --output_dir outputs/run_search_w2 \
   --after-first-pass stop \
   --non-interactive
@@ -103,6 +141,7 @@ PDF_BROWSER_HEADLESS=1 \
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
   --max_workers 4 \
+  --precheck-landing 0 \
   --output_dir outputs/run_ready_w4_deep \
   --after-first-pass deep \
   --non-interactive
@@ -141,6 +180,13 @@ Drission 내부 전략:
   - 고차단/일반 도메인: PDF 버튼 1회 클릭 + 파일 감지
 - 링크가 있으면 `page.download` 또는 navigation 다운로드
 - 1차 패스는 빠른 경로만 사용하고 느린 fallback(requests/js/추가 CFFI)은 생략
+
+`--precheck-landing 1`일 때 추가 동작:
+
+- 다운로드 전에 `landing_access_repro.py`를 별도 실행
+- `SUCCESS_ACCESS`만 다운로드 대상으로 유지
+- `FAIL_ACCESS_RIGHTS`는 landing 단계 권한 없음으로 별도 집계
+- `<output_dir>/landing_precheck/` 아래에 precheck 입력/결과/report 저장
 
 ## 5. Bot-detection 회피 방식
 
@@ -202,8 +248,21 @@ Drission 내부 전략:
 - `<output_dir>/Open_Access/logs/download_log_*.txt`
 - `<output_dir>/Closed_Access/logs/download_log_*.txt`
 - `<output_dir>/**/logs/screenshots/final_fail_capture_*.png`
+- `<output_dir>/landing_precheck/landing_input.csv` (`--precheck-landing 1`일 때만 생성)
+- `<output_dir>/landing_precheck/landing_results.jsonl` (`--precheck-landing 1`일 때만 생성)
+- `<output_dir>/landing_precheck/landing_report.json` (`--precheck-landing 1`일 때만 생성)
+- `<output_dir>/landing_precheck/landing_report.md` (`--precheck-landing 1`일 때만 생성)
 - `outputs/summary.json`
 - `outputs/failed_papers.jsonl`
+
+`outputs/summary.json`에는 아래 항목이 포함됩니다.
+
+- `precheck_landing`
+- `landing_precheck`
+- `effective_rates`
+  - `download_raw_success_rate`
+  - `download_adjusted_success_rate`
+  - `end_to_end_adjusted_success_rate`
 - `outputs/download_attempts.jsonl`
 - `outputs/download_attempts_summary.json`
 
