@@ -1,0 +1,210 @@
+{
+  "generated_at": 1772964637,
+  "input_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/headless_structural_focus_20260308.csv",
+  "sample_size": 9,
+  "workers_requested": 1,
+  "workers_effective": 1,
+  "headless": true,
+  "no_sandbox": true,
+  "server_tuned": true,
+  "single_process": "0",
+  "humanized_browser": "1",
+  "assume_institution_access": true,
+  "startup_retries": 3,
+  "timeout_sec": 15.0,
+  "per_doi_deadline_sec": 45.0,
+  "max_nav_attempts": 2,
+  "publisher_cooldown_sec": 7.0,
+  "global_start_spacing_sec": 1.5,
+  "jitter_sec": [
+    0.7,
+    1.8
+  ],
+  "profile_mode": "auto",
+  "profile_name": "Default",
+  "persistent_profile_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/.chrome_user_data",
+  "worker_profile_root": "/tmp/seyong/landing_worker_profiles",
+  "probe_page_mode": "reuse_page",
+  "criteria": "success_landing only when expected publisher/target is reached, visible content is populated, article metadata or stable article markers exist, and no challenge/interstitial/blank heuristics fire.",
+  "summary": {
+    "total_valid": 9,
+    "success_ratio": 0.6667,
+    "classifier_counts": {
+      "success_landing": 6,
+      "publisher_error": 1,
+      "unknown_non_success": 1,
+      "challenge_detected": 1
+    },
+    "outcome_counts": {
+      "SUCCESS_ACCESS": 6,
+      "FAIL_BLOCK": 2,
+      "FAIL_CAPTCHA": 1
+    },
+    "top_reason_codes": [
+      [
+        "content_populated",
+        8
+      ],
+      [
+        "expected_domain_match",
+        8
+      ],
+      [
+        "doi_match",
+        6
+      ],
+      [
+        "publisher_marker_present",
+        6
+      ],
+      [
+        "strong_meta_present",
+        4
+      ],
+      [
+        "publisher_error_marker",
+        1
+      ],
+      [
+        "insufficient_article_signals",
+        1
+      ],
+      [
+        "low_main_text",
+        1
+      ],
+      [
+        "fail_block_bot_signal",
+        1
+      ],
+      [
+        "url_marker=challenge_or_bot",
+        1
+      ]
+    ],
+    "publisher_breakdown": [
+      {
+        "publisher": "elsevier",
+        "sample_size": 4,
+        "counts": {
+          "success_landing": 4
+        }
+      },
+      {
+        "publisher": "ieee",
+        "sample_size": 3,
+        "counts": {
+          "publisher_error": 1,
+          "success_landing": 2
+        }
+      },
+      {
+        "publisher": "optica",
+        "sample_size": 1,
+        "counts": {
+          "challenge_detected": 1
+        }
+      },
+      {
+        "publisher": "powdermat",
+        "sample_size": 1,
+        "counts": {
+          "unknown_non_success": 1
+        }
+      }
+    ],
+    "legacy_success_like_count": 7,
+    "legacy_reclassified_non_success": [
+      {
+        "doi": "10.1109/pvsc.2017.8366874",
+        "publisher": "2017 IEEE 44th Photovoltaic Specialist Conference (PVSC)",
+        "final_url": "https://ieeexplore.ieee.org/document/8366874/",
+        "title": "ieeexplore.ieee.org/document/8366874/",
+        "classifier_state": "publisher_error",
+        "reason_codes": [
+          "content_populated",
+          "expected_domain_match",
+          "publisher_error_marker"
+        ]
+      },
+      {
+        "doi": "10.4150/jpm.2025.00094",
+        "publisher": "Hanguk bunmal jaeryo hakoeji",
+        "final_url": "https://www.powdermat.org/authors/copyright_transfer_agreement.php",
+        "title": "Journal of Powder Materials",
+        "classifier_state": "unknown_non_success",
+        "reason_codes": [
+          "content_populated",
+          "expected_domain_match",
+          "insufficient_article_signals",
+          "low_main_text"
+        ]
+      }
+    ],
+    "p50_elapsed_ms": 22178.0,
+    "p90_elapsed_ms": 48000.2,
+    "domain_breakdown_top20": [
+      {
+        "domain": "ieeexplore.ieee.org",
+        "sample_size": 3,
+        "counts": {
+          "publisher_error": 1,
+          "success_landing": 2
+        },
+        "p50_elapsed_ms": 21064.0,
+        "p90_elapsed_ms": 21064.0
+      },
+      {
+        "domain": "www.sciencedirect.com",
+        "sample_size": 3,
+        "counts": {
+          "success_landing": 3
+        },
+        "p50_elapsed_ms": 21656.0,
+        "p90_elapsed_ms": 21656.0
+      },
+      {
+        "domain": "opg.optica.org",
+        "sample_size": 1,
+        "counts": {
+          "challenge_detected": 1
+        },
+        "p50_elapsed_ms": 33380.0,
+        "p90_elapsed_ms": 33380.0
+      },
+      {
+        "domain": "www.cell.com",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        },
+        "p50_elapsed_ms": 39297.0,
+        "p90_elapsed_ms": 39297.0
+      },
+      {
+        "domain": "www.powdermat.org",
+        "sample_size": 1,
+        "counts": {
+          "unknown_non_success": 1
+        },
+        "p50_elapsed_ms": 55365.0,
+        "p90_elapsed_ms": 55365.0
+      }
+    ]
+  },
+  "publishers_covered": [
+    "2017 IEEE 44th Photovoltaic Specialist Conference (PVSC)",
+    "Elsevier BV",
+    "Hanguk bunmal jaeryo hakoeji",
+    "Institute of Electrical and Electronics Engineers",
+    "Optica Publishing Group"
+  ],
+  "remaining_weak_spots": [
+    "`unknown_non_success` still appears on pages that render some content but do not expose stable DOI/article metadata.",
+    "Challenge pages remain a hard stop. [blocked] No CAPTCHA, Turnstile, or Cloudflare bypass is implemented."
+  ],
+  "output_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/headless_structural_focus_after2_20260308/results.jsonl",
+  "artifact_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/headless_structural_focus_after2_20260308/artifacts",
+  "failure_artifact_zip": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/headless_structural_focus_after2_20260308/failures.zip",
+  "success_artifact_zip": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/headless_structural_focus_after2_20260308/successes.zip"
+}

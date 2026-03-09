@@ -1,0 +1,82 @@
+{
+  "doi": "10.1063/5.0021038",
+  "input_publisher": "American Institute of Physics",
+  "scheduler_publisher": "aip",
+  "captured_at_ms": 1773043934184,
+  "worker_idx": 0,
+  "browser_identity": "worker_0",
+  "probe_page_mode": "reuse_page",
+  "probe_tab_id": "8A63ECD3F44B966755D3BCCEE84C3285",
+  "scheduled_start_ms": 1773043912461,
+  "actual_start_ms": 1773043912462,
+  "pacing_wait_ms": 0,
+  "pacing_penalty_wait_ms": 0,
+  "classifier_state": "challenge_detected",
+  "outcome": "FAIL_CAPTCHA",
+  "final_url": "https://pubs.aip.org/apl/article/117/13/133702/567183/Subtractive-patterning-High-resolution?__cf_chl_rt_tk=UydJ_Q6fi_BhlfLGkln689ivfPLOMOzjHyiO8oODmlc-1773043913-1.0.1.1-11If6q9ZHAWG.2QtkuYeBsm8fpcw3ZH88m1m1b0njI0",
+  "navigation_chain": [
+    {
+      "step": "pre_reset",
+      "requested_url": "about:blank",
+      "observed_url": "about:blank"
+    },
+    {
+      "step": "doi_get",
+      "requested_url": "https://doi.org/10.1063/5.0021038",
+      "observed_url": "https://pubs.aip.org/apl/article/117/13/133702/567183/Subtractive-patterning-High-resolution?__cf_chl_rt_tk=UydJ_Q6fi_BhlfLGkln689ivfPLOMOzjHyiO8oODmlc-1773043913-1.0.1.1-11If6q9ZHAWG.2QtkuYeBsm8fpcw3ZH88m1m1b0njI0"
+    }
+  ],
+  "title": "Just a moment...",
+  "reason_codes": [
+    "fail_block_bot_signal",
+    "url_marker=challenge_or_bot"
+  ],
+  "signal_summary": {
+    "body_text_len": 16,
+    "main_text_len": 0,
+    "meta_keys": []
+  },
+  "timing_breakdown": {
+    "scheduled_start_ms": 1773043912461,
+    "actual_start_ms": 1773043912462,
+    "pacing_wait_ms": 0,
+    "pacing_penalty_wait_ms": 0,
+    "pacing_jitter_sec": 1.524,
+    "attempts": [
+      {
+        "attempt": 1,
+        "pre_reset_ms": 74,
+        "network_listener": true,
+        "doi_get_ms": 565,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 2429,
+        "attempt_elapsed_ms": 21721
+      }
+    ]
+  },
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "classifier_state": "challenge_detected",
+      "reason_codes": [
+        "fail_block_bot_signal",
+        "url_marker=challenge_or_bot"
+      ],
+      "final_url": "https://pubs.aip.org/apl/article/117/13/133702/567183/Subtractive-patterning-High-resolution?__cf_chl_rt_tk=UydJ_Q6fi_BhlfLGkln689ivfPLOMOzjHyiO8oODmlc-1773043913-1.0.1.1-11If6q9ZHAWG.2QtkuYeBsm8fpcw3ZH88m1m1b0njI0",
+      "timing_ms": {
+        "attempt": 1,
+        "pre_reset_ms": 74,
+        "network_listener": true,
+        "doi_get_ms": 565,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 2429,
+        "attempt_elapsed_ms": 21721
+      }
+    }
+  ],
+  "direct_pdf_path": "",
+  "direct_pdf_event": {},
+  "legacy_success_like": false,
+  "dom_signature": "Just a moment...",
+  "html_len": 7704
+}

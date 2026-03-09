@@ -1,0 +1,75 @@
+{
+  "generated_at": 1773079329,
+  "total_papers": 1,
+  "after_first_pass": "stop",
+  "non_interactive": true,
+  "first_pass": {
+    "success": 1,
+    "failed": 0,
+    "fail_reasons": {
+      "FAIL_CAPTCHA": 0,
+      "FAIL_BLOCK": 0,
+      "FAIL_ACCESS_RIGHTS": 0,
+      "FAIL_WRONG_MIME": 0,
+      "FAIL_VIEWER_HTML": 0,
+      "FAIL_HTTP_STATUS": 0,
+      "FAIL_TIMEOUT/NETWORK": 0,
+      "FAIL_PDF_MAGIC": 0,
+      "FAIL_TOO_SMALL": 0,
+      "FAIL_NO_CANDIDATE": 0,
+      "FAIL_REDIRECT_LOOP": 0,
+      "FAIL_UNKNOWN": 0
+    }
+  },
+  "deep_retry": {
+    "executed": false,
+    "total": 0,
+    "success": 0,
+    "failed": 0,
+    "fail_reasons": {
+      "FAIL_CAPTCHA": 0,
+      "FAIL_BLOCK": 0,
+      "FAIL_ACCESS_RIGHTS": 0,
+      "FAIL_WRONG_MIME": 0,
+      "FAIL_VIEWER_HTML": 0,
+      "FAIL_HTTP_STATUS": 0,
+      "FAIL_TIMEOUT/NETWORK": 0,
+      "FAIL_PDF_MAGIC": 0,
+      "FAIL_TOO_SMALL": 0,
+      "FAIL_NO_CANDIDATE": 0,
+      "FAIL_REDIRECT_LOOP": 0,
+      "FAIL_UNKNOWN": 0
+    }
+  },
+  "elapsed_seconds": 12.75,
+  "live_attempt_metrics": {
+    "count": 1,
+    "success_rate": 1.0,
+    "median_latency_ms": 2102,
+    "reason_distribution": {
+      "SUCCESS": 1
+    },
+    "by_strategy": {
+      "cffi_baseline": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 2102
+      }
+    },
+    "by_domain": {
+      "www.nature.com": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 2102
+      }
+    }
+  },
+  "artifacts": {
+    "results_csv": "/tmp/seyong/download_with_landing_gate/tmp_gate_smoke_run/openalex_search_results_parallel.csv",
+    "failed_csv": "/tmp/seyong/download_with_landing_gate/tmp_gate_smoke_run/failed_papers.csv",
+    "failed_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/failed_papers.jsonl",
+    "attempts_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/download_attempts.jsonl",
+    "attempts_summary_json": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/download_attempts_summary.json",
+    "summary_json": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/summary.json"
+  }
+}

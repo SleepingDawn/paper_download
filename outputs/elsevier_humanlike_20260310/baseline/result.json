@@ -1,0 +1,15 @@
+{
+  "doi": "10.1016/j.cclet.2023.108591",
+  "result": {
+    "ok": false,
+    "reason": "FAIL_PARSE",
+    "evidence": [
+      "sciencedirect_pdf_not_downloadable"
+    ],
+    "stage": "drission",
+    "domain": "doi.org",
+    "http_status": null
+  },
+  "pdf_exists": false,
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/elsevier_humanlike_20260310/baseline/pdfs/10.1016_j.cclet.2023.108591.pdf"
+}

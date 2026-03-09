@@ -1,0 +1,31 @@
+{
+  "input_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/open_access_non_acs_ready_to_download.csv",
+  "started_at": 1773079485,
+  "runs": [
+    {
+      "label": "headful_w2",
+      "headless": false,
+      "started_at": 1773079485,
+      "cmd": [
+        "/opt/anaconda3/bin/python",
+        "-u",
+        "parallel_download.py",
+        "--doi_path",
+        "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/open_access_non_acs_ready_to_download.csv",
+        "--max_workers",
+        "2",
+        "--output_dir",
+        "/tmp/seyong/oa_nonacs_precheck_compare_20260310/headful_w2",
+        "--after-first-pass",
+        "stop",
+        "--non-interactive",
+        "--precheck-landing",
+        "1"
+      ],
+      "ended_at": 1773084680,
+      "wall_time_sec": 5194.92,
+      "returncode": -15
+    }
+  ],
+  "finished_at": 1773084680
+}

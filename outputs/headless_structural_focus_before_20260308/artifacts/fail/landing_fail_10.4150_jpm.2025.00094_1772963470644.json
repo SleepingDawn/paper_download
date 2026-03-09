@@ -1,0 +1,99 @@
+{
+  "doi": "10.4150/jpm.2025.00094",
+  "input_publisher": "Hanguk bunmal jaeryo hakoeji",
+  "scheduler_publisher": "powdermat",
+  "captured_at_ms": 1772963470644,
+  "worker_idx": 0,
+  "browser_identity": "worker_0",
+  "probe_page_mode": "reuse_page",
+  "probe_tab_id": "C3E8BE6323828BEC6953D787EE8A5670",
+  "scheduled_start_ms": 1772963432059,
+  "actual_start_ms": 1772963432060,
+  "pacing_wait_ms": 0,
+  "pacing_penalty_wait_ms": 0,
+  "classifier_state": "unknown_non_success",
+  "outcome": "FAIL_BLOCK",
+  "final_url": "https://www.powdermat.org/authors/copyright_transfer_agreement.php",
+  "navigation_chain": [
+    {
+      "step": "pre_reset",
+      "requested_url": "about:blank",
+      "observed_url": "about:blank"
+    },
+    {
+      "step": "doi_get",
+      "requested_url": "https://www.powdermat.org/journal/view.php?doi=10.4150/jpm.2025.00094",
+      "observed_url": "https://www.powdermat.org/journal/view.php?doi=10.4150/jpm.2025.00094"
+    },
+    {
+      "step": "targeted_recovery",
+      "requested_url": "https://www.powdermat.org/journal/view.php?doi=10.4150/jpm.2025.00094",
+      "observed_url": "https://www.powdermat.org/journal/view.php?doi=10.4150/jpm.2025.00094"
+    }
+  ],
+  "title": "Journal of Powder Materials",
+  "reason_codes": [
+    "content_populated",
+    "expected_domain_match",
+    "insufficient_article_signals",
+    "low_main_text"
+  ],
+  "signal_summary": {
+    "body_text_len": 2101,
+    "main_text_len": 0,
+    "meta_keys": []
+  },
+  "timing_breakdown": {
+    "scheduled_start_ms": 1772963432059,
+    "actual_start_ms": 1772963432060,
+    "pacing_wait_ms": 0,
+    "pacing_penalty_wait_ms": 0,
+    "pacing_jitter_sec": 1.44,
+    "attempts": [
+      {
+        "attempt": 1,
+        "pre_reset_ms": 91,
+        "network_listener": true,
+        "entry_url_override": "https://www.powdermat.org/journal/view.php?doi=10.4150/jpm.2025.00094",
+        "doi_get_ms": 737,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 28,
+        "targeted_recovery_ms": 482,
+        "targeted_recovery_url": "https://www.powdermat.org/journal/view.php?doi=10.4150/jpm.2025.00094",
+        "targeted_recovery_stabilize_ms": 21,
+        "attempt_elapsed_ms": 38583
+      }
+    ]
+  },
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "classifier_state": "unknown_non_success",
+      "reason_codes": [
+        "content_populated",
+        "expected_domain_match",
+        "insufficient_article_signals",
+        "low_main_text"
+      ],
+      "final_url": "https://www.powdermat.org/authors/copyright_transfer_agreement.php",
+      "timing_ms": {
+        "attempt": 1,
+        "pre_reset_ms": 91,
+        "network_listener": true,
+        "entry_url_override": "https://www.powdermat.org/journal/view.php?doi=10.4150/jpm.2025.00094",
+        "doi_get_ms": 737,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 28,
+        "targeted_recovery_ms": 482,
+        "targeted_recovery_url": "https://www.powdermat.org/journal/view.php?doi=10.4150/jpm.2025.00094",
+        "targeted_recovery_stabilize_ms": 21,
+        "attempt_elapsed_ms": 38583
+      }
+    }
+  ],
+  "direct_pdf_path": "",
+  "direct_pdf_event": {},
+  "legacy_success_like": true,
+  "dom_signature": "KPMI Contact us E-SUBMISSION Skip Navigation Skip to contents About Browse Articles Editorial Policies For Contributors SEARCH Copyright transfer agreement Page Path HOME > For Contributors > Copyright transfer agreement For Contributors In",
+  "html_len": 36314
+}

@@ -1,0 +1,91 @@
+{
+  "doi": "10.1109/pvsc.2017.8366874",
+  "input_publisher": "2017 IEEE 44th Photovoltaic Specialist Conference (PVSC)",
+  "scheduler_publisher": "ieee",
+  "captured_at_ms": 1772963308594,
+  "worker_idx": 0,
+  "browser_identity": "worker_0",
+  "probe_page_mode": "reuse_page",
+  "probe_tab_id": "C3E8BE6323828BEC6953D787EE8A5670",
+  "scheduled_start_ms": 1772963262270,
+  "actual_start_ms": 1772963262270,
+  "pacing_wait_ms": 0,
+  "pacing_penalty_wait_ms": 0,
+  "classifier_state": "publisher_error",
+  "outcome": "FAIL_BLOCK",
+  "final_url": "https://ieeexplore.ieee.org/document/8366874/",
+  "navigation_chain": [
+    {
+      "step": "pre_reset",
+      "requested_url": "about:blank",
+      "observed_url": "about:blank"
+    },
+    {
+      "step": "doi_get",
+      "requested_url": "https://doi.org/10.1109/pvsc.2017.8366874",
+      "observed_url": "https://ieeexplore.ieee.org/document/8366874/"
+    },
+    {
+      "step": "ieee_title_search",
+      "requested_url": "https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=Atomic-layer%20deposited%20passivation%20schemes%20for%20c-Si%20solar%20cells",
+      "observed_url": "https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=Atomic-layer%20deposited%20passivation%20schemes%20for%20c-Si%20solar%20cells"
+    }
+  ],
+  "title": "ieeexplore.ieee.org/document/8366874/",
+  "reason_codes": [
+    "content_populated",
+    "expected_domain_match",
+    "publisher_error_marker"
+  ],
+  "signal_summary": {
+    "body_text_len": 963,
+    "main_text_len": 0,
+    "meta_keys": []
+  },
+  "timing_breakdown": {
+    "scheduled_start_ms": 1772963262270,
+    "actual_start_ms": 1772963262270,
+    "pacing_wait_ms": 0,
+    "pacing_penalty_wait_ms": 0,
+    "pacing_jitter_sec": 1.411,
+    "attempts": [
+      {
+        "attempt": 1,
+        "pre_reset_ms": 63,
+        "network_listener": true,
+        "doi_get_ms": 805,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 23,
+        "ieee_title_search_ms": 1182,
+        "attempt_elapsed_ms": 46322
+      }
+    ]
+  },
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "classifier_state": "publisher_error",
+      "reason_codes": [
+        "content_populated",
+        "expected_domain_match",
+        "publisher_error_marker"
+      ],
+      "final_url": "https://ieeexplore.ieee.org/document/8366874/",
+      "timing_ms": {
+        "attempt": 1,
+        "pre_reset_ms": 63,
+        "network_listener": true,
+        "doi_get_ms": 805,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 23,
+        "ieee_title_search_ms": 1182,
+        "attempt_elapsed_ms": 46322
+      }
+    }
+  ],
+  "direct_pdf_path": "",
+  "direct_pdf_event": {},
+  "legacy_success_like": true,
+  "dom_signature": "IEEE.org IEEE Xplore IEEE-SA IEEE Spectrum More Sites 404: Page Not Found The page you were looking for could not be found. Browse or search IEEE Xplore to continue. Email us at onlinesupport@ieee.org for further assistance. IEEE Personal A",
+  "html_len": 15582
+}

@@ -1,0 +1,96 @@
+{
+  "doi": "10.1016/j.apcatb.2016.11.023",
+  "input_publisher": "Elsevier BV",
+  "scheduler_publisher": "elsevier",
+  "captured_at_ms": 1772964635814,
+  "worker_idx": 0,
+  "browser_identity": "worker_0",
+  "probe_page_mode": "reuse_page",
+  "probe_tab_id": "D8E899045A278E73467594CA36228583",
+  "scheduled_start_ms": 1772964613634,
+  "actual_start_ms": 1772964613634,
+  "pacing_wait_ms": 0,
+  "pacing_penalty_wait_ms": 0,
+  "classifier_state": "success_landing",
+  "outcome": "SUCCESS_ACCESS",
+  "final_url": "https://www.sciencedirect.com/science/article/abs/pii/S0926337316308827",
+  "navigation_chain": [
+    {
+      "step": "pre_reset",
+      "requested_url": "about:blank",
+      "observed_url": "about:blank"
+    },
+    {
+      "step": "doi_get",
+      "requested_url": "https://www.sciencedirect.com/science/article/pii/S0926337316308827",
+      "observed_url": "https://www.sciencedirect.com/science/article/abs/pii/S0926337316308827"
+    }
+  ],
+  "title": "Plasmonic Ag-TiO2 − x nanocomposites for the photocatalytic removal of NO under visible light with high selectivity: The role of oxygen vacancies - ScienceDirect",
+  "reason_codes": [
+    "content_populated",
+    "doi_match",
+    "expected_domain_match",
+    "publisher_marker_present",
+    "strong_meta_present"
+  ],
+  "signal_summary": {
+    "body_text_len": 11385,
+    "main_text_len": 10932,
+    "meta_keys": [
+      "citation_doi",
+      "citation_journal_title",
+      "citation_title",
+      "dc.identifier",
+      "og:type"
+    ]
+  },
+  "timing_breakdown": {
+    "scheduled_start_ms": 1772964613634,
+    "actual_start_ms": 1772964613634,
+    "pacing_wait_ms": 0,
+    "pacing_penalty_wait_ms": 0,
+    "pacing_jitter_sec": 0.766,
+    "attempts": [
+      {
+        "attempt": 1,
+        "pre_reset_ms": 48,
+        "network_listener": true,
+        "entry_url_override": "https://www.sciencedirect.com/science/article/pii/S0926337316308827",
+        "doi_get_ms": 1365,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 44,
+        "attempt_elapsed_ms": 22178
+      }
+    ]
+  },
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "classifier_state": "success_landing",
+      "reason_codes": [
+        "content_populated",
+        "doi_match",
+        "expected_domain_match",
+        "publisher_marker_present",
+        "strong_meta_present"
+      ],
+      "final_url": "https://www.sciencedirect.com/science/article/abs/pii/S0926337316308827",
+      "timing_ms": {
+        "attempt": 1,
+        "pre_reset_ms": 48,
+        "network_listener": true,
+        "entry_url_override": "https://www.sciencedirect.com/science/article/pii/S0926337316308827",
+        "doi_get_ms": 1365,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 44,
+        "attempt_elapsed_ms": 22178
+      }
+    }
+  ],
+  "direct_pdf_path": "",
+  "direct_pdf_event": {},
+  "legacy_success_like": true,
+  "dom_signature": "Skip to main content Skip to article Journals & Books Help Search My account Sign in Access through your organization Purchase PDF Article preview Abstract Introduction Section snippets References (67) Cited by (218) Applied Catalysis B: En",
+  "html_len": 358506
+}

@@ -1,0 +1,86 @@
+{
+  "doi": "10.1109/icept.2015.7236779",
+  "input_publisher": "Institute of Electrical and Electronics Engineers",
+  "scheduler_publisher": "ieee",
+  "captured_at_ms": 1772964830500,
+  "worker_idx": 0,
+  "browser_identity": "worker_0",
+  "probe_page_mode": "reuse_page",
+  "probe_tab_id": "CD5D264E84792DD4D4372271E0D35ECD",
+  "scheduled_start_ms": 1772964810207,
+  "actual_start_ms": 1772964810207,
+  "pacing_wait_ms": 0,
+  "pacing_penalty_wait_ms": 0,
+  "classifier_state": "success_landing",
+  "outcome": "SUCCESS_ACCESS",
+  "final_url": "https://ieeexplore.ieee.org/document/7236779",
+  "navigation_chain": [
+    {
+      "step": "pre_reset",
+      "requested_url": "about:blank",
+      "observed_url": "about:blank"
+    },
+    {
+      "step": "doi_get",
+      "requested_url": "https://doi.org/10.1109/icept.2015.7236779",
+      "observed_url": "https://ieeexplore.ieee.org/document/7236779"
+    }
+  ],
+  "title": "High performance silver nanowire based transparent electrodes reinforced by conductive polymer adhesive | IEEE Conference Publication | IEEE Xplore",
+  "reason_codes": [
+    "content_populated",
+    "doi_match",
+    "expected_domain_match",
+    "publisher_marker_present"
+  ],
+  "signal_summary": {
+    "body_text_len": 3802,
+    "main_text_len": 2772,
+    "meta_keys": []
+  },
+  "timing_breakdown": {
+    "scheduled_start_ms": 1772964810207,
+    "actual_start_ms": 1772964810207,
+    "pacing_wait_ms": 0,
+    "pacing_penalty_wait_ms": 0,
+    "pacing_jitter_sec": 1.518,
+    "attempts": [
+      {
+        "attempt": 1,
+        "pre_reset_ms": 76,
+        "network_listener": true,
+        "doi_get_ms": 828,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 84,
+        "attempt_elapsed_ms": 20292
+      }
+    ]
+  },
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "classifier_state": "success_landing",
+      "reason_codes": [
+        "content_populated",
+        "doi_match",
+        "expected_domain_match",
+        "publisher_marker_present"
+      ],
+      "final_url": "https://ieeexplore.ieee.org/document/7236779",
+      "timing_ms": {
+        "attempt": 1,
+        "pre_reset_ms": 76,
+        "network_listener": true,
+        "doi_get_ms": 828,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 84,
+        "attempt_elapsed_ms": 20292
+      }
+    }
+  ],
+  "direct_pdf_path": "",
+  "direct_pdf_event": {},
+  "legacy_success_like": true,
+  "dom_signature": "Skip to main content Skip to Main Content IEEE.org IEEE Xplore IEEE SA IEEE Spectrum More Sites Subscribe Donate Cart Create Account Personal Sign In Browse My Settings Help Institutional Sign In All Books Conferences Courses Journals & Mag",
+  "html_len": 329850
+}

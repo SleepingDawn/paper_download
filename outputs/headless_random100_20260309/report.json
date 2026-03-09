@@ -1,0 +1,403 @@
+{
+  "generated_at": 1773045552,
+  "input_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/headless_random100_20260309_sample.csv",
+  "sample_size": 100,
+  "workers_requested": 1,
+  "workers_effective": 1,
+  "headless": true,
+  "no_sandbox": true,
+  "server_tuned": true,
+  "single_process": "0",
+  "humanized_browser": "1",
+  "assume_institution_access": true,
+  "startup_retries": 3,
+  "timeout_sec": 15.0,
+  "per_doi_deadline_sec": 45.0,
+  "max_nav_attempts": 2,
+  "publisher_cooldown_sec": 7.0,
+  "global_start_spacing_sec": 1.5,
+  "jitter_sec": [
+    0.7,
+    1.8
+  ],
+  "profile_mode": "auto",
+  "profile_name": "Default",
+  "persistent_profile_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/.chrome_user_data",
+  "worker_profile_root": "/tmp/seyong/landing_worker_profiles",
+  "probe_page_mode": "reuse_page",
+  "criteria": "success_landing only when expected publisher/target is reached, visible content is populated, article metadata or stable article markers exist, and no challenge/interstitial/blank heuristics fire.",
+  "summary": {
+    "total_valid": 100,
+    "success_ratio": 0.98,
+    "classifier_counts": {
+      "success_landing": 97,
+      "challenge_detected": 1,
+      "direct_pdf_handoff": 1,
+      "blank_or_incomplete": 1
+    },
+    "outcome_counts": {
+      "SUCCESS_ACCESS": 98,
+      "FAIL_CAPTCHA": 1,
+      "FAIL_BLOCK": 1
+    },
+    "top_reason_codes": [
+      [
+        "content_populated",
+        97
+      ],
+      [
+        "doi_match",
+        97
+      ],
+      [
+        "expected_domain_match",
+        97
+      ],
+      [
+        "publisher_marker_present",
+        93
+      ],
+      [
+        "strong_meta_present",
+        85
+      ],
+      [
+        "fail_block_bot_signal",
+        1
+      ],
+      [
+        "url_marker=challenge_or_bot",
+        1
+      ],
+      [
+        "direct_pdf_response_observed",
+        1
+      ],
+      [
+        "low_main_text",
+        1
+      ],
+      [
+        "low_visible_text",
+        1
+      ],
+      [
+        "minimal_body_children",
+        1
+      ],
+      [
+        "no_final_domain",
+        1
+      ],
+      [
+        "tiny_html",
+        1
+      ],
+      [
+        "urlish_title",
+        1
+      ]
+    ],
+    "publisher_breakdown": [
+      {
+        "publisher": "acs",
+        "sample_size": 29,
+        "counts": {
+          "success_landing": 29
+        }
+      },
+      {
+        "publisher": "elsevier",
+        "sample_size": 24,
+        "counts": {
+          "success_landing": 24
+        }
+      },
+      {
+        "publisher": "aip",
+        "sample_size": 12,
+        "counts": {
+          "challenge_detected": 1,
+          "success_landing": 11
+        }
+      },
+      {
+        "publisher": "wiley",
+        "sample_size": 11,
+        "counts": {
+          "success_landing": 11
+        }
+      },
+      {
+        "publisher": "nature",
+        "sample_size": 9,
+        "counts": {
+          "success_landing": 8,
+          "direct_pdf_handoff": 1
+        }
+      },
+      {
+        "publisher": "iop",
+        "sample_size": 4,
+        "counts": {
+          "success_landing": 4
+        }
+      },
+      {
+        "publisher": "mdpi",
+        "sample_size": 3,
+        "counts": {
+          "success_landing": 3
+        }
+      },
+      {
+        "publisher": "rsc",
+        "sample_size": 2,
+        "counts": {
+          "blank_or_incomplete": 1,
+          "success_landing": 1
+        }
+      },
+      {
+        "publisher": "10.1055",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        }
+      },
+      {
+        "publisher": "10.1126",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        }
+      },
+      {
+        "publisher": "10.1146",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        }
+      },
+      {
+        "publisher": "10.4139",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        }
+      },
+      {
+        "publisher": "ieee",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        }
+      },
+      {
+        "publisher": "spie",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        }
+      }
+    ],
+    "legacy_success_like_count": 97,
+    "legacy_reclassified_non_success": [],
+    "p50_elapsed_ms": 22917.5,
+    "p90_elapsed_ms": 24507.8,
+    "domain_breakdown_top20": [
+      {
+        "domain": "pubs.acs.org",
+        "sample_size": 29,
+        "counts": {
+          "success_landing": 29
+        },
+        "p50_elapsed_ms": 23908.0,
+        "p90_elapsed_ms": 24283.0
+      },
+      {
+        "domain": "www.sciencedirect.com",
+        "sample_size": 24,
+        "counts": {
+          "success_landing": 24
+        },
+        "p50_elapsed_ms": 21859.5,
+        "p90_elapsed_ms": 22735.0
+      },
+      {
+        "domain": "pubs.aip.org",
+        "sample_size": 12,
+        "counts": {
+          "challenge_detected": 1,
+          "success_landing": 11
+        },
+        "p50_elapsed_ms": 23163.0,
+        "p90_elapsed_ms": 23343.0
+      },
+      {
+        "domain": "onlinelibrary.wiley.com",
+        "sample_size": 6,
+        "counts": {
+          "success_landing": 6
+        },
+        "p50_elapsed_ms": 23500.0,
+        "p90_elapsed_ms": 24144.0
+      },
+      {
+        "domain": "www.nature.com",
+        "sample_size": 6,
+        "counts": {
+          "success_landing": 6
+        },
+        "p50_elapsed_ms": 9436.5,
+        "p90_elapsed_ms": 10362.0
+      },
+      {
+        "domain": "advanced.onlinelibrary.wiley.com",
+        "sample_size": 4,
+        "counts": {
+          "success_landing": 4
+        },
+        "p50_elapsed_ms": 23512.0,
+        "p90_elapsed_ms": 23945.0
+      },
+      {
+        "domain": "iopscience.iop.org",
+        "sample_size": 4,
+        "counts": {
+          "success_landing": 4
+        },
+        "p50_elapsed_ms": 21357.5,
+        "p90_elapsed_ms": 21822.0
+      },
+      {
+        "domain": "link.springer.com",
+        "sample_size": 3,
+        "counts": {
+          "direct_pdf_handoff": 1,
+          "success_landing": 2
+        },
+        "p50_elapsed_ms": 20692.0,
+        "p90_elapsed_ms": 20692.0
+      },
+      {
+        "domain": "www.mdpi.com",
+        "sample_size": 3,
+        "counts": {
+          "success_landing": 3
+        },
+        "p50_elapsed_ms": 22449.0,
+        "p90_elapsed_ms": 22449.0
+      },
+      {
+        "domain": "",
+        "sample_size": 1,
+        "counts": {
+          "blank_or_incomplete": 1
+        },
+        "p50_elapsed_ms": 64733.0,
+        "p90_elapsed_ms": 64733.0
+      },
+      {
+        "domain": "chemistry-europe.onlinelibrary.wiley.com",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        },
+        "p50_elapsed_ms": 15937.0,
+        "p90_elapsed_ms": 15937.0
+      },
+      {
+        "domain": "ieeexplore.ieee.org",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        },
+        "p50_elapsed_ms": 26206.0,
+        "p90_elapsed_ms": 26206.0
+      },
+      {
+        "domain": "pubs.rsc.org",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        },
+        "p50_elapsed_ms": 25755.0,
+        "p90_elapsed_ms": 25755.0
+      },
+      {
+        "domain": "www.annualreviews.org",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        },
+        "p50_elapsed_ms": 22919.0,
+        "p90_elapsed_ms": 22919.0
+      },
+      {
+        "domain": "www.jstage.jst.go.jp",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        },
+        "p50_elapsed_ms": 28641.0,
+        "p90_elapsed_ms": 28641.0
+      },
+      {
+        "domain": "www.science.org",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        },
+        "p50_elapsed_ms": 20733.0,
+        "p90_elapsed_ms": 20733.0
+      },
+      {
+        "domain": "www.spiedigitallibrary.org",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        },
+        "p50_elapsed_ms": 25380.0,
+        "p90_elapsed_ms": 25380.0
+      },
+      {
+        "domain": "www.thieme-connect.de",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        },
+        "p50_elapsed_ms": 21525.0,
+        "p90_elapsed_ms": 21525.0
+      }
+    ]
+  },
+  "publishers_covered": [
+    "Advanced Materials",
+    "American Association for the Advancement of Science",
+    "American Chemical Society",
+    "American Institute of Physics",
+    "Annual Reviews",
+    "Elsevier BV",
+    "Georg Thieme Verlag",
+    "IOP Publishing",
+    "Institute of Electrical and Electronics Engineers",
+    "Institute of Physics",
+    "Journal of Micro/Nanopatterning Materials and Metrology",
+    "Journal of Vacuum Science & Technology B Nanotechnology and Microelectronics Materials Processing Measurement and Phenomena",
+    "Multidisciplinary Digital Publishing Institute",
+    "Nature Portfolio",
+    "Royal Society of Chemistry",
+    "Springer Science+Business Media",
+    "The Surface Finishing Society of Japan",
+    "Wiley"
+  ],
+  "remaining_weak_spots": [
+    "A few publisher shells still finish with too little visible text; the classifier now rejects them, but the browser-side recovery options stay intentionally conservative.",
+    "Challenge pages remain a hard stop. [blocked] No CAPTCHA, Turnstile, or Cloudflare bypass is implemented."
+  ],
+  "output_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/headless_random100_20260309/results.jsonl",
+  "artifact_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/headless_random100_20260309/artifacts",
+  "failure_artifact_zip": "",
+  "success_artifact_zip": ""
+}
