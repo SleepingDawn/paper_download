@@ -36,8 +36,8 @@ def get_config():
                         help="인용 상위 퍼센트 필터 (기본값: 0.99)")
     
     # 시스템 설정
-    parser.add_argument("--max_workers", type=int, default=4,
-                        help="병렬 다운로드 프로세스 수 (기본값: 4)")
+    parser.add_argument("--max_workers", type=int, default=1,
+                        help="병렬 다운로드 프로세스 수 (기본값: 1)")
     
     parser.add_argument("--output_dir", type=str, default=DEFAULT_OUTPUT_DIR,
                         help=f"결과 저장 경로 (기본값: {DEFAULT_OUTPUT_DIR})")
@@ -45,6 +45,47 @@ def get_config():
     # 외부 doi list import
     parser.add_argument("--doi_path", type=str, default = None,
                         help ="doi리스트 경로")
+
+    parser.add_argument(
+        "--after-first-pass",
+        type=str,
+        choices=["stop", "deep"],
+        default="stop",
+        help="1차 패스 후 동작: stop(종료) 또는 deep(실패 건 심화 재시도). 기본값: stop",
+    )
+    parser.add_argument(
+        "--non-interactive",
+        action="store_true",
+        help="입력 프롬프트 없이 --after-first-pass 값으로 실행",
+    )
+    parser.add_argument(
+        "--precheck-landing",
+        type=int,
+        default=0,
+        choices=[0, 1],
+        help="다운로드 전 landing_access_repro.py로 랜딩 성공 여부를 먼저 확인하고, 성공 DOI만 다운로드에 투입",
+    )
+    parser.add_argument(
+        "--headless",
+        type=int,
+        default=None,
+        choices=[0, 1],
+        help="브라우저 다운로드 1차 패스 headless 모드. 미지정 시 PDF_BROWSER_HEADLESS 환경변수를 따른다.",
+    )
+    parser.add_argument(
+        "--deep-retry-headless",
+        type=int,
+        default=None,
+        choices=[0, 1],
+        help="deep retry 브라우저 모드. 미지정 시 --headless 값을 따른다.",
+    )
+    parser.add_argument(
+        "--abort-on-landing-block",
+        type=int,
+        default=1,
+        choices=[0, 1],
+        help="다운로드 전 landing 단계에서 captcha/challenge/block를 감지하면 즉시 중단할지 여부. 기본값: 1",
+    )
 
     args = parser.parse_args()
     return args

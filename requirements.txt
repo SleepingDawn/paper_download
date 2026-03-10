@@ -1,9 +1,11 @@
 pandas
 requests
 tqdm
-beautifulsoup4
+beautifulsoup4==4.14.3
 seleniumbase
 webdriver_manager
 matplotlib
 DrissionPage
 curl_cffi
+rapidocr-onnxruntime==1.2.3
+pypdf==6.7.5
