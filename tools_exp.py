@@ -10,7 +10,7 @@ import random
 import json
 from html import unescape as html_unescape
 
-from typing import Set
+from typing import Dict, Set
 from urllib.parse import urljoin, quote, urlencode, urlparse
 from seleniumbase import Driver
 from bs4 import BeautifulSoup
@@ -515,7 +515,16 @@ def _looks_like_pdf_link(url: str) -> bool:
     low = str(url or "").lower()
     if not low:
         return False
-    good_tokens = (".pdf", "/doi/pdf", "/articlepdf", "/pdfft", "download=true", "article-pdf")
+    good_tokens = (
+        ".pdf",
+        "/doi/pdf",
+        "/articlepdf",
+        "/pdfft",
+        "download=true",
+        "article-pdf",
+        "/upload/pdf/",
+        "/upload/article/",
+    )
     bad_tokens = ("/proceedings", "/session", "/program", "/toc", "/contents")
     if any(b in low for b in bad_tokens):
         return False
@@ -557,6 +566,69 @@ def _doi_from_doi_url(doi_url: str) -> str:
         raw = raw.split("doi.org/", 1)[1]
     raw = raw.split("?", 1)[0].split("#", 1)[0].strip().lower()
     return raw
+
+
+def _powdermat_entry_url(doi: str) -> str:
+    doi_norm = _doi_from_doi_url(doi)
+    if not doi_norm.startswith("10.4150/"):
+        return ""
+    return f"https://www.powdermat.org/journal/view.php?doi={quote(doi_norm, safe='/')}"
+
+
+def _extract_powdermat_pdf_target_from_html(html: str) -> Dict[str, str]:
+    raw = str(html or "")
+    if not raw:
+        return {}
+
+    match = re.search(
+        r"journal_download\(\s*['\"](pdf(?:_a)?)['\"]\s*,\s*['\"]\d+['\"]\s*,\s*['\"]([^'\"]+\.pdf)['\"]\s*\)",
+        raw,
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        return {}
+
+    kind = str(match.group(1) or "").strip().lower()
+    filename = os.path.basename(str(match.group(2) or "").strip())
+    if not filename.lower().endswith(".pdf"):
+        return {}
+
+    subdir = "article" if kind == "pdf_a" else "pdf"
+    return {
+        "kind": kind,
+        "filename": filename,
+        "pdf_url": f"https://www.powdermat.org/upload/{subdir}/{quote(filename, safe='')}",
+    }
+
+
+def _resolve_powdermat_pdf_target(doi: str, current_url: str = "", current_html: str = "") -> Dict[str, str]:
+    doi_norm = _doi_from_doi_url(doi)
+    if not doi_norm.startswith("10.4150/"):
+        return {}
+
+    current_target = _extract_powdermat_pdf_target_from_html(current_html)
+    if current_target:
+        if current_url:
+            current_target["article_url"] = current_url
+        return current_target
+
+    entry_url = _powdermat_entry_url(doi_norm)
+    if not entry_url:
+        return {}
+
+    try:
+        resp = requests.get(
+            entry_url,
+            timeout=15,
+            headers={"User-Agent": _resolve_best_browser_ua(), "Referer": "https://www.powdermat.org/"},
+        )
+    except Exception:
+        return {}
+
+    resolved = _extract_powdermat_pdf_target_from_html(resp.text or "")
+    if resolved:
+        resolved["article_url"] = str(resp.url or entry_url).strip() or entry_url
+    return resolved
 
 
 def _extract_sciencedirect_pii_from_url(url: str) -> str:
@@ -3484,6 +3556,20 @@ def download_with_drission(
                 pdf_url = _extract_sciencedirect_pdfft_url_from_html(page_html, target_pii=target_pii_now)
                 if pdf_url and logger:
                     logger.info(f"        [Elsevier] html 메타 기반 pdfft URL 복구: {pdf_url}")
+            if (not pdf_url) and doi_norm.startswith("10.4150/"):
+                powdermat_target = _resolve_powdermat_pdf_target(
+                    doi=doi_norm,
+                    current_url=page.url or "",
+                    current_html=page_html,
+                )
+                if powdermat_target:
+                    pdf_url = powdermat_target.get("pdf_url") or pdf_url
+                    powdermat_article_url = str(powdermat_target.get("article_url") or "").strip()
+                    if powdermat_article_url:
+                        referer_url = powdermat_article_url
+                        current_domain = _extract_domain(powdermat_article_url) or current_domain
+                    if pdf_url and logger:
+                        logger.info(f"        [Powdermat] DOI 기반 direct PDF URL 복구: {pdf_url}")
             
             # 고차단 도메인은 실제 사용자 행동과 유사하게 버튼 클릭 다운로드를 우선 시도
             if high_friction and pdf_btn and (not is_acs) and (not is_sciencedirect):

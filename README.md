@@ -410,7 +410,7 @@ Elsevier는 가장 많은 예외 처리가 들어가 있습니다.
 - `stamp.jsp`는 최종 PDF가 아닌 중간 viewer인 경우가 많습니다.
 - stamp 페이지에서 iframe의 실제 PDF URL을 추출해 `ielx7/...pdf`로 교체합니다.
 - 버튼 요소가 stale 되더라도 DownloadKit 결과를 직접 확정해 파일을 놓치지 않도록 처리합니다.
-- landing 진단 쪽에서는 title 기반 검색 결과 복구도 일부 사용합니다.
+- 실험 기준으로는 현재 main downloader의 stamp/iframe 복구만으로 old-failure 샘플이 성공했기 때문에, title 기반 검색 복구는 아직 landing 진단 전용입니다.
 
 ### ACS
 
@@ -439,3 +439,11 @@ Elsevier는 가장 많은 예외 처리가 들어가 있습니다.
 ### Powdermat
 
 - agreement 또는 비정상 article shell처럼 보이는 화면이 떠도 서버 HTML을 다시 읽어 article snapshot을 재평가합니다.
+- `10.4150/...` DOI는 article HTML의 `journal_download('pdf', sid, filename)` 패턴을 해석해 `/upload/pdf/<filename>` 또는 `/upload/article/<filename>` direct URL로 복구합니다.
+- 이 경로는 unknown publisher로 분류돼도 작동하며, headless 1차 패스에서 direct PDF로 바로 내려받도록 설계되어 있습니다.
+
+### 진단 전용 / 보류
+
+- `old version`, `legacy`, `classic version` 링크를 눌러 깨진 shell을 우회하는 generic fallback은 현재 landing 진단에만 있습니다.
+- 이번 검증에서는 이 fallback이 실제 다운로드 성공률을 바꾼 live 사례를 확보하지 못해 main downloader에는 아직 넣지 않았습니다.
+- `10.7567/...` SSDM/atlas 계열은 단순 extractor보다 접근 제약이 먼저 관찰되어, 현재는 별도 site-specific downloader를 두지 않습니다.
