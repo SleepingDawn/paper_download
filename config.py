@@ -9,19 +9,6 @@ WILEY_API_KEY = "b4b01dd9-bf66-4a57-a791-0e7f3ff95a39"
 DEFAULT_DOWNLOAD_DIR = "./downloaded_files"
 DEFAULT_OUTPUT_DIR = "./Solid_State_Electrolyte_Battery_Li_Papers"
 
-MOUSE_PATCH_JS =  """
-function getRandomInt(min, max) {
-return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-let screenX = getRandomInt(800, 1200);
-let screenY = getRandomInt(400, 600);
-Object.defineProperty(MouseEvent.prototype, 'screenX', { value: screenX });
-Object.defineProperty(MouseEvent.prototype, 'screenY', { value: screenY });
-"""
-
-COMMON_UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-CHROME_PATH = "/home/yongyong0206/chrome-linux64/chrome"
-
 def get_config():
     parser = argparse.ArgumentParser(description="OpenAlex Paper Downloader with DrissionPage")
 

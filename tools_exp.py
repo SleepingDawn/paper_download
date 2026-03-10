@@ -2316,48 +2316,6 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
                 reason = REASON_FAIL_REDIRECT_LOOP
             return {"ok": False, "reason": reason, "evidence": [str(e)], "http_status": None}
         return False
-    
-# =======================================================
-# Chromiumpage 생성
-# =======================================================
-def get_chromiumpage(chrome_path = CHROME_PATH, save_dir = DEFAULT_OUTPUT_DIR):
-    co = ChromiumOptions() 
-    chrome_path = "/home/yongyong0206/chrome-linux64/chrome"
-    co.set_browser_path(chrome_path)
-    co.auto_port() 
-    # co.no_imgs(True)            
-    co.mute(True)                  
-    co.set_argument('--no-sandbox')
-    co.set_argument('--disable-dev-shm-usage')
-    co.set_argument('--window-size=1920,1080')
-    co.set_argument('--start-maximized')
-    co.set_argument('--lang=ko_KR,ko;q=0.9,en-US;q=0.8,en;q=0.7')
-    # co.set_argument('--headless=new')
-    co.set_user_agent(COMMON_UA)
-    
-    # 다운로드 설정
-    co.set_pref('download.default_directory', save_dir) # 다운로드 경로 지정
-    co.set_pref('download.prompt_for_download', False)  # 저장 여부 묻지 않기
-    co.set_pref('plugins.always_open_pdf_externally', True) # PDF를 브라우저에서 열지 않고 다운로드
-    co.set_pref('profile.default_content_settings.popups', 0) # 팝업 차단 해제
-    co.remove_extensions()
-    page  = ChromiumPage(co)
-    page.add_init_js(MOUSE_PATCH_JS)
-    
-    # 쿠키 이식
-    cookie_file = 'cookies.json'
-    if os.path.exists(cookie_file):
-        try:
-            with open(cookie_file, 'r', encoding='utf-8') as f:
-                cookies = json.load(f)
-            page.set.cookies(cookies)
-            print(" 쿠키 로드 성공.")
-        except Exception as e:
-            print(f"쿠키 로드 실패: {e}")
-    else:
-        print("쿠키 위치 오류")
-                
-    return page
 
 # =======================================================
 # DrissionPage 크롤러
@@ -2794,7 +2752,7 @@ def download_with_drission(
                     time.sleep(0.6) # 로딩 대기
                     
                     # 2.   _analyze_html_structure_drission 재호출
-                    real_url = _analyze_html_structure_drission(current_page, logger)
+                    real_url = _analyze_html_structure_drission(page, logger)
                     
                     if real_url and "stamp.jsp" not in real_url:
                         pdf_url = real_url
@@ -3043,9 +3001,6 @@ def download_with_drission(
                 
             else :
                 logger.warning(f"        pdf 링크 미발견 : {doi_url}")
-            
-            page = current_page
-            dest = page.url
 
         except Exception as e:
             logger.warning(f"        시도 {attempt} 에러: {e}")
@@ -3112,6 +3067,23 @@ def _analyze_html_structure_drission(page, logger):
             frames = _eles_quick(page, 'tag:iframe', timeout=0.5)
             src_list = [f.attr('src') for f in frames]
             logger.warning(f"        IEEE Iframe 로딩 실패. 발견된 iframe들: {src_list}")
+
+    # # # -------------------------------------------------------
+    # # # 2. ScienceDirect 전용 로직 -> new 시도
+    # # # -------------------------------------------------------
+    # if "sciencedirect.com" in page.url:
+    #     import re
+    #     current_url = page.url
+    #     # URL에서 PII 추출 (예: /pii/S002195172030005X)
+    #     match = re.search(r'/pii/([A-Z0-9]+)', current_url, re.IGNORECASE)
+        
+    #     if match:
+    #         pii_code = match.group(1)
+    #         # 이 URL 패턴이 403을 가장 잘 우회하는 "순수 PDF API" 형식입니다.
+    #         # download=true 파라미터가 핵심입니다.
+    #         pdf_heuristic_url = f"https://www.sciencedirect.com/science/article/pii/{pii_code}/pdfft?isDTM=true&download=true"
+    #         logger.info(f"        [ScienceDirect] trying new url : {pdf_heuristic_url}")
+    #         return pdf_heuristic_url
 
     # -------------------------------------------------------
     # 3. Iframe / Embed / Object (일반)
@@ -3325,6 +3297,22 @@ def try_manual_scihub(doi: str, pdf_dir: str, logger=None, max_total_s: int = 15
     
     
 # =======================================================
+import re
+from typing import Optional, Dict
+import requests
+
+PREFIX_EXACT_MAP: Dict[str, str] = {
+    "10.1038": "Nature",
+    "10.1021": "ACS",
+    "10.1039": "RSC",
+    "10.1063": "AIP",
+    "10.1088": "IOP",
+    "10.1109": "IEEE",
+    "10.1016": "ELSEVIER",
+    "10.1002": "WILEY",
+    "10.1111": "WILEY",
+    # CELL은 DOI prefix만으로 ELSEVIER(10.1016)와 분리가 어려움
+}
 
 # 2) Crossref가 돌려주는 registrant(스튜어드) name의 변형들을 "원하는 라벨"로 통일
 def normalize_publisher_label(raw_name: str, prefix: Optional[str] = None) -> Optional[str]:
