@@ -1,0 +1,1 @@
+{"timestamp": 1773117614, "attempt": 1, "doi": "10.1016/j.snb.2024.135701", "reason": "FAIL_NO_CANDIDATE", "stage": "drission", "domain": "doi.org", "http_status": null, "evidence": ["sciencedirect_pdf_not_downloadable", "{\"trace\": [{\"strategy\": \"api\", \"reason\": \"FAIL_NO_CANDIDATE\", \"evidence\": [\"skipped_elsevier_api\"]}]}"], "mode": "first"}

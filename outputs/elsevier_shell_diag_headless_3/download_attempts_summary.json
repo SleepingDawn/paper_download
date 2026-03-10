@@ -1,0 +1,22 @@
+{
+  "count": 1,
+  "success_rate": 0.0,
+  "median_latency_ms": 125,
+  "reason_distribution": {
+    "FAIL_TIMEOUT/NETWORK": 1
+  },
+  "by_strategy": {
+    "cffi_baseline": {
+      "count": 1,
+      "success_rate": 0.0,
+      "median_latency_ms": 125
+    }
+  },
+  "by_domain": {
+    "www.sciencedirect.com": {
+      "count": 1,
+      "success_rate": 0.0,
+      "median_latency_ms": 125
+    }
+  }
+}
