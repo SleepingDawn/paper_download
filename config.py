@@ -7,7 +7,11 @@ CHROME_PATH = "/usr/bin/google-chrome"  # 리눅스 예시
 WILEY_API_KEY = "b4b01dd9-bf66-4a57-a791-0e7f3ff95a39"
 
 DEFAULT_DOWNLOAD_DIR = "./downloaded_files"
-DEFAULT_OUTPUT_DIR = "./Solid_State_Electrolyte_Battery_Li_Papers"
+DEFAULT_OUTPUT_DIR = "outputs/paper_download_run"
+DEFAULT_DOWNLOAD_PUBLISHER_COOLDOWN_SEC = float(os.getenv("DOWNLOAD_PER_PUBLISHER_COOLDOWN_SEC", "7"))
+DEFAULT_DOWNLOAD_GLOBAL_START_SPACING_SEC = float(os.getenv("DOWNLOAD_GLOBAL_START_SPACING_SEC", "1.5"))
+DEFAULT_DOWNLOAD_JITTER_MIN_SEC = float(os.getenv("DOWNLOAD_JITTER_MIN_SEC", "0.7"))
+DEFAULT_DOWNLOAD_JITTER_MAX_SEC = float(os.getenv("DOWNLOAD_JITTER_MAX_SEC", "1.8"))
 
 def get_config():
     parser = argparse.ArgumentParser(description="OpenAlex Paper Downloader with DrissionPage")
@@ -27,7 +31,13 @@ def get_config():
                         help="병렬 다운로드 프로세스 수 (기본값: 1)")
     
     parser.add_argument("--output_dir", type=str, default=DEFAULT_OUTPUT_DIR,
-                        help=f"결과 저장 경로 (기본값: {DEFAULT_OUTPUT_DIR})")
+                        help=f"런 산출물 저장 경로. 상대 경로는 outputs/ 아래로 정리됨 (기본값: {DEFAULT_OUTPUT_DIR})")
+    parser.add_argument(
+        "--pdf_output_dir",
+        type=str,
+        default=None,
+        help="PDF 저장 루트. 미지정 시 pdfs/<run_name> 사용",
+    )
     
     # 외부 doi list import
     parser.add_argument("--doi_path", type=str, default = None,
@@ -72,6 +82,30 @@ def get_config():
         default=1,
         choices=[0, 1],
         help="다운로드 전 landing 단계에서 captcha/challenge/block를 감지하면 즉시 중단할지 여부. 기본값: 1",
+    )
+    parser.add_argument(
+        "--publisher-cooldown-sec",
+        type=float,
+        default=DEFAULT_DOWNLOAD_PUBLISHER_COOLDOWN_SEC,
+        help=f"같은 publisher 재시작 전 최소 간격(초). 기본값: {DEFAULT_DOWNLOAD_PUBLISHER_COOLDOWN_SEC}",
+    )
+    parser.add_argument(
+        "--global-start-spacing-sec",
+        type=float,
+        default=DEFAULT_DOWNLOAD_GLOBAL_START_SPACING_SEC,
+        help=f"전체 DOI 시작 간 최소 간격(초). 기본값: {DEFAULT_DOWNLOAD_GLOBAL_START_SPACING_SEC}",
+    )
+    parser.add_argument(
+        "--jitter-min-sec",
+        type=float,
+        default=DEFAULT_DOWNLOAD_JITTER_MIN_SEC,
+        help=f"publisher pacing jitter 최소값(초). 기본값: {DEFAULT_DOWNLOAD_JITTER_MIN_SEC}",
+    )
+    parser.add_argument(
+        "--jitter-max-sec",
+        type=float,
+        default=DEFAULT_DOWNLOAD_JITTER_MAX_SEC,
+        help=f"publisher pacing jitter 최대값(초). 기본값: {DEFAULT_DOWNLOAD_JITTER_MAX_SEC}",
     )
 
     args = parser.parse_args()

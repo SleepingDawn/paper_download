@@ -1,0 +1,116 @@
+{
+  "generated_at": 1773117500,
+  "input_total_before_precheck": 1,
+  "total_papers": 1,
+  "after_first_pass": "stop",
+  "non_interactive": true,
+  "precheck_landing": false,
+  "paths": {
+    "run_output_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/elsevier_shell_diag_headless_2",
+    "pdf_output_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/elsevier_shell_diag_headless_2",
+    "open_access_pdf_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/elsevier_shell_diag_headless_2/Open_Access",
+    "closed_access_pdf_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/elsevier_shell_diag_headless_2/Closed_Access"
+  },
+  "download_browser": {
+    "headless": true,
+    "deep_retry_headless": true,
+    "abort_on_landing_block": true
+  },
+  "download_scheduler": {
+    "publisher_cooldown_sec": 7.0,
+    "global_start_spacing_sec": 1.5,
+    "jitter_min_sec": 0.7,
+    "jitter_max_sec": 1.8
+  },
+  "landing_precheck": {
+    "executed": false
+  },
+  "integrated_landing": {
+    "attempted": 1,
+    "not_attempted": 0,
+    "success": 1,
+    "access_rights_failures": 0,
+    "direct_pdf_handoff": 0,
+    "raw_success_rate": 1.0,
+    "adjusted_denominator": 1,
+    "adjusted_success_rate": 1.0,
+    "state_counts": {
+      "success_landing": 1
+    }
+  },
+  "first_pass": {
+    "success": 1,
+    "failed": 0,
+    "fail_reasons": {
+      "FAIL_CAPTCHA": 0,
+      "FAIL_BLOCK": 0,
+      "FAIL_ACCESS_RIGHTS": 0,
+      "FAIL_WRONG_MIME": 0,
+      "FAIL_VIEWER_HTML": 0,
+      "FAIL_HTTP_STATUS": 0,
+      "FAIL_TIMEOUT/NETWORK": 0,
+      "FAIL_PDF_MAGIC": 0,
+      "FAIL_TOO_SMALL": 0,
+      "FAIL_NO_CANDIDATE": 0,
+      "FAIL_REDIRECT_LOOP": 0,
+      "FAIL_UNKNOWN": 0
+    }
+  },
+  "deep_retry": {
+    "executed": false,
+    "total": 0,
+    "success": 0,
+    "failed": 0,
+    "fail_reasons": {
+      "FAIL_CAPTCHA": 0,
+      "FAIL_BLOCK": 0,
+      "FAIL_ACCESS_RIGHTS": 0,
+      "FAIL_WRONG_MIME": 0,
+      "FAIL_VIEWER_HTML": 0,
+      "FAIL_HTTP_STATUS": 0,
+      "FAIL_TIMEOUT/NETWORK": 0,
+      "FAIL_PDF_MAGIC": 0,
+      "FAIL_TOO_SMALL": 0,
+      "FAIL_NO_CANDIDATE": 0,
+      "FAIL_REDIRECT_LOOP": 0,
+      "FAIL_UNKNOWN": 0
+    }
+  },
+  "elapsed_seconds": 43.95,
+  "live_attempt_metrics": {
+    "count": 1,
+    "success_rate": 1.0,
+    "median_latency_ms": 980,
+    "reason_distribution": {
+      "SUCCESS": 1
+    },
+    "by_strategy": {
+      "cffi_baseline": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 980
+      }
+    },
+    "by_domain": {
+      "pdf.sciencedirectassets.com": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 980
+      }
+    }
+  },
+  "effective_rates": {
+    "download_raw_success_rate": 1.0,
+    "download_adjusted_success_rate": 1.0,
+    "end_to_end_adjusted_success_rate": 1.0
+  },
+  "artifacts": {
+    "results_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/elsevier_shell_diag_headless_2/openalex_search_results_parallel.csv",
+    "failed_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/elsevier_shell_diag_headless_2/failed_papers.csv",
+    "failed_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/elsevier_shell_diag_headless_2/failed_papers.jsonl",
+    "attempts_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/elsevier_shell_diag_headless_2/download_attempts.jsonl",
+    "attempts_summary_json": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/elsevier_shell_diag_headless_2/download_attempts_summary.json",
+    "summary_json": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/elsevier_shell_diag_headless_2/summary.json",
+    "pdf_root_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/elsevier_shell_diag_headless_2"
+  }
+}

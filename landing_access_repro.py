@@ -82,10 +82,6 @@ DEFAULT_LOCAL_LANDING_WORKERS = 1
 DEFAULT_LOCAL_HEADLESS = 0
 DEFAULT_LOCAL_TIMEOUT_SEC = 15.0
 DEFAULT_LOCAL_PER_DOI_DEADLINE_SEC = 45.0
-CHALLENGE_PREFLIGHT_ROOTS = {
-    "10.1103": "https://journals.aps.org/",
-    "10.1364": "https://opg.optica.org/",
-}
 ELSEVIER_ARTICLE_HOST_MARKERS = ("sciencedirect.com", "cell.com", "thelancet.com")
 PDF_MIME_MARKERS = ("application/pdf", "application/x-pdf")
 PDF_URL_MARKERS = (".pdf", "/pdf", "download=true", "pdfft")
@@ -464,25 +460,6 @@ def _prune_extra_tabs(page: ChromiumPage) -> None:
 def _remaining_budget(deadline_monotonic: float, preferred_sec: float, floor_sec: float = 3.0) -> float:
     remaining = deadline_monotonic - time.monotonic()
     return max(float(floor_sec), min(float(preferred_sec), remaining))
-
-
-def _maybe_preflight_challenge_origin(page: ChromiumPage, doi: str, deadline_monotonic: float) -> str:
-    low_doi = str(doi or "").strip().lower()
-    target = ""
-    for prefix, url in CHALLENGE_PREFLIGHT_ROOTS.items():
-        if low_doi.startswith(f"{prefix}/"):
-            target = url
-            break
-    if not target or page is None or time.monotonic() >= deadline_monotonic:
-        return ""
-    try:
-        timeout = _remaining_budget(deadline_monotonic, 6.0, floor_sec=3.0)
-        page.get(target, retry=0, interval=0.4, timeout=timeout)
-        _dismiss_cookie_or_consent_banner(page)
-        time.sleep(min(0.8, max(0.15, deadline_monotonic - time.monotonic())))
-        return target
-    except Exception:
-        return ""
 
 
 def _normalize_elsevier_article_url(final_url: str, snapshot: Dict[str, Any]) -> str:
@@ -1855,10 +1832,6 @@ def _probe_one(
                     initial_download_files = sorted(_get_current_files(worker_download_dir))
                 except Exception:
                     initial_download_files = []
-            if attempt_idx == 0:
-                preflight_url = _maybe_preflight_challenge_origin(page, doi=doi, deadline_monotonic=deadline)
-                if preflight_url:
-                    _append_nav_step(navigation_chain, "challenge_preflight", preflight_url, page.url or preflight_url)
             _prune_extra_tabs(page)
             try:
                 reset_started = time.perf_counter()

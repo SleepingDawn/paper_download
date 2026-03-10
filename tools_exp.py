@@ -10,7 +10,7 @@ import random
 import json
 from html import unescape as html_unescape
 
-from typing import Set
+from typing import Dict, Set
 from urllib.parse import urljoin, quote, urlencode, urlparse
 from seleniumbase import Driver
 from bs4 import BeautifulSoup
@@ -515,7 +515,16 @@ def _looks_like_pdf_link(url: str) -> bool:
     low = str(url or "").lower()
     if not low:
         return False
-    good_tokens = (".pdf", "/doi/pdf", "/articlepdf", "/pdfft", "download=true", "article-pdf")
+    good_tokens = (
+        ".pdf",
+        "/doi/pdf",
+        "/articlepdf",
+        "/pdfft",
+        "download=true",
+        "article-pdf",
+        "/upload/pdf/",
+        "/upload/article/",
+    )
     bad_tokens = ("/proceedings", "/session", "/program", "/toc", "/contents")
     if any(b in low for b in bad_tokens):
         return False
@@ -557,6 +566,69 @@ def _doi_from_doi_url(doi_url: str) -> str:
         raw = raw.split("doi.org/", 1)[1]
     raw = raw.split("?", 1)[0].split("#", 1)[0].strip().lower()
     return raw
+
+
+def _powdermat_entry_url(doi: str) -> str:
+    doi_norm = _doi_from_doi_url(doi)
+    if not doi_norm.startswith("10.4150/"):
+        return ""
+    return f"https://www.powdermat.org/journal/view.php?doi={quote(doi_norm, safe='/')}"
+
+
+def _extract_powdermat_pdf_target_from_html(html: str) -> Dict[str, str]:
+    raw = str(html or "")
+    if not raw:
+        return {}
+
+    match = re.search(
+        r"journal_download\(\s*['\"](pdf(?:_a)?)['\"]\s*,\s*['\"]\d+['\"]\s*,\s*['\"]([^'\"]+\.pdf)['\"]\s*\)",
+        raw,
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        return {}
+
+    kind = str(match.group(1) or "").strip().lower()
+    filename = os.path.basename(str(match.group(2) or "").strip())
+    if not filename.lower().endswith(".pdf"):
+        return {}
+
+    subdir = "article" if kind == "pdf_a" else "pdf"
+    return {
+        "kind": kind,
+        "filename": filename,
+        "pdf_url": f"https://www.powdermat.org/upload/{subdir}/{quote(filename, safe='')}",
+    }
+
+
+def _resolve_powdermat_pdf_target(doi: str, current_url: str = "", current_html: str = "") -> Dict[str, str]:
+    doi_norm = _doi_from_doi_url(doi)
+    if not doi_norm.startswith("10.4150/"):
+        return {}
+
+    current_target = _extract_powdermat_pdf_target_from_html(current_html)
+    if current_target:
+        if current_url:
+            current_target["article_url"] = current_url
+        return current_target
+
+    entry_url = _powdermat_entry_url(doi_norm)
+    if not entry_url:
+        return {}
+
+    try:
+        resp = requests.get(
+            entry_url,
+            timeout=15,
+            headers={"User-Agent": _resolve_best_browser_ua(), "Referer": "https://www.powdermat.org/"},
+        )
+    except Exception:
+        return {}
+
+    resolved = _extract_powdermat_pdf_target_from_html(resp.text or "")
+    if resolved:
+        resolved["article_url"] = str(resp.url or entry_url).strip() or entry_url
+    return resolved
 
 
 def _extract_sciencedirect_pii_from_url(url: str) -> str:
@@ -891,11 +963,68 @@ def _is_recommended_or_related_blob(blob: str) -> bool:
         "recommended",
         "related",
         "suggested",
+        "other users also viewed",
+        "reading assistant",
+        "questions you could ask",
+        "actions you could take",
+        "summarize this article",
+        "summarize experiments",
         "similar article",
         "you may also like",
         "more like this",
     )
     return any(tok in low for tok in bad_tokens)
+
+
+def _element_context_blob(el) -> str:
+    if el is None:
+        return ""
+    try:
+        raw = el.run_js(
+            """let parts = [];
+            let node = this;
+            for (let i = 0; i < 6 && node; i += 1, node = node.parentElement) {
+                try {
+                    parts.push([
+                        node.tagName || '',
+                        node.id || '',
+                        node.className || '',
+                        node.getAttribute('role') || '',
+                        node.getAttribute('aria-label') || '',
+                        (node.innerText || '').slice(0, 300)
+                    ].join(' '));
+                } catch (e) {}
+            }
+            return parts.join(' | ');"""
+        )
+    except Exception:
+        raw = ""
+    return str(raw or "").lower()
+
+
+def _is_elsevier_aux_overlay_blob(blob: str) -> bool:
+    low = str(blob or "").lower()
+    if not low:
+        return False
+    marker_tokens = (
+        "other users also viewed",
+        "reading assistant",
+        "questions you could ask",
+        "actions you could take",
+        "summarize this article",
+        "summarize experiments",
+        "sign in to unlock the full response",
+    )
+    overlay_tokens = (
+        " role dialog ",
+        " aria-modal ",
+        " modal ",
+        " overlay ",
+        " drawer ",
+        " popover ",
+        " backdrop ",
+    )
+    return any(tok in low for tok in marker_tokens) or any(tok in low for tok in overlay_tokens)
 
 
 def _select_best_clickable_pdf_element(page, xpaths, logger=None, must_tokens=None, ban_tokens=None):
@@ -913,9 +1042,11 @@ def _select_best_clickable_pdf_element(page, xpaths, logger=None, must_tokens=No
             title = (el.attr("title") or "").strip()
             aria = (el.attr("aria-label") or "").strip()
             href = (el.attr("href") or "").strip()
+            context_blob = _element_context_blob(el)
             blob = f"{text} {title} {aria} {href}".lower()
+            full_blob = f"{blob} {context_blob}".strip()
             if any(
-                k in blob
+                k in full_blob
                 for k in (
                     "figure",
                     "supplement",
@@ -930,18 +1061,26 @@ def _select_best_clickable_pdf_element(page, xpaths, logger=None, must_tokens=No
                 )
             ):
                 continue
-            if _is_recommended_or_related_blob(blob):
+            if _is_recommended_or_related_blob(full_blob):
                 continue
-            if ban_tokens and any(tok in blob for tok in ban_tokens):
+            if _is_elsevier_aux_overlay_blob(context_blob):
+                continue
+            if ban_tokens and any(tok in full_blob for tok in ban_tokens):
                 continue
             if not any(k in blob for k in ("pdf", ".pdf", "/pdfft", "articlepdf", "open pdf", "view pdf")):
                 continue
-            if must_tokens and not any(tok in blob for tok in must_tokens):
+            if must_tokens and not any(tok in full_blob for tok in must_tokens):
                 continue
             score = 0
             for k in ("open pdf", "view pdf", "download pdf", "/pdfft", ".pdf", "articlepdf", "pdf"):
                 if k in blob:
                     score += 2
+            if "accessbar" in context_blob:
+                score += 8
+            if "_blank" in blob or "opens in a new window" in full_blob:
+                score += 2
+            if href:
+                score += 1
             candidates.append((score, el, blob))
 
     if not candidates:
@@ -963,11 +1102,173 @@ def _adopt_latest_tab(page, logger=None):
             ntab = page.get_tab(latest_id)
             if ntab:
                 if logger:
-                    logger.info(f"        [Elsevier][Tab] 새 탭 전환: {current_id[:8]} -> {latest_id[:8]}")
+                    logger.info(f"        [Tab] 새 탭 전환: {current_id[:8]} -> {latest_id[:8]}")
                 return ntab
     except Exception:
         pass
     return page
+
+
+def _open_temporary_tab(page, start_url: str = "about:blank"):
+    if page is None:
+        return None
+    try:
+        temp_page = page.new_tab(start_url, background=False)
+        time.sleep(0.2)
+        return temp_page
+    except Exception:
+        return None
+
+
+def _close_temporary_tab(page, temp_page) -> None:
+    if page is None or temp_page is None or temp_page is page:
+        return
+    temp_tab_id = str(getattr(temp_page, "tab_id", "") or "")
+    current_tab_id = str(getattr(page, "tab_id", "") or "")
+    try:
+        temp_page.close()
+    except Exception:
+        if temp_tab_id:
+            try:
+                page.close_tabs(temp_tab_id)
+            except Exception:
+                pass
+    if current_tab_id:
+        try:
+            page.activate_tab(current_tab_id)
+        except Exception:
+            pass
+
+
+def _close_new_tabs_since(page, baseline_tab_ids) -> None:
+    if page is None:
+        return
+    baseline = {str(t or "") for t in (baseline_tab_ids or []) if str(t or "")}
+    try:
+        current_tab_id = str(getattr(page, "tab_id", "") or "")
+        current_ids = [str(t or "") for t in (getattr(page, "tab_ids", []) or [])]
+        for tab_id in current_ids:
+            if not tab_id or tab_id in baseline:
+                continue
+            try:
+                page.close_tabs(tab_id)
+            except Exception:
+                pass
+        if current_tab_id:
+            try:
+                page.activate_tab(current_tab_id)
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+
+def _summarize_elsevier_pdf_control(el) -> str:
+    if el is None:
+        return "missing"
+    try:
+        text = " ".join(str(el.text or "").split())
+        aria = str(el.attr("aria-label") or "").strip()
+        href = str(el.attr("href") or "").strip()
+        target = str(el.attr("target") or "").strip()
+        el_id = str(el.attr("id") or "").strip()
+        cls = " ".join(str(el.attr("class") or "").split()[:6])
+        return (
+            f"text={text[:80]!r}, aria={aria[:80]!r}, href={bool(href)}, "
+            f"target={target[:20]!r}, id={el_id[:40]!r}, class={cls[:80]!r}"
+        )
+    except Exception:
+        return "unavailable"
+
+
+def _dismiss_elsevier_aux_overlays(page, logger=None) -> bool:
+    if page is None:
+        return False
+    js = r"""
+(() => {
+  const markers = [
+    'other users also viewed',
+    'reading assistant',
+    'questions you could ask',
+    'actions you could take',
+    'summarize this article',
+    'summarize experiments',
+    'sign in to unlock the full response'
+  ];
+  const lower = (v) => String(v || '').toLowerCase();
+  const nodes = Array.from(document.querySelectorAll('dialog,[role="dialog"],aside,section,div'));
+  const touched = new Set();
+  let changed = false;
+
+  function isTarget(el) {
+    const blob = lower([
+      el.tagName || '',
+      el.id || '',
+      el.className || '',
+      el.getAttribute && el.getAttribute('role'),
+      el.getAttribute && el.getAttribute('aria-label'),
+      (el.innerText || '').slice(0, 1200)
+    ].join(' '));
+    return markers.some(m => blob.includes(m));
+  }
+
+  for (const el of nodes) {
+    if (!el || touched.has(el) || !isTarget(el)) continue;
+    touched.add(el);
+    const buttons = Array.from(el.querySelectorAll('button,a,[role="button"]'));
+    const closer = buttons.find(btn => {
+      const blob = lower([
+        btn.innerText || '',
+        btn.getAttribute('aria-label') || '',
+        btn.getAttribute('title') || '',
+        btn.className || ''
+      ].join(' '));
+      return (
+        blob.includes('close')
+        || blob.includes('dismiss')
+        || blob.includes('not now')
+        || blob.includes('no thanks')
+        || blob.includes('no thank you')
+        || blob === '×'
+        || blob === 'x'
+      );
+    });
+    if (closer) {
+      try {
+        closer.click();
+        changed = true;
+        continue;
+      } catch (e) {}
+    }
+    try {
+      el.style.setProperty('display', 'none', 'important');
+      el.style.setProperty('visibility', 'hidden', 'important');
+      el.setAttribute('data-codex-hidden', '1');
+      changed = true;
+    } catch (e) {}
+  }
+
+  if (changed) {
+    for (const back of Array.from(document.querySelectorAll('[class*="overlay"],[class*="backdrop"],[class*="modal-backdrop"]'))) {
+      const text = lower((back.innerText || '').slice(0, 600));
+      if (markers.some(m => text.includes(m)) || back.hasAttribute('data-codex-hidden')) {
+        try {
+          back.style.setProperty('display', 'none', 'important');
+          back.style.setProperty('visibility', 'hidden', 'important');
+        } catch (e) {}
+      }
+    }
+  }
+  return changed;
+})();
+"""
+    try:
+        changed = bool(page.run_js(js))
+    except Exception:
+        changed = False
+    if changed and logger:
+        logger.info("        [Elsevier] 보조 overlay/panel 정리")
+    return changed
 
 
 def _click_once_wait_file(
@@ -1158,6 +1459,176 @@ def _download_elsevier_signed_pdf_from_viewer(page, tmp_path: str, referer_url: 
     return _is_valid_pdf(tmp_path)
 
 
+def _tab_looks_like_elsevier_target(tab, doi_norm: str, target_pii: str) -> bool:
+    if tab is None:
+        return False
+    current_url = str(getattr(tab, "url", "") or "")
+    if _looks_like_elsevier_signed_pdf_url(current_url):
+        return True
+    if target_pii and target_pii.lower() in current_url.lower() and "sciencedirect.com" in current_url.lower():
+        return True
+    return _is_elsevier_target_page(tab, doi_norm, target_pii)
+
+
+def _adopt_elsevier_target_tab(page, doi_norm: str, target_pii: str, logger=None):
+    if page is None:
+        return page
+    current_id = str(getattr(page, "tab_id", "") or "")
+    try:
+        tab_ids = [str(t or "") for t in (getattr(page, "tab_ids", []) or [])]
+    except Exception:
+        tab_ids = []
+    if len(tab_ids) <= 1:
+        return page
+
+    chosen = None
+    mismatched = []
+    for tab_id in reversed(tab_ids):
+        if not tab_id or tab_id == current_id:
+            continue
+        try:
+            candidate = page.get_tab(tab_id)
+        except Exception:
+            continue
+        if _tab_looks_like_elsevier_target(candidate, doi_norm=doi_norm, target_pii=target_pii):
+            chosen = candidate
+            break
+        mismatched.append((tab_id, str(getattr(candidate, "url", "") or ""), str(getattr(candidate, "title", "") or "")))
+
+    for tab_id, url, title in mismatched:
+        low = url.lower()
+        if low.startswith("http") or low.startswith("about:"):
+            try:
+                page.close_tabs(tab_id)
+                if logger:
+                    logger.info(
+                        f"        [Elsevier][Tab] 타깃 불일치 탭 정리: url={url[:160]!r}, title={title[:100]!r}"
+                    )
+            except Exception:
+                pass
+
+    if chosen is not None:
+        chosen_id = str(getattr(chosen, "tab_id", "") or "")
+        if chosen_id and chosen_id != current_id and logger:
+            logger.info(f"        [Elsevier][Tab] 타깃 탭 전환: {current_id[:8]} -> {chosen_id[:8]}")
+        return chosen
+    return page
+
+
+def _build_elsevier_article_candidates(target_pii: str, *urls) -> list:
+    candidates = []
+    seen = set()
+
+    def _push(raw_url: str) -> None:
+        raw = str(raw_url or "").strip()
+        if not raw:
+            return
+        try:
+            parsed = urlparse(raw)
+        except Exception:
+            return
+        low = raw.lower()
+        if "sciencedirect.com/science/article/" not in low:
+            return
+        cleaned = urlunparse(parsed._replace(query="", fragment=""))
+        for candidate in (cleaned, cleaned.replace("/science/article/pii/", "/science/article/abs/pii/")):
+            cand = str(candidate or "").strip()
+            key = cand.lower()
+            if not cand or key in seen:
+                continue
+            seen.add(key)
+            candidates.append(cand)
+
+    for raw_url in urls:
+        _push(raw_url)
+    pii = str(target_pii or "").strip().upper()
+    if pii:
+        _push(f"https://www.sciencedirect.com/science/article/pii/{pii}")
+        _push(f"https://www.sciencedirect.com/science/article/abs/pii/{pii}")
+    return candidates
+
+
+def _looks_like_elsevier_article_shell(page, doi_norm: str, target_pii: str) -> bool:
+    if page is None:
+        return False
+    current_url = str(getattr(page, "url", "") or "").strip().lower()
+    if "sciencedirect.com" not in current_url:
+        return False
+    if not any(token in current_url for token in ("/science/article/pii/", "/fulltext/")):
+        return False
+    title = str(getattr(page, "title", "") or "").strip()
+    if len(title) < 18:
+        return False
+    citation_doi = _extract_meta_content(page, "citation_doi").lower()
+    if doi_norm and citation_doi and citation_doi != doi_norm:
+        return False
+    try:
+        metrics = page.run_js(
+            """const main = document.querySelector('main');
+            return {
+                body_text_len: ((document.body && document.body.innerText) || '').length,
+                main_text_len: ((main && main.innerText) || '').length
+            };"""
+        ) or {}
+    except Exception:
+        metrics = {}
+    body_text_len = int((metrics or {}).get("body_text_len") or 0)
+    main_text_len = int((metrics or {}).get("main_text_len") or 0)
+    if body_text_len >= 450 or main_text_len >= 120:
+        return False
+    if target_pii and (target_pii.lower() not in current_url) and not citation_doi:
+        return False
+    return True
+
+
+def _recover_elsevier_article_shell(page, doi_norm: str, target_pii: str, article_referer: str, logger=None) -> bool:
+    if not _looks_like_elsevier_article_shell(page, doi_norm=doi_norm, target_pii=target_pii):
+        return False
+    current_url = str(getattr(page, "url", "") or "")
+    for candidate in _build_elsevier_article_candidates(target_pii, article_referer, current_url):
+        try:
+            current_clean = urlunparse(urlparse(current_url)._replace(query="", fragment=""))
+        except Exception:
+            current_clean = current_url
+        if candidate.lower() == str(current_clean or "").lower():
+            continue
+        if logger:
+            logger.info(f"        [Elsevier] article shell reopen 시도: {candidate}")
+        try:
+            page.get(candidate, retry=0, interval=0.3, timeout=8)
+            _dismiss_cookie_or_consent_banner(page, logger=logger)
+            return True
+        except Exception as e:
+            if logger:
+                logger.info(f"        [Elsevier] article shell reopen 실패(계속): {e}")
+    return False
+
+
+def _recover_elsevier_interstitial_article(page, target_pii: str, article_referer: str, logger=None) -> bool:
+    if page is None:
+        return False
+    interstitial_titles = {"redirecting", "redirecting...", "loading", "please wait", "just a moment"}
+    title = str(getattr(page, "title", "") or "").strip().lower()
+    current_url = str(getattr(page, "url", "") or "").strip().lower()
+    if title not in interstitial_titles:
+        return False
+    if "sciencedirect.com" not in current_url:
+        return False
+    for candidate in _build_elsevier_article_candidates(target_pii, article_referer, current_url):
+        if logger:
+            logger.info(f"        [Elsevier] interstitial article reopen 시도: {candidate}")
+        try:
+            page.get(candidate, retry=0, interval=0.3, timeout=8)
+            _dismiss_cookie_or_consent_banner(page, logger=logger)
+            reopened_title = str(getattr(page, "title", "") or "").strip().lower()
+            if reopened_title not in interstitial_titles:
+                return True
+        except Exception as e:
+            if logger:
+                logger.info(f"        [Elsevier] interstitial article reopen 실패(계속): {e}")
+    return False
+
+
 def _attempt_elsevier_two_step_click_download(
     page,
     doi: str,
@@ -1165,6 +1636,7 @@ def _attempt_elsevier_two_step_click_download(
     tmp_path: str,
     logger=None,
     allow_doi_reentry: bool = True,
+    allow_headless_fresh_tab_recovery: bool = True,
 ) -> bool:
     if page is None:
         return False
@@ -1201,6 +1673,10 @@ def _attempt_elsevier_two_step_click_download(
     _wait_for_elsevier_article_ready(page, doi_norm, logger=logger, timeout_s=8)
     time.sleep(0.6)
     article_referer = str(getattr(page, "url", "") or "")
+    if _recover_elsevier_article_shell(page, doi_norm=doi_norm, target_pii=target_pii, article_referer=article_referer, logger=logger):
+        _wait_for_elsevier_article_ready(page, doi_norm, logger=logger, timeout_s=8)
+        time.sleep(0.6)
+        article_referer = str(getattr(page, "url", "") or article_referer)
 
     # 사용자 관찰 반영:
     # 복구(sciencedirect) 후 DOI 링크를 다시 타면 쿠키/버튼 플로우가 정상화되는 케이스가 있다.
@@ -1260,8 +1736,24 @@ def _attempt_elsevier_two_step_click_download(
     ]
     step1 = None
     for loc in quick_locators:
-        step1 = _ele_quick(page, loc, timeout=0.5)
-        if step1:
+        candidates = _eles_quick(page, loc, timeout=0.5)
+        filtered = []
+        for el in candidates:
+            context_blob = _element_context_blob(el)
+            if _is_elsevier_aux_overlay_blob(context_blob):
+                continue
+            blob = f"{(el.text or '').strip()} {(el.attr('aria-label') or '').strip()} {(el.attr('class') or '').strip()}".lower()
+            score = 0
+            if "accessbar" in context_blob:
+                score += 8
+            if "view pdf" in blob:
+                score += 4
+            if "_blank" in blob or "opens in a new window" in context_blob:
+                score += 2
+            filtered.append((score, el))
+        if filtered:
+            filtered.sort(key=lambda item: item[0], reverse=True)
+            step1 = filtered[0][1]
             break
 
     # 1) Article page에서 Open/View/Download PDF 클릭
@@ -1286,6 +1778,8 @@ def _attempt_elsevier_two_step_click_download(
             if step1:
                 break
             time.sleep(0.5)
+    if logger:
+        logger.info(f"        [Elsevier] step1 control: {_summarize_elsevier_pdf_control(step1)}")
 
     if step1 and _click_once_wait_file(
         page,
@@ -1308,9 +1802,38 @@ def _attempt_elsevier_two_step_click_download(
         return True
 
     # View PDF가 새 탭으로 열리는 케이스 대응
-    page = _adopt_latest_tab(page, logger=logger)
+    page = _adopt_elsevier_target_tab(page, doi_norm=doi_norm, target_pii=target_pii, logger=logger)
     _dismiss_cookie_or_consent_banner(page, logger=logger)
+    _dismiss_elsevier_aux_overlays(page, logger=logger)
     viewer_state = _wait_for_elsevier_viewer_ready(page, logger=logger, timeout_s=6)
+    if (not viewer_state) and _is_elsevier_target_page(page, doi_norm, target_pii):
+        _dismiss_elsevier_aux_overlays(page, logger=logger)
+        retry_step1 = _select_best_clickable_pdf_element(
+            page,
+            article_xpaths,
+            logger=logger,
+            must_tokens=token_candidates,
+            ban_tokens=["recommended", "related", "reading assistant"],
+        )
+        if retry_step1 and _click_once_wait_file(
+            page,
+            retry_step1,
+            tmp_dir,
+            tmp_path,
+            wait_s=8,
+            logger=logger,
+            post_click_guard=_context_guard,
+            downloaded_file_guard=_file_guard,
+            fast_exit_on_new_tab=True,
+            allow_js_fallback=False,
+        ):
+            if logger:
+                logger.info(f"        [Elsevier] overlay 정리 후 재클릭 성공: {doi}")
+            return True
+        page = _adopt_elsevier_target_tab(page, doi_norm=doi_norm, target_pii=target_pii, logger=logger)
+        _dismiss_cookie_or_consent_banner(page, logger=logger)
+        _dismiss_elsevier_aux_overlays(page, logger=logger)
+        viewer_state = _wait_for_elsevier_viewer_ready(page, logger=logger, timeout_s=4)
     if viewer_state == "signed_pdf" and _download_elsevier_signed_pdf_from_viewer(
         page,
         tmp_path,
@@ -1356,6 +1879,53 @@ def _attempt_elsevier_two_step_click_download(
             if logger:
                 logger.info(f"        [Elsevier] 2단계 지연 다운로드 정리 성공: {doi}")
             return True
+
+    # Headless에서는 article shell이 떠도 View PDF가 dead control로 남는 경우가 있다.
+    # 이때는 현재 탭에서 pdfft fallback으로 바로 내려가면 403이 자주 발생하므로
+    # 같은 article URL을 fresh tab에서 한 번 더 hydrate시켜 재시도한다.
+    if (
+        allow_headless_fresh_tab_recovery
+        and os.getenv("PDF_BROWSER_HEADLESS", "0").strip().lower() in ("1", "true", "yes")
+    ):
+        current_url = str(getattr(page, "url", "") or "")
+        candidates = _build_elsevier_article_candidates(target_pii, article_referer, current_url)
+        if candidates:
+            baseline_tab_ids = set(getattr(page, "tab_ids", []) or [])
+            if logger:
+                logger.info(
+                    f"        [Elsevier] headless fresh-tab recovery 시작: candidates={len(candidates)}"
+                )
+            for idx, candidate in enumerate(candidates):
+                temp_page = _open_temporary_tab(page)
+                if temp_page is None:
+                    break
+                try:
+                    if logger:
+                        logger.info(f"        [Elsevier] fresh-tab candidate {idx + 1}: {candidate}")
+                    temp_page.get(candidate, retry=0, interval=0.3, timeout=10)
+                    _dismiss_cookie_or_consent_banner(temp_page, logger=logger)
+                    _dismiss_elsevier_aux_overlays(temp_page, logger=logger)
+                    _wait_for_elsevier_article_ready(temp_page, doi_norm, logger=logger, timeout_s=12)
+                    if _attempt_elsevier_two_step_click_download(
+                        temp_page,
+                        doi_norm,
+                        tmp_dir,
+                        tmp_path,
+                        logger=logger,
+                        allow_doi_reentry=False,
+                        allow_headless_fresh_tab_recovery=False,
+                    ):
+                        if logger:
+                            logger.info(
+                                f"        [Elsevier] fresh-tab recovery 성공: candidate {idx + 1}"
+                            )
+                        return True
+                except Exception as e:
+                    if logger:
+                        logger.info(f"        [Elsevier] fresh-tab recovery 실패(계속): {e}")
+                finally:
+                    _close_temporary_tab(page, temp_page)
+                    _close_new_tabs_since(page, baseline_tab_ids)
     return False
 
 
@@ -1670,9 +2240,9 @@ def _dismiss_cookie_or_consent_banner(page, logger=None) -> bool:
     return False
 
 
-def _click_viewer_open_button(page, logger=None) -> bool:
+def _click_viewer_open_button(page, logger=None, return_detail: bool = False):
     if page is None:
-        return False
+        return {"clicked": False, "href": "", "label": ""} if return_detail else False
     current_url = str(getattr(page, "url", "") or "").lower()
     pdf_context = any(k in current_url for k in (".pdf", "/pdfft", "/doi/pdf", "/epdf", "/pdf/"))
     xpaths = [
@@ -1714,9 +2284,127 @@ def _click_viewer_open_button(page, logger=None) -> bool:
                 if logger:
                     logger.info("        [ViewerGate] Open/View 버튼 클릭 시도")
                 time.sleep(1.0)
+                if return_detail:
+                    label = (text or title or aria or href).strip()
+                    return {"clicked": True, "href": href, "label": label}
                 return True
             except Exception:
                 continue
+    return {"clicked": False, "href": "", "label": ""} if return_detail else False
+
+
+def _collect_pdf_candidate_urls_from_page(page, logger=None) -> list:
+    if page is None:
+        return []
+
+    current_url = str(getattr(page, "url", "") or "").strip()
+    seen = set()
+    candidates = []
+
+    def add(raw_url):
+        url = str(raw_url or "").strip()
+        if not url or url.startswith("javascript:") or url.startswith("blob:"):
+            return
+        if not url.startswith("http"):
+            try:
+                url = urljoin(current_url, url)
+            except Exception:
+                return
+        low = url.lower()
+        if not (
+            _looks_like_pdf_link(url)
+            or "silverchair.com/" in low
+            or "watermark" in low
+            or "stamp.jsp" in low
+        ):
+            return
+        if url in seen:
+            return
+        seen.add(url)
+        candidates.append(url)
+
+    add(current_url)
+
+    try:
+        meta_pdf = _ele_quick(page, 'css:meta[name="citation_pdf_url"]', timeout=0.2)
+        if meta_pdf:
+            add(meta_pdf.attr("content"))
+    except Exception:
+        pass
+
+    try:
+        analyzed = _analyze_html_structure_drission(page, logger)
+        add(analyzed)
+    except Exception:
+        pass
+
+    try:
+        links = _eles_quick(
+            page,
+            "xpath://a[contains(@href,'.pdf') or contains(@href,'/pdfft') or contains(@href,'/doi/pdf') or contains(@href,'article-pdf') or contains(@href,'stamp.jsp')]",
+            timeout=0.3,
+        )
+        for link in links[:12]:
+            add(link.attr("href"))
+    except Exception:
+        pass
+
+    try:
+        frames = _eles_quick(page, 'css:iframe, embed, object', timeout=0.3)
+        for frame in frames[:8]:
+            add(frame.attr("src") or frame.attr("data"))
+    except Exception:
+        pass
+
+    if logger and candidates:
+        logger.info(f"        [ViewerGate] 후보 URL {len(candidates)}개 수집")
+    return candidates
+
+
+def _try_cookie_cffi_candidate_urls(page, candidate_urls, target_path: str, logger=None, timeout_s: int = 16, context: str = "candidate-cffi") -> bool:
+    if page is None:
+        return False
+
+    urls = []
+    seen = set()
+    for raw in candidate_urls or []:
+        url = str(raw or "").strip()
+        if not url or url in seen:
+            continue
+        seen.add(url)
+        urls.append(url)
+
+    if not urls:
+        return False
+
+    try:
+        cookies = {c["name"]: c["value"] for c in (page.cookies() or [])}
+    except Exception:
+        cookies = None
+    referer = str(getattr(page, "url", "") or "").strip() or None
+    ua = _resolve_best_browser_ua()
+
+    for url in urls:
+        low = url.lower()
+        if "stamp.jsp" in low:
+            continue
+        if logger:
+            logger.info(f"        [{context}] 후보 직접 수집 시도: {url}")
+        try:
+            cffi_result = download_with_cffi(
+                url,
+                target_path,
+                referer=referer,
+                cookies=cookies,
+                ua=ua,
+                logger=logger,
+                return_detail=True,
+                timeout=timeout_s,
+            )
+            if cffi_result.get("ok"):
+                return True
+        except Exception:
+            continue
     return False
 
 
@@ -2110,7 +2798,8 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
                 return target_path
 
         # viewer 페이지에서 Open 버튼만 누르면 내려오는 경우 대응
-        _click_viewer_open_button(page, logger=logger)
+        viewer_detail = _click_viewer_open_button(page, logger=logger, return_detail=True)
+        page = _adopt_latest_tab(page, logger=logger)
         if _capture_direct_downloaded_pdf(
             download_dir=target_dir,
             initial_files=initial_files,
@@ -2121,6 +2810,20 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
             context="navigation-viewer-open",
         ):
             logger.info("        viewer Open/View 후 다운로드 감지/확정")
+            return target_path
+        viewer_candidates = []
+        if viewer_detail.get("href"):
+            viewer_candidates.append(viewer_detail["href"])
+        viewer_candidates.extend(_collect_pdf_candidate_urls_from_page(page, logger=logger))
+        if _try_cookie_cffi_candidate_urls(
+            page,
+            viewer_candidates,
+            target_path,
+            logger=logger,
+            timeout_s=min(max(8, timeout_s), 18),
+            context="navigation-viewer-candidate",
+        ):
+            logger.info("        viewer 후보 URL 직접 수집 성공")
             return target_path
 
         # 2) 버튼 클릭
@@ -2145,6 +2848,7 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
             """
             buttons = _eles_quick(page, f'xpath:{button_xpath}', timeout=0.8)
             clicked = False
+            clicked_href = ""
             for btn in buttons:
                 if not btn.states.is_displayed:
                     continue
@@ -2179,6 +2883,7 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
                     continue
 
                 btn_info = text or title or aria or "ICON"
+                clicked_href = href
                 logger.info(f"         버튼 발견: {btn_info[:20]}... 클릭 시도")
                 try:
                     btn.click()
@@ -2194,6 +2899,8 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
                 logger.warning("        클릭할 PDF 버튼을 못 찾음 (이동만으로 다운로드됐을 수 있음)")
                 _dismiss_cookie_or_consent_banner(page, logger=logger)
                 _click_viewer_open_button(page, logger=logger)
+            else:
+                page = _adopt_latest_tab(page, logger=logger)
         except Exception as e:
             logger.warning(f"        버튼 클릭 로직 에러 (무시): {e}")
 
@@ -2208,6 +2915,21 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
             context="navigation-click-download",
         ):
             logger.info(f"        파일명/유효성 확인 완료: {target_path}")
+            return target_path
+
+        click_candidates = []
+        if clicked_href:
+            click_candidates.append(clicked_href)
+        click_candidates.extend(_collect_pdf_candidate_urls_from_page(page, logger=logger))
+        if _try_cookie_cffi_candidate_urls(
+            page,
+            click_candidates,
+            target_path,
+            logger=logger,
+            timeout_s=min(max(8, timeout_s), 18),
+            context="navigation-click-candidate",
+        ):
+            logger.info("        클릭 후 후보 URL 직접 수집 성공")
             return target_path
 
         page_src = (page.html or "")
@@ -2265,7 +2987,9 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
         )
 
         # 계측 누적 (append-only)
-        metrics_path = os.path.abspath(os.path.join("outputs", "download_attempts.jsonl"))
+        metrics_path = os.path.abspath(
+            os.environ.get("PDF_ATTEMPTS_JSONL", os.path.join("outputs", "download_attempts.jsonl"))
+        )
         append_metrics_jsonl(metrics_path, attempt)
 
         if logger:
@@ -2330,11 +3054,14 @@ def download_with_drission(
     mode="first",
     return_detail=False,
     hard_timeout_s=None,
+    artifact_root=None,
 ):
     # 폴더 생성
     os.makedirs(save_dir, exist_ok=True)
     full_save_path = os.path.join(save_dir, filename)
-    browser_tmp_root = os.path.join(save_dir, ".browser_tmp")
+    artifact_root = artifact_root or save_dir
+    os.makedirs(artifact_root, exist_ok=True)
+    browser_tmp_root = os.path.join(artifact_root, ".browser_tmp")
     browser_tmp_dir = os.path.join(browser_tmp_root, os.path.splitext(filename)[0])
     tmp_save_path = os.path.join(browser_tmp_dir, filename)
     
@@ -2411,6 +3138,27 @@ def download_with_drission(
         max_attempts = 1
     per_attempt_timeout = 24 if mode == "deep" else (20 if is_elsevier_preview else 12)
     per_attempt_sleep = 2 if mode == "deep" else 0
+    landing_attempted = False
+    landing_success = False
+    landing_state = "not_attempted"
+    landing_url = ""
+    landing_title = ""
+
+    def _set_landing_state(state: str, success: bool, page_obj=None):
+        nonlocal landing_attempted, landing_success, landing_state, landing_url, landing_title
+        landing_attempted = True
+        landing_success = bool(success)
+        landing_state = state
+        target_page = page_obj or page
+        if target_page is not None:
+            try:
+                landing_url = target_page.url or landing_url
+            except Exception:
+                pass
+            try:
+                landing_title = target_page.title or landing_title
+            except Exception:
+                pass
 
     def _detail(ok, reason, evidence=None, stage="drission", http_status=None):
         payload = {
@@ -2420,18 +3168,23 @@ def download_with_drission(
             "stage": stage,
             "domain": _extract_domain(doi_url),
             "http_status": http_status,
+            "landing_attempted": landing_attempted,
+            "landing_success": landing_success,
+            "landing_state": landing_state,
+            "landing_url": landing_url,
+            "landing_title": landing_title,
         }
         return payload if return_detail else ok
 
     def _ret(ok, reason, evidence=None, stage="drission", http_status=None):
         if not ok and page:
             try:
-                _safe_screenshot(
-                    page,
-                    os.path.join(save_dir, "logs", "screenshots"),
-                    f"final_fail_capture_{filename}.png",
-                    logger,
-                )
+                    _safe_screenshot(
+                        page,
+                        os.path.join(artifact_root, "logs", "screenshots"),
+                        f"final_fail_capture_{filename}.png",
+                        logger,
+                    )
             except Exception:
                 pass
         payload = _detail(ok, reason, evidence=evidence, stage=stage, http_status=http_status)
@@ -2482,6 +3235,7 @@ def download_with_drission(
                 timeout_s=0,
                 context="doi-direct-download-immediate",
             ):
+                _set_landing_state("direct_pdf_handoff", True)
                 return _ret(True, "SUCCESS", stage="doi-direct-download")
             unexpected_landing = (
                 (not current_domain)
@@ -2500,6 +3254,7 @@ def download_with_drission(
                     timeout_s=direct_wait_s,
                     context="doi-direct-download",
                 ):
+                    _set_landing_state("direct_pdf_handoff", True)
                     return _ret(True, "SUCCESS", stage="doi-direct-download")
                 logger.info(f"        [Drission] 예상외 랜딩({page.url}) 감지 -> DOI 재요청 1회")
                 try:
@@ -2519,6 +3274,7 @@ def download_with_drission(
                         timeout_s=0,
                         context="doi-direct-download-retry-immediate",
                     ):
+                        _set_landing_state("direct_pdf_handoff", True)
                         return _ret(True, "SUCCESS", stage="doi-direct-download")
                     retry_unexpected = (
                         (not current_domain)
@@ -2535,6 +3291,7 @@ def download_with_drission(
                         timeout_s=direct_wait_s,
                         context="doi-direct-download-retry",
                     ):
+                        _set_landing_state("direct_pdf_handoff", True)
                         return _ret(True, "SUCCESS", stage="doi-direct-download")
                 except Exception:
                     pass
@@ -2617,6 +3374,7 @@ def download_with_drission(
                     if "linkinghub.elsevier.com" in current_domain and _is_elsevier_retrieve_url(page.url):
                         if logger:
                             logger.warning("        [Elsevier] retrieve 고착: DOI/handoff 전환 실패로 종료")
+                        _set_landing_state("interstitial_or_retrieve", False)
                         return _ret(False, "FAIL_BLOCK", ["elsevier_retrieve_stuck_no_handoff"], stage="landing")
 
                     recovered_article_url = _extract_sciencedirect_article_url_from_html(page_html)
@@ -2655,8 +3413,21 @@ def download_with_drission(
                     timeout_s=3,
                     context="doi-direct-download-final-check",
                 ):
+                    _set_landing_state("direct_pdf_handoff", True)
                     return _ret(True, "SUCCESS", stage="doi-direct-download")
+                _set_landing_state("blank_or_incomplete", False)
                 return _ret(False, "FAIL_NETWORK", [f"unexpected_landing_page={page.url}"], stage="landing")
+
+            if is_elsevier_doi and ("sciencedirect.com" in current_domain):
+                _recover_elsevier_interstitial_article(
+                    page,
+                    target_pii=_extract_elsevier_target_pii(page),
+                    article_referer=str(getattr(page, "url", "") or ""),
+                    logger=logger,
+                )
+                current_domain = _extract_domain(page.url)
+                page_title = page.title or page_title
+                page_html = page.html or page_html
 
             issue, evidence = detect_access_issue(
                 title=page_title,
@@ -2669,6 +3440,7 @@ def download_with_drission(
             if issue == "FAIL_ACCESS_RIGHTS":
                 if logger:
                     logger.warning(f"        landing 단계 접근권한 필요 감지로 중단: {evidence}")
+                _set_landing_state("access_rights_block", False)
                 return _ret(False, issue, evidence, stage="landing")
             if issue in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
                 if not _abort_on_landing_block():
@@ -2683,7 +3455,9 @@ def download_with_drission(
                 else:
                     if logger:
                         logger.warning(f"        landing 단계 차단/캡차 감지로 중단: {evidence}")
+                    _set_landing_state("challenge_or_block", False)
                     return _ret(False, issue, evidence, stage="landing")
+            _set_landing_state("success_landing", True)
 
             high_friction = _is_high_friction_domain(current_domain)
             is_sciencedirect = "sciencedirect.com" in current_domain
@@ -2782,6 +3556,20 @@ def download_with_drission(
                 pdf_url = _extract_sciencedirect_pdfft_url_from_html(page_html, target_pii=target_pii_now)
                 if pdf_url and logger:
                     logger.info(f"        [Elsevier] html 메타 기반 pdfft URL 복구: {pdf_url}")
+            if (not pdf_url) and doi_norm.startswith("10.4150/"):
+                powdermat_target = _resolve_powdermat_pdf_target(
+                    doi=doi_norm,
+                    current_url=page.url or "",
+                    current_html=page_html,
+                )
+                if powdermat_target:
+                    pdf_url = powdermat_target.get("pdf_url") or pdf_url
+                    powdermat_article_url = str(powdermat_target.get("article_url") or "").strip()
+                    if powdermat_article_url:
+                        referer_url = powdermat_article_url
+                        current_domain = _extract_domain(powdermat_article_url) or current_domain
+                    if pdf_url and logger:
+                        logger.info(f"        [Powdermat] DOI 기반 direct PDF URL 복구: {pdf_url}")
             
             # 고차단 도메인은 실제 사용자 행동과 유사하게 버튼 클릭 다운로드를 우선 시도
             if high_friction and pdf_btn and (not is_acs) and (not is_sciencedirect):
@@ -2835,7 +3623,7 @@ def download_with_drission(
                     try:
                         _safe_screenshot(
                             page,
-                            os.path.join(save_dir, "logs", "screenshots"),
+                            os.path.join(artifact_root, "logs", "screenshots"),
                             f"pre_pdf_attempt_{filename}.png",
                             logger,
                         )
@@ -2902,6 +3690,17 @@ def download_with_drission(
 
                 if _over_budget():
                     return _ret(False, "FAIL_PARSE", ["budget_exceeded_before_navigation"], stage="drission")
+
+                if is_sciencedirect and mode == "first" and _looks_like_elsevier_signed_pdf_url(pdf_url):
+                    try:
+                        nav_result = download_pdf_via_navigation(page, pdf_url, tmp_save_path, logger, timeout_s=8)
+                        if nav_result == "__ACCESS_RIGHTS_REQUIRED__":
+                            return _ret(False, "FAIL_ACCESS_RIGHTS", ["navigation_access_rights_required"], stage="navigation-download")
+                        if nav_result:
+                            if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
+                                return _ret(True, "SUCCESS", stage="navigation-download")
+                    except Exception:
+                        pass
 
                 if not is_sciencedirect:
                     try :
@@ -3442,19 +4241,12 @@ def download_via_acspdf(doi: str, output_path: str, logger = None) -> bool:
 
 
 def download_via_aippdf(doi: str, output_path: str, logger = None) -> bool:
-    # 케이스에 따라 download=true가 더 잘 먹는 경우가 있어 2개를 순차 시도
-    headers = {
-        "User-Agent": "Mozilla/5.0",
-        "Referer": f"https://aip.scitation.org/doi/{doi}",
-    }
-    referer = headers["Referer"]
-
-    url1 = f"https://aip.scitation.org/doi/pdf/{doi}"
-    if download_with_cffi(url1, output_path, referer):
-        return True
-
-    url2 = f"https://aip.scitation.org/doi/pdf/{doi}?download=true"
-    return download_with_cffi(url2, output_path, referer)
+    # AIP의 aip.scitation/avs.scitation doi/pdf 엔드포인트는 브라우저 없이 접근하면
+    # JS gate HTML로 떨어지는 경우가 많아 불필요한 실패와 시도 횟수만 늘린다.
+    # 여기서는 API/direct 단계에서 건너뛰고 브라우저 landing에서 실제 article-pdf 경로를 찾는다.
+    if logger:
+        logger.info(f"        [AIP] direct doi/pdf wrapper 스킵 -> browser landing 우선: {doi}")
+    return False
 
 
 def download_via_ioppdf(doi: str, output_path: str, logger = None) -> bool:

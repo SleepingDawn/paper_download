@@ -1,0 +1,1 @@
+{"timestamp": 1773121751, "attempt": 1, "doi": "10.1016/j.surfin.2023.103298", "reason": "FAIL_CAPTCHA", "stage": "landing", "domain": "doi.org", "http_status": null, "evidence": ["keyword=just a moment", "{\"trace\": [{\"strategy\": \"api\", \"reason\": \"FAIL_NO_CANDIDATE\", \"evidence\": [\"skipped_elsevier_api\"]}]}"], "mode": "first"}

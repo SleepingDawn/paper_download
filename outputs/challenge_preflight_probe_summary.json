@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-03-10T17:32:00+09:00",
+  "probe_type": "headless browser landing probe",
+  "strategy_under_test": "first-party origin challenge preflight before DOI landing",
+  "cases": [
+    {
+      "doi": "10.1103/physrevb.90.155405",
+      "label": "aps_no_preflight",
+      "preflight": false,
+      "final_url": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.90.155405?__cf_chl_rt_tk=gqdjqNVzjO3ZmIJZ1cKK5f1bFoxpa4lDj5P9j7aVzBo-1773131170-1.0.1.1-7Gded_Z6abhdfrXajKUzQE.4RY0_ywAhirEwPJBY5ho",
+      "title": "Just a moment...",
+      "issue": "FAIL_BLOCK",
+      "evidence": [
+        "url_marker=challenge_or_bot"
+      ],
+      "pdf_candidate_found": false
+    },
+    {
+      "doi": "10.1103/physrevlett.109.096803",
+      "label": "aps_with_preflight",
+      "preflight": true,
+      "preflight_url": "https://journals.aps.org/",
+      "preflight_final_url": "https://journals.aps.org/?__cf_chl_rt_tk=R0E1YO4ss12f2sf8en7WCOJJXfip8V19pl9Me59pfFU-1773131189-1.0.1.1-RoaaxcY.pByQd2FmcTcLOzvOlH12k33BfpOP7Mt7q5Q",
+      "preflight_title": "Just a moment...",
+      "preflight_issue": "FAIL_BLOCK",
+      "final_url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.109.096803?__cf_chl_rt_tk=V0WUeY4.NSwNUgl3ceAG7KpvxC1Xp36O5CN4R8eSLUU-1773131205-1.0.1.1-NkSHITnI0p5WP3W0ofDDSjW0rgvbMvdaoyeCWUCo_dY",
+      "title": "Just a moment...",
+      "issue": "FAIL_BLOCK",
+      "evidence": [
+        "url_marker=challenge_or_bot"
+      ],
+      "pdf_candidate_found": false
+    },
+    {
+      "doi": "10.1364/oe.24.00a312",
+      "label": "optica_no_preflight",
+      "preflight": false,
+      "final_url": "https://opg.optica.org/captcha/(S(obsyox5nprvrqgpjm4jyh5ep))/?guid=589A7574-5930-45A3-BAA2-F967FD37453E&uri=oe-24-2-A312",
+      "title": "Captcha",
+      "issue": "FAIL_BLOCK",
+      "evidence": [
+        "url_marker=challenge_or_bot"
+      ],
+      "pdf_candidate_found": false
+    },
+    {
+      "doi": "10.1364/oe.17.018364",
+      "label": "optica_with_preflight",
+      "preflight": true,
+      "preflight_url": "https://opg.optica.org/",
+      "preflight_final_url": "https://opg.optica.org/",
+      "preflight_title": "새 탭",
+      "preflight_issue": "",
+      "final_url": "https://opg.optica.org/captcha/(S(bj2minypvacziogi3zry2duo))/?guid=16339B52-86EC-4FD0-9943-0C8DD72743DE&uri=oe-17-20-18364",
+      "title": "Captcha",
+      "issue": "FAIL_BLOCK",
+      "evidence": [
+        "url_marker=challenge_or_bot"
+      ],
+      "pdf_candidate_found": false
+    }
+  ],
+  "conclusion": {
+    "effective": false,
+    "main_download_adopted": false,
+    "kept_in_landing_repro": false,
+    "reason": "APS preflight itself triggered a challenge page, and Optica preflight did not improve DOI landing outcome."
+  }
+}
