@@ -52,6 +52,27 @@ def get_config():
         choices=[0, 1],
         help="다운로드 전 landing_access_repro.py로 랜딩 성공 여부를 먼저 확인하고, 성공 DOI만 다운로드에 투입",
     )
+    parser.add_argument(
+        "--headless",
+        type=int,
+        default=None,
+        choices=[0, 1],
+        help="브라우저 다운로드 1차 패스 headless 모드. 미지정 시 PDF_BROWSER_HEADLESS 환경변수를 따른다.",
+    )
+    parser.add_argument(
+        "--deep-retry-headless",
+        type=int,
+        default=None,
+        choices=[0, 1],
+        help="deep retry 브라우저 모드. 미지정 시 --headless 값을 따른다.",
+    )
+    parser.add_argument(
+        "--abort-on-landing-block",
+        type=int,
+        default=1,
+        choices=[0, 1],
+        help="다운로드 전 landing 단계에서 captcha/challenge/block를 감지하면 즉시 중단할지 여부. 기본값: 1",
+    )
 
     args = parser.parse_args()
     return args

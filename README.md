@@ -3,6 +3,18 @@
 DOI 목록을 입력받아 PDF를 다운로드하는 파이프라인입니다.  
 `Sci-Hub -> direct OA(CFFI) -> publisher API -> Drission 브라우저` 순서로 시도하며, 실패 원인/로그/스크린샷을 함께 남깁니다.
 
+현재 다운로드 기본축은 다음과 같습니다.
+- 1차 다운로드는 parser 기준 `--headless`로 제어
+- deep retry는 `--deep-retry-headless`로 별도 제어 가능
+- 랜딩 단계에서 `captcha/challenge/block`가 감지되면 기본적으로 즉시 중단 (`--abort-on-landing-block 1`)
+- `--precheck-landing 1`이면 다운로드 전에 strict landing precheck를 먼저 수행
+
+최근 반영된 핵심 변경:
+- Springer처럼 `Download PDF` 클릭이 바로 파일 저장으로 이어지는 케이스를 publisher 한정 없이 공통 direct-download 경로에서 감지
+- `page.download(...)` 반환 결과를 직접 확정해 브라우저 다운로드를 놓치지 않도록 보강
+- Elsevier는 article -> viewer -> signed PDF/viewer 다운로드 중심의 `viewer-first` 유지
+- Powdermat는 article page가 agreement 화면으로 덮여도 `view.php?doi=...`의 서버 HTML을 article snapshot으로 재평가하는 fallback 추가
+
 ## 1. 설치
 
 ```bash
@@ -107,12 +119,12 @@ python3 -u landing_experiment_compare.py \
 ### 2-1. DOI CSV로 바로 다운로드
 
 ```bash
-PDF_BROWSER_HEADLESS=1 \
-CHROME_PATH=/usr/bin/google-chrome \
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
-  --max_workers 4 \
+  --max_workers 2 \
+  --headless 0 \
   --precheck-landing 0 \
+  --abort-on-landing-block 1 \
   --output_dir outputs/run_ready_w4 \
   --after-first-pass stop \
   --non-interactive
@@ -120,15 +132,31 @@ python3 -u parallel_download.py \
 
 랜딩 선확인이 필요하면 `--precheck-landing 1`을 추가합니다. 이 옵션은 다운로드 전에 `landing_access_repro.py`를 먼저 실행해 `SUCCESS_ACCESS`로 판정된 DOI만 다운로드 큐에 넣습니다.
 
+1차는 headless, deep retry만 headful로 따로 돌리고 싶으면:
+
+```bash
+python3 -u parallel_download.py \
+  --doi_path ready_to_download.csv \
+  --max_workers 2 \
+  --headless 1 \
+  --deep-retry-headless 0 \
+  --precheck-landing 1 \
+  --abort-on-landing-block 1 \
+  --output_dir outputs/run_ready_w2_deep_headful \
+  --after-first-pass deep \
+  --non-interactive
+```
+
 ### 2-2. 검색 + 다운로드(OpenAlex)
 
 ```bash
-PDF_BROWSER_HEADLESS=1 \
 python3 -u parallel_download.py \
   --query "('solid-state electrolyte' OR 'solid electrolyte') AND battery AND Li" \
   --max_num 300 \
   --max_workers 2 \
+  --headless 1 \
   --precheck-landing 0 \
+  --abort-on-landing-block 1 \
   --output_dir outputs/run_search_w2 \
   --after-first-pass stop \
   --non-interactive
@@ -137,11 +165,13 @@ python3 -u parallel_download.py \
 ### 2-3. 1차 실패 건 deep retry까지 수행
 
 ```bash
-PDF_BROWSER_HEADLESS=1 \
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
-  --max_workers 4 \
+  --max_workers 2 \
+  --headless 1 \
+  --deep-retry-headless 0 \
   --precheck-landing 0 \
+  --abort-on-landing-block 1 \
   --output_dir outputs/run_ready_w4_deep \
   --after-first-pass deep \
   --non-interactive
@@ -169,8 +199,11 @@ python3 -u parallel_download.py \
 
 Drission 내부 전략:
 
-- DOI landing
-- 차단/캡차/인증 요구 판정
+- DOI/article landing
+- 랜딩 직후 차단/캡차/인증 요구 판정
+  - 기본값은 `--abort-on-landing-block 1`
+  - 즉 `captcha/challenge/block`가 뜨면 다운로드 단계로 깊게 들어가지 않고 바로 중단
+  - 단 `doi.org` 단계나 기존 soft-continue 예외는 그대로 유지
 - PDF 링크 탐색
   - `citation_pdf_url` 메타
   - 버튼 href
@@ -178,8 +211,24 @@ Drission 내부 전략:
 - 도메인별 클릭 전략
   - Elsevier: article -> viewer 2단계 클릭
   - 고차단/일반 도메인: PDF 버튼 1회 클릭 + 파일 감지
+- direct-download 감지
+  - DOI 진입 직후
+  - PDF 버튼 클릭 직후
+  - navigation으로 PDF URL 이동한 직후
+  - `page.download(...)` 반환 결과
+  - 즉, 특정 퍼블리셔 전용이 아니라 “클릭/이동 후 바로 파일이 생기는 경로”를 공통 처리
 - 링크가 있으면 `page.download` 또는 navigation 다운로드
 - 1차 패스는 빠른 경로만 사용하고 느린 fallback(requests/js/추가 CFFI)은 생략
+
+퍼블리셔별 현재 핵심 처리:
+- Elsevier
+  - article page를 먼저 안정화한 뒤 `View PDF`
+  - viewer/signed PDF 경로를 우선 사용
+  - 랜딩 단계에서 challenge가 보이면 기본적으로 즉시 중단
+- Springer
+  - article landing 후 `Download PDF`가 바로 파일 저장으로 이어지는 경로를 generic direct-download/DownloadKit 확정 경로로 처리
+- Powdermat
+  - 브라우저 최종 상태가 agreement로 덮여도 `view.php?doi=...`의 서버 HTML에서 DOI/title/meta가 충분하면 article landing으로 재평가
 
 `--precheck-landing 1`일 때 추가 동작:
 
@@ -201,6 +250,7 @@ Drission 내부 전략:
   - `accept/reject/continue`류 버튼 자동 클릭
 - 접근 판정 로직
   - `detect_access_issue()`로 `FAIL_CAPTCHA/FAIL_BLOCK` 판단
+  - 다운로드 파이프라인은 기본적으로 landing 단계의 `FAIL_CAPTCHA/FAIL_BLOCK`를 hard-fail로 본다 (`--abort-on-landing-block 1`)
   - 쿠키/동의 오버레이는 차단으로 오판하지 않도록 soft 처리
   - URL에 challenge 토큰(`__cf_chl_rt_tk`, `/cdn-cgi/challenge` 등)이 있으면 성공으로 보지 않음
   - `validate user` 페이지는 우회 클릭 없이 차단으로 즉시 분류
@@ -223,7 +273,9 @@ Drission 내부 전략:
 
 ## 7. 주요 환경변수
 
+- parser 옵션을 우선 권장합니다. 특히 `parallel_download.py`는 `--headless`, `--deep-retry-headless`, `--abort-on-landing-block`를 직접 지원합니다.
 - `PDF_BROWSER_HEADLESS=1` : 헤드리스 실행
+- `PDF_ABORT_ON_LANDING_BLOCK=1` : landing 단계에서 captcha/challenge/block 시 즉시 중단
 - `PDF_BROWSER_NO_SANDBOX=1` : 서버 컨테이너에서 필요할 수 있음
 - `PDF_BROWSER_HUMANIZED=1` : 과도한 `--disable-*` 플래그를 줄여 사람 브라우저 지문을 우선
 - `PDF_BROWSER_UA_PLATFORM=linux|mac` : UA 플랫폼 강제(기본은 자동)
@@ -258,6 +310,10 @@ Drission 내부 전략:
 `outputs/summary.json`에는 아래 항목이 포함됩니다.
 
 - `precheck_landing`
+- `download_browser`
+  - `headless`
+  - `deep_retry_headless`
+  - `abort_on_landing_block`
 - `landing_precheck`
 - `effective_rates`
   - `download_raw_success_rate`

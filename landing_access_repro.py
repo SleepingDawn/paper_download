@@ -53,6 +53,8 @@ from landing_classifier import (
     stabilize_page_state,
     suggest_remaining_weak_spots,
     summarize_classifier_states,
+    _extract_main_like_text,
+    _strip_visible_text,
 )
 from tools_exp import (
     _apply_best_browser_profile,
@@ -1041,6 +1043,152 @@ def _recover_powdermat_article_target(
         settle_wait_sec=0.35,
         stabilize_polls=3,
     )
+
+
+def _build_static_snapshot(title: str, html: str, final_url: str) -> Dict[str, Any]:
+    soup = BeautifulSoup(str(html or ""), "html.parser")
+    meta: Dict[str, str] = {}
+    for tag in soup.select("meta[name][content], meta[property][content]"):
+        key = str(tag.get("name") or tag.get("property") or "").strip().lower()
+        value = " ".join(str(tag.get("content") or "").split()).strip()
+        if key and value and key not in meta:
+            meta[key] = value
+    body = soup.body
+    main = soup.find("main") or soup.find("article")
+    visible_text = _strip_visible_text(html)
+    main_text = _extract_main_like_text(html)
+    abstract_text = ""
+    for tag in soup.select("#Abs1-content, .Abstract, .abstract, section.abstract, [data-title='Abstract']"):
+        abstract_text = " ".join(tag.get_text(" ", strip=True).split())
+        if abstract_text:
+            break
+    return {
+        "meta": meta,
+        "title": str(title or "").strip(),
+        "canonical_url": str(final_url or "").strip(),
+        "body_text_excerpt": visible_text[:480],
+        "parsed_text_excerpt": visible_text[:480],
+        "body_text_len": len(visible_text),
+        "parsed_text_len": len(visible_text),
+        "main_text_len": len(main_text),
+        "parsed_main_text_len": len(main_text),
+        "abstract_text_len": len(abstract_text),
+        "has_main": main is not None,
+        "has_article_tag": soup.find("article") is not None,
+        "has_abstract_node": bool(abstract_text),
+        "body_child_count": len(list(body.children)) if body else 0,
+        "spinner_count": 0,
+        "iframe_count": len(soup.find_all("iframe")),
+        "ready_state": "complete",
+        "html_len": len(str(html or "")),
+    }
+
+
+def _recover_powdermat_static_entry(
+    record: Dict[str, Any],
+    expected_domains: Sequence[str],
+) -> Dict[str, Any]:
+    target_url = _powdermat_entry_url(str(record.get("doi") or ""))
+    if not target_url:
+        return {}
+    try:
+        resp = requests.get(
+            target_url,
+            timeout=15,
+            headers={"User-Agent": "Mozilla/5.0"},
+        )
+    except Exception:
+        return {}
+    html = str(resp.text or "")
+    if not html:
+        return {}
+    soup = BeautifulSoup(html, "html.parser")
+    title = ""
+    if soup.title:
+        title = " ".join(soup.title.get_text(" ", strip=True).split()).strip()
+    final_url = str(resp.url or target_url).strip()
+    snapshot = _build_static_snapshot(title=title, html=html, final_url=final_url)
+    evaluated = _evaluate_page_state(
+        record=record,
+        expected_domains=expected_domains,
+        final_url=final_url,
+        title=title,
+        html=html,
+        snapshot=snapshot,
+    )
+    if evaluated.get("classifier_state") not in SUCCESS_STATES:
+        return {}
+    return {
+        "page": None,
+        "final_url": final_url,
+        "title": title,
+        "html": html,
+        "snapshot": snapshot,
+        **evaluated,
+    }
+
+
+def _recover_powdermat_via_back(
+    page: ChromiumPage,
+    record: Dict[str, Any],
+    expected_domains: Sequence[str],
+    final_url: str,
+    deadline_monotonic: float,
+    navigation_chain: List[Dict[str, str]],
+    attempt_timing: Dict[str, Any],
+) -> Dict[str, Any]:
+    low_final = str(final_url or "").lower()
+    if "powdermat.org" not in low_final or "/authors/copyright_transfer_agreement.php" not in low_final:
+        return {}
+    if page is None or time.monotonic() >= deadline_monotonic:
+        return {}
+    try:
+        timeout = _remaining_budget(deadline_monotonic, min(DEFAULT_LOCAL_TIMEOUT_SEC, 6.0), floor_sec=2.5)
+        started = time.perf_counter()
+        page.back()
+        deadline = time.monotonic() + timeout
+        while time.monotonic() < deadline:
+            current = str(page.url or "").strip()
+            if current and current.lower() != low_final:
+                break
+            time.sleep(0.15)
+        attempt_timing["powdermat_back_ms"] = int((time.perf_counter() - started) * 1000)
+        _append_nav_step(navigation_chain, "powdermat_back", final_url, page.url or final_url)
+        _dismiss_cookie_or_consent_banner(page)
+        back_url = page.url or final_url
+        back_title = page.title or ""
+        back_html = page.html or ""
+        back_title, back_html, back_snapshot = stabilize_page_state(
+            page,
+            title=back_title,
+            html=back_html,
+            deadline_monotonic=deadline_monotonic,
+            settle_wait_sec=0.3,
+            stabilize_polls=3,
+        )
+        back_url = page.url or back_url
+        if "/authors/copyright_transfer_agreement.php" in str(back_url or "").lower():
+            return {}
+        evaluated = _evaluate_page_state(
+            record=record,
+            expected_domains=expected_domains,
+            final_url=back_url,
+            title=back_title,
+            html=back_html,
+            snapshot=back_snapshot,
+        )
+        if evaluated.get("classifier_state") not in SUCCESS_STATES:
+            return {}
+        return {
+            "page": None,
+            "final_url": back_url,
+            "title": back_title,
+            "html": back_html,
+            "snapshot": back_snapshot,
+            **evaluated,
+        }
+    except Exception:
+        return {}
 
 
 def _normalize_title_key(value: str) -> str:
@@ -2125,6 +2273,47 @@ def _probe_one(
                 and attempt_idx == 0
                 and time.monotonic() < deadline
             ):
+                powdermat_static_recovery = _recover_powdermat_static_entry(
+                    record=record,
+                    expected_domains=expected_domains,
+                )
+                if powdermat_static_recovery:
+                    final_url = powdermat_static_recovery.get("final_url", final_url)
+                    title = powdermat_static_recovery.get("title", title)
+                    html = powdermat_static_recovery.get("html", html)
+                    snapshot = dict(powdermat_static_recovery.get("snapshot") or snapshot)
+                    issue = str(powdermat_static_recovery.get("issue") or "")
+                    issue_evidence = list(powdermat_static_recovery.get("issue_evidence") or [])
+                    article_signal = bool(powdermat_static_recovery.get("article_signal"))
+                    pdf_action_signal = bool(powdermat_static_recovery.get("pdf_action_signal"))
+                    consent_signal = bool(powdermat_static_recovery.get("consent_signal"))
+                    legacy_success_like = bool(powdermat_static_recovery.get("legacy_success_like"))
+                    classifier_state = str(powdermat_static_recovery.get("classifier_state") or classifier_state)
+                    reason_codes = list(dict.fromkeys(list(powdermat_static_recovery.get("reason_codes") or reason_codes) + ["powdermat_static_entry"]))
+                    snapshot_signal_summary = dict(powdermat_static_recovery.get("signal_summary") or snapshot_signal_summary)
+                powdermat_back_recovery = _recover_powdermat_via_back(
+                    page=page,
+                    record=record,
+                    expected_domains=expected_domains,
+                    final_url=final_url,
+                    deadline_monotonic=deadline,
+                    navigation_chain=navigation_chain,
+                    attempt_timing=attempt_timing,
+                )
+                if powdermat_back_recovery and classifier_state not in SUCCESS_STATES:
+                    final_url = powdermat_back_recovery.get("final_url", final_url)
+                    title = powdermat_back_recovery.get("title", title)
+                    html = powdermat_back_recovery.get("html", html)
+                    snapshot = dict(powdermat_back_recovery.get("snapshot") or snapshot)
+                    issue = str(powdermat_back_recovery.get("issue") or "")
+                    issue_evidence = list(powdermat_back_recovery.get("issue_evidence") or [])
+                    article_signal = bool(powdermat_back_recovery.get("article_signal"))
+                    pdf_action_signal = bool(powdermat_back_recovery.get("pdf_action_signal"))
+                    consent_signal = bool(powdermat_back_recovery.get("consent_signal"))
+                    legacy_success_like = bool(powdermat_back_recovery.get("legacy_success_like"))
+                    classifier_state = str(powdermat_back_recovery.get("classifier_state") or classifier_state)
+                    reason_codes = list(dict.fromkeys(list(powdermat_back_recovery.get("reason_codes") or reason_codes) + ["powdermat_back_recovery"]))
+                    snapshot_signal_summary = dict(powdermat_back_recovery.get("signal_summary") or snapshot_signal_summary)
                 powdermat_recovery = _recover_powdermat_article_target(
                     page=page,
                     record=record,
@@ -2134,7 +2323,7 @@ def _probe_one(
                     navigation_chain=navigation_chain,
                     attempt_timing=attempt_timing,
                 )
-                if powdermat_recovery:
+                if powdermat_recovery and classifier_state not in SUCCESS_STATES:
                     final_url = powdermat_recovery.get("final_url", final_url)
                     title = powdermat_recovery.get("title", title)
                     html = powdermat_recovery.get("html", html)

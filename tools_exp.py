@@ -206,14 +206,18 @@ def _apply_best_browser_profile(co: ChromiumOptions) -> None:
     if single_process:
         co.set_argument("--single-process")
         co.set_argument("--no-zygote")
-    try:
-        co.set_load_mode("eager")
-    except Exception:
-        pass
     if no_sandbox:
         co.set_argument("--no-sandbox")
         co.set_argument("--disable-dev-shm-usage")
     co.set_user_agent(_resolve_best_browser_ua())
+    try:
+        co.set_load_mode("eager")
+    except Exception:
+        pass
+
+
+def _abort_on_landing_block() -> bool:
+    return os.getenv("PDF_ABORT_ON_LANDING_BLOCK", "1").strip().lower() in ("1", "true", "yes", "on")
 # =======================================================
 # Logger
 # =======================================================
@@ -439,6 +443,7 @@ def _capture_direct_downloaded_pdf(
     logger=None,
     timeout_s: int = 6,
     context: str = "direct-download",
+    downloaded_file_guard=None,
 ) -> bool:
     downloaded_path = _pick_valid_downloaded_pdf(
         download_dir=download_dir,
@@ -457,6 +462,19 @@ def _capture_direct_downloaded_pdf(
     if not downloaded_path:
         return False
 
+    if downloaded_file_guard:
+        try:
+            if not downloaded_file_guard(downloaded_path):
+                try:
+                    os.remove(downloaded_path)
+                except Exception:
+                    pass
+                if logger:
+                    logger.info(f"        [{context}] 다운로드 파일이 대상 논문과 불일치하여 폐기")
+                return False
+        except Exception:
+            return False
+
     if not _finalize_downloaded_file(downloaded_path, tmp_target_path, logger=logger):
         return False
     if not _finalize_downloaded_file(tmp_target_path, final_target_path, logger=logger):
@@ -464,6 +482,32 @@ def _capture_direct_downloaded_pdf(
 
     if logger:
         logger.info(f"        [{context}] DOI 직행 PDF 다운로드 성공")
+    return True
+
+
+def _finalize_downloadkit_result(
+    download_result,
+    tmp_target_path: str,
+    final_target_path: str,
+    logger=None,
+    context: str = "downloadkit",
+) -> bool:
+    try:
+        result, info = download_result
+    except Exception:
+        return False
+    if result not in ("success", "skipped"):
+        return False
+
+    candidate_path = str(info or "").strip()
+    if not candidate_path or not os.path.exists(candidate_path):
+        return False
+    if not _finalize_downloaded_file(candidate_path, tmp_target_path, logger=logger):
+        return False
+    if not _finalize_downloaded_file(tmp_target_path, final_target_path, logger=logger):
+        return False
+    if logger:
+        logger.info(f"        [{context}] DownloadKit 결과를 최종 PDF로 확정")
     return True
 
 
@@ -489,11 +533,15 @@ def _try_click_pdf_button_download(page, pdf_btn, save_dir: str, full_save_path:
         except Exception:
             pdf_btn.click()
 
-        downloaded_path = _wait_for_new_file_diff(save_dir, initial_files, timeout_s=wait_timeout_s, logger=logger)
-        if not downloaded_path:
-            return False
-
-        if _finalize_downloaded_file(downloaded_path, full_save_path, logger=logger):
+        if _capture_direct_downloaded_pdf(
+            download_dir=save_dir,
+            initial_files=initial_files,
+            tmp_target_path=full_save_path,
+            final_target_path=full_save_path,
+            logger=logger,
+            timeout_s=wait_timeout_s,
+            context="button-click-download",
+        ):
             if logger:
                 logger.info("        [Drission] 버튼 클릭 기반 다운로드 성공")
             return True
@@ -972,20 +1020,16 @@ def _click_once_wait_file(
                     return False
             except Exception:
                 pass
-        downloaded = _wait_for_new_file_diff(tmp_dir, initial_files, timeout_s=wait_s, logger=logger)
-        if downloaded and downloaded_file_guard:
-            try:
-                if not downloaded_file_guard(downloaded):
-                    try:
-                        os.remove(downloaded)
-                    except Exception:
-                        pass
-                    if logger:
-                        logger.info("        [ClickGuard] 다운로드 파일이 대상 논문과 불일치하여 폐기")
-                    return False
-            except Exception:
-                return False
-        if downloaded and _finalize_downloaded_file(downloaded, tmp_path, logger=logger):
+        if _capture_direct_downloaded_pdf(
+            download_dir=tmp_dir,
+            initial_files=initial_files,
+            tmp_target_path=tmp_path,
+            final_target_path=tmp_path,
+            logger=logger,
+            timeout_s=wait_s,
+            context="click-wait-download",
+            downloaded_file_guard=downloaded_file_guard,
+        ):
             return True
     except Exception as e:
         if logger:
@@ -2053,15 +2097,29 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
 
         # direct PDF URL이면 이동만으로 다운로드가 시작될 수 있으므로 먼저 짧게 확인
         if any(k in (url or "").lower() for k in (".pdf", "/pdfft", "download=true")):
-            maybe_file = _wait_for_new_file_diff(target_dir, initial_files, min(timeout_s, 8), logger=logger)
-            if maybe_file and _finalize_downloaded_file(maybe_file, target_path, logger=logger):
+            if _capture_direct_downloaded_pdf(
+                download_dir=target_dir,
+                initial_files=initial_files,
+                tmp_target_path=target_path,
+                final_target_path=target_path,
+                logger=logger,
+                timeout_s=min(timeout_s, 8),
+                context="navigation-direct-pdf",
+            ):
                 logger.info("        자동 다운로드 감지/확정")
                 return target_path
 
         # viewer 페이지에서 Open 버튼만 누르면 내려오는 경우 대응
         _click_viewer_open_button(page, logger=logger)
-        maybe_file = _wait_for_new_file_diff(target_dir, initial_files, min(timeout_s, 6), logger=logger)
-        if maybe_file and _finalize_downloaded_file(maybe_file, target_path, logger=logger):
+        if _capture_direct_downloaded_pdf(
+            download_dir=target_dir,
+            initial_files=initial_files,
+            tmp_target_path=target_path,
+            final_target_path=target_path,
+            logger=logger,
+            timeout_s=min(timeout_s, 6),
+            context="navigation-viewer-open",
+        ):
             logger.info("        viewer Open/View 후 다운로드 감지/확정")
             return target_path
 
@@ -2140,8 +2198,15 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
             logger.warning(f"        버튼 클릭 로직 에러 (무시): {e}")
 
         # 3) 파일 생성 대기 및 확정
-        new_file_path = _wait_for_new_file_diff(target_dir, initial_files, timeout_s, logger=logger)
-        if new_file_path and _finalize_downloaded_file(new_file_path, target_path, logger=logger):
+        if _capture_direct_downloaded_pdf(
+            download_dir=target_dir,
+            initial_files=initial_files,
+            tmp_target_path=target_path,
+            final_target_path=target_path,
+            logger=logger,
+            timeout_s=timeout_s,
+            context="navigation-click-download",
+        ):
             logger.info(f"        파일명/유효성 확인 완료: {target_path}")
             return target_path
 
@@ -2606,7 +2671,10 @@ def download_with_drission(
                     logger.warning(f"        landing 단계 접근권한 필요 감지로 중단: {evidence}")
                 return _ret(False, issue, evidence, stage="landing")
             if issue in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
-                if current_domain.endswith("doi.org"):
+                if not _abort_on_landing_block():
+                    if logger:
+                        logger.info(f"        landing 차단/캡차 감지 but parser override로 계속 진행: {evidence}")
+                elif current_domain.endswith("doi.org"):
                     if logger:
                         logger.info(f"        [Drission] landing issue on doi.org, publisher 이동 시도 계속: {evidence}")
                 elif _should_soft_continue_issue(issue, evidence, page_title, page_html, current_domain):
@@ -2787,14 +2855,36 @@ def download_with_drission(
                         # file_exists='overwrite'로 중복 시 덮어쓰기
                         initial_files = _get_current_files(browser_tmp_dir)
                         clean_name = filename # 파일명 그대로 사용
-                        page.download(pdf_url, goal_path=browser_tmp_dir, rename=clean_name, file_exists='overwrite')
+                        download_result = page.download(
+                            pdf_url,
+                            goal_path=browser_tmp_dir,
+                            rename=clean_name,
+                            file_exists='overwrite',
+                            show_msg=False,
+                        )
+
+                        if _finalize_downloadkit_result(
+                            download_result=download_result,
+                            tmp_target_path=tmp_save_path,
+                            final_target_path=full_save_path,
+                            logger=logger,
+                            context="drission-downloadkit",
+                        ):
+                            return _ret(True, "SUCCESS", stage="drission-download")
 
                         if mode == "deep":
                             download_wait_s = 18
                         else:
                             download_wait_s = 4 if is_sciencedirect else (8 if is_acs else 6)
-                        new_file = _wait_for_new_file_diff(browser_tmp_dir, initial_files, timeout_s=download_wait_s, logger=logger)
-                        if new_file and _finalize_downloaded_file(new_file, tmp_save_path, logger=logger):
+                        if _capture_direct_downloaded_pdf(
+                            download_dir=browser_tmp_dir,
+                            initial_files=initial_files,
+                            tmp_target_path=tmp_save_path,
+                            final_target_path=tmp_save_path,
+                            logger=logger,
+                            timeout_s=download_wait_s,
+                            context="drission-download",
+                        ):
                             logger.info(f"        [Drission] 다운로드 성공")
                             if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
                                 return _ret(True, "SUCCESS", stage="drission-download")

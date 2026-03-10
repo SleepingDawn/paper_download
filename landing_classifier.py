@@ -1197,8 +1197,3 @@ def compact_text_signature(snapshot: Dict[str, Any]) -> str:
         return ""
     return excerpt[:240]
 
-
-def dump_json(path: str, payload: Dict[str, Any]) -> None:
-    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2)

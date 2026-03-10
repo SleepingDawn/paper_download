@@ -3,6 +3,7 @@ import os
 import subprocess
 import sys
 import time
+from contextlib import contextmanager
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from typing import Any, Dict, List, Optional
 
@@ -53,6 +54,30 @@ FAILURE_REASON_ORDER = [
     REASON_FAIL_REDIRECT_LOOP,
     REASON_FAIL_UNKNOWN,
 ]
+
+
+def _env_flag(name: str, default: int = 0) -> bool:
+    raw = str(os.environ.get(name, str(default))).strip().lower()
+    return raw in ("1", "true", "yes", "on")
+
+
+@contextmanager
+def _temporary_browser_env(headless: bool, abort_on_landing_block: bool):
+    prev_headless = os.environ.get("PDF_BROWSER_HEADLESS")
+    prev_abort = os.environ.get("PDF_ABORT_ON_LANDING_BLOCK")
+    os.environ["PDF_BROWSER_HEADLESS"] = "1" if headless else "0"
+    os.environ["PDF_ABORT_ON_LANDING_BLOCK"] = "1" if abort_on_landing_block else "0"
+    try:
+        yield
+    finally:
+        if prev_headless is None:
+            os.environ.pop("PDF_BROWSER_HEADLESS", None)
+        else:
+            os.environ["PDF_BROWSER_HEADLESS"] = prev_headless
+        if prev_abort is None:
+            os.environ.pop("PDF_ABORT_ON_LANDING_BLOCK", None)
+        else:
+            os.environ["PDF_ABORT_ON_LANDING_BLOCK"] = prev_abort
 
 
 def _domain_from_url(url: str) -> str:
@@ -164,6 +189,8 @@ def _single_download_attempt(
     save_dir: str,
     attempt: int,
     mode: str,
+    headless: bool,
+    abort_on_landing_block: bool,
 ) -> Dict[str, Any]:
     doi = str(row_data.get("doi", "")).strip()
     result = _result_template(doi=doi, attempt=attempt, mode=mode)
@@ -247,16 +274,17 @@ def _single_download_attempt(
 
     def _run_drission_result() -> Dict[str, Any]:
         chrome_path = resolve_browser_executable(os.environ.get("CHROME_PATH", ""), logger=logger)
-        dr = download_with_drission(
-            f"https://doi.org/{doi}",
-            save_dir,
-            filename,
-            chrome_path,
-            max_attempts=2 if mode == "deep" else 1,
-            logger=logger,
-            mode=mode,
-            return_detail=True,
-        )
+        with _temporary_browser_env(headless=headless, abort_on_landing_block=abort_on_landing_block):
+            dr = download_with_drission(
+                f"https://doi.org/{doi}",
+                save_dir,
+                filename,
+                chrome_path,
+                max_attempts=2 if mode == "deep" else 1,
+                logger=logger,
+                mode=mode,
+                return_detail=True,
+            )
         if dr.get("ok"):
             return {
                 **result,
@@ -299,13 +327,27 @@ def _single_download_attempt(
     return _run_drission_result()
 
 
-def download_process_worker(row_data, final_save_path, attempt=1, mode="first"):
+def download_process_worker(
+    row_data,
+    final_save_path,
+    attempt=1,
+    mode="first",
+    headless=False,
+    abort_on_landing_block=True,
+):
     network_retry_limit = 0 if mode == "first" else 2
     base_backoff = 2 if mode == "first" else 5
 
     last_result = None
     for network_try in range(network_retry_limit + 1):
-        last_result = _single_download_attempt(row_data, final_save_path, attempt=attempt, mode=mode)
+        last_result = _single_download_attempt(
+            row_data,
+            final_save_path,
+            attempt=attempt,
+            mode=mode,
+            headless=bool(headless),
+            abort_on_landing_block=bool(abort_on_landing_block),
+        )
 
         if last_result.get("success"):
             return last_result
@@ -335,7 +377,14 @@ def download_process_worker(row_data, final_save_path, attempt=1, mode="first"):
     return last_result
 
 
-def _first_pass(df: pd.DataFrame, oa_dir: str, ca_dir: str, max_workers: int) -> List[Dict[str, Any]]:
+def _first_pass(
+    df: pd.DataFrame,
+    oa_dir: str,
+    ca_dir: str,
+    max_workers: int,
+    headless: bool,
+    abort_on_landing_block: bool,
+) -> List[Dict[str, Any]]:
     rows = [row for _, row in df.iterrows()]
     results: List[Dict[str, Any]] = [None] * len(rows)
 
@@ -347,6 +396,8 @@ def _first_pass(df: pd.DataFrame, oa_dir: str, ca_dir: str, max_workers: int) ->
                 oa_dir if row["open_access"] else ca_dir,
                 1,
                 "first",
+                bool(headless),
+                bool(abort_on_landing_block),
             ): i
             for i, row in enumerate(rows)
         }
@@ -372,6 +423,8 @@ def _deep_retry(
     first_pass_results: List[Dict[str, Any]],
     oa_dir: str,
     ca_dir: str,
+    headless: bool,
+    abort_on_landing_block: bool,
 ) -> List[Dict[str, Any]]:
     failed_indices = [i for i, r in enumerate(first_pass_results) if not r.get("success")]
     deep_results: List[Dict[str, Any]] = []
@@ -386,7 +439,14 @@ def _deep_retry(
     for idx in tqdm(failed_indices, desc="Deep Retry"):
         row = df.iloc[idx]
         save_dir = oa_dir if row["open_access"] else ca_dir
-        result = download_process_worker(row, save_dir, attempt=2, mode="deep")
+        result = download_process_worker(
+            row,
+            save_dir,
+            attempt=2,
+            mode="deep",
+            headless=bool(headless),
+            abort_on_landing_block=bool(abort_on_landing_block),
+        )
         deep_results.append({"index": idx, **result})
 
         if result.get("reason") in (REASON_FAIL_HTTP_STATUS, REASON_FAIL_BLOCK) and result.get("http_status") == 429:
@@ -481,6 +541,7 @@ def _run_landing_precheck(
     df: pd.DataFrame,
     final_save_path: str,
     max_workers: int,
+    headless: bool,
 ) -> tuple[pd.DataFrame, Dict[str, Any]]:
     precheck_dir = os.path.join(final_save_path, "landing_precheck")
     os.makedirs(precheck_dir, exist_ok=True)
@@ -502,7 +563,7 @@ def _run_landing_precheck(
         "--workers",
         str(max(1, min(int(max_workers), 2))),
         "--headless",
-        "1" if os.environ.get("PDF_BROWSER_HEADLESS", "0").strip().lower() in ("1", "true", "yes") else "0",
+        "1" if bool(headless) else "0",
         "--progress-every",
         "100",
         "--capture-fail-artifacts",
@@ -595,6 +656,9 @@ def main(
     after_first_pass="stop",
     non_interactive=False,
     precheck_landing=False,
+    headless=None,
+    deep_retry_headless=None,
+    abort_on_landing_block=True,
 ):
     start_time = time.time()
     max_workers = max(1, min(int(max_workers), SAFE_MAX_WORKERS))
@@ -636,6 +700,15 @@ def main(
     print(f"전처리 후 남은 전체 논문 수: {len(df)}건")
     print(f"다운로드 동시성(max_workers): {max_workers} (상한={SAFE_MAX_WORKERS})")
 
+    resolved_headless = _env_flag("PDF_BROWSER_HEADLESS", 0) if headless is None else bool(headless)
+    resolved_deep_retry_headless = resolved_headless if deep_retry_headless is None else bool(deep_retry_headless)
+    resolved_abort_on_landing_block = bool(abort_on_landing_block)
+    print(
+        f"브라우저 모드(first/deep): {'headless' if resolved_headless else 'headful'} / "
+        f"{'headless' if resolved_deep_retry_headless else 'headful'}"
+    )
+    print(f"landing challenge/block 즉시 중단: {resolved_abort_on_landing_block}")
+
     input_total_before_precheck = int(len(df))
     landing_precheck_metrics: Dict[str, Any] = {"executed": False}
     if precheck_landing:
@@ -646,6 +719,7 @@ def main(
             df=df,
             final_save_path=final_save_path,
             max_workers=max_workers,
+            headless=resolved_headless,
         )
         print(
             f"Landing precheck 완료: 성공={landing_precheck_metrics.get('landing_success', 0)} / "
@@ -653,7 +727,14 @@ def main(
             f"다운로드 투입={landing_precheck_metrics.get('eligible_for_download', 0)}"
         )
 
-    first_results = _first_pass(df, oa_dir, ca_dir, max_workers=max_workers)
+    first_results = _first_pass(
+        df,
+        oa_dir,
+        ca_dir,
+        max_workers=max_workers,
+        headless=resolved_headless,
+        abort_on_landing_block=resolved_abort_on_landing_block,
+    )
 
     df["download_status"] = [_status_text(r) for r in first_results]
 
@@ -684,7 +765,14 @@ def main(
 
     deep_results: List[Dict[str, Any]] = []
     if decision == "deep":
-        deep_results = _deep_retry(df, first_results, oa_dir, ca_dir)
+        deep_results = _deep_retry(
+            df,
+            first_results,
+            oa_dir,
+            ca_dir,
+            headless=resolved_deep_retry_headless,
+            abort_on_landing_block=resolved_abort_on_landing_block,
+        )
 
         for item in deep_results:
             idx = item["index"]
@@ -725,6 +813,11 @@ def main(
         "after_first_pass": decision,
         "non_interactive": bool(non_interactive),
         "precheck_landing": bool(precheck_landing),
+        "download_browser": {
+            "headless": bool(resolved_headless),
+            "deep_retry_headless": bool(resolved_deep_retry_headless),
+            "abort_on_landing_block": bool(resolved_abort_on_landing_block),
+        },
         "landing_precheck": landing_precheck_metrics,
         "first_pass": {
             "success": int(sum(1 for r in first_results if r.get("success"))),
@@ -797,4 +890,7 @@ if __name__ == "__main__":
         after_first_pass=args.after_first_pass,
         non_interactive=args.non_interactive,
         precheck_landing=bool(int(args.precheck_landing)),
+        headless=args.headless,
+        deep_retry_headless=args.deep_retry_headless,
+        abort_on_landing_block=bool(int(args.abort_on_landing_block)),
     )
