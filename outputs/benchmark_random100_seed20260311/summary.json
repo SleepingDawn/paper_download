@@ -1,0 +1,175 @@
+{
+  "generated_at": 1773195244,
+  "input_total_before_precheck": 100,
+  "total_papers": 100,
+  "after_first_pass": "deep",
+  "non_interactive": true,
+  "precheck_landing": false,
+  "paths": {
+    "run_output_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/benchmark_random100_seed20260311",
+    "pdf_output_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/benchmark_random100_seed20260311",
+    "open_access_pdf_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/benchmark_random100_seed20260311/Open_Access",
+    "closed_access_pdf_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/benchmark_random100_seed20260311/Closed_Access"
+  },
+  "download_browser": {
+    "execution_env": "desktop",
+    "headless": true,
+    "deep_retry_headless": false,
+    "abort_on_landing_block": true,
+    "profile_mode": "auto",
+    "profile_name": "Default",
+    "persistent_profile_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/.chrome_user_data",
+    "runtime_profile_root": "/tmp/seyong/download_runtime_profiles/benchmark_random100_seed20260311",
+    "session_seed_root": ""
+  },
+  "download_scheduler": {
+    "publisher_cooldown_sec": 7.0,
+    "global_start_spacing_sec": 1.5,
+    "jitter_min_sec": 0.7,
+    "jitter_max_sec": 1.8
+  },
+  "landing_precheck": {
+    "executed": false
+  },
+  "integrated_landing": {
+    "attempted": 30,
+    "not_attempted": 70,
+    "success": 30,
+    "access_rights_failures": 0,
+    "direct_pdf_handoff": 0,
+    "raw_success_rate": 1.0,
+    "adjusted_denominator": 30,
+    "adjusted_success_rate": 1.0,
+    "state_counts": {
+      "success_landing": 30
+    }
+  },
+  "first_pass": {
+    "success": 98,
+    "failed": 2,
+    "fail_reasons": {
+      "FAIL_CAPTCHA": 0,
+      "FAIL_BLOCK": 0,
+      "FAIL_ACCESS_RIGHTS": 1,
+      "FAIL_WRONG_MIME": 0,
+      "FAIL_VIEWER_HTML": 0,
+      "FAIL_HTTP_STATUS": 0,
+      "FAIL_TIMEOUT/NETWORK": 1,
+      "FAIL_PDF_MAGIC": 0,
+      "FAIL_TOO_SMALL": 0,
+      "FAIL_NO_CANDIDATE": 0,
+      "FAIL_REDIRECT_LOOP": 0,
+      "FAIL_UNKNOWN": 0
+    }
+  },
+  "deep_retry": {
+    "executed": true,
+    "total": 2,
+    "success": 0,
+    "failed": 2,
+    "fail_reasons": {
+      "FAIL_CAPTCHA": 0,
+      "FAIL_BLOCK": 0,
+      "FAIL_ACCESS_RIGHTS": 1,
+      "FAIL_WRONG_MIME": 0,
+      "FAIL_VIEWER_HTML": 0,
+      "FAIL_HTTP_STATUS": 0,
+      "FAIL_TIMEOUT/NETWORK": 1,
+      "FAIL_PDF_MAGIC": 0,
+      "FAIL_TOO_SMALL": 0,
+      "FAIL_NO_CANDIDATE": 0,
+      "FAIL_REDIRECT_LOOP": 0,
+      "FAIL_UNKNOWN": 0
+    }
+  },
+  "elapsed_seconds": 1447.63,
+  "live_attempt_metrics": {
+    "count": 38,
+    "success_rate": 0.5,
+    "median_latency_ms": 1124,
+    "reason_distribution": {
+      "FAIL_VIEWER_HTML": 7,
+      "SUCCESS": 19,
+      "FAIL_TIMEOUT/NETWORK": 6,
+      "FAIL_WRONG_MIME": 6
+    },
+    "by_strategy": {
+      "cffi_baseline": {
+        "count": 38,
+        "success_rate": 0.5,
+        "median_latency_ms": 1124
+      }
+    },
+    "by_domain": {
+      "onlinelibrary.wiley.com": {
+        "count": 7,
+        "success_rate": 0.0,
+        "median_latency_ms": 824
+      },
+      "pdf.sciencedirectassets.com": {
+        "count": 11,
+        "success_rate": 1.0,
+        "median_latency_ms": 1502
+      },
+      "www.sciencedirect.com": {
+        "count": 2,
+        "success_rate": 0.0,
+        "median_latency_ms": 123
+      },
+      "pubs.acs.org": {
+        "count": 8,
+        "success_rate": 0.125,
+        "median_latency_ms": 689
+      },
+      "nature.com": {
+        "count": 3,
+        "success_rate": 0.0,
+        "median_latency_ms": 4002
+      },
+      "iopscience.iop.org": {
+        "count": 2,
+        "success_rate": 1.0,
+        "median_latency_ms": 18034
+      },
+      "www.nature.com": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 2049
+      },
+      "link.springer.com": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 1625
+      },
+      "pubs.rsc.org": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 17628
+      },
+      "www.tandfonline.com": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 2938
+      },
+      "www.mdpi.com": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 1278
+      }
+    }
+  },
+  "effective_rates": {
+    "download_raw_success_rate": 0.98,
+    "download_adjusted_success_rate": 0.9899,
+    "end_to_end_adjusted_success_rate": 0.98
+  },
+  "artifacts": {
+    "results_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/benchmark_random100_seed20260311/openalex_search_results_parallel.csv",
+    "failed_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/benchmark_random100_seed20260311/failed_papers.csv",
+    "failed_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/benchmark_random100_seed20260311/failed_papers.jsonl",
+    "attempts_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/benchmark_random100_seed20260311/download_attempts.jsonl",
+    "attempts_summary_json": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/benchmark_random100_seed20260311/download_attempts_summary.json",
+    "summary_json": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/benchmark_random100_seed20260311/summary.json",
+    "pdf_root_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/benchmark_random100_seed20260311"
+  }
+}

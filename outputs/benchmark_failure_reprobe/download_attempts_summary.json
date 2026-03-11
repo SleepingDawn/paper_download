@@ -1,0 +1,28 @@
+{
+  "count": 2,
+  "success_rate": 0.5,
+  "median_latency_ms": 1699,
+  "reason_distribution": {
+    "SUCCESS": 1,
+    "FAIL_VIEWER_HTML": 1
+  },
+  "by_strategy": {
+    "cffi_baseline": {
+      "count": 2,
+      "success_rate": 0.5,
+      "median_latency_ms": 1699
+    }
+  },
+  "by_domain": {
+    "pdf.sciencedirectassets.com": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 1251
+    },
+    "www.spiedigitallibrary.org": {
+      "count": 1,
+      "success_rate": 0.0,
+      "median_latency_ms": 2148
+    }
+  }
+}

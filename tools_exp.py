@@ -10,8 +10,8 @@ import random
 import json
 from html import unescape as html_unescape
 
-from typing import Dict, Set
-from urllib.parse import urljoin, quote, urlencode, urlparse
+from typing import Any, Dict, Set
+from urllib.parse import urljoin, quote, urlencode, urlparse, urlunparse
 from seleniumbase import Driver
 from bs4 import BeautifulSoup
 from curl_cffi import requests as cffi_requests # 이름 충돌 방지
@@ -65,6 +65,55 @@ AUTO_PROFILE_DOI_PREFIXES = (
     "10.1039",  # RSC
     "10.3390",  # MDPI
 )
+
+
+class BrowserDisconnectedError(RuntimeError):
+    """Raised when the underlying browser/page session is no longer usable."""
+
+
+def _exc_message(exc) -> str:
+    if exc is None:
+        return ""
+    if isinstance(exc, str):
+        return exc
+    try:
+        return str(exc)
+    except Exception:
+        return repr(exc)
+
+
+def _is_browser_disconnect_error(exc) -> bool:
+    message = _exc_message(exc).strip().lower()
+    if not message:
+        return False
+    needles = (
+        "与页面的连接已断开",
+        "connection to the page has been lost",
+        "page disconnected",
+        "browser disconnected",
+        "disconnected from page",
+        "disconnected from target",
+        "target closed",
+        "page crashed",
+        "browser has been closed",
+        "connection is closed",
+        "connection closed",
+        "not connected to devtools",
+        "websocket is not open",
+        "session closed",
+        "target page, context or browser has been closed",
+    )
+    return any(token in message for token in needles)
+
+
+def _raise_if_browser_disconnect(exc, logger=None, context: str = "") -> None:
+    if not _is_browser_disconnect_error(exc):
+        return
+    message = _exc_message(exc).strip() or "browser_disconnected"
+    if logger:
+        prefix = f"{context}: " if context else ""
+        logger.warning(f"     [Drission] {prefix}브라우저 연결 종료 감지 -> 세션 재생성")
+    raise BrowserDisconnectedError(message)
 
 
 def _resolve_best_browser_ua() -> str:
@@ -131,6 +180,315 @@ def _find_system_chrome_user_data_dir(profile_name: str = "Default") -> str:
     return ""
 
 
+def _normalize_profile_mode(profile_mode: str = "") -> str:
+    raw = str(profile_mode or os.getenv("PDF_BROWSER_PROFILE_MODE", "auto")).strip().lower()
+    aliases = {
+        "": "auto",
+        "legacy": "auto",
+        "default": "auto",
+        "persist": "persistent",
+        "persisted": "persistent",
+        "stateful": "persistent",
+        "ephemeral": "temp",
+    }
+    normalized = aliases.get(raw, raw)
+    if normalized in ("auto", "temp", "persistent", "system"):
+        return normalized
+    return "auto"
+
+
+def _normalize_execution_env(execution_env: str = "") -> str:
+    raw = str(execution_env or os.getenv("PDF_BROWSER_EXECUTION_ENV", "auto")).strip().lower().replace("-", "_")
+    aliases = {
+        "": "auto",
+        "local": "desktop",
+        "local_desktop": "desktop",
+        "mac": "desktop",
+        "macos": "desktop",
+        "server": "linux_cli",
+        "linuxcli": "linux_cli",
+        "hpc": "linux_cli",
+        "slurm": "linux_cli",
+    }
+    normalized = aliases.get(raw, raw)
+    if normalized in ("auto", "desktop", "linux_cli"):
+        return normalized
+    return "auto"
+
+
+def resolve_browser_execution_env(execution_env: str = "") -> str:
+    normalized = _normalize_execution_env(execution_env)
+    if normalized != "auto":
+        return normalized
+    if sys.platform.startswith("linux"):
+        if any(os.environ.get(name, "").strip() for name in ("DISPLAY", "WAYLAND_DISPLAY", "MIR_SOCKET")):
+            return "desktop"
+        return "linux_cli"
+    return "desktop"
+
+
+def coerce_headless_for_execution_env(headless: bool, execution_env: str = "", logger=None, context: str = "browser") -> bool:
+    requested = bool(headless)
+    resolved_env = resolve_browser_execution_env(execution_env)
+    if resolved_env == "linux_cli" and not requested:
+        if logger:
+            logger.info(f"     [Drission] {context}: linux_cli 환경이므로 headless=1로 강제")
+        return True
+    return requested
+
+
+def _stateful_profile_requested(doi_url: str, profile_mode: str = "") -> bool:
+    normalized_mode = _normalize_profile_mode(profile_mode)
+    if normalized_mode == "temp":
+        return False
+    if normalized_mode in ("persistent", "system"):
+        return True
+    doi_norm = _doi_from_doi_url(doi_url)
+    return doi_norm.startswith(AUTO_PROFILE_DOI_PREFIXES)
+
+
+def _landing_stateful_profile_isolation_enabled() -> bool:
+    raw = os.getenv("PDF_BROWSER_LANDING_ISOLATE_STATEFUL", "1").strip().lower()
+    return raw in ("1", "true", "yes", "on")
+
+
+def _resolve_stateful_profile_source(profile_name: str, profile_mode: str, session_seed_root: str = "") -> tuple[str, str]:
+    profile_name = str(profile_name or "Default").strip() or "Default"
+    normalized_mode = _normalize_profile_mode(profile_mode)
+    seed_root = os.path.abspath(str(session_seed_root or "").strip()) if str(session_seed_root or "").strip() else ""
+    persistent_dir = os.getenv(
+        "PDF_BROWSER_PERSISTENT_PROFILE_DIR",
+        os.path.abspath(os.path.join("outputs", ".chrome_user_data")),
+    ).strip() or os.path.abspath(os.path.join("outputs", ".chrome_user_data"))
+    persistent_dir = os.path.abspath(persistent_dir)
+
+    if seed_root and os.path.isdir(os.path.join(seed_root, profile_name)):
+        return seed_root, "precheck_seed"
+
+    if normalized_mode == "persistent":
+        os.makedirs(persistent_dir, exist_ok=True)
+        return persistent_dir, "persistent"
+
+    system_dir = _find_system_chrome_user_data_dir(profile_name)
+    if system_dir:
+        return system_dir, "system"
+
+    os.makedirs(persistent_dir, exist_ok=True)
+    return persistent_dir, "persistent_fallback"
+
+
+def _seed_profile_root_for_runtime(source_root: str, target_root: str, profile_name: str, logger=None) -> str:
+    source_root = os.path.abspath(str(source_root or "").strip())
+    target_root = os.path.abspath(str(target_root or "").strip())
+    profile_name = str(profile_name or "Default").strip() or "Default"
+    marker_path = os.path.join(target_root, ".codex_profile_seed_ready")
+    target_profile_dir = os.path.join(target_root, profile_name)
+    if os.path.isfile(marker_path) and os.path.isdir(target_profile_dir):
+        return target_root
+
+    if os.path.isdir(target_root):
+        shutil.rmtree(target_root, ignore_errors=True)
+    os.makedirs(target_root, exist_ok=True)
+
+    for top_name in ("Local State", "First Run", "Last Version"):
+        src_path = os.path.join(source_root, top_name)
+        dst_path = os.path.join(target_root, top_name)
+        if os.path.isfile(src_path):
+            shutil.copy2(src_path, dst_path)
+
+    src_profile_dir = os.path.join(source_root, profile_name)
+    os.makedirs(target_profile_dir, exist_ok=True)
+    if os.path.isdir(src_profile_dir):
+        shutil.copytree(
+            src_profile_dir,
+            target_profile_dir,
+            dirs_exist_ok=True,
+            ignore=shutil.ignore_patterns(
+                "Singleton*",
+                "LOCK",
+                "lockfile",
+                "Crashpad",
+                "BrowserMetrics",
+                "Code Cache",
+                "GPUCache",
+                "GrShaderCache",
+                "ShaderCache",
+                "DawnCache",
+                "optimization_guide_model_store",
+                "component_crx_cache",
+                "segmentation_platform",
+            ),
+        )
+    with open(marker_path, "w", encoding="utf-8") as f:
+        f.write(json.dumps({"profile_name": profile_name, "source_root": source_root}, ensure_ascii=False))
+    if logger:
+        logger.info(f"     [Drission] 런타임 프로필 시드 완료: {target_root}/{profile_name}")
+    return target_root
+
+
+def build_landing_browser_session_plan(doi_url: str, worker_profile_root: str, worker_idx: int, logger=None) -> Dict[str, Any]:
+    worker_profile_root = os.path.abspath(str(worker_profile_root or "").strip() or os.path.join("outputs", ".landing_profiles"))
+    os.makedirs(worker_profile_root, exist_ok=True)
+
+    profile_mode = _normalize_profile_mode()
+    profile_name = os.getenv("PDF_BROWSER_PROFILE_NAME", "Default").strip() or "Default"
+    temp_profile_name = f"worker_{int(worker_idx)}"
+    temp_user_data_dir = os.path.join(worker_profile_root, temp_profile_name)
+
+    plan: Dict[str, Any] = {
+        "session_mode": "temp",
+        "session_source": "temp",
+        "profile_mode": profile_mode,
+        "profile_name": temp_profile_name,
+        "user_data_dir": temp_user_data_dir,
+        "cache_key": "temp",
+        "browser_identity": f"worker_{int(worker_idx)}:temp",
+    }
+
+    if not _stateful_profile_requested(doi_url, profile_mode):
+        os.makedirs(temp_user_data_dir, exist_ok=True)
+        return plan
+
+    stateful_source, stateful_source_kind = _resolve_stateful_profile_source(profile_name, profile_mode)
+
+    actual_user_data_dir = stateful_source
+    actual_source_kind = stateful_source_kind
+    if _landing_stateful_profile_isolation_enabled():
+        isolated_root = os.path.join(worker_profile_root, f"stateful_worker_{int(worker_idx)}")
+        try:
+            actual_user_data_dir = _seed_profile_root_for_runtime(
+                stateful_source,
+                isolated_root,
+                profile_name,
+                logger=logger,
+            )
+            actual_source_kind = f"{stateful_source_kind}_clone"
+        except Exception as exc:
+            if logger:
+                logger.warning(f"     [Drission] stateful 프로필 시드 실패, 원본 직접 사용: {exc}")
+
+    return {
+        "session_mode": "stateful",
+        "session_source": actual_source_kind,
+        "profile_mode": profile_mode,
+        "profile_name": profile_name,
+        "user_data_dir": actual_user_data_dir,
+        "cache_key": f"stateful:{stateful_source_kind}",
+        "browser_identity": f"worker_{int(worker_idx)}:stateful:{stateful_source_kind}",
+    }
+
+
+def _default_runtime_profile_root() -> str:
+    explicit = os.getenv("PDF_BROWSER_RUNTIME_PROFILE_ROOT", "").strip()
+    if explicit:
+        return os.path.abspath(explicit)
+    run_base = os.environ.get("SLURM_TMPDIR", "").strip() or os.path.join("/tmp", os.environ.get("USER", "user"))
+    return os.path.abspath(os.path.join(run_base, "download_runtime_profiles"))
+
+
+def _download_stateful_profile_isolation_enabled() -> bool:
+    raw = os.getenv("PDF_BROWSER_DOWNLOAD_ISOLATE_STATEFUL", "1").strip().lower()
+    return raw in ("1", "true", "yes", "on")
+
+
+def build_download_browser_session_plan(
+    doi_url: str,
+    runtime_profile_root: str = "",
+    worker_label: str = "",
+    logger=None,
+) -> Dict[str, Any]:
+    runtime_root = os.path.abspath(str(runtime_profile_root or _default_runtime_profile_root()).strip())
+    os.makedirs(runtime_root, exist_ok=True)
+
+    profile_mode = _normalize_profile_mode()
+    profile_name = os.getenv("PDF_BROWSER_PROFILE_NAME", "Default").strip() or "Default"
+    session_seed_root = os.getenv("PDF_BROWSER_SESSION_SEED_ROOT", "").strip()
+    doi_norm = _doi_from_doi_url(doi_url)
+    doi_key = _sanitize_doi_to_filename(doi_norm) or "unknown_doi"
+    worker_key = _sanitize_doi_to_filename(worker_label or f"pid_{os.getpid()}") or f"pid_{os.getpid()}"
+
+    if not _stateful_profile_requested(doi_url, profile_mode):
+        temp_root = os.path.join(runtime_root, worker_key, "temp", doi_key)
+        os.makedirs(temp_root, exist_ok=True)
+        return {
+            "session_mode": "temp",
+            "session_source": "temp",
+            "profile_mode": profile_mode,
+            "profile_name": "Default",
+            "user_data_dir": temp_root,
+            "cache_key": f"temp:{worker_key}:{doi_key}",
+            "browser_identity": f"{worker_key}:temp:{doi_key}",
+            "cleanup_on_close": True,
+            "cleanup_dir": temp_root,
+        }
+
+    stateful_source, stateful_source_kind = _resolve_stateful_profile_source(
+        profile_name,
+        profile_mode,
+        session_seed_root=session_seed_root,
+    )
+
+    actual_user_data_dir = stateful_source
+    actual_source_kind = stateful_source_kind
+    if _download_stateful_profile_isolation_enabled():
+        isolated_root = os.path.join(runtime_root, worker_key, f"stateful_{stateful_source_kind}")
+        try:
+            actual_user_data_dir = _seed_profile_root_for_runtime(
+                stateful_source,
+                isolated_root,
+                profile_name,
+                logger=logger,
+            )
+            actual_source_kind = f"{stateful_source_kind}_clone"
+        except Exception as exc:
+            if logger:
+                logger.warning(f"     [Drission] download stateful 프로필 시드 실패, 원본 직접 사용: {exc}")
+
+    return {
+        "session_mode": "stateful",
+        "session_source": actual_source_kind,
+        "profile_mode": profile_mode,
+        "profile_name": profile_name,
+        "user_data_dir": actual_user_data_dir,
+        "cache_key": f"stateful:{worker_key}:{stateful_source_kind}",
+        "browser_identity": f"{worker_key}:stateful:{stateful_source_kind}",
+        "cleanup_on_close": False,
+        "cleanup_dir": "",
+    }
+
+
+def _apply_browser_session_plan(co: ChromiumOptions, session_plan: Dict[str, Any], logger=None) -> bool:
+    if not session_plan:
+        return False
+    user_data_dir = os.path.abspath(str(session_plan.get("user_data_dir") or "").strip())
+    profile_name = str(session_plan.get("profile_name") or "").strip()
+    if not user_data_dir or not profile_name:
+        return False
+    os.makedirs(user_data_dir, exist_ok=True)
+    co.set_user_data_path(user_data_dir)
+    co.set_user(profile_name)
+    if logger:
+        logger.info(
+            "     [Drission] 브라우저 세션 적용: "
+            f"mode={session_plan.get('session_mode')} source={session_plan.get('session_source')} "
+            f"profile={profile_name} root={user_data_dir}"
+        )
+    return True
+
+
+def _cleanup_browser_session_plan(session_plan: Dict[str, Any], logger=None) -> None:
+    if not session_plan or not bool(session_plan.get("cleanup_on_close")):
+        return
+    cleanup_dir = os.path.abspath(str(session_plan.get("cleanup_dir") or session_plan.get("user_data_dir") or "").strip())
+    if not cleanup_dir or not os.path.isdir(cleanup_dir):
+        return
+    try:
+        shutil.rmtree(cleanup_dir, ignore_errors=True)
+    except Exception as exc:
+        if logger:
+            logger.warning(f"     [Drission] 세션 정리 실패(무시): {exc}")
+
+
 def _maybe_apply_system_chrome_profile(co: ChromiumOptions, doi_url: str, logger=None) -> bool:
     profile_mode = os.getenv("PDF_BROWSER_PROFILE_MODE", "auto").strip().lower()
     profile_name = os.getenv("PDF_BROWSER_PROFILE_NAME", "Default").strip() or "Default"
@@ -170,7 +528,9 @@ def _maybe_apply_system_chrome_profile(co: ChromiumOptions, doi_url: str, logger
 
 
 def _apply_best_browser_profile(co: ChromiumOptions) -> None:
+    execution_env = resolve_browser_execution_env()
     headless = os.getenv("PDF_BROWSER_HEADLESS", "0").strip().lower() in ("1", "true", "yes")
+    headless = coerce_headless_for_execution_env(headless, execution_env, context="browser_profile")
     no_sandbox = os.getenv("PDF_BROWSER_NO_SANDBOX", "0").strip().lower() in ("1", "true", "yes")
     server_tuned = os.getenv("PDF_BROWSER_SERVER_TUNED", "0").strip().lower() in ("1", "true", "yes")
     single_process = os.getenv("PDF_BROWSER_SINGLE_PROCESS", "0").strip().lower() in ("1", "true", "yes")
@@ -325,24 +685,44 @@ def _wait_for_new_file_diff(download_dir: str, initial_files: Set[str], timeout_
         logger.info("       파일 감지 타임아웃")
     return None
 
-def _safe_screenshot(page, path: str, name: str, logger=None):
+def _safe_screenshot(page, path: str, name: str, logger=None, full_page: bool = True):
     """
     DrissionPage의 get_screenshot 메서드를 사용하여 스크린샷을 저장합니다.
     path: 저장할 폴더 경로 (예: ./logs/screenshots)
     name: 파일명 (예: capture.png)
     """
+    if page is None:
+        return None
     try:
         # 폴더 생성
         if not os.path.exists(path):
             os.makedirs(path, exist_ok=True)
-        
-        #  DrissionPage get_screenshot 호출
-        saved_path = page.get_screenshot(path=path, name=name, full_page=True)
+
+        target_full_page = bool(full_page)
+        try:
+            current_url = str(getattr(page, "url", "") or "").lower()
+        except Exception as e:
+            _raise_if_browser_disconnect(e, logger=logger, context="screenshot-url-check")
+            current_url = ""
+        if target_full_page and any(
+            token in current_url for token in ("sciencedirect.com", "linkinghub.elsevier.com")
+        ):
+            # Elsevier article pages are extremely tall; full-page capture has repeatedly
+            # destabilized Chrome during active download flows on macOS.
+            target_full_page = False
+
+        # DrissionPage get_screenshot 호출
+        saved_path = page.get_screenshot(path=path, name=name, full_page=target_full_page)
         
         if logger: 
             logger.info(f"  스크린샷 저장 성공: {saved_path}")
+        return saved_path
 
     except Exception as e:
+        if _is_browser_disconnect_error(e):
+            if logger:
+                logger.warning(f"  스크린샷 스킵: 브라우저 연결 종료 ({_exc_message(e)})")
+            return None
         # 전체 페이지 캡처 실패 시 (메모리 부족, 무한 스크롤 등), 보이는 화면(Viewport)만 재시도
         try:
             if logger: 
@@ -351,11 +731,15 @@ def _safe_screenshot(page, path: str, name: str, logger=None):
             # 파일명에 visible_ 접두사를 붙여 재시도
             retry_name = "visible_" + name
             page.get_screenshot(path=path, name=retry_name, full_page=False)
+            return os.path.join(path, retry_name)
             
         except Exception as e2:
+            if _is_browser_disconnect_error(e2) and logger:
+                logger.warning(f"  스크린샷 재시도 스킵: 브라우저 연결 종료 ({_exc_message(e2)})")
             # 재시도마저 실패한 경우
             pass
             # if logger: logger.warning(f"  스크린샷 저장 최종 실패 : {e2}")
+    return None
 
 
 def _extract_domain(url: str) -> str:
@@ -467,7 +851,8 @@ def _capture_direct_downloaded_pdf(
             if not downloaded_file_guard(downloaded_path):
                 try:
                     os.remove(downloaded_path)
-                except Exception:
+                except Exception as e:
+                    _raise_if_browser_disconnect(e, logger=logger, context="unexpected-landing-retry")
                     pass
                 if logger:
                     logger.info(f"        [{context}] 다운로드 파일이 대상 논문과 불일치하여 폐기")
@@ -531,16 +916,42 @@ def _looks_like_pdf_link(url: str) -> bool:
     return any(g in low for g in good_tokens)
 
 
-def _try_click_pdf_button_download(page, pdf_btn, save_dir: str, full_save_path: str, logger=None, wait_timeout_s: int = 25) -> bool:
+def _try_click_pdf_button_download(
+    page,
+    pdf_btn,
+    save_dir: str,
+    full_save_path: str,
+    logger=None,
+    wait_timeout_s: int = 25,
+    return_page: bool = False,
+):
     if page is None or pdf_btn is None:
-        return False
+        return (False, page) if return_page else False
+    active_page = page
     try:
         _dismiss_cookie_or_consent_banner(page, logger=logger)
         initial_files = _get_current_files(save_dir)
         try:
+            before_tab_ids = set(getattr(page, "tab_ids", []) or [])
+        except Exception:
+            before_tab_ids = set()
+        before_url = str(getattr(page, "url", "") or "")
+        try:
             pdf_btn.click(by_js=True)
         except Exception:
             pdf_btn.click()
+        time.sleep(0.9)
+
+        try:
+            after_tab_ids = set(getattr(page, "tab_ids", []) or [])
+        except Exception:
+            after_tab_ids = set()
+        current_url = str(getattr(page, "url", "") or "")
+        if (after_tab_ids - before_tab_ids) or (current_url and current_url != before_url):
+            adopted = _adopt_latest_tab(page, logger=logger)
+            if adopted is not None:
+                active_page = adopted
+                _dismiss_cookie_or_consent_banner(active_page, logger=logger)
 
         if _capture_direct_downloaded_pdf(
             download_dir=save_dir,
@@ -553,11 +964,24 @@ def _try_click_pdf_button_download(page, pdf_btn, save_dir: str, full_save_path:
         ):
             if logger:
                 logger.info("        [Drission] 버튼 클릭 기반 다운로드 성공")
-            return True
+            return (True, active_page) if return_page else True
+
+        click_candidates = _collect_pdf_candidate_urls_from_page(active_page, logger=logger)
+        if _try_cookie_cffi_candidate_urls(
+            active_page,
+            click_candidates,
+            full_save_path,
+            logger=logger,
+            timeout_s=min(max(8, wait_timeout_s), 18),
+            context="button-click-candidate",
+        ):
+            if logger:
+                logger.info("        [Drission] 버튼 클릭 후 후보 URL 직접 회수 성공")
+            return (True, active_page) if return_page else True
     except Exception as e:
         if logger:
             logger.warning(f"        버튼 클릭 기반 다운로드 실패: {e}")
-    return False
+    return (False, active_page) if return_page else False
 
 
 def _doi_from_doi_url(doi_url: str) -> str:
@@ -1996,6 +2420,54 @@ def _has_cookie_or_consent_signal(title: str = "", html: str = "") -> bool:
     return any(m in blob for m in markers)
 
 
+def _wait_for_spie_article_ready(page, logger=None, timeout_s: int = 10) -> bool:
+    if page is None:
+        return False
+    try:
+        current_url = str(getattr(page, "url", "") or "").lower()
+    except Exception:
+        return False
+    if "spiedigitallibrary.org" not in current_url:
+        return False
+
+    start = time.time()
+    last_title = ""
+    while (time.time() - start) < max(2, min(int(timeout_s), 18)):
+        try:
+            title = str(getattr(page, "title", "") or "").strip()
+            html = str(getattr(page, "html", "") or "")
+        except Exception:
+            return False
+        last_title = title or last_title
+        blob = f"{title}\n{html}".lower()
+        if any(
+            marker in blob
+            for marker in (
+                "pardon our interruption",
+                "as you were browsing",
+                "super-human speed",
+                "ghostery",
+                "noscript",
+            )
+        ):
+            if logger:
+                logger.info("        [SPIE] bot wall 감지 -> article ready 대기 종료")
+            return False
+        if (
+            _has_article_signal(title=title, html=html)
+            or _has_pdf_action_signal(title=title, html=html)
+            or ("citation_pdf_url" in html.lower())
+        ):
+            if logger:
+                logger.info("        [SPIE] article/PDF 시그널 확인")
+            return True
+        time.sleep(0.8)
+
+    if logger and last_title:
+        logger.info(f"        [SPIE] article ready 대기 타임아웃: title={last_title[:120]!r}")
+    return False
+
+
 def _has_auth_required_signal(title: str = "", html: str = "") -> bool:
     blob = f"{title or ''} {html or ''}".lower()
     safe_markers = (
@@ -2051,11 +2523,17 @@ def _classify_access_gate(title: str = "", html: str = "") -> str:
         return "hard_rights"
 
     strong_bot_like_markers = (
+        "pardon our interruption",
+        "as you were browsing",
         "validate user",
         "unusual traffic",
         "request blocked",
         "verify you are human",
         "are you a robot",
+        "super-human speed",
+        "ghostery",
+        "noscript",
+        "cookies and javascript are enabled before reloading the page",
     )
     weak_bot_like_markers = (
         "security check",
@@ -2511,6 +2989,7 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
 
     # Avoid false positives from normal pages that include analytics/captcha-related assets.
     title_captcha_keywords = [
+        "pardon our interruption",
         "just a moment",
         "잠시만",
         "verify you are human",
@@ -2528,12 +3007,18 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
         "security check",
     ]
     html_captcha_markers = [
+        "pardon our interruption",
+        "as you were browsing",
         "cf-turnstile",
         "challenge-form",
         "captcha-box",
         "validate user",
         "verify you are human",
         "are you a robot",
+        "super-human speed",
+        "ghostery",
+        "noscript",
+        "cookies and javascript are enabled before reloading the page",
     ]
     html_block_markers = [
         "error code 1020",
@@ -2742,6 +3227,7 @@ def force_download_with_requests(page, pdf_url, referer_url, save_path, logger):
                 return False
         return False
     except Exception as e:
+        _raise_if_browser_disconnect(e, logger=logger, context="requests-force-download")
         logger.error(f"requests 오류: {e}")
         return False
 
@@ -2776,15 +3262,10 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
         page.get(url, retry=0, interval=0.5, timeout=nav_timeout)
         time.sleep(random.uniform(0.4, 0.9))
         _dismiss_cookie_or_consent_banner(page, logger=logger)
-        if _has_auth_required_signal(title=page.title or "", html=page.html or "") or _has_access_rights_required_signal(
-            title=page.title or "",
-            html=page.html or "",
-        ):
-            logger.warning("        인증/비밀번호 요구 페이지 감지 -> 다운로드 포기")
-            return "__ACCESS_RIGHTS_REQUIRED__"
+        pdf_like_navigation = any(k in (url or "").lower() for k in (".pdf", "/pdfft", "download=true"))
 
         # direct PDF URL이면 이동만으로 다운로드가 시작될 수 있으므로 먼저 짧게 확인
-        if any(k in (url or "").lower() for k in (".pdf", "/pdfft", "download=true")):
+        if pdf_like_navigation:
             if _capture_direct_downloaded_pdf(
                 download_dir=target_dir,
                 initial_files=initial_files,
@@ -2796,6 +3277,27 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
             ):
                 logger.info("        자동 다운로드 감지/확정")
                 return target_path
+            # 일부 publisher(SPIE 등)는 .pdf endpoint가 별도 HTML gate를 거치므로
+            # access-rights 판정보다 먼저 same-page cookie를 싣고 직접 회수해 본다.
+            navigation_candidates = [url]
+            navigation_candidates.extend(_collect_pdf_candidate_urls_from_page(page, logger=logger))
+            if _try_cookie_cffi_candidate_urls(
+                page,
+                navigation_candidates,
+                target_path,
+                logger=logger,
+                timeout_s=min(max(8, timeout_s), 16),
+                context="navigation-preauth-cffi",
+            ):
+                logger.info("        navigation 전환 직후 cookie-aware 직접 회수 성공")
+                return target_path
+
+        if _has_auth_required_signal(title=page.title or "", html=page.html or "") or _has_access_rights_required_signal(
+            title=page.title or "",
+            html=page.html or "",
+        ):
+            logger.warning("        인증/비밀번호 요구 페이지 감지 -> 다운로드 포기")
+            return "__ACCESS_RIGHTS_REQUIRED__"
 
         # viewer 페이지에서 Open 버튼만 누르면 내려오는 경우 대응
         viewer_detail = _click_viewer_open_button(page, logger=logger, return_detail=True)
@@ -2902,6 +3404,7 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
             else:
                 page = _adopt_latest_tab(page, logger=logger)
         except Exception as e:
+            _raise_if_browser_disconnect(e, logger=logger, context="navigation-button-click")
             logger.warning(f"        버튼 클릭 로직 에러 (무시): {e}")
 
         # 3) 파일 생성 대기 및 확정
@@ -2941,6 +3444,7 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
             logger.warning("        파일 생성 안됨 (타임아웃)")
         return None
     except Exception as e:
+        _raise_if_browser_disconnect(e, logger=logger, context="navigation-download")
         logger.error(f"        네비게이션 다운로드 중 에러: {e}")
         return None
 
@@ -3079,6 +3583,12 @@ def download_with_drission(
     doi_norm_preview = _doi_from_doi_url(doi_url)
     is_elsevier_preview = doi_norm_preview.startswith("10.1016")
     resolved_browser = resolve_browser_executable(chrome_path, logger=logger)
+    session_plan = build_download_browser_session_plan(
+        doi_url,
+        runtime_profile_root=os.getenv("PDF_BROWSER_RUNTIME_PROFILE_ROOT", "").strip(),
+        worker_label=f"pid_{os.getpid()}",
+        logger=logger,
+    )
     if not resolved_browser:
         if return_detail:
             return {
@@ -3088,13 +3598,17 @@ def download_with_drission(
                 "stage": "drission-init",
                 "domain": _extract_domain(doi_url),
                 "http_status": None,
+                "browser_session_mode": str(session_plan.get("session_mode") or ""),
+                "browser_session_source": str(session_plan.get("session_source") or ""),
+                "browser_profile_name": str(session_plan.get("profile_name") or ""),
+                "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
             }
         return False
 
     # --- 옵션 설정 ---
     co = ChromiumOptions()
     co.set_browser_path(resolved_browser)
-    _maybe_apply_system_chrome_profile(co, doi_url, logger=logger)
+    _apply_browser_session_plan(co, session_plan, logger=logger)
     co.auto_port()
     _apply_best_browser_profile(co)
     if is_elsevier_preview:
@@ -3130,6 +3644,10 @@ def download_with_drission(
                 "stage": "drission-init",
                 "domain": _extract_domain(doi_url),
                 "http_status": None,
+                "browser_session_mode": str(session_plan.get("session_mode") or ""),
+                "browser_session_source": str(session_plan.get("session_source") or ""),
+                "browser_profile_name": str(session_plan.get("profile_name") or ""),
+                "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
             }
         return False
     
@@ -3173,6 +3691,10 @@ def download_with_drission(
             "landing_state": landing_state,
             "landing_url": landing_url,
             "landing_title": landing_title,
+            "browser_session_mode": str(session_plan.get("session_mode") or ""),
+            "browser_session_source": str(session_plan.get("session_source") or ""),
+            "browser_profile_name": str(session_plan.get("profile_name") or ""),
+            "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
         }
         return payload if return_detail else ok
 
@@ -3196,6 +3718,7 @@ def download_with_drission(
         except Exception:
             pass
         _close_page_safely(page, logger)
+        _cleanup_browser_session_plan(session_plan, logger=logger)
         return payload
     
     for attempt in range(1, max_attempts + 1):
@@ -3226,6 +3749,12 @@ def download_with_drission(
             referer_url = page.url
             page_title = page.title or ""
             page_html = page.html or ""
+            if "spiedigitallibrary.org" in current_domain:
+                _wait_for_spie_article_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 7)
+                current_domain = _extract_domain(page.url)
+                referer_url = page.url
+                page_title = page.title or ""
+                page_html = page.html or ""
             if _capture_direct_downloaded_pdf(
                 download_dir=browser_tmp_dir,
                 initial_files=landing_initial_files,
@@ -3265,6 +3794,12 @@ def download_with_drission(
                     referer_url = page.url
                     page_title = page.title or ""
                     page_html = page.html or ""
+                    if "spiedigitallibrary.org" in current_domain:
+                        _wait_for_spie_article_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 7)
+                        current_domain = _extract_domain(page.url)
+                        referer_url = page.url
+                        page_title = page.title or ""
+                        page_html = page.html or ""
                     if _capture_direct_downloaded_pdf(
                         download_dir=browser_tmp_dir,
                         initial_files=retry_initial_files,
@@ -3342,6 +3877,7 @@ def download_with_drission(
                                 if ("sciencedirect.com" in current_domain) and (not _is_elsevier_retrieve_url(page.url)):
                                     need_recover = False
                             except Exception as e:
+                                _raise_if_browser_disconnect(e, logger=logger, context="elsevier-retrieve-doi-click")
                                 if logger:
                                     logger.info(f"        [Elsevier] retrieve→DOI 클릭 후 전환 실패: {e}")
                         if need_recover:
@@ -3367,6 +3903,7 @@ def download_with_drission(
                                     if ("sciencedirect.com" in current_domain) and (not _is_elsevier_retrieve_url(page.url)):
                                         need_recover = False
                                 except Exception as e:
+                                    _raise_if_browser_disconnect(e, logger=logger, context="elsevier-retrieve-handoff")
                                     if logger:
                                         logger.info(f"        [Elsevier] retrieve handoff 이동 실패: {e}")
                 if need_recover:
@@ -3401,6 +3938,7 @@ def download_with_drission(
                             page_title = page.title or ""
                             page_html = page.html or ""
                         except Exception as e:
+                            _raise_if_browser_disconnect(e, logger=logger, context="elsevier-article-recover")
                             logger.info(f"        [Elsevier] article URL 복구 이동 실패(계속 진행): {e}")
 
             if (not current_domain) or ("google." in current_domain) or page.url.startswith("chrome://") or page.url.startswith("about:blank"):
@@ -3575,28 +4113,38 @@ def download_with_drission(
             if high_friction and pdf_btn and (not is_acs) and (not is_sciencedirect):
                 btn_wait_s = 18 if mode == "deep" else (6 if is_sciencedirect else 12)
                 logger.info(f"        [Drission] 고차단 도메인({current_domain}) 버튼 클릭 다운로드 우선 시도")
-                if _try_click_pdf_button_download(
+                click_ok, click_page = _try_click_pdf_button_download(
                     page=page,
                     pdf_btn=pdf_btn,
                     save_dir=browser_tmp_dir,
                     full_save_path=tmp_save_path,
                     logger=logger,
                     wait_timeout_s=btn_wait_s,
-                ):
+                    return_page=True,
+                )
+                if click_page is not None:
+                    page = click_page
+                    current_domain = _extract_domain(getattr(page, "url", "") or "") or current_domain
+                if click_ok:
                     if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
                         return _ret(True, "SUCCESS", stage="button-click-download")
 
             # 일반/비지원 도메인도 js 기반 버튼 케이스가 있어 1회 클릭 시도
             if (not high_friction) and pdf_btn and (not is_acs) and (not is_sciencedirect):
                 logger.info(f"        [Drission] 일반 도메인({current_domain}) 버튼 클릭 다운로드 1회 시도")
-                if _try_click_pdf_button_download(
+                click_ok, click_page = _try_click_pdf_button_download(
                     page=page,
                     pdf_btn=pdf_btn,
                     save_dir=browser_tmp_dir,
                     full_save_path=tmp_save_path,
                     logger=logger,
                     wait_timeout_s=8 if mode == "first" else 16,
-                ):
+                    return_page=True,
+                )
+                if click_page is not None:
+                    page = click_page
+                    current_domain = _extract_domain(getattr(page, "url", "") or "") or current_domain
+                if click_ok:
                     if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
                         return _ret(True, "SUCCESS", stage="button-click-download")
 
@@ -3620,15 +4168,17 @@ def download_with_drission(
                 
                 logger.info(f"        PDF 링크 발견: {pdf_url}")
                 if is_sciencedirect:
-                    try:
-                        _safe_screenshot(
-                            page,
-                            os.path.join(artifact_root, "logs", "screenshots"),
-                            f"pre_pdf_attempt_{filename}.png",
-                            logger,
-                        )
-                    except Exception:
-                        pass
+                    if os.getenv("PDF_DEBUG_PRE_PDF_SCREENSHOT", "0").strip().lower() in ("1", "true", "yes", "on"):
+                        try:
+                            _safe_screenshot(
+                                page,
+                                os.path.join(artifact_root, "logs", "screenshots"),
+                                f"pre_pdf_attempt_{filename}.png",
+                                logger,
+                                full_page=False,
+                            )
+                        except Exception as e:
+                            _raise_if_browser_disconnect(e, logger=logger, context="pre-pdf-screenshot")
                 if _over_budget():
                     return _ret(False, "FAIL_PARSE", ["budget_exceeded_before_download"], stage="drission")
 
@@ -3683,6 +4233,7 @@ def download_with_drission(
                         logger.info("        자체 다운로드 타임아웃")
 
                     except Exception as e:
+                        _raise_if_browser_disconnect(e, logger=logger, context="drission-download")
                         logger.warning(f"        자체 다운로드 실패: {e}")
                         pass
                 else:
@@ -3699,7 +4250,8 @@ def download_with_drission(
                         if nav_result:
                             if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
                                 return _ret(True, "SUCCESS", stage="navigation-download")
-                    except Exception:
+                    except Exception as e:
+                        _raise_if_browser_disconnect(e, logger=logger, context="signed-navigation-download")
                         pass
 
                 if not is_sciencedirect:
@@ -3711,7 +4263,9 @@ def download_with_drission(
                         if nav_result:
                             if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
                                 return _ret(True, "SUCCESS", stage="navigation-download")
-                    except : pass
+                    except Exception as e:
+                        _raise_if_browser_disconnect(e, logger=logger, context="navigation-download")
+                        pass
 
                 if _is_valid_pdf(tmp_save_path):
                     if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
@@ -3751,7 +4305,9 @@ def download_with_drission(
                 try :
                     if force_download_with_requests(page, pdf_url, referer_url, full_save_path, logger):
                         return _ret(True, "SUCCESS", stage="requests-download")
-                except: pass
+                except Exception as e:
+                    _raise_if_browser_disconnect(e, logger=logger, context="requests-download")
+                    pass
 
                 if _is_valid_pdf(full_save_path):
                     return _ret(True, "SUCCESS", stage="post-requests-file-check")
@@ -3764,7 +4320,9 @@ def download_with_drission(
                     try :
                         if download_pdf_via_js_injection(page, pdf_url, filename, save_dir, logger):
                             return _ret(True, "SUCCESS", stage="js-download")
-                    except : pass
+                    except Exception as e:
+                        _raise_if_browser_disconnect(e, logger=logger, context="js-download")
+                        pass
 
                 if _is_valid_pdf(full_save_path):
                     return _ret(True, "SUCCESS", stage="post-js-file-check")
@@ -3796,11 +4354,22 @@ def download_with_drission(
                             stage="cffi-download",
                             http_status=cffi_result.get("http_status"),
                         )
-                except : pass
+                except Exception as e:
+                    _raise_if_browser_disconnect(e, logger=logger, context="cffi-download")
+                    pass
                 
             else :
                 logger.warning(f"        pdf 링크 미발견 : {doi_url}")
 
+        except BrowserDisconnectedError as e:
+            logger.warning(f"        시도 {attempt} 브라우저 연결 종료: {e}")
+            if page:
+                _close_page_safely(page, logger)
+                page = None
+            if attempt >= max_attempts:
+                return _ret(False, "FAIL_TIMEOUT/NETWORK", [f"browser_disconnected: {e}"], stage="drission")
+            time.sleep(min(2 + attempt, 5))
+            continue
         except Exception as e:
             logger.warning(f"        시도 {attempt} 에러: {e}")
             # 에러 발생 시 브라우저 닫고 초기화 (다음 시도에서 재생성)

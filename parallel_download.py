@@ -22,10 +22,12 @@ from landing_classifier import (
 from openalex_search import main_search
 from tools_exp import (
     _sanitize_doi_to_filename,
+    coerce_headless_for_execution_env,
     download_using_api,
     download_with_cffi,
     download_with_drission,
     normalize_publisher_label,
+    resolve_browser_execution_env,
     resolve_browser_executable,
     setup_logger,
     try_manual_scihub,
@@ -62,6 +64,14 @@ FAILURE_REASON_ORDER = [
     REASON_FAIL_REDIRECT_LOOP,
     REASON_FAIL_UNKNOWN,
 ]
+
+PACING_PROFILE_OVERRIDES = {
+    "spie": {
+        "cooldown_multiplier_first": 2.5,
+        "cooldown_multiplier_deep": 4.0,
+        "global_spacing_multiplier": 2.0,
+    },
+}
 
 
 def _resolve_run_output_dir(output_dir: str) -> str:
@@ -114,6 +124,27 @@ def _domain_from_url(url: str) -> str:
         return (urlparse(url).netloc or "").lower()
     except Exception:
         return ""
+
+
+def _resolve_pacing_overrides(
+    publisher_key: str,
+    mode: str,
+    publisher_cooldown_sec: float,
+    global_start_spacing_sec: float,
+) -> tuple[float, float]:
+    key = str(publisher_key or "").strip().lower()
+    profile = PACING_PROFILE_OVERRIDES.get(key, {})
+    if str(mode or "") == "deep":
+        cooldown_multiplier = float(
+            profile.get("cooldown_multiplier_deep", profile.get("cooldown_multiplier_first", 1.0))
+        )
+    else:
+        cooldown_multiplier = float(profile.get("cooldown_multiplier_first", 1.0))
+    global_multiplier = float(profile.get("global_spacing_multiplier", 1.0))
+    return (
+        max(0.0, float(publisher_cooldown_sec or 0.0)) * max(1.0, cooldown_multiplier),
+        max(0.0, float(global_start_spacing_sec or 0.0)) * max(1.0, global_multiplier),
+    )
 
 
 def _is_browser_only_pdf_wrapper(url: str) -> bool:
@@ -411,6 +442,10 @@ def _single_download_attempt(
                 "landing_state": str(dr.get("landing_state") or "not_attempted"),
                 "landing_url": str(dr.get("landing_url") or ""),
                 "landing_title": str(dr.get("landing_title") or ""),
+                "browser_session_mode": str(dr.get("browser_session_mode") or ""),
+                "browser_session_source": str(dr.get("browser_session_source") or ""),
+                "browser_profile_name": str(dr.get("browser_profile_name") or ""),
+                "browser_user_data_dir": str(dr.get("browser_user_data_dir") or ""),
             }
         return {
             **result,
@@ -424,6 +459,10 @@ def _single_download_attempt(
             "landing_state": str(dr.get("landing_state") or "not_attempted"),
             "landing_url": str(dr.get("landing_url") or ""),
             "landing_title": str(dr.get("landing_title") or ""),
+            "browser_session_mode": str(dr.get("browser_session_mode") or ""),
+            "browser_session_source": str(dr.get("browser_session_source") or ""),
+            "browser_profile_name": str(dr.get("browser_profile_name") or ""),
+            "browser_user_data_dir": str(dr.get("browser_user_data_dir") or ""),
         }
 
     publisher_key = (publisher or "").lower()
@@ -474,13 +513,19 @@ def download_process_worker(
         "jitter_sec": 0.0,
     }
     publisher_key = str(row_data.get("scheduler_publisher") or "")
+    effective_publisher_cooldown_sec, effective_global_start_spacing_sec = _resolve_pacing_overrides(
+        publisher_key=publisher_key,
+        mode=mode,
+        publisher_cooldown_sec=float(publisher_cooldown_sec or 0.0),
+        global_start_spacing_sec=float(global_start_spacing_sec or 0.0),
+    )
     if pacing_state is not None and pacing_lock is not None:
         pacing_info = reserve_pacing_slot(
             pacing_state,
             pacing_lock,
             publisher_key=publisher_key,
-            cooldown_sec=float(publisher_cooldown_sec or 0.0),
-            global_spacing_sec=float(global_start_spacing_sec or 0.0),
+            cooldown_sec=effective_publisher_cooldown_sec,
+            global_spacing_sec=effective_global_start_spacing_sec,
             jitter_min_sec=float(jitter_min_sec or 0.0),
             jitter_max_sec=float(jitter_max_sec or 0.0),
         )
@@ -552,46 +597,45 @@ def _first_pass(
     global_start_spacing_sec: float,
     jitter_min_sec: float,
     jitter_max_sec: float,
+    pacing_state,
+    pacing_lock,
 ) -> List[Dict[str, Any]]:
     rows = _prepare_download_records(df)
     results: List[Dict[str, Any]] = [None] * len(rows)
 
-    with Manager() as manager:
-        pacing_state = manager.dict()
-        pacing_lock = manager.Lock()
-        with ProcessPoolExecutor(max_workers=max_workers) as executor:
-            future_to_index = {
-                executor.submit(
-                    download_process_worker,
-                    row,
-                    oa_pdf_dir if row["open_access"] else ca_pdf_dir,
-                    oa_artifact_dir if row["open_access"] else ca_artifact_dir,
-                    1,
-                    "first",
-                    bool(headless),
-                    bool(abort_on_landing_block),
-                    pacing_state,
-                    pacing_lock,
-                    float(publisher_cooldown_sec),
-                    float(global_start_spacing_sec),
-                    float(jitter_min_sec),
-                    float(jitter_max_sec),
-                ): int(row.get("_row_index", 0))
-                for row in rows
-            }
+    with ProcessPoolExecutor(max_workers=max_workers) as executor:
+        future_to_index = {
+            executor.submit(
+                download_process_worker,
+                row,
+                oa_pdf_dir if row["open_access"] else ca_pdf_dir,
+                oa_artifact_dir if row["open_access"] else ca_artifact_dir,
+                1,
+                "first",
+                bool(headless),
+                bool(abort_on_landing_block),
+                pacing_state,
+                pacing_lock,
+                float(publisher_cooldown_sec),
+                float(global_start_spacing_sec),
+                float(jitter_min_sec),
+                float(jitter_max_sec),
+            ): int(row.get("_row_index", 0))
+            for row in rows
+        }
 
-            for future in tqdm(as_completed(future_to_index), total=len(rows), desc="First Pass"):
-                idx = future_to_index[future]
-                try:
-                    results[idx] = future.result()
-                except Exception as e:
-                    doi = str(df.iloc[idx].get("doi", ""))
-                    results[idx] = {
-                        **_result_template(doi=doi, attempt=1, mode="first"),
-                        "reason": REASON_FAIL_TIMEOUT_NETWORK,
-                        "stage": "worker",
-                        "evidence": [str(e)],
-                    }
+        for future in tqdm(as_completed(future_to_index), total=len(rows), desc="First Pass"):
+            idx = future_to_index[future]
+            try:
+                results[idx] = future.result()
+            except Exception as e:
+                doi = str(df.iloc[idx].get("doi", ""))
+                results[idx] = {
+                    **_result_template(doi=doi, attempt=1, mode="first"),
+                    "reason": REASON_FAIL_TIMEOUT_NETWORK,
+                    "stage": "worker",
+                    "evidence": [str(e)],
+                }
 
     return results
 
@@ -609,6 +653,8 @@ def _deep_retry(
     global_start_spacing_sec: float,
     jitter_min_sec: float,
     jitter_max_sec: float,
+    pacing_state,
+    pacing_lock,
 ) -> List[Dict[str, Any]]:
     failed_indices = [i for i, r in enumerate(first_pass_results) if not r.get("success")]
     deep_results: List[Dict[str, Any]] = []
@@ -621,42 +667,39 @@ def _deep_retry(
     print("=" * 60)
 
     prepared_rows = _prepare_download_records(df.iloc[failed_indices].reset_index())
-    with Manager() as manager:
-        pacing_state = manager.dict()
-        pacing_lock = manager.Lock()
-        for row in tqdm(prepared_rows, desc="Deep Retry"):
-            idx = int(row.get("index", row.get("_row_index", 0)))
-            pdf_save_dir = oa_pdf_dir if row["open_access"] else ca_pdf_dir
-            artifact_dir = oa_artifact_dir if row["open_access"] else ca_artifact_dir
-            result = download_process_worker(
-                row,
-                pdf_save_dir,
-                artifact_dir,
-                attempt=2,
-                mode="deep",
-                headless=bool(headless),
-                abort_on_landing_block=bool(abort_on_landing_block),
-                pacing_state=pacing_state,
-                pacing_lock=pacing_lock,
-                publisher_cooldown_sec=float(publisher_cooldown_sec),
-                global_start_spacing_sec=float(global_start_spacing_sec),
-                jitter_min_sec=float(jitter_min_sec),
-                jitter_max_sec=float(jitter_max_sec),
-            )
-            deep_results.append({"index": idx, **result})
+    for row in tqdm(prepared_rows, desc="Deep Retry"):
+        idx = int(row.get("index", row.get("_row_index", 0)))
+        pdf_save_dir = oa_pdf_dir if row["open_access"] else ca_pdf_dir
+        artifact_dir = oa_artifact_dir if row["open_access"] else ca_artifact_dir
+        result = download_process_worker(
+            row,
+            pdf_save_dir,
+            artifact_dir,
+            attempt=2,
+            mode="deep",
+            headless=bool(headless),
+            abort_on_landing_block=bool(abort_on_landing_block),
+            pacing_state=pacing_state,
+            pacing_lock=pacing_lock,
+            publisher_cooldown_sec=float(publisher_cooldown_sec),
+            global_start_spacing_sec=float(global_start_spacing_sec),
+            jitter_min_sec=float(jitter_min_sec),
+            jitter_max_sec=float(jitter_max_sec),
+        )
+        deep_results.append({"index": idx, **result})
 
-            if result.get("reason") in (REASON_FAIL_HTTP_STATUS, REASON_FAIL_BLOCK) and result.get("http_status") == 429:
-                retry_after = None
-                for ev in result.get("evidence", []):
-                    if str(ev).startswith("retry_after="):
-                        try:
-                            retry_after = int(str(ev).split("=", 1)[1])
-                        except Exception:
-                            retry_after = None
-                        break
-                time.sleep(max(2, retry_after or 10))
-            else:
-                time.sleep(5)
+        if result.get("reason") in (REASON_FAIL_HTTP_STATUS, REASON_FAIL_BLOCK) and result.get("http_status") == 429:
+            retry_after = None
+            for ev in result.get("evidence", []):
+                if str(ev).startswith("retry_after="):
+                    try:
+                        retry_after = int(str(ev).split("=", 1)[1])
+                    except Exception:
+                        retry_after = None
+                    break
+            time.sleep(max(2, retry_after or 10))
+        else:
+            time.sleep(5)
 
     return deep_results
 
@@ -733,11 +776,32 @@ def _summarize_live_attempt_metrics(attempts_jsonl_path: str, out_path: str) -> 
     return payload
 
 
+def _discover_session_seed_root(worker_profile_root: str, profile_name: str) -> str:
+    base = os.path.abspath(str(worker_profile_root or "").strip())
+    profile_name = str(profile_name or "Default").strip() or "Default"
+    if not base or not os.path.isdir(base):
+        return ""
+
+    marker_hits: List[str] = []
+    for root, _, files in os.walk(base):
+        if ".codex_profile_seed_ready" in files and os.path.isdir(os.path.join(root, profile_name)):
+            marker_hits.append(root)
+    if marker_hits:
+        marker_hits.sort()
+        return marker_hits[0]
+
+    direct_profile = os.path.join(base, profile_name)
+    if os.path.isdir(direct_profile):
+        return base
+    return ""
+
+
 def _run_landing_precheck(
     df: pd.DataFrame,
     run_output_dir: str,
     max_workers: int,
     headless: bool,
+    execution_env: str,
 ) -> tuple[pd.DataFrame, Dict[str, Any]]:
     landing_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "landing_access_repro.py")
     precheck_dir = os.path.join(run_output_dir, "landing_precheck")
@@ -761,6 +825,8 @@ def _run_landing_precheck(
         str(max(1, min(int(max_workers), 2))),
         "--headless",
         "1" if bool(headless) else "0",
+        "--execution-env",
+        str(execution_env or "auto"),
         "--progress-every",
         "100",
         "--capture-fail-artifacts",
@@ -789,6 +855,10 @@ def _run_landing_precheck(
     if os.path.exists(landing_report_json):
         with open(landing_report_json, "r", encoding="utf-8") as f:
             landing_report = json.load(f)
+    session_seed_root = _discover_session_seed_root(
+        worker_profile_root=str(landing_report.get("worker_profile_root") or ""),
+        profile_name=str(landing_report.get("profile_name") or "Default"),
+    )
 
     records: List[Dict[str, Any]] = []
     if os.path.exists(landing_output_jsonl):
@@ -838,6 +908,7 @@ def _run_landing_precheck(
             "report_json": landing_report_json,
             "report_md": landing_report_md,
         },
+        "session_seed_root": session_seed_root,
         "report_summary": landing_report.get("summary", {}),
     }
     return eligible_df, metrics
@@ -855,12 +926,17 @@ def main(
     non_interactive=False,
     precheck_landing=False,
     headless=None,
+    execution_env="auto",
     deep_retry_headless=None,
     abort_on_landing_block=True,
     publisher_cooldown_sec=7.0,
     global_start_spacing_sec=1.5,
     jitter_min_sec=0.7,
     jitter_max_sec=1.8,
+    profile_mode="auto",
+    profile_name="Default",
+    persistent_profile_dir="outputs/.chrome_user_data",
+    runtime_profile_root="",
 ):
     start_time = time.time()
     max_workers = max(1, min(int(max_workers), SAFE_MAX_WORKERS))
@@ -883,6 +959,20 @@ def main(
     attempts_jsonl_path = os.path.join(run_output_dir, "download_attempts.jsonl")
     attempts_summary_path = os.path.join(run_output_dir, "download_attempts_summary.json")
     os.environ["PDF_ATTEMPTS_JSONL"] = attempts_jsonl_path
+    resolved_execution_env = resolve_browser_execution_env(execution_env)
+    os.environ["PDF_BROWSER_EXECUTION_ENV"] = resolved_execution_env
+    os.environ["PDF_BROWSER_PROFILE_MODE"] = str(profile_mode or "auto").strip().lower() or "auto"
+    os.environ["PDF_BROWSER_PROFILE_NAME"] = str(profile_name or "Default").strip() or "Default"
+    os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = os.path.abspath(
+        str(persistent_profile_dir or "outputs/.chrome_user_data")
+    )
+    os.environ.pop("PDF_BROWSER_SESSION_SEED_ROOT", None)
+    runtime_profile_root = str(runtime_profile_root or "").strip()
+    if not runtime_profile_root:
+        runtime_base = os.environ.get("SLURM_TMPDIR", "").strip() or os.path.join("/tmp", os.environ.get("USER", "user"))
+        runtime_label = os.path.basename(os.path.normpath(run_output_dir)) or "paper_download_run"
+        runtime_profile_root = os.path.join(runtime_base, "download_runtime_profiles", runtime_label)
+    os.environ["PDF_BROWSER_RUNTIME_PROFILE_ROOT"] = os.path.abspath(runtime_profile_root)
     failed_dedupe_keys = _load_failed_dedupe_keys(failed_jsonl_path)
 
     ta_query = (
@@ -907,13 +997,26 @@ def main(
     print(f"전처리 후 남은 전체 논문 수: {len(df)}건")
     print(f"다운로드 동시성(max_workers): {max_workers} (상한={SAFE_MAX_WORKERS})")
 
-    resolved_headless = _env_flag("PDF_BROWSER_HEADLESS", 0) if headless is None else bool(headless)
-    resolved_deep_retry_headless = resolved_headless if deep_retry_headless is None else bool(deep_retry_headless)
+    requested_headless = _env_flag("PDF_BROWSER_HEADLESS", 0) if headless is None else bool(headless)
+    requested_deep_retry_headless = requested_headless if deep_retry_headless is None else bool(deep_retry_headless)
+    resolved_headless = coerce_headless_for_execution_env(
+        requested_headless,
+        resolved_execution_env,
+        context="download_first_pass",
+    )
+    resolved_deep_retry_headless = coerce_headless_for_execution_env(
+        requested_deep_retry_headless,
+        resolved_execution_env,
+        context="download_deep_retry",
+    )
     resolved_abort_on_landing_block = bool(abort_on_landing_block)
+    if resolved_execution_env == "linux_cli" and (not requested_headless or not requested_deep_retry_headless):
+        print("execution_env=linux_cli 이므로 headful 요청은 무시하고 headless로 강제합니다.")
     print(
         f"브라우저 모드(first/deep): {'headless' if resolved_headless else 'headful'} / "
         f"{'headless' if resolved_deep_retry_headless else 'headful'}"
     )
+    print(f"브라우저 실행 환경: {resolved_execution_env}")
     print(f"landing challenge/block 즉시 중단: {resolved_abort_on_landing_block}")
     print(
         "download publisher pacing: "
@@ -935,92 +1038,105 @@ def main(
             run_output_dir=run_output_dir,
             max_workers=max_workers,
             headless=resolved_headless,
+            execution_env=resolved_execution_env,
         )
         print(
             f"Landing precheck 완료: 성공={landing_precheck_metrics.get('landing_success', 0)} / "
             f"권한없음={landing_precheck_metrics.get('access_rights_failures', 0)} / "
             f"다운로드 투입={landing_precheck_metrics.get('eligible_for_download', 0)}"
         )
+        session_seed_root = str(landing_precheck_metrics.get("session_seed_root") or "").strip()
+        if session_seed_root:
+            os.environ["PDF_BROWSER_SESSION_SEED_ROOT"] = session_seed_root
+            print(f"landing session seed root: {session_seed_root}")
 
-    first_results = _first_pass(
-        df,
-        oa_pdf_dir,
-        ca_pdf_dir,
-        oa_artifact_dir,
-        ca_artifact_dir,
-        max_workers=max_workers,
-        headless=resolved_headless,
-        abort_on_landing_block=resolved_abort_on_landing_block,
-        publisher_cooldown_sec=float(publisher_cooldown_sec),
-        global_start_spacing_sec=float(global_start_spacing_sec),
-        jitter_min_sec=float(jitter_min_sec),
-        jitter_max_sec=float(jitter_max_sec),
-    )
+    with Manager() as manager:
+        pacing_state = manager.dict()
+        pacing_lock = manager.Lock()
 
-    df["download_status"] = [_status_text(r) for r in first_results]
-
-    first_failures = [r for r in first_results if not r.get("success")]
-    for fail in first_failures:
-        _append_failed_jsonl(
-            failed_jsonl_path,
-            {
-                "timestamp": int(time.time()),
-                "attempt": 1,
-                "doi": fail.get("doi"),
-                "reason": fail.get("reason"),
-                "stage": fail.get("stage"),
-                "domain": fail.get("domain"),
-                "http_status": fail.get("http_status"),
-                "evidence": fail.get("evidence", []),
-                "mode": "first",
-            },
-            failed_dedupe_keys,
-        )
-
-    first_summary = _summarize_failures(first_results)
-    print("\n[1차 패스 실패 요약]")
-    for reason in FAILURE_REASON_ORDER:
-        print(f"  - {reason}: {first_summary.get(reason, 0)}")
-
-    decision = _resolve_decision(non_interactive, after_first_pass, len(first_failures))
-
-    deep_results: List[Dict[str, Any]] = []
-    if decision == "deep":
-        deep_results = _deep_retry(
+        first_results = _first_pass(
             df,
-            first_results,
             oa_pdf_dir,
             ca_pdf_dir,
             oa_artifact_dir,
             ca_artifact_dir,
-            headless=resolved_deep_retry_headless,
+            max_workers=max_workers,
+            headless=resolved_headless,
             abort_on_landing_block=resolved_abort_on_landing_block,
             publisher_cooldown_sec=float(publisher_cooldown_sec),
             global_start_spacing_sec=float(global_start_spacing_sec),
             jitter_min_sec=float(jitter_min_sec),
             jitter_max_sec=float(jitter_max_sec),
+            pacing_state=pacing_state,
+            pacing_lock=pacing_lock,
         )
 
-        for item in deep_results:
-            idx = item["index"]
-            if item.get("success"):
-                df.at[idx, "download_status"] = _status_text(item)
-            else:
-                _append_failed_jsonl(
-                    failed_jsonl_path,
-                    {
-                        "timestamp": int(time.time()),
-                        "attempt": 2,
-                        "doi": item.get("doi"),
-                        "reason": item.get("reason"),
-                        "stage": item.get("stage"),
-                        "domain": item.get("domain"),
-                        "http_status": item.get("http_status"),
-                        "evidence": item.get("evidence", []),
-                        "mode": "deep",
-                    },
-                    failed_dedupe_keys,
-                )
+        df["download_status"] = [_status_text(r) for r in first_results]
+
+        first_failures = [r for r in first_results if not r.get("success")]
+        for fail in first_failures:
+            _append_failed_jsonl(
+                failed_jsonl_path,
+                {
+                    "timestamp": int(time.time()),
+                    "attempt": 1,
+                    "doi": fail.get("doi"),
+                    "reason": fail.get("reason"),
+                    "stage": fail.get("stage"),
+                    "domain": fail.get("domain"),
+                    "http_status": fail.get("http_status"),
+                    "evidence": fail.get("evidence", []),
+                    "mode": "first",
+                },
+                failed_dedupe_keys,
+            )
+
+        first_summary = _summarize_failures(first_results)
+        print("\n[1차 패스 실패 요약]")
+        for reason in FAILURE_REASON_ORDER:
+            print(f"  - {reason}: {first_summary.get(reason, 0)}")
+
+        decision = _resolve_decision(non_interactive, after_first_pass, len(first_failures))
+
+        deep_results: List[Dict[str, Any]] = []
+        if decision == "deep":
+            deep_results = _deep_retry(
+                df,
+                first_results,
+                oa_pdf_dir,
+                ca_pdf_dir,
+                oa_artifact_dir,
+                ca_artifact_dir,
+                headless=resolved_deep_retry_headless,
+                abort_on_landing_block=resolved_abort_on_landing_block,
+                publisher_cooldown_sec=float(publisher_cooldown_sec),
+                global_start_spacing_sec=float(global_start_spacing_sec),
+                jitter_min_sec=float(jitter_min_sec),
+                jitter_max_sec=float(jitter_max_sec),
+                pacing_state=pacing_state,
+                pacing_lock=pacing_lock,
+            )
+
+            for item in deep_results:
+                idx = item["index"]
+                if item.get("success"):
+                    df.at[idx, "download_status"] = _status_text(item)
+                else:
+                    _append_failed_jsonl(
+                        failed_jsonl_path,
+                        {
+                            "timestamp": int(time.time()),
+                            "attempt": 2,
+                            "doi": item.get("doi"),
+                            "reason": item.get("reason"),
+                            "stage": item.get("stage"),
+                            "domain": item.get("domain"),
+                            "http_status": item.get("http_status"),
+                            "evidence": item.get("evidence", []),
+                            "mode": "deep",
+                        },
+                        failed_dedupe_keys,
+                    )
 
     elapsed_seconds = time.time() - start_time
     final_results = list(first_results)
@@ -1032,6 +1148,10 @@ def main(
     df["landing_state"] = [str(r.get("landing_state") or "not_attempted") for r in final_results]
     df["landing_url"] = [str(r.get("landing_url") or "") for r in final_results]
     df["landing_title"] = [str(r.get("landing_title") or "") for r in final_results]
+    df["browser_session_mode"] = [str(r.get("browser_session_mode") or "") for r in final_results]
+    df["browser_session_source"] = [str(r.get("browser_session_source") or "") for r in final_results]
+    df["browser_profile_name"] = [str(r.get("browser_profile_name") or "") for r in final_results]
+    df["browser_user_data_dir"] = [str(r.get("browser_user_data_dir") or "") for r in final_results]
     df["scheduler_publisher"] = [str(r.get("scheduler_publisher") or "") for r in final_results]
     df["scheduled_start_ms"] = [int(r.get("scheduled_start_ms", 0) or 0) for r in final_results]
     df["actual_start_ms"] = [int(r.get("actual_start_ms", 0) or 0) for r in final_results]
@@ -1062,9 +1182,15 @@ def main(
             "closed_access_pdf_dir": ca_pdf_dir,
         },
         "download_browser": {
+            "execution_env": resolved_execution_env,
             "headless": bool(resolved_headless),
             "deep_retry_headless": bool(resolved_deep_retry_headless),
             "abort_on_landing_block": bool(resolved_abort_on_landing_block),
+            "profile_mode": os.environ.get("PDF_BROWSER_PROFILE_MODE", ""),
+            "profile_name": os.environ.get("PDF_BROWSER_PROFILE_NAME", ""),
+            "persistent_profile_dir": os.environ.get("PDF_BROWSER_PERSISTENT_PROFILE_DIR", ""),
+            "runtime_profile_root": os.environ.get("PDF_BROWSER_RUNTIME_PROFILE_ROOT", ""),
+            "session_seed_root": os.environ.get("PDF_BROWSER_SESSION_SEED_ROOT", ""),
         },
         "download_scheduler": {
             "publisher_cooldown_sec": float(publisher_cooldown_sec),
@@ -1148,10 +1274,15 @@ if __name__ == "__main__":
         non_interactive=args.non_interactive,
         precheck_landing=bool(int(args.precheck_landing)),
         headless=args.headless,
+        execution_env=args.execution_env,
         deep_retry_headless=args.deep_retry_headless,
         abort_on_landing_block=bool(int(args.abort_on_landing_block)),
         publisher_cooldown_sec=args.publisher_cooldown_sec,
         global_start_spacing_sec=args.global_start_spacing_sec,
         jitter_min_sec=args.jitter_min_sec,
         jitter_max_sec=args.jitter_max_sec,
+        profile_mode=args.profile_mode,
+        profile_name=args.profile_name,
+        persistent_profile_dir=args.persistent_profile_dir,
+        runtime_profile_root=args.runtime_profile_root,
     )

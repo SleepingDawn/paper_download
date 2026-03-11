@@ -67,7 +67,10 @@ from tools_exp import (
     _has_pdf_action_signal,
     _is_elsevier_retrieve_url,
     _sanitize_doi_to_filename,
+    build_landing_browser_session_plan,
+    coerce_headless_for_execution_env,
     detect_access_issue,
+    resolve_browser_execution_env,
 )
 
 OUT_SUCCESS_ACCESS = "SUCCESS_ACCESS"
@@ -111,6 +114,7 @@ def _browser_for_worker(
     worker_idx: int,
     worker_profile_root: str,
     worker_download_root: str,
+    session_plan: Dict[str, Any],
     startup_retries: int = 3,
     retry_sleep_sec: float = 1.5,
 ) -> ChromiumPage:
@@ -119,8 +123,13 @@ def _browser_for_worker(
     worker_download_root = os.path.abspath(worker_download_root)
     os.makedirs(worker_profile_root, exist_ok=True)
     os.makedirs(worker_download_root, exist_ok=True)
-    worker_profile_name = f"worker_{int(worker_idx)}"
-    worker_download_dir = os.path.join(worker_download_root, worker_profile_name)
+    worker_profile_name = str(session_plan.get("profile_name") or f"worker_{int(worker_idx)}").strip() or f"worker_{int(worker_idx)}"
+    worker_user_data_dir = os.path.abspath(str(session_plan.get("user_data_dir") or worker_profile_root))
+    worker_download_key = (
+        _sanitize_doi_to_filename(str(session_plan.get("cache_key") or worker_profile_name)) or f"worker_{int(worker_idx)}"
+    )
+    worker_download_dir = os.path.join(worker_download_root, worker_download_key)
+    os.makedirs(worker_user_data_dir, exist_ok=True)
     os.makedirs(worker_download_dir, exist_ok=True)
 
     last_err = None
@@ -128,7 +137,7 @@ def _browser_for_worker(
         co = ChromiumOptions()
         if chrome_path and os.path.exists(chrome_path):
             co.set_browser_path(chrome_path)
-        co.set_user_data_path(worker_profile_root)
+        co.set_user_data_path(worker_user_data_dir)
         co.set_user(worker_profile_name)
         co.set_download_path(worker_download_dir)
         co.set_pref("download.prompt_for_download", False)
@@ -144,7 +153,8 @@ def _browser_for_worker(
 
     raise RuntimeError(
         f"browser_init_failed(worker={worker_idx}, chrome_path={chrome_path}, "
-        f"profile_root={worker_profile_root}, profile={worker_profile_name}): {last_err}"
+        f"profile_root={worker_user_data_dir}, profile={worker_profile_name}, "
+        f"session_mode={session_plan.get('session_mode')}, session_source={session_plan.get('session_source')}): {last_err}"
     )
 
 
@@ -2458,6 +2468,10 @@ def _probe_one(
         "title": str(title or "")[:240],
         "worker_idx": int(worker_idx),
         "browser_identity": str(browser_identity or ""),
+        "browser_session_mode": str(probe_page_meta.get("browser_session_mode") or ""),
+        "browser_session_source": str(probe_page_meta.get("browser_session_source") or ""),
+        "browser_profile_name": str(probe_page_meta.get("browser_profile_name") or ""),
+        "browser_user_data_dir": str(probe_page_meta.get("browser_user_data_dir") or ""),
         "probe_page_mode": str(probe_page_meta.get("probe_page_mode") or ""),
         "controller_tab_id": str(probe_page_meta.get("controller_tab_id") or ""),
         "probe_tab_id": str(probe_page_meta.get("probe_tab_id") or ""),
@@ -2538,20 +2552,31 @@ def _worker_run(
     jitter_max_sec: float,
     probe_page_mode: str,
 ) -> Dict[str, Any]:
-    controller_page = _browser_for_worker(
-        chrome_path=chrome_path,
-        worker_idx=worker_idx,
-        worker_profile_root=worker_profile_root,
-        worker_download_root=worker_download_root,
-        startup_retries=startup_retries,
-    )
-    browser_identity = f"worker_{int(worker_idx)}"
+    controller_pages: Dict[str, ChromiumPage] = {}
     done = 0
     success = 0
     worker_records: List[Dict[str, Any]] = []
     try:
         with open(out_jsonl, "w", encoding="utf-8") as f:
             for rec in records:
+                session_plan = build_landing_browser_session_plan(
+                    str(rec.get("doi") or ""),
+                    worker_profile_root=worker_profile_root,
+                    worker_idx=worker_idx,
+                )
+                session_cache_key = str(session_plan.get("cache_key") or "temp")
+                controller_page = controller_pages.get(session_cache_key)
+                if controller_page is None:
+                    controller_page = _browser_for_worker(
+                        chrome_path=chrome_path,
+                        worker_idx=worker_idx,
+                        worker_profile_root=worker_profile_root,
+                        worker_download_root=worker_download_root,
+                        session_plan=session_plan,
+                        startup_retries=startup_retries,
+                    )
+                    controller_pages[session_cache_key] = controller_page
+                browser_identity = str(session_plan.get("browser_identity") or f"worker_{int(worker_idx)}:{session_cache_key}")
                 publisher_key = str(rec.get("scheduler_publisher") or "")
                 pacing_info = reserve_pacing_slot(
                     pacing_state,
@@ -2563,7 +2588,12 @@ def _worker_run(
                     jitter_max_sec=jitter_max_sec,
                 )
                 probe_page, page_meta = _open_probe_page(controller_page, probe_page_mode=probe_page_mode)
-                page_meta["worker_download_dir"] = os.path.join(os.path.abspath(worker_download_root), f"worker_{int(worker_idx)}")
+                download_key = _sanitize_doi_to_filename(session_cache_key) or f"worker_{int(worker_idx)}"
+                page_meta["worker_download_dir"] = os.path.join(os.path.abspath(worker_download_root), download_key)
+                page_meta["browser_session_mode"] = str(session_plan.get("session_mode") or "")
+                page_meta["browser_session_source"] = str(session_plan.get("session_source") or "")
+                page_meta["browser_profile_name"] = str(session_plan.get("profile_name") or "")
+                page_meta["browser_user_data_dir"] = str(session_plan.get("user_data_dir") or "")
                 probe_started_ms = _now_ms()
                 result: Dict[str, Any] = {}
                 try:
@@ -2609,10 +2639,11 @@ def _worker_run(
                         flush=True,
                     )
     finally:
-        try:
-            controller_page.quit()
-        except Exception:
-            pass
+        for controller_page in controller_pages.values():
+            try:
+                controller_page.quit()
+            except Exception:
+                pass
     return {"worker": worker_idx, "done": done, "success": success, "records": worker_records}
 
 
@@ -2694,6 +2725,7 @@ def main() -> None:
     parser.add_argument("--progress-every", type=int, default=25)
     parser.add_argument("--chrome-path", type=str, default=os.environ.get("CHROME_PATH", ""))
     parser.add_argument("--headless", type=int, default=DEFAULT_LOCAL_HEADLESS, choices=[0, 1])
+    parser.add_argument("--execution-env", type=str, default=os.environ.get("PDF_BROWSER_EXECUTION_ENV", "auto"), choices=["auto", "desktop", "linux_cli"])
     parser.add_argument("--no-sandbox", type=int, default=1, choices=[0, 1])
     parser.add_argument("--server-tuned", type=int, default=1, choices=[0, 1])
     parser.add_argument("--single-process", type=int, default=0, choices=[0, 1])
@@ -2730,7 +2762,17 @@ def main() -> None:
     workers = min(requested_workers, SAFE_LANDING_MAX_WORKERS, len(ordered_records))
     chunks = chunk_inputs_round_robin(ordered_records, workers)
 
-    os.environ["PDF_BROWSER_HEADLESS"] = "1" if int(args.headless) == 1 else "0"
+    resolved_execution_env = resolve_browser_execution_env(args.execution_env)
+    requested_headless = bool(int(args.headless))
+    resolved_headless = coerce_headless_for_execution_env(
+        requested_headless,
+        resolved_execution_env,
+        context="landing_precheck",
+    )
+    if resolved_execution_env == "linux_cli" and not requested_headless:
+        print(json.dumps({"execution_env": resolved_execution_env, "headless_forced": True}, ensure_ascii=False), flush=True)
+    os.environ["PDF_BROWSER_EXECUTION_ENV"] = resolved_execution_env
+    os.environ["PDF_BROWSER_HEADLESS"] = "1" if resolved_headless else "0"
     os.environ["PDF_BROWSER_NO_SANDBOX"] = "1" if int(args.no_sandbox) == 1 else "0"
     os.environ["PDF_BROWSER_SERVER_TUNED"] = "1" if int(args.server_tuned) == 1 else "0"
     os.environ["PDF_BROWSER_SINGLE_PROCESS"] = "1" if int(args.single_process) == 1 else "0"
@@ -2769,6 +2811,7 @@ def main() -> None:
         )
 
     print(json.dumps({"resolved_chrome_path": chrome_path}, ensure_ascii=False), flush=True)
+    print(json.dumps({"execution_env": resolved_execution_env}, ensure_ascii=False), flush=True)
     print(json.dumps({"worker_profile_root": worker_profile_root}, ensure_ascii=False), flush=True)
     print(json.dumps({"worker_download_root": worker_download_root}, ensure_ascii=False), flush=True)
     if workers != requested_workers:
@@ -2889,7 +2932,9 @@ def main() -> None:
         "sample_size": len(ordered_records),
         "workers_requested": requested_workers,
         "workers_effective": workers,
-        "headless": bool(int(args.headless)),
+        "execution_env": resolved_execution_env,
+        "headless": bool(resolved_headless),
+        "headless_requested": bool(requested_headless),
         "no_sandbox": bool(int(args.no_sandbox)),
         "server_tuned": bool(int(args.server_tuned)),
         "single_process": os.environ.get("PDF_BROWSER_SINGLE_PROCESS", "0"),
