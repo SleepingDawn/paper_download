@@ -71,6 +71,7 @@ from tools_exp import (
     build_landing_browser_session_plan,
     coerce_headless_for_execution_env,
     detect_access_issue,
+    resolve_browser_executable,
     resolve_browser_execution_env,
 )
 
@@ -161,40 +162,7 @@ def _browser_for_worker(
 
 
 def _resolve_browser_path(preferred_path: str) -> str:
-    candidates = []
-    if preferred_path:
-        candidates.append(preferred_path)
-    env_path = str(os.environ.get("CHROME_PATH", "")).strip()
-    if env_path:
-        candidates.append(env_path)
-
-    for name in ("google-chrome", "google-chrome-stable", "chromium-browser", "chromium", "chrome"):
-        path = shutil.which(name)
-        if path:
-            candidates.append(path)
-
-    candidates.extend(
-        [
-            "/usr/bin/google-chrome",
-            "/usr/bin/google-chrome-stable",
-            "/usr/bin/chromium-browser",
-            "/usr/bin/chromium",
-            "/opt/google/chrome/chrome",
-            "/usr/local/bin/chrome",
-            "/home/yongyong0206/chrome-linux64/chrome",
-            "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-        ]
-    )
-
-    seen = set()
-    for path in candidates:
-        candidate = str(path or "").strip()
-        if not candidate or candidate in seen:
-            continue
-        seen.add(candidate)
-        if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
-            return candidate
-    return ""
+    return resolve_browser_executable(preferred_path)
 
 
 def _pick_free_local_port() -> int:
@@ -2810,10 +2778,15 @@ def main() -> None:
 
     chrome_path = _resolve_browser_path(str(args.chrome_path or "").strip())
     if not chrome_path:
+        tried_hint = (
+            "Tried PATH, CHROME_PATH, and common Linux Chrome/Chromium paths."
+            if resolved_execution_env == "linux_cli"
+            else "Tried PATH, CHROME_PATH, common Linux Chrome/Chromium paths, plus the macOS app path."
+        )
         raise RuntimeError(
             "Chrome/Chromium executable not found. "
             "Set --chrome-path or CHROME_PATH. "
-            "Tried google-chrome/google-chrome-stable/chromium-browser/chromium/chrome plus the macOS app path."
+            f"{tried_hint}"
         )
 
     print(json.dumps({"resolved_chrome_path": chrome_path}, ensure_ascii=False), flush=True)

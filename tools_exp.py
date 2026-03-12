@@ -132,7 +132,24 @@ def _resolve_best_browser_ua() -> str:
     return BEST_BROWSER_UA_LINUX
 
 
-def resolve_browser_executable(preferred_path: str = "", logger=None) -> str:
+def _is_macos_app_browser_path(path: str) -> bool:
+    normalized = str(path or "").strip().replace("\\", "/")
+    if not normalized:
+        return False
+    return normalized.startswith("/Applications/") or ".app/Contents/MacOS/" in normalized
+
+
+def _browser_path_allowed_for_execution_env(path: str, execution_env: str = "") -> bool:
+    candidate = str(path or "").strip()
+    if not candidate:
+        return False
+    if resolve_browser_execution_env(execution_env) != "linux_cli":
+        return True
+    return not _is_macos_app_browser_path(candidate)
+
+
+def resolve_browser_executable(preferred_path: str = "", logger=None, execution_env: str = "") -> str:
+    resolved_env = resolve_browser_execution_env(execution_env)
     candidates = []
     if preferred_path:
         candidates.append(preferred_path)
@@ -152,15 +169,20 @@ def resolve_browser_executable(preferred_path: str = "", logger=None) -> str:
             "/opt/google/chrome/chrome",
             "/usr/local/bin/chrome",
             "/home/yongyong0206/chrome-linux64/chrome",
-            "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
         ]
     )
+    if resolved_env != "linux_cli" and sys.platform == "darwin":
+        candidates.append("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
     seen = set()
     for path in candidates:
         p = str(path or "").strip()
         if not p or p in seen:
             continue
         seen.add(p)
+        if not _browser_path_allowed_for_execution_env(p, resolved_env):
+            if logger and _is_macos_app_browser_path(p):
+                logger.info(f"     [Drission] linux_cli 환경이므로 macOS Chrome 경로 무시: {p}")
+            continue
         if os.path.isfile(p) and os.access(p, os.X_OK):
             if logger:
                 logger.info(f"     [Drission] 브라우저 실행 파일: {p}")
@@ -168,12 +190,21 @@ def resolve_browser_executable(preferred_path: str = "", logger=None) -> str:
     return ""
 
 
-def _find_system_chrome_user_data_dir(profile_name: str = "Default") -> str:
-    candidates = [
-        os.path.expanduser("~/Library/Application Support/Google/Chrome"),
+def _find_system_chrome_user_data_dir(profile_name: str = "Default", execution_env: str = "") -> str:
+    linux_candidates = [
         os.path.expanduser("~/.config/google-chrome"),
         os.path.expanduser("~/.config/google-chrome-beta"),
+        os.path.expanduser("~/.config/chromium"),
     ]
+    if resolve_browser_execution_env(execution_env) == "linux_cli":
+        candidates = linux_candidates
+    elif sys.platform == "darwin":
+        candidates = [
+            os.path.expanduser("~/Library/Application Support/Google/Chrome"),
+            *linux_candidates,
+        ]
+    else:
+        candidates = linux_candidates
     for base in candidates:
         if os.path.isdir(os.path.join(base, profile_name)):
             return base
