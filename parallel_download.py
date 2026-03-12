@@ -373,10 +373,14 @@ def _single_download_attempt(
     filename = _sanitize_doi_to_filename(doi)
     full_path = os.path.join(pdf_save_dir, filename)
 
-    logger = setup_logger(artifact_dir, filename)
-    attempt_trace: List[Dict[str, Any]] = []
-
     if publisher == "arxiv" or "arxiv.org" in pdf_url_oa.lower() or doi.lower().startswith("10.1149/ma"):
+        skip_reason = "policy_skip"
+        if publisher == "arxiv" or "arxiv.org" in pdf_url_oa.lower():
+            skip_reason = "arxiv_managed_outside_pipeline"
+        elif doi.lower().startswith("10.1149/ma"):
+            skip_reason = "ecs_meeting_abstract_pattern"
+        logger = setup_logger(artifact_dir, filename)
+        logger.info(f"[Skip] 다운로드 생략: doi={doi}, reason={skip_reason}")
         return {
             **result,
             "status": "Skipped",
@@ -385,6 +389,9 @@ def _single_download_attempt(
             "success": True,
             "stage": "skip",
         }
+
+    logger = setup_logger(artifact_dir, filename)
+    attempt_trace: List[Dict[str, Any]] = []
 
     # 사용자 요청: Sci-Hub를 항상 최우선(1순위)으로 시도.
     try:
