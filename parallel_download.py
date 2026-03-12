@@ -77,13 +77,18 @@ PACING_PROFILE_OVERRIDES = {
 
 
 def _resolve_worker_max_tasks_per_child() -> Optional[int]:
-    raw = os.getenv("PDF_WORKER_MAX_TASKS_PER_CHILD", "25").strip()
+    # macOS spawn + Manager proxy 조합에서는 worker recycle이 future 정리 단계에서
+    # 영구 대기를 유발할 수 있어 기본 비활성화한다.
+    if sys.platform == "darwin":
+        return None
+
+    raw = os.getenv("PDF_WORKER_MAX_TASKS_PER_CHILD", "").strip()
     if not raw:
-        return 25
+        return None
     try:
         value = int(raw)
     except ValueError:
-        return 25
+        return None
     if value <= 0:
         return None
     return max(1, value)
