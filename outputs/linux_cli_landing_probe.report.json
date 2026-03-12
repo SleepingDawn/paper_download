@@ -1,0 +1,116 @@
+{
+  "generated_at": 1773132957,
+  "input_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/linux_cli_probe_input.csv",
+  "sample_size": 3,
+  "workers_requested": 1,
+  "workers_effective": 1,
+  "execution_env": "linux_cli",
+  "headless": true,
+  "headless_requested": true,
+  "no_sandbox": true,
+  "server_tuned": true,
+  "single_process": "0",
+  "humanized_browser": "1",
+  "assume_institution_access": true,
+  "startup_retries": 3,
+  "timeout_sec": 18.0,
+  "per_doi_deadline_sec": 75.0,
+  "max_nav_attempts": 2,
+  "publisher_cooldown_sec": 7.0,
+  "global_start_spacing_sec": 1.5,
+  "jitter_sec": [
+    0.7,
+    1.8
+  ],
+  "profile_mode": "auto",
+  "profile_name": "Default",
+  "persistent_profile_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/.chrome_user_data",
+  "worker_profile_root": "/tmp/seyong/landing_worker_profiles",
+  "probe_page_mode": "reuse_page",
+  "capture_fail_artifacts": false,
+  "capture_fail_screenshot": false,
+  "capture_success_artifacts": false,
+  "capture_success_html": false,
+  "criteria": "success_landing only when expected publisher/target is reached, visible content is populated, article metadata or stable article markers exist, and no challenge/interstitial/blank heuristics fire.",
+  "summary": {
+    "total_valid": 3,
+    "success_ratio": 1.0,
+    "classifier_counts": {
+      "success_landing": 3
+    },
+    "outcome_counts": {
+      "SUCCESS_ACCESS": 3
+    },
+    "top_reason_codes": [
+      [
+        "content_populated",
+        3
+      ],
+      [
+        "doi_match",
+        3
+      ],
+      [
+        "expected_domain_match",
+        3
+      ],
+      [
+        "publisher_marker_present",
+        3
+      ],
+      [
+        "strong_meta_present",
+        3
+      ]
+    ],
+    "publisher_breakdown": [
+      {
+        "publisher": "aip",
+        "sample_size": 2,
+        "counts": {
+          "success_landing": 2
+        }
+      },
+      {
+        "publisher": "elsevier",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        }
+      }
+    ],
+    "legacy_success_like_count": 3,
+    "legacy_reclassified_non_success": [],
+    "p50_elapsed_ms": 22966.0,
+    "p90_elapsed_ms": 35185.2,
+    "domain_breakdown_top20": [
+      {
+        "domain": "pubs.aip.org",
+        "sample_size": 2,
+        "counts": {
+          "success_landing": 2
+        },
+        "p50_elapsed_ms": 30603.0,
+        "p90_elapsed_ms": 22966.0
+      },
+      {
+        "domain": "www.sciencedirect.com",
+        "sample_size": 1,
+        "counts": {
+          "success_landing": 1
+        },
+        "p50_elapsed_ms": 22061.0,
+        "p90_elapsed_ms": 22061.0
+      }
+    ]
+  },
+  "publishers_covered": [
+    "AIP",
+    "Elsevier"
+  ],
+  "remaining_weak_spots": [],
+  "output_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/linux_cli_landing_probe.jsonl",
+  "artifact_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/landing_access_artifacts",
+  "failure_artifact_zip": "",
+  "success_artifact_zip": ""
+}
