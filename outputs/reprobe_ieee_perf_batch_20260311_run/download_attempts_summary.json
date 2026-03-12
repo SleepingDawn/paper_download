@@ -1,0 +1,22 @@
+{
+  "count": 3,
+  "success_rate": 1.0,
+  "median_latency_ms": 106147,
+  "reason_distribution": {
+    "SUCCESS": 3
+  },
+  "by_strategy": {
+    "cffi_baseline": {
+      "count": 3,
+      "success_rate": 1.0,
+      "median_latency_ms": 106147
+    }
+  },
+  "by_domain": {
+    "ieeexplore.ieee.org": {
+      "count": 3,
+      "success_rate": 1.0,
+      "median_latency_ms": 106147
+    }
+  }
+}

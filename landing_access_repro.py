@@ -34,6 +34,7 @@ from landing_classifier import (
     STATE_CHALLENGE_DETECTED,
     STATE_CONSENT_OR_INTERSTITIAL_BLOCK,
     STATE_DIRECT_PDF_HANDOFF,
+    STATE_DOI_NOT_FOUND,
     STATE_DOMAIN_MISMATCH,
     STATE_NETWORK_ERROR,
     STATE_PUBLISHER_ERROR,
@@ -77,6 +78,7 @@ OUT_SUCCESS_ACCESS = "SUCCESS_ACCESS"
 OUT_FAIL_CAPTCHA = "FAIL_CAPTCHA"
 OUT_FAIL_BLOCK = "FAIL_BLOCK"
 OUT_FAIL_ACCESS_RIGHTS = "FAIL_ACCESS_RIGHTS"
+OUT_FAIL_DOI_NOT_FOUND = "FAIL_DOI_NOT_FOUND"
 OUT_FAIL_NETWORK = "FAIL_NETWORK"
 PROBE_PAGE_MODE_REUSE = "reuse_page"
 PROBE_PAGE_MODE_FRESH_TAB = "fresh_tab"
@@ -1533,6 +1535,8 @@ def _compat_outcome_from_state(classifier_state: str, reason_codes: Sequence[str
         return OUT_SUCCESS_ACCESS
     if classifier_state == STATE_CHALLENGE_DETECTED:
         return OUT_FAIL_CAPTCHA
+    if classifier_state == STATE_DOI_NOT_FOUND:
+        return OUT_FAIL_DOI_NOT_FOUND
     if classifier_state in (STATE_TIMEOUT, STATE_NETWORK_ERROR):
         return OUT_FAIL_NETWORK
     if "access_rights_gate" in reason_blob:
@@ -1624,6 +1628,8 @@ def _should_retry_landing(classifier_state: str, reason_codes: Sequence[str], at
     codes = {str(code or "") for code in (reason_codes or [])}
     if classifier_state in (STATE_TIMEOUT, STATE_NETWORK_ERROR, STATE_BLANK_OR_INCOMPLETE):
         return True
+    if classifier_state == STATE_DOI_NOT_FOUND:
+        return False
     if classifier_state == STATE_BROKEN_JS_SHELL:
         return attempt_idx == 0
     if classifier_state == STATE_DOMAIN_MISMATCH:

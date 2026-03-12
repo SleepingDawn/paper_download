@@ -756,7 +756,14 @@ def _close_page_safely(page, logger=None):
     if page is None:
         return
     try:
-        page.quit()
+        quit_fn = getattr(page, "quit", None)
+        if callable(quit_fn):
+            quit_fn()
+            return
+        close_fn = getattr(page, "close", None)
+        if callable(close_fn):
+            close_fn()
+            return
     except Exception as e:
         if logger:
             logger.warning(f"     [Drission] 브라우저 종료 실패(무시): {e}")
@@ -905,6 +912,7 @@ def _looks_like_pdf_link(url: str) -> bool:
         "/doi/pdf",
         "/articlepdf",
         "/pdfft",
+        "stamppdf/getpdf.jsp",
         "download=true",
         "article-pdf",
         "/upload/pdf/",
@@ -2061,9 +2069,13 @@ def _attempt_elsevier_two_step_click_download(
     logger=None,
     allow_doi_reentry: bool = True,
     allow_headless_fresh_tab_recovery: bool = True,
-) -> bool:
+    return_page: bool = False,
+):
+    def _ret(ok: bool, current_page):
+        return (ok, current_page) if return_page else ok
+
     if page is None:
-        return False
+        return _ret(False, page)
     _dismiss_cookie_or_consent_banner(page, logger=logger)
     doi_norm = str(doi or "").strip().lower()
     target_pii = _extract_elsevier_target_pii(page)
@@ -2073,7 +2085,7 @@ def _attempt_elsevier_two_step_click_download(
     if not target_pii and not doi_norm:
         if logger:
             logger.info("        [Elsevier] 타겟 식별자 부족으로 클릭 플로우 스킵")
-        return False
+        return _ret(False, page)
 
     def _context_guard() -> bool:
         cur = str(getattr(page, "url", "") or "").lower()
@@ -2219,11 +2231,11 @@ def _attempt_elsevier_two_step_click_download(
     ):
         if logger:
             logger.info(f"        [Elsevier] 1단계 클릭으로 다운로드 성공: {doi}")
-        return True
+        return _ret(True, page)
     if _finalize_existing_downloads_in_dir(tmp_dir, tmp_path, logger=logger, downloaded_file_guard=_file_guard):
         if logger:
             logger.info(f"        [Elsevier] 1단계 지연 다운로드 정리 성공: {doi}")
-        return True
+        return _ret(True, page)
 
     # View PDF가 새 탭으로 열리는 케이스 대응
     page = _adopt_elsevier_target_tab(page, doi_norm=doi_norm, target_pii=target_pii, logger=logger)
@@ -2253,7 +2265,7 @@ def _attempt_elsevier_two_step_click_download(
         ):
             if logger:
                 logger.info(f"        [Elsevier] overlay 정리 후 재클릭 성공: {doi}")
-            return True
+            return _ret(True, page)
         page = _adopt_elsevier_target_tab(page, doi_norm=doi_norm, target_pii=target_pii, logger=logger)
         _dismiss_cookie_or_consent_banner(page, logger=logger)
         _dismiss_elsevier_aux_overlays(page, logger=logger)
@@ -2266,7 +2278,7 @@ def _attempt_elsevier_two_step_click_download(
     ):
         if logger:
             logger.info(f"        [Elsevier] signed PDF viewer URL 다운로드 성공: {doi}")
-        return True
+        return _ret(True, page)
 
     # 2) viewer/pdfft 상태라면 Download 버튼 한 번 더 클릭
     current_url = str(page.url or "").lower()
@@ -2298,11 +2310,11 @@ def _attempt_elsevier_two_step_click_download(
         ):
             if logger:
                 logger.info(f"        [Elsevier] 2단계 클릭으로 다운로드 성공: {doi}")
-            return True
+            return _ret(True, page)
         if _finalize_existing_downloads_in_dir(tmp_dir, tmp_path, logger=logger, downloaded_file_guard=_file_guard):
             if logger:
                 logger.info(f"        [Elsevier] 2단계 지연 다운로드 정리 성공: {doi}")
-            return True
+            return _ret(True, page)
 
     # Headless에서는 article shell이 떠도 View PDF가 dead control로 남는 경우가 있다.
     # 이때는 현재 탭에서 pdfft fallback으로 바로 내려가면 403이 자주 발생하므로
@@ -2330,7 +2342,7 @@ def _attempt_elsevier_two_step_click_download(
                     _dismiss_cookie_or_consent_banner(temp_page, logger=logger)
                     _dismiss_elsevier_aux_overlays(temp_page, logger=logger)
                     _wait_for_elsevier_article_ready(temp_page, doi_norm, logger=logger, timeout_s=12)
-                    if _attempt_elsevier_two_step_click_download(
+                    nested_ok, temp_page = _attempt_elsevier_two_step_click_download(
                         temp_page,
                         doi_norm,
                         tmp_dir,
@@ -2338,19 +2350,21 @@ def _attempt_elsevier_two_step_click_download(
                         logger=logger,
                         allow_doi_reentry=False,
                         allow_headless_fresh_tab_recovery=False,
-                    ):
+                        return_page=True,
+                    )
+                    if nested_ok:
                         if logger:
                             logger.info(
                                 f"        [Elsevier] fresh-tab recovery 성공: candidate {idx + 1}"
                             )
-                        return True
+                        return _ret(True, temp_page)
                 except Exception as e:
                     if logger:
                         logger.info(f"        [Elsevier] fresh-tab recovery 실패(계속): {e}")
                 finally:
                     _close_temporary_tab(page, temp_page)
                     _close_new_tabs_since(page, baseline_tab_ids)
-    return False
+    return _ret(False, page)
 
 
 def _has_article_signal(title: str = "", html: str = "") -> bool:
@@ -2420,6 +2434,70 @@ def _has_cookie_or_consent_signal(title: str = "", html: str = "") -> bool:
     return any(m in blob for m in markers)
 
 
+def _has_purchase_or_institutional_gate_signal(title: str = "", html: str = "") -> bool:
+    blob = f"{title or ''} {html or ''}".lower()
+    institutional_markers = (
+        "full text access may be available",
+        "organizational sign in",
+        "organizational username",
+        "organizational password",
+        "institutional sign in",
+        "select your institution to access",
+        "sign in with credentials provided by your organization",
+        "sign in with username and password",
+        "access the spie digital library",
+        "provided by your organization",
+        "access through your institution",
+        "sign in through your institution",
+        "institutional login",
+        "shibboleth",
+        "openathens",
+    )
+    purchase_markers = (
+        "purchase this content",
+        "purchase single article",
+        "purchase article",
+        "purchase instant access",
+        "buy this article",
+        "subscribe to digital library",
+        "subscribe to this journal",
+        "subscription required",
+        "pay per view",
+        "rent this article",
+        "add to cart",
+    )
+    institutional_hits = sum(1 for m in institutional_markers if m in blob)
+    purchase_hits = sum(1 for m in purchase_markers if m in blob)
+    return institutional_hits >= 3 or (institutional_hits >= 2 and purchase_hits >= 1) or purchase_hits >= 2
+
+
+def _has_bot_wall_text_signal(title: str = "", html: str = "") -> bool:
+    blob = f"{title or ''} {html or ''}".lower()
+    if "pardon our interruption" in blob:
+        return True
+
+    support_markers = (
+        "as you were browsing",
+        "super-human speed",
+        "third-party browser plugin",
+        "ghostery or noscript",
+        "preventing javascript from running",
+        "cookies and javascript are enabled before reloading the page",
+    )
+    support_hits = sum(1 for m in support_markers if m in blob)
+    if support_hits >= 2:
+        return True
+
+    other_bot_markers = (
+        "validate user",
+        "verify you are human",
+        "are you a robot",
+        "unusual traffic",
+        "request blocked",
+    )
+    return any(m in blob for m in other_bot_markers)
+
+
 def _wait_for_spie_article_ready(page, logger=None, timeout_s: int = 10) -> bool:
     if page is None:
         return False
@@ -2439,17 +2517,11 @@ def _wait_for_spie_article_ready(page, logger=None, timeout_s: int = 10) -> bool
         except Exception:
             return False
         last_title = title or last_title
-        blob = f"{title}\n{html}".lower()
-        if any(
-            marker in blob
-            for marker in (
-                "pardon our interruption",
-                "as you were browsing",
-                "super-human speed",
-                "ghostery",
-                "noscript",
-            )
-        ):
+        if _has_purchase_or_institutional_gate_signal(title=title, html=html):
+            if logger:
+                logger.info("        [SPIE] access-control modal 감지 -> rights gate로 계속 진행")
+            return True
+        if _has_bot_wall_text_signal(title=title, html=html):
             if logger:
                 logger.info("        [SPIE] bot wall 감지 -> article ready 대기 종료")
             return False
@@ -2522,26 +2594,13 @@ def _classify_access_gate(title: str = "", html: str = "") -> str:
     if any(m in blob for m in hard_rights_markers):
         return "hard_rights"
 
-    strong_bot_like_markers = (
-        "pardon our interruption",
-        "as you were browsing",
-        "validate user",
-        "unusual traffic",
-        "request blocked",
-        "verify you are human",
-        "are you a robot",
-        "super-human speed",
-        "ghostery",
-        "noscript",
-        "cookies and javascript are enabled before reloading the page",
-    )
     weak_bot_like_markers = (
         "security check",
         "too many requests",
         "access denied",
         "forbidden",
     )
-    if any(m in blob for m in strong_bot_like_markers):
+    if _has_bot_wall_text_signal(title=title, html=html):
         return "bot_like"
     weak_hits = [m for m in weak_bot_like_markers if m in blob]
     if weak_hits:
@@ -2553,24 +2612,36 @@ def _classify_access_gate(title: str = "", html: str = "") -> str:
 
     login_markers = (
         "institutional login",
+        "institutional sign in",
+        "organizational sign in",
+        "organizational username",
+        "organizational password",
         "sign in through your institution",
+        "sign in with credentials provided by your organization",
         "log in to wiley online library",
         "access through your institution",
+        "select your institution to access",
         "shibboleth",
         "openathens",
     )
     paywall_markers = (
+        "purchase this content",
         "purchase instant access",
         "purchase article",
+        "purchase single article",
         "buy this article",
         "get access to the full version of this article",
+        "subscribe to digital library",
         "subscribe to this journal",
         "subscription required",
         "pay per view",
         "rent this article",
+        "add to cart",
     )
     login_hit = any(m in blob for m in login_markers)
     paywall_hits = sum(1 for m in paywall_markers if m in blob)
+    if _has_purchase_or_institutional_gate_signal(title=title, html=html):
+        return "soft_gate"
 
     # 기사/DOI/PDF 시그널이 있는 정상 랜딩에서 네비 메뉴 문구만으로 권한 실패를 내지 않도록 보수 처리
     if article_like or pdf_action_like:
@@ -2819,7 +2890,7 @@ def _collect_pdf_candidate_urls_from_page(page, logger=None) -> list:
     try:
         links = _eles_quick(
             page,
-            "xpath://a[contains(@href,'.pdf') or contains(@href,'/pdfft') or contains(@href,'/doi/pdf') or contains(@href,'article-pdf') or contains(@href,'stamp.jsp')]",
+            "xpath://a[contains(@href,'.pdf') or contains(@href,'/pdfft') or contains(@href,'/doi/pdf') or contains(@href,'article-pdf') or contains(@href,'stamp.jsp') or contains(translate(@href,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'stamppdf/getpdf.jsp')]",
             timeout=0.3,
         )
         for link in links[:12]:
@@ -2929,10 +3000,29 @@ def _should_soft_continue_issue(
     return False
 
 
+def _has_doi_not_found_signal(title: str = "", html: str = "", url: str = "", domain: str = "") -> bool:
+    t = (title or "").lower()
+    h = (html or "").lower()
+    u = (url or "").lower()
+    d = (domain or "").lower()
+    if (not d) and u:
+        d = _extract_domain(u)
+    if "doi.org" not in d and "doi.org" not in u:
+        return False
+
+    markers = (
+        "doi not found",
+        "this doi cannot be found in the doi system",
+        "the doi has not been activated yet",
+        "report an error",
+    )
+    return any(marker in t or marker in h for marker in markers)
+
+
 def detect_access_issue(title: str = "", html: str = "", http_status: int = None, url: str = "", domain: str = ""):
     """
     캡차/차단 신호를 감지해 (reason, evidence)를 반환.
-    reason: FAIL_CAPTCHA | FAIL_BLOCK | FAIL_ACCESS_RIGHTS | None
+    reason: FAIL_CAPTCHA | FAIL_BLOCK | FAIL_ACCESS_RIGHTS | FAIL_DOI_NOT_FOUND | None
     """
     t = (title or "").lower()
     h = (html or "").lower()
@@ -2962,6 +3052,11 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
     if ("pubs.aip.org" in d) and ("__cf_chl_rt_tk=" in u):
         evidence.append("url_marker=aip_cloudflare_challenge")
         return "FAIL_BLOCK", evidence
+    if _has_doi_not_found_signal(title=title, html=html, url=url, domain=d):
+        evidence.append("keyword=doi_not_found")
+        if "doi.org" in d or "doi.org" in u:
+            evidence.append("domain=doi.org")
+        return "FAIL_DOI_NOT_FOUND", evidence
 
     if auth_required_like:
         if rich_article_abstract or (article_like and pdf_action_like):
@@ -3016,8 +3111,9 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
         "verify you are human",
         "are you a robot",
         "super-human speed",
-        "ghostery",
-        "noscript",
+        "ghostery or noscript",
+        "third-party browser plugin",
+        "preventing javascript from running",
         "cookies and javascript are enabled before reloading the page",
     ]
     html_block_markers = [
@@ -3042,6 +3138,9 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
 
     for kw in title_block_keywords:
         if kw in t:
+            if kw in ("attention required", "access denied") and _has_purchase_or_institutional_gate_signal(title=title, html=html):
+                evidence.append(f"soft_keyword={kw}")
+                continue
             if kw in ("forbidden", "too many requests", "security check") and (article_like or pdf_action_like or consent_like):
                 evidence.append(f"soft_keyword={kw}")
                 continue
@@ -3975,6 +4074,11 @@ def download_with_drission(
             )
             # 요청사항 반영:
             # hard-fail 판단은 landing 단계에서만 수행하고, 이후 단계는 다운로드 시도까지 진행한다.
+            if issue == "FAIL_DOI_NOT_FOUND":
+                if logger:
+                    logger.warning(f"        landing 단계 DOI 미등록 감지로 중단: {evidence}")
+                _set_landing_state("doi_not_found", False)
+                return _ret(False, issue, evidence, stage="landing")
             if issue == "FAIL_ACCESS_RIGHTS":
                 if logger:
                     logger.warning(f"        landing 단계 접근권한 필요 감지로 중단: {evidence}")
@@ -4004,14 +4108,20 @@ def download_with_drission(
 
             if is_elsevier_landing and mode == "first":
                 logger.info(f"        [Elsevier] 2단계 클릭 다운로드 우선 시도: {doi_norm}")
-                if _attempt_elsevier_two_step_click_download(
+                elsevier_click_ok, page = _attempt_elsevier_two_step_click_download(
                     page=page,
                     doi=doi_norm,
                     tmp_dir=browser_tmp_dir,
                     tmp_path=tmp_save_path,
                     logger=logger,
                     allow_doi_reentry=False,
-                ):
+                    return_page=True,
+                )
+                current_domain = _extract_domain(page.url)
+                referer_url = page.url
+                page_title = page.title or ""
+                page_html = page.html or ""
+                if elsevier_click_ok:
                     if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
                         return _ret(True, "SUCCESS", stage="elsevier-two-step-click")
                 logger.info("        [Elsevier] 클릭 플로우 실패, 기존 다운로드 경로로 계속")
@@ -4080,6 +4190,8 @@ def download_with_drission(
                 url=page.url or "",
                 domain=current_domain,
             )
+            if issue == "FAIL_DOI_NOT_FOUND":
+                return _ret(False, issue, evidence, stage="pdf-discovery")
             if issue == "FAIL_ACCESS_RIGHTS":
                 return _ret(False, issue, evidence, stage="pdf-discovery")
             if issue in ("FAIL_CAPTCHA", "FAIL_BLOCK") and logger:
@@ -4108,9 +4220,28 @@ def download_with_drission(
                         current_domain = _extract_domain(powdermat_article_url) or current_domain
                     if pdf_url and logger:
                         logger.info(f"        [Powdermat] DOI 기반 direct PDF URL 복구: {pdf_url}")
+
+            ieee_fastpath_url_ready = False
+            pdf_url_domain = _extract_domain(pdf_url) if pdf_url else ""
+            if pdf_url and (
+                "ieeexplore.ieee.org" in str(current_domain or "").lower()
+                or "ieeexplore.ieee.org" in pdf_url_domain
+            ):
+                pdf_low = str(pdf_url or "").lower()
+                ieee_fastpath_url_ready = any(
+                    token in pdf_low
+                    for token in (
+                        "stamppdf/getpdf.jsp",
+                        "/ielx",
+                        ".pdf",
+                        "arnumber=",
+                    )
+                )
+                if ieee_fastpath_url_ready and logger:
+                    logger.info("        [IEEE] real PDF URL 확보 -> 버튼 클릭 우선 시도 생략")
             
             # 고차단 도메인은 실제 사용자 행동과 유사하게 버튼 클릭 다운로드를 우선 시도
-            if high_friction and pdf_btn and (not is_acs) and (not is_sciencedirect):
+            if high_friction and pdf_btn and (not is_acs) and (not is_sciencedirect) and (not ieee_fastpath_url_ready):
                 btn_wait_s = 18 if mode == "deep" else (6 if is_sciencedirect else 12)
                 logger.info(f"        [Drission] 고차단 도메인({current_domain}) 버튼 클릭 다운로드 우선 시도")
                 click_ok, click_page = _try_click_pdf_button_download(
@@ -4184,6 +4315,31 @@ def download_with_drission(
 
                 if _is_valid_pdf(full_save_path):
                     return _ret(True, "SUCCESS", stage="already-downloaded")
+
+                if ieee_fastpath_url_ready:
+                    try:
+                        cookies_list = page.cookies()
+                        current_cookies = {c['name']: c['value'] for c in cookies_list}
+                    except Exception:
+                        current_cookies = {}
+                    logger.info("        [IEEE] fastpath cookie-aware 직접 회수 시도")
+                    ieee_cffi_result = download_with_cffi(
+                        pdf_url,
+                        full_save_path,
+                        referer=page.url,
+                        cookies=current_cookies,
+                        ua=_resolve_best_browser_ua(),
+                        logger=logger,
+                        return_detail=True,
+                        timeout=8,
+                    )
+                    if ieee_cffi_result.get("ok"):
+                        return _ret(True, "SUCCESS", stage="ieee-fastpath-cffi")
+                    if logger:
+                        logger.info(
+                            "        [IEEE] fastpath 직접 회수 실패 "
+                            f"(reason={ieee_cffi_result.get('reason') or 'unknown'}) -> 기본 다운로드 경로 계속"
+                        )
 
                 if not (is_acs and mode == "first"):
                     # Drissionpage 자체 다운로드 먼저 시도

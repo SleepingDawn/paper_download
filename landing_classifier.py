@@ -15,6 +15,7 @@ from tools_exp import normalize_publisher_label
 STATE_SUCCESS_LANDING = "success_landing"
 STATE_DIRECT_PDF_HANDOFF = "direct_pdf_handoff"
 STATE_CHALLENGE_DETECTED = "challenge_detected"
+STATE_DOI_NOT_FOUND = "doi_not_found"
 STATE_BLANK_OR_INCOMPLETE = "blank_or_incomplete"
 STATE_CONSENT_OR_INTERSTITIAL_BLOCK = "consent_or_interstitial_block"
 STATE_BROKEN_JS_SHELL = "broken_js_shell"
@@ -27,6 +28,7 @@ STATE_UNKNOWN_NON_SUCCESS = "unknown_non_success"
 SUCCESS_STATES = {STATE_SUCCESS_LANDING, STATE_DIRECT_PDF_HANDOFF}
 NON_SUCCESS_STATES = {
     STATE_CHALLENGE_DETECTED,
+    STATE_DOI_NOT_FOUND,
     STATE_BLANK_OR_INCOMPLETE,
     STATE_CONSENT_OR_INTERSTITIAL_BLOCK,
     STATE_BROKEN_JS_SHELL,
@@ -976,6 +978,9 @@ def classify_landing(
         if issue == "FAIL_CAPTCHA":
             reason_codes.append("fail_captcha")
             state = STATE_CHALLENGE_DETECTED
+        elif issue == "FAIL_DOI_NOT_FOUND":
+            reason_codes.append("doi_not_found")
+            state = STATE_DOI_NOT_FOUND
         elif issue == "FAIL_ACCESS_RIGHTS":
             reason_codes.append("access_rights_gate")
             state = STATE_CONSENT_OR_INTERSTITIAL_BLOCK

@@ -37,6 +37,7 @@ REASON_SUCCESS = "SUCCESS"
 REASON_FAIL_CAPTCHA = "FAIL_CAPTCHA"
 REASON_FAIL_BLOCK = "FAIL_BLOCK"
 REASON_FAIL_ACCESS_RIGHTS = "FAIL_ACCESS_RIGHTS"
+REASON_FAIL_DOI_NOT_FOUND = "FAIL_DOI_NOT_FOUND"
 REASON_FAIL_WRONG_MIME = "FAIL_WRONG_MIME"
 REASON_FAIL_VIEWER_HTML = "FAIL_VIEWER_HTML"
 REASON_FAIL_HTTP_STATUS = "FAIL_HTTP_STATUS"
@@ -54,6 +55,7 @@ FAILURE_REASON_ORDER = [
     REASON_FAIL_CAPTCHA,
     REASON_FAIL_BLOCK,
     REASON_FAIL_ACCESS_RIGHTS,
+    REASON_FAIL_DOI_NOT_FOUND,
     REASON_FAIL_WRONG_MIME,
     REASON_FAIL_VIEWER_HTML,
     REASON_FAIL_HTTP_STATUS,
@@ -71,6 +73,17 @@ PACING_PROFILE_OVERRIDES = {
         "cooldown_multiplier_deep": 4.0,
         "global_spacing_multiplier": 2.0,
     },
+}
+
+NON_RETRYABLE_TERMINAL_REASONS = {
+    REASON_FAIL_CAPTCHA,
+    REASON_FAIL_BLOCK,
+    REASON_FAIL_ACCESS_RIGHTS,
+    REASON_FAIL_DOI_NOT_FOUND,
+}
+NON_DEEP_RETRY_REASONS = {
+    REASON_FAIL_ACCESS_RIGHTS,
+    REASON_FAIL_DOI_NOT_FOUND,
 }
 
 
@@ -199,6 +212,8 @@ def _normalize_reason(reason: Optional[str], http_status: Optional[int] = None) 
         return REASON_FAIL_NO_CANDIDATE
     if reason == "FAIL_ACCESS_RIGHTS":
         return REASON_FAIL_ACCESS_RIGHTS
+    if reason == "FAIL_DOI_NOT_FOUND":
+        return REASON_FAIL_DOI_NOT_FOUND
     if reason == "FAIL_BLOCK":
         return REASON_FAIL_HTTP_STATUS if http_status else REASON_FAIL_BLOCK
     return reason
@@ -308,6 +323,8 @@ def _download_result_to_pacing_state(result: Dict[str, Any]) -> str:
     reason = str(result.get("reason") or "")
     if reason in (REASON_FAIL_CAPTCHA, REASON_FAIL_BLOCK):
         return STATE_CHALLENGE_DETECTED
+    if reason == REASON_FAIL_DOI_NOT_FOUND:
+        return "doi_not_found"
     return str(result.get("landing_state") or "")
 
 
@@ -552,7 +569,7 @@ def download_process_worker(
                 return last_result
 
             reason = last_result.get("reason")
-            if reason in (REASON_FAIL_CAPTCHA, REASON_FAIL_BLOCK, REASON_FAIL_ACCESS_RIGHTS):
+            if reason in NON_RETRYABLE_TERMINAL_REASONS:
                 return last_result
 
             if reason == REASON_FAIL_TIMEOUT_NETWORK and network_try < network_retry_limit:
@@ -656,7 +673,11 @@ def _deep_retry(
     pacing_state,
     pacing_lock,
 ) -> List[Dict[str, Any]]:
-    failed_indices = [i for i, r in enumerate(first_pass_results) if not r.get("success")]
+    failed_indices = [
+        i
+        for i, r in enumerate(first_pass_results)
+        if (not r.get("success")) and (str(r.get("reason") or "") not in NON_DEEP_RETRY_REASONS)
+    ]
     deep_results: List[Dict[str, Any]] = []
 
     if not failed_indices:
