@@ -19,7 +19,6 @@ from landing_classifier import (
     reorder_inputs_for_pacing,
     reserve_pacing_slot,
 )
-from openalex_search import main_search
 from tools_exp import (
     _sanitize_doi_to_filename,
     coerce_headless_for_execution_env,
@@ -27,6 +26,7 @@ from tools_exp import (
     download_with_cffi,
     download_with_drission,
     normalize_publisher_label,
+    reap_stale_drission_orphan_browsers,
     resolve_browser_execution_env,
     resolve_browser_executable,
     setup_logger,
@@ -74,6 +74,19 @@ PACING_PROFILE_OVERRIDES = {
         "global_spacing_multiplier": 2.0,
     },
 }
+
+
+def _resolve_worker_max_tasks_per_child() -> Optional[int]:
+    raw = os.getenv("PDF_WORKER_MAX_TASKS_PER_CHILD", "25").strip()
+    if not raw:
+        return 25
+    try:
+        value = int(raw)
+    except ValueError:
+        return 25
+    if value <= 0:
+        return None
+    return max(1, value)
 
 NON_RETRYABLE_TERMINAL_REASONS = {
     REASON_FAIL_CAPTCHA,
@@ -614,13 +627,17 @@ def _first_pass(
     global_start_spacing_sec: float,
     jitter_min_sec: float,
     jitter_max_sec: float,
+    worker_max_tasks_per_child: Optional[int],
     pacing_state,
     pacing_lock,
 ) -> List[Dict[str, Any]]:
     rows = _prepare_download_records(df)
     results: List[Dict[str, Any]] = [None] * len(rows)
 
-    with ProcessPoolExecutor(max_workers=max_workers) as executor:
+    with ProcessPoolExecutor(
+        max_workers=max_workers,
+        max_tasks_per_child=worker_max_tasks_per_child,
+    ) as executor:
         future_to_index = {
             executor.submit(
                 download_process_worker,
@@ -1078,6 +1095,9 @@ def main(
 ):
     start_time = time.time()
     max_workers = max(1, min(int(max_workers), SAFE_MAX_WORKERS))
+    worker_max_tasks_per_child = _resolve_worker_max_tasks_per_child()
+    startup_orphan_reaped = 0
+    shutdown_orphan_reaped = 0
 
     run_output_dir = _resolve_run_output_dir(output_dir)
     pdf_root_dir = _resolve_pdf_output_dir(pdf_output_dir, run_output_dir)
@@ -1091,6 +1111,7 @@ def main(
     os.makedirs(ca_pdf_dir, exist_ok=True)
     os.makedirs(oa_artifact_dir, exist_ok=True)
     os.makedirs(ca_artifact_dir, exist_ok=True)
+    startup_orphan_reaped = reap_stale_drission_orphan_browsers(current_pid=os.getpid())
 
     failed_jsonl_path = os.path.join(run_output_dir, "failed_papers.jsonl")
     summary_json_path = os.path.join(run_output_dir, "summary.json")
@@ -1120,13 +1141,18 @@ def main(
         else query
     )
 
-    csv_path = doi_path or main_search(
-        run_output_dir,
-        "Searched_DOIs.csv",
-        ta_query,
-        max_num=max_num,
-        citation_percentile=citation_percentile,
-    )
+    if doi_path:
+        csv_path = doi_path
+    else:
+        from openalex_search import main_search
+
+        csv_path = main_search(
+            run_output_dir,
+            "Searched_DOIs.csv",
+            ta_query,
+            max_num=max_num,
+            citation_percentile=citation_percentile,
+        )
     df = pd.read_csv(csv_path)
 
     print(f"\n중복 및 doi 누락 제거 전 논문 수: {len(df)}건")
@@ -1134,6 +1160,12 @@ def main(
     df = df.dropna(subset=["doi_lower"]).drop_duplicates(subset=["doi_lower"]).drop(columns=["doi_lower"])
     print(f"전처리 후 남은 전체 논문 수: {len(df)}건")
     print(f"다운로드 동시성(max_workers): {max_workers} (상한={SAFE_MAX_WORKERS})")
+    print(
+        "worker recycle(max_tasks_per_child): "
+        f"{worker_max_tasks_per_child if worker_max_tasks_per_child is not None else 'disabled'}"
+    )
+    if startup_orphan_reaped:
+        print(f"시작 전 stale headless Chrome 정리: {startup_orphan_reaped}개")
 
     requested_headless = _env_flag("PDF_BROWSER_HEADLESS", 0) if headless is None else bool(headless)
     requested_deep_retry_headless = requested_headless if deep_retry_headless is None else bool(deep_retry_headless)
@@ -1205,6 +1237,7 @@ def main(
             global_start_spacing_sec=float(global_start_spacing_sec),
             jitter_min_sec=float(jitter_min_sec),
             jitter_max_sec=float(jitter_max_sec),
+            worker_max_tasks_per_child=worker_max_tasks_per_child,
             pacing_state=pacing_state,
             pacing_lock=pacing_lock,
         )
@@ -1310,6 +1343,7 @@ def main(
     failed_csv_path = os.path.join(run_output_dir, "failed_papers.csv")
     failed_df.to_csv(failed_csv_path, index=False, encoding="utf-8-sig")
 
+    shutdown_orphan_reaped = reap_stale_drission_orphan_browsers(current_pid=os.getpid())
     live_metrics = _summarize_live_attempt_metrics(attempts_jsonl_path, attempts_summary_path)
     integrated_landing_metrics = _summarize_integrated_landing(final_results)
 
@@ -1342,6 +1376,7 @@ def main(
             "global_start_spacing_sec": float(global_start_spacing_sec),
             "jitter_min_sec": float(jitter_min_sec),
             "jitter_max_sec": float(jitter_max_sec),
+            "worker_max_tasks_per_child": worker_max_tasks_per_child,
         },
         "landing_precheck": landing_precheck_metrics,
         "integrated_landing": integrated_landing_metrics,
@@ -1391,6 +1426,10 @@ def main(
             "metadata_root_dir": metadata_manifest.get("root_dir", metadata_dir),
         },
         "metadata_sidecars": metadata_manifest,
+        "process_cleanup": {
+            "startup_orphan_reaped": int(startup_orphan_reaped),
+            "shutdown_orphan_reaped": int(shutdown_orphan_reaped),
+        },
     }
 
     with open(summary_json_path, "w", encoding="utf-8") as f:
@@ -1405,6 +1444,11 @@ def main(
     print(f"실패 로그(JSONL): {failed_jsonl_path}")
     print(f"요약(JSON): {summary_json_path}")
     print(f"메타데이터(JSON) 경로: {metadata_manifest.get('root_dir', metadata_dir)}")
+    if startup_orphan_reaped or shutdown_orphan_reaped:
+        print(
+            "stale headless Chrome 정리: "
+            f"start={int(startup_orphan_reaped)}, end={int(shutdown_orphan_reaped)}"
+        )
     print("=" * 60)
 
 

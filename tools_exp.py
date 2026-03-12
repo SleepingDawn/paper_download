@@ -1,5 +1,6 @@
 import os
 import re
+import signal
 import sys
 import time
 import shutil
@@ -80,6 +81,222 @@ def _exc_message(exc) -> str:
         return str(exc)
     except Exception:
         return repr(exc)
+
+
+def _maybe_import_psutil():
+    try:
+        import psutil  # type: ignore
+
+        return psutil
+    except Exception:
+        return None
+
+
+def _other_download_runner_active(current_pid: Any = None) -> bool:
+    psutil = _maybe_import_psutil()
+    if psutil is None:
+        return False
+    try:
+        current_pid_int = int(current_pid) if current_pid is not None else os.getpid()
+    except Exception:
+        current_pid_int = os.getpid()
+
+    runner_markers = ("parallel_download.py", "landing_access_repro.py")
+    for proc in psutil.process_iter(["pid", "cmdline"]):
+        try:
+            pid = int(proc.info.get("pid") or 0)
+            if pid <= 0 or pid == current_pid_int:
+                continue
+            cmdline = proc.info.get("cmdline") or []
+            cmd = " ".join(str(part) for part in cmdline if part)
+            if any(marker in cmd for marker in runner_markers):
+                return True
+        except Exception:
+            continue
+    return False
+
+
+def _process_exists(pid: Any) -> bool:
+    try:
+        pid_int = int(pid)
+    except Exception:
+        return False
+    if pid_int <= 0:
+        return False
+    try:
+        os.kill(pid_int, 0)
+        return True
+    except OSError:
+        return False
+
+
+def _kill_process_tree(pid: Any, logger=None, reason: str = "") -> int:
+    try:
+        pid_int = int(pid)
+    except Exception:
+        return 0
+    if pid_int <= 0 or pid_int == os.getpid():
+        return 0
+
+    psutil = _maybe_import_psutil()
+    killed = 0
+    if psutil is not None:
+        try:
+            proc = psutil.Process(pid_int)
+        except Exception:
+            return 0
+
+        targets = []
+        try:
+            targets.extend(proc.children(recursive=True))
+        except Exception:
+            pass
+        targets.append(proc)
+
+        seen = set()
+        ordered = []
+        for target in reversed(targets):
+            try:
+                target_pid = int(target.pid)
+            except Exception:
+                continue
+            if target_pid in seen or target_pid == os.getpid():
+                continue
+            seen.add(target_pid)
+            ordered.append(target)
+
+        for target in ordered:
+            try:
+                target.kill()
+                killed += 1
+            except Exception:
+                pass
+
+        if ordered:
+            try:
+                psutil.wait_procs(ordered, timeout=1.0)
+            except Exception:
+                pass
+        if logger and killed:
+            suffix = f" ({reason})" if reason else ""
+            logger.info(f"     [Drission] 브라우저 프로세스 강제 종료: {killed}개 pid-tree 정리{suffix}")
+        return killed
+
+    try:
+        os.kill(pid_int, signal.SIGKILL)
+        killed = 1
+    except Exception:
+        killed = 0
+    if logger and killed:
+        suffix = f" ({reason})" if reason else ""
+        logger.info(f"     [Drission] 브라우저 프로세스 강제 종료: pid={pid_int}{suffix}")
+    return killed
+
+
+def _is_drission_browser_root_command(cmd: str) -> bool:
+    low = str(cmd or "").lower()
+    if not low:
+        return False
+    if "--remote-debugging-port=" not in low:
+        return False
+    if "drissionpage/autop" not in low and "drissionpage/autoportdata" not in low:
+        return False
+    return "helper" not in low
+
+
+def _kill_browser_processes_by_user_data_dir(user_data_dir: str, logger=None, only_orphans: bool = False) -> int:
+    target_dir = os.path.abspath(str(user_data_dir or "").strip())
+    if not target_dir:
+        return 0
+
+    psutil = _maybe_import_psutil()
+    if psutil is None:
+        return 0
+
+    killed = 0
+    for proc in psutil.process_iter(["pid", "ppid", "cmdline"]):
+        try:
+            cmdline = proc.info.get("cmdline") or []
+            cmd = " ".join(str(part) for part in cmdline if part)
+            if not cmd:
+                continue
+            if target_dir not in cmd:
+                continue
+            if not _is_drission_browser_root_command(cmd):
+                continue
+            if only_orphans and int(proc.info.get("ppid") or 0) != 1:
+                continue
+            killed += _kill_process_tree(proc.info.get("pid"), logger=logger, reason=f"user-data-dir={target_dir}")
+        except Exception:
+            continue
+    return killed
+
+
+def _collect_browser_cleanup_hints(page, session_plan: Dict[str, Any] = None) -> Dict[str, Any]:
+    hints = {
+        "browser_pid": None,
+        "user_data_dir": "",
+    }
+    if session_plan:
+        hints["user_data_dir"] = str(session_plan.get("user_data_dir") or "").strip()
+
+    browser = None
+    try:
+        browser = getattr(page, "browser", None)
+    except Exception:
+        browser = None
+
+    if browser is not None:
+        try:
+            pid = getattr(browser, "process_id", None)
+            if pid:
+                hints["browser_pid"] = int(pid)
+        except Exception:
+            pass
+        try:
+            options = getattr(browser, "_chromium_options", None)
+            user_data_dir = getattr(options, "user_data_path", None) if options is not None else None
+            if user_data_dir:
+                hints["user_data_dir"] = str(user_data_dir).strip()
+        except Exception:
+            pass
+
+    return hints
+
+
+def reap_stale_drission_orphan_browsers(logger=None, current_pid: Any = None, min_age_sec: float = None) -> int:
+    psutil = _maybe_import_psutil()
+    if psutil is None:
+        return 0
+    if _other_download_runner_active(current_pid=current_pid):
+        if logger:
+            logger.info("     [Drission] 다른 다운로드 runner가 활성 상태여서 stale browser 정리를 건너뜁니다.")
+        return 0
+
+    if min_age_sec is None:
+        try:
+            min_age_sec = float(os.getenv("PDF_STALE_BROWSER_MIN_AGE_SEC", "120"))
+        except Exception:
+            min_age_sec = 120.0
+    min_age_sec = max(0.0, float(min_age_sec or 0.0))
+
+    killed = 0
+    now = time.time()
+    for proc in psutil.process_iter(["pid", "ppid", "cmdline", "create_time"]):
+        try:
+            if int(proc.info.get("ppid") or 0) != 1:
+                continue
+            create_time = float(proc.info.get("create_time") or 0.0)
+            if create_time and (now - create_time) < min_age_sec:
+                continue
+            cmdline = proc.info.get("cmdline") or []
+            cmd = " ".join(str(part) for part in cmdline if part)
+            if not _is_drission_browser_root_command(cmd):
+                continue
+            killed += _kill_process_tree(proc.info.get("pid"), logger=logger, reason="stale-orphan")
+        except Exception:
+            continue
+    return killed
 
 
 def _is_browser_disconnect_error(exc) -> bool:
@@ -752,21 +969,66 @@ def _extract_domain(url: str) -> str:
         return ""
 
 
-def _close_page_safely(page, logger=None):
+def _close_page_safely(page, logger=None, session_plan: Dict[str, Any] = None):
     if page is None:
+        if session_plan:
+            _kill_browser_processes_by_user_data_dir(
+                str(session_plan.get("user_data_dir") or ""),
+                logger=logger,
+                only_orphans=False,
+            )
         return
+
+    hints = _collect_browser_cleanup_hints(page, session_plan=session_plan)
+    browser_pid = hints.get("browser_pid")
+    user_data_dir = str(hints.get("user_data_dir") or "").strip()
+    close_errors = []
+
     try:
         quit_fn = getattr(page, "quit", None)
         if callable(quit_fn):
+            quit_fn(timeout=3, force=True)
+    except TypeError:
+        try:
             quit_fn()
-            return
-        close_fn = getattr(page, "close", None)
-        if callable(close_fn):
-            close_fn()
-            return
-    except Exception as e:
-        if logger:
-            logger.warning(f"     [Drission] 브라우저 종료 실패(무시): {e}")
+        except Exception as exc:
+            close_errors.append(exc)
+    except Exception as exc:
+        close_errors.append(exc)
+
+    if close_errors:
+        try:
+            browser = getattr(page, "browser", None)
+            browser_quit = getattr(browser, "quit", None) if browser is not None else None
+            if callable(browser_quit):
+                browser_quit(timeout=3, force=True)
+                close_errors.clear()
+        except TypeError:
+            try:
+                browser_quit()
+                close_errors.clear()
+            except Exception as exc:
+                close_errors.append(exc)
+        except Exception as exc:
+            close_errors.append(exc)
+
+    if close_errors:
+        try:
+            close_fn = getattr(page, "close", None)
+            if callable(close_fn):
+                close_fn()
+        except Exception as exc:
+            close_errors.append(exc)
+
+    time.sleep(0.2)
+    if browser_pid and _process_exists(browser_pid):
+        _kill_process_tree(browser_pid, logger=logger, reason="post-quit-pid")
+    if user_data_dir:
+        _kill_browser_processes_by_user_data_dir(user_data_dir, logger=logger, only_orphans=False)
+
+    if close_errors and logger:
+        last_error = close_errors[-1]
+        logger.warning(f"     [Drission] 브라우저 종료 fallback 후 정리: {_exc_message(last_error)}")
 
 
 def _is_high_friction_domain(url_or_domain: str) -> bool:
@@ -3816,7 +4078,7 @@ def download_with_drission(
                 os.rmdir(browser_tmp_root)
         except Exception:
             pass
-        _close_page_safely(page, logger)
+        _close_page_safely(page, logger, session_plan=session_plan)
         _cleanup_browser_session_plan(session_plan, logger=logger)
         return payload
     
@@ -4520,7 +4782,7 @@ def download_with_drission(
         except BrowserDisconnectedError as e:
             logger.warning(f"        시도 {attempt} 브라우저 연결 종료: {e}")
             if page:
-                _close_page_safely(page, logger)
+                _close_page_safely(page, logger, session_plan=session_plan)
                 page = None
             if attempt >= max_attempts:
                 return _ret(False, "FAIL_TIMEOUT/NETWORK", [f"browser_disconnected: {e}"], stage="drission")
@@ -4530,7 +4792,7 @@ def download_with_drission(
             logger.warning(f"        시도 {attempt} 에러: {e}")
             # 에러 발생 시 브라우저 닫고 초기화 (다음 시도에서 재생성)
             if page:
-                _close_page_safely(page, logger)
+                _close_page_safely(page, logger, session_plan=session_plan)
                 page = None
             if attempt >= max_attempts:
                 return _ret(False, "FAIL_NETWORK", [str(e)], stage="drission")

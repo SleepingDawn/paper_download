@@ -3,12 +3,7 @@ import os
 import pandas as pd
 import time
 import requests
-from bs4 import BeautifulSoup
 from typing import Dict, List, Optional, Iterable, Any
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-import matplotlib.pyplot as plt
 
 OPENALEX_ENDPOINT = "https://api.openalex.org/works"
 MAX_NUM = 1000
@@ -202,18 +197,23 @@ def main_search(pdf_save_dir = None, csv_name = None, query = None, max_num = 10
     
     # 그래프로 시각화 
     if 'publication_year' in df.columns:
-        plt.figure(figsize=(10, 6))
-        year_counts.plot(kind='bar')
-        plt.title('Number of Selected Papers by Publication Year')
-        plt.xlabel('Publication Year')
-        plt.ylabel('Number of Papers')
-        plt.xticks(rotation=45)
-        plt.tight_layout()
-        plt.gca().invert_xaxis()
-        # plt.show()
-        fig_path = os.path.join(PDF_SAVE_DIR, 'selected_papers_by_year.png')
-        plt.savefig(fig_path)
-        plt.close()
+        try:
+            import matplotlib.pyplot as plt
+
+            plt.figure(figsize=(10, 6))
+            year_counts.plot(kind='bar')
+            plt.title('Number of Selected Papers by Publication Year')
+            plt.xlabel('Publication Year')
+            plt.ylabel('Number of Papers')
+            plt.xticks(rotation=45)
+            plt.tight_layout()
+            plt.gca().invert_xaxis()
+            # plt.show()
+            fig_path = os.path.join(PDF_SAVE_DIR, 'selected_papers_by_year.png')
+            plt.savefig(fig_path)
+            plt.close()
+        except Exception as exc:
+            print(f"연도별 그래프 생성을 건너뜁니다: {exc}")
     return CSV_PATH
 
 if __name__ == "__main__":
