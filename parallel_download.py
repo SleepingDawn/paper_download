@@ -101,6 +101,25 @@ SCHEDULER_TO_DOWNLOAD_LABEL = {
 
 API_SUPPORTED_PUBLISHERS = {"aip", "iop", "nature", "springer", "wiley"}
 
+
+def _resolve_worker_max_tasks_per_child() -> Optional[int]:
+    # macOS spawn + Manager proxy 조합에서는 worker recycle이 future 정리 단계에서
+    # 영구 대기를 유발할 수 있어 기본 비활성화한다.
+    if sys.platform == "darwin":
+        return None
+
+    raw = os.getenv("PDF_WORKER_MAX_TASKS_PER_CHILD", "").strip()
+    if not raw:
+        return None
+    try:
+        value = int(raw)
+    except ValueError:
+        return None
+    if value <= 0:
+        return None
+    return max(1, value)
+
+
 NON_RETRYABLE_TERMINAL_REASONS = {
     REASON_FAIL_CAPTCHA,
     REASON_FAIL_BLOCK,
@@ -406,10 +425,14 @@ def _single_download_attempt(
     filename = _sanitize_doi_to_filename(doi)
     full_path = os.path.join(pdf_save_dir, filename)
 
-    logger = setup_logger(artifact_dir, filename)
-    attempt_trace: List[Dict[str, Any]] = []
-
     if publisher == "arxiv" or "arxiv.org" in pdf_url_oa.lower() or doi.lower().startswith("10.1149/ma"):
+        skip_reason = "policy_skip"
+        if publisher == "arxiv" or "arxiv.org" in pdf_url_oa.lower():
+            skip_reason = "arxiv_managed_outside_pipeline"
+        elif doi.lower().startswith("10.1149/ma"):
+            skip_reason = "ecs_meeting_abstract_pattern"
+        logger = setup_logger(artifact_dir, filename)
+        logger.info(f"[Skip] 다운로드 생략: doi={doi}, reason={skip_reason}")
         return {
             **result,
             "status": "Skipped",
@@ -418,6 +441,9 @@ def _single_download_attempt(
             "success": True,
             "stage": "skip",
         }
+
+    logger = setup_logger(artifact_dir, filename)
+    attempt_trace: List[Dict[str, Any]] = []
 
     # 사용자 요청: Sci-Hub를 항상 최우선(1순위)으로 시도.
     try:
@@ -671,13 +697,17 @@ def _first_pass(
     global_start_spacing_sec: float,
     jitter_min_sec: float,
     jitter_max_sec: float,
+    worker_max_tasks_per_child: Optional[int],
     pacing_state,
     pacing_lock,
 ) -> List[Dict[str, Any]]:
     rows = _prepare_download_records(df)
     results: List[Dict[str, Any]] = [None] * len(rows)
 
-    with ProcessPoolExecutor(max_workers=max_workers) as executor:
+    with ProcessPoolExecutor(
+        max_workers=max_workers,
+        max_tasks_per_child=worker_max_tasks_per_child,
+    ) as executor:
         future_to_index = {
             executor.submit(
                 download_process_worker,
@@ -1018,6 +1048,7 @@ def main(
 ):
     start_time = time.time()
     max_workers = max(1, min(int(max_workers), SAFE_MAX_WORKERS))
+    worker_max_tasks_per_child = _resolve_worker_max_tasks_per_child()
 
     run_output_dir = _resolve_run_output_dir(output_dir)
     pdf_root_dir = _resolve_pdf_output_dir(pdf_output_dir, run_output_dir)
@@ -1074,6 +1105,10 @@ def main(
     df = df.dropna(subset=["doi_lower"]).drop_duplicates(subset=["doi_lower"]).drop(columns=["doi_lower"])
     print(f"전처리 후 남은 전체 논문 수: {len(df)}건")
     print(f"다운로드 동시성(max_workers): {max_workers} (상한={SAFE_MAX_WORKERS})")
+    print(
+        "worker recycle(max_tasks_per_child): "
+        f"{worker_max_tasks_per_child if worker_max_tasks_per_child is not None else 'disabled'}"
+    )
 
     requested_headless = _env_flag("PDF_BROWSER_HEADLESS", 0) if headless is None else bool(headless)
     requested_deep_retry_headless = requested_headless if deep_retry_headless is None else bool(deep_retry_headless)
@@ -1145,6 +1180,7 @@ def main(
             global_start_spacing_sec=float(global_start_spacing_sec),
             jitter_min_sec=float(jitter_min_sec),
             jitter_max_sec=float(jitter_max_sec),
+            worker_max_tasks_per_child=worker_max_tasks_per_child,
             pacing_state=pacing_state,
             pacing_lock=pacing_lock,
         )
@@ -1275,6 +1311,7 @@ def main(
             "global_start_spacing_sec": float(global_start_spacing_sec),
             "jitter_min_sec": float(jitter_min_sec),
             "jitter_max_sec": float(jitter_max_sec),
+            "worker_max_tasks_per_child": worker_max_tasks_per_child,
         },
         "landing_precheck": landing_precheck_metrics,
         "integrated_landing": integrated_landing_metrics,
