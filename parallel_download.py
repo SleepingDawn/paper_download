@@ -68,12 +68,38 @@ FAILURE_REASON_ORDER = [
 ]
 
 PACING_PROFILE_OVERRIDES = {
+    "elsevier": {
+        "cooldown_multiplier_first": 4.0,
+        "cooldown_multiplier_deep": 6.0,
+        "global_spacing_multiplier": 3.0,
+    },
     "spie": {
         "cooldown_multiplier_first": 2.5,
         "cooldown_multiplier_deep": 4.0,
         "global_spacing_multiplier": 2.0,
     },
 }
+
+SCHEDULER_TO_DOWNLOAD_LABEL = {
+    "acs": "ACS",
+    "aip": "AIP",
+    "aps": "APS",
+    "elsevier": "ELSEVIER",
+    "frontiers": "Frontiers",
+    "ieee": "IEEE",
+    "iop": "IOP",
+    "ivyspring": "Ivyspring",
+    "mdpi": "MDPI",
+    "nature": "Nature",
+    "optica": "Optica",
+    "powdermat": "Powdermat",
+    "rsc": "RSC",
+    "spie": "SPIE",
+    "taylor_and_francis": "Taylor & Francis",
+    "wiley": "WILEY",
+}
+
+API_SUPPORTED_PUBLISHERS = {"aip", "iop", "nature", "springer", "wiley"}
 
 NON_RETRYABLE_TERMINAL_REASONS = {
     REASON_FAIL_CAPTCHA,
@@ -137,6 +163,31 @@ def _domain_from_url(url: str) -> str:
         return (urlparse(url).netloc or "").lower()
     except Exception:
         return ""
+
+
+def _doi_prefix(doi: str) -> str:
+    norm = str(doi or "").strip().lower()
+    if "/" not in norm:
+        return ""
+    return norm.split("/", 1)[0]
+
+
+def _resolve_download_publisher_label(row_data: Dict[str, Any]) -> Optional[str]:
+    doi = str(row_data.get("doi", "") or "").strip()
+    raw_publisher = str(row_data.get("publisher", "") or "").strip()
+    scheduler_key = str(row_data.get("scheduler_publisher") or "").strip().lower()
+
+    normalized = normalize_publisher_label(raw_publisher, prefix=doi)
+    if normalized:
+        return normalized
+
+    if scheduler_key == "nature" and _doi_prefix(doi) == "10.1007":
+        return "Springer"
+
+    if scheduler_key:
+        return SCHEDULER_TO_DOWNLOAD_LABEL.get(scheduler_key)
+
+    return normalize_publisher_label("", prefix=doi)
 
 
 def _resolve_pacing_overrides(
@@ -350,7 +401,7 @@ def _single_download_attempt(
         result["evidence"] = ["missing_doi"]
         return result
 
-    publisher = normalize_publisher_label(str(row_data.get("publisher", "")))
+    publisher = _resolve_download_publisher_label(row_data)
     pdf_url_oa = str(row_data.get("pdf_url", "")).strip()
     filename = _sanitize_doi_to_filename(doi)
     full_path = os.path.join(pdf_save_dir, filename)
@@ -483,8 +534,8 @@ def _single_download_attempt(
         }
 
     publisher_key = (publisher or "").lower()
-    # Elsevier API 경로는 실효성이 낮고 브라우저 경로와 중복 비용이 커서 생략.
-    skip_api = publisher_key in {"elsevier"}
+    # 지원 함수가 없는 publisher, 그리고 Elsevier/ACS는 브라우저 쿠키 세션 경로를 우선한다.
+    skip_api = (publisher_key not in API_SUPPORTED_PUBLISHERS) or (publisher_key in {"elsevier", "acs"})
     if not skip_api:
         try:
             if download_using_api(doi, pdf_save_dir, publisher, logger):
@@ -500,7 +551,13 @@ def _single_download_attempt(
             logger.warning(f"   API 다운로드 에러: {e}")
             attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
     else:
-        attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_NO_CANDIDATE, "evidence": ["skipped_elsevier_api"]})
+        attempt_trace.append(
+            {
+                "strategy": "api",
+                "reason": REASON_FAIL_NO_CANDIDATE,
+                "evidence": [f"skipped_{publisher_key or 'unknown'}_api"],
+            }
+        )
 
     return _run_drission_result()
 

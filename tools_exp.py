@@ -10,8 +10,8 @@ import random
 import json
 from html import unescape as html_unescape
 
-from typing import Any, Dict, Set
-from urllib.parse import urljoin, quote, urlencode, urlparse, urlunparse
+from typing import Any, Dict, Optional, Set
+from urllib.parse import parse_qs, urljoin, quote, urlencode, urlparse, urlunparse
 from seleniumbase import Driver
 from bs4 import BeautifulSoup
 from curl_cffi import requests as cffi_requests # 이름 충돌 방지
@@ -4211,7 +4211,12 @@ def download_with_drission(
                         pdf_url = real_url
                         logger.info(f"        [IEEE] Real URL 교체 완료: {pdf_url}")
                     else:
-                        logger.warning("        [IEEE] Real URL 추출 실패 (기본 링크 사용)")
+                        recovered_ieee_pdf = _recover_ieee_stamp_pdf_url(real_url, pdf_url, page.url, page.html)
+                        if recovered_ieee_pdf:
+                            pdf_url = recovered_ieee_pdf
+                            logger.info(f"        [IEEE] stampPDF 경로 강제 복구: {pdf_url}")
+                        else:
+                            logger.warning("        [IEEE] Real URL 추출 실패 (기본 링크 사용)")
 
             page_title = page.title or ""
             page_html = page.html or ""
@@ -4272,7 +4277,7 @@ def download_with_drission(
                     logger.info("        [IEEE] real PDF URL 확보 -> 버튼 클릭 우선 시도 생략")
             
             # 고차단 도메인은 실제 사용자 행동과 유사하게 버튼 클릭 다운로드를 우선 시도
-            if high_friction and pdf_btn and (not is_acs) and (not is_sciencedirect) and (not ieee_fastpath_url_ready):
+            if high_friction and pdf_btn and (not is_sciencedirect) and (not ieee_fastpath_url_ready):
                 btn_wait_s = 18 if mode == "deep" else (6 if is_sciencedirect else 12)
                 logger.info(f"        [Drission] 고차단 도메인({current_domain}) 버튼 클릭 다운로드 우선 시도")
                 click_ok, click_page = _try_click_pdf_button_download(
@@ -4292,7 +4297,7 @@ def download_with_drission(
                         return _ret(True, "SUCCESS", stage="button-click-download")
 
             # 일반/비지원 도메인도 js 기반 버튼 케이스가 있어 1회 클릭 시도
-            if (not high_friction) and pdf_btn and (not is_acs) and (not is_sciencedirect):
+            if (not high_friction) and pdf_btn and (not is_sciencedirect):
                 logger.info(f"        [Drission] 일반 도메인({current_domain}) 버튼 클릭 다운로드 1회 시도")
                 click_ok, click_page = _try_click_pdf_button_download(
                     page=page,
@@ -4372,59 +4377,56 @@ def download_with_drission(
                             f"(reason={ieee_cffi_result.get('reason') or 'unknown'}) -> 기본 다운로드 경로 계속"
                         )
 
-                if not (is_acs and mode == "first"):
-                    # Drissionpage 자체 다운로드 먼저 시도
-                    logger.info("        1. Drission 자체 다운로드 시도")
-                    try:
-                        # [수정] path=폴더경로, rename=파일명 (확장자 포함 가능)
-                        # file_exists='overwrite'로 중복 시 덮어쓰기
-                        initial_files = _get_current_files(browser_tmp_dir)
-                        clean_name = filename # 파일명 그대로 사용
-                        download_result = page.download(
-                            pdf_url,
-                            goal_path=browser_tmp_dir,
-                            rename=clean_name,
-                            file_exists='overwrite',
-                            show_msg=False,
-                        )
+                # DrissionPage 자체 다운로드 먼저 시도
+                logger.info("        1. Drission 자체 다운로드 시도")
+                try:
+                    # [수정] path=폴더경로, rename=파일명 (확장자 포함 가능)
+                    # file_exists='overwrite'로 중복 시 덮어쓰기
+                    initial_files = _get_current_files(browser_tmp_dir)
+                    clean_name = filename # 파일명 그대로 사용
+                    download_result = page.download(
+                        pdf_url,
+                        goal_path=browser_tmp_dir,
+                        rename=clean_name,
+                        file_exists='overwrite',
+                        show_msg=False,
+                    )
 
-                        if _finalize_downloadkit_result(
-                            download_result=download_result,
-                            tmp_target_path=tmp_save_path,
-                            final_target_path=full_save_path,
-                            logger=logger,
-                            context="drission-downloadkit",
-                        ):
+                    if _finalize_downloadkit_result(
+                        download_result=download_result,
+                        tmp_target_path=tmp_save_path,
+                        final_target_path=full_save_path,
+                        logger=logger,
+                        context="drission-downloadkit",
+                    ):
+                        return _ret(True, "SUCCESS", stage="drission-download")
+
+                    if mode == "deep":
+                        download_wait_s = 18
+                    else:
+                        download_wait_s = 4 if is_sciencedirect else (8 if is_acs else 6)
+                    if _capture_direct_downloaded_pdf(
+                        download_dir=browser_tmp_dir,
+                        initial_files=initial_files,
+                        tmp_target_path=tmp_save_path,
+                        final_target_path=tmp_save_path,
+                        logger=logger,
+                        timeout_s=download_wait_s,
+                        context="drission-download",
+                    ):
+                        logger.info(f"        [Drission] 다운로드 성공")
+                        if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
                             return _ret(True, "SUCCESS", stage="drission-download")
+                    if _is_valid_pdf(tmp_save_path):
+                        logger.info(f"        [Drission] 다운로드 성공(파일명 정규화 경유)")
+                        if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
+                            return _ret(True, "SUCCESS", stage="drission-download")
+                    logger.info("        자체 다운로드 타임아웃")
 
-                        if mode == "deep":
-                            download_wait_s = 18
-                        else:
-                            download_wait_s = 4 if is_sciencedirect else (8 if is_acs else 6)
-                        if _capture_direct_downloaded_pdf(
-                            download_dir=browser_tmp_dir,
-                            initial_files=initial_files,
-                            tmp_target_path=tmp_save_path,
-                            final_target_path=tmp_save_path,
-                            logger=logger,
-                            timeout_s=download_wait_s,
-                            context="drission-download",
-                        ):
-                            logger.info(f"        [Drission] 다운로드 성공")
-                            if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
-                                return _ret(True, "SUCCESS", stage="drission-download")
-                        if _is_valid_pdf(tmp_save_path):
-                            logger.info(f"        [Drission] 다운로드 성공(파일명 정규화 경유)")
-                            if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
-                                return _ret(True, "SUCCESS", stage="drission-download")
-                        logger.info("        자체 다운로드 타임아웃")
-
-                    except Exception as e:
-                        _raise_if_browser_disconnect(e, logger=logger, context="drission-download")
-                        logger.warning(f"        자체 다운로드 실패: {e}")
-                        pass
-                else:
-                    logger.info("        [Drission] ACS first mode: 자체 다운로드 스킵(중복 트리거 방지)")
+                except Exception as e:
+                    _raise_if_browser_disconnect(e, logger=logger, context="drission-download")
+                    logger.warning(f"        자체 다운로드 실패: {e}")
+                    pass
 
                 if _over_budget():
                     return _ret(False, "FAIL_PARSE", ["budget_exceeded_before_navigation"], stage="drission")
@@ -4459,9 +4461,6 @@ def download_with_drission(
                         return _ret(True, "SUCCESS", stage="post-navigation-file-check")
                 if _is_valid_pdf(full_save_path):
                     return _ret(True, "SUCCESS", stage="post-navigation-file-check")
-
-                if is_acs and mode == "first":
-                    return _ret(False, "FAIL_PARSE", ["acs_single_click_flow_failed"], stage="drission")
 
                 # Elsevier는 navigation/requests/js 연쇄 시도가 대부분 병목으로만 작동하므로 CFFI cookie 시도로 바로 전환.
                 if is_sciencedirect and mode == "first":
@@ -4546,7 +4545,16 @@ def download_with_drission(
                     pass
                 
             else :
-                logger.warning(f"        pdf 링크 미발견 : {doi_url}")
+                current_page_url = ""
+                try:
+                    current_page_url = page.url or ""
+                except Exception:
+                    current_page_url = ""
+                logger.warning(
+                    "        pdf 링크 미발견 : "
+                    f"doi={doi_url}, current_url={current_page_url}, "
+                    f"title={(page_title or '')[:160]}, domain={current_domain}"
+                )
 
         except BrowserDisconnectedError as e:
             logger.warning(f"        시도 {attempt} 브라우저 연결 종료: {e}")
@@ -4569,6 +4577,37 @@ def download_with_drission(
         time.sleep(per_attempt_sleep) # 재시도 전 대기
 
     return _ret(False, "FAIL_PARSE", ["pdf_link_not_found_or_download_failed"], stage="drission")
+
+
+# =======================================================
+# [보조] IEEE stamp.jsp URL 복구
+# =======================================================
+def _extract_ieee_arnumber(*candidates: str) -> Optional[str]:
+    for candidate in candidates:
+        text = str(candidate or "")
+        if not text:
+            continue
+        parsed = urlparse(text)
+        try:
+            arnumber_values = parse_qs(parsed.query).get("arnumber") or []
+        except Exception:
+            arnumber_values = []
+        if arnumber_values and str(arnumber_values[0]).strip():
+            return str(arnumber_values[0]).strip()
+        match = re.search(r"[?&]arnumber=(\d+)", text, re.IGNORECASE)
+        if match:
+            return match.group(1)
+        match = re.search(r"/document/(\d+)", text, re.IGNORECASE)
+        if match:
+            return match.group(1)
+    return None
+
+
+def _recover_ieee_stamp_pdf_url(*candidates: str) -> Optional[str]:
+    arnumber = _extract_ieee_arnumber(*candidates)
+    if not arnumber:
+        return None
+    return f"https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber={arnumber}&ref="
 
 
 # =======================================================
@@ -4622,6 +4661,10 @@ def _analyze_html_structure_drission(page, logger):
             frames = _eles_quick(page, 'tag:iframe', timeout=0.5)
             src_list = [f.attr('src') for f in frames]
             logger.warning(f"        IEEE Iframe 로딩 실패. 발견된 iframe들: {src_list}")
+            stamp_pdf_url = _recover_ieee_stamp_pdf_url(current_url, page_source)
+            if stamp_pdf_url:
+                logger.info(f"        [IEEE] arnumber 기반 stampPDF URL 복구: {stamp_pdf_url}")
+                return stamp_pdf_url
 
     # # # -------------------------------------------------------
     # # # 2. ScienceDirect 전용 로직 -> new 시도
@@ -4857,15 +4900,18 @@ from typing import Optional, Dict
 import requests
 
 PREFIX_EXACT_MAP: Dict[str, str] = {
-    "10.1038": "Nature",
+    "10.1002": "WILEY",
+    "10.1007": "Springer",
+    "10.1016": "ELSEVIER",
     "10.1021": "ACS",
+    "10.1038": "Nature",
     "10.1039": "RSC",
     "10.1063": "AIP",
     "10.1088": "IOP",
     "10.1109": "IEEE",
-    "10.1016": "ELSEVIER",
-    "10.1002": "WILEY",
     "10.1111": "WILEY",
+    "10.1117": "SPIE",
+    "10.3390": "MDPI",
     # CELL은 DOI prefix만으로 ELSEVIER(10.1016)와 분리가 어려움
 }
 
@@ -4875,16 +4921,26 @@ def normalize_publisher_label(raw_name: str, prefix: Optional[str] = None) -> Op
     raw_name: Crossref /prefixes/{prefix} 응답의 message.name (등록자/스튜어드 이름)
     prefix: (선택) prefix를 같이 주면 보조 규칙에 활용
     """
+    prefix_key = extract_doi_prefix(prefix or "")
+    if prefix_key in PREFIX_EXACT_MAP:
+        return PREFIX_EXACT_MAP[prefix_key]
+
     if not raw_name or str(raw_name) == 'non':
         return None
 
     n = raw_name.lower().strip()
 
-    # Nature 계열: "Springer Nature" 같이 넓은 이름이 나오는 케이스가 있어, prefix 기반 보조룰 포함
-    if prefix == "10.1038":
+    # Nature/Springer 계열은 DOI prefix가 더 신뢰할 수 있다.
+    if prefix_key == "10.1038":
         return "Nature"
-    if ("nature" in n) or ("springer" in n) or ("npg" in n):
+    if prefix_key == "10.1007":
+        return "Springer"
+    if ("nature" in n) or ("npg" in n):
         return "Nature"
+    if "springer" in n:
+        if "springer nature" in n:
+            return "Nature"
+        return "Springer"
 
     # ACS
     if ("american chemical society" in n) or ('acs' in n) or re.search(r"\bacs\b", n):
@@ -4905,6 +4961,14 @@ def normalize_publisher_label(raw_name: str, prefix: Optional[str] = None) -> Op
     # IEEE
     if ("institute of electrical and electronics engineers" in n) or re.search(r"\bieee\b", n):
         return "IEEE"
+
+    # MDPI
+    if ("multidisciplinary digital publishing institute" in n) or re.search(r"\bmdpi\b", n):
+        return "MDPI"
+
+    # SPIE
+    if ("spie" in n) or ("society of photo-optical instrumentation engineers" in n):
+        return "SPIE"
 
     # ELSEVIER
     if "elsevier" in n:
@@ -5051,19 +5115,66 @@ def download_via_wiley(doi: str, output_path: str, logger = None):
         # Provide a more specific hint on failure
         raise Exception(
             f"Wiley API download failed: {e}. Ensure your API key is correct and you have access rights.")
-        
+def _download_direct_pdf_candidates(
+    doi: str,
+    output_path: str,
+    candidates: list[tuple[str, str]],
+    logger = None,
+) -> bool:
+    for pdf_url, referer in candidates:
+        if logger:
+            logger.info(f"        [DirectPDF] 후보 시도: {pdf_url}")
+        result = download_with_cffi(pdf_url, output_path, referer=referer, logger=logger, return_detail=True)
+        if result.get("ok"):
+            return True
+        if logger:
+            logger.info(
+                f"        [DirectPDF] 후보 실패 reason={result.get('reason') or 'unknown'} "
+                f"status={result.get('http_status')}"
+            )
+    return False
+
+
+def _nature_article_id_from_doi(doi: str) -> str:
+    norm = str(doi or "").strip()
+    if "/" not in norm:
+        return norm
+    return norm.split("/", 1)[1]
+
+
+def download_via_naturepdf(doi: str, output_path: str, logger = None):
+    """
+    Download the PDF of a Nature article by constructing the direct Nature PDF URL.
+    """
+    article_id = _nature_article_id_from_doi(doi)
+    candidates = [
+        (
+            f"https://www.nature.com/articles/{article_id}.pdf",
+            f"https://www.nature.com/articles/{article_id}",
+        ),
+        (
+            f"https://www.nature.com/articles/{doi}.pdf",
+            f"https://www.nature.com/articles/{doi}",
+        ),
+    ]
+    return _download_direct_pdf_candidates(doi, output_path, candidates, logger=logger)
+
+
 def download_via_springerpdf(doi: str, output_path: str, logger = None):
     """
-    Download the PDF of a Springer article (including Nature) by constructing the direct PDF URL.
-    Note: This method mimics a browser and may not work for bulk or for closed-access content.
+    Download the PDF of a Springer article by constructing the direct SpringerLink PDF URL.
     """
-    pdf_url = f"https://nature.com/articles/{doi}.pdf"
-    headers = {
-        "User-Agent": "Mozilla/5.0",
-        "Referer": f"https://nature.com/articles/{doi}"
-    }
-    referer = headers["Referer"]
-    return bool(download_with_cffi(pdf_url, output_path, referer, logger=logger))
+    candidates = [
+        (
+            f"https://link.springer.com/content/pdf/{doi}.pdf",
+            f"https://link.springer.com/article/{doi}",
+        ),
+        (
+            f"https://link.springer.com/content/pdf/{doi}.pdf?download=1",
+            f"https://link.springer.com/article/{doi}",
+        ),
+    ]
+    return _download_direct_pdf_candidates(doi, output_path, candidates, logger=logger)
     
 def download_using_api(doi: str, output_path: str, publisher: str, logger = None):
     """
@@ -5072,7 +5183,8 @@ def download_using_api(doi: str, output_path: str, publisher: str, logger = None
     """
     TOOL_FUNCTIONS = {
         "wiley": download_via_wiley,
-        "nature": download_via_springerpdf,
+        "nature": download_via_naturepdf,
+        "springer": download_via_springerpdf,
         "acs": download_via_acspdf,
         "aip": download_via_aippdf,
         "iop": download_via_ioppdf,
