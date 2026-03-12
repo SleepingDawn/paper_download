@@ -2376,10 +2376,12 @@ def _attempt_elsevier_two_step_click_download(
         time.sleep(0.6)
         article_referer = str(getattr(page, "url", "") or article_referer)
 
-    # 사용자 관찰 반영:
-    # 복구(sciencedirect) 후 DOI 링크를 다시 타면 쿠키/버튼 플로우가 정상화되는 케이스가 있다.
-    if allow_doi_reentry and ("sciencedirect.com" in str(getattr(page, "url", "") or "").lower()):
-        doi_link = _ele_quick(page, f"css:a[href*='doi.org/{doi_norm}']", timeout=0.6) if doi_norm else None
+    def _attempt_doi_reentry_after_dead_click(current_page):
+        if not allow_doi_reentry:
+            return current_page, False
+        if "sciencedirect.com" not in str(getattr(current_page, "url", "") or "").lower():
+            return current_page, False
+        doi_link = _ele_quick(current_page, f"css:a[href*='doi.org/{doi_norm}']", timeout=0.6) if doi_norm else None
         if doi_link:
             try:
                 href = str(doi_link.attr("href") or "").strip().lower()
@@ -2388,7 +2390,6 @@ def _attempt_elsevier_two_step_click_download(
                     f"{doi_link.attr('title') or ''} "
                     f"{doi_link.attr('aria-label') or ''}"
                 ).lower()
-                # retrieve 링크/타 논문 DOI로 오탐되는 경우를 배제한다.
                 if _is_elsevier_retrieve_url(href):
                     if logger:
                         logger.info("        [Elsevier] DOI 재진입 후보가 retrieve URL이라 스킵")
@@ -2399,29 +2400,78 @@ def _attempt_elsevier_two_step_click_download(
                     doi_link = None
             except Exception:
                 pass
-        if doi_link:
+        if not doi_link:
+            return current_page, False
+
+        origin_page = current_page
+        origin_tab_id = str(getattr(current_page, "tab_id", "") or "")
+        baseline_tab_ids = set(getattr(current_page, "tab_ids", []) or [])
+        try:
             try:
-                try:
-                    doi_link.click()
-                except Exception:
-                    doi_link.click(by_js=True)
-                time.sleep(0.8)
-                page = _adopt_latest_tab(page, logger=logger)
-                # DOI 재진입 후에도 retrieve 블랭크에 머물면 article URL로 즉시 복귀
-                now_url = str(getattr(page, "url", "") or "")
-                if _is_elsevier_retrieve_url(now_url) and target_pii:
-                    recover_url = f"https://www.sciencedirect.com/science/article/pii/{target_pii}"
-                    if logger:
-                        logger.info(f"        [Elsevier] DOI 재진입 후 retrieve 감지 -> 복귀: {recover_url}")
-                    try:
-                        page.get(recover_url, retry=0, interval=0.3, timeout=8)
-                    except Exception:
-                        pass
-                _dismiss_cookie_or_consent_banner(page, logger=logger)
-                if logger:
-                    logger.info("        [Elsevier] DOI 링크 재진입 전략 적용")
+                doi_link.click()
             except Exception:
-                pass
+                doi_link.click(by_js=True)
+            time.sleep(0.8)
+            current_page = _adopt_latest_tab(current_page, logger=logger)
+            now_url = str(getattr(current_page, "url", "") or "")
+            if _is_elsevier_retrieve_url(now_url) and target_pii:
+                recover_url = f"https://www.sciencedirect.com/science/article/pii/{target_pii}"
+                if logger:
+                    logger.info(f"        [Elsevier] DOI 재진입 후 retrieve 감지 -> 복귀: {recover_url}")
+                try:
+                    current_page.get(recover_url, retry=0, interval=0.3, timeout=8)
+                except Exception:
+                    pass
+            _dismiss_cookie_or_consent_banner(current_page, logger=logger)
+            reentry_title = str(getattr(current_page, "title", "") or "")
+            reentry_html = str(getattr(current_page, "html", "") or "")
+            reentry_domain = _extract_domain(getattr(current_page, "url", "") or "")
+            reentry_issue, reentry_evidence = detect_access_issue(
+                title=reentry_title,
+                html=reentry_html,
+                url=getattr(current_page, "url", "") or "",
+                domain=reentry_domain,
+            )
+            if reentry_issue in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
+                if logger:
+                    logger.info(
+                        "        [Elsevier] DOI 재진입 결과가 차단/캡차여서 원래 article context로 복귀 후 계속: "
+                        f"{reentry_issue}, {reentry_evidence}"
+                    )
+                current_tab_id = str(getattr(current_page, "tab_id", "") or "")
+                if current_tab_id and origin_tab_id and current_tab_id != origin_tab_id:
+                    try:
+                        origin_page.close_tabs(current_tab_id)
+                    except Exception:
+                        try:
+                            current_page.close()
+                        except Exception:
+                            pass
+                    try:
+                        restored = origin_page.get_tab(origin_tab_id)
+                        current_page = restored if restored is not None else origin_page
+                    except Exception:
+                        current_page = origin_page
+                elif target_pii:
+                    recover_candidates = _build_elsevier_article_candidates(
+                        target_pii,
+                        article_referer,
+                        getattr(current_page, "url", "") or "",
+                    )
+                    for recover_url in recover_candidates:
+                        try:
+                            current_page.get(recover_url, retry=0, interval=0.3, timeout=8)
+                            break
+                        except Exception:
+                            continue
+                _dismiss_cookie_or_consent_banner(current_page, logger=logger)
+                _dismiss_elsevier_aux_overlays(current_page, logger=logger)
+                _close_new_tabs_since(current_page, baseline_tab_ids)
+            if logger:
+                logger.info("        [Elsevier] DOI 링크 재진입 전략 적용")
+            return current_page, True
+        except Exception:
+            return current_page, False
 
     # ScienceDirect는 View PDF 버튼 id/aria 기반 렌더링이 많아 대표 버튼 1회만 누른다.
     quick_locators = [
@@ -2504,6 +2554,14 @@ def _attempt_elsevier_two_step_click_download(
     _dismiss_cookie_or_consent_banner(page, logger=logger)
     _dismiss_elsevier_aux_overlays(page, logger=logger)
     viewer_state = _wait_for_elsevier_viewer_ready(page, logger=logger, timeout_s=6)
+    if (not viewer_state) and step1:
+        page, doi_reentry_used = _attempt_doi_reentry_after_dead_click(page)
+        if doi_reentry_used:
+            article_referer = str(getattr(page, "url", "") or article_referer)
+            page = _adopt_elsevier_target_tab(page, doi_norm=doi_norm, target_pii=target_pii, logger=logger)
+            _dismiss_cookie_or_consent_banner(page, logger=logger)
+            _dismiss_elsevier_aux_overlays(page, logger=logger)
+            viewer_state = _wait_for_elsevier_viewer_ready(page, logger=logger, timeout_s=4)
     if (not viewer_state) and _is_elsevier_target_page(page, doi_norm, target_pii):
         _dismiss_elsevier_aux_overlays(page, logger=logger)
         retry_step1 = _select_best_clickable_pdf_element(
@@ -2610,7 +2668,7 @@ def _attempt_elsevier_two_step_click_download(
                         tmp_dir,
                         tmp_path,
                         logger=logger,
-                        allow_doi_reentry=False,
+                        allow_doi_reentry=True,
                         allow_headless_fresh_tab_recovery=False,
                         return_page=True,
                     )
@@ -4376,7 +4434,7 @@ def download_with_drission(
                     tmp_dir=browser_tmp_dir,
                     tmp_path=tmp_save_path,
                     logger=logger,
-                    allow_doi_reentry=False,
+                    allow_doi_reentry=True,
                     return_page=True,
                 )
                 current_domain = _extract_domain(page.url)
