@@ -1,5 +1,6 @@
 import json
 import os
+import inspect
 import subprocess
 import sys
 import time
@@ -118,6 +119,13 @@ def _resolve_worker_max_tasks_per_child() -> Optional[int]:
     if value <= 0:
         return None
     return max(1, value)
+
+
+def _process_pool_supports_max_tasks_per_child() -> bool:
+    try:
+        return "max_tasks_per_child" in inspect.signature(ProcessPoolExecutor).parameters
+    except Exception:
+        return False
 
 
 NON_RETRYABLE_TERMINAL_REASONS = {
@@ -704,10 +712,11 @@ def _first_pass(
     rows = _prepare_download_records(df)
     results: List[Dict[str, Any]] = [None] * len(rows)
 
-    with ProcessPoolExecutor(
-        max_workers=max_workers,
-        max_tasks_per_child=worker_max_tasks_per_child,
-    ) as executor:
+    executor_kwargs = {"max_workers": max_workers}
+    if worker_max_tasks_per_child is not None and _process_pool_supports_max_tasks_per_child():
+        executor_kwargs["max_tasks_per_child"] = worker_max_tasks_per_child
+
+    with ProcessPoolExecutor(**executor_kwargs) as executor:
         future_to_index = {
             executor.submit(
                 download_process_worker,
@@ -1049,6 +1058,10 @@ def main(
     start_time = time.time()
     max_workers = max(1, min(int(max_workers), SAFE_MAX_WORKERS))
     worker_max_tasks_per_child = _resolve_worker_max_tasks_per_child()
+    worker_recycle_supported = _process_pool_supports_max_tasks_per_child()
+    effective_worker_max_tasks_per_child = (
+        worker_max_tasks_per_child if worker_recycle_supported else None
+    )
 
     run_output_dir = _resolve_run_output_dir(output_dir)
     pdf_root_dir = _resolve_pdf_output_dir(pdf_output_dir, run_output_dir)
@@ -1105,10 +1118,13 @@ def main(
     df = df.dropna(subset=["doi_lower"]).drop_duplicates(subset=["doi_lower"]).drop(columns=["doi_lower"])
     print(f"전처리 후 남은 전체 논문 수: {len(df)}건")
     print(f"다운로드 동시성(max_workers): {max_workers} (상한={SAFE_MAX_WORKERS})")
-    print(
-        "worker recycle(max_tasks_per_child): "
-        f"{worker_max_tasks_per_child if worker_max_tasks_per_child is not None else 'disabled'}"
-    )
+    if worker_max_tasks_per_child is None:
+        worker_recycle_label = "disabled"
+    elif effective_worker_max_tasks_per_child is None:
+        worker_recycle_label = "disabled (runtime unsupported)"
+    else:
+        worker_recycle_label = str(effective_worker_max_tasks_per_child)
+    print(f"worker recycle(max_tasks_per_child): {worker_recycle_label}")
 
     requested_headless = _env_flag("PDF_BROWSER_HEADLESS", 0) if headless is None else bool(headless)
     requested_deep_retry_headless = requested_headless if deep_retry_headless is None else bool(deep_retry_headless)
@@ -1180,7 +1196,7 @@ def main(
             global_start_spacing_sec=float(global_start_spacing_sec),
             jitter_min_sec=float(jitter_min_sec),
             jitter_max_sec=float(jitter_max_sec),
-            worker_max_tasks_per_child=worker_max_tasks_per_child,
+            worker_max_tasks_per_child=effective_worker_max_tasks_per_child,
             pacing_state=pacing_state,
             pacing_lock=pacing_lock,
         )
@@ -1311,7 +1327,9 @@ def main(
             "global_start_spacing_sec": float(global_start_spacing_sec),
             "jitter_min_sec": float(jitter_min_sec),
             "jitter_max_sec": float(jitter_max_sec),
-            "worker_max_tasks_per_child": worker_max_tasks_per_child,
+            "worker_max_tasks_per_child_requested": worker_max_tasks_per_child,
+            "worker_max_tasks_per_child": effective_worker_max_tasks_per_child,
+            "worker_recycle_supported": bool(worker_recycle_supported),
         },
         "landing_precheck": landing_precheck_metrics,
         "integrated_landing": integrated_landing_metrics,
