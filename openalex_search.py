@@ -1,3 +1,4 @@
+import json
 import os
 import pandas as pd
 import time
@@ -56,6 +57,7 @@ def extract_row(work: Dict[str, Any]) -> Dict[str, Any]:
     source = primary_loc.get("source") or {}
     citation_normalized_percentile = work.get("citation_normalized_percentile") or {}
     open_access_loc = work.get("open_access") or {}
+    authorships = work.get("authorships") or []
 
     # 1순위: 호스트 조직 이름 (예: Elsevier BV)
     publisher = source.get("host_organization_name")
@@ -63,15 +65,51 @@ def extract_row(work: Dict[str, Any]) -> Dict[str, Any]:
     if not publisher:
         publisher = source.get("display_name")
 
+    author_entries = []
+    author_names = []
+    for authorship in authorships:
+        if not isinstance(authorship, dict):
+            continue
+        author = authorship.get("author") or {}
+        display_name = (
+            author.get("display_name")
+            or authorship.get("raw_author_name")
+            or ""
+        )
+        if not display_name:
+            continue
+        author_names.append(display_name)
+        author_entries.append(
+            {
+                "display_name": display_name,
+                "id": author.get("id"),
+                "orcid": author.get("orcid"),
+                "author_position": authorship.get("author_position"),
+                "is_corresponding": authorship.get("is_corresponding"),
+            }
+        )
+
     return {
+        "openalex_id": work.get("id"),
         "doi": doi.replace("https://doi.org/", "") if doi else None,
         "title": work.get("title"),
         "publisher" : publisher,
+        "journal": source.get("display_name"),
+        "journal_id": source.get("id"),
+        "journal_type": source.get("type"),
+        "journal_issn_l": source.get("issn_l"),
+        "journal_issn_json": json.dumps(source.get("issn") or [], ensure_ascii=False),
+        "publication_date": work.get("publication_date"),
         "publication_year": work.get("publication_year"),
+        "work_type": work.get("type"),
         "cited_by_count": work.get("cited_by_count"),
         "citation_normalized_percentile": citation_normalized_percentile.get("value") if citation_normalized_percentile else None,
         "pdf_url": primary_loc.get("pdf_url"), # arXiv 필터링용
-        "open_access": open_access_loc.get("is_oa")
+        "open_access": open_access_loc.get("is_oa"),
+        "author_count": len(author_entries),
+        "first_author": author_names[0] if author_names else None,
+        "authors_display": "; ".join(author_names),
+        "authors_json": json.dumps(author_entries, ensure_ascii=False),
     }
 
 # 데이터를 모두 가져와서
@@ -94,7 +132,19 @@ def main_search(pdf_save_dir = None, csv_name = None, query = None, max_num = 10
     # percentile_filter = f'cited_by_count.percentile.min:{CITATION_PERCENTILE_THRESHOLD}'
     # PERCENTILE_FILTER = f"{base_filter},{percentile_filter}"
 
-    SELECT = ["doi", "title", "publication_year", "cited_by_count", "primary_location", "citation_normalized_percentile", "open_access"]
+    SELECT = [
+        "id",
+        "doi",
+        "title",
+        "type",
+        "publication_date",
+        "publication_year",
+        "cited_by_count",
+        "primary_location",
+        "authorships",
+        "citation_normalized_percentile",
+        "open_access",
+    ]
 
     # 2. 연도별 상위 인용 논문 데이터 수집
     print(f"Step 1: 전체 논문 수집 중...")

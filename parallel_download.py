@@ -797,6 +797,123 @@ def _summarize_live_attempt_metrics(attempts_jsonl_path: str, out_path: str) -> 
     return payload
 
 
+def _json_safe_value(value: Any) -> Any:
+    if value is None:
+        return None
+    if isinstance(value, dict):
+        return {str(k): _json_safe_value(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_json_safe_value(v) for v in value]
+    if isinstance(value, pd.Timestamp):
+        return value.isoformat()
+    if hasattr(value, "item"):
+        try:
+            value = value.item()
+        except Exception:
+            pass
+    try:
+        if pd.isna(value):
+            return None
+    except Exception:
+        pass
+    if isinstance(value, (str, int, float, bool)):
+        return value
+    return str(value)
+
+
+def _parse_json_column(value: Any, default: Any) -> Any:
+    if value is None:
+        return default
+    try:
+        if pd.isna(value):
+            return default
+    except Exception:
+        pass
+    if isinstance(value, (list, dict)):
+        return value
+    raw = str(value).strip()
+    if not raw:
+        return default
+    try:
+        return json.loads(raw)
+    except Exception:
+        return default
+
+
+def _write_metadata_sidecars(df: pd.DataFrame, metadata_root_dir: str, pdf_root_dir: str) -> Dict[str, Any]:
+    os.makedirs(metadata_root_dir, exist_ok=True)
+    written = 0
+    missing_pdf = 0
+
+    for _, row in df.iterrows():
+        status = str(row.get("download_status") or "")
+        if "success" not in status.lower():
+            continue
+
+        doi = str(row.get("doi") or "").strip()
+        if not doi:
+            continue
+
+        pdf_filename = _sanitize_doi_to_filename(doi)
+        json_filename = os.path.splitext(pdf_filename)[0] + ".json"
+        access_dir = "Open_Access" if bool(row.get("open_access")) else "Closed_Access"
+        pdf_path = os.path.join(pdf_root_dir, access_dir, pdf_filename)
+        if not os.path.exists(pdf_path):
+            missing_pdf += 1
+            continue
+
+        out_dir = os.path.join(metadata_root_dir, access_dir)
+        os.makedirs(out_dir, exist_ok=True)
+        out_path = os.path.join(out_dir, json_filename)
+
+        row_payload = {str(k): _json_safe_value(v) for k, v in row.to_dict().items()}
+        journal_issn = _parse_json_column(row.get("journal_issn_json"), [])
+        authors = _parse_json_column(row.get("authors_json"), [])
+        openalex_payload = {
+            "id": _json_safe_value(row.get("openalex_id")),
+            "doi": doi,
+            "title": _json_safe_value(row.get("title")),
+            "publisher": _json_safe_value(row.get("publisher")),
+            "journal": {
+                "name": _json_safe_value(row.get("journal")),
+                "id": _json_safe_value(row.get("journal_id")),
+                "type": _json_safe_value(row.get("journal_type")),
+                "issn_l": _json_safe_value(row.get("journal_issn_l")),
+                "issn": journal_issn if isinstance(journal_issn, list) else [],
+            },
+            "publication_date": _json_safe_value(row.get("publication_date")),
+            "publication_year": _json_safe_value(row.get("publication_year")),
+            "work_type": _json_safe_value(row.get("work_type")),
+            "cited_by_count": _json_safe_value(row.get("cited_by_count")),
+            "citation_normalized_percentile": _json_safe_value(row.get("citation_normalized_percentile")),
+            "pdf_url": _json_safe_value(row.get("pdf_url")),
+            "open_access": _json_safe_value(row.get("open_access")),
+            "author_count": _json_safe_value(row.get("author_count")),
+            "first_author": _json_safe_value(row.get("first_author")),
+            "authors_display": _json_safe_value(row.get("authors_display")),
+            "authors": authors if isinstance(authors, list) else [],
+        }
+        payload = {
+            "doi": doi,
+            "pdf_filename": pdf_filename,
+            "json_filename": json_filename,
+            "access_bucket": access_dir,
+            "pdf_path": os.path.abspath(pdf_path),
+            "openalex": openalex_payload,
+            "record": row_payload,
+        }
+
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        written += 1
+
+    return {
+        "root_dir": os.path.abspath(metadata_root_dir),
+        "written": int(written),
+        "missing_pdf": int(missing_pdf),
+    }
+
+
 def _discover_session_seed_root(worker_profile_root: str, profile_name: str) -> str:
     base = os.path.abspath(str(worker_profile_root or "").strip())
     profile_name = str(profile_name or "Default").strip() or "Default"
@@ -1179,6 +1296,13 @@ def main(
     df["pacing_wait_ms"] = [int(r.get("pacing_wait_ms", 0) or 0) for r in final_results]
     df["pacing_jitter_sec"] = [float(r.get("pacing_jitter_sec", 0.0) or 0.0) for r in final_results]
 
+    metadata_dir = os.path.join(run_output_dir, "metadata")
+    metadata_manifest = _write_metadata_sidecars(
+        df=df,
+        metadata_root_dir=metadata_dir,
+        pdf_root_dir=pdf_root_dir,
+    )
+
     full_csv_path = os.path.join(run_output_dir, "openalex_search_results_parallel.csv")
     df.to_csv(full_csv_path, index=False, encoding="utf-8-sig")
 
@@ -1264,7 +1388,9 @@ def main(
             "attempts_summary_json": attempts_summary_path,
             "summary_json": summary_json_path,
             "pdf_root_dir": pdf_root_dir,
+            "metadata_root_dir": metadata_manifest.get("root_dir", metadata_dir),
         },
+        "metadata_sidecars": metadata_manifest,
     }
 
     with open(summary_json_path, "w", encoding="utf-8") as f:
@@ -1278,6 +1404,7 @@ def main(
     print(f"의사결정: {decision}")
     print(f"실패 로그(JSONL): {failed_jsonl_path}")
     print(f"요약(JSON): {summary_json_path}")
+    print(f"메타데이터(JSON) 경로: {metadata_manifest.get('root_dir', metadata_dir)}")
     print("=" * 60)
 
 

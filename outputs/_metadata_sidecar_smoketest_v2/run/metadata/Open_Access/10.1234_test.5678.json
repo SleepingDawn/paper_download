@@ -1,0 +1,66 @@
+{
+  "doi": "10.1234/test.5678",
+  "pdf_filename": "10.1234_test.5678.pdf",
+  "json_filename": "10.1234_test.5678.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/_metadata_sidecar_smoketest_v2/pdfs/Open_Access/10.1234_test.5678.pdf",
+  "openalex": {
+    "id": "https://openalex.org/W123",
+    "doi": "10.1234/test.5678",
+    "title": "Test Paper",
+    "publisher": "Test Publisher",
+    "journal": {
+      "name": "Journal of Tests",
+      "id": "https://openalex.org/S123",
+      "type": "journal",
+      "issn_l": "1234-5678",
+      "issn": [
+        "1234-5678",
+        "8765-4321"
+      ]
+    },
+    "publication_date": "2026-03-01",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.5,
+    "pdf_url": "https://example.com/test.pdf",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Alice",
+    "authors_display": "Alice; Bob",
+    "authors": [
+      {
+        "display_name": "Alice"
+      },
+      {
+        "display_name": "Bob"
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W123",
+    "doi": "10.1234/test.5678",
+    "title": "Test Paper",
+    "publisher": "Test Publisher",
+    "journal": "Journal of Tests",
+    "journal_id": "https://openalex.org/S123",
+    "journal_type": "journal",
+    "journal_issn_l": "1234-5678",
+    "journal_issn_json": "[\"1234-5678\", \"8765-4321\"]",
+    "publication_date": "2026-03-01",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.5,
+    "pdf_url": "https://example.com/test.pdf",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Alice",
+    "authors_display": "Alice; Bob",
+    "authors_json": "[{\"display_name\":\"Alice\"},{\"display_name\":\"Bob\"}]",
+    "download_status": "Success (drission)",
+    "landing_state": "success_landing",
+    "landing_url": "https://example.com/article"
+  }
+}
