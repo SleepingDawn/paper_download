@@ -1834,35 +1834,249 @@ def _finalize_existing_downloads_in_dir(tmp_dir: str, tmp_path: str, logger=None
         return False
 
 
-def _wait_for_elsevier_article_ready(page, target_doi: str = "", logger=None, timeout_s: int = 8) -> None:
+def _is_low_trust_elsevier_session_source(session_source: str) -> bool:
+    low = str(session_source or "").strip().lower()
+    if not low:
+        return True
+    return low == "temp" or low.startswith("persistent_fallback")
+
+
+def _select_elsevier_pdf_control_snapshot(page) -> Dict[str, Any]:
+    snapshot: Dict[str, Any] = {
+        "found": False,
+        "disabled": False,
+        "href": "",
+        "onclick": "",
+        "context_blob": "",
+        "score": -999,
+    }
     if page is None:
-        return
+        return snapshot
+
+    quick_locators = [
+        'css:#viewpdf',
+        'css:a#viewpdf',
+        'css:button#viewpdf',
+        'css:[id*="viewpdf"]',
+        'css:[aria-label*="View PDF"]',
+        'css:[aria-label*="view pdf"]',
+    ]
+    for loc in quick_locators:
+        for el in _eles_quick(page, loc, timeout=0.25):
+            context_blob = _element_context_blob(el)
+            if _is_elsevier_aux_overlay_blob(context_blob) or _is_recommended_or_related_blob(context_blob):
+                continue
+            href = str(el.attr("href") or "").strip()
+            onclick = str(el.attr("onclick") or "").strip()
+            aria_label = str(el.attr("aria-label") or "").strip()
+            class_name = str(el.attr("class") or "").strip()
+            disabled = any(
+                str(token or "").strip().lower() in ("true", "disabled")
+                for token in (
+                    el.attr("disabled"),
+                    el.attr("aria-disabled"),
+                )
+            ) or ("disabled" in class_name.lower())
+            blob = f"{(el.text or '').strip()} {aria_label} {class_name}".lower()
+            score = 0
+            if "accessbar" in context_blob:
+                score += 8
+            if "view pdf" in blob:
+                score += 4
+            if href:
+                score += 3
+            if onclick:
+                score += 2
+            if "_blank" in href.lower() or "opens in a new window" in context_blob:
+                score += 1
+            if disabled:
+                score -= 20
+            if score > int(snapshot.get("score") or -999):
+                snapshot = {
+                    "found": True,
+                    "disabled": disabled,
+                    "href": href,
+                    "onclick": onclick,
+                    "context_blob": context_blob,
+                    "score": score,
+                }
+    return snapshot
+
+
+def _inspect_elsevier_article_readiness(page, target_doi: str = "") -> Dict[str, Any]:
+    if page is None:
+        return {
+            "ready": False,
+            "issue": "",
+            "evidence": [],
+            "target_match": False,
+            "citation_pdf_url": "",
+            "citation_abs_url": "",
+            "has_download_toolbar": False,
+            "actionable_view_pdf": False,
+            "looks_like_shell": False,
+            "body_text_len": 0,
+            "main_text_len": 0,
+        }
+
+    current_url = str(getattr(page, "url", "") or "")
+    title = str(getattr(page, "title", "") or "")
+    html = str(getattr(page, "html", "") or "")
+    domain = _extract_domain(current_url)
+    issue, evidence = detect_access_issue(title=title, html=html, url=current_url, domain=domain)
+    citation_doi = _extract_meta_content(page, "citation_doi").lower()
+    citation_pdf_url = _extract_meta_content(page, "citation_pdf_url").strip()
+    citation_abs_url = _extract_meta_content(page, "citation_abstract_html_url").strip()
+    target_pii = _extract_elsevier_target_pii(page)
+    target_match = _is_elsevier_target_page(page, target_doi, target_pii)
+    control_snapshot = _select_elsevier_pdf_control_snapshot(page)
+    has_download_toolbar = bool(
+        _ele_quick(page, 'css:button[aria-label*="Download"]', timeout=0.2)
+        or _ele_quick(page, 'css:button[title*="Download"]', timeout=0.2)
+        or _ele_quick(page, 'css:a[download]', timeout=0.2)
+    )
+    try:
+        metrics = page.run_js(
+            """const main = document.querySelector('main');
+            return {
+                body_text_len: ((document.body && document.body.innerText) || '').length,
+                main_text_len: ((main && main.innerText) || '').length
+            };"""
+        ) or {}
+    except Exception:
+        metrics = {}
+    body_text_len = int((metrics or {}).get("body_text_len") or 0)
+    main_text_len = int((metrics or {}).get("main_text_len") or 0)
+    looks_like_shell = _looks_like_elsevier_article_shell(page, doi_norm=str(target_doi or "").strip().lower(), target_pii=target_pii)
+    actionable_view_pdf = bool(
+        control_snapshot.get("found")
+        and not bool(control_snapshot.get("disabled"))
+        and (
+            citation_pdf_url
+            or control_snapshot.get("href")
+            or control_snapshot.get("onclick")
+            or int(control_snapshot.get("score") or 0) >= 8
+        )
+    )
+    ready = bool(
+        issue is None
+        and target_match
+        and (citation_pdf_url or actionable_view_pdf or has_download_toolbar)
+        and (
+            not looks_like_shell
+            or bool(citation_pdf_url)
+            or bool(has_download_toolbar)
+            or bool(citation_abs_url)
+            or body_text_len >= 450
+            or main_text_len >= 120
+        )
+    )
+    return {
+        "ready": ready,
+        "issue": issue or "",
+        "evidence": list(evidence or []),
+        "target_match": target_match,
+        "citation_doi": citation_doi,
+        "citation_pdf_url": citation_pdf_url,
+        "citation_abs_url": citation_abs_url,
+        "has_download_toolbar": has_download_toolbar,
+        "actionable_view_pdf": actionable_view_pdf,
+        "looks_like_shell": looks_like_shell,
+        "body_text_len": body_text_len,
+        "main_text_len": main_text_len,
+        "control_score": int(control_snapshot.get("score") or 0),
+        "current_url": current_url,
+    }
+
+
+def _wait_for_elsevier_article_ready(
+    page,
+    target_doi: str = "",
+    logger=None,
+    timeout_s: int = 8,
+    strict: bool = False,
+) -> Dict[str, Any]:
+    if page is None:
+        return {"ready": False, "issue": "", "evidence": [], "target_match": False}
     target_doi = str(target_doi or "").strip().lower()
     deadline = time.time() + max(1, int(timeout_s))
     ready_seen = 0
+    required_ready_seen = 3 if strict else 2
+    last_snapshot: Dict[str, Any] = {"ready": False, "issue": "", "evidence": [], "target_match": False}
     while time.time() < deadline:
         try:
-            citation_doi = _extract_meta_content(page, "citation_doi").lower()
-            has_target = bool(target_doi and citation_doi == target_doi)
-            has_view_pdf = bool(
-                _ele_quick(page, 'css:[aria-label*="View PDF"]', timeout=0.2)
-                or _ele_quick(page, 'css:[aria-label*="view pdf"]', timeout=0.2)
-                or _ele_quick(page, 'css:#viewpdf', timeout=0.2)
-            )
-            if has_target and has_view_pdf:
+            snapshot = _inspect_elsevier_article_readiness(page, target_doi)
+            last_snapshot = snapshot
+            if snapshot.get("issue") in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
+                if logger:
+                    logger.info(
+                        "        [Elsevier] hydrate 대기 중 차단 감지: "
+                        f"{snapshot.get('issue')} {snapshot.get('evidence')}"
+                    )
+                return snapshot
+            if snapshot.get("ready"):
                 ready_seen += 1
-                if ready_seen >= 2:
+                if ready_seen >= required_ready_seen:
                     if logger:
-                        logger.info("        [Elsevier] article page hydrate 대기 완료")
-                    time.sleep(1.0)
-                    return
+                        logger.info(
+                            "        [Elsevier] article page hydrate 대기 완료 "
+                            f"(pdf_meta={int(bool(snapshot.get('citation_pdf_url')))}, "
+                            f"actionable={int(bool(snapshot.get('actionable_view_pdf')))}, "
+                            f"viewer={int(bool(snapshot.get('has_download_toolbar')))}, "
+                            f"shell={int(bool(snapshot.get('looks_like_shell')))}, "
+                            f"body={int(snapshot.get('body_text_len') or 0)})"
+                        )
+                    time.sleep(1.2 if strict else 1.0)
+                    return snapshot
             else:
                 ready_seen = 0
         except Exception:
             ready_seen = 0
         time.sleep(0.5)
     if logger:
-        logger.info("        [Elsevier] article page hydrate 대기 타임아웃(계속 진행)")
+        logger.info(
+            "        [Elsevier] article page hydrate 대기 타임아웃 "
+            f"(target={int(bool(last_snapshot.get('target_match')))}, "
+            f"pdf_meta={int(bool(last_snapshot.get('citation_pdf_url')))}, "
+            f"actionable={int(bool(last_snapshot.get('actionable_view_pdf')))}, "
+            f"viewer={int(bool(last_snapshot.get('has_download_toolbar')))}, "
+            f"shell={int(bool(last_snapshot.get('looks_like_shell')))}, "
+            f"issue={last_snapshot.get('issue') or 'none'})"
+        )
+    return last_snapshot
+
+
+def _warm_elsevier_article_hydration(
+    page,
+    doi_norm: str,
+    target_pii: str,
+    article_referer: str,
+    logger=None,
+    timeout_s: int = 12,
+    strict: bool = True,
+):
+    current_url = str(getattr(page, "url", "") or "")
+    last_snapshot = _inspect_elsevier_article_readiness(page, doi_norm)
+    for idx, candidate in enumerate(_build_elsevier_article_candidates(target_pii, article_referer, current_url)[:2]):
+        try:
+            if logger:
+                logger.info(f"        [Elsevier] hydration warm reload {idx + 1}: {candidate}")
+            page.get(candidate, retry=0, interval=0.3, timeout=min(timeout_s, 12))
+            _dismiss_cookie_or_consent_banner(page, logger=logger)
+            _dismiss_elsevier_aux_overlays(page, logger=logger)
+            last_snapshot = _wait_for_elsevier_article_ready(
+                page,
+                doi_norm,
+                logger=logger,
+                timeout_s=timeout_s,
+                strict=strict,
+            )
+            if last_snapshot.get("ready") or last_snapshot.get("issue") in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
+                return page, last_snapshot
+        except Exception as e:
+            if logger:
+                logger.info(f"        [Elsevier] hydration warm reload 실패(계속): {e}")
+    return page, last_snapshot
 
 
 def _looks_like_elsevier_signed_pdf_url(url: str) -> bool:
@@ -2100,10 +2314,18 @@ def _attempt_elsevier_two_step_click_download(
     logger=None,
     allow_doi_reentry: bool = True,
     allow_headless_fresh_tab_recovery: bool = True,
+    session_source: str = "",
+    low_trust_session: bool = False,
     return_page: bool = False,
 ):
-    def _ret(ok: bool, current_page):
-        return (ok, current_page) if return_page else ok
+    def _ret(ok: bool, current_page, *, issue: str = "", evidence=None, readiness=None, stage: str = ""):
+        detail = {
+            "issue": str(issue or ""),
+            "evidence": list(evidence or []),
+            "readiness": readiness or {},
+            "stage": str(stage or ""),
+        }
+        return (ok, current_page, detail) if return_page else ok
 
     if page is None:
         return _ret(False, page)
@@ -2137,13 +2359,90 @@ def _attempt_elsevier_two_step_click_download(
         token_candidates.append(f"/pii/{target_pii.lower()}")
         token_candidates.append(target_pii.lower())
 
-    _wait_for_elsevier_article_ready(page, doi_norm, logger=logger, timeout_s=8)
+    hydration_timeout = 12 if low_trust_session else 8
+    readiness = _wait_for_elsevier_article_ready(
+        page,
+        doi_norm,
+        logger=logger,
+        timeout_s=hydration_timeout,
+        strict=low_trust_session,
+    )
+    if readiness.get("issue") in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
+        return _ret(
+            False,
+            page,
+            issue=str(readiness.get("issue") or ""),
+            evidence=list(readiness.get("evidence") or []),
+            readiness=readiness,
+            stage="preclick-hydration",
+        )
     time.sleep(0.6)
     article_referer = str(getattr(page, "url", "") or "")
     if _recover_elsevier_article_shell(page, doi_norm=doi_norm, target_pii=target_pii, article_referer=article_referer, logger=logger):
-        _wait_for_elsevier_article_ready(page, doi_norm, logger=logger, timeout_s=8)
+        readiness = _wait_for_elsevier_article_ready(
+            page,
+            doi_norm,
+            logger=logger,
+            timeout_s=hydration_timeout,
+            strict=low_trust_session,
+        )
+        if readiness.get("issue") in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
+            return _ret(
+                False,
+                page,
+                issue=str(readiness.get("issue") or ""),
+                evidence=list(readiness.get("evidence") or []),
+                readiness=readiness,
+                stage="preclick-hydration",
+            )
         time.sleep(0.6)
         article_referer = str(getattr(page, "url", "") or article_referer)
+
+    if low_trust_session and not readiness.get("ready"):
+        if logger:
+            logger.info(
+                "        [Elsevier] low-trust session에서 hydration 미완료 -> warm reload 시도 "
+                f"(source={session_source or 'unknown'})"
+            )
+        page, readiness = _warm_elsevier_article_hydration(
+            page,
+            doi_norm=doi_norm,
+            target_pii=target_pii,
+            article_referer=article_referer,
+            logger=logger,
+            timeout_s=12,
+            strict=True,
+        )
+        article_referer = str(getattr(page, "url", "") or article_referer)
+        if readiness.get("issue") in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
+            return _ret(
+                False,
+                page,
+                issue=str(readiness.get("issue") or ""),
+                evidence=list(readiness.get("evidence") or []),
+                readiness=readiness,
+                stage="preclick-hydration",
+            )
+        if not readiness.get("ready"):
+            evidence = [
+                "elsevier_hydration_incomplete_low_trust",
+                f"session_source={session_source or 'unknown'}",
+                f"citation_pdf_url={int(bool(readiness.get('citation_pdf_url')))}",
+                f"actionable_view_pdf={int(bool(readiness.get('actionable_view_pdf')))}",
+                f"viewer_download={int(bool(readiness.get('has_download_toolbar')))}",
+                f"looks_like_shell={int(bool(readiness.get('looks_like_shell')))}",
+                f"target_match={int(bool(readiness.get('target_match')))}",
+            ]
+            if logger:
+                logger.info(f"        [Elsevier] hydration 미완료로 클릭 플로우 중단: {evidence}")
+            return _ret(
+                False,
+                page,
+                issue="FAIL_PARSE",
+                evidence=evidence,
+                readiness=readiness,
+                stage="preclick-hydration",
+            )
 
     # 사용자 관찰 반영:
     # 복구(sciencedirect) 후 DOI 링크를 다시 타면 쿠키/버튼 플로우가 정상화되는 케이스가 있다.
@@ -2372,8 +2671,14 @@ def _attempt_elsevier_two_step_click_download(
                     temp_page.get(candidate, retry=0, interval=0.3, timeout=10)
                     _dismiss_cookie_or_consent_banner(temp_page, logger=logger)
                     _dismiss_elsevier_aux_overlays(temp_page, logger=logger)
-                    _wait_for_elsevier_article_ready(temp_page, doi_norm, logger=logger, timeout_s=12)
-                    nested_ok, temp_page = _attempt_elsevier_two_step_click_download(
+                    _wait_for_elsevier_article_ready(
+                        temp_page,
+                        doi_norm,
+                        logger=logger,
+                        timeout_s=12,
+                        strict=low_trust_session,
+                    )
+                    nested_ok, temp_page, nested_detail = _attempt_elsevier_two_step_click_download(
                         temp_page,
                         doi_norm,
                         tmp_dir,
@@ -2381,6 +2686,8 @@ def _attempt_elsevier_two_step_click_download(
                         logger=logger,
                         allow_doi_reentry=False,
                         allow_headless_fresh_tab_recovery=False,
+                        session_source=session_source,
+                        low_trust_session=low_trust_session,
                         return_page=True,
                     )
                     if nested_ok:
@@ -2389,6 +2696,13 @@ def _attempt_elsevier_two_step_click_download(
                                 f"        [Elsevier] fresh-tab recovery 성공: candidate {idx + 1}"
                             )
                         return _ret(True, temp_page)
+                    if str((nested_detail or {}).get("issue") or "") in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
+                        if logger:
+                            logger.info(
+                                "        [Elsevier] fresh-tab recovery 중 차단 감지 -> 후보 순회 중단 "
+                                f"{(nested_detail or {}).get('evidence') or []}"
+                            )
+                        break
                 except Exception as e:
                     if logger:
                         logger.info(f"        [Elsevier] fresh-tab recovery 실패(계속): {e}")
@@ -3719,6 +4033,8 @@ def download_with_drission(
         worker_label=f"pid_{os.getpid()}",
         logger=logger,
     )
+    elsevier_session_source = str(session_plan.get("session_source") or "")
+    elsevier_low_trust_session = _is_low_trust_elsevier_session_source(elsevier_session_source)
     if not resolved_browser:
         if return_detail:
             return {
@@ -3746,6 +4062,11 @@ def download_with_drission(
             co.set_load_mode("normal")
             if logger:
                 logger.info("     [Drission] Elsevier는 normal load mode 사용")
+                if elsevier_low_trust_session:
+                    logger.info(
+                        "     [Drission] Elsevier low-trust session 감지 -> strict hydration 사용 "
+                        f"(source={elsevier_session_source or 'unknown'})"
+                    )
         except Exception:
             pass
     
@@ -4139,13 +4460,15 @@ def download_with_drission(
 
             if is_elsevier_landing and mode == "first":
                 logger.info(f"        [Elsevier] 2단계 클릭 다운로드 우선 시도: {doi_norm}")
-                elsevier_click_ok, page = _attempt_elsevier_two_step_click_download(
+                elsevier_click_ok, page, elsevier_click_detail = _attempt_elsevier_two_step_click_download(
                     page=page,
                     doi=doi_norm,
                     tmp_dir=browser_tmp_dir,
                     tmp_path=tmp_save_path,
                     logger=logger,
                     allow_doi_reentry=False,
+                    session_source=elsevier_session_source,
+                    low_trust_session=elsevier_low_trust_session,
                     return_page=True,
                 )
                 current_domain = _extract_domain(page.url)
@@ -4155,6 +4478,11 @@ def download_with_drission(
                 if elsevier_click_ok:
                     if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
                         return _ret(True, "SUCCESS", stage="elsevier-two-step-click")
+                elsevier_issue = str((elsevier_click_detail or {}).get("issue") or "")
+                elsevier_evidence = list((elsevier_click_detail or {}).get("evidence") or [])
+                elsevier_stage = str((elsevier_click_detail or {}).get("stage") or "")
+                if elsevier_stage == "preclick-hydration" and elsevier_issue:
+                    return _ret(False, elsevier_issue, elsevier_evidence, stage="elsevier-hydration")
                 logger.info("        [Elsevier] 클릭 플로우 실패, 기존 다운로드 경로로 계속")
 
             # RSC는 우측 Download options 위젯이 지연 로딩되는 경우가 있어 짧게 대기
