@@ -59,6 +59,7 @@ from landing_classifier import (
     _strip_visible_text,
 )
 from tools_exp import (
+    _attempt_publisher_landing_challenge_recovery,
     _apply_best_browser_profile,
     _capture_direct_downloaded_pdf,
     _dismiss_cookie_or_consent_banner,
@@ -68,7 +69,10 @@ from tools_exp import (
     _has_cookie_or_consent_signal,
     _has_pdf_action_signal,
     _is_elsevier_retrieve_url,
+    _maybe_bootstrap_low_trust_publisher_session,
+    _resolve_preferred_browser_entry_url,
     _sanitize_doi_to_filename,
+    _should_prebootstrap_low_trust_publisher,
     build_landing_browser_session_plan,
     coerce_headless_for_execution_env,
     detect_access_issue,
@@ -635,6 +639,27 @@ def _resolve_structural_entry_url(record: Dict[str, Any], doi_url: str) -> str:
             reject_domains=("/authors/copyright_transfer_agreement.php",),
         )
     return ""
+
+
+def _landing_session_hint(probe_page_meta: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "session_source": str(probe_page_meta.get("browser_session_source") or ""),
+        "user_data_dir": str(probe_page_meta.get("browser_user_data_dir") or ""),
+        "profile_name": str(probe_page_meta.get("browser_profile_name") or ""),
+    }
+
+
+def _resolve_landing_entry_url(record: Dict[str, Any], doi_url: str, session_source: str = "") -> str:
+    doi = _normalize_doi_text(record.get("doi") or "")
+    structural = _resolve_structural_entry_url(record=record, doi_url=doi_url)
+    if structural:
+        return structural
+    preferred = _resolve_preferred_browser_entry_url(
+        doi_url,
+        doi_norm=doi,
+        session_source=session_source,
+    )
+    return preferred or doi_url
 
 
 def _extract_ieee_doc_id(url: str) -> str:
@@ -1591,12 +1616,21 @@ def _legacy_verify_landing_success(
     return True
 
 
-def _should_retry_landing(classifier_state: str, reason_codes: Sequence[str], attempt_idx: int, max_attempts: int) -> bool:
+def _should_retry_landing(
+    classifier_state: str,
+    reason_codes: Sequence[str],
+    attempt_idx: int,
+    max_attempts: int,
+    doi: str = "",
+    session_source: str = "",
+) -> bool:
     if attempt_idx + 1 >= max_attempts:
         return False
     codes = {str(code or "") for code in (reason_codes or [])}
     if classifier_state in (STATE_TIMEOUT, STATE_NETWORK_ERROR, STATE_BLANK_OR_INCOMPLETE):
         return True
+    if classifier_state == STATE_CHALLENGE_DETECTED:
+        return attempt_idx == 0 and _should_prebootstrap_low_trust_publisher(doi, session_source=session_source)
     if classifier_state == STATE_DOI_NOT_FOUND:
         return False
     if classifier_state == STATE_BROKEN_JS_SHELL:
@@ -1763,6 +1797,8 @@ def _probe_one(
     deadline = time.monotonic() + min(110.0, max(15.0, float(per_doi_deadline_sec)))
     doi = str(record.get("doi") or "")
     doi_url = f"https://doi.org/{doi}"
+    session_source = str(probe_page_meta.get("browser_session_source") or "")
+    session_hint = _landing_session_hint(probe_page_meta)
     input_publisher = str(record.get("input_publisher") or "")
     scheduler_publisher = str(record.get("scheduler_publisher") or "")
     expected_domains = expected_domains_for_record(record)
@@ -1829,7 +1865,18 @@ def _probe_one(
             attempt_timing["network_listener"] = bool(listener_started)
 
             step_timeout = _remaining_budget(deadline, timeout_sec, floor_sec=5.0)
-            entry_url = _resolve_structural_entry_url(record=record, doi_url=doi_url)
+            _maybe_bootstrap_low_trust_publisher_session(
+                page,
+                doi,
+                session_plan=session_hint,
+                logger=None,
+                timeout_s=min(step_timeout, 10.0),
+            )
+            entry_url = _resolve_landing_entry_url(
+                record=record,
+                doi_url=doi_url,
+                session_source=session_source,
+            )
             nav_url = entry_url or doi_url
             if entry_url and entry_url.lower() != doi_url.lower():
                 attempt_timing["entry_url_override"] = entry_url
@@ -2088,8 +2135,71 @@ def _probe_one(
                     snapshot_signal_summary = dict(classified.get("signal_summary") or {})
 
             if (
+                classifier_state == STATE_CHALLENGE_DETECTED
+                and attempt_idx == 0
+                and _should_prebootstrap_low_trust_publisher(doi, session_source=session_source)
+                and time.monotonic() < deadline
+            ):
+                recovery_started = time.perf_counter()
+                page, recovery_snapshot, recovered = _attempt_publisher_landing_challenge_recovery(
+                    page,
+                    doi_url=doi_url,
+                    doi_norm=doi,
+                    logger=None,
+                    timeout_s=14 if doi.startswith("10.1016/") else 10,
+                    session_source=session_source,
+                )
+                attempt_timing["challenge_recovery_ms"] = int((time.perf_counter() - recovery_started) * 1000)
+                attempt_timing["challenge_recovery_recovered"] = bool(recovered)
+                final_url = str(recovery_snapshot.get("url") or page.url or final_url or doi_url)
+                title = str(recovery_snapshot.get("title") or page.title or title)
+                html = str(recovery_snapshot.get("html") or page.html or html)
+                try:
+                    snapshot = collect_page_snapshot(page, title=title, html=html)
+                except Exception:
+                    pass
+                if recovered and time.monotonic() < deadline:
+                    stabilize_started = time.perf_counter()
+                    title, html, snapshot = stabilize_page_state(
+                        page,
+                        title=title,
+                        html=html,
+                        deadline_monotonic=deadline,
+                    )
+                    attempt_timing["challenge_recovery_stabilize_ms"] = int((time.perf_counter() - stabilize_started) * 1000)
+                    final_url = page.url or final_url or doi_url
+                issue, issue_evidence = detect_access_issue(title=title, html=html, url=final_url, domain="")
+                article_signal = bool(_has_article_signal(title=title, html=html))
+                pdf_action_signal = bool(_has_pdf_action_signal(title=title, html=html))
+                consent_signal = bool(_has_cookie_or_consent_signal(title=title, html=html))
+                legacy_success_like = _legacy_verify_landing_success(
+                    doi=doi,
+                    url=final_url,
+                    domain=_extract_domain(str(snapshot.get("canonical_url") or "") or final_url),
+                    title=title,
+                    html=html,
+                    article_signal=article_signal,
+                    pdf_action_signal=pdf_action_signal,
+                )
+                classified = classify_landing(
+                    doi=doi,
+                    input_publisher=input_publisher,
+                    scheduler_publisher=scheduler_publisher,
+                    final_url=final_url,
+                    title=title,
+                    html=html,
+                    snapshot=snapshot,
+                    issue=issue or "",
+                    issue_evidence=issue_evidence or [],
+                    exception_kind="",
+                    expected_domains=expected_domains,
+                )
+                classifier_state = classified.get("classifier_state", STATE_UNKNOWN_NON_SUCCESS)
+                reason_codes = list(classified.get("reason_codes", []) or [])
+                snapshot_signal_summary = dict(classified.get("signal_summary") or {})
+
+            if (
                 classifier_state not in SUCCESS_STATES
-                and classifier_state != STATE_CHALLENGE_DETECTED
                 and str(record.get("scheduler_publisher") or "") == "elsevier"
                 and attempt_idx == 0
                 and time.monotonic() < deadline
@@ -2331,7 +2441,14 @@ def _probe_one(
             attempt_timing["attempt_elapsed_ms"] = int((time.perf_counter() - attempt_started) * 1000)
             timing_breakdown["attempts"].append(attempt_timing)
 
-            if not _should_retry_landing(classifier_state, reason_codes, attempt_idx, max_nav_attempts):
+            if not _should_retry_landing(
+                classifier_state,
+                reason_codes,
+                attempt_idx,
+                max_nav_attempts,
+                doi=doi,
+                session_source=session_source,
+            ):
                 attempt_history.append(
                     {
                         "attempt": attempt_idx + 1,
@@ -2383,7 +2500,14 @@ def _probe_one(
                     "timing_ms": dict(attempt_timing),
                 }
             )
-            if not _should_retry_landing(classifier_state, reason_codes, attempt_idx, max_nav_attempts):
+            if not _should_retry_landing(
+                classifier_state,
+                reason_codes,
+                attempt_idx,
+                max_nav_attempts,
+                doi=doi,
+                session_source=session_source,
+            ):
                 break
             backoff_sec = min(4.5, 1.5 * (2 ** attempt_idx) + random.uniform(0.2, 0.8))
             if time.monotonic() + backoff_sec >= deadline:

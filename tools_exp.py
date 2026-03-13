@@ -55,6 +55,7 @@ HIGH_FRICTION_DOMAINS = (
     "acs.org",
     "sciencedirect.com",
     "aip.org",
+    "journals.aps.org",
     "wiley.com",
     "rsc.org",
     "mdpi.com",
@@ -65,6 +66,7 @@ AUTO_PROFILE_DOI_PREFIXES = (
     "10.1016",  # Elsevier
     "10.1063",  # AIP
     "10.1116",  # AVS(AIP platform)
+    "10.1103",  # APS
     "10.1039",  # RSC
     "10.3390",  # MDPI
 )
@@ -72,10 +74,27 @@ SHARED_TEMP_PROFILE_BUCKETS = (
     ("10.1016", "elsevier"),
     ("10.1021", "acs"),
     ("10.1063", "aip"),
+    ("10.1103", "aps"),
     ("10.1088", "iop"),
     ("10.1109", "ieee"),
     ("10.1117", "spie"),
 )
+APS_JOURNAL_SLUGS = {
+    "physreva": "pra",
+    "physrevb": "prb",
+    "physrevc": "prc",
+    "physrevd": "prd",
+    "physreve": "pre",
+    "physrevx": "prx",
+    "physrevlett": "prl",
+    "physrevapplied": "prapplied",
+    "physrevmaterials": "prmaterials",
+    "physrevresearch": "prresearch",
+    "physrevfluids": "prfluids",
+    "physrevaccelbeams": "prab",
+    "revmodphys": "rmp",
+}
+AIP_FIRST_PARTY_DOMAINS = ("pubs.aip.org", "avs.scitation.org", "aip.scitation.org")
 
 
 class BrowserDisconnectedError(RuntimeError):
@@ -1912,6 +1931,95 @@ def _resolve_doi_redirect_target(doi_url: str, logger=None) -> str:
         if logger:
             logger.info(f"        [DOI Resolve] redirect 해석 실패: {e}")
         return ""
+
+
+def _strip_challenge_markers_from_url(url: str, allowed_domains: tuple[str, ...] = ()) -> str:
+    raw = str(url or "").strip()
+    if not raw:
+        return ""
+    try:
+        parsed = urlparse(raw)
+    except Exception:
+        return ""
+    domain = _extract_domain(raw)
+    if allowed_domains and not any(domain == host or domain.endswith(f".{host}") for host in allowed_domains):
+        return ""
+    low = raw.lower()
+    if any(token in low for token in ("validate.perfdrive.com", "captcha.perfdrive.com", "challenges.cloudflare.com")):
+        return ""
+    if "__cf_chl_rt_tk=" not in low and "/cdn-cgi/challenge" not in low and "/cdn-cgi/l/chk_captcha" not in low:
+        return raw
+    cleaned = urlunparse(parsed._replace(query="", fragment=""))
+    return cleaned if cleaned and cleaned != raw else ""
+
+
+def _requests_first_party_entry_url(
+    doi_url: str,
+    allowed_domains: tuple[str, ...],
+    prefer_tokens: tuple[str, ...] = (),
+    reject_tokens: tuple[str, ...] = (),
+) -> str:
+    try:
+        resp = requests.get(
+            str(doi_url or "").strip(),
+            allow_redirects=True,
+            timeout=15,
+            headers={"User-Agent": _resolve_best_browser_ua()},
+        )
+    except Exception:
+        return ""
+
+    candidates = []
+    chain = [getattr(h, "url", "") for h in (resp.history or [])] + [resp.url]
+    for candidate in chain:
+        cand = str(candidate or "").strip()
+        if not cand:
+            continue
+        domain = _extract_domain(cand)
+        if allowed_domains and not any(domain == host or domain.endswith(f".{host}") for host in allowed_domains):
+            continue
+        low = cand.lower()
+        if any(token in low for token in reject_tokens):
+            continue
+        candidates.append(cand)
+
+    if not candidates:
+        cleaned = _strip_challenge_markers_from_url(str(resp.url or ""), allowed_domains=allowed_domains)
+        if cleaned:
+            return cleaned
+        return ""
+
+    for token in prefer_tokens:
+        low_token = str(token or "").lower()
+        for candidate in reversed(candidates):
+            if low_token and low_token in candidate.lower():
+                cleaned = _strip_challenge_markers_from_url(candidate, allowed_domains=allowed_domains)
+                return cleaned or candidate
+
+    best = candidates[-1]
+    cleaned = _strip_challenge_markers_from_url(best, allowed_domains=allowed_domains)
+    return cleaned or best
+
+
+def _build_aps_first_party_article_url(doi_norm: str) -> str:
+    norm = str(doi_norm or "").strip().lower()
+    if not norm.startswith("10.1103/"):
+        return ""
+    suffix = norm.split("/", 1)[1]
+    journal = suffix.split(".", 1)[0].lower()
+    slug = APS_JOURNAL_SLUGS.get(journal)
+    if not slug:
+        return ""
+    return f"https://journals.aps.org/{slug}/abstract/{norm}"
+
+
+def _resolve_aip_structural_entry_url(doi_url: str) -> str:
+    return _requests_first_party_entry_url(
+        doi_url=doi_url,
+        allowed_domains=AIP_FIRST_PARTY_DOMAINS,
+        prefer_tokens=("/article/", "/doi/abs/", "/doi/full/"),
+        reject_tokens=("__cf_chl_rt_tk=", "/cdn-cgi/challenge", "challenges.cloudflare.com"),
+    )
 
 
 def _resolve_dspace_pdf_target(current_url: str = "", current_html: str = "", logger=None) -> Dict[str, str]:
@@ -4158,6 +4266,8 @@ def _publisher_bootstrap_url_for_doi(doi_norm: str = "") -> str:
         return "https://pubs.acs.org/"
     if doi_norm.startswith("10.1063") or doi_norm.startswith("10.1116"):
         return "https://pubs.aip.org/"
+    if doi_norm.startswith("10.1103"):
+        return "https://journals.aps.org/"
     if doi_norm.startswith("10.1088"):
         return "https://iopscience.iop.org/"
     return ""
@@ -4166,7 +4276,7 @@ def _publisher_bootstrap_url_for_doi(doi_norm: str = "") -> str:
 def _should_prebootstrap_low_trust_publisher(doi_norm: str = "", session_source: str = "") -> bool:
     doi_norm = str(doi_norm or "").strip().lower()
     source = str(session_source or "").strip().lower()
-    if not doi_norm.startswith(("10.1016", "10.1021", "10.1063", "10.1116", "10.1088")):
+    if not doi_norm.startswith(("10.1016", "10.1021", "10.1063", "10.1116", "10.1088", "10.1103")):
         return False
     if not source:
         return True
@@ -4238,6 +4348,14 @@ def _resolve_preferred_browser_entry_url(
         return ""
     if not _should_prebootstrap_low_trust_publisher(doi_norm, session_source=session_source):
         return raw
+    if str(doi_norm or "").startswith("10.1103/"):
+        aps_url = _build_aps_first_party_article_url(doi_norm)
+        if aps_url:
+            return aps_url
+    if str(doi_norm or "").startswith(("10.1063/", "10.1116/")):
+        aip_url = _resolve_aip_structural_entry_url(raw)
+        if aip_url:
+            return aip_url
     resolved_target = _resolve_doi_redirect_target(raw, logger=logger)
     if resolved_target and not _looks_like_challenge_url(resolved_target):
         return resolved_target
@@ -4300,6 +4418,7 @@ def _attempt_publisher_landing_challenge_recovery(
     doi_norm: str,
     logger=None,
     timeout_s: int = 10,
+    session_source: str = "",
 ) -> tuple[Any, Dict[str, Any], bool]:
     snapshot = _wait_for_challenge_clear(page, logger=logger, timeout_s=min(10, timeout_s))
     if snapshot.get("issue") not in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
@@ -4341,8 +4460,17 @@ def _attempt_publisher_landing_challenge_recovery(
         ):
             _push(candidate)
     else:
+        preferred_target = _resolve_preferred_browser_entry_url(
+            doi_url,
+            doi_norm=doi_norm,
+            session_source=session_source,
+            logger=logger,
+        )
+        _push(preferred_target)
         resolved_target = _resolve_doi_redirect_target(doi_url, logger=logger)
         _push(resolved_target)
+        stripped_current = _strip_challenge_markers_from_url(current_url)
+        _push(stripped_current)
         if current_url and (not _looks_like_challenge_url(current_url)):
             _push(current_url)
 
@@ -5587,6 +5715,7 @@ def download_with_drission(
                     doi_norm=doi_norm,
                     logger=logger,
                     timeout_s=14 if is_elsevier_doi else 10,
+                    session_source=elsevier_session_source,
                 )
                 if recovered:
                     current_domain = _extract_domain(page.url)
