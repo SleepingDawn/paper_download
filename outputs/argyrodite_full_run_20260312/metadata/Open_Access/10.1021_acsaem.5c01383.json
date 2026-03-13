@@ -1,0 +1,109 @@
+{
+  "doi": "10.1021/acsaem.5c01383",
+  "pdf_filename": "10.1021_acsaem.5c01383.pdf",
+  "json_filename": "10.1021_acsaem.5c01383.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsaem.5c01383.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4412799287",
+    "doi": "10.1021/acsaem.5c01383",
+    "title": "Insights into the Compatibility and Interphases of Li<sub>6</sub>PS<sub>5</sub>Cl and Ga-Doped Li<sub>2</sub>ZrCl<sub>6</sub> Halide Electrolytes by Solid-State NMR",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2025-07-31",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.75530486,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Pedram Ghorbanzade",
+    "authors_display": "Pedram Ghorbanzade; Arianna Pesce; Kerman Gómez; Pedro López‐Aranguren; Juan Miguel López del Amo",
+    "authors": [
+      {
+        "display_name": "Pedram Ghorbanzade",
+        "id": "https://openalex.org/A5006356897",
+        "orcid": "https://orcid.org/0000-0002-9228-7373",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Arianna Pesce",
+        "id": "https://openalex.org/A5022392061",
+        "orcid": "https://orcid.org/0000-0002-6461-5296",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kerman Gómez",
+        "id": "https://openalex.org/A5108563777",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pedro López‐Aranguren",
+        "id": "https://openalex.org/A5010080494",
+        "orcid": "https://orcid.org/0000-0001-6912-2055",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Juan Miguel López del Amo",
+        "id": "https://openalex.org/A5071518935",
+        "orcid": "https://orcid.org/0000-0002-2315-5414",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4412799287",
+    "doi": "10.1021/acsaem.5c01383",
+    "title": "Insights into the Compatibility and Interphases of Li<sub>6</sub>PS<sub>5</sub>Cl and Ga-Doped Li<sub>2</sub>ZrCl<sub>6</sub> Halide Electrolytes by Solid-State NMR",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2025-07-31",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.75530486,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Pedram Ghorbanzade",
+    "authors_display": "Pedram Ghorbanzade; Arianna Pesce; Kerman Gómez; Pedro López‐Aranguren; Juan Miguel López del Amo",
+    "authors_json": "[{\"display_name\": \"Pedram Ghorbanzade\", \"id\": \"https://openalex.org/A5006356897\", \"orcid\": \"https://orcid.org/0000-0002-9228-7373\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Arianna Pesce\", \"id\": \"https://openalex.org/A5022392061\", \"orcid\": \"https://orcid.org/0000-0002-6461-5296\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kerman Gómez\", \"id\": \"https://openalex.org/A5108563777\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pedro López‐Aranguren\", \"id\": \"https://openalex.org/A5010080494\", \"orcid\": \"https://orcid.org/0000-0001-6912-2055\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Juan Miguel López del Amo\", \"id\": \"https://openalex.org/A5071518935\", \"orcid\": \"https://orcid.org/0000-0002-2315-5414\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.5c01383",
+    "landing_title": "Insights into the Compatibility and Interphases of Li6PS5Cl and Ga-Doped Li2ZrCl6 Halide Electrolytes by Solid-State NMR | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acsaem.5c01383.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773307959794,
+    "actual_start_ms": 1773307959794,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.322
+  }
+}

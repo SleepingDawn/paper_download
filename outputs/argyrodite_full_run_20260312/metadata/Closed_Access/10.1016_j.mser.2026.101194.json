@@ -1,0 +1,131 @@
+{
+  "doi": "10.1016/j.mser.2026.101194",
+  "pdf_filename": "10.1016_j.mser.2026.101194.pdf",
+  "json_filename": "10.1016_j.mser.2026.101194.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.mser.2026.101194.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7128423477",
+    "doi": "10.1016/j.mser.2026.101194",
+    "title": "Surface morphogenesis of argyrodite-type solid electrolytes with electron-blocking secondary phases for dendrite-free all-solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Materials Science and Engineering R Reports",
+      "id": "https://openalex.org/S1018252914",
+      "type": "journal",
+      "issn_l": "0927-796X",
+      "issn": [
+        "0927-796X",
+        "1879-212X"
+      ]
+    },
+    "publication_date": "2026-02-09",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.68962289,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Jingyi Liu",
+    "authors_display": "Jingyi Liu; Huanli Sun; Wanqing Jia; Feilong L. Pan; Zhixuan Wei; Yi Zeng; Deping Wang; Fei Du",
+    "authors": [
+      {
+        "display_name": "Jingyi Liu",
+        "id": "https://openalex.org/A5125440251",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Huanli Sun",
+        "id": "https://openalex.org/A5074341380",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wanqing Jia",
+        "id": "https://openalex.org/A5125452851",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Feilong L. Pan",
+        "id": "https://openalex.org/A5104158940",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhixuan Wei",
+        "id": "https://openalex.org/A5067125252",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yi Zeng",
+        "id": "https://openalex.org/A5125468023",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Deping Wang",
+        "id": "https://openalex.org/A5125432092",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Fei Du",
+        "id": "https://openalex.org/A5089134808",
+        "orcid": "https://orcid.org/0000-0003-0741-7100",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7128423477",
+    "doi": "10.1016/j.mser.2026.101194",
+    "title": "Surface morphogenesis of argyrodite-type solid electrolytes with electron-blocking secondary phases for dendrite-free all-solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Materials Science and Engineering R Reports",
+    "journal_id": "https://openalex.org/S1018252914",
+    "journal_type": "journal",
+    "journal_issn_l": "0927-796X",
+    "journal_issn_json": "[\"0927-796X\", \"1879-212X\"]",
+    "publication_date": "2026-02-09",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.68962289,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Jingyi Liu",
+    "authors_display": "Jingyi Liu; Huanli Sun; Wanqing Jia; Feilong L. Pan; Zhixuan Wei; Yi Zeng; Deping Wang; Fei Du",
+    "authors_json": "[{\"display_name\": \"Jingyi Liu\", \"id\": \"https://openalex.org/A5125440251\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Huanli Sun\", \"id\": \"https://openalex.org/A5074341380\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wanqing Jia\", \"id\": \"https://openalex.org/A5125452851\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Feilong L. Pan\", \"id\": \"https://openalex.org/A5104158940\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhixuan Wei\", \"id\": \"https://openalex.org/A5067125252\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yi Zeng\", \"id\": \"https://openalex.org/A5125468023\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Deping Wang\", \"id\": \"https://openalex.org/A5125432092\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Fei Du\", \"id\": \"https://openalex.org/A5089134808\", \"orcid\": \"https://orcid.org/0000-0003-0741-7100\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S0927796X26000197?via%3Dihub",
+    "landing_title": "Surface morphogenesis of argyrodite-type solid electrolytes with electron-blocking secondary phases for dendrite-free all-solid-state lithium metal batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773310183977,
+    "actual_start_ms": 1773310184550,
+    "pacing_wait_ms": 572,
+    "pacing_jitter_sec": 1.392
+  }
+}

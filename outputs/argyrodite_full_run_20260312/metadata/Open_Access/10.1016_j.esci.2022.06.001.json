@@ -1,0 +1,144 @@
+{
+  "doi": "10.1016/j.esci.2022.06.001",
+  "pdf_filename": "10.1016_j.esci.2022.06.001.pdf",
+  "json_filename": "10.1016_j.esci.2022.06.001.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.esci.2022.06.001.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4282825506",
+    "doi": "10.1016/j.esci.2022.06.001",
+    "title": "Stable Ni-rich layered oxide cathode for sulfide-based all-solid-state lithium battery",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "eScience",
+      "id": "https://openalex.org/S4210209524",
+      "type": "journal",
+      "issn_l": "2667-1417",
+      "issn": [
+        "2667-1417"
+      ]
+    },
+    "publication_date": "2022-06-13",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 103,
+    "citation_normalized_percentile": 0.98668646,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Yue Wang",
+    "authors_display": "Yue Wang; Zhixuan Wang; Dengxu Wu; Quanhai Niu; Pushun Lu; Tenghuan Ma; Yibo Su; Liquan Chen; Hong Li; Fan Wu",
+    "authors": [
+      {
+        "display_name": "Yue Wang",
+        "id": "https://openalex.org/A5100658420",
+        "orcid": "https://orcid.org/0000-0002-0026-1767",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhixuan Wang",
+        "id": "https://openalex.org/A5046729236",
+        "orcid": "https://orcid.org/0000-0002-1044-214X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dengxu Wu",
+        "id": "https://openalex.org/A5046515234",
+        "orcid": "https://orcid.org/0000-0002-2361-1205",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Quanhai Niu",
+        "id": "https://openalex.org/A5031801286",
+        "orcid": "https://orcid.org/0000-0003-2583-1508",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pushun Lu",
+        "id": "https://openalex.org/A5026316143",
+        "orcid": "https://orcid.org/0000-0002-1381-5837",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tenghuan Ma",
+        "id": "https://openalex.org/A5052455872",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yibo Su",
+        "id": "https://openalex.org/A5027935573",
+        "orcid": "https://orcid.org/0000-0001-8157-3158",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liquan Chen",
+        "id": "https://openalex.org/A5101604337",
+        "orcid": "https://orcid.org/0000-0001-5058-9552",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Li",
+        "id": "https://openalex.org/A5100339418",
+        "orcid": "https://orcid.org/0000-0002-8659-086X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fan Wu",
+        "id": "https://openalex.org/A5065133070",
+        "orcid": "https://orcid.org/0000-0001-8009-3945",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4282825506",
+    "doi": "10.1016/j.esci.2022.06.001",
+    "title": "Stable Ni-rich layered oxide cathode for sulfide-based all-solid-state lithium battery",
+    "publisher": "Elsevier BV",
+    "journal": "eScience",
+    "journal_id": "https://openalex.org/S4210209524",
+    "journal_type": "journal",
+    "journal_issn_l": "2667-1417",
+    "journal_issn_json": "[\"2667-1417\"]",
+    "publication_date": "2022-06-13",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 103,
+    "citation_normalized_percentile": 0.98668646,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Yue Wang",
+    "authors_display": "Yue Wang; Zhixuan Wang; Dengxu Wu; Quanhai Niu; Pushun Lu; Tenghuan Ma; Yibo Su; Liquan Chen; Hong Li; Fan Wu",
+    "authors_json": "[{\"display_name\": \"Yue Wang\", \"id\": \"https://openalex.org/A5100658420\", \"orcid\": \"https://orcid.org/0000-0002-0026-1767\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Zhixuan Wang\", \"id\": \"https://openalex.org/A5046729236\", \"orcid\": \"https://orcid.org/0000-0002-1044-214X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dengxu Wu\", \"id\": \"https://openalex.org/A5046515234\", \"orcid\": \"https://orcid.org/0000-0002-2361-1205\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Quanhai Niu\", \"id\": \"https://openalex.org/A5031801286\", \"orcid\": \"https://orcid.org/0000-0003-2583-1508\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pushun Lu\", \"id\": \"https://openalex.org/A5026316143\", \"orcid\": \"https://orcid.org/0000-0002-1381-5837\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tenghuan Ma\", \"id\": \"https://openalex.org/A5052455872\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yibo Su\", \"id\": \"https://openalex.org/A5027935573\", \"orcid\": \"https://orcid.org/0000-0001-8157-3158\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liquan Chen\", \"id\": \"https://openalex.org/A5101604337\", \"orcid\": \"https://orcid.org/0000-0001-5058-9552\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Li\", \"id\": \"https://openalex.org/A5100339418\", \"orcid\": \"https://orcid.org/0000-0002-8659-086X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fan Wu\", \"id\": \"https://openalex.org/A5065133070\", \"orcid\": \"https://orcid.org/0000-0001-8009-3945\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301633521,
+    "actual_start_ms": 1773301639326,
+    "pacing_wait_ms": 5805,
+    "pacing_jitter_sec": 1.375
+  }
+}

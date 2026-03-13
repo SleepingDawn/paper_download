@@ -1,0 +1,96 @@
+{
+  "doi": "10.1016/j.electacta.2023.141869",
+  "pdf_filename": "10.1016_j.electacta.2023.141869.pdf",
+  "json_filename": "10.1016_j.electacta.2023.141869.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.electacta.2023.141869.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4313855051",
+    "doi": "10.1016/j.electacta.2023.141869",
+    "title": "Improved electrochemical and air stability performance of SeS2 doped argyrodite lithium superionic conductors for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Electrochimica Acta",
+      "id": "https://openalex.org/S198339081",
+      "type": "journal",
+      "issn_l": "0013-4686",
+      "issn": [
+        "0013-4686",
+        "1873-3859"
+      ]
+    },
+    "publication_date": "2023-01-09",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.91299718,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Hak-Min Kim",
+    "authors_display": "Hak-Min Kim; Yuvaraj Subramanian; Kwang‐Sun Ryu",
+    "authors": [
+      {
+        "display_name": "Hak-Min Kim",
+        "id": "https://openalex.org/A5102814529",
+        "orcid": "https://orcid.org/0000-0003-0001-7411",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuvaraj Subramanian",
+        "id": "https://openalex.org/A5104119459",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kwang‐Sun Ryu",
+        "id": "https://openalex.org/A5032691935",
+        "orcid": "https://orcid.org/0000-0002-8758-0495",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4313855051",
+    "doi": "10.1016/j.electacta.2023.141869",
+    "title": "Improved electrochemical and air stability performance of SeS2 doped argyrodite lithium superionic conductors for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Electrochimica Acta",
+    "journal_id": "https://openalex.org/S198339081",
+    "journal_type": "journal",
+    "journal_issn_l": "0013-4686",
+    "journal_issn_json": "[\"0013-4686\", \"1873-3859\"]",
+    "publication_date": "2023-01-09",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.91299718,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Hak-Min Kim",
+    "authors_display": "Hak-Min Kim; Yuvaraj Subramanian; Kwang‐Sun Ryu",
+    "authors_json": "[{\"display_name\": \"Hak-Min Kim\", \"id\": \"https://openalex.org/A5102814529\", \"orcid\": \"https://orcid.org/0000-0003-0001-7411\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yuvaraj Subramanian\", \"id\": \"https://openalex.org/A5104119459\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kwang‐Sun Ryu\", \"id\": \"https://openalex.org/A5032691935\", \"orcid\": \"https://orcid.org/0000-0002-8758-0495\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302551765,
+    "actual_start_ms": 1773302560062,
+    "pacing_wait_ms": 8296,
+    "pacing_jitter_sec": 1.101
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "doi": "10.1016/j.inv.2025.100045",
+  "pdf_filename": "10.1016_j.inv.2025.100045.pdf",
+  "json_filename": "10.1016_j.inv.2025.100045.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.inv.2025.100045.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4415219160",
+    "doi": "10.1016/j.inv.2025.100045",
+    "title": "Interlayered Solid Electrolyte Architecture for Lithium Dendrite Suppression in Lithium Metal Batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Invention Disclosure",
+      "id": "https://openalex.org/S4210182109",
+      "type": "journal",
+      "issn_l": "2772-4441",
+      "issn": [
+        "2772-4441"
+      ]
+    },
+    "publication_date": "2025-10-15",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.79787287,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Zikang Yu",
+    "authors_display": "Zikang Yu; Brian W. Sheldon",
+    "authors": [
+      {
+        "display_name": "Zikang Yu",
+        "id": "https://openalex.org/A5113342277",
+        "orcid": "https://orcid.org/0009-0002-6349-3431",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Brian W. Sheldon",
+        "id": "https://openalex.org/A5085691864",
+        "orcid": "https://orcid.org/0000-0002-9593-891X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4415219160",
+    "doi": "10.1016/j.inv.2025.100045",
+    "title": "Interlayered Solid Electrolyte Architecture for Lithium Dendrite Suppression in Lithium Metal Batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Invention Disclosure",
+    "journal_id": "https://openalex.org/S4210182109",
+    "journal_type": "journal",
+    "journal_issn_l": "2772-4441",
+    "journal_issn_json": "[\"2772-4441\"]",
+    "publication_date": "2025-10-15",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.79787287,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Zikang Yu",
+    "authors_display": "Zikang Yu; Brian W. Sheldon",
+    "authors_json": "[{\"display_name\": \"Zikang Yu\", \"id\": \"https://openalex.org/A5113342277\", \"orcid\": \"https://orcid.org/0009-0002-6349-3431\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Brian W. Sheldon\", \"id\": \"https://openalex.org/A5085691864\", \"orcid\": \"https://orcid.org/0000-0002-9593-891X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2772444125000096?via%3Dihub",
+    "landing_title": "Interlayered Solid Electrolyte Architecture for Lithium Dendrite Suppression in Lithium Metal Batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773308866291,
+    "actual_start_ms": 1773308866292,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.542
+  }
+}

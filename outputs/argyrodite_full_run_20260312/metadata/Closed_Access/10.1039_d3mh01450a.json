@@ -1,0 +1,131 @@
+{
+  "doi": "10.1039/d3mh01450a",
+  "pdf_filename": "10.1039_d3mh01450a.pdf",
+  "json_filename": "10.1039_d3mh01450a.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d3mh01450a.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4388423895",
+    "doi": "10.1039/d3mh01450a",
+    "title": "Borohydride and halide dual-substituted lithium argyrodites",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Materials Horizons",
+      "id": "https://openalex.org/S2764386229",
+      "type": "journal",
+      "issn_l": "2051-6347",
+      "issn": [
+        "2051-6347",
+        "2051-6355"
+      ]
+    },
+    "publication_date": "2023-11-06",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.89993597,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Ji-Hoon Han",
+    "authors_display": "Ji-Hoon Han; Do Kyung Kim; Young Joo Lee; Young‐Su Lee; Kyung‐Woo Yi; Young Whan Cho; Kyung-Woo Yi; Young Whan Cho",
+    "authors": [
+      {
+        "display_name": "Ji-Hoon Han",
+        "id": "https://openalex.org/A5101657505",
+        "orcid": "https://orcid.org/0009-0003-4167-7253",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Do Kyung Kim",
+        "id": "https://openalex.org/A5100759185",
+        "orcid": "https://orcid.org/0000-0001-9092-9427",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young Joo Lee",
+        "id": "https://openalex.org/A5100698635",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young‐Su Lee",
+        "id": "https://openalex.org/A5054146335",
+        "orcid": "https://orcid.org/0000-0002-3160-6633",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Kyung‐Woo Yi",
+        "id": "https://openalex.org/A5023160283",
+        "orcid": "https://orcid.org/0000-0002-7926-9541",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Young Whan Cho",
+        "id": "https://openalex.org/A5070086820",
+        "orcid": "https://orcid.org/0000-0001-9909-0082",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung-Woo Yi",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young Whan Cho",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0001-9909-0082",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4388423895",
+    "doi": "10.1039/d3mh01450a",
+    "title": "Borohydride and halide dual-substituted lithium argyrodites",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Materials Horizons",
+    "journal_id": "https://openalex.org/S2764386229",
+    "journal_type": "journal",
+    "journal_issn_l": "2051-6347",
+    "journal_issn_json": "[\"2051-6347\", \"2051-6355\"]",
+    "publication_date": "2023-11-06",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.89993597,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Ji-Hoon Han",
+    "authors_display": "Ji-Hoon Han; Do Kyung Kim; Young Joo Lee; Young‐Su Lee; Kyung‐Woo Yi; Young Whan Cho; Kyung-Woo Yi; Young Whan Cho",
+    "authors_json": "[{\"display_name\": \"Ji-Hoon Han\", \"id\": \"https://openalex.org/A5101657505\", \"orcid\": \"https://orcid.org/0009-0003-4167-7253\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Do Kyung Kim\", \"id\": \"https://openalex.org/A5100759185\", \"orcid\": \"https://orcid.org/0000-0001-9092-9427\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young Joo Lee\", \"id\": \"https://openalex.org/A5100698635\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young‐Su Lee\", \"id\": \"https://openalex.org/A5054146335\", \"orcid\": \"https://orcid.org/0000-0002-3160-6633\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Kyung‐Woo Yi\", \"id\": \"https://openalex.org/A5023160283\", \"orcid\": \"https://orcid.org/0000-0002-7926-9541\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Young Whan Cho\", \"id\": \"https://openalex.org/A5070086820\", \"orcid\": \"https://orcid.org/0000-0001-9909-0082\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung-Woo Yi\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young Whan Cho\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0001-9909-0082\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.rsc.org/en/content/articlelanding/2024/mh/d3mh01450a",
+    "landing_title": "Borohydride and halide dual-substituted lithium argyrodites - Materials Horizons (RSC Publishing)",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773312744129,
+    "actual_start_ms": 1773312744131,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.357
+  }
+}

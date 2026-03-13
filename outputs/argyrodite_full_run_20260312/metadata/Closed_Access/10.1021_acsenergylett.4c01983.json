@@ -1,0 +1,123 @@
+{
+  "doi": "10.1021/acsenergylett.4c01983",
+  "pdf_filename": "10.1021_acsenergylett.4c01983.pdf",
+  "json_filename": "10.1021_acsenergylett.4c01983.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.4c01983.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4403381879",
+    "doi": "10.1021/acsenergylett.4c01983",
+    "title": "Chemomechanical Pairing of Alloy Anodes and Solid-State Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2024-10-14",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.92206898,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Shiwei Chen",
+    "authors_display": "Shiwei Chen; Qingbo Cao; Bin Tang; Xinyu Yu; Zhen Zhou; Shou‐Hang Bo; Yunlong Guo",
+    "authors": [
+      {
+        "display_name": "Shiwei Chen",
+        "id": "https://openalex.org/A5100613031",
+        "orcid": "https://orcid.org/0000-0002-7214-2177",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qingbo Cao",
+        "id": "https://openalex.org/A5101443907",
+        "orcid": "https://orcid.org/0009-0007-1256-5147",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bin Tang",
+        "id": "https://openalex.org/A5078279335",
+        "orcid": "https://orcid.org/0000-0001-5765-1144",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinyu Yu",
+        "id": "https://openalex.org/A5101851434",
+        "orcid": "https://orcid.org/0000-0003-1214-790X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhen Zhou",
+        "id": "https://openalex.org/A5034955307",
+        "orcid": "https://orcid.org/0000-0003-3232-9903",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shou‐Hang Bo",
+        "id": "https://openalex.org/A5080651679",
+        "orcid": "https://orcid.org/0000-0001-8963-5261",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yunlong Guo",
+        "id": "https://openalex.org/A5001552953",
+        "orcid": "https://orcid.org/0000-0002-4490-2140",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4403381879",
+    "doi": "10.1021/acsenergylett.4c01983",
+    "title": "Chemomechanical Pairing of Alloy Anodes and Solid-State Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2024-10-14",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.92206898,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Shiwei Chen",
+    "authors_display": "Shiwei Chen; Qingbo Cao; Bin Tang; Xinyu Yu; Zhen Zhou; Shou‐Hang Bo; Yunlong Guo",
+    "authors_json": "[{\"display_name\": \"Shiwei Chen\", \"id\": \"https://openalex.org/A5100613031\", \"orcid\": \"https://orcid.org/0000-0002-7214-2177\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Qingbo Cao\", \"id\": \"https://openalex.org/A5101443907\", \"orcid\": \"https://orcid.org/0009-0007-1256-5147\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bin Tang\", \"id\": \"https://openalex.org/A5078279335\", \"orcid\": \"https://orcid.org/0000-0001-5765-1144\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinyu Yu\", \"id\": \"https://openalex.org/A5101851434\", \"orcid\": \"https://orcid.org/0000-0003-1214-790X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhen Zhou\", \"id\": \"https://openalex.org/A5034955307\", \"orcid\": \"https://orcid.org/0000-0003-3232-9903\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shou‐Hang Bo\", \"id\": \"https://openalex.org/A5080651679\", \"orcid\": \"https://orcid.org/0000-0001-8963-5261\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yunlong Guo\", \"id\": \"https://openalex.org/A5001552953\", \"orcid\": \"https://orcid.org/0000-0002-4490-2140\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.4c01983",
+    "landing_title": "Chemomechanical Pairing of Alloy Anodes and Solid-State Electrolytes | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsenergylett.4c01983.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773304066884,
+    "actual_start_ms": 1773304074662,
+    "pacing_wait_ms": 7777,
+    "pacing_jitter_sec": 1.075
+  }
+}

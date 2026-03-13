@@ -1,0 +1,96 @@
+{
+  "doi": "10.1002/zaac.200670048",
+  "pdf_filename": "10.1002_zaac.200670048.pdf",
+  "json_filename": "10.1002_zaac.200670048.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_zaac.200670048.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2025701363",
+    "doi": "10.1002/zaac.200670048",
+    "title": "Synthesis and Characterization of Lithium Argyrodite, Li<sub>7</sub>PS<sub>6</sub>",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Zeitschrift für anorganische und allgemeine Chemie",
+      "id": "https://openalex.org/S171987449",
+      "type": "journal",
+      "issn_l": "0044-2313",
+      "issn": [
+        "0044-2313",
+        "1521-3749"
+      ]
+    },
+    "publication_date": "2006-08-23",
+    "publication_year": 2006,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.10850272,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Shiao‐Tong Kong",
+    "authors_display": "Shiao‐Tong Kong; Christof Reiner; H. J. Deiseroth",
+    "authors": [
+      {
+        "display_name": "Shiao‐Tong Kong",
+        "id": "https://openalex.org/A5103451528",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Christof Reiner",
+        "id": "https://openalex.org/A5013054650",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "H. J. Deiseroth",
+        "id": "https://openalex.org/A5110619788",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2025701363",
+    "doi": "10.1002/zaac.200670048",
+    "title": "Synthesis and Characterization of Lithium Argyrodite, Li<sub>7</sub>PS<sub>6</sub>",
+    "publisher": "Wiley",
+    "journal": "Zeitschrift für anorganische und allgemeine Chemie",
+    "journal_id": "https://openalex.org/S171987449",
+    "journal_type": "journal",
+    "journal_issn_l": "0044-2313",
+    "journal_issn_json": "[\"0044-2313\", \"1521-3749\"]",
+    "publication_date": "2006-08-23",
+    "publication_year": 2006,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.10850272,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Shiao‐Tong Kong",
+    "authors_display": "Shiao‐Tong Kong; Christof Reiner; H. J. Deiseroth",
+    "authors_json": "[{\"display_name\": \"Shiao‐Tong Kong\", \"id\": \"https://openalex.org/A5103451528\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Christof Reiner\", \"id\": \"https://openalex.org/A5013054650\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"H. J. Deiseroth\", \"id\": \"https://openalex.org/A5110619788\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308097149,
+    "actual_start_ms": 1773308097150,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.896
+  }
+}

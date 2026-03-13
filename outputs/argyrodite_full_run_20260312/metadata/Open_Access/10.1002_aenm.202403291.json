@@ -1,0 +1,180 @@
+{
+  "doi": "10.1002/aenm.202403291",
+  "pdf_filename": "10.1002_aenm.202403291.pdf",
+  "json_filename": "10.1002_aenm.202403291.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202403291.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4402269041",
+    "doi": "10.1002/aenm.202403291",
+    "title": "Influence of Post‐Synthesis Processing on the Structure, Transport, and Performance of the Solid Electrolyte Li<sub>5.5</sub>PS<sub>4.5</sub>Cl<sub>1.5</sub> in All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2024-09-05",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 21,
+    "citation_normalized_percentile": 0.95495471,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202403291",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Oliver Maus",
+    "authors_display": "Oliver Maus; Martin Lange; Finn Frankenberg; Florian Stainer; Vasiliki Faka; Eva Schlautmann; Carolin Rosenbach; Anna Jodlbauer; Johannes Schubert; Jürgen Janek; Cheng Li; Peter Michalowski; Martin Wilkening; Arno Kwade; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Oliver Maus",
+        "id": "https://openalex.org/A5081496191",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Lange",
+        "id": "https://openalex.org/A5062147292",
+        "orcid": "https://orcid.org/0000-0002-4045-3915",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Finn Frankenberg",
+        "id": "https://openalex.org/A5093090571",
+        "orcid": "https://orcid.org/0009-0005-0644-1565",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Florian Stainer",
+        "id": "https://openalex.org/A5046355828",
+        "orcid": "https://orcid.org/0000-0003-2072-2687",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vasiliki Faka",
+        "id": "https://openalex.org/A5092989778",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Eva Schlautmann",
+        "id": "https://openalex.org/A5092358864",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Carolin Rosenbach",
+        "id": "https://openalex.org/A5072648110",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anna Jodlbauer",
+        "id": "https://openalex.org/A5029895612",
+        "orcid": "https://orcid.org/0009-0008-6887-4106",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Johannes Schubert",
+        "id": "https://openalex.org/A5068109325",
+        "orcid": "https://orcid.org/0009-0003-3148-6672",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cheng Li",
+        "id": "https://openalex.org/A5100354261",
+        "orcid": "https://orcid.org/0000-0002-6546-6413",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peter Michalowski",
+        "id": "https://openalex.org/A5078649071",
+        "orcid": "https://orcid.org/0000-0001-6738-8108",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Wilkening",
+        "id": "https://openalex.org/A5024063649",
+        "orcid": "https://orcid.org/0000-0001-9706-4892",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Arno Kwade",
+        "id": "https://openalex.org/A5005901248",
+        "orcid": "https://orcid.org/0000-0002-6348-7309",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4402269041",
+    "doi": "10.1002/aenm.202403291",
+    "title": "Influence of Post‐Synthesis Processing on the Structure, Transport, and Performance of the Solid Electrolyte Li<sub>5.5</sub>PS<sub>4.5</sub>Cl<sub>1.5</sub> in All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2024-09-05",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 21,
+    "citation_normalized_percentile": 0.95495471,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202403291",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Oliver Maus",
+    "authors_display": "Oliver Maus; Martin Lange; Finn Frankenberg; Florian Stainer; Vasiliki Faka; Eva Schlautmann; Carolin Rosenbach; Anna Jodlbauer; Johannes Schubert; Jürgen Janek; Cheng Li; Peter Michalowski; Martin Wilkening; Arno Kwade; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Oliver Maus\", \"id\": \"https://openalex.org/A5081496191\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Martin Lange\", \"id\": \"https://openalex.org/A5062147292\", \"orcid\": \"https://orcid.org/0000-0002-4045-3915\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Finn Frankenberg\", \"id\": \"https://openalex.org/A5093090571\", \"orcid\": \"https://orcid.org/0009-0005-0644-1565\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Florian Stainer\", \"id\": \"https://openalex.org/A5046355828\", \"orcid\": \"https://orcid.org/0000-0003-2072-2687\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Vasiliki Faka\", \"id\": \"https://openalex.org/A5092989778\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Eva Schlautmann\", \"id\": \"https://openalex.org/A5092358864\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Carolin Rosenbach\", \"id\": \"https://openalex.org/A5072648110\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anna Jodlbauer\", \"id\": \"https://openalex.org/A5029895612\", \"orcid\": \"https://orcid.org/0009-0008-6887-4106\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Johannes Schubert\", \"id\": \"https://openalex.org/A5068109325\", \"orcid\": \"https://orcid.org/0009-0003-3148-6672\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cheng Li\", \"id\": \"https://openalex.org/A5100354261\", \"orcid\": \"https://orcid.org/0000-0002-6546-6413\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peter Michalowski\", \"id\": \"https://openalex.org/A5078649071\", \"orcid\": \"https://orcid.org/0000-0001-6738-8108\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Martin Wilkening\", \"id\": \"https://openalex.org/A5024063649\", \"orcid\": \"https://orcid.org/0000-0001-9706-4892\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Arno Kwade\", \"id\": \"https://openalex.org/A5005901248\", \"orcid\": \"https://orcid.org/0000-0002-6348-7309\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773304295159,
+    "actual_start_ms": 1773304295159,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.716
+  }
+}

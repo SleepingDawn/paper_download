@@ -1,0 +1,138 @@
+{
+  "doi": "10.1002/anie.202213228",
+  "pdf_filename": "10.1002_anie.202213228.pdf",
+  "json_filename": "10.1002_anie.202213228.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_anie.202213228.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4309766466",
+    "doi": "10.1002/anie.202213228",
+    "title": "Impact of the Chlorination of Lithium Argyrodites on the Electrolyte/Cathode Interface in Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Angewandte Chemie International Edition",
+      "id": "https://openalex.org/S67393510",
+      "type": "journal",
+      "issn_l": "1433-7851",
+      "issn": [
+        "1433-7851",
+        "1521-3773"
+      ]
+    },
+    "publication_date": "2022-11-23",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 68,
+    "citation_normalized_percentile": 0.97007896,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Tong‐Tong Zuo",
+    "authors_display": "Tong‐Tong Zuo; Felix Walther; Jun Hao Teo; Raffael Rueß; Yübo Wang; Marcus Rohnke; Daniel Schröder; Linda F. Nazar; Jürgen Janek",
+    "authors": [
+      {
+        "display_name": "Tong‐Tong Zuo",
+        "id": "https://openalex.org/A5072894083",
+        "orcid": "https://orcid.org/0000-0003-3594-7029",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Felix Walther",
+        "id": "https://openalex.org/A5070817363",
+        "orcid": "https://orcid.org/0000-0002-5843-4237",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Hao Teo",
+        "id": "https://openalex.org/A5045966184",
+        "orcid": "https://orcid.org/0000-0002-0343-669X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Raffael Rueß",
+        "id": "https://openalex.org/A5078362054",
+        "orcid": "https://orcid.org/0000-0002-9274-4714",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yübo Wang",
+        "id": "https://openalex.org/A5100383192",
+        "orcid": "https://orcid.org/0009-0005-8942-345X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marcus Rohnke",
+        "id": "https://openalex.org/A5019168746",
+        "orcid": "https://orcid.org/0000-0002-8867-950X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniel Schröder",
+        "id": "https://openalex.org/A5009720323",
+        "orcid": "https://orcid.org/0000-0002-2198-0218",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Linda F. Nazar",
+        "id": "https://openalex.org/A5079626231",
+        "orcid": "https://orcid.org/0000-0002-3314-8197",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4309766466",
+    "doi": "10.1002/anie.202213228",
+    "title": "Impact of the Chlorination of Lithium Argyrodites on the Electrolyte/Cathode Interface in Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": "Angewandte Chemie International Edition",
+    "journal_id": "https://openalex.org/S67393510",
+    "journal_type": "journal",
+    "journal_issn_l": "1433-7851",
+    "journal_issn_json": "[\"1433-7851\", \"1521-3773\"]",
+    "publication_date": "2022-11-23",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 68,
+    "citation_normalized_percentile": 0.97007896,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Tong‐Tong Zuo",
+    "authors_display": "Tong‐Tong Zuo; Felix Walther; Jun Hao Teo; Raffael Rueß; Yübo Wang; Marcus Rohnke; Daniel Schröder; Linda F. Nazar; Jürgen Janek",
+    "authors_json": "[{\"display_name\": \"Tong‐Tong Zuo\", \"id\": \"https://openalex.org/A5072894083\", \"orcid\": \"https://orcid.org/0000-0003-3594-7029\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Felix Walther\", \"id\": \"https://openalex.org/A5070817363\", \"orcid\": \"https://orcid.org/0000-0002-5843-4237\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun Hao Teo\", \"id\": \"https://openalex.org/A5045966184\", \"orcid\": \"https://orcid.org/0000-0002-0343-669X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Raffael Rueß\", \"id\": \"https://openalex.org/A5078362054\", \"orcid\": \"https://orcid.org/0000-0002-9274-4714\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yübo Wang\", \"id\": \"https://openalex.org/A5100383192\", \"orcid\": \"https://orcid.org/0009-0005-8942-345X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marcus Rohnke\", \"id\": \"https://openalex.org/A5019168746\", \"orcid\": \"https://orcid.org/0000-0002-8867-950X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniel Schröder\", \"id\": \"https://openalex.org/A5009720323\", \"orcid\": \"https://orcid.org/0000-0002-2198-0218\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Linda F. Nazar\", \"id\": \"https://openalex.org/A5079626231\", \"orcid\": \"https://orcid.org/0000-0002-3314-8197\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302878114,
+    "actual_start_ms": 1773302879617,
+    "pacing_wait_ms": 1502,
+    "pacing_jitter_sec": 1.693
+  }
+}

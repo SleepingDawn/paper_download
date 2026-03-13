@@ -1,0 +1,131 @@
+{
+  "doi": "10.1016/j.apsusc.2022.155490",
+  "pdf_filename": "10.1016_j.apsusc.2022.155490.pdf",
+  "json_filename": "10.1016_j.apsusc.2022.155490.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.apsusc.2022.155490.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4308040577",
+    "doi": "10.1016/j.apsusc.2022.155490",
+    "title": "Lithium-enhanced functionalized carbon nanofibers as a mixed electronic/ionic conductor for sulfide all solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Applied Surface Science",
+      "id": "https://openalex.org/S42323631",
+      "type": "journal",
+      "issn_l": "0169-4332",
+      "issn": [
+        "0169-4332",
+        "1873-5584"
+      ]
+    },
+    "publication_date": "2022-10-29",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.71273159,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Tom James Embleton",
+    "authors_display": "Tom James Embleton; Jeongsik Yun; Jae Hong Choi; Jongho Kim; Kyungmok Ko; Jin‐Soo Kim; Yoonkook Son; Pilgun Oh",
+    "authors": [
+      {
+        "display_name": "Tom James Embleton",
+        "id": "https://openalex.org/A5017548561",
+        "orcid": "https://orcid.org/0000-0002-6557-2996",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeongsik Yun",
+        "id": "https://openalex.org/A5013688652",
+        "orcid": "https://orcid.org/0000-0003-1933-699X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jae Hong Choi",
+        "id": "https://openalex.org/A5103909119",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jongho Kim",
+        "id": "https://openalex.org/A5100427727",
+        "orcid": "https://orcid.org/0000-0001-9317-7494",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyungmok Ko",
+        "id": "https://openalex.org/A5046707437",
+        "orcid": "https://orcid.org/0000-0001-6076-3366",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jin‐Soo Kim",
+        "id": "https://openalex.org/A5100390255",
+        "orcid": "https://orcid.org/0000-0001-8217-5071",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoonkook Son",
+        "id": "https://openalex.org/A5028102444",
+        "orcid": "https://orcid.org/0000-0003-2666-1790",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pilgun Oh",
+        "id": "https://openalex.org/A5051578878",
+        "orcid": "https://orcid.org/0000-0001-8601-8380",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4308040577",
+    "doi": "10.1016/j.apsusc.2022.155490",
+    "title": "Lithium-enhanced functionalized carbon nanofibers as a mixed electronic/ionic conductor for sulfide all solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Applied Surface Science",
+    "journal_id": "https://openalex.org/S42323631",
+    "journal_type": "journal",
+    "journal_issn_l": "0169-4332",
+    "journal_issn_json": "[\"0169-4332\", \"1873-5584\"]",
+    "publication_date": "2022-10-29",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.71273159,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Tom James Embleton",
+    "authors_display": "Tom James Embleton; Jeongsik Yun; Jae Hong Choi; Jongho Kim; Kyungmok Ko; Jin‐Soo Kim; Yoonkook Son; Pilgun Oh",
+    "authors_json": "[{\"display_name\": \"Tom James Embleton\", \"id\": \"https://openalex.org/A5017548561\", \"orcid\": \"https://orcid.org/0000-0002-6557-2996\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jeongsik Yun\", \"id\": \"https://openalex.org/A5013688652\", \"orcid\": \"https://orcid.org/0000-0003-1933-699X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jae Hong Choi\", \"id\": \"https://openalex.org/A5103909119\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jongho Kim\", \"id\": \"https://openalex.org/A5100427727\", \"orcid\": \"https://orcid.org/0000-0001-9317-7494\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyungmok Ko\", \"id\": \"https://openalex.org/A5046707437\", \"orcid\": \"https://orcid.org/0000-0001-6076-3366\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jin‐Soo Kim\", \"id\": \"https://openalex.org/A5100390255\", \"orcid\": \"https://orcid.org/0000-0001-8217-5071\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoonkook Son\", \"id\": \"https://openalex.org/A5028102444\", \"orcid\": \"https://orcid.org/0000-0003-2666-1790\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pilgun Oh\", \"id\": \"https://openalex.org/A5051578878\", \"orcid\": \"https://orcid.org/0000-0001-8601-8380\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S0169433222030185?via%3Dihub",
+    "landing_title": "Lithium-enhanced functionalized carbon nanofibers as a mixed electronic/ionic conductor for sulfide all solid-state batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773304923362,
+    "actual_start_ms": 1773305230646,
+    "pacing_wait_ms": 307283,
+    "pacing_jitter_sec": 1.679
+  }
+}

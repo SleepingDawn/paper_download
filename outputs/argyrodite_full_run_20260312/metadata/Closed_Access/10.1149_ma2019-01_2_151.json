@@ -1,0 +1,112 @@
+{
+  "doi": "10.1149/ma2019-01/2/151",
+  "pdf_filename": "10.1149_ma2019-01_2_151.pdf",
+  "json_filename": "10.1149_ma2019-01_2_151.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2019-01_2_151.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W3102430837",
+    "doi": "10.1149/ma2019-01/2/151",
+    "title": "From Ionic Liquid Fragments Towards Hybrid Nanoparticles for Solid-State Lithium Ion Technology",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2019-05-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21018267,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Jennifer Bidal",
+    "authors_display": "Jennifer Bidal; Benoît Fleutot; Caroline Hadad; Matthieu Bécuwe; Albert Nguyen Van Nhien",
+    "authors": [
+      {
+        "display_name": "Jennifer Bidal",
+        "id": "https://openalex.org/A5046038676",
+        "orcid": "https://orcid.org/0000-0002-2699-1733",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Benoît Fleutot",
+        "id": "https://openalex.org/A5017510915",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Caroline Hadad",
+        "id": "https://openalex.org/A5022114202",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Matthieu Bécuwe",
+        "id": "https://openalex.org/A5071046039",
+        "orcid": "https://orcid.org/0000-0002-1949-3955",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Albert Nguyen Van Nhien",
+        "id": "https://openalex.org/A5025664757",
+        "orcid": "https://orcid.org/0000-0002-1956-1153",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3102430837",
+    "doi": "10.1149/ma2019-01/2/151",
+    "title": "From Ionic Liquid Fragments Towards Hybrid Nanoparticles for Solid-State Lithium Ion Technology",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2019-05-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21018267,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Jennifer Bidal",
+    "authors_display": "Jennifer Bidal; Benoît Fleutot; Caroline Hadad; Matthieu Bécuwe; Albert Nguyen Van Nhien",
+    "authors_json": "[{\"display_name\": \"Jennifer Bidal\", \"id\": \"https://openalex.org/A5046038676\", \"orcid\": \"https://orcid.org/0000-0002-2699-1733\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Benoît Fleutot\", \"id\": \"https://openalex.org/A5017510915\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Caroline Hadad\", \"id\": \"https://openalex.org/A5022114202\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Matthieu Bécuwe\", \"id\": \"https://openalex.org/A5071046039\", \"orcid\": \"https://orcid.org/0000-0002-1949-3955\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Albert Nguyen Van Nhien\", \"id\": \"https://openalex.org/A5025664757\", \"orcid\": \"https://orcid.org/0000-0002-1956-1153\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773302887905,
+    "actual_start_ms": 1773302889449,
+    "pacing_wait_ms": 1543,
+    "pacing_jitter_sec": 1.315
+  }
+}

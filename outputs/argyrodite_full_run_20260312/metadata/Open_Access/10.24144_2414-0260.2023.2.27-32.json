@@ -1,0 +1,109 @@
+{
+  "doi": "10.24144/2414-0260.2023.2.27-32",
+  "pdf_filename": "10.24144_2414-0260.2023.2.27-32.pdf",
+  "json_filename": "10.24144_2414-0260.2023.2.27-32.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.24144_2414-0260.2023.2.27-32.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4392393201",
+    "doi": "10.24144/2414-0260.2023.2.27-32",
+    "title": "Pogodin A.I., Filep M.J., Zhukova Yu.P. Malakhovska T.O., Kokhan O.P. CRYSTAL STRUCTURE AND ELECTRICAL CONDUCTIVITY OF Ag7+x(P1-xGex)S6 (x = 0.1; 0.25) SINGLE CRYSTALS",
+    "publisher": "Scientific Bulletin of the Uzhhorod University Series «Chemistry»",
+    "journal": {
+      "name": "Scientific Bulletin of the Uzhhorod University Series «Chemistry»",
+      "id": "https://openalex.org/S4210217543",
+      "type": "journal",
+      "issn_l": "2414-0260",
+      "issn": [
+        "2414-0260"
+      ]
+    },
+    "publication_date": "2024-01-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.01548022,
+    "pdf_url": "http://visnyk-khim.uzhnu.edu.ua/article/download/297013/289974",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "A.I. Pogodin",
+    "authors_display": "A.I. Pogodin; M.J. Filep; Yu.P. Zhukova; Т.О. Malakhovska; O.P. Kokhan",
+    "authors": [
+      {
+        "display_name": "A.I. Pogodin",
+        "id": "https://openalex.org/A5020454096",
+        "orcid": "https://orcid.org/0000-0002-2430-3220",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "M.J. Filep",
+        "id": "https://openalex.org/A5053182495",
+        "orcid": "https://orcid.org/0000-0001-7017-5437",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu.P. Zhukova",
+        "id": "https://openalex.org/A5055020212",
+        "orcid": "https://orcid.org/0000-0001-7711-3984",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Т.О. Malakhovska",
+        "id": "https://openalex.org/A5057564232",
+        "orcid": "https://orcid.org/0000-0001-7309-4894",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "O.P. Kokhan",
+        "id": "https://openalex.org/A5032166814",
+        "orcid": "https://orcid.org/0000-0003-1534-6779",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4392393201",
+    "doi": "10.24144/2414-0260.2023.2.27-32",
+    "title": "Pogodin A.I., Filep M.J., Zhukova Yu.P. Malakhovska T.O., Kokhan O.P. CRYSTAL STRUCTURE AND ELECTRICAL CONDUCTIVITY OF Ag7+x(P1-xGex)S6 (x = 0.1; 0.25) SINGLE CRYSTALS",
+    "publisher": "Scientific Bulletin of the Uzhhorod University Series «Chemistry»",
+    "journal": "Scientific Bulletin of the Uzhhorod University Series «Chemistry»",
+    "journal_id": "https://openalex.org/S4210217543",
+    "journal_type": "journal",
+    "journal_issn_l": "2414-0260",
+    "journal_issn_json": "[\"2414-0260\"]",
+    "publication_date": "2024-01-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.01548022,
+    "pdf_url": "http://visnyk-khim.uzhnu.edu.ua/article/download/297013/289974",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "A.I. Pogodin",
+    "authors_display": "A.I. Pogodin; M.J. Filep; Yu.P. Zhukova; Т.О. Malakhovska; O.P. Kokhan",
+    "authors_json": "[{\"display_name\": \"A.I. Pogodin\", \"id\": \"https://openalex.org/A5020454096\", \"orcid\": \"https://orcid.org/0000-0002-2430-3220\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"M.J. Filep\", \"id\": \"https://openalex.org/A5053182495\", \"orcid\": \"https://orcid.org/0000-0001-7017-5437\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu.P. Zhukova\", \"id\": \"https://openalex.org/A5055020212\", \"orcid\": \"https://orcid.org/0000-0001-7711-3984\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Т.О. Malakhovska\", \"id\": \"https://openalex.org/A5057564232\", \"orcid\": \"https://orcid.org/0000-0001-7309-4894\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"O.P. Kokhan\", \"id\": \"https://openalex.org/A5032166814\", \"orcid\": \"https://orcid.org/0000-0003-1534-6779\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.24144",
+    "scheduled_start_ms": 1773310587678,
+    "actual_start_ms": 1773310587679,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.732
+  }
+}

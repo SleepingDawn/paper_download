@@ -1,0 +1,98 @@
+{
+  "doi": "10.1149/ma2016-03/2/1051",
+  "pdf_filename": "10.1149_ma2016-03_2_1051.pdf",
+  "json_filename": "10.1149_ma2016-03_2_1051.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2016-03_2_1051.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W2306233170",
+    "doi": "10.1149/ma2016-03/2/1051",
+    "title": "Liquid-Phase Synthesis of High Lithium-Ion Conducting Li<sub>6</sub>PS<sub>5</sub>Br Solid Electrolyte Using Ethanol and Its Application to All-Solid-State Lithium Secondary Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2016-06-10",
+    "publication_year": 2016,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.54795029,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "So Yubuchi",
+    "authors_display": "So Yubuchi; Akitoshi Hayashi; Masahiro Tatsumisago",
+    "authors": [
+      {
+        "display_name": "So Yubuchi",
+        "id": "https://openalex.org/A5077611173",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Akitoshi Hayashi",
+        "id": "https://openalex.org/A5112836633",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masahiro Tatsumisago",
+        "id": "https://openalex.org/A5081903089",
+        "orcid": "https://orcid.org/0000-0002-4836-0158",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2306233170",
+    "doi": "10.1149/ma2016-03/2/1051",
+    "title": "Liquid-Phase Synthesis of High Lithium-Ion Conducting Li<sub>6</sub>PS<sub>5</sub>Br Solid Electrolyte Using Ethanol and Its Application to All-Solid-State Lithium Secondary Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2016-06-10",
+    "publication_year": 2016,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.54795029,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "So Yubuchi",
+    "authors_display": "So Yubuchi; Akitoshi Hayashi; Masahiro Tatsumisago",
+    "authors_json": "[{\"display_name\": \"So Yubuchi\", \"id\": \"https://openalex.org/A5077611173\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Akitoshi Hayashi\", \"id\": \"https://openalex.org/A5112836633\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masahiro Tatsumisago\", \"id\": \"https://openalex.org/A5081903089\", \"orcid\": \"https://orcid.org/0000-0002-4836-0158\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773302705491,
+    "actual_start_ms": 1773302706988,
+    "pacing_wait_ms": 1497,
+    "pacing_jitter_sec": 1.163
+  }
+}

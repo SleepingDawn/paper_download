@@ -1,0 +1,144 @@
+{
+  "doi": "10.2139/ssrn.3983713",
+  "pdf_filename": "10.2139_ssrn.3983713.pdf",
+  "json_filename": "10.2139_ssrn.3983713.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.3983713.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4285543687",
+    "doi": "10.2139/ssrn.3983713",
+    "title": "High-Rate and Durable Sulfide-Based All-Solid-State Lithium Battery with &lt;i&gt;in situ&lt;/i&gt; Li &lt;sub&gt;2&lt;/sub&gt;O Buffering",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2021-01-01",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Jie Shi",
+    "authors_display": "Jie Shi; Ping Li; Kun Han; Dong Sun; Wang Zhao; Zhiwei Liu; Gemeng Liang; Kenneth Davey; Zhanhu Guo; Xuanhui Qu",
+    "authors": [
+      {
+        "display_name": "Jie Shi",
+        "id": "https://openalex.org/A5102868363",
+        "orcid": "https://orcid.org/0009-0002-7210-4418",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ping Li",
+        "id": "https://openalex.org/A5100435557",
+        "orcid": "https://orcid.org/0000-0003-0280-6860",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kun Han",
+        "id": "https://openalex.org/A5100602023",
+        "orcid": "https://orcid.org/0000-0003-2991-2305",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong Sun",
+        "id": "https://openalex.org/A5058722197",
+        "orcid": "https://orcid.org/0000-0002-0898-4548",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wang Zhao",
+        "id": "https://openalex.org/A5024023828",
+        "orcid": "https://orcid.org/0000-0002-0591-5459",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhiwei Liu",
+        "id": "https://openalex.org/A5003339175",
+        "orcid": "https://orcid.org/0000-0002-6679-6326",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gemeng Liang",
+        "id": "https://openalex.org/A5070903368",
+        "orcid": "https://orcid.org/0000-0002-2302-4932",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kenneth Davey",
+        "id": "https://openalex.org/A5083049159",
+        "orcid": "https://orcid.org/0000-0002-7623-9320",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhanhu Guo",
+        "id": "https://openalex.org/A5110015262",
+        "orcid": "https://orcid.org/0000-0003-3464-5301",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xuanhui Qu",
+        "id": "https://openalex.org/A5073931088",
+        "orcid": "https://orcid.org/0000-0002-2943-3008",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4285543687",
+    "doi": "10.2139/ssrn.3983713",
+    "title": "High-Rate and Durable Sulfide-Based All-Solid-State Lithium Battery with &lt;i&gt;in situ&lt;/i&gt; Li &lt;sub&gt;2&lt;/sub&gt;O Buffering",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2021-01-01",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Jie Shi",
+    "authors_display": "Jie Shi; Ping Li; Kun Han; Dong Sun; Wang Zhao; Zhiwei Liu; Gemeng Liang; Kenneth Davey; Zhanhu Guo; Xuanhui Qu",
+    "authors_json": "[{\"display_name\": \"Jie Shi\", \"id\": \"https://openalex.org/A5102868363\", \"orcid\": \"https://orcid.org/0009-0002-7210-4418\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ping Li\", \"id\": \"https://openalex.org/A5100435557\", \"orcid\": \"https://orcid.org/0000-0003-0280-6860\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kun Han\", \"id\": \"https://openalex.org/A5100602023\", \"orcid\": \"https://orcid.org/0000-0003-2991-2305\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong Sun\", \"id\": \"https://openalex.org/A5058722197\", \"orcid\": \"https://orcid.org/0000-0002-0898-4548\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wang Zhao\", \"id\": \"https://openalex.org/A5024023828\", \"orcid\": \"https://orcid.org/0000-0002-0591-5459\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhiwei Liu\", \"id\": \"https://openalex.org/A5003339175\", \"orcid\": \"https://orcid.org/0000-0002-6679-6326\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gemeng Liang\", \"id\": \"https://openalex.org/A5070903368\", \"orcid\": \"https://orcid.org/0000-0002-2302-4932\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kenneth Davey\", \"id\": \"https://openalex.org/A5083049159\", \"orcid\": \"https://orcid.org/0000-0002-7623-9320\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhanhu Guo\", \"id\": \"https://openalex.org/A5110015262\", \"orcid\": \"https://orcid.org/0000-0003-3464-5301\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xuanhui Qu\", \"id\": \"https://openalex.org/A5073931088\", \"orcid\": \"https://orcid.org/0000-0002-2943-3008\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3983713&__cf_chl_rt_tk=uE7gWiVreWfsCpLi0LvUeSv4QdOOPkdVQL_G14dWYo0-1773312480-1.0.1.1-Az8zU.JFxExEaSqvqXfVuzik19sveOHCZ6awf57c7bs",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.3983713.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773312459913,
+    "actual_start_ms": 1773312459914,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.144
+  }
+}

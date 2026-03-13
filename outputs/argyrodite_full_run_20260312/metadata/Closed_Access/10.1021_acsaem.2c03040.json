@@ -1,0 +1,130 @@
+{
+  "doi": "10.1021/acsaem.2c03040",
+  "pdf_filename": "10.1021_acsaem.2c03040.pdf",
+  "json_filename": "10.1021_acsaem.2c03040.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.2c03040.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4311455615",
+    "doi": "10.1021/acsaem.2c03040",
+    "title": "Surficial Sulfur Loss of Jet-Milled Li<sub>6</sub>PS<sub>5</sub>Cl Powder under Mild-Temperature Heat Treatment",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2022-12-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.78037232,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Yo-Seob Kim",
+    "authors_display": "Yo-Seob Kim; Seung Hyeon Jeon; Woosuk Cho; Kyung-Su Kim; Ji‐Sang Yu; Jeongdoo Yi; Goojin Jeong; Kern Ho Park",
+    "authors": [
+      {
+        "display_name": "Yo-Seob Kim",
+        "id": "https://openalex.org/A5003510444",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung Hyeon Jeon",
+        "id": "https://openalex.org/A5108825622",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Woosuk Cho",
+        "id": "https://openalex.org/A5065789071",
+        "orcid": "https://orcid.org/0000-0003-1715-325X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung-Su Kim",
+        "id": "https://openalex.org/A5100374557",
+        "orcid": "https://orcid.org/0009-0005-3151-4113",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji‐Sang Yu",
+        "id": "https://openalex.org/A5101630653",
+        "orcid": "https://orcid.org/0000-0001-9759-1297",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeongdoo Yi",
+        "id": "https://openalex.org/A5072490549",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Goojin Jeong",
+        "id": "https://openalex.org/A5038473555",
+        "orcid": "https://orcid.org/0000-0002-4946-5664",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Kern Ho Park",
+        "id": "https://openalex.org/A5091485561",
+        "orcid": "https://orcid.org/0000-0002-0087-7625",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4311455615",
+    "doi": "10.1021/acsaem.2c03040",
+    "title": "Surficial Sulfur Loss of Jet-Milled Li<sub>6</sub>PS<sub>5</sub>Cl Powder under Mild-Temperature Heat Treatment",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2022-12-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.78037232,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Yo-Seob Kim",
+    "authors_display": "Yo-Seob Kim; Seung Hyeon Jeon; Woosuk Cho; Kyung-Su Kim; Ji‐Sang Yu; Jeongdoo Yi; Goojin Jeong; Kern Ho Park",
+    "authors_json": "[{\"display_name\": \"Yo-Seob Kim\", \"id\": \"https://openalex.org/A5003510444\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Seung Hyeon Jeon\", \"id\": \"https://openalex.org/A5108825622\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Woosuk Cho\", \"id\": \"https://openalex.org/A5065789071\", \"orcid\": \"https://orcid.org/0000-0003-1715-325X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung-Su Kim\", \"id\": \"https://openalex.org/A5100374557\", \"orcid\": \"https://orcid.org/0009-0005-3151-4113\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ji‐Sang Yu\", \"id\": \"https://openalex.org/A5101630653\", \"orcid\": \"https://orcid.org/0000-0001-9759-1297\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeongdoo Yi\", \"id\": \"https://openalex.org/A5072490549\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Goojin Jeong\", \"id\": \"https://openalex.org/A5038473555\", \"orcid\": \"https://orcid.org/0000-0002-4946-5664\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Kern Ho Park\", \"id\": \"https://openalex.org/A5091485561\", \"orcid\": \"https://orcid.org/0000-0002-0087-7625\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.2c03040",
+    "landing_title": "Surficial Sulfur Loss of Jet-Milled Li6PS5Cl Powder under Mild-Temperature Heat Treatment | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsaem.2c03040.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773304354118,
+    "actual_start_ms": 1773304354118,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.403
+  }
+}

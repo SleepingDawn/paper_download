@@ -1,0 +1,138 @@
+{
+  "doi": "10.1016/j.ensm.2026.104986",
+  "pdf_filename": "10.1016_j.ensm.2026.104986.pdf",
+  "json_filename": "10.1016_j.ensm.2026.104986.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2026.104986.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7128820139",
+    "doi": "10.1016/j.ensm.2026.104986",
+    "title": "Lattice-oxygen-driven selective oxidation strategy for stable argyrodite solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2026-02-13",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.73833587,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Mohammad Sufiyan Nafis",
+    "authors_display": "Mohammad Sufiyan Nafis; Zhiming Liang; Ahmed H. Biby; Dakota Rodriguez; Ryan J. Tancin; Donal P. Finegan; Charles B. Musgrave; Sehee Lee; Chunmei Ban",
+    "authors": [
+      {
+        "display_name": "Mohammad Sufiyan Nafis",
+        "id": "https://openalex.org/A5107821259",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhiming Liang",
+        "id": "https://openalex.org/A5125972108",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ahmed H. Biby",
+        "id": "https://openalex.org/A5015088978",
+        "orcid": "https://orcid.org/0000-0002-7114-5624",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dakota Rodriguez",
+        "id": "https://openalex.org/A5073629082",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ryan J. Tancin",
+        "id": "https://openalex.org/A5071737653",
+        "orcid": "https://orcid.org/0000-0001-7973-854X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Donal P. Finegan",
+        "id": "https://openalex.org/A5125956716",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Charles B. Musgrave",
+        "id": "https://openalex.org/A5125946307",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sehee Lee",
+        "id": "https://openalex.org/A5125935693",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chunmei Ban",
+        "id": "https://openalex.org/A5125478140",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7128820139",
+    "doi": "10.1016/j.ensm.2026.104986",
+    "title": "Lattice-oxygen-driven selective oxidation strategy for stable argyrodite solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2026-02-13",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.73833587,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Mohammad Sufiyan Nafis",
+    "authors_display": "Mohammad Sufiyan Nafis; Zhiming Liang; Ahmed H. Biby; Dakota Rodriguez; Ryan J. Tancin; Donal P. Finegan; Charles B. Musgrave; Sehee Lee; Chunmei Ban",
+    "authors_json": "[{\"display_name\": \"Mohammad Sufiyan Nafis\", \"id\": \"https://openalex.org/A5107821259\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Zhiming Liang\", \"id\": \"https://openalex.org/A5125972108\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ahmed H. Biby\", \"id\": \"https://openalex.org/A5015088978\", \"orcid\": \"https://orcid.org/0000-0002-7114-5624\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dakota Rodriguez\", \"id\": \"https://openalex.org/A5073629082\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ryan J. Tancin\", \"id\": \"https://openalex.org/A5071737653\", \"orcid\": \"https://orcid.org/0000-0001-7973-854X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Donal P. Finegan\", \"id\": \"https://openalex.org/A5125956716\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Charles B. Musgrave\", \"id\": \"https://openalex.org/A5125946307\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sehee Lee\", \"id\": \"https://openalex.org/A5125935693\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Chunmei Ban\", \"id\": \"https://openalex.org/A5125478140\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2405829726001194?via%3Dihub",
+    "landing_title": "Lattice-oxygen-driven selective oxidation strategy for stable argyrodite solid-state lithium metal batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773310247213,
+    "actual_start_ms": 1773310247214,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.598
+  }
+}

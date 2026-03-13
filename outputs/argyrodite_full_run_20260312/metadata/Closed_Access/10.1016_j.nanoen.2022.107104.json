@@ -1,0 +1,131 @@
+{
+  "doi": "10.1016/j.nanoen.2022.107104",
+  "pdf_filename": "10.1016_j.nanoen.2022.107104.pdf",
+  "json_filename": "10.1016_j.nanoen.2022.107104.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.nanoen.2022.107104.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4220766278",
+    "doi": "10.1016/j.nanoen.2022.107104",
+    "title": "Stabilizing the interphase between Li and Argyrodite electrolyte through synergistic phosphating process for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Nano Energy",
+      "id": "https://openalex.org/S2497301991",
+      "type": "journal",
+      "issn_l": "2211-2855",
+      "issn": [
+        "2211-2855",
+        "2211-3282"
+      ]
+    },
+    "publication_date": "2022-02-28",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 84,
+    "citation_normalized_percentile": 0.98190409,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Han Su",
+    "authors_display": "Han Su; Yu Liu; Yu Zhong; Jingru Li; Xiuli Wang; Xinhui Xia; Changdong Gu; J.P. Tu",
+    "authors": [
+      {
+        "display_name": "Han Su",
+        "id": "https://openalex.org/A5102774121",
+        "orcid": "https://orcid.org/0000-0003-4260-8340",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Liu",
+        "id": "https://openalex.org/A5115601881",
+        "orcid": "https://orcid.org/0000-0003-1248-3225",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Zhong",
+        "id": "https://openalex.org/A5030856499",
+        "orcid": "https://orcid.org/0000-0002-2363-7093",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jingru Li",
+        "id": "https://openalex.org/A5107918638",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiuli Wang",
+        "id": "https://openalex.org/A5100439040",
+        "orcid": "https://orcid.org/0000-0002-9845-1242",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xinhui Xia",
+        "id": "https://openalex.org/A5069358349",
+        "orcid": "https://orcid.org/0000-0002-5976-5337",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Changdong Gu",
+        "id": "https://openalex.org/A5113791202",
+        "orcid": "https://orcid.org/0009-0007-3459-5830",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J.P. Tu",
+        "id": "https://openalex.org/A5112063509",
+        "orcid": "https://orcid.org/0009-0007-2501-4627",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4220766278",
+    "doi": "10.1016/j.nanoen.2022.107104",
+    "title": "Stabilizing the interphase between Li and Argyrodite electrolyte through synergistic phosphating process for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Nano Energy",
+    "journal_id": "https://openalex.org/S2497301991",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-2855",
+    "journal_issn_json": "[\"2211-2855\", \"2211-3282\"]",
+    "publication_date": "2022-02-28",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 84,
+    "citation_normalized_percentile": 0.98190409,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Han Su",
+    "authors_display": "Han Su; Yu Liu; Yu Zhong; Jingru Li; Xiuli Wang; Xinhui Xia; Changdong Gu; J.P. Tu",
+    "authors_json": "[{\"display_name\": \"Han Su\", \"id\": \"https://openalex.org/A5102774121\", \"orcid\": \"https://orcid.org/0000-0003-4260-8340\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yu Liu\", \"id\": \"https://openalex.org/A5115601881\", \"orcid\": \"https://orcid.org/0000-0003-1248-3225\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Zhong\", \"id\": \"https://openalex.org/A5030856499\", \"orcid\": \"https://orcid.org/0000-0002-2363-7093\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jingru Li\", \"id\": \"https://openalex.org/A5107918638\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiuli Wang\", \"id\": \"https://openalex.org/A5100439040\", \"orcid\": \"https://orcid.org/0000-0002-9845-1242\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xinhui Xia\", \"id\": \"https://openalex.org/A5069358349\", \"orcid\": \"https://orcid.org/0000-0002-5976-5337\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Changdong Gu\", \"id\": \"https://openalex.org/A5113791202\", \"orcid\": \"https://orcid.org/0009-0007-3459-5830\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J.P. Tu\", \"id\": \"https://openalex.org/A5112063509\", \"orcid\": \"https://orcid.org/0009-0007-2501-4627\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301716214,
+    "actual_start_ms": 1773301737989,
+    "pacing_wait_ms": 21774,
+    "pacing_jitter_sec": 1.791
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "doi": "10.1039/d0ta08472g",
+  "pdf_filename": "10.1039_d0ta08472g.pdf",
+  "json_filename": "10.1039_d0ta08472g.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d0ta08472g.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3101181540",
+    "doi": "10.1039/d0ta08472g",
+    "title": "Research progress in Li-argyrodite-based solid-state electrolytes",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2020-01-01",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 118,
+    "citation_normalized_percentile": 0.97571516,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Xiangtao Bai",
+    "authors_display": "Xiangtao Bai; Yi Duan; Weidong Zhuang; Rong Yang; Jiantao Wang",
+    "authors": [
+      {
+        "display_name": "Xiangtao Bai",
+        "id": "https://openalex.org/A5030164784",
+        "orcid": "https://orcid.org/0000-0002-7646-2207",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yi Duan",
+        "id": "https://openalex.org/A5075688300",
+        "orcid": "https://orcid.org/0009-0003-0575-1647",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Weidong Zhuang",
+        "id": "https://openalex.org/A5108350950",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rong Yang",
+        "id": "https://openalex.org/A5072472914",
+        "orcid": "https://orcid.org/0000-0001-6427-026X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiantao Wang",
+        "id": "https://openalex.org/A5100632945",
+        "orcid": "https://orcid.org/0000-0002-4773-5229",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3101181540",
+    "doi": "10.1039/d0ta08472g",
+    "title": "Research progress in Li-argyrodite-based solid-state electrolytes",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2020-01-01",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 118,
+    "citation_normalized_percentile": 0.97571516,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Xiangtao Bai",
+    "authors_display": "Xiangtao Bai; Yi Duan; Weidong Zhuang; Rong Yang; Jiantao Wang",
+    "authors_json": "[{\"display_name\": \"Xiangtao Bai\", \"id\": \"https://openalex.org/A5030164784\", \"orcid\": \"https://orcid.org/0000-0002-7646-2207\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Yi Duan\", \"id\": \"https://openalex.org/A5075688300\", \"orcid\": \"https://orcid.org/0009-0003-0575-1647\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Weidong Zhuang\", \"id\": \"https://openalex.org/A5108350950\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rong Yang\", \"id\": \"https://openalex.org/A5072472914\", \"orcid\": \"https://orcid.org/0000-0001-6427-026X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiantao Wang\", \"id\": \"https://openalex.org/A5100632945\", \"orcid\": \"https://orcid.org/0000-0002-4773-5229\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773307244245,
+    "actual_start_ms": 1773307244246,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.016
+  }
+}

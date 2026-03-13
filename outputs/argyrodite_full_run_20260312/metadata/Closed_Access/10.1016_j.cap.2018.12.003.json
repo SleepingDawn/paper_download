@@ -1,0 +1,103 @@
+{
+  "doi": "10.1016/j.cap.2018.12.003",
+  "pdf_filename": "10.1016_j.cap.2018.12.003.pdf",
+  "json_filename": "10.1016_j.cap.2018.12.003.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.cap.2018.12.003.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2905305791",
+    "doi": "10.1016/j.cap.2018.12.003",
+    "title": "Insights into interfacial stability of Li6PS5Cl solid electrolytes with buffer layers",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Current Applied Physics",
+      "id": "https://openalex.org/S159232998",
+      "type": "journal",
+      "issn_l": "1567-1739",
+      "issn": [
+        "1567-1739",
+        "1878-1675"
+      ]
+    },
+    "publication_date": "2018-12-10",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.78822608,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Bingbing Chen",
+    "authors_display": "Bingbing Chen; Chaoqun Xu; Han Wang; Jianqiu Zhou",
+    "authors": [
+      {
+        "display_name": "Bingbing Chen",
+        "id": "https://openalex.org/A5024516866",
+        "orcid": "https://orcid.org/0000-0001-5995-4464",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chaoqun Xu",
+        "id": "https://openalex.org/A5103149871",
+        "orcid": "https://orcid.org/0000-0001-7398-8425",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Han Wang",
+        "id": "https://openalex.org/A5100452686",
+        "orcid": "https://orcid.org/0000-0002-2421-5917",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianqiu Zhou",
+        "id": "https://openalex.org/A5101945426",
+        "orcid": "https://orcid.org/0000-0003-4663-2743",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2905305791",
+    "doi": "10.1016/j.cap.2018.12.003",
+    "title": "Insights into interfacial stability of Li6PS5Cl solid electrolytes with buffer layers",
+    "publisher": "Elsevier BV",
+    "journal": "Current Applied Physics",
+    "journal_id": "https://openalex.org/S159232998",
+    "journal_type": "journal",
+    "journal_issn_l": "1567-1739",
+    "journal_issn_json": "[\"1567-1739\", \"1878-1675\"]",
+    "publication_date": "2018-12-10",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.78822608,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Bingbing Chen",
+    "authors_display": "Bingbing Chen; Chaoqun Xu; Han Wang; Jianqiu Zhou",
+    "authors_json": "[{\"display_name\": \"Bingbing Chen\", \"id\": \"https://openalex.org/A5024516866\", \"orcid\": \"https://orcid.org/0000-0001-5995-4464\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Chaoqun Xu\", \"id\": \"https://openalex.org/A5103149871\", \"orcid\": \"https://orcid.org/0000-0001-7398-8425\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Han Wang\", \"id\": \"https://openalex.org/A5100452686\", \"orcid\": \"https://orcid.org/0000-0002-2421-5917\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianqiu Zhou\", \"id\": \"https://openalex.org/A5101945426\", \"orcid\": \"https://orcid.org/0000-0003-4663-2743\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302419094,
+    "actual_start_ms": 1773302425706,
+    "pacing_wait_ms": 6611,
+    "pacing_jitter_sec": 1.116
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "doi": "10.1016/j.jechem.2024.01.018",
+  "pdf_filename": "10.1016_j.jechem.2024.01.018.pdf",
+  "json_filename": "10.1016_j.jechem.2024.01.018.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.jechem.2024.01.018.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4391070653",
+    "doi": "10.1016/j.jechem.2024.01.018",
+    "title": "Revealing the specific role of sulfide and nano-alumina in composite solid-state electrolytes for performance-reinforced ether-nitrile copolymers",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Chemistry",
+      "id": "https://openalex.org/S2500128275",
+      "type": "journal",
+      "issn_l": "2095-4956",
+      "issn": [
+        "2095-4956",
+        "2096-885X"
+      ]
+    },
+    "publication_date": "2024-01-21",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.90802593,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Haoyang Yuan",
+    "authors_display": "Haoyang Yuan; Changhao Tian; Mengyuan Song; Wenjun Lin; Tao Huang; Aishui Yu",
+    "authors": [
+      {
+        "display_name": "Haoyang Yuan",
+        "id": "https://openalex.org/A5085487157",
+        "orcid": "https://orcid.org/0009-0003-8108-8082",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Changhao Tian",
+        "id": "https://openalex.org/A5083831154",
+        "orcid": "https://orcid.org/0000-0003-3263-0368",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mengyuan Song",
+        "id": "https://openalex.org/A5102736012",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenjun Lin",
+        "id": "https://openalex.org/A5113065743",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tao Huang",
+        "id": "https://openalex.org/A5100663800",
+        "orcid": "https://orcid.org/0000-0002-2706-4827",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Aishui Yu",
+        "id": "https://openalex.org/A5002189161",
+        "orcid": "https://orcid.org/0000-0002-8135-5123",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4391070653",
+    "doi": "10.1016/j.jechem.2024.01.018",
+    "title": "Revealing the specific role of sulfide and nano-alumina in composite solid-state electrolytes for performance-reinforced ether-nitrile copolymers",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Chemistry",
+    "journal_id": "https://openalex.org/S2500128275",
+    "journal_type": "journal",
+    "journal_issn_l": "2095-4956",
+    "journal_issn_json": "[\"2095-4956\", \"2096-885X\"]",
+    "publication_date": "2024-01-21",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.90802593,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Haoyang Yuan",
+    "authors_display": "Haoyang Yuan; Changhao Tian; Mengyuan Song; Wenjun Lin; Tao Huang; Aishui Yu",
+    "authors_json": "[{\"display_name\": \"Haoyang Yuan\", \"id\": \"https://openalex.org/A5085487157\", \"orcid\": \"https://orcid.org/0009-0003-8108-8082\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Changhao Tian\", \"id\": \"https://openalex.org/A5083831154\", \"orcid\": \"https://orcid.org/0000-0003-3263-0368\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mengyuan Song\", \"id\": \"https://openalex.org/A5102736012\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wenjun Lin\", \"id\": \"https://openalex.org/A5113065743\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tao Huang\", \"id\": \"https://openalex.org/A5100663800\", \"orcid\": \"https://orcid.org/0000-0002-2706-4827\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Aishui Yu\", \"id\": \"https://openalex.org/A5002189161\", \"orcid\": \"https://orcid.org/0000-0002-8135-5123\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S209549562400055X?via%3Dihub",
+    "landing_title": "Revealing the specific role of sulfide and nano-alumina in composite solid-state electrolytes for performance-reinforced ether-nitrile copolymers - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773303906361,
+    "actual_start_ms": 1773303908624,
+    "pacing_wait_ms": 2263,
+    "pacing_jitter_sec": 1.128
+  }
+}

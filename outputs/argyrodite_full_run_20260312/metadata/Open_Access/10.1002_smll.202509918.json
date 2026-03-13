@@ -1,0 +1,159 @@
+{
+  "doi": "10.1002/smll.202509918",
+  "pdf_filename": "10.1002_smll.202509918.pdf",
+  "json_filename": "10.1002_smll.202509918.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_smll.202509918.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4416397344",
+    "doi": "10.1002/smll.202509918",
+    "title": "From Composition to Ionic Conductivity: Machine Learning‐Guided Discovery and Experimental Validation of Argyrodite‐Type Lithium‐Ion Electrolytes",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2025-11-18",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.30265607,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202509918",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Songjia Kong",
+    "authors_display": "Songjia Kong; Ziheng Yu; Naoki Matsui; Michiyo Kamiya; Yudai Iwamizu; Yūki Tanaka; N. Kubota; K. Nomoto; Satoshi Hori; Masaaki Hirayama; Kota Suzuki; Ryoji Kanno",
+    "authors": [
+      {
+        "display_name": "Songjia Kong",
+        "id": "https://openalex.org/A5111332322",
+        "orcid": "https://orcid.org/0000-0002-3856-9388",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziheng Yu",
+        "id": "https://openalex.org/A5065592263",
+        "orcid": "https://orcid.org/0009-0009-9543-9051",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Naoki Matsui",
+        "id": "https://openalex.org/A5026350275",
+        "orcid": "https://orcid.org/0000-0001-9784-6421",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michiyo Kamiya",
+        "id": "https://openalex.org/A5111418004",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yudai Iwamizu",
+        "id": "https://openalex.org/A5018805617",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yūki Tanaka",
+        "id": "https://openalex.org/A5069583730",
+        "orcid": "https://orcid.org/0000-0003-4522-6313",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "N. Kubota",
+        "id": "https://openalex.org/A5113215499",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "K. Nomoto",
+        "id": "https://openalex.org/A5073136789",
+        "orcid": "https://orcid.org/0009-0009-2770-8061",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Satoshi Hori",
+        "id": "https://openalex.org/A5023011533",
+        "orcid": "https://orcid.org/0000-0001-7845-3518",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masaaki Hirayama",
+        "id": "https://openalex.org/A5052056108",
+        "orcid": "https://orcid.org/0000-0003-4804-4208",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kota Suzuki",
+        "id": "https://openalex.org/A5046895954",
+        "orcid": "https://orcid.org/0000-0002-2473-0724",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ryoji Kanno",
+        "id": "https://openalex.org/A5020726738",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4416397344",
+    "doi": "10.1002/smll.202509918",
+    "title": "From Composition to Ionic Conductivity: Machine Learning‐Guided Discovery and Experimental Validation of Argyrodite‐Type Lithium‐Ion Electrolytes",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2025-11-18",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.30265607,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202509918",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Songjia Kong",
+    "authors_display": "Songjia Kong; Ziheng Yu; Naoki Matsui; Michiyo Kamiya; Yudai Iwamizu; Yūki Tanaka; N. Kubota; K. Nomoto; Satoshi Hori; Masaaki Hirayama; Kota Suzuki; Ryoji Kanno",
+    "authors_json": "[{\"display_name\": \"Songjia Kong\", \"id\": \"https://openalex.org/A5111332322\", \"orcid\": \"https://orcid.org/0000-0002-3856-9388\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ziheng Yu\", \"id\": \"https://openalex.org/A5065592263\", \"orcid\": \"https://orcid.org/0009-0009-9543-9051\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Naoki Matsui\", \"id\": \"https://openalex.org/A5026350275\", \"orcid\": \"https://orcid.org/0000-0001-9784-6421\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Michiyo Kamiya\", \"id\": \"https://openalex.org/A5111418004\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yudai Iwamizu\", \"id\": \"https://openalex.org/A5018805617\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yūki Tanaka\", \"id\": \"https://openalex.org/A5069583730\", \"orcid\": \"https://orcid.org/0000-0003-4522-6313\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"N. Kubota\", \"id\": \"https://openalex.org/A5113215499\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"K. Nomoto\", \"id\": \"https://openalex.org/A5073136789\", \"orcid\": \"https://orcid.org/0009-0009-2770-8061\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Satoshi Hori\", \"id\": \"https://openalex.org/A5023011533\", \"orcid\": \"https://orcid.org/0000-0001-7845-3518\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masaaki Hirayama\", \"id\": \"https://openalex.org/A5052056108\", \"orcid\": \"https://orcid.org/0000-0003-4804-4208\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kota Suzuki\", \"id\": \"https://openalex.org/A5046895954\", \"orcid\": \"https://orcid.org/0000-0002-2473-0724\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ryoji Kanno\", \"id\": \"https://openalex.org/A5020726738\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773309983484,
+    "actual_start_ms": 1773309983484,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.679
+  }
+}

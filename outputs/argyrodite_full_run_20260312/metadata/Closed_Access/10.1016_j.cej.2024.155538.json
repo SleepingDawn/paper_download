@@ -1,0 +1,152 @@
+{
+  "doi": "10.1016/j.cej.2024.155538",
+  "pdf_filename": "10.1016_j.cej.2024.155538.pdf",
+  "json_filename": "10.1016_j.cej.2024.155538.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.cej.2024.155538.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4402305261",
+    "doi": "10.1016/j.cej.2024.155538",
+    "title": "Majorizing structural design and unraveling synergistic mechanisms in sulfide electrolytes via cationic and anionic modulation",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chemical Engineering Journal",
+      "id": "https://openalex.org/S149937609",
+      "type": "journal",
+      "issn_l": "1385-8947",
+      "issn": [
+        "1385-8947",
+        "1873-3212"
+      ]
+    },
+    "publication_date": "2024-09-06",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.52579142,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Yaru Shi",
+    "authors_display": "Yaru Shi; Zheng Zhang; Qiuhong Li; Yiwen Sun; Jinlong Jiang; Bing Zhao; Shoushuang Huang; Yi Xu; Xueliang Sun; Jiujun Zhang; Yong Jiang",
+    "authors": [
+      {
+        "display_name": "Yaru Shi",
+        "id": "https://openalex.org/A5050792044",
+        "orcid": "https://orcid.org/0009-0006-1193-3641",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zheng Zhang",
+        "id": "https://openalex.org/A5103723998",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qiuhong Li",
+        "id": "https://openalex.org/A5100701720",
+        "orcid": "https://orcid.org/0000-0002-1462-4354",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yiwen Sun",
+        "id": "https://openalex.org/A5112544003",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinlong Jiang",
+        "id": "https://openalex.org/A5103049597",
+        "orcid": "https://orcid.org/0000-0002-2499-1385",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bing Zhao",
+        "id": "https://openalex.org/A5000420308",
+        "orcid": "https://orcid.org/0000-0002-5560-6750",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shoushuang Huang",
+        "id": "https://openalex.org/A5038897688",
+        "orcid": "https://orcid.org/0000-0002-8895-0443",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yi Xu",
+        "id": "https://openalex.org/A5015991927",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xueliang Sun",
+        "id": "https://openalex.org/A5027533708",
+        "orcid": "https://orcid.org/0000-0003-0374-1245",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiujun Zhang",
+        "id": "https://openalex.org/A5101499775",
+        "orcid": "https://orcid.org/0000-0002-6858-4060",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong Jiang",
+        "id": "https://openalex.org/A5076017340",
+        "orcid": "https://orcid.org/0000-0002-1414-7404",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4402305261",
+    "doi": "10.1016/j.cej.2024.155538",
+    "title": "Majorizing structural design and unraveling synergistic mechanisms in sulfide electrolytes via cationic and anionic modulation",
+    "publisher": "Elsevier BV",
+    "journal": "Chemical Engineering Journal",
+    "journal_id": "https://openalex.org/S149937609",
+    "journal_type": "journal",
+    "journal_issn_l": "1385-8947",
+    "journal_issn_json": "[\"1385-8947\", \"1873-3212\"]",
+    "publication_date": "2024-09-06",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.52579142,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Yaru Shi",
+    "authors_display": "Yaru Shi; Zheng Zhang; Qiuhong Li; Yiwen Sun; Jinlong Jiang; Bing Zhao; Shoushuang Huang; Yi Xu; Xueliang Sun; Jiujun Zhang; Yong Jiang",
+    "authors_json": "[{\"display_name\": \"Yaru Shi\", \"id\": \"https://openalex.org/A5050792044\", \"orcid\": \"https://orcid.org/0009-0006-1193-3641\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Zheng Zhang\", \"id\": \"https://openalex.org/A5103723998\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qiuhong Li\", \"id\": \"https://openalex.org/A5100701720\", \"orcid\": \"https://orcid.org/0000-0002-1462-4354\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yiwen Sun\", \"id\": \"https://openalex.org/A5112544003\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinlong Jiang\", \"id\": \"https://openalex.org/A5103049597\", \"orcid\": \"https://orcid.org/0000-0002-2499-1385\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bing Zhao\", \"id\": \"https://openalex.org/A5000420308\", \"orcid\": \"https://orcid.org/0000-0002-5560-6750\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shoushuang Huang\", \"id\": \"https://openalex.org/A5038897688\", \"orcid\": \"https://orcid.org/0000-0002-8895-0443\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yi Xu\", \"id\": \"https://openalex.org/A5015991927\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xueliang Sun\", \"id\": \"https://openalex.org/A5027533708\", \"orcid\": \"https://orcid.org/0000-0003-0374-1245\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiujun Zhang\", \"id\": \"https://openalex.org/A5101499775\", \"orcid\": \"https://orcid.org/0000-0002-6858-4060\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong Jiang\", \"id\": \"https://openalex.org/A5076017340\", \"orcid\": \"https://orcid.org/0000-0002-1414-7404\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S1385894724070293?via%3Dihub",
+    "landing_title": "Majorizing structural design and unraveling synergistic mechanisms in sulfide electrolytes via cationic and anionic modulation - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773308676763,
+    "actual_start_ms": 1773308680564,
+    "pacing_wait_ms": 3801,
+    "pacing_jitter_sec": 1.264
+  }
+}

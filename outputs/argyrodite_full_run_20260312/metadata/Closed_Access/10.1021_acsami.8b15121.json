@@ -1,0 +1,131 @@
+{
+  "doi": "10.1021/acsami.8b15121",
+  "pdf_filename": "10.1021_acsami.8b15121.pdf",
+  "json_filename": "10.1021_acsami.8b15121.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.8b15121.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2901181159",
+    "doi": "10.1021/acsami.8b15121",
+    "title": "High-Conductivity Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Solid Electrolytes Prepared via Optimized Sintering Processes for All-Solid-State Lithium–Sulfur Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2018-11-19",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 265,
+    "citation_normalized_percentile": 0.98514745,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Shuo Wang",
+    "authors_display": "Shuo Wang; Yibo Zhang; Xue Zhang; Ting Liu; Yuanhua Lin; Yang Shen; Liangliang Li; Ce‐Wen Nan",
+    "authors": [
+      {
+        "display_name": "Shuo Wang",
+        "id": "https://openalex.org/A5100400173",
+        "orcid": "https://orcid.org/0000-0002-7907-9676",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yibo Zhang",
+        "id": "https://openalex.org/A5100449659",
+        "orcid": "https://orcid.org/0000-0001-9983-5451",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xue Zhang",
+        "id": "https://openalex.org/A5100445838",
+        "orcid": "https://orcid.org/0000-0002-2531-4263",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ting Liu",
+        "id": "https://openalex.org/A5100418166",
+        "orcid": "https://orcid.org/0000-0003-4228-7241",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuanhua Lin",
+        "id": "https://openalex.org/A5101549431",
+        "orcid": "https://orcid.org/0000-0002-5652-6701",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Shen",
+        "id": "https://openalex.org/A5091319997",
+        "orcid": "https://orcid.org/0000-0002-1421-0629",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liangliang Li",
+        "id": "https://openalex.org/A5100739408",
+        "orcid": "https://orcid.org/0000-0001-7808-7052",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ce‐Wen Nan",
+        "id": "https://openalex.org/A5060345214",
+        "orcid": "https://orcid.org/0000-0003-2176-6403",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2901181159",
+    "doi": "10.1021/acsami.8b15121",
+    "title": "High-Conductivity Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Solid Electrolytes Prepared via Optimized Sintering Processes for All-Solid-State Lithium–Sulfur Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2018-11-19",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 265,
+    "citation_normalized_percentile": 0.98514745,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Shuo Wang",
+    "authors_display": "Shuo Wang; Yibo Zhang; Xue Zhang; Ting Liu; Yuanhua Lin; Yang Shen; Liangliang Li; Ce‐Wen Nan",
+    "authors_json": "[{\"display_name\": \"Shuo Wang\", \"id\": \"https://openalex.org/A5100400173\", \"orcid\": \"https://orcid.org/0000-0002-7907-9676\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yibo Zhang\", \"id\": \"https://openalex.org/A5100449659\", \"orcid\": \"https://orcid.org/0000-0001-9983-5451\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xue Zhang\", \"id\": \"https://openalex.org/A5100445838\", \"orcid\": \"https://orcid.org/0000-0002-2531-4263\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ting Liu\", \"id\": \"https://openalex.org/A5100418166\", \"orcid\": \"https://orcid.org/0000-0003-4228-7241\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuanhua Lin\", \"id\": \"https://openalex.org/A5101549431\", \"orcid\": \"https://orcid.org/0000-0002-5652-6701\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Shen\", \"id\": \"https://openalex.org/A5091319997\", \"orcid\": \"https://orcid.org/0000-0002-1421-0629\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liangliang Li\", \"id\": \"https://openalex.org/A5100739408\", \"orcid\": \"https://orcid.org/0000-0001-7808-7052\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ce‐Wen Nan\", \"id\": \"https://openalex.org/A5060345214\", \"orcid\": \"https://orcid.org/0000-0003-2176-6403\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301590121,
+    "actual_start_ms": 1773301591620,
+    "pacing_wait_ms": 1499,
+    "pacing_jitter_sec": 0.949
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "doi": "10.1021/acsami.4c02548",
+  "pdf_filename": "10.1021_acsami.4c02548.pdf",
+  "json_filename": "10.1021_acsami.4c02548.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsami.4c02548.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4396614966",
+    "doi": "10.1021/acsami.4c02548",
+    "title": "Two-Step Growth Mechanism of the Solid Electrolyte Interphase in Argyrodyte/Li-Metal Contacts",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2024-05-03",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.93045344,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Gracie Chaney",
+    "authors_display": "Gracie Chaney; Andrey A. Golov; Ambroise van Roekeghem; Javier Carrasco; Natalio Mingo",
+    "authors": [
+      {
+        "display_name": "Gracie Chaney",
+        "id": "https://openalex.org/A5051945439",
+        "orcid": "https://orcid.org/0000-0002-0354-9029",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andrey A. Golov",
+        "id": "https://openalex.org/A5081209614",
+        "orcid": "https://orcid.org/0000-0002-1776-4328",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ambroise van Roekeghem",
+        "id": "https://openalex.org/A5027398903",
+        "orcid": "https://orcid.org/0000-0003-2679-3072",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Javier Carrasco",
+        "id": "https://openalex.org/A5072947717",
+        "orcid": "https://orcid.org/0000-0003-3117-6933",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Natalio Mingo",
+        "id": "https://openalex.org/A5043127515",
+        "orcid": "https://orcid.org/0000-0001-8093-0512",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4396614966",
+    "doi": "10.1021/acsami.4c02548",
+    "title": "Two-Step Growth Mechanism of the Solid Electrolyte Interphase in Argyrodyte/Li-Metal Contacts",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2024-05-03",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.93045344,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Gracie Chaney",
+    "authors_display": "Gracie Chaney; Andrey A. Golov; Ambroise van Roekeghem; Javier Carrasco; Natalio Mingo",
+    "authors_json": "[{\"display_name\": \"Gracie Chaney\", \"id\": \"https://openalex.org/A5051945439\", \"orcid\": \"https://orcid.org/0000-0002-0354-9029\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Andrey A. Golov\", \"id\": \"https://openalex.org/A5081209614\", \"orcid\": \"https://orcid.org/0000-0002-1776-4328\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ambroise van Roekeghem\", \"id\": \"https://openalex.org/A5027398903\", \"orcid\": \"https://orcid.org/0000-0003-2679-3072\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Javier Carrasco\", \"id\": \"https://openalex.org/A5072947717\", \"orcid\": \"https://orcid.org/0000-0003-3117-6933\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Natalio Mingo\", \"id\": \"https://openalex.org/A5043127515\", \"orcid\": \"https://orcid.org/0000-0001-8093-0512\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsami.4c02548",
+    "landing_title": "Two-Step Growth Mechanism of the Solid Electrolyte Interphase in Argyrodyte/Li-Metal Contacts | ACS Applied Materials & Interfaces",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsami.4c02548.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773303465198,
+    "actual_start_ms": 1773303473495,
+    "pacing_wait_ms": 8296,
+    "pacing_jitter_sec": 1.126
+  }
+}

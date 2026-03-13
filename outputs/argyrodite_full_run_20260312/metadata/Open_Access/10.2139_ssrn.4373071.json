@@ -1,0 +1,102 @@
+{
+  "doi": "10.2139/ssrn.4373071",
+  "pdf_filename": "10.2139_ssrn.4373071.pdf",
+  "json_filename": "10.2139_ssrn.4373071.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.4373071.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4322708512",
+    "doi": "10.2139/ssrn.4373071",
+    "title": "Exothermal Reaction and Microstructure Study of the Charged Lini0.5co0.2mn0.3o2 Electrode Layers Using Argyrodite-Type Solid Electrolytes",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Hirofumi Tsukasaki",
+    "authors_display": "Hirofumi Tsukasaki; Koichi Sugiura; Mitsumoto Kawai; Shigeo Mori",
+    "authors": [
+      {
+        "display_name": "Hirofumi Tsukasaki",
+        "id": "https://openalex.org/A5016252105",
+        "orcid": "https://orcid.org/0000-0003-0523-5469",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Koichi Sugiura",
+        "id": "https://openalex.org/A5022323822",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mitsumoto Kawai",
+        "id": "https://openalex.org/A5018005760",
+        "orcid": "https://orcid.org/0000-0003-0250-0220",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shigeo Mori",
+        "id": "https://openalex.org/A5111806627",
+        "orcid": "https://orcid.org/0009-0001-0392-9320",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4322708512",
+    "doi": "10.2139/ssrn.4373071",
+    "title": "Exothermal Reaction and Microstructure Study of the Charged Lini0.5co0.2mn0.3o2 Electrode Layers Using Argyrodite-Type Solid Electrolytes",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Hirofumi Tsukasaki",
+    "authors_display": "Hirofumi Tsukasaki; Koichi Sugiura; Mitsumoto Kawai; Shigeo Mori",
+    "authors_json": "[{\"display_name\": \"Hirofumi Tsukasaki\", \"id\": \"https://openalex.org/A5016252105\", \"orcid\": \"https://orcid.org/0000-0003-0523-5469\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Koichi Sugiura\", \"id\": \"https://openalex.org/A5022323822\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mitsumoto Kawai\", \"id\": \"https://openalex.org/A5018005760\", \"orcid\": \"https://orcid.org/0000-0003-0250-0220\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shigeo Mori\", \"id\": \"https://openalex.org/A5111806627\", \"orcid\": \"https://orcid.org/0009-0001-0392-9320\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4373071&__cf_chl_rt_tk=YwRRpFiQEhSDh3W6QmwWVhc5htCZjg.NjRWujcdYRPs-1773313945-1.0.1.1-A1uj4Tbd8a3wo7YJl1GtTghH_pxVt9HKAy.jej3sQcQ",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.4373071.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773313925580,
+    "actual_start_ms": 1773313925581,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 0.853
+  }
+}

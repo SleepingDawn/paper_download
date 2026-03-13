@@ -1,0 +1,159 @@
+{
+  "doi": "10.1016/j.nanoen.2023.108471",
+  "pdf_filename": "10.1016_j.nanoen.2023.108471.pdf",
+  "json_filename": "10.1016_j.nanoen.2023.108471.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.nanoen.2023.108471.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4366606948",
+    "doi": "10.1016/j.nanoen.2023.108471",
+    "title": "Air-stable iodized-oxychloride argyrodite sulfide and anionic swap on the practical potential window for all-solid-state lithium-metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Nano Energy",
+      "id": "https://openalex.org/S2497301991",
+      "type": "journal",
+      "issn_l": "2211-2855",
+      "issn": [
+        "2211-2855",
+        "2211-3282"
+      ]
+    },
+    "publication_date": "2023-04-21",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 42,
+    "citation_normalized_percentile": 0.96703324,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Bereket Woldegbreal Taklu",
+    "authors_display": "Bereket Woldegbreal Taklu; Yosef Nikodimos; Hailemariam Kassa Bezabh; Keseven Lakshmanan; Teklay Mezgebe Hagos; Teshome Assefa Nigatu; Semaw Kebede Merso; Hung-Yi Sung; Sheng‐Chiang Yang; She‐Huang Wu; Wei‐Nien Su; Bing−Joe Hwang",
+    "authors": [
+      {
+        "display_name": "Bereket Woldegbreal Taklu",
+        "id": "https://openalex.org/A5067245309",
+        "orcid": "https://orcid.org/0000-0002-8550-4835",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yosef Nikodimos",
+        "id": "https://openalex.org/A5082309206",
+        "orcid": "https://orcid.org/0000-0002-2929-3965",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hailemariam Kassa Bezabh",
+        "id": "https://openalex.org/A5021910941",
+        "orcid": "https://orcid.org/0000-0002-0421-2671",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Keseven Lakshmanan",
+        "id": "https://openalex.org/A5048665495",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Teklay Mezgebe Hagos",
+        "id": "https://openalex.org/A5070237445",
+        "orcid": "https://orcid.org/0000-0001-9316-8811",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Teshome Assefa Nigatu",
+        "id": "https://openalex.org/A5083678975",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Semaw Kebede Merso",
+        "id": "https://openalex.org/A5035764610",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hung-Yi Sung",
+        "id": "https://openalex.org/A5023777698",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sheng‐Chiang Yang",
+        "id": "https://openalex.org/A5058781576",
+        "orcid": "https://orcid.org/0000-0002-8888-6381",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "She‐Huang Wu",
+        "id": "https://openalex.org/A5087838064",
+        "orcid": "https://orcid.org/0000-0003-1165-9444",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei‐Nien Su",
+        "id": "https://openalex.org/A5031136629",
+        "orcid": "https://orcid.org/0000-0003-1494-2675",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Bing−Joe Hwang",
+        "id": "https://openalex.org/A5030917995",
+        "orcid": "https://orcid.org/0000-0002-3873-2149",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4366606948",
+    "doi": "10.1016/j.nanoen.2023.108471",
+    "title": "Air-stable iodized-oxychloride argyrodite sulfide and anionic swap on the practical potential window for all-solid-state lithium-metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Nano Energy",
+    "journal_id": "https://openalex.org/S2497301991",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-2855",
+    "journal_issn_json": "[\"2211-2855\", \"2211-3282\"]",
+    "publication_date": "2023-04-21",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 42,
+    "citation_normalized_percentile": 0.96703324,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Bereket Woldegbreal Taklu",
+    "authors_display": "Bereket Woldegbreal Taklu; Yosef Nikodimos; Hailemariam Kassa Bezabh; Keseven Lakshmanan; Teklay Mezgebe Hagos; Teshome Assefa Nigatu; Semaw Kebede Merso; Hung-Yi Sung; Sheng‐Chiang Yang; She‐Huang Wu; Wei‐Nien Su; Bing−Joe Hwang",
+    "authors_json": "[{\"display_name\": \"Bereket Woldegbreal Taklu\", \"id\": \"https://openalex.org/A5067245309\", \"orcid\": \"https://orcid.org/0000-0002-8550-4835\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yosef Nikodimos\", \"id\": \"https://openalex.org/A5082309206\", \"orcid\": \"https://orcid.org/0000-0002-2929-3965\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hailemariam Kassa Bezabh\", \"id\": \"https://openalex.org/A5021910941\", \"orcid\": \"https://orcid.org/0000-0002-0421-2671\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Keseven Lakshmanan\", \"id\": \"https://openalex.org/A5048665495\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Teklay Mezgebe Hagos\", \"id\": \"https://openalex.org/A5070237445\", \"orcid\": \"https://orcid.org/0000-0001-9316-8811\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Teshome Assefa Nigatu\", \"id\": \"https://openalex.org/A5083678975\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Semaw Kebede Merso\", \"id\": \"https://openalex.org/A5035764610\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hung-Yi Sung\", \"id\": \"https://openalex.org/A5023777698\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sheng‐Chiang Yang\", \"id\": \"https://openalex.org/A5058781576\", \"orcid\": \"https://orcid.org/0000-0002-8888-6381\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"She‐Huang Wu\", \"id\": \"https://openalex.org/A5087838064\", \"orcid\": \"https://orcid.org/0000-0003-1165-9444\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei‐Nien Su\", \"id\": \"https://openalex.org/A5031136629\", \"orcid\": \"https://orcid.org/0000-0003-1494-2675\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Bing−Joe Hwang\", \"id\": \"https://openalex.org/A5030917995\", \"orcid\": \"https://orcid.org/0000-0002-3873-2149\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2211285523003087?via%3Dihub",
+    "landing_title": "Air-stable iodized-oxychloride argyrodite sulfide and anionic swap on the practical potential window for all-solid-state lithium-metal batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302042222,
+    "actual_start_ms": 1773302139044,
+    "pacing_wait_ms": 96821,
+    "pacing_jitter_sec": 1.637
+  }
+}

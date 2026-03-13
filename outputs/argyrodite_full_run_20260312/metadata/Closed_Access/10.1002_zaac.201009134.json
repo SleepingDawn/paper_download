@@ -1,0 +1,89 @@
+{
+  "doi": "10.1002/zaac.201009134",
+  "pdf_filename": "10.1002_zaac.201009134.pdf",
+  "json_filename": "10.1002_zaac.201009134.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_zaac.201009134.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2023730431",
+    "doi": "10.1002/zaac.201009134",
+    "title": "Lithium Oxygen Argyrodites, Li<sub>6</sub>PO<sub>5</sub><i>X</i> (<i>X</i> = Cl, Br): Synthesis, Structure and Ionic Conductivity",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Zeitschrift für anorganische und allgemeine Chemie",
+      "id": "https://openalex.org/S171987449",
+      "type": "journal",
+      "issn_l": "0044-2313",
+      "issn": [
+        "0044-2313",
+        "1521-3749"
+      ]
+    },
+    "publication_date": "2010-09-01",
+    "publication_year": 2010,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.0954032,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Shiao‐Tong Kong",
+    "authors_display": "Shiao‐Tong Kong; Hans‐Jörg Deiseroth",
+    "authors": [
+      {
+        "display_name": "Shiao‐Tong Kong",
+        "id": "https://openalex.org/A5103451528",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hans‐Jörg Deiseroth",
+        "id": "https://openalex.org/A5081757254",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2023730431",
+    "doi": "10.1002/zaac.201009134",
+    "title": "Lithium Oxygen Argyrodites, Li<sub>6</sub>PO<sub>5</sub><i>X</i> (<i>X</i> = Cl, Br): Synthesis, Structure and Ionic Conductivity",
+    "publisher": "Wiley",
+    "journal": "Zeitschrift für anorganische und allgemeine Chemie",
+    "journal_id": "https://openalex.org/S171987449",
+    "journal_type": "journal",
+    "journal_issn_l": "0044-2313",
+    "journal_issn_json": "[\"0044-2313\", \"1521-3749\"]",
+    "publication_date": "2010-09-01",
+    "publication_year": 2010,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.0954032,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Shiao‐Tong Kong",
+    "authors_display": "Shiao‐Tong Kong; Hans‐Jörg Deiseroth",
+    "authors_json": "[{\"display_name\": \"Shiao‐Tong Kong\", \"id\": \"https://openalex.org/A5103451528\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hans‐Jörg Deiseroth\", \"id\": \"https://openalex.org/A5081757254\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773309175104,
+    "actual_start_ms": 1773309175104,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.398
+  }
+}

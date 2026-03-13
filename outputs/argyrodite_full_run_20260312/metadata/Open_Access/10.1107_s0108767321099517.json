@@ -1,0 +1,95 @@
+{
+  "doi": "10.1107/s0108767321099517",
+  "pdf_filename": "10.1107_s0108767321099517.pdf",
+  "json_filename": "10.1107_s0108767321099517.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1107_s0108767321099517.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3208659026",
+    "doi": "10.1107/s0108767321099517",
+    "title": "Probing structural attributes for Li-argyrodite as a fast ion conductor using neutron powder diffraction",
+    "publisher": "Acta Crystallographica Section A Foundations and Advances",
+    "journal": {
+      "name": "Acta Crystallographica Section A Foundations and Advances",
+      "id": "https://openalex.org/S4393918093",
+      "type": "journal",
+      "issn_l": "2053-2733",
+      "issn": [
+        "2053-2733"
+      ]
+    },
+    "publication_date": "2021-07-30",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.49996773,
+    "pdf_url": "https://journals.iucr.org/a/issues/2021/a1/00/a59308/a59308.pdf",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Po‐Hsiu Chien",
+    "authors_display": "Po‐Hsiu Chien; Xuyong Feng; Jue Liu",
+    "authors": [
+      {
+        "display_name": "Po‐Hsiu Chien",
+        "id": "https://openalex.org/A5059953572",
+        "orcid": "https://orcid.org/0000-0002-1607-1271",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xuyong Feng",
+        "id": "https://openalex.org/A5010856605",
+        "orcid": "https://orcid.org/0009-0005-5363-671X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jue Liu",
+        "id": "https://openalex.org/A5100702265",
+        "orcid": "https://orcid.org/0000-0002-4453-910X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3208659026",
+    "doi": "10.1107/s0108767321099517",
+    "title": "Probing structural attributes for Li-argyrodite as a fast ion conductor using neutron powder diffraction",
+    "publisher": "Acta Crystallographica Section A Foundations and Advances",
+    "journal": "Acta Crystallographica Section A Foundations and Advances",
+    "journal_id": "https://openalex.org/S4393918093",
+    "journal_type": "journal",
+    "journal_issn_l": "2053-2733",
+    "journal_issn_json": "[\"2053-2733\"]",
+    "publication_date": "2021-07-30",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.49996773,
+    "pdf_url": "https://journals.iucr.org/a/issues/2021/a1/00/a59308/a59308.pdf",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Po‐Hsiu Chien",
+    "authors_display": "Po‐Hsiu Chien; Xuyong Feng; Jue Liu",
+    "authors_json": "[{\"display_name\": \"Po‐Hsiu Chien\", \"id\": \"https://openalex.org/A5059953572\", \"orcid\": \"https://orcid.org/0000-0002-1607-1271\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Xuyong Feng\", \"id\": \"https://openalex.org/A5010856605\", \"orcid\": \"https://orcid.org/0009-0005-5363-671X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jue Liu\", \"id\": \"https://openalex.org/A5100702265\", \"orcid\": \"https://orcid.org/0000-0002-4453-910X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.1107",
+    "scheduled_start_ms": 1773310577954,
+    "actual_start_ms": 1773310577954,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.849
+  }
+}

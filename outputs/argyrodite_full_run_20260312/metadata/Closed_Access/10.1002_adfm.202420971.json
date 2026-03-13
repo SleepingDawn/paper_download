@@ -1,0 +1,145 @@
+{
+  "doi": "10.1002/adfm.202420971",
+  "pdf_filename": "10.1002_adfm.202420971.pdf",
+  "json_filename": "10.1002_adfm.202420971.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_adfm.202420971.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4406117788",
+    "doi": "10.1002/adfm.202420971",
+    "title": "Boosting Ionic Conductivity and Air Stability in Bromide‐Rich Thioarsenate Argyrodite Solid Electrolytes",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2025-01-06",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.98373162,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Ruihua Zhou",
+    "authors_display": "Ruihua Zhou; Ajay Gautam; Emmanuelle Suard; Shenghao Li; Swapna Ganapathy; Kai Chen; Xin Zhang; Ce‐Wen Nan; Shuo Wang; Marnix Wagemaker",
+    "authors": [
+      {
+        "display_name": "Ruihua Zhou",
+        "id": "https://openalex.org/A5070649513",
+        "orcid": "https://orcid.org/0000-0003-0409-5951",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ajay Gautam",
+        "id": "https://openalex.org/A5101921028",
+        "orcid": "https://orcid.org/0000-0002-3971-8365",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Emmanuelle Suard",
+        "id": "https://openalex.org/A5015437413",
+        "orcid": "https://orcid.org/0000-0001-5966-5929",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shenghao Li",
+        "id": "https://openalex.org/A5081005656",
+        "orcid": "https://orcid.org/0000-0002-3196-7981",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Swapna Ganapathy",
+        "id": "https://openalex.org/A5075602037",
+        "orcid": "https://orcid.org/0000-0001-5265-1663",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kai Chen",
+        "id": "https://openalex.org/A5020515916",
+        "orcid": "https://orcid.org/0000-0001-6952-3051",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xin Zhang",
+        "id": "https://openalex.org/A5010144610",
+        "orcid": "https://orcid.org/0000-0003-4310-4187",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ce‐Wen Nan",
+        "id": "https://openalex.org/A5060345214",
+        "orcid": "https://orcid.org/0000-0003-2176-6403",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuo Wang",
+        "id": "https://openalex.org/A5100400194",
+        "orcid": "https://orcid.org/0000-0003-2716-6011",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Marnix Wagemaker",
+        "id": "https://openalex.org/A5034244816",
+        "orcid": "https://orcid.org/0000-0003-3851-1044",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4406117788",
+    "doi": "10.1002/adfm.202420971",
+    "title": "Boosting Ionic Conductivity and Air Stability in Bromide‐Rich Thioarsenate Argyrodite Solid Electrolytes",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2025-01-06",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.98373162,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Ruihua Zhou",
+    "authors_display": "Ruihua Zhou; Ajay Gautam; Emmanuelle Suard; Shenghao Li; Swapna Ganapathy; Kai Chen; Xin Zhang; Ce‐Wen Nan; Shuo Wang; Marnix Wagemaker",
+    "authors_json": "[{\"display_name\": \"Ruihua Zhou\", \"id\": \"https://openalex.org/A5070649513\", \"orcid\": \"https://orcid.org/0000-0003-0409-5951\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ajay Gautam\", \"id\": \"https://openalex.org/A5101921028\", \"orcid\": \"https://orcid.org/0000-0002-3971-8365\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Emmanuelle Suard\", \"id\": \"https://openalex.org/A5015437413\", \"orcid\": \"https://orcid.org/0000-0001-5966-5929\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shenghao Li\", \"id\": \"https://openalex.org/A5081005656\", \"orcid\": \"https://orcid.org/0000-0002-3196-7981\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Swapna Ganapathy\", \"id\": \"https://openalex.org/A5075602037\", \"orcid\": \"https://orcid.org/0000-0001-5265-1663\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kai Chen\", \"id\": \"https://openalex.org/A5020515916\", \"orcid\": \"https://orcid.org/0000-0001-6952-3051\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xin Zhang\", \"id\": \"https://openalex.org/A5010144610\", \"orcid\": \"https://orcid.org/0000-0003-4310-4187\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ce‐Wen Nan\", \"id\": \"https://openalex.org/A5060345214\", \"orcid\": \"https://orcid.org/0000-0003-2176-6403\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuo Wang\", \"id\": \"https://openalex.org/A5100400194\", \"orcid\": \"https://orcid.org/0000-0003-2716-6011\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Marnix Wagemaker\", \"id\": \"https://openalex.org/A5034244816\", \"orcid\": \"https://orcid.org/0000-0003-3851-1044\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773305175629,
+    "actual_start_ms": 1773305175629,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.122
+  }
+}

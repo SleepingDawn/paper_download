@@ -1,0 +1,145 @@
+{
+  "doi": "10.1007/s40820-025-01667-7",
+  "pdf_filename": "10.1007_s40820-025-01667-7.pdf",
+  "json_filename": "10.1007_s40820-025-01667-7.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1007_s40820-025-01667-7.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4407356237",
+    "doi": "10.1007/s40820-025-01667-7",
+    "title": "Construction of Multifunctional Conductive Carbon-Based Cathode Additives for Boosting Li6PS5Cl-Based All-Solid-State Lithium Batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Nano-Micro Letters",
+      "id": "https://openalex.org/S9070373",
+      "type": "journal",
+      "issn_l": "2150-5551",
+      "issn": [
+        "2150-5551",
+        "2311-6706"
+      ]
+    },
+    "publication_date": "2025-02-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.94616952,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Xin Gao",
+    "authors_display": "Xin Gao; Ya Chen; Zhen Zheng; Lifeng Cui; Ling Huang; Xi Chen; Jiayi Chen; Xiaodong Chen; Duu‐Jong Lee; Guoxiu Wang",
+    "authors": [
+      {
+        "display_name": "Xin Gao",
+        "id": "https://openalex.org/A5101580415",
+        "orcid": "https://orcid.org/0000-0002-1542-1153",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ya Chen",
+        "id": "https://openalex.org/A5101529653",
+        "orcid": "https://orcid.org/0009-0009-5076-1522",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhen Zheng",
+        "id": "https://openalex.org/A5101579947",
+        "orcid": "https://orcid.org/0000-0001-6853-5181",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lifeng Cui",
+        "id": "https://openalex.org/A5015949314",
+        "orcid": "https://orcid.org/0000-0002-2827-5992",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ling Huang",
+        "id": "https://openalex.org/A5014614003",
+        "orcid": "https://orcid.org/0000-0003-2403-1170",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xi Chen",
+        "id": "https://openalex.org/A5100329996",
+        "orcid": "https://orcid.org/0000-0002-8911-4172",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiayi Chen",
+        "id": "https://openalex.org/A5100609075",
+        "orcid": "https://orcid.org/0000-0001-6417-290X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaodong Chen",
+        "id": "https://openalex.org/A5100373719",
+        "orcid": "https://orcid.org/0000-0002-3312-1664",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Duu‐Jong Lee",
+        "id": "https://openalex.org/A5100436302",
+        "orcid": "https://orcid.org/0000-0002-8820-8097",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guoxiu Wang",
+        "id": "https://openalex.org/A5007273016",
+        "orcid": "https://orcid.org/0000-0003-4295-8578",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4407356237",
+    "doi": "10.1007/s40820-025-01667-7",
+    "title": "Construction of Multifunctional Conductive Carbon-Based Cathode Additives for Boosting Li6PS5Cl-Based All-Solid-State Lithium Batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Nano-Micro Letters",
+    "journal_id": "https://openalex.org/S9070373",
+    "journal_type": "journal",
+    "journal_issn_l": "2150-5551",
+    "journal_issn_json": "[\"2150-5551\", \"2311-6706\"]",
+    "publication_date": "2025-02-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.94616952,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Xin Gao",
+    "authors_display": "Xin Gao; Ya Chen; Zhen Zheng; Lifeng Cui; Ling Huang; Xi Chen; Jiayi Chen; Xiaodong Chen; Duu‐Jong Lee; Guoxiu Wang",
+    "authors_json": "[{\"display_name\": \"Xin Gao\", \"id\": \"https://openalex.org/A5101580415\", \"orcid\": \"https://orcid.org/0000-0002-1542-1153\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ya Chen\", \"id\": \"https://openalex.org/A5101529653\", \"orcid\": \"https://orcid.org/0009-0009-5076-1522\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhen Zheng\", \"id\": \"https://openalex.org/A5101579947\", \"orcid\": \"https://orcid.org/0000-0001-6853-5181\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lifeng Cui\", \"id\": \"https://openalex.org/A5015949314\", \"orcid\": \"https://orcid.org/0000-0002-2827-5992\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ling Huang\", \"id\": \"https://openalex.org/A5014614003\", \"orcid\": \"https://orcid.org/0000-0003-2403-1170\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xi Chen\", \"id\": \"https://openalex.org/A5100329996\", \"orcid\": \"https://orcid.org/0000-0002-8911-4172\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiayi Chen\", \"id\": \"https://openalex.org/A5100609075\", \"orcid\": \"https://orcid.org/0000-0001-6417-290X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaodong Chen\", \"id\": \"https://openalex.org/A5100373719\", \"orcid\": \"https://orcid.org/0000-0002-3312-1664\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Duu‐Jong Lee\", \"id\": \"https://openalex.org/A5100436302\", \"orcid\": \"https://orcid.org/0000-0002-8820-8097\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guoxiu Wang\", \"id\": \"https://openalex.org/A5007273016\", \"orcid\": \"https://orcid.org/0000-0003-4295-8578\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://link.springer.com/article/10.1007/s40820-025-01667-7",
+    "landing_title": "Construction of Multifunctional Conductive Carbon-Based Cathode Additives for Boosting Li6PS5Cl-Based All-Solid-State Lithium Batteries | Nano-Micro Letters | Springer Nature Link",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1007_s40820-025-01667-7.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773309308459,
+    "actual_start_ms": 1773309308460,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.38
+  }
+}

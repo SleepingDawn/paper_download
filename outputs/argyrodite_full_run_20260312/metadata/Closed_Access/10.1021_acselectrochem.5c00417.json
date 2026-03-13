@@ -1,0 +1,130 @@
+{
+  "doi": "10.1021/acselectrochem.5c00417",
+  "pdf_filename": "10.1021_acselectrochem.5c00417.pdf",
+  "json_filename": "10.1021_acselectrochem.5c00417.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acselectrochem.5c00417.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7124275323",
+    "doi": "10.1021/acselectrochem.5c00417",
+    "title": "Operando Detection of Void Formation during Lithium Stripping in Solid-State Batteries Using Single-Frequency Impedance Analysis",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS electrochemistry.",
+      "id": "https://openalex.org/S4404674019",
+      "type": "journal",
+      "issn_l": "2997-0571",
+      "issn": [
+        "2997-0571"
+      ]
+    },
+    "publication_date": "2026-01-15",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.98916642,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "YoungGyu Kim",
+    "authors_display": "YoungGyu Kim; Jonathan Gjerde; H. Zheng; W. Beck Andrews; Daniel W. Liao; Jeff Sakamoto; Katsuyo Thornton; Neil P. Dasgupta",
+    "authors": [
+      {
+        "display_name": "YoungGyu Kim",
+        "id": "https://openalex.org/A5016268797",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jonathan Gjerde",
+        "id": "https://openalex.org/A5075235929",
+        "orcid": "https://orcid.org/0000-0003-0126-3788",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "H. Zheng",
+        "id": "https://openalex.org/A5055443490",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "W. Beck Andrews",
+        "id": "https://openalex.org/A5123106383",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniel W. Liao",
+        "id": "https://openalex.org/A5080486767",
+        "orcid": "https://orcid.org/0000-0003-4601-1453",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeff Sakamoto",
+        "id": "https://openalex.org/A5081987488",
+        "orcid": "https://orcid.org/0000-0002-3099-462X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Katsuyo Thornton",
+        "id": "https://openalex.org/A5033451427",
+        "orcid": "https://orcid.org/0000-0002-1227-5293",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Neil P. Dasgupta",
+        "id": "https://openalex.org/A5004446540",
+        "orcid": "https://orcid.org/0000-0002-5180-4063",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7124275323",
+    "doi": "10.1021/acselectrochem.5c00417",
+    "title": "Operando Detection of Void Formation during Lithium Stripping in Solid-State Batteries Using Single-Frequency Impedance Analysis",
+    "publisher": "American Chemical Society",
+    "journal": "ACS electrochemistry.",
+    "journal_id": "https://openalex.org/S4404674019",
+    "journal_type": "journal",
+    "journal_issn_l": "2997-0571",
+    "journal_issn_json": "[\"2997-0571\"]",
+    "publication_date": "2026-01-15",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.98916642,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "YoungGyu Kim",
+    "authors_display": "YoungGyu Kim; Jonathan Gjerde; H. Zheng; W. Beck Andrews; Daniel W. Liao; Jeff Sakamoto; Katsuyo Thornton; Neil P. Dasgupta",
+    "authors_json": "[{\"display_name\": \"YoungGyu Kim\", \"id\": \"https://openalex.org/A5016268797\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jonathan Gjerde\", \"id\": \"https://openalex.org/A5075235929\", \"orcid\": \"https://orcid.org/0000-0003-0126-3788\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"H. Zheng\", \"id\": \"https://openalex.org/A5055443490\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"W. Beck Andrews\", \"id\": \"https://openalex.org/A5123106383\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniel W. Liao\", \"id\": \"https://openalex.org/A5080486767\", \"orcid\": \"https://orcid.org/0000-0003-4601-1453\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeff Sakamoto\", \"id\": \"https://openalex.org/A5081987488\", \"orcid\": \"https://orcid.org/0000-0002-3099-462X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Katsuyo Thornton\", \"id\": \"https://openalex.org/A5033451427\", \"orcid\": \"https://orcid.org/0000-0002-1227-5293\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Neil P. Dasgupta\", \"id\": \"https://openalex.org/A5004446540\", \"orcid\": \"https://orcid.org/0000-0002-5180-4063\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acselectrochem.5c00417",
+    "landing_title": "Operando Detection of Void Formation during Lithium Stripping in Solid-State Batteries Using Single-Frequency Impedance Analysis | ACS Electrochemistry",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acselectrochem.5c00417.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308193858,
+    "actual_start_ms": 1773308202217,
+    "pacing_wait_ms": 8358,
+    "pacing_jitter_sec": 1.348
+  }
+}

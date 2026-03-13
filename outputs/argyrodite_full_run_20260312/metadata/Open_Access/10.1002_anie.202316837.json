@@ -1,0 +1,131 @@
+{
+  "doi": "10.1002/anie.202316837",
+  "pdf_filename": "10.1002_anie.202316837.pdf",
+  "json_filename": "10.1002_anie.202316837.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_anie.202316837.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4391608027",
+    "doi": "10.1002/anie.202316837",
+    "title": "Nanoscale Visualization of Lithium Plating/Stripping Tuned by On‐site Formed Solid Electrolyte Interphase in All‐Solid‐State Lithium‐Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Angewandte Chemie International Edition",
+      "id": "https://openalex.org/S67393510",
+      "type": "journal",
+      "issn_l": "1433-7851",
+      "issn": [
+        "1433-7851",
+        "1521-3773"
+      ]
+    },
+    "publication_date": "2024-02-07",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.85774985,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/anie.202316837",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Zhenzhen Shen",
+    "authors_display": "Zhenzhen Shen; Xusheng Zhang; Jing Wan; Gui‐Xian Liu; Jianxin Tian; Bing Liu; Yu‐Guo Guo; Rui Wen",
+    "authors": [
+      {
+        "display_name": "Zhenzhen Shen",
+        "id": "https://openalex.org/A5102206701",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xusheng Zhang",
+        "id": "https://openalex.org/A5026604896",
+        "orcid": "https://orcid.org/0000-0002-3039-9222",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jing Wan",
+        "id": "https://openalex.org/A5047486682",
+        "orcid": "https://orcid.org/0000-0002-0531-5197",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gui‐Xian Liu",
+        "id": "https://openalex.org/A5049027988",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianxin Tian",
+        "id": "https://openalex.org/A5053268781",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bing Liu",
+        "id": "https://openalex.org/A5070851801",
+        "orcid": "https://orcid.org/0000-0003-4297-157X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu‐Guo Guo",
+        "id": "https://openalex.org/A5070372567",
+        "orcid": "https://orcid.org/0000-0003-0322-8476",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rui Wen",
+        "id": "https://openalex.org/A5020848795",
+        "orcid": "https://orcid.org/0000-0002-8522-2053",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4391608027",
+    "doi": "10.1002/anie.202316837",
+    "title": "Nanoscale Visualization of Lithium Plating/Stripping Tuned by On‐site Formed Solid Electrolyte Interphase in All‐Solid‐State Lithium‐Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "Angewandte Chemie International Edition",
+    "journal_id": "https://openalex.org/S67393510",
+    "journal_type": "journal",
+    "journal_issn_l": "1433-7851",
+    "journal_issn_json": "[\"1433-7851\", \"1521-3773\"]",
+    "publication_date": "2024-02-07",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.85774985,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/anie.202316837",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Zhenzhen Shen",
+    "authors_display": "Zhenzhen Shen; Xusheng Zhang; Jing Wan; Gui‐Xian Liu; Jianxin Tian; Bing Liu; Yu‐Guo Guo; Rui Wen",
+    "authors_json": "[{\"display_name\": \"Zhenzhen Shen\", \"id\": \"https://openalex.org/A5102206701\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Xusheng Zhang\", \"id\": \"https://openalex.org/A5026604896\", \"orcid\": \"https://orcid.org/0000-0002-3039-9222\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jing Wan\", \"id\": \"https://openalex.org/A5047486682\", \"orcid\": \"https://orcid.org/0000-0002-0531-5197\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gui‐Xian Liu\", \"id\": \"https://openalex.org/A5049027988\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianxin Tian\", \"id\": \"https://openalex.org/A5053268781\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bing Liu\", \"id\": \"https://openalex.org/A5070851801\", \"orcid\": \"https://orcid.org/0000-0003-4297-157X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu‐Guo Guo\", \"id\": \"https://openalex.org/A5070372567\", \"orcid\": \"https://orcid.org/0000-0003-0322-8476\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rui Wen\", \"id\": \"https://openalex.org/A5020848795\", \"orcid\": \"https://orcid.org/0000-0002-8522-2053\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://onlinelibrary.wiley.com/doi/10.1002/anie.202316837",
+    "landing_title": "Nanoscale Visualization of Lithium Plating/Stripping Tuned by On‐site Formed Solid Electrolyte Interphase in All‐Solid‐State Lithium‐Metal Batteries - Shen - 2024 - Angewandte Chemie International Edition - Wiley Online Library",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1002_anie.202316837.pdf",
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773306060597,
+    "actual_start_ms": 1773306060597,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.832
+  }
+}

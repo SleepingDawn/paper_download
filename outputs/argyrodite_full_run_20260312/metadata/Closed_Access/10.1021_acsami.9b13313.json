@@ -1,0 +1,138 @@
+{
+  "doi": "10.1021/acsami.9b13313",
+  "pdf_filename": "10.1021_acsami.9b13313.pdf",
+  "json_filename": "10.1021_acsami.9b13313.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.9b13313.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2979481539",
+    "doi": "10.1021/acsami.9b13313",
+    "title": "Argyrodite Solid Electrolyte with a Stable Interface and Superior Dendrite Suppression Capability Realized by ZnO Co-Doping",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2019-10-09",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 141,
+    "citation_normalized_percentile": 0.97269669,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Ting Chen",
+    "authors_display": "Ting Chen; Long Zhang; Zhaoxing Zhang; Peng Li; Hongqiang Wang; Chuang Yu; Xinlin Yan; Limin Wang; Bo Xu",
+    "authors": [
+      {
+        "display_name": "Ting Chen",
+        "id": "https://openalex.org/A5100663544",
+        "orcid": "https://orcid.org/0000-0002-9060-9834",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Long Zhang",
+        "id": "https://openalex.org/A5100363525",
+        "orcid": "https://orcid.org/0000-0002-4861-1471",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zhaoxing Zhang",
+        "id": "https://openalex.org/A5031166189",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peng Li",
+        "id": "https://openalex.org/A5100432648",
+        "orcid": "https://orcid.org/0000-0001-9466-2838",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongqiang Wang",
+        "id": "https://openalex.org/A5100757645",
+        "orcid": "https://orcid.org/0000-0003-1262-1958",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinlin Yan",
+        "id": "https://openalex.org/A5065866946",
+        "orcid": "https://orcid.org/0000-0003-0745-4446",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Limin Wang",
+        "id": "https://openalex.org/A5100436492",
+        "orcid": "https://orcid.org/0000-0001-9618-9239",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bo Xu",
+        "id": "https://openalex.org/A5100711151",
+        "orcid": "https://orcid.org/0000-0002-9804-1614",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2979481539",
+    "doi": "10.1021/acsami.9b13313",
+    "title": "Argyrodite Solid Electrolyte with a Stable Interface and Superior Dendrite Suppression Capability Realized by ZnO Co-Doping",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2019-10-09",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 141,
+    "citation_normalized_percentile": 0.97269669,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Ting Chen",
+    "authors_display": "Ting Chen; Long Zhang; Zhaoxing Zhang; Peng Li; Hongqiang Wang; Chuang Yu; Xinlin Yan; Limin Wang; Bo Xu",
+    "authors_json": "[{\"display_name\": \"Ting Chen\", \"id\": \"https://openalex.org/A5100663544\", \"orcid\": \"https://orcid.org/0000-0002-9060-9834\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Long Zhang\", \"id\": \"https://openalex.org/A5100363525\", \"orcid\": \"https://orcid.org/0000-0002-4861-1471\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Zhaoxing Zhang\", \"id\": \"https://openalex.org/A5031166189\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peng Li\", \"id\": \"https://openalex.org/A5100432648\", \"orcid\": \"https://orcid.org/0000-0001-9466-2838\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongqiang Wang\", \"id\": \"https://openalex.org/A5100757645\", \"orcid\": \"https://orcid.org/0000-0003-1262-1958\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinlin Yan\", \"id\": \"https://openalex.org/A5065866946\", \"orcid\": \"https://orcid.org/0000-0003-0745-4446\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Limin Wang\", \"id\": \"https://openalex.org/A5100436492\", \"orcid\": \"https://orcid.org/0000-0001-9618-9239\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bo Xu\", \"id\": \"https://openalex.org/A5100711151\", \"orcid\": \"https://orcid.org/0000-0002-9804-1614\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301672600,
+    "actual_start_ms": 1773301675367,
+    "pacing_wait_ms": 2766,
+    "pacing_jitter_sec": 1.612
+  }
+}

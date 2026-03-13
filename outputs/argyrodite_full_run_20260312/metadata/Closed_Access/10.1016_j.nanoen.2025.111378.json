@@ -1,0 +1,110 @@
+{
+  "doi": "10.1016/j.nanoen.2025.111378",
+  "pdf_filename": "10.1016_j.nanoen.2025.111378.pdf",
+  "json_filename": "10.1016_j.nanoen.2025.111378.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.nanoen.2025.111378.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413158684",
+    "doi": "10.1016/j.nanoen.2025.111378",
+    "title": "Unlocking the potential of Li-argyrodite solid-state electrolytes: A path toward enhanced Li-ion conduction and electrode-electrolyte compatibility for high-performance next-generation all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Nano Energy",
+      "id": "https://openalex.org/S2497301991",
+      "type": "journal",
+      "issn_l": "2211-2855",
+      "issn": [
+        "2211-2855",
+        "2211-3282"
+      ]
+    },
+    "publication_date": "2025-08-13",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.8954593,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Yassmine JAMOURI",
+    "authors_display": "Yassmine JAMOURI; Daniel Mwanza; Asmaa Akhrouf; Mohamed Chakir; Abdessamad Faik",
+    "authors": [
+      {
+        "display_name": "Yassmine JAMOURI",
+        "id": "https://openalex.org/A5119285310",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Daniel Mwanza",
+        "id": "https://openalex.org/A5085198661",
+        "orcid": "https://orcid.org/0000-0003-0676-3255",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Asmaa Akhrouf",
+        "id": "https://openalex.org/A5000092561",
+        "orcid": "https://orcid.org/0000-0003-1434-6099",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mohamed Chakir",
+        "id": "https://openalex.org/A5070996800",
+        "orcid": "https://orcid.org/0000-0001-6137-6923",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Abdessamad Faik",
+        "id": "https://openalex.org/A5036023794",
+        "orcid": "https://orcid.org/0000-0003-2379-2242",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413158684",
+    "doi": "10.1016/j.nanoen.2025.111378",
+    "title": "Unlocking the potential of Li-argyrodite solid-state electrolytes: A path toward enhanced Li-ion conduction and electrode-electrolyte compatibility for high-performance next-generation all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Nano Energy",
+    "journal_id": "https://openalex.org/S2497301991",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-2855",
+    "journal_issn_json": "[\"2211-2855\", \"2211-3282\"]",
+    "publication_date": "2025-08-13",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.8954593,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Yassmine JAMOURI",
+    "authors_display": "Yassmine JAMOURI; Daniel Mwanza; Asmaa Akhrouf; Mohamed Chakir; Abdessamad Faik",
+    "authors_json": "[{\"display_name\": \"Yassmine JAMOURI\", \"id\": \"https://openalex.org/A5119285310\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Daniel Mwanza\", \"id\": \"https://openalex.org/A5085198661\", \"orcid\": \"https://orcid.org/0000-0003-0676-3255\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Asmaa Akhrouf\", \"id\": \"https://openalex.org/A5000092561\", \"orcid\": \"https://orcid.org/0000-0003-1434-6099\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mohamed Chakir\", \"id\": \"https://openalex.org/A5070996800\", \"orcid\": \"https://orcid.org/0000-0001-6137-6923\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Abdessamad Faik\", \"id\": \"https://openalex.org/A5036023794\", \"orcid\": \"https://orcid.org/0000-0003-2379-2242\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2211285525007372?via%3Dihub",
+    "landing_title": "Unlocking the potential of Li-argyrodite solid-state electrolytes: A path toward enhanced Li-ion conduction and electrode-electrolyte compatibility for high-performance next-generation all-solid-state batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773307525443,
+    "actual_start_ms": 1773307558883,
+    "pacing_wait_ms": 33439,
+    "pacing_jitter_sec": 0.979
+  }
+}

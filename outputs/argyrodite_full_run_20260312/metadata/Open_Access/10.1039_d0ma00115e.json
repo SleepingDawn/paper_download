@@ -1,0 +1,123 @@
+{
+  "doi": "10.1039/d0ma00115e",
+  "pdf_filename": "10.1039_d0ma00115e.pdf",
+  "json_filename": "10.1039_d0ma00115e.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_d0ma00115e.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3017594686",
+    "doi": "10.1039/d0ma00115e",
+    "title": "Ionic conduction mechanism of a lithium superionic argyrodite in the Li–Al–Si–S–O system",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Materials Advances",
+      "id": "https://openalex.org/S4210182508",
+      "type": "journal",
+      "issn_l": "2633-5409",
+      "issn": [
+        "2633-5409"
+      ]
+    },
+    "publication_date": "2020-01-01",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 48,
+    "citation_normalized_percentile": 0.93615803,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2020/ma/d0ma00115e",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Wenze Huang",
+    "authors_display": "Wenze Huang; Lindong Cheng; Satoshi Hori; Kota Suzuki; Masao Yonemura; Masaaki Hirayama; Ryoji Kanno",
+    "authors": [
+      {
+        "display_name": "Wenze Huang",
+        "id": "https://openalex.org/A5103043078",
+        "orcid": "https://orcid.org/0000-0001-8535-0058",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lindong Cheng",
+        "id": "https://openalex.org/A5033366322",
+        "orcid": "https://orcid.org/0000-0002-3024-946X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Satoshi Hori",
+        "id": "https://openalex.org/A5023011533",
+        "orcid": "https://orcid.org/0000-0001-7845-3518",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kota Suzuki",
+        "id": "https://openalex.org/A5046895954",
+        "orcid": "https://orcid.org/0000-0002-2473-0724",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masao Yonemura",
+        "id": "https://openalex.org/A5032384994",
+        "orcid": "https://orcid.org/0000-0002-4444-1997",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masaaki Hirayama",
+        "id": "https://openalex.org/A5052056108",
+        "orcid": "https://orcid.org/0000-0003-4804-4208",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ryoji Kanno",
+        "id": "https://openalex.org/A5049374070",
+        "orcid": "https://orcid.org/0000-0002-0593-2515",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3017594686",
+    "doi": "10.1039/d0ma00115e",
+    "title": "Ionic conduction mechanism of a lithium superionic argyrodite in the Li–Al–Si–S–O system",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Materials Advances",
+    "journal_id": "https://openalex.org/S4210182508",
+    "journal_type": "journal",
+    "journal_issn_l": "2633-5409",
+    "journal_issn_json": "[\"2633-5409\"]",
+    "publication_date": "2020-01-01",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 48,
+    "citation_normalized_percentile": 0.93615803,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2020/ma/d0ma00115e",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Wenze Huang",
+    "authors_display": "Wenze Huang; Lindong Cheng; Satoshi Hori; Kota Suzuki; Masao Yonemura; Masaaki Hirayama; Ryoji Kanno",
+    "authors_json": "[{\"display_name\": \"Wenze Huang\", \"id\": \"https://openalex.org/A5103043078\", \"orcid\": \"https://orcid.org/0000-0001-8535-0058\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Lindong Cheng\", \"id\": \"https://openalex.org/A5033366322\", \"orcid\": \"https://orcid.org/0000-0002-3024-946X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Satoshi Hori\", \"id\": \"https://openalex.org/A5023011533\", \"orcid\": \"https://orcid.org/0000-0001-7845-3518\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kota Suzuki\", \"id\": \"https://openalex.org/A5046895954\", \"orcid\": \"https://orcid.org/0000-0002-2473-0724\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masao Yonemura\", \"id\": \"https://openalex.org/A5032384994\", \"orcid\": \"https://orcid.org/0000-0002-4444-1997\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masaaki Hirayama\", \"id\": \"https://openalex.org/A5052056108\", \"orcid\": \"https://orcid.org/0000-0003-4804-4208\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ryoji Kanno\", \"id\": \"https://openalex.org/A5049374070\", \"orcid\": \"https://orcid.org/0000-0002-0593-2515\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773307711272,
+    "actual_start_ms": 1773307711273,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.71
+  }
+}

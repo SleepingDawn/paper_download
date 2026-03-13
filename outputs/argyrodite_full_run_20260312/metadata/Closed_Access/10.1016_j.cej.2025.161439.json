@@ -1,0 +1,194 @@
+{
+  "doi": "10.1016/j.cej.2025.161439",
+  "pdf_filename": "10.1016_j.cej.2025.161439.pdf",
+  "json_filename": "10.1016_j.cej.2025.161439.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.cej.2025.161439.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408286467",
+    "doi": "10.1016/j.cej.2025.161439",
+    "title": "Boosting anode interfacial stability in All-Solid-State lithium hybrid batteries with MCMB-Modified stainless steel current collector",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chemical Engineering Journal",
+      "id": "https://openalex.org/S149937609",
+      "type": "journal",
+      "issn_l": "1385-8947",
+      "issn": [
+        "1385-8947",
+        "1873-3212"
+      ]
+    },
+    "publication_date": "2025-03-10",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.90421141,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 17,
+    "first_author": "Abebe Taye Fenta",
+    "authors_display": "Abebe Taye Fenta; Yosef Nikodimos; Semaw Kebede Merso; Ayenew Meniber; Misganaw Adigo Weret; Kassie Nigus Shitaw; Bereket Woldegbreal Taklu; Fernando Fortes de Valência; Tsung‐I Yeh; Chih‐hao Hsieh; Chia‐Yu Chang; Yajun Liu; C. Y. Chen; H.C. Su; She‐Huang Wu; Wei‐Nien Su; Bing−Joe Hwang",
+    "authors": [
+      {
+        "display_name": "Abebe Taye Fenta",
+        "id": "https://openalex.org/A5116571571",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yosef Nikodimos",
+        "id": "https://openalex.org/A5082309206",
+        "orcid": "https://orcid.org/0000-0002-2929-3965",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Semaw Kebede Merso",
+        "id": "https://openalex.org/A5035764610",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ayenew Meniber",
+        "id": "https://openalex.org/A5116571572",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Misganaw Adigo Weret",
+        "id": "https://openalex.org/A5019150658",
+        "orcid": "https://orcid.org/0000-0003-4891-8526",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kassie Nigus Shitaw",
+        "id": "https://openalex.org/A5074290171",
+        "orcid": "https://orcid.org/0000-0003-4586-6468",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bereket Woldegbreal Taklu",
+        "id": "https://openalex.org/A5067245309",
+        "orcid": "https://orcid.org/0000-0002-8550-4835",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fernando Fortes de Valência",
+        "id": "https://openalex.org/A5009387314",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tsung‐I Yeh",
+        "id": "https://openalex.org/A5111130037",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chih‐hao Hsieh",
+        "id": "https://openalex.org/A5037899572",
+        "orcid": "https://orcid.org/0000-0001-5935-7272",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chia‐Yu Chang",
+        "id": "https://openalex.org/A5061126514",
+        "orcid": "https://orcid.org/0009-0001-4510-7923",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yajun Liu",
+        "id": "https://openalex.org/A5100449873",
+        "orcid": "https://orcid.org/0000-0002-0899-5968",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "C. Y. Chen",
+        "id": "https://openalex.org/A5074921126",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "H.C. Su",
+        "id": "https://openalex.org/A5077329777",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "She‐Huang Wu",
+        "id": "https://openalex.org/A5087838064",
+        "orcid": "https://orcid.org/0000-0003-1165-9444",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei‐Nien Su",
+        "id": "https://openalex.org/A5031136629",
+        "orcid": "https://orcid.org/0000-0003-1494-2675",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Bing−Joe Hwang",
+        "id": "https://openalex.org/A5030917995",
+        "orcid": "https://orcid.org/0000-0002-3873-2149",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408286467",
+    "doi": "10.1016/j.cej.2025.161439",
+    "title": "Boosting anode interfacial stability in All-Solid-State lithium hybrid batteries with MCMB-Modified stainless steel current collector",
+    "publisher": "Elsevier BV",
+    "journal": "Chemical Engineering Journal",
+    "journal_id": "https://openalex.org/S149937609",
+    "journal_type": "journal",
+    "journal_issn_l": "1385-8947",
+    "journal_issn_json": "[\"1385-8947\", \"1873-3212\"]",
+    "publication_date": "2025-03-10",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.90421141,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 17,
+    "first_author": "Abebe Taye Fenta",
+    "authors_display": "Abebe Taye Fenta; Yosef Nikodimos; Semaw Kebede Merso; Ayenew Meniber; Misganaw Adigo Weret; Kassie Nigus Shitaw; Bereket Woldegbreal Taklu; Fernando Fortes de Valência; Tsung‐I Yeh; Chih‐hao Hsieh; Chia‐Yu Chang; Yajun Liu; C. Y. Chen; H.C. Su; She‐Huang Wu; Wei‐Nien Su; Bing−Joe Hwang",
+    "authors_json": "[{\"display_name\": \"Abebe Taye Fenta\", \"id\": \"https://openalex.org/A5116571571\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yosef Nikodimos\", \"id\": \"https://openalex.org/A5082309206\", \"orcid\": \"https://orcid.org/0000-0002-2929-3965\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Semaw Kebede Merso\", \"id\": \"https://openalex.org/A5035764610\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ayenew Meniber\", \"id\": \"https://openalex.org/A5116571572\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Misganaw Adigo Weret\", \"id\": \"https://openalex.org/A5019150658\", \"orcid\": \"https://orcid.org/0000-0003-4891-8526\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kassie Nigus Shitaw\", \"id\": \"https://openalex.org/A5074290171\", \"orcid\": \"https://orcid.org/0000-0003-4586-6468\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bereket Woldegbreal Taklu\", \"id\": \"https://openalex.org/A5067245309\", \"orcid\": \"https://orcid.org/0000-0002-8550-4835\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fernando Fortes de Valência\", \"id\": \"https://openalex.org/A5009387314\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tsung‐I Yeh\", \"id\": \"https://openalex.org/A5111130037\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chih‐hao Hsieh\", \"id\": \"https://openalex.org/A5037899572\", \"orcid\": \"https://orcid.org/0000-0001-5935-7272\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chia‐Yu Chang\", \"id\": \"https://openalex.org/A5061126514\", \"orcid\": \"https://orcid.org/0009-0001-4510-7923\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yajun Liu\", \"id\": \"https://openalex.org/A5100449873\", \"orcid\": \"https://orcid.org/0000-0002-0899-5968\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"C. Y. Chen\", \"id\": \"https://openalex.org/A5074921126\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"H.C. Su\", \"id\": \"https://openalex.org/A5077329777\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"She‐Huang Wu\", \"id\": \"https://openalex.org/A5087838064\", \"orcid\": \"https://orcid.org/0000-0003-1165-9444\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei‐Nien Su\", \"id\": \"https://openalex.org/A5031136629\", \"orcid\": \"https://orcid.org/0000-0003-1494-2675\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Bing−Joe Hwang\", \"id\": \"https://openalex.org/A5030917995\", \"orcid\": \"https://orcid.org/0000-0002-3873-2149\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S1385894725022612?via%3Dihub",
+    "landing_title": "Boosting anode interfacial stability in All-Solid-State lithium hybrid batteries with MCMB-Modified stainless steel current collector - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773306709361,
+    "actual_start_ms": 1773306717382,
+    "pacing_wait_ms": 8020,
+    "pacing_jitter_sec": 1.02
+  }
+}

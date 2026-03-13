@@ -1,0 +1,145 @@
+{
+  "doi": "10.1039/d5ta07185b",
+  "pdf_filename": "10.1039_d5ta07185b.pdf",
+  "json_filename": "10.1039_d5ta07185b.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_d5ta07185b.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4414914460",
+    "doi": "10.1039/d5ta07185b",
+    "title": "Impact of structural coherence and disorder on the ionic transport and lattice dynamics in Li <sup>+</sup> -conducting argyrodites",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.23205657,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/ta/d5ta07185b",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Thorben Böger",
+    "authors_display": "Thorben Böger; Kyra Strotmann; Vasiliki Faka; Oliver Maus; D. L. Abernathy; G. E. Granroth; Niina Jalarvo; Cheng Li; Emmanuelle Suard; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Thorben Böger",
+        "id": "https://openalex.org/A5055003745",
+        "orcid": "https://orcid.org/0009-0006-5239-7814",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Kyra Strotmann",
+        "id": "https://openalex.org/A5094028799",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vasiliki Faka",
+        "id": "https://openalex.org/A5092989778",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Oliver Maus",
+        "id": "https://openalex.org/A5081496191",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "D. L. Abernathy",
+        "id": "https://openalex.org/A5088429698",
+        "orcid": "https://orcid.org/0000-0002-3533-003X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "G. E. Granroth",
+        "id": "https://openalex.org/A5057023812",
+        "orcid": "https://orcid.org/0000-0002-7583-8778",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Niina Jalarvo",
+        "id": "https://openalex.org/A5016118802",
+        "orcid": "https://orcid.org/0000-0003-0644-6866",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cheng Li",
+        "id": "https://openalex.org/A5100354261",
+        "orcid": "https://orcid.org/0000-0002-6546-6413",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Emmanuelle Suard",
+        "id": "https://openalex.org/A5015437413",
+        "orcid": "https://orcid.org/0000-0001-5966-5929",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4414914460",
+    "doi": "10.1039/d5ta07185b",
+    "title": "Impact of structural coherence and disorder on the ionic transport and lattice dynamics in Li <sup>+</sup> -conducting argyrodites",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.23205657,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/ta/d5ta07185b",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Thorben Böger",
+    "authors_display": "Thorben Böger; Kyra Strotmann; Vasiliki Faka; Oliver Maus; D. L. Abernathy; G. E. Granroth; Niina Jalarvo; Cheng Li; Emmanuelle Suard; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Thorben Böger\", \"id\": \"https://openalex.org/A5055003745\", \"orcid\": \"https://orcid.org/0009-0006-5239-7814\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Kyra Strotmann\", \"id\": \"https://openalex.org/A5094028799\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Vasiliki Faka\", \"id\": \"https://openalex.org/A5092989778\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Oliver Maus\", \"id\": \"https://openalex.org/A5081496191\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"D. L. Abernathy\", \"id\": \"https://openalex.org/A5088429698\", \"orcid\": \"https://orcid.org/0000-0002-3533-003X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"G. E. Granroth\", \"id\": \"https://openalex.org/A5057023812\", \"orcid\": \"https://orcid.org/0000-0002-7583-8778\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Niina Jalarvo\", \"id\": \"https://openalex.org/A5016118802\", \"orcid\": \"https://orcid.org/0000-0003-0644-6866\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cheng Li\", \"id\": \"https://openalex.org/A5100354261\", \"orcid\": \"https://orcid.org/0000-0002-6546-6413\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Emmanuelle Suard\", \"id\": \"https://openalex.org/A5015437413\", \"orcid\": \"https://orcid.org/0000-0001-5966-5929\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://doi.org/10.1039/d5ta07185b",
+    "landing_title": "새 탭",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773317876456,
+    "actual_start_ms": 1773317876457,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.704
+  }
+}

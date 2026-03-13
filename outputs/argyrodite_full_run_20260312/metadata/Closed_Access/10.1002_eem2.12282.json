@@ -1,0 +1,124 @@
+{
+  "doi": "10.1002/eem2.12282",
+  "pdf_filename": "10.1002_eem2.12282.pdf",
+  "json_filename": "10.1002_eem2.12282.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_eem2.12282.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3204541680",
+    "doi": "10.1002/eem2.12282",
+    "title": "Enabling Argyrodite Sulfides as Superb Solid‐State Electrolyte with Remarkable Interfacial Stability Against Electrodes",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Energy & environment materials",
+      "id": "https://openalex.org/S4210219471",
+      "type": "journal",
+      "issn_l": "2575-0348",
+      "issn": [
+        "2575-0348",
+        "2575-0356"
+      ]
+    },
+    "publication_date": "2021-09-25",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 104,
+    "citation_normalized_percentile": 0.97778054,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Hongjie Xu",
+    "authors_display": "Hongjie Xu; Guoqin Cao; Yonglong Shen; Yuran Yu; Junhua Hu; Zhuo Wang; Guosheng Shao",
+    "authors": [
+      {
+        "display_name": "Hongjie Xu",
+        "id": "https://openalex.org/A5072213022",
+        "orcid": "https://orcid.org/0000-0001-8161-7480",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guoqin Cao",
+        "id": "https://openalex.org/A5080168038",
+        "orcid": "https://orcid.org/0000-0001-6138-4202",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yonglong Shen",
+        "id": "https://openalex.org/A5005441194",
+        "orcid": "https://orcid.org/0000-0001-6647-7600",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuran Yu",
+        "id": "https://openalex.org/A5102016415",
+        "orcid": "https://orcid.org/0000-0002-0565-7373",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junhua Hu",
+        "id": "https://openalex.org/A5052631267",
+        "orcid": "https://orcid.org/0000-0003-0191-1503",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zhuo Wang",
+        "id": "https://openalex.org/A5100446615",
+        "orcid": "https://orcid.org/0000-0003-4436-9689",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Guosheng Shao",
+        "id": "https://openalex.org/A5071303877",
+        "orcid": "https://orcid.org/0000-0003-1498-7929",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3204541680",
+    "doi": "10.1002/eem2.12282",
+    "title": "Enabling Argyrodite Sulfides as Superb Solid‐State Electrolyte with Remarkable Interfacial Stability Against Electrodes",
+    "publisher": "Wiley",
+    "journal": "Energy & environment materials",
+    "journal_id": "https://openalex.org/S4210219471",
+    "journal_type": "journal",
+    "journal_issn_l": "2575-0348",
+    "journal_issn_json": "[\"2575-0348\", \"2575-0356\"]",
+    "publication_date": "2021-09-25",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 104,
+    "citation_normalized_percentile": 0.97778054,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Hongjie Xu",
+    "authors_display": "Hongjie Xu; Guoqin Cao; Yonglong Shen; Yuran Yu; Junhua Hu; Zhuo Wang; Guosheng Shao",
+    "authors_json": "[{\"display_name\": \"Hongjie Xu\", \"id\": \"https://openalex.org/A5072213022\", \"orcid\": \"https://orcid.org/0000-0001-8161-7480\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Guoqin Cao\", \"id\": \"https://openalex.org/A5080168038\", \"orcid\": \"https://orcid.org/0000-0001-6138-4202\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yonglong Shen\", \"id\": \"https://openalex.org/A5005441194\", \"orcid\": \"https://orcid.org/0000-0001-6647-7600\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuran Yu\", \"id\": \"https://openalex.org/A5102016415\", \"orcid\": \"https://orcid.org/0000-0002-0565-7373\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junhua Hu\", \"id\": \"https://openalex.org/A5052631267\", \"orcid\": \"https://orcid.org/0000-0003-0191-1503\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Zhuo Wang\", \"id\": \"https://openalex.org/A5100446615\", \"orcid\": \"https://orcid.org/0000-0003-4436-9689\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Guosheng Shao\", \"id\": \"https://openalex.org/A5071303877\", \"orcid\": \"https://orcid.org/0000-0003-1498-7929\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302773556,
+    "actual_start_ms": 1773302775060,
+    "pacing_wait_ms": 1504,
+    "pacing_jitter_sec": 1.025
+  }
+}

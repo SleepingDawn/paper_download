@@ -1,0 +1,109 @@
+{
+  "doi": "10.1021/acsaem.5c02440",
+  "pdf_filename": "10.1021_acsaem.5c02440.pdf",
+  "json_filename": "10.1021_acsaem.5c02440.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.5c02440.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4414765016",
+    "doi": "10.1021/acsaem.5c02440",
+    "title": "Low-Content Bromine Substitution Accelerates Li<sup>+</sup> Conduction in Chloride Electrolytes for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2025-10-02",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.79424708,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Qian Zhao",
+    "authors_display": "Qian Zhao; Weizong Wang; Cheng Ruan; Zhengping Ding; Yurong Ren",
+    "authors": [
+      {
+        "display_name": "Qian Zhao",
+        "id": "https://openalex.org/A5109793036",
+        "orcid": "https://orcid.org/0000-0003-4182-0657",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Weizong Wang",
+        "id": "https://openalex.org/A5075193406",
+        "orcid": "https://orcid.org/0000-0002-6022-1441",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cheng Ruan",
+        "id": "https://openalex.org/A5109538507",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhengping Ding",
+        "id": "https://openalex.org/A5062182083",
+        "orcid": "https://orcid.org/0000-0001-5275-5905",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yurong Ren",
+        "id": "https://openalex.org/A5001008654",
+        "orcid": "https://orcid.org/0000-0001-9365-852X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4414765016",
+    "doi": "10.1021/acsaem.5c02440",
+    "title": "Low-Content Bromine Substitution Accelerates Li<sup>+</sup> Conduction in Chloride Electrolytes for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2025-10-02",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.79424708,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Qian Zhao",
+    "authors_display": "Qian Zhao; Weizong Wang; Cheng Ruan; Zhengping Ding; Yurong Ren",
+    "authors_json": "[{\"display_name\": \"Qian Zhao\", \"id\": \"https://openalex.org/A5109793036\", \"orcid\": \"https://orcid.org/0000-0003-4182-0657\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Weizong Wang\", \"id\": \"https://openalex.org/A5075193406\", \"orcid\": \"https://orcid.org/0000-0002-6022-1441\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cheng Ruan\", \"id\": \"https://openalex.org/A5109538507\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhengping Ding\", \"id\": \"https://openalex.org/A5062182083\", \"orcid\": \"https://orcid.org/0000-0001-5275-5905\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yurong Ren\", \"id\": \"https://openalex.org/A5001008654\", \"orcid\": \"https://orcid.org/0000-0001-9365-852X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.5c02440",
+    "landing_title": "Low-Content Bromine Substitution Accelerates Li+ Conduction in Chloride Electrolytes for All-Solid-State Batteries | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsaem.5c02440.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308095172,
+    "actual_start_ms": 1773308095172,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.579
+  }
+}

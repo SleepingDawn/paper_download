@@ -1,0 +1,89 @@
+{
+  "doi": "10.3365/kjmm.2021.59.4.247",
+  "pdf_filename": "10.3365_kjmm.2021.59.4.247.pdf",
+  "json_filename": "10.3365_kjmm.2021.59.4.247.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3365_kjmm.2021.59.4.247.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3148082188",
+    "doi": "10.3365/kjmm.2021.59.4.247",
+    "title": "Structure and Ion Conductivity Study of Argyrodite (Li5.5PS4.5Cl1.5) according to Cooling Method",
+    "publisher": "The Korean Institute of Metals and Materials",
+    "journal": {
+      "name": "Korean Journal of Metals and Materials",
+      "id": "https://openalex.org/S169751677",
+      "type": "journal",
+      "issn_l": "1738-8228",
+      "issn": [
+        "1738-8228",
+        "2288-8241"
+      ]
+    },
+    "publication_date": "2021-04-05",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.6277423,
+    "pdf_url": "http://kjmm.org/upload/pdf/kjmm-2021-59-4-247.pdf",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Sangwon Park",
+    "authors_display": "Sangwon Park; Jin-Woong Lee",
+    "authors": [
+      {
+        "display_name": "Sangwon Park",
+        "id": "https://openalex.org/A5100644785",
+        "orcid": "https://orcid.org/0000-0001-7819-7892",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jin-Woong Lee",
+        "id": "https://openalex.org/A5102908003",
+        "orcid": "https://orcid.org/0000-0001-5825-8184",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3148082188",
+    "doi": "10.3365/kjmm.2021.59.4.247",
+    "title": "Structure and Ion Conductivity Study of Argyrodite (Li5.5PS4.5Cl1.5) according to Cooling Method",
+    "publisher": "The Korean Institute of Metals and Materials",
+    "journal": "Korean Journal of Metals and Materials",
+    "journal_id": "https://openalex.org/S169751677",
+    "journal_type": "journal",
+    "journal_issn_l": "1738-8228",
+    "journal_issn_json": "[\"1738-8228\", \"2288-8241\"]",
+    "publication_date": "2021-04-05",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.6277423,
+    "pdf_url": "http://kjmm.org/upload/pdf/kjmm-2021-59-4-247.pdf",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Sangwon Park",
+    "authors_display": "Sangwon Park; Jin-Woong Lee",
+    "authors_json": "[{\"display_name\": \"Sangwon Park\", \"id\": \"https://openalex.org/A5100644785\", \"orcid\": \"https://orcid.org/0000-0001-7819-7892\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Jin-Woong Lee\", \"id\": \"https://openalex.org/A5102908003\", \"orcid\": \"https://orcid.org/0000-0001-5825-8184\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://kjmm.org/journal/view.php?doi=10.3365/KJMM.2021.59.4.247",
+    "landing_title": "kjmm.org/journal/view.php?doi=10.3365/KJMM.2021.59.4.247",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.3365_kjmm.2021.59.4.247.pdf",
+    "scheduler_publisher": "10.3365",
+    "scheduled_start_ms": 1773316379956,
+    "actual_start_ms": 1773316379957,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 0.793
+  }
+}

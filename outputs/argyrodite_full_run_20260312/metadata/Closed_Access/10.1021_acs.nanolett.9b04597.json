@@ -1,0 +1,152 @@
+{
+  "doi": "10.1021/acs.nanolett.9b04597",
+  "pdf_filename": "10.1021_acs.nanolett.9b04597.pdf",
+  "json_filename": "10.1021_acs.nanolett.9b04597.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.nanolett.9b04597.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3009675128",
+    "doi": "10.1021/acs.nanolett.9b04597",
+    "title": "Superionic Halogen-Rich Li-Argyrodites Using In Situ Nanocrystal Nucleation and Rapid Crystal Growth",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Nano Letters",
+      "id": "https://openalex.org/S143846845",
+      "type": "journal",
+      "issn_l": "1530-6984",
+      "issn": [
+        "1530-6984",
+        "1530-6992"
+      ]
+    },
+    "publication_date": "2020-03-09",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 132,
+    "citation_normalized_percentile": 0.97961831,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Wo Dum Jung",
+    "authors_display": "Wo Dum Jung; Ji Su Kim; Sungjun Choi; Seongmin Kim; Minjae Jeon; Hun‐Gi Jung; Kyung Yoon Chung; Jong‐Ho Lee; Byung-Kook Kim; Jong‐Heun Lee; Hyoungchul Kim",
+    "authors": [
+      {
+        "display_name": "Wo Dum Jung",
+        "id": "https://openalex.org/A5030517798",
+        "orcid": "https://orcid.org/0000-0002-8544-6583",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji Su Kim",
+        "id": "https://openalex.org/A5100729885",
+        "orcid": "https://orcid.org/0000-0002-9501-9665",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sungjun Choi",
+        "id": "https://openalex.org/A5102245787",
+        "orcid": "https://orcid.org/0009-0007-7245-6575",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seongmin Kim",
+        "id": "https://openalex.org/A5100358163",
+        "orcid": "https://orcid.org/0000-0002-6119-9653",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Minjae Jeon",
+        "id": "https://openalex.org/A5032417000",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hun‐Gi Jung",
+        "id": "https://openalex.org/A5045467177",
+        "orcid": "https://orcid.org/0000-0002-2162-2680",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung Yoon Chung",
+        "id": "https://openalex.org/A5078491552",
+        "orcid": "https://orcid.org/0000-0002-1273-746X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jong‐Ho Lee",
+        "id": "https://openalex.org/A5100423382",
+        "orcid": "https://orcid.org/0000-0003-4481-6258",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byung-Kook Kim",
+        "id": "https://openalex.org/A5110045801",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jong‐Heun Lee",
+        "id": "https://openalex.org/A5105973568",
+        "orcid": "https://orcid.org/0000-0002-3075-3623",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyoungchul Kim",
+        "id": "https://openalex.org/A5055060451",
+        "orcid": "https://orcid.org/0000-0003-3109-660X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3009675128",
+    "doi": "10.1021/acs.nanolett.9b04597",
+    "title": "Superionic Halogen-Rich Li-Argyrodites Using In Situ Nanocrystal Nucleation and Rapid Crystal Growth",
+    "publisher": "American Chemical Society",
+    "journal": "Nano Letters",
+    "journal_id": "https://openalex.org/S143846845",
+    "journal_type": "journal",
+    "journal_issn_l": "1530-6984",
+    "journal_issn_json": "[\"1530-6984\", \"1530-6992\"]",
+    "publication_date": "2020-03-09",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 132,
+    "citation_normalized_percentile": 0.97961831,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Wo Dum Jung",
+    "authors_display": "Wo Dum Jung; Ji Su Kim; Sungjun Choi; Seongmin Kim; Minjae Jeon; Hun‐Gi Jung; Kyung Yoon Chung; Jong‐Ho Lee; Byung-Kook Kim; Jong‐Heun Lee; Hyoungchul Kim",
+    "authors_json": "[{\"display_name\": \"Wo Dum Jung\", \"id\": \"https://openalex.org/A5030517798\", \"orcid\": \"https://orcid.org/0000-0002-8544-6583\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ji Su Kim\", \"id\": \"https://openalex.org/A5100729885\", \"orcid\": \"https://orcid.org/0000-0002-9501-9665\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sungjun Choi\", \"id\": \"https://openalex.org/A5102245787\", \"orcid\": \"https://orcid.org/0009-0007-7245-6575\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seongmin Kim\", \"id\": \"https://openalex.org/A5100358163\", \"orcid\": \"https://orcid.org/0000-0002-6119-9653\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Minjae Jeon\", \"id\": \"https://openalex.org/A5032417000\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hun‐Gi Jung\", \"id\": \"https://openalex.org/A5045467177\", \"orcid\": \"https://orcid.org/0000-0002-2162-2680\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung Yoon Chung\", \"id\": \"https://openalex.org/A5078491552\", \"orcid\": \"https://orcid.org/0000-0002-1273-746X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jong‐Ho Lee\", \"id\": \"https://openalex.org/A5100423382\", \"orcid\": \"https://orcid.org/0000-0003-4481-6258\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byung-Kook Kim\", \"id\": \"https://openalex.org/A5110045801\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jong‐Heun Lee\", \"id\": \"https://openalex.org/A5105973568\", \"orcid\": \"https://orcid.org/0000-0002-3075-3623\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyoungchul Kim\", \"id\": \"https://openalex.org/A5055060451\", \"orcid\": \"https://orcid.org/0000-0003-3109-660X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301704560,
+    "actual_start_ms": 1773301708116,
+    "pacing_wait_ms": 3556,
+    "pacing_jitter_sec": 1.133
+  }
+}

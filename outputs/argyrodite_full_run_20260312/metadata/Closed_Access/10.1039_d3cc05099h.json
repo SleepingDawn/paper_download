@@ -1,0 +1,117 @@
+{
+  "doi": "10.1039/d3cc05099h",
+  "pdf_filename": "10.1039_d3cc05099h.pdf",
+  "json_filename": "10.1039_d3cc05099h.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d3cc05099h.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4388511682",
+    "doi": "10.1039/d3cc05099h",
+    "title": "Optimizing milling and sintering parameters for mild synthesis of highly conductive Li<sub>5.5</sub>PS<sub>4.5</sub>Cl<sub>1.5</sub> solid electrolyte",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Chemical Communications",
+      "id": "https://openalex.org/S152760256",
+      "type": "journal",
+      "issn_l": "1359-7345",
+      "issn": [
+        "1359-7345",
+        "1364-548X"
+      ]
+    },
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.69456721,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Tianyu Lei",
+    "authors_display": "Tianyu Lei; Linfeng Peng; Cong Liao; Shuai Chen; Shijie Cheng; Jia Xie",
+    "authors": [
+      {
+        "display_name": "Tianyu Lei",
+        "id": "https://openalex.org/A5064796075",
+        "orcid": "https://orcid.org/0009-0005-7009-2427",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Linfeng Peng",
+        "id": "https://openalex.org/A5101094536",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cong Liao",
+        "id": "https://openalex.org/A5102095751",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuai Chen",
+        "id": "https://openalex.org/A5100396692",
+        "orcid": "https://orcid.org/0000-0002-9950-6049",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Cheng",
+        "id": "https://openalex.org/A5024186253",
+        "orcid": "https://orcid.org/0000-0002-8752-4311",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jia Xie",
+        "id": "https://openalex.org/A5081117176",
+        "orcid": "https://orcid.org/0000-0002-8731-295X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4388511682",
+    "doi": "10.1039/d3cc05099h",
+    "title": "Optimizing milling and sintering parameters for mild synthesis of highly conductive Li<sub>5.5</sub>PS<sub>4.5</sub>Cl<sub>1.5</sub> solid electrolyte",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Chemical Communications",
+    "journal_id": "https://openalex.org/S152760256",
+    "journal_type": "journal",
+    "journal_issn_l": "1359-7345",
+    "journal_issn_json": "[\"1359-7345\", \"1364-548X\"]",
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.69456721,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Tianyu Lei",
+    "authors_display": "Tianyu Lei; Linfeng Peng; Cong Liao; Shuai Chen; Shijie Cheng; Jia Xie",
+    "authors_json": "[{\"display_name\": \"Tianyu Lei\", \"id\": \"https://openalex.org/A5064796075\", \"orcid\": \"https://orcid.org/0009-0005-7009-2427\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Linfeng Peng\", \"id\": \"https://openalex.org/A5101094536\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cong Liao\", \"id\": \"https://openalex.org/A5102095751\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuai Chen\", \"id\": \"https://openalex.org/A5100396692\", \"orcid\": \"https://orcid.org/0000-0002-9950-6049\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Cheng\", \"id\": \"https://openalex.org/A5024186253\", \"orcid\": \"https://orcid.org/0000-0002-8752-4311\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jia Xie\", \"id\": \"https://openalex.org/A5081117176\", \"orcid\": \"https://orcid.org/0000-0002-8731-295X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://doi.org/10.1039/d3cc05099h",
+    "landing_title": "새 탭",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773316050323,
+    "actual_start_ms": 1773316050324,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 0.927
+  }
+}

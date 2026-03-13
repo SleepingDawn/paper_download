@@ -1,0 +1,137 @@
+{
+  "doi": "10.1021/acsaem.1c03599",
+  "pdf_filename": "10.1021_acsaem.1c03599.pdf",
+  "json_filename": "10.1021_acsaem.1c03599.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.1c03599.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4225546373",
+    "doi": "10.1021/acsaem.1c03599",
+    "title": "Can Substitutions Affect the Oxidative Stability of Lithium Argyrodite Solid Electrolytes?",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2022-02-03",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 33,
+    "citation_normalized_percentile": 0.90604047,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Ananya Banik",
+    "authors_display": "Ananya Banik; Yunsheng Liu; Saneyuki Ohno; Yannik Rudel; Alberto Jiménez‐Solano; A. Gloskovskii; Nella M. Vargas‐Barbosa; Yifei Mo; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Ananya Banik",
+        "id": "https://openalex.org/A5011028807",
+        "orcid": "https://orcid.org/0000-0003-0455-3051",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yunsheng Liu",
+        "id": "https://openalex.org/A5101817205",
+        "orcid": "https://orcid.org/0000-0002-6456-9437",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Saneyuki Ohno",
+        "id": "https://openalex.org/A5029516654",
+        "orcid": "https://orcid.org/0000-0001-8192-996X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yannik Rudel",
+        "id": "https://openalex.org/A5046598366",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alberto Jiménez‐Solano",
+        "id": "https://openalex.org/A5055404667",
+        "orcid": "https://orcid.org/0000-0003-4639-5901",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "A. Gloskovskii",
+        "id": "https://openalex.org/A5113884729",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nella M. Vargas‐Barbosa",
+        "id": "https://openalex.org/A5040044322",
+        "orcid": "https://orcid.org/0000-0002-6357-017X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yifei Mo",
+        "id": "https://openalex.org/A5043347975",
+        "orcid": "https://orcid.org/0000-0002-8162-4629",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4225546373",
+    "doi": "10.1021/acsaem.1c03599",
+    "title": "Can Substitutions Affect the Oxidative Stability of Lithium Argyrodite Solid Electrolytes?",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2022-02-03",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 33,
+    "citation_normalized_percentile": 0.90604047,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Ananya Banik",
+    "authors_display": "Ananya Banik; Yunsheng Liu; Saneyuki Ohno; Yannik Rudel; Alberto Jiménez‐Solano; A. Gloskovskii; Nella M. Vargas‐Barbosa; Yifei Mo; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Ananya Banik\", \"id\": \"https://openalex.org/A5011028807\", \"orcid\": \"https://orcid.org/0000-0003-0455-3051\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yunsheng Liu\", \"id\": \"https://openalex.org/A5101817205\", \"orcid\": \"https://orcid.org/0000-0002-6456-9437\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Saneyuki Ohno\", \"id\": \"https://openalex.org/A5029516654\", \"orcid\": \"https://orcid.org/0000-0001-8192-996X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yannik Rudel\", \"id\": \"https://openalex.org/A5046598366\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alberto Jiménez‐Solano\", \"id\": \"https://openalex.org/A5055404667\", \"orcid\": \"https://orcid.org/0000-0003-4639-5901\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"A. Gloskovskii\", \"id\": \"https://openalex.org/A5113884729\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nella M. Vargas‐Barbosa\", \"id\": \"https://openalex.org/A5040044322\", \"orcid\": \"https://orcid.org/0000-0002-6357-017X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yifei Mo\", \"id\": \"https://openalex.org/A5043347975\", \"orcid\": \"https://orcid.org/0000-0002-8162-4629\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302627269,
+    "actual_start_ms": 1773302628770,
+    "pacing_wait_ms": 1501,
+    "pacing_jitter_sec": 1.398
+  }
+}

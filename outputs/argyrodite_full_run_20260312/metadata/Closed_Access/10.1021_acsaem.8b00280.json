@@ -1,0 +1,109 @@
+{
+  "doi": "10.1021/acsaem.8b00280",
+  "pdf_filename": "10.1021_acsaem.8b00280.pdf",
+  "json_filename": "10.1021_acsaem.8b00280.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.8b00280.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2838941989",
+    "doi": "10.1021/acsaem.8b00280",
+    "title": "Lithium-Ion-Conducting Argyrodite-Type Li<sub>6</sub>PS<sub>5</sub>X (X = Cl, Br, I) Solid Electrolytes Prepared by a Liquid-Phase Technique Using Ethanol as a Solvent",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2018-07-11",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 130,
+    "citation_normalized_percentile": 0.98114829,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "So Yubuchi",
+    "authors_display": "So Yubuchi; Miwa Uematsu; Minako Deguchi; Akitoshi Hayashi; Masahiro Tatsumisago",
+    "authors": [
+      {
+        "display_name": "So Yubuchi",
+        "id": "https://openalex.org/A5077611173",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Miwa Uematsu",
+        "id": "https://openalex.org/A5054117933",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Minako Deguchi",
+        "id": "https://openalex.org/A5040586049",
+        "orcid": "https://orcid.org/0009-0009-8326-6130",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Akitoshi Hayashi",
+        "id": "https://openalex.org/A5056798072",
+        "orcid": "https://orcid.org/0000-0001-9503-5561",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Masahiro Tatsumisago",
+        "id": "https://openalex.org/A5081903089",
+        "orcid": "https://orcid.org/0000-0002-4836-0158",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2838941989",
+    "doi": "10.1021/acsaem.8b00280",
+    "title": "Lithium-Ion-Conducting Argyrodite-Type Li<sub>6</sub>PS<sub>5</sub>X (X = Cl, Br, I) Solid Electrolytes Prepared by a Liquid-Phase Technique Using Ethanol as a Solvent",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2018-07-11",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 130,
+    "citation_normalized_percentile": 0.98114829,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "So Yubuchi",
+    "authors_display": "So Yubuchi; Miwa Uematsu; Minako Deguchi; Akitoshi Hayashi; Masahiro Tatsumisago",
+    "authors_json": "[{\"display_name\": \"So Yubuchi\", \"id\": \"https://openalex.org/A5077611173\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Miwa Uematsu\", \"id\": \"https://openalex.org/A5054117933\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Minako Deguchi\", \"id\": \"https://openalex.org/A5040586049\", \"orcid\": \"https://orcid.org/0009-0009-8326-6130\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Akitoshi Hayashi\", \"id\": \"https://openalex.org/A5056798072\", \"orcid\": \"https://orcid.org/0000-0001-9503-5561\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Masahiro Tatsumisago\", \"id\": \"https://openalex.org/A5081903089\", \"orcid\": \"https://orcid.org/0000-0002-4836-0158\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301712399,
+    "actual_start_ms": 1773301716209,
+    "pacing_wait_ms": 3809,
+    "pacing_jitter_sec": 1.089
+  }
+}

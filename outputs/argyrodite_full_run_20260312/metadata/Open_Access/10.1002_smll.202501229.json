@@ -1,0 +1,96 @@
+{
+  "doi": "10.1002/smll.202501229",
+  "pdf_filename": "10.1002_smll.202501229.pdf",
+  "json_filename": "10.1002_smll.202501229.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_smll.202501229.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408884108",
+    "doi": "10.1002/smll.202501229",
+    "title": "Enhanced Electrochemical Stability in All‐Solid‐State Lithium–Sulfur Batteries with Lithium Argyrodite Electrolyte",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2025-03-26",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.92821813,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202501229",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Yin‐Ju Yen",
+    "authors_display": "Yin‐Ju Yen; Hyunki Sul; Arumugam Manthiram",
+    "authors": [
+      {
+        "display_name": "Yin‐Ju Yen",
+        "id": "https://openalex.org/A5102939705",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyunki Sul",
+        "id": "https://openalex.org/A5107930672",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Arumugam Manthiram",
+        "id": "https://openalex.org/A5066705036",
+        "orcid": "https://orcid.org/0000-0003-0237-9563",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408884108",
+    "doi": "10.1002/smll.202501229",
+    "title": "Enhanced Electrochemical Stability in All‐Solid‐State Lithium–Sulfur Batteries with Lithium Argyrodite Electrolyte",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2025-03-26",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.92821813,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202501229",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Yin‐Ju Yen",
+    "authors_display": "Yin‐Ju Yen; Hyunki Sul; Arumugam Manthiram",
+    "authors_json": "[{\"display_name\": \"Yin‐Ju Yen\", \"id\": \"https://openalex.org/A5102939705\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hyunki Sul\", \"id\": \"https://openalex.org/A5107930672\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Arumugam Manthiram\", \"id\": \"https://openalex.org/A5066705036\", \"orcid\": \"https://orcid.org/0000-0003-0237-9563\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773307172160,
+    "actual_start_ms": 1773307172160,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.23
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "doi": "10.1021/acsami.2c13150",
+  "pdf_filename": "10.1021_acsami.2c13150.pdf",
+  "json_filename": "10.1021_acsami.2c13150.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.2c13150.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4306911293",
+    "doi": "10.1021/acsami.2c13150",
+    "title": "Decoupling Parasitic Reactions at the Positive Electrode Interfaces in Argyrodite-Based Systems",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2022-10-20",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.84332799,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Elisa Quemin",
+    "authors_display": "Elisa Quemin; Romain Dugas; Tuncay Koç; Benjamin Hennequart; Ronan Chometon; Jean‐Marie Tarascon",
+    "authors": [
+      {
+        "display_name": "Elisa Quemin",
+        "id": "https://openalex.org/A5088042759",
+        "orcid": "https://orcid.org/0000-0003-3617-3352",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Romain Dugas",
+        "id": "https://openalex.org/A5035542534",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tuncay Koç",
+        "id": "https://openalex.org/A5079971526",
+        "orcid": "https://orcid.org/0000-0002-4091-3192",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Benjamin Hennequart",
+        "id": "https://openalex.org/A5046768685",
+        "orcid": "https://orcid.org/0000-0002-0325-7691",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ronan Chometon",
+        "id": "https://openalex.org/A5027363171",
+        "orcid": "https://orcid.org/0000-0001-9026-4082",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jean‐Marie Tarascon",
+        "id": "https://openalex.org/A5019830612",
+        "orcid": "https://orcid.org/0000-0002-7059-6845",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4306911293",
+    "doi": "10.1021/acsami.2c13150",
+    "title": "Decoupling Parasitic Reactions at the Positive Electrode Interfaces in Argyrodite-Based Systems",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2022-10-20",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.84332799,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Elisa Quemin",
+    "authors_display": "Elisa Quemin; Romain Dugas; Tuncay Koç; Benjamin Hennequart; Ronan Chometon; Jean‐Marie Tarascon",
+    "authors_json": "[{\"display_name\": \"Elisa Quemin\", \"id\": \"https://openalex.org/A5088042759\", \"orcid\": \"https://orcid.org/0000-0003-3617-3352\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Romain Dugas\", \"id\": \"https://openalex.org/A5035542534\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tuncay Koç\", \"id\": \"https://openalex.org/A5079971526\", \"orcid\": \"https://orcid.org/0000-0002-4091-3192\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Benjamin Hennequart\", \"id\": \"https://openalex.org/A5046768685\", \"orcid\": \"https://orcid.org/0000-0002-0325-7691\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ronan Chometon\", \"id\": \"https://openalex.org/A5027363171\", \"orcid\": \"https://orcid.org/0000-0001-9026-4082\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jean‐Marie Tarascon\", \"id\": \"https://openalex.org/A5019830612\", \"orcid\": \"https://orcid.org/0000-0002-7059-6845\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302899021,
+    "actual_start_ms": 1773302901777,
+    "pacing_wait_ms": 2755,
+    "pacing_jitter_sec": 0.898
+  }
+}

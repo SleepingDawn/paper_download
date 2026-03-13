@@ -1,0 +1,102 @@
+{
+  "doi": "10.1038/s42004-025-01609-9",
+  "pdf_filename": "10.1038_s42004-025-01609-9.pdf",
+  "json_filename": "10.1038_s42004-025-01609-9.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s42004-025-01609-9.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4412646596",
+    "doi": "10.1038/s42004-025-01609-9",
+    "title": "Probing the chemical stability between current collectors and argyrodite Li6PS5Cl sulfide electrolyte",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Communications Chemistry",
+      "id": "https://openalex.org/S4210191625",
+      "type": "journal",
+      "issn_l": "2399-3669",
+      "issn": [
+        "2399-3669"
+      ]
+    },
+    "publication_date": "2025-07-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.92305185,
+    "pdf_url": "https://www.nature.com/articles/s42004-025-01609-9.pdf",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Artur Tron",
+    "authors_display": "Artur Tron; Alexander Beutl; Irshad Mohammad; Andrea Paolella",
+    "authors": [
+      {
+        "display_name": "Artur Tron",
+        "id": "https://openalex.org/A5002945442",
+        "orcid": "https://orcid.org/0000-0002-6565-8247",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Alexander Beutl",
+        "id": "https://openalex.org/A5062737645",
+        "orcid": "https://orcid.org/0000-0002-7098-619X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Irshad Mohammad",
+        "id": "https://openalex.org/A5070277927",
+        "orcid": "https://orcid.org/0000-0001-7211-5657",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andrea Paolella",
+        "id": "https://openalex.org/A5042467922",
+        "orcid": "https://orcid.org/0000-0003-0986-6460",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4412646596",
+    "doi": "10.1038/s42004-025-01609-9",
+    "title": "Probing the chemical stability between current collectors and argyrodite Li6PS5Cl sulfide electrolyte",
+    "publisher": "Nature Portfolio",
+    "journal": "Communications Chemistry",
+    "journal_id": "https://openalex.org/S4210191625",
+    "journal_type": "journal",
+    "journal_issn_l": "2399-3669",
+    "journal_issn_json": "[\"2399-3669\"]",
+    "publication_date": "2025-07-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.92305185,
+    "pdf_url": "https://www.nature.com/articles/s42004-025-01609-9.pdf",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Artur Tron",
+    "authors_display": "Artur Tron; Alexander Beutl; Irshad Mohammad; Andrea Paolella",
+    "authors_json": "[{\"display_name\": \"Artur Tron\", \"id\": \"https://openalex.org/A5002945442\", \"orcid\": \"https://orcid.org/0000-0002-6565-8247\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Alexander Beutl\", \"id\": \"https://openalex.org/A5062737645\", \"orcid\": \"https://orcid.org/0000-0002-7098-619X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Irshad Mohammad\", \"id\": \"https://openalex.org/A5070277927\", \"orcid\": \"https://orcid.org/0000-0001-7211-5657\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Andrea Paolella\", \"id\": \"https://openalex.org/A5042467922\", \"orcid\": \"https://orcid.org/0000-0003-0986-6460\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773309604778,
+    "actual_start_ms": 1773309604779,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.718
+  }
+}

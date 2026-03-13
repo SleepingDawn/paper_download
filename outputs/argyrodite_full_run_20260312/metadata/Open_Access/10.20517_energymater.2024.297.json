@@ -1,0 +1,179 @@
+{
+  "doi": "10.20517/energymater.2024.297",
+  "pdf_filename": "10.20517_energymater.2024.297.pdf",
+  "json_filename": "10.20517_energymater.2024.297.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.20517_energymater.2024.297.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408499689",
+    "doi": "10.20517/energymater.2024.297",
+    "title": "All-solid-state lithium batteries with NMC<sub>955</sub> cathodes: PVDF-free formulation with SBR and capacity recovery insights",
+    "publisher": "Energy Materials",
+    "journal": {
+      "name": "Energy Materials",
+      "id": "https://openalex.org/S4210212614",
+      "type": "journal",
+      "issn_l": "2770-5900",
+      "issn": [
+        "2770-5900"
+      ]
+    },
+    "publication_date": "2025-03-17",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.94045825,
+    "pdf_url": "https://f.oaes.cc/xmlpdf/962e3f04-bd06-4ac5-b10c-5b774fb6c29c/em40297.pdf",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Beatriz M. Gomes",
+    "authors_display": "Beatriz M. Gomes; Manuela C. Baptista; Ander Orue; Bhattacharjya Dhrubajyoti; S. Terlicka; Peter Sjövall; Nico Zamperlin; Carlos Fonseca; Jasmin Smajic; Ville Kekkonen; Willar Vonk; Artur Tron; Andy Schena; Anwar Ahniyaz; Maria Helena Braga",
+    "authors": [
+      {
+        "display_name": "Beatriz M. Gomes",
+        "id": "https://openalex.org/A5109617176",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Manuela C. Baptista",
+        "id": "https://openalex.org/A5061599115",
+        "orcid": "https://orcid.org/0000-0002-8933-2751",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ander Orue",
+        "id": "https://openalex.org/A5073676071",
+        "orcid": "https://orcid.org/0000-0001-5802-4193",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bhattacharjya Dhrubajyoti",
+        "id": "https://openalex.org/A5116647568",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "S. Terlicka",
+        "id": "https://openalex.org/A5015946025",
+        "orcid": "https://orcid.org/0000-0002-0099-3052",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peter Sjövall",
+        "id": "https://openalex.org/A5116647569",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nico Zamperlin",
+        "id": "https://openalex.org/A5029173708",
+        "orcid": "https://orcid.org/0000-0003-1736-9843",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Carlos Fonseca",
+        "id": "https://openalex.org/A5052088353",
+        "orcid": "https://orcid.org/0000-0002-2759-0384",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jasmin Smajic",
+        "id": "https://openalex.org/A5064472955",
+        "orcid": "https://orcid.org/0000-0003-2374-0901",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ville Kekkonen",
+        "id": "https://openalex.org/A5030949976",
+        "orcid": "https://orcid.org/0000-0002-2673-362X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Willar Vonk",
+        "id": "https://openalex.org/A5116647566",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Artur Tron",
+        "id": "https://openalex.org/A5002945442",
+        "orcid": "https://orcid.org/0000-0002-6565-8247",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andy Schena",
+        "id": "https://openalex.org/A5116647567",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anwar Ahniyaz",
+        "id": "https://openalex.org/A5055283668",
+        "orcid": "https://orcid.org/0000-0001-8775-0602",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maria Helena Braga",
+        "id": "https://openalex.org/A5089673050",
+        "orcid": "https://orcid.org/0000-0003-4577-2154",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408499689",
+    "doi": "10.20517/energymater.2024.297",
+    "title": "All-solid-state lithium batteries with NMC<sub>955</sub> cathodes: PVDF-free formulation with SBR and capacity recovery insights",
+    "publisher": "Energy Materials",
+    "journal": "Energy Materials",
+    "journal_id": "https://openalex.org/S4210212614",
+    "journal_type": "journal",
+    "journal_issn_l": "2770-5900",
+    "journal_issn_json": "[\"2770-5900\"]",
+    "publication_date": "2025-03-17",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.94045825,
+    "pdf_url": "https://f.oaes.cc/xmlpdf/962e3f04-bd06-4ac5-b10c-5b774fb6c29c/em40297.pdf",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Beatriz M. Gomes",
+    "authors_display": "Beatriz M. Gomes; Manuela C. Baptista; Ander Orue; Bhattacharjya Dhrubajyoti; S. Terlicka; Peter Sjövall; Nico Zamperlin; Carlos Fonseca; Jasmin Smajic; Ville Kekkonen; Willar Vonk; Artur Tron; Andy Schena; Anwar Ahniyaz; Maria Helena Braga",
+    "authors_json": "[{\"display_name\": \"Beatriz M. Gomes\", \"id\": \"https://openalex.org/A5109617176\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Manuela C. Baptista\", \"id\": \"https://openalex.org/A5061599115\", \"orcid\": \"https://orcid.org/0000-0002-8933-2751\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ander Orue\", \"id\": \"https://openalex.org/A5073676071\", \"orcid\": \"https://orcid.org/0000-0001-5802-4193\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bhattacharjya Dhrubajyoti\", \"id\": \"https://openalex.org/A5116647568\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"S. Terlicka\", \"id\": \"https://openalex.org/A5015946025\", \"orcid\": \"https://orcid.org/0000-0002-0099-3052\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peter Sjövall\", \"id\": \"https://openalex.org/A5116647569\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nico Zamperlin\", \"id\": \"https://openalex.org/A5029173708\", \"orcid\": \"https://orcid.org/0000-0003-1736-9843\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Carlos Fonseca\", \"id\": \"https://openalex.org/A5052088353\", \"orcid\": \"https://orcid.org/0000-0002-2759-0384\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jasmin Smajic\", \"id\": \"https://openalex.org/A5064472955\", \"orcid\": \"https://orcid.org/0000-0003-2374-0901\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ville Kekkonen\", \"id\": \"https://openalex.org/A5030949976\", \"orcid\": \"https://orcid.org/0000-0002-2673-362X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Willar Vonk\", \"id\": \"https://openalex.org/A5116647566\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Artur Tron\", \"id\": \"https://openalex.org/A5002945442\", \"orcid\": \"https://orcid.org/0000-0002-6565-8247\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Andy Schena\", \"id\": \"https://openalex.org/A5116647567\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anwar Ahniyaz\", \"id\": \"https://openalex.org/A5055283668\", \"orcid\": \"https://orcid.org/0000-0001-8775-0602\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maria Helena Braga\", \"id\": \"https://openalex.org/A5089673050\", \"orcid\": \"https://orcid.org/0000-0003-4577-2154\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.20517",
+    "scheduled_start_ms": 1773311097769,
+    "actual_start_ms": 1773311097770,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.702
+  }
+}

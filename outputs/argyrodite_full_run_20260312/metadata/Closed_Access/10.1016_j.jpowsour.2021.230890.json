@@ -1,0 +1,138 @@
+{
+  "doi": "10.1016/j.jpowsour.2021.230890",
+  "pdf_filename": "10.1016_j.jpowsour.2021.230890.pdf",
+  "json_filename": "10.1016_j.jpowsour.2021.230890.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.jpowsour.2021.230890.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4200474833",
+    "doi": "10.1016/j.jpowsour.2021.230890",
+    "title": "Unraveling the crystallinity on battery performances of chlorine-rich argyrodite electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Power Sources",
+      "id": "https://openalex.org/S177147899",
+      "type": "journal",
+      "issn_l": "0378-7753",
+      "issn": [
+        "0378-7753",
+        "1873-2755"
+      ]
+    },
+    "publication_date": "2021-12-15",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 43,
+    "citation_normalized_percentile": 0.93129072,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Linfeng Peng",
+    "authors_display": "Linfeng Peng; Shaoqing Chen; Chuang Yu; Cong Liao; Mengjun Sun; Hsing‐Lin Wang; Long Zhang; Shijie Cheng; Jia Xie",
+    "authors": [
+      {
+        "display_name": "Linfeng Peng",
+        "id": "https://openalex.org/A5101094536",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shaoqing Chen",
+        "id": "https://openalex.org/A5010748983",
+        "orcid": "https://orcid.org/0000-0002-6700-292X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Cong Liao",
+        "id": "https://openalex.org/A5102095751",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mengjun Sun",
+        "id": "https://openalex.org/A5113988225",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hsing‐Lin Wang",
+        "id": "https://openalex.org/A5101978885",
+        "orcid": "https://orcid.org/0000-0002-6379-0519",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Long Zhang",
+        "id": "https://openalex.org/A5100363525",
+        "orcid": "https://orcid.org/0000-0002-4861-1471",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Cheng",
+        "id": "https://openalex.org/A5024186253",
+        "orcid": "https://orcid.org/0000-0002-8752-4311",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jia Xie",
+        "id": "https://openalex.org/A5081117176",
+        "orcid": "https://orcid.org/0000-0002-8731-295X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4200474833",
+    "doi": "10.1016/j.jpowsour.2021.230890",
+    "title": "Unraveling the crystallinity on battery performances of chlorine-rich argyrodite electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Power Sources",
+    "journal_id": "https://openalex.org/S177147899",
+    "journal_type": "journal",
+    "journal_issn_l": "0378-7753",
+    "journal_issn_json": "[\"0378-7753\", \"1873-2755\"]",
+    "publication_date": "2021-12-15",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 43,
+    "citation_normalized_percentile": 0.93129072,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Linfeng Peng",
+    "authors_display": "Linfeng Peng; Shaoqing Chen; Chuang Yu; Cong Liao; Mengjun Sun; Hsing‐Lin Wang; Long Zhang; Shijie Cheng; Jia Xie",
+    "authors_json": "[{\"display_name\": \"Linfeng Peng\", \"id\": \"https://openalex.org/A5101094536\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Shaoqing Chen\", \"id\": \"https://openalex.org/A5010748983\", \"orcid\": \"https://orcid.org/0000-0002-6700-292X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Cong Liao\", \"id\": \"https://openalex.org/A5102095751\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mengjun Sun\", \"id\": \"https://openalex.org/A5113988225\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hsing‐Lin Wang\", \"id\": \"https://openalex.org/A5101978885\", \"orcid\": \"https://orcid.org/0000-0002-6379-0519\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Long Zhang\", \"id\": \"https://openalex.org/A5100363525\", \"orcid\": \"https://orcid.org/0000-0002-4861-1471\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Cheng\", \"id\": \"https://openalex.org/A5024186253\", \"orcid\": \"https://orcid.org/0000-0002-8752-4311\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jia Xie\", \"id\": \"https://openalex.org/A5081117176\", \"orcid\": \"https://orcid.org/0000-0002-8731-295X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302034028,
+    "actual_start_ms": 1773302040710,
+    "pacing_wait_ms": 6681,
+    "pacing_jitter_sec": 1.185
+  }
+}

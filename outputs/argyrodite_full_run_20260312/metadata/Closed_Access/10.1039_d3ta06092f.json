@@ -1,0 +1,159 @@
+{
+  "doi": "10.1039/d3ta06092f",
+  "pdf_filename": "10.1039_d3ta06092f.pdf",
+  "json_filename": "10.1039_d3ta06092f.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d3ta06092f.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4390920697",
+    "doi": "10.1039/d3ta06092f",
+    "title": "Interfacial degradation of the NMC/Li<sub>6</sub>PS<sub>5</sub>Cl composite cathode in all-solid-state batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.94060451,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Xudong Hu",
+    "authors_display": "Xudong Hu; Zishuo Zhao; Yang Zhao; Xuelong Wang; Sami Sainio; Dennis Nordlund; Cristina Mariana Ruse; Xiao‐Dong Zhou; Shannon W. Boettcher; Dong Hou; Qi‐Jun Hong; Linqin Mu",
+    "authors": [
+      {
+        "display_name": "Xudong Hu",
+        "id": "https://openalex.org/A5103476266",
+        "orcid": "https://orcid.org/0000-0002-0288-0158",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zishuo Zhao",
+        "id": "https://openalex.org/A5113179896",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Zhao",
+        "id": "https://openalex.org/A5082445301",
+        "orcid": "https://orcid.org/0000-0002-4148-2603",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xuelong Wang",
+        "id": "https://openalex.org/A5035420625",
+        "orcid": "https://orcid.org/0000-0003-2652-944X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sami Sainio",
+        "id": "https://openalex.org/A5069357743",
+        "orcid": "https://orcid.org/0000-0002-9268-0124",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dennis Nordlund",
+        "id": "https://openalex.org/A5015462149",
+        "orcid": "https://orcid.org/0000-0001-9524-6908",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cristina Mariana Ruse",
+        "id": "https://openalex.org/A5028329055",
+        "orcid": "https://orcid.org/0000-0001-9062-2775",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao‐Dong Zhou",
+        "id": "https://openalex.org/A5015581970",
+        "orcid": "https://orcid.org/0000-0001-9934-9429",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shannon W. Boettcher",
+        "id": "https://openalex.org/A5032458792",
+        "orcid": "https://orcid.org/0000-0001-8971-9123",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong Hou",
+        "id": "https://openalex.org/A5026983787",
+        "orcid": "https://orcid.org/0000-0002-0942-688X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Qi‐Jun Hong",
+        "id": "https://openalex.org/A5091880910",
+        "orcid": "https://orcid.org/0000-0002-5970-0605",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Linqin Mu",
+        "id": "https://openalex.org/A5049943189",
+        "orcid": "https://orcid.org/0000-0003-4421-4820",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4390920697",
+    "doi": "10.1039/d3ta06092f",
+    "title": "Interfacial degradation of the NMC/Li<sub>6</sub>PS<sub>5</sub>Cl composite cathode in all-solid-state batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.94060451,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Xudong Hu",
+    "authors_display": "Xudong Hu; Zishuo Zhao; Yang Zhao; Xuelong Wang; Sami Sainio; Dennis Nordlund; Cristina Mariana Ruse; Xiao‐Dong Zhou; Shannon W. Boettcher; Dong Hou; Qi‐Jun Hong; Linqin Mu",
+    "authors_json": "[{\"display_name\": \"Xudong Hu\", \"id\": \"https://openalex.org/A5103476266\", \"orcid\": \"https://orcid.org/0000-0002-0288-0158\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Zishuo Zhao\", \"id\": \"https://openalex.org/A5113179896\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Zhao\", \"id\": \"https://openalex.org/A5082445301\", \"orcid\": \"https://orcid.org/0000-0002-4148-2603\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xuelong Wang\", \"id\": \"https://openalex.org/A5035420625\", \"orcid\": \"https://orcid.org/0000-0003-2652-944X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sami Sainio\", \"id\": \"https://openalex.org/A5069357743\", \"orcid\": \"https://orcid.org/0000-0002-9268-0124\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dennis Nordlund\", \"id\": \"https://openalex.org/A5015462149\", \"orcid\": \"https://orcid.org/0000-0001-9524-6908\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cristina Mariana Ruse\", \"id\": \"https://openalex.org/A5028329055\", \"orcid\": \"https://orcid.org/0000-0001-9062-2775\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiao‐Dong Zhou\", \"id\": \"https://openalex.org/A5015581970\", \"orcid\": \"https://orcid.org/0000-0001-9934-9429\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shannon W. Boettcher\", \"id\": \"https://openalex.org/A5032458792\", \"orcid\": \"https://orcid.org/0000-0001-8971-9123\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong Hou\", \"id\": \"https://openalex.org/A5026983787\", \"orcid\": \"https://orcid.org/0000-0002-0942-688X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Qi‐Jun Hong\", \"id\": \"https://openalex.org/A5091880910\", \"orcid\": \"https://orcid.org/0000-0002-5970-0605\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Linqin Mu\", \"id\": \"https://openalex.org/A5049943189\", \"orcid\": \"https://orcid.org/0000-0003-4421-4820\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.rsc.org/en/content/articlelanding/2024/ta/d3ta06092f",
+    "landing_title": "Interfacial degradation of the NMC/Li6PS5Cl composite cathode in all-solid-state batteries - Journal of Materials Chemistry A (RSC Publishing)",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773312924827,
+    "actual_start_ms": 1773312924828,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 0.907
+  }
+}

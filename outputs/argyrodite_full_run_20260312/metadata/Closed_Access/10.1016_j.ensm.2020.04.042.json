@@ -1,0 +1,131 @@
+{
+  "doi": "10.1016/j.ensm.2020.04.042",
+  "pdf_filename": "10.1016_j.ensm.2020.04.042.pdf",
+  "json_filename": "10.1016_j.ensm.2020.04.042.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2020.04.042.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3022559796",
+    "doi": "10.1016/j.ensm.2020.04.042",
+    "title": "Enhanced ion conduction by enforcing structural disorder in Li-deficient argyrodites Li6−xPS5−xCl1+x",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2020-05-07",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 210,
+    "citation_normalized_percentile": 0.98848456,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Xuyong Feng",
+    "authors_display": "Xuyong Feng; Po‐Hsiu Chien; Yan Wang; Sawankumar V. Patel; Pengbo Wang; Haoyu Liu; Marcello Immediato‐Scuotto; Yan‐Yan Hu",
+    "authors": [
+      {
+        "display_name": "Xuyong Feng",
+        "id": "https://openalex.org/A5010856605",
+        "orcid": "https://orcid.org/0009-0005-5363-671X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Po‐Hsiu Chien",
+        "id": "https://openalex.org/A5059953572",
+        "orcid": "https://orcid.org/0000-0002-1607-1271",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yan Wang",
+        "id": "https://openalex.org/A5100322823",
+        "orcid": "https://orcid.org/0000-0002-8648-2172",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sawankumar V. Patel",
+        "id": "https://openalex.org/A5005113583",
+        "orcid": "https://orcid.org/0000-0002-5293-9330",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pengbo Wang",
+        "id": "https://openalex.org/A5062069628",
+        "orcid": "https://orcid.org/0000-0002-5740-6912",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haoyu Liu",
+        "id": "https://openalex.org/A5100444755",
+        "orcid": "https://orcid.org/0000-0002-6741-7295",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marcello Immediato‐Scuotto",
+        "id": "https://openalex.org/A5031476966",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yan‐Yan Hu",
+        "id": "https://openalex.org/A5078089711",
+        "orcid": "https://orcid.org/0000-0003-0677-5897",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3022559796",
+    "doi": "10.1016/j.ensm.2020.04.042",
+    "title": "Enhanced ion conduction by enforcing structural disorder in Li-deficient argyrodites Li6−xPS5−xCl1+x",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2020-05-07",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 210,
+    "citation_normalized_percentile": 0.98848456,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Xuyong Feng",
+    "authors_display": "Xuyong Feng; Po‐Hsiu Chien; Yan Wang; Sawankumar V. Patel; Pengbo Wang; Haoyu Liu; Marcello Immediato‐Scuotto; Yan‐Yan Hu",
+    "authors_json": "[{\"display_name\": \"Xuyong Feng\", \"id\": \"https://openalex.org/A5010856605\", \"orcid\": \"https://orcid.org/0009-0005-5363-671X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Po‐Hsiu Chien\", \"id\": \"https://openalex.org/A5059953572\", \"orcid\": \"https://orcid.org/0000-0002-1607-1271\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yan Wang\", \"id\": \"https://openalex.org/A5100322823\", \"orcid\": \"https://orcid.org/0000-0002-8648-2172\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sawankumar V. Patel\", \"id\": \"https://openalex.org/A5005113583\", \"orcid\": \"https://orcid.org/0000-0002-5293-9330\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pengbo Wang\", \"id\": \"https://openalex.org/A5062069628\", \"orcid\": \"https://orcid.org/0000-0002-5740-6912\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haoyu Liu\", \"id\": \"https://openalex.org/A5100444755\", \"orcid\": \"https://orcid.org/0000-0002-6741-7295\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marcello Immediato‐Scuotto\", \"id\": \"https://openalex.org/A5031476966\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yan‐Yan Hu\", \"id\": \"https://openalex.org/A5078089711\", \"orcid\": \"https://orcid.org/0000-0003-0677-5897\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301559397,
+    "actual_start_ms": 1773301565769,
+    "pacing_wait_ms": 6371,
+    "pacing_jitter_sec": 1.292
+  }
+}

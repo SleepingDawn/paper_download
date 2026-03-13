@@ -1,0 +1,124 @@
+{
+  "doi": "10.1039/d5ta02205c",
+  "pdf_filename": "10.1039_d5ta02205c.pdf",
+  "json_filename": "10.1039_d5ta02205c.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_d5ta02205c.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409866592",
+    "doi": "10.1039/d5ta02205c",
+    "title": "Unraveling Li-ion transport mechanisms in high-entropy anion-disordered argyrodites <i>via</i> machine-learned interatomic potentials",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.90716555,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/ta/d5ta02205c",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Moon Hyung Jang",
+    "authors_display": "Moon Hyung Jang; K.-H. Park; Hun‐Gi Jung; Kyung Yoon Chung; Joon Hyung Shim; Ohmin Kwon; Seungho Yu",
+    "authors": [
+      {
+        "display_name": "Moon Hyung Jang",
+        "id": "https://openalex.org/A5073447320",
+        "orcid": "https://orcid.org/0000-0001-5601-8021",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "K.-H. Park",
+        "id": "https://openalex.org/A5029506947",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hun‐Gi Jung",
+        "id": "https://openalex.org/A5045467177",
+        "orcid": "https://orcid.org/0000-0002-2162-2680",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung Yoon Chung",
+        "id": "https://openalex.org/A5078491552",
+        "orcid": "https://orcid.org/0000-0002-1273-746X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joon Hyung Shim",
+        "id": "https://openalex.org/A5001838991",
+        "orcid": "https://orcid.org/0000-0002-3995-1968",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ohmin Kwon",
+        "id": "https://openalex.org/A5007946814",
+        "orcid": "https://orcid.org/0000-0003-3169-4829",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seungho Yu",
+        "id": "https://openalex.org/A5038742609",
+        "orcid": "https://orcid.org/0000-0003-3912-6463",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409866592",
+    "doi": "10.1039/d5ta02205c",
+    "title": "Unraveling Li-ion transport mechanisms in high-entropy anion-disordered argyrodites <i>via</i> machine-learned interatomic potentials",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.90716555,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/ta/d5ta02205c",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Moon Hyung Jang",
+    "authors_display": "Moon Hyung Jang; K.-H. Park; Hun‐Gi Jung; Kyung Yoon Chung; Joon Hyung Shim; Ohmin Kwon; Seungho Yu",
+    "authors_json": "[{\"display_name\": \"Moon Hyung Jang\", \"id\": \"https://openalex.org/A5073447320\", \"orcid\": \"https://orcid.org/0000-0001-5601-8021\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"K.-H. Park\", \"id\": \"https://openalex.org/A5029506947\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hun‐Gi Jung\", \"id\": \"https://openalex.org/A5045467177\", \"orcid\": \"https://orcid.org/0000-0002-2162-2680\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung Yoon Chung\", \"id\": \"https://openalex.org/A5078491552\", \"orcid\": \"https://orcid.org/0000-0002-1273-746X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Joon Hyung Shim\", \"id\": \"https://openalex.org/A5001838991\", \"orcid\": \"https://orcid.org/0000-0002-3995-1968\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ohmin Kwon\", \"id\": \"https://openalex.org/A5007946814\", \"orcid\": \"https://orcid.org/0000-0003-3169-4829\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seungho Yu\", \"id\": \"https://openalex.org/A5038742609\", \"orcid\": \"https://orcid.org/0000-0003-3912-6463\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773309694432,
+    "actual_start_ms": 1773309694432,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.086
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "doi": "10.1016/j.scriptamat.2023.115303",
+  "pdf_filename": "10.1016_j.scriptamat.2023.115303.pdf",
+  "json_filename": "10.1016_j.scriptamat.2023.115303.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.scriptamat.2023.115303.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4315629126",
+    "doi": "10.1016/j.scriptamat.2023.115303",
+    "title": "Ag/Br dual-doped Li6PS5Br electrolyte with superior conductivity for all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Scripta Materialia",
+      "id": "https://openalex.org/S105962883",
+      "type": "journal",
+      "issn_l": "1359-6462",
+      "issn": [
+        "1359-6462",
+        "1872-8456"
+      ]
+    },
+    "publication_date": "2023-01-11",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 21,
+    "citation_normalized_percentile": 0.90788597,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Ziling Jiang",
+    "authors_display": "Ziling Jiang; Chuang Yu; Shaoqing Chen; Chaochao Wei; Cong Liao; Zhongkai Wu; Shuai Chen; Shijie Cheng; Jia Xie",
+    "authors": [
+      {
+        "display_name": "Ziling Jiang",
+        "id": "https://openalex.org/A5032247200",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Shaoqing Chen",
+        "id": "https://openalex.org/A5010748983",
+        "orcid": "https://orcid.org/0000-0002-6700-292X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chaochao Wei",
+        "id": "https://openalex.org/A5113211601",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cong Liao",
+        "id": "https://openalex.org/A5102095751",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhongkai Wu",
+        "id": "https://openalex.org/A5027106287",
+        "orcid": "https://orcid.org/0000-0002-9864-2559",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuai Chen",
+        "id": "https://openalex.org/A5000249135",
+        "orcid": "https://orcid.org/0000-0001-8566-601X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Cheng",
+        "id": "https://openalex.org/A5024186253",
+        "orcid": "https://orcid.org/0000-0002-8752-4311",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jia Xie",
+        "id": "https://openalex.org/A5081117176",
+        "orcid": "https://orcid.org/0000-0002-8731-295X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4315629126",
+    "doi": "10.1016/j.scriptamat.2023.115303",
+    "title": "Ag/Br dual-doped Li6PS5Br electrolyte with superior conductivity for all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Scripta Materialia",
+    "journal_id": "https://openalex.org/S105962883",
+    "journal_type": "journal",
+    "journal_issn_l": "1359-6462",
+    "journal_issn_json": "[\"1359-6462\", \"1872-8456\"]",
+    "publication_date": "2023-01-11",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 21,
+    "citation_normalized_percentile": 0.90788597,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Ziling Jiang",
+    "authors_display": "Ziling Jiang; Chuang Yu; Shaoqing Chen; Chaochao Wei; Cong Liao; Zhongkai Wu; Shuai Chen; Shijie Cheng; Jia Xie",
+    "authors_json": "[{\"display_name\": \"Ziling Jiang\", \"id\": \"https://openalex.org/A5032247200\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Shaoqing Chen\", \"id\": \"https://openalex.org/A5010748983\", \"orcid\": \"https://orcid.org/0000-0002-6700-292X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chaochao Wei\", \"id\": \"https://openalex.org/A5113211601\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cong Liao\", \"id\": \"https://openalex.org/A5102095751\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhongkai Wu\", \"id\": \"https://openalex.org/A5027106287\", \"orcid\": \"https://orcid.org/0000-0002-9864-2559\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuai Chen\", \"id\": \"https://openalex.org/A5000249135\", \"orcid\": \"https://orcid.org/0000-0001-8566-601X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Cheng\", \"id\": \"https://openalex.org/A5024186253\", \"orcid\": \"https://orcid.org/0000-0002-8752-4311\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jia Xie\", \"id\": \"https://openalex.org/A5081117176\", \"orcid\": \"https://orcid.org/0000-0002-8731-295X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302621984,
+    "actual_start_ms": 1773302627264,
+    "pacing_wait_ms": 5280,
+    "pacing_jitter_sec": 1.088
+  }
+}

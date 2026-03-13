@@ -1,0 +1,88 @@
+{
+  "doi": "10.1021/acssuschemeng.5c03717",
+  "pdf_filename": "10.1021_acssuschemeng.5c03717.pdf",
+  "json_filename": "10.1021_acssuschemeng.5c03717.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acssuschemeng.5c03717.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4414473888",
+    "doi": "10.1021/acssuschemeng.5c03717",
+    "title": "Preparation of OH Anion-Doped Li<sub>6</sub>PS<sub>5</sub>Cl Argyrodite Solid Electrolyte for Enhanced Stability in All-Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Sustainable Chemistry & Engineering",
+      "id": "https://openalex.org/S2502047864",
+      "type": "journal",
+      "issn_l": "2168-0485",
+      "issn": [
+        "2168-0485"
+      ]
+    },
+    "publication_date": "2025-09-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.27489612,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Rajesh Rajagopal",
+    "authors_display": "Rajesh Rajagopal; Kwang‐Sun Ryu",
+    "authors": [
+      {
+        "display_name": "Rajesh Rajagopal",
+        "id": "https://openalex.org/A5110849393",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kwang‐Sun Ryu",
+        "id": "https://openalex.org/A5032691935",
+        "orcid": "https://orcid.org/0000-0002-8758-0495",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4414473888",
+    "doi": "10.1021/acssuschemeng.5c03717",
+    "title": "Preparation of OH Anion-Doped Li<sub>6</sub>PS<sub>5</sub>Cl Argyrodite Solid Electrolyte for Enhanced Stability in All-Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "journal_id": "https://openalex.org/S2502047864",
+    "journal_type": "journal",
+    "journal_issn_l": "2168-0485",
+    "journal_issn_json": "[\"2168-0485\"]",
+    "publication_date": "2025-09-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.27489612,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Rajesh Rajagopal",
+    "authors_display": "Rajesh Rajagopal; Kwang‐Sun Ryu",
+    "authors_json": "[{\"display_name\": \"Rajesh Rajagopal\", \"id\": \"https://openalex.org/A5110849393\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Kwang‐Sun Ryu\", \"id\": \"https://openalex.org/A5032691935\", \"orcid\": \"https://orcid.org/0000-0002-8758-0495\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acssuschemeng.5c03717",
+    "landing_title": "Preparation of OH Anion-Doped Li6PS5Cl Argyrodite Solid Electrolyte for Enhanced Stability in All-Solid-State Lithium Batteries | ACS Sustainable Chemistry & Engineering",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acssuschemeng.5c03717.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308739097,
+    "actual_start_ms": 1773308766154,
+    "pacing_wait_ms": 27056,
+    "pacing_jitter_sec": 1.459
+  }
+}

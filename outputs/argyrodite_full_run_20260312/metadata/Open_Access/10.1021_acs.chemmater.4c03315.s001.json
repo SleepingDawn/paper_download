@@ -1,0 +1,121 @@
+{
+  "doi": "10.1021/acs.chemmater.4c03315.s001",
+  "pdf_filename": "10.1021_acs.chemmater.4c03315.s001.pdf",
+  "json_filename": "10.1021_acs.chemmater.4c03315.s001.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.chemmater.4c03315.s001.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7110863078",
+    "doi": "10.1021/acs.chemmater.4c03315.s001",
+    "title": "Role and Evolutionof FeS<sub>2</sub> Cathode Microstructurein Argyrodite-Based All-Solid-State Lithium–Sulfur Batteries",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": {
+      "name": "Figshare",
+      "id": "https://openalex.org/S4377196282",
+      "type": "repository",
+      "issn_l": null,
+      "issn": []
+    },
+    "publication_date": "2025-04-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.53433971,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Matilde Pavan (17174681)",
+    "authors_display": "Matilde Pavan (17174681); Konrad Münch (19321877); Sebastian L. Benz (11919388); Tim Bernges (5874257); Anja Henss (770000); Wolfgang G. Zeier (1476598); Jürgen Janek (1272231)",
+    "authors": [
+      {
+        "display_name": "Matilde Pavan (17174681)",
+        "id": null,
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Konrad Münch (19321877)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sebastian L. Benz (11919388)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tim Bernges (5874257)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anja Henss (770000)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier (1476598)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek (1272231)",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7110863078",
+    "doi": "10.1021/acs.chemmater.4c03315.s001",
+    "title": "Role and Evolutionof FeS<sub>2</sub> Cathode Microstructurein Argyrodite-Based All-Solid-State Lithium–Sulfur Batteries",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": "Figshare",
+    "journal_id": "https://openalex.org/S4377196282",
+    "journal_type": "repository",
+    "journal_issn_l": null,
+    "journal_issn_json": "[]",
+    "publication_date": "2025-04-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.53433971,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Matilde Pavan (17174681)",
+    "authors_display": "Matilde Pavan (17174681); Konrad Münch (19321877); Sebastian L. Benz (11919388); Tim Bernges (5874257); Anja Henss (770000); Wolfgang G. Zeier (1476598); Jürgen Janek (1272231)",
+    "authors_json": "[{\"display_name\": \"Matilde Pavan (17174681)\", \"id\": null, \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Konrad Münch (19321877)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sebastian L. Benz (11919388)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tim Bernges (5874257)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anja Henss (770000)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier (1476598)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek (1272231)\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "direct_pdf_handoff",
+    "landing_url": "https://doi.org/10.1021/acs.chemmater.4c03315.s001",
+    "landing_title": "새 탭",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acs.chemmater.4c03315.s001.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773309273446,
+    "actual_start_ms": 1773309273446,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.363
+  }
+}

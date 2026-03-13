@@ -1,0 +1,89 @@
+{
+  "doi": "10.1007/s12598-022-02188-7",
+  "pdf_filename": "10.1007_s12598-022-02188-7.pdf",
+  "json_filename": "10.1007_s12598-022-02188-7.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s12598-022-02188-7.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4307402978",
+    "doi": "10.1007/s12598-022-02188-7",
+    "title": "Hydrolysis mechanism of Li‐argyrodite Li <sub>6</sub> PS <sub>5</sub> Cl in air",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Rare Metals",
+      "id": "https://openalex.org/S172552266",
+      "type": "journal",
+      "issn_l": "1001-0521",
+      "issn": [
+        "1001-0521",
+        "1867-7185"
+      ]
+    },
+    "publication_date": "2022-10-25",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 23,
+    "citation_normalized_percentile": 0.87303084,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Jin Zhang",
+    "authors_display": "Jin Zhang; Xiao Gu",
+    "authors": [
+      {
+        "display_name": "Jin Zhang",
+        "id": "https://openalex.org/A5100406016",
+        "orcid": "https://orcid.org/0000-0003-3731-8859",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xiao Gu",
+        "id": "https://openalex.org/A5066372474",
+        "orcid": "https://orcid.org/0000-0002-3166-3638",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4307402978",
+    "doi": "10.1007/s12598-022-02188-7",
+    "title": "Hydrolysis mechanism of Li‐argyrodite Li <sub>6</sub> PS <sub>5</sub> Cl in air",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Rare Metals",
+    "journal_id": "https://openalex.org/S172552266",
+    "journal_type": "journal",
+    "journal_issn_l": "1001-0521",
+    "journal_issn_json": "[\"1001-0521\", \"1867-7185\"]",
+    "publication_date": "2022-10-25",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 23,
+    "citation_normalized_percentile": 0.87303084,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Jin Zhang",
+    "authors_display": "Jin Zhang; Xiao Gu",
+    "authors_json": "[{\"display_name\": \"Jin Zhang\", \"id\": \"https://openalex.org/A5100406016\", \"orcid\": \"https://orcid.org/0000-0003-3731-8859\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Xiao Gu\", \"id\": \"https://openalex.org/A5066372474\", \"orcid\": \"https://orcid.org/0000-0002-3166-3638\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773308468559,
+    "actual_start_ms": 1773308470069,
+    "pacing_wait_ms": 1509,
+    "pacing_jitter_sec": 1.027
+  }
+}

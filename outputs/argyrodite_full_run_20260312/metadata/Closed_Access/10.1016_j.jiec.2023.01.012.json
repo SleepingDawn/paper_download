@@ -1,0 +1,180 @@
+{
+  "doi": "10.1016/j.jiec.2023.01.012",
+  "pdf_filename": "10.1016_j.jiec.2023.01.012.pdf",
+  "json_filename": "10.1016_j.jiec.2023.01.012.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.jiec.2023.01.012.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4317528568",
+    "doi": "10.1016/j.jiec.2023.01.012",
+    "title": "Solvent-engineered synthesis of sulfide solid electrolytes for high performance all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Industrial and Engineering Chemistry",
+      "id": "https://openalex.org/S145420111",
+      "type": "journal",
+      "issn_l": "1226-086X",
+      "issn": [
+        "1226-086X",
+        "1876-794X"
+      ]
+    },
+    "publication_date": "2023-01-20",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.89483773,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 15,
+    "first_author": "Ik‐Hyeon Choi",
+    "authors_display": "Ik‐Hyeon Choi; Eunji Kim; Yung-Soo Jo; Jeong‐Won Hong; Junghwan Sung; Jeongsuk Seo; Byung Gon Kim; Jun-ho Park; Yoojin Lee; Yoon‐Cheol Ha; Doohun Kim; Jin Hong Lee; Jun‐Woo Park; Jun-Woo Park; Jun-Woo Park",
+    "authors": [
+      {
+        "display_name": "Ik‐Hyeon Choi",
+        "id": "https://openalex.org/A5049974997",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Eunji Kim",
+        "id": "https://openalex.org/A5100319303",
+        "orcid": "https://orcid.org/0000-0001-7323-4498",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yung-Soo Jo",
+        "id": "https://openalex.org/A5061604595",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeong‐Won Hong",
+        "id": "https://openalex.org/A5003117428",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junghwan Sung",
+        "id": "https://openalex.org/A5048153105",
+        "orcid": "https://orcid.org/0000-0003-4907-6957",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeongsuk Seo",
+        "id": "https://openalex.org/A5061677672",
+        "orcid": "https://orcid.org/0000-0002-4602-1910",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byung Gon Kim",
+        "id": "https://openalex.org/A5101614289",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun-ho Park",
+        "id": "https://openalex.org/A5035250996",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoojin Lee",
+        "id": "https://openalex.org/A5100657013",
+        "orcid": "https://orcid.org/0009-0002-8490-8018",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yoon‐Cheol Ha",
+        "id": "https://openalex.org/A5086764992",
+        "orcid": "https://orcid.org/0000-0001-5769-1461",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Doohun Kim",
+        "id": "https://openalex.org/A5033446393",
+        "orcid": "https://orcid.org/0000-0001-9061-9525",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jin Hong Lee",
+        "id": "https://openalex.org/A5001539738",
+        "orcid": "https://orcid.org/0000-0001-6800-5543",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun‐Woo Park",
+        "id": "https://openalex.org/A5118844308",
+        "orcid": "https://orcid.org/0000-0002-1446-8822",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jun-Woo Park",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jun-Woo Park",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4317528568",
+    "doi": "10.1016/j.jiec.2023.01.012",
+    "title": "Solvent-engineered synthesis of sulfide solid electrolytes for high performance all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Industrial and Engineering Chemistry",
+    "journal_id": "https://openalex.org/S145420111",
+    "journal_type": "journal",
+    "journal_issn_l": "1226-086X",
+    "journal_issn_json": "[\"1226-086X\", \"1876-794X\"]",
+    "publication_date": "2023-01-20",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.89483773,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 15,
+    "first_author": "Ik‐Hyeon Choi",
+    "authors_display": "Ik‐Hyeon Choi; Eunji Kim; Yung-Soo Jo; Jeong‐Won Hong; Junghwan Sung; Jeongsuk Seo; Byung Gon Kim; Jun-ho Park; Yoojin Lee; Yoon‐Cheol Ha; Doohun Kim; Jin Hong Lee; Jun‐Woo Park; Jun-Woo Park; Jun-Woo Park",
+    "authors_json": "[{\"display_name\": \"Ik‐Hyeon Choi\", \"id\": \"https://openalex.org/A5049974997\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Eunji Kim\", \"id\": \"https://openalex.org/A5100319303\", \"orcid\": \"https://orcid.org/0000-0001-7323-4498\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yung-Soo Jo\", \"id\": \"https://openalex.org/A5061604595\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeong‐Won Hong\", \"id\": \"https://openalex.org/A5003117428\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junghwan Sung\", \"id\": \"https://openalex.org/A5048153105\", \"orcid\": \"https://orcid.org/0000-0003-4907-6957\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeongsuk Seo\", \"id\": \"https://openalex.org/A5061677672\", \"orcid\": \"https://orcid.org/0000-0002-4602-1910\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byung Gon Kim\", \"id\": \"https://openalex.org/A5101614289\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun-ho Park\", \"id\": \"https://openalex.org/A5035250996\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoojin Lee\", \"id\": \"https://openalex.org/A5100657013\", \"orcid\": \"https://orcid.org/0009-0002-8490-8018\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yoon‐Cheol Ha\", \"id\": \"https://openalex.org/A5086764992\", \"orcid\": \"https://orcid.org/0000-0001-5769-1461\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Doohun Kim\", \"id\": \"https://openalex.org/A5033446393\", \"orcid\": \"https://orcid.org/0000-0001-9061-9525\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jin Hong Lee\", \"id\": \"https://openalex.org/A5001539738\", \"orcid\": \"https://orcid.org/0000-0001-6800-5543\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun‐Woo Park\", \"id\": \"https://openalex.org/A5118844308\", \"orcid\": \"https://orcid.org/0000-0002-1446-8822\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jun-Woo Park\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jun-Woo Park\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302724341,
+    "actual_start_ms": 1773302726753,
+    "pacing_wait_ms": 2412,
+    "pacing_jitter_sec": 1.748
+  }
+}

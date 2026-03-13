@@ -1,0 +1,123 @@
+{
+  "doi": "10.1021/acsenergylett.4c03243",
+  "pdf_filename": "10.1021_acsenergylett.4c03243.pdf",
+  "json_filename": "10.1021_acsenergylett.4c03243.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.4c03243.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408399072",
+    "doi": "10.1021/acsenergylett.4c03243",
+    "title": "Graded Cathode Design for Enhanced Performance of Sulfide-Based Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2025-03-13",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.98769426,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Eva Schlautmann",
+    "authors_display": "Eva Schlautmann; Janina Drews; Lukas Ketter; Martin Lange; Timo Danner; Arnulf Latz; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Eva Schlautmann",
+        "id": "https://openalex.org/A5092358864",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Janina Drews",
+        "id": "https://openalex.org/A5074137001",
+        "orcid": "https://orcid.org/0000-0002-9800-6421",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lukas Ketter",
+        "id": "https://openalex.org/A5092937082",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Lange",
+        "id": "https://openalex.org/A5062147292",
+        "orcid": "https://orcid.org/0000-0002-4045-3915",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Timo Danner",
+        "id": "https://openalex.org/A5004134021",
+        "orcid": "https://orcid.org/0000-0003-2336-6059",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Arnulf Latz",
+        "id": "https://openalex.org/A5013132420",
+        "orcid": "https://orcid.org/0000-0003-1449-8172",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408399072",
+    "doi": "10.1021/acsenergylett.4c03243",
+    "title": "Graded Cathode Design for Enhanced Performance of Sulfide-Based Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2025-03-13",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.98769426,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Eva Schlautmann",
+    "authors_display": "Eva Schlautmann; Janina Drews; Lukas Ketter; Martin Lange; Timo Danner; Arnulf Latz; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Eva Schlautmann\", \"id\": \"https://openalex.org/A5092358864\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Janina Drews\", \"id\": \"https://openalex.org/A5074137001\", \"orcid\": \"https://orcid.org/0000-0002-9800-6421\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lukas Ketter\", \"id\": \"https://openalex.org/A5092937082\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Martin Lange\", \"id\": \"https://openalex.org/A5062147292\", \"orcid\": \"https://orcid.org/0000-0002-4045-3915\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Timo Danner\", \"id\": \"https://openalex.org/A5004134021\", \"orcid\": \"https://orcid.org/0000-0003-2336-6059\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Arnulf Latz\", \"id\": \"https://openalex.org/A5013132420\", \"orcid\": \"https://orcid.org/0000-0003-1449-8172\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.4c03243",
+    "landing_title": "Graded Cathode Design for Enhanced Performance of Sulfide-Based Solid-State Batteries | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsenergylett.4c03243.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773303856297,
+    "actual_start_ms": 1773303856661,
+    "pacing_wait_ms": 364,
+    "pacing_jitter_sec": 0.968
+  }
+}

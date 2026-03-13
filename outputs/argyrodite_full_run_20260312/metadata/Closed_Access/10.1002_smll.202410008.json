@@ -1,0 +1,131 @@
+{
+  "doi": "10.1002/smll.202410008",
+  "pdf_filename": "10.1002_smll.202410008.pdf",
+  "json_filename": "10.1002_smll.202410008.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_smll.202410008.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4404870566",
+    "doi": "10.1002/smll.202410008",
+    "title": "Discovering Multi‐Compositional Li‐Argyrodite Solid‐State Electrolytes via Experimental Active Learning",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2024-11-28",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.43722416,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Min Young Cho",
+    "authors_display": "Min Young Cho; Kyunglim Pyo; Byung Do Lee; Hee-jeong Kim; Jiyoon Shin; Jung Yong Seo; Woon Bae Park; Kee‐Sun Sohn",
+    "authors": [
+      {
+        "display_name": "Min Young Cho",
+        "id": "https://openalex.org/A5080752066",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyunglim Pyo",
+        "id": "https://openalex.org/A5037405568",
+        "orcid": "https://orcid.org/0000-0002-7227-7880",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byung Do Lee",
+        "id": "https://openalex.org/A5010478453",
+        "orcid": "https://orcid.org/0000-0002-1660-7339",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hee-jeong Kim",
+        "id": "https://openalex.org/A5100688812",
+        "orcid": "https://orcid.org/0000-0003-4558-7936",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiyoon Shin",
+        "id": "https://openalex.org/A5004680899",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jung Yong Seo",
+        "id": "https://openalex.org/A5013236497",
+        "orcid": "https://orcid.org/0000-0001-9622-1411",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Woon Bae Park",
+        "id": "https://openalex.org/A5063137731",
+        "orcid": "https://orcid.org/0000-0002-0631-1905",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Kee‐Sun Sohn",
+        "id": "https://openalex.org/A5033246805",
+        "orcid": "https://orcid.org/0000-0002-7496-2283",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4404870566",
+    "doi": "10.1002/smll.202410008",
+    "title": "Discovering Multi‐Compositional Li‐Argyrodite Solid‐State Electrolytes via Experimental Active Learning",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2024-11-28",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.43722416,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Min Young Cho",
+    "authors_display": "Min Young Cho; Kyunglim Pyo; Byung Do Lee; Hee-jeong Kim; Jiyoon Shin; Jung Yong Seo; Woon Bae Park; Kee‐Sun Sohn",
+    "authors_json": "[{\"display_name\": \"Min Young Cho\", \"id\": \"https://openalex.org/A5080752066\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Kyunglim Pyo\", \"id\": \"https://openalex.org/A5037405568\", \"orcid\": \"https://orcid.org/0000-0002-7227-7880\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byung Do Lee\", \"id\": \"https://openalex.org/A5010478453\", \"orcid\": \"https://orcid.org/0000-0002-1660-7339\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hee-jeong Kim\", \"id\": \"https://openalex.org/A5100688812\", \"orcid\": \"https://orcid.org/0000-0003-4558-7936\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiyoon Shin\", \"id\": \"https://openalex.org/A5004680899\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jung Yong Seo\", \"id\": \"https://openalex.org/A5013236497\", \"orcid\": \"https://orcid.org/0000-0001-9622-1411\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Woon Bae Park\", \"id\": \"https://openalex.org/A5063137731\", \"orcid\": \"https://orcid.org/0000-0002-0631-1905\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Kee‐Sun Sohn\", \"id\": \"https://openalex.org/A5033246805\", \"orcid\": \"https://orcid.org/0000-0002-7496-2283\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308941520,
+    "actual_start_ms": 1773308941520,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.155
+  }
+}

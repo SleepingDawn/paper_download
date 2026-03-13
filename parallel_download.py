@@ -38,6 +38,7 @@ REASON_FAIL_CAPTCHA = "FAIL_CAPTCHA"
 REASON_FAIL_BLOCK = "FAIL_BLOCK"
 REASON_FAIL_ACCESS_RIGHTS = "FAIL_ACCESS_RIGHTS"
 REASON_FAIL_DOI_NOT_FOUND = "FAIL_DOI_NOT_FOUND"
+REASON_FAIL_SSRN_CHALLENGE = "FAIL_SSRN_CHALLENGE"
 REASON_FAIL_WRONG_MIME = "FAIL_WRONG_MIME"
 REASON_FAIL_VIEWER_HTML = "FAIL_VIEWER_HTML"
 REASON_FAIL_HTTP_STATUS = "FAIL_HTTP_STATUS"
@@ -56,6 +57,7 @@ FAILURE_REASON_ORDER = [
     REASON_FAIL_BLOCK,
     REASON_FAIL_ACCESS_RIGHTS,
     REASON_FAIL_DOI_NOT_FOUND,
+    REASON_FAIL_SSRN_CHALLENGE,
     REASON_FAIL_WRONG_MIME,
     REASON_FAIL_VIEWER_HTML,
     REASON_FAIL_HTTP_STATUS,
@@ -98,10 +100,12 @@ NON_RETRYABLE_TERMINAL_REASONS = {
     REASON_FAIL_BLOCK,
     REASON_FAIL_ACCESS_RIGHTS,
     REASON_FAIL_DOI_NOT_FOUND,
+    REASON_FAIL_SSRN_CHALLENGE,
 }
 NON_DEEP_RETRY_REASONS = {
     REASON_FAIL_ACCESS_RIGHTS,
     REASON_FAIL_DOI_NOT_FOUND,
+    REASON_FAIL_SSRN_CHALLENGE,
 }
 
 
@@ -232,6 +236,8 @@ def _normalize_reason(reason: Optional[str], http_status: Optional[int] = None) 
         return REASON_FAIL_ACCESS_RIGHTS
     if reason == "FAIL_DOI_NOT_FOUND":
         return REASON_FAIL_DOI_NOT_FOUND
+    if reason == "FAIL_SSRN_CHALLENGE":
+        return REASON_FAIL_SSRN_CHALLENGE
     if reason == "FAIL_BLOCK":
         return REASON_FAIL_HTTP_STATUS if http_status else REASON_FAIL_BLOCK
     return reason
@@ -327,6 +333,7 @@ def _prepare_download_records(df: pd.DataFrame) -> List[Dict[str, Any]]:
         doi = str(rec.get("doi", "") or "").strip()
         publisher = str(rec.get("publisher", "") or "").strip()
         pdf_url = str(rec.get("pdf_url", "") or "").strip()
+        rec["open_access"] = _coerce_boolish(rec.get("open_access"))
         rec["_row_index"] = idx
         rec["scheduler_publisher"] = estimate_publisher_key(doi, input_publisher=publisher, pdf_url=pdf_url)
         records.append(rec)
@@ -372,6 +379,7 @@ def _single_download_attempt(
     pdf_url_oa = str(row_data.get("pdf_url", "")).strip()
     filename = _sanitize_doi_to_filename(doi)
     full_path = os.path.join(pdf_save_dir, filename)
+    is_ssrn_doi = doi.lower().startswith("10.2139/ssrn.")
 
     if publisher == "arxiv" or "arxiv.org" in pdf_url_oa.lower() or doi.lower().startswith("10.1149/ma"):
         skip_reason = "policy_skip"
@@ -408,6 +416,18 @@ def _single_download_attempt(
     except Exception as e:
         logger.warning(f"   Sci-Hub 다운로드 에러: {e}")
         attempt_trace.append({"strategy": "scihub", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
+
+    if is_ssrn_doi:
+        logger.info(f"[FastFail] SSRN official-path fast-fail 정책 적용: doi={doi}")
+        return {
+            **result,
+            "status": REASON_FAIL_SSRN_CHALLENGE,
+            "reason": REASON_FAIL_SSRN_CHALLENGE,
+            "method": "policy",
+            "success": False,
+            "stage": "policy",
+            "evidence": ["ssrn_official_path_fast_fail_after_scihub"],
+        }
 
     if pdf_url_oa and pdf_url_oa.lower() not in ("none", "nan") and len(pdf_url_oa) > 10:
         if _is_browser_only_pdf_wrapper(pdf_url_oa):
@@ -869,27 +889,57 @@ def _parse_json_column(value: Any, default: Any) -> Any:
         return default
 
 
+def _coerce_boolish(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    try:
+        if pd.isna(value):
+            return False
+    except Exception:
+        pass
+    if isinstance(value, (int, float)):
+        return bool(value)
+    raw = str(value or "").strip().lower()
+    if raw in {"1", "true", "yes", "y", "on"}:
+        return True
+    if raw in {"0", "false", "no", "n", "off", ""}:
+        return False
+    return bool(value)
+
+
 def _write_metadata_sidecars(df: pd.DataFrame, metadata_root_dir: str, pdf_root_dir: str) -> Dict[str, Any]:
     os.makedirs(metadata_root_dir, exist_ok=True)
     written = 0
     missing_pdf = 0
+    skipped = 0
+    removed_stale_skip_sidecars = 0
 
     for _, row in df.iterrows():
-        status = str(row.get("download_status") or "")
-        if "success" not in status.lower():
-            continue
-
         doi = str(row.get("doi") or "").strip()
         if not doi:
             continue
 
         pdf_filename = _sanitize_doi_to_filename(doi)
         json_filename = os.path.splitext(pdf_filename)[0] + ".json"
-        access_dir = "Open_Access" if bool(row.get("open_access")) else "Closed_Access"
-        pdf_path = os.path.join(pdf_root_dir, access_dir, pdf_filename)
-        if not os.path.exists(pdf_path):
-            missing_pdf += 1
+        is_open_access = _coerce_boolish(row.get("open_access"))
+        access_dir = "Open_Access" if is_open_access else "Closed_Access"
+        download_status = str(row.get("download_status") or "").strip().lower()
+        if download_status == "skipped":
+            skipped += 1
+            for skip_bucket in ("Open_Access", "Closed_Access"):
+                stale_path = os.path.join(metadata_root_dir, skip_bucket, json_filename)
+                if os.path.exists(stale_path):
+                    try:
+                        os.remove(stale_path)
+                        removed_stale_skip_sidecars += 1
+                    except OSError:
+                        pass
             continue
+
+        pdf_path = os.path.join(pdf_root_dir, access_dir, pdf_filename)
+        pdf_exists = os.path.exists(pdf_path)
+        if not pdf_exists:
+            missing_pdf += 1
 
         out_dir = os.path.join(metadata_root_dir, access_dir)
         os.makedirs(out_dir, exist_ok=True)
@@ -916,7 +966,7 @@ def _write_metadata_sidecars(df: pd.DataFrame, metadata_root_dir: str, pdf_root_
             "cited_by_count": _json_safe_value(row.get("cited_by_count")),
             "citation_normalized_percentile": _json_safe_value(row.get("citation_normalized_percentile")),
             "pdf_url": _json_safe_value(row.get("pdf_url")),
-            "open_access": _json_safe_value(row.get("open_access")),
+            "open_access": bool(is_open_access),
             "author_count": _json_safe_value(row.get("author_count")),
             "first_author": _json_safe_value(row.get("first_author")),
             "authors_display": _json_safe_value(row.get("authors_display")),
@@ -928,6 +978,7 @@ def _write_metadata_sidecars(df: pd.DataFrame, metadata_root_dir: str, pdf_root_
             "json_filename": json_filename,
             "access_bucket": access_dir,
             "pdf_path": os.path.abspath(pdf_path),
+            "pdf_exists": bool(pdf_exists),
             "openalex": openalex_payload,
             "record": row_payload,
         }
@@ -940,6 +991,8 @@ def _write_metadata_sidecars(df: pd.DataFrame, metadata_root_dir: str, pdf_root_
         "root_dir": os.path.abspath(metadata_root_dir),
         "written": int(written),
         "missing_pdf": int(missing_pdf),
+        "skipped": int(skipped),
+        "removed_stale_skip_sidecars": int(removed_stale_skip_sidecars),
     }
 
 

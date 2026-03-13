@@ -1,0 +1,102 @@
+{
+  "doi": "10.1016/j.xcrp.2025.102600",
+  "pdf_filename": "10.1016_j.xcrp.2025.102600.pdf",
+  "json_filename": "10.1016_j.xcrp.2025.102600.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.xcrp.2025.102600.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4410301894",
+    "doi": "10.1016/j.xcrp.2025.102600",
+    "title": "Elucidation of degradation mechanism of a Li-argyrodite solid electrolyte against moisture and proposal of design principles for robust stability",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Cell Reports Physical Science",
+      "id": "https://openalex.org/S4210216867",
+      "type": "journal",
+      "issn_l": "2666-3864",
+      "issn": [
+        "2666-3864"
+      ]
+    },
+    "publication_date": "2025-05-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.9175884,
+    "pdf_url": "https://www.cell.com/action/showPdf?pii=S2666386425001997",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Suseong Hyun",
+    "authors_display": "Suseong Hyun; Wei Tao; Jeonghyun Ko; Byungchan Han",
+    "authors": [
+      {
+        "display_name": "Suseong Hyun",
+        "id": "https://openalex.org/A5075707907",
+        "orcid": "https://orcid.org/0000-0003-1005-1365",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wei Tao",
+        "id": "https://openalex.org/A5101712081",
+        "orcid": "https://orcid.org/0000-0002-7238-6796",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeonghyun Ko",
+        "id": "https://openalex.org/A5085956361",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byungchan Han",
+        "id": "https://openalex.org/A5036749276",
+        "orcid": "https://orcid.org/0000-0002-2325-6733",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4410301894",
+    "doi": "10.1016/j.xcrp.2025.102600",
+    "title": "Elucidation of degradation mechanism of a Li-argyrodite solid electrolyte against moisture and proposal of design principles for robust stability",
+    "publisher": "Elsevier BV",
+    "journal": "Cell Reports Physical Science",
+    "journal_id": "https://openalex.org/S4210216867",
+    "journal_type": "journal",
+    "journal_issn_l": "2666-3864",
+    "journal_issn_json": "[\"2666-3864\"]",
+    "publication_date": "2025-05-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.9175884,
+    "pdf_url": "https://www.cell.com/action/showPdf?pii=S2666386425001997",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Suseong Hyun",
+    "authors_display": "Suseong Hyun; Wei Tao; Jeonghyun Ko; Byungchan Han",
+    "authors_json": "[{\"display_name\": \"Suseong Hyun\", \"id\": \"https://openalex.org/A5075707907\", \"orcid\": \"https://orcid.org/0000-0003-1005-1365\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Wei Tao\", \"id\": \"https://openalex.org/A5101712081\", \"orcid\": \"https://orcid.org/0000-0002-7238-6796\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeonghyun Ko\", \"id\": \"https://openalex.org/A5085956361\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byungchan Han\", \"id\": \"https://openalex.org/A5036749276\", \"orcid\": \"https://orcid.org/0000-0002-2325-6733\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2666386425001997?via%3Dihub",
+    "landing_title": "Elucidation of degradation mechanism of a Li-argyrodite solid electrolyte against moisture and proposal of design principles for robust stability - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773306829606,
+    "actual_start_ms": 1773306957205,
+    "pacing_wait_ms": 127598,
+    "pacing_jitter_sec": 1.684
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "doi": "10.1039/d1ta10964b",
+  "pdf_filename": "10.1039_d1ta10964b.pdf",
+  "json_filename": "10.1039_d1ta10964b.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d1ta10964b.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4214931655",
+    "doi": "10.1039/d1ta10964b",
+    "title": "Designing a descriptor for the computational screening of argyrodite-based solid-state superionic conductors: uniformity of ion-cage size",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.82918501,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Byeongsun Jun",
+    "authors_display": "Byeongsun Jun; Sang Uck Lee",
+    "authors": [
+      {
+        "display_name": "Byeongsun Jun",
+        "id": "https://openalex.org/A5076863865",
+        "orcid": "https://orcid.org/0000-0003-2127-8565",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang Uck Lee",
+        "id": "https://openalex.org/A5083443128",
+        "orcid": "https://orcid.org/0000-0001-9596-2349",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4214931655",
+    "doi": "10.1039/d1ta10964b",
+    "title": "Designing a descriptor for the computational screening of argyrodite-based solid-state superionic conductors: uniformity of ion-cage size",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.82918501,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Byeongsun Jun",
+    "authors_display": "Byeongsun Jun; Sang Uck Lee",
+    "authors_json": "[{\"display_name\": \"Byeongsun Jun\", \"id\": \"https://openalex.org/A5076863865\", \"orcid\": \"https://orcid.org/0000-0003-2127-8565\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Sang Uck Lee\", \"id\": \"https://openalex.org/A5083443128\", \"orcid\": \"https://orcid.org/0000-0001-9596-2349\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.rsc.org/en/content/articlelanding/2022/ta/d1ta10964b",
+    "landing_title": "Designing a descriptor for the computational screening of argyrodite-based solid-state superionic conductors: uniformity of ion-cage size - Journal of Materials Chemistry A (RSC Publishing)",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773313155722,
+    "actual_start_ms": 1773313155723,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.673
+  }
+}

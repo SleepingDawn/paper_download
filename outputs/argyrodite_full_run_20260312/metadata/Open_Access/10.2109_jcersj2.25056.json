@@ -1,0 +1,110 @@
+{
+  "doi": "10.2109/jcersj2.25056",
+  "pdf_filename": "10.2109_jcersj2.25056.pdf",
+  "json_filename": "10.2109_jcersj2.25056.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2109_jcersj2.25056.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413864634",
+    "doi": "10.2109/jcersj2.25056",
+    "title": "Hetero-coating of spherical graphite with sulfide solid electrolytes via the SEED process for all-solid-state lithium batteries",
+    "publisher": "Ceramic Society of Japan",
+    "journal": {
+      "name": "Journal of the Ceramic Society of Japan",
+      "id": "https://openalex.org/S4210202036",
+      "type": "journal",
+      "issn_l": "1348-6535",
+      "issn": [
+        "1348-6535",
+        "1882-0743"
+      ]
+    },
+    "publication_date": "2025-08-31",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.23277211,
+    "pdf_url": "https://www.jstage.jst.go.jp/article/jcersj2/133/9/133_25056/_pdf",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Reiko Matsuda",
+    "authors_display": "Reiko Matsuda; Masayo Takahashi; Kazuhiro Hikima; Hiroyuki Muto; Atsunori Matsuda",
+    "authors": [
+      {
+        "display_name": "Reiko Matsuda",
+        "id": "https://openalex.org/A5008056373",
+        "orcid": "https://orcid.org/0000-0002-3145-0624",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Masayo Takahashi",
+        "id": "https://openalex.org/A5109729435",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kazuhiro Hikima",
+        "id": "https://openalex.org/A5069872081",
+        "orcid": "https://orcid.org/0000-0001-5714-4652",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hiroyuki Muto",
+        "id": "https://openalex.org/A5060804673",
+        "orcid": "https://orcid.org/0000-0003-2816-1415",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Atsunori Matsuda",
+        "id": "https://openalex.org/A5019391341",
+        "orcid": "https://orcid.org/0000-0002-6493-1205",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413864634",
+    "doi": "10.2109/jcersj2.25056",
+    "title": "Hetero-coating of spherical graphite with sulfide solid electrolytes via the SEED process for all-solid-state lithium batteries",
+    "publisher": "Ceramic Society of Japan",
+    "journal": "Journal of the Ceramic Society of Japan",
+    "journal_id": "https://openalex.org/S4210202036",
+    "journal_type": "journal",
+    "journal_issn_l": "1348-6535",
+    "journal_issn_json": "[\"1348-6535\", \"1882-0743\"]",
+    "publication_date": "2025-08-31",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.23277211,
+    "pdf_url": "https://www.jstage.jst.go.jp/article/jcersj2/133/9/133_25056/_pdf",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Reiko Matsuda",
+    "authors_display": "Reiko Matsuda; Masayo Takahashi; Kazuhiro Hikima; Hiroyuki Muto; Atsunori Matsuda",
+    "authors_json": "[{\"display_name\": \"Reiko Matsuda\", \"id\": \"https://openalex.org/A5008056373\", \"orcid\": \"https://orcid.org/0000-0002-3145-0624\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Masayo Takahashi\", \"id\": \"https://openalex.org/A5109729435\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kazuhiro Hikima\", \"id\": \"https://openalex.org/A5069872081\", \"orcid\": \"https://orcid.org/0000-0001-5714-4652\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hiroyuki Muto\", \"id\": \"https://openalex.org/A5060804673\", \"orcid\": \"https://orcid.org/0000-0003-2816-1415\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Atsunori Matsuda\", \"id\": \"https://openalex.org/A5019391341\", \"orcid\": \"https://orcid.org/0000-0002-6493-1205\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.2109",
+    "scheduled_start_ms": 1773311340321,
+    "actual_start_ms": 1773311340321,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.166
+  }
+}

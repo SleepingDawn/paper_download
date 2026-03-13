@@ -1,0 +1,200 @@
+{
+  "doi": "10.1016/j.xcrp.2024.101909",
+  "pdf_filename": "10.1016_j.xcrp.2024.101909.pdf",
+  "json_filename": "10.1016_j.xcrp.2024.101909.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.xcrp.2024.101909.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4393386125",
+    "doi": "10.1016/j.xcrp.2024.101909",
+    "title": "Atomic insights into the oxidative degradation mechanisms of sulfide solid electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Cell Reports Physical Science",
+      "id": "https://openalex.org/S4210216867",
+      "type": "journal",
+      "issn_l": "2666-3864",
+      "issn": [
+        "2666-3864"
+      ]
+    },
+    "publication_date": "2024-04-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.91734372,
+    "pdf_url": "http://www.cell.com/article/S2666386424001450/pdf",
+    "open_access": true,
+    "author_count": 18,
+    "first_author": "Chuntian Cao",
+    "authors_display": "Chuntian Cao; Matthew R. Carbone; Cem Komurcuoglu; Jagriti S. Shekhawat; Kerry Sun; Haoyue Guo; Sizhan Liu; Ke Chen; Seong‐Min Bak; Yonghua Du; Conan Weiland; Xiao Tong; Daniel A. Steingart; Shinjae Yoo; Nongnuch Artrith; Alexander Urban; Deyu Lu; Feng Wang",
+    "authors": [
+      {
+        "display_name": "Chuntian Cao",
+        "id": "https://openalex.org/A5014522167",
+        "orcid": "https://orcid.org/0000-0003-4753-7334",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Matthew R. Carbone",
+        "id": "https://openalex.org/A5067892749",
+        "orcid": "https://orcid.org/0000-0002-5181-9513",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cem Komurcuoglu",
+        "id": "https://openalex.org/A5092903298",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jagriti S. Shekhawat",
+        "id": "https://openalex.org/A5092998439",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kerry Sun",
+        "id": "https://openalex.org/A5047114921",
+        "orcid": "https://orcid.org/0000-0001-6762-7623",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haoyue Guo",
+        "id": "https://openalex.org/A5057361433",
+        "orcid": "https://orcid.org/0000-0003-3477-9203",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sizhan Liu",
+        "id": "https://openalex.org/A5042756778",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ke Chen",
+        "id": "https://openalex.org/A5100452026",
+        "orcid": "https://orcid.org/0000-0003-2384-8437",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seong‐Min Bak",
+        "id": "https://openalex.org/A5036821112",
+        "orcid": "https://orcid.org/0000-0002-1626-5949",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yonghua Du",
+        "id": "https://openalex.org/A5074829223",
+        "orcid": "https://orcid.org/0000-0003-2655-045X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Conan Weiland",
+        "id": "https://openalex.org/A5052520436",
+        "orcid": "https://orcid.org/0000-0001-6808-1941",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao Tong",
+        "id": "https://openalex.org/A5034130133",
+        "orcid": "https://orcid.org/0000-0002-5567-9677",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniel A. Steingart",
+        "id": "https://openalex.org/A5078984036",
+        "orcid": "https://orcid.org/0000-0002-8184-9641",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shinjae Yoo",
+        "id": "https://openalex.org/A5048176207",
+        "orcid": "https://orcid.org/0000-0003-4378-6448",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nongnuch Artrith",
+        "id": "https://openalex.org/A5040792944",
+        "orcid": "https://orcid.org/0000-0003-1153-6583",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alexander Urban",
+        "id": "https://openalex.org/A5112603221",
+        "orcid": "https://orcid.org/0000-0002-9021-279X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Deyu Lu",
+        "id": "https://openalex.org/A5053233284",
+        "orcid": "https://orcid.org/0000-0003-4351-6085",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Feng Wang",
+        "id": "https://openalex.org/A5092077344",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4393386125",
+    "doi": "10.1016/j.xcrp.2024.101909",
+    "title": "Atomic insights into the oxidative degradation mechanisms of sulfide solid electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": "Cell Reports Physical Science",
+    "journal_id": "https://openalex.org/S4210216867",
+    "journal_type": "journal",
+    "journal_issn_l": "2666-3864",
+    "journal_issn_json": "[\"2666-3864\"]",
+    "publication_date": "2024-04-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.91734372,
+    "pdf_url": "http://www.cell.com/article/S2666386424001450/pdf",
+    "open_access": true,
+    "author_count": 18,
+    "first_author": "Chuntian Cao",
+    "authors_display": "Chuntian Cao; Matthew R. Carbone; Cem Komurcuoglu; Jagriti S. Shekhawat; Kerry Sun; Haoyue Guo; Sizhan Liu; Ke Chen; Seong‐Min Bak; Yonghua Du; Conan Weiland; Xiao Tong; Daniel A. Steingart; Shinjae Yoo; Nongnuch Artrith; Alexander Urban; Deyu Lu; Feng Wang",
+    "authors_json": "[{\"display_name\": \"Chuntian Cao\", \"id\": \"https://openalex.org/A5014522167\", \"orcid\": \"https://orcid.org/0000-0003-4753-7334\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Matthew R. Carbone\", \"id\": \"https://openalex.org/A5067892749\", \"orcid\": \"https://orcid.org/0000-0002-5181-9513\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cem Komurcuoglu\", \"id\": \"https://openalex.org/A5092903298\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jagriti S. Shekhawat\", \"id\": \"https://openalex.org/A5092998439\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kerry Sun\", \"id\": \"https://openalex.org/A5047114921\", \"orcid\": \"https://orcid.org/0000-0001-6762-7623\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haoyue Guo\", \"id\": \"https://openalex.org/A5057361433\", \"orcid\": \"https://orcid.org/0000-0003-3477-9203\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sizhan Liu\", \"id\": \"https://openalex.org/A5042756778\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ke Chen\", \"id\": \"https://openalex.org/A5100452026\", \"orcid\": \"https://orcid.org/0000-0003-2384-8437\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seong‐Min Bak\", \"id\": \"https://openalex.org/A5036821112\", \"orcid\": \"https://orcid.org/0000-0002-1626-5949\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yonghua Du\", \"id\": \"https://openalex.org/A5074829223\", \"orcid\": \"https://orcid.org/0000-0003-2655-045X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Conan Weiland\", \"id\": \"https://openalex.org/A5052520436\", \"orcid\": \"https://orcid.org/0000-0001-6808-1941\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiao Tong\", \"id\": \"https://openalex.org/A5034130133\", \"orcid\": \"https://orcid.org/0000-0002-5567-9677\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniel A. Steingart\", \"id\": \"https://openalex.org/A5078984036\", \"orcid\": \"https://orcid.org/0000-0002-8184-9641\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shinjae Yoo\", \"id\": \"https://openalex.org/A5048176207\", \"orcid\": \"https://orcid.org/0000-0003-4378-6448\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nongnuch Artrith\", \"id\": \"https://openalex.org/A5040792944\", \"orcid\": \"https://orcid.org/0000-0003-1153-6583\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alexander Urban\", \"id\": \"https://openalex.org/A5112603221\", \"orcid\": \"https://orcid.org/0000-0002-9021-279X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Deyu Lu\", \"id\": \"https://openalex.org/A5053233284\", \"orcid\": \"https://orcid.org/0000-0003-4351-6085\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Feng Wang\", \"id\": \"https://openalex.org/A5092077344\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2666386424001450?via%3Dihub",
+    "landing_title": "Atomic insights into the oxidative degradation mechanisms of sulfide solid electrolytes - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773303336381,
+    "actual_start_ms": 1773303337881,
+    "pacing_wait_ms": 1499,
+    "pacing_jitter_sec": 1.533
+  }
+}

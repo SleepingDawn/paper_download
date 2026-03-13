@@ -1,0 +1,158 @@
+{
+  "doi": "10.3389/fceng.2022.883502",
+  "pdf_filename": "10.3389_fceng.2022.883502.pdf",
+  "json_filename": "10.3389_fceng.2022.883502.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3389_fceng.2022.883502.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4306931110",
+    "doi": "10.3389/fceng.2022.883502",
+    "title": "Facile synthesis of lithium argyrodite Li5.5PS4.5Br1.5 with high ionic conductivity for all-solid-state batteries",
+    "publisher": "Frontiers Media",
+    "journal": {
+      "name": "Frontiers in Chemical Engineering",
+      "id": "https://openalex.org/S4210240945",
+      "type": "journal",
+      "issn_l": "2673-2718",
+      "issn": [
+        "2673-2718"
+      ]
+    },
+    "publication_date": "2022-10-20",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.60976917,
+    "pdf_url": "https://www.frontiersin.org/articles/10.3389/fceng.2022.883502/pdf",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Shuo Wang",
+    "authors_display": "Shuo Wang; Xinbin Wu; Yuhan Liang; Yushuai Xu; Shundong Guan; Kaihua Wen; Xiang Miao; Ying Liang; Hongcai He; Yuanhua Lin; Yang Shen; Ce‐Wen Nan",
+    "authors": [
+      {
+        "display_name": "Shuo Wang",
+        "id": "https://openalex.org/A5100400194",
+        "orcid": "https://orcid.org/0000-0003-2716-6011",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xinbin Wu",
+        "id": "https://openalex.org/A5046612628",
+        "orcid": "https://orcid.org/0000-0003-0487-7611",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuhan Liang",
+        "id": "https://openalex.org/A5101925405",
+        "orcid": "https://orcid.org/0000-0002-6850-9108",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yushuai Xu",
+        "id": "https://openalex.org/A5103039677",
+        "orcid": "https://orcid.org/0000-0002-3668-8420",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shundong Guan",
+        "id": "https://openalex.org/A5008502315",
+        "orcid": "https://orcid.org/0000-0001-7402-0977",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kaihua Wen",
+        "id": "https://openalex.org/A5019746223",
+        "orcid": "https://orcid.org/0000-0002-2497-4307",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiang Miao",
+        "id": "https://openalex.org/A5103275495",
+        "orcid": "https://orcid.org/0000-0002-1577-1698",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ying Liang",
+        "id": "https://openalex.org/A5068681728",
+        "orcid": "https://orcid.org/0000-0001-9630-3126",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongcai He",
+        "id": "https://openalex.org/A5101811640",
+        "orcid": "https://orcid.org/0000-0001-5665-7560",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuanhua Lin",
+        "id": "https://openalex.org/A5101549431",
+        "orcid": "https://orcid.org/0000-0002-5652-6701",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Shen",
+        "id": "https://openalex.org/A5091319997",
+        "orcid": "https://orcid.org/0000-0002-1421-0629",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ce‐Wen Nan",
+        "id": "https://openalex.org/A5060345214",
+        "orcid": "https://orcid.org/0000-0003-2176-6403",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4306931110",
+    "doi": "10.3389/fceng.2022.883502",
+    "title": "Facile synthesis of lithium argyrodite Li5.5PS4.5Br1.5 with high ionic conductivity for all-solid-state batteries",
+    "publisher": "Frontiers Media",
+    "journal": "Frontiers in Chemical Engineering",
+    "journal_id": "https://openalex.org/S4210240945",
+    "journal_type": "journal",
+    "journal_issn_l": "2673-2718",
+    "journal_issn_json": "[\"2673-2718\"]",
+    "publication_date": "2022-10-20",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.60976917,
+    "pdf_url": "https://www.frontiersin.org/articles/10.3389/fceng.2022.883502/pdf",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Shuo Wang",
+    "authors_display": "Shuo Wang; Xinbin Wu; Yuhan Liang; Yushuai Xu; Shundong Guan; Kaihua Wen; Xiang Miao; Ying Liang; Hongcai He; Yuanhua Lin; Yang Shen; Ce‐Wen Nan",
+    "authors_json": "[{\"display_name\": \"Shuo Wang\", \"id\": \"https://openalex.org/A5100400194\", \"orcid\": \"https://orcid.org/0000-0003-2716-6011\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Xinbin Wu\", \"id\": \"https://openalex.org/A5046612628\", \"orcid\": \"https://orcid.org/0000-0003-0487-7611\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuhan Liang\", \"id\": \"https://openalex.org/A5101925405\", \"orcid\": \"https://orcid.org/0000-0002-6850-9108\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yushuai Xu\", \"id\": \"https://openalex.org/A5103039677\", \"orcid\": \"https://orcid.org/0000-0002-3668-8420\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shundong Guan\", \"id\": \"https://openalex.org/A5008502315\", \"orcid\": \"https://orcid.org/0000-0001-7402-0977\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kaihua Wen\", \"id\": \"https://openalex.org/A5019746223\", \"orcid\": \"https://orcid.org/0000-0002-2497-4307\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiang Miao\", \"id\": \"https://openalex.org/A5103275495\", \"orcid\": \"https://orcid.org/0000-0002-1577-1698\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ying Liang\", \"id\": \"https://openalex.org/A5068681728\", \"orcid\": \"https://orcid.org/0000-0001-9630-3126\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongcai He\", \"id\": \"https://openalex.org/A5101811640\", \"orcid\": \"https://orcid.org/0000-0001-5665-7560\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuanhua Lin\", \"id\": \"https://openalex.org/A5101549431\", \"orcid\": \"https://orcid.org/0000-0002-5652-6701\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Shen\", \"id\": \"https://openalex.org/A5091319997\", \"orcid\": \"https://orcid.org/0000-0002-1421-0629\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ce‐Wen Nan\", \"id\": \"https://openalex.org/A5060345214\", \"orcid\": \"https://orcid.org/0000-0003-2176-6403\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "frontiers",
+    "scheduled_start_ms": 1773310963014,
+    "actual_start_ms": 1773310963015,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.02
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "doi": "10.1039/d4ta04835k",
+  "pdf_filename": "10.1039_d4ta04835k.pdf",
+  "json_filename": "10.1039_d4ta04835k.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d4ta04835k.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4403042266",
+    "doi": "10.1039/d4ta04835k",
+    "title": "Oxygen substitution at the unbonded S site for excellent wet-air stability and lithium compatibility of Br-rich Li-argyrodite solid-state electrolytes",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.81168153,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Haiting Shi",
+    "authors_display": "Haiting Shi; Xu Tong; Daoxi Wang; Xianyan Wu; Shuaitong Liang; Yaohui Liang; Hao Li; Zhiwei Xu",
+    "authors": [
+      {
+        "display_name": "Haiting Shi",
+        "id": "https://openalex.org/A5104004301",
+        "orcid": "https://orcid.org/0000-0001-5959-9474",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xu Tong",
+        "id": "https://openalex.org/A5063904078",
+        "orcid": "https://orcid.org/0000-0002-3277-6941",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daoxi Wang",
+        "id": "https://openalex.org/A5056114918",
+        "orcid": "https://orcid.org/0000-0001-9669-4374",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xianyan Wu",
+        "id": "https://openalex.org/A5001148056",
+        "orcid": "https://orcid.org/0000-0002-1582-2205",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Shuaitong Liang",
+        "id": "https://openalex.org/A5068220629",
+        "orcid": "https://orcid.org/0000-0001-8053-2004",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yaohui Liang",
+        "id": "https://openalex.org/A5113412855",
+        "orcid": "https://orcid.org/0000-0001-8897-3381",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hao Li",
+        "id": "https://openalex.org/A5100348696",
+        "orcid": "https://orcid.org/0000-0003-3870-5981",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhiwei Xu",
+        "id": "https://openalex.org/A5020907360",
+        "orcid": "https://orcid.org/0000-0002-8067-5344",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4403042266",
+    "doi": "10.1039/d4ta04835k",
+    "title": "Oxygen substitution at the unbonded S site for excellent wet-air stability and lithium compatibility of Br-rich Li-argyrodite solid-state electrolytes",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.81168153,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Haiting Shi",
+    "authors_display": "Haiting Shi; Xu Tong; Daoxi Wang; Xianyan Wu; Shuaitong Liang; Yaohui Liang; Hao Li; Zhiwei Xu",
+    "authors_json": "[{\"display_name\": \"Haiting Shi\", \"id\": \"https://openalex.org/A5104004301\", \"orcid\": \"https://orcid.org/0000-0001-5959-9474\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Xu Tong\", \"id\": \"https://openalex.org/A5063904078\", \"orcid\": \"https://orcid.org/0000-0002-3277-6941\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daoxi Wang\", \"id\": \"https://openalex.org/A5056114918\", \"orcid\": \"https://orcid.org/0000-0001-9669-4374\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xianyan Wu\", \"id\": \"https://openalex.org/A5001148056\", \"orcid\": \"https://orcid.org/0000-0002-1582-2205\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Shuaitong Liang\", \"id\": \"https://openalex.org/A5068220629\", \"orcid\": \"https://orcid.org/0000-0001-8053-2004\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yaohui Liang\", \"id\": \"https://openalex.org/A5113412855\", \"orcid\": \"https://orcid.org/0000-0001-8897-3381\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Hao Li\", \"id\": \"https://openalex.org/A5100348696\", \"orcid\": \"https://orcid.org/0000-0003-3870-5981\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhiwei Xu\", \"id\": \"https://openalex.org/A5020907360\", \"orcid\": \"https://orcid.org/0000-0002-8067-5344\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.rsc.org/en/content/articlelanding/2024/ta/d4ta04835k",
+    "landing_title": "Oxygen substitution at the unbonded S site for excellent wet-air stability and lithium compatibility of Br-rich Li-argyrodite solid-state electrolytes - Journal of Materials Chemistry A (RSC Publishing)",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773315131927,
+    "actual_start_ms": 1773315131928,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.776
+  }
+}

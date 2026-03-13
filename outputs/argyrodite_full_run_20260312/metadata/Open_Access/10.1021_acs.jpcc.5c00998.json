@@ -1,0 +1,110 @@
+{
+  "doi": "10.1021/acs.jpcc.5c00998",
+  "pdf_filename": "10.1021_acs.jpcc.5c00998.pdf",
+  "json_filename": "10.1021_acs.jpcc.5c00998.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.jpcc.5c00998.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4411207923",
+    "doi": "10.1021/acs.jpcc.5c00998",
+    "title": "Influence of Solvent Nature and Binder Presence on Argyrodite (Li<sub>6</sub>PS<sub>5</sub>Cl) Slurry Properties",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "The Journal of Physical Chemistry C",
+      "id": "https://openalex.org/S95739953",
+      "type": "journal",
+      "issn_l": "1932-7447",
+      "issn": [
+        "1932-7447",
+        "1932-7455"
+      ]
+    },
+    "publication_date": "2025-06-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.66491429,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Nizar Ghazouani",
+    "authors_display": "Nizar Ghazouani; Paul Labansat; Julien Jolly; Guillaume Ovarlez; Yaocihuatl Medina‐González",
+    "authors": [
+      {
+        "display_name": "Nizar Ghazouani",
+        "id": "https://openalex.org/A5116019044",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Paul Labansat",
+        "id": "https://openalex.org/A5116019045",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Julien Jolly",
+        "id": "https://openalex.org/A5085264421",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guillaume Ovarlez",
+        "id": "https://openalex.org/A5029575633",
+        "orcid": "https://orcid.org/0000-0003-1554-1080",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yaocihuatl Medina‐González",
+        "id": "https://openalex.org/A5032207719",
+        "orcid": "https://orcid.org/0000-0003-2859-8158",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4411207923",
+    "doi": "10.1021/acs.jpcc.5c00998",
+    "title": "Influence of Solvent Nature and Binder Presence on Argyrodite (Li<sub>6</sub>PS<sub>5</sub>Cl) Slurry Properties",
+    "publisher": "American Chemical Society",
+    "journal": "The Journal of Physical Chemistry C",
+    "journal_id": "https://openalex.org/S95739953",
+    "journal_type": "journal",
+    "journal_issn_l": "1932-7447",
+    "journal_issn_json": "[\"1932-7447\", \"1932-7455\"]",
+    "publication_date": "2025-06-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.66491429,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Nizar Ghazouani",
+    "authors_display": "Nizar Ghazouani; Paul Labansat; Julien Jolly; Guillaume Ovarlez; Yaocihuatl Medina‐González",
+    "authors_json": "[{\"display_name\": \"Nizar Ghazouani\", \"id\": \"https://openalex.org/A5116019044\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Paul Labansat\", \"id\": \"https://openalex.org/A5116019045\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Julien Jolly\", \"id\": \"https://openalex.org/A5085264421\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guillaume Ovarlez\", \"id\": \"https://openalex.org/A5029575633\", \"orcid\": \"https://orcid.org/0000-0003-1554-1080\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yaocihuatl Medina‐González\", \"id\": \"https://openalex.org/A5032207719\", \"orcid\": \"https://orcid.org/0000-0003-2859-8158\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.jpcc.5c00998",
+    "landing_title": "Influence of Solvent Nature and Binder Presence on Argyrodite (Li6PS5Cl) Slurry Properties | The Journal of Physical Chemistry C",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acs.jpcc.5c00998.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308383352,
+    "actual_start_ms": 1773308383352,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.409
+  }
+}

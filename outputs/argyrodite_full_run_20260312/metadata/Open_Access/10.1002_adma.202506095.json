@@ -1,0 +1,180 @@
+{
+  "doi": "10.1002/adma.202506095",
+  "pdf_filename": "10.1002_adma.202506095.pdf",
+  "json_filename": "10.1002_adma.202506095.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_adma.202506095.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4412457346",
+    "doi": "10.1002/adma.202506095",
+    "title": "Understanding the Role of Borohydride Doping in Electrochemical Stability of Argyrodite Li <sub>6</sub> PS <sub>5</sub> Cl Solid‐State Electrolyte",
+    "publisher": "Advanced Materials",
+    "journal": {
+      "name": "Advanced Materials",
+      "id": "https://openalex.org/S99352657",
+      "type": "journal",
+      "issn_l": "0935-9648",
+      "issn": [
+        "0935-9648",
+        "1521-4095"
+      ]
+    },
+    "publication_date": "2025-07-15",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.74944626,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202506095",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Yixian Wang",
+    "authors_display": "Yixian Wang; Vikalp Raj; Qianqian Yan; Cole D. Fincher; Yuanshun Li; Rohit Raj; Hugo Celio; Andrei Dolocan; Guang Yang; Frédéric A. Perras; Yet‐Ming Chiang; John Watt; Hong Fang; Puru Jena; David Mitlin",
+    "authors": [
+      {
+        "display_name": "Yixian Wang",
+        "id": "https://openalex.org/A5101784896",
+        "orcid": "https://orcid.org/0000-0001-6107-8352",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Vikalp Raj",
+        "id": "https://openalex.org/A5071449978",
+        "orcid": "https://orcid.org/0000-0001-5873-5446",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qianqian Yan",
+        "id": "https://openalex.org/A5101449772",
+        "orcid": "https://orcid.org/0000-0003-2852-4044",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cole D. Fincher",
+        "id": "https://openalex.org/A5039719377",
+        "orcid": "https://orcid.org/0000-0002-8009-7484",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuanshun Li",
+        "id": "https://openalex.org/A5114643225",
+        "orcid": "https://orcid.org/0009-0001-8264-1287",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rohit Raj",
+        "id": "https://openalex.org/A5102180044",
+        "orcid": "https://orcid.org/0009-0005-7842-1045",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hugo Celio",
+        "id": "https://openalex.org/A5000791602",
+        "orcid": "https://orcid.org/0000-0001-9066-9952",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andrei Dolocan",
+        "id": "https://openalex.org/A5037952567",
+        "orcid": "https://orcid.org/0000-0001-5653-0439",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guang Yang",
+        "id": "https://openalex.org/A5075057187",
+        "orcid": "https://orcid.org/0000-0003-0583-6272",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Frédéric A. Perras",
+        "id": "https://openalex.org/A5050679087",
+        "orcid": "https://orcid.org/0000-0002-2662-5119",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yet‐Ming Chiang",
+        "id": "https://openalex.org/A5060617433",
+        "orcid": "https://orcid.org/0000-0002-0833-7674",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "John Watt",
+        "id": "https://openalex.org/A5082628784",
+        "orcid": "https://orcid.org/0000-0002-8012-9837",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Fang",
+        "id": "https://openalex.org/A5012866011",
+        "orcid": "https://orcid.org/0000-0002-0968-8687",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Puru Jena",
+        "id": "https://openalex.org/A5109789300",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "David Mitlin",
+        "id": "https://openalex.org/A5086743052",
+        "orcid": "https://orcid.org/0000-0002-7556-3575",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4412457346",
+    "doi": "10.1002/adma.202506095",
+    "title": "Understanding the Role of Borohydride Doping in Electrochemical Stability of Argyrodite Li <sub>6</sub> PS <sub>5</sub> Cl Solid‐State Electrolyte",
+    "publisher": "Advanced Materials",
+    "journal": "Advanced Materials",
+    "journal_id": "https://openalex.org/S99352657",
+    "journal_type": "journal",
+    "journal_issn_l": "0935-9648",
+    "journal_issn_json": "[\"0935-9648\", \"1521-4095\"]",
+    "publication_date": "2025-07-15",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.74944626,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.202506095",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Yixian Wang",
+    "authors_display": "Yixian Wang; Vikalp Raj; Qianqian Yan; Cole D. Fincher; Yuanshun Li; Rohit Raj; Hugo Celio; Andrei Dolocan; Guang Yang; Frédéric A. Perras; Yet‐Ming Chiang; John Watt; Hong Fang; Puru Jena; David Mitlin",
+    "authors_json": "[{\"display_name\": \"Yixian Wang\", \"id\": \"https://openalex.org/A5101784896\", \"orcid\": \"https://orcid.org/0000-0001-6107-8352\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Vikalp Raj\", \"id\": \"https://openalex.org/A5071449978\", \"orcid\": \"https://orcid.org/0000-0001-5873-5446\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qianqian Yan\", \"id\": \"https://openalex.org/A5101449772\", \"orcid\": \"https://orcid.org/0000-0003-2852-4044\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cole D. Fincher\", \"id\": \"https://openalex.org/A5039719377\", \"orcid\": \"https://orcid.org/0000-0002-8009-7484\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuanshun Li\", \"id\": \"https://openalex.org/A5114643225\", \"orcid\": \"https://orcid.org/0009-0001-8264-1287\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rohit Raj\", \"id\": \"https://openalex.org/A5102180044\", \"orcid\": \"https://orcid.org/0009-0005-7842-1045\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hugo Celio\", \"id\": \"https://openalex.org/A5000791602\", \"orcid\": \"https://orcid.org/0000-0001-9066-9952\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Andrei Dolocan\", \"id\": \"https://openalex.org/A5037952567\", \"orcid\": \"https://orcid.org/0000-0001-5653-0439\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guang Yang\", \"id\": \"https://openalex.org/A5075057187\", \"orcid\": \"https://orcid.org/0000-0003-0583-6272\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Frédéric A. Perras\", \"id\": \"https://openalex.org/A5050679087\", \"orcid\": \"https://orcid.org/0000-0002-2662-5119\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yet‐Ming Chiang\", \"id\": \"https://openalex.org/A5060617433\", \"orcid\": \"https://orcid.org/0000-0002-0833-7674\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"John Watt\", \"id\": \"https://openalex.org/A5082628784\", \"orcid\": \"https://orcid.org/0000-0002-8012-9837\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Fang\", \"id\": \"https://openalex.org/A5012866011\", \"orcid\": \"https://orcid.org/0000-0002-0968-8687\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Puru Jena\", \"id\": \"https://openalex.org/A5109789300\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"David Mitlin\", \"id\": \"https://openalex.org/A5086743052\", \"orcid\": \"https://orcid.org/0000-0002-7556-3575\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773309109022,
+    "actual_start_ms": 1773309109022,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.006
+  }
+}

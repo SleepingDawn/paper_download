@@ -1,0 +1,124 @@
+{
+  "doi": "10.1021/acs.chemmater.4c03315",
+  "pdf_filename": "10.1021_acs.chemmater.4c03315.pdf",
+  "json_filename": "10.1021_acs.chemmater.4c03315.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.chemmater.4c03315.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409810847",
+    "doi": "10.1021/acs.chemmater.4c03315",
+    "title": "Role and Evolution of FeS<sub>2</sub> Cathode Microstructure in Argyrodite-Based All-Solid-State Lithium–Sulfur Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2025-04-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.96332218,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Matilde Pavan",
+    "authors_display": "Matilde Pavan; Konrad Münch; Sebastian L. Benz; Tim Bernges; Anja Henß; Wolfgang G. Zeier; Jürgen Janek",
+    "authors": [
+      {
+        "display_name": "Matilde Pavan",
+        "id": "https://openalex.org/A5049260990",
+        "orcid": "https://orcid.org/0009-0007-5611-7522",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Konrad Münch",
+        "id": "https://openalex.org/A5010897062",
+        "orcid": "https://orcid.org/0000-0002-8778-9344",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sebastian L. Benz",
+        "id": "https://openalex.org/A5102766272",
+        "orcid": "https://orcid.org/0000-0002-0650-984X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tim Bernges",
+        "id": "https://openalex.org/A5068451266",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anja Henß",
+        "id": "https://openalex.org/A5072831450",
+        "orcid": "https://orcid.org/0000-0001-5009-6512",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409810847",
+    "doi": "10.1021/acs.chemmater.4c03315",
+    "title": "Role and Evolution of FeS<sub>2</sub> Cathode Microstructure in Argyrodite-Based All-Solid-State Lithium–Sulfur Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2025-04-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.96332218,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Matilde Pavan",
+    "authors_display": "Matilde Pavan; Konrad Münch; Sebastian L. Benz; Tim Bernges; Anja Henß; Wolfgang G. Zeier; Jürgen Janek",
+    "authors_json": "[{\"display_name\": \"Matilde Pavan\", \"id\": \"https://openalex.org/A5049260990\", \"orcid\": \"https://orcid.org/0009-0007-5611-7522\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Konrad Münch\", \"id\": \"https://openalex.org/A5010897062\", \"orcid\": \"https://orcid.org/0000-0002-8778-9344\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sebastian L. Benz\", \"id\": \"https://openalex.org/A5102766272\", \"orcid\": \"https://orcid.org/0000-0002-0650-984X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tim Bernges\", \"id\": \"https://openalex.org/A5068451266\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anja Henß\", \"id\": \"https://openalex.org/A5072831450\", \"orcid\": \"https://orcid.org/0000-0001-5009-6512\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.chemmater.4c03315",
+    "landing_title": "Role and Evolution of FeS2 Cathode Microstructure in Argyrodite-Based All-Solid-State Lithium–Sulfur Batteries | Chemistry of Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acs.chemmater.4c03315.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773305396105,
+    "actual_start_ms": 1773305403951,
+    "pacing_wait_ms": 7846,
+    "pacing_jitter_sec": 1.144
+  }
+}

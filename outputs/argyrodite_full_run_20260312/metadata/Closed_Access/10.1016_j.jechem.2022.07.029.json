@@ -1,0 +1,138 @@
+{
+  "doi": "10.1016/j.jechem.2022.07.029",
+  "pdf_filename": "10.1016_j.jechem.2022.07.029.pdf",
+  "json_filename": "10.1016_j.jechem.2022.07.029.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.jechem.2022.07.029.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4289838941",
+    "doi": "10.1016/j.jechem.2022.07.029",
+    "title": "A facile path from fast synthesis of Li-argyrodite conductor to dry forming ultrathin electrolyte membrane for high-energy-density all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Chemistry",
+      "id": "https://openalex.org/S2500128275",
+      "type": "journal",
+      "issn_l": "2095-4956",
+      "issn": [
+        "2095-4956",
+        "2096-885X"
+      ]
+    },
+    "publication_date": "2022-08-04",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 49,
+    "citation_normalized_percentile": 0.95415676,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zhao Jiang",
+    "authors_display": "Zhao Jiang; Hongling Peng; Jingru Li; Yu Liu; Yu Zhong; Changdong Gu; Xiu‐Li Wang; Xinhui Xia; J.P. Tu",
+    "authors": [
+      {
+        "display_name": "Zhao Jiang",
+        "id": "https://openalex.org/A5101182924",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongling Peng",
+        "id": "https://openalex.org/A5024352159",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jingru Li",
+        "id": "https://openalex.org/A5107918638",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Liu",
+        "id": "https://openalex.org/A5100345834",
+        "orcid": "https://orcid.org/0000-0002-7261-455X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Zhong",
+        "id": "https://openalex.org/A5030856499",
+        "orcid": "https://orcid.org/0000-0002-2363-7093",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Changdong Gu",
+        "id": "https://openalex.org/A5113791202",
+        "orcid": "https://orcid.org/0009-0007-3459-5830",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiu‐Li Wang",
+        "id": "https://openalex.org/A5100439032",
+        "orcid": "https://orcid.org/0000-0002-2732-9477",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinhui Xia",
+        "id": "https://openalex.org/A5069358349",
+        "orcid": "https://orcid.org/0000-0002-5976-5337",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J.P. Tu",
+        "id": "https://openalex.org/A5112063509",
+        "orcid": "https://orcid.org/0009-0007-2501-4627",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4289838941",
+    "doi": "10.1016/j.jechem.2022.07.029",
+    "title": "A facile path from fast synthesis of Li-argyrodite conductor to dry forming ultrathin electrolyte membrane for high-energy-density all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Chemistry",
+    "journal_id": "https://openalex.org/S2500128275",
+    "journal_type": "journal",
+    "journal_issn_l": "2095-4956",
+    "journal_issn_json": "[\"2095-4956\", \"2096-885X\"]",
+    "publication_date": "2022-08-04",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 49,
+    "citation_normalized_percentile": 0.95415676,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zhao Jiang",
+    "authors_display": "Zhao Jiang; Hongling Peng; Jingru Li; Yu Liu; Yu Zhong; Changdong Gu; Xiu‐Li Wang; Xinhui Xia; J.P. Tu",
+    "authors_json": "[{\"display_name\": \"Zhao Jiang\", \"id\": \"https://openalex.org/A5101182924\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hongling Peng\", \"id\": \"https://openalex.org/A5024352159\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jingru Li\", \"id\": \"https://openalex.org/A5107918638\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Liu\", \"id\": \"https://openalex.org/A5100345834\", \"orcid\": \"https://orcid.org/0000-0002-7261-455X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Zhong\", \"id\": \"https://openalex.org/A5030856499\", \"orcid\": \"https://orcid.org/0000-0002-2363-7093\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Changdong Gu\", \"id\": \"https://openalex.org/A5113791202\", \"orcid\": \"https://orcid.org/0009-0007-3459-5830\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiu‐Li Wang\", \"id\": \"https://openalex.org/A5100439032\", \"orcid\": \"https://orcid.org/0000-0002-2732-9477\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinhui Xia\", \"id\": \"https://openalex.org/A5069358349\", \"orcid\": \"https://orcid.org/0000-0002-5976-5337\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J.P. Tu\", \"id\": \"https://openalex.org/A5112063509\", \"orcid\": \"https://orcid.org/0009-0007-2501-4627\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301976693,
+    "actual_start_ms": 1773301983713,
+    "pacing_wait_ms": 7019,
+    "pacing_jitter_sec": 1.52
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "doi": "10.1021/acs.jpcc.5c05116",
+  "pdf_filename": "10.1021_acs.jpcc.5c05116.pdf",
+  "json_filename": "10.1021_acs.jpcc.5c05116.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.jpcc.5c05116.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4414295550",
+    "doi": "10.1021/acs.jpcc.5c05116",
+    "title": "First-Principles Investigation of Mechanical Properties and Anisotropy of Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Crystal Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "The Journal of Physical Chemistry C",
+      "id": "https://openalex.org/S95739953",
+      "type": "journal",
+      "issn_l": "1932-7447",
+      "issn": [
+        "1932-7447",
+        "1932-7455"
+      ]
+    },
+    "publication_date": "2025-09-16",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.78701118,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Masato Torii",
+    "authors_display": "Masato Torii; Yuki Okita; Kota Motohashi; Atsushi Sakuda; Akitoshi Hayashi",
+    "authors": [
+      {
+        "display_name": "Masato Torii",
+        "id": "https://openalex.org/A5048383019",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuki Okita",
+        "id": "https://openalex.org/A5119656176",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kota Motohashi",
+        "id": "https://openalex.org/A5060226336",
+        "orcid": "https://orcid.org/0000-0001-9318-7588",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Atsushi Sakuda",
+        "id": "https://openalex.org/A5025626446",
+        "orcid": "https://orcid.org/0000-0002-9214-0347",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Akitoshi Hayashi",
+        "id": "https://openalex.org/A5056798072",
+        "orcid": "https://orcid.org/0000-0001-9503-5561",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4414295550",
+    "doi": "10.1021/acs.jpcc.5c05116",
+    "title": "First-Principles Investigation of Mechanical Properties and Anisotropy of Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Crystal Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": "The Journal of Physical Chemistry C",
+    "journal_id": "https://openalex.org/S95739953",
+    "journal_type": "journal",
+    "journal_issn_l": "1932-7447",
+    "journal_issn_json": "[\"1932-7447\", \"1932-7455\"]",
+    "publication_date": "2025-09-16",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.78701118,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Masato Torii",
+    "authors_display": "Masato Torii; Yuki Okita; Kota Motohashi; Atsushi Sakuda; Akitoshi Hayashi",
+    "authors_json": "[{\"display_name\": \"Masato Torii\", \"id\": \"https://openalex.org/A5048383019\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yuki Okita\", \"id\": \"https://openalex.org/A5119656176\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kota Motohashi\", \"id\": \"https://openalex.org/A5060226336\", \"orcid\": \"https://orcid.org/0000-0001-9318-7588\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Atsushi Sakuda\", \"id\": \"https://openalex.org/A5025626446\", \"orcid\": \"https://orcid.org/0000-0002-9214-0347\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Akitoshi Hayashi\", \"id\": \"https://openalex.org/A5056798072\", \"orcid\": \"https://orcid.org/0000-0001-9503-5561\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.jpcc.5c05116",
+    "landing_title": "First-Principles Investigation of Mechanical Properties and Anisotropy of Argyrodite Li6PS5Cl Crystal Electrolytes | The Journal of Physical Chemistry C",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acs.jpcc.5c05116.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308039664,
+    "actual_start_ms": 1773308039665,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.095
+  }
+}

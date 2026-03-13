@@ -1,0 +1,152 @@
+{
+  "doi": "10.1016/j.cej.2023.147179",
+  "pdf_filename": "10.1016_j.cej.2023.147179.pdf",
+  "json_filename": "10.1016_j.cej.2023.147179.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.cej.2023.147179.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4388535017",
+    "doi": "10.1016/j.cej.2023.147179",
+    "title": "In-situ construction of Li-Ag/LiF composite layer for long cycled all-solid-state Li metal battery",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chemical Engineering Journal",
+      "id": "https://openalex.org/S149937609",
+      "type": "journal",
+      "issn_l": "1385-8947",
+      "issn": [
+        "1385-8947",
+        "1873-3212"
+      ]
+    },
+    "publication_date": "2023-11-09",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.91740426,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Qianxiao Fan",
+    "authors_display": "Qianxiao Fan; Wendi Zhang; Yilong Jin; Dongmei Zhang; Xianglong Meng; Wanxiong Peng; Jinhui Wang; Jinshan Mo; Kai Liu; Lehao Liu; Meicheng Li",
+    "authors": [
+      {
+        "display_name": "Qianxiao Fan",
+        "id": "https://openalex.org/A5082613606",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wendi Zhang",
+        "id": "https://openalex.org/A5055164962",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yilong Jin",
+        "id": "https://openalex.org/A5102584543",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dongmei Zhang",
+        "id": "https://openalex.org/A5100331492",
+        "orcid": "https://orcid.org/0000-0003-2497-3678",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xianglong Meng",
+        "id": "https://openalex.org/A5010531152",
+        "orcid": "https://orcid.org/0000-0002-4119-0731",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wanxiong Peng",
+        "id": "https://openalex.org/A5101265425",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinhui Wang",
+        "id": "https://openalex.org/A5100394108",
+        "orcid": "https://orcid.org/0009-0000-1584-3631",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinshan Mo",
+        "id": "https://openalex.org/A5101272190",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kai Liu",
+        "id": "https://openalex.org/A5100399993",
+        "orcid": "https://orcid.org/0000-0003-3362-180X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lehao Liu",
+        "id": "https://openalex.org/A5067836281",
+        "orcid": "https://orcid.org/0000-0002-7483-9197",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Meicheng Li",
+        "id": "https://openalex.org/A5021530398",
+        "orcid": "https://orcid.org/0000-0002-0731-741X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4388535017",
+    "doi": "10.1016/j.cej.2023.147179",
+    "title": "In-situ construction of Li-Ag/LiF composite layer for long cycled all-solid-state Li metal battery",
+    "publisher": "Elsevier BV",
+    "journal": "Chemical Engineering Journal",
+    "journal_id": "https://openalex.org/S149937609",
+    "journal_type": "journal",
+    "journal_issn_l": "1385-8947",
+    "journal_issn_json": "[\"1385-8947\", \"1873-3212\"]",
+    "publication_date": "2023-11-09",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.91740426,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Qianxiao Fan",
+    "authors_display": "Qianxiao Fan; Wendi Zhang; Yilong Jin; Dongmei Zhang; Xianglong Meng; Wanxiong Peng; Jinhui Wang; Jinshan Mo; Kai Liu; Lehao Liu; Meicheng Li",
+    "authors_json": "[{\"display_name\": \"Qianxiao Fan\", \"id\": \"https://openalex.org/A5082613606\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Wendi Zhang\", \"id\": \"https://openalex.org/A5055164962\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yilong Jin\", \"id\": \"https://openalex.org/A5102584543\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dongmei Zhang\", \"id\": \"https://openalex.org/A5100331492\", \"orcid\": \"https://orcid.org/0000-0003-2497-3678\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xianglong Meng\", \"id\": \"https://openalex.org/A5010531152\", \"orcid\": \"https://orcid.org/0000-0002-4119-0731\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wanxiong Peng\", \"id\": \"https://openalex.org/A5101265425\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinhui Wang\", \"id\": \"https://openalex.org/A5100394108\", \"orcid\": \"https://orcid.org/0009-0000-1584-3631\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinshan Mo\", \"id\": \"https://openalex.org/A5101272190\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kai Liu\", \"id\": \"https://openalex.org/A5100399993\", \"orcid\": \"https://orcid.org/0000-0003-3362-180X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lehao Liu\", \"id\": \"https://openalex.org/A5067836281\", \"orcid\": \"https://orcid.org/0000-0002-7483-9197\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Meicheng Li\", \"id\": \"https://openalex.org/A5021530398\", \"orcid\": \"https://orcid.org/0000-0002-0731-741X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302561571,
+    "actual_start_ms": 1773302568587,
+    "pacing_wait_ms": 7015,
+    "pacing_jitter_sec": 1.515
+  }
+}

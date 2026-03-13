@@ -1,0 +1,96 @@
+{
+  "doi": "10.1039/d3ta06069a",
+  "pdf_filename": "10.1039_d3ta06069a.pdf",
+  "json_filename": "10.1039_d3ta06069a.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d3ta06069a.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4389318838",
+    "doi": "10.1039/d3ta06069a",
+    "title": "Understanding the anion disorder governing lithium distribution and diffusion in an argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl solid electrolyte",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2023-12-04",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.93372937,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Taegon Jeon",
+    "authors_display": "Taegon Jeon; Gyeong Ho; Sung Chul Jung",
+    "authors": [
+      {
+        "display_name": "Taegon Jeon",
+        "id": "https://openalex.org/A5001230531",
+        "orcid": "https://orcid.org/0000-0002-5204-1715",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gyeong Ho",
+        "id": "https://openalex.org/A5072450223",
+        "orcid": "https://orcid.org/0000-0001-7564-5389",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sung Chul Jung",
+        "id": "https://openalex.org/A5025754299",
+        "orcid": "https://orcid.org/0000-0001-6906-4182",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4389318838",
+    "doi": "10.1039/d3ta06069a",
+    "title": "Understanding the anion disorder governing lithium distribution and diffusion in an argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl solid electrolyte",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2023-12-04",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.93372937,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Taegon Jeon",
+    "authors_display": "Taegon Jeon; Gyeong Ho; Sung Chul Jung",
+    "authors_json": "[{\"display_name\": \"Taegon Jeon\", \"id\": \"https://openalex.org/A5001230531\", \"orcid\": \"https://orcid.org/0000-0002-5204-1715\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Gyeong Ho\", \"id\": \"https://openalex.org/A5072450223\", \"orcid\": \"https://orcid.org/0000-0001-7564-5389\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sung Chul Jung\", \"id\": \"https://openalex.org/A5025754299\", \"orcid\": \"https://orcid.org/0000-0001-6906-4182\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.rsc.org/en/content/articlelanding/2024/ta/d3ta06069a",
+    "landing_title": "Understanding the anion disorder governing lithium distribution and diffusion in an argyrodite Li6PS5Cl solid electrolyte - Journal of Materials Chemistry A (RSC Publishing)",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773312033516,
+    "actual_start_ms": 1773312033517,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 0.863
+  }
+}

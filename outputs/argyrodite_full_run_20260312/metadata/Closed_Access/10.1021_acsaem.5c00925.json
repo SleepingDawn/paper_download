@@ -1,0 +1,144 @@
+{
+  "doi": "10.1021/acsaem.5c00925",
+  "pdf_filename": "10.1021_acsaem.5c00925.pdf",
+  "json_filename": "10.1021_acsaem.5c00925.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.5c00925.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4410918533",
+    "doi": "10.1021/acsaem.5c00925",
+    "title": "Prelithiated MoS<sub>2</sub> Anode for All-Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2025-05-31",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.8818442,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Minghua Li",
+    "authors_display": "Minghua Li; Deli Xu; Guoxian Wu; Sheng Wang; Hao Cheng; Jianshu He; Kangzhe Yu; Zhihan Liu; Yaqing Zhou; Bingbing Tian",
+    "authors": [
+      {
+        "display_name": "Minghua Li",
+        "id": "https://openalex.org/A5100633766",
+        "orcid": "https://orcid.org/0000-0002-7857-6670",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Deli Xu",
+        "id": "https://openalex.org/A5114226148",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guoxian Wu",
+        "id": "https://openalex.org/A5109781340",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sheng Wang",
+        "id": "https://openalex.org/A5100371334",
+        "orcid": "https://orcid.org/0009-0001-1477-4272",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hao Cheng",
+        "id": "https://openalex.org/A5002932429",
+        "orcid": "https://orcid.org/0000-0003-1031-8357",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianshu He",
+        "id": "https://openalex.org/A5108333395",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kangzhe Yu",
+        "id": "https://openalex.org/A5017465501",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhihan Liu",
+        "id": "https://openalex.org/A5101553410",
+        "orcid": "https://orcid.org/0000-0002-7449-1725",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yaqing Zhou",
+        "id": "https://openalex.org/A5108276023",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Bingbing Tian",
+        "id": "https://openalex.org/A5029006725",
+        "orcid": "https://orcid.org/0000-0003-1508-6217",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4410918533",
+    "doi": "10.1021/acsaem.5c00925",
+    "title": "Prelithiated MoS<sub>2</sub> Anode for All-Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2025-05-31",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.8818442,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Minghua Li",
+    "authors_display": "Minghua Li; Deli Xu; Guoxian Wu; Sheng Wang; Hao Cheng; Jianshu He; Kangzhe Yu; Zhihan Liu; Yaqing Zhou; Bingbing Tian",
+    "authors_json": "[{\"display_name\": \"Minghua Li\", \"id\": \"https://openalex.org/A5100633766\", \"orcid\": \"https://orcid.org/0000-0002-7857-6670\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Deli Xu\", \"id\": \"https://openalex.org/A5114226148\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guoxian Wu\", \"id\": \"https://openalex.org/A5109781340\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sheng Wang\", \"id\": \"https://openalex.org/A5100371334\", \"orcid\": \"https://orcid.org/0009-0001-1477-4272\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hao Cheng\", \"id\": \"https://openalex.org/A5002932429\", \"orcid\": \"https://orcid.org/0000-0003-1031-8357\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianshu He\", \"id\": \"https://openalex.org/A5108333395\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kangzhe Yu\", \"id\": \"https://openalex.org/A5017465501\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhihan Liu\", \"id\": \"https://openalex.org/A5101553410\", \"orcid\": \"https://orcid.org/0000-0002-7449-1725\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yaqing Zhou\", \"id\": \"https://openalex.org/A5108276023\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Bingbing Tian\", \"id\": \"https://openalex.org/A5029006725\", \"orcid\": \"https://orcid.org/0000-0003-1508-6217\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.5c00925",
+    "landing_title": "Prelithiated MoS2 Anode for All-Solid-State Lithium Batteries | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsaem.5c00925.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773307134130,
+    "actual_start_ms": 1773307134513,
+    "pacing_wait_ms": 383,
+    "pacing_jitter_sec": 1.747
+  }
+}

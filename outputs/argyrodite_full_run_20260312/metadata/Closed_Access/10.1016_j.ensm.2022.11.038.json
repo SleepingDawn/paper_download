@@ -1,0 +1,131 @@
+{
+  "doi": "10.1016/j.ensm.2022.11.038",
+  "pdf_filename": "10.1016_j.ensm.2022.11.038.pdf",
+  "json_filename": "10.1016_j.ensm.2022.11.038.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2022.11.038.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4309778777",
+    "doi": "10.1016/j.ensm.2022.11.038",
+    "title": "Synergistic halide-sulfide hybrid solid electrolytes for Ni-rich cathodes design guided by digital twin for all-solid-State Li batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2022-11-21",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 69,
+    "citation_normalized_percentile": 0.97064881,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Jong Seok Kim",
+    "authors_display": "Jong Seok Kim; Seungwon Jung; Hiram Kwak; Yoonjae Han; Suhwan Kim; Jongwoo Lim; Yong Min Lee; Yoon Seok Jung",
+    "authors": [
+      {
+        "display_name": "Jong Seok Kim",
+        "id": "https://openalex.org/A5047892072",
+        "orcid": "https://orcid.org/0000-0003-3243-3890",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seungwon Jung",
+        "id": "https://openalex.org/A5101470395",
+        "orcid": "https://orcid.org/0000-0001-9799-2787",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hiram Kwak",
+        "id": "https://openalex.org/A5081127519",
+        "orcid": "https://orcid.org/0009-0005-1624-0388",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoonjae Han",
+        "id": "https://openalex.org/A5103773257",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Suhwan Kim",
+        "id": "https://openalex.org/A5080332152",
+        "orcid": "https://orcid.org/0000-0001-9107-2963",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jongwoo Lim",
+        "id": "https://openalex.org/A5079871073",
+        "orcid": "https://orcid.org/0000-0002-3897-7488",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong Min Lee",
+        "id": "https://openalex.org/A5100740899",
+        "orcid": "https://orcid.org/0000-0003-2002-2218",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yoon Seok Jung",
+        "id": "https://openalex.org/A5045334638",
+        "orcid": "https://orcid.org/0000-0003-0357-9508",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4309778777",
+    "doi": "10.1016/j.ensm.2022.11.038",
+    "title": "Synergistic halide-sulfide hybrid solid electrolytes for Ni-rich cathodes design guided by digital twin for all-solid-State Li batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2022-11-21",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 69,
+    "citation_normalized_percentile": 0.97064881,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Jong Seok Kim",
+    "authors_display": "Jong Seok Kim; Seungwon Jung; Hiram Kwak; Yoonjae Han; Suhwan Kim; Jongwoo Lim; Yong Min Lee; Yoon Seok Jung",
+    "authors_json": "[{\"display_name\": \"Jong Seok Kim\", \"id\": \"https://openalex.org/A5047892072\", \"orcid\": \"https://orcid.org/0000-0003-3243-3890\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Seungwon Jung\", \"id\": \"https://openalex.org/A5101470395\", \"orcid\": \"https://orcid.org/0000-0001-9799-2787\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hiram Kwak\", \"id\": \"https://openalex.org/A5081127519\", \"orcid\": \"https://orcid.org/0009-0005-1624-0388\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoonjae Han\", \"id\": \"https://openalex.org/A5103773257\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Suhwan Kim\", \"id\": \"https://openalex.org/A5080332152\", \"orcid\": \"https://orcid.org/0000-0001-9107-2963\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jongwoo Lim\", \"id\": \"https://openalex.org/A5079871073\", \"orcid\": \"https://orcid.org/0000-0002-3897-7488\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong Min Lee\", \"id\": \"https://openalex.org/A5100740899\", \"orcid\": \"https://orcid.org/0000-0003-2002-2218\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yoon Seok Jung\", \"id\": \"https://openalex.org/A5045334638\", \"orcid\": \"https://orcid.org/0000-0003-0357-9508\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301783480,
+    "actual_start_ms": 1773302337173,
+    "pacing_wait_ms": 553690,
+    "pacing_jitter_sec": 1.773
+  }
+}

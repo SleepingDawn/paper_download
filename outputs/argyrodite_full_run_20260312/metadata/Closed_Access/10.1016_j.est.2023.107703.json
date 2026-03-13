@@ -1,0 +1,96 @@
+{
+  "doi": "10.1016/j.est.2023.107703",
+  "pdf_filename": "10.1016_j.est.2023.107703.pdf",
+  "json_filename": "10.1016_j.est.2023.107703.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.est.2023.107703.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4377090150",
+    "doi": "10.1016/j.est.2023.107703",
+    "title": "Influence of the slurry composition on thin-film components for the wet coating process of sulfide-based all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Storage",
+      "id": "https://openalex.org/S2764865925",
+      "type": "journal",
+      "issn_l": "2352-152X",
+      "issn": [
+        "2352-152X",
+        "2352-1538"
+      ]
+    },
+    "publication_date": "2023-05-19",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 21,
+    "citation_normalized_percentile": 0.90992098,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Célestine Singer",
+    "authors_display": "Célestine Singer; Stefan Schmalzbauer; Rüdiger Daub",
+    "authors": [
+      {
+        "display_name": "Célestine Singer",
+        "id": "https://openalex.org/A5000768015",
+        "orcid": "https://orcid.org/0000-0002-2778-973X",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Stefan Schmalzbauer",
+        "id": "https://openalex.org/A5091979408",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rüdiger Daub",
+        "id": "https://openalex.org/A5024110966",
+        "orcid": "https://orcid.org/0000-0002-5120-4228",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4377090150",
+    "doi": "10.1016/j.est.2023.107703",
+    "title": "Influence of the slurry composition on thin-film components for the wet coating process of sulfide-based all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Storage",
+    "journal_id": "https://openalex.org/S2764865925",
+    "journal_type": "journal",
+    "journal_issn_l": "2352-152X",
+    "journal_issn_json": "[\"2352-152X\", \"2352-1538\"]",
+    "publication_date": "2023-05-19",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 21,
+    "citation_normalized_percentile": 0.90992098,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Célestine Singer",
+    "authors_display": "Célestine Singer; Stefan Schmalzbauer; Rüdiger Daub",
+    "authors_json": "[{\"display_name\": \"Célestine Singer\", \"id\": \"https://openalex.org/A5000768015\", \"orcid\": \"https://orcid.org/0000-0002-2778-973X\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Stefan Schmalzbauer\", \"id\": \"https://openalex.org/A5091979408\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rüdiger Daub\", \"id\": \"https://openalex.org/A5024110966\", \"orcid\": \"https://orcid.org/0000-0002-5120-4228\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302570094,
+    "actual_start_ms": 1773302576814,
+    "pacing_wait_ms": 6719,
+    "pacing_jitter_sec": 1.219
+  }
+}

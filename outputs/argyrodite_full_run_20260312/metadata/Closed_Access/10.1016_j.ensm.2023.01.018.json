@@ -1,0 +1,145 @@
+{
+  "doi": "10.1016/j.ensm.2023.01.018",
+  "pdf_filename": "10.1016_j.ensm.2023.01.018.pdf",
+  "json_filename": "10.1016_j.ensm.2023.01.018.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2023.01.018.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4319655080",
+    "doi": "10.1016/j.ensm.2023.01.018",
+    "title": "Enhanced air stability and interfacial compatibility of Li-argyrodite sulfide electrolyte triggered by CuBr co-substitution for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2023-01-13",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 61,
+    "citation_normalized_percentile": 0.98429675,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Zhao Jiang",
+    "authors_display": "Zhao Jiang; Yu Liu; Hongling Peng; Jingru Li; Xueer Xu; Han Su; Yu Zhong; Xiuli Wang; Changdong Gu; J.P. Tu",
+    "authors": [
+      {
+        "display_name": "Zhao Jiang",
+        "id": "https://openalex.org/A5101182924",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Liu",
+        "id": "https://openalex.org/A5100345944",
+        "orcid": "https://orcid.org/0000-0003-3884-1270",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongling Peng",
+        "id": "https://openalex.org/A5024352159",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jingru Li",
+        "id": "https://openalex.org/A5107918638",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xueer Xu",
+        "id": "https://openalex.org/A5048146740",
+        "orcid": "https://orcid.org/0009-0004-7707-8954",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Han Su",
+        "id": "https://openalex.org/A5102774121",
+        "orcid": "https://orcid.org/0000-0003-4260-8340",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Zhong",
+        "id": "https://openalex.org/A5030856499",
+        "orcid": "https://orcid.org/0000-0002-2363-7093",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xiuli Wang",
+        "id": "https://openalex.org/A5100439040",
+        "orcid": "https://orcid.org/0000-0002-9845-1242",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Changdong Gu",
+        "id": "https://openalex.org/A5113791202",
+        "orcid": "https://orcid.org/0009-0007-3459-5830",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J.P. Tu",
+        "id": "https://openalex.org/A5112063509",
+        "orcid": "https://orcid.org/0009-0007-2501-4627",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4319655080",
+    "doi": "10.1016/j.ensm.2023.01.018",
+    "title": "Enhanced air stability and interfacial compatibility of Li-argyrodite sulfide electrolyte triggered by CuBr co-substitution for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2023-01-13",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 61,
+    "citation_normalized_percentile": 0.98429675,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Zhao Jiang",
+    "authors_display": "Zhao Jiang; Yu Liu; Hongling Peng; Jingru Li; Xueer Xu; Han Su; Yu Zhong; Xiuli Wang; Changdong Gu; J.P. Tu",
+    "authors_json": "[{\"display_name\": \"Zhao Jiang\", \"id\": \"https://openalex.org/A5101182924\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yu Liu\", \"id\": \"https://openalex.org/A5100345944\", \"orcid\": \"https://orcid.org/0000-0003-3884-1270\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongling Peng\", \"id\": \"https://openalex.org/A5024352159\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jingru Li\", \"id\": \"https://openalex.org/A5107918638\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xueer Xu\", \"id\": \"https://openalex.org/A5048146740\", \"orcid\": \"https://orcid.org/0009-0004-7707-8954\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Han Su\", \"id\": \"https://openalex.org/A5102774121\", \"orcid\": \"https://orcid.org/0000-0003-4260-8340\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Zhong\", \"id\": \"https://openalex.org/A5030856499\", \"orcid\": \"https://orcid.org/0000-0002-2363-7093\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xiuli Wang\", \"id\": \"https://openalex.org/A5100439040\", \"orcid\": \"https://orcid.org/0000-0002-9845-1242\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Changdong Gu\", \"id\": \"https://openalex.org/A5113791202\", \"orcid\": \"https://orcid.org/0009-0007-3459-5830\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J.P. Tu\", \"id\": \"https://openalex.org/A5112063509\", \"orcid\": \"https://orcid.org/0009-0007-2501-4627\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301894634,
+    "actual_start_ms": 1773301900286,
+    "pacing_wait_ms": 5652,
+    "pacing_jitter_sec": 0.922
+  }
+}

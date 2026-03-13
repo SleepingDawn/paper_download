@@ -1,0 +1,180 @@
+{
+  "doi": "10.1002/smll.202409523",
+  "pdf_filename": "10.1002_smll.202409523.pdf",
+  "json_filename": "10.1002_smll.202409523.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_smll.202409523.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4405725982",
+    "doi": "10.1002/smll.202409523",
+    "title": "Iron as a Sulfidation‐Resistant Current Collector for Negative Electrode in Sulfide‐Based All‐Solid‐Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2024-12-23",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.71066455,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202409523",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Hye Jun Kim",
+    "authors_display": "Hye Jun Kim; Hyojoo Lee; Ghee Young Kwon; Jiyun Kim; Dong Seop Jeong; Hun‐Gi Jung; Jong‐Seong Bae; Daiha Shin; Jiung Cho; Jung Ho Kim; Hyun-Seung Kim; Junyoung Mun; Ohmin Kwon; Junyoung Mun; Ohmin Kwon",
+    "authors": [
+      {
+        "display_name": "Hye Jun Kim",
+        "id": "https://openalex.org/A5036605098",
+        "orcid": "https://orcid.org/0000-0002-5062-1222",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hyojoo Lee",
+        "id": "https://openalex.org/A5017615269",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ghee Young Kwon",
+        "id": "https://openalex.org/A5110252088",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiyun Kim",
+        "id": "https://openalex.org/A5101661306",
+        "orcid": "https://orcid.org/0009-0007-3189-6849",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong Seop Jeong",
+        "id": "https://openalex.org/A5050947498",
+        "orcid": "https://orcid.org/0000-0002-6947-8403",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hun‐Gi Jung",
+        "id": "https://openalex.org/A5045467177",
+        "orcid": "https://orcid.org/0000-0002-2162-2680",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jong‐Seong Bae",
+        "id": "https://openalex.org/A5101771881",
+        "orcid": "https://orcid.org/0000-0003-0039-4030",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daiha Shin",
+        "id": "https://openalex.org/A5101446499",
+        "orcid": "https://orcid.org/0000-0001-7737-1545",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiung Cho",
+        "id": "https://openalex.org/A5025608081",
+        "orcid": "https://orcid.org/0000-0003-0500-6703",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jung Ho Kim",
+        "id": "https://openalex.org/A5100426073",
+        "orcid": "https://orcid.org/0000-0003-4931-3553",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyun-Seung Kim",
+        "id": "https://openalex.org/A5101971075",
+        "orcid": "https://orcid.org/0000-0003-4021-5914",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junyoung Mun",
+        "id": "https://openalex.org/A5036553885",
+        "orcid": "https://orcid.org/0000-0001-9965-5709",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ohmin Kwon",
+        "id": "https://openalex.org/A5007946814",
+        "orcid": "https://orcid.org/0000-0003-3169-4829",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junyoung Mun",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ohmin Kwon",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0003-3169-4829",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405725982",
+    "doi": "10.1002/smll.202409523",
+    "title": "Iron as a Sulfidation‐Resistant Current Collector for Negative Electrode in Sulfide‐Based All‐Solid‐Batteries",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2024-12-23",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.71066455,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202409523",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Hye Jun Kim",
+    "authors_display": "Hye Jun Kim; Hyojoo Lee; Ghee Young Kwon; Jiyun Kim; Dong Seop Jeong; Hun‐Gi Jung; Jong‐Seong Bae; Daiha Shin; Jiung Cho; Jung Ho Kim; Hyun-Seung Kim; Junyoung Mun; Ohmin Kwon; Junyoung Mun; Ohmin Kwon",
+    "authors_json": "[{\"display_name\": \"Hye Jun Kim\", \"id\": \"https://openalex.org/A5036605098\", \"orcid\": \"https://orcid.org/0000-0002-5062-1222\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hyojoo Lee\", \"id\": \"https://openalex.org/A5017615269\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ghee Young Kwon\", \"id\": \"https://openalex.org/A5110252088\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiyun Kim\", \"id\": \"https://openalex.org/A5101661306\", \"orcid\": \"https://orcid.org/0009-0007-3189-6849\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong Seop Jeong\", \"id\": \"https://openalex.org/A5050947498\", \"orcid\": \"https://orcid.org/0000-0002-6947-8403\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hun‐Gi Jung\", \"id\": \"https://openalex.org/A5045467177\", \"orcid\": \"https://orcid.org/0000-0002-2162-2680\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jong‐Seong Bae\", \"id\": \"https://openalex.org/A5101771881\", \"orcid\": \"https://orcid.org/0000-0003-0039-4030\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daiha Shin\", \"id\": \"https://openalex.org/A5101446499\", \"orcid\": \"https://orcid.org/0000-0001-7737-1545\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiung Cho\", \"id\": \"https://openalex.org/A5025608081\", \"orcid\": \"https://orcid.org/0000-0003-0500-6703\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jung Ho Kim\", \"id\": \"https://openalex.org/A5100426073\", \"orcid\": \"https://orcid.org/0000-0003-4931-3553\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyun-Seung Kim\", \"id\": \"https://openalex.org/A5101971075\", \"orcid\": \"https://orcid.org/0000-0003-4021-5914\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junyoung Mun\", \"id\": \"https://openalex.org/A5036553885\", \"orcid\": \"https://orcid.org/0000-0001-9965-5709\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ohmin Kwon\", \"id\": \"https://openalex.org/A5007946814\", \"orcid\": \"https://orcid.org/0000-0003-3169-4829\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junyoung Mun\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ohmin Kwon\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0003-3169-4829\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773307805890,
+    "actual_start_ms": 1773307805890,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.595
+  }
+}

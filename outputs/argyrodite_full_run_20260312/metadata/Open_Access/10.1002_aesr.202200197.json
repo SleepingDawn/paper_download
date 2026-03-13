@@ -1,0 +1,137 @@
+{
+  "doi": "10.1002/aesr.202200197",
+  "pdf_filename": "10.1002_aesr.202200197.pdf",
+  "json_filename": "10.1002_aesr.202200197.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aesr.202200197.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4319264703",
+    "doi": "10.1002/aesr.202200197",
+    "title": "Effect of Processing on Structure and Ionic Conductivity of Chlorine‐Rich Lithium Argyrodites",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy and Sustainability Research",
+      "id": "https://openalex.org/S4210231858",
+      "type": "journal",
+      "issn_l": "2699-9412",
+      "issn": [
+        "2699-9412"
+      ]
+    },
+    "publication_date": "2023-02-05",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.87158979,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aesr.202200197",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Shuo Wang",
+    "authors_display": "Shuo Wang; Ajay Gautam; Xinbin Wu; Shenghao Li; Xin Zhang; Hongcai He; Yuanhua Lin; Yang Shen; Ce‐Wen Nan",
+    "authors": [
+      {
+        "display_name": "Shuo Wang",
+        "id": "https://openalex.org/A5100400194",
+        "orcid": "https://orcid.org/0000-0003-2716-6011",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ajay Gautam",
+        "id": "https://openalex.org/A5101921028",
+        "orcid": "https://orcid.org/0000-0002-3971-8365",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinbin Wu",
+        "id": "https://openalex.org/A5046612628",
+        "orcid": "https://orcid.org/0000-0003-0487-7611",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shenghao Li",
+        "id": "https://openalex.org/A5081005656",
+        "orcid": "https://orcid.org/0000-0002-3196-7981",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xin Zhang",
+        "id": "https://openalex.org/A5010144610",
+        "orcid": "https://orcid.org/0000-0003-4310-4187",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongcai He",
+        "id": "https://openalex.org/A5101811640",
+        "orcid": "https://orcid.org/0000-0001-5665-7560",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuanhua Lin",
+        "id": "https://openalex.org/A5101549431",
+        "orcid": "https://orcid.org/0000-0002-5652-6701",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Shen",
+        "id": "https://openalex.org/A5091319997",
+        "orcid": "https://orcid.org/0000-0002-1421-0629",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ce‐Wen Nan",
+        "id": "https://openalex.org/A5000830544",
+        "orcid": "https://orcid.org/0000-0002-3261-4053",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4319264703",
+    "doi": "10.1002/aesr.202200197",
+    "title": "Effect of Processing on Structure and Ionic Conductivity of Chlorine‐Rich Lithium Argyrodites",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy and Sustainability Research",
+    "journal_id": "https://openalex.org/S4210231858",
+    "journal_type": "journal",
+    "journal_issn_l": "2699-9412",
+    "journal_issn_json": "[\"2699-9412\"]",
+    "publication_date": "2023-02-05",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.87158979,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aesr.202200197",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Shuo Wang",
+    "authors_display": "Shuo Wang; Ajay Gautam; Xinbin Wu; Shenghao Li; Xin Zhang; Hongcai He; Yuanhua Lin; Yang Shen; Ce‐Wen Nan",
+    "authors_json": "[{\"display_name\": \"Shuo Wang\", \"id\": \"https://openalex.org/A5100400194\", \"orcid\": \"https://orcid.org/0000-0003-2716-6011\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ajay Gautam\", \"id\": \"https://openalex.org/A5101921028\", \"orcid\": \"https://orcid.org/0000-0002-3971-8365\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinbin Wu\", \"id\": \"https://openalex.org/A5046612628\", \"orcid\": \"https://orcid.org/0000-0003-0487-7611\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shenghao Li\", \"id\": \"https://openalex.org/A5081005656\", \"orcid\": \"https://orcid.org/0000-0002-3196-7981\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xin Zhang\", \"id\": \"https://openalex.org/A5010144610\", \"orcid\": \"https://orcid.org/0000-0003-4310-4187\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongcai He\", \"id\": \"https://openalex.org/A5101811640\", \"orcid\": \"https://orcid.org/0000-0001-5665-7560\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuanhua Lin\", \"id\": \"https://openalex.org/A5101549431\", \"orcid\": \"https://orcid.org/0000-0002-5652-6701\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Shen\", \"id\": \"https://openalex.org/A5091319997\", \"orcid\": \"https://orcid.org/0000-0002-1421-0629\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ce‐Wen Nan\", \"id\": \"https://openalex.org/A5000830544\", \"orcid\": \"https://orcid.org/0000-0002-3261-4053\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773304623777,
+    "actual_start_ms": 1773304623777,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.499
+  }
+}

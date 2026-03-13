@@ -1,0 +1,159 @@
+{
+  "doi": "10.1016/j.nanoen.2021.106542",
+  "pdf_filename": "10.1016_j.nanoen.2021.106542.pdf",
+  "json_filename": "10.1016_j.nanoen.2021.106542.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.nanoen.2021.106542.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3199974488",
+    "doi": "10.1016/j.nanoen.2021.106542",
+    "title": "Dual CuCl doped argyrodite superconductor to boost the interfacial compatibility and air stability for all solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Nano Energy",
+      "id": "https://openalex.org/S2497301991",
+      "type": "journal",
+      "issn_l": "2211-2855",
+      "issn": [
+        "2211-2855",
+        "2211-3282"
+      ]
+    },
+    "publication_date": "2021-09-22",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 136,
+    "citation_normalized_percentile": 0.98544163,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Bereket Woldegbreal Taklu",
+    "authors_display": "Bereket Woldegbreal Taklu; Wei‐Nien Su; Yosef Nikodimos; Keseven Lakshmanan; Nigusu Tiruneh Temesgen; Pei-Xuan Lin; Shi‐Kai Jiang; Chen−Jui Huang; Di‐Yan Wang; Hwo‐Shuenn Sheu; She‐Huang Wu; Bing−Joe Hwang",
+    "authors": [
+      {
+        "display_name": "Bereket Woldegbreal Taklu",
+        "id": "https://openalex.org/A5067245309",
+        "orcid": "https://orcid.org/0000-0002-8550-4835",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei‐Nien Su",
+        "id": "https://openalex.org/A5031136629",
+        "orcid": "https://orcid.org/0000-0003-1494-2675",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yosef Nikodimos",
+        "id": "https://openalex.org/A5082309206",
+        "orcid": "https://orcid.org/0000-0002-2929-3965",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Keseven Lakshmanan",
+        "id": "https://openalex.org/A5048665495",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nigusu Tiruneh Temesgen",
+        "id": "https://openalex.org/A5043010768",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pei-Xuan Lin",
+        "id": "https://openalex.org/A5036750040",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shi‐Kai Jiang",
+        "id": "https://openalex.org/A5065128662",
+        "orcid": "https://orcid.org/0000-0002-9533-9642",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chen−Jui Huang",
+        "id": "https://openalex.org/A5037158605",
+        "orcid": "https://orcid.org/0000-0001-8338-1424",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Di‐Yan Wang",
+        "id": "https://openalex.org/A5081268430",
+        "orcid": "https://orcid.org/0000-0003-3084-6050",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hwo‐Shuenn Sheu",
+        "id": "https://openalex.org/A5047526919",
+        "orcid": "https://orcid.org/0000-0003-1334-5895",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "She‐Huang Wu",
+        "id": "https://openalex.org/A5087838064",
+        "orcid": "https://orcid.org/0000-0003-1165-9444",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Bing−Joe Hwang",
+        "id": "https://openalex.org/A5030917995",
+        "orcid": "https://orcid.org/0000-0002-3873-2149",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3199974488",
+    "doi": "10.1016/j.nanoen.2021.106542",
+    "title": "Dual CuCl doped argyrodite superconductor to boost the interfacial compatibility and air stability for all solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Nano Energy",
+    "journal_id": "https://openalex.org/S2497301991",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-2855",
+    "journal_issn_json": "[\"2211-2855\", \"2211-3282\"]",
+    "publication_date": "2021-09-22",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 136,
+    "citation_normalized_percentile": 0.98544163,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Bereket Woldegbreal Taklu",
+    "authors_display": "Bereket Woldegbreal Taklu; Wei‐Nien Su; Yosef Nikodimos; Keseven Lakshmanan; Nigusu Tiruneh Temesgen; Pei-Xuan Lin; Shi‐Kai Jiang; Chen−Jui Huang; Di‐Yan Wang; Hwo‐Shuenn Sheu; She‐Huang Wu; Bing−Joe Hwang",
+    "authors_json": "[{\"display_name\": \"Bereket Woldegbreal Taklu\", \"id\": \"https://openalex.org/A5067245309\", \"orcid\": \"https://orcid.org/0000-0002-8550-4835\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Wei‐Nien Su\", \"id\": \"https://openalex.org/A5031136629\", \"orcid\": \"https://orcid.org/0000-0003-1494-2675\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yosef Nikodimos\", \"id\": \"https://openalex.org/A5082309206\", \"orcid\": \"https://orcid.org/0000-0002-2929-3965\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Keseven Lakshmanan\", \"id\": \"https://openalex.org/A5048665495\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nigusu Tiruneh Temesgen\", \"id\": \"https://openalex.org/A5043010768\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pei-Xuan Lin\", \"id\": \"https://openalex.org/A5036750040\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shi‐Kai Jiang\", \"id\": \"https://openalex.org/A5065128662\", \"orcid\": \"https://orcid.org/0000-0002-9533-9642\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chen−Jui Huang\", \"id\": \"https://openalex.org/A5037158605\", \"orcid\": \"https://orcid.org/0000-0001-8338-1424\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Di‐Yan Wang\", \"id\": \"https://openalex.org/A5081268430\", \"orcid\": \"https://orcid.org/0000-0003-3084-6050\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hwo‐Shuenn Sheu\", \"id\": \"https://openalex.org/A5047526919\", \"orcid\": \"https://orcid.org/0000-0003-1334-5895\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"She‐Huang Wu\", \"id\": \"https://openalex.org/A5087838064\", \"orcid\": \"https://orcid.org/0000-0003-1165-9444\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Bing−Joe Hwang\", \"id\": \"https://openalex.org/A5030917995\", \"orcid\": \"https://orcid.org/0000-0002-3873-2149\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301600303,
+    "actual_start_ms": 1773301606587,
+    "pacing_wait_ms": 6283,
+    "pacing_jitter_sec": 1.512
+  }
+}

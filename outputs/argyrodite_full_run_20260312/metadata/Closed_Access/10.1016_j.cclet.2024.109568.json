@@ -1,0 +1,145 @@
+{
+  "doi": "10.1016/j.cclet.2024.109568",
+  "pdf_filename": "10.1016_j.cclet.2024.109568.pdf",
+  "json_filename": "10.1016_j.cclet.2024.109568.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.cclet.2024.109568.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4391425855",
+    "doi": "10.1016/j.cclet.2024.109568",
+    "title": "Al-F co-doping towards enhanced electrolyte-electrodes interface properties for halide and sulfide solid electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chinese Chemical Letters",
+      "id": "https://openalex.org/S167919573",
+      "type": "journal",
+      "issn_l": "1001-8417",
+      "issn": [
+        "1001-8417",
+        "1878-5964"
+      ]
+    },
+    "publication_date": "2024-02-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 38,
+    "citation_normalized_percentile": 0.98191331,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Yan Han",
+    "authors_display": "Yan Han; Jingming Yao; Zhangran Ye; Qiaoquan Lin; Ziqi Zhang; Shulin Li; Dawei Song; Zhenyu Wang; Chuang Yu; Long Zhang",
+    "authors": [
+      {
+        "display_name": "Yan Han",
+        "id": "https://openalex.org/A5101299381",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jingming Yao",
+        "id": "https://openalex.org/A5007497790",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhangran Ye",
+        "id": "https://openalex.org/A5013084958",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qiaoquan Lin",
+        "id": "https://openalex.org/A5113053625",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziqi Zhang",
+        "id": "https://openalex.org/A5100404389",
+        "orcid": "https://orcid.org/0000-0002-6251-0087",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shulin Li",
+        "id": "https://openalex.org/A5055203050",
+        "orcid": "https://orcid.org/0000-0001-5657-4183",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dawei Song",
+        "id": "https://openalex.org/A5020276837",
+        "orcid": "https://orcid.org/0000-0002-3670-5091",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhenyu Wang",
+        "id": "https://openalex.org/A5115694992",
+        "orcid": "https://orcid.org/0009-0008-9068-080X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Long Zhang",
+        "id": "https://openalex.org/A5100363525",
+        "orcid": "https://orcid.org/0000-0002-4861-1471",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4391425855",
+    "doi": "10.1016/j.cclet.2024.109568",
+    "title": "Al-F co-doping towards enhanced electrolyte-electrodes interface properties for halide and sulfide solid electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": "Chinese Chemical Letters",
+    "journal_id": "https://openalex.org/S167919573",
+    "journal_type": "journal",
+    "journal_issn_l": "1001-8417",
+    "journal_issn_json": "[\"1001-8417\", \"1878-5964\"]",
+    "publication_date": "2024-02-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 38,
+    "citation_normalized_percentile": 0.98191331,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Yan Han",
+    "authors_display": "Yan Han; Jingming Yao; Zhangran Ye; Qiaoquan Lin; Ziqi Zhang; Shulin Li; Dawei Song; Zhenyu Wang; Chuang Yu; Long Zhang",
+    "authors_json": "[{\"display_name\": \"Yan Han\", \"id\": \"https://openalex.org/A5101299381\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jingming Yao\", \"id\": \"https://openalex.org/A5007497790\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhangran Ye\", \"id\": \"https://openalex.org/A5013084958\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qiaoquan Lin\", \"id\": \"https://openalex.org/A5113053625\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ziqi Zhang\", \"id\": \"https://openalex.org/A5100404389\", \"orcid\": \"https://orcid.org/0000-0002-6251-0087\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shulin Li\", \"id\": \"https://openalex.org/A5055203050\", \"orcid\": \"https://orcid.org/0000-0001-5657-4183\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dawei Song\", \"id\": \"https://openalex.org/A5020276837\", \"orcid\": \"https://orcid.org/0000-0002-3670-5091\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhenyu Wang\", \"id\": \"https://openalex.org/A5115694992\", \"orcid\": \"https://orcid.org/0009-0008-9068-080X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Long Zhang\", \"id\": \"https://openalex.org/A5100363525\", \"orcid\": \"https://orcid.org/0000-0002-4861-1471\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302115912,
+    "actual_start_ms": 1773302122401,
+    "pacing_wait_ms": 6489,
+    "pacing_jitter_sec": 0.99
+  }
+}

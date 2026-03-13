@@ -1,0 +1,117 @@
+{
+  "doi": "10.1039/d5ta05538e",
+  "pdf_filename": "10.1039_d5ta05538e.pdf",
+  "json_filename": "10.1039_d5ta05538e.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d5ta05538e.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413934508",
+    "doi": "10.1039/d5ta05538e",
+    "title": "Mechanistic insights into superionic thioarsenate argyrodite solid electrolytes <i>via</i> machine learning interatomic potentials",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.22042616,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Moon Hyung Jang",
+    "authors_display": "Moon Hyung Jang; K.-H. Park; Yong‐Heum Lee; Joon Hyung Shim; Kwangnam Kim; Seung‐Ho Yu",
+    "authors": [
+      {
+        "display_name": "Moon Hyung Jang",
+        "id": "https://openalex.org/A5073447320",
+        "orcid": "https://orcid.org/0000-0001-5601-8021",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "K.-H. Park",
+        "id": "https://openalex.org/A5029506947",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong‐Heum Lee",
+        "id": "https://openalex.org/A5058851110",
+        "orcid": "https://orcid.org/0000-0002-1241-525X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joon Hyung Shim",
+        "id": "https://openalex.org/A5001838991",
+        "orcid": "https://orcid.org/0000-0002-3995-1968",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kwangnam Kim",
+        "id": "https://openalex.org/A5056818979",
+        "orcid": "https://orcid.org/0000-0003-1149-1733",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung‐Ho Yu",
+        "id": "https://openalex.org/A5083133451",
+        "orcid": "https://orcid.org/0000-0003-4833-3181",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413934508",
+    "doi": "10.1039/d5ta05538e",
+    "title": "Mechanistic insights into superionic thioarsenate argyrodite solid electrolytes <i>via</i> machine learning interatomic potentials",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.22042616,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Moon Hyung Jang",
+    "authors_display": "Moon Hyung Jang; K.-H. Park; Yong‐Heum Lee; Joon Hyung Shim; Kwangnam Kim; Seung‐Ho Yu",
+    "authors_json": "[{\"display_name\": \"Moon Hyung Jang\", \"id\": \"https://openalex.org/A5073447320\", \"orcid\": \"https://orcid.org/0000-0001-5601-8021\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"K.-H. Park\", \"id\": \"https://openalex.org/A5029506947\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong‐Heum Lee\", \"id\": \"https://openalex.org/A5058851110\", \"orcid\": \"https://orcid.org/0000-0002-1241-525X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Joon Hyung Shim\", \"id\": \"https://openalex.org/A5001838991\", \"orcid\": \"https://orcid.org/0000-0002-3995-1968\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kwangnam Kim\", \"id\": \"https://openalex.org/A5056818979\", \"orcid\": \"https://orcid.org/0000-0003-1149-1733\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seung‐Ho Yu\", \"id\": \"https://openalex.org/A5083133451\", \"orcid\": \"https://orcid.org/0000-0003-4833-3181\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.rsc.org/en/content/articlelanding/2025/ta/d5ta05538e",
+    "landing_title": "Mechanistic insights into superionic thioarsenate argyrodite solid electrolytes via machine learning interatomic potentials - Journal of Materials Chemistry A (RSC Publishing)",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773317761554,
+    "actual_start_ms": 1773317761555,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.649
+  }
+}

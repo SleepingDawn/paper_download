@@ -1,0 +1,152 @@
+{
+  "doi": "10.1007/s12209-024-00394-1",
+  "pdf_filename": "10.1007_s12209-024-00394-1.pdf",
+  "json_filename": "10.1007_s12209-024-00394-1.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s12209-024-00394-1.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4399290403",
+    "doi": "10.1007/s12209-024-00394-1",
+    "title": "Fluorine-Doped High-Performance Li6PS5Cl Electrolyte by Lithium Fluoride Nanoparticles for All-Solid-State Lithium-Metal Batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Transactions of Tianjin University",
+      "id": "https://openalex.org/S110358141",
+      "type": "journal",
+      "issn_l": "1006-4982",
+      "issn": [
+        "1006-4982",
+        "1995-8196"
+      ]
+    },
+    "publication_date": "2024-06-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.91010276,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Xiaorou Cao",
+    "authors_display": "Xiaorou Cao; Shijie Xu; Yuzhe Zhang; Xiaohu Hu; Yifan Yan; Yanru Wang; Haoran Qian; Jiakai Wang; Haolong Chang; Fangyi Cheng; Yongan Yang",
+    "authors": [
+      {
+        "display_name": "Xiaorou Cao",
+        "id": "https://openalex.org/A5039747660",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Xu",
+        "id": "https://openalex.org/A5061038297",
+        "orcid": "https://orcid.org/0000-0002-1586-8457",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuzhe Zhang",
+        "id": "https://openalex.org/A5100727265",
+        "orcid": "https://orcid.org/0009-0004-1819-1279",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaohu Hu",
+        "id": "https://openalex.org/A5018154304",
+        "orcid": "https://orcid.org/0000-0002-4720-7848",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yifan Yan",
+        "id": "https://openalex.org/A5104094957",
+        "orcid": "https://orcid.org/0009-0002-0062-7906",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanru Wang",
+        "id": "https://openalex.org/A5101546908",
+        "orcid": "https://orcid.org/0000-0002-4586-2419",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haoran Qian",
+        "id": "https://openalex.org/A5108586049",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiakai Wang",
+        "id": "https://openalex.org/A5101610408",
+        "orcid": "https://orcid.org/0000-0002-7374-8605",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haolong Chang",
+        "id": "https://openalex.org/A5102597457",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fangyi Cheng",
+        "id": "https://openalex.org/A5049506458",
+        "orcid": "https://orcid.org/0000-0002-9400-1500",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yongan Yang",
+        "id": "https://openalex.org/A5015906224",
+        "orcid": "https://orcid.org/0000-0003-1451-2923",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4399290403",
+    "doi": "10.1007/s12209-024-00394-1",
+    "title": "Fluorine-Doped High-Performance Li6PS5Cl Electrolyte by Lithium Fluoride Nanoparticles for All-Solid-State Lithium-Metal Batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Transactions of Tianjin University",
+    "journal_id": "https://openalex.org/S110358141",
+    "journal_type": "journal",
+    "journal_issn_l": "1006-4982",
+    "journal_issn_json": "[\"1006-4982\", \"1995-8196\"]",
+    "publication_date": "2024-06-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.91010276,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Xiaorou Cao",
+    "authors_display": "Xiaorou Cao; Shijie Xu; Yuzhe Zhang; Xiaohu Hu; Yifan Yan; Yanru Wang; Haoran Qian; Jiakai Wang; Haolong Chang; Fangyi Cheng; Yongan Yang",
+    "authors_json": "[{\"display_name\": \"Xiaorou Cao\", \"id\": \"https://openalex.org/A5039747660\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Xu\", \"id\": \"https://openalex.org/A5061038297\", \"orcid\": \"https://orcid.org/0000-0002-1586-8457\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuzhe Zhang\", \"id\": \"https://openalex.org/A5100727265\", \"orcid\": \"https://orcid.org/0009-0004-1819-1279\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaohu Hu\", \"id\": \"https://openalex.org/A5018154304\", \"orcid\": \"https://orcid.org/0000-0002-4720-7848\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yifan Yan\", \"id\": \"https://openalex.org/A5104094957\", \"orcid\": \"https://orcid.org/0009-0002-0062-7906\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanru Wang\", \"id\": \"https://openalex.org/A5101546908\", \"orcid\": \"https://orcid.org/0000-0002-4586-2419\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haoran Qian\", \"id\": \"https://openalex.org/A5108586049\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiakai Wang\", \"id\": \"https://openalex.org/A5101610408\", \"orcid\": \"https://orcid.org/0000-0002-7374-8605\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haolong Chang\", \"id\": \"https://openalex.org/A5102597457\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fangyi Cheng\", \"id\": \"https://openalex.org/A5049506458\", \"orcid\": \"https://orcid.org/0000-0002-9400-1500\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yongan Yang\", \"id\": \"https://openalex.org/A5015906224\", \"orcid\": \"https://orcid.org/0000-0003-1451-2923\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://link.springer.com/article/10.1007/s12209-024-00394-1",
+    "landing_title": "Fluorine-Doped High-Performance Li6PS5Cl Electrolyte by Lithium Fluoride Nanoparticles for All-Solid-State Lithium-Metal Batteries | Transactions of Tianjin University | Springer Nature Link",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1007_s12209-024-00394-1.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773308832203,
+    "actual_start_ms": 1773308833713,
+    "pacing_wait_ms": 1509,
+    "pacing_jitter_sec": 1.606
+  }
+}

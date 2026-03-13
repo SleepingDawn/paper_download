@@ -1,0 +1,130 @@
+{
+  "doi": "10.2139/ssrn.4333397",
+  "pdf_filename": "10.2139_ssrn.4333397.pdf",
+  "json_filename": "10.2139_ssrn.4333397.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.4333397.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4320014441",
+    "doi": "10.2139/ssrn.4333397",
+    "title": "Film Processing of Li6ps5cl Electrolyte Using Different Binders and Their Combinations",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Artur Tron",
+    "authors_display": "Artur Tron; Raad Hamid; Ningxin Zhang; Andrea Paolella; Paul Wulfert‐Holzmann; Vladislav Kolotygin; Pedro Lopez-Aranguren Oliver; Alexander Beutl",
+    "authors": [
+      {
+        "display_name": "Artur Tron",
+        "id": "https://openalex.org/A5002945442",
+        "orcid": "https://orcid.org/0000-0002-6565-8247",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Raad Hamid",
+        "id": "https://openalex.org/A5019670168",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ningxin Zhang",
+        "id": "https://openalex.org/A5044548137",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andrea Paolella",
+        "id": "https://openalex.org/A5042467922",
+        "orcid": "https://orcid.org/0000-0003-0986-6460",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Paul Wulfert‐Holzmann",
+        "id": "https://openalex.org/A5062000786",
+        "orcid": "https://orcid.org/0000-0003-3840-0432",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vladislav Kolotygin",
+        "id": "https://openalex.org/A5084570121",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pedro Lopez-Aranguren Oliver",
+        "id": "https://openalex.org/A5043598460",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alexander Beutl",
+        "id": "https://openalex.org/A5062737645",
+        "orcid": "https://orcid.org/0000-0002-7098-619X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4320014441",
+    "doi": "10.2139/ssrn.4333397",
+    "title": "Film Processing of Li6ps5cl Electrolyte Using Different Binders and Their Combinations",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Artur Tron",
+    "authors_display": "Artur Tron; Raad Hamid; Ningxin Zhang; Andrea Paolella; Paul Wulfert‐Holzmann; Vladislav Kolotygin; Pedro Lopez-Aranguren Oliver; Alexander Beutl",
+    "authors_json": "[{\"display_name\": \"Artur Tron\", \"id\": \"https://openalex.org/A5002945442\", \"orcid\": \"https://orcid.org/0000-0002-6565-8247\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Raad Hamid\", \"id\": \"https://openalex.org/A5019670168\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ningxin Zhang\", \"id\": \"https://openalex.org/A5044548137\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Andrea Paolella\", \"id\": \"https://openalex.org/A5042467922\", \"orcid\": \"https://orcid.org/0000-0003-0986-6460\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Paul Wulfert‐Holzmann\", \"id\": \"https://openalex.org/A5062000786\", \"orcid\": \"https://orcid.org/0000-0003-3840-0432\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Vladislav Kolotygin\", \"id\": \"https://openalex.org/A5084570121\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pedro Lopez-Aranguren Oliver\", \"id\": \"https://openalex.org/A5043598460\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alexander Beutl\", \"id\": \"https://openalex.org/A5062737645\", \"orcid\": \"https://orcid.org/0000-0002-7098-619X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4333397&__cf_chl_rt_tk=CiydUvPnUIJuTZ_C3jyW.R50kqFiPDec7OmSIDdkKjg-1773313308-1.0.1.1-Z8wdbucCVf9KC6hW737RHvh0eQSGL.3HjNnoH0gmyx4",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.4333397.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773313286573,
+    "actual_start_ms": 1773313286574,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.573
+  }
+}

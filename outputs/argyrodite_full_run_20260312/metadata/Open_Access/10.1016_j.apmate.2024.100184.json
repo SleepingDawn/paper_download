@@ -1,0 +1,130 @@
+{
+  "doi": "10.1016/j.apmate.2024.100184",
+  "pdf_filename": "10.1016_j.apmate.2024.100184.pdf",
+  "json_filename": "10.1016_j.apmate.2024.100184.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.apmate.2024.100184.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4392139344",
+    "doi": "10.1016/j.apmate.2024.100184",
+    "title": "Unraveling the evolution of Cathode–Solid electrolyte interface using operando X-ray Photoelectron spectroscopy",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Advanced Powder Materials",
+      "id": "https://openalex.org/S4210231862",
+      "type": "journal",
+      "issn_l": "2772-834X",
+      "issn": [
+        "2772-834X"
+      ]
+    },
+    "publication_date": "2024-02-24",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.93989463,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Wenhao Zhong",
+    "authors_display": "Wenhao Zhong; Jianming Tao; Yue Chen; R.G. White; Long Zhang; Jiaxin Li; Zhigao Huang; Yingbin Lin",
+    "authors": [
+      {
+        "display_name": "Wenhao Zhong",
+        "id": "https://openalex.org/A5026825762",
+        "orcid": "https://orcid.org/0009-0001-1840-8843",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianming Tao",
+        "id": "https://openalex.org/A5026941162",
+        "orcid": "https://orcid.org/0000-0003-0128-5805",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yue Chen",
+        "id": "https://openalex.org/A5100454809",
+        "orcid": "https://orcid.org/0000-0002-0463-4209",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "R.G. White",
+        "id": "https://openalex.org/A5055950229",
+        "orcid": "https://orcid.org/0000-0002-8904-9104",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Long Zhang",
+        "id": "https://openalex.org/A5100363525",
+        "orcid": "https://orcid.org/0000-0002-4861-1471",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiaxin Li",
+        "id": "https://openalex.org/A5100343396",
+        "orcid": "https://orcid.org/0000-0001-5360-0219",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhigao Huang",
+        "id": "https://openalex.org/A5085172880",
+        "orcid": "https://orcid.org/0000-0002-8157-3550",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yingbin Lin",
+        "id": "https://openalex.org/A5082997357",
+        "orcid": "https://orcid.org/0000-0003-1793-5649",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4392139344",
+    "doi": "10.1016/j.apmate.2024.100184",
+    "title": "Unraveling the evolution of Cathode–Solid electrolyte interface using operando X-ray Photoelectron spectroscopy",
+    "publisher": "Elsevier BV",
+    "journal": "Advanced Powder Materials",
+    "journal_id": "https://openalex.org/S4210231862",
+    "journal_type": "journal",
+    "journal_issn_l": "2772-834X",
+    "journal_issn_json": "[\"2772-834X\"]",
+    "publication_date": "2024-02-24",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.93989463,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Wenhao Zhong",
+    "authors_display": "Wenhao Zhong; Jianming Tao; Yue Chen; R.G. White; Long Zhang; Jiaxin Li; Zhigao Huang; Yingbin Lin",
+    "authors_json": "[{\"display_name\": \"Wenhao Zhong\", \"id\": \"https://openalex.org/A5026825762\", \"orcid\": \"https://orcid.org/0009-0001-1840-8843\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jianming Tao\", \"id\": \"https://openalex.org/A5026941162\", \"orcid\": \"https://orcid.org/0000-0003-0128-5805\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yue Chen\", \"id\": \"https://openalex.org/A5100454809\", \"orcid\": \"https://orcid.org/0000-0002-0463-4209\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"R.G. White\", \"id\": \"https://openalex.org/A5055950229\", \"orcid\": \"https://orcid.org/0000-0002-8904-9104\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Long Zhang\", \"id\": \"https://openalex.org/A5100363525\", \"orcid\": \"https://orcid.org/0000-0002-4861-1471\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiaxin Li\", \"id\": \"https://openalex.org/A5100343396\", \"orcid\": \"https://orcid.org/0000-0001-5360-0219\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhigao Huang\", \"id\": \"https://openalex.org/A5085172880\", \"orcid\": \"https://orcid.org/0000-0002-8157-3550\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yingbin Lin\", \"id\": \"https://openalex.org/A5082997357\", \"orcid\": \"https://orcid.org/0000-0003-1793-5649\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302803548,
+    "actual_start_ms": 1773302806164,
+    "pacing_wait_ms": 2615,
+    "pacing_jitter_sec": 0.966
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "doi": "10.1016/j.solidstatesciences.2021.106681",
+  "pdf_filename": "10.1016_j.solidstatesciences.2021.106681.pdf",
+  "json_filename": "10.1016_j.solidstatesciences.2021.106681.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.solidstatesciences.2021.106681.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3177456097",
+    "doi": "10.1016/j.solidstatesciences.2021.106681",
+    "title": "A detailed characterisation study of Li6PS5Cl ionic conductors from several synthetic routes",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Solid State Sciences",
+      "id": "https://openalex.org/S40206742",
+      "type": "journal",
+      "issn_l": "1293-2558",
+      "issn": [
+        "1293-2558",
+        "1873-3085"
+      ]
+    },
+    "publication_date": "2021-06-19",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.82329875,
+    "pdf_url": "https://www.sciencedirect.com/science/article/am/pii/S1293255821001497?via%3Dihub",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Xavier Randrema",
+    "authors_display": "Xavier Randrema; Cédric Barcha; Mohamed Chakir; Virginie Viallet; Mathieu Morcrette",
+    "authors": [
+      {
+        "display_name": "Xavier Randrema",
+        "id": "https://openalex.org/A5008959714",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Cédric Barcha",
+        "id": "https://openalex.org/A5031906143",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mohamed Chakir",
+        "id": "https://openalex.org/A5070996800",
+        "orcid": "https://orcid.org/0000-0001-6137-6923",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Virginie Viallet",
+        "id": "https://openalex.org/A5108853385",
+        "orcid": "https://orcid.org/0000-0002-3853-6287",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mathieu Morcrette",
+        "id": "https://openalex.org/A5005901354",
+        "orcid": "https://orcid.org/0000-0003-2215-4847",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3177456097",
+    "doi": "10.1016/j.solidstatesciences.2021.106681",
+    "title": "A detailed characterisation study of Li6PS5Cl ionic conductors from several synthetic routes",
+    "publisher": "Elsevier BV",
+    "journal": "Solid State Sciences",
+    "journal_id": "https://openalex.org/S40206742",
+    "journal_type": "journal",
+    "journal_issn_l": "1293-2558",
+    "journal_issn_json": "[\"1293-2558\", \"1873-3085\"]",
+    "publication_date": "2021-06-19",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.82329875,
+    "pdf_url": "https://www.sciencedirect.com/science/article/am/pii/S1293255821001497?via%3Dihub",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Xavier Randrema",
+    "authors_display": "Xavier Randrema; Cédric Barcha; Mohamed Chakir; Virginie Viallet; Mathieu Morcrette",
+    "authors_json": "[{\"display_name\": \"Xavier Randrema\", \"id\": \"https://openalex.org/A5008959714\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Cédric Barcha\", \"id\": \"https://openalex.org/A5031906143\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mohamed Chakir\", \"id\": \"https://openalex.org/A5070996800\", \"orcid\": \"https://orcid.org/0000-0001-6137-6923\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Virginie Viallet\", \"id\": \"https://openalex.org/A5108853385\", \"orcid\": \"https://orcid.org/0000-0002-3853-6287\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mathieu Morcrette\", \"id\": \"https://openalex.org/A5005901354\", \"orcid\": \"https://orcid.org/0000-0003-2215-4847\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302402986,
+    "actual_start_ms": 1773302409277,
+    "pacing_wait_ms": 6290,
+    "pacing_jitter_sec": 0.735
+  }
+}

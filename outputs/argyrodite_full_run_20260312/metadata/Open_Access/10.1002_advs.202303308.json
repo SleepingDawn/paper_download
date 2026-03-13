@@ -1,0 +1,130 @@
+{
+  "doi": "10.1002/advs.202303308",
+  "pdf_filename": "10.1002_advs.202303308.pdf",
+  "json_filename": "10.1002_advs.202303308.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_advs.202303308.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4387866116",
+    "doi": "10.1002/advs.202303308",
+    "title": "Trimethylsilyl Compounds for the Interfacial Stabilization of Thiophosphate‐Based Solid Electrolytes in All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Science",
+      "id": "https://openalex.org/S2737737698",
+      "type": "journal",
+      "issn_l": "2198-3844",
+      "issn": [
+        "2198-3844"
+      ]
+    },
+    "publication_date": "2023-10-22",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.91702447,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202303308",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Kanghyeon Kim",
+    "authors_display": "Kanghyeon Kim; Tae-Hun Kim; Gawon Song; Seunghyun Lee; Min Soo Jung; Seongmin Ha; Adams Ha; Kyu Tae Lee",
+    "authors": [
+      {
+        "display_name": "Kanghyeon Kim",
+        "id": "https://openalex.org/A5060692350",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tae-Hun Kim",
+        "id": "https://openalex.org/A5100387023",
+        "orcid": "https://orcid.org/0009-0003-7223-4332",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gawon Song",
+        "id": "https://openalex.org/A5082884513",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seunghyun Lee",
+        "id": "https://openalex.org/A5100426787",
+        "orcid": "https://orcid.org/0000-0002-2477-1243",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Min Soo Jung",
+        "id": "https://openalex.org/A5034380302",
+        "orcid": "https://orcid.org/0000-0002-9288-1866",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seongmin Ha",
+        "id": "https://openalex.org/A5108444702",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Adams Ha",
+        "id": "https://openalex.org/A5111061537",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyu Tae Lee",
+        "id": "https://openalex.org/A5016289652",
+        "orcid": "https://orcid.org/0000-0003-2769-3372",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4387866116",
+    "doi": "10.1002/advs.202303308",
+    "title": "Trimethylsilyl Compounds for the Interfacial Stabilization of Thiophosphate‐Based Solid Electrolytes in All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Science",
+    "journal_id": "https://openalex.org/S2737737698",
+    "journal_type": "journal",
+    "journal_issn_l": "2198-3844",
+    "journal_issn_json": "[\"2198-3844\"]",
+    "publication_date": "2023-10-22",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.91702447,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202303308",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Kanghyeon Kim",
+    "authors_display": "Kanghyeon Kim; Tae-Hun Kim; Gawon Song; Seunghyun Lee; Min Soo Jung; Seongmin Ha; Adams Ha; Kyu Tae Lee",
+    "authors_json": "[{\"display_name\": \"Kanghyeon Kim\", \"id\": \"https://openalex.org/A5060692350\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Tae-Hun Kim\", \"id\": \"https://openalex.org/A5100387023\", \"orcid\": \"https://orcid.org/0009-0003-7223-4332\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gawon Song\", \"id\": \"https://openalex.org/A5082884513\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seunghyun Lee\", \"id\": \"https://openalex.org/A5100426787\", \"orcid\": \"https://orcid.org/0000-0002-2477-1243\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Min Soo Jung\", \"id\": \"https://openalex.org/A5034380302\", \"orcid\": \"https://orcid.org/0000-0002-9288-1866\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seongmin Ha\", \"id\": \"https://openalex.org/A5108444702\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Adams Ha\", \"id\": \"https://openalex.org/A5111061537\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyu Tae Lee\", \"id\": \"https://openalex.org/A5016289652\", \"orcid\": \"https://orcid.org/0000-0003-2769-3372\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773304100426,
+    "actual_start_ms": 1773304100427,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.38
+  }
+}

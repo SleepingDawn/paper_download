@@ -1,0 +1,158 @@
+{
+  "doi": "10.1021/acsenergylett.2c01637",
+  "pdf_filename": "10.1021_acsenergylett.2c01637.pdf",
+  "json_filename": "10.1021_acsenergylett.2c01637.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.2c01637.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4292088811",
+    "doi": "10.1021/acsenergylett.2c01637",
+    "title": "High-Energy and Long-Cycling All-Solid-State Lithium-Ion Batteries with Li- and Mn-Rich Layered Oxide Cathodes and Sulfide Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2022-08-17",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 70,
+    "citation_normalized_percentile": 0.9720998,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Wubin Du",
+    "authors_display": "Wubin Du; Qinong Shao; Yiqi Wei; Chenhui Yan; Panyu Gao; Yue Lin; Yinzhu Jiang; Yongfeng Liu; Xuebin Yu; Mingxia Gao; Wenping Sun; Hongge Pan",
+    "authors": [
+      {
+        "display_name": "Wubin Du",
+        "id": "https://openalex.org/A5056680644",
+        "orcid": "https://orcid.org/0000-0002-9396-0275",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qinong Shao",
+        "id": "https://openalex.org/A5031909248",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yiqi Wei",
+        "id": "https://openalex.org/A5056159365",
+        "orcid": "https://orcid.org/0000-0002-9917-4400",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chenhui Yan",
+        "id": "https://openalex.org/A5087447359",
+        "orcid": "https://orcid.org/0000-0002-5440-9536",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Panyu Gao",
+        "id": "https://openalex.org/A5081442582",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yue Lin",
+        "id": "https://openalex.org/A5027859336",
+        "orcid": "https://orcid.org/0000-0001-5333-511X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yinzhu Jiang",
+        "id": "https://openalex.org/A5070851387",
+        "orcid": "https://orcid.org/0000-0003-0639-2562",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yongfeng Liu",
+        "id": "https://openalex.org/A5100630229",
+        "orcid": "https://orcid.org/0000-0002-4002-8265",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xuebin Yu",
+        "id": "https://openalex.org/A5010772578",
+        "orcid": "https://orcid.org/0000-0002-4035-0991",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mingxia Gao",
+        "id": "https://openalex.org/A5053843921",
+        "orcid": "https://orcid.org/0000-0002-4719-6747",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wenping Sun",
+        "id": "https://openalex.org/A5100646222",
+        "orcid": "https://orcid.org/0000-0003-3021-6382",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongge Pan",
+        "id": "https://openalex.org/A5053786338",
+        "orcid": "https://orcid.org/0000-0002-7582-3744",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4292088811",
+    "doi": "10.1021/acsenergylett.2c01637",
+    "title": "High-Energy and Long-Cycling All-Solid-State Lithium-Ion Batteries with Li- and Mn-Rich Layered Oxide Cathodes and Sulfide Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2022-08-17",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 70,
+    "citation_normalized_percentile": 0.9720998,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Wubin Du",
+    "authors_display": "Wubin Du; Qinong Shao; Yiqi Wei; Chenhui Yan; Panyu Gao; Yue Lin; Yinzhu Jiang; Yongfeng Liu; Xuebin Yu; Mingxia Gao; Wenping Sun; Hongge Pan",
+    "authors_json": "[{\"display_name\": \"Wubin Du\", \"id\": \"https://openalex.org/A5056680644\", \"orcid\": \"https://orcid.org/0000-0002-9396-0275\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Qinong Shao\", \"id\": \"https://openalex.org/A5031909248\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yiqi Wei\", \"id\": \"https://openalex.org/A5056159365\", \"orcid\": \"https://orcid.org/0000-0002-9917-4400\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chenhui Yan\", \"id\": \"https://openalex.org/A5087447359\", \"orcid\": \"https://orcid.org/0000-0002-5440-9536\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Panyu Gao\", \"id\": \"https://openalex.org/A5081442582\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yue Lin\", \"id\": \"https://openalex.org/A5027859336\", \"orcid\": \"https://orcid.org/0000-0001-5333-511X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yinzhu Jiang\", \"id\": \"https://openalex.org/A5070851387\", \"orcid\": \"https://orcid.org/0000-0003-0639-2562\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yongfeng Liu\", \"id\": \"https://openalex.org/A5100630229\", \"orcid\": \"https://orcid.org/0000-0002-4002-8265\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xuebin Yu\", \"id\": \"https://openalex.org/A5010772578\", \"orcid\": \"https://orcid.org/0000-0002-4035-0991\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mingxia Gao\", \"id\": \"https://openalex.org/A5053843921\", \"orcid\": \"https://orcid.org/0000-0002-4719-6747\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wenping Sun\", \"id\": \"https://openalex.org/A5100646222\", \"orcid\": \"https://orcid.org/0000-0003-3021-6382\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongge Pan\", \"id\": \"https://openalex.org/A5053786338\", \"orcid\": \"https://orcid.org/0000-0002-7582-3744\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301958896,
+    "actual_start_ms": 1773301960394,
+    "pacing_wait_ms": 1498,
+    "pacing_jitter_sec": 1.233
+  }
+}

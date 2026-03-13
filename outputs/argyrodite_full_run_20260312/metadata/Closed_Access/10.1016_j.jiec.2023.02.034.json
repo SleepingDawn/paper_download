@@ -1,0 +1,96 @@
+{
+  "doi": "10.1016/j.jiec.2023.02.034",
+  "pdf_filename": "10.1016_j.jiec.2023.02.034.pdf",
+  "json_filename": "10.1016_j.jiec.2023.02.034.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.jiec.2023.02.034.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4321768839",
+    "doi": "10.1016/j.jiec.2023.02.034",
+    "title": "Exploring the use of butadiene rubbers as a binder in composite cathodes for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Industrial and Engineering Chemistry",
+      "id": "https://openalex.org/S145420111",
+      "type": "journal",
+      "issn_l": "1226-086X",
+      "issn": [
+        "1226-086X",
+        "1876-794X"
+      ]
+    },
+    "publication_date": "2023-02-24",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 20,
+    "citation_normalized_percentile": 0.90282517,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Young‐Jun Lee",
+    "authors_display": "Young‐Jun Lee; Seung‐Bo Hong; Dong‐Won Kim",
+    "authors": [
+      {
+        "display_name": "Young‐Jun Lee",
+        "id": "https://openalex.org/A5109224195",
+        "orcid": "https://orcid.org/0000-0002-0870-6142",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung‐Bo Hong",
+        "id": "https://openalex.org/A5006134666",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Won Kim",
+        "id": "https://openalex.org/A5100691394",
+        "orcid": "https://orcid.org/0000-0002-1735-0272",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4321768839",
+    "doi": "10.1016/j.jiec.2023.02.034",
+    "title": "Exploring the use of butadiene rubbers as a binder in composite cathodes for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Industrial and Engineering Chemistry",
+    "journal_id": "https://openalex.org/S145420111",
+    "journal_type": "journal",
+    "journal_issn_l": "1226-086X",
+    "journal_issn_json": "[\"1226-086X\", \"1876-794X\"]",
+    "publication_date": "2023-02-24",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 20,
+    "citation_normalized_percentile": 0.90282517,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Young‐Jun Lee",
+    "authors_display": "Young‐Jun Lee; Seung‐Bo Hong; Dong‐Won Kim",
+    "authors_json": "[{\"display_name\": \"Young‐Jun Lee\", \"id\": \"https://openalex.org/A5109224195\", \"orcid\": \"https://orcid.org/0000-0002-0870-6142\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Seung‐Bo Hong\", \"id\": \"https://openalex.org/A5006134666\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Won Kim\", \"id\": \"https://openalex.org/A5100691394\", \"orcid\": \"https://orcid.org/0000-0002-1735-0272\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S1226086X23001181?via%3Dihub",
+    "landing_title": "Exploring the use of butadiene rubbers as a binder in composite cathodes for all-solid-state lithium batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302631782,
+    "actual_start_ms": 1773302635422,
+    "pacing_wait_ms": 3640,
+    "pacing_jitter_sec": 1.151
+  }
+}

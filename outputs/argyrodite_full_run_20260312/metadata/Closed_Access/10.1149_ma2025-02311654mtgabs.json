@@ -1,0 +1,154 @@
+{
+  "doi": "10.1149/ma2025-02311654mtgabs",
+  "pdf_filename": "10.1149_ma2025-02311654mtgabs.pdf",
+  "json_filename": "10.1149_ma2025-02311654mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2025-02311654mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4416600189",
+    "doi": "10.1149/ma2025-02311654mtgabs",
+    "title": "Unravelling the Mechanism of Al2O3 Atomic Layer Deposition on Li6PS5Cl for All-Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2025-11-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.38464815,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Kyobin Park",
+    "authors_display": "Kyobin Park; Donghyeon Kang; Taewoo Kim; Vepa Rozyyev; Anil U. Mane; Hacksung Kim; Francisco Lagunas Vargas; Zachary D. Hood; Peter Zapol; Justin G. Connell; Jeffrey W. Elam",
+    "authors": [
+      {
+        "display_name": "Kyobin Park",
+        "id": "https://openalex.org/A5064572176",
+        "orcid": "https://orcid.org/0009-0004-7746-3174",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Donghyeon Kang",
+        "id": "https://openalex.org/A5013627286",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Taewoo Kim",
+        "id": "https://openalex.org/A5100400947",
+        "orcid": "https://orcid.org/0000-0002-5501-3146",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vepa Rozyyev",
+        "id": "https://openalex.org/A5085822042",
+        "orcid": "https://orcid.org/0000-0002-4340-1985",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anil U. Mane",
+        "id": "https://openalex.org/A5007776434",
+        "orcid": "https://orcid.org/0000-0003-1490-4476",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hacksung Kim",
+        "id": "https://openalex.org/A5101925941",
+        "orcid": "https://orcid.org/0000-0002-5599-065X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Francisco Lagunas Vargas",
+        "id": "https://openalex.org/A5102534945",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zachary D. Hood",
+        "id": "https://openalex.org/A5044352220",
+        "orcid": "https://orcid.org/0000-0002-5720-4392",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peter Zapol",
+        "id": "https://openalex.org/A5014585812",
+        "orcid": "https://orcid.org/0000-0003-0570-9169",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Justin G. Connell",
+        "id": "https://openalex.org/A5046520763",
+        "orcid": "https://orcid.org/0000-0002-2979-2131",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeffrey W. Elam",
+        "id": "https://openalex.org/A5055809181",
+        "orcid": "https://orcid.org/0000-0002-5861-2996",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4416600189",
+    "doi": "10.1149/ma2025-02311654mtgabs",
+    "title": "Unravelling the Mechanism of Al2O3 Atomic Layer Deposition on Li6PS5Cl for All-Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2025-11-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.38464815,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Kyobin Park",
+    "authors_display": "Kyobin Park; Donghyeon Kang; Taewoo Kim; Vepa Rozyyev; Anil U. Mane; Hacksung Kim; Francisco Lagunas Vargas; Zachary D. Hood; Peter Zapol; Justin G. Connell; Jeffrey W. Elam",
+    "authors_json": "[{\"display_name\": \"Kyobin Park\", \"id\": \"https://openalex.org/A5064572176\", \"orcid\": \"https://orcid.org/0009-0004-7746-3174\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Donghyeon Kang\", \"id\": \"https://openalex.org/A5013627286\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Taewoo Kim\", \"id\": \"https://openalex.org/A5100400947\", \"orcid\": \"https://orcid.org/0000-0002-5501-3146\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Vepa Rozyyev\", \"id\": \"https://openalex.org/A5085822042\", \"orcid\": \"https://orcid.org/0000-0002-4340-1985\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anil U. Mane\", \"id\": \"https://openalex.org/A5007776434\", \"orcid\": \"https://orcid.org/0000-0003-1490-4476\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hacksung Kim\", \"id\": \"https://openalex.org/A5101925941\", \"orcid\": \"https://orcid.org/0000-0002-5599-065X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Francisco Lagunas Vargas\", \"id\": \"https://openalex.org/A5102534945\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zachary D. Hood\", \"id\": \"https://openalex.org/A5044352220\", \"orcid\": \"https://orcid.org/0000-0002-5720-4392\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peter Zapol\", \"id\": \"https://openalex.org/A5014585812\", \"orcid\": \"https://orcid.org/0000-0003-0570-9169\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Justin G. Connell\", \"id\": \"https://openalex.org/A5046520763\", \"orcid\": \"https://orcid.org/0000-0002-2979-2131\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeffrey W. Elam\", \"id\": \"https://openalex.org/A5055809181\", \"orcid\": \"https://orcid.org/0000-0002-5861-2996\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773309230737,
+    "actual_start_ms": 1773309230737,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.985
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "doi": "10.1039/d3ma01042b",
+  "pdf_filename": "10.1039_d3ma01042b.pdf",
+  "json_filename": "10.1039_d3ma01042b.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_d3ma01042b.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4390876468",
+    "doi": "10.1039/d3ma01042b",
+    "title": "Understanding the role of aliovalent cation substitution on the li-ion diffusion mechanism in Li<sub>6+<i>x</i></sub>P<sub>1−<i>x</i></sub>Si<sub><i>x</i></sub>S<sub>5</sub>Br argyrodites",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Materials Advances",
+      "id": "https://openalex.org/S4210182508",
+      "type": "journal",
+      "issn_l": "2633-5409",
+      "issn": [
+        "2633-5409"
+      ]
+    },
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.88514779,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2024/ma/d3ma01042b",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Tammo K. Schwietert",
+    "authors_display": "Tammo K. Schwietert; Ajay Gautam; Anastasia K. Lavrinenko; David Drost; Theodosios Famprikis; Marnix Wagemaker; Alexandros Vasileiadis",
+    "authors": [
+      {
+        "display_name": "Tammo K. Schwietert",
+        "id": "https://openalex.org/A5080001085",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ajay Gautam",
+        "id": "https://openalex.org/A5101921028",
+        "orcid": "https://orcid.org/0000-0002-3971-8365",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anastasia K. Lavrinenko",
+        "id": "https://openalex.org/A5028342379",
+        "orcid": "https://orcid.org/0000-0001-9863-8325",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "David Drost",
+        "id": "https://openalex.org/A5093719679",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Theodosios Famprikis",
+        "id": "https://openalex.org/A5027910905",
+        "orcid": "https://orcid.org/0000-0002-7946-1445",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marnix Wagemaker",
+        "id": "https://openalex.org/A5034244816",
+        "orcid": "https://orcid.org/0000-0003-3851-1044",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alexandros Vasileiadis",
+        "id": "https://openalex.org/A5024365367",
+        "orcid": "https://orcid.org/0000-0001-9761-7936",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4390876468",
+    "doi": "10.1039/d3ma01042b",
+    "title": "Understanding the role of aliovalent cation substitution on the li-ion diffusion mechanism in Li<sub>6+<i>x</i></sub>P<sub>1−<i>x</i></sub>Si<sub><i>x</i></sub>S<sub>5</sub>Br argyrodites",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Materials Advances",
+    "journal_id": "https://openalex.org/S4210182508",
+    "journal_type": "journal",
+    "journal_issn_l": "2633-5409",
+    "journal_issn_json": "[\"2633-5409\"]",
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.88514779,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2024/ma/d3ma01042b",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Tammo K. Schwietert",
+    "authors_display": "Tammo K. Schwietert; Ajay Gautam; Anastasia K. Lavrinenko; David Drost; Theodosios Famprikis; Marnix Wagemaker; Alexandros Vasileiadis",
+    "authors_json": "[{\"display_name\": \"Tammo K. Schwietert\", \"id\": \"https://openalex.org/A5080001085\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ajay Gautam\", \"id\": \"https://openalex.org/A5101921028\", \"orcid\": \"https://orcid.org/0000-0002-3971-8365\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anastasia K. Lavrinenko\", \"id\": \"https://openalex.org/A5028342379\", \"orcid\": \"https://orcid.org/0000-0001-9863-8325\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"David Drost\", \"id\": \"https://openalex.org/A5093719679\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Theodosios Famprikis\", \"id\": \"https://openalex.org/A5027910905\", \"orcid\": \"https://orcid.org/0000-0002-7946-1445\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marnix Wagemaker\", \"id\": \"https://openalex.org/A5034244816\", \"orcid\": \"https://orcid.org/0000-0003-3851-1044\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alexandros Vasileiadis\", \"id\": \"https://openalex.org/A5024365367\", \"orcid\": \"https://orcid.org/0000-0001-9761-7936\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773313898411,
+    "actual_start_ms": 1773313898413,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.237
+  }
+}

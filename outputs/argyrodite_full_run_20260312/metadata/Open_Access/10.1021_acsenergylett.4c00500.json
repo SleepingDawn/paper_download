@@ -1,0 +1,186 @@
+{
+  "doi": "10.1021/acsenergylett.4c00500",
+  "pdf_filename": "10.1021_acsenergylett.4c00500.pdf",
+  "json_filename": "10.1021_acsenergylett.4c00500.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsenergylett.4c00500.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4393379426",
+    "doi": "10.1021/acsenergylett.4c00500",
+    "title": "Moisture Robustness of Li<sub>6</sub>PS<sub>5</sub>Cl Argyrodite Sulfide Solid Electrolyte Improved by Nano-Level Treatment with Lewis Acid Additives",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2024-04-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 37,
+    "citation_normalized_percentile": 0.9815319,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.4c00500",
+    "open_access": true,
+    "author_count": 16,
+    "first_author": "Yosef Nikodimos",
+    "authors_display": "Yosef Nikodimos; Shi‐Kai Jiang; Shing‐Jong Huang; Bereket Woldegbreal Taklu; Wei‐Hsiang Huang; Gidey Bahre Desta; Teshager Mekonnen Tekaligne; Zabish Bilew Muche; Keseven Lakshmanan; Chia‐Yu Chang; Teklay Mezgebe Hagos; Kassie Nigus Shitaw; Sheng‐Chiang Yang; She‐Huang Wu; Wei‐Nien Su; Bing−Joe Hwang",
+    "authors": [
+      {
+        "display_name": "Yosef Nikodimos",
+        "id": "https://openalex.org/A5082309206",
+        "orcid": "https://orcid.org/0000-0002-2929-3965",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shi‐Kai Jiang",
+        "id": "https://openalex.org/A5065128662",
+        "orcid": "https://orcid.org/0000-0002-9533-9642",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shing‐Jong Huang",
+        "id": "https://openalex.org/A5111427987",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bereket Woldegbreal Taklu",
+        "id": "https://openalex.org/A5067245309",
+        "orcid": "https://orcid.org/0000-0002-8550-4835",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei‐Hsiang Huang",
+        "id": "https://openalex.org/A5078062437",
+        "orcid": "https://orcid.org/0000-0001-9503-0373",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gidey Bahre Desta",
+        "id": "https://openalex.org/A5048555481",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Teshager Mekonnen Tekaligne",
+        "id": "https://openalex.org/A5008183916",
+        "orcid": "https://orcid.org/0000-0002-7626-7102",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zabish Bilew Muche",
+        "id": "https://openalex.org/A5092988455",
+        "orcid": "https://orcid.org/0009-0003-8630-7205",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Keseven Lakshmanan",
+        "id": "https://openalex.org/A5048665495",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chia‐Yu Chang",
+        "id": "https://openalex.org/A5061126514",
+        "orcid": "https://orcid.org/0009-0001-4510-7923",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Teklay Mezgebe Hagos",
+        "id": "https://openalex.org/A5070237445",
+        "orcid": "https://orcid.org/0000-0001-9316-8811",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kassie Nigus Shitaw",
+        "id": "https://openalex.org/A5074290171",
+        "orcid": "https://orcid.org/0000-0003-4586-6468",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sheng‐Chiang Yang",
+        "id": "https://openalex.org/A5058781576",
+        "orcid": "https://orcid.org/0000-0002-8888-6381",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "She‐Huang Wu",
+        "id": "https://openalex.org/A5087838064",
+        "orcid": "https://orcid.org/0000-0003-1165-9444",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei‐Nien Su",
+        "id": "https://openalex.org/A5031136629",
+        "orcid": "https://orcid.org/0000-0003-1494-2675",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Bing−Joe Hwang",
+        "id": "https://openalex.org/A5030917995",
+        "orcid": "https://orcid.org/0000-0002-3873-2149",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4393379426",
+    "doi": "10.1021/acsenergylett.4c00500",
+    "title": "Moisture Robustness of Li<sub>6</sub>PS<sub>5</sub>Cl Argyrodite Sulfide Solid Electrolyte Improved by Nano-Level Treatment with Lewis Acid Additives",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2024-04-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 37,
+    "citation_normalized_percentile": 0.9815319,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.4c00500",
+    "open_access": true,
+    "author_count": 16,
+    "first_author": "Yosef Nikodimos",
+    "authors_display": "Yosef Nikodimos; Shi‐Kai Jiang; Shing‐Jong Huang; Bereket Woldegbreal Taklu; Wei‐Hsiang Huang; Gidey Bahre Desta; Teshager Mekonnen Tekaligne; Zabish Bilew Muche; Keseven Lakshmanan; Chia‐Yu Chang; Teklay Mezgebe Hagos; Kassie Nigus Shitaw; Sheng‐Chiang Yang; She‐Huang Wu; Wei‐Nien Su; Bing−Joe Hwang",
+    "authors_json": "[{\"display_name\": \"Yosef Nikodimos\", \"id\": \"https://openalex.org/A5082309206\", \"orcid\": \"https://orcid.org/0000-0002-2929-3965\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Shi‐Kai Jiang\", \"id\": \"https://openalex.org/A5065128662\", \"orcid\": \"https://orcid.org/0000-0002-9533-9642\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shing‐Jong Huang\", \"id\": \"https://openalex.org/A5111427987\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bereket Woldegbreal Taklu\", \"id\": \"https://openalex.org/A5067245309\", \"orcid\": \"https://orcid.org/0000-0002-8550-4835\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei‐Hsiang Huang\", \"id\": \"https://openalex.org/A5078062437\", \"orcid\": \"https://orcid.org/0000-0001-9503-0373\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gidey Bahre Desta\", \"id\": \"https://openalex.org/A5048555481\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Teshager Mekonnen Tekaligne\", \"id\": \"https://openalex.org/A5008183916\", \"orcid\": \"https://orcid.org/0000-0002-7626-7102\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zabish Bilew Muche\", \"id\": \"https://openalex.org/A5092988455\", \"orcid\": \"https://orcid.org/0009-0003-8630-7205\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Keseven Lakshmanan\", \"id\": \"https://openalex.org/A5048665495\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chia‐Yu Chang\", \"id\": \"https://openalex.org/A5061126514\", \"orcid\": \"https://orcid.org/0009-0001-4510-7923\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Teklay Mezgebe Hagos\", \"id\": \"https://openalex.org/A5070237445\", \"orcid\": \"https://orcid.org/0000-0001-9316-8811\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kassie Nigus Shitaw\", \"id\": \"https://openalex.org/A5074290171\", \"orcid\": \"https://orcid.org/0000-0003-4586-6468\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sheng‐Chiang Yang\", \"id\": \"https://openalex.org/A5058781576\", \"orcid\": \"https://orcid.org/0000-0002-8888-6381\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"She‐Huang Wu\", \"id\": \"https://openalex.org/A5087838064\", \"orcid\": \"https://orcid.org/0000-0003-1165-9444\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei‐Nien Su\", \"id\": \"https://openalex.org/A5031136629\", \"orcid\": \"https://orcid.org/0000-0003-1494-2675\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Bing−Joe Hwang\", \"id\": \"https://openalex.org/A5030917995\", \"orcid\": \"https://orcid.org/0000-0002-3873-2149\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302449350,
+    "actual_start_ms": 1773302450849,
+    "pacing_wait_ms": 1498,
+    "pacing_jitter_sec": 0.796
+  }
+}

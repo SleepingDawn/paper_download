@@ -1,0 +1,117 @@
+{
+  "doi": "10.1021/acsami.3c14489",
+  "pdf_filename": "10.1021_acsami.3c14489.pdf",
+  "json_filename": "10.1021_acsami.3c14489.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.3c14489.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4390222633",
+    "doi": "10.1021/acsami.3c14489",
+    "title": "SiSe<sub>2</sub> for Superior Sulfide Solid Electrolytes and Li-Ion Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2023-12-26",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.75482852,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Ki‐Hun Nam",
+    "authors_display": "Ki‐Hun Nam; Vinoth Ganesan; Do–Hyeon Kim; Sangmin Jeong; Ki‐Joon Jeon; Cheol‐Min Park",
+    "authors": [
+      {
+        "display_name": "Ki‐Hun Nam",
+        "id": "https://openalex.org/A5071569457",
+        "orcid": "https://orcid.org/0000-0002-4227-753X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vinoth Ganesan",
+        "id": "https://openalex.org/A5036051892",
+        "orcid": "https://orcid.org/0000-0003-4309-6148",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Do–Hyeon Kim",
+        "id": "https://openalex.org/A5100736864",
+        "orcid": "https://orcid.org/0000-0002-4845-9617",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sangmin Jeong",
+        "id": "https://openalex.org/A5026932291",
+        "orcid": "https://orcid.org/0000-0002-8628-2920",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ki‐Joon Jeon",
+        "id": "https://openalex.org/A5019458669",
+        "orcid": "https://orcid.org/0000-0003-1653-6339",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Cheol‐Min Park",
+        "id": "https://openalex.org/A5059676640",
+        "orcid": "https://orcid.org/0000-0001-8204-5760",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4390222633",
+    "doi": "10.1021/acsami.3c14489",
+    "title": "SiSe<sub>2</sub> for Superior Sulfide Solid Electrolytes and Li-Ion Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2023-12-26",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.75482852,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Ki‐Hun Nam",
+    "authors_display": "Ki‐Hun Nam; Vinoth Ganesan; Do–Hyeon Kim; Sangmin Jeong; Ki‐Joon Jeon; Cheol‐Min Park",
+    "authors_json": "[{\"display_name\": \"Ki‐Hun Nam\", \"id\": \"https://openalex.org/A5071569457\", \"orcid\": \"https://orcid.org/0000-0002-4227-753X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Vinoth Ganesan\", \"id\": \"https://openalex.org/A5036051892\", \"orcid\": \"https://orcid.org/0000-0003-4309-6148\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Do–Hyeon Kim\", \"id\": \"https://openalex.org/A5100736864\", \"orcid\": \"https://orcid.org/0000-0002-4845-9617\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sangmin Jeong\", \"id\": \"https://openalex.org/A5026932291\", \"orcid\": \"https://orcid.org/0000-0002-8628-2920\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ki‐Joon Jeon\", \"id\": \"https://openalex.org/A5019458669\", \"orcid\": \"https://orcid.org/0000-0003-1653-6339\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Cheol‐Min Park\", \"id\": \"https://openalex.org/A5059676640\", \"orcid\": \"https://orcid.org/0000-0001-8204-5760\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsami.3c14489",
+    "landing_title": "SiSe2 for Superior Sulfide Solid Electrolytes and Li-Ion Batteries | ACS Applied Materials & Interfaces",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsami.3c14489.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773306014445,
+    "actual_start_ms": 1773306014446,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.208
+  }
+}

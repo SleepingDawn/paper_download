@@ -1,0 +1,103 @@
+{
+  "doi": "10.1021/acs.jpcc.5c08415",
+  "pdf_filename": "10.1021_acs.jpcc.5c08415.pdf",
+  "json_filename": "10.1021_acs.jpcc.5c08415.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.jpcc.5c08415.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7130832946",
+    "doi": "10.1021/acs.jpcc.5c08415",
+    "title": "Impedance Spectroscopy Analysis of Sulfide Solid Electrolyte Composites for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "The Journal of Physical Chemistry C",
+      "id": "https://openalex.org/S95739953",
+      "type": "journal",
+      "issn_l": "1932-7447",
+      "issn": [
+        "1932-7447",
+        "1932-7455"
+      ]
+    },
+    "publication_date": "2026-02-21",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.74416088,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Susana Suttor",
+    "authors_display": "Susana Suttor; Patrick Walke; Katarina Cicvarić; Aliaksandr S. Bandarenka",
+    "authors": [
+      {
+        "display_name": "Susana Suttor",
+        "id": "https://openalex.org/A5077725118",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Patrick Walke",
+        "id": "https://openalex.org/A5052963596",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Katarina Cicvarić",
+        "id": "https://openalex.org/A5046847732",
+        "orcid": "https://orcid.org/0000-0002-1966-649X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Aliaksandr S. Bandarenka",
+        "id": "https://openalex.org/A5126559679",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7130832946",
+    "doi": "10.1021/acs.jpcc.5c08415",
+    "title": "Impedance Spectroscopy Analysis of Sulfide Solid Electrolyte Composites for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "The Journal of Physical Chemistry C",
+    "journal_id": "https://openalex.org/S95739953",
+    "journal_type": "journal",
+    "journal_issn_l": "1932-7447",
+    "journal_issn_json": "[\"1932-7447\", \"1932-7455\"]",
+    "publication_date": "2026-02-21",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.74416088,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Susana Suttor",
+    "authors_display": "Susana Suttor; Patrick Walke; Katarina Cicvarić; Aliaksandr S. Bandarenka",
+    "authors_json": "[{\"display_name\": \"Susana Suttor\", \"id\": \"https://openalex.org/A5077725118\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Patrick Walke\", \"id\": \"https://openalex.org/A5052963596\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Katarina Cicvarić\", \"id\": \"https://openalex.org/A5046847732\", \"orcid\": \"https://orcid.org/0000-0002-1966-649X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Aliaksandr S. Bandarenka\", \"id\": \"https://openalex.org/A5126559679\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.jpcc.5c08415",
+    "landing_title": "Impedance Spectroscopy Analysis of Sulfide Solid Electrolyte Composites for All-Solid-State Batteries | The Journal of Physical Chemistry C",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acs.jpcc.5c08415.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773310629217,
+    "actual_start_ms": 1773310629217,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.712
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "doi": "10.1021/acsenergylett.1c01395",
+  "pdf_filename": "10.1021_acsenergylett.1c01395.pdf",
+  "json_filename": "10.1021_acsenergylett.1c01395.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.1c01395.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3195647900",
+    "doi": "10.1021/acsenergylett.1c01395",
+    "title": "Stack Pressure Measurements to Probe the Evolution of the Lithium–Solid-State Electrolyte Interface",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2021-08-24",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 155,
+    "citation_normalized_percentile": 0.98939007,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Chanhee Lee",
+    "authors_display": "Chanhee Lee; Sang Yun Han; John A. Lewis; Pralav P. Shetty; David Yeh; Yuhgene Liu; Emily J. Klein; Hyun‐Wook Lee; Matthew T. McDowell",
+    "authors": [
+      {
+        "display_name": "Chanhee Lee",
+        "id": "https://openalex.org/A5113782068",
+        "orcid": "https://orcid.org/0009-0002-5287-6664",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang Yun Han",
+        "id": "https://openalex.org/A5078924554",
+        "orcid": "https://orcid.org/0000-0002-2448-2564",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "John A. Lewis",
+        "id": "https://openalex.org/A5029935997",
+        "orcid": "https://orcid.org/0000-0002-3992-7837",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pralav P. Shetty",
+        "id": "https://openalex.org/A5072562852",
+        "orcid": "https://orcid.org/0000-0002-0583-5707",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "David Yeh",
+        "id": "https://openalex.org/A5089164311",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuhgene Liu",
+        "id": "https://openalex.org/A5042549747",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Emily J. Klein",
+        "id": "https://openalex.org/A5010393586",
+        "orcid": "https://orcid.org/0000-0002-1776-9436",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyun‐Wook Lee",
+        "id": "https://openalex.org/A5037158942",
+        "orcid": "https://orcid.org/0000-0001-9074-1619",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Matthew T. McDowell",
+        "id": "https://openalex.org/A5016796967",
+        "orcid": "https://orcid.org/0000-0001-5552-3456",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3195647900",
+    "doi": "10.1021/acsenergylett.1c01395",
+    "title": "Stack Pressure Measurements to Probe the Evolution of the Lithium–Solid-State Electrolyte Interface",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2021-08-24",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 155,
+    "citation_normalized_percentile": 0.98939007,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Chanhee Lee",
+    "authors_display": "Chanhee Lee; Sang Yun Han; John A. Lewis; Pralav P. Shetty; David Yeh; Yuhgene Liu; Emily J. Klein; Hyun‐Wook Lee; Matthew T. McDowell",
+    "authors_json": "[{\"display_name\": \"Chanhee Lee\", \"id\": \"https://openalex.org/A5113782068\", \"orcid\": \"https://orcid.org/0009-0002-5287-6664\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Sang Yun Han\", \"id\": \"https://openalex.org/A5078924554\", \"orcid\": \"https://orcid.org/0000-0002-2448-2564\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"John A. Lewis\", \"id\": \"https://openalex.org/A5029935997\", \"orcid\": \"https://orcid.org/0000-0002-3992-7837\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pralav P. Shetty\", \"id\": \"https://openalex.org/A5072562852\", \"orcid\": \"https://orcid.org/0000-0002-0583-5707\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"David Yeh\", \"id\": \"https://openalex.org/A5089164311\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuhgene Liu\", \"id\": \"https://openalex.org/A5042549747\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Emily J. Klein\", \"id\": \"https://openalex.org/A5010393586\", \"orcid\": \"https://orcid.org/0000-0002-1776-9436\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyun‐Wook Lee\", \"id\": \"https://openalex.org/A5037158942\", \"orcid\": \"https://orcid.org/0000-0001-9074-1619\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Matthew T. McDowell\", \"id\": \"https://openalex.org/A5016796967\", \"orcid\": \"https://orcid.org/0000-0001-5552-3456\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301639330,
+    "actual_start_ms": 1773301641609,
+    "pacing_wait_ms": 2279,
+    "pacing_jitter_sec": 1.086
+  }
+}

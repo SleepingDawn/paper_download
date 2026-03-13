@@ -1,0 +1,116 @@
+{
+  "doi": "10.3390/en16135100",
+  "pdf_filename": "10.3390_en16135100.pdf",
+  "json_filename": "10.3390_en16135100.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_en16135100.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4382982909",
+    "doi": "10.3390/en16135100",
+    "title": "Ionic Conductivity of the Li6PS5Cl0.5Br0.5 Argyrodite Electrolyte at Different Operating and Pelletizing Pressures and Temperatures",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Energies",
+      "id": "https://openalex.org/S198098182",
+      "type": "journal",
+      "issn_l": "1996-1073",
+      "issn": [
+        "1996-1073"
+      ]
+    },
+    "publication_date": "2023-07-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.59351592,
+    "pdf_url": "https://www.mdpi.com/1996-1073/16/13/5100/pdf?version=1688197699",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Joshua Dunham",
+    "authors_display": "Joshua Dunham; Joshua Carfang; Chan-Yeop Yu; Raziyeh Ghahremani; Rashid Farahati; Siamak Farhad",
+    "authors": [
+      {
+        "display_name": "Joshua Dunham",
+        "id": "https://openalex.org/A5049223852",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joshua Carfang",
+        "id": "https://openalex.org/A5092145583",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chan-Yeop Yu",
+        "id": "https://openalex.org/A5047712839",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Raziyeh Ghahremani",
+        "id": "https://openalex.org/A5000968021",
+        "orcid": "https://orcid.org/0000-0001-7575-0832",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rashid Farahati",
+        "id": "https://openalex.org/A5017551378",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Siamak Farhad",
+        "id": "https://openalex.org/A5061550343",
+        "orcid": "https://orcid.org/0000-0002-5810-166X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4382982909",
+    "doi": "10.3390/en16135100",
+    "title": "Ionic Conductivity of the Li6PS5Cl0.5Br0.5 Argyrodite Electrolyte at Different Operating and Pelletizing Pressures and Temperatures",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Energies",
+    "journal_id": "https://openalex.org/S198098182",
+    "journal_type": "journal",
+    "journal_issn_l": "1996-1073",
+    "journal_issn_json": "[\"1996-1073\"]",
+    "publication_date": "2023-07-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.59351592,
+    "pdf_url": "https://www.mdpi.com/1996-1073/16/13/5100/pdf?version=1688197699",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Joshua Dunham",
+    "authors_display": "Joshua Dunham; Joshua Carfang; Chan-Yeop Yu; Raziyeh Ghahremani; Rashid Farahati; Siamak Farhad",
+    "authors_json": "[{\"display_name\": \"Joshua Dunham\", \"id\": \"https://openalex.org/A5049223852\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Joshua Carfang\", \"id\": \"https://openalex.org/A5092145583\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chan-Yeop Yu\", \"id\": \"https://openalex.org/A5047712839\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Raziyeh Ghahremani\", \"id\": \"https://openalex.org/A5000968021\", \"orcid\": \"https://orcid.org/0000-0001-7575-0832\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rashid Farahati\", \"id\": \"https://openalex.org/A5017551378\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Siamak Farhad\", \"id\": \"https://openalex.org/A5061550343\", \"orcid\": \"https://orcid.org/0000-0002-5810-166X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773310208999,
+    "actual_start_ms": 1773310210508,
+    "pacing_wait_ms": 1508,
+    "pacing_jitter_sec": 1.532
+  }
+}

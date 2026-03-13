@@ -1,0 +1,131 @@
+{
+  "doi": "10.1021/acs.chemmater.2c00346",
+  "pdf_filename": "10.1021_acs.chemmater.2c00346.pdf",
+  "json_filename": "10.1021_acs.chemmater.2c00346.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.chemmater.2c00346.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4293792418",
+    "doi": "10.1021/acs.chemmater.2c00346",
+    "title": "Enhancing Ionic Conductivity by in Situ Formation of Li<sub>7</sub>SiPS<sub>8</sub>/Argyrodite Hybrid Solid Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2022-08-31",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.76259982,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.chemmater.2c00346",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Robert Calaminus",
+    "authors_display": "Robert Calaminus; Sascha Harm; Douglas H. Fabini; Lucas G. Balzat; Anna‐Katharina Hatz; Viola Düppel; Igor Moudrakovski; Bettina V. Lotsch",
+    "authors": [
+      {
+        "display_name": "Robert Calaminus",
+        "id": "https://openalex.org/A5061989742",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sascha Harm",
+        "id": "https://openalex.org/A5054766326",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Douglas H. Fabini",
+        "id": "https://openalex.org/A5031718468",
+        "orcid": "https://orcid.org/0000-0002-2391-1507",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lucas G. Balzat",
+        "id": "https://openalex.org/A5014045039",
+        "orcid": "https://orcid.org/0009-0008-0409-2383",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anna‐Katharina Hatz",
+        "id": "https://openalex.org/A5081262666",
+        "orcid": "https://orcid.org/0009-0006-6247-4385",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Viola Düppel",
+        "id": "https://openalex.org/A5051923359",
+        "orcid": "https://orcid.org/0000-0003-2952-816X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Igor Moudrakovski",
+        "id": "https://openalex.org/A5056633916",
+        "orcid": "https://orcid.org/0000-0002-8919-4766",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bettina V. Lotsch",
+        "id": "https://openalex.org/A5046180571",
+        "orcid": "https://orcid.org/0000-0002-3094-303X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4293792418",
+    "doi": "10.1021/acs.chemmater.2c00346",
+    "title": "Enhancing Ionic Conductivity by in Situ Formation of Li<sub>7</sub>SiPS<sub>8</sub>/Argyrodite Hybrid Solid Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2022-08-31",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.76259982,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.chemmater.2c00346",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Robert Calaminus",
+    "authors_display": "Robert Calaminus; Sascha Harm; Douglas H. Fabini; Lucas G. Balzat; Anna‐Katharina Hatz; Viola Düppel; Igor Moudrakovski; Bettina V. Lotsch",
+    "authors_json": "[{\"display_name\": \"Robert Calaminus\", \"id\": \"https://openalex.org/A5061989742\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Sascha Harm\", \"id\": \"https://openalex.org/A5054766326\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Douglas H. Fabini\", \"id\": \"https://openalex.org/A5031718468\", \"orcid\": \"https://orcid.org/0000-0002-2391-1507\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lucas G. Balzat\", \"id\": \"https://openalex.org/A5014045039\", \"orcid\": \"https://orcid.org/0009-0008-0409-2383\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anna‐Katharina Hatz\", \"id\": \"https://openalex.org/A5081262666\", \"orcid\": \"https://orcid.org/0009-0006-6247-4385\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Viola Düppel\", \"id\": \"https://openalex.org/A5051923359\", \"orcid\": \"https://orcid.org/0000-0003-2952-816X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Igor Moudrakovski\", \"id\": \"https://openalex.org/A5056633916\", \"orcid\": \"https://orcid.org/0000-0002-8919-4766\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bettina V. Lotsch\", \"id\": \"https://openalex.org/A5046180571\", \"orcid\": \"https://orcid.org/0000-0002-3094-303X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773304305785,
+    "actual_start_ms": 1773304306216,
+    "pacing_wait_ms": 430,
+    "pacing_jitter_sec": 0.922
+  }
+}

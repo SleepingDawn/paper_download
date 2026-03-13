@@ -1,0 +1,112 @@
+{
+  "doi": "10.1149/ma2024-0281238mtgabs",
+  "pdf_filename": "10.1149_ma2024-0281238mtgabs.pdf",
+  "json_filename": "10.1149_ma2024-0281238mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2024-0281238mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4405591508",
+    "doi": "10.1149/ma2024-0281238mtgabs",
+    "title": "High Energy Density Sulfide-Based All-Solid-State Batteries by Tailoring Electronic Conductivity within Composite Cathode",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21416523,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Hyeon‐Ji Shin",
+    "authors_display": "Hyeon‐Ji Shin; Jun Tae Kim; Daseul Han; Kyung‐Wan Nam; Hun‐Gi Jung",
+    "authors": [
+      {
+        "display_name": "Hyeon‐Ji Shin",
+        "id": "https://openalex.org/A5059280023",
+        "orcid": "https://orcid.org/0000-0002-9885-9811",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jun Tae Kim",
+        "id": "https://openalex.org/A5100710222",
+        "orcid": "https://orcid.org/0000-0002-7725-3861",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daseul Han",
+        "id": "https://openalex.org/A5079757093",
+        "orcid": "https://orcid.org/0000-0001-9560-9246",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung‐Wan Nam",
+        "id": "https://openalex.org/A5047805438",
+        "orcid": "https://orcid.org/0000-0001-6278-6369",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hun‐Gi Jung",
+        "id": "https://openalex.org/A5045467177",
+        "orcid": "https://orcid.org/0000-0002-2162-2680",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405591508",
+    "doi": "10.1149/ma2024-0281238mtgabs",
+    "title": "High Energy Density Sulfide-Based All-Solid-State Batteries by Tailoring Electronic Conductivity within Composite Cathode",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21416523,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Hyeon‐Ji Shin",
+    "authors_display": "Hyeon‐Ji Shin; Jun Tae Kim; Daseul Han; Kyung‐Wan Nam; Hun‐Gi Jung",
+    "authors_json": "[{\"display_name\": \"Hyeon‐Ji Shin\", \"id\": \"https://openalex.org/A5059280023\", \"orcid\": \"https://orcid.org/0000-0002-9885-9811\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Jun Tae Kim\", \"id\": \"https://openalex.org/A5100710222\", \"orcid\": \"https://orcid.org/0000-0002-7725-3861\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daseul Han\", \"id\": \"https://openalex.org/A5079757093\", \"orcid\": \"https://orcid.org/0000-0001-9560-9246\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung‐Wan Nam\", \"id\": \"https://openalex.org/A5047805438\", \"orcid\": \"https://orcid.org/0000-0001-6278-6369\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hun‐Gi Jung\", \"id\": \"https://openalex.org/A5045467177\", \"orcid\": \"https://orcid.org/0000-0002-2162-2680\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773306390060,
+    "actual_start_ms": 1773306390061,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.243
+  }
+}

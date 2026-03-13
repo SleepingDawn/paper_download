@@ -1,0 +1,110 @@
+{
+  "doi": "10.1039/d5ta10262f",
+  "pdf_filename": "10.1039_d5ta10262f.pdf",
+  "json_filename": "10.1039_d5ta10262f.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d5ta10262f.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7134244293",
+    "doi": "10.1039/d5ta10262f",
+    "title": "Tailoring I-rich argyrodite sulfides <i>via</i> low-energy mechanical alloying for all-solid-state Li-metal batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2026-01-01",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.95806665,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Young Jung Kim",
+    "authors_display": "Young Jung Kim; Sahn Nahm; Jae Jin Kim; Jong-Ho Lee; Hyoungchul Kim",
+    "authors": [
+      {
+        "display_name": "Young Jung Kim",
+        "id": "https://openalex.org/A5044158086",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sahn Nahm",
+        "id": "https://openalex.org/A5128474564",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jae Jin Kim",
+        "id": "https://openalex.org/A5101819704",
+        "orcid": "https://orcid.org/0000-0001-7709-3530",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jong-Ho Lee",
+        "id": "https://openalex.org/A5100423376",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hyoungchul Kim",
+        "id": "https://openalex.org/A5128463484",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7134244293",
+    "doi": "10.1039/d5ta10262f",
+    "title": "Tailoring I-rich argyrodite sulfides <i>via</i> low-energy mechanical alloying for all-solid-state Li-metal batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2026-01-01",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.95806665,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Young Jung Kim",
+    "authors_display": "Young Jung Kim; Sahn Nahm; Jae Jin Kim; Jong-Ho Lee; Hyoungchul Kim",
+    "authors_json": "[{\"display_name\": \"Young Jung Kim\", \"id\": \"https://openalex.org/A5044158086\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Sahn Nahm\", \"id\": \"https://openalex.org/A5128474564\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jae Jin Kim\", \"id\": \"https://openalex.org/A5101819704\", \"orcid\": \"https://orcid.org/0000-0001-7709-3530\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jong-Ho Lee\", \"id\": \"https://openalex.org/A5100423376\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Hyoungchul Kim\", \"id\": \"https://openalex.org/A5128463484\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.rsc.org/en/content/articlelanding/2026/ta/d5ta10262f",
+    "landing_title": "Tailoring I-rich argyrodite sulfides via low-energy mechanical alloying for all-solid-state Li-metal batteries - Journal of Materials Chemistry A (RSC Publishing)",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773318229957,
+    "actual_start_ms": 1773318229958,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 0.827
+  }
+}

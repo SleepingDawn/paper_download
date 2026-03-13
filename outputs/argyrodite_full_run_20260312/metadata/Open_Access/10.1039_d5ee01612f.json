@@ -1,0 +1,166 @@
+{
+  "doi": "10.1039/d5ee01612f",
+  "pdf_filename": "10.1039_d5ee01612f.pdf",
+  "json_filename": "10.1039_d5ee01612f.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_d5ee01612f.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413427841",
+    "doi": "10.1039/d5ee01612f",
+    "title": "How multi-length scale disorder shapes ion transport in lithium argyrodites",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Energy & Environmental Science",
+      "id": "https://openalex.org/S117082959",
+      "type": "journal",
+      "issn_l": "1754-5692",
+      "issn": [
+        "1754-5692",
+        "1754-5706"
+      ]
+    },
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.77629439,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/ee/d5ee01612f",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Ben Payne",
+    "authors_display": "Ben Payne; Mikkel Juelsholt; Miguel A. Pérez‐Osorio; Dominic L. R. Melvin; G.J. Cuello; Emmanuelle Suard; Daniel Irving; Nicholas H. Rees; Mark Feaviour; Enrico Petrucco; Stephen H. Day; Gregory J. Rees; Peter G. Bruce",
+    "authors": [
+      {
+        "display_name": "Ben Payne",
+        "id": "https://openalex.org/A5111653182",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Mikkel Juelsholt",
+        "id": "https://openalex.org/A5055371760",
+        "orcid": "https://orcid.org/0000-0001-6401-8267",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Miguel A. Pérez‐Osorio",
+        "id": "https://openalex.org/A5101581958",
+        "orcid": "https://orcid.org/0000-0001-8077-5655",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dominic L. R. Melvin",
+        "id": "https://openalex.org/A5053104258",
+        "orcid": "https://orcid.org/0000-0001-7944-0225",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "G.J. Cuello",
+        "id": "https://openalex.org/A5088161068",
+        "orcid": "https://orcid.org/0000-0003-3844-0602",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Emmanuelle Suard",
+        "id": "https://openalex.org/A5015437413",
+        "orcid": "https://orcid.org/0000-0001-5966-5929",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniel Irving",
+        "id": "https://openalex.org/A5041995725",
+        "orcid": "https://orcid.org/0000-0002-5211-8268",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nicholas H. Rees",
+        "id": "https://openalex.org/A5050160701",
+        "orcid": "https://orcid.org/0000-0001-8866-1935",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mark Feaviour",
+        "id": "https://openalex.org/A5119387438",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Enrico Petrucco",
+        "id": "https://openalex.org/A5055661025",
+        "orcid": "https://orcid.org/0000-0002-1710-2869",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Stephen H. Day",
+        "id": "https://openalex.org/A5006464184",
+        "orcid": "https://orcid.org/0000-0003-2020-0432",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gregory J. Rees",
+        "id": "https://openalex.org/A5028405313",
+        "orcid": "https://orcid.org/0000-0002-7514-1516",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peter G. Bruce",
+        "id": "https://openalex.org/A5056496930",
+        "orcid": "https://orcid.org/0000-0001-6748-3084",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413427841",
+    "doi": "10.1039/d5ee01612f",
+    "title": "How multi-length scale disorder shapes ion transport in lithium argyrodites",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Energy & Environmental Science",
+    "journal_id": "https://openalex.org/S117082959",
+    "journal_type": "journal",
+    "journal_issn_l": "1754-5692",
+    "journal_issn_json": "[\"1754-5692\", \"1754-5706\"]",
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.77629439,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/ee/d5ee01612f",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Ben Payne",
+    "authors_display": "Ben Payne; Mikkel Juelsholt; Miguel A. Pérez‐Osorio; Dominic L. R. Melvin; G.J. Cuello; Emmanuelle Suard; Daniel Irving; Nicholas H. Rees; Mark Feaviour; Enrico Petrucco; Stephen H. Day; Gregory J. Rees; Peter G. Bruce",
+    "authors_json": "[{\"display_name\": \"Ben Payne\", \"id\": \"https://openalex.org/A5111653182\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Mikkel Juelsholt\", \"id\": \"https://openalex.org/A5055371760\", \"orcid\": \"https://orcid.org/0000-0001-6401-8267\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Miguel A. Pérez‐Osorio\", \"id\": \"https://openalex.org/A5101581958\", \"orcid\": \"https://orcid.org/0000-0001-8077-5655\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dominic L. R. Melvin\", \"id\": \"https://openalex.org/A5053104258\", \"orcid\": \"https://orcid.org/0000-0001-7944-0225\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"G.J. Cuello\", \"id\": \"https://openalex.org/A5088161068\", \"orcid\": \"https://orcid.org/0000-0003-3844-0602\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Emmanuelle Suard\", \"id\": \"https://openalex.org/A5015437413\", \"orcid\": \"https://orcid.org/0000-0001-5966-5929\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniel Irving\", \"id\": \"https://openalex.org/A5041995725\", \"orcid\": \"https://orcid.org/0000-0002-5211-8268\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nicholas H. Rees\", \"id\": \"https://openalex.org/A5050160701\", \"orcid\": \"https://orcid.org/0000-0001-8866-1935\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mark Feaviour\", \"id\": \"https://openalex.org/A5119387438\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Enrico Petrucco\", \"id\": \"https://openalex.org/A5055661025\", \"orcid\": \"https://orcid.org/0000-0002-1710-2869\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Stephen H. Day\", \"id\": \"https://openalex.org/A5006464184\", \"orcid\": \"https://orcid.org/0000-0003-2020-0432\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gregory J. Rees\", \"id\": \"https://openalex.org/A5028405313\", \"orcid\": \"https://orcid.org/0000-0002-7514-1516\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peter G. Bruce\", \"id\": \"https://openalex.org/A5056496930\", \"orcid\": \"https://orcid.org/0000-0001-6748-3084\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://doi.org/10.1039/d5ee01612f",
+    "landing_title": "새 탭",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773316865056,
+    "actual_start_ms": 1773316865057,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.021
+  }
+}

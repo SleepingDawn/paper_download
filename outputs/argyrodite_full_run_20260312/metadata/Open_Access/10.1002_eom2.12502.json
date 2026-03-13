@@ -1,0 +1,158 @@
+{
+  "doi": "10.1002/eom2.12502",
+  "pdf_filename": "10.1002_eom2.12502.pdf",
+  "json_filename": "10.1002_eom2.12502.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_eom2.12502.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4404259345",
+    "doi": "10.1002/eom2.12502",
+    "title": "Impact of conducting agents on sulfide and halide electrolytes in disordered rocksalt cathode‐based all‐solid‐state batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "EcoMat",
+      "id": "https://openalex.org/S4210174281",
+      "type": "journal",
+      "issn_l": "2567-3173",
+      "issn": [
+        "2567-3173"
+      ]
+    },
+    "publication_date": "2024-11-12",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.85653729,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/eom2.12502",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Yun‐Chae Jung",
+    "authors_display": "Yun‐Chae Jung; You‐Yeob Song; Yoon‐Seong Kim; Young‐Chul Chung; Dae‐Hyung Lee; Sang‐Wook Park; Hojoon Kim; Hong‐Seok Min; Jesik Park; Jeongho Seong; Sung‐Kyun Jung; Dong‐Hwa Seo",
+    "authors": [
+      {
+        "display_name": "Yun‐Chae Jung",
+        "id": "https://openalex.org/A5102814826",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "You‐Yeob Song",
+        "id": "https://openalex.org/A5109633609",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoon‐Seong Kim",
+        "id": "https://openalex.org/A5104348482",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young‐Chul Chung",
+        "id": "https://openalex.org/A5019759933",
+        "orcid": "https://orcid.org/0000-0001-9491-1822",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dae‐Hyung Lee",
+        "id": "https://openalex.org/A5109295388",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang‐Wook Park",
+        "id": "https://openalex.org/A5046800114",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hojoon Kim",
+        "id": "https://openalex.org/A5104239815",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong‐Seok Min",
+        "id": "https://openalex.org/A5114002104",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jesik Park",
+        "id": "https://openalex.org/A5025776579",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeongho Seong",
+        "id": "https://openalex.org/A5113525569",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sung‐Kyun Jung",
+        "id": "https://openalex.org/A5046353772",
+        "orcid": "https://orcid.org/0000-0002-3708-3757",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Hwa Seo",
+        "id": "https://openalex.org/A5074384928",
+        "orcid": "https://orcid.org/0000-0002-7200-7186",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4404259345",
+    "doi": "10.1002/eom2.12502",
+    "title": "Impact of conducting agents on sulfide and halide electrolytes in disordered rocksalt cathode‐based all‐solid‐state batteries",
+    "publisher": "Wiley",
+    "journal": "EcoMat",
+    "journal_id": "https://openalex.org/S4210174281",
+    "journal_type": "journal",
+    "journal_issn_l": "2567-3173",
+    "journal_issn_json": "[\"2567-3173\"]",
+    "publication_date": "2024-11-12",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.85653729,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/eom2.12502",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Yun‐Chae Jung",
+    "authors_display": "Yun‐Chae Jung; You‐Yeob Song; Yoon‐Seong Kim; Young‐Chul Chung; Dae‐Hyung Lee; Sang‐Wook Park; Hojoon Kim; Hong‐Seok Min; Jesik Park; Jeongho Seong; Sung‐Kyun Jung; Dong‐Hwa Seo",
+    "authors_json": "[{\"display_name\": \"Yun‐Chae Jung\", \"id\": \"https://openalex.org/A5102814826\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"You‐Yeob Song\", \"id\": \"https://openalex.org/A5109633609\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoon‐Seong Kim\", \"id\": \"https://openalex.org/A5104348482\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young‐Chul Chung\", \"id\": \"https://openalex.org/A5019759933\", \"orcid\": \"https://orcid.org/0000-0001-9491-1822\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dae‐Hyung Lee\", \"id\": \"https://openalex.org/A5109295388\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang‐Wook Park\", \"id\": \"https://openalex.org/A5046800114\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hojoon Kim\", \"id\": \"https://openalex.org/A5104239815\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong‐Seok Min\", \"id\": \"https://openalex.org/A5114002104\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jesik Park\", \"id\": \"https://openalex.org/A5025776579\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeongho Seong\", \"id\": \"https://openalex.org/A5113525569\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sung‐Kyun Jung\", \"id\": \"https://openalex.org/A5046353772\", \"orcid\": \"https://orcid.org/0000-0002-3708-3757\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Hwa Seo\", \"id\": \"https://openalex.org/A5074384928\", \"orcid\": \"https://orcid.org/0000-0002-7200-7186\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773306473519,
+    "actual_start_ms": 1773306473519,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.913
+  }
+}

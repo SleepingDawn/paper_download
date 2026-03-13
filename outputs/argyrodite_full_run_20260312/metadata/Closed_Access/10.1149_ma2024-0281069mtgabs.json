@@ -1,0 +1,147 @@
+{
+  "doi": "10.1149/ma2024-0281069mtgabs",
+  "pdf_filename": "10.1149_ma2024-0281069mtgabs.pdf",
+  "json_filename": "10.1149_ma2024-0281069mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2024-0281069mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4405591332",
+    "doi": "10.1149/ma2024-0281069mtgabs",
+    "title": "Evaluation of Oxide|Sulfide Heteroionic Interface Stability with LLZO|Li<sub>7</sub>P<sub>3</sub>S<sub>11</sub> and LLZO|Li<sub>6</sub>PS<sub>5</sub> Cl As Fundamental Case Studies",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21807352,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "L. Merola",
+    "authors_display": "L. Merola; Max J. Palmer; Vipin Singh; Janis K. Eckhardt; Sebastian L. Benz; Till Fuchs; Felix H. Richter; Linda F. Nazar; Jeff Sakamoto; Jürgen Janek",
+    "authors": [
+      {
+        "display_name": "L. Merola",
+        "id": "https://openalex.org/A5107924425",
+        "orcid": "https://orcid.org/0009-0009-6649-2814",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Max J. Palmer",
+        "id": "https://openalex.org/A5034677703",
+        "orcid": "https://orcid.org/0000-0003-0455-6738",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vipin Singh",
+        "id": "https://openalex.org/A5111477611",
+        "orcid": "https://orcid.org/0000-0002-8548-3237",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Janis K. Eckhardt",
+        "id": "https://openalex.org/A5043202369",
+        "orcid": "https://orcid.org/0000-0002-2799-0599",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sebastian L. Benz",
+        "id": "https://openalex.org/A5102766272",
+        "orcid": "https://orcid.org/0000-0002-0650-984X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Till Fuchs",
+        "id": "https://openalex.org/A5026425699",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Felix H. Richter",
+        "id": "https://openalex.org/A5035183233",
+        "orcid": "https://orcid.org/0000-0002-6587-7757",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Linda F. Nazar",
+        "id": "https://openalex.org/A5079626231",
+        "orcid": "https://orcid.org/0000-0002-3314-8197",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeff Sakamoto",
+        "id": "https://openalex.org/A5081987488",
+        "orcid": "https://orcid.org/0000-0002-3099-462X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405591332",
+    "doi": "10.1149/ma2024-0281069mtgabs",
+    "title": "Evaluation of Oxide|Sulfide Heteroionic Interface Stability with LLZO|Li<sub>7</sub>P<sub>3</sub>S<sub>11</sub> and LLZO|Li<sub>6</sub>PS<sub>5</sub> Cl As Fundamental Case Studies",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21807352,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "L. Merola",
+    "authors_display": "L. Merola; Max J. Palmer; Vipin Singh; Janis K. Eckhardt; Sebastian L. Benz; Till Fuchs; Felix H. Richter; Linda F. Nazar; Jeff Sakamoto; Jürgen Janek",
+    "authors_json": "[{\"display_name\": \"L. Merola\", \"id\": \"https://openalex.org/A5107924425\", \"orcid\": \"https://orcid.org/0009-0009-6649-2814\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Max J. Palmer\", \"id\": \"https://openalex.org/A5034677703\", \"orcid\": \"https://orcid.org/0000-0003-0455-6738\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Vipin Singh\", \"id\": \"https://openalex.org/A5111477611\", \"orcid\": \"https://orcid.org/0000-0002-8548-3237\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Janis K. Eckhardt\", \"id\": \"https://openalex.org/A5043202369\", \"orcid\": \"https://orcid.org/0000-0002-2799-0599\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sebastian L. Benz\", \"id\": \"https://openalex.org/A5102766272\", \"orcid\": \"https://orcid.org/0000-0002-0650-984X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Till Fuchs\", \"id\": \"https://openalex.org/A5026425699\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Felix H. Richter\", \"id\": \"https://openalex.org/A5035183233\", \"orcid\": \"https://orcid.org/0000-0002-6587-7757\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Linda F. Nazar\", \"id\": \"https://openalex.org/A5079626231\", \"orcid\": \"https://orcid.org/0000-0002-3314-8197\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeff Sakamoto\", \"id\": \"https://openalex.org/A5081987488\", \"orcid\": \"https://orcid.org/0000-0002-3099-462X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773306061538,
+    "actual_start_ms": 1773306062104,
+    "pacing_wait_ms": 565,
+    "pacing_jitter_sec": 1.025
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "doi": "10.1016/j.matchemphys.2026.132229",
+  "pdf_filename": "10.1016_j.matchemphys.2026.132229.pdf",
+  "json_filename": "10.1016_j.matchemphys.2026.132229.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.matchemphys.2026.132229.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7129054495",
+    "doi": "10.1016/j.matchemphys.2026.132229",
+    "title": "Lithium argyrodite@lithium titanium phosphate@reduced graphene oxide coated carbon cloth as energy storage and hydrogen evolution reaction electrodes",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Materials Chemistry and Physics",
+      "id": "https://openalex.org/S5707928",
+      "type": "journal",
+      "issn_l": "0254-0584",
+      "issn": [
+        "0254-0584",
+        "1879-3312"
+      ]
+    },
+    "publication_date": "2026-02-16",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.82379122,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Sahar Y. Rajeh",
+    "authors_display": "Sahar Y. Rajeh; Munazza Arshad; Y.M. Fahmy; Muhammad Shahbaz; Muneerah Alomar; Abdelfattah Amari; Sohail Mumtaz; Amir Muhammad Afzal",
+    "authors": [
+      {
+        "display_name": "Sahar Y. Rajeh",
+        "id": "https://openalex.org/A5126103634",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Munazza Arshad",
+        "id": "https://openalex.org/A5126113145",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Y.M. Fahmy",
+        "id": "https://openalex.org/A5125010776",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Muhammad Shahbaz",
+        "id": "https://openalex.org/A5011093610",
+        "orcid": "https://orcid.org/0000-0001-8829-6026",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Muneerah Alomar",
+        "id": "https://openalex.org/A5126163755",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Abdelfattah Amari",
+        "id": "https://openalex.org/A5118992602",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sohail Mumtaz",
+        "id": "https://openalex.org/A5113417690",
+        "orcid": "https://orcid.org/0009-0006-3649-3232",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Amir Muhammad Afzal",
+        "id": "https://openalex.org/A5126132599",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7129054495",
+    "doi": "10.1016/j.matchemphys.2026.132229",
+    "title": "Lithium argyrodite@lithium titanium phosphate@reduced graphene oxide coated carbon cloth as energy storage and hydrogen evolution reaction electrodes",
+    "publisher": "Elsevier BV",
+    "journal": "Materials Chemistry and Physics",
+    "journal_id": "https://openalex.org/S5707928",
+    "journal_type": "journal",
+    "journal_issn_l": "0254-0584",
+    "journal_issn_json": "[\"0254-0584\", \"1879-3312\"]",
+    "publication_date": "2026-02-16",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.82379122,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Sahar Y. Rajeh",
+    "authors_display": "Sahar Y. Rajeh; Munazza Arshad; Y.M. Fahmy; Muhammad Shahbaz; Muneerah Alomar; Abdelfattah Amari; Sohail Mumtaz; Amir Muhammad Afzal",
+    "authors_json": "[{\"display_name\": \"Sahar Y. Rajeh\", \"id\": \"https://openalex.org/A5126103634\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Munazza Arshad\", \"id\": \"https://openalex.org/A5126113145\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Y.M. Fahmy\", \"id\": \"https://openalex.org/A5125010776\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Muhammad Shahbaz\", \"id\": \"https://openalex.org/A5011093610\", \"orcid\": \"https://orcid.org/0000-0001-8829-6026\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Muneerah Alomar\", \"id\": \"https://openalex.org/A5126163755\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Abdelfattah Amari\", \"id\": \"https://openalex.org/A5118992602\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sohail Mumtaz\", \"id\": \"https://openalex.org/A5113417690\", \"orcid\": \"https://orcid.org/0009-0006-3649-3232\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Amir Muhammad Afzal\", \"id\": \"https://openalex.org/A5126132599\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S0254058426002208?via%3Dihub",
+    "landing_title": "Lithium argyrodite@lithium titanium phosphate@reduced graphene oxide coated carbon cloth as energy storage and hydrogen evolution reaction electrodes - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773310316973,
+    "actual_start_ms": 1773310317718,
+    "pacing_wait_ms": 745,
+    "pacing_jitter_sec": 0.819
+  }
+}

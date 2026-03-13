@@ -1,0 +1,125 @@
+{
+  "doi": "10.1021/jacs.6b05066",
+  "pdf_filename": "10.1021_jacs.6b05066.pdf",
+  "json_filename": "10.1021_jacs.6b05066.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_jacs.6b05066.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2507796133",
+    "doi": "10.1021/jacs.6b05066",
+    "title": "Unravelling Li-Ion Transport from Picoseconds to Seconds: Bulk versus Interfaces in an Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl–Li<sub>2</sub>S All-Solid-State Li-Ion Battery",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Journal of the American Chemical Society",
+      "id": "https://openalex.org/S111155417",
+      "type": "journal",
+      "issn_l": "0002-7863",
+      "issn": [
+        "0002-7863",
+        "1520-5126",
+        "1943-2984"
+      ]
+    },
+    "publication_date": "2016-08-11",
+    "publication_year": 2016,
+    "work_type": "article",
+    "cited_by_count": 240,
+    "citation_normalized_percentile": 0.99023063,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Chuang Yu",
+    "authors_display": "Chuang Yu; Swapna Ganapathy; Niek J. J. de Klerk; Irek Rosłoń; Ernst R. H. van Eck; Arno P. M. Kentgens; Marnix Wagemaker",
+    "authors": [
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Swapna Ganapathy",
+        "id": "https://openalex.org/A5075602037",
+        "orcid": "https://orcid.org/0000-0001-5265-1663",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Niek J. J. de Klerk",
+        "id": "https://openalex.org/A5081312429",
+        "orcid": "https://orcid.org/0000-0002-5100-4883",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Irek Rosłoń",
+        "id": "https://openalex.org/A5082947931",
+        "orcid": "https://orcid.org/0000-0002-7371-2768",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ernst R. H. van Eck",
+        "id": "https://openalex.org/A5030253796",
+        "orcid": "https://orcid.org/0000-0002-2365-9583",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Arno P. M. Kentgens",
+        "id": "https://openalex.org/A5021781045",
+        "orcid": "https://orcid.org/0000-0001-5893-4488",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marnix Wagemaker",
+        "id": "https://openalex.org/A5034244816",
+        "orcid": "https://orcid.org/0000-0003-3851-1044",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2507796133",
+    "doi": "10.1021/jacs.6b05066",
+    "title": "Unravelling Li-Ion Transport from Picoseconds to Seconds: Bulk versus Interfaces in an Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl–Li<sub>2</sub>S All-Solid-State Li-Ion Battery",
+    "publisher": "American Chemical Society",
+    "journal": "Journal of the American Chemical Society",
+    "journal_id": "https://openalex.org/S111155417",
+    "journal_type": "journal",
+    "journal_issn_l": "0002-7863",
+    "journal_issn_json": "[\"0002-7863\", \"1520-5126\", \"1943-2984\"]",
+    "publication_date": "2016-08-11",
+    "publication_year": 2016,
+    "work_type": "article",
+    "cited_by_count": 240,
+    "citation_normalized_percentile": 0.99023063,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Chuang Yu",
+    "authors_display": "Chuang Yu; Swapna Ganapathy; Niek J. J. de Klerk; Irek Rosłoń; Ernst R. H. van Eck; Arno P. M. Kentgens; Marnix Wagemaker",
+    "authors_json": "[{\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Swapna Ganapathy\", \"id\": \"https://openalex.org/A5075602037\", \"orcid\": \"https://orcid.org/0000-0001-5265-1663\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Niek J. J. de Klerk\", \"id\": \"https://openalex.org/A5081312429\", \"orcid\": \"https://orcid.org/0000-0002-5100-4883\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Irek Rosłoń\", \"id\": \"https://openalex.org/A5082947931\", \"orcid\": \"https://orcid.org/0000-0002-7371-2768\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ernst R. H. van Eck\", \"id\": \"https://openalex.org/A5030253796\", \"orcid\": \"https://orcid.org/0000-0002-2365-9583\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Arno P. M. Kentgens\", \"id\": \"https://openalex.org/A5021781045\", \"orcid\": \"https://orcid.org/0000-0001-5893-4488\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marnix Wagemaker\", \"id\": \"https://openalex.org/A5034244816\", \"orcid\": \"https://orcid.org/0000-0003-3851-1044\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301508290,
+    "actual_start_ms": 1773301510595,
+    "pacing_wait_ms": 2305,
+    "pacing_jitter_sec": 0.815
+  }
+}

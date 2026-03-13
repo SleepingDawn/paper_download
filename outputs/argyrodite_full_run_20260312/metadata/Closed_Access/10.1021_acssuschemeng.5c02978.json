@@ -1,0 +1,116 @@
+{
+  "doi": "10.1021/acssuschemeng.5c02978",
+  "pdf_filename": "10.1021_acssuschemeng.5c02978.pdf",
+  "json_filename": "10.1021_acssuschemeng.5c02978.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acssuschemeng.5c02978.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4411367445",
+    "doi": "10.1021/acssuschemeng.5c02978",
+    "title": "Dynamic Covalent and Ionic Bond Reorganization for Self-Adaptive Interphase Enhancing the Electrochemical Stability of Li<sub>6</sub>PS<sub>5</sub>Cl with Lithium Anode",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Sustainable Chemistry & Engineering",
+      "id": "https://openalex.org/S2502047864",
+      "type": "journal",
+      "issn_l": "2168-0485",
+      "issn": [
+        "2168-0485"
+      ]
+    },
+    "publication_date": "2025-06-17",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.14980036,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Jianji Ke",
+    "authors_display": "Jianji Ke; Mengru Wu; Han Bao; Jianghao Zhao; Furong Liu; Guofeng Xu",
+    "authors": [
+      {
+        "display_name": "Jianji Ke",
+        "id": "https://openalex.org/A5042033661",
+        "orcid": "https://orcid.org/0000-0001-5199-0436",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mengru Wu",
+        "id": "https://openalex.org/A5109923308",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Han Bao",
+        "id": "https://openalex.org/A5076763918",
+        "orcid": "https://orcid.org/0000-0002-1972-2148",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianghao Zhao",
+        "id": "https://openalex.org/A5039626087",
+        "orcid": "https://orcid.org/0000-0003-0342-0927",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Furong Liu",
+        "id": "https://openalex.org/A5067009892",
+        "orcid": "https://orcid.org/0000-0001-8745-2883",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guofeng Xu",
+        "id": "https://openalex.org/A5062325629",
+        "orcid": "https://orcid.org/0000-0002-7689-7868",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4411367445",
+    "doi": "10.1021/acssuschemeng.5c02978",
+    "title": "Dynamic Covalent and Ionic Bond Reorganization for Self-Adaptive Interphase Enhancing the Electrochemical Stability of Li<sub>6</sub>PS<sub>5</sub>Cl with Lithium Anode",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "journal_id": "https://openalex.org/S2502047864",
+    "journal_type": "journal",
+    "journal_issn_l": "2168-0485",
+    "journal_issn_json": "[\"2168-0485\"]",
+    "publication_date": "2025-06-17",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.14980036,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Jianji Ke",
+    "authors_display": "Jianji Ke; Mengru Wu; Han Bao; Jianghao Zhao; Furong Liu; Guofeng Xu",
+    "authors_json": "[{\"display_name\": \"Jianji Ke\", \"id\": \"https://openalex.org/A5042033661\", \"orcid\": \"https://orcid.org/0000-0001-5199-0436\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Mengru Wu\", \"id\": \"https://openalex.org/A5109923308\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Han Bao\", \"id\": \"https://openalex.org/A5076763918\", \"orcid\": \"https://orcid.org/0000-0002-1972-2148\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianghao Zhao\", \"id\": \"https://openalex.org/A5039626087\", \"orcid\": \"https://orcid.org/0000-0003-0342-0927\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Furong Liu\", \"id\": \"https://openalex.org/A5067009892\", \"orcid\": \"https://orcid.org/0000-0001-8745-2883\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guofeng Xu\", \"id\": \"https://openalex.org/A5062325629\", \"orcid\": \"https://orcid.org/0000-0002-7689-7868\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acssuschemeng.5c02978",
+    "landing_title": "Dynamic Covalent and Ionic Bond Reorganization for Self-Adaptive Interphase Enhancing the Electrochemical Stability of Li6PS5Cl with Lithium Anode | ACS Sustainable Chemistry & Engineering",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acssuschemeng.5c02978.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308597213,
+    "actual_start_ms": 1773308606324,
+    "pacing_wait_ms": 9110,
+    "pacing_jitter_sec": 1.495
+  }
+}

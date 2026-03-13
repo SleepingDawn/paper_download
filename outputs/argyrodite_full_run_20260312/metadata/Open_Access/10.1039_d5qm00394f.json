@@ -1,0 +1,109 @@
+{
+  "doi": "10.1039/d5qm00394f",
+  "pdf_filename": "10.1039_d5qm00394f.pdf",
+  "json_filename": "10.1039_d5qm00394f.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_d5qm00394f.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4411276651",
+    "doi": "10.1039/d5qm00394f",
+    "title": "Sn-doped mixed-halide Li <sub>6</sub> PS <sub>5</sub> Cl <sub>0.5</sub> Br <sub>0.5</sub> argyrodite with enhanced chemical stability for all-solid-state batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Materials Chemistry Frontiers",
+      "id": "https://openalex.org/S2765048856",
+      "type": "journal",
+      "issn_l": "2052-1537",
+      "issn": [
+        "2052-1537"
+      ]
+    },
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.79397556,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/qm/d5qm00394f",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Yoon Jae Cho",
+    "authors_display": "Yoon Jae Cho; Jung Hwan Song; Ji Eun Wang; Do Kyung Kim; Dong Jun Kim",
+    "authors": [
+      {
+        "display_name": "Yoon Jae Cho",
+        "id": "https://openalex.org/A5023032588",
+        "orcid": "https://orcid.org/0000-0002-7231-4258",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jung Hwan Song",
+        "id": "https://openalex.org/A5110045454",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji Eun Wang",
+        "id": "https://openalex.org/A5035788673",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Do Kyung Kim",
+        "id": "https://openalex.org/A5100759185",
+        "orcid": "https://orcid.org/0000-0001-9092-9427",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong Jun Kim",
+        "id": "https://openalex.org/A5100669129",
+        "orcid": "https://orcid.org/0000-0002-5930-1364",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4411276651",
+    "doi": "10.1039/d5qm00394f",
+    "title": "Sn-doped mixed-halide Li <sub>6</sub> PS <sub>5</sub> Cl <sub>0.5</sub> Br <sub>0.5</sub> argyrodite with enhanced chemical stability for all-solid-state batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Materials Chemistry Frontiers",
+    "journal_id": "https://openalex.org/S2765048856",
+    "journal_type": "journal",
+    "journal_issn_l": "2052-1537",
+    "journal_issn_json": "[\"2052-1537\"]",
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.79397556,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/qm/d5qm00394f",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Yoon Jae Cho",
+    "authors_display": "Yoon Jae Cho; Jung Hwan Song; Ji Eun Wang; Do Kyung Kim; Dong Jun Kim",
+    "authors_json": "[{\"display_name\": \"Yoon Jae Cho\", \"id\": \"https://openalex.org/A5023032588\", \"orcid\": \"https://orcid.org/0000-0002-7231-4258\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Jung Hwan Song\", \"id\": \"https://openalex.org/A5110045454\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ji Eun Wang\", \"id\": \"https://openalex.org/A5035788673\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Do Kyung Kim\", \"id\": \"https://openalex.org/A5100759185\", \"orcid\": \"https://orcid.org/0000-0001-9092-9427\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong Jun Kim\", \"id\": \"https://openalex.org/A5100669129\", \"orcid\": \"https://orcid.org/0000-0002-5930-1364\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://doi.org/10.1039/d5qm00394f",
+    "landing_title": "새 탭",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773316441817,
+    "actual_start_ms": 1773316441819,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.587
+  }
+}

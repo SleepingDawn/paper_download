@@ -1,0 +1,159 @@
+{
+  "doi": "10.1002/aenm.202370162",
+  "pdf_filename": "10.1002_aenm.202370162.pdf",
+  "json_filename": "10.1002_aenm.202370162.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202370162.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4387977796",
+    "doi": "10.1002/aenm.202370162",
+    "title": "New Consideration of Degradation Accelerating of All‐Solid‐State Batteries under a Low‐Pressure Condition (Adv. Energy Mater. 40/2023)",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2023-10-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.45641637,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202370162",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Hyeon‐Ji Shin",
+    "authors_display": "Hyeon‐Ji Shin; Jun Tae Kim; A‐Yeon Kim; Namgyu Noh; Jungjae Park; Chang Reung Park; Seungho Yu; Hyoungchul Kim; Kyung Yoon Chung; Jong Min Yuk; Seung‐Taek Myung; Hun‐Gi Jung",
+    "authors": [
+      {
+        "display_name": "Hyeon‐Ji Shin",
+        "id": "https://openalex.org/A5059280023",
+        "orcid": "https://orcid.org/0000-0002-9885-9811",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jun Tae Kim",
+        "id": "https://openalex.org/A5100710222",
+        "orcid": "https://orcid.org/0000-0002-7725-3861",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "A‐Yeon Kim",
+        "id": "https://openalex.org/A5103090012",
+        "orcid": "https://orcid.org/0009-0000-1957-5347",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Namgyu Noh",
+        "id": "https://openalex.org/A5023168496",
+        "orcid": "https://orcid.org/0000-0002-0427-3757",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jungjae Park",
+        "id": "https://openalex.org/A5027802403",
+        "orcid": "https://orcid.org/0000-0002-9588-9425",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chang Reung Park",
+        "id": "https://openalex.org/A5028295935",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seungho Yu",
+        "id": "https://openalex.org/A5038742609",
+        "orcid": "https://orcid.org/0000-0003-3912-6463",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyoungchul Kim",
+        "id": "https://openalex.org/A5055060451",
+        "orcid": "https://orcid.org/0000-0003-3109-660X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung Yoon Chung",
+        "id": "https://openalex.org/A5078491552",
+        "orcid": "https://orcid.org/0000-0002-1273-746X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jong Min Yuk",
+        "id": "https://openalex.org/A5037303921",
+        "orcid": "https://orcid.org/0000-0002-4677-7363",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung‐Taek Myung",
+        "id": "https://openalex.org/A5073564197",
+        "orcid": "https://orcid.org/0000-0001-6888-5376",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hun‐Gi Jung",
+        "id": "https://openalex.org/A5045467177",
+        "orcid": "https://orcid.org/0000-0002-2162-2680",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4387977796",
+    "doi": "10.1002/aenm.202370162",
+    "title": "New Consideration of Degradation Accelerating of All‐Solid‐State Batteries under a Low‐Pressure Condition (Adv. Energy Mater. 40/2023)",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2023-10-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.45641637,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202370162",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Hyeon‐Ji Shin",
+    "authors_display": "Hyeon‐Ji Shin; Jun Tae Kim; A‐Yeon Kim; Namgyu Noh; Jungjae Park; Chang Reung Park; Seungho Yu; Hyoungchul Kim; Kyung Yoon Chung; Jong Min Yuk; Seung‐Taek Myung; Hun‐Gi Jung",
+    "authors_json": "[{\"display_name\": \"Hyeon‐Ji Shin\", \"id\": \"https://openalex.org/A5059280023\", \"orcid\": \"https://orcid.org/0000-0002-9885-9811\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Jun Tae Kim\", \"id\": \"https://openalex.org/A5100710222\", \"orcid\": \"https://orcid.org/0000-0002-7725-3861\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"A‐Yeon Kim\", \"id\": \"https://openalex.org/A5103090012\", \"orcid\": \"https://orcid.org/0009-0000-1957-5347\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Namgyu Noh\", \"id\": \"https://openalex.org/A5023168496\", \"orcid\": \"https://orcid.org/0000-0002-0427-3757\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jungjae Park\", \"id\": \"https://openalex.org/A5027802403\", \"orcid\": \"https://orcid.org/0000-0002-9588-9425\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chang Reung Park\", \"id\": \"https://openalex.org/A5028295935\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seungho Yu\", \"id\": \"https://openalex.org/A5038742609\", \"orcid\": \"https://orcid.org/0000-0003-3912-6463\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyoungchul Kim\", \"id\": \"https://openalex.org/A5055060451\", \"orcid\": \"https://orcid.org/0000-0003-3109-660X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung Yoon Chung\", \"id\": \"https://openalex.org/A5078491552\", \"orcid\": \"https://orcid.org/0000-0002-1273-746X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jong Min Yuk\", \"id\": \"https://openalex.org/A5037303921\", \"orcid\": \"https://orcid.org/0000-0002-4677-7363\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seung‐Taek Myung\", \"id\": \"https://openalex.org/A5073564197\", \"orcid\": \"https://orcid.org/0000-0001-6888-5376\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hun‐Gi Jung\", \"id\": \"https://openalex.org/A5045467177\", \"orcid\": \"https://orcid.org/0000-0002-2162-2680\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308886554,
+    "actual_start_ms": 1773308886555,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.04
+  }
+}

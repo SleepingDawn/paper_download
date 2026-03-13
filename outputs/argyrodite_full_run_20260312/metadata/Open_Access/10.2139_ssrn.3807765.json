@@ -1,0 +1,95 @@
+{
+  "doi": "10.2139/ssrn.3807765",
+  "pdf_filename": "10.2139_ssrn.3807765.pdf",
+  "json_filename": "10.2139_ssrn.3807765.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.3807765.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W3147117968",
+    "doi": "10.2139/ssrn.3807765",
+    "title": "High Ionic-Conducting Li-ion Argyrodites Synthesized Using a Simple and Economic Liquid-Phase Approach and Their Application in All Solid-State-Lithium Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2021-01-01",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.025482,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Yuvaraj Subramanian",
+    "authors_display": "Yuvaraj Subramanian; Rajesh Rajagopal; Kwang‐Sun Ryu",
+    "authors": [
+      {
+        "display_name": "Yuvaraj Subramanian",
+        "id": "https://openalex.org/A5104119459",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Rajesh Rajagopal",
+        "id": "https://openalex.org/A5034649463",
+        "orcid": "https://orcid.org/0000-0001-7009-4266",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kwang‐Sun Ryu",
+        "id": "https://openalex.org/A5032691935",
+        "orcid": "https://orcid.org/0000-0002-8758-0495",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3147117968",
+    "doi": "10.2139/ssrn.3807765",
+    "title": "High Ionic-Conducting Li-ion Argyrodites Synthesized Using a Simple and Economic Liquid-Phase Approach and Their Application in All Solid-State-Lithium Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2021-01-01",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.025482,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Yuvaraj Subramanian",
+    "authors_display": "Yuvaraj Subramanian; Rajesh Rajagopal; Kwang‐Sun Ryu",
+    "authors_json": "[{\"display_name\": \"Yuvaraj Subramanian\", \"id\": \"https://openalex.org/A5104119459\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Rajesh Rajagopal\", \"id\": \"https://openalex.org/A5034649463\", \"orcid\": \"https://orcid.org/0000-0001-7009-4266\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kwang‐Sun Ryu\", \"id\": \"https://openalex.org/A5032691935\", \"orcid\": \"https://orcid.org/0000-0002-8758-0495\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3807765&__cf_chl_rt_tk=1hxTzu1cyo0n92tDfCyo_O3ckNihXrtjozHs2SQGK5w-1773312343-1.0.1.1-69cP1H4t4toSwWH0NsphNLq1yc3vSEyUMTQkMFB6Le8",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.3807765.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773312322173,
+    "actual_start_ms": 1773312322174,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 0.803
+  }
+}

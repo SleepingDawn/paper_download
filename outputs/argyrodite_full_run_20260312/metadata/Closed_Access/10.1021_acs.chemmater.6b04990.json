@@ -1,0 +1,117 @@
+{
+  "doi": "10.1021/acs.chemmater.6b04990",
+  "pdf_filename": "10.1021_acs.chemmater.6b04990.pdf",
+  "json_filename": "10.1021_acs.chemmater.6b04990.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.chemmater.6b04990.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2604591970",
+    "doi": "10.1021/acs.chemmater.6b04990",
+    "title": "Interface Stability of Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl toward LiCoO<sub>2</sub>, LiNi<sub>1/3</sub>Co<sub>1/3</sub>Mn<sub>1/3</sub>O<sub>2</sub>, and LiMn<sub>2</sub>O<sub>4</sub> in Bulk All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2017-04-07",
+    "publication_year": 2017,
+    "work_type": "article",
+    "cited_by_count": 598,
+    "citation_normalized_percentile": 0.99671396,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Jérémie Auvergniot",
+    "authors_display": "Jérémie Auvergniot; Alice Cassel; Jean‐Bernard Ledeuil; Virginie Viallet; Vincent Seznéc; Rémi Dedryvère",
+    "authors": [
+      {
+        "display_name": "Jérémie Auvergniot",
+        "id": "https://openalex.org/A5107936939",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Alice Cassel",
+        "id": "https://openalex.org/A5038404902",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jean‐Bernard Ledeuil",
+        "id": "https://openalex.org/A5034112284",
+        "orcid": "https://orcid.org/0000-0002-7366-2190",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Virginie Viallet",
+        "id": "https://openalex.org/A5108853385",
+        "orcid": "https://orcid.org/0000-0002-3853-6287",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vincent Seznéc",
+        "id": "https://openalex.org/A5088541476",
+        "orcid": "https://orcid.org/0000-0001-5233-5943",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rémi Dedryvère",
+        "id": "https://openalex.org/A5079560240",
+        "orcid": "https://orcid.org/0000-0001-5125-640X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2604591970",
+    "doi": "10.1021/acs.chemmater.6b04990",
+    "title": "Interface Stability of Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl toward LiCoO<sub>2</sub>, LiNi<sub>1/3</sub>Co<sub>1/3</sub>Mn<sub>1/3</sub>O<sub>2</sub>, and LiMn<sub>2</sub>O<sub>4</sub> in Bulk All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2017-04-07",
+    "publication_year": 2017,
+    "work_type": "article",
+    "cited_by_count": 598,
+    "citation_normalized_percentile": 0.99671396,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Jérémie Auvergniot",
+    "authors_display": "Jérémie Auvergniot; Alice Cassel; Jean‐Bernard Ledeuil; Virginie Viallet; Vincent Seznéc; Rémi Dedryvère",
+    "authors_json": "[{\"display_name\": \"Jérémie Auvergniot\", \"id\": \"https://openalex.org/A5107936939\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Alice Cassel\", \"id\": \"https://openalex.org/A5038404902\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jean‐Bernard Ledeuil\", \"id\": \"https://openalex.org/A5034112284\", \"orcid\": \"https://orcid.org/0000-0002-7366-2190\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Virginie Viallet\", \"id\": \"https://openalex.org/A5108853385\", \"orcid\": \"https://orcid.org/0000-0002-3853-6287\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Vincent Seznéc\", \"id\": \"https://openalex.org/A5088541476\", \"orcid\": \"https://orcid.org/0000-0001-5233-5943\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rémi Dedryvère\", \"id\": \"https://openalex.org/A5079560240\", \"orcid\": \"https://orcid.org/0000-0001-5125-640X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301442572,
+    "actual_start_ms": 1773301444548,
+    "pacing_wait_ms": 1976,
+    "pacing_jitter_sec": 1.443
+  }
+}

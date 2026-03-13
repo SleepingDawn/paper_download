@@ -1,0 +1,109 @@
+{
+  "doi": "10.1021/acsaem.9b01794",
+  "pdf_filename": "10.1021_acsaem.9b01794.pdf",
+  "json_filename": "10.1021_acsaem.9b01794.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.9b01794.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2980592077",
+    "doi": "10.1021/acsaem.9b01794",
+    "title": "Changing the Static and Dynamic Lattice Effects for the Improvement of the Ionic Transport Properties within the Argyrodite Li <sub>6</sub> PS <sub> 5– <i>x</i> </sub> Se <sub> <i>x</i> </sub> I",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2019-10-15",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 73,
+    "citation_normalized_percentile": 0.96248717,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Roman Schlem",
+    "authors_display": "Roman Schlem; Michael Ghidiu; Sean P. Culver; Anna‐Lena Hansen; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Roman Schlem",
+        "id": "https://openalex.org/A5023303891",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michael Ghidiu",
+        "id": "https://openalex.org/A5015154762",
+        "orcid": "https://orcid.org/0000-0002-0599-9824",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sean P. Culver",
+        "id": "https://openalex.org/A5085137977",
+        "orcid": "https://orcid.org/0000-0002-4156-6487",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anna‐Lena Hansen",
+        "id": "https://openalex.org/A5090978433",
+        "orcid": "https://orcid.org/0000-0001-5806-9674",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2980592077",
+    "doi": "10.1021/acsaem.9b01794",
+    "title": "Changing the Static and Dynamic Lattice Effects for the Improvement of the Ionic Transport Properties within the Argyrodite Li <sub>6</sub> PS <sub> 5– <i>x</i> </sub> Se <sub> <i>x</i> </sub> I",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2019-10-15",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 73,
+    "citation_normalized_percentile": 0.96248717,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Roman Schlem",
+    "authors_display": "Roman Schlem; Michael Ghidiu; Sean P. Culver; Anna‐Lena Hansen; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Roman Schlem\", \"id\": \"https://openalex.org/A5023303891\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Michael Ghidiu\", \"id\": \"https://openalex.org/A5015154762\", \"orcid\": \"https://orcid.org/0000-0002-0599-9824\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sean P. Culver\", \"id\": \"https://openalex.org/A5085137977\", \"orcid\": \"https://orcid.org/0000-0002-4156-6487\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anna‐Lena Hansen\", \"id\": \"https://openalex.org/A5090978433\", \"orcid\": \"https://orcid.org/0000-0001-5806-9674\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301916941,
+    "actual_start_ms": 1773301919317,
+    "pacing_wait_ms": 2376,
+    "pacing_jitter_sec": 0.976
+  }
+}

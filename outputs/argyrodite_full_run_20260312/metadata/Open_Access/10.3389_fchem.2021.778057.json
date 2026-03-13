@@ -1,0 +1,102 @@
+{
+  "doi": "10.3389/fchem.2021.778057",
+  "pdf_filename": "10.3389_fchem.2021.778057.pdf",
+  "json_filename": "10.3389_fchem.2021.778057.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3389_fchem.2021.778057.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4200447915",
+    "doi": "10.3389/fchem.2021.778057",
+    "title": "Ionic and Electronic Conductivities of Lithium Argyrodite Li6PS5Cl Electrolytes Prepared via Wet Milling and Post-Annealing",
+    "publisher": "Frontiers Media",
+    "journal": {
+      "name": "Frontiers in Chemistry",
+      "id": "https://openalex.org/S2764970645",
+      "type": "journal",
+      "issn_l": "2296-2646",
+      "issn": [
+        "2296-2646"
+      ]
+    },
+    "publication_date": "2021-12-16",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.70355953,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Jae Min Lee",
+    "authors_display": "Jae Min Lee; Young Seon Park; Ji‐Woong Moon; Hae‐Jin Hwang",
+    "authors": [
+      {
+        "display_name": "Jae Min Lee",
+        "id": "https://openalex.org/A5100381277",
+        "orcid": "https://orcid.org/0000-0002-1781-4380",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young Seon Park",
+        "id": "https://openalex.org/A5076272379",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji‐Woong Moon",
+        "id": "https://openalex.org/A5104159336",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hae‐Jin Hwang",
+        "id": "https://openalex.org/A5069392804",
+        "orcid": "https://orcid.org/0000-0002-1174-9485",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4200447915",
+    "doi": "10.3389/fchem.2021.778057",
+    "title": "Ionic and Electronic Conductivities of Lithium Argyrodite Li6PS5Cl Electrolytes Prepared via Wet Milling and Post-Annealing",
+    "publisher": "Frontiers Media",
+    "journal": "Frontiers in Chemistry",
+    "journal_id": "https://openalex.org/S2764970645",
+    "journal_type": "journal",
+    "journal_issn_l": "2296-2646",
+    "journal_issn_json": "[\"2296-2646\"]",
+    "publication_date": "2021-12-16",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.70355953,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Jae Min Lee",
+    "authors_display": "Jae Min Lee; Young Seon Park; Ji‐Woong Moon; Hae‐Jin Hwang",
+    "authors_json": "[{\"display_name\": \"Jae Min Lee\", \"id\": \"https://openalex.org/A5100381277\", \"orcid\": \"https://orcid.org/0000-0002-1781-4380\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Young Seon Park\", \"id\": \"https://openalex.org/A5076272379\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ji‐Woong Moon\", \"id\": \"https://openalex.org/A5104159336\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hae‐Jin Hwang\", \"id\": \"https://openalex.org/A5069392804\", \"orcid\": \"https://orcid.org/0000-0002-1174-9485\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.frontiersin.org/journals/chemistry/articles/10.3389/fchem.2021.778057/full",
+    "landing_title": "Frontiers | Ionic and Electronic Conductivities of Lithium Argyrodite Li6PS5Cl Electrolytes Prepared via Wet Milling and Post-Annealing",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.3389_fchem.2021.778057.pdf",
+    "scheduler_publisher": "frontiers",
+    "scheduled_start_ms": 1773310667440,
+    "actual_start_ms": 1773310667440,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.241
+  }
+}

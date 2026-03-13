@@ -1,0 +1,137 @@
+{
+  "doi": "10.1021/acsenergylett.1c02756",
+  "pdf_filename": "10.1021_acsenergylett.1c02756.pdf",
+  "json_filename": "10.1021_acsenergylett.1c02756.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.1c02756.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4213280520",
+    "doi": "10.1021/acsenergylett.1c02756",
+    "title": "All-Solid-State Lithium Batteries: Li<sup>+</sup>-Conducting Ionomer Binder for Dry-Processed Composite Cathodes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2022-02-23",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 142,
+    "citation_normalized_percentile": 0.9926712,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Seung‐Bo Hong",
+    "authors_display": "Seung‐Bo Hong; Young‐Jun Lee; Un‐Hyuck Kim; Cheol Bak; Yong Min Lee; Woosuk Cho; Hoe Jin Hah; Yang‐Kook Sun; Dong‐Won Kim",
+    "authors": [
+      {
+        "display_name": "Seung‐Bo Hong",
+        "id": "https://openalex.org/A5006134666",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young‐Jun Lee",
+        "id": "https://openalex.org/A5109224195",
+        "orcid": "https://orcid.org/0000-0002-0870-6142",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Un‐Hyuck Kim",
+        "id": "https://openalex.org/A5063249497",
+        "orcid": "https://orcid.org/0000-0002-1644-9473",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cheol Bak",
+        "id": "https://openalex.org/A5034714271",
+        "orcid": "https://orcid.org/0000-0003-1150-4338",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong Min Lee",
+        "id": "https://openalex.org/A5100740899",
+        "orcid": "https://orcid.org/0000-0003-2002-2218",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Woosuk Cho",
+        "id": "https://openalex.org/A5065789071",
+        "orcid": "https://orcid.org/0000-0003-1715-325X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hoe Jin Hah",
+        "id": "https://openalex.org/A5088439715",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang‐Kook Sun",
+        "id": "https://openalex.org/A5043316802",
+        "orcid": "https://orcid.org/0000-0002-0117-0170",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Dong‐Won Kim",
+        "id": "https://openalex.org/A5100691394",
+        "orcid": "https://orcid.org/0000-0002-1735-0272",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4213280520",
+    "doi": "10.1021/acsenergylett.1c02756",
+    "title": "All-Solid-State Lithium Batteries: Li<sup>+</sup>-Conducting Ionomer Binder for Dry-Processed Composite Cathodes",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2022-02-23",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 142,
+    "citation_normalized_percentile": 0.9926712,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Seung‐Bo Hong",
+    "authors_display": "Seung‐Bo Hong; Young‐Jun Lee; Un‐Hyuck Kim; Cheol Bak; Yong Min Lee; Woosuk Cho; Hoe Jin Hah; Yang‐Kook Sun; Dong‐Won Kim",
+    "authors_json": "[{\"display_name\": \"Seung‐Bo Hong\", \"id\": \"https://openalex.org/A5006134666\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Young‐Jun Lee\", \"id\": \"https://openalex.org/A5109224195\", \"orcid\": \"https://orcid.org/0000-0002-0870-6142\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Un‐Hyuck Kim\", \"id\": \"https://openalex.org/A5063249497\", \"orcid\": \"https://orcid.org/0000-0002-1644-9473\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cheol Bak\", \"id\": \"https://openalex.org/A5034714271\", \"orcid\": \"https://orcid.org/0000-0003-1150-4338\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong Min Lee\", \"id\": \"https://openalex.org/A5100740899\", \"orcid\": \"https://orcid.org/0000-0003-2002-2218\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Woosuk Cho\", \"id\": \"https://openalex.org/A5065789071\", \"orcid\": \"https://orcid.org/0000-0003-1715-325X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hoe Jin Hah\", \"id\": \"https://openalex.org/A5088439715\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang‐Kook Sun\", \"id\": \"https://openalex.org/A5043316802\", \"orcid\": \"https://orcid.org/0000-0002-0117-0170\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Dong‐Won Kim\", \"id\": \"https://openalex.org/A5100691394\", \"orcid\": \"https://orcid.org/0000-0002-1735-0272\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301565771,
+    "actual_start_ms": 1773301567663,
+    "pacing_wait_ms": 1891,
+    "pacing_jitter_sec": 1.262
+  }
+}

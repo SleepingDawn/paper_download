@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.cej.2025.163406",
+  "pdf_filename": "10.1016_j.cej.2025.163406.pdf",
+  "json_filename": "10.1016_j.cej.2025.163406.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.cej.2025.163406.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4410083562",
+    "doi": "10.1016/j.cej.2025.163406",
+    "title": "Surface engineering of argyrodite-Li6PS5Cl solid electrolytes with a polyborosiloxane copolymer for all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chemical Engineering Journal",
+      "id": "https://openalex.org/S149937609",
+      "type": "journal",
+      "issn_l": "1385-8947",
+      "issn": [
+        "1385-8947",
+        "1873-3212"
+      ]
+    },
+    "publication_date": "2025-05-05",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.93635806,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Yoojin Hong",
+    "authors_display": "Yoojin Hong; Jae Yup Jung; Yun Seong Byeon; Sung Joon Park; Ki Jae Kim; Woosuk Cho; Min‐Sik Park",
+    "authors": [
+      {
+        "display_name": "Yoojin Hong",
+        "id": "https://openalex.org/A5100874876",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jae Yup Jung",
+        "id": "https://openalex.org/A5104134495",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yun Seong Byeon",
+        "id": "https://openalex.org/A5084264004",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sung Joon Park",
+        "id": "https://openalex.org/A5100720981",
+        "orcid": "https://orcid.org/0000-0001-5610-6195",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ki Jae Kim",
+        "id": "https://openalex.org/A5074764555",
+        "orcid": "https://orcid.org/0000-0002-2166-7467",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Woosuk Cho",
+        "id": "https://openalex.org/A5065789071",
+        "orcid": "https://orcid.org/0000-0003-1715-325X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Min‐Sik Park",
+        "id": "https://openalex.org/A5100736623",
+        "orcid": "https://orcid.org/0000-0002-3490-2999",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4410083562",
+    "doi": "10.1016/j.cej.2025.163406",
+    "title": "Surface engineering of argyrodite-Li6PS5Cl solid electrolytes with a polyborosiloxane copolymer for all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Chemical Engineering Journal",
+    "journal_id": "https://openalex.org/S149937609",
+    "journal_type": "journal",
+    "journal_issn_l": "1385-8947",
+    "journal_issn_json": "[\"1385-8947\", \"1873-3212\"]",
+    "publication_date": "2025-05-05",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.93635806,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Yoojin Hong",
+    "authors_display": "Yoojin Hong; Jae Yup Jung; Yun Seong Byeon; Sung Joon Park; Ki Jae Kim; Woosuk Cho; Min‐Sik Park",
+    "authors_json": "[{\"display_name\": \"Yoojin Hong\", \"id\": \"https://openalex.org/A5100874876\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jae Yup Jung\", \"id\": \"https://openalex.org/A5104134495\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yun Seong Byeon\", \"id\": \"https://openalex.org/A5084264004\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sung Joon Park\", \"id\": \"https://openalex.org/A5100720981\", \"orcid\": \"https://orcid.org/0000-0001-5610-6195\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ki Jae Kim\", \"id\": \"https://openalex.org/A5074764555\", \"orcid\": \"https://orcid.org/0000-0002-2166-7467\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Woosuk Cho\", \"id\": \"https://openalex.org/A5065789071\", \"orcid\": \"https://orcid.org/0000-0003-1715-325X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Min‐Sik Park\", \"id\": \"https://openalex.org/A5100736623\", \"orcid\": \"https://orcid.org/0000-0002-3490-2999\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S1385894725042408?via%3Dihub",
+    "landing_title": "Surface engineering of argyrodite-Li6PS5Cl solid electrolytes with a polyborosiloxane copolymer for all-solid-state batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773306390062,
+    "actual_start_ms": 1773306429532,
+    "pacing_wait_ms": 39469,
+    "pacing_jitter_sec": 0.869
+  }
+}

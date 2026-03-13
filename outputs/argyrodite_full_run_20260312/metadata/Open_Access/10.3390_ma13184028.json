@@ -1,0 +1,109 @@
+{
+  "doi": "10.3390/ma13184028",
+  "pdf_filename": "10.3390_ma13184028.pdf",
+  "json_filename": "10.3390_ma13184028.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_ma13184028.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3084143093",
+    "doi": "10.3390/ma13184028",
+    "title": "Solid-State Li-Ion Batteries Operating at Room Temperature Using New Borohydride Argyrodite Electrolytes",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Materials",
+      "id": "https://openalex.org/S18714766",
+      "type": "journal",
+      "issn_l": "1996-1944",
+      "issn": [
+        "1996-1944"
+      ]
+    },
+    "publication_date": "2020-09-11",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.78288208,
+    "pdf_url": "https://www.mdpi.com/1996-1944/13/18/4028/pdf?version=1599816266",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Anh Ha Dao",
+    "authors_display": "Anh Ha Dao; Pedro López-Aranguren; Junxian Zhang; Fermín Cuevas; Michel Latroche",
+    "authors": [
+      {
+        "display_name": "Anh Ha Dao",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0001-6669-0233",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Pedro López-Aranguren",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0001-6912-2055",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junxian Zhang",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fermín Cuevas",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0002-9055-5880",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michel Latroche",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0002-8677-8280",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3084143093",
+    "doi": "10.3390/ma13184028",
+    "title": "Solid-State Li-Ion Batteries Operating at Room Temperature Using New Borohydride Argyrodite Electrolytes",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Materials",
+    "journal_id": "https://openalex.org/S18714766",
+    "journal_type": "journal",
+    "journal_issn_l": "1996-1944",
+    "journal_issn_json": "[\"1996-1944\"]",
+    "publication_date": "2020-09-11",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.78288208,
+    "pdf_url": "https://www.mdpi.com/1996-1944/13/18/4028/pdf?version=1599816266",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Anh Ha Dao",
+    "authors_display": "Anh Ha Dao; Pedro López-Aranguren; Junxian Zhang; Fermín Cuevas; Michel Latroche",
+    "authors_json": "[{\"display_name\": \"Anh Ha Dao\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0001-6669-0233\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Pedro López-Aranguren\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0001-6912-2055\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junxian Zhang\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fermín Cuevas\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0002-9055-5880\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Michel Latroche\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0002-8677-8280\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773309404729,
+    "actual_start_ms": 1773309406238,
+    "pacing_wait_ms": 1509,
+    "pacing_jitter_sec": 1.529
+  }
+}

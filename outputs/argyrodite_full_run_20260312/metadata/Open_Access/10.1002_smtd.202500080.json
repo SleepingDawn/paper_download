@@ -1,0 +1,130 @@
+{
+  "doi": "10.1002/smtd.202500080",
+  "pdf_filename": "10.1002_smtd.202500080.pdf",
+  "json_filename": "10.1002_smtd.202500080.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_smtd.202500080.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409811487",
+    "doi": "10.1002/smtd.202500080",
+    "title": "Degradation Processes in Positive Electrode Composites for All‐Solid‐State Lithium‐Ion Batteries Visualized by Scanning Spreading Resistance Microscopy",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small Methods",
+      "id": "https://openalex.org/S4210232622",
+      "type": "journal",
+      "issn_l": "2366-9608",
+      "issn": [
+        "2366-9608"
+      ]
+    },
+    "publication_date": "2025-04-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.886857,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smtd.202500080",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Hirotada Gamo",
+    "authors_display": "Hirotada Gamo; Yasushi Maeda; Kentaro Kuratani; Yuji Yamagishi; Tetsu Kiyobayashi; Zyun Siroma; Nobuhiko Takeichi; Hikaru Sano",
+    "authors": [
+      {
+        "display_name": "Hirotada Gamo",
+        "id": "https://openalex.org/A5003435028",
+        "orcid": "https://orcid.org/0000-0002-5817-9985",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yasushi Maeda",
+        "id": "https://openalex.org/A5043693226",
+        "orcid": "https://orcid.org/0000-0002-6190-9627",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Kentaro Kuratani",
+        "id": "https://openalex.org/A5087500856",
+        "orcid": "https://orcid.org/0000-0001-8445-8032",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuji Yamagishi",
+        "id": "https://openalex.org/A5090803267",
+        "orcid": "https://orcid.org/0000-0001-6269-2426",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tetsu Kiyobayashi",
+        "id": "https://openalex.org/A5071961086",
+        "orcid": "https://orcid.org/0000-0001-8842-573X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zyun Siroma",
+        "id": "https://openalex.org/A5086224758",
+        "orcid": "https://orcid.org/0000-0002-3237-4643",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nobuhiko Takeichi",
+        "id": "https://openalex.org/A5009695097",
+        "orcid": "https://orcid.org/0000-0002-3272-1860",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hikaru Sano",
+        "id": "https://openalex.org/A5002686051",
+        "orcid": "https://orcid.org/0000-0002-7557-0767",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409811487",
+    "doi": "10.1002/smtd.202500080",
+    "title": "Degradation Processes in Positive Electrode Composites for All‐Solid‐State Lithium‐Ion Batteries Visualized by Scanning Spreading Resistance Microscopy",
+    "publisher": "Wiley",
+    "journal": "Small Methods",
+    "journal_id": "https://openalex.org/S4210232622",
+    "journal_type": "journal",
+    "journal_issn_l": "2366-9608",
+    "journal_issn_json": "[\"2366-9608\"]",
+    "publication_date": "2025-04-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.886857,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smtd.202500080",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Hirotada Gamo",
+    "authors_display": "Hirotada Gamo; Yasushi Maeda; Kentaro Kuratani; Yuji Yamagishi; Tetsu Kiyobayashi; Zyun Siroma; Nobuhiko Takeichi; Hikaru Sano",
+    "authors_json": "[{\"display_name\": \"Hirotada Gamo\", \"id\": \"https://openalex.org/A5003435028\", \"orcid\": \"https://orcid.org/0000-0002-5817-9985\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Yasushi Maeda\", \"id\": \"https://openalex.org/A5043693226\", \"orcid\": \"https://orcid.org/0000-0002-6190-9627\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Kentaro Kuratani\", \"id\": \"https://openalex.org/A5087500856\", \"orcid\": \"https://orcid.org/0000-0001-8445-8032\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuji Yamagishi\", \"id\": \"https://openalex.org/A5090803267\", \"orcid\": \"https://orcid.org/0000-0001-6269-2426\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tetsu Kiyobayashi\", \"id\": \"https://openalex.org/A5071961086\", \"orcid\": \"https://orcid.org/0000-0001-8842-573X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zyun Siroma\", \"id\": \"https://openalex.org/A5086224758\", \"orcid\": \"https://orcid.org/0000-0002-3237-4643\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nobuhiko Takeichi\", \"id\": \"https://openalex.org/A5009695097\", \"orcid\": \"https://orcid.org/0000-0002-3272-1860\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hikaru Sano\", \"id\": \"https://openalex.org/A5002686051\", \"orcid\": \"https://orcid.org/0000-0002-7557-0767\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773307646482,
+    "actual_start_ms": 1773307646482,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.795
+  }
+}

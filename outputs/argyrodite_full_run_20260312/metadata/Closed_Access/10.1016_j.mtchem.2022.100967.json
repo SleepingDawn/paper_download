@@ -1,0 +1,116 @@
+{
+  "doi": "10.1016/j.mtchem.2022.100967",
+  "pdf_filename": "10.1016_j.mtchem.2022.100967.pdf",
+  "json_filename": "10.1016_j.mtchem.2022.100967.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.mtchem.2022.100967.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4281852453",
+    "doi": "10.1016/j.mtchem.2022.100967",
+    "title": "Graphene fluoride as a conductive agent for Li-argyrodite electrolyte containing all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Materials Today Chemistry",
+      "id": "https://openalex.org/S2898120712",
+      "type": "journal",
+      "issn_l": "2468-5194",
+      "issn": [
+        "2468-5194"
+      ]
+    },
+    "publication_date": "2022-05-30",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.72431968,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Xinchen Dai",
+    "authors_display": "Xinchen Dai; Jung‐Hoon Song; J.E. Wang; X. Chen; Dowan Kim; Dong Jun Kim",
+    "authors": [
+      {
+        "display_name": "Xinchen Dai",
+        "id": "https://openalex.org/A5106717005",
+        "orcid": "https://orcid.org/0000-0003-0307-0904",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jung‐Hoon Song",
+        "id": "https://openalex.org/A5103139226",
+        "orcid": "https://orcid.org/0000-0003-1999-8117",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J.E. Wang",
+        "id": "https://openalex.org/A5084363013",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "X. Chen",
+        "id": "https://openalex.org/A5086450470",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Dowan Kim",
+        "id": "https://openalex.org/A5032253972",
+        "orcid": "https://orcid.org/0009-0005-0015-9526",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Dong Jun Kim",
+        "id": "https://openalex.org/A5100669129",
+        "orcid": "https://orcid.org/0000-0002-5930-1364",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4281852453",
+    "doi": "10.1016/j.mtchem.2022.100967",
+    "title": "Graphene fluoride as a conductive agent for Li-argyrodite electrolyte containing all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Materials Today Chemistry",
+    "journal_id": "https://openalex.org/S2898120712",
+    "journal_type": "journal",
+    "journal_issn_l": "2468-5194",
+    "journal_issn_json": "[\"2468-5194\"]",
+    "publication_date": "2022-05-30",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.72431968,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Xinchen Dai",
+    "authors_display": "Xinchen Dai; Jung‐Hoon Song; J.E. Wang; X. Chen; Dowan Kim; Dong Jun Kim",
+    "authors_json": "[{\"display_name\": \"Xinchen Dai\", \"id\": \"https://openalex.org/A5106717005\", \"orcid\": \"https://orcid.org/0000-0003-0307-0904\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jung‐Hoon Song\", \"id\": \"https://openalex.org/A5103139226\", \"orcid\": \"https://orcid.org/0000-0003-1999-8117\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J.E. Wang\", \"id\": \"https://openalex.org/A5084363013\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"X. Chen\", \"id\": \"https://openalex.org/A5086450470\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Dowan Kim\", \"id\": \"https://openalex.org/A5032253972\", \"orcid\": \"https://orcid.org/0009-0005-0015-9526\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Dong Jun Kim\", \"id\": \"https://openalex.org/A5100669129\", \"orcid\": \"https://orcid.org/0000-0002-5930-1364\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2468519422001963?via%3Dihub",
+    "landing_title": "Graphene fluoride as a conductive agent for Li-argyrodite electrolyte containing all-solid-state batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773304583212,
+    "actual_start_ms": 1773304630473,
+    "pacing_wait_ms": 47260,
+    "pacing_jitter_sec": 1.026
+  }
+}

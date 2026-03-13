@@ -1,0 +1,149 @@
+{
+  "doi": "10.1021/acsenergylett.5c00508.s001",
+  "pdf_filename": "10.1021_acsenergylett.5c00508.s001.pdf",
+  "json_filename": "10.1021_acsenergylett.5c00508.s001.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsenergylett.5c00508.s001.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7110829773",
+    "doi": "10.1021/acsenergylett.5c00508.s001",
+    "title": "The Role ofChlorine Content in H<sub>2</sub>O Adsorptionand Reactions on Argyrodite Sulfide Electrolytes",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": {
+      "name": "Figshare",
+      "id": "https://openalex.org/S4377196282",
+      "type": "repository",
+      "issn_l": null,
+      "issn": []
+    },
+    "publication_date": "2025-05-05",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.52905178,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Guoyao Li (10678172)",
+    "authors_display": "Guoyao Li (10678172); Hongpeng Zheng (17299177); Yu Yang (83671); Danhui Zhao (8620410); Yeqing Shen (21245592); Junduo Chen (21245595); Shaoping Wu (6622); Hong Zhu (109912); Yong Yang (63842); Hezhou Liu (1777636); Huanan Duan (1777630)",
+    "authors": [
+      {
+        "display_name": "Guoyao Li (10678172)",
+        "id": null,
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hongpeng Zheng (17299177)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Yang (83671)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Danhui Zhao (8620410)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yeqing Shen (21245592)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junduo Chen (21245595)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shaoping Wu (6622)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Zhu (109912)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong Yang (63842)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hezhou Liu (1777636)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Huanan Duan (1777630)",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7110829773",
+    "doi": "10.1021/acsenergylett.5c00508.s001",
+    "title": "The Role ofChlorine Content in H<sub>2</sub>O Adsorptionand Reactions on Argyrodite Sulfide Electrolytes",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": "Figshare",
+    "journal_id": "https://openalex.org/S4377196282",
+    "journal_type": "repository",
+    "journal_issn_l": null,
+    "journal_issn_json": "[]",
+    "publication_date": "2025-05-05",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.52905178,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Guoyao Li (10678172)",
+    "authors_display": "Guoyao Li (10678172); Hongpeng Zheng (17299177); Yu Yang (83671); Danhui Zhao (8620410); Yeqing Shen (21245592); Junduo Chen (21245595); Shaoping Wu (6622); Hong Zhu (109912); Yong Yang (63842); Hezhou Liu (1777636); Huanan Duan (1777630)",
+    "authors_json": "[{\"display_name\": \"Guoyao Li (10678172)\", \"id\": null, \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hongpeng Zheng (17299177)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Yang (83671)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Danhui Zhao (8620410)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yeqing Shen (21245592)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junduo Chen (21245595)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shaoping Wu (6622)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Zhu (109912)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong Yang (63842)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hezhou Liu (1777636)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Huanan Duan (1777630)\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "direct_pdf_handoff",
+    "landing_url": "https://doi.org/10.1021/acsenergylett.5c00508.s001",
+    "landing_title": "새 탭",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsenergylett.5c00508.s001.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773309214413,
+    "actual_start_ms": 1773309222736,
+    "pacing_wait_ms": 8323,
+    "pacing_jitter_sec": 1.245
+  }
+}

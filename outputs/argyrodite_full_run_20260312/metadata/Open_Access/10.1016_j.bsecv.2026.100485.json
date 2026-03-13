@@ -1,0 +1,103 @@
+{
+  "doi": "10.1016/j.bsecv.2026.100485",
+  "pdf_filename": "10.1016_j.bsecv.2026.100485.pdf",
+  "json_filename": "10.1016_j.bsecv.2026.100485.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.bsecv.2026.100485.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7131422549",
+    "doi": "10.1016/j.bsecv.2026.100485",
+    "title": "Effect of solvent and binder on fabrication of thin layers of argyrodite-type sulfide solid electrolyte",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Boletín de la Sociedad Española de Cerámica y Vidrio",
+      "id": "https://openalex.org/S37073569",
+      "type": "journal",
+      "issn_l": "0366-3175",
+      "issn": [
+        "0366-3175",
+        "2173-0431"
+      ]
+    },
+    "publication_date": "2026-02-25",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.92482348,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Wakana Kobayashi",
+    "authors_display": "Wakana Kobayashi; Nataly Carolina Rosero-Navarro; Akira Miura; Kiyoharu Tadanaga",
+    "authors": [
+      {
+        "display_name": "Wakana Kobayashi",
+        "id": "https://openalex.org/A5005256106",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nataly Carolina Rosero-Navarro",
+        "id": "https://openalex.org/A5126803975",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Akira Miura",
+        "id": "https://openalex.org/A5030838565",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kiyoharu Tadanaga",
+        "id": "https://openalex.org/A5070611167",
+        "orcid": "https://orcid.org/0000-0002-3319-4353",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7131422549",
+    "doi": "10.1016/j.bsecv.2026.100485",
+    "title": "Effect of solvent and binder on fabrication of thin layers of argyrodite-type sulfide solid electrolyte",
+    "publisher": "Elsevier BV",
+    "journal": "Boletín de la Sociedad Española de Cerámica y Vidrio",
+    "journal_id": "https://openalex.org/S37073569",
+    "journal_type": "journal",
+    "journal_issn_l": "0366-3175",
+    "journal_issn_json": "[\"0366-3175\", \"2173-0431\"]",
+    "publication_date": "2026-02-25",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.92482348,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Wakana Kobayashi",
+    "authors_display": "Wakana Kobayashi; Nataly Carolina Rosero-Navarro; Akira Miura; Kiyoharu Tadanaga",
+    "authors_json": "[{\"display_name\": \"Wakana Kobayashi\", \"id\": \"https://openalex.org/A5005256106\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Nataly Carolina Rosero-Navarro\", \"id\": \"https://openalex.org/A5126803975\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Akira Miura\", \"id\": \"https://openalex.org/A5030838565\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kiyoharu Tadanaga\", \"id\": \"https://openalex.org/A5070611167\", \"orcid\": \"https://orcid.org/0000-0002-3319-4353\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S0366317526000026?via%3Dihub",
+    "landing_title": "Effect of solvent and binder on fabrication of thin layers of argyrodite-type sulfide solid electrolyte - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773310596553,
+    "actual_start_ms": 1773310596554,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.27
+  }
+}

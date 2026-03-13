@@ -1,0 +1,102 @@
+{
+  "doi": "10.1021/acsenergylett.2c02443",
+  "pdf_filename": "10.1021_acsenergylett.2c02443.pdf",
+  "json_filename": "10.1021_acsenergylett.2c02443.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.2c02443.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4311703351",
+    "doi": "10.1021/acsenergylett.2c02443",
+    "title": "Interphases and Electrode Crosstalk Dictate the Thermal Stability of Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2022-12-06",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 64,
+    "citation_normalized_percentile": 0.96742718,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Bairav S. Vishnugopi",
+    "authors_display": "Bairav S. Vishnugopi; Md Toukir Hasan; Hanwei Zhou; Partha P. Mukherjee",
+    "authors": [
+      {
+        "display_name": "Bairav S. Vishnugopi",
+        "id": "https://openalex.org/A5011168368",
+        "orcid": "https://orcid.org/0009-0002-6357-9358",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Md Toukir Hasan",
+        "id": "https://openalex.org/A5039464103",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hanwei Zhou",
+        "id": "https://openalex.org/A5050736839",
+        "orcid": "https://orcid.org/0000-0002-5449-1103",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Partha P. Mukherjee",
+        "id": "https://openalex.org/A5058780839",
+        "orcid": "https://orcid.org/0000-0001-7900-7261",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4311703351",
+    "doi": "10.1021/acsenergylett.2c02443",
+    "title": "Interphases and Electrode Crosstalk Dictate the Thermal Stability of Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2022-12-06",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 64,
+    "citation_normalized_percentile": 0.96742718,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Bairav S. Vishnugopi",
+    "authors_display": "Bairav S. Vishnugopi; Md Toukir Hasan; Hanwei Zhou; Partha P. Mukherjee",
+    "authors_json": "[{\"display_name\": \"Bairav S. Vishnugopi\", \"id\": \"https://openalex.org/A5011168368\", \"orcid\": \"https://orcid.org/0009-0002-6357-9358\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Md Toukir Hasan\", \"id\": \"https://openalex.org/A5039464103\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hanwei Zhou\", \"id\": \"https://openalex.org/A5050736839\", \"orcid\": \"https://orcid.org/0000-0002-5449-1103\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Partha P. Mukherjee\", \"id\": \"https://openalex.org/A5058780839\", \"orcid\": \"https://orcid.org/0000-0001-7900-7261\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302000027,
+    "actual_start_ms": 1773302001526,
+    "pacing_wait_ms": 1499,
+    "pacing_jitter_sec": 0.947
+  }
+}

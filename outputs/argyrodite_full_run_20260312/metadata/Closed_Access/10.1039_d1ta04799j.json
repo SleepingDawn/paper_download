@@ -1,0 +1,152 @@
+{
+  "doi": "10.1039/d1ta04799j",
+  "pdf_filename": "10.1039_d1ta04799j.pdf",
+  "json_filename": "10.1039_d1ta04799j.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d1ta04799j.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3188153253",
+    "doi": "10.1039/d1ta04799j",
+    "title": "Critical role of zeolites as H<sub>2</sub>S scavengers in argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl solid electrolytes for all-solid-state batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2021-01-01",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 54,
+    "citation_normalized_percentile": 0.93028178,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Donggun Lee",
+    "authors_display": "Donggun Lee; Kern Ho Park; So Yeun Kim; Jae Yup Jung; Wonrak Lee; Kyungsu Kim; Goojin Jeong; Ji-Sang Yu; Jungkyu Choi; Min‐Sik Park; Woosuk Cho",
+    "authors": [
+      {
+        "display_name": "Donggun Lee",
+        "id": "https://openalex.org/A5101912606",
+        "orcid": "https://orcid.org/0000-0001-5881-8946",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kern Ho Park",
+        "id": "https://openalex.org/A5091485561",
+        "orcid": "https://orcid.org/0000-0002-0087-7625",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "So Yeun Kim",
+        "id": "https://openalex.org/A5111984117",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jae Yup Jung",
+        "id": "https://openalex.org/A5104134495",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wonrak Lee",
+        "id": "https://openalex.org/A5060148190",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyungsu Kim",
+        "id": "https://openalex.org/A5000349069",
+        "orcid": "https://orcid.org/0000-0001-6622-6545",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Goojin Jeong",
+        "id": "https://openalex.org/A5038473555",
+        "orcid": "https://orcid.org/0000-0002-4946-5664",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji-Sang Yu",
+        "id": "https://openalex.org/A5109797490",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jungkyu Choi",
+        "id": "https://openalex.org/A5067483266",
+        "orcid": "https://orcid.org/0000-0003-1137-4799",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Min‐Sik Park",
+        "id": "https://openalex.org/A5100736623",
+        "orcid": "https://orcid.org/0000-0002-3490-2999",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Woosuk Cho",
+        "id": "https://openalex.org/A5065789071",
+        "orcid": "https://orcid.org/0000-0003-1715-325X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3188153253",
+    "doi": "10.1039/d1ta04799j",
+    "title": "Critical role of zeolites as H<sub>2</sub>S scavengers in argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl solid electrolytes for all-solid-state batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2021-01-01",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 54,
+    "citation_normalized_percentile": 0.93028178,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Donggun Lee",
+    "authors_display": "Donggun Lee; Kern Ho Park; So Yeun Kim; Jae Yup Jung; Wonrak Lee; Kyungsu Kim; Goojin Jeong; Ji-Sang Yu; Jungkyu Choi; Min‐Sik Park; Woosuk Cho",
+    "authors_json": "[{\"display_name\": \"Donggun Lee\", \"id\": \"https://openalex.org/A5101912606\", \"orcid\": \"https://orcid.org/0000-0001-5881-8946\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Kern Ho Park\", \"id\": \"https://openalex.org/A5091485561\", \"orcid\": \"https://orcid.org/0000-0002-0087-7625\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"So Yeun Kim\", \"id\": \"https://openalex.org/A5111984117\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jae Yup Jung\", \"id\": \"https://openalex.org/A5104134495\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wonrak Lee\", \"id\": \"https://openalex.org/A5060148190\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyungsu Kim\", \"id\": \"https://openalex.org/A5000349069\", \"orcid\": \"https://orcid.org/0000-0001-6622-6545\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Goojin Jeong\", \"id\": \"https://openalex.org/A5038473555\", \"orcid\": \"https://orcid.org/0000-0002-4946-5664\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ji-Sang Yu\", \"id\": \"https://openalex.org/A5109797490\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jungkyu Choi\", \"id\": \"https://openalex.org/A5067483266\", \"orcid\": \"https://orcid.org/0000-0003-1137-4799\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Min‐Sik Park\", \"id\": \"https://openalex.org/A5100736623\", \"orcid\": \"https://orcid.org/0000-0002-3490-2999\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Woosuk Cho\", \"id\": \"https://openalex.org/A5065789071\", \"orcid\": \"https://orcid.org/0000-0003-1715-325X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773307657926,
+    "actual_start_ms": 1773307657926,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.792
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "doi": "10.1021/acsenergylett.5c00508",
+  "pdf_filename": "10.1021_acsenergylett.5c00508.pdf",
+  "json_filename": "10.1021_acsenergylett.5c00508.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.5c00508.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4410089840",
+    "doi": "10.1021/acsenergylett.5c00508",
+    "title": "The Role of Chlorine Content in H<sub>2</sub>O Adsorption and Reactions on Argyrodite Sulfide Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2025-05-05",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.91075759,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Guoyao Li",
+    "authors_display": "Guoyao Li; Hongpeng Zheng; Yu Yang; Danhui Zhao; Yeqing Shen; J Chen; Shaoping Wu; Hong Zhu; Yong Yang; Hezhou Liu; Huanan Duan",
+    "authors": [
+      {
+        "display_name": "Guoyao Li",
+        "id": "https://openalex.org/A5039110448",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongpeng Zheng",
+        "id": "https://openalex.org/A5034078440",
+        "orcid": "https://orcid.org/0000-0002-8694-0081",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Yang",
+        "id": "https://openalex.org/A5100659238",
+        "orcid": "https://orcid.org/0000-0002-4518-3299",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Danhui Zhao",
+        "id": "https://openalex.org/A5108641355",
+        "orcid": "https://orcid.org/0009-0008-6864-0182",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yeqing Shen",
+        "id": "https://openalex.org/A5104339005",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J Chen",
+        "id": "https://openalex.org/A5011644118",
+        "orcid": "https://orcid.org/0000-0001-7692-657X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shaoping Wu",
+        "id": "https://openalex.org/A5104031327",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Zhu",
+        "id": "https://openalex.org/A5052109054",
+        "orcid": "https://orcid.org/0000-0001-7919-5661",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong Yang",
+        "id": "https://openalex.org/A5100402375",
+        "orcid": "https://orcid.org/0000-0002-9928-7165",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hezhou Liu",
+        "id": "https://openalex.org/A5036524122",
+        "orcid": "https://orcid.org/0000-0002-3521-1970",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Huanan Duan",
+        "id": "https://openalex.org/A5070856326",
+        "orcid": "https://orcid.org/0000-0003-3052-3905",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4410089840",
+    "doi": "10.1021/acsenergylett.5c00508",
+    "title": "The Role of Chlorine Content in H<sub>2</sub>O Adsorption and Reactions on Argyrodite Sulfide Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2025-05-05",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.91075759,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Guoyao Li",
+    "authors_display": "Guoyao Li; Hongpeng Zheng; Yu Yang; Danhui Zhao; Yeqing Shen; J Chen; Shaoping Wu; Hong Zhu; Yong Yang; Hezhou Liu; Huanan Duan",
+    "authors_json": "[{\"display_name\": \"Guoyao Li\", \"id\": \"https://openalex.org/A5039110448\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hongpeng Zheng\", \"id\": \"https://openalex.org/A5034078440\", \"orcid\": \"https://orcid.org/0000-0002-8694-0081\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Yang\", \"id\": \"https://openalex.org/A5100659238\", \"orcid\": \"https://orcid.org/0000-0002-4518-3299\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Danhui Zhao\", \"id\": \"https://openalex.org/A5108641355\", \"orcid\": \"https://orcid.org/0009-0008-6864-0182\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yeqing Shen\", \"id\": \"https://openalex.org/A5104339005\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J Chen\", \"id\": \"https://openalex.org/A5011644118\", \"orcid\": \"https://orcid.org/0000-0001-7692-657X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shaoping Wu\", \"id\": \"https://openalex.org/A5104031327\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Zhu\", \"id\": \"https://openalex.org/A5052109054\", \"orcid\": \"https://orcid.org/0000-0001-7919-5661\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong Yang\", \"id\": \"https://openalex.org/A5100402375\", \"orcid\": \"https://orcid.org/0000-0002-9928-7165\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hezhou Liu\", \"id\": \"https://openalex.org/A5036524122\", \"orcid\": \"https://orcid.org/0000-0002-3521-1970\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Huanan Duan\", \"id\": \"https://openalex.org/A5070856326\", \"orcid\": \"https://orcid.org/0000-0003-3052-3905\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.5c00508",
+    "landing_title": "The Role of Chlorine Content in H2O Adsorption and Reactions on Argyrodite Sulfide Electrolytes | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acsenergylett.5c00508.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773307080287,
+    "actual_start_ms": 1773307080288,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 0.906
+  }
+}

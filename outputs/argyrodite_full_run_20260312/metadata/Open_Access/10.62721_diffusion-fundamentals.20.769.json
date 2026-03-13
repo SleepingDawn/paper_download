@@ -1,0 +1,102 @@
+{
+  "doi": "10.62721/diffusion-fundamentals.20.769",
+  "pdf_filename": "10.62721_diffusion-fundamentals.20.769.pdf",
+  "json_filename": "10.62721_diffusion-fundamentals.20.769.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.62721_diffusion-fundamentals.20.769.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3144030933",
+    "doi": "10.62721/diffusion-fundamentals.20.769",
+    "title": "Extreme mobility: low-temperature NMR probes highly diffusive Li+ ions in argyrodite-type Li6PSe5Cl and Li6PS5Br",
+    "publisher": "Diffusion fundamentals.",
+    "journal": {
+      "name": "Diffusion fundamentals.",
+      "id": "https://openalex.org/S4404670297",
+      "type": "journal",
+      "issn_l": "1862-4138",
+      "issn": [
+        "1862-4138"
+      ]
+    },
+    "publication_date": "2013-12-31",
+    "publication_year": 2013,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.36621314,
+    "pdf_url": "https://diffusion.publia.org/diffusion/article/download/769/766",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Viktor Epp",
+    "authors_display": "Viktor Epp; Özgül Gün; Hans‐Jörg Deiseroth; Martin Wilkening",
+    "authors": [
+      {
+        "display_name": "Viktor Epp",
+        "id": "https://openalex.org/A5103971254",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Özgül Gün",
+        "id": "https://openalex.org/A5036415905",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hans‐Jörg Deiseroth",
+        "id": "https://openalex.org/A5110776794",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Wilkening",
+        "id": "https://openalex.org/A5024063649",
+        "orcid": "https://orcid.org/0000-0001-9706-4892",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3144030933",
+    "doi": "10.62721/diffusion-fundamentals.20.769",
+    "title": "Extreme mobility: low-temperature NMR probes highly diffusive Li+ ions in argyrodite-type Li6PSe5Cl and Li6PS5Br",
+    "publisher": "Diffusion fundamentals.",
+    "journal": "Diffusion fundamentals.",
+    "journal_id": "https://openalex.org/S4404670297",
+    "journal_type": "journal",
+    "journal_issn_l": "1862-4138",
+    "journal_issn_json": "[\"1862-4138\"]",
+    "publication_date": "2013-12-31",
+    "publication_year": 2013,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.36621314,
+    "pdf_url": "https://diffusion.publia.org/diffusion/article/download/769/766",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Viktor Epp",
+    "authors_display": "Viktor Epp; Özgül Gün; Hans‐Jörg Deiseroth; Martin Wilkening",
+    "authors_json": "[{\"display_name\": \"Viktor Epp\", \"id\": \"https://openalex.org/A5103971254\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Özgül Gün\", \"id\": \"https://openalex.org/A5036415905\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hans‐Jörg Deiseroth\", \"id\": \"https://openalex.org/A5110776794\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Martin Wilkening\", \"id\": \"https://openalex.org/A5024063649\", \"orcid\": \"https://orcid.org/0000-0001-9706-4892\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.62721",
+    "scheduled_start_ms": 1773311247390,
+    "actual_start_ms": 1773311248183,
+    "pacing_wait_ms": 793,
+    "pacing_jitter_sec": 1.743
+  }
+}

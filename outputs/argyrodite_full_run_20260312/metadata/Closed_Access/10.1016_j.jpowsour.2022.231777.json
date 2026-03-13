@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.jpowsour.2022.231777",
+  "pdf_filename": "10.1016_j.jpowsour.2022.231777.pdf",
+  "json_filename": "10.1016_j.jpowsour.2022.231777.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.jpowsour.2022.231777.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4283386306",
+    "doi": "10.1016/j.jpowsour.2022.231777",
+    "title": "Li6PS5Cl-based composite electrolyte reinforced with high-strength polyester fibers for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Power Sources",
+      "id": "https://openalex.org/S177147899",
+      "type": "journal",
+      "issn_l": "0378-7753",
+      "issn": [
+        "0378-7753",
+        "1873-2755"
+      ]
+    },
+    "publication_date": "2022-06-22",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 30,
+    "citation_normalized_percentile": 0.90664595,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Si-Eun Lee",
+    "authors_display": "Si-Eun Lee; Hui‐Tae Sim; Young‐Jun Lee; Seung‐Bo Hong; Kyung Yoon Chung; Hun‐Gi Jung; Dong‐Won Kim",
+    "authors": [
+      {
+        "display_name": "Si-Eun Lee",
+        "id": "https://openalex.org/A5044175513",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hui‐Tae Sim",
+        "id": "https://openalex.org/A5008817800",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young‐Jun Lee",
+        "id": "https://openalex.org/A5109224195",
+        "orcid": "https://orcid.org/0000-0002-0870-6142",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung‐Bo Hong",
+        "id": "https://openalex.org/A5006134666",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung Yoon Chung",
+        "id": "https://openalex.org/A5078491552",
+        "orcid": "https://orcid.org/0000-0002-1273-746X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hun‐Gi Jung",
+        "id": "https://openalex.org/A5045467177",
+        "orcid": "https://orcid.org/0000-0002-2162-2680",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Won Kim",
+        "id": "https://openalex.org/A5100691394",
+        "orcid": "https://orcid.org/0000-0002-1735-0272",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4283386306",
+    "doi": "10.1016/j.jpowsour.2022.231777",
+    "title": "Li6PS5Cl-based composite electrolyte reinforced with high-strength polyester fibers for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Power Sources",
+    "journal_id": "https://openalex.org/S177147899",
+    "journal_type": "journal",
+    "journal_issn_l": "0378-7753",
+    "journal_issn_json": "[\"0378-7753\", \"1873-2755\"]",
+    "publication_date": "2022-06-22",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 30,
+    "citation_normalized_percentile": 0.90664595,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Si-Eun Lee",
+    "authors_display": "Si-Eun Lee; Hui‐Tae Sim; Young‐Jun Lee; Seung‐Bo Hong; Kyung Yoon Chung; Hun‐Gi Jung; Dong‐Won Kim",
+    "authors_json": "[{\"display_name\": \"Si-Eun Lee\", \"id\": \"https://openalex.org/A5044175513\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hui‐Tae Sim\", \"id\": \"https://openalex.org/A5008817800\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young‐Jun Lee\", \"id\": \"https://openalex.org/A5109224195\", \"orcid\": \"https://orcid.org/0000-0002-0870-6142\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seung‐Bo Hong\", \"id\": \"https://openalex.org/A5006134666\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung Yoon Chung\", \"id\": \"https://openalex.org/A5078491552\", \"orcid\": \"https://orcid.org/0000-0002-1273-746X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hun‐Gi Jung\", \"id\": \"https://openalex.org/A5045467177\", \"orcid\": \"https://orcid.org/0000-0002-2162-2680\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Won Kim\", \"id\": \"https://openalex.org/A5100691394\", \"orcid\": \"https://orcid.org/0000-0002-1735-0272\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302329900,
+    "actual_start_ms": 1773302473990,
+    "pacing_wait_ms": 144089,
+    "pacing_jitter_sec": 1.553
+  }
+}

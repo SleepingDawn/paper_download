@@ -1,0 +1,131 @@
+{
+  "doi": "10.1021/acsnano.5c15859",
+  "pdf_filename": "10.1021_acsnano.5c15859.pdf",
+  "json_filename": "10.1021_acsnano.5c15859.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsnano.5c15859.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4416572774",
+    "doi": "10.1021/acsnano.5c15859",
+    "title": "Enhancing Moisture Stability and Structural Integrity of Argyrodite Li <sub>6</sub> PS <sub>5</sub> Cl Solid Electrolytes via Porous Silica Incorporation",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Nano",
+      "id": "https://openalex.org/S145476921",
+      "type": "journal",
+      "issn_l": "1936-0851",
+      "issn": [
+        "1936-0851",
+        "1936-086X"
+      ]
+    },
+    "publication_date": "2025-11-22",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.38259929,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Yoojin Hong",
+    "authors_display": "Yoojin Hong; Jae Yup Jung; Yun Seong Byeon; Sung Joon Park; Yun‐Chae Jung; Ki Jae Kim; Woosuk Cho; Min‐Sik Park",
+    "authors": [
+      {
+        "display_name": "Yoojin Hong",
+        "id": "https://openalex.org/A5100874876",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jae Yup Jung",
+        "id": "https://openalex.org/A5104134495",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yun Seong Byeon",
+        "id": "https://openalex.org/A5084264004",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sung Joon Park",
+        "id": "https://openalex.org/A5100720983",
+        "orcid": "https://orcid.org/0000-0001-6370-5997",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yun‐Chae Jung",
+        "id": "https://openalex.org/A5102814826",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ki Jae Kim",
+        "id": "https://openalex.org/A5074764555",
+        "orcid": "https://orcid.org/0000-0002-2166-7467",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Woosuk Cho",
+        "id": "https://openalex.org/A5065789071",
+        "orcid": "https://orcid.org/0000-0003-1715-325X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Min‐Sik Park",
+        "id": "https://openalex.org/A5100736623",
+        "orcid": "https://orcid.org/0000-0002-3490-2999",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4416572774",
+    "doi": "10.1021/acsnano.5c15859",
+    "title": "Enhancing Moisture Stability and Structural Integrity of Argyrodite Li <sub>6</sub> PS <sub>5</sub> Cl Solid Electrolytes via Porous Silica Incorporation",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Nano",
+    "journal_id": "https://openalex.org/S145476921",
+    "journal_type": "journal",
+    "journal_issn_l": "1936-0851",
+    "journal_issn_json": "[\"1936-0851\", \"1936-086X\"]",
+    "publication_date": "2025-11-22",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.38259929,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Yoojin Hong",
+    "authors_display": "Yoojin Hong; Jae Yup Jung; Yun Seong Byeon; Sung Joon Park; Yun‐Chae Jung; Ki Jae Kim; Woosuk Cho; Min‐Sik Park",
+    "authors_json": "[{\"display_name\": \"Yoojin Hong\", \"id\": \"https://openalex.org/A5100874876\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jae Yup Jung\", \"id\": \"https://openalex.org/A5104134495\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yun Seong Byeon\", \"id\": \"https://openalex.org/A5084264004\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sung Joon Park\", \"id\": \"https://openalex.org/A5100720983\", \"orcid\": \"https://orcid.org/0000-0001-6370-5997\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yun‐Chae Jung\", \"id\": \"https://openalex.org/A5102814826\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ki Jae Kim\", \"id\": \"https://openalex.org/A5074764555\", \"orcid\": \"https://orcid.org/0000-0002-2166-7467\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Woosuk Cho\", \"id\": \"https://openalex.org/A5065789071\", \"orcid\": \"https://orcid.org/0000-0003-1715-325X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Min‐Sik Park\", \"id\": \"https://openalex.org/A5100736623\", \"orcid\": \"https://orcid.org/0000-0002-3490-2999\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsnano.5c15859",
+    "landing_title": "Enhancing Moisture Stability and Structural Integrity of Argyrodite Li6PS5Cl Solid Electrolytes via Porous Silica Incorporation | ACS Nano",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsnano.5c15859.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773309009389,
+    "actual_start_ms": 1773309009389,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.784
+  }
+}

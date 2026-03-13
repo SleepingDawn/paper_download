@@ -1,0 +1,131 @@
+{
+  "doi": "10.1093/nsr/nwaf217",
+  "pdf_filename": "10.1093_nsr_nwaf217.pdf",
+  "json_filename": "10.1093_nsr_nwaf217.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1093_nsr_nwaf217.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4410942599",
+    "doi": "10.1093/nsr/nwaf217",
+    "title": "Fluorine-doped argyrodite sulfide electrolyte enables commercial LiCoO2 use for 4.6 V high-voltage all-solid-state batteries",
+    "publisher": "Oxford University Press",
+    "journal": {
+      "name": "National Science Review",
+      "id": "https://openalex.org/S2734413303",
+      "type": "journal",
+      "issn_l": "2053-714X",
+      "issn": [
+        "2053-714X",
+        "2095-5138"
+      ]
+    },
+    "publication_date": "2025-06-02",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.9380609,
+    "pdf_url": "https://academic.oup.com/nsr/advance-article-pdf/doi/10.1093/nsr/nwaf217/63418269/nwaf217.pdf",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Cong Dong",
+    "authors_display": "Cong Dong; Zhihong Bi; Rui Li; Yuxin Ma; Bin Li; Haodong Shi; Zhizhen Zhang; Zhong‐Shuai Wu",
+    "authors": [
+      {
+        "display_name": "Cong Dong",
+        "id": "https://openalex.org/A5054446049",
+        "orcid": "https://orcid.org/0000-0001-7581-7160",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zhihong Bi",
+        "id": "https://openalex.org/A5016497428",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rui Li",
+        "id": "https://openalex.org/A5049456619",
+        "orcid": "https://orcid.org/0009-0001-4020-3836",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuxin Ma",
+        "id": "https://openalex.org/A5081773077",
+        "orcid": "https://orcid.org/0000-0002-7671-9770",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bin Li",
+        "id": "https://openalex.org/A5100365291",
+        "orcid": "https://orcid.org/0009-0002-8445-4327",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haodong Shi",
+        "id": "https://openalex.org/A5050906892",
+        "orcid": "https://orcid.org/0000-0002-3312-6529",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhizhen Zhang",
+        "id": "https://openalex.org/A5028577515",
+        "orcid": "https://orcid.org/0000-0002-4238-3447",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhong‐Shuai Wu",
+        "id": "https://openalex.org/A5112399925",
+        "orcid": "https://orcid.org/0000-0003-1851-4803",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4410942599",
+    "doi": "10.1093/nsr/nwaf217",
+    "title": "Fluorine-doped argyrodite sulfide electrolyte enables commercial LiCoO2 use for 4.6 V high-voltage all-solid-state batteries",
+    "publisher": "Oxford University Press",
+    "journal": "National Science Review",
+    "journal_id": "https://openalex.org/S2734413303",
+    "journal_type": "journal",
+    "journal_issn_l": "2053-714X",
+    "journal_issn_json": "[\"2053-714X\", \"2095-5138\"]",
+    "publication_date": "2025-06-02",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.9380609,
+    "pdf_url": "https://academic.oup.com/nsr/advance-article-pdf/doi/10.1093/nsr/nwaf217/63418269/nwaf217.pdf",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Cong Dong",
+    "authors_display": "Cong Dong; Zhihong Bi; Rui Li; Yuxin Ma; Bin Li; Haodong Shi; Zhizhen Zhang; Zhong‐Shuai Wu",
+    "authors_json": "[{\"display_name\": \"Cong Dong\", \"id\": \"https://openalex.org/A5054446049\", \"orcid\": \"https://orcid.org/0000-0001-7581-7160\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Zhihong Bi\", \"id\": \"https://openalex.org/A5016497428\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rui Li\", \"id\": \"https://openalex.org/A5049456619\", \"orcid\": \"https://orcid.org/0009-0001-4020-3836\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuxin Ma\", \"id\": \"https://openalex.org/A5081773077\", \"orcid\": \"https://orcid.org/0000-0002-7671-9770\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bin Li\", \"id\": \"https://openalex.org/A5100365291\", \"orcid\": \"https://orcid.org/0009-0002-8445-4327\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haodong Shi\", \"id\": \"https://openalex.org/A5050906892\", \"orcid\": \"https://orcid.org/0000-0002-3312-6529\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhizhen Zhang\", \"id\": \"https://openalex.org/A5028577515\", \"orcid\": \"https://orcid.org/0000-0002-4238-3447\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhong‐Shuai Wu\", \"id\": \"https://openalex.org/A5112399925\", \"orcid\": \"https://orcid.org/0000-0003-1851-4803\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://academic.oup.com/nsr/article/doi/10.1093/nsr/nwaf217/8155228?__cf_chl_rt_tk=bmki9C8E9N88RixgcnkuicoYcBj5Lj_HcLa5RjVLtHY-1773314605-1.0.1.1-hMI2L5WBb8Eue5u.MSrEqThhD9kkeu9inJsiXOSvc7U",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.1093_nsr_nwaf217.pdf",
+    "scheduler_publisher": "10.1093",
+    "scheduled_start_ms": 1773314596940,
+    "actual_start_ms": 1773314596942,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.433
+  }
+}

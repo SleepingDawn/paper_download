@@ -1,0 +1,138 @@
+{
+  "doi": "10.1021/acs.chemmater.3c00658",
+  "pdf_filename": "10.1021_acs.chemmater.3c00658.pdf",
+  "json_filename": "10.1021_acs.chemmater.3c00658.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.chemmater.3c00658.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4380323725",
+    "doi": "10.1021/acs.chemmater.3c00658",
+    "title": "Understanding Lithium-Ion Transport in Selenophosphate-Based Lithium Argyrodites and Their Limitations in Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2023-06-12",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.89099574,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Johannes Härtel",
+    "authors_display": "Johannes Härtel; Ananya Banik; Josef Maximilian Gerdes; Björn Wankmiller; Bianca Helm; Cheng Li; Marvin A. Kraft; Michael Ryan Hansen; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Johannes Härtel",
+        "id": "https://openalex.org/A5087770738",
+        "orcid": "https://orcid.org/0000-0002-7461-2320",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ananya Banik",
+        "id": "https://openalex.org/A5011028807",
+        "orcid": "https://orcid.org/0000-0003-0455-3051",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Josef Maximilian Gerdes",
+        "id": "https://openalex.org/A5034887260",
+        "orcid": "https://orcid.org/0000-0001-9260-8053",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Björn Wankmiller",
+        "id": "https://openalex.org/A5016855020",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bianca Helm",
+        "id": "https://openalex.org/A5085566686",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cheng Li",
+        "id": "https://openalex.org/A5100354261",
+        "orcid": "https://orcid.org/0000-0002-6546-6413",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marvin A. Kraft",
+        "id": "https://openalex.org/A5035145677",
+        "orcid": "https://orcid.org/0009-0005-5632-4228",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michael Ryan Hansen",
+        "id": "https://openalex.org/A5090003045",
+        "orcid": "https://orcid.org/0000-0001-7114-8051",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4380323725",
+    "doi": "10.1021/acs.chemmater.3c00658",
+    "title": "Understanding Lithium-Ion Transport in Selenophosphate-Based Lithium Argyrodites and Their Limitations in Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2023-06-12",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.89099574,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Johannes Härtel",
+    "authors_display": "Johannes Härtel; Ananya Banik; Josef Maximilian Gerdes; Björn Wankmiller; Bianca Helm; Cheng Li; Marvin A. Kraft; Michael Ryan Hansen; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Johannes Härtel\", \"id\": \"https://openalex.org/A5087770738\", \"orcid\": \"https://orcid.org/0000-0002-7461-2320\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ananya Banik\", \"id\": \"https://openalex.org/A5011028807\", \"orcid\": \"https://orcid.org/0000-0003-0455-3051\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Josef Maximilian Gerdes\", \"id\": \"https://openalex.org/A5034887260\", \"orcid\": \"https://orcid.org/0000-0001-9260-8053\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Björn Wankmiller\", \"id\": \"https://openalex.org/A5016855020\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bianca Helm\", \"id\": \"https://openalex.org/A5085566686\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cheng Li\", \"id\": \"https://openalex.org/A5100354261\", \"orcid\": \"https://orcid.org/0000-0002-6546-6413\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marvin A. Kraft\", \"id\": \"https://openalex.org/A5035145677\", \"orcid\": \"https://orcid.org/0009-0005-5632-4228\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Michael Ryan Hansen\", \"id\": \"https://openalex.org/A5090003045\", \"orcid\": \"https://orcid.org/0000-0001-7114-8051\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.chemmater.3c00658",
+    "landing_title": "Understanding Lithium-Ion Transport in Selenophosphate-Based Lithium Argyrodites and Their Limitations in Solid-State Batteries | Chemistry of Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acs.chemmater.3c00658.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773303314153,
+    "actual_start_ms": 1773303363775,
+    "pacing_wait_ms": 49625,
+    "pacing_jitter_sec": 0.911
+  }
+}

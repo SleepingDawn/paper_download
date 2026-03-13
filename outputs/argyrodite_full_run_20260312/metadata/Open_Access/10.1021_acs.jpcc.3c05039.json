@@ -1,0 +1,131 @@
+{
+  "doi": "10.1021/acs.jpcc.3c05039",
+  "pdf_filename": "10.1021_acs.jpcc.3c05039.pdf",
+  "json_filename": "10.1021_acs.jpcc.3c05039.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.jpcc.3c05039.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4387012255",
+    "doi": "10.1021/acs.jpcc.3c05039",
+    "title": "Degradation of Lithium Iron Phosphate Sulfide Solid-State Batteries by Conductive Interfaces",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "The Journal of Physical Chemistry C",
+      "id": "https://openalex.org/S95739953",
+      "type": "journal",
+      "issn_l": "1932-7447",
+      "issn": [
+        "1932-7447",
+        "1932-7455"
+      ]
+    },
+    "publication_date": "2023-09-25",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.80742955,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Kerry Sun",
+    "authors_display": "Kerry Sun; Chuntian Cao; Dingyi Zhao; Xiao Tong; Seong‐Min Bak; Yonghua Du; Feng Wang; Daniel A. Steingart",
+    "authors": [
+      {
+        "display_name": "Kerry Sun",
+        "id": "https://openalex.org/A5047114921",
+        "orcid": "https://orcid.org/0000-0001-6762-7623",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuntian Cao",
+        "id": "https://openalex.org/A5014522167",
+        "orcid": "https://orcid.org/0000-0003-4753-7334",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dingyi Zhao",
+        "id": "https://openalex.org/A5104240933",
+        "orcid": "https://orcid.org/0009-0002-1854-6354",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao Tong",
+        "id": "https://openalex.org/A5034130133",
+        "orcid": "https://orcid.org/0000-0002-5567-9677",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seong‐Min Bak",
+        "id": "https://openalex.org/A5036821112",
+        "orcid": "https://orcid.org/0000-0002-1626-5949",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yonghua Du",
+        "id": "https://openalex.org/A5074829223",
+        "orcid": "https://orcid.org/0000-0003-2655-045X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Feng Wang",
+        "id": "https://openalex.org/A5092077344",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniel A. Steingart",
+        "id": "https://openalex.org/A5078984036",
+        "orcid": "https://orcid.org/0000-0002-8184-9641",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4387012255",
+    "doi": "10.1021/acs.jpcc.3c05039",
+    "title": "Degradation of Lithium Iron Phosphate Sulfide Solid-State Batteries by Conductive Interfaces",
+    "publisher": "American Chemical Society",
+    "journal": "The Journal of Physical Chemistry C",
+    "journal_id": "https://openalex.org/S95739953",
+    "journal_type": "journal",
+    "journal_issn_l": "1932-7447",
+    "journal_issn_json": "[\"1932-7447\", \"1932-7455\"]",
+    "publication_date": "2023-09-25",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.80742955,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Kerry Sun",
+    "authors_display": "Kerry Sun; Chuntian Cao; Dingyi Zhao; Xiao Tong; Seong‐Min Bak; Yonghua Du; Feng Wang; Daniel A. Steingart",
+    "authors_json": "[{\"display_name\": \"Kerry Sun\", \"id\": \"https://openalex.org/A5047114921\", \"orcid\": \"https://orcid.org/0000-0001-6762-7623\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Chuntian Cao\", \"id\": \"https://openalex.org/A5014522167\", \"orcid\": \"https://orcid.org/0000-0003-4753-7334\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dingyi Zhao\", \"id\": \"https://openalex.org/A5104240933\", \"orcid\": \"https://orcid.org/0009-0002-1854-6354\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiao Tong\", \"id\": \"https://openalex.org/A5034130133\", \"orcid\": \"https://orcid.org/0000-0002-5567-9677\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seong‐Min Bak\", \"id\": \"https://openalex.org/A5036821112\", \"orcid\": \"https://orcid.org/0000-0002-1626-5949\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yonghua Du\", \"id\": \"https://openalex.org/A5074829223\", \"orcid\": \"https://orcid.org/0000-0003-2655-045X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Feng Wang\", \"id\": \"https://openalex.org/A5092077344\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniel A. Steingart\", \"id\": \"https://openalex.org/A5078984036\", \"orcid\": \"https://orcid.org/0000-0002-8184-9641\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.jpcc.3c05039",
+    "landing_title": "Degradation of Lithium Iron Phosphate Sulfide Solid-State Batteries by Conductive Interfaces | The Journal of Physical Chemistry C",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acs.jpcc.3c05039.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773305232300,
+    "actual_start_ms": 1773305239594,
+    "pacing_wait_ms": 7293,
+    "pacing_jitter_sec": 1.223
+  }
+}

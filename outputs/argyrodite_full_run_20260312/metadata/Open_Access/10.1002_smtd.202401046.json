@@ -1,0 +1,123 @@
+{
+  "doi": "10.1002/smtd.202401046",
+  "pdf_filename": "10.1002_smtd.202401046.pdf",
+  "json_filename": "10.1002_smtd.202401046.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_smtd.202401046.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4402269071",
+    "doi": "10.1002/smtd.202401046",
+    "title": "Wet Mechanochemical Synthesis of BH<sub>4</sub>‐Substituted Lithium Argyrodites",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small Methods",
+      "id": "https://openalex.org/S4210232622",
+      "type": "journal",
+      "issn_l": "2366-9608",
+      "issn": [
+        "2366-9608"
+      ]
+    },
+    "publication_date": "2024-09-05",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.77801575,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smtd.202401046",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Ji‐Hoon Han",
+    "authors_display": "Ji‐Hoon Han; Y. S. Shin; Young Joo Lee; Sangdoo Ahn; Young‐Su Lee; Kyung‐Woo Yi; Young Whan Cho",
+    "authors": [
+      {
+        "display_name": "Ji‐Hoon Han",
+        "id": "https://openalex.org/A5103813776",
+        "orcid": "https://orcid.org/0009-0005-3845-3237",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Y. S. Shin",
+        "id": "https://openalex.org/A5108980768",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young Joo Lee",
+        "id": "https://openalex.org/A5100698635",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sangdoo Ahn",
+        "id": "https://openalex.org/A5036312296",
+        "orcid": "https://orcid.org/0000-0003-3803-9210",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young‐Su Lee",
+        "id": "https://openalex.org/A5054146335",
+        "orcid": "https://orcid.org/0000-0002-3160-6633",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung‐Woo Yi",
+        "id": "https://openalex.org/A5023160283",
+        "orcid": "https://orcid.org/0000-0002-7926-9541",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young Whan Cho",
+        "id": "https://openalex.org/A5070086820",
+        "orcid": "https://orcid.org/0000-0001-9909-0082",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4402269071",
+    "doi": "10.1002/smtd.202401046",
+    "title": "Wet Mechanochemical Synthesis of BH<sub>4</sub>‐Substituted Lithium Argyrodites",
+    "publisher": "Wiley",
+    "journal": "Small Methods",
+    "journal_id": "https://openalex.org/S4210232622",
+    "journal_type": "journal",
+    "journal_issn_l": "2366-9608",
+    "journal_issn_json": "[\"2366-9608\"]",
+    "publication_date": "2024-09-05",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.77801575,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smtd.202401046",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Ji‐Hoon Han",
+    "authors_display": "Ji‐Hoon Han; Y. S. Shin; Young Joo Lee; Sangdoo Ahn; Young‐Su Lee; Kyung‐Woo Yi; Young Whan Cho",
+    "authors_json": "[{\"display_name\": \"Ji‐Hoon Han\", \"id\": \"https://openalex.org/A5103813776\", \"orcid\": \"https://orcid.org/0009-0005-3845-3237\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Y. S. Shin\", \"id\": \"https://openalex.org/A5108980768\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young Joo Lee\", \"id\": \"https://openalex.org/A5100698635\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sangdoo Ahn\", \"id\": \"https://openalex.org/A5036312296\", \"orcid\": \"https://orcid.org/0000-0003-3803-9210\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young‐Su Lee\", \"id\": \"https://openalex.org/A5054146335\", \"orcid\": \"https://orcid.org/0000-0002-3160-6633\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung‐Woo Yi\", \"id\": \"https://openalex.org/A5023160283\", \"orcid\": \"https://orcid.org/0000-0002-7926-9541\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young Whan Cho\", \"id\": \"https://openalex.org/A5070086820\", \"orcid\": \"https://orcid.org/0000-0001-9909-0082\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773307290537,
+    "actual_start_ms": 1773307290537,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.234
+  }
+}

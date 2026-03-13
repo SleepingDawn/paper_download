@@ -1,0 +1,152 @@
+{
+  "doi": "10.1007/s11426-024-2275-2",
+  "pdf_filename": "10.1007_s11426-024-2275-2.pdf",
+  "json_filename": "10.1007_s11426-024-2275-2.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s11426-024-2275-2.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4402335835",
+    "doi": "10.1007/s11426-024-2275-2",
+    "title": "Enhancing solid-state lithium metal battery performance via indium-based modification of electrolytes and lithium metal surfaces: mechanistic insights and optimization",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Science China Chemistry",
+      "id": "https://openalex.org/S147836164",
+      "type": "journal",
+      "issn_l": "1674-7291",
+      "issn": [
+        "1674-7291",
+        "1869-1870"
+      ]
+    },
+    "publication_date": "2024-09-04",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 37,
+    "citation_normalized_percentile": 0.98167355,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Zhongkai Wu",
+    "authors_display": "Zhongkai Wu; Chen Liu; Ziling Jiang; Lin Li; Siwu Li; Chaochao Wei; Qiyue Luo; Xia Chen; Long Zhang; Shijie Cheng; Chuang Yu",
+    "authors": [
+      {
+        "display_name": "Zhongkai Wu",
+        "id": "https://openalex.org/A5027106287",
+        "orcid": "https://orcid.org/0000-0002-9864-2559",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chen Liu",
+        "id": "https://openalex.org/A5100322126",
+        "orcid": "https://orcid.org/0000-0001-6702-8129",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziling Jiang",
+        "id": "https://openalex.org/A5032247200",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lin Li",
+        "id": "https://openalex.org/A5100722609",
+        "orcid": "https://orcid.org/0000-0002-4938-1217",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Siwu Li",
+        "id": "https://openalex.org/A5083989267",
+        "orcid": "https://orcid.org/0000-0002-0484-8629",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chaochao Wei",
+        "id": "https://openalex.org/A5113211601",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qiyue Luo",
+        "id": "https://openalex.org/A5039050510",
+        "orcid": "https://orcid.org/0000-0002-6502-4316",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xia Chen",
+        "id": "https://openalex.org/A5100423111",
+        "orcid": "https://orcid.org/0000-0003-0186-7821",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Long Zhang",
+        "id": "https://openalex.org/A5100363525",
+        "orcid": "https://orcid.org/0000-0002-4861-1471",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Cheng",
+        "id": "https://openalex.org/A5024186253",
+        "orcid": "https://orcid.org/0000-0002-8752-4311",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4402335835",
+    "doi": "10.1007/s11426-024-2275-2",
+    "title": "Enhancing solid-state lithium metal battery performance via indium-based modification of electrolytes and lithium metal surfaces: mechanistic insights and optimization",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Science China Chemistry",
+    "journal_id": "https://openalex.org/S147836164",
+    "journal_type": "journal",
+    "journal_issn_l": "1674-7291",
+    "journal_issn_json": "[\"1674-7291\", \"1869-1870\"]",
+    "publication_date": "2024-09-04",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 37,
+    "citation_normalized_percentile": 0.98167355,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Zhongkai Wu",
+    "authors_display": "Zhongkai Wu; Chen Liu; Ziling Jiang; Lin Li; Siwu Li; Chaochao Wei; Qiyue Luo; Xia Chen; Long Zhang; Shijie Cheng; Chuang Yu",
+    "authors_json": "[{\"display_name\": \"Zhongkai Wu\", \"id\": \"https://openalex.org/A5027106287\", \"orcid\": \"https://orcid.org/0000-0002-9864-2559\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Chen Liu\", \"id\": \"https://openalex.org/A5100322126\", \"orcid\": \"https://orcid.org/0000-0001-6702-8129\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ziling Jiang\", \"id\": \"https://openalex.org/A5032247200\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lin Li\", \"id\": \"https://openalex.org/A5100722609\", \"orcid\": \"https://orcid.org/0000-0002-4938-1217\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Siwu Li\", \"id\": \"https://openalex.org/A5083989267\", \"orcid\": \"https://orcid.org/0000-0002-0484-8629\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chaochao Wei\", \"id\": \"https://openalex.org/A5113211601\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qiyue Luo\", \"id\": \"https://openalex.org/A5039050510\", \"orcid\": \"https://orcid.org/0000-0002-6502-4316\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xia Chen\", \"id\": \"https://openalex.org/A5100423111\", \"orcid\": \"https://orcid.org/0000-0003-0186-7821\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Long Zhang\", \"id\": \"https://openalex.org/A5100363525\", \"orcid\": \"https://orcid.org/0000-0002-4861-1471\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Cheng\", \"id\": \"https://openalex.org/A5024186253\", \"orcid\": \"https://orcid.org/0000-0002-8752-4311\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://link.springer.com/article/10.1007/s11426-024-2275-2",
+    "landing_title": "Enhancing solid-state lithium metal battery performance via indium-based modification of electrolytes and lithium metal surfaces: mechanistic insights and optimization | Science China Chemistry | Springer Nature Link",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1007_s11426-024-2275-2.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773308213904,
+    "actual_start_ms": 1773308215413,
+    "pacing_wait_ms": 1509,
+    "pacing_jitter_sec": 0.718
+  }
+}

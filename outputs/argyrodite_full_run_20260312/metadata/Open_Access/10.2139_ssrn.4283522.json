@@ -1,0 +1,116 @@
+{
+  "doi": "10.2139/ssrn.4283522",
+  "pdf_filename": "10.2139_ssrn.4283522.pdf",
+  "json_filename": "10.2139_ssrn.4283522.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.4283522.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4312669752",
+    "doi": "10.2139/ssrn.4283522",
+    "title": "Enhancing the Moisture Stability and Electrochemical Performances of Li6ps5cl Solid Electrolytes Through Ga Substitution",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Kwonsoo Seol",
+    "authors_display": "Kwonsoo Seol; Chitrarasu Kaliyaperumal; Aarthi Uthayakumar; Insang Yoon; Gahyeon Lee; Dongwook Shin",
+    "authors": [
+      {
+        "display_name": "Kwonsoo Seol",
+        "id": "https://openalex.org/A5061705918",
+        "orcid": "https://orcid.org/0000-0001-6965-6671",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chitrarasu Kaliyaperumal",
+        "id": "https://openalex.org/A5066499057",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Aarthi Uthayakumar",
+        "id": "https://openalex.org/A5027391630",
+        "orcid": "https://orcid.org/0000-0003-3439-0759",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Insang Yoon",
+        "id": "https://openalex.org/A5015161083",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gahyeon Lee",
+        "id": "https://openalex.org/A5051508311",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dongwook Shin",
+        "id": "https://openalex.org/A5101982864",
+        "orcid": "https://orcid.org/0000-0002-8829-9638",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4312669752",
+    "doi": "10.2139/ssrn.4283522",
+    "title": "Enhancing the Moisture Stability and Electrochemical Performances of Li6ps5cl Solid Electrolytes Through Ga Substitution",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Kwonsoo Seol",
+    "authors_display": "Kwonsoo Seol; Chitrarasu Kaliyaperumal; Aarthi Uthayakumar; Insang Yoon; Gahyeon Lee; Dongwook Shin",
+    "authors_json": "[{\"display_name\": \"Kwonsoo Seol\", \"id\": \"https://openalex.org/A5061705918\", \"orcid\": \"https://orcid.org/0000-0001-6965-6671\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Chitrarasu Kaliyaperumal\", \"id\": \"https://openalex.org/A5066499057\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Aarthi Uthayakumar\", \"id\": \"https://openalex.org/A5027391630\", \"orcid\": \"https://orcid.org/0000-0003-3439-0759\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Insang Yoon\", \"id\": \"https://openalex.org/A5015161083\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gahyeon Lee\", \"id\": \"https://openalex.org/A5051508311\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dongwook Shin\", \"id\": \"https://openalex.org/A5101982864\", \"orcid\": \"https://orcid.org/0000-0002-8829-9638\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4283522&__cf_chl_rt_tk=8qdjUBxlZ_elbTT3vWOdDlvbJxptLgXiecoZhryGIY8-1773312916-1.0.1.1-_8A1cqTov2qC_uBNIn2QLmTq_fgoqXF7AtSo9kEdMFw",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.4283522.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773312895455,
+    "actual_start_ms": 1773312895456,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.791
+  }
+}

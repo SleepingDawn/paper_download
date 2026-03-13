@@ -1,0 +1,158 @@
+{
+  "doi": "10.1021/acsenergylett.4c01639",
+  "pdf_filename": "10.1021_acsenergylett.4c01639.pdf",
+  "json_filename": "10.1021_acsenergylett.4c01639.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.4c01639.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4401734112",
+    "doi": "10.1021/acsenergylett.4c01639",
+    "title": "Hydrogen-Rich Argyrodite Solid Electrolytes for NCM/Li All-Solid-State batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2024-08-21",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.85271606,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Taegyoung Lee",
+    "authors_display": "Taegyoung Lee; H. K. Park; Seunghee Joo; Hyerim Kim; Jeonghyun Kim; Taeseung Kim; Wonrak Lee; Youngbok Kim; Ji Young Kim; Kyungsu Kim; Woosuk Cho; Sangryun Kim",
+    "authors": [
+      {
+        "display_name": "Taegyoung Lee",
+        "id": "https://openalex.org/A5111190160",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "H. K. Park",
+        "id": "https://openalex.org/A5048310460",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seunghee Joo",
+        "id": "https://openalex.org/A5106653863",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyerim Kim",
+        "id": "https://openalex.org/A5100734710",
+        "orcid": "https://orcid.org/0000-0001-6517-1634",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeonghyun Kim",
+        "id": "https://openalex.org/A5100717997",
+        "orcid": "https://orcid.org/0000-0003-3090-1435",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Taeseung Kim",
+        "id": "https://openalex.org/A5061024819",
+        "orcid": "https://orcid.org/0009-0003-0447-1440",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wonrak Lee",
+        "id": "https://openalex.org/A5060148190",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Youngbok Kim",
+        "id": "https://openalex.org/A5106653864",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji Young Kim",
+        "id": "https://openalex.org/A5100420165",
+        "orcid": "https://orcid.org/0000-0001-6998-9580",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyungsu Kim",
+        "id": "https://openalex.org/A5000349069",
+        "orcid": "https://orcid.org/0000-0001-6622-6545",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Woosuk Cho",
+        "id": "https://openalex.org/A5065789071",
+        "orcid": "https://orcid.org/0000-0003-1715-325X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sangryun Kim",
+        "id": "https://openalex.org/A5028889140",
+        "orcid": "https://orcid.org/0000-0001-8617-3022",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4401734112",
+    "doi": "10.1021/acsenergylett.4c01639",
+    "title": "Hydrogen-Rich Argyrodite Solid Electrolytes for NCM/Li All-Solid-State batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2024-08-21",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.85271606,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Taegyoung Lee",
+    "authors_display": "Taegyoung Lee; H. K. Park; Seunghee Joo; Hyerim Kim; Jeonghyun Kim; Taeseung Kim; Wonrak Lee; Youngbok Kim; Ji Young Kim; Kyungsu Kim; Woosuk Cho; Sangryun Kim",
+    "authors_json": "[{\"display_name\": \"Taegyoung Lee\", \"id\": \"https://openalex.org/A5111190160\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"H. K. Park\", \"id\": \"https://openalex.org/A5048310460\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seunghee Joo\", \"id\": \"https://openalex.org/A5106653863\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyerim Kim\", \"id\": \"https://openalex.org/A5100734710\", \"orcid\": \"https://orcid.org/0000-0001-6517-1634\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeonghyun Kim\", \"id\": \"https://openalex.org/A5100717997\", \"orcid\": \"https://orcid.org/0000-0003-3090-1435\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Taeseung Kim\", \"id\": \"https://openalex.org/A5061024819\", \"orcid\": \"https://orcid.org/0009-0003-0447-1440\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wonrak Lee\", \"id\": \"https://openalex.org/A5060148190\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Youngbok Kim\", \"id\": \"https://openalex.org/A5106653864\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ji Young Kim\", \"id\": \"https://openalex.org/A5100420165\", \"orcid\": \"https://orcid.org/0000-0001-6998-9580\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyungsu Kim\", \"id\": \"https://openalex.org/A5000349069\", \"orcid\": \"https://orcid.org/0000-0001-6622-6545\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Woosuk Cho\", \"id\": \"https://openalex.org/A5065789071\", \"orcid\": \"https://orcid.org/0000-0003-1715-325X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sangryun Kim\", \"id\": \"https://openalex.org/A5028889140\", \"orcid\": \"https://orcid.org/0000-0001-8617-3022\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.4c01639",
+    "landing_title": "Hydrogen-Rich Argyrodite Solid Electrolytes for NCM/Li All-Solid-State batteries | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acsenergylett.4c01639.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773305611699,
+    "actual_start_ms": 1773305632616,
+    "pacing_wait_ms": 20916,
+    "pacing_jitter_sec": 0.89
+  }
+}

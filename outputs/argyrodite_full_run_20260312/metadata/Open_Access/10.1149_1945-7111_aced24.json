@@ -1,0 +1,131 @@
+{
+  "doi": "10.1149/1945-7111/aced24",
+  "pdf_filename": "10.1149_1945-7111_aced24.pdf",
+  "json_filename": "10.1149_1945-7111_aced24.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1149_1945-7111_aced24.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4385516377",
+    "doi": "10.1149/1945-7111/aced24",
+    "title": "Adverse Effects of Trace Non-polar Binder on Ion Transport in Free-standing Sulfide Solid Electrolyte Separators",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "Journal of The Electrochemical Society",
+      "id": "https://openalex.org/S138759888",
+      "type": "journal",
+      "issn_l": "0013-4651",
+      "issn": [
+        "0013-4651",
+        "1945-7111"
+      ]
+    },
+    "publication_date": "2023-08-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 17,
+    "citation_normalized_percentile": 0.88536519,
+    "pdf_url": "https://iopscience.iop.org/article/10.1149/1945-7111/aced24/pdf",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Anna Mills",
+    "authors_display": "Anna Mills; Guang Yang; Wan‐Yu Tsai; X. Chelsea Chen; Robert L. Sacci; Beth L. Armstrong; Daniel T. Hallinan; Jagjit Nanda",
+    "authors": [
+      {
+        "display_name": "Anna Mills",
+        "id": "https://openalex.org/A5059730894",
+        "orcid": "https://orcid.org/0000-0002-8273-2883",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guang Yang",
+        "id": "https://openalex.org/A5075057187",
+        "orcid": "https://orcid.org/0000-0003-0583-6272",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wan‐Yu Tsai",
+        "id": "https://openalex.org/A5033922371",
+        "orcid": "https://orcid.org/0000-0002-4731-7051",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "X. Chelsea Chen",
+        "id": "https://openalex.org/A5078602251",
+        "orcid": "https://orcid.org/0000-0003-1188-7658",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Robert L. Sacci",
+        "id": "https://openalex.org/A5066964209",
+        "orcid": "https://orcid.org/0000-0002-0073-5221",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Beth L. Armstrong",
+        "id": "https://openalex.org/A5081743475",
+        "orcid": "https://orcid.org/0000-0001-7149-3576",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniel T. Hallinan",
+        "id": "https://openalex.org/A5036506213",
+        "orcid": "https://orcid.org/0000-0002-3819-0992",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jagjit Nanda",
+        "id": "https://openalex.org/A5054033892",
+        "orcid": "https://orcid.org/0000-0002-6875-0057",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4385516377",
+    "doi": "10.1149/1945-7111/aced24",
+    "title": "Adverse Effects of Trace Non-polar Binder on Ion Transport in Free-standing Sulfide Solid Electrolyte Separators",
+    "publisher": "Institute of Physics",
+    "journal": "Journal of The Electrochemical Society",
+    "journal_id": "https://openalex.org/S138759888",
+    "journal_type": "journal",
+    "journal_issn_l": "0013-4651",
+    "journal_issn_json": "[\"0013-4651\", \"1945-7111\"]",
+    "publication_date": "2023-08-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 17,
+    "citation_normalized_percentile": 0.88536519,
+    "pdf_url": "https://iopscience.iop.org/article/10.1149/1945-7111/aced24/pdf",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Anna Mills",
+    "authors_display": "Anna Mills; Guang Yang; Wan‐Yu Tsai; X. Chelsea Chen; Robert L. Sacci; Beth L. Armstrong; Daniel T. Hallinan; Jagjit Nanda",
+    "authors_json": "[{\"display_name\": \"Anna Mills\", \"id\": \"https://openalex.org/A5059730894\", \"orcid\": \"https://orcid.org/0000-0002-8273-2883\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Guang Yang\", \"id\": \"https://openalex.org/A5075057187\", \"orcid\": \"https://orcid.org/0000-0003-0583-6272\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wan‐Yu Tsai\", \"id\": \"https://openalex.org/A5033922371\", \"orcid\": \"https://orcid.org/0000-0002-4731-7051\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"X. Chelsea Chen\", \"id\": \"https://openalex.org/A5078602251\", \"orcid\": \"https://orcid.org/0000-0003-1188-7658\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Robert L. Sacci\", \"id\": \"https://openalex.org/A5066964209\", \"orcid\": \"https://orcid.org/0000-0002-0073-5221\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Beth L. Armstrong\", \"id\": \"https://openalex.org/A5081743475\", \"orcid\": \"https://orcid.org/0000-0001-7149-3576\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniel T. Hallinan\", \"id\": \"https://openalex.org/A5036506213\", \"orcid\": \"https://orcid.org/0000-0002-3819-0992\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jagjit Nanda\", \"id\": \"https://openalex.org/A5054033892\", \"orcid\": \"https://orcid.org/0000-0002-6875-0057\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773302106256,
+    "actual_start_ms": 1773302107756,
+    "pacing_wait_ms": 1500,
+    "pacing_jitter_sec": 1.428
+  }
+}

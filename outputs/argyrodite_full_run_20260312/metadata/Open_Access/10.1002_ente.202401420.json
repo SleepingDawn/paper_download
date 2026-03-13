@@ -1,0 +1,117 @@
+{
+  "doi": "10.1002/ente.202401420",
+  "pdf_filename": "10.1002_ente.202401420.pdf",
+  "json_filename": "10.1002_ente.202401420.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_ente.202401420.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4403436083",
+    "doi": "10.1002/ente.202401420",
+    "title": "Doping Strategies for Improving Performance of Li‐Argyrodite Solid‐State Electrolyte",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Energy Technology",
+      "id": "https://openalex.org/S2765059294",
+      "type": "journal",
+      "issn_l": "2194-4288",
+      "issn": [
+        "2194-4288",
+        "2194-4296"
+      ]
+    },
+    "publication_date": "2024-10-15",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.90601867,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/ente.202401420",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Qianjin Huang",
+    "authors_display": "Qianjin Huang; Yinglei Wu; Zhongyi He; Sirui Wang; Jinhui Zhu; Xiaodong Zhuang",
+    "authors": [
+      {
+        "display_name": "Qianjin Huang",
+        "id": "https://openalex.org/A5009435564",
+        "orcid": "https://orcid.org/0009-0000-8192-1888",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yinglei Wu",
+        "id": "https://openalex.org/A5029477046",
+        "orcid": "https://orcid.org/0009-0009-2129-2683",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zhongyi He",
+        "id": "https://openalex.org/A5101865039",
+        "orcid": "https://orcid.org/0000-0002-4320-0294",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sirui Wang",
+        "id": "https://openalex.org/A5100631510",
+        "orcid": "https://orcid.org/0000-0002-8695-2429",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinhui Zhu",
+        "id": "https://openalex.org/A5081973419",
+        "orcid": "https://orcid.org/0000-0001-7685-5142",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xiaodong Zhuang",
+        "id": "https://openalex.org/A5006485558",
+        "orcid": "https://orcid.org/0000-0002-4090-0420",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4403436083",
+    "doi": "10.1002/ente.202401420",
+    "title": "Doping Strategies for Improving Performance of Li‐Argyrodite Solid‐State Electrolyte",
+    "publisher": "Wiley",
+    "journal": "Energy Technology",
+    "journal_id": "https://openalex.org/S2765059294",
+    "journal_type": "journal",
+    "journal_issn_l": "2194-4288",
+    "journal_issn_json": "[\"2194-4288\", \"2194-4296\"]",
+    "publication_date": "2024-10-15",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.90601867,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/ente.202401420",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Qianjin Huang",
+    "authors_display": "Qianjin Huang; Yinglei Wu; Zhongyi He; Sirui Wang; Jinhui Zhu; Xiaodong Zhuang",
+    "authors_json": "[{\"display_name\": \"Qianjin Huang\", \"id\": \"https://openalex.org/A5009435564\", \"orcid\": \"https://orcid.org/0009-0000-8192-1888\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yinglei Wu\", \"id\": \"https://openalex.org/A5029477046\", \"orcid\": \"https://orcid.org/0009-0009-2129-2683\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Zhongyi He\", \"id\": \"https://openalex.org/A5101865039\", \"orcid\": \"https://orcid.org/0000-0002-4320-0294\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sirui Wang\", \"id\": \"https://openalex.org/A5100631510\", \"orcid\": \"https://orcid.org/0000-0002-8695-2429\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinhui Zhu\", \"id\": \"https://openalex.org/A5081973419\", \"orcid\": \"https://orcid.org/0000-0001-7685-5142\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xiaodong Zhuang\", \"id\": \"https://openalex.org/A5006485558\", \"orcid\": \"https://orcid.org/0000-0002-4090-0420\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773305433814,
+    "actual_start_ms": 1773305433814,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.636
+  }
+}

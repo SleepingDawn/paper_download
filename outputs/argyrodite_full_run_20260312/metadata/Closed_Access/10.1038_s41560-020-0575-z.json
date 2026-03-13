@@ -1,0 +1,186 @@
+{
+  "doi": "10.1038/s41560-020-0575-z",
+  "pdf_filename": "10.1038_s41560-020-0575-z.pdf",
+  "json_filename": "10.1038_s41560-020-0575-z.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1038_s41560-020-0575-z.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3010463153",
+    "doi": "10.1038/s41560-020-0575-z",
+    "title": "High-energy long-cycling all-solid-state lithium metal batteries enabled by silver–carbon composite anodes",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Energy",
+      "id": "https://openalex.org/S2764528046",
+      "type": "journal",
+      "issn_l": "2058-7546",
+      "issn": [
+        "2058-7546"
+      ]
+    },
+    "publication_date": "2020-03-09",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 1607,
+    "citation_normalized_percentile": 0.99991887,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 16,
+    "first_author": "Yong-Gun Lee",
+    "authors_display": "Yong-Gun Lee; Satoshi Fujiki; Changhoon Jung; N. Suzuki; Nobuyoshi Yashiro; Ryo Omoda; Dong‐Su Ko; Tomoyuki Shiratsuchi; Toshinori Sugimoto; Saebom Ryu; Jun H. Ku; Taku Watanabe; Y. Park; Yûichi Aihara; Dongmin Im; In Taek Han",
+    "authors": [
+      {
+        "display_name": "Yong-Gun Lee",
+        "id": "https://openalex.org/A5068048593",
+        "orcid": "https://orcid.org/0000-0003-4374-9057",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Satoshi Fujiki",
+        "id": "https://openalex.org/A5040495240",
+        "orcid": "https://orcid.org/0000-0002-0466-6892",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Changhoon Jung",
+        "id": "https://openalex.org/A5103893745",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "N. Suzuki",
+        "id": "https://openalex.org/A5022933638",
+        "orcid": "https://orcid.org/0000-0002-6904-6897",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nobuyoshi Yashiro",
+        "id": "https://openalex.org/A5042955794",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ryo Omoda",
+        "id": "https://openalex.org/A5049721902",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Su Ko",
+        "id": "https://openalex.org/A5075061561",
+        "orcid": "https://orcid.org/0000-0001-5901-3146",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tomoyuki Shiratsuchi",
+        "id": "https://openalex.org/A5001404916",
+        "orcid": "https://orcid.org/0000-0002-2496-5734",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Toshinori Sugimoto",
+        "id": "https://openalex.org/A5067259606",
+        "orcid": "https://orcid.org/0000-0002-9676-451X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Saebom Ryu",
+        "id": "https://openalex.org/A5084117263",
+        "orcid": "https://orcid.org/0000-0003-1905-0289",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun H. Ku",
+        "id": "https://openalex.org/A5113561971",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Taku Watanabe",
+        "id": "https://openalex.org/A5103106338",
+        "orcid": "https://orcid.org/0000-0002-7948-7573",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Y. Park",
+        "id": "https://openalex.org/A5001687095",
+        "orcid": "https://orcid.org/0000-0002-9291-2706",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yûichi Aihara",
+        "id": "https://openalex.org/A5042813782",
+        "orcid": "https://orcid.org/0000-0001-5879-7452",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dongmin Im",
+        "id": "https://openalex.org/A5077849827",
+        "orcid": "https://orcid.org/0000-0003-2788-0477",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "In Taek Han",
+        "id": "https://openalex.org/A5111429639",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3010463153",
+    "doi": "10.1038/s41560-020-0575-z",
+    "title": "High-energy long-cycling all-solid-state lithium metal batteries enabled by silver–carbon composite anodes",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Energy",
+    "journal_id": "https://openalex.org/S2764528046",
+    "journal_type": "journal",
+    "journal_issn_l": "2058-7546",
+    "journal_issn_json": "[\"2058-7546\"]",
+    "publication_date": "2020-03-09",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 1607,
+    "citation_normalized_percentile": 0.99991887,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 16,
+    "first_author": "Yong-Gun Lee",
+    "authors_display": "Yong-Gun Lee; Satoshi Fujiki; Changhoon Jung; N. Suzuki; Nobuyoshi Yashiro; Ryo Omoda; Dong‐Su Ko; Tomoyuki Shiratsuchi; Toshinori Sugimoto; Saebom Ryu; Jun H. Ku; Taku Watanabe; Y. Park; Yûichi Aihara; Dongmin Im; In Taek Han",
+    "authors_json": "[{\"display_name\": \"Yong-Gun Lee\", \"id\": \"https://openalex.org/A5068048593\", \"orcid\": \"https://orcid.org/0000-0003-4374-9057\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Satoshi Fujiki\", \"id\": \"https://openalex.org/A5040495240\", \"orcid\": \"https://orcid.org/0000-0002-0466-6892\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Changhoon Jung\", \"id\": \"https://openalex.org/A5103893745\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"N. Suzuki\", \"id\": \"https://openalex.org/A5022933638\", \"orcid\": \"https://orcid.org/0000-0002-6904-6897\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nobuyoshi Yashiro\", \"id\": \"https://openalex.org/A5042955794\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ryo Omoda\", \"id\": \"https://openalex.org/A5049721902\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Su Ko\", \"id\": \"https://openalex.org/A5075061561\", \"orcid\": \"https://orcid.org/0000-0001-5901-3146\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tomoyuki Shiratsuchi\", \"id\": \"https://openalex.org/A5001404916\", \"orcid\": \"https://orcid.org/0000-0002-2496-5734\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Toshinori Sugimoto\", \"id\": \"https://openalex.org/A5067259606\", \"orcid\": \"https://orcid.org/0000-0002-9676-451X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Saebom Ryu\", \"id\": \"https://openalex.org/A5084117263\", \"orcid\": \"https://orcid.org/0000-0003-1905-0289\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun H. Ku\", \"id\": \"https://openalex.org/A5113561971\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Taku Watanabe\", \"id\": \"https://openalex.org/A5103106338\", \"orcid\": \"https://orcid.org/0000-0002-7948-7573\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Y. Park\", \"id\": \"https://openalex.org/A5001687095\", \"orcid\": \"https://orcid.org/0000-0002-9291-2706\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yûichi Aihara\", \"id\": \"https://openalex.org/A5042813782\", \"orcid\": \"https://orcid.org/0000-0001-5879-7452\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dongmin Im\", \"id\": \"https://openalex.org/A5077849827\", \"orcid\": \"https://orcid.org/0000-0003-2788-0477\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"In Taek Han\", \"id\": \"https://openalex.org/A5111429639\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773307073766,
+    "actual_start_ms": 1773307075271,
+    "pacing_wait_ms": 1504,
+    "pacing_jitter_sec": 1.542
+  }
+}

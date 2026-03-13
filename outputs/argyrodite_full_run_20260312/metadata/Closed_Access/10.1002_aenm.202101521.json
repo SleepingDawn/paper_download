@@ -1,0 +1,138 @@
+{
+  "doi": "10.1002/aenm.202101521",
+  "pdf_filename": "10.1002_aenm.202101521.pdf",
+  "json_filename": "10.1002_aenm.202101521.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_aenm.202101521.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3190472458",
+    "doi": "10.1002/aenm.202101521",
+    "title": "A Versatile Li<sub>6.5</sub>In<sub>0.25</sub>P<sub>0.75</sub>S<sub>5</sub>I Sulfide Electrolyte Triggered by Ultimate‐Energy Mechanical Alloying for All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2021-08-04",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 116,
+    "citation_normalized_percentile": 0.98174716,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zhao Jiang",
+    "authors_display": "Zhao Jiang; Hongling Peng; Yu Liu; Zhongxu Li; Yu Zhong; Xiuli Wang; Xinhui Xia; Changdong Gu; J.P. Tu",
+    "authors": [
+      {
+        "display_name": "Zhao Jiang",
+        "id": "https://openalex.org/A5101182924",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongling Peng",
+        "id": "https://openalex.org/A5024352159",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Liu",
+        "id": "https://openalex.org/A5010502185",
+        "orcid": "https://orcid.org/0000-0002-0779-1488",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhongxu Li",
+        "id": "https://openalex.org/A5084029232",
+        "orcid": "https://orcid.org/0000-0002-3175-1013",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Zhong",
+        "id": "https://openalex.org/A5030856499",
+        "orcid": "https://orcid.org/0000-0002-2363-7093",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiuli Wang",
+        "id": "https://openalex.org/A5100439024",
+        "orcid": "https://orcid.org/0000-0001-6954-7475",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xinhui Xia",
+        "id": "https://openalex.org/A5069358349",
+        "orcid": "https://orcid.org/0000-0002-5976-5337",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Changdong Gu",
+        "id": "https://openalex.org/A5113791202",
+        "orcid": "https://orcid.org/0009-0007-3459-5830",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J.P. Tu",
+        "id": "https://openalex.org/A5112063509",
+        "orcid": "https://orcid.org/0009-0007-2501-4627",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3190472458",
+    "doi": "10.1002/aenm.202101521",
+    "title": "A Versatile Li<sub>6.5</sub>In<sub>0.25</sub>P<sub>0.75</sub>S<sub>5</sub>I Sulfide Electrolyte Triggered by Ultimate‐Energy Mechanical Alloying for All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2021-08-04",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 116,
+    "citation_normalized_percentile": 0.98174716,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zhao Jiang",
+    "authors_display": "Zhao Jiang; Hongling Peng; Yu Liu; Zhongxu Li; Yu Zhong; Xiuli Wang; Xinhui Xia; Changdong Gu; J.P. Tu",
+    "authors_json": "[{\"display_name\": \"Zhao Jiang\", \"id\": \"https://openalex.org/A5101182924\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hongling Peng\", \"id\": \"https://openalex.org/A5024352159\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Liu\", \"id\": \"https://openalex.org/A5010502185\", \"orcid\": \"https://orcid.org/0000-0002-0779-1488\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhongxu Li\", \"id\": \"https://openalex.org/A5084029232\", \"orcid\": \"https://orcid.org/0000-0002-3175-1013\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Zhong\", \"id\": \"https://openalex.org/A5030856499\", \"orcid\": \"https://orcid.org/0000-0002-2363-7093\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiuli Wang\", \"id\": \"https://openalex.org/A5100439024\", \"orcid\": \"https://orcid.org/0000-0001-6954-7475\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xinhui Xia\", \"id\": \"https://openalex.org/A5069358349\", \"orcid\": \"https://orcid.org/0000-0002-5976-5337\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Changdong Gu\", \"id\": \"https://openalex.org/A5113791202\", \"orcid\": \"https://orcid.org/0009-0007-3459-5830\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J.P. Tu\", \"id\": \"https://openalex.org/A5112063509\", \"orcid\": \"https://orcid.org/0009-0007-2501-4627\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302711215,
+    "actual_start_ms": 1773302714222,
+    "pacing_wait_ms": 3006,
+    "pacing_jitter_sec": 1.731
+  }
+}

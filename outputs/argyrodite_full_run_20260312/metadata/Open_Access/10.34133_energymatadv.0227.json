@@ -1,0 +1,117 @@
+{
+  "doi": "10.34133/energymatadv.0227",
+  "pdf_filename": "10.34133_energymatadv.0227.pdf",
+  "json_filename": "10.34133_energymatadv.0227.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.34133_energymatadv.0227.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4416332007",
+    "doi": "10.34133/energymatadv.0227",
+    "title": "Dual-Functional Ga/F Co-Doped Argyrodite Sulfide Electrolytes for All-Solid-State Lithium Batteries",
+    "publisher": "American Association for the Advancement of Science",
+    "journal": {
+      "name": "Energy Material Advances",
+      "id": "https://openalex.org/S4210231836",
+      "type": "journal",
+      "issn_l": "2097-1133",
+      "issn": [
+        "2097-1133",
+        "2692-7640"
+      ]
+    },
+    "publication_date": "2025-11-18",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.36871386,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Yaru Li",
+    "authors_display": "Yaru Li; Dabing Li; Li Yang; Yanling Zhang; Xiang Qi; Li‐Zhen Fan",
+    "authors": [
+      {
+        "display_name": "Yaru Li",
+        "id": "https://openalex.org/A5100633787",
+        "orcid": "https://orcid.org/0000-0002-0026-508X",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Dabing Li",
+        "id": "https://openalex.org/A5016499715",
+        "orcid": "https://orcid.org/0000-0001-5353-1460",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Li Yang",
+        "id": "https://openalex.org/A5100660982",
+        "orcid": "https://orcid.org/0000-0003-2032-2819",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanling Zhang",
+        "id": "https://openalex.org/A5100621563",
+        "orcid": "https://orcid.org/0000-0002-4282-9082",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiang Qi",
+        "id": "https://openalex.org/A5047513706",
+        "orcid": "https://orcid.org/0000-0002-0939-8874",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Li‐Zhen Fan",
+        "id": "https://openalex.org/A5036874871",
+        "orcid": "https://orcid.org/0000-0003-2270-4458",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4416332007",
+    "doi": "10.34133/energymatadv.0227",
+    "title": "Dual-Functional Ga/F Co-Doped Argyrodite Sulfide Electrolytes for All-Solid-State Lithium Batteries",
+    "publisher": "American Association for the Advancement of Science",
+    "journal": "Energy Material Advances",
+    "journal_id": "https://openalex.org/S4210231836",
+    "journal_type": "journal",
+    "journal_issn_l": "2097-1133",
+    "journal_issn_json": "[\"2097-1133\", \"2692-7640\"]",
+    "publication_date": "2025-11-18",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.36871386,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Yaru Li",
+    "authors_display": "Yaru Li; Dabing Li; Li Yang; Yanling Zhang; Xiang Qi; Li‐Zhen Fan",
+    "authors_json": "[{\"display_name\": \"Yaru Li\", \"id\": \"https://openalex.org/A5100633787\", \"orcid\": \"https://orcid.org/0000-0002-0026-508X\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Dabing Li\", \"id\": \"https://openalex.org/A5016499715\", \"orcid\": \"https://orcid.org/0000-0001-5353-1460\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Li Yang\", \"id\": \"https://openalex.org/A5100660982\", \"orcid\": \"https://orcid.org/0000-0003-2032-2819\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanling Zhang\", \"id\": \"https://openalex.org/A5100621563\", \"orcid\": \"https://orcid.org/0000-0002-4282-9082\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiang Qi\", \"id\": \"https://openalex.org/A5047513706\", \"orcid\": \"https://orcid.org/0000-0002-0939-8874\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Li‐Zhen Fan\", \"id\": \"https://openalex.org/A5036874871\", \"orcid\": \"https://orcid.org/0000-0003-2270-4458\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://spj.science.org/doi/10.34133/energymatadv.0227",
+    "landing_title": "Dual-Functional Ga/F Co-Doped Argyrodite Sulfide Electrolytes for All-Solid-State Lithium Batteries | Energy Material Advances",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.34133_energymatadv.0227.pdf",
+    "scheduler_publisher": "10.34133",
+    "scheduled_start_ms": 1773311344361,
+    "actual_start_ms": 1773311344361,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.526
+  }
+}

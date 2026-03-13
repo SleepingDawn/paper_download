@@ -1,0 +1,173 @@
+{
+  "doi": "10.1016/j.cej.2025.166951",
+  "pdf_filename": "10.1016_j.cej.2025.166951.pdf",
+  "json_filename": "10.1016_j.cej.2025.166951.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.cej.2025.166951.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413213940",
+    "doi": "10.1016/j.cej.2025.166951",
+    "title": "High-purity Li₆PS₅Cl sulfide solid electrolytes via liquid-phase method synthesis for high-performance all-solid-state Li-ion batteries: Particle-scale analysis of formation with precursor and solvent optimization",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chemical Engineering Journal",
+      "id": "https://openalex.org/S149937609",
+      "type": "journal",
+      "issn_l": "1385-8947",
+      "issn": [
+        "1385-8947",
+        "1873-3212"
+      ]
+    },
+    "publication_date": "2025-08-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.77252997,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 14,
+    "first_author": "Hye-Won Jo",
+    "authors_display": "Hye-Won Jo; Bit-Na Kim; Byeong‐Min Ahn; Youngjun Huh; So Young Kim; Jung Han Kim; Heetaek Park; Jun‐Woo Park; Yoon‐Cheol Ha; Jay Hyok Song; Je In Lee; Junho Park; Jun-Ho Park; Jun-Ho Park",
+    "authors": [
+      {
+        "display_name": "Hye-Won Jo",
+        "id": "https://openalex.org/A5087097952",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bit-Na Kim",
+        "id": "https://openalex.org/A5102942348",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byeong‐Min Ahn",
+        "id": "https://openalex.org/A5046309644",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Youngjun Huh",
+        "id": "https://openalex.org/A5017923928",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "So Young Kim",
+        "id": "https://openalex.org/A5100338582",
+        "orcid": "https://orcid.org/0000-0003-2470-8065",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jung Han Kim",
+        "id": "https://openalex.org/A5044201544",
+        "orcid": "https://orcid.org/0000-0002-6678-2282",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Heetaek Park",
+        "id": "https://openalex.org/A5025088024",
+        "orcid": "https://orcid.org/0000-0003-2799-5354",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun‐Woo Park",
+        "id": "https://openalex.org/A5118844308",
+        "orcid": "https://orcid.org/0000-0002-1446-8822",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoon‐Cheol Ha",
+        "id": "https://openalex.org/A5086764992",
+        "orcid": "https://orcid.org/0000-0001-5769-1461",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jay Hyok Song",
+        "id": "https://openalex.org/A5103238339",
+        "orcid": "https://orcid.org/0000-0001-7955-0010",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Je In Lee",
+        "id": "https://openalex.org/A5002411989",
+        "orcid": "https://orcid.org/0000-0001-9110-8030",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junho Park",
+        "id": "https://openalex.org/A5100667209",
+        "orcid": "https://orcid.org/0000-0002-1460-4046",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jun-Ho Park",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jun-Ho Park",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413213940",
+    "doi": "10.1016/j.cej.2025.166951",
+    "title": "High-purity Li₆PS₅Cl sulfide solid electrolytes via liquid-phase method synthesis for high-performance all-solid-state Li-ion batteries: Particle-scale analysis of formation with precursor and solvent optimization",
+    "publisher": "Elsevier BV",
+    "journal": "Chemical Engineering Journal",
+    "journal_id": "https://openalex.org/S149937609",
+    "journal_type": "journal",
+    "journal_issn_l": "1385-8947",
+    "journal_issn_json": "[\"1385-8947\", \"1873-3212\"]",
+    "publication_date": "2025-08-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.77252997,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 14,
+    "first_author": "Hye-Won Jo",
+    "authors_display": "Hye-Won Jo; Bit-Na Kim; Byeong‐Min Ahn; Youngjun Huh; So Young Kim; Jung Han Kim; Heetaek Park; Jun‐Woo Park; Yoon‐Cheol Ha; Jay Hyok Song; Je In Lee; Junho Park; Jun-Ho Park; Jun-Ho Park",
+    "authors_json": "[{\"display_name\": \"Hye-Won Jo\", \"id\": \"https://openalex.org/A5087097952\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Bit-Na Kim\", \"id\": \"https://openalex.org/A5102942348\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byeong‐Min Ahn\", \"id\": \"https://openalex.org/A5046309644\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Youngjun Huh\", \"id\": \"https://openalex.org/A5017923928\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"So Young Kim\", \"id\": \"https://openalex.org/A5100338582\", \"orcid\": \"https://orcid.org/0000-0003-2470-8065\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jung Han Kim\", \"id\": \"https://openalex.org/A5044201544\", \"orcid\": \"https://orcid.org/0000-0002-6678-2282\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Heetaek Park\", \"id\": \"https://openalex.org/A5025088024\", \"orcid\": \"https://orcid.org/0000-0003-2799-5354\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun‐Woo Park\", \"id\": \"https://openalex.org/A5118844308\", \"orcid\": \"https://orcid.org/0000-0002-1446-8822\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoon‐Cheol Ha\", \"id\": \"https://openalex.org/A5086764992\", \"orcid\": \"https://orcid.org/0000-0001-5769-1461\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jay Hyok Song\", \"id\": \"https://openalex.org/A5103238339\", \"orcid\": \"https://orcid.org/0000-0001-7955-0010\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Je In Lee\", \"id\": \"https://openalex.org/A5002411989\", \"orcid\": \"https://orcid.org/0000-0001-9110-8030\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junho Park\", \"id\": \"https://openalex.org/A5100667209\", \"orcid\": \"https://orcid.org/0000-0002-1460-4046\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jun-Ho Park\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jun-Ho Park\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S1385894725077903?via%3Dihub",
+    "landing_title": "High-purity Li₆PS₅Cl sulfide solid electrolytes via liquid-phase method synthesis for high-performance all-solid-state Li-ion batteries: Particle-scale analysis of formation with precursor and solvent optimization - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773308524221,
+    "actual_start_ms": 1773308524221,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.565
+  }
+}

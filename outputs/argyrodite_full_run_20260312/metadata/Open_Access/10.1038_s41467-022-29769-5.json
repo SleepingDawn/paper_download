@@ -1,0 +1,88 @@
+{
+  "doi": "10.1038/s41467-022-29769-5",
+  "pdf_filename": "10.1038_s41467-022-29769-5.pdf",
+  "json_filename": "10.1038_s41467-022-29769-5.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s41467-022-29769-5.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4224219201",
+    "doi": "10.1038/s41467-022-29769-5",
+    "title": "Argyrodite-type advanced lithium conductors and transport mechanisms beyond paddle-wheel effect",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Communications",
+      "id": "https://openalex.org/S64187185",
+      "type": "journal",
+      "issn_l": "2041-1723",
+      "issn": [
+        "2041-1723"
+      ]
+    },
+    "publication_date": "2022-04-19",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 82,
+    "citation_normalized_percentile": 0.97943431,
+    "pdf_url": "https://www.nature.com/articles/s41467-022-29769-5.pdf",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Hong Fang",
+    "authors_display": "Hong Fang; Puru Jena",
+    "authors": [
+      {
+        "display_name": "Hong Fang",
+        "id": "https://openalex.org/A5012866011",
+        "orcid": "https://orcid.org/0000-0002-0968-8687",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Puru Jena",
+        "id": "https://openalex.org/A5004635120",
+        "orcid": "https://orcid.org/0000-0002-2316-859X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4224219201",
+    "doi": "10.1038/s41467-022-29769-5",
+    "title": "Argyrodite-type advanced lithium conductors and transport mechanisms beyond paddle-wheel effect",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Communications",
+    "journal_id": "https://openalex.org/S64187185",
+    "journal_type": "journal",
+    "journal_issn_l": "2041-1723",
+    "journal_issn_json": "[\"2041-1723\"]",
+    "publication_date": "2022-04-19",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 82,
+    "citation_normalized_percentile": 0.97943431,
+    "pdf_url": "https://www.nature.com/articles/s41467-022-29769-5.pdf",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Hong Fang",
+    "authors_display": "Hong Fang; Puru Jena",
+    "authors_json": "[{\"display_name\": \"Hong Fang\", \"id\": \"https://openalex.org/A5012866011\", \"orcid\": \"https://orcid.org/0000-0002-0968-8687\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Puru Jena\", \"id\": \"https://openalex.org/A5004635120\", \"orcid\": \"https://orcid.org/0000-0002-2316-859X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773307952795,
+    "actual_start_ms": 1773307954300,
+    "pacing_wait_ms": 1504,
+    "pacing_jitter_sec": 1.406
+  }
+}

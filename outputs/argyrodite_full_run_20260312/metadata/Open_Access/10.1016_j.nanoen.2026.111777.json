@@ -1,0 +1,131 @@
+{
+  "doi": "10.1016/j.nanoen.2026.111777",
+  "pdf_filename": "10.1016_j.nanoen.2026.111777.pdf",
+  "json_filename": "10.1016_j.nanoen.2026.111777.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.nanoen.2026.111777.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7128054196",
+    "doi": "10.1016/j.nanoen.2026.111777",
+    "title": "Design principles for cation-disordered superionic thioantimonate argyrodite solid electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Nano Energy",
+      "id": "https://openalex.org/S2497301991",
+      "type": "journal",
+      "issn_l": "2211-2855",
+      "issn": [
+        "2211-2855",
+        "2211-3282"
+      ]
+    },
+    "publication_date": "2026-02-05",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.63073487,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "K.-H. Park",
+    "authors_display": "K.-H. Park; Myeongcho Jang; S. Lee; YongHeum Lee; Hun-Gi Jung; Kyung Yoon Chung; Seung-Ho Yu; Suxin Yu",
+    "authors": [
+      {
+        "display_name": "K.-H. Park",
+        "id": "https://openalex.org/A5029506947",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Myeongcho Jang",
+        "id": "https://openalex.org/A5108496311",
+        "orcid": "https://orcid.org/0009-0007-9935-3584",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "S. Lee",
+        "id": "https://openalex.org/A5108504009",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "YongHeum Lee",
+        "id": "https://openalex.org/A5076352213",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hun-Gi Jung",
+        "id": "https://openalex.org/A5121037181",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung Yoon Chung",
+        "id": "https://openalex.org/A5125212690",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung-Ho Yu",
+        "id": "https://openalex.org/A5125104482",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Suxin Yu",
+        "id": "https://openalex.org/A5054426073",
+        "orcid": "https://orcid.org/0000-0003-1038-1583",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7128054196",
+    "doi": "10.1016/j.nanoen.2026.111777",
+    "title": "Design principles for cation-disordered superionic thioantimonate argyrodite solid electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": "Nano Energy",
+    "journal_id": "https://openalex.org/S2497301991",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-2855",
+    "journal_issn_json": "[\"2211-2855\", \"2211-3282\"]",
+    "publication_date": "2026-02-05",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.63073487,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "K.-H. Park",
+    "authors_display": "K.-H. Park; Myeongcho Jang; S. Lee; YongHeum Lee; Hun-Gi Jung; Kyung Yoon Chung; Seung-Ho Yu; Suxin Yu",
+    "authors_json": "[{\"display_name\": \"K.-H. Park\", \"id\": \"https://openalex.org/A5029506947\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Myeongcho Jang\", \"id\": \"https://openalex.org/A5108496311\", \"orcid\": \"https://orcid.org/0009-0007-9935-3584\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"S. Lee\", \"id\": \"https://openalex.org/A5108504009\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"YongHeum Lee\", \"id\": \"https://openalex.org/A5076352213\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hun-Gi Jung\", \"id\": \"https://openalex.org/A5121037181\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung Yoon Chung\", \"id\": \"https://openalex.org/A5125212690\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seung-Ho Yu\", \"id\": \"https://openalex.org/A5125104482\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Suxin Yu\", \"id\": \"https://openalex.org/A5054426073\", \"orcid\": \"https://orcid.org/0000-0003-1038-1583\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2211285526000819?via%3Dihub",
+    "landing_title": "Design principles for cation-disordered superionic thioantimonate argyrodite solid electrolytes - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773310030198,
+    "actual_start_ms": 1773310030198,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.391
+  }
+}

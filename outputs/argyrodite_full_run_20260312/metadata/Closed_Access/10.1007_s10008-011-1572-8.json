@@ -1,0 +1,103 @@
+{
+  "doi": "10.1007/s10008-011-1572-8",
+  "pdf_filename": "10.1007_s10008-011-1572-8.pdf",
+  "json_filename": "10.1007_s10008-011-1572-8.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s10008-011-1572-8.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2460080986",
+    "doi": "10.1007/s10008-011-1572-8",
+    "title": "Variation in structure and Li+-ion migration in argyrodite-type Li6PS5X (X = Cl, Br, I) solid electrolytes",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Journal of Solid State Electrochemistry",
+      "id": "https://openalex.org/S25422132",
+      "type": "journal",
+      "issn_l": "1432-8488",
+      "issn": [
+        "1432-8488",
+        "1433-0768"
+      ]
+    },
+    "publication_date": "2011-10-27",
+    "publication_year": 2011,
+    "work_type": "article",
+    "cited_by_count": 251,
+    "citation_normalized_percentile": 0.85977147,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "R. Prasada Rao",
+    "authors_display": "R. Prasada Rao; Neeraj Sharma; Vanessa K. Peterson; Stefan Adams",
+    "authors": [
+      {
+        "display_name": "R. Prasada Rao",
+        "id": "https://openalex.org/A5020388351",
+        "orcid": "https://orcid.org/0000-0002-4022-2340",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Neeraj Sharma",
+        "id": "https://openalex.org/A5090151283",
+        "orcid": "https://orcid.org/0000-0003-1197-6343",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vanessa K. Peterson",
+        "id": "https://openalex.org/A5077451558",
+        "orcid": "https://orcid.org/0000-0002-5442-0591",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Stefan Adams",
+        "id": "https://openalex.org/A5050140273",
+        "orcid": "https://orcid.org/0000-0003-0710-135X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2460080986",
+    "doi": "10.1007/s10008-011-1572-8",
+    "title": "Variation in structure and Li+-ion migration in argyrodite-type Li6PS5X (X = Cl, Br, I) solid electrolytes",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Journal of Solid State Electrochemistry",
+    "journal_id": "https://openalex.org/S25422132",
+    "journal_type": "journal",
+    "journal_issn_l": "1432-8488",
+    "journal_issn_json": "[\"1432-8488\", \"1433-0768\"]",
+    "publication_date": "2011-10-27",
+    "publication_year": 2011,
+    "work_type": "article",
+    "cited_by_count": 251,
+    "citation_normalized_percentile": 0.85977147,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "R. Prasada Rao",
+    "authors_display": "R. Prasada Rao; Neeraj Sharma; Vanessa K. Peterson; Stefan Adams",
+    "authors_json": "[{\"display_name\": \"R. Prasada Rao\", \"id\": \"https://openalex.org/A5020388351\", \"orcid\": \"https://orcid.org/0000-0002-4022-2340\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Neeraj Sharma\", \"id\": \"https://openalex.org/A5090151283\", \"orcid\": \"https://orcid.org/0000-0003-1197-6343\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Vanessa K. Peterson\", \"id\": \"https://openalex.org/A5077451558\", \"orcid\": \"https://orcid.org/0000-0002-5442-0591\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Stefan Adams\", \"id\": \"https://openalex.org/A5050140273\", \"orcid\": \"https://orcid.org/0000-0003-0710-135X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773307660351,
+    "actual_start_ms": 1773307661860,
+    "pacing_wait_ms": 1508,
+    "pacing_jitter_sec": 1.586
+  }
+}

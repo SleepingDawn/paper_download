@@ -1,0 +1,131 @@
+{
+  "doi": "10.1039/d5tc00529a",
+  "pdf_filename": "10.1039_d5tc00529a.pdf",
+  "json_filename": "10.1039_d5tc00529a.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_d5tc00529a.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409955021",
+    "doi": "10.1039/d5tc00529a",
+    "title": "Iodide substituted halide-rich lithium argyrodite solid electrolytes with improved performance for all solid-state batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry C",
+      "id": "https://openalex.org/S2500738039",
+      "type": "journal",
+      "issn_l": "2050-7526",
+      "issn": [
+        "2050-7526",
+        "2050-7534"
+      ]
+    },
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.7288525,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/tc/d5tc00529a",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Adwitiya Rao",
+    "authors_display": "Adwitiya Rao; Jacob Rempel; Ming Jiang; Parvin Adeli; Chae-Ho Yim; Mohamed Houache; Yaser Abu‐Lebdeh; Chandra Veer Singh",
+    "authors": [
+      {
+        "display_name": "Adwitiya Rao",
+        "id": "https://openalex.org/A5048565747",
+        "orcid": "https://orcid.org/0000-0002-3529-3697",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jacob Rempel",
+        "id": "https://openalex.org/A5021628814",
+        "orcid": "https://orcid.org/0000-0001-9821-5314",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ming Jiang",
+        "id": "https://openalex.org/A5022001222",
+        "orcid": "https://orcid.org/0000-0001-6102-8785",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Parvin Adeli",
+        "id": "https://openalex.org/A5065628999",
+        "orcid": "https://orcid.org/0000-0002-0311-0382",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chae-Ho Yim",
+        "id": "https://openalex.org/A5034349441",
+        "orcid": "https://orcid.org/0000-0001-7321-1288",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mohamed Houache",
+        "id": "https://openalex.org/A5047138322",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yaser Abu‐Lebdeh",
+        "id": "https://openalex.org/A5078262597",
+        "orcid": "https://orcid.org/0000-0001-8936-4238",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chandra Veer Singh",
+        "id": "https://openalex.org/A5077238261",
+        "orcid": "https://orcid.org/0000-0002-6644-0178",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409955021",
+    "doi": "10.1039/d5tc00529a",
+    "title": "Iodide substituted halide-rich lithium argyrodite solid electrolytes with improved performance for all solid-state batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry C",
+    "journal_id": "https://openalex.org/S2500738039",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7526",
+    "journal_issn_json": "[\"2050-7526\", \"2050-7534\"]",
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.7288525,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/tc/d5tc00529a",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Adwitiya Rao",
+    "authors_display": "Adwitiya Rao; Jacob Rempel; Ming Jiang; Parvin Adeli; Chae-Ho Yim; Mohamed Houache; Yaser Abu‐Lebdeh; Chandra Veer Singh",
+    "authors_json": "[{\"display_name\": \"Adwitiya Rao\", \"id\": \"https://openalex.org/A5048565747\", \"orcid\": \"https://orcid.org/0000-0002-3529-3697\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jacob Rempel\", \"id\": \"https://openalex.org/A5021628814\", \"orcid\": \"https://orcid.org/0000-0001-9821-5314\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ming Jiang\", \"id\": \"https://openalex.org/A5022001222\", \"orcid\": \"https://orcid.org/0000-0001-6102-8785\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Parvin Adeli\", \"id\": \"https://openalex.org/A5065628999\", \"orcid\": \"https://orcid.org/0000-0002-0311-0382\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chae-Ho Yim\", \"id\": \"https://openalex.org/A5034349441\", \"orcid\": \"https://orcid.org/0000-0001-7321-1288\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mohamed Houache\", \"id\": \"https://openalex.org/A5047138322\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yaser Abu‐Lebdeh\", \"id\": \"https://openalex.org/A5078262597\", \"orcid\": \"https://orcid.org/0000-0001-8936-4238\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chandra Veer Singh\", \"id\": \"https://openalex.org/A5077238261\", \"orcid\": \"https://orcid.org/0000-0002-6644-0178\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.rsc.org/en/content/articlelanding/2025/tc/d5tc00529a",
+    "landing_title": "pubs.rsc.org/en/content/articlelanding/2025/tc/d5tc00529a",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773316658289,
+    "actual_start_ms": 1773316658289,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.84
+  }
+}

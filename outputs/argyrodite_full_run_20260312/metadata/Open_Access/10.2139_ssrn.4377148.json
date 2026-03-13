@@ -1,0 +1,116 @@
+{
+  "doi": "10.2139/ssrn.4377148",
+  "pdf_filename": "10.2139_ssrn.4377148.pdf",
+  "json_filename": "10.2139_ssrn.4377148.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.4377148.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4323058947",
+    "doi": "10.2139/ssrn.4377148",
+    "title": "Stability of Amorphous Li-La-Zr-Ta-O Coating for High-Voltage Cathodes in Sulfide-Based Solid-State Batterieseclaration of Interests",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Jeevan Kumar Padarti",
+    "authors_display": "Jeevan Kumar Padarti; Yusuke Morino; Satoshi Kanada; Akihiro Shiota; Shigeto Hirai; Tomoya Ohno",
+    "authors": [
+      {
+        "display_name": "Jeevan Kumar Padarti",
+        "id": "https://openalex.org/A5053085697",
+        "orcid": "https://orcid.org/0000-0001-7932-8989",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yusuke Morino",
+        "id": "https://openalex.org/A5082471934",
+        "orcid": "https://orcid.org/0000-0002-6973-7786",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Satoshi Kanada",
+        "id": "https://openalex.org/A5008448415",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Akihiro Shiota",
+        "id": "https://openalex.org/A5074212281",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shigeto Hirai",
+        "id": "https://openalex.org/A5036570962",
+        "orcid": "https://orcid.org/0000-0001-8420-8711",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tomoya Ohno",
+        "id": "https://openalex.org/A5060980991",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4323058947",
+    "doi": "10.2139/ssrn.4377148",
+    "title": "Stability of Amorphous Li-La-Zr-Ta-O Coating for High-Voltage Cathodes in Sulfide-Based Solid-State Batterieseclaration of Interests",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Jeevan Kumar Padarti",
+    "authors_display": "Jeevan Kumar Padarti; Yusuke Morino; Satoshi Kanada; Akihiro Shiota; Shigeto Hirai; Tomoya Ohno",
+    "authors_json": "[{\"display_name\": \"Jeevan Kumar Padarti\", \"id\": \"https://openalex.org/A5053085697\", \"orcid\": \"https://orcid.org/0000-0001-7932-8989\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Yusuke Morino\", \"id\": \"https://openalex.org/A5082471934\", \"orcid\": \"https://orcid.org/0000-0002-6973-7786\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Satoshi Kanada\", \"id\": \"https://openalex.org/A5008448415\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Akihiro Shiota\", \"id\": \"https://openalex.org/A5074212281\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shigeto Hirai\", \"id\": \"https://openalex.org/A5036570962\", \"orcid\": \"https://orcid.org/0000-0001-8420-8711\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tomoya Ohno\", \"id\": \"https://openalex.org/A5060980991\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4377148&__cf_chl_rt_tk=AD9RIzcB.7A6Gp.BqSrfYPYT5YRFmHaQ0DQtldk3tW8-1773315123-1.0.1.1-Q824E2c8PgGy8ZSRIS0nQgGEXiWnY0mIVc2veh.0iJ8",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.4377148.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773315102085,
+    "actual_start_ms": 1773315102086,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.176
+  }
+}

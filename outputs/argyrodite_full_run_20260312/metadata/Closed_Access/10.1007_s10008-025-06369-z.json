@@ -1,0 +1,103 @@
+{
+  "doi": "10.1007/s10008-025-06369-z",
+  "pdf_filename": "10.1007_s10008-025-06369-z.pdf",
+  "json_filename": "10.1007_s10008-025-06369-z.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s10008-025-06369-z.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4411635876",
+    "doi": "10.1007/s10008-025-06369-z",
+    "title": "Synthesis and electrochemical characterization of Li2S and Li6−xPS5−xCl1+x−yBry (0 ≤ x ≤ 0.7; 0 ≤ y ≤ 1.7) for all-solid-state lithium-ion batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Journal of Solid State Electrochemistry",
+      "id": "https://openalex.org/S25422132",
+      "type": "journal",
+      "issn_l": "1432-8488",
+      "issn": [
+        "1432-8488",
+        "1433-0768"
+      ]
+    },
+    "publication_date": "2025-06-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.16054246,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Bo-Qun Cao",
+    "authors_display": "Bo-Qun Cao; Hao-Tian Bao; Jiwei Zhang; Gang-Qin Shao",
+    "authors": [
+      {
+        "display_name": "Bo-Qun Cao",
+        "id": "https://openalex.org/A5030784081",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hao-Tian Bao",
+        "id": "https://openalex.org/A5078976207",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiwei Zhang",
+        "id": "https://openalex.org/A5100353043",
+        "orcid": "https://orcid.org/0000-0001-9282-4741",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gang-Qin Shao",
+        "id": "https://openalex.org/A5032893499",
+        "orcid": "https://orcid.org/0000-0001-6002-5910",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4411635876",
+    "doi": "10.1007/s10008-025-06369-z",
+    "title": "Synthesis and electrochemical characterization of Li2S and Li6−xPS5−xCl1+x−yBry (0 ≤ x ≤ 0.7; 0 ≤ y ≤ 1.7) for all-solid-state lithium-ion batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Journal of Solid State Electrochemistry",
+    "journal_id": "https://openalex.org/S25422132",
+    "journal_type": "journal",
+    "journal_issn_l": "1432-8488",
+    "journal_issn_json": "[\"1432-8488\", \"1433-0768\"]",
+    "publication_date": "2025-06-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.16054246,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Bo-Qun Cao",
+    "authors_display": "Bo-Qun Cao; Hao-Tian Bao; Jiwei Zhang; Gang-Qin Shao",
+    "authors_json": "[{\"display_name\": \"Bo-Qun Cao\", \"id\": \"https://openalex.org/A5030784081\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hao-Tian Bao\", \"id\": \"https://openalex.org/A5078976207\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiwei Zhang\", \"id\": \"https://openalex.org/A5100353043\", \"orcid\": \"https://orcid.org/0000-0001-9282-4741\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gang-Qin Shao\", \"id\": \"https://openalex.org/A5032893499\", \"orcid\": \"https://orcid.org/0000-0001-6002-5910\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://link.springer.com/article/10.1007/s10008-025-06369-z",
+    "landing_title": "Synthesis and electrochemical characterization of Li2S and Li6−xPS5−xCl1+x−yBry (0 ≤ x ≤ 0.7; 0 ≤ y ≤ 1.7) for all-solid-state lithium-ion batteries | Journal of Solid State Electrochemistry | Springer Nature Link",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1007_s10008-025-06369-z.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773310027638,
+    "actual_start_ms": 1773310027638,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.945
+  }
+}

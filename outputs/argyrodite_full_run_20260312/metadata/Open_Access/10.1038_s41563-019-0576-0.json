@@ -1,0 +1,173 @@
+{
+  "doi": "10.1038/s41563-019-0576-0",
+  "pdf_filename": "10.1038_s41563-019-0576-0.pdf",
+  "json_filename": "10.1038_s41563-019-0576-0.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s41563-019-0576-0.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2970796811",
+    "doi": "10.1038/s41563-019-0576-0",
+    "title": "Clarifying the relationship between redox activity and electrochemical stability in solid electrolytes",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Materials",
+      "id": "https://openalex.org/S103895331",
+      "type": "journal",
+      "issn_l": "1476-1122",
+      "issn": [
+        "1476-1122",
+        "1476-4660"
+      ]
+    },
+    "publication_date": "2020-01-13",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 491,
+    "citation_normalized_percentile": 0.99816677,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 14,
+    "first_author": "Tammo K. Schwietert",
+    "authors_display": "Tammo K. Schwietert; Violetta A. Arszelewska; Chao Wang; Chuang Yu; Alexandros Vasileiadis; Niek J. J. de Klerk; Jart Hageman; Thomas Hupfer; Ingo Kerkamm; Yaolin Xu; Eveline van der Maas; Erik M. Kelder; Swapna Ganapathy; Marnix Wagemaker",
+    "authors": [
+      {
+        "display_name": "Tammo K. Schwietert",
+        "id": null,
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Violetta A. Arszelewska",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chao Wang",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alexandros Vasileiadis",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Niek J. J. de Klerk",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jart Hageman",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Thomas Hupfer",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ingo Kerkamm",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yaolin Xu",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Eveline van der Maas",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Erik M. Kelder",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Swapna Ganapathy",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0001-5265-1663",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marnix Wagemaker",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0003-3851-1044",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2970796811",
+    "doi": "10.1038/s41563-019-0576-0",
+    "title": "Clarifying the relationship between redox activity and electrochemical stability in solid electrolytes",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Materials",
+    "journal_id": "https://openalex.org/S103895331",
+    "journal_type": "journal",
+    "journal_issn_l": "1476-1122",
+    "journal_issn_json": "[\"1476-1122\", \"1476-4660\"]",
+    "publication_date": "2020-01-13",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 491,
+    "citation_normalized_percentile": 0.99816677,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 14,
+    "first_author": "Tammo K. Schwietert",
+    "authors_display": "Tammo K. Schwietert; Violetta A. Arszelewska; Chao Wang; Chuang Yu; Alexandros Vasileiadis; Niek J. J. de Klerk; Jart Hageman; Thomas Hupfer; Ingo Kerkamm; Yaolin Xu; Eveline van der Maas; Erik M. Kelder; Swapna Ganapathy; Marnix Wagemaker",
+    "authors_json": "[{\"display_name\": \"Tammo K. Schwietert\", \"id\": null, \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Violetta A. Arszelewska\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chao Wang\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alexandros Vasileiadis\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Niek J. J. de Klerk\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jart Hageman\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Thomas Hupfer\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ingo Kerkamm\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yaolin Xu\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Eveline van der Maas\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Erik M. Kelder\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Swapna Ganapathy\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0001-5265-1663\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marnix Wagemaker\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0003-3851-1044\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773307128445,
+    "actual_start_ms": 1773307129947,
+    "pacing_wait_ms": 1501,
+    "pacing_jitter_sec": 1.156
+  }
+}

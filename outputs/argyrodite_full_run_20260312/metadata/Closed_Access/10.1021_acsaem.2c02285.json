@@ -1,0 +1,88 @@
+{
+  "doi": "10.1021/acsaem.2c02285",
+  "pdf_filename": "10.1021_acsaem.2c02285.pdf",
+  "json_filename": "10.1021_acsaem.2c02285.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.2c02285.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4308886701",
+    "doi": "10.1021/acsaem.2c02285",
+    "title": "Interfacial Behavior of a Thio-LISICON Solid-State Electrolyte under External Pressure",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2022-11-10",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.69180642,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Yifan Wu",
+    "authors_display": "Yifan Wu; Shou‐Hang Bo",
+    "authors": [
+      {
+        "display_name": "Yifan Wu",
+        "id": "https://openalex.org/A5101872686",
+        "orcid": "https://orcid.org/0000-0003-1296-7035",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shou‐Hang Bo",
+        "id": "https://openalex.org/A5080651679",
+        "orcid": "https://orcid.org/0000-0001-8963-5261",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4308886701",
+    "doi": "10.1021/acsaem.2c02285",
+    "title": "Interfacial Behavior of a Thio-LISICON Solid-State Electrolyte under External Pressure",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2022-11-10",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.69180642,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Yifan Wu",
+    "authors_display": "Yifan Wu; Shou‐Hang Bo",
+    "authors_json": "[{\"display_name\": \"Yifan Wu\", \"id\": \"https://openalex.org/A5101872686\", \"orcid\": \"https://orcid.org/0000-0003-1296-7035\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Shou‐Hang Bo\", \"id\": \"https://openalex.org/A5080651679\", \"orcid\": \"https://orcid.org/0000-0001-8963-5261\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.2c02285",
+    "landing_title": "Interfacial Behavior of a Thio-LISICON Solid-State Electrolyte under External Pressure | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsaem.2c02285.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773305703413,
+    "actual_start_ms": 1773305742982,
+    "pacing_wait_ms": 39568,
+    "pacing_jitter_sec": 1.663
+  }
+}

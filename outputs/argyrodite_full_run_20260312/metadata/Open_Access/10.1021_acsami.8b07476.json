@@ -1,0 +1,145 @@
+{
+  "doi": "10.1021/acsami.8b07476",
+  "pdf_filename": "10.1021_acsami.8b07476.pdf",
+  "json_filename": "10.1021_acsami.8b07476.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsami.8b07476.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2891557444",
+    "doi": "10.1021/acsami.8b07476",
+    "title": "Facile Synthesis toward the Optimal Structure-Conductivity Characteristics of the Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Solid-State Electrolyte",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2018-09-10",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 245,
+    "citation_normalized_percentile": 0.98781049,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acsami.8b07476",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Chuang Yu",
+    "authors_display": "Chuang Yu; Swapna Ganapathy; J.C.L. Hageman; Lambert van Eijck; Ernst R. H. van Eck; Long Zhang; Tammo K. Schwietert; Shibabrata Basak; Erik M. Kelder; Marnix Wagemaker",
+    "authors": [
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Swapna Ganapathy",
+        "id": "https://openalex.org/A5075602037",
+        "orcid": "https://orcid.org/0000-0001-5265-1663",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J.C.L. Hageman",
+        "id": "https://openalex.org/A5068390518",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lambert van Eijck",
+        "id": "https://openalex.org/A5011563461",
+        "orcid": "https://orcid.org/0000-0003-2047-2665",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ernst R. H. van Eck",
+        "id": "https://openalex.org/A5030253796",
+        "orcid": "https://orcid.org/0000-0002-2365-9583",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Long Zhang",
+        "id": "https://openalex.org/A5100363525",
+        "orcid": "https://orcid.org/0000-0002-4861-1471",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tammo K. Schwietert",
+        "id": "https://openalex.org/A5080001085",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shibabrata Basak",
+        "id": "https://openalex.org/A5029866201",
+        "orcid": "https://orcid.org/0000-0002-4331-4742",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Erik M. Kelder",
+        "id": "https://openalex.org/A5024102755",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marnix Wagemaker",
+        "id": "https://openalex.org/A5034244816",
+        "orcid": "https://orcid.org/0000-0003-3851-1044",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2891557444",
+    "doi": "10.1021/acsami.8b07476",
+    "title": "Facile Synthesis toward the Optimal Structure-Conductivity Characteristics of the Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Solid-State Electrolyte",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2018-09-10",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 245,
+    "citation_normalized_percentile": 0.98781049,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acsami.8b07476",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Chuang Yu",
+    "authors_display": "Chuang Yu; Swapna Ganapathy; J.C.L. Hageman; Lambert van Eijck; Ernst R. H. van Eck; Long Zhang; Tammo K. Schwietert; Shibabrata Basak; Erik M. Kelder; Marnix Wagemaker",
+    "authors_json": "[{\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Swapna Ganapathy\", \"id\": \"https://openalex.org/A5075602037\", \"orcid\": \"https://orcid.org/0000-0001-5265-1663\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J.C.L. Hageman\", \"id\": \"https://openalex.org/A5068390518\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lambert van Eijck\", \"id\": \"https://openalex.org/A5011563461\", \"orcid\": \"https://orcid.org/0000-0003-2047-2665\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ernst R. H. van Eck\", \"id\": \"https://openalex.org/A5030253796\", \"orcid\": \"https://orcid.org/0000-0002-2365-9583\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Long Zhang\", \"id\": \"https://openalex.org/A5100363525\", \"orcid\": \"https://orcid.org/0000-0002-4861-1471\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tammo K. Schwietert\", \"id\": \"https://openalex.org/A5080001085\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shibabrata Basak\", \"id\": \"https://openalex.org/A5029866201\", \"orcid\": \"https://orcid.org/0000-0002-4331-4742\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Erik M. Kelder\", \"id\": \"https://openalex.org/A5024102755\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marnix Wagemaker\", \"id\": \"https://openalex.org/A5034244816\", \"orcid\": \"https://orcid.org/0000-0003-3851-1044\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301598033,
+    "actual_start_ms": 1773301600301,
+    "pacing_wait_ms": 2267,
+    "pacing_jitter_sec": 1.601
+  }
+}

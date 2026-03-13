@@ -1,0 +1,119 @@
+{
+  "doi": "10.1149/ma2023-024773mtgabs",
+  "pdf_filename": "10.1149_ma2023-024773mtgabs.pdf",
+  "json_filename": "10.1149_ma2023-024773mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2023-024773mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4391640086",
+    "doi": "10.1149/ma2023-024773mtgabs",
+    "title": "Computationally Predicted New Solid-State Electrolyte (Li<sub>5+x </sub>PS<sub>4+x </sub>Cl<sub>2-x </sub>: 0 ≤ x ≤ 2) and Poly Sulfide Cathodes (Li<sub>3+y </sub>PS<sub>9 </sub> or Li<sub>5+y </sub>PS<sub>9</sub>Cl<sub>2</sub>: 0 ≤ y ≤ 9) for High Performance Li Metal Anode Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2023-12-22",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.19341219,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Tridip Das",
+    "authors_display": "Tridip Das; Sergey I. Morozov; Boris V. Merinov; Sergey V. Zybin; Moon Young Yang; William A. Goddard",
+    "authors": [
+      {
+        "display_name": "Tridip Das",
+        "id": "https://openalex.org/A5020427334",
+        "orcid": "https://orcid.org/0000-0002-3320-2157",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Sergey I. Morozov",
+        "id": "https://openalex.org/A5016807292",
+        "orcid": "https://orcid.org/0000-0001-6226-5811",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Boris V. Merinov",
+        "id": "https://openalex.org/A5071381490",
+        "orcid": "https://orcid.org/0000-0002-2783-4262",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sergey V. Zybin",
+        "id": "https://openalex.org/A5079372041",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Moon Young Yang",
+        "id": "https://openalex.org/A5012227349",
+        "orcid": "https://orcid.org/0000-0003-4436-8010",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "William A. Goddard",
+        "id": "https://openalex.org/A5035627473",
+        "orcid": "https://orcid.org/0000-0003-0097-5716",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4391640086",
+    "doi": "10.1149/ma2023-024773mtgabs",
+    "title": "Computationally Predicted New Solid-State Electrolyte (Li<sub>5+x </sub>PS<sub>4+x </sub>Cl<sub>2-x </sub>: 0 ≤ x ≤ 2) and Poly Sulfide Cathodes (Li<sub>3+y </sub>PS<sub>9 </sub> or Li<sub>5+y </sub>PS<sub>9</sub>Cl<sub>2</sub>: 0 ≤ y ≤ 9) for High Performance Li Metal Anode Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2023-12-22",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.19341219,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Tridip Das",
+    "authors_display": "Tridip Das; Sergey I. Morozov; Boris V. Merinov; Sergey V. Zybin; Moon Young Yang; William A. Goddard",
+    "authors_json": "[{\"display_name\": \"Tridip Das\", \"id\": \"https://openalex.org/A5020427334\", \"orcid\": \"https://orcid.org/0000-0002-3320-2157\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Sergey I. Morozov\", \"id\": \"https://openalex.org/A5016807292\", \"orcid\": \"https://orcid.org/0000-0001-6226-5811\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Boris V. Merinov\", \"id\": \"https://openalex.org/A5071381490\", \"orcid\": \"https://orcid.org/0000-0002-2783-4262\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sergey V. Zybin\", \"id\": \"https://openalex.org/A5079372041\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Moon Young Yang\", \"id\": \"https://openalex.org/A5012227349\", \"orcid\": \"https://orcid.org/0000-0003-4436-8010\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"William A. Goddard\", \"id\": \"https://openalex.org/A5035627473\", \"orcid\": \"https://orcid.org/0000-0003-0097-5716\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773304823181,
+    "actual_start_ms": 1773304823181,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.606
+  }
+}

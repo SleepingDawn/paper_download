@@ -1,0 +1,138 @@
+{
+  "doi": "10.1002/adfm.202420170",
+  "pdf_filename": "10.1002_adfm.202420170.pdf",
+  "json_filename": "10.1002_adfm.202420170.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_adfm.202420170.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4407110505",
+    "doi": "10.1002/adfm.202420170",
+    "title": "Metastability‐Induced Atom Coordination and Electron Relocalization Toward Dendrite Free All‐Solid‐State Lithium Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2025-02-02",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.97599327,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Jianji Ke",
+    "authors_display": "Jianji Ke; Guofeng Xu; Furong Liu; Changhong Wang; Jinling Zhao; Mengru Wu; Zulfiqar Ali; Jiantao Wang; Xueliang Sun",
+    "authors": [
+      {
+        "display_name": "Jianji Ke",
+        "id": "https://openalex.org/A5042033661",
+        "orcid": "https://orcid.org/0000-0001-5199-0436",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guofeng Xu",
+        "id": "https://openalex.org/A5062325629",
+        "orcid": "https://orcid.org/0000-0002-7689-7868",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Furong Liu",
+        "id": "https://openalex.org/A5110067842",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Changhong Wang",
+        "id": "https://openalex.org/A5100427140",
+        "orcid": "https://orcid.org/0000-0002-4201-0130",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinling Zhao",
+        "id": "https://openalex.org/A5100623275",
+        "orcid": "https://orcid.org/0000-0002-8352-7689",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mengru Wu",
+        "id": "https://openalex.org/A5109923308",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zulfiqar Ali",
+        "id": "https://openalex.org/A5100626293",
+        "orcid": "https://orcid.org/0009-0008-9930-1845",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiantao Wang",
+        "id": "https://openalex.org/A5100632945",
+        "orcid": "https://orcid.org/0000-0002-4773-5229",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xueliang Sun",
+        "id": "https://openalex.org/A5027533708",
+        "orcid": "https://orcid.org/0000-0003-0374-1245",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4407110505",
+    "doi": "10.1002/adfm.202420170",
+    "title": "Metastability‐Induced Atom Coordination and Electron Relocalization Toward Dendrite Free All‐Solid‐State Lithium Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2025-02-02",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.97599327,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Jianji Ke",
+    "authors_display": "Jianji Ke; Guofeng Xu; Furong Liu; Changhong Wang; Jinling Zhao; Mengru Wu; Zulfiqar Ali; Jiantao Wang; Xueliang Sun",
+    "authors_json": "[{\"display_name\": \"Jianji Ke\", \"id\": \"https://openalex.org/A5042033661\", \"orcid\": \"https://orcid.org/0000-0001-5199-0436\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Guofeng Xu\", \"id\": \"https://openalex.org/A5062325629\", \"orcid\": \"https://orcid.org/0000-0002-7689-7868\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Furong Liu\", \"id\": \"https://openalex.org/A5110067842\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Changhong Wang\", \"id\": \"https://openalex.org/A5100427140\", \"orcid\": \"https://orcid.org/0000-0002-4201-0130\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinling Zhao\", \"id\": \"https://openalex.org/A5100623275\", \"orcid\": \"https://orcid.org/0000-0002-8352-7689\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mengru Wu\", \"id\": \"https://openalex.org/A5109923308\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zulfiqar Ali\", \"id\": \"https://openalex.org/A5100626293\", \"orcid\": \"https://orcid.org/0009-0008-9930-1845\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiantao Wang\", \"id\": \"https://openalex.org/A5100632945\", \"orcid\": \"https://orcid.org/0000-0002-4773-5229\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xueliang Sun\", \"id\": \"https://openalex.org/A5027533708\", \"orcid\": \"https://orcid.org/0000-0003-0374-1245\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773305678872,
+    "actual_start_ms": 1773305678872,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.725
+  }
+}

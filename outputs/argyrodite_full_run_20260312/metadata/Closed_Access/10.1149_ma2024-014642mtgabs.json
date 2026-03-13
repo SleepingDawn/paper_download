@@ -1,0 +1,105 @@
+{
+  "doi": "10.1149/ma2024-014642mtgabs",
+  "pdf_filename": "10.1149_ma2024-014642mtgabs.pdf",
+  "json_filename": "10.1149_ma2024-014642mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2024-014642mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4401698268",
+    "doi": "10.1149/ma2024-014642mtgabs",
+    "title": "(Invited) Advanced Electrode Processing for Next Generation Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2024-08-09",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.49262449,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Stefan Kaskel",
+    "authors_display": "Stefan Kaskel; Benjamin Schumm; Holger Althues; Felix Hippauf",
+    "authors": [
+      {
+        "display_name": "Stefan Kaskel",
+        "id": "https://openalex.org/A5030419910",
+        "orcid": "https://orcid.org/0000-0003-4572-0303",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Benjamin Schumm",
+        "id": "https://openalex.org/A5068465682",
+        "orcid": "https://orcid.org/0000-0001-9663-9092",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Holger Althues",
+        "id": "https://openalex.org/A5046398535",
+        "orcid": "https://orcid.org/0000-0002-3865-6262",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Felix Hippauf",
+        "id": "https://openalex.org/A5048356342",
+        "orcid": "https://orcid.org/0000-0002-9951-7776",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4401698268",
+    "doi": "10.1149/ma2024-014642mtgabs",
+    "title": "(Invited) Advanced Electrode Processing for Next Generation Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2024-08-09",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.49262449,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Stefan Kaskel",
+    "authors_display": "Stefan Kaskel; Benjamin Schumm; Holger Althues; Felix Hippauf",
+    "authors_json": "[{\"display_name\": \"Stefan Kaskel\", \"id\": \"https://openalex.org/A5030419910\", \"orcid\": \"https://orcid.org/0000-0003-4572-0303\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Benjamin Schumm\", \"id\": \"https://openalex.org/A5068465682\", \"orcid\": \"https://orcid.org/0000-0001-9663-9092\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Holger Althues\", \"id\": \"https://openalex.org/A5046398535\", \"orcid\": \"https://orcid.org/0000-0002-3865-6262\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Felix Hippauf\", \"id\": \"https://openalex.org/A5048356342\", \"orcid\": \"https://orcid.org/0000-0002-9951-7776\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773302576819,
+    "actual_start_ms": 1773302578320,
+    "pacing_wait_ms": 1500,
+    "pacing_jitter_sec": 1.644
+  }
+}

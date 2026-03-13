@@ -1,0 +1,187 @@
+{
+  "doi": "10.1016/j.ensm.2025.104103",
+  "pdf_filename": "10.1016_j.ensm.2025.104103.pdf",
+  "json_filename": "10.1016_j.ensm.2025.104103.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2025.104103.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4407217890",
+    "doi": "10.1016/j.ensm.2025.104103",
+    "title": "Stabilizing the interface between Li6PS5Cl argyrodite sulfide solid electrolyte and Li via in situ formed LiF-Li3Bi lithiophobic-lithiophilic bifunctional layer",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2025-02-06",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.99082268,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 16,
+    "first_author": "Gashahun Gobena Serbessa",
+    "authors_display": "Gashahun Gobena Serbessa; Yosef Nikodimos; Bereket Woldegbreal Taklu; Semaw Kebede Merso; Zabish Bilew Muche; Berhanu Degagsa Dandena; Saravanan Ashok Vallal; Tsung‐I Yeh; Fernando Fortes de Valência; Y. C. Hung; Jui‐Hung Hsu; Chi‐Ming Lee; She‐Huang Wu; Wei‐Nien Su; Chun‐Chen Yang; Bing−Joe Hwang",
+    "authors": [
+      {
+        "display_name": "Gashahun Gobena Serbessa",
+        "id": "https://openalex.org/A5092988456",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yosef Nikodimos",
+        "id": "https://openalex.org/A5082309206",
+        "orcid": "https://orcid.org/0000-0002-2929-3965",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bereket Woldegbreal Taklu",
+        "id": "https://openalex.org/A5067245309",
+        "orcid": "https://orcid.org/0000-0002-8550-4835",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Semaw Kebede Merso",
+        "id": "https://openalex.org/A5035764610",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zabish Bilew Muche",
+        "id": "https://openalex.org/A5092988455",
+        "orcid": "https://orcid.org/0009-0003-8630-7205",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Berhanu Degagsa Dandena",
+        "id": "https://openalex.org/A5093428323",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Saravanan Ashok Vallal",
+        "id": "https://openalex.org/A5077652061",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tsung‐I Yeh",
+        "id": "https://openalex.org/A5111130037",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fernando Fortes de Valência",
+        "id": "https://openalex.org/A5009387314",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Y. C. Hung",
+        "id": "https://openalex.org/A5112610471",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jui‐Hung Hsu",
+        "id": "https://openalex.org/A5108623996",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chi‐Ming Lee",
+        "id": "https://openalex.org/A5038576395",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "She‐Huang Wu",
+        "id": "https://openalex.org/A5087838064",
+        "orcid": "https://orcid.org/0000-0003-1165-9444",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wei‐Nien Su",
+        "id": "https://openalex.org/A5031136629",
+        "orcid": "https://orcid.org/0000-0003-1494-2675",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chun‐Chen Yang",
+        "id": "https://openalex.org/A5058388363",
+        "orcid": "https://orcid.org/0000-0002-3832-9800",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Bing−Joe Hwang",
+        "id": "https://openalex.org/A5030917995",
+        "orcid": "https://orcid.org/0000-0002-3873-2149",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4407217890",
+    "doi": "10.1016/j.ensm.2025.104103",
+    "title": "Stabilizing the interface between Li6PS5Cl argyrodite sulfide solid electrolyte and Li via in situ formed LiF-Li3Bi lithiophobic-lithiophilic bifunctional layer",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2025-02-06",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.99082268,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 16,
+    "first_author": "Gashahun Gobena Serbessa",
+    "authors_display": "Gashahun Gobena Serbessa; Yosef Nikodimos; Bereket Woldegbreal Taklu; Semaw Kebede Merso; Zabish Bilew Muche; Berhanu Degagsa Dandena; Saravanan Ashok Vallal; Tsung‐I Yeh; Fernando Fortes de Valência; Y. C. Hung; Jui‐Hung Hsu; Chi‐Ming Lee; She‐Huang Wu; Wei‐Nien Su; Chun‐Chen Yang; Bing−Joe Hwang",
+    "authors_json": "[{\"display_name\": \"Gashahun Gobena Serbessa\", \"id\": \"https://openalex.org/A5092988456\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yosef Nikodimos\", \"id\": \"https://openalex.org/A5082309206\", \"orcid\": \"https://orcid.org/0000-0002-2929-3965\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bereket Woldegbreal Taklu\", \"id\": \"https://openalex.org/A5067245309\", \"orcid\": \"https://orcid.org/0000-0002-8550-4835\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Semaw Kebede Merso\", \"id\": \"https://openalex.org/A5035764610\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zabish Bilew Muche\", \"id\": \"https://openalex.org/A5092988455\", \"orcid\": \"https://orcid.org/0009-0003-8630-7205\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Berhanu Degagsa Dandena\", \"id\": \"https://openalex.org/A5093428323\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Saravanan Ashok Vallal\", \"id\": \"https://openalex.org/A5077652061\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tsung‐I Yeh\", \"id\": \"https://openalex.org/A5111130037\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fernando Fortes de Valência\", \"id\": \"https://openalex.org/A5009387314\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Y. C. Hung\", \"id\": \"https://openalex.org/A5112610471\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jui‐Hung Hsu\", \"id\": \"https://openalex.org/A5108623996\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chi‐Ming Lee\", \"id\": \"https://openalex.org/A5038576395\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"She‐Huang Wu\", \"id\": \"https://openalex.org/A5087838064\", \"orcid\": \"https://orcid.org/0000-0003-1165-9444\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wei‐Nien Su\", \"id\": \"https://openalex.org/A5031136629\", \"orcid\": \"https://orcid.org/0000-0003-1494-2675\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Chun‐Chen Yang\", \"id\": \"https://openalex.org/A5058388363\", \"orcid\": \"https://orcid.org/0000-0002-3832-9800\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Bing−Joe Hwang\", \"id\": \"https://openalex.org/A5030917995\", \"orcid\": \"https://orcid.org/0000-0002-3873-2149\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301518924,
+    "actual_start_ms": 1773301524502,
+    "pacing_wait_ms": 5577,
+    "pacing_jitter_sec": 1.311
+  }
+}

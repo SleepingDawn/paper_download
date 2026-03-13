@@ -1,0 +1,165 @@
+{
+  "doi": "10.1002/smtd.202400571",
+  "pdf_filename": "10.1002_smtd.202400571.pdf",
+  "json_filename": "10.1002_smtd.202400571.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_smtd.202400571.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4403158361",
+    "doi": "10.1002/smtd.202400571",
+    "title": "Li–Sb Alloy Formation Strategy to Improve Interfacial Stability of All‐Solid‐State Lithium Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small Methods",
+      "id": "https://openalex.org/S4210232622",
+      "type": "journal",
+      "issn_l": "2366-9608",
+      "issn": [
+        "2366-9608"
+      ]
+    },
+    "publication_date": "2024-10-04",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.85456873,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smtd.202400571",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Berhanu Degagsa Dandena",
+    "authors_display": "Berhanu Degagsa Dandena; Wei‐Nien Su; Dah‐Shyang Tsai; Yosef Nikodimos; Bereket Woldegbreal Taklu; Hailemariam Kassa Bezabh; Gidey Bahre Desta; Sheng‐Chiang Yang; Keseven Lakshmanan; Hwo‐Shuenn Sheu; Chia‐Hsin Wang; She‐Huang Wu; Bing−Joe Hwang",
+    "authors": [
+      {
+        "display_name": "Berhanu Degagsa Dandena",
+        "id": "https://openalex.org/A5093428323",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei‐Nien Su",
+        "id": "https://openalex.org/A5031136629",
+        "orcid": "https://orcid.org/0000-0003-1494-2675",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Dah‐Shyang Tsai",
+        "id": "https://openalex.org/A5049957160",
+        "orcid": "https://orcid.org/0000-0001-8067-9540",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yosef Nikodimos",
+        "id": "https://openalex.org/A5082309206",
+        "orcid": "https://orcid.org/0000-0002-2929-3965",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bereket Woldegbreal Taklu",
+        "id": "https://openalex.org/A5067245309",
+        "orcid": "https://orcid.org/0000-0002-8550-4835",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hailemariam Kassa Bezabh",
+        "id": "https://openalex.org/A5021910941",
+        "orcid": "https://orcid.org/0000-0002-0421-2671",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gidey Bahre Desta",
+        "id": "https://openalex.org/A5048555481",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sheng‐Chiang Yang",
+        "id": "https://openalex.org/A5058781576",
+        "orcid": "https://orcid.org/0000-0002-8888-6381",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Keseven Lakshmanan",
+        "id": "https://openalex.org/A5048665495",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hwo‐Shuenn Sheu",
+        "id": "https://openalex.org/A5047526919",
+        "orcid": "https://orcid.org/0000-0003-1334-5895",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chia‐Hsin Wang",
+        "id": "https://openalex.org/A5045121576",
+        "orcid": "https://orcid.org/0000-0003-3108-4422",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "She‐Huang Wu",
+        "id": "https://openalex.org/A5087838064",
+        "orcid": "https://orcid.org/0000-0003-1165-9444",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bing−Joe Hwang",
+        "id": "https://openalex.org/A5030917995",
+        "orcid": "https://orcid.org/0000-0002-3873-2149",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4403158361",
+    "doi": "10.1002/smtd.202400571",
+    "title": "Li–Sb Alloy Formation Strategy to Improve Interfacial Stability of All‐Solid‐State Lithium Batteries",
+    "publisher": "Wiley",
+    "journal": "Small Methods",
+    "journal_id": "https://openalex.org/S4210232622",
+    "journal_type": "journal",
+    "journal_issn_l": "2366-9608",
+    "journal_issn_json": "[\"2366-9608\"]",
+    "publication_date": "2024-10-04",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.85456873,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smtd.202400571",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Berhanu Degagsa Dandena",
+    "authors_display": "Berhanu Degagsa Dandena; Wei‐Nien Su; Dah‐Shyang Tsai; Yosef Nikodimos; Bereket Woldegbreal Taklu; Hailemariam Kassa Bezabh; Gidey Bahre Desta; Sheng‐Chiang Yang; Keseven Lakshmanan; Hwo‐Shuenn Sheu; Chia‐Hsin Wang; She‐Huang Wu; Bing−Joe Hwang",
+    "authors_json": "[{\"display_name\": \"Berhanu Degagsa Dandena\", \"id\": \"https://openalex.org/A5093428323\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Wei‐Nien Su\", \"id\": \"https://openalex.org/A5031136629\", \"orcid\": \"https://orcid.org/0000-0003-1494-2675\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Dah‐Shyang Tsai\", \"id\": \"https://openalex.org/A5049957160\", \"orcid\": \"https://orcid.org/0000-0001-8067-9540\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yosef Nikodimos\", \"id\": \"https://openalex.org/A5082309206\", \"orcid\": \"https://orcid.org/0000-0002-2929-3965\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bereket Woldegbreal Taklu\", \"id\": \"https://openalex.org/A5067245309\", \"orcid\": \"https://orcid.org/0000-0002-8550-4835\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hailemariam Kassa Bezabh\", \"id\": \"https://openalex.org/A5021910941\", \"orcid\": \"https://orcid.org/0000-0002-0421-2671\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gidey Bahre Desta\", \"id\": \"https://openalex.org/A5048555481\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sheng‐Chiang Yang\", \"id\": \"https://openalex.org/A5058781576\", \"orcid\": \"https://orcid.org/0000-0002-8888-6381\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Keseven Lakshmanan\", \"id\": \"https://openalex.org/A5048665495\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hwo‐Shuenn Sheu\", \"id\": \"https://openalex.org/A5047526919\", \"orcid\": \"https://orcid.org/0000-0003-1334-5895\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chia‐Hsin Wang\", \"id\": \"https://openalex.org/A5045121576\", \"orcid\": \"https://orcid.org/0000-0003-3108-4422\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"She‐Huang Wu\", \"id\": \"https://openalex.org/A5087838064\", \"orcid\": \"https://orcid.org/0000-0003-1165-9444\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bing−Joe Hwang\", \"id\": \"https://openalex.org/A5030917995\", \"orcid\": \"https://orcid.org/0000-0002-3873-2149\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773306331843,
+    "actual_start_ms": 1773306331843,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.211
+  }
+}

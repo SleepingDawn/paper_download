@@ -1,0 +1,88 @@
+{
+  "doi": "10.1002/admi.202400423",
+  "pdf_filename": "10.1002_admi.202400423.pdf",
+  "json_filename": "10.1002_admi.202400423.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_admi.202400423.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4401290560",
+    "doi": "10.1002/admi.202400423",
+    "title": "Grain Boundary Transport in the Argyrodite‐Type Li<sub>6</sub>PS<sub>5</sub>Br Solid Electrolyte: Influence of Misorientation and Anion Disorder on Li Ion Mobility",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Materials Interfaces",
+      "id": "https://openalex.org/S2764385675",
+      "type": "journal",
+      "issn_l": "2196-7350",
+      "issn": [
+        "2196-7350"
+      ]
+    },
+    "publication_date": "2024-08-03",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.9026034,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/admi.202400423",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Marcel Sadowski",
+    "authors_display": "Marcel Sadowski; Karsten Albe",
+    "authors": [
+      {
+        "display_name": "Marcel Sadowski",
+        "id": "https://openalex.org/A5001622557",
+        "orcid": "https://orcid.org/0000-0001-9869-6162",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Karsten Albe",
+        "id": "https://openalex.org/A5020304363",
+        "orcid": "https://orcid.org/0000-0003-4669-8056",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4401290560",
+    "doi": "10.1002/admi.202400423",
+    "title": "Grain Boundary Transport in the Argyrodite‐Type Li<sub>6</sub>PS<sub>5</sub>Br Solid Electrolyte: Influence of Misorientation and Anion Disorder on Li Ion Mobility",
+    "publisher": "Wiley",
+    "journal": "Advanced Materials Interfaces",
+    "journal_id": "https://openalex.org/S2764385675",
+    "journal_type": "journal",
+    "journal_issn_l": "2196-7350",
+    "journal_issn_json": "[\"2196-7350\"]",
+    "publication_date": "2024-08-03",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.9026034,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/admi.202400423",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Marcel Sadowski",
+    "authors_display": "Marcel Sadowski; Karsten Albe",
+    "authors_json": "[{\"display_name\": \"Marcel Sadowski\", \"id\": \"https://openalex.org/A5001622557\", \"orcid\": \"https://orcid.org/0000-0001-9869-6162\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Karsten Albe\", \"id\": \"https://openalex.org/A5020304363\", \"orcid\": \"https://orcid.org/0000-0003-4669-8056\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773305338701,
+    "actual_start_ms": 1773305338701,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.981
+  }
+}

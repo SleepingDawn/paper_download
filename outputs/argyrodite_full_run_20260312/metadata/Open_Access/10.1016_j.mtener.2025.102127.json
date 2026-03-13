@@ -1,0 +1,116 @@
+{
+  "doi": "10.1016/j.mtener.2025.102127",
+  "pdf_filename": "10.1016_j.mtener.2025.102127.pdf",
+  "json_filename": "10.1016_j.mtener.2025.102127.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.mtener.2025.102127.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7106013439",
+    "doi": "10.1016/j.mtener.2025.102127",
+    "title": "From anionic disorder to fast ion transport in Br-rich argyrodites",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Materials Today Energy",
+      "id": "https://openalex.org/S2898308537",
+      "type": "journal",
+      "issn_l": "2468-6069",
+      "issn": [
+        "2468-6069"
+      ]
+    },
+    "publication_date": "2025-11-19",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.51408748,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Yaxin Qu",
+    "authors_display": "Yaxin Qu; Mickael Mateos; Nicolas Emery; Zhiran Ouyang; Ivan da Silva; Junxian Zhang",
+    "authors": [
+      {
+        "display_name": "Yaxin Qu",
+        "id": null,
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mickael Mateos",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0002-1443-3910",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Nicolas Emery",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhiran Ouyang",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ivan da Silva",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junxian Zhang",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7106013439",
+    "doi": "10.1016/j.mtener.2025.102127",
+    "title": "From anionic disorder to fast ion transport in Br-rich argyrodites",
+    "publisher": "Elsevier BV",
+    "journal": "Materials Today Energy",
+    "journal_id": "https://openalex.org/S2898308537",
+    "journal_type": "journal",
+    "journal_issn_l": "2468-6069",
+    "journal_issn_json": "[\"2468-6069\"]",
+    "publication_date": "2025-11-19",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.51408748,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Yaxin Qu",
+    "authors_display": "Yaxin Qu; Mickael Mateos; Nicolas Emery; Zhiran Ouyang; Ivan da Silva; Junxian Zhang",
+    "authors_json": "[{\"display_name\": \"Yaxin Qu\", \"id\": null, \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Mickael Mateos\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0002-1443-3910\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Nicolas Emery\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhiran Ouyang\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ivan da Silva\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junxian Zhang\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2468606925003351?via%3Dihub",
+    "landing_title": "From anionic disorder to fast ion transport in Br-rich argyrodites - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773309719242,
+    "actual_start_ms": 1773309727106,
+    "pacing_wait_ms": 7863,
+    "pacing_jitter_sec": 0.861
+  }
+}

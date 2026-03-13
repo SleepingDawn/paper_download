@@ -1,0 +1,159 @@
+{
+  "doi": "10.1002/adfm.202313308",
+  "pdf_filename": "10.1002_adfm.202313308.pdf",
+  "json_filename": "10.1002_adfm.202313308.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_adfm.202313308.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4391162313",
+    "doi": "10.1002/adfm.202313308",
+    "title": "Enhanced Air Stability and Li Metal Compatibility of Li‐Argyrodite Electrolytes Triggered by In<sub>2</sub>O<sub>3</sub> Co‐Doping for All‐Solid‐State Li Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2024-01-24",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 33,
+    "citation_normalized_percentile": 0.97632612,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202313308",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Chengdeng Wang",
+    "authors_display": "Chengdeng Wang; Jiamao Hao; Jun Wu; Haofeng Shi; Liubing Fan; Jiashuai Wang; Zhaokun Wang; Wang Zhi; Lu Yang; Yan Gao; Xiaoqin Yan; Yousong Gu",
+    "authors": [
+      {
+        "display_name": "Chengdeng Wang",
+        "id": "https://openalex.org/A5079055954",
+        "orcid": "https://orcid.org/0000-0002-7234-9231",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiamao Hao",
+        "id": "https://openalex.org/A5038058230",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Wu",
+        "id": "https://openalex.org/A5101801130",
+        "orcid": "https://orcid.org/0000-0002-0671-1757",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haofeng Shi",
+        "id": "https://openalex.org/A5014658393",
+        "orcid": "https://orcid.org/0000-0002-9187-0751",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liubing Fan",
+        "id": "https://openalex.org/A5045228390",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiashuai Wang",
+        "id": "https://openalex.org/A5019277954",
+        "orcid": "https://orcid.org/0000-0001-7876-3196",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhaokun Wang",
+        "id": "https://openalex.org/A5052246612",
+        "orcid": "https://orcid.org/0000-0001-5895-3718",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wang Zhi",
+        "id": "https://openalex.org/A5100933746",
+        "orcid": "https://orcid.org/0009-0002-6495-9715",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lu Yang",
+        "id": "https://openalex.org/A5110065328",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yan Gao",
+        "id": "https://openalex.org/A5050408065",
+        "orcid": "https://orcid.org/0000-0002-9011-4161",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaoqin Yan",
+        "id": "https://openalex.org/A5038840961",
+        "orcid": "https://orcid.org/0000-0001-9835-5704",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yousong Gu",
+        "id": "https://openalex.org/A5005798272",
+        "orcid": "https://orcid.org/0000-0003-3835-8609",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4391162313",
+    "doi": "10.1002/adfm.202313308",
+    "title": "Enhanced Air Stability and Li Metal Compatibility of Li‐Argyrodite Electrolytes Triggered by In<sub>2</sub>O<sub>3</sub> Co‐Doping for All‐Solid‐State Li Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2024-01-24",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 33,
+    "citation_normalized_percentile": 0.97632612,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202313308",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Chengdeng Wang",
+    "authors_display": "Chengdeng Wang; Jiamao Hao; Jun Wu; Haofeng Shi; Liubing Fan; Jiashuai Wang; Zhaokun Wang; Wang Zhi; Lu Yang; Yan Gao; Xiaoqin Yan; Yousong Gu",
+    "authors_json": "[{\"display_name\": \"Chengdeng Wang\", \"id\": \"https://openalex.org/A5079055954\", \"orcid\": \"https://orcid.org/0000-0002-7234-9231\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jiamao Hao\", \"id\": \"https://openalex.org/A5038058230\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun Wu\", \"id\": \"https://openalex.org/A5101801130\", \"orcid\": \"https://orcid.org/0000-0002-0671-1757\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haofeng Shi\", \"id\": \"https://openalex.org/A5014658393\", \"orcid\": \"https://orcid.org/0000-0002-9187-0751\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liubing Fan\", \"id\": \"https://openalex.org/A5045228390\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiashuai Wang\", \"id\": \"https://openalex.org/A5019277954\", \"orcid\": \"https://orcid.org/0000-0001-7876-3196\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhaokun Wang\", \"id\": \"https://openalex.org/A5052246612\", \"orcid\": \"https://orcid.org/0000-0001-5895-3718\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wang Zhi\", \"id\": \"https://openalex.org/A5100933746\", \"orcid\": \"https://orcid.org/0009-0002-6495-9715\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lu Yang\", \"id\": \"https://openalex.org/A5110065328\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yan Gao\", \"id\": \"https://openalex.org/A5050408065\", \"orcid\": \"https://orcid.org/0000-0002-9011-4161\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaoqin Yan\", \"id\": \"https://openalex.org/A5038840961\", \"orcid\": \"https://orcid.org/0000-0001-9835-5704\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yousong Gu\", \"id\": \"https://openalex.org/A5005798272\", \"orcid\": \"https://orcid.org/0000-0003-3835-8609\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773303381851,
+    "actual_start_ms": 1773303381851,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.633
+  }
+}

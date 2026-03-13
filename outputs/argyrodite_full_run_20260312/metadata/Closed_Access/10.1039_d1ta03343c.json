@@ -1,0 +1,145 @@
+{
+  "doi": "10.1039/d1ta03343c",
+  "pdf_filename": "10.1039_d1ta03343c.pdf",
+  "json_filename": "10.1039_d1ta03343c.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d1ta03343c.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3162716396",
+    "doi": "10.1039/d1ta03343c",
+    "title": "<i>In situ</i> formation of a Li<sub>3</sub>N-rich interface between lithium and argyrodite solid electrolyte enabled by nitrogen doping",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2021-01-01",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 101,
+    "citation_normalized_percentile": 0.98240948,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Yu Liu",
+    "authors_display": "Yu Liu; Han Su; Min Li; Jiayuan Xiang; Xianzhang Wu; Yu Zhong; Xiuli Wang; Xinhui Xia; Changdong Gu; Jiangping Tu",
+    "authors": [
+      {
+        "display_name": "Yu Liu",
+        "id": "https://openalex.org/A5100345834",
+        "orcid": "https://orcid.org/0000-0002-7261-455X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Han Su",
+        "id": "https://openalex.org/A5102774121",
+        "orcid": "https://orcid.org/0000-0003-4260-8340",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Min Li",
+        "id": "https://openalex.org/A5100400792",
+        "orcid": "https://orcid.org/0009-0004-5389-6530",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiayuan Xiang",
+        "id": "https://openalex.org/A5111491267",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xianzhang Wu",
+        "id": "https://openalex.org/A5058531113",
+        "orcid": "https://orcid.org/0000-0002-1493-4985",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Zhong",
+        "id": "https://openalex.org/A5030856499",
+        "orcid": "https://orcid.org/0000-0002-2363-7093",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiuli Wang",
+        "id": "https://openalex.org/A5100439040",
+        "orcid": "https://orcid.org/0000-0002-9845-1242",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xinhui Xia",
+        "id": "https://openalex.org/A5069358349",
+        "orcid": "https://orcid.org/0000-0002-5976-5337",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Changdong Gu",
+        "id": "https://openalex.org/A5113791202",
+        "orcid": "https://orcid.org/0009-0007-3459-5830",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiangping Tu",
+        "id": "https://openalex.org/A5066207937",
+        "orcid": "https://orcid.org/0000-0002-7928-1583",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3162716396",
+    "doi": "10.1039/d1ta03343c",
+    "title": "<i>In situ</i> formation of a Li<sub>3</sub>N-rich interface between lithium and argyrodite solid electrolyte enabled by nitrogen doping",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2021-01-01",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 101,
+    "citation_normalized_percentile": 0.98240948,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Yu Liu",
+    "authors_display": "Yu Liu; Han Su; Min Li; Jiayuan Xiang; Xianzhang Wu; Yu Zhong; Xiuli Wang; Xinhui Xia; Changdong Gu; Jiangping Tu",
+    "authors_json": "[{\"display_name\": \"Yu Liu\", \"id\": \"https://openalex.org/A5100345834\", \"orcid\": \"https://orcid.org/0000-0002-7261-455X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Han Su\", \"id\": \"https://openalex.org/A5102774121\", \"orcid\": \"https://orcid.org/0000-0003-4260-8340\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Min Li\", \"id\": \"https://openalex.org/A5100400792\", \"orcid\": \"https://orcid.org/0009-0004-5389-6530\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiayuan Xiang\", \"id\": \"https://openalex.org/A5111491267\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xianzhang Wu\", \"id\": \"https://openalex.org/A5058531113\", \"orcid\": \"https://orcid.org/0000-0002-1493-4985\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Zhong\", \"id\": \"https://openalex.org/A5030856499\", \"orcid\": \"https://orcid.org/0000-0002-2363-7093\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiuli Wang\", \"id\": \"https://openalex.org/A5100439040\", \"orcid\": \"https://orcid.org/0000-0002-9845-1242\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xinhui Xia\", \"id\": \"https://openalex.org/A5069358349\", \"orcid\": \"https://orcid.org/0000-0002-5976-5337\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Changdong Gu\", \"id\": \"https://openalex.org/A5113791202\", \"orcid\": \"https://orcid.org/0009-0007-3459-5830\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiangping Tu\", \"id\": \"https://openalex.org/A5066207937\", \"orcid\": \"https://orcid.org/0000-0002-7928-1583\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773307405535,
+    "actual_start_ms": 1773307405535,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.902
+  }
+}

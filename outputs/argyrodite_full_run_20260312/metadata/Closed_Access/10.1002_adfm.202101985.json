@@ -1,0 +1,159 @@
+{
+  "doi": "10.1002/adfm.202101985",
+  "pdf_filename": "10.1002_adfm.202101985.pdf",
+  "json_filename": "10.1002_adfm.202101985.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_adfm.202101985.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3178449407",
+    "doi": "10.1002/adfm.202101985",
+    "title": "A Self‐Limited Free‐Standing Sulfide Electrolyte Thin Film for All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2021-06-04",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 145,
+    "citation_normalized_percentile": 0.98847478,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Gaolong Zhu",
+    "authors_display": "Gaolong Zhu; Chen‐Zi Zhao; Hong‐Jie Peng; Hong Yuan; Jiang‐Kui Hu; Haoxiong Nan; Yang Lu; Xin‐Yan Liu; Jia‐Qi Huang; Chuanxin He; Jian Zhang; Qiang Zhang",
+    "authors": [
+      {
+        "display_name": "Gaolong Zhu",
+        "id": "https://openalex.org/A5027084170",
+        "orcid": "https://orcid.org/0000-0001-7860-5729",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chen‐Zi Zhao",
+        "id": "https://openalex.org/A5000604958",
+        "orcid": "https://orcid.org/0000-0002-1794-3086",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong‐Jie Peng",
+        "id": "https://openalex.org/A5062965071",
+        "orcid": "https://orcid.org/0000-0002-4183-703X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Yuan",
+        "id": "https://openalex.org/A5035220989",
+        "orcid": "https://orcid.org/0000-0001-7565-2204",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiang‐Kui Hu",
+        "id": "https://openalex.org/A5101068670",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haoxiong Nan",
+        "id": "https://openalex.org/A5023784940",
+        "orcid": "https://orcid.org/0000-0002-3549-8908",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Lu",
+        "id": "https://openalex.org/A5013658387",
+        "orcid": "https://orcid.org/0000-0002-0946-7155",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xin‐Yan Liu",
+        "id": "https://openalex.org/A5014749058",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jia‐Qi Huang",
+        "id": "https://openalex.org/A5051853002",
+        "orcid": "https://orcid.org/0000-0001-7394-9186",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuanxin He",
+        "id": "https://openalex.org/A5064805977",
+        "orcid": "https://orcid.org/0000-0002-2254-360X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jian Zhang",
+        "id": "https://openalex.org/A5100410098",
+        "orcid": "https://orcid.org/0000-0003-4757-7168",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qiang Zhang",
+        "id": "https://openalex.org/A5100381911",
+        "orcid": "https://orcid.org/0000-0002-3929-1541",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3178449407",
+    "doi": "10.1002/adfm.202101985",
+    "title": "A Self‐Limited Free‐Standing Sulfide Electrolyte Thin Film for All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2021-06-04",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 145,
+    "citation_normalized_percentile": 0.98847478,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Gaolong Zhu",
+    "authors_display": "Gaolong Zhu; Chen‐Zi Zhao; Hong‐Jie Peng; Hong Yuan; Jiang‐Kui Hu; Haoxiong Nan; Yang Lu; Xin‐Yan Liu; Jia‐Qi Huang; Chuanxin He; Jian Zhang; Qiang Zhang",
+    "authors_json": "[{\"display_name\": \"Gaolong Zhu\", \"id\": \"https://openalex.org/A5027084170\", \"orcid\": \"https://orcid.org/0000-0001-7860-5729\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Chen‐Zi Zhao\", \"id\": \"https://openalex.org/A5000604958\", \"orcid\": \"https://orcid.org/0000-0002-1794-3086\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong‐Jie Peng\", \"id\": \"https://openalex.org/A5062965071\", \"orcid\": \"https://orcid.org/0000-0002-4183-703X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Yuan\", \"id\": \"https://openalex.org/A5035220989\", \"orcid\": \"https://orcid.org/0000-0001-7565-2204\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiang‐Kui Hu\", \"id\": \"https://openalex.org/A5101068670\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haoxiong Nan\", \"id\": \"https://openalex.org/A5023784940\", \"orcid\": \"https://orcid.org/0000-0002-3549-8908\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Lu\", \"id\": \"https://openalex.org/A5013658387\", \"orcid\": \"https://orcid.org/0000-0002-0946-7155\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xin‐Yan Liu\", \"id\": \"https://openalex.org/A5014749058\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jia‐Qi Huang\", \"id\": \"https://openalex.org/A5051853002\", \"orcid\": \"https://orcid.org/0000-0001-7394-9186\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuanxin He\", \"id\": \"https://openalex.org/A5064805977\", \"orcid\": \"https://orcid.org/0000-0002-2254-360X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jian Zhang\", \"id\": \"https://openalex.org/A5100410098\", \"orcid\": \"https://orcid.org/0000-0003-4757-7168\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qiang Zhang\", \"id\": \"https://openalex.org/A5100381911\", \"orcid\": \"https://orcid.org/0000-0002-3929-1541\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302618973,
+    "actual_start_ms": 1773302620475,
+    "pacing_wait_ms": 1501,
+    "pacing_jitter_sec": 0.758
+  }
+}

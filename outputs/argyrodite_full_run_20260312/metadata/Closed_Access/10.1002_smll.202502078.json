@@ -1,0 +1,124 @@
+{
+  "doi": "10.1002/smll.202502078",
+  "pdf_filename": "10.1002_smll.202502078.pdf",
+  "json_filename": "10.1002_smll.202502078.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_smll.202502078.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409671171",
+    "doi": "10.1002/smll.202502078",
+    "title": "Unraveling Lithium‐Ion Migration Mechanisms in Novel Quasi‐Layered Argyrodite Solid Electrolyte for All‐Solid‐State Battery",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2025-04-22",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.88630088,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Suzhe Liang",
+    "authors_display": "Suzhe Liang; Mingzi Sun; Haitao Yu; Xiao‐Feng Wu; Zhiguo Xing; Jun-long Kou; Bolong Huang",
+    "authors": [
+      {
+        "display_name": "Suzhe Liang",
+        "id": "https://openalex.org/A5017432227",
+        "orcid": "https://orcid.org/0000-0001-8773-897X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mingzi Sun",
+        "id": "https://openalex.org/A5077976121",
+        "orcid": "https://orcid.org/0000-0001-5136-7265",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haitao Yu",
+        "id": "https://openalex.org/A5100423188",
+        "orcid": "https://orcid.org/0000-0003-3116-0288",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao‐Feng Wu",
+        "id": "https://openalex.org/A5006621343",
+        "orcid": "https://orcid.org/0000-0001-6622-3328",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhiguo Xing",
+        "id": "https://openalex.org/A5041917190",
+        "orcid": "https://orcid.org/0000-0003-1882-4641",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun-long Kou",
+        "id": "https://openalex.org/A5042616526",
+        "orcid": "https://orcid.org/0000-0002-0481-5149",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bolong Huang",
+        "id": "https://openalex.org/A5022350148",
+        "orcid": "https://orcid.org/0000-0002-2526-2002",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409671171",
+    "doi": "10.1002/smll.202502078",
+    "title": "Unraveling Lithium‐Ion Migration Mechanisms in Novel Quasi‐Layered Argyrodite Solid Electrolyte for All‐Solid‐State Battery",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2025-04-22",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.88630088,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Suzhe Liang",
+    "authors_display": "Suzhe Liang; Mingzi Sun; Haitao Yu; Xiao‐Feng Wu; Zhiguo Xing; Jun-long Kou; Bolong Huang",
+    "authors_json": "[{\"display_name\": \"Suzhe Liang\", \"id\": \"https://openalex.org/A5017432227\", \"orcid\": \"https://orcid.org/0000-0001-8773-897X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Mingzi Sun\", \"id\": \"https://openalex.org/A5077976121\", \"orcid\": \"https://orcid.org/0000-0001-5136-7265\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haitao Yu\", \"id\": \"https://openalex.org/A5100423188\", \"orcid\": \"https://orcid.org/0000-0003-3116-0288\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiao‐Feng Wu\", \"id\": \"https://openalex.org/A5006621343\", \"orcid\": \"https://orcid.org/0000-0001-6622-3328\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhiguo Xing\", \"id\": \"https://openalex.org/A5041917190\", \"orcid\": \"https://orcid.org/0000-0003-1882-4641\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun-long Kou\", \"id\": \"https://openalex.org/A5042616526\", \"orcid\": \"https://orcid.org/0000-0002-0481-5149\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bolong Huang\", \"id\": \"https://openalex.org/A5022350148\", \"orcid\": \"https://orcid.org/0000-0002-2526-2002\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773307599214,
+    "actual_start_ms": 1773307599214,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.367
+  }
+}

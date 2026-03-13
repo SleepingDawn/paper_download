@@ -1,0 +1,140 @@
+{
+  "doi": "10.1149/ma2024-02104942mtgabs",
+  "pdf_filename": "10.1149_ma2024-02104942mtgabs.pdf",
+  "json_filename": "10.1149_ma2024-02104942mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2024-02104942mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4405591784",
+    "doi": "10.1149/ma2024-02104942mtgabs",
+    "title": "Densifying Solid Electrolytes to Mitigate Shorting of Solid State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.13826498,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Mengchen Liu",
+    "authors_display": "Mengchen Liu; Shijie Feng; Shen Wang; E. D. Lu; Junwei Gao; Jeong Woo Oh; Min-Sang Song; J. Luo; Ping Liu",
+    "authors": [
+      {
+        "display_name": "Mengchen Liu",
+        "id": "https://openalex.org/A5038127718",
+        "orcid": "https://orcid.org/0009-0003-4047-9116",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Shijie Feng",
+        "id": "https://openalex.org/A5079082315",
+        "orcid": "https://orcid.org/0000-0001-5797-8542",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shen Wang",
+        "id": "https://openalex.org/A5100377078",
+        "orcid": "https://orcid.org/0000-0003-3826-4397",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "E. D. Lu",
+        "id": "https://openalex.org/A5014052918",
+        "orcid": "https://orcid.org/0000-0002-1323-3079",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junwei Gao",
+        "id": "https://openalex.org/A5009457931",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeong Woo Oh",
+        "id": "https://openalex.org/A5106607264",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Min-Sang Song",
+        "id": "https://openalex.org/A5103437230",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J. Luo",
+        "id": "https://openalex.org/A5115587887",
+        "orcid": "https://orcid.org/0009-0001-6626-4506",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ping Liu",
+        "id": "https://openalex.org/A5115588357",
+        "orcid": "https://orcid.org/0009-0008-2025-9331",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405591784",
+    "doi": "10.1149/ma2024-02104942mtgabs",
+    "title": "Densifying Solid Electrolytes to Mitigate Shorting of Solid State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.13826498,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Mengchen Liu",
+    "authors_display": "Mengchen Liu; Shijie Feng; Shen Wang; E. D. Lu; Junwei Gao; Jeong Woo Oh; Min-Sang Song; J. Luo; Ping Liu",
+    "authors_json": "[{\"display_name\": \"Mengchen Liu\", \"id\": \"https://openalex.org/A5038127718\", \"orcid\": \"https://orcid.org/0009-0003-4047-9116\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Shijie Feng\", \"id\": \"https://openalex.org/A5079082315\", \"orcid\": \"https://orcid.org/0000-0001-5797-8542\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shen Wang\", \"id\": \"https://openalex.org/A5100377078\", \"orcid\": \"https://orcid.org/0000-0003-3826-4397\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"E. D. Lu\", \"id\": \"https://openalex.org/A5014052918\", \"orcid\": \"https://orcid.org/0000-0002-1323-3079\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junwei Gao\", \"id\": \"https://openalex.org/A5009457931\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeong Woo Oh\", \"id\": \"https://openalex.org/A5106607264\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Min-Sang Song\", \"id\": \"https://openalex.org/A5103437230\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J. Luo\", \"id\": \"https://openalex.org/A5115587887\", \"orcid\": \"https://orcid.org/0009-0001-6626-4506\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ping Liu\", \"id\": \"https://openalex.org/A5115588357\", \"orcid\": \"https://orcid.org/0009-0008-2025-9331\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773306828752,
+    "actual_start_ms": 1773306829603,
+    "pacing_wait_ms": 851,
+    "pacing_jitter_sec": 1.133
+  }
+}

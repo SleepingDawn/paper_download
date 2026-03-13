@@ -1,0 +1,186 @@
+{
+  "doi": "10.1038/s41560-025-01847-0",
+  "pdf_filename": "10.1038_s41560-025-01847-0.pdf",
+  "json_filename": "10.1038_s41560-025-01847-0.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s41560-025-01847-0.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413993000",
+    "doi": "10.1038/s41560-025-01847-0",
+    "title": "High plating currents without dendrites at the interface between a lithium anode and solid electrolyte",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Energy",
+      "id": "https://openalex.org/S2764528046",
+      "type": "journal",
+      "issn_l": "2058-7546",
+      "issn": [
+        "2058-7546"
+      ]
+    },
+    "publication_date": "2025-09-04",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.97291266,
+    "pdf_url": "https://www.nature.com/articles/s41560-025-01847-0.pdf",
+    "open_access": true,
+    "author_count": 16,
+    "first_author": "Dominic L. R. Melvin",
+    "authors_display": "Dominic L. R. Melvin; Marco Siniscalchi; Dominic Spencer Jolly; Bingkun Hu; Ziyang Ning; Shengming Zhang; Junfu Bu; Shashidhara Marathe; Anne Bonnin; Johannes Ihli; Gregory J. Rees; Patrick S. Grant; Charles W. Monroe; T.J. Marrow; Guanchen Li; Peter G. Bruce",
+    "authors": [
+      {
+        "display_name": "Dominic L. R. Melvin",
+        "id": "https://openalex.org/A5053104258",
+        "orcid": "https://orcid.org/0000-0001-7944-0225",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marco Siniscalchi",
+        "id": "https://openalex.org/A5038326506",
+        "orcid": "https://orcid.org/0000-0002-6054-2448",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dominic Spencer Jolly",
+        "id": "https://openalex.org/A5085974632",
+        "orcid": "https://orcid.org/0000-0002-4925-6870",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bingkun Hu",
+        "id": "https://openalex.org/A5037025481",
+        "orcid": "https://orcid.org/0009-0008-8681-7850",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziyang Ning",
+        "id": "https://openalex.org/A5022232210",
+        "orcid": "https://orcid.org/0000-0002-7406-5312",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shengming Zhang",
+        "id": "https://openalex.org/A5101983327",
+        "orcid": "https://orcid.org/0000-0001-5849-1963",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junfu Bu",
+        "id": "https://openalex.org/A5091740817",
+        "orcid": "https://orcid.org/0000-0001-5258-099X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shashidhara Marathe",
+        "id": "https://openalex.org/A5050233648",
+        "orcid": "https://orcid.org/0000-0002-7662-8465",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anne Bonnin",
+        "id": "https://openalex.org/A5036123914",
+        "orcid": "https://orcid.org/0000-0001-5537-8682",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Johannes Ihli",
+        "id": "https://openalex.org/A5039136448",
+        "orcid": "https://orcid.org/0000-0002-9541-5748",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gregory J. Rees",
+        "id": "https://openalex.org/A5028405313",
+        "orcid": "https://orcid.org/0000-0002-7514-1516",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Patrick S. Grant",
+        "id": "https://openalex.org/A5041676080",
+        "orcid": "https://orcid.org/0000-0002-7942-7837",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Charles W. Monroe",
+        "id": "https://openalex.org/A5068493355",
+        "orcid": "https://orcid.org/0000-0002-9894-5023",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "T.J. Marrow",
+        "id": "https://openalex.org/A5029418917",
+        "orcid": "https://orcid.org/0000-0001-6120-9826",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guanchen Li",
+        "id": "https://openalex.org/A5084382073",
+        "orcid": "https://orcid.org/0000-0001-8125-6793",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Peter G. Bruce",
+        "id": "https://openalex.org/A5056496930",
+        "orcid": "https://orcid.org/0000-0001-6748-3084",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413993000",
+    "doi": "10.1038/s41560-025-01847-0",
+    "title": "High plating currents without dendrites at the interface between a lithium anode and solid electrolyte",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Energy",
+    "journal_id": "https://openalex.org/S2764528046",
+    "journal_type": "journal",
+    "journal_issn_l": "2058-7546",
+    "journal_issn_json": "[\"2058-7546\"]",
+    "publication_date": "2025-09-04",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.97291266,
+    "pdf_url": "https://www.nature.com/articles/s41560-025-01847-0.pdf",
+    "open_access": true,
+    "author_count": 16,
+    "first_author": "Dominic L. R. Melvin",
+    "authors_display": "Dominic L. R. Melvin; Marco Siniscalchi; Dominic Spencer Jolly; Bingkun Hu; Ziyang Ning; Shengming Zhang; Junfu Bu; Shashidhara Marathe; Anne Bonnin; Johannes Ihli; Gregory J. Rees; Patrick S. Grant; Charles W. Monroe; T.J. Marrow; Guanchen Li; Peter G. Bruce",
+    "authors_json": "[{\"display_name\": \"Dominic L. R. Melvin\", \"id\": \"https://openalex.org/A5053104258\", \"orcid\": \"https://orcid.org/0000-0001-7944-0225\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Marco Siniscalchi\", \"id\": \"https://openalex.org/A5038326506\", \"orcid\": \"https://orcid.org/0000-0002-6054-2448\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dominic Spencer Jolly\", \"id\": \"https://openalex.org/A5085974632\", \"orcid\": \"https://orcid.org/0000-0002-4925-6870\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bingkun Hu\", \"id\": \"https://openalex.org/A5037025481\", \"orcid\": \"https://orcid.org/0009-0008-8681-7850\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ziyang Ning\", \"id\": \"https://openalex.org/A5022232210\", \"orcid\": \"https://orcid.org/0000-0002-7406-5312\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shengming Zhang\", \"id\": \"https://openalex.org/A5101983327\", \"orcid\": \"https://orcid.org/0000-0001-5849-1963\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junfu Bu\", \"id\": \"https://openalex.org/A5091740817\", \"orcid\": \"https://orcid.org/0000-0001-5258-099X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shashidhara Marathe\", \"id\": \"https://openalex.org/A5050233648\", \"orcid\": \"https://orcid.org/0000-0002-7662-8465\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anne Bonnin\", \"id\": \"https://openalex.org/A5036123914\", \"orcid\": \"https://orcid.org/0000-0001-5537-8682\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Johannes Ihli\", \"id\": \"https://openalex.org/A5039136448\", \"orcid\": \"https://orcid.org/0000-0002-9541-5748\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gregory J. Rees\", \"id\": \"https://openalex.org/A5028405313\", \"orcid\": \"https://orcid.org/0000-0002-7514-1516\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Patrick S. Grant\", \"id\": \"https://openalex.org/A5041676080\", \"orcid\": \"https://orcid.org/0000-0002-7942-7837\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Charles W. Monroe\", \"id\": \"https://openalex.org/A5068493355\", \"orcid\": \"https://orcid.org/0000-0002-9894-5023\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"T.J. Marrow\", \"id\": \"https://openalex.org/A5029418917\", \"orcid\": \"https://orcid.org/0000-0001-6120-9826\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guanchen Li\", \"id\": \"https://openalex.org/A5084382073\", \"orcid\": \"https://orcid.org/0000-0001-8125-6793\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Peter G. Bruce\", \"id\": \"https://openalex.org/A5056496930\", \"orcid\": \"https://orcid.org/0000-0001-6748-3084\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773309179162,
+    "actual_start_ms": 1773309180672,
+    "pacing_wait_ms": 1509,
+    "pacing_jitter_sec": 1.38
+  }
+}

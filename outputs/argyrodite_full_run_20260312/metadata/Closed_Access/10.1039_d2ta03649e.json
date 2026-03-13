@@ -1,0 +1,138 @@
+{
+  "doi": "10.1039/d2ta03649e",
+  "pdf_filename": "10.1039_d2ta03649e.pdf",
+  "json_filename": "10.1039_d2ta03649e.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d2ta03649e.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4286364313",
+    "doi": "10.1039/d2ta03649e",
+    "title": "The crucial role of oxygen substitution in argyrodite solid electrolytes from the bulk to the surface under atmospheric conditions",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.88407685,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Taesoon Hwang",
+    "authors_display": "Taesoon Hwang; You‐Jin Lee; So Ri Lee; Yoon‐Cheol Ha; Maenghyo Cho; Sang‐Min Lee; Kyeongjae Cho; Sang-Min Lee; Kyeongjae Cho",
+    "authors": [
+      {
+        "display_name": "Taesoon Hwang",
+        "id": "https://openalex.org/A5066579076",
+        "orcid": "https://orcid.org/0000-0002-1264-1265",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "You‐Jin Lee",
+        "id": "https://openalex.org/A5007359456",
+        "orcid": "https://orcid.org/0000-0002-9133-7893",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "So Ri Lee",
+        "id": "https://openalex.org/A5068112790",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yoon‐Cheol Ha",
+        "id": "https://openalex.org/A5086764992",
+        "orcid": "https://orcid.org/0000-0001-5769-1461",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maenghyo Cho",
+        "id": "https://openalex.org/A5008311630",
+        "orcid": "https://orcid.org/0000-0003-3942-9261",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang‐Min Lee",
+        "id": "https://openalex.org/A5100319606",
+        "orcid": "https://orcid.org/0000-0003-3650-289X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyeongjae Cho",
+        "id": "https://openalex.org/A5004018821",
+        "orcid": "https://orcid.org/0000-0003-2698-7774",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang-Min Lee",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Kyeongjae Cho",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0003-2698-7774",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4286364313",
+    "doi": "10.1039/d2ta03649e",
+    "title": "The crucial role of oxygen substitution in argyrodite solid electrolytes from the bulk to the surface under atmospheric conditions",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.88407685,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Taesoon Hwang",
+    "authors_display": "Taesoon Hwang; You‐Jin Lee; So Ri Lee; Yoon‐Cheol Ha; Maenghyo Cho; Sang‐Min Lee; Kyeongjae Cho; Sang-Min Lee; Kyeongjae Cho",
+    "authors_json": "[{\"display_name\": \"Taesoon Hwang\", \"id\": \"https://openalex.org/A5066579076\", \"orcid\": \"https://orcid.org/0000-0002-1264-1265\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"You‐Jin Lee\", \"id\": \"https://openalex.org/A5007359456\", \"orcid\": \"https://orcid.org/0000-0002-9133-7893\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"So Ri Lee\", \"id\": \"https://openalex.org/A5068112790\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yoon‐Cheol Ha\", \"id\": \"https://openalex.org/A5086764992\", \"orcid\": \"https://orcid.org/0000-0001-5769-1461\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maenghyo Cho\", \"id\": \"https://openalex.org/A5008311630\", \"orcid\": \"https://orcid.org/0000-0003-3942-9261\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang‐Min Lee\", \"id\": \"https://openalex.org/A5100319606\", \"orcid\": \"https://orcid.org/0000-0003-3650-289X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyeongjae Cho\", \"id\": \"https://openalex.org/A5004018821\", \"orcid\": \"https://orcid.org/0000-0003-2698-7774\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang-Min Lee\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Kyeongjae Cho\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0003-2698-7774\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.rsc.org/en/content/articlelanding/2022/ta/d2ta03649e",
+    "landing_title": "The crucial role of oxygen substitution in argyrodite solid electrolytes from the bulk to the surface under atmospheric conditions - Journal of Materials Chemistry A (RSC Publishing)",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773311722003,
+    "actual_start_ms": 1773311722005,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.546
+  }
+}

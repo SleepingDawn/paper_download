@@ -1,0 +1,103 @@
+{
+  "doi": "10.1016/j.ensm.2022.03.012",
+  "pdf_filename": "10.1016_j.ensm.2022.03.012.pdf",
+  "json_filename": "10.1016_j.ensm.2022.03.012.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2022.03.012.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4220960134",
+    "doi": "10.1016/j.ensm.2022.03.012",
+    "title": "Bipolar stackings high voltage and high cell level energy density sulfide based all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2022-03-15",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 101,
+    "citation_normalized_percentile": 0.98650064,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Daxian Cao",
+    "authors_display": "Daxian Cao; Xiao Sun; Ying Wang; Hongli Zhu",
+    "authors": [
+      {
+        "display_name": "Daxian Cao",
+        "id": "https://openalex.org/A5091648041",
+        "orcid": "https://orcid.org/0000-0003-1191-5954",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao Sun",
+        "id": "https://openalex.org/A5074070055",
+        "orcid": "https://orcid.org/0000-0002-0449-7603",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ying Wang",
+        "id": "https://openalex.org/A5100347123",
+        "orcid": "https://orcid.org/0000-0002-6240-5535",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongli Zhu",
+        "id": "https://openalex.org/A5028366101",
+        "orcid": "https://orcid.org/0000-0003-1733-4333",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4220960134",
+    "doi": "10.1016/j.ensm.2022.03.012",
+    "title": "Bipolar stackings high voltage and high cell level energy density sulfide based all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2022-03-15",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 101,
+    "citation_normalized_percentile": 0.98650064,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Daxian Cao",
+    "authors_display": "Daxian Cao; Xiao Sun; Ying Wang; Hongli Zhu",
+    "authors_json": "[{\"display_name\": \"Daxian Cao\", \"id\": \"https://openalex.org/A5091648041\", \"orcid\": \"https://orcid.org/0000-0003-1191-5954\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Xiao Sun\", \"id\": \"https://openalex.org/A5074070055\", \"orcid\": \"https://orcid.org/0000-0002-0449-7603\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ying Wang\", \"id\": \"https://openalex.org/A5100347123\", \"orcid\": \"https://orcid.org/0000-0002-6240-5535\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongli Zhu\", \"id\": \"https://openalex.org/A5028366101\", \"orcid\": \"https://orcid.org/0000-0003-1733-4333\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301658683,
+    "actual_start_ms": 1773301664481,
+    "pacing_wait_ms": 5797,
+    "pacing_jitter_sec": 1.251
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "doi": "10.1016/j.electacta.2023.142585",
+  "pdf_filename": "10.1016_j.electacta.2023.142585.pdf",
+  "json_filename": "10.1016_j.electacta.2023.142585.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.electacta.2023.142585.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4376620248",
+    "doi": "10.1016/j.electacta.2023.142585",
+    "title": "Electro-chemo-mechanical finite-element model of single-crystal and polycrystalline NMC cathode particles embedded in an argyrodite solid electrolyte",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Electrochimica Acta",
+      "id": "https://openalex.org/S198339081",
+      "type": "journal",
+      "issn_l": "0013-4686",
+      "issn": [
+        "0013-4686",
+        "1873-3859"
+      ]
+    },
+    "publication_date": "2023-05-15",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 39,
+    "citation_normalized_percentile": 0.96295048,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Kasra Taghikhani",
+    "authors_display": "Kasra Taghikhani; Peter J. Weddle; Robert M. Hoffman; Jean‐François Berger; Robert J. Kee",
+    "authors": [
+      {
+        "display_name": "Kasra Taghikhani",
+        "id": "https://openalex.org/A5065133964",
+        "orcid": "https://orcid.org/0000-0002-7763-8315",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Peter J. Weddle",
+        "id": "https://openalex.org/A5047858603",
+        "orcid": "https://orcid.org/0000-0002-1600-0756",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Robert M. Hoffman",
+        "id": "https://openalex.org/A5081533782",
+        "orcid": "https://orcid.org/0000-0002-7428-0151",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jean‐François Berger",
+        "id": "https://openalex.org/A5111972002",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Robert J. Kee",
+        "id": "https://openalex.org/A5058494124",
+        "orcid": "https://orcid.org/0000-0003-3930-4784",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4376620248",
+    "doi": "10.1016/j.electacta.2023.142585",
+    "title": "Electro-chemo-mechanical finite-element model of single-crystal and polycrystalline NMC cathode particles embedded in an argyrodite solid electrolyte",
+    "publisher": "Elsevier BV",
+    "journal": "Electrochimica Acta",
+    "journal_id": "https://openalex.org/S198339081",
+    "journal_type": "journal",
+    "journal_issn_l": "0013-4686",
+    "journal_issn_json": "[\"0013-4686\", \"1873-3859\"]",
+    "publication_date": "2023-05-15",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 39,
+    "citation_normalized_percentile": 0.96295048,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Kasra Taghikhani",
+    "authors_display": "Kasra Taghikhani; Peter J. Weddle; Robert M. Hoffman; Jean‐François Berger; Robert J. Kee",
+    "authors_json": "[{\"display_name\": \"Kasra Taghikhani\", \"id\": \"https://openalex.org/A5065133964\", \"orcid\": \"https://orcid.org/0000-0002-7763-8315\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Peter J. Weddle\", \"id\": \"https://openalex.org/A5047858603\", \"orcid\": \"https://orcid.org/0000-0002-1600-0756\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Robert M. Hoffman\", \"id\": \"https://openalex.org/A5081533782\", \"orcid\": \"https://orcid.org/0000-0002-7428-0151\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jean‐François Berger\", \"id\": \"https://openalex.org/A5111972002\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Robert J. Kee\", \"id\": \"https://openalex.org/A5058494124\", \"orcid\": \"https://orcid.org/0000-0003-3930-4784\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302099522,
+    "actual_start_ms": 1773302106252,
+    "pacing_wait_ms": 6729,
+    "pacing_jitter_sec": 1.237
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "doi": "10.1149/ma2023-025871mtgabs",
+  "pdf_filename": "10.1149_ma2023-025871mtgabs.pdf",
+  "json_filename": "10.1149_ma2023-025871mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2023-025871mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4391640107",
+    "doi": "10.1149/ma2023-025871mtgabs",
+    "title": "Multimodal Characterization of Nucleation and Progression of Interfacial Degradation in All Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2023-12-22",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.1931756,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Partha P. Paul",
+    "authors_display": "Partha P. Paul; Ji Hu; R. S. Young; Ludovic Broche; Alexander J. E. Rettie; Marco DiMichiel; Philip J. Withers",
+    "authors": [
+      {
+        "display_name": "Partha P. Paul",
+        "id": "https://openalex.org/A5028048523",
+        "orcid": "https://orcid.org/0000-0002-0559-3429",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ji Hu",
+        "id": "https://openalex.org/A5020045333",
+        "orcid": "https://orcid.org/0000-0003-2889-0853",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "R. S. Young",
+        "id": "https://openalex.org/A5021234946",
+        "orcid": "https://orcid.org/0000-0002-4478-7656",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ludovic Broche",
+        "id": "https://openalex.org/A5110736283",
+        "orcid": "https://orcid.org/0000-0001-7704-0762",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alexander J. E. Rettie",
+        "id": "https://openalex.org/A5067116911",
+        "orcid": "https://orcid.org/0000-0002-2482-9732",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marco DiMichiel",
+        "id": "https://openalex.org/A5009088572",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Philip J. Withers",
+        "id": "https://openalex.org/A5078303945",
+        "orcid": "https://orcid.org/0000-0002-1946-5647",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4391640107",
+    "doi": "10.1149/ma2023-025871mtgabs",
+    "title": "Multimodal Characterization of Nucleation and Progression of Interfacial Degradation in All Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2023-12-22",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.1931756,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Partha P. Paul",
+    "authors_display": "Partha P. Paul; Ji Hu; R. S. Young; Ludovic Broche; Alexander J. E. Rettie; Marco DiMichiel; Philip J. Withers",
+    "authors_json": "[{\"display_name\": \"Partha P. Paul\", \"id\": \"https://openalex.org/A5028048523\", \"orcid\": \"https://orcid.org/0000-0002-0559-3429\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ji Hu\", \"id\": \"https://openalex.org/A5020045333\", \"orcid\": \"https://orcid.org/0000-0003-2889-0853\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"R. S. Young\", \"id\": \"https://openalex.org/A5021234946\", \"orcid\": \"https://orcid.org/0000-0002-4478-7656\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ludovic Broche\", \"id\": \"https://openalex.org/A5110736283\", \"orcid\": \"https://orcid.org/0000-0001-7704-0762\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alexander J. E. Rettie\", \"id\": \"https://openalex.org/A5067116911\", \"orcid\": \"https://orcid.org/0000-0002-2482-9732\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marco DiMichiel\", \"id\": \"https://openalex.org/A5009088572\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Philip J. Withers\", \"id\": \"https://openalex.org/A5078303945\", \"orcid\": \"https://orcid.org/0000-0002-1946-5647\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773304923361,
+    "actual_start_ms": 1773304923361,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.936
+  }
+}

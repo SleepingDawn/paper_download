@@ -1,0 +1,110 @@
+{
+  "doi": "10.3390/molecules28083537",
+  "pdf_filename": "10.3390_molecules28083537.pdf",
+  "json_filename": "10.3390_molecules28083537.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_molecules28083537.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4366291986",
+    "doi": "10.3390/molecules28083537",
+    "title": "LiNi0.6Co0.2Mn0.2O2 Cathode-Solid Electrolyte Interfacial Behavior Characterization Using Novel Method Adopting Microcavity Electrode",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Molecules",
+      "id": "https://openalex.org/S108911230",
+      "type": "journal",
+      "issn_l": "1420-3049",
+      "issn": [
+        "1420-3049",
+        "1433-1373"
+      ]
+    },
+    "publication_date": "2023-04-17",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.67431436,
+    "pdf_url": "https://www.mdpi.com/1420-3049/28/8/3537/pdf?version=1681736913",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Rahul S. Ingole",
+    "authors_display": "Rahul S. Ingole; Rajesh Rajagopal; Orynbassar Mukhan; Sung‐Soo Kim; Kwang‐Sun Ryu",
+    "authors": [
+      {
+        "display_name": "Rahul S. Ingole",
+        "id": "https://openalex.org/A5001235943",
+        "orcid": "https://orcid.org/0000-0003-4941-4303",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rajesh Rajagopal",
+        "id": "https://openalex.org/A5034649463",
+        "orcid": "https://orcid.org/0000-0001-7009-4266",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Orynbassar Mukhan",
+        "id": "https://openalex.org/A5024780806",
+        "orcid": "https://orcid.org/0000-0001-6634-5368",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sung‐Soo Kim",
+        "id": "https://openalex.org/A5059734794",
+        "orcid": "https://orcid.org/0000-0001-8969-7075",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Kwang‐Sun Ryu",
+        "id": "https://openalex.org/A5032691935",
+        "orcid": "https://orcid.org/0000-0002-8758-0495",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4366291986",
+    "doi": "10.3390/molecules28083537",
+    "title": "LiNi0.6Co0.2Mn0.2O2 Cathode-Solid Electrolyte Interfacial Behavior Characterization Using Novel Method Adopting Microcavity Electrode",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Molecules",
+    "journal_id": "https://openalex.org/S108911230",
+    "journal_type": "journal",
+    "journal_issn_l": "1420-3049",
+    "journal_issn_json": "[\"1420-3049\", \"1433-1373\"]",
+    "publication_date": "2023-04-17",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.67431436,
+    "pdf_url": "https://www.mdpi.com/1420-3049/28/8/3537/pdf?version=1681736913",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Rahul S. Ingole",
+    "authors_display": "Rahul S. Ingole; Rajesh Rajagopal; Orynbassar Mukhan; Sung‐Soo Kim; Kwang‐Sun Ryu",
+    "authors_json": "[{\"display_name\": \"Rahul S. Ingole\", \"id\": \"https://openalex.org/A5001235943\", \"orcid\": \"https://orcid.org/0000-0003-4941-4303\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Rajesh Rajagopal\", \"id\": \"https://openalex.org/A5034649463\", \"orcid\": \"https://orcid.org/0000-0001-7009-4266\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Orynbassar Mukhan\", \"id\": \"https://openalex.org/A5024780806\", \"orcid\": \"https://orcid.org/0000-0001-6634-5368\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sung‐Soo Kim\", \"id\": \"https://openalex.org/A5059734794\", \"orcid\": \"https://orcid.org/0000-0001-8969-7075\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Kwang‐Sun Ryu\", \"id\": \"https://openalex.org/A5032691935\", \"orcid\": \"https://orcid.org/0000-0002-8758-0495\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773309824423,
+    "actual_start_ms": 1773309825930,
+    "pacing_wait_ms": 1506,
+    "pacing_jitter_sec": 1.289
+  }
+}

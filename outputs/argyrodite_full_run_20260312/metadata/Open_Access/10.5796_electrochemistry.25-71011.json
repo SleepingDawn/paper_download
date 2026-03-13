@@ -1,0 +1,124 @@
+{
+  "doi": "10.5796/electrochemistry.25-71011",
+  "pdf_filename": "10.5796_electrochemistry.25-71011.pdf",
+  "json_filename": "10.5796_electrochemistry.25-71011.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.5796_electrochemistry.25-71011.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4407202389",
+    "doi": "10.5796/electrochemistry.25-71011",
+    "title": "Moisture Stability of Sulfide Solid Electrolytes: Systematic Comparison and Mechanistic Insight",
+    "publisher": "The Electrochemical Society of Japan",
+    "journal": {
+      "name": "Electrochemistry",
+      "id": "https://openalex.org/S191655311",
+      "type": "journal",
+      "issn_l": "1344-3542",
+      "issn": [
+        "1344-3542",
+        "2186-2451"
+      ]
+    },
+    "publication_date": "2025-02-06",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.92291201,
+    "pdf_url": "https://www.jstage.jst.go.jp/article/electrochemistry/93/6/93_25-71011/_pdf",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Yusuke Morino",
+    "authors_display": "Yusuke Morino; Daisuke Itô; Misae Otoyama; Hirotada Gamo; Minami Kato; Nobuhiko Takeichi; Hikaru Sano",
+    "authors": [
+      {
+        "display_name": "Yusuke Morino",
+        "id": "https://openalex.org/A5082471934",
+        "orcid": "https://orcid.org/0000-0002-6973-7786",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Daisuke Itô",
+        "id": "https://openalex.org/A5103124585",
+        "orcid": "https://orcid.org/0009-0006-9296-1926",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Misae Otoyama",
+        "id": "https://openalex.org/A5076397746",
+        "orcid": "https://orcid.org/0000-0002-1897-6672",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hirotada Gamo",
+        "id": "https://openalex.org/A5003435028",
+        "orcid": "https://orcid.org/0000-0002-5817-9985",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Minami Kato",
+        "id": "https://openalex.org/A5101647003",
+        "orcid": "https://orcid.org/0000-0002-2512-2704",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nobuhiko Takeichi",
+        "id": "https://openalex.org/A5009695097",
+        "orcid": "https://orcid.org/0000-0002-3272-1860",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hikaru Sano",
+        "id": "https://openalex.org/A5002686051",
+        "orcid": "https://orcid.org/0000-0002-7557-0767",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4407202389",
+    "doi": "10.5796/electrochemistry.25-71011",
+    "title": "Moisture Stability of Sulfide Solid Electrolytes: Systematic Comparison and Mechanistic Insight",
+    "publisher": "The Electrochemical Society of Japan",
+    "journal": "Electrochemistry",
+    "journal_id": "https://openalex.org/S191655311",
+    "journal_type": "journal",
+    "journal_issn_l": "1344-3542",
+    "journal_issn_json": "[\"1344-3542\", \"2186-2451\"]",
+    "publication_date": "2025-02-06",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.92291201,
+    "pdf_url": "https://www.jstage.jst.go.jp/article/electrochemistry/93/6/93_25-71011/_pdf",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Yusuke Morino",
+    "authors_display": "Yusuke Morino; Daisuke Itô; Misae Otoyama; Hirotada Gamo; Minami Kato; Nobuhiko Takeichi; Hikaru Sano",
+    "authors_json": "[{\"display_name\": \"Yusuke Morino\", \"id\": \"https://openalex.org/A5082471934\", \"orcid\": \"https://orcid.org/0000-0002-6973-7786\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Daisuke Itô\", \"id\": \"https://openalex.org/A5103124585\", \"orcid\": \"https://orcid.org/0009-0006-9296-1926\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Misae Otoyama\", \"id\": \"https://openalex.org/A5076397746\", \"orcid\": \"https://orcid.org/0000-0002-1897-6672\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hirotada Gamo\", \"id\": \"https://openalex.org/A5003435028\", \"orcid\": \"https://orcid.org/0000-0002-5817-9985\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Minami Kato\", \"id\": \"https://openalex.org/A5101647003\", \"orcid\": \"https://orcid.org/0000-0002-2512-2704\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nobuhiko Takeichi\", \"id\": \"https://openalex.org/A5009695097\", \"orcid\": \"https://orcid.org/0000-0002-3272-1860\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hikaru Sano\", \"id\": \"https://openalex.org/A5002686051\", \"orcid\": \"https://orcid.org/0000-0002-7557-0767\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.5796",
+    "scheduled_start_ms": 1773310673661,
+    "actual_start_ms": 1773310673661,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.944
+  }
+}

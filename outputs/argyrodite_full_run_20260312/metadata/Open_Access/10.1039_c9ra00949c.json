@@ -1,0 +1,116 @@
+{
+  "doi": "10.1039/c9ra00949c",
+  "pdf_filename": "10.1039_c9ra00949c.pdf",
+  "json_filename": "10.1039_c9ra00949c.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_c9ra00949c.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2944159212",
+    "doi": "10.1039/c9ra00949c",
+    "title": "Quantitative analysis of crystallinity in an argyrodite sulfide-based solid electrolyte synthesized <i>via</i> solution processing",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "RSC Advances",
+      "id": "https://openalex.org/S2481244646",
+      "type": "journal",
+      "issn_l": "2046-2069",
+      "issn": [
+        "2046-2069"
+      ]
+    },
+    "publication_date": "2019-01-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 31,
+    "citation_normalized_percentile": 0.84297349,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2019/ra/c9ra00949c",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "So Yubuchi",
+    "authors_display": "So Yubuchi; Hirofumi Tsukasaki; Atsushi Sakuda; Shigeo Mori; Akitoshi Hayashi; Masahiro Tatsumisago",
+    "authors": [
+      {
+        "display_name": "So Yubuchi",
+        "id": "https://openalex.org/A5077611173",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hirofumi Tsukasaki",
+        "id": "https://openalex.org/A5016252105",
+        "orcid": "https://orcid.org/0000-0003-0523-5469",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Atsushi Sakuda",
+        "id": "https://openalex.org/A5025626446",
+        "orcid": "https://orcid.org/0000-0002-9214-0347",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shigeo Mori",
+        "id": "https://openalex.org/A5101113604",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Akitoshi Hayashi",
+        "id": "https://openalex.org/A5056798072",
+        "orcid": "https://orcid.org/0000-0001-9503-5561",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Masahiro Tatsumisago",
+        "id": "https://openalex.org/A5081903089",
+        "orcid": "https://orcid.org/0000-0002-4836-0158",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2944159212",
+    "doi": "10.1039/c9ra00949c",
+    "title": "Quantitative analysis of crystallinity in an argyrodite sulfide-based solid electrolyte synthesized <i>via</i> solution processing",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "RSC Advances",
+    "journal_id": "https://openalex.org/S2481244646",
+    "journal_type": "journal",
+    "journal_issn_l": "2046-2069",
+    "journal_issn_json": "[\"2046-2069\"]",
+    "publication_date": "2019-01-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 31,
+    "citation_normalized_percentile": 0.84297349,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2019/ra/c9ra00949c",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "So Yubuchi",
+    "authors_display": "So Yubuchi; Hirofumi Tsukasaki; Atsushi Sakuda; Shigeo Mori; Akitoshi Hayashi; Masahiro Tatsumisago",
+    "authors_json": "[{\"display_name\": \"So Yubuchi\", \"id\": \"https://openalex.org/A5077611173\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hirofumi Tsukasaki\", \"id\": \"https://openalex.org/A5016252105\", \"orcid\": \"https://orcid.org/0000-0003-0523-5469\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Atsushi Sakuda\", \"id\": \"https://openalex.org/A5025626446\", \"orcid\": \"https://orcid.org/0000-0002-9214-0347\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shigeo Mori\", \"id\": \"https://openalex.org/A5101113604\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Akitoshi Hayashi\", \"id\": \"https://openalex.org/A5056798072\", \"orcid\": \"https://orcid.org/0000-0001-9503-5561\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Masahiro Tatsumisago\", \"id\": \"https://openalex.org/A5081903089\", \"orcid\": \"https://orcid.org/0000-0002-4836-0158\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773307948582,
+    "actual_start_ms": 1773307949850,
+    "pacing_wait_ms": 1268,
+    "pacing_jitter_sec": 1.096
+  }
+}

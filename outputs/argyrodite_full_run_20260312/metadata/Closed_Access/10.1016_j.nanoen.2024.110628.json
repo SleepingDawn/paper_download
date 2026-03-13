@@ -1,0 +1,138 @@
+{
+  "doi": "10.1016/j.nanoen.2024.110628",
+  "pdf_filename": "10.1016_j.nanoen.2024.110628.pdf",
+  "json_filename": "10.1016_j.nanoen.2024.110628.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.nanoen.2024.110628.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4405867598",
+    "doi": "10.1016/j.nanoen.2024.110628",
+    "title": "Li6PS5Cl/MoS2 hybrid electrolyte integrates high sulfur conversion kinetics with stable lithium metal interfaces in all-solid-state lithium-sulfur batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Nano Energy",
+      "id": "https://openalex.org/S2497301991",
+      "type": "journal",
+      "issn_l": "2211-2855",
+      "issn": [
+        "2211-2855",
+        "2211-3282"
+      ]
+    },
+    "publication_date": "2024-12-28",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.83740158,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Min Luo",
+    "authors_display": "Min Luo; Jiayi Wang; Liuzhen Wang; Jing Ye; Xin Wang; Jiantao Wang; Zhongwei Chen; Jiantao Wang; Zhongwei Chen",
+    "authors": [
+      {
+        "display_name": "Min Luo",
+        "id": "https://openalex.org/A5101555121",
+        "orcid": "https://orcid.org/0000-0001-8080-0881",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiayi Wang",
+        "id": "https://openalex.org/A5118983749",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liuzhen Wang",
+        "id": "https://openalex.org/A5030914857",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jing Ye",
+        "id": "https://openalex.org/A5108985619",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xin Wang",
+        "id": "https://openalex.org/A5100370177",
+        "orcid": "https://orcid.org/0000-0002-8965-4910",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiantao Wang",
+        "id": "https://openalex.org/A5100632945",
+        "orcid": "https://orcid.org/0000-0002-4773-5229",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zhongwei Chen",
+        "id": "https://openalex.org/A5100784984",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jiantao Wang",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhongwei Chen",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405867598",
+    "doi": "10.1016/j.nanoen.2024.110628",
+    "title": "Li6PS5Cl/MoS2 hybrid electrolyte integrates high sulfur conversion kinetics with stable lithium metal interfaces in all-solid-state lithium-sulfur batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Nano Energy",
+    "journal_id": "https://openalex.org/S2497301991",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-2855",
+    "journal_issn_json": "[\"2211-2855\", \"2211-3282\"]",
+    "publication_date": "2024-12-28",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.83740158,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Min Luo",
+    "authors_display": "Min Luo; Jiayi Wang; Liuzhen Wang; Jing Ye; Xin Wang; Jiantao Wang; Zhongwei Chen; Jiantao Wang; Zhongwei Chen",
+    "authors_json": "[{\"display_name\": \"Min Luo\", \"id\": \"https://openalex.org/A5101555121\", \"orcid\": \"https://orcid.org/0000-0001-8080-0881\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jiayi Wang\", \"id\": \"https://openalex.org/A5118983749\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liuzhen Wang\", \"id\": \"https://openalex.org/A5030914857\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jing Ye\", \"id\": \"https://openalex.org/A5108985619\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xin Wang\", \"id\": \"https://openalex.org/A5100370177\", \"orcid\": \"https://orcid.org/0000-0002-8965-4910\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiantao Wang\", \"id\": \"https://openalex.org/A5100632945\", \"orcid\": \"https://orcid.org/0000-0002-4773-5229\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Zhongwei Chen\", \"id\": \"https://openalex.org/A5100784984\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jiantao Wang\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhongwei Chen\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2211285524013806?via%3Dihub",
+    "landing_title": "Li6PS5Cl/MoS2 hybrid electrolyte integrates high sulfur conversion kinetics with stable lithium metal interfaces in all-solid-state lithium-sulfur batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773305635448,
+    "actual_start_ms": 1773305665898,
+    "pacing_wait_ms": 30450,
+    "pacing_jitter_sec": 0.927
+  }
+}

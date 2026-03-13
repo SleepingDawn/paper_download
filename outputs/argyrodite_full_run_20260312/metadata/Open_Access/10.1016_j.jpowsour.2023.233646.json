@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.jpowsour.2023.233646",
+  "pdf_filename": "10.1016_j.jpowsour.2023.233646.pdf",
+  "json_filename": "10.1016_j.jpowsour.2023.233646.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.jpowsour.2023.233646.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4387149153",
+    "doi": "10.1016/j.jpowsour.2023.233646",
+    "title": "Low pressure cycling of solid state Li-ion pouch cells based on NMC – Sulfide – Nanosilicon chemistry",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Power Sources",
+      "id": "https://openalex.org/S177147899",
+      "type": "journal",
+      "issn_l": "0378-7753",
+      "issn": [
+        "0378-7753",
+        "1873-2755"
+      ]
+    },
+    "publication_date": "2023-09-28",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.89942614,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Martine Grandjean",
+    "authors_display": "Martine Grandjean; Marian Perrey; Xavier Randrema; Jade Laurier; Pascale Chenevier; Cédric Haon; Sébastien Liatard",
+    "authors": [
+      {
+        "display_name": "Martine Grandjean",
+        "id": "https://openalex.org/A5008879860",
+        "orcid": "https://orcid.org/0009-0007-9619-3140",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marian Perrey",
+        "id": "https://openalex.org/A5092963690",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xavier Randrema",
+        "id": "https://openalex.org/A5008959714",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jade Laurier",
+        "id": "https://openalex.org/A5092963691",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pascale Chenevier",
+        "id": "https://openalex.org/A5044083706",
+        "orcid": "https://orcid.org/0000-0003-4358-2162",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Cédric Haon",
+        "id": "https://openalex.org/A5067016444",
+        "orcid": "https://orcid.org/0000-0001-8505-606X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Sébastien Liatard",
+        "id": "https://openalex.org/A5073500954",
+        "orcid": "https://orcid.org/0000-0003-4585-0749",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4387149153",
+    "doi": "10.1016/j.jpowsour.2023.233646",
+    "title": "Low pressure cycling of solid state Li-ion pouch cells based on NMC – Sulfide – Nanosilicon chemistry",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Power Sources",
+    "journal_id": "https://openalex.org/S177147899",
+    "journal_type": "journal",
+    "journal_issn_l": "0378-7753",
+    "journal_issn_json": "[\"0378-7753\", \"1873-2755\"]",
+    "publication_date": "2023-09-28",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.89942614,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Martine Grandjean",
+    "authors_display": "Martine Grandjean; Marian Perrey; Xavier Randrema; Jade Laurier; Pascale Chenevier; Cédric Haon; Sébastien Liatard",
+    "authors_json": "[{\"display_name\": \"Martine Grandjean\", \"id\": \"https://openalex.org/A5008879860\", \"orcid\": \"https://orcid.org/0009-0007-9619-3140\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Marian Perrey\", \"id\": \"https://openalex.org/A5092963690\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xavier Randrema\", \"id\": \"https://openalex.org/A5008959714\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jade Laurier\", \"id\": \"https://openalex.org/A5092963691\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pascale Chenevier\", \"id\": \"https://openalex.org/A5044083706\", \"orcid\": \"https://orcid.org/0000-0003-4358-2162\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Cédric Haon\", \"id\": \"https://openalex.org/A5067016444\", \"orcid\": \"https://orcid.org/0000-0001-8505-606X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Sébastien Liatard\", \"id\": \"https://openalex.org/A5073500954\", \"orcid\": \"https://orcid.org/0000-0003-4585-0749\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302706992,
+    "actual_start_ms": 1773302709706,
+    "pacing_wait_ms": 2713,
+    "pacing_jitter_sec": 1.064
+  }
+}

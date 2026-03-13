@@ -1,0 +1,151 @@
+{
+  "doi": "10.1038/s41467-024-48071-0",
+  "pdf_filename": "10.1038_s41467-024-48071-0.pdf",
+  "json_filename": "10.1038_s41467-024-48071-0.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s41467-024-48071-0.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4399038433",
+    "doi": "10.1038/s41467-024-48071-0",
+    "title": "The impact of magnesium content on lithium-magnesium alloy electrode performance with argyrodite solid electrolyte",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Communications",
+      "id": "https://openalex.org/S64187185",
+      "type": "journal",
+      "issn_l": "2041-1723",
+      "issn": [
+        "2041-1723"
+      ]
+    },
+    "publication_date": "2024-05-27",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 40,
+    "citation_normalized_percentile": 0.98354821,
+    "pdf_url": "https://www.nature.com/articles/s41467-024-48071-0.pdf",
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Jack Aspinall",
+    "authors_display": "Jack Aspinall; K. Sada; Hua Guo; Souhardh Kotakadi; Sudarshan Narayanan; Yvonne Chart; Ben Jagger; Emily Milan; Laurence Brassart; David E.J. Armstrong; Mauro Pasta",
+    "authors": [
+      {
+        "display_name": "Jack Aspinall",
+        "id": "https://openalex.org/A5010339771",
+        "orcid": "https://orcid.org/0000-0002-6470-3915",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "K. Sada",
+        "id": "https://openalex.org/A5013406971",
+        "orcid": "https://orcid.org/0000-0001-6119-6164",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hua Guo",
+        "id": "https://openalex.org/A5038375764",
+        "orcid": "https://orcid.org/0000-0001-9901-053X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Souhardh Kotakadi",
+        "id": "https://openalex.org/A5098878983",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sudarshan Narayanan",
+        "id": "https://openalex.org/A5048969462",
+        "orcid": "https://orcid.org/0000-0001-7026-5010",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yvonne Chart",
+        "id": "https://openalex.org/A5051501257",
+        "orcid": "https://orcid.org/0000-0003-0523-8627",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ben Jagger",
+        "id": "https://openalex.org/A5078867450",
+        "orcid": "https://orcid.org/0000-0002-1870-3391",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Emily Milan",
+        "id": "https://openalex.org/A5019620186",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Laurence Brassart",
+        "id": "https://openalex.org/A5064940527",
+        "orcid": "https://orcid.org/0000-0001-7966-750X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "David E.J. Armstrong",
+        "id": "https://openalex.org/A5034719668",
+        "orcid": "https://orcid.org/0000-0002-5067-5108",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mauro Pasta",
+        "id": "https://openalex.org/A5011547289",
+        "orcid": "https://orcid.org/0000-0002-2613-4555",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4399038433",
+    "doi": "10.1038/s41467-024-48071-0",
+    "title": "The impact of magnesium content on lithium-magnesium alloy electrode performance with argyrodite solid electrolyte",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Communications",
+    "journal_id": "https://openalex.org/S64187185",
+    "journal_type": "journal",
+    "journal_issn_l": "2041-1723",
+    "journal_issn_json": "[\"2041-1723\"]",
+    "publication_date": "2024-05-27",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 40,
+    "citation_normalized_percentile": 0.98354821,
+    "pdf_url": "https://www.nature.com/articles/s41467-024-48071-0.pdf",
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Jack Aspinall",
+    "authors_display": "Jack Aspinall; K. Sada; Hua Guo; Souhardh Kotakadi; Sudarshan Narayanan; Yvonne Chart; Ben Jagger; Emily Milan; Laurence Brassart; David E.J. Armstrong; Mauro Pasta",
+    "authors_json": "[{\"display_name\": \"Jack Aspinall\", \"id\": \"https://openalex.org/A5010339771\", \"orcid\": \"https://orcid.org/0000-0002-6470-3915\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"K. Sada\", \"id\": \"https://openalex.org/A5013406971\", \"orcid\": \"https://orcid.org/0000-0001-6119-6164\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hua Guo\", \"id\": \"https://openalex.org/A5038375764\", \"orcid\": \"https://orcid.org/0000-0001-9901-053X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Souhardh Kotakadi\", \"id\": \"https://openalex.org/A5098878983\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sudarshan Narayanan\", \"id\": \"https://openalex.org/A5048969462\", \"orcid\": \"https://orcid.org/0000-0001-7026-5010\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yvonne Chart\", \"id\": \"https://openalex.org/A5051501257\", \"orcid\": \"https://orcid.org/0000-0003-0523-8627\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ben Jagger\", \"id\": \"https://openalex.org/A5078867450\", \"orcid\": \"https://orcid.org/0000-0002-1870-3391\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Emily Milan\", \"id\": \"https://openalex.org/A5019620186\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Laurence Brassart\", \"id\": \"https://openalex.org/A5064940527\", \"orcid\": \"https://orcid.org/0000-0001-7966-750X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"David E.J. Armstrong\", \"id\": \"https://openalex.org/A5034719668\", \"orcid\": \"https://orcid.org/0000-0002-5067-5108\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mauro Pasta\", \"id\": \"https://openalex.org/A5011547289\", \"orcid\": \"https://orcid.org/0000-0002-2613-4555\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773308173894,
+    "actual_start_ms": 1773308175403,
+    "pacing_wait_ms": 1509,
+    "pacing_jitter_sec": 1.243
+  }
+}

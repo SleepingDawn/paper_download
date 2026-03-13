@@ -1,0 +1,145 @@
+{
+  "doi": "10.1016/j.nanoen.2024.109767",
+  "pdf_filename": "10.1016_j.nanoen.2024.109767.pdf",
+  "json_filename": "10.1016_j.nanoen.2024.109767.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.nanoen.2024.109767.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4398174542",
+    "doi": "10.1016/j.nanoen.2024.109767",
+    "title": "A CuS-based composite cathode with a high areal capacity for sulfide-based all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Nano Energy",
+      "id": "https://openalex.org/S2497301991",
+      "type": "journal",
+      "issn_l": "2211-2855",
+      "issn": [
+        "2211-2855",
+        "2211-3282"
+      ]
+    },
+    "publication_date": "2024-05-21",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.8052062,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Dengfeng Yu",
+    "authors_display": "Dengfeng Yu; Haocheng Yuan; Kaihua Wen; Peipei Ding; Hong Liu; Yu-Hsien Wu; Rong Yang; Ce‐Wen Nan; Yaoyu Ren; Liangliang Li",
+    "authors": [
+      {
+        "display_name": "Dengfeng Yu",
+        "id": "https://openalex.org/A5054365049",
+        "orcid": "https://orcid.org/0000-0002-1104-0417",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haocheng Yuan",
+        "id": "https://openalex.org/A5080254514",
+        "orcid": "https://orcid.org/0000-0002-9739-9622",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kaihua Wen",
+        "id": "https://openalex.org/A5019746223",
+        "orcid": "https://orcid.org/0000-0002-2497-4307",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peipei Ding",
+        "id": "https://openalex.org/A5103056299",
+        "orcid": "https://orcid.org/0009-0009-6320-5621",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Liu",
+        "id": "https://openalex.org/A5100683942",
+        "orcid": "https://orcid.org/0000-0002-7256-5751",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu-Hsien Wu",
+        "id": "https://openalex.org/A5002306255",
+        "orcid": "https://orcid.org/0009-0004-3505-7522",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rong Yang",
+        "id": "https://openalex.org/A5077438115",
+        "orcid": "https://orcid.org/0000-0001-5936-6849",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ce‐Wen Nan",
+        "id": "https://openalex.org/A5000830544",
+        "orcid": "https://orcid.org/0000-0002-3261-4053",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yaoyu Ren",
+        "id": "https://openalex.org/A5065079900",
+        "orcid": "https://orcid.org/0000-0003-3261-5846",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Liangliang Li",
+        "id": "https://openalex.org/A5100739408",
+        "orcid": "https://orcid.org/0000-0001-7808-7052",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4398174542",
+    "doi": "10.1016/j.nanoen.2024.109767",
+    "title": "A CuS-based composite cathode with a high areal capacity for sulfide-based all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Nano Energy",
+    "journal_id": "https://openalex.org/S2497301991",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-2855",
+    "journal_issn_json": "[\"2211-2855\", \"2211-3282\"]",
+    "publication_date": "2024-05-21",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.8052062,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Dengfeng Yu",
+    "authors_display": "Dengfeng Yu; Haocheng Yuan; Kaihua Wen; Peipei Ding; Hong Liu; Yu-Hsien Wu; Rong Yang; Ce‐Wen Nan; Yaoyu Ren; Liangliang Li",
+    "authors_json": "[{\"display_name\": \"Dengfeng Yu\", \"id\": \"https://openalex.org/A5054365049\", \"orcid\": \"https://orcid.org/0000-0002-1104-0417\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Haocheng Yuan\", \"id\": \"https://openalex.org/A5080254514\", \"orcid\": \"https://orcid.org/0000-0002-9739-9622\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kaihua Wen\", \"id\": \"https://openalex.org/A5019746223\", \"orcid\": \"https://orcid.org/0000-0002-2497-4307\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peipei Ding\", \"id\": \"https://openalex.org/A5103056299\", \"orcid\": \"https://orcid.org/0009-0009-6320-5621\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Liu\", \"id\": \"https://openalex.org/A5100683942\", \"orcid\": \"https://orcid.org/0000-0002-7256-5751\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu-Hsien Wu\", \"id\": \"https://openalex.org/A5002306255\", \"orcid\": \"https://orcid.org/0009-0004-3505-7522\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rong Yang\", \"id\": \"https://openalex.org/A5077438115\", \"orcid\": \"https://orcid.org/0000-0001-5936-6849\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ce‐Wen Nan\", \"id\": \"https://openalex.org/A5000830544\", \"orcid\": \"https://orcid.org/0000-0002-3261-4053\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yaoyu Ren\", \"id\": \"https://openalex.org/A5065079900\", \"orcid\": \"https://orcid.org/0000-0003-3261-5846\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Liangliang Li\", \"id\": \"https://openalex.org/A5100739408\", \"orcid\": \"https://orcid.org/0000-0001-7808-7052\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2211285524005159?via%3Dihub",
+    "landing_title": "A CuS-based composite cathode with a high areal capacity for sulfide-based all-solid-state batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773306062108,
+    "actual_start_ms": 1773306068489,
+    "pacing_wait_ms": 6380,
+    "pacing_jitter_sec": 0.887
+  }
+}

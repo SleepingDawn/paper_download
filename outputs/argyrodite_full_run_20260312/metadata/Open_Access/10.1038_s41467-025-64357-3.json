@@ -1,0 +1,137 @@
+{
+  "doi": "10.1038/s41467-025-64357-3",
+  "pdf_filename": "10.1038_s41467-025-64357-3.pdf",
+  "json_filename": "10.1038_s41467-025-64357-3.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s41467-025-64357-3.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4415380266",
+    "doi": "10.1038/s41467-025-64357-3",
+    "title": "The role of phosphorus in the solid electrolyte interphase of argyrodite solid electrolytes",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Communications",
+      "id": "https://openalex.org/S64187185",
+      "type": "journal",
+      "issn_l": "2041-1723",
+      "issn": [
+        "2041-1723"
+      ]
+    },
+    "publication_date": "2025-10-21",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.90297792,
+    "pdf_url": "https://www.nature.com/articles/s41467-025-64357-3.pdf",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Matthew Burton",
+    "authors_display": "Matthew Burton; Ben Jagger; Yi Liang; Joshua S. Gibson; Jack Aspinall; Zhengwei Long; Jack E. N. Swallow; Robert S. Weatherup; Mauro Pasta",
+    "authors": [
+      {
+        "display_name": "Matthew Burton",
+        "id": "https://openalex.org/A5044192890",
+        "orcid": "https://orcid.org/0000-0002-0376-6322",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ben Jagger",
+        "id": "https://openalex.org/A5078867450",
+        "orcid": "https://orcid.org/0000-0002-1870-3391",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yi Liang",
+        "id": "https://openalex.org/A5100552308",
+        "orcid": "https://orcid.org/0000-0002-7260-4861",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joshua S. Gibson",
+        "id": "https://openalex.org/A5041818322",
+        "orcid": "https://orcid.org/0000-0002-4160-1879",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jack Aspinall",
+        "id": "https://openalex.org/A5010339771",
+        "orcid": "https://orcid.org/0000-0002-6470-3915",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhengwei Long",
+        "id": "https://openalex.org/A5079224301",
+        "orcid": "https://orcid.org/0000-0002-1929-3128",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jack E. N. Swallow",
+        "id": "https://openalex.org/A5067017965",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Robert S. Weatherup",
+        "id": "https://openalex.org/A5034130649",
+        "orcid": "https://orcid.org/0000-0002-3993-9045",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mauro Pasta",
+        "id": "https://openalex.org/A5011547289",
+        "orcid": "https://orcid.org/0000-0002-2613-4555",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4415380266",
+    "doi": "10.1038/s41467-025-64357-3",
+    "title": "The role of phosphorus in the solid electrolyte interphase of argyrodite solid electrolytes",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Communications",
+    "journal_id": "https://openalex.org/S64187185",
+    "journal_type": "journal",
+    "journal_issn_l": "2041-1723",
+    "journal_issn_json": "[\"2041-1723\"]",
+    "publication_date": "2025-10-21",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.90297792,
+    "pdf_url": "https://www.nature.com/articles/s41467-025-64357-3.pdf",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Matthew Burton",
+    "authors_display": "Matthew Burton; Ben Jagger; Yi Liang; Joshua S. Gibson; Jack Aspinall; Zhengwei Long; Jack E. N. Swallow; Robert S. Weatherup; Mauro Pasta",
+    "authors_json": "[{\"display_name\": \"Matthew Burton\", \"id\": \"https://openalex.org/A5044192890\", \"orcid\": \"https://orcid.org/0000-0002-0376-6322\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ben Jagger\", \"id\": \"https://openalex.org/A5078867450\", \"orcid\": \"https://orcid.org/0000-0002-1870-3391\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yi Liang\", \"id\": \"https://openalex.org/A5100552308\", \"orcid\": \"https://orcid.org/0000-0002-7260-4861\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Joshua S. Gibson\", \"id\": \"https://openalex.org/A5041818322\", \"orcid\": \"https://orcid.org/0000-0002-4160-1879\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jack Aspinall\", \"id\": \"https://openalex.org/A5010339771\", \"orcid\": \"https://orcid.org/0000-0002-6470-3915\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhengwei Long\", \"id\": \"https://openalex.org/A5079224301\", \"orcid\": \"https://orcid.org/0000-0002-1929-3128\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jack E. N. Swallow\", \"id\": \"https://openalex.org/A5067017965\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Robert S. Weatherup\", \"id\": \"https://openalex.org/A5034130649\", \"orcid\": \"https://orcid.org/0000-0002-3993-9045\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mauro Pasta\", \"id\": \"https://openalex.org/A5011547289\", \"orcid\": \"https://orcid.org/0000-0002-2613-4555\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773309714206,
+    "actual_start_ms": 1773309714464,
+    "pacing_wait_ms": 257,
+    "pacing_jitter_sec": 1.348
+  }
+}

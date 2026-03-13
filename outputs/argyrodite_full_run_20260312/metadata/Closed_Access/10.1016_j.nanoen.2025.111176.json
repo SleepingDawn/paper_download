@@ -1,0 +1,194 @@
+{
+  "doi": "10.1016/j.nanoen.2025.111176",
+  "pdf_filename": "10.1016_j.nanoen.2025.111176.pdf",
+  "json_filename": "10.1016_j.nanoen.2025.111176.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.nanoen.2025.111176.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4410616438",
+    "doi": "10.1016/j.nanoen.2025.111176",
+    "title": "Design of lithium metal−compatible sulfide electrolytes by electronic structure engineering for all−solid−state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Nano Energy",
+      "id": "https://openalex.org/S2497301991",
+      "type": "journal",
+      "issn_l": "2211-2855",
+      "issn": [
+        "2211-2855",
+        "2211-3282"
+      ]
+    },
+    "publication_date": "2025-05-22",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.97180447,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 17,
+    "first_author": "Sheng Liu",
+    "authors_display": "Sheng Liu; Miao He; Shuying Wang; Yin Hu; Dongjiang Chen; Chaozhu Shu; Weiqiang Lv; Bo Chen; Dongxu Chen; Xia Li; Jianbo Wu; Taihang Lei; Yichao Yan; Chaoyi Yan; Wei Chen; Chaoyi Yan; Wei Chen",
+    "authors": [
+      {
+        "display_name": "Sheng Liu",
+        "id": "https://openalex.org/A5083548561",
+        "orcid": "https://orcid.org/0000-0001-5933-1101",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Miao He",
+        "id": "https://openalex.org/A5101878291",
+        "orcid": "https://orcid.org/0000-0003-3745-5327",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuying Wang",
+        "id": "https://openalex.org/A5029966763",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yin Hu",
+        "id": "https://openalex.org/A5079719354",
+        "orcid": "https://orcid.org/0000-0003-2090-1845",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dongjiang Chen",
+        "id": "https://openalex.org/A5068535516",
+        "orcid": "https://orcid.org/0000-0002-0567-0850",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chaozhu Shu",
+        "id": "https://openalex.org/A5046532572",
+        "orcid": "https://orcid.org/0000-0003-2120-6238",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Weiqiang Lv",
+        "id": "https://openalex.org/A5069206239",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bo Chen",
+        "id": "https://openalex.org/A5100427272",
+        "orcid": "https://orcid.org/0000-0001-7515-3042",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dongxu Chen",
+        "id": "https://openalex.org/A5100627492",
+        "orcid": "https://orcid.org/0000-0002-8854-9262",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xia Li",
+        "id": "https://openalex.org/A5100445623",
+        "orcid": "https://orcid.org/0000-0003-3509-1494",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jianbo Wu",
+        "id": "https://openalex.org/A5101646773",
+        "orcid": "https://orcid.org/0000-0002-8567-8050",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Taihang Lei",
+        "id": "https://openalex.org/A5109697379",
+        "orcid": "https://orcid.org/0009-0000-9355-9118",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yichao Yan",
+        "id": "https://openalex.org/A5100718879",
+        "orcid": "https://orcid.org/0000-0001-7889-6394",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chaoyi Yan",
+        "id": "https://openalex.org/A5103212107",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wei Chen",
+        "id": "https://openalex.org/A5100344384",
+        "orcid": "https://orcid.org/0000-0002-1131-3585",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chaoyi Yan",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei Chen",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4410616438",
+    "doi": "10.1016/j.nanoen.2025.111176",
+    "title": "Design of lithium metal−compatible sulfide electrolytes by electronic structure engineering for all−solid−state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Nano Energy",
+    "journal_id": "https://openalex.org/S2497301991",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-2855",
+    "journal_issn_json": "[\"2211-2855\", \"2211-3282\"]",
+    "publication_date": "2025-05-22",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.97180447,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 17,
+    "first_author": "Sheng Liu",
+    "authors_display": "Sheng Liu; Miao He; Shuying Wang; Yin Hu; Dongjiang Chen; Chaozhu Shu; Weiqiang Lv; Bo Chen; Dongxu Chen; Xia Li; Jianbo Wu; Taihang Lei; Yichao Yan; Chaoyi Yan; Wei Chen; Chaoyi Yan; Wei Chen",
+    "authors_json": "[{\"display_name\": \"Sheng Liu\", \"id\": \"https://openalex.org/A5083548561\", \"orcid\": \"https://orcid.org/0000-0001-5933-1101\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Miao He\", \"id\": \"https://openalex.org/A5101878291\", \"orcid\": \"https://orcid.org/0000-0003-3745-5327\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuying Wang\", \"id\": \"https://openalex.org/A5029966763\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yin Hu\", \"id\": \"https://openalex.org/A5079719354\", \"orcid\": \"https://orcid.org/0000-0003-2090-1845\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dongjiang Chen\", \"id\": \"https://openalex.org/A5068535516\", \"orcid\": \"https://orcid.org/0000-0002-0567-0850\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Chaozhu Shu\", \"id\": \"https://openalex.org/A5046532572\", \"orcid\": \"https://orcid.org/0000-0003-2120-6238\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Weiqiang Lv\", \"id\": \"https://openalex.org/A5069206239\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bo Chen\", \"id\": \"https://openalex.org/A5100427272\", \"orcid\": \"https://orcid.org/0000-0001-7515-3042\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dongxu Chen\", \"id\": \"https://openalex.org/A5100627492\", \"orcid\": \"https://orcid.org/0000-0002-8854-9262\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xia Li\", \"id\": \"https://openalex.org/A5100445623\", \"orcid\": \"https://orcid.org/0000-0003-3509-1494\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jianbo Wu\", \"id\": \"https://openalex.org/A5101646773\", \"orcid\": \"https://orcid.org/0000-0002-8567-8050\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Taihang Lei\", \"id\": \"https://openalex.org/A5109697379\", \"orcid\": \"https://orcid.org/0009-0000-9355-9118\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yichao Yan\", \"id\": \"https://openalex.org/A5100718879\", \"orcid\": \"https://orcid.org/0000-0001-7889-6394\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chaoyi Yan\", \"id\": \"https://openalex.org/A5103212107\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wei Chen\", \"id\": \"https://openalex.org/A5100344384\", \"orcid\": \"https://orcid.org/0000-0002-1131-3585\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chaoyi Yan\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei Chen\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S221128552500535X?via%3Dihub",
+    "landing_title": "Design of lithium metal−compatible sulfide electrolytes by electronic structure engineering for all−solid−state lithium metal batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773304823182,
+    "actual_start_ms": 1773305066805,
+    "pacing_wait_ms": 243622,
+    "pacing_jitter_sec": 1.432
+  }
+}

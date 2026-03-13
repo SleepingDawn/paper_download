@@ -1,0 +1,110 @@
+{
+  "doi": "10.1115/1.4069379",
+  "pdf_filename": "10.1115_1.4069379.pdf",
+  "json_filename": "10.1115_1.4069379.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1115_1.4069379.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413220721",
+    "doi": "10.1115/1.4069379",
+    "title": "Understanding the Electrochemical–Mechanical Coupled Volume Variation of All-Solid-State Lithium Metal Batteries",
+    "publisher": "ASM International",
+    "journal": {
+      "name": "Journal of Electrochemical Energy Conversion and Storage",
+      "id": "https://openalex.org/S4210203503",
+      "type": "journal",
+      "issn_l": "2381-6872",
+      "issn": [
+        "2381-6872",
+        "2381-6910"
+      ]
+    },
+    "publication_date": "2025-08-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.76307738,
+    "pdf_url": "https://asmedigitalcollection.asme.org/electrochemical/article-pdf/23/2/021101/7526217/jeecs-25-1021.pdf",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "M.K. Han",
+    "authors_display": "M.K. Han; Hua Zhang; Peng Xie; Wenjing Zhang; Chunhao Yuan",
+    "authors": [
+      {
+        "display_name": "M.K. Han",
+        "id": "https://openalex.org/A5026501882",
+        "orcid": "https://orcid.org/0000-0002-8179-4492",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hua Zhang",
+        "id": "https://openalex.org/A5100408669",
+        "orcid": "https://orcid.org/0000-0001-9518-740X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peng Xie",
+        "id": "https://openalex.org/A5100696610",
+        "orcid": "https://orcid.org/0000-0002-0081-6048",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenjing Zhang",
+        "id": "https://openalex.org/A5100407211",
+        "orcid": "https://orcid.org/0000-0002-7492-7904",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chunhao Yuan",
+        "id": "https://openalex.org/A5065847267",
+        "orcid": "https://orcid.org/0000-0003-0122-712X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413220721",
+    "doi": "10.1115/1.4069379",
+    "title": "Understanding the Electrochemical–Mechanical Coupled Volume Variation of All-Solid-State Lithium Metal Batteries",
+    "publisher": "ASM International",
+    "journal": "Journal of Electrochemical Energy Conversion and Storage",
+    "journal_id": "https://openalex.org/S4210203503",
+    "journal_type": "journal",
+    "journal_issn_l": "2381-6872",
+    "journal_issn_json": "[\"2381-6872\", \"2381-6910\"]",
+    "publication_date": "2025-08-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.76307738,
+    "pdf_url": "https://asmedigitalcollection.asme.org/electrochemical/article-pdf/23/2/021101/7526217/jeecs-25-1021.pdf",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "M.K. Han",
+    "authors_display": "M.K. Han; Hua Zhang; Peng Xie; Wenjing Zhang; Chunhao Yuan",
+    "authors_json": "[{\"display_name\": \"M.K. Han\", \"id\": \"https://openalex.org/A5026501882\", \"orcid\": \"https://orcid.org/0000-0002-8179-4492\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hua Zhang\", \"id\": \"https://openalex.org/A5100408669\", \"orcid\": \"https://orcid.org/0000-0001-9518-740X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peng Xie\", \"id\": \"https://openalex.org/A5100696610\", \"orcid\": \"https://orcid.org/0000-0002-0081-6048\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wenjing Zhang\", \"id\": \"https://openalex.org/A5100407211\", \"orcid\": \"https://orcid.org/0000-0002-7492-7904\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chunhao Yuan\", \"id\": \"https://openalex.org/A5065847267\", \"orcid\": \"https://orcid.org/0000-0003-0122-712X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.1115",
+    "scheduled_start_ms": 1773311154961,
+    "actual_start_ms": 1773311154961,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.68
+  }
+}

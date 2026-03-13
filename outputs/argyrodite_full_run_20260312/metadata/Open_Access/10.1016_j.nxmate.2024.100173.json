@@ -1,0 +1,123 @@
+{
+  "doi": "10.1016/j.nxmate.2024.100173",
+  "pdf_filename": "10.1016_j.nxmate.2024.100173.pdf",
+  "json_filename": "10.1016_j.nxmate.2024.100173.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.nxmate.2024.100173.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4392637931",
+    "doi": "10.1016/j.nxmate.2024.100173",
+    "title": "Polycaprolactone-Li6PS5Cl composite polymer electrolytes for stable room temperature all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Next Materials",
+      "id": "https://openalex.org/S4387287712",
+      "type": "journal",
+      "issn_l": "2949-8228",
+      "issn": [
+        "2949-8228"
+      ]
+    },
+    "publication_date": "2024-03-11",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.79339859,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Hui Tang",
+    "authors_display": "Hui Tang; Mengyuan Zhu; Jia Wang; Tinghu Liu; Hao He; Shaojie Chen; Xiayin Yao",
+    "authors": [
+      {
+        "display_name": "Hui Tang",
+        "id": "https://openalex.org/A5009050901",
+        "orcid": "https://orcid.org/0000-0002-5875-3908",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mengyuan Zhu",
+        "id": "https://openalex.org/A5115444791",
+        "orcid": "https://orcid.org/0009-0007-9289-1742",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jia Wang",
+        "id": "https://openalex.org/A5103260270",
+        "orcid": "https://orcid.org/0000-0002-0950-8877",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tinghu Liu",
+        "id": "https://openalex.org/A5100576338",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hao He",
+        "id": "https://openalex.org/A5084094052",
+        "orcid": "https://orcid.org/0000-0001-7070-3260",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shaojie Chen",
+        "id": "https://openalex.org/A5076419990",
+        "orcid": "https://orcid.org/0000-0003-4611-249X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xiayin Yao",
+        "id": "https://openalex.org/A5058800364",
+        "orcid": "https://orcid.org/0000-0002-2224-4247",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4392637931",
+    "doi": "10.1016/j.nxmate.2024.100173",
+    "title": "Polycaprolactone-Li6PS5Cl composite polymer electrolytes for stable room temperature all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Next Materials",
+    "journal_id": "https://openalex.org/S4387287712",
+    "journal_type": "journal",
+    "journal_issn_l": "2949-8228",
+    "journal_issn_json": "[\"2949-8228\"]",
+    "publication_date": "2024-03-11",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.79339859,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Hui Tang",
+    "authors_display": "Hui Tang; Mengyuan Zhu; Jia Wang; Tinghu Liu; Hao He; Shaojie Chen; Xiayin Yao",
+    "authors_json": "[{\"display_name\": \"Hui Tang\", \"id\": \"https://openalex.org/A5009050901\", \"orcid\": \"https://orcid.org/0000-0002-5875-3908\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Mengyuan Zhu\", \"id\": \"https://openalex.org/A5115444791\", \"orcid\": \"https://orcid.org/0009-0007-9289-1742\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jia Wang\", \"id\": \"https://openalex.org/A5103260270\", \"orcid\": \"https://orcid.org/0000-0002-0950-8877\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tinghu Liu\", \"id\": \"https://openalex.org/A5100576338\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hao He\", \"id\": \"https://openalex.org/A5084094052\", \"orcid\": \"https://orcid.org/0000-0001-7070-3260\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shaojie Chen\", \"id\": \"https://openalex.org/A5076419990\", \"orcid\": \"https://orcid.org/0000-0003-4611-249X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xiayin Yao\", \"id\": \"https://openalex.org/A5058800364\", \"orcid\": \"https://orcid.org/0000-0002-2224-4247\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2949822824000704?via%3Dihub",
+    "landing_title": "Polycaprolactone-Li6PS5Cl composite polymer electrolytes for stable room temperature all-solid-state lithium batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773305925003,
+    "actual_start_ms": 1773306022405,
+    "pacing_wait_ms": 97402,
+    "pacing_jitter_sec": 0.959
+  }
+}

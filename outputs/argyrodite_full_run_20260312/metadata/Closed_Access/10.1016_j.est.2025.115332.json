@@ -1,0 +1,110 @@
+{
+  "doi": "10.1016/j.est.2025.115332",
+  "pdf_filename": "10.1016_j.est.2025.115332.pdf",
+  "json_filename": "10.1016_j.est.2025.115332.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.est.2025.115332.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4406094652",
+    "doi": "10.1016/j.est.2025.115332",
+    "title": "Enhancing the electrochemical stability of the Li1.3Al0.3Ti1.7(PO4)3 by altering with Li6PS5Cl composite solid electrolytes for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Storage",
+      "id": "https://openalex.org/S2764865925",
+      "type": "journal",
+      "issn_l": "2352-152X",
+      "issn": [
+        "2352-152X",
+        "2352-1538"
+      ]
+    },
+    "publication_date": "2025-01-06",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.92054956,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Cheng-En Yu",
+    "authors_display": "Cheng-En Yu; Shivnath Babu; Ming-Kuen Huang; J. Chang; Wei‐Ren Liu",
+    "authors": [
+      {
+        "display_name": "Cheng-En Yu",
+        "id": "https://openalex.org/A5101318323",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shivnath Babu",
+        "id": "https://openalex.org/A5100646227",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ming-Kuen Huang",
+        "id": "https://openalex.org/A5038996785",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J. Chang",
+        "id": "https://openalex.org/A5108524017",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei‐Ren Liu",
+        "id": "https://openalex.org/A5041033327",
+        "orcid": "https://orcid.org/0000-0003-0468-895X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4406094652",
+    "doi": "10.1016/j.est.2025.115332",
+    "title": "Enhancing the electrochemical stability of the Li1.3Al0.3Ti1.7(PO4)3 by altering with Li6PS5Cl composite solid electrolytes for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Storage",
+    "journal_id": "https://openalex.org/S2764865925",
+    "journal_type": "journal",
+    "journal_issn_l": "2352-152X",
+    "journal_issn_json": "[\"2352-152X\", \"2352-1538\"]",
+    "publication_date": "2025-01-06",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.92054956,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Cheng-En Yu",
+    "authors_display": "Cheng-En Yu; Shivnath Babu; Ming-Kuen Huang; J. Chang; Wei‐Ren Liu",
+    "authors_json": "[{\"display_name\": \"Cheng-En Yu\", \"id\": \"https://openalex.org/A5101318323\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Shivnath Babu\", \"id\": \"https://openalex.org/A5100646227\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ming-Kuen Huang\", \"id\": \"https://openalex.org/A5038996785\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J. Chang\", \"id\": \"https://openalex.org/A5108524017\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei‐Ren Liu\", \"id\": \"https://openalex.org/A5041033327\", \"orcid\": \"https://orcid.org/0000-0003-0468-895X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2352152X25000453?via%3Dihub",
+    "landing_title": "Enhancing the electrochemical stability of the Li1.3Al0.3Ti1.7(PO4)3 by altering with Li6PS5Cl composite solid electrolytes for all-solid-state lithium batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773306432621,
+    "actual_start_ms": 1773306475512,
+    "pacing_wait_ms": 42891,
+    "pacing_jitter_sec": 1.499
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "doi": "10.1002/cssc.202402128",
+  "pdf_filename": "10.1002_cssc.202402128.pdf",
+  "json_filename": "10.1002_cssc.202402128.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_cssc.202402128.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4406125539",
+    "doi": "10.1002/cssc.202402128",
+    "title": "Towards Recycling of All‐Solid‐State Batteries with Argyrodite Sulfide Electrolytes: Insights into Electrolyte and Electrode Degradation in Dissolution‐Based Separation Processes",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "ChemSusChem",
+      "id": "https://openalex.org/S193447295",
+      "type": "journal",
+      "issn_l": "1864-5631",
+      "issn": [
+        "1864-5631",
+        "1864-564X"
+      ]
+    },
+    "publication_date": "2025-01-07",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.81392023,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/cssc.202402128",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Kerstin Wissel",
+    "authors_display": "Kerstin Wissel; Zhongai Hu; Xuebin Wu; Martine Jacob; Kathrin Küster; Ulrich Starke; Oliver Clemens",
+    "authors": [
+      {
+        "display_name": "Kerstin Wissel",
+        "id": "https://openalex.org/A5072889836",
+        "orcid": "https://orcid.org/0000-0003-4418-0595",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zhongai Hu",
+        "id": "https://openalex.org/A5101517479",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xuebin Wu",
+        "id": "https://openalex.org/A5013653082",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martine Jacob",
+        "id": "https://openalex.org/A5054761221",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kathrin Küster",
+        "id": "https://openalex.org/A5052444822",
+        "orcid": "https://orcid.org/0000-0002-3185-6982",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ulrich Starke",
+        "id": "https://openalex.org/A5025940416",
+        "orcid": "https://orcid.org/0000-0003-1153-1862",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Oliver Clemens",
+        "id": "https://openalex.org/A5089347876",
+        "orcid": "https://orcid.org/0000-0002-0860-0911",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4406125539",
+    "doi": "10.1002/cssc.202402128",
+    "title": "Towards Recycling of All‐Solid‐State Batteries with Argyrodite Sulfide Electrolytes: Insights into Electrolyte and Electrode Degradation in Dissolution‐Based Separation Processes",
+    "publisher": "Wiley",
+    "journal": "ChemSusChem",
+    "journal_id": "https://openalex.org/S193447295",
+    "journal_type": "journal",
+    "journal_issn_l": "1864-5631",
+    "journal_issn_json": "[\"1864-5631\", \"1864-564X\"]",
+    "publication_date": "2025-01-07",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.81392023,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/cssc.202402128",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Kerstin Wissel",
+    "authors_display": "Kerstin Wissel; Zhongai Hu; Xuebin Wu; Martine Jacob; Kathrin Küster; Ulrich Starke; Oliver Clemens",
+    "authors_json": "[{\"display_name\": \"Kerstin Wissel\", \"id\": \"https://openalex.org/A5072889836\", \"orcid\": \"https://orcid.org/0000-0003-4418-0595\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Zhongai Hu\", \"id\": \"https://openalex.org/A5101517479\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xuebin Wu\", \"id\": \"https://openalex.org/A5013653082\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Martine Jacob\", \"id\": \"https://openalex.org/A5054761221\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kathrin Küster\", \"id\": \"https://openalex.org/A5052444822\", \"orcid\": \"https://orcid.org/0000-0002-3185-6982\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ulrich Starke\", \"id\": \"https://openalex.org/A5025940416\", \"orcid\": \"https://orcid.org/0000-0003-1153-1862\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Oliver Clemens\", \"id\": \"https://openalex.org/A5089347876\", \"orcid\": \"https://orcid.org/0000-0002-0860-0911\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308197315,
+    "actual_start_ms": 1773308197315,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.623
+  }
+}

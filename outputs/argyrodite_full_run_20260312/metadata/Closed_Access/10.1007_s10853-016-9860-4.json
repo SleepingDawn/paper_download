@@ -1,0 +1,89 @@
+{
+  "doi": "10.1007/s10853-016-9860-4",
+  "pdf_filename": "10.1007_s10853-016-9860-4.pdf",
+  "json_filename": "10.1007_s10853-016-9860-4.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s10853-016-9860-4.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2291103202",
+    "doi": "10.1007/s10853-016-9860-4",
+    "title": "Membranes for rechargeable lithium sulphur semi-flow batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Journal of Materials Science",
+      "id": "https://openalex.org/S26125866",
+      "type": "journal",
+      "issn_l": "0022-2461",
+      "issn": [
+        "0022-2461",
+        "1573-4803"
+      ]
+    },
+    "publication_date": "2016-03-04",
+    "publication_year": 2016,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.7684165,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "R. Prasada Rao",
+    "authors_display": "R. Prasada Rao; Stefan Adams",
+    "authors": [
+      {
+        "display_name": "R. Prasada Rao",
+        "id": "https://openalex.org/A5020388351",
+        "orcid": "https://orcid.org/0000-0002-4022-2340",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Stefan Adams",
+        "id": "https://openalex.org/A5050140273",
+        "orcid": "https://orcid.org/0000-0003-0710-135X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2291103202",
+    "doi": "10.1007/s10853-016-9860-4",
+    "title": "Membranes for rechargeable lithium sulphur semi-flow batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Journal of Materials Science",
+    "journal_id": "https://openalex.org/S26125866",
+    "journal_type": "journal",
+    "journal_issn_l": "0022-2461",
+    "journal_issn_json": "[\"0022-2461\", \"1573-4803\"]",
+    "publication_date": "2016-03-04",
+    "publication_year": 2016,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.7684165,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "R. Prasada Rao",
+    "authors_display": "R. Prasada Rao; Stefan Adams",
+    "authors_json": "[{\"display_name\": \"R. Prasada Rao\", \"id\": \"https://openalex.org/A5020388351\", \"orcid\": \"https://orcid.org/0000-0002-4022-2340\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Stefan Adams\", \"id\": \"https://openalex.org/A5050140273\", \"orcid\": \"https://orcid.org/0000-0003-0710-135X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773309071897,
+    "actual_start_ms": 1773309073403,
+    "pacing_wait_ms": 1506,
+    "pacing_jitter_sec": 1.466
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "doi": "10.1021/acsami.0c08261",
+  "pdf_filename": "10.1021_acsami.0c08261.pdf",
+  "json_filename": "10.1021_acsami.0c08261.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.0c08261.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3081091687",
+    "doi": "10.1021/acsami.0c08261",
+    "title": "Stable and Flexible Sulfide Composite Electrolyte for High-Performance Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2020-08-26",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 88,
+    "citation_normalized_percentile": 0.96257299,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Yang Li",
+    "authors_display": "Yang Li; William Arnold; Arjun Thapa; Jacek B. Jasiński; Gamini Sumanasekera; Mahendra K. Sunkara; Thad Druffel; Hui Wang",
+    "authors": [
+      {
+        "display_name": "Yang Li",
+        "id": "https://openalex.org/A5100421695",
+        "orcid": "https://orcid.org/0000-0003-0357-4520",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "William Arnold",
+        "id": "https://openalex.org/A5103052505",
+        "orcid": "https://orcid.org/0000-0002-1331-9489",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Arjun Thapa",
+        "id": "https://openalex.org/A5045303370",
+        "orcid": "https://orcid.org/0000-0002-8555-5720",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jacek B. Jasiński",
+        "id": "https://openalex.org/A5078488878",
+        "orcid": "https://orcid.org/0000-0002-1297-6145",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gamini Sumanasekera",
+        "id": "https://openalex.org/A5076499335",
+        "orcid": "https://orcid.org/0000-0001-9585-8533",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mahendra K. Sunkara",
+        "id": "https://openalex.org/A5041153515",
+        "orcid": "https://orcid.org/0000-0003-2087-5261",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Thad Druffel",
+        "id": "https://openalex.org/A5086415191",
+        "orcid": "https://orcid.org/0000-0002-1412-3023",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hui Wang",
+        "id": "https://openalex.org/A5051147941",
+        "orcid": "https://orcid.org/0000-0003-0936-6781",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3081091687",
+    "doi": "10.1021/acsami.0c08261",
+    "title": "Stable and Flexible Sulfide Composite Electrolyte for High-Performance Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2020-08-26",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 88,
+    "citation_normalized_percentile": 0.96257299,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Yang Li",
+    "authors_display": "Yang Li; William Arnold; Arjun Thapa; Jacek B. Jasiński; Gamini Sumanasekera; Mahendra K. Sunkara; Thad Druffel; Hui Wang",
+    "authors_json": "[{\"display_name\": \"Yang Li\", \"id\": \"https://openalex.org/A5100421695\", \"orcid\": \"https://orcid.org/0000-0003-0357-4520\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"William Arnold\", \"id\": \"https://openalex.org/A5103052505\", \"orcid\": \"https://orcid.org/0000-0002-1331-9489\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Arjun Thapa\", \"id\": \"https://openalex.org/A5045303370\", \"orcid\": \"https://orcid.org/0000-0002-8555-5720\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jacek B. Jasiński\", \"id\": \"https://openalex.org/A5078488878\", \"orcid\": \"https://orcid.org/0000-0002-1297-6145\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gamini Sumanasekera\", \"id\": \"https://openalex.org/A5076499335\", \"orcid\": \"https://orcid.org/0000-0001-9585-8533\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mahendra K. Sunkara\", \"id\": \"https://openalex.org/A5041153515\", \"orcid\": \"https://orcid.org/0000-0003-2087-5261\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Thad Druffel\", \"id\": \"https://openalex.org/A5086415191\", \"orcid\": \"https://orcid.org/0000-0002-1412-3023\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hui Wang\", \"id\": \"https://openalex.org/A5051147941\", \"orcid\": \"https://orcid.org/0000-0003-0936-6781\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301867550,
+    "actual_start_ms": 1773301869044,
+    "pacing_wait_ms": 1493,
+    "pacing_jitter_sec": 0.792
+  }
+}

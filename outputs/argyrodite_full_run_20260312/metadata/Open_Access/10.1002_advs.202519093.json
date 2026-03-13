@@ -1,0 +1,165 @@
+{
+  "doi": "10.1002/advs.202519093",
+  "pdf_filename": "10.1002_advs.202519093.pdf",
+  "json_filename": "10.1002_advs.202519093.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_advs.202519093.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4417361183",
+    "doi": "10.1002/advs.202519093",
+    "title": "Improved Air Stability of Li Argyrodites Through PS <sub>4</sub> <sup>3−</sup> Rotation Suppression by Al and Se Co‐Substitution for All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Science",
+      "id": "https://openalex.org/S2737737698",
+      "type": "journal",
+      "issn_l": "2198-3844",
+      "issn": [
+        "2198-3844"
+      ]
+    },
+    "publication_date": "2025-12-16",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.43304855,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Juhyoun Park",
+    "authors_display": "Juhyoun Park; Jihun Lee; Yoon‐Seong Kim; Donghyeok Kim; Moongyu Jang; Junwoo Lee; H. Kim; Changhun Park; Jeongheon Kim; Habin Chung; Kyung‐Wan Nam; Dong‐Hwa Seo; Yoon Seok Jung",
+    "authors": [
+      {
+        "display_name": "Juhyoun Park",
+        "id": "https://openalex.org/A5052005718",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jihun Lee",
+        "id": "https://openalex.org/A5017768072",
+        "orcid": "https://orcid.org/0000-0002-8803-7689",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoon‐Seong Kim",
+        "id": "https://openalex.org/A5073004789",
+        "orcid": "https://orcid.org/0000-0001-6246-5477",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Donghyeok Kim",
+        "id": "https://openalex.org/A5066719910",
+        "orcid": "https://orcid.org/0009-0007-2525-9595",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Moongyu Jang",
+        "id": "https://openalex.org/A5102839569",
+        "orcid": "https://orcid.org/0000-0003-4019-2564",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junwoo Lee",
+        "id": "https://openalex.org/A5101444558",
+        "orcid": "https://orcid.org/0000-0003-1613-4903",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "H. Kim",
+        "id": "https://openalex.org/A5111313710",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Changhun Park",
+        "id": "https://openalex.org/A5012301711",
+        "orcid": "https://orcid.org/0009-0003-3288-3581",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeongheon Kim",
+        "id": "https://openalex.org/A5083894024",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Habin Chung",
+        "id": "https://openalex.org/A5103230449",
+        "orcid": "https://orcid.org/0000-0001-5220-5516",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung‐Wan Nam",
+        "id": "https://openalex.org/A5047805438",
+        "orcid": "https://orcid.org/0000-0001-6278-6369",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Hwa Seo",
+        "id": "https://openalex.org/A5074384928",
+        "orcid": "https://orcid.org/0000-0002-7200-7186",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yoon Seok Jung",
+        "id": "https://openalex.org/A5045334638",
+        "orcid": "https://orcid.org/0000-0003-0357-9508",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4417361183",
+    "doi": "10.1002/advs.202519093",
+    "title": "Improved Air Stability of Li Argyrodites Through PS <sub>4</sub> <sup>3−</sup> Rotation Suppression by Al and Se Co‐Substitution for All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Science",
+    "journal_id": "https://openalex.org/S2737737698",
+    "journal_type": "journal",
+    "journal_issn_l": "2198-3844",
+    "journal_issn_json": "[\"2198-3844\"]",
+    "publication_date": "2025-12-16",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.43304855,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Juhyoun Park",
+    "authors_display": "Juhyoun Park; Jihun Lee; Yoon‐Seong Kim; Donghyeok Kim; Moongyu Jang; Junwoo Lee; H. Kim; Changhun Park; Jeongheon Kim; Habin Chung; Kyung‐Wan Nam; Dong‐Hwa Seo; Yoon Seok Jung",
+    "authors_json": "[{\"display_name\": \"Juhyoun Park\", \"id\": \"https://openalex.org/A5052005718\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jihun Lee\", \"id\": \"https://openalex.org/A5017768072\", \"orcid\": \"https://orcid.org/0000-0002-8803-7689\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoon‐Seong Kim\", \"id\": \"https://openalex.org/A5073004789\", \"orcid\": \"https://orcid.org/0000-0001-6246-5477\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Donghyeok Kim\", \"id\": \"https://openalex.org/A5066719910\", \"orcid\": \"https://orcid.org/0009-0007-2525-9595\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Moongyu Jang\", \"id\": \"https://openalex.org/A5102839569\", \"orcid\": \"https://orcid.org/0000-0003-4019-2564\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junwoo Lee\", \"id\": \"https://openalex.org/A5101444558\", \"orcid\": \"https://orcid.org/0000-0003-1613-4903\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"H. Kim\", \"id\": \"https://openalex.org/A5111313710\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Changhun Park\", \"id\": \"https://openalex.org/A5012301711\", \"orcid\": \"https://orcid.org/0009-0003-3288-3581\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeongheon Kim\", \"id\": \"https://openalex.org/A5083894024\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Habin Chung\", \"id\": \"https://openalex.org/A5103230449\", \"orcid\": \"https://orcid.org/0000-0001-5220-5516\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung‐Wan Nam\", \"id\": \"https://openalex.org/A5047805438\", \"orcid\": \"https://orcid.org/0000-0001-6278-6369\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Hwa Seo\", \"id\": \"https://openalex.org/A5074384928\", \"orcid\": \"https://orcid.org/0000-0002-7200-7186\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yoon Seok Jung\", \"id\": \"https://openalex.org/A5045334638\", \"orcid\": \"https://orcid.org/0000-0003-0357-9508\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773310191714,
+    "actual_start_ms": 1773310191714,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.006
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "doi": "10.1016/j.est.2025.118511",
+  "pdf_filename": "10.1016_j.est.2025.118511.pdf",
+  "json_filename": "10.1016_j.est.2025.118511.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.est.2025.118511.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4414715923",
+    "doi": "10.1016/j.est.2025.118511",
+    "title": "Atmospheric stability enhancement of borohydride-substituted sulfide solid electrolytes via porous silica incorporation",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Storage",
+      "id": "https://openalex.org/S2764865925",
+      "type": "journal",
+      "issn_l": "2352-152X",
+      "issn": [
+        "2352-152X",
+        "2352-1538"
+      ]
+    },
+    "publication_date": "2025-10-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.28754609,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Seunghyeok Jang",
+    "authors_display": "Seunghyeok Jang; Hyunsuk Noh; Hyungrae Kim; Sungchul Bae; Jae‐Hun Kim",
+    "authors": [
+      {
+        "display_name": "Seunghyeok Jang",
+        "id": "https://openalex.org/A5047175403",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyunsuk Noh",
+        "id": "https://openalex.org/A5108274296",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyungrae Kim",
+        "id": "https://openalex.org/A5066751552",
+        "orcid": "https://orcid.org/0000-0002-2617-6288",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sungchul Bae",
+        "id": "https://openalex.org/A5018701685",
+        "orcid": "https://orcid.org/0000-0002-8511-6939",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jae‐Hun Kim",
+        "id": "https://openalex.org/A5100772899",
+        "orcid": "https://orcid.org/0000-0002-4252-2590",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4414715923",
+    "doi": "10.1016/j.est.2025.118511",
+    "title": "Atmospheric stability enhancement of borohydride-substituted sulfide solid electrolytes via porous silica incorporation",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Storage",
+    "journal_id": "https://openalex.org/S2764865925",
+    "journal_type": "journal",
+    "journal_issn_l": "2352-152X",
+    "journal_issn_json": "[\"2352-152X\", \"2352-1538\"]",
+    "publication_date": "2025-10-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.28754609,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Seunghyeok Jang",
+    "authors_display": "Seunghyeok Jang; Hyunsuk Noh; Hyungrae Kim; Sungchul Bae; Jae‐Hun Kim",
+    "authors_json": "[{\"display_name\": \"Seunghyeok Jang\", \"id\": \"https://openalex.org/A5047175403\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hyunsuk Noh\", \"id\": \"https://openalex.org/A5108274296\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyungrae Kim\", \"id\": \"https://openalex.org/A5066751552\", \"orcid\": \"https://orcid.org/0000-0002-2617-6288\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sungchul Bae\", \"id\": \"https://openalex.org/A5018701685\", \"orcid\": \"https://orcid.org/0000-0002-8511-6939\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jae‐Hun Kim\", \"id\": \"https://openalex.org/A5100772899\", \"orcid\": \"https://orcid.org/0000-0002-4252-2590\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2352152X25032244?via%3Dihub",
+    "landing_title": "Atmospheric stability enhancement of borohydride-substituted sulfide solid electrolytes via porous silica incorporation - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773309310304,
+    "actual_start_ms": 1773309318619,
+    "pacing_wait_ms": 8314,
+    "pacing_jitter_sec": 1.135
+  }
+}

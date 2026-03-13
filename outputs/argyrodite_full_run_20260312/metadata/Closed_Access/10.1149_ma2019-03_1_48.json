@@ -1,0 +1,147 @@
+{
+  "doi": "10.1149/ma2019-03/1/48",
+  "pdf_filename": "10.1149_ma2019-03_1_48.pdf",
+  "json_filename": "10.1149_ma2019-03_1_48.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2019-03_1_48.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W2923433052",
+    "doi": "10.1149/ma2019-03/1/48",
+    "title": "(Invited) In Quest of High Voltage Insertion Compounds for Li-Ion and Na-Ion Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2019-02-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.02197671,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Marine Reynaud",
+    "authors_display": "Marine Reynaud; Agnieszka Wizner; Nebil A. Katcho; J. Rodrı́guez-Carvajal; Javier Carrasco; Gwenaëlle Rousse; Montserrat Galcerán; Teófilo Rojo; Michel Armand; Montse Casas‐Cabanas",
+    "authors": [
+      {
+        "display_name": "Marine Reynaud",
+        "id": "https://openalex.org/A5022301001",
+        "orcid": "https://orcid.org/0000-0002-0156-8701",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Agnieszka Wizner",
+        "id": "https://openalex.org/A5052310834",
+        "orcid": "https://orcid.org/0000-0002-4199-1520",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nebil A. Katcho",
+        "id": "https://openalex.org/A5030317327",
+        "orcid": "https://orcid.org/0000-0002-1300-2238",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J. Rodrı́guez-Carvajal",
+        "id": "https://openalex.org/A5086768178",
+        "orcid": "https://orcid.org/0000-0001-5582-2632",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Javier Carrasco",
+        "id": "https://openalex.org/A5072947717",
+        "orcid": "https://orcid.org/0000-0003-3117-6933",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gwenaëlle Rousse",
+        "id": "https://openalex.org/A5053511672",
+        "orcid": "https://orcid.org/0000-0001-8877-0015",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Montserrat Galcerán",
+        "id": "https://openalex.org/A5023718505",
+        "orcid": "https://orcid.org/0000-0002-8749-9371",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Teófilo Rojo",
+        "id": "https://openalex.org/A5005945570",
+        "orcid": "https://orcid.org/0000-0003-2711-8458",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michel Armand",
+        "id": "https://openalex.org/A5055227491",
+        "orcid": "https://orcid.org/0000-0002-1303-9233",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Montse Casas‐Cabanas",
+        "id": "https://openalex.org/A5058578086",
+        "orcid": "https://orcid.org/0000-0002-9298-2333",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2923433052",
+    "doi": "10.1149/ma2019-03/1/48",
+    "title": "(Invited) In Quest of High Voltage Insertion Compounds for Li-Ion and Na-Ion Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2019-02-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.02197671,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Marine Reynaud",
+    "authors_display": "Marine Reynaud; Agnieszka Wizner; Nebil A. Katcho; J. Rodrı́guez-Carvajal; Javier Carrasco; Gwenaëlle Rousse; Montserrat Galcerán; Teófilo Rojo; Michel Armand; Montse Casas‐Cabanas",
+    "authors_json": "[{\"display_name\": \"Marine Reynaud\", \"id\": \"https://openalex.org/A5022301001\", \"orcid\": \"https://orcid.org/0000-0002-0156-8701\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Agnieszka Wizner\", \"id\": \"https://openalex.org/A5052310834\", \"orcid\": \"https://orcid.org/0000-0002-4199-1520\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nebil A. Katcho\", \"id\": \"https://openalex.org/A5030317327\", \"orcid\": \"https://orcid.org/0000-0002-1300-2238\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J. Rodrı́guez-Carvajal\", \"id\": \"https://openalex.org/A5086768178\", \"orcid\": \"https://orcid.org/0000-0001-5582-2632\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Javier Carrasco\", \"id\": \"https://openalex.org/A5072947717\", \"orcid\": \"https://orcid.org/0000-0003-3117-6933\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gwenaëlle Rousse\", \"id\": \"https://openalex.org/A5053511672\", \"orcid\": \"https://orcid.org/0000-0001-8877-0015\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Montserrat Galcerán\", \"id\": \"https://openalex.org/A5023718505\", \"orcid\": \"https://orcid.org/0000-0002-8749-9371\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Teófilo Rojo\", \"id\": \"https://openalex.org/A5005945570\", \"orcid\": \"https://orcid.org/0000-0003-2711-8458\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Michel Armand\", \"id\": \"https://openalex.org/A5055227491\", \"orcid\": \"https://orcid.org/0000-0002-1303-9233\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Montse Casas‐Cabanas\", \"id\": \"https://openalex.org/A5058578086\", \"orcid\": \"https://orcid.org/0000-0002-9298-2333\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773302845488,
+    "actual_start_ms": 1773302846988,
+    "pacing_wait_ms": 1499,
+    "pacing_jitter_sec": 1.027
+  }
+}

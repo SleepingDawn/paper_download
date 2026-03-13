@@ -1,0 +1,110 @@
+{
+  "doi": "10.1107/s0108768197019654",
+  "pdf_filename": "10.1107_s0108768197019654.pdf",
+  "json_filename": "10.1107_s0108768197019654.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1107_s0108768197019654.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4240891921",
+    "doi": "10.1107/s0108768197019654",
+    "title": "Structures and Phase Transitions of the <i>A</i> <sub>7</sub>PSe<sub>6</sub> (<i>A</i> = Ag, Cu) Argyrodite-Type Ionic Conductors. I. Ag<sub>7</sub>PSe<sub>6</sub>",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Acta Crystallographica Section B Structural Science",
+      "id": "https://openalex.org/S4210171216",
+      "type": "journal",
+      "issn_l": "0108-7681",
+      "issn": [
+        "0108-7681",
+        "1600-5740"
+      ]
+    },
+    "publication_date": "1998-08-01",
+    "publication_year": 1998,
+    "work_type": "article",
+    "cited_by_count": 51,
+    "citation_normalized_percentile": 0.71506628,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "M. Evain",
+    "authors_display": "M. Evain; Etienne Gaudin; Florent Boucher; V. Petřı́ček; F. Taulelle",
+    "authors": [
+      {
+        "display_name": "M. Evain",
+        "id": "https://openalex.org/A5002406321",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Etienne Gaudin",
+        "id": "https://openalex.org/A5042847357",
+        "orcid": "https://orcid.org/0000-0001-8781-5066",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Florent Boucher",
+        "id": "https://openalex.org/A5071510387",
+        "orcid": "https://orcid.org/0000-0001-5438-3930",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "V. Petřı́ček",
+        "id": "https://openalex.org/A5082721560",
+        "orcid": "https://orcid.org/0000-0002-9731-8730",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "F. Taulelle",
+        "id": "https://openalex.org/A5069457888",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4240891921",
+    "doi": "10.1107/s0108768197019654",
+    "title": "Structures and Phase Transitions of the <i>A</i> <sub>7</sub>PSe<sub>6</sub> (<i>A</i> = Ag, Cu) Argyrodite-Type Ionic Conductors. I. Ag<sub>7</sub>PSe<sub>6</sub>",
+    "publisher": "Wiley",
+    "journal": "Acta Crystallographica Section B Structural Science",
+    "journal_id": "https://openalex.org/S4210171216",
+    "journal_type": "journal",
+    "journal_issn_l": "0108-7681",
+    "journal_issn_json": "[\"0108-7681\", \"1600-5740\"]",
+    "publication_date": "1998-08-01",
+    "publication_year": 1998,
+    "work_type": "article",
+    "cited_by_count": 51,
+    "citation_normalized_percentile": 0.71506628,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "M. Evain",
+    "authors_display": "M. Evain; Etienne Gaudin; Florent Boucher; V. Petřı́ček; F. Taulelle",
+    "authors_json": "[{\"display_name\": \"M. Evain\", \"id\": \"https://openalex.org/A5002406321\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Etienne Gaudin\", \"id\": \"https://openalex.org/A5042847357\", \"orcid\": \"https://orcid.org/0000-0001-8781-5066\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Florent Boucher\", \"id\": \"https://openalex.org/A5071510387\", \"orcid\": \"https://orcid.org/0000-0001-5438-3930\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"V. Petřı́ček\", \"id\": \"https://openalex.org/A5082721560\", \"orcid\": \"https://orcid.org/0000-0002-9731-8730\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"F. Taulelle\", \"id\": \"https://openalex.org/A5069457888\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302901782,
+    "actual_start_ms": 1773302904141,
+    "pacing_wait_ms": 2359,
+    "pacing_jitter_sec": 1.261
+  }
+}

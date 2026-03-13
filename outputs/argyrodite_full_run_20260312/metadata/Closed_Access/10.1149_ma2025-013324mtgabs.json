@@ -1,0 +1,98 @@
+{
+  "doi": "10.1149/ma2025-013324mtgabs",
+  "pdf_filename": "10.1149_ma2025-013324mtgabs.pdf",
+  "json_filename": "10.1149_ma2025-013324mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2025-013324mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4412510021",
+    "doi": "10.1149/ma2025-013324mtgabs",
+    "title": "Doping-Additive Integrated Approach for Enhanced Electrochemical and Moisture Tolerance in Sulfide Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2025-07-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.75040772,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Bereket Woldegbreal Taklu",
+    "authors_display": "Bereket Woldegbreal Taklu; Zabish Bilew Muche; Bing−Joe Hwang",
+    "authors": [
+      {
+        "display_name": "Bereket Woldegbreal Taklu",
+        "id": "https://openalex.org/A5067245309",
+        "orcid": "https://orcid.org/0000-0002-8550-4835",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zabish Bilew Muche",
+        "id": "https://openalex.org/A5092988455",
+        "orcid": "https://orcid.org/0009-0003-8630-7205",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bing−Joe Hwang",
+        "id": "https://openalex.org/A5030917995",
+        "orcid": "https://orcid.org/0000-0002-3873-2149",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4412510021",
+    "doi": "10.1149/ma2025-013324mtgabs",
+    "title": "Doping-Additive Integrated Approach for Enhanced Electrochemical and Moisture Tolerance in Sulfide Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2025-07-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.75040772,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Bereket Woldegbreal Taklu",
+    "authors_display": "Bereket Woldegbreal Taklu; Zabish Bilew Muche; Bing−Joe Hwang",
+    "authors_json": "[{\"display_name\": \"Bereket Woldegbreal Taklu\", \"id\": \"https://openalex.org/A5067245309\", \"orcid\": \"https://orcid.org/0000-0002-8550-4835\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Zabish Bilew Muche\", \"id\": \"https://openalex.org/A5092988455\", \"orcid\": \"https://orcid.org/0009-0003-8630-7205\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bing−Joe Hwang\", \"id\": \"https://openalex.org/A5030917995\", \"orcid\": \"https://orcid.org/0000-0002-3873-2149\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773302696859,
+    "actual_start_ms": 1773302698357,
+    "pacing_wait_ms": 1498,
+    "pacing_jitter_sec": 0.749
+  }
+}

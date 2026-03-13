@@ -1,0 +1,116 @@
+{
+  "doi": "10.1016/j.rechem.2022.100468",
+  "pdf_filename": "10.1016_j.rechem.2022.100468.pdf",
+  "json_filename": "10.1016_j.rechem.2022.100468.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.rechem.2022.100468.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4290052878",
+    "doi": "10.1016/j.rechem.2022.100468",
+    "title": "Synthesis of high ionic conductivity Li6PS5Cl solid electrolyte by second sintering process",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Results in Chemistry",
+      "id": "https://openalex.org/S4210212333",
+      "type": "journal",
+      "issn_l": "2211-7156",
+      "issn": [
+        "2211-7156"
+      ]
+    },
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.71038886,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Chenguang Zhao",
+    "authors_display": "Chenguang Zhao; Miaomiao Lyu; Chuangji Bi; Sida Huo; Sirui Li; Wendong Xue",
+    "authors": [
+      {
+        "display_name": "Chenguang Zhao",
+        "id": "https://openalex.org/A5101586516",
+        "orcid": "https://orcid.org/0000-0002-6242-9086",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Miaomiao Lyu",
+        "id": "https://openalex.org/A5050992313",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuangji Bi",
+        "id": "https://openalex.org/A5065555310",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sida Huo",
+        "id": "https://openalex.org/A5019133008",
+        "orcid": "https://orcid.org/0000-0001-8911-9267",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sirui Li",
+        "id": "https://openalex.org/A5100701503",
+        "orcid": "https://orcid.org/0000-0002-2267-4335",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wendong Xue",
+        "id": "https://openalex.org/A5052533719",
+        "orcid": "https://orcid.org/0000-0002-7539-7001",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4290052878",
+    "doi": "10.1016/j.rechem.2022.100468",
+    "title": "Synthesis of high ionic conductivity Li6PS5Cl solid electrolyte by second sintering process",
+    "publisher": "Elsevier BV",
+    "journal": "Results in Chemistry",
+    "journal_id": "https://openalex.org/S4210212333",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-7156",
+    "journal_issn_json": "[\"2211-7156\"]",
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.71038886,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Chenguang Zhao",
+    "authors_display": "Chenguang Zhao; Miaomiao Lyu; Chuangji Bi; Sida Huo; Sirui Li; Wendong Xue",
+    "authors_json": "[{\"display_name\": \"Chenguang Zhao\", \"id\": \"https://openalex.org/A5101586516\", \"orcid\": \"https://orcid.org/0000-0002-6242-9086\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Miaomiao Lyu\", \"id\": \"https://openalex.org/A5050992313\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuangji Bi\", \"id\": \"https://openalex.org/A5065555310\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sida Huo\", \"id\": \"https://openalex.org/A5019133008\", \"orcid\": \"https://orcid.org/0000-0001-8911-9267\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sirui Li\", \"id\": \"https://openalex.org/A5100701503\", \"orcid\": \"https://orcid.org/0000-0002-2267-4335\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wendong Xue\", \"id\": \"https://openalex.org/A5052533719\", \"orcid\": \"https://orcid.org/0000-0002-7539-7001\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2211715622001874?via%3Dihub",
+    "landing_title": "Synthesis of high ionic conductivity Li6PS5Cl solid electrolyte by second sintering process - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773304349724,
+    "actual_start_ms": 1773304373395,
+    "pacing_wait_ms": 23670,
+    "pacing_jitter_sec": 1.22
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "doi": "10.1021/acsenergylett.4c01072",
+  "pdf_filename": "10.1021_acsenergylett.4c01072.pdf",
+  "json_filename": "10.1021_acsenergylett.4c01072.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.4c01072.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4400088921",
+    "doi": "10.1021/acsenergylett.4c01072",
+    "title": "Operando Photoelectron Spectroscopy Analysis of Li <sub>6</sub> PS <sub>5</sub> Cl Electrochemical Decomposition Reactions in Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2024-06-27",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 43,
+    "citation_normalized_percentile": 0.98622343,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Burak Aktekin",
+    "authors_display": "Burak Aktekin; Elmar Kataev; Luise M. Riegger; Raul Garcia‐Diez; Zora Chalkley; Juri Becker; Regan G. Wilks; Anja Henß; Marcus Bär; Jürgen Janek",
+    "authors": [
+      {
+        "display_name": "Burak Aktekin",
+        "id": "https://openalex.org/A5042507134",
+        "orcid": "https://orcid.org/0000-0002-8659-7519",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Elmar Kataev",
+        "id": "https://openalex.org/A5082918470",
+        "orcid": "https://orcid.org/0000-0003-1016-946X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Luise M. Riegger",
+        "id": "https://openalex.org/A5030107416",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Raul Garcia‐Diez",
+        "id": "https://openalex.org/A5011238991",
+        "orcid": "https://orcid.org/0009-0000-9374-1083",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zora Chalkley",
+        "id": "https://openalex.org/A5019605412",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Juri Becker",
+        "id": "https://openalex.org/A5001366809",
+        "orcid": "https://orcid.org/0009-0009-9934-8851",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Regan G. Wilks",
+        "id": "https://openalex.org/A5086358033",
+        "orcid": "https://orcid.org/0000-0001-5822-8399",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anja Henß",
+        "id": "https://openalex.org/A5072831450",
+        "orcid": "https://orcid.org/0000-0001-5009-6512",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marcus Bär",
+        "id": "https://openalex.org/A5084897727",
+        "orcid": "https://orcid.org/0000-0001-8581-0691",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4400088921",
+    "doi": "10.1021/acsenergylett.4c01072",
+    "title": "Operando Photoelectron Spectroscopy Analysis of Li <sub>6</sub> PS <sub>5</sub> Cl Electrochemical Decomposition Reactions in Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2024-06-27",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 43,
+    "citation_normalized_percentile": 0.98622343,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Burak Aktekin",
+    "authors_display": "Burak Aktekin; Elmar Kataev; Luise M. Riegger; Raul Garcia‐Diez; Zora Chalkley; Juri Becker; Regan G. Wilks; Anja Henß; Marcus Bär; Jürgen Janek",
+    "authors_json": "[{\"display_name\": \"Burak Aktekin\", \"id\": \"https://openalex.org/A5042507134\", \"orcid\": \"https://orcid.org/0000-0002-8659-7519\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Elmar Kataev\", \"id\": \"https://openalex.org/A5082918470\", \"orcid\": \"https://orcid.org/0000-0003-1016-946X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Luise M. Riegger\", \"id\": \"https://openalex.org/A5030107416\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Raul Garcia‐Diez\", \"id\": \"https://openalex.org/A5011238991\", \"orcid\": \"https://orcid.org/0009-0000-9374-1083\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zora Chalkley\", \"id\": \"https://openalex.org/A5019605412\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Juri Becker\", \"id\": \"https://openalex.org/A5001366809\", \"orcid\": \"https://orcid.org/0009-0009-9934-8851\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Regan G. Wilks\", \"id\": \"https://openalex.org/A5086358033\", \"orcid\": \"https://orcid.org/0000-0001-5822-8399\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anja Henß\", \"id\": \"https://openalex.org/A5072831450\", \"orcid\": \"https://orcid.org/0000-0001-5009-6512\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marcus Bär\", \"id\": \"https://openalex.org/A5084897727\", \"orcid\": \"https://orcid.org/0000-0001-8581-0691\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302302595,
+    "actual_start_ms": 1773302302595,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.673
+  }
+}

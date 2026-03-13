@@ -1,0 +1,144 @@
+{
+  "doi": "10.1021/acssuschemeng.2c02238",
+  "pdf_filename": "10.1021_acssuschemeng.2c02238.pdf",
+  "json_filename": "10.1021_acssuschemeng.2c02238.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acssuschemeng.2c02238.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4308991486",
+    "doi": "10.1021/acssuschemeng.2c02238",
+    "title": "Low-Cost and Scalable Synthesis of High-Purity Li<sub>2</sub>S for Sulfide Solid Electrolyte",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Sustainable Chemistry & Engineering",
+      "id": "https://openalex.org/S2502047864",
+      "type": "journal",
+      "issn_l": "2168-0485",
+      "issn": [
+        "2168-0485"
+      ]
+    },
+    "publication_date": "2022-11-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 20,
+    "citation_normalized_percentile": 0.83532267,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Fangyuan Tu",
+    "authors_display": "Fangyuan Tu; Zixiang Zhao; Xin Zhang; Zhenyu Wang; Yue Ma; Hongzhou Zhang; Dawei Song; Lianqi Zhang; Yongan Yang; Lingyun Zhu",
+    "authors": [
+      {
+        "display_name": "Fangyuan Tu",
+        "id": "https://openalex.org/A5013070919",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zixiang Zhao",
+        "id": "https://openalex.org/A5013999534",
+        "orcid": "https://orcid.org/0000-0002-5461-6017",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xin Zhang",
+        "id": "https://openalex.org/A5100327582",
+        "orcid": "https://orcid.org/0000-0003-2000-858X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhenyu Wang",
+        "id": "https://openalex.org/A5115694992",
+        "orcid": "https://orcid.org/0009-0008-9068-080X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yue Ma",
+        "id": "https://openalex.org/A5100616306",
+        "orcid": "https://orcid.org/0000-0001-8672-4090",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hongzhou Zhang",
+        "id": "https://openalex.org/A5100733579",
+        "orcid": "https://orcid.org/0000-0002-5375-2359",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dawei Song",
+        "id": "https://openalex.org/A5020276837",
+        "orcid": "https://orcid.org/0000-0002-3670-5091",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Lianqi Zhang",
+        "id": "https://openalex.org/A5015947591",
+        "orcid": "https://orcid.org/0000-0003-2165-7995",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yongan Yang",
+        "id": "https://openalex.org/A5015906224",
+        "orcid": "https://orcid.org/0000-0003-1451-2923",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lingyun Zhu",
+        "id": "https://openalex.org/A5103071342",
+        "orcid": "https://orcid.org/0000-0001-8137-8715",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4308991486",
+    "doi": "10.1021/acssuschemeng.2c02238",
+    "title": "Low-Cost and Scalable Synthesis of High-Purity Li<sub>2</sub>S for Sulfide Solid Electrolyte",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "journal_id": "https://openalex.org/S2502047864",
+    "journal_type": "journal",
+    "journal_issn_l": "2168-0485",
+    "journal_issn_json": "[\"2168-0485\"]",
+    "publication_date": "2022-11-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 20,
+    "citation_normalized_percentile": 0.83532267,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Fangyuan Tu",
+    "authors_display": "Fangyuan Tu; Zixiang Zhao; Xin Zhang; Zhenyu Wang; Yue Ma; Hongzhou Zhang; Dawei Song; Lianqi Zhang; Yongan Yang; Lingyun Zhu",
+    "authors_json": "[{\"display_name\": \"Fangyuan Tu\", \"id\": \"https://openalex.org/A5013070919\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Zixiang Zhao\", \"id\": \"https://openalex.org/A5013999534\", \"orcid\": \"https://orcid.org/0000-0002-5461-6017\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xin Zhang\", \"id\": \"https://openalex.org/A5100327582\", \"orcid\": \"https://orcid.org/0000-0003-2000-858X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhenyu Wang\", \"id\": \"https://openalex.org/A5115694992\", \"orcid\": \"https://orcid.org/0009-0008-9068-080X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yue Ma\", \"id\": \"https://openalex.org/A5100616306\", \"orcid\": \"https://orcid.org/0000-0001-8672-4090\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Hongzhou Zhang\", \"id\": \"https://openalex.org/A5100733579\", \"orcid\": \"https://orcid.org/0000-0002-5375-2359\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dawei Song\", \"id\": \"https://openalex.org/A5020276837\", \"orcid\": \"https://orcid.org/0000-0002-3670-5091\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Lianqi Zhang\", \"id\": \"https://openalex.org/A5015947591\", \"orcid\": \"https://orcid.org/0000-0003-2165-7995\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yongan Yang\", \"id\": \"https://openalex.org/A5015906224\", \"orcid\": \"https://orcid.org/0000-0003-1451-2923\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lingyun Zhu\", \"id\": \"https://openalex.org/A5103071342\", \"orcid\": \"https://orcid.org/0000-0001-8137-8715\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acssuschemeng.2c02238",
+    "landing_title": "Low-Cost and Scalable Synthesis of High-Purity Li2S for Sulfide Solid Electrolyte | ACS Sustainable Chemistry & Engineering",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acssuschemeng.2c02238.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773303148899,
+    "actual_start_ms": 1773303150157,
+    "pacing_wait_ms": 1257,
+    "pacing_jitter_sec": 1.241
+  }
+}

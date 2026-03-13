@@ -1,0 +1,109 @@
+{
+  "doi": "10.1021/cbe.6c00001",
+  "pdf_filename": "10.1021_cbe.6c00001.pdf",
+  "json_filename": "10.1021_cbe.6c00001.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_cbe.6c00001.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7133119064",
+    "doi": "10.1021/cbe.6c00001",
+    "title": "Self-Healable and Superrobust Supramolecular Elastomer-Bound Sulfide Electrolyte Films for Dendrite-Free All-Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chem & Bio Engineering",
+      "id": "https://openalex.org/S4390648409",
+      "type": "journal",
+      "issn_l": "2836-967X",
+      "issn": [
+        "2836-967X"
+      ]
+    },
+    "publication_date": "2026-03-01",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.92317192,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Wanqing Jia",
+    "authors_display": "Wanqing Jia; Jiayi Liu; Shiyu Yao; Wenwen Niu; Fei Du",
+    "authors": [
+      {
+        "display_name": "Wanqing Jia",
+        "id": "https://openalex.org/A5127744704",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiayi Liu",
+        "id": "https://openalex.org/A5100370770",
+        "orcid": "https://orcid.org/0000-0003-1819-2998",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shiyu Yao",
+        "id": "https://openalex.org/A5014280698",
+        "orcid": "https://orcid.org/0000-0002-6988-898X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wenwen Niu",
+        "id": "https://openalex.org/A5018803452",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Fei Du",
+        "id": "https://openalex.org/A5089134808",
+        "orcid": "https://orcid.org/0000-0003-0741-7100",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7133119064",
+    "doi": "10.1021/cbe.6c00001",
+    "title": "Self-Healable and Superrobust Supramolecular Elastomer-Bound Sulfide Electrolyte Films for Dendrite-Free All-Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "Chem & Bio Engineering",
+    "journal_id": "https://openalex.org/S4390648409",
+    "journal_type": "journal",
+    "journal_issn_l": "2836-967X",
+    "journal_issn_json": "[\"2836-967X\"]",
+    "publication_date": "2026-03-01",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.92317192,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Wanqing Jia",
+    "authors_display": "Wanqing Jia; Jiayi Liu; Shiyu Yao; Wenwen Niu; Fei Du",
+    "authors_json": "[{\"display_name\": \"Wanqing Jia\", \"id\": \"https://openalex.org/A5127744704\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jiayi Liu\", \"id\": \"https://openalex.org/A5100370770\", \"orcid\": \"https://orcid.org/0000-0003-1819-2998\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shiyu Yao\", \"id\": \"https://openalex.org/A5014280698\", \"orcid\": \"https://orcid.org/0000-0002-6988-898X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wenwen Niu\", \"id\": \"https://openalex.org/A5018803452\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Fei Du\", \"id\": \"https://openalex.org/A5089134808\", \"orcid\": \"https://orcid.org/0000-0003-0741-7100\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/cbe.6c00001",
+    "landing_title": "Self-Healable and Superrobust Supramolecular Elastomer-Bound Sulfide Electrolyte Films for Dendrite-Free All-Solid-State Lithium Batteries | Chem & Bio Engineering",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_cbe.6c00001.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773310945739,
+    "actual_start_ms": 1773310945739,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.15
+  }
+}

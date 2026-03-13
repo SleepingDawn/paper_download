@@ -1,0 +1,131 @@
+{
+  "doi": "10.1038/s41567-024-02707-6",
+  "pdf_filename": "10.1038_s41567-024-02707-6.pdf",
+  "json_filename": "10.1038_s41567-024-02707-6.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s41567-024-02707-6.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4406104099",
+    "doi": "10.1038/s41567-024-02707-6",
+    "title": "Liquid-like dynamics in a solid-state lithium electrolyte",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Physics",
+      "id": "https://openalex.org/S156274416",
+      "type": "journal",
+      "issn_l": "1745-2473",
+      "issn": [
+        "1745-2473",
+        "1745-2481"
+      ]
+    },
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 37,
+    "citation_normalized_percentile": 0.9976873,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Jingxuan Ding",
+    "authors_display": "Jingxuan Ding; Mayanak K. Gupta; Carolin Rosenbach; H. H. Lin; Naresh C. Osti; D. L. Abernathy; Wolfgang G. Zeier; Olivier Delaire",
+    "authors": [
+      {
+        "display_name": "Jingxuan Ding",
+        "id": "https://openalex.org/A5101639487",
+        "orcid": "https://orcid.org/0000-0003-3126-7165",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mayanak K. Gupta",
+        "id": "https://openalex.org/A5043115031",
+        "orcid": "https://orcid.org/0000-0002-9016-2438",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Carolin Rosenbach",
+        "id": "https://openalex.org/A5072648110",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "H. H. Lin",
+        "id": "https://openalex.org/A5101468609",
+        "orcid": "https://orcid.org/0000-0002-3693-3668",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Naresh C. Osti",
+        "id": "https://openalex.org/A5077341845",
+        "orcid": "https://orcid.org/0000-0002-0213-2299",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "D. L. Abernathy",
+        "id": "https://openalex.org/A5088429698",
+        "orcid": "https://orcid.org/0000-0002-3533-003X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Olivier Delaire",
+        "id": "https://openalex.org/A5064958048",
+        "orcid": "https://orcid.org/0000-0003-1230-2834",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4406104099",
+    "doi": "10.1038/s41567-024-02707-6",
+    "title": "Liquid-like dynamics in a solid-state lithium electrolyte",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Physics",
+    "journal_id": "https://openalex.org/S156274416",
+    "journal_type": "journal",
+    "journal_issn_l": "1745-2473",
+    "journal_issn_json": "[\"1745-2473\", \"1745-2481\"]",
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 37,
+    "citation_normalized_percentile": 0.9976873,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Jingxuan Ding",
+    "authors_display": "Jingxuan Ding; Mayanak K. Gupta; Carolin Rosenbach; H. H. Lin; Naresh C. Osti; D. L. Abernathy; Wolfgang G. Zeier; Olivier Delaire",
+    "authors_json": "[{\"display_name\": \"Jingxuan Ding\", \"id\": \"https://openalex.org/A5101639487\", \"orcid\": \"https://orcid.org/0000-0003-3126-7165\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Mayanak K. Gupta\", \"id\": \"https://openalex.org/A5043115031\", \"orcid\": \"https://orcid.org/0000-0002-9016-2438\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Carolin Rosenbach\", \"id\": \"https://openalex.org/A5072648110\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"H. H. Lin\", \"id\": \"https://openalex.org/A5101468609\", \"orcid\": \"https://orcid.org/0000-0002-3693-3668\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Naresh C. Osti\", \"id\": \"https://openalex.org/A5077341845\", \"orcid\": \"https://orcid.org/0000-0002-0213-2299\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"D. L. Abernathy\", \"id\": \"https://openalex.org/A5088429698\", \"orcid\": \"https://orcid.org/0000-0002-3533-003X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Olivier Delaire\", \"id\": \"https://openalex.org/A5064958048\", \"orcid\": \"https://orcid.org/0000-0003-1230-2834\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.nature.com/articles/s41567-024-02707-6",
+    "landing_title": "Liquid-like dynamics in a solid-state lithium electrolyte | Nature Physics",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1038_s41567-024-02707-6.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773307563706,
+    "actual_start_ms": 1773307565207,
+    "pacing_wait_ms": 1501,
+    "pacing_jitter_sec": 1.137
+  }
+}

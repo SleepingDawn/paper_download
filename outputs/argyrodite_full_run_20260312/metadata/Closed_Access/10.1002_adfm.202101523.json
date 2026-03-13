@@ -1,0 +1,138 @@
+{
+  "doi": "10.1002/adfm.202101523",
+  "pdf_filename": "10.1002_adfm.202101523.pdf",
+  "json_filename": "10.1002_adfm.202101523.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_adfm.202101523.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3157934864",
+    "doi": "10.1002/adfm.202101523",
+    "title": "Facile Design of Sulfide‐Based all Solid‐State Lithium Metal Battery: In Situ Polymerization within Self‐Supported Porous Argyrodite Skeleton",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2021-04-29",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 143,
+    "citation_normalized_percentile": 0.98982922,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Yantao Wang",
+    "authors_display": "Yantao Wang; Jiangwei Ju; Shanmu Dong; Yiyuan Yan; Feng Jiang; Longfei Cui; Qinglei Wang; Xiaoqi Han; Guanglei Cui",
+    "authors": [
+      {
+        "display_name": "Yantao Wang",
+        "id": "https://openalex.org/A5061418233",
+        "orcid": "https://orcid.org/0000-0003-0188-2597",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiangwei Ju",
+        "id": "https://openalex.org/A5072229491",
+        "orcid": "https://orcid.org/0000-0002-4391-7957",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shanmu Dong",
+        "id": "https://openalex.org/A5007181193",
+        "orcid": "https://orcid.org/0000-0002-2493-3556",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yiyuan Yan",
+        "id": "https://openalex.org/A5069211942",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Feng Jiang",
+        "id": "https://openalex.org/A5100726835",
+        "orcid": "https://orcid.org/0009-0006-0779-1732",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Longfei Cui",
+        "id": "https://openalex.org/A5042846626",
+        "orcid": "https://orcid.org/0000-0002-2885-1021",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qinglei Wang",
+        "id": "https://openalex.org/A5077297862",
+        "orcid": "https://orcid.org/0000-0001-6300-439X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaoqi Han",
+        "id": "https://openalex.org/A5053051082",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guanglei Cui",
+        "id": "https://openalex.org/A5079176132",
+        "orcid": "https://orcid.org/0000-0001-5987-7569",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3157934864",
+    "doi": "10.1002/adfm.202101523",
+    "title": "Facile Design of Sulfide‐Based all Solid‐State Lithium Metal Battery: In Situ Polymerization within Self‐Supported Porous Argyrodite Skeleton",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2021-04-29",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 143,
+    "citation_normalized_percentile": 0.98982922,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Yantao Wang",
+    "authors_display": "Yantao Wang; Jiangwei Ju; Shanmu Dong; Yiyuan Yan; Feng Jiang; Longfei Cui; Qinglei Wang; Xiaoqi Han; Guanglei Cui",
+    "authors_json": "[{\"display_name\": \"Yantao Wang\", \"id\": \"https://openalex.org/A5061418233\", \"orcid\": \"https://orcid.org/0000-0003-0188-2597\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jiangwei Ju\", \"id\": \"https://openalex.org/A5072229491\", \"orcid\": \"https://orcid.org/0000-0002-4391-7957\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shanmu Dong\", \"id\": \"https://openalex.org/A5007181193\", \"orcid\": \"https://orcid.org/0000-0002-2493-3556\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yiyuan Yan\", \"id\": \"https://openalex.org/A5069211942\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Feng Jiang\", \"id\": \"https://openalex.org/A5100726835\", \"orcid\": \"https://orcid.org/0009-0006-0779-1732\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Longfei Cui\", \"id\": \"https://openalex.org/A5042846626\", \"orcid\": \"https://orcid.org/0000-0002-2885-1021\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qinglei Wang\", \"id\": \"https://openalex.org/A5077297862\", \"orcid\": \"https://orcid.org/0000-0001-6300-439X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaoqi Han\", \"id\": \"https://openalex.org/A5053051082\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guanglei Cui\", \"id\": \"https://openalex.org/A5079176132\", \"orcid\": \"https://orcid.org/0000-0001-5987-7569\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302628775,
+    "actual_start_ms": 1773302630274,
+    "pacing_wait_ms": 1498,
+    "pacing_jitter_sec": 0.941
+  }
+}

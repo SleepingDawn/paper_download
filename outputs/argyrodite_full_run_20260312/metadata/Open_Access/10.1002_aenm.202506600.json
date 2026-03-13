@@ -1,0 +1,131 @@
+{
+  "doi": "10.1002/aenm.202506600",
+  "pdf_filename": "10.1002_aenm.202506600.pdf",
+  "json_filename": "10.1002_aenm.202506600.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202506600.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7128029635",
+    "doi": "10.1002/aenm.202506600",
+    "title": "Investigation of the Lithium Extraction Mechanism from LiNi <sub>0.6</sub> Mn <sub>0.2</sub> Co <sub>0.2</sub> O <sub>2</sub> by Using <i>Operando</i> Neutron Diffraction in an All‐Solid‐State Battery",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2026-02-04",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.64262442,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Sreelakshmi Anil Kumar",
+    "authors_display": "Sreelakshmi Anil Kumar; Dhanush Shanbhag; Ove Korjus; Prashanth Sivakumar; Laurence Croguennec; Christian Masquelier; Jean‐Noël Chotard; E. Suard",
+    "authors": [
+      {
+        "display_name": "Sreelakshmi Anil Kumar",
+        "id": "https://openalex.org/A5079279359",
+        "orcid": "https://orcid.org/0009-0007-4461-3545",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Dhanush Shanbhag",
+        "id": "https://openalex.org/A5058000658",
+        "orcid": "https://orcid.org/0000-0003-3866-9423",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ove Korjus",
+        "id": "https://openalex.org/A5065347717",
+        "orcid": "https://orcid.org/0000-0003-2151-0440",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Prashanth Sivakumar",
+        "id": "https://openalex.org/A5110654657",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Laurence Croguennec",
+        "id": "https://openalex.org/A5125120931",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Christian Masquelier",
+        "id": "https://openalex.org/A5125110172",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jean‐Noël Chotard",
+        "id": "https://openalex.org/A5125144708",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "E. Suard",
+        "id": "https://openalex.org/A5083657984",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7128029635",
+    "doi": "10.1002/aenm.202506600",
+    "title": "Investigation of the Lithium Extraction Mechanism from LiNi <sub>0.6</sub> Mn <sub>0.2</sub> Co <sub>0.2</sub> O <sub>2</sub> by Using <i>Operando</i> Neutron Diffraction in an All‐Solid‐State Battery",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2026-02-04",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.64262442,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Sreelakshmi Anil Kumar",
+    "authors_display": "Sreelakshmi Anil Kumar; Dhanush Shanbhag; Ove Korjus; Prashanth Sivakumar; Laurence Croguennec; Christian Masquelier; Jean‐Noël Chotard; E. Suard",
+    "authors_json": "[{\"display_name\": \"Sreelakshmi Anil Kumar\", \"id\": \"https://openalex.org/A5079279359\", \"orcid\": \"https://orcid.org/0009-0007-4461-3545\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Dhanush Shanbhag\", \"id\": \"https://openalex.org/A5058000658\", \"orcid\": \"https://orcid.org/0000-0003-3866-9423\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ove Korjus\", \"id\": \"https://openalex.org/A5065347717\", \"orcid\": \"https://orcid.org/0000-0003-2151-0440\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Prashanth Sivakumar\", \"id\": \"https://openalex.org/A5110654657\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Laurence Croguennec\", \"id\": \"https://openalex.org/A5125120931\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Christian Masquelier\", \"id\": \"https://openalex.org/A5125110172\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jean‐Noël Chotard\", \"id\": \"https://openalex.org/A5125144708\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"E. Suard\", \"id\": \"https://openalex.org/A5083657984\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773310451824,
+    "actual_start_ms": 1773310451824,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.714
+  }
+}

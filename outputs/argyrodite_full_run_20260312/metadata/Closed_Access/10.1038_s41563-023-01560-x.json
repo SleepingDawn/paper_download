@@ -1,0 +1,215 @@
+{
+  "doi": "10.1038/s41563-023-01560-x",
+  "pdf_filename": "10.1038_s41563-023-01560-x.pdf",
+  "json_filename": "10.1038_s41563-023-01560-x.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1038_s41563-023-01560-x.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4377019726",
+    "doi": "10.1038/s41563-023-01560-x",
+    "title": "Extreme phonon anharmonicity underpins superionic diffusion and ultralow thermal conductivity in argyrodite Ag8SnSe6",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Materials",
+      "id": "https://openalex.org/S103895331",
+      "type": "journal",
+      "issn_l": "1476-1122",
+      "issn": [
+        "1476-1122",
+        "1476-4660"
+      ]
+    },
+    "publication_date": "2023-05-18",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 127,
+    "citation_normalized_percentile": 0.99530551,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 20,
+    "first_author": "Qingyong Ren",
+    "authors_display": "Qingyong Ren; Mayanak K. Gupta; Min Jin; Jingxuan Ding; Jiangtao Wu; Zhiwei Chen; Siqi Lin; Óscar Fabelo; J. Alberto Rodríguez‐Velamazán; Maiko Kofu; Kenji Nakajima; Marcell Wolf; Fengfeng Zhu; Jianli Wang; Zhenxiang Cheng; Guohua Wang; Xin Tong; Yanzhong Pei; Olivier Delaire; Jie Ma",
+    "authors": [
+      {
+        "display_name": "Qingyong Ren",
+        "id": "https://openalex.org/A5008299722",
+        "orcid": "https://orcid.org/0000-0002-3163-9320",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mayanak K. Gupta",
+        "id": "https://openalex.org/A5043115031",
+        "orcid": "https://orcid.org/0000-0002-9016-2438",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Min Jin",
+        "id": "https://openalex.org/A5040349338",
+        "orcid": "https://orcid.org/0000-0001-7763-0869",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jingxuan Ding",
+        "id": "https://openalex.org/A5101639487",
+        "orcid": "https://orcid.org/0000-0003-3126-7165",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiangtao Wu",
+        "id": "https://openalex.org/A5080344483",
+        "orcid": "https://orcid.org/0000-0003-1123-4307",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhiwei Chen",
+        "id": "https://openalex.org/A5091972289",
+        "orcid": "https://orcid.org/0009-0004-6228-1909",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Siqi Lin",
+        "id": "https://openalex.org/A5032585581",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Óscar Fabelo",
+        "id": "https://openalex.org/A5001591104",
+        "orcid": "https://orcid.org/0000-0001-6452-8830",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J. Alberto Rodríguez‐Velamazán",
+        "id": "https://openalex.org/A5059858885",
+        "orcid": "https://orcid.org/0000-0002-8505-5232",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maiko Kofu",
+        "id": "https://openalex.org/A5002630643",
+        "orcid": "https://orcid.org/0000-0003-3756-2157",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kenji Nakajima",
+        "id": "https://openalex.org/A5053775690",
+        "orcid": "https://orcid.org/0000-0003-2085-3425",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marcell Wolf",
+        "id": "https://openalex.org/A5058685120",
+        "orcid": "https://orcid.org/0000-0002-8523-7597",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fengfeng Zhu",
+        "id": "https://openalex.org/A5029562648",
+        "orcid": "https://orcid.org/0000-0003-2052-3055",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianli Wang",
+        "id": "https://openalex.org/A5100378973",
+        "orcid": "https://orcid.org/0000-0001-9254-1661",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhenxiang Cheng",
+        "id": "https://openalex.org/A5009561241",
+        "orcid": "https://orcid.org/0000-0003-4847-2907",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guohua Wang",
+        "id": "https://openalex.org/A5006133235",
+        "orcid": "https://orcid.org/0000-0001-9022-5761",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xin Tong",
+        "id": "https://openalex.org/A5019715627",
+        "orcid": "https://orcid.org/0000-0001-6105-5345",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanzhong Pei",
+        "id": "https://openalex.org/A5062606091",
+        "orcid": "https://orcid.org/0000-0003-1612-3294",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Olivier Delaire",
+        "id": "https://openalex.org/A5064958048",
+        "orcid": "https://orcid.org/0000-0003-1230-2834",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jie Ma",
+        "id": "https://openalex.org/A5081656474",
+        "orcid": "https://orcid.org/0000-0002-7060-1325",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4377019726",
+    "doi": "10.1038/s41563-023-01560-x",
+    "title": "Extreme phonon anharmonicity underpins superionic diffusion and ultralow thermal conductivity in argyrodite Ag8SnSe6",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Materials",
+    "journal_id": "https://openalex.org/S103895331",
+    "journal_type": "journal",
+    "journal_issn_l": "1476-1122",
+    "journal_issn_json": "[\"1476-1122\", \"1476-4660\"]",
+    "publication_date": "2023-05-18",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 127,
+    "citation_normalized_percentile": 0.99530551,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 20,
+    "first_author": "Qingyong Ren",
+    "authors_display": "Qingyong Ren; Mayanak K. Gupta; Min Jin; Jingxuan Ding; Jiangtao Wu; Zhiwei Chen; Siqi Lin; Óscar Fabelo; J. Alberto Rodríguez‐Velamazán; Maiko Kofu; Kenji Nakajima; Marcell Wolf; Fengfeng Zhu; Jianli Wang; Zhenxiang Cheng; Guohua Wang; Xin Tong; Yanzhong Pei; Olivier Delaire; Jie Ma",
+    "authors_json": "[{\"display_name\": \"Qingyong Ren\", \"id\": \"https://openalex.org/A5008299722\", \"orcid\": \"https://orcid.org/0000-0002-3163-9320\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Mayanak K. Gupta\", \"id\": \"https://openalex.org/A5043115031\", \"orcid\": \"https://orcid.org/0000-0002-9016-2438\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Min Jin\", \"id\": \"https://openalex.org/A5040349338\", \"orcid\": \"https://orcid.org/0000-0001-7763-0869\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jingxuan Ding\", \"id\": \"https://openalex.org/A5101639487\", \"orcid\": \"https://orcid.org/0000-0003-3126-7165\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiangtao Wu\", \"id\": \"https://openalex.org/A5080344483\", \"orcid\": \"https://orcid.org/0000-0003-1123-4307\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhiwei Chen\", \"id\": \"https://openalex.org/A5091972289\", \"orcid\": \"https://orcid.org/0009-0004-6228-1909\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Siqi Lin\", \"id\": \"https://openalex.org/A5032585581\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Óscar Fabelo\", \"id\": \"https://openalex.org/A5001591104\", \"orcid\": \"https://orcid.org/0000-0001-6452-8830\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J. Alberto Rodríguez‐Velamazán\", \"id\": \"https://openalex.org/A5059858885\", \"orcid\": \"https://orcid.org/0000-0002-8505-5232\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maiko Kofu\", \"id\": \"https://openalex.org/A5002630643\", \"orcid\": \"https://orcid.org/0000-0003-3756-2157\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kenji Nakajima\", \"id\": \"https://openalex.org/A5053775690\", \"orcid\": \"https://orcid.org/0000-0003-2085-3425\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marcell Wolf\", \"id\": \"https://openalex.org/A5058685120\", \"orcid\": \"https://orcid.org/0000-0002-8523-7597\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fengfeng Zhu\", \"id\": \"https://openalex.org/A5029562648\", \"orcid\": \"https://orcid.org/0000-0003-2052-3055\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianli Wang\", \"id\": \"https://openalex.org/A5100378973\", \"orcid\": \"https://orcid.org/0000-0001-9254-1661\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhenxiang Cheng\", \"id\": \"https://openalex.org/A5009561241\", \"orcid\": \"https://orcid.org/0000-0003-4847-2907\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guohua Wang\", \"id\": \"https://openalex.org/A5006133235\", \"orcid\": \"https://orcid.org/0000-0001-9022-5761\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xin Tong\", \"id\": \"https://openalex.org/A5019715627\", \"orcid\": \"https://orcid.org/0000-0001-6105-5345\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanzhong Pei\", \"id\": \"https://openalex.org/A5062606091\", \"orcid\": \"https://orcid.org/0000-0003-1612-3294\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Olivier Delaire\", \"id\": \"https://openalex.org/A5064958048\", \"orcid\": \"https://orcid.org/0000-0003-1230-2834\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jie Ma\", \"id\": \"https://openalex.org/A5081656474\", \"orcid\": \"https://orcid.org/0000-0002-7060-1325\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.nature.com/articles/s41563-023-01560-x",
+    "landing_title": "Extreme phonon anharmonicity underpins superionic diffusion and ultralow thermal conductivity in argyrodite Ag8SnSe6 | Nature Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1038_s41563-023-01560-x.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773307502347,
+    "actual_start_ms": 1773307503851,
+    "pacing_wait_ms": 1503,
+    "pacing_jitter_sec": 1.385
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "doi": "10.1149/1945-7111/ad75bd",
+  "pdf_filename": "10.1149_1945-7111_ad75bd.pdf",
+  "json_filename": "10.1149_1945-7111_ad75bd.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_1945-7111_ad75bd.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4402029780",
+    "doi": "10.1149/1945-7111/ad75bd",
+    "title": "PVDF Binder in All-Solid-State Lithium Batteries with NCM/Sulfide/PVDF Cathode, Oxide/PEO SE Layer, and Li-metal Anode",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "Journal of The Electrochemical Society",
+      "id": "https://openalex.org/S138759888",
+      "type": "journal",
+      "issn_l": "0013-4651",
+      "issn": [
+        "0013-4651",
+        "1945-7111"
+      ]
+    },
+    "publication_date": "2024-08-30",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.74298312,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Byeong-Su Kang",
+    "authors_display": "Byeong-Su Kang; Se hyeon Jeon; Sang-Jun Park; Young-Woong Song; Jinsub Lim; Young Sun Hong; Minyoung Kim; Ho‐Sung Kim",
+    "authors": [
+      {
+        "display_name": "Byeong-Su Kang",
+        "id": "https://openalex.org/A5055170700",
+        "orcid": "https://orcid.org/0000-0003-4492-9244",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Se hyeon Jeon",
+        "id": "https://openalex.org/A5108976957",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang-Jun Park",
+        "id": "https://openalex.org/A5100690661",
+        "orcid": "https://orcid.org/0009-0000-0899-9670",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young-Woong Song",
+        "id": "https://openalex.org/A5100516135",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinsub Lim",
+        "id": "https://openalex.org/A5058396074",
+        "orcid": "https://orcid.org/0000-0001-9996-2127",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young Sun Hong",
+        "id": "https://openalex.org/A5109349890",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Minyoung Kim",
+        "id": "https://openalex.org/A5100670942",
+        "orcid": "https://orcid.org/0000-0002-5078-7142",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ho‐Sung Kim",
+        "id": "https://openalex.org/A5101519656",
+        "orcid": "https://orcid.org/0000-0002-3799-4606",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4402029780",
+    "doi": "10.1149/1945-7111/ad75bd",
+    "title": "PVDF Binder in All-Solid-State Lithium Batteries with NCM/Sulfide/PVDF Cathode, Oxide/PEO SE Layer, and Li-metal Anode",
+    "publisher": "Institute of Physics",
+    "journal": "Journal of The Electrochemical Society",
+    "journal_id": "https://openalex.org/S138759888",
+    "journal_type": "journal",
+    "journal_issn_l": "0013-4651",
+    "journal_issn_json": "[\"0013-4651\", \"1945-7111\"]",
+    "publication_date": "2024-08-30",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.74298312,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Byeong-Su Kang",
+    "authors_display": "Byeong-Su Kang; Se hyeon Jeon; Sang-Jun Park; Young-Woong Song; Jinsub Lim; Young Sun Hong; Minyoung Kim; Ho‐Sung Kim",
+    "authors_json": "[{\"display_name\": \"Byeong-Su Kang\", \"id\": \"https://openalex.org/A5055170700\", \"orcid\": \"https://orcid.org/0000-0003-4492-9244\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Se hyeon Jeon\", \"id\": \"https://openalex.org/A5108976957\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang-Jun Park\", \"id\": \"https://openalex.org/A5100690661\", \"orcid\": \"https://orcid.org/0009-0000-0899-9670\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young-Woong Song\", \"id\": \"https://openalex.org/A5100516135\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinsub Lim\", \"id\": \"https://openalex.org/A5058396074\", \"orcid\": \"https://orcid.org/0000-0001-9996-2127\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young Sun Hong\", \"id\": \"https://openalex.org/A5109349890\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Minyoung Kim\", \"id\": \"https://openalex.org/A5100670942\", \"orcid\": \"https://orcid.org/0000-0002-5078-7142\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ho‐Sung Kim\", \"id\": \"https://openalex.org/A5101519656\", \"orcid\": \"https://orcid.org/0000-0002-3799-4606\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773302319654,
+    "actual_start_ms": 1773302321151,
+    "pacing_wait_ms": 1496,
+    "pacing_jitter_sec": 1.505
+  }
+}

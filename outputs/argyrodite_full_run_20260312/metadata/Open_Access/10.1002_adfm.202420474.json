@@ -1,0 +1,103 @@
+{
+  "doi": "10.1002/adfm.202420474",
+  "pdf_filename": "10.1002_adfm.202420474.pdf",
+  "json_filename": "10.1002_adfm.202420474.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_adfm.202420474.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4406081908",
+    "doi": "10.1002/adfm.202420474",
+    "title": "Impact of Electrolyte Decomposition on Copper Corrosion in Li<sub>6</sub>PS<sub>5</sub>Cl‐Based All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2025-01-05",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.95358263,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202420474",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Ohmin Kwon",
+    "authors_display": "Ohmin Kwon; Ji‐Hwan Kang; Suhyeon Kim; Taeho Yoon",
+    "authors": [
+      {
+        "display_name": "Ohmin Kwon",
+        "id": "https://openalex.org/A5007946814",
+        "orcid": "https://orcid.org/0000-0003-3169-4829",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji‐Hwan Kang",
+        "id": "https://openalex.org/A5030748798",
+        "orcid": "https://orcid.org/0000-0002-2393-2009",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Suhyeon Kim",
+        "id": "https://openalex.org/A5055361239",
+        "orcid": "https://orcid.org/0000-0001-7618-1854",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Taeho Yoon",
+        "id": "https://openalex.org/A5056789852",
+        "orcid": "https://orcid.org/0000-0002-9403-9250",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4406081908",
+    "doi": "10.1002/adfm.202420474",
+    "title": "Impact of Electrolyte Decomposition on Copper Corrosion in Li<sub>6</sub>PS<sub>5</sub>Cl‐Based All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2025-01-05",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.95358263,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202420474",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Ohmin Kwon",
+    "authors_display": "Ohmin Kwon; Ji‐Hwan Kang; Suhyeon Kim; Taeho Yoon",
+    "authors_json": "[{\"display_name\": \"Ohmin Kwon\", \"id\": \"https://openalex.org/A5007946814\", \"orcid\": \"https://orcid.org/0000-0003-3169-4829\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ji‐Hwan Kang\", \"id\": \"https://openalex.org/A5030748798\", \"orcid\": \"https://orcid.org/0000-0002-2393-2009\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Suhyeon Kim\", \"id\": \"https://openalex.org/A5055361239\", \"orcid\": \"https://orcid.org/0000-0001-7618-1854\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Taeho Yoon\", \"id\": \"https://openalex.org/A5056789852\", \"orcid\": \"https://orcid.org/0000-0002-9403-9250\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773306888926,
+    "actual_start_ms": 1773306888926,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.904
+  }
+}

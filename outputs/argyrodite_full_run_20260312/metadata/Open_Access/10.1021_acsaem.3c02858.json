@@ -1,0 +1,102 @@
+{
+  "doi": "10.1021/acsaem.3c02858",
+  "pdf_filename": "10.1021_acsaem.3c02858.pdf",
+  "json_filename": "10.1021_acsaem.3c02858.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsaem.3c02858.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4391878963",
+    "doi": "10.1021/acsaem.3c02858",
+    "title": "Argyrodite-Li<sub>6</sub>PS<sub>5</sub>Cl/Polymer-based Highly Conductive Composite Electrolyte for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2024-02-16",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.94405854,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acsaem.3c02858",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Faiz Ahmed",
+    "authors_display": "Faiz Ahmed; Anna Chen; M. Virginia P. Altoé; Gao Liu",
+    "authors": [
+      {
+        "display_name": "Faiz Ahmed",
+        "id": "https://openalex.org/A5102703568",
+        "orcid": "https://orcid.org/0000-0002-9349-0525",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anna Chen",
+        "id": "https://openalex.org/A5056436767",
+        "orcid": "https://orcid.org/0000-0002-5946-6572",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "M. Virginia P. Altoé",
+        "id": "https://openalex.org/A5060559201",
+        "orcid": "https://orcid.org/0000-0003-0476-5089",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gao Liu",
+        "id": "https://openalex.org/A5100682324",
+        "orcid": "https://orcid.org/0000-0001-6886-0507",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4391878963",
+    "doi": "10.1021/acsaem.3c02858",
+    "title": "Argyrodite-Li<sub>6</sub>PS<sub>5</sub>Cl/Polymer-based Highly Conductive Composite Electrolyte for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2024-02-16",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.94405854,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acsaem.3c02858",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Faiz Ahmed",
+    "authors_display": "Faiz Ahmed; Anna Chen; M. Virginia P. Altoé; Gao Liu",
+    "authors_json": "[{\"display_name\": \"Faiz Ahmed\", \"id\": \"https://openalex.org/A5102703568\", \"orcid\": \"https://orcid.org/0000-0002-9349-0525\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Anna Chen\", \"id\": \"https://openalex.org/A5056436767\", \"orcid\": \"https://orcid.org/0000-0002-5946-6572\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"M. Virginia P. Altoé\", \"id\": \"https://openalex.org/A5060559201\", \"orcid\": \"https://orcid.org/0000-0003-0476-5089\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gao Liu\", \"id\": \"https://openalex.org/A5100682324\", \"orcid\": \"https://orcid.org/0000-0001-6886-0507\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.3c02858",
+    "landing_title": "Argyrodite-Li6PS5Cl/Polymer-based Highly Conductive Composite Electrolyte for All-Solid-State Batteries | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acsaem.3c02858.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773303171971,
+    "actual_start_ms": 1773303203954,
+    "pacing_wait_ms": 31982,
+    "pacing_jitter_sec": 1.096
+  }
+}

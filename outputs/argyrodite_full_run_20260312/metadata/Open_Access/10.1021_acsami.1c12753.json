@@ -1,0 +1,89 @@
+{
+  "doi": "10.1021/acsami.1c12753",
+  "pdf_filename": "10.1021_acsami.1c12753.pdf",
+  "json_filename": "10.1021_acsami.1c12753.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsami.1c12753.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3197158416",
+    "doi": "10.1021/acsami.1c12753",
+    "title": "Molecular-Level Insight into the Interfacial Reactivity and Ionic Conductivity of a Li-Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Solid Electrolyte at Bare and Coated Li-Metal Anodes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2021-09-01",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 40,
+    "citation_normalized_percentile": 0.88652844,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acsami.1c12753",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Andrey A. Golov",
+    "authors_display": "Andrey A. Golov; Javier Carrasco",
+    "authors": [
+      {
+        "display_name": "Andrey A. Golov",
+        "id": "https://openalex.org/A5081209614",
+        "orcid": "https://orcid.org/0000-0002-1776-4328",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Javier Carrasco",
+        "id": "https://openalex.org/A5072947717",
+        "orcid": "https://orcid.org/0000-0003-3117-6933",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3197158416",
+    "doi": "10.1021/acsami.1c12753",
+    "title": "Molecular-Level Insight into the Interfacial Reactivity and Ionic Conductivity of a Li-Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Solid Electrolyte at Bare and Coated Li-Metal Anodes",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2021-09-01",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 40,
+    "citation_normalized_percentile": 0.88652844,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acsami.1c12753",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Andrey A. Golov",
+    "authors_display": "Andrey A. Golov; Javier Carrasco",
+    "authors_json": "[{\"display_name\": \"Andrey A. Golov\", \"id\": \"https://openalex.org/A5081209614\", \"orcid\": \"https://orcid.org/0000-0002-1776-4328\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Javier Carrasco\", \"id\": \"https://openalex.org/A5072947717\", \"orcid\": \"https://orcid.org/0000-0003-3117-6933\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302352883,
+    "actual_start_ms": 1773302354384,
+    "pacing_wait_ms": 1500,
+    "pacing_jitter_sec": 0.881
+  }
+}

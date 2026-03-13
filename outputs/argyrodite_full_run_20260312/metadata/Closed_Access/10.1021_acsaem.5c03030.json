@@ -1,0 +1,144 @@
+{
+  "doi": "10.1021/acsaem.5c03030",
+  "pdf_filename": "10.1021_acsaem.5c03030.pdf",
+  "json_filename": "10.1021_acsaem.5c03030.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.5c03030.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4417527701",
+    "doi": "10.1021/acsaem.5c03030",
+    "title": "Electrochemical Performance and Stability of Li <sub>7</sub> Si <sub>2</sub> S <sub>7</sub> I Solid Electrolytes in Solid-State Battery Cathode Composites",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2025-12-20",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.44759106,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Johannes Härtel",
+    "authors_display": "Johannes Härtel; Tae-Hun Kim; Nina Nascimento Schürhoff; Marvin A. Kraft; Guopeng Han; Ruiyong Chen; Luke M. Daniels; Laurence J. Hardwick; Matthew J. Rosseinsky; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Johannes Härtel",
+        "id": "https://openalex.org/A5087770738",
+        "orcid": "https://orcid.org/0000-0002-7461-2320",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tae-Hun Kim",
+        "id": "https://openalex.org/A5100387023",
+        "orcid": "https://orcid.org/0009-0003-7223-4332",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nina Nascimento Schürhoff",
+        "id": "https://openalex.org/A5120868403",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marvin A. Kraft",
+        "id": "https://openalex.org/A5035145677",
+        "orcid": "https://orcid.org/0009-0005-5632-4228",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guopeng Han",
+        "id": "https://openalex.org/A5060186170",
+        "orcid": "https://orcid.org/0000-0003-3861-5396",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ruiyong Chen",
+        "id": "https://openalex.org/A5034044522",
+        "orcid": "https://orcid.org/0000-0002-5340-248X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Luke M. Daniels",
+        "id": "https://openalex.org/A5021303389",
+        "orcid": "https://orcid.org/0000-0002-7077-6125",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Laurence J. Hardwick",
+        "id": "https://openalex.org/A5039774913",
+        "orcid": "https://orcid.org/0000-0001-8796-685X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Matthew J. Rosseinsky",
+        "id": "https://openalex.org/A5054755054",
+        "orcid": "https://orcid.org/0000-0002-7077-6125",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4417527701",
+    "doi": "10.1021/acsaem.5c03030",
+    "title": "Electrochemical Performance and Stability of Li <sub>7</sub> Si <sub>2</sub> S <sub>7</sub> I Solid Electrolytes in Solid-State Battery Cathode Composites",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2025-12-20",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.44759106,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Johannes Härtel",
+    "authors_display": "Johannes Härtel; Tae-Hun Kim; Nina Nascimento Schürhoff; Marvin A. Kraft; Guopeng Han; Ruiyong Chen; Luke M. Daniels; Laurence J. Hardwick; Matthew J. Rosseinsky; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Johannes Härtel\", \"id\": \"https://openalex.org/A5087770738\", \"orcid\": \"https://orcid.org/0000-0002-7461-2320\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Tae-Hun Kim\", \"id\": \"https://openalex.org/A5100387023\", \"orcid\": \"https://orcid.org/0009-0003-7223-4332\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nina Nascimento Schürhoff\", \"id\": \"https://openalex.org/A5120868403\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marvin A. Kraft\", \"id\": \"https://openalex.org/A5035145677\", \"orcid\": \"https://orcid.org/0009-0005-5632-4228\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guopeng Han\", \"id\": \"https://openalex.org/A5060186170\", \"orcid\": \"https://orcid.org/0000-0003-3861-5396\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ruiyong Chen\", \"id\": \"https://openalex.org/A5034044522\", \"orcid\": \"https://orcid.org/0000-0002-5340-248X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Luke M. Daniels\", \"id\": \"https://openalex.org/A5021303389\", \"orcid\": \"https://orcid.org/0000-0002-7077-6125\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Laurence J. Hardwick\", \"id\": \"https://openalex.org/A5039774913\", \"orcid\": \"https://orcid.org/0000-0001-8796-685X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Matthew J. Rosseinsky\", \"id\": \"https://openalex.org/A5054755054\", \"orcid\": \"https://orcid.org/0000-0002-7077-6125\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.5c03030",
+    "landing_title": "Electrochemical Performance and Stability of Li7Si2S7I Solid Electrolytes in Solid-State Battery Cathode Composites | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsaem.5c03030.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773309161541,
+    "actual_start_ms": 1773309169953,
+    "pacing_wait_ms": 8411,
+    "pacing_jitter_sec": 1.401
+  }
+}

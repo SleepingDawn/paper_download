@@ -1,0 +1,110 @@
+{
+  "doi": "10.1177/01445987251400457",
+  "pdf_filename": "10.1177_01445987251400457.pdf",
+  "json_filename": "10.1177_01445987251400457.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1177_01445987251400457.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W7117485436",
+    "doi": "10.1177/01445987251400457",
+    "title": "Computational and artificial intelligence-driven battery design of solid-state batteries",
+    "publisher": "SAGE Publishing",
+    "journal": {
+      "name": "Energy Exploration & Exploitation",
+      "id": "https://openalex.org/S73050191",
+      "type": "journal",
+      "issn_l": "0144-5987",
+      "issn": [
+        "0144-5987",
+        "2048-4054"
+      ]
+    },
+    "publication_date": "2025-12-29",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.59077451,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Alen Rufus P",
+    "authors_display": "Alen Rufus P; Kanimozhi Gunasekaran; Ravi Samikannu; Maruliya Begam Kadarmydeen; Sivaram Murugan",
+    "authors": [
+      {
+        "display_name": "Alen Rufus P",
+        "id": "https://openalex.org/A5121491703",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kanimozhi Gunasekaran",
+        "id": "https://openalex.org/A5104257401",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ravi Samikannu",
+        "id": "https://openalex.org/A5121206837",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maruliya Begam Kadarmydeen",
+        "id": "https://openalex.org/A5094116618",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sivaram Murugan",
+        "id": "https://openalex.org/A5121505618",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7117485436",
+    "doi": "10.1177/01445987251400457",
+    "title": "Computational and artificial intelligence-driven battery design of solid-state batteries",
+    "publisher": "SAGE Publishing",
+    "journal": "Energy Exploration & Exploitation",
+    "journal_id": "https://openalex.org/S73050191",
+    "journal_type": "journal",
+    "journal_issn_l": "0144-5987",
+    "journal_issn_json": "[\"0144-5987\", \"2048-4054\"]",
+    "publication_date": "2025-12-29",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.59077451,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Alen Rufus P",
+    "authors_display": "Alen Rufus P; Kanimozhi Gunasekaran; Ravi Samikannu; Maruliya Begam Kadarmydeen; Sivaram Murugan",
+    "authors_json": "[{\"display_name\": \"Alen Rufus P\", \"id\": \"https://openalex.org/A5121491703\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Kanimozhi Gunasekaran\", \"id\": \"https://openalex.org/A5104257401\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ravi Samikannu\", \"id\": \"https://openalex.org/A5121206837\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maruliya Begam Kadarmydeen\", \"id\": \"https://openalex.org/A5094116618\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sivaram Murugan\", \"id\": \"https://openalex.org/A5121505618\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://journals.sagepub.com/doi/10.1177/01445987251400457?__cf_chl_rt_tk=kIzYXi62soGeMQ.9rVIjlyZMWi3oxMbQlXn2rqp4Ptk-1773319038-1.0.1.1-vqFclUAjwqyOkAkvpvGEsglwpEZjk8SWzmMEFCk6VTk",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.1177_01445987251400457.pdf",
+    "scheduler_publisher": "10.1177",
+    "scheduled_start_ms": 1773318986086,
+    "actual_start_ms": 1773318986087,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.772
+  }
+}

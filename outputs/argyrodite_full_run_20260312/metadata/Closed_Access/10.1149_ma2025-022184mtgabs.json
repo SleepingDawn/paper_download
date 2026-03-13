@@ -1,0 +1,119 @@
+{
+  "doi": "10.1149/ma2025-022184mtgabs",
+  "pdf_filename": "10.1149_ma2025-022184mtgabs.pdf",
+  "json_filename": "10.1149_ma2025-022184mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2025-022184mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4416610422",
+    "doi": "10.1149/ma2025-022184mtgabs",
+    "title": "Area-Selective Lithium Deposition in Anode-Free Solid-State Batteries Using Patterned Atomic Layer Deposition Interlayers",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2025-11-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.38629414,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Davy Zeng",
+    "authors_display": "Davy Zeng; Alexis Luglio; Daniel W. Liao; Young-Gyu Kim; Tae H. Cho; Neil P. Dasgupta",
+    "authors": [
+      {
+        "display_name": "Davy Zeng",
+        "id": "https://openalex.org/A5003605068",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Alexis Luglio",
+        "id": "https://openalex.org/A5118977168",
+        "orcid": "https://orcid.org/0000-0002-3875-4241",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniel W. Liao",
+        "id": "https://openalex.org/A5080486767",
+        "orcid": "https://orcid.org/0000-0003-4601-1453",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young-Gyu Kim",
+        "id": "https://openalex.org/A5103178650",
+        "orcid": "https://orcid.org/0000-0002-8489-8457",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tae H. Cho",
+        "id": "https://openalex.org/A5087172727",
+        "orcid": "https://orcid.org/0000-0003-2686-2349",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Neil P. Dasgupta",
+        "id": "https://openalex.org/A5004446540",
+        "orcid": "https://orcid.org/0000-0002-5180-4063",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4416610422",
+    "doi": "10.1149/ma2025-022184mtgabs",
+    "title": "Area-Selective Lithium Deposition in Anode-Free Solid-State Batteries Using Patterned Atomic Layer Deposition Interlayers",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2025-11-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.38629414,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Davy Zeng",
+    "authors_display": "Davy Zeng; Alexis Luglio; Daniel W. Liao; Young-Gyu Kim; Tae H. Cho; Neil P. Dasgupta",
+    "authors_json": "[{\"display_name\": \"Davy Zeng\", \"id\": \"https://openalex.org/A5003605068\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Alexis Luglio\", \"id\": \"https://openalex.org/A5118977168\", \"orcid\": \"https://orcid.org/0000-0002-3875-4241\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniel W. Liao\", \"id\": \"https://openalex.org/A5080486767\", \"orcid\": \"https://orcid.org/0000-0003-4601-1453\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young-Gyu Kim\", \"id\": \"https://openalex.org/A5103178650\", \"orcid\": \"https://orcid.org/0000-0002-8489-8457\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tae H. Cho\", \"id\": \"https://openalex.org/A5087172727\", \"orcid\": \"https://orcid.org/0000-0003-2686-2349\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Neil P. Dasgupta\", \"id\": \"https://openalex.org/A5004446540\", \"orcid\": \"https://orcid.org/0000-0002-5180-4063\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773309753355,
+    "actual_start_ms": 1773309753356,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.151
+  }
+}

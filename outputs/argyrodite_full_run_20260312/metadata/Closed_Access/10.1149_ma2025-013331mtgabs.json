@@ -1,0 +1,147 @@
+{
+  "doi": "10.1149/ma2025-013331mtgabs",
+  "pdf_filename": "10.1149_ma2025-013331mtgabs.pdf",
+  "json_filename": "10.1149_ma2025-013331mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2025-013331mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4412510033",
+    "doi": "10.1149/ma2025-013331mtgabs",
+    "title": "Silicon Nitrides as Promising Anode Materials for All-Solid-State Batteries: Enhancing Stability and Performance",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2025-07-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.19687841,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Federico Rossi",
+    "authors_display": "Federico Rossi; Burak Aktekin; Hao Lu; Martin Becker; Moritz Loewenich; Atharva Harshawardhan Ladole; Marvin A. Kraft; Hartmut Wiggers; Wolfgang G. Zeier; Jürgen Janek",
+    "authors": [
+      {
+        "display_name": "Federico Rossi",
+        "id": "https://openalex.org/A5091725704",
+        "orcid": "https://orcid.org/0000-0002-3871-0679",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Burak Aktekin",
+        "id": "https://openalex.org/A5042507134",
+        "orcid": "https://orcid.org/0000-0002-8659-7519",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hao Lu",
+        "id": "https://openalex.org/A5101750064",
+        "orcid": "https://orcid.org/0000-0001-8882-7974",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Becker",
+        "id": "https://openalex.org/A5024218324",
+        "orcid": "https://orcid.org/0000-0002-1199-7892",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Moritz Loewenich",
+        "id": "https://openalex.org/A5058397984",
+        "orcid": "https://orcid.org/0000-0003-1573-8780",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Atharva Harshawardhan Ladole",
+        "id": "https://openalex.org/A5093601022",
+        "orcid": "https://orcid.org/0000-0003-4160-2924",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marvin A. Kraft",
+        "id": "https://openalex.org/A5035145677",
+        "orcid": "https://orcid.org/0009-0005-5632-4228",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hartmut Wiggers",
+        "id": "https://openalex.org/A5025147471",
+        "orcid": "https://orcid.org/0000-0001-8487-9937",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4412510033",
+    "doi": "10.1149/ma2025-013331mtgabs",
+    "title": "Silicon Nitrides as Promising Anode Materials for All-Solid-State Batteries: Enhancing Stability and Performance",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2025-07-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.19687841,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Federico Rossi",
+    "authors_display": "Federico Rossi; Burak Aktekin; Hao Lu; Martin Becker; Moritz Loewenich; Atharva Harshawardhan Ladole; Marvin A. Kraft; Hartmut Wiggers; Wolfgang G. Zeier; Jürgen Janek",
+    "authors_json": "[{\"display_name\": \"Federico Rossi\", \"id\": \"https://openalex.org/A5091725704\", \"orcid\": \"https://orcid.org/0000-0002-3871-0679\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Burak Aktekin\", \"id\": \"https://openalex.org/A5042507134\", \"orcid\": \"https://orcid.org/0000-0002-8659-7519\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hao Lu\", \"id\": \"https://openalex.org/A5101750064\", \"orcid\": \"https://orcid.org/0000-0001-8882-7974\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Martin Becker\", \"id\": \"https://openalex.org/A5024218324\", \"orcid\": \"https://orcid.org/0000-0002-1199-7892\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Moritz Loewenich\", \"id\": \"https://openalex.org/A5058397984\", \"orcid\": \"https://orcid.org/0000-0003-1573-8780\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Atharva Harshawardhan Ladole\", \"id\": \"https://openalex.org/A5093601022\", \"orcid\": \"https://orcid.org/0000-0003-4160-2924\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marvin A. Kraft\", \"id\": \"https://openalex.org/A5035145677\", \"orcid\": \"https://orcid.org/0009-0005-5632-4228\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hartmut Wiggers\", \"id\": \"https://openalex.org/A5025147471\", \"orcid\": \"https://orcid.org/0000-0001-8487-9937\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773308427713,
+    "actual_start_ms": 1773308427713,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.193
+  }
+}

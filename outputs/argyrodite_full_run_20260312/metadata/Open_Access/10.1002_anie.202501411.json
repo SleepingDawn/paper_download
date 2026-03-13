@@ -1,0 +1,138 @@
+{
+  "doi": "10.1002/anie.202501411",
+  "pdf_filename": "10.1002_anie.202501411.pdf",
+  "json_filename": "10.1002_anie.202501411.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_anie.202501411.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4407987255",
+    "doi": "10.1002/anie.202501411",
+    "title": "Electronic Localization Enables Long‐Cycling Sulfides‐Based All‐Solid‐State Lithium Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Angewandte Chemie International Edition",
+      "id": "https://openalex.org/S67393510",
+      "type": "journal",
+      "issn_l": "1433-7851",
+      "issn": [
+        "1433-7851",
+        "1521-3773"
+      ]
+    },
+    "publication_date": "2025-03-09",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.97970287,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/anie.202501411",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Dewen Wang",
+    "authors_display": "Dewen Wang; Chong Liu; Ruoyu Wang; Tianran Zhang; Butian Chen; Tenghui Wang; Qi Liang Lu; Wen‐Jin Yin; Xiangfeng Liu",
+    "authors": [
+      {
+        "display_name": "Dewen Wang",
+        "id": "https://openalex.org/A5069973371",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chong Liu",
+        "id": "https://openalex.org/A5100412251",
+        "orcid": "https://orcid.org/0000-0003-2322-8721",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ruoyu Wang",
+        "id": "https://openalex.org/A5100653717",
+        "orcid": "https://orcid.org/0009-0001-4225-8013",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tianran Zhang",
+        "id": "https://openalex.org/A5013342444",
+        "orcid": "https://orcid.org/0000-0003-2837-4971",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Butian Chen",
+        "id": "https://openalex.org/A5023606280",
+        "orcid": "https://orcid.org/0000-0002-9268-7916",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tenghui Wang",
+        "id": "https://openalex.org/A5052057343",
+        "orcid": "https://orcid.org/0000-0003-1605-4153",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qi Liang Lu",
+        "id": "https://openalex.org/A5100665477",
+        "orcid": "https://orcid.org/0000-0002-2200-3849",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wen‐Jin Yin",
+        "id": "https://openalex.org/A5100654261",
+        "orcid": "https://orcid.org/0000-0003-0499-7664",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiangfeng Liu",
+        "id": "https://openalex.org/A5058350031",
+        "orcid": "https://orcid.org/0000-0001-9633-7721",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4407987255",
+    "doi": "10.1002/anie.202501411",
+    "title": "Electronic Localization Enables Long‐Cycling Sulfides‐Based All‐Solid‐State Lithium Batteries",
+    "publisher": "Wiley",
+    "journal": "Angewandte Chemie International Edition",
+    "journal_id": "https://openalex.org/S67393510",
+    "journal_type": "journal",
+    "journal_issn_l": "1433-7851",
+    "journal_issn_json": "[\"1433-7851\", \"1521-3773\"]",
+    "publication_date": "2025-03-09",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.97970287,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/anie.202501411",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Dewen Wang",
+    "authors_display": "Dewen Wang; Chong Liu; Ruoyu Wang; Tianran Zhang; Butian Chen; Tenghui Wang; Qi Liang Lu; Wen‐Jin Yin; Xiangfeng Liu",
+    "authors_json": "[{\"display_name\": \"Dewen Wang\", \"id\": \"https://openalex.org/A5069973371\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Chong Liu\", \"id\": \"https://openalex.org/A5100412251\", \"orcid\": \"https://orcid.org/0000-0003-2322-8721\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ruoyu Wang\", \"id\": \"https://openalex.org/A5100653717\", \"orcid\": \"https://orcid.org/0009-0001-4225-8013\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tianran Zhang\", \"id\": \"https://openalex.org/A5013342444\", \"orcid\": \"https://orcid.org/0000-0003-2837-4971\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Butian Chen\", \"id\": \"https://openalex.org/A5023606280\", \"orcid\": \"https://orcid.org/0000-0002-9268-7916\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tenghui Wang\", \"id\": \"https://openalex.org/A5052057343\", \"orcid\": \"https://orcid.org/0000-0003-1605-4153\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qi Liang Lu\", \"id\": \"https://openalex.org/A5100665477\", \"orcid\": \"https://orcid.org/0000-0002-2200-3849\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wen‐Jin Yin\", \"id\": \"https://openalex.org/A5100654261\", \"orcid\": \"https://orcid.org/0000-0003-0499-7664\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiangfeng Liu\", \"id\": \"https://openalex.org/A5058350031\", \"orcid\": \"https://orcid.org/0000-0001-9633-7721\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773305506046,
+    "actual_start_ms": 1773305506046,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.694
+  }
+}

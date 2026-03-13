@@ -1,0 +1,110 @@
+{
+  "doi": "10.1039/c8cc08030e",
+  "pdf_filename": "10.1039_c8cc08030e.pdf",
+  "json_filename": "10.1039_c8cc08030e.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_c8cc08030e.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2902058996",
+    "doi": "10.1039/c8cc08030e",
+    "title": "Electrochemical behaviors of Li-argyrodite-based all-solid-state batteries under deep-freezing conditions",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Chemical Communications",
+      "id": "https://openalex.org/S152760256",
+      "type": "journal",
+      "issn_l": "1359-7345",
+      "issn": [
+        "1359-7345",
+        "1364-548X"
+      ]
+    },
+    "publication_date": "2018-01-01",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 44,
+    "citation_normalized_percentile": 0.87140964,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Sungjun Choi",
+    "authors_display": "Sungjun Choi; Minjae Jeon; Byung-Kook Kim; Byoung‐In Sang; Hyoungchul Kim",
+    "authors": [
+      {
+        "display_name": "Sungjun Choi",
+        "id": "https://openalex.org/A5102245787",
+        "orcid": "https://orcid.org/0009-0007-7245-6575",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Minjae Jeon",
+        "id": "https://openalex.org/A5032417000",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byung-Kook Kim",
+        "id": "https://openalex.org/A5110045801",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byoung‐In Sang",
+        "id": "https://openalex.org/A5031910362",
+        "orcid": "https://orcid.org/0000-0001-7972-6709",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyoungchul Kim",
+        "id": "https://openalex.org/A5055060451",
+        "orcid": "https://orcid.org/0000-0003-3109-660X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2902058996",
+    "doi": "10.1039/c8cc08030e",
+    "title": "Electrochemical behaviors of Li-argyrodite-based all-solid-state batteries under deep-freezing conditions",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Chemical Communications",
+    "journal_id": "https://openalex.org/S152760256",
+    "journal_type": "journal",
+    "journal_issn_l": "1359-7345",
+    "journal_issn_json": "[\"1359-7345\", \"1364-548X\"]",
+    "publication_date": "2018-01-01",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 44,
+    "citation_normalized_percentile": 0.87140964,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Sungjun Choi",
+    "authors_display": "Sungjun Choi; Minjae Jeon; Byung-Kook Kim; Byoung‐In Sang; Hyoungchul Kim",
+    "authors_json": "[{\"display_name\": \"Sungjun Choi\", \"id\": \"https://openalex.org/A5102245787\", \"orcid\": \"https://orcid.org/0009-0007-7245-6575\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Minjae Jeon\", \"id\": \"https://openalex.org/A5032417000\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byung-Kook Kim\", \"id\": \"https://openalex.org/A5110045801\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byoung‐In Sang\", \"id\": \"https://openalex.org/A5031910362\", \"orcid\": \"https://orcid.org/0000-0001-7972-6709\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyoungchul Kim\", \"id\": \"https://openalex.org/A5055060451\", \"orcid\": \"https://orcid.org/0000-0003-3109-660X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773307816147,
+    "actual_start_ms": 1773307816147,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.562
+  }
+}

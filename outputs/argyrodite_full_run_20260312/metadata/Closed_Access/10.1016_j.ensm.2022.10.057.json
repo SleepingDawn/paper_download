@@ -1,0 +1,159 @@
+{
+  "doi": "10.1016/j.ensm.2022.10.057",
+  "pdf_filename": "10.1016_j.ensm.2022.10.057.pdf",
+  "json_filename": "10.1016_j.ensm.2022.10.057.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2022.10.057.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4308345913",
+    "doi": "10.1016/j.ensm.2022.10.057",
+    "title": "High-safety, wide-temperature-range, low-external-pressure and dendrite-free lithium battery with sulfide solid electrolyte",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2022-10-30",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 74,
+    "citation_normalized_percentile": 0.97549222,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Jian Peng",
+    "authors_display": "Jian Peng; Dengxu Wu; Pushun Lu; Zhixuan Wang; Yahao Du; Yanru Wu; Yujing Wu; Wenlin Yan; Jiacheng Wang; Hong Li; Liquan Chen; Fan Wu",
+    "authors": [
+      {
+        "display_name": "Jian Peng",
+        "id": "https://openalex.org/A5101780474",
+        "orcid": "https://orcid.org/0009-0008-0638-6326",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dengxu Wu",
+        "id": "https://openalex.org/A5046515234",
+        "orcid": "https://orcid.org/0000-0002-2361-1205",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pushun Lu",
+        "id": "https://openalex.org/A5026316143",
+        "orcid": "https://orcid.org/0000-0002-1381-5837",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhixuan Wang",
+        "id": "https://openalex.org/A5046729236",
+        "orcid": "https://orcid.org/0000-0002-1044-214X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yahao Du",
+        "id": "https://openalex.org/A5048214724",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanru Wu",
+        "id": "https://openalex.org/A5047787810",
+        "orcid": "https://orcid.org/0000-0002-1447-5336",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yujing Wu",
+        "id": "https://openalex.org/A5002653322",
+        "orcid": "https://orcid.org/0000-0001-5688-9839",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenlin Yan",
+        "id": "https://openalex.org/A5036355534",
+        "orcid": "https://orcid.org/0000-0002-1778-3780",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiacheng Wang",
+        "id": "https://openalex.org/A5100727960",
+        "orcid": "https://orcid.org/0000-0003-4327-1508",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Li",
+        "id": "https://openalex.org/A5100339418",
+        "orcid": "https://orcid.org/0000-0002-8659-086X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liquan Chen",
+        "id": "https://openalex.org/A5101604337",
+        "orcid": "https://orcid.org/0000-0001-5058-9552",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fan Wu",
+        "id": "https://openalex.org/A5065133070",
+        "orcid": "https://orcid.org/0000-0001-8009-3945",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4308345913",
+    "doi": "10.1016/j.ensm.2022.10.057",
+    "title": "High-safety, wide-temperature-range, low-external-pressure and dendrite-free lithium battery with sulfide solid electrolyte",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2022-10-30",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 74,
+    "citation_normalized_percentile": 0.97549222,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Jian Peng",
+    "authors_display": "Jian Peng; Dengxu Wu; Pushun Lu; Zhixuan Wang; Yahao Du; Yanru Wu; Yujing Wu; Wenlin Yan; Jiacheng Wang; Hong Li; Liquan Chen; Fan Wu",
+    "authors_json": "[{\"display_name\": \"Jian Peng\", \"id\": \"https://openalex.org/A5101780474\", \"orcid\": \"https://orcid.org/0009-0008-0638-6326\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Dengxu Wu\", \"id\": \"https://openalex.org/A5046515234\", \"orcid\": \"https://orcid.org/0000-0002-2361-1205\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pushun Lu\", \"id\": \"https://openalex.org/A5026316143\", \"orcid\": \"https://orcid.org/0000-0002-1381-5837\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhixuan Wang\", \"id\": \"https://openalex.org/A5046729236\", \"orcid\": \"https://orcid.org/0000-0002-1044-214X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yahao Du\", \"id\": \"https://openalex.org/A5048214724\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanru Wu\", \"id\": \"https://openalex.org/A5047787810\", \"orcid\": \"https://orcid.org/0000-0002-1447-5336\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yujing Wu\", \"id\": \"https://openalex.org/A5002653322\", \"orcid\": \"https://orcid.org/0000-0001-5688-9839\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wenlin Yan\", \"id\": \"https://openalex.org/A5036355534\", \"orcid\": \"https://orcid.org/0000-0002-1778-3780\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiacheng Wang\", \"id\": \"https://openalex.org/A5100727960\", \"orcid\": \"https://orcid.org/0000-0003-4327-1508\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Li\", \"id\": \"https://openalex.org/A5100339418\", \"orcid\": \"https://orcid.org/0000-0002-8659-086X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liquan Chen\", \"id\": \"https://openalex.org/A5101604337\", \"orcid\": \"https://orcid.org/0000-0001-5058-9552\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fan Wu\", \"id\": \"https://openalex.org/A5065133070\", \"orcid\": \"https://orcid.org/0000-0001-8009-3945\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2405829722005876?via%3Dihub",
+    "landing_title": "High-safety, wide-temperature-range, low-external-pressure and dendrite-free lithium battery with sulfide solid electrolyte - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301766140,
+    "actual_start_ms": 1773301771479,
+    "pacing_wait_ms": 5338,
+    "pacing_jitter_sec": 1.604
+  }
+}

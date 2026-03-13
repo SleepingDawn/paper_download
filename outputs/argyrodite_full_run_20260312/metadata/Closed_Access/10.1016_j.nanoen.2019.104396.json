@@ -1,0 +1,194 @@
+{
+  "doi": "10.1016/j.nanoen.2019.104396",
+  "pdf_filename": "10.1016_j.nanoen.2019.104396.pdf",
+  "json_filename": "10.1016_j.nanoen.2019.104396.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.nanoen.2019.104396.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2995283300",
+    "doi": "10.1016/j.nanoen.2019.104396",
+    "title": "Superionic conductivity in lithium argyrodite solid-state electrolyte by controlled Cl-doping",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Nano Energy",
+      "id": "https://openalex.org/S2497301991",
+      "type": "journal",
+      "issn_l": "2211-2855",
+      "issn": [
+        "2211-2855",
+        "2211-3282"
+      ]
+    },
+    "publication_date": "2019-12-18",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 139,
+    "citation_normalized_percentile": 0.98047793,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 17,
+    "first_author": "Chuang Yu",
+    "authors_display": "Chuang Yu; Yong Li; Mathew J. Willans; Yang Zhao; Keegan R. Adair; Feipeng Zhao; Weihan Li; Sixu Deng; Jianwen Liang; Mohammad Norouzi Banis; Ruying Li; Huan Huang; Li Zhang; Rong Yang; Shigang Lu; Yining Huang; Xueliang Sun",
+    "authors": [
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong Li",
+        "id": "https://openalex.org/A5100355357",
+        "orcid": "https://orcid.org/0000-0002-2774-841X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mathew J. Willans",
+        "id": "https://openalex.org/A5111518020",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Zhao",
+        "id": "https://openalex.org/A5082445301",
+        "orcid": "https://orcid.org/0000-0002-4148-2603",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Keegan R. Adair",
+        "id": "https://openalex.org/A5072392667",
+        "orcid": "https://orcid.org/0000-0002-8680-3378",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Feipeng Zhao",
+        "id": "https://openalex.org/A5087765157",
+        "orcid": "https://orcid.org/0000-0003-2686-6956",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Weihan Li",
+        "id": "https://openalex.org/A5100783455",
+        "orcid": "https://orcid.org/0000-0002-6542-1784",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sixu Deng",
+        "id": "https://openalex.org/A5035083082",
+        "orcid": "https://orcid.org/0000-0001-7458-0296",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianwen Liang",
+        "id": "https://openalex.org/A5070818496",
+        "orcid": "https://orcid.org/0000-0003-4055-1301",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mohammad Norouzi Banis",
+        "id": "https://openalex.org/A5034983793",
+        "orcid": "https://orcid.org/0000-0002-6144-6837",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ruying Li",
+        "id": "https://openalex.org/A5103120011",
+        "orcid": "https://orcid.org/0000-0003-1369-3398",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Huan Huang",
+        "id": "https://openalex.org/A5100670327",
+        "orcid": "https://orcid.org/0000-0001-5651-3831",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Li Zhang",
+        "id": "https://openalex.org/A5100425709",
+        "orcid": "https://orcid.org/0000-0003-1152-8962",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rong Yang",
+        "id": "https://openalex.org/A5072472914",
+        "orcid": "https://orcid.org/0000-0001-6427-026X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shigang Lu",
+        "id": "https://openalex.org/A5061018363",
+        "orcid": "https://orcid.org/0000-0001-9066-7797",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yining Huang",
+        "id": "https://openalex.org/A5008557264",
+        "orcid": "https://orcid.org/0000-0001-9265-5896",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xueliang Sun",
+        "id": "https://openalex.org/A5027533708",
+        "orcid": "https://orcid.org/0000-0003-0374-1245",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2995283300",
+    "doi": "10.1016/j.nanoen.2019.104396",
+    "title": "Superionic conductivity in lithium argyrodite solid-state electrolyte by controlled Cl-doping",
+    "publisher": "Elsevier BV",
+    "journal": "Nano Energy",
+    "journal_id": "https://openalex.org/S2497301991",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-2855",
+    "journal_issn_json": "[\"2211-2855\", \"2211-3282\"]",
+    "publication_date": "2019-12-18",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 139,
+    "citation_normalized_percentile": 0.98047793,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 17,
+    "first_author": "Chuang Yu",
+    "authors_display": "Chuang Yu; Yong Li; Mathew J. Willans; Yang Zhao; Keegan R. Adair; Feipeng Zhao; Weihan Li; Sixu Deng; Jianwen Liang; Mohammad Norouzi Banis; Ruying Li; Huan Huang; Li Zhang; Rong Yang; Shigang Lu; Yining Huang; Xueliang Sun",
+    "authors_json": "[{\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yong Li\", \"id\": \"https://openalex.org/A5100355357\", \"orcid\": \"https://orcid.org/0000-0002-2774-841X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mathew J. Willans\", \"id\": \"https://openalex.org/A5111518020\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Zhao\", \"id\": \"https://openalex.org/A5082445301\", \"orcid\": \"https://orcid.org/0000-0002-4148-2603\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Keegan R. Adair\", \"id\": \"https://openalex.org/A5072392667\", \"orcid\": \"https://orcid.org/0000-0002-8680-3378\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Feipeng Zhao\", \"id\": \"https://openalex.org/A5087765157\", \"orcid\": \"https://orcid.org/0000-0003-2686-6956\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Weihan Li\", \"id\": \"https://openalex.org/A5100783455\", \"orcid\": \"https://orcid.org/0000-0002-6542-1784\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sixu Deng\", \"id\": \"https://openalex.org/A5035083082\", \"orcid\": \"https://orcid.org/0000-0001-7458-0296\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianwen Liang\", \"id\": \"https://openalex.org/A5070818496\", \"orcid\": \"https://orcid.org/0000-0003-4055-1301\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mohammad Norouzi Banis\", \"id\": \"https://openalex.org/A5034983793\", \"orcid\": \"https://orcid.org/0000-0002-6144-6837\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ruying Li\", \"id\": \"https://openalex.org/A5103120011\", \"orcid\": \"https://orcid.org/0000-0003-1369-3398\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Huan Huang\", \"id\": \"https://openalex.org/A5100670327\", \"orcid\": \"https://orcid.org/0000-0001-5651-3831\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Li Zhang\", \"id\": \"https://openalex.org/A5100425709\", \"orcid\": \"https://orcid.org/0000-0003-1152-8962\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rong Yang\", \"id\": \"https://openalex.org/A5072472914\", \"orcid\": \"https://orcid.org/0000-0001-6427-026X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shigang Lu\", \"id\": \"https://openalex.org/A5061018363\", \"orcid\": \"https://orcid.org/0000-0001-9066-7797\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yining Huang\", \"id\": \"https://openalex.org/A5008557264\", \"orcid\": \"https://orcid.org/0000-0001-9265-5896\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xueliang Sun\", \"id\": \"https://openalex.org/A5027533708\", \"orcid\": \"https://orcid.org/0000-0003-0374-1245\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301583557,
+    "actual_start_ms": 1773301590118,
+    "pacing_wait_ms": 6561,
+    "pacing_jitter_sec": 1.139
+  }
+}

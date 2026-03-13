@@ -1,0 +1,96 @@
+{
+  "doi": "10.1021/acsami.3c00462",
+  "pdf_filename": "10.1021_acsami.3c00462.pdf",
+  "json_filename": "10.1021_acsami.3c00462.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.3c00462.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4367671092",
+    "doi": "10.1021/acsami.3c00462",
+    "title": "Microscopic Degradation Mechanism of Argyrodite-Type Sulfide at the Solid Electrolyte–Cathode Interface",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2023-05-02",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 37,
+    "citation_normalized_percentile": 0.95973146,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Yusuke Morino",
+    "authors_display": "Yusuke Morino; Hirofumi Tsukasaki; Shigeo Mori",
+    "authors": [
+      {
+        "display_name": "Yusuke Morino",
+        "id": "https://openalex.org/A5082471934",
+        "orcid": "https://orcid.org/0000-0002-6973-7786",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hirofumi Tsukasaki",
+        "id": "https://openalex.org/A5016252105",
+        "orcid": "https://orcid.org/0000-0003-0523-5469",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shigeo Mori",
+        "id": "https://openalex.org/A5101113604",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4367671092",
+    "doi": "10.1021/acsami.3c00462",
+    "title": "Microscopic Degradation Mechanism of Argyrodite-Type Sulfide at the Solid Electrolyte–Cathode Interface",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2023-05-02",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 37,
+    "citation_normalized_percentile": 0.95973146,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Yusuke Morino",
+    "authors_display": "Yusuke Morino; Hirofumi Tsukasaki; Shigeo Mori",
+    "authors_json": "[{\"display_name\": \"Yusuke Morino\", \"id\": \"https://openalex.org/A5082471934\", \"orcid\": \"https://orcid.org/0000-0002-6973-7786\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hirofumi Tsukasaki\", \"id\": \"https://openalex.org/A5016252105\", \"orcid\": \"https://orcid.org/0000-0003-0523-5469\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shigeo Mori\", \"id\": \"https://openalex.org/A5101113604\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302425712,
+    "actual_start_ms": 1773302427212,
+    "pacing_wait_ms": 1499,
+    "pacing_jitter_sec": 1.053
+  }
+}

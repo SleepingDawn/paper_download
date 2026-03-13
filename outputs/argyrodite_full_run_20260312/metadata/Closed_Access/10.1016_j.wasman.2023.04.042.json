@@ -1,0 +1,110 @@
+{
+  "doi": "10.1016/j.wasman.2023.04.042",
+  "pdf_filename": "10.1016_j.wasman.2023.04.042.pdf",
+  "json_filename": "10.1016_j.wasman.2023.04.042.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.wasman.2023.04.042.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4376116675",
+    "doi": "10.1016/j.wasman.2023.04.042",
+    "title": "Chemical speciation changes of an all-solid-state lithium-ion battery caused by roasting determined by sequential acid leaching",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Waste Management",
+      "id": "https://openalex.org/S19266977",
+      "type": "journal",
+      "issn_l": "0956-053X",
+      "issn": [
+        "0956-053X",
+        "1879-2456"
+      ]
+    },
+    "publication_date": "2023-05-10",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.47922021,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Yutaro Takaya",
+    "authors_display": "Yutaro Takaya; Syuichi Kuwaba; Yusaku Tsujimura; Katsunori Yamaguchi; Chiharu Tokoro",
+    "authors": [
+      {
+        "display_name": "Yutaro Takaya",
+        "id": "https://openalex.org/A5045929127",
+        "orcid": "https://orcid.org/0000-0003-4046-6780",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Syuichi Kuwaba",
+        "id": "https://openalex.org/A5091919486",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yusaku Tsujimura",
+        "id": "https://openalex.org/A5091919487",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Katsunori Yamaguchi",
+        "id": "https://openalex.org/A5109502015",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chiharu Tokoro",
+        "id": "https://openalex.org/A5089223716",
+        "orcid": "https://orcid.org/0000-0001-6214-0402",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4376116675",
+    "doi": "10.1016/j.wasman.2023.04.042",
+    "title": "Chemical speciation changes of an all-solid-state lithium-ion battery caused by roasting determined by sequential acid leaching",
+    "publisher": "Elsevier BV",
+    "journal": "Waste Management",
+    "journal_id": "https://openalex.org/S19266977",
+    "journal_type": "journal",
+    "journal_issn_l": "0956-053X",
+    "journal_issn_json": "[\"0956-053X\", \"1879-2456\"]",
+    "publication_date": "2023-05-10",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.47922021,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Yutaro Takaya",
+    "authors_display": "Yutaro Takaya; Syuichi Kuwaba; Yusaku Tsujimura; Katsunori Yamaguchi; Chiharu Tokoro",
+    "authors_json": "[{\"display_name\": \"Yutaro Takaya\", \"id\": \"https://openalex.org/A5045929127\", \"orcid\": \"https://orcid.org/0000-0003-4046-6780\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Syuichi Kuwaba\", \"id\": \"https://openalex.org/A5091919486\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yusaku Tsujimura\", \"id\": \"https://openalex.org/A5091919487\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Katsunori Yamaguchi\", \"id\": \"https://openalex.org/A5109502015\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chiharu Tokoro\", \"id\": \"https://openalex.org/A5089223716\", \"orcid\": \"https://orcid.org/0000-0001-6214-0402\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S0956053X23003331?via%3Dihub",
+    "landing_title": "Chemical speciation changes of an all-solid-state lithium-ion battery caused by roasting determined by sequential acid leaching - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773308085012,
+    "actual_start_ms": 1773308091697,
+    "pacing_wait_ms": 6685,
+    "pacing_jitter_sec": 0.916
+  }
+}

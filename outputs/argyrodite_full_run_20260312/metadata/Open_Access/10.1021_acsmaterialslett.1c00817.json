@@ -1,0 +1,130 @@
+{
+  "doi": "10.1021/acsmaterialslett.1c00817",
+  "pdf_filename": "10.1021_acsmaterialslett.1c00817.pdf",
+  "json_filename": "10.1021_acsmaterialslett.1c00817.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsmaterialslett.1c00817.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4206964637",
+    "doi": "10.1021/acsmaterialslett.1c00817",
+    "title": "High-Entropy Polyanionic Lithium Superionic Conductors",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Materials Letters",
+      "id": "https://openalex.org/S4210213087",
+      "type": "journal",
+      "issn_l": "2639-4979",
+      "issn": [
+        "2639-4979"
+      ]
+    },
+    "publication_date": "2022-01-25",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 70,
+    "citation_normalized_percentile": 0.9714826,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Florian Strauss",
+    "authors_display": "Florian Strauss; Jing Lin; Marie Duffiet; Kai Wang; Tatiana Zinkevich; Anna‐Lena Hansen; Sylvio Indris; Torsten Brezesinski",
+    "authors": [
+      {
+        "display_name": "Florian Strauss",
+        "id": "https://openalex.org/A5019742727",
+        "orcid": "https://orcid.org/0000-0001-5817-6349",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jing Lin",
+        "id": "https://openalex.org/A5101982105",
+        "orcid": "https://orcid.org/0000-0002-6403-4803",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marie Duffiet",
+        "id": "https://openalex.org/A5003719560",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kai Wang",
+        "id": "https://openalex.org/A5100436928",
+        "orcid": "https://orcid.org/0000-0001-6149-6685",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tatiana Zinkevich",
+        "id": "https://openalex.org/A5007138622",
+        "orcid": "https://orcid.org/0000-0002-8145-3145",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anna‐Lena Hansen",
+        "id": "https://openalex.org/A5090978433",
+        "orcid": "https://orcid.org/0000-0001-5806-9674",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sylvio Indris",
+        "id": "https://openalex.org/A5046099728",
+        "orcid": "https://orcid.org/0000-0002-5100-113X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Torsten Brezesinski",
+        "id": "https://openalex.org/A5030005479",
+        "orcid": "https://orcid.org/0000-0002-4336-263X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4206964637",
+    "doi": "10.1021/acsmaterialslett.1c00817",
+    "title": "High-Entropy Polyanionic Lithium Superionic Conductors",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Materials Letters",
+    "journal_id": "https://openalex.org/S4210213087",
+    "journal_type": "journal",
+    "journal_issn_l": "2639-4979",
+    "journal_issn_json": "[\"2639-4979\"]",
+    "publication_date": "2022-01-25",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 70,
+    "citation_normalized_percentile": 0.9714826,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Florian Strauss",
+    "authors_display": "Florian Strauss; Jing Lin; Marie Duffiet; Kai Wang; Tatiana Zinkevich; Anna‐Lena Hansen; Sylvio Indris; Torsten Brezesinski",
+    "authors_json": "[{\"display_name\": \"Florian Strauss\", \"id\": \"https://openalex.org/A5019742727\", \"orcid\": \"https://orcid.org/0000-0001-5817-6349\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Jing Lin\", \"id\": \"https://openalex.org/A5101982105\", \"orcid\": \"https://orcid.org/0000-0002-6403-4803\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marie Duffiet\", \"id\": \"https://openalex.org/A5003719560\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kai Wang\", \"id\": \"https://openalex.org/A5100436928\", \"orcid\": \"https://orcid.org/0000-0001-6149-6685\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tatiana Zinkevich\", \"id\": \"https://openalex.org/A5007138622\", \"orcid\": \"https://orcid.org/0000-0002-8145-3145\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anna‐Lena Hansen\", \"id\": \"https://openalex.org/A5090978433\", \"orcid\": \"https://orcid.org/0000-0001-5806-9674\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sylvio Indris\", \"id\": \"https://openalex.org/A5046099728\", \"orcid\": \"https://orcid.org/0000-0002-5100-113X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Torsten Brezesinski\", \"id\": \"https://openalex.org/A5030005479\", \"orcid\": \"https://orcid.org/0000-0002-4336-263X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301950157,
+    "actual_start_ms": 1773301951660,
+    "pacing_wait_ms": 1502,
+    "pacing_jitter_sec": 1.302
+  }
+}

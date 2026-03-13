@@ -1,0 +1,133 @@
+{
+  "doi": "10.1149/ma2024-0281095mtgabs",
+  "pdf_filename": "10.1149_ma2024-0281095mtgabs.pdf",
+  "json_filename": "10.1149_ma2024-0281095mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2024-0281095mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4405593823",
+    "doi": "10.1149/ma2024-0281095mtgabs",
+    "title": "Elucidating Ion Transport Phenomena in Sulfide/Polymer Composite Electrolytes for Practical Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21988358,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Kyeongseok Oh",
+    "authors_display": "Kyeongseok Oh; Ji Eun Lee; Yong-Hyeok Lee; Yi-Su Jeong; Imanuel Kristanto; Hong‐Seok Min; Sang Kyu Kwak; Sang‐Young Lee",
+    "authors": [
+      {
+        "display_name": "Kyeongseok Oh",
+        "id": "https://openalex.org/A5061586249",
+        "orcid": "https://orcid.org/0000-0001-5166-3793",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ji Eun Lee",
+        "id": "https://openalex.org/A5118899219",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong-Hyeok Lee",
+        "id": "https://openalex.org/A5062549985",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yi-Su Jeong",
+        "id": "https://openalex.org/A5111008209",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Imanuel Kristanto",
+        "id": "https://openalex.org/A5025415211",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong‐Seok Min",
+        "id": "https://openalex.org/A5114002104",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang Kyu Kwak",
+        "id": "https://openalex.org/A5021793622",
+        "orcid": "https://orcid.org/0000-0002-0332-1534",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang‐Young Lee",
+        "id": "https://openalex.org/A5002813719",
+        "orcid": "https://orcid.org/0000-0001-7153-0517",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405593823",
+    "doi": "10.1149/ma2024-0281095mtgabs",
+    "title": "Elucidating Ion Transport Phenomena in Sulfide/Polymer Composite Electrolytes for Practical Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21988358,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Kyeongseok Oh",
+    "authors_display": "Kyeongseok Oh; Ji Eun Lee; Yong-Hyeok Lee; Yi-Su Jeong; Imanuel Kristanto; Hong‐Seok Min; Sang Kyu Kwak; Sang‐Young Lee",
+    "authors_json": "[{\"display_name\": \"Kyeongseok Oh\", \"id\": \"https://openalex.org/A5061586249\", \"orcid\": \"https://orcid.org/0000-0001-5166-3793\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ji Eun Lee\", \"id\": \"https://openalex.org/A5118899219\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong-Hyeok Lee\", \"id\": \"https://openalex.org/A5062549985\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yi-Su Jeong\", \"id\": \"https://openalex.org/A5111008209\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Imanuel Kristanto\", \"id\": \"https://openalex.org/A5025415211\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong‐Seok Min\", \"id\": \"https://openalex.org/A5114002104\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang Kyu Kwak\", \"id\": \"https://openalex.org/A5021793622\", \"orcid\": \"https://orcid.org/0000-0002-0332-1534\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang‐Young Lee\", \"id\": \"https://openalex.org/A5002813719\", \"orcid\": \"https://orcid.org/0000-0001-7153-0517\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773307616414,
+    "actual_start_ms": 1773307616414,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.528
+  }
+}

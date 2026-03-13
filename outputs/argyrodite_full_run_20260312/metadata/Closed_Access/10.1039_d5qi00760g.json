@@ -1,0 +1,124 @@
+{
+  "doi": "10.1039/d5qi00760g",
+  "pdf_filename": "10.1039_d5qi00760g.pdf",
+  "json_filename": "10.1039_d5qi00760g.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d5qi00760g.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409803609",
+    "doi": "10.1039/d5qi00760g",
+    "title": "Temperature-dependent interfacial reactions between a sulfide argyrodite solid electrolyte and a lithium metal anode",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Inorganic Chemistry Frontiers",
+      "id": "https://openalex.org/S2764402489",
+      "type": "journal",
+      "issn_l": "2052-1545",
+      "issn": [
+        "2052-1545",
+        "2052-1553"
+      ]
+    },
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.08678214,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Ye‐Eun Park",
+    "authors_display": "Ye‐Eun Park; Seong Gu Kang; Tae Hyun Kim; Hyoun‐Myoung Oh; Kyung-Su Kim; Woosuk Cho; Sangryun Kim",
+    "authors": [
+      {
+        "display_name": "Ye‐Eun Park",
+        "id": "https://openalex.org/A5064813673",
+        "orcid": "https://orcid.org/0000-0003-3936-0452",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Seong Gu Kang",
+        "id": "https://openalex.org/A5051015992",
+        "orcid": "https://orcid.org/0000-0001-5722-3975",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tae Hyun Kim",
+        "id": "https://openalex.org/A5100438979",
+        "orcid": "https://orcid.org/0000-0002-0154-518X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyoun‐Myoung Oh",
+        "id": "https://openalex.org/A5011964927",
+        "orcid": "https://orcid.org/0000-0001-7376-5600",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung-Su Kim",
+        "id": "https://openalex.org/A5100374557",
+        "orcid": "https://orcid.org/0009-0005-3151-4113",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Woosuk Cho",
+        "id": "https://openalex.org/A5055468719",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sangryun Kim",
+        "id": "https://openalex.org/A5028889140",
+        "orcid": "https://orcid.org/0000-0001-8617-3022",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409803609",
+    "doi": "10.1039/d5qi00760g",
+    "title": "Temperature-dependent interfacial reactions between a sulfide argyrodite solid electrolyte and a lithium metal anode",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Inorganic Chemistry Frontiers",
+    "journal_id": "https://openalex.org/S2764402489",
+    "journal_type": "journal",
+    "journal_issn_l": "2052-1545",
+    "journal_issn_json": "[\"2052-1545\", \"2052-1553\"]",
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.08678214,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Ye‐Eun Park",
+    "authors_display": "Ye‐Eun Park; Seong Gu Kang; Tae Hyun Kim; Hyoun‐Myoung Oh; Kyung-Su Kim; Woosuk Cho; Sangryun Kim",
+    "authors_json": "[{\"display_name\": \"Ye‐Eun Park\", \"id\": \"https://openalex.org/A5064813673\", \"orcid\": \"https://orcid.org/0000-0003-3936-0452\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Seong Gu Kang\", \"id\": \"https://openalex.org/A5051015992\", \"orcid\": \"https://orcid.org/0000-0001-5722-3975\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tae Hyun Kim\", \"id\": \"https://openalex.org/A5100438979\", \"orcid\": \"https://orcid.org/0000-0002-0154-518X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyoun‐Myoung Oh\", \"id\": \"https://openalex.org/A5011964927\", \"orcid\": \"https://orcid.org/0000-0001-7376-5600\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung-Su Kim\", \"id\": \"https://openalex.org/A5100374557\", \"orcid\": \"https://orcid.org/0009-0005-3151-4113\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Woosuk Cho\", \"id\": \"https://openalex.org/A5055468719\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sangryun Kim\", \"id\": \"https://openalex.org/A5028889140\", \"orcid\": \"https://orcid.org/0000-0001-8617-3022\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://doi.org/10.1039/d5qi00760g",
+    "landing_title": "새 탭",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773317175455,
+    "actual_start_ms": 1773317175456,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.676
+  }
+}

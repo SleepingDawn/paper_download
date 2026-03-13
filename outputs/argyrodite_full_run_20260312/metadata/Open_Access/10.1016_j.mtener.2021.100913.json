@@ -1,0 +1,109 @@
+{
+  "doi": "10.1016/j.mtener.2021.100913",
+  "pdf_filename": "10.1016_j.mtener.2021.100913.pdf",
+  "json_filename": "10.1016_j.mtener.2021.100913.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.mtener.2021.100913.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3215699938",
+    "doi": "10.1016/j.mtener.2021.100913",
+    "title": "2D argyrodite LPSCl solid electrolyte for all-solid-state Li-ion battery using reduced graphene oxide template",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Materials Today Energy",
+      "id": "https://openalex.org/S2898308537",
+      "type": "journal",
+      "issn_l": "2468-6069",
+      "issn": [
+        "2468-6069"
+      ]
+    },
+    "publication_date": "2021-11-26",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.72381474,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Seok Hun Kang",
+    "authors_display": "Seok Hun Kang; Ju Young Kim; Dong Ok Shin; Myeong Ju Lee; Young-Gi Lee",
+    "authors": [
+      {
+        "display_name": "Seok Hun Kang",
+        "id": "https://openalex.org/A5046819573",
+        "orcid": "https://orcid.org/0000-0001-6725-7140",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ju Young Kim",
+        "id": "https://openalex.org/A5100371856",
+        "orcid": "https://orcid.org/0000-0002-2396-4457",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong Ok Shin",
+        "id": "https://openalex.org/A5076755270",
+        "orcid": "https://orcid.org/0000-0001-6608-8509",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Myeong Ju Lee",
+        "id": "https://openalex.org/A5091369909",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young-Gi Lee",
+        "id": "https://openalex.org/A5077265115",
+        "orcid": "https://orcid.org/0000-0002-6364-4626",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3215699938",
+    "doi": "10.1016/j.mtener.2021.100913",
+    "title": "2D argyrodite LPSCl solid electrolyte for all-solid-state Li-ion battery using reduced graphene oxide template",
+    "publisher": "Elsevier BV",
+    "journal": "Materials Today Energy",
+    "journal_id": "https://openalex.org/S2898308537",
+    "journal_type": "journal",
+    "journal_issn_l": "2468-6069",
+    "journal_issn_json": "[\"2468-6069\"]",
+    "publication_date": "2021-11-26",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.72381474,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Seok Hun Kang",
+    "authors_display": "Seok Hun Kang; Ju Young Kim; Dong Ok Shin; Myeong Ju Lee; Young-Gi Lee",
+    "authors_json": "[{\"display_name\": \"Seok Hun Kang\", \"id\": \"https://openalex.org/A5046819573\", \"orcid\": \"https://orcid.org/0000-0001-6725-7140\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ju Young Kim\", \"id\": \"https://openalex.org/A5100371856\", \"orcid\": \"https://orcid.org/0000-0002-2396-4457\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong Ok Shin\", \"id\": \"https://openalex.org/A5076755270\", \"orcid\": \"https://orcid.org/0000-0001-6608-8509\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Myeong Ju Lee\", \"id\": \"https://openalex.org/A5091369909\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young-Gi Lee\", \"id\": \"https://openalex.org/A5077265115\", \"orcid\": \"https://orcid.org/0000-0002-6364-4626\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302889453,
+    "actual_start_ms": 1773302890958,
+    "pacing_wait_ms": 1504,
+    "pacing_jitter_sec": 1.0
+  }
+}

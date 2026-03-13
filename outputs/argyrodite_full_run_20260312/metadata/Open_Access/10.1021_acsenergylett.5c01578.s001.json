@@ -1,0 +1,114 @@
+{
+  "doi": "10.1021/acsenergylett.5c01578.s001",
+  "pdf_filename": "10.1021_acsenergylett.5c01578.s001.pdf",
+  "json_filename": "10.1021_acsenergylett.5c01578.s001.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsenergylett.5c01578.s001.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7111344457",
+    "doi": "10.1021/acsenergylett.5c01578.s001",
+    "title": "Unveilingthe Role of Lithium Iodide in StabilizingSolid Interfaces in All-Solid-State Li Metal Batteries",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": {
+      "name": "Figshare",
+      "id": "https://openalex.org/S4377196282",
+      "type": "repository",
+      "issn_l": null,
+      "issn": []
+    },
+    "publication_date": "2025-08-23",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.54888127,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Di Huang (360305)",
+    "authors_display": "Di Huang (360305); Suyue Yuan (22113415); Nicole Adelstein (1834396); Gao Liu (1466482); Liwen F. Wan (1441123); Wei Tong (6537)",
+    "authors": [
+      {
+        "display_name": "Di Huang (360305)",
+        "id": null,
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Suyue Yuan (22113415)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nicole Adelstein (1834396)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gao Liu (1466482)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liwen F. Wan (1441123)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei Tong (6537)",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7111344457",
+    "doi": "10.1021/acsenergylett.5c01578.s001",
+    "title": "Unveilingthe Role of Lithium Iodide in StabilizingSolid Interfaces in All-Solid-State Li Metal Batteries",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": "Figshare",
+    "journal_id": "https://openalex.org/S4377196282",
+    "journal_type": "repository",
+    "journal_issn_l": null,
+    "journal_issn_json": "[]",
+    "publication_date": "2025-08-23",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.54888127,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Di Huang (360305)",
+    "authors_display": "Di Huang (360305); Suyue Yuan (22113415); Nicole Adelstein (1834396); Gao Liu (1466482); Liwen F. Wan (1441123); Wei Tong (6537)",
+    "authors_json": "[{\"display_name\": \"Di Huang (360305)\", \"id\": null, \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Suyue Yuan (22113415)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nicole Adelstein (1834396)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gao Liu (1466482)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liwen F. Wan (1441123)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei Tong (6537)\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "direct_pdf_handoff",
+    "landing_url": "https://doi.org/10.1021/acsenergylett.5c01578.s001",
+    "landing_title": "새 탭",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsenergylett.5c01578.s001.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773310117211,
+    "actual_start_ms": 1773310117211,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.755
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "doi": "10.2139/ssrn.4233149",
+  "pdf_filename": "10.2139_ssrn.4233149.pdf",
+  "json_filename": "10.2139_ssrn.4233149.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.4233149.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4312864132",
+    "doi": "10.2139/ssrn.4233149",
+    "title": "Highly Conductive Iodine and Fluorine Dual Doped Argyrodite Solid Electrolyte for Lithium Metal Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "William Arnold",
+    "authors_display": "William Arnold; Varun Shreyas; Sharmin Akter; Yang Li; Selim Halacoglu; Milinda Kalutara Koralalage; Xiaolin Guo; Wei Wei; Gamini Sumanasekera; Jacek B. Jasiński; Badri Narayanan; Hui Wang",
+    "authors": [
+      {
+        "display_name": "William Arnold",
+        "id": "https://openalex.org/A5103052505",
+        "orcid": "https://orcid.org/0000-0002-1331-9489",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Varun Shreyas",
+        "id": "https://openalex.org/A5079541333",
+        "orcid": "https://orcid.org/0000-0002-5362-0874",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sharmin Akter",
+        "id": "https://openalex.org/A5000749284",
+        "orcid": "https://orcid.org/0000-0001-6901-3377",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Li",
+        "id": "https://openalex.org/A5100421695",
+        "orcid": "https://orcid.org/0000-0003-0357-4520",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Selim Halacoglu",
+        "id": "https://openalex.org/A5060597294",
+        "orcid": "https://orcid.org/0000-0001-6261-7311",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Milinda Kalutara Koralalage",
+        "id": "https://openalex.org/A5019742921",
+        "orcid": "https://orcid.org/0000-0002-1356-7060",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaolin Guo",
+        "id": "https://openalex.org/A5101530242",
+        "orcid": "https://orcid.org/0009-0004-1204-6978",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei Wei",
+        "id": "https://openalex.org/A5100323783",
+        "orcid": "https://orcid.org/0000-0002-9701-3742",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gamini Sumanasekera",
+        "id": "https://openalex.org/A5076499335",
+        "orcid": "https://orcid.org/0000-0001-9585-8533",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jacek B. Jasiński",
+        "id": "https://openalex.org/A5078488878",
+        "orcid": "https://orcid.org/0000-0002-1297-6145",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Badri Narayanan",
+        "id": "https://openalex.org/A5014353341",
+        "orcid": "https://orcid.org/0000-0001-8147-1047",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hui Wang",
+        "id": "https://openalex.org/A5100460802",
+        "orcid": "https://orcid.org/0000-0002-5208-8329",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4312864132",
+    "doi": "10.2139/ssrn.4233149",
+    "title": "Highly Conductive Iodine and Fluorine Dual Doped Argyrodite Solid Electrolyte for Lithium Metal Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "William Arnold",
+    "authors_display": "William Arnold; Varun Shreyas; Sharmin Akter; Yang Li; Selim Halacoglu; Milinda Kalutara Koralalage; Xiaolin Guo; Wei Wei; Gamini Sumanasekera; Jacek B. Jasiński; Badri Narayanan; Hui Wang",
+    "authors_json": "[{\"display_name\": \"William Arnold\", \"id\": \"https://openalex.org/A5103052505\", \"orcid\": \"https://orcid.org/0000-0002-1331-9489\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Varun Shreyas\", \"id\": \"https://openalex.org/A5079541333\", \"orcid\": \"https://orcid.org/0000-0002-5362-0874\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sharmin Akter\", \"id\": \"https://openalex.org/A5000749284\", \"orcid\": \"https://orcid.org/0000-0001-6901-3377\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Li\", \"id\": \"https://openalex.org/A5100421695\", \"orcid\": \"https://orcid.org/0000-0003-0357-4520\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Selim Halacoglu\", \"id\": \"https://openalex.org/A5060597294\", \"orcid\": \"https://orcid.org/0000-0001-6261-7311\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Milinda Kalutara Koralalage\", \"id\": \"https://openalex.org/A5019742921\", \"orcid\": \"https://orcid.org/0000-0002-1356-7060\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaolin Guo\", \"id\": \"https://openalex.org/A5101530242\", \"orcid\": \"https://orcid.org/0009-0004-1204-6978\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei Wei\", \"id\": \"https://openalex.org/A5100323783\", \"orcid\": \"https://orcid.org/0000-0002-9701-3742\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gamini Sumanasekera\", \"id\": \"https://openalex.org/A5076499335\", \"orcid\": \"https://orcid.org/0000-0001-9585-8533\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jacek B. Jasiński\", \"id\": \"https://openalex.org/A5078488878\", \"orcid\": \"https://orcid.org/0000-0002-1297-6145\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Badri Narayanan\", \"id\": \"https://openalex.org/A5014353341\", \"orcid\": \"https://orcid.org/0000-0001-8147-1047\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hui Wang\", \"id\": \"https://openalex.org/A5100460802\", \"orcid\": \"https://orcid.org/0000-0002-5208-8329\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4233149",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.4233149.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773312003867,
+    "actual_start_ms": 1773312003868,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.056
+  }
+}

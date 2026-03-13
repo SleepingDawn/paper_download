@@ -1,0 +1,90 @@
+{
+  "doi": "10.1149/1.3393854",
+  "pdf_filename": "10.1149_1.3393854.pdf",
+  "json_filename": "10.1149_1.3393854.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_1.3393854.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2322814164",
+    "doi": "10.1149/1.3393854",
+    "title": "Crystalline Halide Substituted Li-Argyrodites as Solid Electrolytes for Lithium Secondary Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Transactions",
+      "id": "https://openalex.org/S4210205149",
+      "type": "journal",
+      "issn_l": "1938-5862",
+      "issn": [
+        "1938-5862",
+        "1938-6737",
+        "2151-2051"
+      ]
+    },
+    "publication_date": "2010-04-16",
+    "publication_year": 2010,
+    "work_type": "article",
+    "cited_by_count": 28,
+    "citation_normalized_percentile": 0.8658886,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Florian J. Stadler",
+    "authors_display": "Florian J. Stadler; Christopher Fietzek",
+    "authors": [
+      {
+        "display_name": "Florian J. Stadler",
+        "id": "https://openalex.org/A5073987958",
+        "orcid": "https://orcid.org/0000-0002-5849-1485",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Christopher Fietzek",
+        "id": "https://openalex.org/A5019806753",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2322814164",
+    "doi": "10.1149/1.3393854",
+    "title": "Crystalline Halide Substituted Li-Argyrodites as Solid Electrolytes for Lithium Secondary Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Transactions",
+    "journal_id": "https://openalex.org/S4210205149",
+    "journal_type": "journal",
+    "journal_issn_l": "1938-5862",
+    "journal_issn_json": "[\"1938-5862\", \"1938-6737\", \"2151-2051\"]",
+    "publication_date": "2010-04-16",
+    "publication_year": 2010,
+    "work_type": "article",
+    "cited_by_count": 28,
+    "citation_normalized_percentile": 0.8658886,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Florian J. Stadler",
+    "authors_display": "Florian J. Stadler; Christopher Fietzek",
+    "authors_json": "[{\"display_name\": \"Florian J. Stadler\", \"id\": \"https://openalex.org/A5073987958\", \"orcid\": \"https://orcid.org/0000-0002-5849-1485\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Christopher Fietzek\", \"id\": \"https://openalex.org/A5019806753\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773302057873,
+    "actual_start_ms": 1773302059369,
+    "pacing_wait_ms": 1496,
+    "pacing_jitter_sec": 1.778
+  }
+}

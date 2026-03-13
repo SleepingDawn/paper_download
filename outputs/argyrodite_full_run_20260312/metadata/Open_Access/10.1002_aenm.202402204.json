@@ -1,0 +1,152 @@
+{
+  "doi": "10.1002/aenm.202402204",
+  "pdf_filename": "10.1002_aenm.202402204.pdf",
+  "json_filename": "10.1002_aenm.202402204.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202402204.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4401339776",
+    "doi": "10.1002/aenm.202402204",
+    "title": "A Small Electrolyte Drop Enables a Disruptive Semisolid High‐Energy Sulfur Battery Cell Design via an Argyrodite‐Based Sulfur Cathode in Combination with a Metallic Lithium Anode",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2024-08-05",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.93657553,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202402204",
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Sebastian Kirchhoff",
+    "authors_display": "Sebastian Kirchhoff; Magdalena Fiedler; Arthur Dupuy; Paul Härtel; Maria Semmler; Felix Hippauf; Susanne Dörfler; Benjamin Schumm; Thomas Abendroth; Holger Althues; Stefan Kaskel",
+    "authors": [
+      {
+        "display_name": "Sebastian Kirchhoff",
+        "id": "https://openalex.org/A5016593869",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Magdalena Fiedler",
+        "id": "https://openalex.org/A5049308914",
+        "orcid": "https://orcid.org/0000-0002-4552-8189",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Arthur Dupuy",
+        "id": "https://openalex.org/A5016564852",
+        "orcid": "https://orcid.org/0000-0003-3574-8142",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Paul Härtel",
+        "id": "https://openalex.org/A5064985190",
+        "orcid": "https://orcid.org/0000-0002-7843-7654",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maria Semmler",
+        "id": "https://openalex.org/A5114203557",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Felix Hippauf",
+        "id": "https://openalex.org/A5048356342",
+        "orcid": "https://orcid.org/0000-0002-9951-7776",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Susanne Dörfler",
+        "id": "https://openalex.org/A5037769749",
+        "orcid": "https://orcid.org/0000-0002-0142-4759",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Benjamin Schumm",
+        "id": "https://openalex.org/A5068465682",
+        "orcid": "https://orcid.org/0000-0001-9663-9092",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Thomas Abendroth",
+        "id": "https://openalex.org/A5025455419",
+        "orcid": "https://orcid.org/0000-0001-6942-3640",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Holger Althues",
+        "id": "https://openalex.org/A5046398535",
+        "orcid": "https://orcid.org/0000-0002-3865-6262",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Stefan Kaskel",
+        "id": "https://openalex.org/A5030419910",
+        "orcid": "https://orcid.org/0000-0003-4572-0303",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4401339776",
+    "doi": "10.1002/aenm.202402204",
+    "title": "A Small Electrolyte Drop Enables a Disruptive Semisolid High‐Energy Sulfur Battery Cell Design via an Argyrodite‐Based Sulfur Cathode in Combination with a Metallic Lithium Anode",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2024-08-05",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.93657553,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202402204",
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Sebastian Kirchhoff",
+    "authors_display": "Sebastian Kirchhoff; Magdalena Fiedler; Arthur Dupuy; Paul Härtel; Maria Semmler; Felix Hippauf; Susanne Dörfler; Benjamin Schumm; Thomas Abendroth; Holger Althues; Stefan Kaskel",
+    "authors_json": "[{\"display_name\": \"Sebastian Kirchhoff\", \"id\": \"https://openalex.org/A5016593869\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Magdalena Fiedler\", \"id\": \"https://openalex.org/A5049308914\", \"orcid\": \"https://orcid.org/0000-0002-4552-8189\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Arthur Dupuy\", \"id\": \"https://openalex.org/A5016564852\", \"orcid\": \"https://orcid.org/0000-0003-3574-8142\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Paul Härtel\", \"id\": \"https://openalex.org/A5064985190\", \"orcid\": \"https://orcid.org/0000-0002-7843-7654\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maria Semmler\", \"id\": \"https://openalex.org/A5114203557\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Felix Hippauf\", \"id\": \"https://openalex.org/A5048356342\", \"orcid\": \"https://orcid.org/0000-0002-9951-7776\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Susanne Dörfler\", \"id\": \"https://openalex.org/A5037769749\", \"orcid\": \"https://orcid.org/0000-0002-0142-4759\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Benjamin Schumm\", \"id\": \"https://openalex.org/A5068465682\", \"orcid\": \"https://orcid.org/0000-0001-9663-9092\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Thomas Abendroth\", \"id\": \"https://openalex.org/A5025455419\", \"orcid\": \"https://orcid.org/0000-0001-6942-3640\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Holger Althues\", \"id\": \"https://openalex.org/A5046398535\", \"orcid\": \"https://orcid.org/0000-0002-3865-6262\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Stefan Kaskel\", \"id\": \"https://openalex.org/A5030419910\", \"orcid\": \"https://orcid.org/0000-0003-4572-0303\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773304531783,
+    "actual_start_ms": 1773304531784,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.243
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "doi": "10.34734/fzj-2025-03465",
+  "pdf_filename": "10.34734_fzj-2025-03465.pdf",
+  "json_filename": "10.34734_fzj-2025-03465.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.34734_fzj-2025-03465.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7125894881",
+    "doi": "10.34734/fzj-2025-03465",
+    "title": "Influence of State‐of‐Charge‐Dependent Decomposition Kinetics at the $Li_6PS_5Cl|LiNi_{0.83}Co_{0.11}Mn_{0.06}O_2$ Interface on Solid‐State Battery Performance",
+    "publisher": "JuSER Publikationsportal",
+    "journal": {
+      "name": "JuSER Publikationsportal",
+      "id": "https://openalex.org/S7407051455",
+      "type": "repository",
+      "issn_l": null,
+      "issn": []
+    },
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.63308758,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Melina Witt",
+    "authors_display": "Melina Witt; Martin Lange; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Melina Witt",
+        "id": "https://openalex.org/A5028276254",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Martin Lange",
+        "id": "https://openalex.org/A5062147292",
+        "orcid": "https://orcid.org/0000-0002-4045-3915",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7125894881",
+    "doi": "10.34734/fzj-2025-03465",
+    "title": "Influence of State‐of‐Charge‐Dependent Decomposition Kinetics at the $Li_6PS_5Cl|LiNi_{0.83}Co_{0.11}Mn_{0.06}O_2$ Interface on Solid‐State Battery Performance",
+    "publisher": "JuSER Publikationsportal",
+    "journal": "JuSER Publikationsportal",
+    "journal_id": "https://openalex.org/S7407051455",
+    "journal_type": "repository",
+    "journal_issn_l": null,
+    "journal_issn_json": "[]",
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.63308758,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Melina Witt",
+    "authors_display": "Melina Witt; Martin Lange; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Melina Witt\", \"id\": \"https://openalex.org/A5028276254\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Martin Lange\", \"id\": \"https://openalex.org/A5062147292\", \"orcid\": \"https://orcid.org/0000-0002-4045-3915\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://juser.fz-juelich.de/record/1044975",
+    "landing_title": "Influence of State‐of‐Charge‐Dependent Decomposition Kinetics at the $Li_6PS_5Cl|LiNi_{0.83}Co_{0.11}Mn_{0.06}O_2$ Interface on Solid‐State Battery Performance - JuSER",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.34734_fzj-2025-03465.pdf",
+    "scheduler_publisher": "10.34734",
+    "scheduled_start_ms": 1773311401745,
+    "actual_start_ms": 1773311401745,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.115
+  }
+}

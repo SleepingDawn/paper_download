@@ -1,0 +1,144 @@
+{
+  "doi": "10.1016/j.xcrp.2022.101043",
+  "pdf_filename": "10.1016_j.xcrp.2022.101043.pdf",
+  "json_filename": "10.1016_j.xcrp.2022.101043.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.xcrp.2022.101043.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4294274965",
+    "doi": "10.1016/j.xcrp.2022.101043",
+    "title": "Li6PS5Cl microstructure and influence on dendrite growth in solid-state batteries with lithium metal anode",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Cell Reports Physical Science",
+      "id": "https://openalex.org/S4210216867",
+      "type": "journal",
+      "issn_l": "2666-3864",
+      "issn": [
+        "2666-3864"
+      ]
+    },
+    "publication_date": "2022-09-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 122,
+    "citation_normalized_percentile": 0.98989248,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Dheeraj K. Singh",
+    "authors_display": "Dheeraj K. Singh; Anja Henß; Boris Mogwitz; Ajay Gautam; Jonas Horn; Thorben Krauskopf; Simon Burkhardt; Joachim Sann; Felix H. Richter; Jürgen Janek",
+    "authors": [
+      {
+        "display_name": "Dheeraj K. Singh",
+        "id": "https://openalex.org/A5003589984",
+        "orcid": "https://orcid.org/0000-0001-8370-9549",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Anja Henß",
+        "id": "https://openalex.org/A5072831450",
+        "orcid": "https://orcid.org/0000-0001-5009-6512",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Boris Mogwitz",
+        "id": "https://openalex.org/A5025523898",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ajay Gautam",
+        "id": "https://openalex.org/A5101921028",
+        "orcid": "https://orcid.org/0000-0002-3971-8365",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jonas Horn",
+        "id": "https://openalex.org/A5024958906",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Thorben Krauskopf",
+        "id": "https://openalex.org/A5081413550",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Simon Burkhardt",
+        "id": "https://openalex.org/A5111881645",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joachim Sann",
+        "id": "https://openalex.org/A5071106594",
+        "orcid": "https://orcid.org/0000-0003-4663-2671",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Felix H. Richter",
+        "id": "https://openalex.org/A5035183233",
+        "orcid": "https://orcid.org/0000-0002-6587-7757",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4294274965",
+    "doi": "10.1016/j.xcrp.2022.101043",
+    "title": "Li6PS5Cl microstructure and influence on dendrite growth in solid-state batteries with lithium metal anode",
+    "publisher": "Elsevier BV",
+    "journal": "Cell Reports Physical Science",
+    "journal_id": "https://openalex.org/S4210216867",
+    "journal_type": "journal",
+    "journal_issn_l": "2666-3864",
+    "journal_issn_json": "[\"2666-3864\"]",
+    "publication_date": "2022-09-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 122,
+    "citation_normalized_percentile": 0.98989248,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Dheeraj K. Singh",
+    "authors_display": "Dheeraj K. Singh; Anja Henß; Boris Mogwitz; Ajay Gautam; Jonas Horn; Thorben Krauskopf; Simon Burkhardt; Joachim Sann; Felix H. Richter; Jürgen Janek",
+    "authors_json": "[{\"display_name\": \"Dheeraj K. Singh\", \"id\": \"https://openalex.org/A5003589984\", \"orcid\": \"https://orcid.org/0000-0001-8370-9549\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Anja Henß\", \"id\": \"https://openalex.org/A5072831450\", \"orcid\": \"https://orcid.org/0000-0001-5009-6512\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Boris Mogwitz\", \"id\": \"https://openalex.org/A5025523898\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ajay Gautam\", \"id\": \"https://openalex.org/A5101921028\", \"orcid\": \"https://orcid.org/0000-0002-3971-8365\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jonas Horn\", \"id\": \"https://openalex.org/A5024958906\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Thorben Krauskopf\", \"id\": \"https://openalex.org/A5081413550\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Simon Burkhardt\", \"id\": \"https://openalex.org/A5111881645\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Joachim Sann\", \"id\": \"https://openalex.org/A5071106594\", \"orcid\": \"https://orcid.org/0000-0003-4663-2671\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Felix H. Richter\", \"id\": \"https://openalex.org/A5035183233\", \"orcid\": \"https://orcid.org/0000-0002-6587-7757\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301616584,
+    "actual_start_ms": 1773301622548,
+    "pacing_wait_ms": 5964,
+    "pacing_jitter_sec": 0.831
+  }
+}

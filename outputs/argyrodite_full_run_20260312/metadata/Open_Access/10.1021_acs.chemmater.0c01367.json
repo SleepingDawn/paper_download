@@ -1,0 +1,96 @@
+{
+  "doi": "10.1021/acs.chemmater.0c01367",
+  "pdf_filename": "10.1021_acs.chemmater.0c01367.pdf",
+  "json_filename": "10.1021_acs.chemmater.0c01367.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.chemmater.0c01367.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3027122611",
+    "doi": "10.1021/acs.chemmater.0c01367",
+    "title": "Understanding the Origin of Enhanced Li-Ion Transport in Nanocrystalline Argyrodite-Type Li<sub>6</sub>PS<sub>5</sub>I",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2020-05-19",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 67,
+    "citation_normalized_percentile": 0.95738087,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.chemmater.0c01367",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Marina Brinek",
+    "authors_display": "Marina Brinek; Caroline Hiebl; Martin Wilkening",
+    "authors": [
+      {
+        "display_name": "Marina Brinek",
+        "id": "https://openalex.org/A5062131411",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Caroline Hiebl",
+        "id": "https://openalex.org/A5062972307",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Wilkening",
+        "id": "https://openalex.org/A5024063649",
+        "orcid": "https://orcid.org/0000-0001-9706-4892",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3027122611",
+    "doi": "10.1021/acs.chemmater.0c01367",
+    "title": "Understanding the Origin of Enhanced Li-Ion Transport in Nanocrystalline Argyrodite-Type Li<sub>6</sub>PS<sub>5</sub>I",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2020-05-19",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 67,
+    "citation_normalized_percentile": 0.95738087,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.chemmater.0c01367",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Marina Brinek",
+    "authors_display": "Marina Brinek; Caroline Hiebl; Martin Wilkening",
+    "authors_json": "[{\"display_name\": \"Marina Brinek\", \"id\": \"https://openalex.org/A5062131411\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Caroline Hiebl\", \"id\": \"https://openalex.org/A5062972307\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Martin Wilkening\", \"id\": \"https://openalex.org/A5024063649\", \"orcid\": \"https://orcid.org/0000-0001-9706-4892\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301975190,
+    "actual_start_ms": 1773301976689,
+    "pacing_wait_ms": 1499,
+    "pacing_jitter_sec": 0.735
+  }
+}

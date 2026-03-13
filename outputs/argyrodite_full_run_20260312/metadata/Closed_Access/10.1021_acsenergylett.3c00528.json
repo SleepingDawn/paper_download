@@ -1,0 +1,102 @@
+{
+  "doi": "10.1021/acsenergylett.3c00528",
+  "pdf_filename": "10.1021_acsenergylett.3c00528.pdf",
+  "json_filename": "10.1021_acsenergylett.3c00528.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.3c00528.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4375852636",
+    "doi": "10.1021/acsenergylett.3c00528",
+    "title": "Improved Rate Capability in Composite Solid-State Battery Electrodes Using 3-D Architectures",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2023-05-08",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.9282493,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Manoj K. Jangid",
+    "authors_display": "Manoj K. Jangid; Andrew L. Davis; Daniel W. Liao; Neil P. Dasgupta",
+    "authors": [
+      {
+        "display_name": "Manoj K. Jangid",
+        "id": "https://openalex.org/A5039466008",
+        "orcid": "https://orcid.org/0000-0001-5487-7615",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andrew L. Davis",
+        "id": "https://openalex.org/A5031013715",
+        "orcid": "https://orcid.org/0000-0002-4264-5259",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniel W. Liao",
+        "id": "https://openalex.org/A5080486767",
+        "orcid": "https://orcid.org/0000-0003-4601-1453",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Neil P. Dasgupta",
+        "id": "https://openalex.org/A5004446540",
+        "orcid": "https://orcid.org/0000-0002-5180-4063",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4375852636",
+    "doi": "10.1021/acsenergylett.3c00528",
+    "title": "Improved Rate Capability in Composite Solid-State Battery Electrodes Using 3-D Architectures",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2023-05-08",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.9282493,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Manoj K. Jangid",
+    "authors_display": "Manoj K. Jangid; Andrew L. Davis; Daniel W. Liao; Neil P. Dasgupta",
+    "authors_json": "[{\"display_name\": \"Manoj K. Jangid\", \"id\": \"https://openalex.org/A5039466008\", \"orcid\": \"https://orcid.org/0000-0001-5487-7615\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Andrew L. Davis\", \"id\": \"https://openalex.org/A5031013715\", \"orcid\": \"https://orcid.org/0000-0002-4264-5259\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniel W. Liao\", \"id\": \"https://openalex.org/A5080486767\", \"orcid\": \"https://orcid.org/0000-0003-4601-1453\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Neil P. Dasgupta\", \"id\": \"https://openalex.org/A5004446540\", \"orcid\": \"https://orcid.org/0000-0002-5180-4063\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302831415,
+    "actual_start_ms": 1773302835271,
+    "pacing_wait_ms": 3856,
+    "pacing_jitter_sec": 1.673
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "doi": "10.1021/acsenergylett.5c00985",
+  "pdf_filename": "10.1021_acsenergylett.5c00985.pdf",
+  "json_filename": "10.1021_acsenergylett.5c00985.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.5c00985.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409783270",
+    "doi": "10.1021/acsenergylett.5c00985",
+    "title": "Pressure-Tolerant 3D Anodes Enable Short-Circuit Prevention and Low Heat Generation in Argyrodite Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2025-04-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.90988307,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zhiming Liang",
+    "authors_display": "Zhiming Liang; Mohammad Sufiyan Nafis; Sung‐Jin Cho; Fenghua Guo; Hui Zhou; Harvey Guthrey; Se‐Hee Lee; M. Stanley Whittingham; Chunmei Ban",
+    "authors": [
+      {
+        "display_name": "Zhiming Liang",
+        "id": "https://openalex.org/A5066553267",
+        "orcid": "https://orcid.org/0000-0001-6185-0605",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mohammad Sufiyan Nafis",
+        "id": "https://openalex.org/A5107821259",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sung‐Jin Cho",
+        "id": "https://openalex.org/A5101979084",
+        "orcid": "https://orcid.org/0000-0002-1741-2031",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fenghua Guo",
+        "id": "https://openalex.org/A5063595158",
+        "orcid": "https://orcid.org/0000-0002-0482-7924",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hui Zhou",
+        "id": "https://openalex.org/A5100656654",
+        "orcid": "https://orcid.org/0000-0001-8739-963X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Harvey Guthrey",
+        "id": "https://openalex.org/A5062515405",
+        "orcid": "https://orcid.org/0000-0003-1574-3379",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Se‐Hee Lee",
+        "id": "https://openalex.org/A5101490538",
+        "orcid": "https://orcid.org/0000-0002-8839-2218",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "M. Stanley Whittingham",
+        "id": "https://openalex.org/A5023061999",
+        "orcid": "https://orcid.org/0000-0002-5039-9334",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chunmei Ban",
+        "id": "https://openalex.org/A5006964324",
+        "orcid": "https://orcid.org/0000-0002-1472-1496",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409783270",
+    "doi": "10.1021/acsenergylett.5c00985",
+    "title": "Pressure-Tolerant 3D Anodes Enable Short-Circuit Prevention and Low Heat Generation in Argyrodite Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2025-04-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.90988307,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zhiming Liang",
+    "authors_display": "Zhiming Liang; Mohammad Sufiyan Nafis; Sung‐Jin Cho; Fenghua Guo; Hui Zhou; Harvey Guthrey; Se‐Hee Lee; M. Stanley Whittingham; Chunmei Ban",
+    "authors_json": "[{\"display_name\": \"Zhiming Liang\", \"id\": \"https://openalex.org/A5066553267\", \"orcid\": \"https://orcid.org/0000-0001-6185-0605\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Mohammad Sufiyan Nafis\", \"id\": \"https://openalex.org/A5107821259\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sung‐Jin Cho\", \"id\": \"https://openalex.org/A5101979084\", \"orcid\": \"https://orcid.org/0000-0002-1741-2031\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fenghua Guo\", \"id\": \"https://openalex.org/A5063595158\", \"orcid\": \"https://orcid.org/0000-0002-0482-7924\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hui Zhou\", \"id\": \"https://openalex.org/A5100656654\", \"orcid\": \"https://orcid.org/0000-0001-8739-963X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Harvey Guthrey\", \"id\": \"https://openalex.org/A5062515405\", \"orcid\": \"https://orcid.org/0000-0003-1574-3379\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Se‐Hee Lee\", \"id\": \"https://openalex.org/A5101490538\", \"orcid\": \"https://orcid.org/0000-0002-8839-2218\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"M. Stanley Whittingham\", \"id\": \"https://openalex.org/A5023061999\", \"orcid\": \"https://orcid.org/0000-0002-5039-9334\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chunmei Ban\", \"id\": \"https://openalex.org/A5006964324\", \"orcid\": \"https://orcid.org/0000-0002-1472-1496\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.5c00985",
+    "landing_title": "Pressure-Tolerant 3D Anodes Enable Short-Circuit Prevention and Low Heat Generation in Argyrodite Solid-State Batteries | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acsenergylett.5c00985.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773306843827,
+    "actual_start_ms": 1773306843827,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.359
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "doi": "10.1007/s12274-022-4880-9",
+  "pdf_filename": "10.1007_s12274-022-4880-9.pdf",
+  "json_filename": "10.1007_s12274-022-4880-9.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s12274-022-4880-9.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4296641972",
+    "doi": "10.1007/s12274-022-4880-9",
+    "title": "Novel Zr-doped β-Li3PS4 solid electrolyte for all-solid-state lithium batteries with a combined experimental and computational approach",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Nano Research",
+      "id": "https://openalex.org/S173461644",
+      "type": "journal",
+      "issn_l": "1998-0000",
+      "issn": [
+        "1998-0000",
+        "1998-0124"
+      ]
+    },
+    "publication_date": "2022-09-22",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.72993121,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Junbo Zhang",
+    "authors_display": "Junbo Zhang; Guoxi Zhu; Han Li; Jiangwei Ju; Jianwei Gu; Renzhuang Xu; Sumin Jin; Jianqiu Zhou; Bingbing Chen",
+    "authors": [
+      {
+        "display_name": "Junbo Zhang",
+        "id": "https://openalex.org/A5100778485",
+        "orcid": "https://orcid.org/0000-0003-4821-6559",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guoxi Zhu",
+        "id": "https://openalex.org/A5031946206",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Han Li",
+        "id": "https://openalex.org/A5100452620",
+        "orcid": "https://orcid.org/0000-0003-1983-5158",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiangwei Ju",
+        "id": "https://openalex.org/A5072229491",
+        "orcid": "https://orcid.org/0000-0002-4391-7957",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianwei Gu",
+        "id": "https://openalex.org/A5027022817",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Renzhuang Xu",
+        "id": "https://openalex.org/A5018100496",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sumin Jin",
+        "id": "https://openalex.org/A5112120229",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianqiu Zhou",
+        "id": "https://openalex.org/A5080044037",
+        "orcid": "https://orcid.org/0000-0002-7381-9514",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Bingbing Chen",
+        "id": "https://openalex.org/A5024516866",
+        "orcid": "https://orcid.org/0000-0001-5995-4464",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4296641972",
+    "doi": "10.1007/s12274-022-4880-9",
+    "title": "Novel Zr-doped β-Li3PS4 solid electrolyte for all-solid-state lithium batteries with a combined experimental and computational approach",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Nano Research",
+    "journal_id": "https://openalex.org/S173461644",
+    "journal_type": "journal",
+    "journal_issn_l": "1998-0000",
+    "journal_issn_json": "[\"1998-0000\", \"1998-0124\"]",
+    "publication_date": "2022-09-22",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.72993121,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Junbo Zhang",
+    "authors_display": "Junbo Zhang; Guoxi Zhu; Han Li; Jiangwei Ju; Jianwei Gu; Renzhuang Xu; Sumin Jin; Jianqiu Zhou; Bingbing Chen",
+    "authors_json": "[{\"display_name\": \"Junbo Zhang\", \"id\": \"https://openalex.org/A5100778485\", \"orcid\": \"https://orcid.org/0000-0003-4821-6559\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Guoxi Zhu\", \"id\": \"https://openalex.org/A5031946206\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Han Li\", \"id\": \"https://openalex.org/A5100452620\", \"orcid\": \"https://orcid.org/0000-0003-1983-5158\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiangwei Ju\", \"id\": \"https://openalex.org/A5072229491\", \"orcid\": \"https://orcid.org/0000-0002-4391-7957\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianwei Gu\", \"id\": \"https://openalex.org/A5027022817\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Renzhuang Xu\", \"id\": \"https://openalex.org/A5018100496\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sumin Jin\", \"id\": \"https://openalex.org/A5112120229\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianqiu Zhou\", \"id\": \"https://openalex.org/A5080044037\", \"orcid\": \"https://orcid.org/0000-0002-7381-9514\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Bingbing Chen\", \"id\": \"https://openalex.org/A5024516866\", \"orcid\": \"https://orcid.org/0000-0001-5995-4464\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773308923529,
+    "actual_start_ms": 1773308923529,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.382
+  }
+}

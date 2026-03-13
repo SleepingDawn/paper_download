@@ -1,0 +1,137 @@
+{
+  "doi": "10.1080/27660400.2023.2253713",
+  "pdf_filename": "10.1080_27660400.2023.2253713.pdf",
+  "json_filename": "10.1080_27660400.2023.2253713.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1080_27660400.2023.2253713.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4386327643",
+    "doi": "10.1080/27660400.2023.2253713",
+    "title": "Optimization of force-field potential parameters using conditional variational autoencoder",
+    "publisher": "Taylor & Francis",
+    "journal": {
+      "name": "Science and Technology of Advanced Materials Methods",
+      "id": "https://openalex.org/S3207143860",
+      "type": "journal",
+      "issn_l": "2766-0400",
+      "issn": [
+        "2766-0400"
+      ]
+    },
+    "publication_date": "2023-08-31",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.07562217,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Koki Matsunoshita",
+    "authors_display": "Koki Matsunoshita; Yudai Yamaguchi; Masato Hamaie; Motoki Horibe; Naoto Tanibata; Hayami Takeda; Masanobu Nakayama; Masayuki Karasuyama; Ryo Kobayashi",
+    "authors": [
+      {
+        "display_name": "Koki Matsunoshita",
+        "id": "https://openalex.org/A5092724553",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yudai Yamaguchi",
+        "id": "https://openalex.org/A5110872424",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masato Hamaie",
+        "id": "https://openalex.org/A5052828600",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Motoki Horibe",
+        "id": "https://openalex.org/A5111033047",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Naoto Tanibata",
+        "id": "https://openalex.org/A5083644015",
+        "orcid": "https://orcid.org/0000-0001-8521-9690",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hayami Takeda",
+        "id": "https://openalex.org/A5035360618",
+        "orcid": "https://orcid.org/0000-0001-9499-9684",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masanobu Nakayama",
+        "id": "https://openalex.org/A5023575100",
+        "orcid": "https://orcid.org/0000-0002-5113-053X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Masayuki Karasuyama",
+        "id": "https://openalex.org/A5003668143",
+        "orcid": "https://orcid.org/0000-0002-6177-3686",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ryo Kobayashi",
+        "id": "https://openalex.org/A5019169275",
+        "orcid": "https://orcid.org/0000-0001-8244-5844",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4386327643",
+    "doi": "10.1080/27660400.2023.2253713",
+    "title": "Optimization of force-field potential parameters using conditional variational autoencoder",
+    "publisher": "Taylor & Francis",
+    "journal": "Science and Technology of Advanced Materials Methods",
+    "journal_id": "https://openalex.org/S3207143860",
+    "journal_type": "journal",
+    "journal_issn_l": "2766-0400",
+    "journal_issn_json": "[\"2766-0400\"]",
+    "publication_date": "2023-08-31",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.07562217,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Koki Matsunoshita",
+    "authors_display": "Koki Matsunoshita; Yudai Yamaguchi; Masato Hamaie; Motoki Horibe; Naoto Tanibata; Hayami Takeda; Masanobu Nakayama; Masayuki Karasuyama; Ryo Kobayashi",
+    "authors_json": "[{\"display_name\": \"Koki Matsunoshita\", \"id\": \"https://openalex.org/A5092724553\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yudai Yamaguchi\", \"id\": \"https://openalex.org/A5110872424\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masato Hamaie\", \"id\": \"https://openalex.org/A5052828600\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Motoki Horibe\", \"id\": \"https://openalex.org/A5111033047\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Naoto Tanibata\", \"id\": \"https://openalex.org/A5083644015\", \"orcid\": \"https://orcid.org/0000-0001-8521-9690\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hayami Takeda\", \"id\": \"https://openalex.org/A5035360618\", \"orcid\": \"https://orcid.org/0000-0001-9499-9684\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masanobu Nakayama\", \"id\": \"https://openalex.org/A5023575100\", \"orcid\": \"https://orcid.org/0000-0002-5113-053X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Masayuki Karasuyama\", \"id\": \"https://openalex.org/A5003668143\", \"orcid\": \"https://orcid.org/0000-0002-6177-3686\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ryo Kobayashi\", \"id\": \"https://openalex.org/A5019169275\", \"orcid\": \"https://orcid.org/0000-0001-8244-5844\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.tandfonline.com/doi/full/10.1080/27660400.2023.2253713",
+    "landing_title": "Full article: Optimization of force-field potential parameters using conditional variational autoencoder",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1080_27660400.2023.2253713.pdf",
+    "scheduler_publisher": "taylor_and_francis",
+    "scheduled_start_ms": 1773311292142,
+    "actual_start_ms": 1773311292664,
+    "pacing_wait_ms": 522,
+    "pacing_jitter_sec": 0.856
+  }
+}

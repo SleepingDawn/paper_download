@@ -1,0 +1,131 @@
+{
+  "doi": "10.1021/acsami.1c06706",
+  "pdf_filename": "10.1021_acsami.1c06706.pdf",
+  "json_filename": "10.1021_acsami.1c06706.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.1c06706.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3157457977",
+    "doi": "10.1021/acsami.1c06706",
+    "title": "Temperature Dependence of Lithium Anode Voiding in Argyrodite Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2021-05-07",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 78,
+    "citation_normalized_percentile": 0.96647986,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Dominic Spencer Jolly",
+    "authors_display": "Dominic Spencer Jolly; Ziyang Ning; Gareth O. Hartley; Boyang Liu; Dominic L. R. Melvin; Paul Adamson; T.J. Marrow; Peter G. Bruce",
+    "authors": [
+      {
+        "display_name": "Dominic Spencer Jolly",
+        "id": "https://openalex.org/A5085974632",
+        "orcid": "https://orcid.org/0000-0002-4925-6870",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziyang Ning",
+        "id": "https://openalex.org/A5022232210",
+        "orcid": "https://orcid.org/0000-0002-7406-5312",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gareth O. Hartley",
+        "id": "https://openalex.org/A5069728211",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Boyang Liu",
+        "id": "https://openalex.org/A5100387884",
+        "orcid": "https://orcid.org/0000-0003-1532-7754",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dominic L. R. Melvin",
+        "id": "https://openalex.org/A5053104258",
+        "orcid": "https://orcid.org/0000-0001-7944-0225",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Paul Adamson",
+        "id": "https://openalex.org/A5033483920",
+        "orcid": "https://orcid.org/0000-0002-5873-0730",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "T.J. Marrow",
+        "id": "https://openalex.org/A5029418917",
+        "orcid": "https://orcid.org/0000-0001-6120-9826",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peter G. Bruce",
+        "id": "https://openalex.org/A5056496930",
+        "orcid": "https://orcid.org/0000-0001-6748-3084",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3157457977",
+    "doi": "10.1021/acsami.1c06706",
+    "title": "Temperature Dependence of Lithium Anode Voiding in Argyrodite Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2021-05-07",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 78,
+    "citation_normalized_percentile": 0.96647986,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Dominic Spencer Jolly",
+    "authors_display": "Dominic Spencer Jolly; Ziyang Ning; Gareth O. Hartley; Boyang Liu; Dominic L. R. Melvin; Paul Adamson; T.J. Marrow; Peter G. Bruce",
+    "authors_json": "[{\"display_name\": \"Dominic Spencer Jolly\", \"id\": \"https://openalex.org/A5085974632\", \"orcid\": \"https://orcid.org/0000-0002-4925-6870\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ziyang Ning\", \"id\": \"https://openalex.org/A5022232210\", \"orcid\": \"https://orcid.org/0000-0002-7406-5312\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gareth O. Hartley\", \"id\": \"https://openalex.org/A5069728211\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Boyang Liu\", \"id\": \"https://openalex.org/A5100387884\", \"orcid\": \"https://orcid.org/0000-0003-1532-7754\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dominic L. R. Melvin\", \"id\": \"https://openalex.org/A5053104258\", \"orcid\": \"https://orcid.org/0000-0001-7944-0225\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Paul Adamson\", \"id\": \"https://openalex.org/A5033483920\", \"orcid\": \"https://orcid.org/0000-0002-5873-0730\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"T.J. Marrow\", \"id\": \"https://openalex.org/A5029418917\", \"orcid\": \"https://orcid.org/0000-0001-6120-9826\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peter G. Bruce\", \"id\": \"https://openalex.org/A5056496930\", \"orcid\": \"https://orcid.org/0000-0001-6748-3084\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301900289,
+    "actual_start_ms": 1773301903119,
+    "pacing_wait_ms": 2829,
+    "pacing_jitter_sec": 1.482
+  }
+}

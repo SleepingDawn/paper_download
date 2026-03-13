@@ -1,0 +1,131 @@
+{
+  "doi": "10.1051/bioconf/202412925013",
+  "pdf_filename": "10.1051_bioconf_202412925013.pdf",
+  "json_filename": "10.1051_bioconf_202412925013.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1051_bioconf_202412925013.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4403496323",
+    "doi": "10.1051/bioconf/202412925013",
+    "title": "PFIB-preparation and STEM-characterization of electrochemically plated lithium at the interface to the solid electrolyte Li6PS5Cl",
+    "publisher": "EDP Sciences",
+    "journal": {
+      "name": "BIO Web of Conferences",
+      "id": "https://openalex.org/S4210168758",
+      "type": "journal",
+      "issn_l": "2117-4458",
+      "issn": [
+        "2117-4458",
+        "2273-1709"
+      ]
+    },
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.16125745,
+    "pdf_url": "https://www.bio-conferences.org/articles/bioconf/pdf/2024/48/bioconf_emc2024_25013.pdf",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Franziska Hüppe",
+    "authors_display": "Franziska Hüppe; Juri Becker; Jürgen Belz; Shamail Ahmed; Till Fuchs; Burak Aktekin; Jürgen Janek; Kerstin Volz",
+    "authors": [
+      {
+        "display_name": "Franziska Hüppe",
+        "id": "https://openalex.org/A5000221969",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Juri Becker",
+        "id": "https://openalex.org/A5001366809",
+        "orcid": "https://orcid.org/0009-0009-9934-8851",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Belz",
+        "id": "https://openalex.org/A5010174726",
+        "orcid": "https://orcid.org/0000-0002-0467-5721",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shamail Ahmed",
+        "id": "https://openalex.org/A5085190051",
+        "orcid": "https://orcid.org/0009-0008-3894-0934",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Till Fuchs",
+        "id": "https://openalex.org/A5026425699",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Burak Aktekin",
+        "id": "https://openalex.org/A5042507134",
+        "orcid": "https://orcid.org/0000-0002-8659-7519",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kerstin Volz",
+        "id": "https://openalex.org/A5065191924",
+        "orcid": "https://orcid.org/0000-0002-4456-5439",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4403496323",
+    "doi": "10.1051/bioconf/202412925013",
+    "title": "PFIB-preparation and STEM-characterization of electrochemically plated lithium at the interface to the solid electrolyte Li6PS5Cl",
+    "publisher": "EDP Sciences",
+    "journal": "BIO Web of Conferences",
+    "journal_id": "https://openalex.org/S4210168758",
+    "journal_type": "journal",
+    "journal_issn_l": "2117-4458",
+    "journal_issn_json": "[\"2117-4458\", \"2273-1709\"]",
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.16125745,
+    "pdf_url": "https://www.bio-conferences.org/articles/bioconf/pdf/2024/48/bioconf_emc2024_25013.pdf",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Franziska Hüppe",
+    "authors_display": "Franziska Hüppe; Juri Becker; Jürgen Belz; Shamail Ahmed; Till Fuchs; Burak Aktekin; Jürgen Janek; Kerstin Volz",
+    "authors_json": "[{\"display_name\": \"Franziska Hüppe\", \"id\": \"https://openalex.org/A5000221969\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Juri Becker\", \"id\": \"https://openalex.org/A5001366809\", \"orcid\": \"https://orcid.org/0009-0009-9934-8851\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Belz\", \"id\": \"https://openalex.org/A5010174726\", \"orcid\": \"https://orcid.org/0000-0002-0467-5721\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shamail Ahmed\", \"id\": \"https://openalex.org/A5085190051\", \"orcid\": \"https://orcid.org/0009-0008-3894-0934\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Till Fuchs\", \"id\": \"https://openalex.org/A5026425699\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Burak Aktekin\", \"id\": \"https://openalex.org/A5042507134\", \"orcid\": \"https://orcid.org/0000-0002-8659-7519\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kerstin Volz\", \"id\": \"https://openalex.org/A5065191924\", \"orcid\": \"https://orcid.org/0000-0002-4456-5439\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.1051",
+    "scheduled_start_ms": 1773311329109,
+    "actual_start_ms": 1773311329110,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.378
+  }
+}

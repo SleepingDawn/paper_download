@@ -1,0 +1,116 @@
+{
+  "doi": "10.1002/batt.201900218",
+  "pdf_filename": "10.1002_batt.201900218.pdf",
+  "json_filename": "10.1002_batt.201900218.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_batt.201900218.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3008074782",
+    "doi": "10.1002/batt.201900218",
+    "title": "Observation of Interfacial Degradation of Li<sub>6</sub>PS<sub>5</sub>Cl against Lithium Metal and LiCoO<sub>2</sub> via <i>In Situ</i> Electrochemical Raman Microscopy",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Batteries & Supercaps",
+      "id": "https://openalex.org/S4210241147",
+      "type": "journal",
+      "issn_l": "2566-6223",
+      "issn": [
+        "2566-6223"
+      ]
+    },
+    "publication_date": "2020-02-28",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 128,
+    "citation_normalized_percentile": 0.97477386,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Yundong Zhou",
+    "authors_display": "Yundong Zhou; Christopher Doerrer; Jitti Kasemchainan; Peter G. Bruce; Mauro Pasta; Laurence J. Hardwick",
+    "authors": [
+      {
+        "display_name": "Yundong Zhou",
+        "id": "https://openalex.org/A5101904471",
+        "orcid": "https://orcid.org/0000-0001-9222-5722",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Christopher Doerrer",
+        "id": "https://openalex.org/A5039888032",
+        "orcid": "https://orcid.org/0000-0003-0166-6333",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jitti Kasemchainan",
+        "id": "https://openalex.org/A5048340493",
+        "orcid": "https://orcid.org/0000-0002-5341-1650",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peter G. Bruce",
+        "id": "https://openalex.org/A5056496930",
+        "orcid": "https://orcid.org/0000-0001-6748-3084",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mauro Pasta",
+        "id": "https://openalex.org/A5011547289",
+        "orcid": "https://orcid.org/0000-0002-2613-4555",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Laurence J. Hardwick",
+        "id": "https://openalex.org/A5039774913",
+        "orcid": "https://orcid.org/0000-0001-8796-685X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3008074782",
+    "doi": "10.1002/batt.201900218",
+    "title": "Observation of Interfacial Degradation of Li<sub>6</sub>PS<sub>5</sub>Cl against Lithium Metal and LiCoO<sub>2</sub> via <i>In Situ</i> Electrochemical Raman Microscopy",
+    "publisher": "Wiley",
+    "journal": "Batteries & Supercaps",
+    "journal_id": "https://openalex.org/S4210241147",
+    "journal_type": "journal",
+    "journal_issn_l": "2566-6223",
+    "journal_issn_json": "[\"2566-6223\"]",
+    "publication_date": "2020-02-28",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 128,
+    "citation_normalized_percentile": 0.97477386,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Yundong Zhou",
+    "authors_display": "Yundong Zhou; Christopher Doerrer; Jitti Kasemchainan; Peter G. Bruce; Mauro Pasta; Laurence J. Hardwick",
+    "authors_json": "[{\"display_name\": \"Yundong Zhou\", \"id\": \"https://openalex.org/A5101904471\", \"orcid\": \"https://orcid.org/0000-0001-9222-5722\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Christopher Doerrer\", \"id\": \"https://openalex.org/A5039888032\", \"orcid\": \"https://orcid.org/0000-0003-0166-6333\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jitti Kasemchainan\", \"id\": \"https://openalex.org/A5048340493\", \"orcid\": \"https://orcid.org/0000-0002-5341-1650\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peter G. Bruce\", \"id\": \"https://openalex.org/A5056496930\", \"orcid\": \"https://orcid.org/0000-0001-6748-3084\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mauro Pasta\", \"id\": \"https://openalex.org/A5011547289\", \"orcid\": \"https://orcid.org/0000-0002-2613-4555\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Laurence J. Hardwick\", \"id\": \"https://openalex.org/A5039774913\", \"orcid\": \"https://orcid.org/0000-0001-8796-685X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302676260,
+    "actual_start_ms": 1773302677765,
+    "pacing_wait_ms": 1504,
+    "pacing_jitter_sec": 1.618
+  }
+}

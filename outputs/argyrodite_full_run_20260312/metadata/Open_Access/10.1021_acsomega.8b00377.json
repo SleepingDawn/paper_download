@@ -1,0 +1,123 @@
+{
+  "doi": "10.1021/acsomega.8b00377",
+  "pdf_filename": "10.1021_acsomega.8b00377.pdf",
+  "json_filename": "10.1021_acsomega.8b00377.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsomega.8b00377.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2803415210",
+    "doi": "10.1021/acsomega.8b00377",
+    "title": "Mechanochemically Prepared Li<sub>2</sub>S–P<sub>2</sub>S<sub>5</sub>–LiBH<sub>4</sub> Solid Electrolytes with an Argyrodite Structure",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Omega",
+      "id": "https://openalex.org/S4210239500",
+      "type": "journal",
+      "issn_l": "2470-1343",
+      "issn": [
+        "2470-1343"
+      ]
+    },
+    "publication_date": "2018-05-21",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 55,
+    "citation_normalized_percentile": 0.88309398,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Atsushi Sakuda",
+    "authors_display": "Atsushi Sakuda; Akihiro Yamauchi; So Yubuchi; Naoto Kitamura; Yasushi Idemoto; Akitoshi Hayashi; Masahiro Tatsumisago",
+    "authors": [
+      {
+        "display_name": "Atsushi Sakuda",
+        "id": "https://openalex.org/A5025626446",
+        "orcid": "https://orcid.org/0000-0002-9214-0347",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Akihiro Yamauchi",
+        "id": "https://openalex.org/A5108762894",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "So Yubuchi",
+        "id": "https://openalex.org/A5077611173",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Naoto Kitamura",
+        "id": "https://openalex.org/A5049761866",
+        "orcid": "https://orcid.org/0000-0002-1940-4609",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yasushi Idemoto",
+        "id": "https://openalex.org/A5079495050",
+        "orcid": "https://orcid.org/0000-0003-3832-2139",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Akitoshi Hayashi",
+        "id": "https://openalex.org/A5056798072",
+        "orcid": "https://orcid.org/0000-0001-9503-5561",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Masahiro Tatsumisago",
+        "id": "https://openalex.org/A5081903089",
+        "orcid": "https://orcid.org/0000-0002-4836-0158",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2803415210",
+    "doi": "10.1021/acsomega.8b00377",
+    "title": "Mechanochemically Prepared Li<sub>2</sub>S–P<sub>2</sub>S<sub>5</sub>–LiBH<sub>4</sub> Solid Electrolytes with an Argyrodite Structure",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Omega",
+    "journal_id": "https://openalex.org/S4210239500",
+    "journal_type": "journal",
+    "journal_issn_l": "2470-1343",
+    "journal_issn_json": "[\"2470-1343\"]",
+    "publication_date": "2018-05-21",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 55,
+    "citation_normalized_percentile": 0.88309398,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Atsushi Sakuda",
+    "authors_display": "Atsushi Sakuda; Akihiro Yamauchi; So Yubuchi; Naoto Kitamura; Yasushi Idemoto; Akitoshi Hayashi; Masahiro Tatsumisago",
+    "authors_json": "[{\"display_name\": \"Atsushi Sakuda\", \"id\": \"https://openalex.org/A5025626446\", \"orcid\": \"https://orcid.org/0000-0002-9214-0347\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Akihiro Yamauchi\", \"id\": \"https://openalex.org/A5108762894\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"So Yubuchi\", \"id\": \"https://openalex.org/A5077611173\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Naoto Kitamura\", \"id\": \"https://openalex.org/A5049761866\", \"orcid\": \"https://orcid.org/0000-0002-1940-4609\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yasushi Idemoto\", \"id\": \"https://openalex.org/A5079495050\", \"orcid\": \"https://orcid.org/0000-0003-3832-2139\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Akitoshi Hayashi\", \"id\": \"https://openalex.org/A5056798072\", \"orcid\": \"https://orcid.org/0000-0001-9503-5561\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Masahiro Tatsumisago\", \"id\": \"https://openalex.org/A5081903089\", \"orcid\": \"https://orcid.org/0000-0002-4836-0158\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302049439,
+    "actual_start_ms": 1773302050934,
+    "pacing_wait_ms": 1495,
+    "pacing_jitter_sec": 1.288
+  }
+}

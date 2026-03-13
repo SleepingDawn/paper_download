@@ -1,0 +1,110 @@
+{
+  "doi": "10.1016/j.cclet.2025.111952",
+  "pdf_filename": "10.1016_j.cclet.2025.111952.pdf",
+  "json_filename": "10.1016_j.cclet.2025.111952.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.cclet.2025.111952.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4415228045",
+    "doi": "10.1016/j.cclet.2025.111952",
+    "title": "Ga2O3-doped argyrodite sulfide solid electrolyte enhances interface stability of all-solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chinese Chemical Letters",
+      "id": "https://openalex.org/S167919573",
+      "type": "journal",
+      "issn_l": "1001-8417",
+      "issn": [
+        "1001-8417",
+        "1878-5964"
+      ]
+    },
+    "publication_date": "2025-10-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.79812226,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Bosen Zhang",
+    "authors_display": "Bosen Zhang; Yecheng Yan; Zhiyuan Chen; Shuo Yang; Zhi Yang",
+    "authors": [
+      {
+        "display_name": "Bosen Zhang",
+        "id": "https://openalex.org/A5045140648",
+        "orcid": "https://orcid.org/0000-0002-1751-6535",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yecheng Yan",
+        "id": "https://openalex.org/A5040760484",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhiyuan Chen",
+        "id": "https://openalex.org/A5100438523",
+        "orcid": "https://orcid.org/0000-0003-4673-5814",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuo Yang",
+        "id": "https://openalex.org/A5057013661",
+        "orcid": "https://orcid.org/0000-0001-8906-5289",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zhi Yang",
+        "id": "https://openalex.org/A5037700967",
+        "orcid": "https://orcid.org/0000-0002-9265-5041",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4415228045",
+    "doi": "10.1016/j.cclet.2025.111952",
+    "title": "Ga2O3-doped argyrodite sulfide solid electrolyte enhances interface stability of all-solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Chinese Chemical Letters",
+    "journal_id": "https://openalex.org/S167919573",
+    "journal_type": "journal",
+    "journal_issn_l": "1001-8417",
+    "journal_issn_json": "[\"1001-8417\", \"1878-5964\"]",
+    "publication_date": "2025-10-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.79812226,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Bosen Zhang",
+    "authors_display": "Bosen Zhang; Yecheng Yan; Zhiyuan Chen; Shuo Yang; Zhi Yang",
+    "authors_json": "[{\"display_name\": \"Bosen Zhang\", \"id\": \"https://openalex.org/A5045140648\", \"orcid\": \"https://orcid.org/0000-0002-1751-6535\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yecheng Yan\", \"id\": \"https://openalex.org/A5040760484\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhiyuan Chen\", \"id\": \"https://openalex.org/A5100438523\", \"orcid\": \"https://orcid.org/0000-0003-4673-5814\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuo Yang\", \"id\": \"https://openalex.org/A5057013661\", \"orcid\": \"https://orcid.org/0000-0001-8906-5289\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Zhi Yang\", \"id\": \"https://openalex.org/A5037700967\", \"orcid\": \"https://orcid.org/0000-0002-9265-5041\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S1001841725011301?via%3Dihub",
+    "landing_title": "Ga2O3-doped argyrodite sulfide solid electrolyte enhances interface stability of all-solid-state lithium metal batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773308582786,
+    "actual_start_ms": 1773308582786,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.228
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "doi": "10.1021/acsmaterialslett.9b00441",
+  "pdf_filename": "10.1021_acsmaterialslett.9b00441.pdf",
+  "json_filename": "10.1021_acsmaterialslett.9b00441.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsmaterialslett.9b00441.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2993749109",
+    "doi": "10.1021/acsmaterialslett.9b00441",
+    "title": "Rational Design of Quasi-Zero-Strain NCM Cathode Materials for Minimizing Volume Change Effects in All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Materials Letters",
+      "id": "https://openalex.org/S4210213087",
+      "type": "journal",
+      "issn_l": "2639-4979",
+      "issn": [
+        "2639-4979"
+      ]
+    },
+    "publication_date": "2019-12-03",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 98,
+    "citation_normalized_percentile": 0.96388599,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Florian Strauss",
+    "authors_display": "Florian Strauss; Lea de Biasi; A‐Young Kim; Jonas Hertle; Simon Schweidler; Jürgen Janek; Pascal Hartmann; Torsten Brezesinski",
+    "authors": [
+      {
+        "display_name": "Florian Strauss",
+        "id": "https://openalex.org/A5019742727",
+        "orcid": "https://orcid.org/0000-0001-5817-6349",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Lea de Biasi",
+        "id": "https://openalex.org/A5108546942",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "A‐Young Kim",
+        "id": "https://openalex.org/A5103217051",
+        "orcid": "https://orcid.org/0000-0001-6124-0807",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jonas Hertle",
+        "id": "https://openalex.org/A5013992563",
+        "orcid": "https://orcid.org/0000-0001-8040-8038",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Simon Schweidler",
+        "id": "https://openalex.org/A5002909917",
+        "orcid": "https://orcid.org/0000-0003-4675-1072",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pascal Hartmann",
+        "id": "https://openalex.org/A5077835735",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Torsten Brezesinski",
+        "id": "https://openalex.org/A5030005479",
+        "orcid": "https://orcid.org/0000-0002-4336-263X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2993749109",
+    "doi": "10.1021/acsmaterialslett.9b00441",
+    "title": "Rational Design of Quasi-Zero-Strain NCM Cathode Materials for Minimizing Volume Change Effects in All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Materials Letters",
+    "journal_id": "https://openalex.org/S4210213087",
+    "journal_type": "journal",
+    "journal_issn_l": "2639-4979",
+    "journal_issn_json": "[\"2639-4979\"]",
+    "publication_date": "2019-12-03",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 98,
+    "citation_normalized_percentile": 0.96388599,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Florian Strauss",
+    "authors_display": "Florian Strauss; Lea de Biasi; A‐Young Kim; Jonas Hertle; Simon Schweidler; Jürgen Janek; Pascal Hartmann; Torsten Brezesinski",
+    "authors_json": "[{\"display_name\": \"Florian Strauss\", \"id\": \"https://openalex.org/A5019742727\", \"orcid\": \"https://orcid.org/0000-0001-5817-6349\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Lea de Biasi\", \"id\": \"https://openalex.org/A5108546942\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"A‐Young Kim\", \"id\": \"https://openalex.org/A5103217051\", \"orcid\": \"https://orcid.org/0000-0001-6124-0807\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jonas Hertle\", \"id\": \"https://openalex.org/A5013992563\", \"orcid\": \"https://orcid.org/0000-0001-8040-8038\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Simon Schweidler\", \"id\": \"https://openalex.org/A5002909917\", \"orcid\": \"https://orcid.org/0000-0003-4675-1072\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pascal Hartmann\", \"id\": \"https://openalex.org/A5077835735\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Torsten Brezesinski\", \"id\": \"https://openalex.org/A5030005479\", \"orcid\": \"https://orcid.org/0000-0002-4336-263X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301817606,
+    "actual_start_ms": 1773301817607,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.901
+  }
+}

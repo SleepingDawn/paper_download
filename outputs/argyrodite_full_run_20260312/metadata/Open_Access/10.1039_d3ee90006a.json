@@ -1,0 +1,117 @@
+{
+  "doi": "10.1039/d3ee90006a",
+  "pdf_filename": "10.1039_d3ee90006a.pdf",
+  "json_filename": "10.1039_d3ee90006a.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_d3ee90006a.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4318067450",
+    "doi": "10.1039/d3ee90006a",
+    "title": "Correction: Interfacial modification between argyrodite-type solid-state electrolytes and Li metal anodes using LiPON interlayers",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Energy & Environmental Science",
+      "id": "https://openalex.org/S117082959",
+      "type": "journal",
+      "issn_l": "1754-5692",
+      "issn": [
+        "1754-5692",
+        "1754-5706"
+      ]
+    },
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.7579829,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2023/ee/d3ee90006a",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Jin Su",
+    "authors_display": "Jin Su; Mauro Pasta; Ziyang Ning; Xiangwen Gao; Peter G. Bruce; C.R.M. Grovenor",
+    "authors": [
+      {
+        "display_name": "Jin Su",
+        "id": "https://openalex.org/A5077212016",
+        "orcid": "https://orcid.org/0000-0001-5162-193X",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Mauro Pasta",
+        "id": "https://openalex.org/A5011547289",
+        "orcid": "https://orcid.org/0000-0002-2613-4555",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziyang Ning",
+        "id": "https://openalex.org/A5022232210",
+        "orcid": "https://orcid.org/0000-0002-7406-5312",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiangwen Gao",
+        "id": "https://openalex.org/A5027963771",
+        "orcid": "https://orcid.org/0000-0002-3271-912X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peter G. Bruce",
+        "id": "https://openalex.org/A5056496930",
+        "orcid": "https://orcid.org/0000-0001-6748-3084",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "C.R.M. Grovenor",
+        "id": "https://openalex.org/A5085419549",
+        "orcid": "https://orcid.org/0000-0001-6425-354X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4318067450",
+    "doi": "10.1039/d3ee90006a",
+    "title": "Correction: Interfacial modification between argyrodite-type solid-state electrolytes and Li metal anodes using LiPON interlayers",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Energy & Environmental Science",
+    "journal_id": "https://openalex.org/S117082959",
+    "journal_type": "journal",
+    "journal_issn_l": "1754-5692",
+    "journal_issn_json": "[\"1754-5692\", \"1754-5706\"]",
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.7579829,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2023/ee/d3ee90006a",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Jin Su",
+    "authors_display": "Jin Su; Mauro Pasta; Ziyang Ning; Xiangwen Gao; Peter G. Bruce; C.R.M. Grovenor",
+    "authors_json": "[{\"display_name\": \"Jin Su\", \"id\": \"https://openalex.org/A5077212016\", \"orcid\": \"https://orcid.org/0000-0001-5162-193X\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Mauro Pasta\", \"id\": \"https://openalex.org/A5011547289\", \"orcid\": \"https://orcid.org/0000-0002-2613-4555\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ziyang Ning\", \"id\": \"https://openalex.org/A5022232210\", \"orcid\": \"https://orcid.org/0000-0002-7406-5312\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiangwen Gao\", \"id\": \"https://openalex.org/A5027963771\", \"orcid\": \"https://orcid.org/0000-0002-3271-912X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peter G. Bruce\", \"id\": \"https://openalex.org/A5056496930\", \"orcid\": \"https://orcid.org/0000-0001-6748-3084\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"C.R.M. Grovenor\", \"id\": \"https://openalex.org/A5085419549\", \"orcid\": \"https://orcid.org/0000-0001-6425-354X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773315084860,
+    "actual_start_ms": 1773315084861,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.791
+  }
+}

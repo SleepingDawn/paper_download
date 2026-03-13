@@ -1,0 +1,135 @@
+{
+  "doi": "10.1021/acsenergylett.5c00985.s001",
+  "pdf_filename": "10.1021_acsenergylett.5c00985.s001.pdf",
+  "json_filename": "10.1021_acsenergylett.5c00985.s001.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsenergylett.5c00985.s001.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7111363173",
+    "doi": "10.1021/acsenergylett.5c00985.s001",
+    "title": "Pressure-Tolerant 3D Anodes Enable Short-Circuit Prevention and Low Heat Generationin Argyrodite Solid-State Batteries",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": {
+      "name": "Figshare",
+      "id": "https://openalex.org/S4377196282",
+      "type": "repository",
+      "issn_l": null,
+      "issn": []
+    },
+    "publication_date": "2025-04-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.54958722,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Zhiming Liang (1515700)",
+    "authors_display": "Zhiming Liang (1515700); Mohammad Sufiyan Nafis (21181473); Sungjin Cho (493449); Fenghua Guo (381229); Hui Zhou (13228); Harvey Guthrey (1471705); Se-hee Lee (6623594); M. Stanley Whittingham (1501345); Chunmei Ban (1263951)",
+    "authors": [
+      {
+        "display_name": "Zhiming Liang (1515700)",
+        "id": null,
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Mohammad Sufiyan Nafis (21181473)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sungjin Cho (493449)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fenghua Guo (381229)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hui Zhou (13228)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Harvey Guthrey (1471705)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Se-hee Lee (6623594)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "M. Stanley Whittingham (1501345)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chunmei Ban (1263951)",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7111363173",
+    "doi": "10.1021/acsenergylett.5c00985.s001",
+    "title": "Pressure-Tolerant 3D Anodes Enable Short-Circuit Prevention and Low Heat Generationin Argyrodite Solid-State Batteries",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": "Figshare",
+    "journal_id": "https://openalex.org/S4377196282",
+    "journal_type": "repository",
+    "journal_issn_l": null,
+    "journal_issn_json": "[]",
+    "publication_date": "2025-04-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.54958722,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Zhiming Liang (1515700)",
+    "authors_display": "Zhiming Liang (1515700); Mohammad Sufiyan Nafis (21181473); Sungjin Cho (493449); Fenghua Guo (381229); Hui Zhou (13228); Harvey Guthrey (1471705); Se-hee Lee (6623594); M. Stanley Whittingham (1501345); Chunmei Ban (1263951)",
+    "authors_json": "[{\"display_name\": \"Zhiming Liang (1515700)\", \"id\": null, \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Mohammad Sufiyan Nafis (21181473)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sungjin Cho (493449)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fenghua Guo (381229)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hui Zhou (13228)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Harvey Guthrey (1471705)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Se-hee Lee (6623594)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"M. Stanley Whittingham (1501345)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chunmei Ban (1263951)\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "direct_pdf_handoff",
+    "landing_url": "https://doi.org/10.1021/acsenergylett.5c00985.s001",
+    "landing_title": "새 탭",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acsenergylett.5c00985.s001.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773310249757,
+    "actual_start_ms": 1773310249757,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.536
+  }
+}

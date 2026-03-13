@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.ssi.2023.116162",
+  "pdf_filename": "10.1016_j.ssi.2023.116162.pdf",
+  "json_filename": "10.1016_j.ssi.2023.116162.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ssi.2023.116162.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4319068774",
+    "doi": "10.1016/j.ssi.2023.116162",
+    "title": "Degradation of an argyrodite-type sulfide solid electrolyte by a trace of water: A spectroscopic analysis",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Solid State Ionics",
+      "id": "https://openalex.org/S101472891",
+      "type": "journal",
+      "issn_l": "0167-2738",
+      "issn": [
+        "0167-2738",
+        "1872-7689"
+      ]
+    },
+    "publication_date": "2023-02-03",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 57,
+    "citation_normalized_percentile": 0.97990092,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Yusuke Morino",
+    "authors_display": "Yusuke Morino; Hikaru Sano; Koji Kawamoto; Kenichi Fukui; Masato Takeuchi; Atsushi Sakuda; Akitoshi Hayashi",
+    "authors": [
+      {
+        "display_name": "Yusuke Morino",
+        "id": "https://openalex.org/A5082471934",
+        "orcid": "https://orcid.org/0000-0002-6973-7786",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hikaru Sano",
+        "id": "https://openalex.org/A5002686051",
+        "orcid": "https://orcid.org/0000-0002-7557-0767",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Koji Kawamoto",
+        "id": "https://openalex.org/A5022588652",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kenichi Fukui",
+        "id": "https://openalex.org/A5103182830",
+        "orcid": "https://orcid.org/0000-0001-8780-5853",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masato Takeuchi",
+        "id": "https://openalex.org/A5035405203",
+        "orcid": "https://orcid.org/0000-0003-3851-9409",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Atsushi Sakuda",
+        "id": "https://openalex.org/A5025626446",
+        "orcid": "https://orcid.org/0000-0002-9214-0347",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Akitoshi Hayashi",
+        "id": "https://openalex.org/A5112836633",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4319068774",
+    "doi": "10.1016/j.ssi.2023.116162",
+    "title": "Degradation of an argyrodite-type sulfide solid electrolyte by a trace of water: A spectroscopic analysis",
+    "publisher": "Elsevier BV",
+    "journal": "Solid State Ionics",
+    "journal_id": "https://openalex.org/S101472891",
+    "journal_type": "journal",
+    "journal_issn_l": "0167-2738",
+    "journal_issn_json": "[\"0167-2738\", \"1872-7689\"]",
+    "publication_date": "2023-02-03",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 57,
+    "citation_normalized_percentile": 0.97990092,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Yusuke Morino",
+    "authors_display": "Yusuke Morino; Hikaru Sano; Koji Kawamoto; Kenichi Fukui; Masato Takeuchi; Atsushi Sakuda; Akitoshi Hayashi",
+    "authors_json": "[{\"display_name\": \"Yusuke Morino\", \"id\": \"https://openalex.org/A5082471934\", \"orcid\": \"https://orcid.org/0000-0002-6973-7786\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hikaru Sano\", \"id\": \"https://openalex.org/A5002686051\", \"orcid\": \"https://orcid.org/0000-0002-7557-0767\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Koji Kawamoto\", \"id\": \"https://openalex.org/A5022588652\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kenichi Fukui\", \"id\": \"https://openalex.org/A5103182830\", \"orcid\": \"https://orcid.org/0000-0001-8780-5853\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masato Takeuchi\", \"id\": \"https://openalex.org/A5035405203\", \"orcid\": \"https://orcid.org/0000-0003-3851-9409\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Atsushi Sakuda\", \"id\": \"https://openalex.org/A5025626446\", \"orcid\": \"https://orcid.org/0000-0002-9214-0347\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Akitoshi Hayashi\", \"id\": \"https://openalex.org/A5112836633\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301935421,
+    "actual_start_ms": 1773301941698,
+    "pacing_wait_ms": 6277,
+    "pacing_jitter_sec": 1.154
+  }
+}

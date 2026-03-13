@@ -1,0 +1,138 @@
+{
+  "doi": "10.1021/acs.jpcc.3c03045",
+  "pdf_filename": "10.1021_acs.jpcc.3c03045.pdf",
+  "json_filename": "10.1021_acs.jpcc.3c03045.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.jpcc.3c03045.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4384560879",
+    "doi": "10.1021/acs.jpcc.3c03045",
+    "title": "Microscopic Study of Solid–Solid Interfacial Reactions in All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "The Journal of Physical Chemistry C",
+      "id": "https://openalex.org/S95739953",
+      "type": "journal",
+      "issn_l": "1932-7447",
+      "issn": [
+        "1932-7447",
+        "1932-7455"
+      ]
+    },
+    "publication_date": "2023-07-17",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.80472945,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Bo‐Yang Tsai",
+    "authors_display": "Bo‐Yang Tsai; Shi‐Kai Jiang; Yi-Tzu Wu; Jing-Sen Yang; She‐Huang Wu; Ping‐Chun Tsai; Wei‐Nien Su; Ching‐Yu Chiang; Bing−Joe Hwang",
+    "authors": [
+      {
+        "display_name": "Bo‐Yang Tsai",
+        "id": "https://openalex.org/A5009079835",
+        "orcid": "https://orcid.org/0000-0002-7122-4752",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shi‐Kai Jiang",
+        "id": "https://openalex.org/A5065128662",
+        "orcid": "https://orcid.org/0000-0002-9533-9642",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yi-Tzu Wu",
+        "id": "https://openalex.org/A5019858310",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jing-Sen Yang",
+        "id": "https://openalex.org/A5114067349",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "She‐Huang Wu",
+        "id": "https://openalex.org/A5087838064",
+        "orcid": "https://orcid.org/0000-0003-1165-9444",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ping‐Chun Tsai",
+        "id": "https://openalex.org/A5102442209",
+        "orcid": "https://orcid.org/0000-0003-4435-7768",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei‐Nien Su",
+        "id": "https://openalex.org/A5031136629",
+        "orcid": "https://orcid.org/0000-0003-1494-2675",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ching‐Yu Chiang",
+        "id": "https://openalex.org/A5058822693",
+        "orcid": "https://orcid.org/0000-0002-3640-0474",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bing−Joe Hwang",
+        "id": "https://openalex.org/A5030917995",
+        "orcid": "https://orcid.org/0000-0002-3873-2149",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4384560879",
+    "doi": "10.1021/acs.jpcc.3c03045",
+    "title": "Microscopic Study of Solid–Solid Interfacial Reactions in All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "The Journal of Physical Chemistry C",
+    "journal_id": "https://openalex.org/S95739953",
+    "journal_type": "journal",
+    "journal_issn_l": "1932-7447",
+    "journal_issn_json": "[\"1932-7447\", \"1932-7455\"]",
+    "publication_date": "2023-07-17",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.80472945,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Bo‐Yang Tsai",
+    "authors_display": "Bo‐Yang Tsai; Shi‐Kai Jiang; Yi-Tzu Wu; Jing-Sen Yang; She‐Huang Wu; Ping‐Chun Tsai; Wei‐Nien Su; Ching‐Yu Chiang; Bing−Joe Hwang",
+    "authors_json": "[{\"display_name\": \"Bo‐Yang Tsai\", \"id\": \"https://openalex.org/A5009079835\", \"orcid\": \"https://orcid.org/0000-0002-7122-4752\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Shi‐Kai Jiang\", \"id\": \"https://openalex.org/A5065128662\", \"orcid\": \"https://orcid.org/0000-0002-9533-9642\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yi-Tzu Wu\", \"id\": \"https://openalex.org/A5019858310\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jing-Sen Yang\", \"id\": \"https://openalex.org/A5114067349\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"She‐Huang Wu\", \"id\": \"https://openalex.org/A5087838064\", \"orcid\": \"https://orcid.org/0000-0003-1165-9444\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ping‐Chun Tsai\", \"id\": \"https://openalex.org/A5102442209\", \"orcid\": \"https://orcid.org/0000-0003-4435-7768\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei‐Nien Su\", \"id\": \"https://openalex.org/A5031136629\", \"orcid\": \"https://orcid.org/0000-0003-1494-2675\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ching‐Yu Chiang\", \"id\": \"https://openalex.org/A5058822693\", \"orcid\": \"https://orcid.org/0000-0002-3640-0474\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bing−Joe Hwang\", \"id\": \"https://openalex.org/A5030917995\", \"orcid\": \"https://orcid.org/0000-0002-3873-2149\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.jpcc.3c03045",
+    "landing_title": "Microscopic Study of Solid–Solid Interfacial Reactions in All-Solid-State Batteries | The Journal of Physical Chemistry C",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acs.jpcc.3c03045.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773305351822,
+    "actual_start_ms": 1773305351823,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.589
+  }
+}

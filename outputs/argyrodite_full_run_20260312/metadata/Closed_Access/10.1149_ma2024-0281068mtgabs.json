@@ -1,0 +1,140 @@
+{
+  "doi": "10.1149/ma2024-0281068mtgabs",
+  "pdf_filename": "10.1149_ma2024-0281068mtgabs.pdf",
+  "json_filename": "10.1149_ma2024-0281068mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2024-0281068mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4405591509",
+    "doi": "10.1149/ma2024-0281068mtgabs",
+    "title": "Deconvolved First Cycle Capacity Loss Mechanisms in All-Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21825917,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Emma Kaeli",
+    "authors_display": "Emma Kaeli; Zhelong Jiang; Xiang I. A. Yang; Emma P.K.L Choy; Nicolas Liang; Sunny Wang; Eddie Barks; Stephen Dongmin Kang; William C. Chueh",
+    "authors": [
+      {
+        "display_name": "Emma Kaeli",
+        "id": "https://openalex.org/A5064886375",
+        "orcid": "https://orcid.org/0000-0001-8166-6362",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zhelong Jiang",
+        "id": "https://openalex.org/A5066684480",
+        "orcid": "https://orcid.org/0000-0003-0013-0860",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiang I. A. Yang",
+        "id": "https://openalex.org/A5085025441",
+        "orcid": "https://orcid.org/0000-0003-4940-5976",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Emma P.K.L Choy",
+        "id": "https://openalex.org/A5114386538",
+        "orcid": "https://orcid.org/0000-0003-3851-5731",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nicolas Liang",
+        "id": "https://openalex.org/A5079079614",
+        "orcid": "https://orcid.org/0000-0002-3927-2922",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sunny Wang",
+        "id": "https://openalex.org/A5029291750",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Eddie Barks",
+        "id": "https://openalex.org/A5115549619",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Stephen Dongmin Kang",
+        "id": "https://openalex.org/A5069253115",
+        "orcid": "https://orcid.org/0000-0002-7491-7933",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "William C. Chueh",
+        "id": "https://openalex.org/A5050039741",
+        "orcid": "https://orcid.org/0000-0002-7066-3470",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405591509",
+    "doi": "10.1149/ma2024-0281068mtgabs",
+    "title": "Deconvolved First Cycle Capacity Loss Mechanisms in All-Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21825917,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Emma Kaeli",
+    "authors_display": "Emma Kaeli; Zhelong Jiang; Xiang I. A. Yang; Emma P.K.L Choy; Nicolas Liang; Sunny Wang; Eddie Barks; Stephen Dongmin Kang; William C. Chueh",
+    "authors_json": "[{\"display_name\": \"Emma Kaeli\", \"id\": \"https://openalex.org/A5064886375\", \"orcid\": \"https://orcid.org/0000-0001-8166-6362\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Zhelong Jiang\", \"id\": \"https://openalex.org/A5066684480\", \"orcid\": \"https://orcid.org/0000-0003-0013-0860\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiang I. A. Yang\", \"id\": \"https://openalex.org/A5085025441\", \"orcid\": \"https://orcid.org/0000-0003-4940-5976\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Emma P.K.L Choy\", \"id\": \"https://openalex.org/A5114386538\", \"orcid\": \"https://orcid.org/0000-0003-3851-5731\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nicolas Liang\", \"id\": \"https://openalex.org/A5079079614\", \"orcid\": \"https://orcid.org/0000-0002-3927-2922\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sunny Wang\", \"id\": \"https://openalex.org/A5029291750\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Eddie Barks\", \"id\": \"https://openalex.org/A5115549619\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Stephen Dongmin Kang\", \"id\": \"https://openalex.org/A5069253115\", \"orcid\": \"https://orcid.org/0000-0002-7491-7933\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"William C. Chueh\", \"id\": \"https://openalex.org/A5050039741\", \"orcid\": \"https://orcid.org/0000-0002-7066-3470\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773306432618,
+    "actual_start_ms": 1773306432619,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.781
+  }
+}
