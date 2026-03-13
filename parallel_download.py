@@ -1251,6 +1251,14 @@ def _run_landing_precheck(
     max_workers: int,
     headless: bool,
     execution_env: str,
+    runtime_preset: str,
+    profile_mode: str,
+    profile_name: str,
+    persistent_profile_dir: str,
+    publisher_cooldown_sec: float,
+    global_start_spacing_sec: float,
+    jitter_min_sec: float,
+    jitter_max_sec: float,
 ) -> tuple[pd.DataFrame, Dict[str, Any]]:
     landing_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "landing_access_repro.py")
     precheck_dir = os.path.join(run_output_dir, "landing_precheck")
@@ -1268,6 +1276,8 @@ def _run_landing_precheck(
         sys.executable,
         "-u",
         landing_script,
+        "--runtime-preset",
+        str(runtime_preset or "auto"),
         "--input",
         landing_input_csv,
         "--workers",
@@ -1276,6 +1286,20 @@ def _run_landing_precheck(
         "1" if bool(headless) else "0",
         "--execution-env",
         str(execution_env or "auto"),
+        "--publisher-cooldown-sec",
+        str(float(publisher_cooldown_sec)),
+        "--global-start-spacing-sec",
+        str(float(global_start_spacing_sec)),
+        "--jitter-min-sec",
+        str(float(jitter_min_sec)),
+        "--jitter-max-sec",
+        str(float(jitter_max_sec)),
+        "--profile-mode",
+        str(profile_mode or "auto"),
+        "--profile-name",
+        str(profile_name or "Default"),
+        "--persistent-profile-dir",
+        os.path.abspath(os.path.expanduser(str(persistent_profile_dir or "outputs/.chrome_user_data"))),
         "--progress-every",
         "100",
         "--capture-fail-artifacts",
@@ -1423,7 +1447,7 @@ def main(
     os.environ["PDF_BROWSER_PROFILE_MODE"] = str(profile_mode or "auto").strip().lower() or "auto"
     os.environ["PDF_BROWSER_PROFILE_NAME"] = str(profile_name or "Default").strip() or "Default"
     os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = os.path.abspath(
-        str(persistent_profile_dir or "outputs/.chrome_user_data")
+        os.path.expanduser(str(persistent_profile_dir or "outputs/.chrome_user_data"))
     )
     os.environ.pop("PDF_BROWSER_SESSION_SEED_ROOT", None)
     runtime_profile_root = str(runtime_profile_root or "").strip()
@@ -1517,6 +1541,14 @@ def main(
             max_workers=max_workers,
             headless=resolved_headless,
             execution_env=resolved_execution_env,
+            runtime_preset=str(runtime_preset_resolved or runtime_preset_requested or "auto"),
+            profile_mode=profile_mode,
+            profile_name=profile_name,
+            persistent_profile_dir=persistent_profile_dir,
+            publisher_cooldown_sec=publisher_cooldown_sec,
+            global_start_spacing_sec=global_start_spacing_sec,
+            jitter_min_sec=jitter_min_sec,
+            jitter_max_sec=jitter_max_sec,
         )
         print(
             f"Landing precheck 완료: 성공={landing_precheck_metrics.get('landing_success', 0)} / "

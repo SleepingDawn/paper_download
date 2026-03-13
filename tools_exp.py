@@ -4083,8 +4083,10 @@ def _collect_pdf_candidate_urls_from_page(page, logger=None) -> list:
         return []
 
     current_url = str(getattr(page, "url", "") or "").strip()
+    current_html = str(getattr(page, "html", "") or "")
     seen = set()
     candidates = []
+    current_low = current_url.lower()
 
     def add(raw_url):
         url = str(raw_url or "").strip()
@@ -4108,7 +4110,18 @@ def _collect_pdf_candidate_urls_from_page(page, logger=None) -> list:
         seen.add(url)
         candidates.append(url)
 
-    add(current_url)
+    # Elsevier article pages often need a second-stage candidate expansion from
+    # the article HTML itself, even when no explicit PDF href is present yet.
+    if "sciencedirect.com" in current_low and "/science/article/" in current_low:
+        add(current_url)
+        try:
+            target_pii = _extract_sciencedirect_pii_from_text(current_url) or _extract_sciencedirect_pii_from_text(current_html)
+            pdfft_url = _extract_sciencedirect_pdfft_url_from_html(current_html, target_pii=target_pii)
+            add(pdfft_url)
+        except Exception:
+            pass
+    else:
+        add(current_url)
 
     try:
         meta_pdf = _ele_quick(page, 'css:meta[name="citation_pdf_url"]', timeout=0.2)
@@ -6390,6 +6403,19 @@ def _analyze_html_structure_drission(page, logger):
     #         pdf_heuristic_url = f"https://www.sciencedirect.com/science/article/pii/{pii_code}/pdfft?isDTM=true&download=true"
     #         logger.info(f"        [ScienceDirect] trying new url : {pdf_heuristic_url}")
     #         return pdf_heuristic_url
+
+    # -------------------------------------------------------
+    # 2. [ScienceDirect 전용] article shell -> pdfft 복구
+    # -------------------------------------------------------
+    if "sciencedirect.com" in current_url.lower() and "/science/article/" in current_url.lower():
+        try:
+            target_pii = _extract_sciencedirect_pii_from_text(current_url) or _extract_sciencedirect_pii_from_text(page_source)
+            pdfft_url = _extract_sciencedirect_pdfft_url_from_html(page_source, target_pii=target_pii)
+            if pdfft_url:
+                logger.info(f"        [ScienceDirect] HTML 기반 pdfft 후보 복구: {pdfft_url}")
+                return pdfft_url
+        except Exception:
+            pass
 
     # -------------------------------------------------------
     # 3. Iframe / Embed / Object (일반)

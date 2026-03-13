@@ -2882,7 +2882,9 @@ def main() -> None:
     os.environ["PDF_ASSUME_INSTITUTION_ACCESS"] = "1" if int(args.assume_institution_access) == 1 else "0"
     os.environ["PDF_BROWSER_PROFILE_MODE"] = str(args.profile_mode or "auto").strip()
     os.environ["PDF_BROWSER_PROFILE_NAME"] = str(args.profile_name or "Default").strip() or "Default"
-    os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = os.path.abspath(str(args.persistent_profile_dir))
+    os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = os.path.abspath(
+        os.path.expanduser(str(args.persistent_profile_dir))
+    )
 
     worker_profile_root = str(args.worker_profile_root or "").strip()
     run_base = os.environ.get("SLURM_TMPDIR", "").strip() or os.path.join("/tmp", os.environ.get("USER", "user"))

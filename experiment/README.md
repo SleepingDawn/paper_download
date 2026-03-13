@@ -12,3 +12,5 @@
   - 주요 publisher를 균형 있게 뽑아 landing / viewer / direct control 문제를 분리해서 보는 입력
 - `publisher_triage_benchmark_20260313.md`
   - 생성 규칙, 권장 실행 명령, publisher별 분석 포인트 정리
+- `elsevier_smoke_download_20260313.csv`
+  - Linux seeded profile이 실제로 Elsevier landing / PDF discovery를 통과하는지 빠르게 확인하는 2건 smoke 입력

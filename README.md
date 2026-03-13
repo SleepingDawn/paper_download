@@ -38,6 +38,85 @@ which google-chrome || which google-chrome-stable || which chromium-browser || w
 
 자세한 절차와 명령어는 [docs/linux_seed_profile_setup.md](docs/linux_seed_profile_setup.md)에 정리했습니다.
 
+## 현재 진전사항
+
+2026-03-13 기준 Linux seeded profile 경로에서 확인된 사항:
+
+- Ubuntu VM에서 만든 Linux Chromium profile을 서버의 `linux_cli_seeded`에 연결하는 흐름을 정리했고, profile 구조 검사/패키징 스크립트를 추가했습니다.
+- `parallel_download.py --precheck-landing 1` 내부 precheck subprocess가 preset/profile 인자를 잃어버리던 버그를 수정했습니다.
+  - 이전에는 상위 실행이 `linux_cli_seeded`여도 precheck가 `auto -> linux_cli_cold`로 떨어질 수 있었습니다.
+  - 현재는 precheck도 `runtime-preset`, `profile-mode`, `profile-name`, `persistent-profile-dir`, pacing 값을 그대로 상속합니다.
+- 서버 seeded smoke에서 Elsevier landing은 2/2 `success_landing`까지 올라오는 것을 확인했습니다.
+- 다운로드 단계에서는 1건 성공, 1건 `FAIL_NO_CANDIDATE`가 남아 있었고, 이를 줄이기 위해 ScienceDirect article HTML에서 `pdfft` URL을 직접 복구하는 candidate fallback을 추가했습니다.
+
+해석:
+
+- 현재 병목은 `profile 연결` 자체가 아니라 Elsevier PDF discovery의 마지막 단계입니다.
+- 즉 seeded profile 전략은 실제로 유효하며, 남은 문제는 일부 Elsevier 변형 page에서 PDF 후보 수집을 더 안정화하는 쪽입니다.
+
+재현용 입력:
+
+- [experiment/elsevier_smoke_download_20260313.csv](/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/experiment/elsevier_smoke_download_20260313.csv)
+
+권장 smoke 명령:
+
+```bash
+python3 -u parallel_download.py \
+  --doi_path experiment/elsevier_smoke_download_20260313.csv \
+  --runtime-preset linux_cli_seeded \
+  --persistent-profile-dir ~/chrome_profiles/linux_chromium_user_data_seed \
+  --profile-name Default \
+  --max_workers 1 \
+  --precheck-landing 1 \
+  --abort-on-landing-block 1 \
+  --publisher-cooldown-sec 15 \
+  --global-start-spacing-sec 5 \
+  --jitter-min-sec 2 \
+  --jitter-max-sec 4 \
+  --non-interactive
+```
+
+## 서버에서 끊김 없이 실행
+
+SSH 세션이 끊겨도 실험이 계속 돌도록 `nohup` 기반 래퍼를 추가했습니다.
+
+권장:
+
+```bash
+bash scripts/run_parallel_detached.sh \
+  --doi-path ready_to_download.csv \
+  --profile-root ~/chrome_profiles/linux_chromium_user_data_seed \
+  --run-name seeded_full_run \
+  --max-workers 1 \
+  --precheck-landing 1
+```
+
+Elsevier smoke 예시:
+
+```bash
+bash scripts/run_parallel_detached.sh \
+  --doi-path experiment/elsevier_smoke_download_20260313.csv \
+  --profile-root ~/chrome_profiles/linux_chromium_user_data_seed \
+  --run-name elsevier_smoke_seeded \
+  --max-workers 1 \
+  --precheck-landing 1
+```
+
+스크립트가 해주는 일:
+
+- `parallel_download.py`를 `nohup`으로 백그라운드 실행
+- `logs/<run_name>.log`에 stdout/stderr 저장
+- `logs/<run_name>.pid`에 PID 저장
+- `logs/<run_name>.cmd.sh`에 실제 실행 명령 저장
+- 출력 디렉터리를 `outputs/<run_name>`, PDF 디렉터리를 `pdfs/<run_name>`로 고정
+
+실행 후 확인:
+
+```bash
+tail -f logs/elsevier_smoke_seeded.log
+ps -fp "$(cat logs/elsevier_smoke_seeded.pid)"
+```
+
 ## 필요한 입력과 형식
 
 ### 1. 다운로드용 CSV
