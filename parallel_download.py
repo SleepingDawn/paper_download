@@ -12,7 +12,8 @@ from typing import Any, Dict, List, Optional
 import pandas as pd
 from tqdm import tqdm
 
-from config import get_config
+from config import apply_runtime_preset, get_config
+from pdf_pipeline import append_metrics_jsonl
 from landing_classifier import (
     STATE_CHALLENGE_DETECTED,
     estimate_publisher_key,
@@ -248,6 +249,52 @@ def _is_browser_only_pdf_wrapper(url: str) -> bool:
     )
 
 
+def _is_cookie_sensitive_wiley_pdf_url(url: str) -> bool:
+    low = str(url or "").strip().lower()
+    if "onlinelibrary.wiley.com" not in low:
+        return False
+    return any(token in low for token in ("/doi/pdfdirect/", "/doi/pdf/", "/doi/epdf/"))
+
+
+def _is_rsc_article_pdf_url(url: str) -> bool:
+    low = str(url or "").strip().lower()
+    return "pubs.rsc.org" in low and "/content/articlepdf/" in low
+
+
+def _is_ieee_stamp_pdf_url(url: str) -> bool:
+    low = str(url or "").strip().lower()
+    return "ieeexplore.ieee.org/stamppdf/getpdf.jsp" in low
+
+
+def _append_live_attempt_record(record: Dict[str, Any]) -> None:
+    metrics_path = os.path.abspath(
+        os.environ.get("PDF_ATTEMPTS_JSONL", os.path.join("outputs", "download_attempts.jsonl"))
+    )
+    append_metrics_jsonl(metrics_path, record)
+
+
+def _build_attempt_metrics_extra(
+    doi: str,
+    publisher: str,
+    scheduler_publisher: str,
+    attempt: int,
+    mode: str,
+    source_stage: str,
+    extra: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
+    payload: Dict[str, Any] = {
+        "doi": doi,
+        "publisher": publisher or "",
+        "scheduler_publisher": scheduler_publisher or "",
+        "workflow_attempt": int(attempt),
+        "workflow_mode": mode,
+        "source_stage": source_stage,
+    }
+    if extra:
+        payload.update(extra)
+    return payload
+
+
 def _result_template(doi: str, attempt: int, mode: str) -> Dict[str, Any]:
     return {
         "doi": doi,
@@ -432,6 +479,8 @@ def _single_download_attempt(
         return result
 
     publisher = _resolve_download_publisher_label(row_data)
+    publisher_key = (publisher or "").lower()
+    scheduler_publisher = str(row_data.get("scheduler_publisher") or "")
     pdf_url_oa = str(row_data.get("pdf_url", "")).strip()
     filename = _sanitize_doi_to_filename(doi)
     full_path = os.path.join(pdf_save_dir, filename)
@@ -495,15 +544,58 @@ def _single_download_attempt(
                     "evidence": [f"browser_only_wrapper={pdf_url_oa}"],
                 }
             )
+        elif _is_cookie_sensitive_wiley_pdf_url(pdf_url_oa):
+            logger.info(f"        [DirectOA] Wiley cookie-sensitive direct URL 스킵 -> browser landing: {pdf_url_oa}")
+            attempt_trace.append(
+                {
+                    "strategy": "direct_oa_cffi",
+                    "reason": REASON_FAIL_NO_CANDIDATE,
+                    "evidence": [f"cookie_sensitive_wiley_wrapper={pdf_url_oa}"],
+                }
+            )
         else:
             cffi_timeout = int(os.getenv("DIRECT_OA_CFFI_TIMEOUT_S", "12"))
-            cffi = download_with_cffi(
-                pdf_url_oa,
-                full_path,
-                logger=logger,
-                return_detail=True,
-                timeout=cffi_timeout,
-            )
+            cffi_retry_limit = 0
+            if _is_rsc_article_pdf_url(pdf_url_oa):
+                cffi_timeout = max(cffi_timeout, int(os.getenv("RSC_DIRECT_OA_TIMEOUT_S", "25")))
+                cffi_retry_limit = 1
+            elif _is_ieee_stamp_pdf_url(pdf_url_oa):
+                cffi_timeout = max(cffi_timeout, int(os.getenv("IEEE_DIRECT_TIMEOUT_S", "15")))
+                cffi_retry_limit = 1
+            cffi = None
+            for cffi_try in range(cffi_retry_limit + 1):
+                timeout_this = cffi_timeout if cffi_try == 0 else max(cffi_timeout + 8, cffi_timeout * 2)
+                cffi = download_with_cffi(
+                    pdf_url_oa,
+                    full_path,
+                    logger=logger,
+                    return_detail=True,
+                    timeout=timeout_this,
+                    metrics_extra=_build_attempt_metrics_extra(
+                        doi=doi,
+                        publisher=publisher or "",
+                        scheduler_publisher=scheduler_publisher,
+                        attempt=attempt,
+                        mode=mode,
+                        source_stage="direct_oa",
+                        extra={
+                            "direct_oa_url": pdf_url_oa,
+                            "direct_oa_try": cffi_try + 1,
+                        },
+                    ),
+                )
+                if cffi.get("ok"):
+                    break
+                if not (
+                    cffi.get("reason") == REASON_FAIL_TIMEOUT_NETWORK
+                    and cffi_try < cffi_retry_limit
+                    and (_is_rsc_article_pdf_url(pdf_url_oa) or _is_ieee_stamp_pdf_url(pdf_url_oa))
+                ):
+                    break
+                logger.info(
+                    f"        [DirectOA] transient direct fetch timeout -> 재시도 {cffi_try + 2}/{cffi_retry_limit + 1} "
+                    f"(timeout={timeout_this}s)"
+                )
             if cffi.get("ok"):
                 return {
                     **result,
@@ -534,9 +626,25 @@ def _single_download_attempt(
 
     def _run_drission_result() -> Dict[str, Any]:
         chrome_path = resolve_browser_executable(os.environ.get("CHROME_PATH", ""), logger=logger)
+        doi_url = f"https://doi.org/{doi}"
+        drission_started_ms = int(time.time() * 1000)
+        _append_live_attempt_record(
+            {
+                "record_type": "attempt_event",
+                "event": "browser_start",
+                "timestamp_ms": drission_started_ms,
+                "doi": doi,
+                "publisher": publisher or "",
+                "scheduler_publisher": scheduler_publisher,
+                "workflow_attempt": int(attempt),
+                "workflow_mode": mode,
+                "source_stage": "browser_entry",
+                "url": doi_url,
+            }
+        )
         with _temporary_browser_env(headless=headless, abort_on_landing_block=abort_on_landing_block):
             dr = download_with_drission(
-                f"https://doi.org/{doi}",
+                doi_url,
                 pdf_save_dir,
                 filename,
                 chrome_path,
@@ -546,6 +654,44 @@ def _single_download_attempt(
                 return_detail=True,
                 artifact_root=artifact_dir,
             )
+        drission_finished_ms = int(time.time() * 1000)
+        _append_live_attempt_record(
+            {
+                "record_type": "attempt_result",
+                "success": bool(dr.get("ok")),
+                "reason": _normalize_reason(dr.get("reason"), dr.get("http_status")),
+                "strategy": "drission",
+                "phase": str(dr.get("stage") or "drission"),
+                "elapsed_ms": max(0, drission_finished_ms - drission_started_ms),
+                "url": doi_url,
+                "final_url": str(dr.get("landing_url") or doi_url),
+                "domain": str(dr.get("domain") or ""),
+                "status_code": dr.get("http_status"),
+                "content_type": "",
+                "content_disposition": "",
+                "content_length": None,
+                "redirect_chain": [],
+                "first_bytes": "",
+                "evidence": {
+                    "landing_attempted": bool(dr.get("landing_attempted")),
+                    "landing_success": bool(dr.get("landing_success")),
+                    "landing_state": str(dr.get("landing_state") or "not_attempted"),
+                    "landing_title": str(dr.get("landing_title") or ""),
+                    "browser_session_mode": str(dr.get("browser_session_mode") or ""),
+                    "browser_session_source": str(dr.get("browser_session_source") or ""),
+                },
+                "file_path": full_path if bool(dr.get("ok")) else None,
+                "timestamp_ms": drission_finished_ms,
+                "started_at_ms": drission_started_ms,
+                "finished_at_ms": drission_finished_ms,
+                "doi": doi,
+                "publisher": publisher or "",
+                "scheduler_publisher": scheduler_publisher,
+                "workflow_attempt": int(attempt),
+                "workflow_mode": mode,
+                "source_stage": "browser",
+            }
+        )
         if dr.get("ok"):
             return {
                 **result,
@@ -583,12 +729,24 @@ def _single_download_attempt(
             "browser_user_data_dir": str(dr.get("browser_user_data_dir") or ""),
         }
 
-    publisher_key = (publisher or "").lower()
     # 지원 함수가 없는 publisher, 그리고 Elsevier/ACS는 브라우저 쿠키 세션 경로를 우선한다.
     skip_api = (publisher_key not in API_SUPPORTED_PUBLISHERS) or (publisher_key in {"elsevier", "acs"})
     if not skip_api:
         try:
-            if download_using_api(doi, pdf_save_dir, publisher, logger):
+            if download_using_api(
+                doi,
+                pdf_save_dir,
+                publisher,
+                logger,
+                metrics_extra=_build_attempt_metrics_extra(
+                    doi=doi,
+                    publisher=publisher or "",
+                    scheduler_publisher=scheduler_publisher,
+                    attempt=attempt,
+                    mode=mode,
+                    source_stage="publisher_direct",
+                ),
+            ):
                 return {
                     **result,
                     "status": "Success",
@@ -854,6 +1012,7 @@ def _resolve_decision(non_interactive: bool, after_first_pass: str, failed_count
 
 def _summarize_live_attempt_metrics(attempts_jsonl_path: str, out_path: str) -> Dict[str, Any]:
     records = []
+    event_counts: Dict[str, int] = {}
     if os.path.exists(attempts_jsonl_path):
         with open(attempts_jsonl_path, "r", encoding="utf-8") as f:
             for line in f:
@@ -861,9 +1020,15 @@ def _summarize_live_attempt_metrics(attempts_jsonl_path: str, out_path: str) -> 
                 if not line:
                     continue
                 try:
-                    records.append(json.loads(line))
+                    record = json.loads(line)
                 except json.JSONDecodeError:
                     continue
+                record_type = str(record.get("record_type") or "attempt_result")
+                if record_type != "attempt_result":
+                    event_name = str(record.get("event") or record_type)
+                    event_counts[event_name] = event_counts.get(event_name, 0) + 1
+                    continue
+                records.append(record)
 
     def _med(vals):
         if not vals:
@@ -902,6 +1067,7 @@ def _summarize_live_attempt_metrics(attempts_jsonl_path: str, out_path: str) -> 
         "reason_distribution": reason_dist,
         "by_strategy": by_strategy,
         "by_domain": by_domain,
+        "event_counts": event_counts,
     }
 
     with open(out_path, "w", encoding="utf-8") as f:
@@ -1220,6 +1386,8 @@ def main(
     profile_name="Default",
     persistent_profile_dir="outputs/.chrome_user_data",
     runtime_profile_root="",
+    runtime_preset_requested="auto",
+    runtime_preset_resolved="",
 ):
     start_time = time.time()
     max_workers = max(1, min(int(max_workers), SAFE_MAX_WORKERS))
@@ -1292,6 +1460,11 @@ def main(
     df = df.dropna(subset=["doi_lower"]).drop_duplicates(subset=["doi_lower"]).drop(columns=["doi_lower"])
     print(f"전처리 후 남은 전체 논문 수: {len(df)}건")
     print(f"다운로드 동시성(max_workers): {max_workers} (상한={SAFE_MAX_WORKERS})")
+    print(
+        "runtime preset: "
+        f"requested={str(runtime_preset_requested or 'auto')}, "
+        f"resolved={str(runtime_preset_resolved or runtime_preset_requested or 'auto')}"
+    )
     if worker_max_tasks_per_child is None:
         worker_recycle_label = "disabled"
     elif effective_worker_max_tasks_per_child is None:
@@ -1496,6 +1669,8 @@ def main(
             "closed_access_pdf_dir": ca_pdf_dir,
         },
         "download_browser": {
+            "runtime_preset_requested": str(runtime_preset_requested or "auto"),
+            "runtime_preset_resolved": str(runtime_preset_resolved or runtime_preset_requested or "auto"),
             "execution_env": resolved_execution_env,
             "headless": bool(resolved_headless),
             "deep_retry_headless": bool(resolved_deep_retry_headless),
@@ -1591,6 +1766,7 @@ def main(
 
 if __name__ == "__main__":
     args = get_config()
+    runtime_config = apply_runtime_preset(args, workflow="download")
     main(
         max_num=args.max_num,
         citation_percentile=args.citation_percentile,
@@ -1614,4 +1790,6 @@ if __name__ == "__main__":
         profile_name=args.profile_name,
         persistent_profile_dir=args.persistent_profile_dir,
         runtime_profile_root=args.runtime_profile_root,
+        runtime_preset_requested=getattr(args, "runtime_preset_requested", getattr(args, "runtime_preset", "auto")),
+        runtime_preset_resolved=getattr(args, "runtime_preset_resolved", runtime_config.preset_name),
     )

@@ -3917,7 +3917,7 @@ def _extract_rsc_article_pdf_url(page) -> str:
     return ""
 
 
-def _wait_for_rsc_article_pdf_ready(page, logger=None, timeout_s: int = 8) -> str:
+def _wait_for_rsc_article_pdf_ready(page, logger=None, timeout_s: int = 10) -> str:
     if page is None:
         return ""
     deadline = time.time() + max(0.5, float(timeout_s))
@@ -4651,7 +4651,17 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
 # =======================================================
 # 4. CFFI 다운로더
 # =======================================================
-def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logger=None, return_detail=False, timeout=20):
+def download_with_cffi(
+    url,
+    save_path,
+    referer=None,
+    cookies=None,
+    ua=None,
+    logger=None,
+    return_detail=False,
+    timeout=20,
+    metrics_extra=None,
+):
     if os.path.isdir(save_path):
         try: shutil.rmtree(save_path)
         except: pass
@@ -4694,7 +4704,18 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
         metrics_path = os.path.abspath(
             os.environ.get("PDF_ATTEMPTS_JSONL", os.path.join("outputs", "download_attempts.jsonl"))
         )
-        append_metrics_jsonl(metrics_path, attempt)
+        finished_at_ms = int(time.time() * 1000)
+        started_at_ms = max(0, finished_at_ms - int(attempt.elapsed_ms or 0))
+        append_metrics_jsonl(
+            metrics_path,
+            attempt,
+            extra={
+                "timestamp_ms": finished_at_ms,
+                "started_at_ms": started_at_ms,
+                "finished_at_ms": finished_at_ms,
+                **(metrics_extra or {}),
+            },
+        )
 
         if logger:
             if attempt.success:
@@ -4714,6 +4735,7 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
                 f"content_type={attempt.content_type}",
                 f"content_disposition={attempt.content_disposition}",
                 f"content_length={attempt.content_length}",
+                f"final_url={attempt.final_url}",
                 f"redirect_chain={' -> '.join(attempt.redirect_chain)}",
                 f"first_bytes={attempt.first_bytes}",
                 f"elapsed_ms={attempt.elapsed_ms}",
@@ -5279,7 +5301,7 @@ def download_with_drission(
             pdf_url = None
             pdf_btn = None
             if is_rsc:
-                pdf_url = _wait_for_rsc_article_pdf_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 6)
+                pdf_url = _wait_for_rsc_article_pdf_ready(page, logger=logger, timeout_s=12 if mode == "deep" else 8)
                 pdf_btn = _select_best_clickable_pdf_element(
                     page,
                     [
@@ -6241,17 +6263,17 @@ from typing import Optional
 
 
 
-def download_via_acspdf(doi: str, output_path: str, logger = None) -> bool:
+def download_via_acspdf(doi: str, output_path: str, logger = None, metrics_extra=None) -> bool:
     pdf_url = f"https://pubs.acs.org/doi/pdf/{doi}"
     headers = {
         "User-Agent": "Mozilla/5.0",
         "Referer": f"https://pubs.acs.org/doi/{doi}",
     }
     referer = headers["Referer"]
-    return bool(download_with_cffi(pdf_url, output_path, referer, logger=logger))
+    return bool(download_with_cffi(pdf_url, output_path, referer, logger=logger, metrics_extra=metrics_extra))
 
 
-def download_via_aippdf(doi: str, output_path: str, logger = None) -> bool:
+def download_via_aippdf(doi: str, output_path: str, logger = None, metrics_extra=None) -> bool:
     # AIP의 aip.scitation/avs.scitation doi/pdf 엔드포인트는 브라우저 없이 접근하면
     # JS gate HTML로 떨어지는 경우가 많아 불필요한 실패와 시도 횟수만 늘린다.
     # 여기서는 API/direct 단계에서 건너뛰고 브라우저 landing에서 실제 article-pdf 경로를 찾는다.
@@ -6260,29 +6282,30 @@ def download_via_aippdf(doi: str, output_path: str, logger = None) -> bool:
     return False
 
 
-def download_via_ioppdf(doi: str, output_path: str, logger = None) -> bool:
+def download_via_ioppdf(doi: str, output_path: str, logger = None, metrics_extra=None) -> bool:
     pdf_url = f"https://iopscience.iop.org/article/{doi}/pdf"
     headers = {
         "User-Agent": "Mozilla/5.0",
         "Referer": f"https://iopscience.iop.org/article/{doi}",
     }
     referer = headers["Referer"]
-    return bool(download_with_cffi(pdf_url, output_path, referer, logger=logger))
+    return bool(download_with_cffi(pdf_url, output_path, referer, logger=logger, metrics_extra=metrics_extra))
 
 
-def download_via_wiley(doi: str, output_path: str, logger = None):
+def download_via_wiley(doi: str, output_path: str, logger = None, metrics_extra=None):
     """
     Download the PDF of a Wiley article via the Wiley TDM API.
     Requires a Wiley API key.
     """
     api_key = WILEY_API_KEY
     if not api_key:
-        raise Exception(
-            "WILEY_API_KEY is not set. Please configure your Wiley API key.")
+        if logger:
+            logger.info("WILEY_API_KEY 미설정 -> cookie-less direct fallback 생략, browser landing으로 이관")
+        return False
     base_url = "https://api.wiley.com/onlinelibrary/tdm/v1/articles/"
     url = base_url + doi
     headers = {"Wiley-TDM-Client-Token": api_key}
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, timeout=20)
     try:
         if response.status_code == 200:
             with open(output_path, 'wb') as file:
@@ -6291,16 +6314,10 @@ def download_via_wiley(doi: str, output_path: str, logger = None):
                 logger.info(f"{doi} downloaded successfully via Wiley API")
             return True
         if logger:
-            logger.warning(f"Wiley API failed status={response.status_code} for doi={doi}, direct PDF fallback 시도")
-
-        fallback_referer = f"https://onlinelibrary.wiley.com/doi/{doi}"
-        fallback_urls = [
-            f"https://onlinelibrary.wiley.com/doi/pdfdirect/{doi}?download=true",
-            f"https://onlinelibrary.wiley.com/doi/pdf/{doi}",
-        ]
-        for fu in fallback_urls:
-            if download_with_cffi(fu, output_path, referer=fallback_referer, logger=logger):
-                return True
+            logger.warning(
+                f"Wiley API failed status={response.status_code} for doi={doi}, "
+                "cookie-less direct fallback 생략 -> browser landing으로 이관"
+            )
         return False
     except Exception as e:
         # Provide a more specific hint on failure
@@ -6311,11 +6328,23 @@ def _download_direct_pdf_candidates(
     output_path: str,
     candidates: list[tuple[str, str]],
     logger = None,
+    metrics_extra=None,
 ) -> bool:
-    for pdf_url, referer in candidates:
+    for idx, (pdf_url, referer) in enumerate(candidates):
         if logger:
             logger.info(f"        [DirectPDF] 후보 시도: {pdf_url}")
-        result = download_with_cffi(pdf_url, output_path, referer=referer, logger=logger, return_detail=True)
+        result = download_with_cffi(
+            pdf_url,
+            output_path,
+            referer=referer,
+            logger=logger,
+            return_detail=True,
+            metrics_extra={
+                "candidate_index": idx,
+                "candidate_url": pdf_url,
+                **(metrics_extra or {}),
+            },
+        )
         if result.get("ok"):
             return True
         if logger:
@@ -6333,7 +6362,7 @@ def _nature_article_id_from_doi(doi: str) -> str:
     return norm.split("/", 1)[1]
 
 
-def download_via_naturepdf(doi: str, output_path: str, logger = None):
+def download_via_naturepdf(doi: str, output_path: str, logger = None, metrics_extra=None):
     """
     Download the PDF of a Nature article by constructing the direct Nature PDF URL.
     """
@@ -6344,14 +6373,18 @@ def download_via_naturepdf(doi: str, output_path: str, logger = None):
             f"https://www.nature.com/articles/{article_id}",
         ),
         (
-            f"https://www.nature.com/articles/{doi}.pdf",
-            f"https://www.nature.com/articles/{doi}",
+            f"https://www.nature.com/articles/{article_id}_reference.pdf",
+            f"https://www.nature.com/articles/{article_id}",
+        ),
+        (
+            f"https://www.nature.com/articles/{article_id}.pdf?download=1",
+            f"https://www.nature.com/articles/{article_id}",
         ),
     ]
-    return _download_direct_pdf_candidates(doi, output_path, candidates, logger=logger)
+    return _download_direct_pdf_candidates(doi, output_path, candidates, logger=logger, metrics_extra=metrics_extra)
 
 
-def download_via_springerpdf(doi: str, output_path: str, logger = None):
+def download_via_springerpdf(doi: str, output_path: str, logger = None, metrics_extra=None):
     """
     Download the PDF of a Springer article by constructing the direct SpringerLink PDF URL.
     """
@@ -6365,9 +6398,9 @@ def download_via_springerpdf(doi: str, output_path: str, logger = None):
             f"https://link.springer.com/article/{doi}",
         ),
     ]
-    return _download_direct_pdf_candidates(doi, output_path, candidates, logger=logger)
+    return _download_direct_pdf_candidates(doi, output_path, candidates, logger=logger, metrics_extra=metrics_extra)
     
-def download_using_api(doi: str, output_path: str, publisher: str, logger = None):
+def download_using_api(doi: str, output_path: str, publisher: str, logger = None, metrics_extra=None):
     """
     Attempt to download the article PDF using publisher-specific API methods.
     Raises an Exception if no suitable method is found or if the download fails.
@@ -6392,7 +6425,7 @@ def download_using_api(doi: str, output_path: str, publisher: str, logger = None
     if publisher_key in TOOL_FUNCTIONS:
         download_func = TOOL_FUNCTIONS[publisher_key]
         logger.info(f"Trying download using api or url for publisher : {publisher_key}, doi : {doi}")
-        return download_func(doi, filepath, logger)
+        return download_func(doi, filepath, logger, metrics_extra=metrics_extra)
     else:
         logger.warning(f"No download method available for publisher: {publisher}")
         raise Exception(f"No download method available for publisher: {publisher}")

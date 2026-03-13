@@ -3,7 +3,7 @@ import os
 import re
 import time
 from dataclasses import dataclass, asdict
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 from urllib import error as urllib_error
 from urllib import request as urllib_request
 from urllib.parse import urljoin, urlparse
@@ -434,8 +434,17 @@ def download_pdf(
         )
 
 
-def append_metrics_jsonl(path: str, attempt: DownloadAttempt) -> None:
-    os.makedirs(os.path.dirname(path), exist_ok=True)
+def append_metrics_jsonl(path: str, attempt: Any, extra: Optional[Dict[str, Any]] = None) -> None:
+    parent = os.path.dirname(path) or "."
+    os.makedirs(parent, exist_ok=True)
+    if isinstance(attempt, DownloadAttempt):
+        payload = asdict(attempt)
+    elif isinstance(attempt, dict):
+        payload = dict(attempt)
+    else:
+        raise TypeError(f"Unsupported attempt payload type: {type(attempt)!r}")
+    if extra:
+        payload.update({str(k): v for k, v in extra.items()})
+    payload.setdefault("record_type", "attempt_result")
     with open(path, "a", encoding="utf-8") as f:
-        f.write(json.dumps(asdict(attempt), ensure_ascii=False) + "\n")
-
+        f.write(json.dumps(payload, ensure_ascii=False) + "\n")

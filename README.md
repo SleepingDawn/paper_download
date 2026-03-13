@@ -110,6 +110,10 @@ OpenAlex 검색 단계 주의:
 
 실제 해석:
 
+- `runtime-preset=auto`면 환경에 따라 `local_mac` 또는 `linux_cli_cold`로 자동 해석됩니다.
+- `runtime-preset=local_mac`은 `desktop + headful + profile_mode=auto` 기본을 씁니다.
+- `runtime-preset=linux_cli_cold`는 `linux_cli + headless + profile_mode=temp` 기본을 씁니다.
+- `runtime-preset=linux_cli_seeded`는 `linux_cli + headless + profile_mode=auto` 기본을 씁니다.
 - `headless=None`이면 `PDF_BROWSER_HEADLESS` 환경변수를 따릅니다.
 - 환경변수도 없으면 로컬 desktop 기준으로는 사실상 `headful`이지만, `execution-env=linux_cli`면 자동으로 `headless`가 강제됩니다.
 - `deep_retry_headless=None`이면 1차 패스의 `headless` 값을 그대로 따릅니다.
@@ -134,6 +138,10 @@ OpenAlex 검색 단계 주의:
 
 실제 해석:
 
+- `runtime-preset=auto`면 환경에 따라 `local_mac` 또는 `linux_cli_cold`로 자동 해석됩니다.
+- `runtime-preset=local_mac`은 `desktop + headful + profile_mode=auto` 기본을 씁니다.
+- `runtime-preset=linux_cli_cold`는 `linux_cli + headless + profile_mode=temp` 기본을 씁니다.
+- `runtime-preset=linux_cli_seeded`는 `linux_cli + headless + profile_mode=auto` 기본을 씁니다.
 - 기본 랜딩 검사는 로컬 desktop 안정성 기준으로 `headful + single worker`입니다.
 - Linux CLI에서는 `execution-env=linux_cli`가 자동/명시 적용되면 headless-only로 동작합니다.
 - Linux CLI에서는 macOS Chrome app 경로와 macOS 시스템 Chrome profile을 후보로 사용하지 않습니다.
@@ -183,8 +191,7 @@ Linux CLI 환경에서는 headful을 사용할 수 없으므로 `--execution-env
 python3 -u landing_access_repro.py \
   --input ready_to_download.csv \
   --workers 1 \
-  --execution-env linux_cli \
-  --headless 1 \
+  --runtime-preset linux_cli_cold \
   --timeout-sec 15 \
   --per-doi-deadline-sec 45 \
   --output-jsonl outputs/landing_access_repro.jsonl \
@@ -200,8 +207,7 @@ python3 -u landing_access_repro.py \
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
   --max_workers 1 \
-  --execution-env linux_cli \
-  --headless 1 \
+  --runtime-preset linux_cli_cold \
   --precheck-landing 0 \
   --abort-on-landing-block 1 \
   --after-first-pass stop \
@@ -218,8 +224,7 @@ python3 -u parallel_download.py \
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
   --max_workers 1 \
-  --execution-env linux_cli \
-  --headless 1 \
+  --runtime-preset linux_cli_seeded \
   --precheck-landing 1 \
   --abort-on-landing-block 1 \
   --after-first-pass stop \

@@ -20,6 +20,7 @@ from DrissionPage import ChromiumOptions, ChromiumPage
 from bs4 import BeautifulSoup
 import requests
 
+from config import add_runtime_preset_argument, apply_runtime_preset
 from landing_classifier import (
     collect_page_snapshot,
     DEFAULT_GLOBAL_START_SPACING_SEC,
@@ -2685,6 +2686,7 @@ def _summarize(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Landing-only DOI access probe with explicit landing classification")
+    add_runtime_preset_argument(parser)
     parser.add_argument("--input", type=str, default="ready_to_download.csv")
     parser.add_argument("--max-dois", type=int, default=0)
     parser.add_argument("--workers", type=int, default=DEFAULT_LOCAL_LANDING_WORKERS)
@@ -2724,6 +2726,7 @@ def main() -> None:
     parser.add_argument("--report", type=str, default="outputs/landing_access_repro_report.json")
     parser.add_argument("--report-md", type=str, default="")
     args = parser.parse_args()
+    runtime_config = apply_runtime_preset(args, workflow="landing")
 
     records = load_landing_inputs(args.input)
     if args.max_dois and args.max_dois > 0:
@@ -2746,6 +2749,7 @@ def main() -> None:
     if resolved_execution_env == "linux_cli" and not requested_headless:
         print(json.dumps({"execution_env": resolved_execution_env, "headless_forced": True}, ensure_ascii=False), flush=True)
     os.environ["PDF_BROWSER_EXECUTION_ENV"] = resolved_execution_env
+    os.environ["PDF_RUNTIME_PRESET"] = str(getattr(args, "runtime_preset_resolved", runtime_config.preset_name))
     os.environ["PDF_BROWSER_HEADLESS"] = "1" if resolved_headless else "0"
     os.environ["PDF_BROWSER_NO_SANDBOX"] = "1" if int(args.no_sandbox) == 1 else "0"
     os.environ["PDF_BROWSER_SERVER_TUNED"] = "1" if int(args.server_tuned) == 1 else "0"
@@ -2790,6 +2794,16 @@ def main() -> None:
         )
 
     print(json.dumps({"resolved_chrome_path": chrome_path}, ensure_ascii=False), flush=True)
+    print(
+        json.dumps(
+            {
+                "runtime_preset_requested": getattr(args, "runtime_preset_requested", getattr(args, "runtime_preset", "auto")),
+                "runtime_preset_resolved": getattr(args, "runtime_preset_resolved", runtime_config.preset_name),
+            },
+            ensure_ascii=False,
+        ),
+        flush=True,
+    )
     print(json.dumps({"execution_env": resolved_execution_env}, ensure_ascii=False), flush=True)
     print(json.dumps({"worker_profile_root": worker_profile_root}, ensure_ascii=False), flush=True)
     print(json.dumps({"worker_download_root": worker_download_root}, ensure_ascii=False), flush=True)
@@ -2911,6 +2925,8 @@ def main() -> None:
         "sample_size": len(ordered_records),
         "workers_requested": requested_workers,
         "workers_effective": workers,
+        "runtime_preset_requested": getattr(args, "runtime_preset_requested", getattr(args, "runtime_preset", "auto")),
+        "runtime_preset_resolved": getattr(args, "runtime_preset_resolved", runtime_config.preset_name),
         "execution_env": resolved_execution_env,
         "headless": bool(resolved_headless),
         "headless_requested": bool(requested_headless),
