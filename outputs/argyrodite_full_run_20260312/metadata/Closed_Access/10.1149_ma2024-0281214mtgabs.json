@@ -1,0 +1,126 @@
+{
+  "doi": "10.1149/ma2024-0281214mtgabs",
+  "pdf_filename": "10.1149_ma2024-0281214mtgabs.pdf",
+  "json_filename": "10.1149_ma2024-0281214mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2024-0281214mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4405592107",
+    "doi": "10.1149/ma2024-0281214mtgabs",
+    "title": "Li Metal Surface Modification to Stabilize Lithium-Argyrodite Interface for Sulfide-Based All-Solid-State Lithium Metal Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21874649,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Hui‐Tae Sim",
+    "authors_display": "Hui‐Tae Sim; Myungkeun Oh; Ye‐Eun Park; Hyo‐Jin Kim; Yun-Sun Cho; Seong-Jin Park; Dong‐Won Kim",
+    "authors": [
+      {
+        "display_name": "Hui‐Tae Sim",
+        "id": "https://openalex.org/A5008817800",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Myungkeun Oh",
+        "id": "https://openalex.org/A5011873816",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ye‐Eun Park",
+        "id": "https://openalex.org/A5064813673",
+        "orcid": "https://orcid.org/0000-0003-3936-0452",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyo‐Jin Kim",
+        "id": "https://openalex.org/A5100439152",
+        "orcid": "https://orcid.org/0000-0002-6636-5745",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yun-Sun Cho",
+        "id": "https://openalex.org/A5109750852",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seong-Jin Park",
+        "id": "https://openalex.org/A5100746888",
+        "orcid": "https://orcid.org/0000-0002-5784-9756",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Won Kim",
+        "id": "https://openalex.org/A5100691394",
+        "orcid": "https://orcid.org/0000-0002-1735-0272",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405592107",
+    "doi": "10.1149/ma2024-0281214mtgabs",
+    "title": "Li Metal Surface Modification to Stabilize Lithium-Argyrodite Interface for Sulfide-Based All-Solid-State Lithium Metal Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21874649,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Hui‐Tae Sim",
+    "authors_display": "Hui‐Tae Sim; Myungkeun Oh; Ye‐Eun Park; Hyo‐Jin Kim; Yun-Sun Cho; Seong-Jin Park; Dong‐Won Kim",
+    "authors_json": "[{\"display_name\": \"Hui‐Tae Sim\", \"id\": \"https://openalex.org/A5008817800\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Myungkeun Oh\", \"id\": \"https://openalex.org/A5011873816\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ye‐Eun Park\", \"id\": \"https://openalex.org/A5064813673\", \"orcid\": \"https://orcid.org/0000-0003-3936-0452\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyo‐Jin Kim\", \"id\": \"https://openalex.org/A5100439152\", \"orcid\": \"https://orcid.org/0000-0002-6636-5745\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yun-Sun Cho\", \"id\": \"https://openalex.org/A5109750852\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seong-Jin Park\", \"id\": \"https://openalex.org/A5100746888\", \"orcid\": \"https://orcid.org/0000-0002-5784-9756\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Won Kim\", \"id\": \"https://openalex.org/A5100691394\", \"orcid\": \"https://orcid.org/0000-0002-1735-0272\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773307244418,
+    "actual_start_ms": 1773307245749,
+    "pacing_wait_ms": 1331,
+    "pacing_jitter_sec": 1.208
+  }
+}

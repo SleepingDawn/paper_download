@@ -1,0 +1,138 @@
+{
+  "doi": "10.1007/s10008-021-05004-x",
+  "pdf_filename": "10.1007_s10008-021-05004-x.pdf",
+  "json_filename": "10.1007_s10008-021-05004-x.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s10008-021-05004-x.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3197535265",
+    "doi": "10.1007/s10008-021-05004-x",
+    "title": "Ionic conductivity and interfacial stability of Li6PS5Cl–Li6.5La3Zr1.5Ta0.5O12 composite electrolyte",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Journal of Solid State Electrochemistry",
+      "id": "https://openalex.org/S25422132",
+      "type": "journal",
+      "issn_l": "1432-8488",
+      "issn": [
+        "1432-8488",
+        "1433-0768"
+      ]
+    },
+    "publication_date": "2021-08-28",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.73888337,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Changfei Zou",
+    "authors_display": "Changfei Zou; Li Yang; Kaili Luo; Lei Liu; Xiyuan Tao; Lingguang Yi; Xianhu Liu; Zhigao Luo; Xianyou Wang",
+    "authors": [
+      {
+        "display_name": "Changfei Zou",
+        "id": "https://openalex.org/A5050538824",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Li Yang",
+        "id": "https://openalex.org/A5100603628",
+        "orcid": "https://orcid.org/0000-0003-2334-1206",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kaili Luo",
+        "id": "https://openalex.org/A5113678831",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lei Liu",
+        "id": "https://openalex.org/A5103888037",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiyuan Tao",
+        "id": "https://openalex.org/A5014875566",
+        "orcid": "https://orcid.org/0000-0001-5075-0545",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lingguang Yi",
+        "id": "https://openalex.org/A5037393844",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xianhu Liu",
+        "id": "https://openalex.org/A5080100993",
+        "orcid": "https://orcid.org/0000-0002-4975-3586",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhigao Luo",
+        "id": "https://openalex.org/A5000193228",
+        "orcid": "https://orcid.org/0000-0002-2228-8995",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xianyou Wang",
+        "id": "https://openalex.org/A5100369584",
+        "orcid": "https://orcid.org/0000-0001-8888-6405",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3197535265",
+    "doi": "10.1007/s10008-021-05004-x",
+    "title": "Ionic conductivity and interfacial stability of Li6PS5Cl–Li6.5La3Zr1.5Ta0.5O12 composite electrolyte",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Journal of Solid State Electrochemistry",
+    "journal_id": "https://openalex.org/S25422132",
+    "journal_type": "journal",
+    "journal_issn_l": "1432-8488",
+    "journal_issn_json": "[\"1432-8488\", \"1433-0768\"]",
+    "publication_date": "2021-08-28",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.73888337,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Changfei Zou",
+    "authors_display": "Changfei Zou; Li Yang; Kaili Luo; Lei Liu; Xiyuan Tao; Lingguang Yi; Xianhu Liu; Zhigao Luo; Xianyou Wang",
+    "authors_json": "[{\"display_name\": \"Changfei Zou\", \"id\": \"https://openalex.org/A5050538824\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Li Yang\", \"id\": \"https://openalex.org/A5100603628\", \"orcid\": \"https://orcid.org/0000-0003-2334-1206\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kaili Luo\", \"id\": \"https://openalex.org/A5113678831\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lei Liu\", \"id\": \"https://openalex.org/A5103888037\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiyuan Tao\", \"id\": \"https://openalex.org/A5014875566\", \"orcid\": \"https://orcid.org/0000-0001-5075-0545\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lingguang Yi\", \"id\": \"https://openalex.org/A5037393844\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xianhu Liu\", \"id\": \"https://openalex.org/A5080100993\", \"orcid\": \"https://orcid.org/0000-0002-4975-3586\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhigao Luo\", \"id\": \"https://openalex.org/A5000193228\", \"orcid\": \"https://orcid.org/0000-0002-2228-8995\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xianyou Wang\", \"id\": \"https://openalex.org/A5100369584\", \"orcid\": \"https://orcid.org/0000-0001-8888-6405\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773308672294,
+    "actual_start_ms": 1773308673801,
+    "pacing_wait_ms": 1506,
+    "pacing_jitter_sec": 1.166
+  }
+}

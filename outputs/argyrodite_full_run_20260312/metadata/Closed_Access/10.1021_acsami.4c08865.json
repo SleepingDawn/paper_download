@@ -1,0 +1,124 @@
+{
+  "doi": "10.1021/acsami.4c08865",
+  "pdf_filename": "10.1021_acsami.4c08865.pdf",
+  "json_filename": "10.1021_acsami.4c08865.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.4c08865.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4401895647",
+    "doi": "10.1021/acsami.4c08865",
+    "title": "Disorder-Dependent Li Diffusion in Li<sub>6</sub>PS<sub>5</sub>Cl Investigated by Machine-Learning Potential",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2024-08-26",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 24,
+    "citation_normalized_percentile": 0.96321479,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Jiho Lee",
+    "authors_display": "Jiho Lee; Suyeon Ju; Seungwoo Hwang; J.H. You; Jisu Jung; Youngho Kang; Seungwu Han",
+    "authors": [
+      {
+        "display_name": "Jiho Lee",
+        "id": "https://openalex.org/A5090238263",
+        "orcid": "https://orcid.org/0009-0008-7266-091X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Suyeon Ju",
+        "id": "https://openalex.org/A5009801348",
+        "orcid": "https://orcid.org/0000-0001-7033-8769",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seungwoo Hwang",
+        "id": "https://openalex.org/A5035762390",
+        "orcid": "https://orcid.org/0000-0002-1523-8340",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J.H. You",
+        "id": "https://openalex.org/A5105843170",
+        "orcid": "https://orcid.org/0009-0003-7152-7774",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jisu Jung",
+        "id": "https://openalex.org/A5046829226",
+        "orcid": "https://orcid.org/0000-0003-2814-1289",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Youngho Kang",
+        "id": "https://openalex.org/A5017460659",
+        "orcid": "https://orcid.org/0000-0003-4532-0027",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Seungwu Han",
+        "id": "https://openalex.org/A5010950048",
+        "orcid": "https://orcid.org/0000-0003-3958-0922",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4401895647",
+    "doi": "10.1021/acsami.4c08865",
+    "title": "Disorder-Dependent Li Diffusion in Li<sub>6</sub>PS<sub>5</sub>Cl Investigated by Machine-Learning Potential",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2024-08-26",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 24,
+    "citation_normalized_percentile": 0.96321479,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Jiho Lee",
+    "authors_display": "Jiho Lee; Suyeon Ju; Seungwoo Hwang; J.H. You; Jisu Jung; Youngho Kang; Seungwu Han",
+    "authors_json": "[{\"display_name\": \"Jiho Lee\", \"id\": \"https://openalex.org/A5090238263\", \"orcid\": \"https://orcid.org/0009-0008-7266-091X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Suyeon Ju\", \"id\": \"https://openalex.org/A5009801348\", \"orcid\": \"https://orcid.org/0000-0001-7033-8769\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seungwoo Hwang\", \"id\": \"https://openalex.org/A5035762390\", \"orcid\": \"https://orcid.org/0000-0002-1523-8340\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J.H. You\", \"id\": \"https://openalex.org/A5105843170\", \"orcid\": \"https://orcid.org/0009-0003-7152-7774\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jisu Jung\", \"id\": \"https://openalex.org/A5046829226\", \"orcid\": \"https://orcid.org/0000-0003-2814-1289\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Youngho Kang\", \"id\": \"https://openalex.org/A5017460659\", \"orcid\": \"https://orcid.org/0000-0003-4532-0027\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Seungwu Han\", \"id\": \"https://openalex.org/A5010950048\", \"orcid\": \"https://orcid.org/0000-0003-3958-0922\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302864993,
+    "actual_start_ms": 1773302869291,
+    "pacing_wait_ms": 4298,
+    "pacing_jitter_sec": 1.769
+  }
+}

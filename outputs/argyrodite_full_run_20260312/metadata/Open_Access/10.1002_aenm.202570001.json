@@ -1,0 +1,138 @@
+{
+  "doi": "10.1002/aenm.202570001",
+  "pdf_filename": "10.1002_aenm.202570001.pdf",
+  "json_filename": "10.1002_aenm.202570001.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202570001.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4406127176",
+    "doi": "10.1002/aenm.202570001",
+    "title": "2D Graphene‐Like Carbon Coated Solid Electrolyte for Reducing Inhomogeneous Reactions of All‐Solid‐State Batteries (Adv. Energy Mater. 1/2025)",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.00221069,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202570001",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Hyeon‐Ji Shin",
+    "authors_display": "Hyeon‐Ji Shin; Jun Kim; Daseul Han; Hyung‐Seok Kim; Kyung Yoon Chung; Junyoung Mun; Jongsoon Kim; Kyung‐Wan Nam; Hun‐Gi Jung",
+    "authors": [
+      {
+        "display_name": "Hyeon‐Ji Shin",
+        "id": "https://openalex.org/A5059280023",
+        "orcid": "https://orcid.org/0000-0002-9885-9811",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jun Kim",
+        "id": "https://openalex.org/A5100708583",
+        "orcid": "https://orcid.org/0000-0002-0062-1275",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daseul Han",
+        "id": "https://openalex.org/A5079757093",
+        "orcid": "https://orcid.org/0000-0001-9560-9246",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyung‐Seok Kim",
+        "id": "https://openalex.org/A5054245909",
+        "orcid": "https://orcid.org/0000-0003-3292-303X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung Yoon Chung",
+        "id": "https://openalex.org/A5078491552",
+        "orcid": "https://orcid.org/0000-0002-1273-746X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junyoung Mun",
+        "id": "https://openalex.org/A5036553885",
+        "orcid": "https://orcid.org/0000-0001-9965-5709",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jongsoon Kim",
+        "id": "https://openalex.org/A5079507482",
+        "orcid": "https://orcid.org/0000-0002-7651-5516",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung‐Wan Nam",
+        "id": "https://openalex.org/A5047805438",
+        "orcid": "https://orcid.org/0000-0001-6278-6369",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hun‐Gi Jung",
+        "id": "https://openalex.org/A5045467177",
+        "orcid": "https://orcid.org/0000-0002-2162-2680",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4406127176",
+    "doi": "10.1002/aenm.202570001",
+    "title": "2D Graphene‐Like Carbon Coated Solid Electrolyte for Reducing Inhomogeneous Reactions of All‐Solid‐State Batteries (Adv. Energy Mater. 1/2025)",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.00221069,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202570001",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Hyeon‐Ji Shin",
+    "authors_display": "Hyeon‐Ji Shin; Jun Kim; Daseul Han; Hyung‐Seok Kim; Kyung Yoon Chung; Junyoung Mun; Jongsoon Kim; Kyung‐Wan Nam; Hun‐Gi Jung",
+    "authors_json": "[{\"display_name\": \"Hyeon‐Ji Shin\", \"id\": \"https://openalex.org/A5059280023\", \"orcid\": \"https://orcid.org/0000-0002-9885-9811\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Jun Kim\", \"id\": \"https://openalex.org/A5100708583\", \"orcid\": \"https://orcid.org/0000-0002-0062-1275\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daseul Han\", \"id\": \"https://openalex.org/A5079757093\", \"orcid\": \"https://orcid.org/0000-0001-9560-9246\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyung‐Seok Kim\", \"id\": \"https://openalex.org/A5054245909\", \"orcid\": \"https://orcid.org/0000-0003-3292-303X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung Yoon Chung\", \"id\": \"https://openalex.org/A5078491552\", \"orcid\": \"https://orcid.org/0000-0002-1273-746X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junyoung Mun\", \"id\": \"https://openalex.org/A5036553885\", \"orcid\": \"https://orcid.org/0000-0001-9965-5709\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jongsoon Kim\", \"id\": \"https://openalex.org/A5079507482\", \"orcid\": \"https://orcid.org/0000-0002-7651-5516\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung‐Wan Nam\", \"id\": \"https://openalex.org/A5047805438\", \"orcid\": \"https://orcid.org/0000-0001-6278-6369\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hun‐Gi Jung\", \"id\": \"https://openalex.org/A5045467177\", \"orcid\": \"https://orcid.org/0000-0002-2162-2680\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773309577577,
+    "actual_start_ms": 1773309577577,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.307
+  }
+}

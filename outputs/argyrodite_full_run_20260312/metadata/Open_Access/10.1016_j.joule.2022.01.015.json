@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.joule.2022.01.015",
+  "pdf_filename": "10.1016_j.joule.2022.01.015.pdf",
+  "json_filename": "10.1016_j.joule.2022.01.015.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.joule.2022.01.015.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4220838839",
+    "doi": "10.1016/j.joule.2022.01.015",
+    "title": "Review of modification strategies in emerging inorganic solid-state electrolytes for lithium, sodium, and potassium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Joule",
+      "id": "https://openalex.org/S2898305631",
+      "type": "journal",
+      "issn_l": "2542-4351",
+      "issn": [
+        "2542-4351",
+        "2542-4785"
+      ]
+    },
+    "publication_date": "2022-03-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 255,
+    "citation_normalized_percentile": 0.99805312,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Xuyong Feng",
+    "authors_display": "Xuyong Feng; Hong Fang; Nan Wu; Pengcheng Liu; Puru Jena; Jagjit Nanda; David Mitlin",
+    "authors": [
+      {
+        "display_name": "Xuyong Feng",
+        "id": "https://openalex.org/A5010856605",
+        "orcid": "https://orcid.org/0009-0005-5363-671X",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hong Fang",
+        "id": "https://openalex.org/A5012866011",
+        "orcid": "https://orcid.org/0000-0002-0968-8687",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nan Wu",
+        "id": "https://openalex.org/A5011602729",
+        "orcid": "https://orcid.org/0000-0003-3100-199X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pengcheng Liu",
+        "id": "https://openalex.org/A5100449833",
+        "orcid": "https://orcid.org/0000-0002-9530-9267",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Puru Jena",
+        "id": "https://openalex.org/A5109789300",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jagjit Nanda",
+        "id": "https://openalex.org/A5054033892",
+        "orcid": "https://orcid.org/0000-0002-6875-0057",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "David Mitlin",
+        "id": "https://openalex.org/A5086743052",
+        "orcid": "https://orcid.org/0000-0002-7556-3575",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4220838839",
+    "doi": "10.1016/j.joule.2022.01.015",
+    "title": "Review of modification strategies in emerging inorganic solid-state electrolytes for lithium, sodium, and potassium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Joule",
+    "journal_id": "https://openalex.org/S2898305631",
+    "journal_type": "journal",
+    "journal_issn_l": "2542-4351",
+    "journal_issn_json": "[\"2542-4351\", \"2542-4785\"]",
+    "publication_date": "2022-03-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 255,
+    "citation_normalized_percentile": 0.99805312,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Xuyong Feng",
+    "authors_display": "Xuyong Feng; Hong Fang; Nan Wu; Pengcheng Liu; Puru Jena; Jagjit Nanda; David Mitlin",
+    "authors_json": "[{\"display_name\": \"Xuyong Feng\", \"id\": \"https://openalex.org/A5010856605\", \"orcid\": \"https://orcid.org/0009-0005-5363-671X\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hong Fang\", \"id\": \"https://openalex.org/A5012866011\", \"orcid\": \"https://orcid.org/0000-0002-0968-8687\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nan Wu\", \"id\": \"https://openalex.org/A5011602729\", \"orcid\": \"https://orcid.org/0000-0003-3100-199X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pengcheng Liu\", \"id\": \"https://openalex.org/A5100449833\", \"orcid\": \"https://orcid.org/0000-0002-9530-9267\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Puru Jena\", \"id\": \"https://openalex.org/A5109789300\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jagjit Nanda\", \"id\": \"https://openalex.org/A5054033892\", \"orcid\": \"https://orcid.org/0000-0002-6875-0057\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"David Mitlin\", \"id\": \"https://openalex.org/A5086743052\", \"orcid\": \"https://orcid.org/0000-0002-7556-3575\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301444552,
+    "actual_start_ms": 1773301450519,
+    "pacing_wait_ms": 5967,
+    "pacing_jitter_sec": 0.945
+  }
+}

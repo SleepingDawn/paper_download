@@ -1,0 +1,138 @@
+{
+  "doi": "10.1016/j.jpowsour.2018.11.016",
+  "pdf_filename": "10.1016_j.jpowsour.2018.11.016.pdf",
+  "json_filename": "10.1016_j.jpowsour.2018.11.016.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.jpowsour.2018.11.016.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2901828499",
+    "doi": "10.1016/j.jpowsour.2018.11.016",
+    "title": "All-in-one improvement toward Li6PS5Br-Based solid electrolytes triggered by compositional tune",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Power Sources",
+      "id": "https://openalex.org/S177147899",
+      "type": "journal",
+      "issn_l": "0378-7753",
+      "issn": [
+        "0378-7753",
+        "1873-2755"
+      ]
+    },
+    "publication_date": "2018-11-13",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 206,
+    "citation_normalized_percentile": 0.9804897,
+    "pdf_url": "https://ars.els-cdn.com/content/image/1-s2.0-S037877531831245X-fx1_lrg.jpg",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Zhixia Zhang",
+    "authors_display": "Zhixia Zhang; Long Zhang; Xinlin Yan; Hongqiang Wang; Yanyan Liu; Chuang Yu; Xiaoting Cao; Lambert van Eijck; Bin Wen",
+    "authors": [
+      {
+        "display_name": "Zhixia Zhang",
+        "id": "https://openalex.org/A5103022585",
+        "orcid": "https://orcid.org/0000-0003-0847-3841",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Long Zhang",
+        "id": "https://openalex.org/A5100363525",
+        "orcid": "https://orcid.org/0000-0002-4861-1471",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xinlin Yan",
+        "id": "https://openalex.org/A5065866946",
+        "orcid": "https://orcid.org/0000-0003-0745-4446",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongqiang Wang",
+        "id": "https://openalex.org/A5100757645",
+        "orcid": "https://orcid.org/0000-0003-1262-1958",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanyan Liu",
+        "id": "https://openalex.org/A5054082730",
+        "orcid": "https://orcid.org/0000-0001-6557-8805",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaoting Cao",
+        "id": "https://openalex.org/A5020105646",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lambert van Eijck",
+        "id": "https://openalex.org/A5011563461",
+        "orcid": "https://orcid.org/0000-0003-2047-2665",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bin Wen",
+        "id": "https://openalex.org/A5064332635",
+        "orcid": "https://orcid.org/0000-0001-9846-5452",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2901828499",
+    "doi": "10.1016/j.jpowsour.2018.11.016",
+    "title": "All-in-one improvement toward Li6PS5Br-Based solid electrolytes triggered by compositional tune",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Power Sources",
+    "journal_id": "https://openalex.org/S177147899",
+    "journal_type": "journal",
+    "journal_issn_l": "0378-7753",
+    "journal_issn_json": "[\"0378-7753\", \"1873-2755\"]",
+    "publication_date": "2018-11-13",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 206,
+    "citation_normalized_percentile": 0.9804897,
+    "pdf_url": "https://ars.els-cdn.com/content/image/1-s2.0-S037877531831245X-fx1_lrg.jpg",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Zhixia Zhang",
+    "authors_display": "Zhixia Zhang; Long Zhang; Xinlin Yan; Hongqiang Wang; Yanyan Liu; Chuang Yu; Xiaoting Cao; Lambert van Eijck; Bin Wen",
+    "authors_json": "[{\"display_name\": \"Zhixia Zhang\", \"id\": \"https://openalex.org/A5103022585\", \"orcid\": \"https://orcid.org/0000-0003-0847-3841\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Long Zhang\", \"id\": \"https://openalex.org/A5100363525\", \"orcid\": \"https://orcid.org/0000-0002-4861-1471\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xinlin Yan\", \"id\": \"https://openalex.org/A5065866946\", \"orcid\": \"https://orcid.org/0000-0003-0745-4446\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongqiang Wang\", \"id\": \"https://openalex.org/A5100757645\", \"orcid\": \"https://orcid.org/0000-0003-1262-1958\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanyan Liu\", \"id\": \"https://openalex.org/A5054082730\", \"orcid\": \"https://orcid.org/0000-0001-6557-8805\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaoting Cao\", \"id\": \"https://openalex.org/A5020105646\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lambert van Eijck\", \"id\": \"https://openalex.org/A5011563461\", \"orcid\": \"https://orcid.org/0000-0003-2047-2665\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bin Wen\", \"id\": \"https://openalex.org/A5064332635\", \"orcid\": \"https://orcid.org/0000-0001-9846-5452\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301567666,
+    "actual_start_ms": 1773301573647,
+    "pacing_wait_ms": 5980,
+    "pacing_jitter_sec": 0.875
+  }
+}

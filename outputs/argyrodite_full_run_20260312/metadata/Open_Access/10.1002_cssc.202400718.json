@@ -1,0 +1,159 @@
+{
+  "doi": "10.1002/cssc.202400718",
+  "pdf_filename": "10.1002_cssc.202400718.pdf",
+  "json_filename": "10.1002_cssc.202400718.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_cssc.202400718.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4399401285",
+    "doi": "10.1002/cssc.202400718",
+    "title": "Chemical and Electrochemical Characterization of Hot‐Pressed Li<sub>6</sub>PS<sub>5</sub>Cl Solid State Electrolyte: Operating Pressure‐Invariant High Ionic Conductivity",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "ChemSusChem",
+      "id": "https://openalex.org/S193447295",
+      "type": "journal",
+      "issn_l": "1864-5631",
+      "issn": [
+        "1864-5631",
+        "1864-564X"
+      ]
+    },
+    "publication_date": "2024-06-06",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.89091383,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Yang Wang",
+    "authors_display": "Yang Wang; Ryan Lim; Karl Larson; Aidan Knab; Daniela Fontecha; Spencer Caverly; Juhye Song; Chanhwi Park; Paul Albertus; Gary W. Rubloff; Sang Bok Lee; Alexander C. Kozen",
+    "authors": [
+      {
+        "display_name": "Yang Wang",
+        "id": "https://openalex.org/A5100644336",
+        "orcid": "https://orcid.org/0000-0001-8219-9014",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ryan Lim",
+        "id": "https://openalex.org/A5100595364",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Karl Larson",
+        "id": "https://openalex.org/A5049440018",
+        "orcid": "https://orcid.org/0009-0005-0946-0243",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Aidan Knab",
+        "id": "https://openalex.org/A5100595365",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniela Fontecha",
+        "id": "https://openalex.org/A5100595366",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Spencer Caverly",
+        "id": "https://openalex.org/A5100595367",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Juhye Song",
+        "id": "https://openalex.org/A5100595368",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chanhwi Park",
+        "id": "https://openalex.org/A5113242173",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Paul Albertus",
+        "id": "https://openalex.org/A5070643778",
+        "orcid": "https://orcid.org/0000-0003-0072-0529",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Gary W. Rubloff",
+        "id": "https://openalex.org/A5091599487",
+        "orcid": "https://orcid.org/0000-0002-1901-3982",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang Bok Lee",
+        "id": "https://openalex.org/A5101730214",
+        "orcid": "https://orcid.org/0000-0003-1375-7099",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Alexander C. Kozen",
+        "id": "https://openalex.org/A5082268294",
+        "orcid": "https://orcid.org/0000-0002-5311-2757",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4399401285",
+    "doi": "10.1002/cssc.202400718",
+    "title": "Chemical and Electrochemical Characterization of Hot‐Pressed Li<sub>6</sub>PS<sub>5</sub>Cl Solid State Electrolyte: Operating Pressure‐Invariant High Ionic Conductivity",
+    "publisher": "Wiley",
+    "journal": "ChemSusChem",
+    "journal_id": "https://openalex.org/S193447295",
+    "journal_type": "journal",
+    "journal_issn_l": "1864-5631",
+    "journal_issn_json": "[\"1864-5631\", \"1864-564X\"]",
+    "publication_date": "2024-06-06",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.89091383,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Yang Wang",
+    "authors_display": "Yang Wang; Ryan Lim; Karl Larson; Aidan Knab; Daniela Fontecha; Spencer Caverly; Juhye Song; Chanhwi Park; Paul Albertus; Gary W. Rubloff; Sang Bok Lee; Alexander C. Kozen",
+    "authors_json": "[{\"display_name\": \"Yang Wang\", \"id\": \"https://openalex.org/A5100644336\", \"orcid\": \"https://orcid.org/0000-0001-8219-9014\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ryan Lim\", \"id\": \"https://openalex.org/A5100595364\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Karl Larson\", \"id\": \"https://openalex.org/A5049440018\", \"orcid\": \"https://orcid.org/0009-0005-0946-0243\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Aidan Knab\", \"id\": \"https://openalex.org/A5100595365\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniela Fontecha\", \"id\": \"https://openalex.org/A5100595366\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Spencer Caverly\", \"id\": \"https://openalex.org/A5100595367\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Juhye Song\", \"id\": \"https://openalex.org/A5100595368\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chanhwi Park\", \"id\": \"https://openalex.org/A5113242173\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Paul Albertus\", \"id\": \"https://openalex.org/A5070643778\", \"orcid\": \"https://orcid.org/0000-0003-0072-0529\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Gary W. Rubloff\", \"id\": \"https://openalex.org/A5091599487\", \"orcid\": \"https://orcid.org/0000-0002-1901-3982\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang Bok Lee\", \"id\": \"https://openalex.org/A5101730214\", \"orcid\": \"https://orcid.org/0000-0003-1375-7099\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Alexander C. Kozen\", \"id\": \"https://openalex.org/A5082268294\", \"orcid\": \"https://orcid.org/0000-0002-5311-2757\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773305624721,
+    "actual_start_ms": 1773305624721,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.161
+  }
+}

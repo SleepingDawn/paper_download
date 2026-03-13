@@ -1,0 +1,96 @@
+{
+  "doi": "10.1002/bte2.70085",
+  "pdf_filename": "10.1002_bte2.70085.pdf",
+  "json_filename": "10.1002_bte2.70085.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_bte2.70085.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7124676807",
+    "doi": "10.1002/bte2.70085",
+    "title": "Solid‐State Lithium Electrolytes: Characteristic of Floating Li Inside of Anion Framework",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Battery energy",
+      "id": "https://openalex.org/S4210239249",
+      "type": "journal",
+      "issn_l": "2768-1688",
+      "issn": [
+        "2768-1688",
+        "2768-1696"
+      ]
+    },
+    "publication_date": "2026-01-19",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21593687,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/bte2.70085",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Suzhe Liang",
+    "authors_display": "Suzhe Liang; Jiongrui Dong; Zikang Li",
+    "authors": [
+      {
+        "display_name": "Suzhe Liang",
+        "id": "https://openalex.org/A5017432227",
+        "orcid": "https://orcid.org/0000-0001-8773-897X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiongrui Dong",
+        "id": "https://openalex.org/A5123319054",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zikang Li",
+        "id": "https://openalex.org/A5122389746",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7124676807",
+    "doi": "10.1002/bte2.70085",
+    "title": "Solid‐State Lithium Electrolytes: Characteristic of Floating Li Inside of Anion Framework",
+    "publisher": "Wiley",
+    "journal": "Battery energy",
+    "journal_id": "https://openalex.org/S4210239249",
+    "journal_type": "journal",
+    "journal_issn_l": "2768-1688",
+    "journal_issn_json": "[\"2768-1688\", \"2768-1696\"]",
+    "publication_date": "2026-01-19",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21593687,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/bte2.70085",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Suzhe Liang",
+    "authors_display": "Suzhe Liang; Jiongrui Dong; Zikang Li",
+    "authors_json": "[{\"display_name\": \"Suzhe Liang\", \"id\": \"https://openalex.org/A5017432227\", \"orcid\": \"https://orcid.org/0000-0001-8773-897X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jiongrui Dong\", \"id\": \"https://openalex.org/A5123319054\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zikang Li\", \"id\": \"https://openalex.org/A5122389746\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773310324431,
+    "actual_start_ms": 1773310324431,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.922
+  }
+}

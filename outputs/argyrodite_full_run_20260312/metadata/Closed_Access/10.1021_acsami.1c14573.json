@@ -1,0 +1,145 @@
+{
+  "doi": "10.1021/acsami.1c14573",
+  "pdf_filename": "10.1021_acsami.1c14573.pdf",
+  "json_filename": "10.1021_acsami.1c14573.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.1c14573.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3214463616",
+    "doi": "10.1021/acsami.1c14573",
+    "title": "Insights on the Properties of the O-Doped Argyrodite Sulfide Solid Electrolytes (Li<sub>6</sub>PS<sub>5–<i>x</i></sub>ClO<sub><i>x</i>,</sub> <i>x</i>=0–1)",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2021-11-15",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 76,
+    "citation_normalized_percentile": 0.96037399,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Zhen Sun",
+    "authors_display": "Zhen Sun; Yanqing Lai; Na Lv; Yaqi Hu; Bingqin Li; Liangxing Jiang; Jiong Wang; Shuo Yin; Kui Li; Fangyang Liu",
+    "authors": [
+      {
+        "display_name": "Zhen Sun",
+        "id": "https://openalex.org/A5081368376",
+        "orcid": "https://orcid.org/0000-0002-8083-2362",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanqing Lai",
+        "id": "https://openalex.org/A5057985253",
+        "orcid": "https://orcid.org/0000-0001-9510-5953",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Na Lv",
+        "id": "https://openalex.org/A5031106793",
+        "orcid": "https://orcid.org/0000-0001-9013-9089",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yaqi Hu",
+        "id": "https://openalex.org/A5003768824",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bingqin Li",
+        "id": "https://openalex.org/A5078295182",
+        "orcid": "https://orcid.org/0000-0003-2240-0876",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liangxing Jiang",
+        "id": "https://openalex.org/A5051040818",
+        "orcid": "https://orcid.org/0000-0002-1590-6193",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiong Wang",
+        "id": "https://openalex.org/A5100677845",
+        "orcid": "https://orcid.org/0000-0003-1300-4804",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuo Yin",
+        "id": "https://openalex.org/A5061373333",
+        "orcid": "https://orcid.org/0000-0003-4273-7839",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kui Li",
+        "id": "https://openalex.org/A5100396636",
+        "orcid": "https://orcid.org/0000-0003-2555-6972",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fangyang Liu",
+        "id": "https://openalex.org/A5087261883",
+        "orcid": "https://orcid.org/0000-0002-0580-7888",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3214463616",
+    "doi": "10.1021/acsami.1c14573",
+    "title": "Insights on the Properties of the O-Doped Argyrodite Sulfide Solid Electrolytes (Li<sub>6</sub>PS<sub>5–<i>x</i></sub>ClO<sub><i>x</i>,</sub> <i>x</i>=0–1)",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2021-11-15",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 76,
+    "citation_normalized_percentile": 0.96037399,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Zhen Sun",
+    "authors_display": "Zhen Sun; Yanqing Lai; Na Lv; Yaqi Hu; Bingqin Li; Liangxing Jiang; Jiong Wang; Shuo Yin; Kui Li; Fangyang Liu",
+    "authors_json": "[{\"display_name\": \"Zhen Sun\", \"id\": \"https://openalex.org/A5081368376\", \"orcid\": \"https://orcid.org/0000-0002-8083-2362\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yanqing Lai\", \"id\": \"https://openalex.org/A5057985253\", \"orcid\": \"https://orcid.org/0000-0001-9510-5953\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Na Lv\", \"id\": \"https://openalex.org/A5031106793\", \"orcid\": \"https://orcid.org/0000-0001-9013-9089\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yaqi Hu\", \"id\": \"https://openalex.org/A5003768824\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bingqin Li\", \"id\": \"https://openalex.org/A5078295182\", \"orcid\": \"https://orcid.org/0000-0003-2240-0876\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liangxing Jiang\", \"id\": \"https://openalex.org/A5051040818\", \"orcid\": \"https://orcid.org/0000-0002-1590-6193\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiong Wang\", \"id\": \"https://openalex.org/A5100677845\", \"orcid\": \"https://orcid.org/0000-0003-1300-4804\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuo Yin\", \"id\": \"https://openalex.org/A5061373333\", \"orcid\": \"https://orcid.org/0000-0003-4273-7839\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kui Li\", \"id\": \"https://openalex.org/A5100396636\", \"orcid\": \"https://orcid.org/0000-0003-2555-6972\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fangyang Liu\", \"id\": \"https://openalex.org/A5087261883\", \"orcid\": \"https://orcid.org/0000-0002-0580-7888\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301908398,
+    "actual_start_ms": 1773301911334,
+    "pacing_wait_ms": 2936,
+    "pacing_jitter_sec": 1.21
+  }
+}

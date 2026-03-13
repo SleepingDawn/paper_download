@@ -1,0 +1,95 @@
+{
+  "doi": "10.1002/advs.202301707",
+  "pdf_filename": "10.1002_advs.202301707.pdf",
+  "json_filename": "10.1002_advs.202301707.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_advs.202301707.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4367834710",
+    "doi": "10.1002/advs.202301707",
+    "title": "A Novel Time‐Saving Synthesis Approach for Li‐Argyrodite Superionic Conductor",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Science",
+      "id": "https://openalex.org/S2737737698",
+      "type": "journal",
+      "issn_l": "2198-3844",
+      "issn": [
+        "2198-3844"
+      ]
+    },
+    "publication_date": "2023-05-03",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 27,
+    "citation_normalized_percentile": 0.93544369,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202301707",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Suk‐Ho Hwang",
+    "authors_display": "Suk‐Ho Hwang; Seung‐Deok Seo; Dong‐Wan Kim",
+    "authors": [
+      {
+        "display_name": "Suk‐Ho Hwang",
+        "id": "https://openalex.org/A5088096172",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung‐Deok Seo",
+        "id": "https://openalex.org/A5057214200",
+        "orcid": "https://orcid.org/0000-0002-0269-948X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Wan Kim",
+        "id": "https://openalex.org/A5016978421",
+        "orcid": "https://orcid.org/0000-0002-1635-6082",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4367834710",
+    "doi": "10.1002/advs.202301707",
+    "title": "A Novel Time‐Saving Synthesis Approach for Li‐Argyrodite Superionic Conductor",
+    "publisher": "Wiley",
+    "journal": "Advanced Science",
+    "journal_id": "https://openalex.org/S2737737698",
+    "journal_type": "journal",
+    "journal_issn_l": "2198-3844",
+    "journal_issn_json": "[\"2198-3844\"]",
+    "publication_date": "2023-05-03",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 27,
+    "citation_normalized_percentile": 0.93544369,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202301707",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Suk‐Ho Hwang",
+    "authors_display": "Suk‐Ho Hwang; Seung‐Deok Seo; Dong‐Wan Kim",
+    "authors_json": "[{\"display_name\": \"Suk‐Ho Hwang\", \"id\": \"https://openalex.org/A5088096172\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Seung‐Deok Seo\", \"id\": \"https://openalex.org/A5057214200\", \"orcid\": \"https://orcid.org/0000-0002-0269-948X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Wan Kim\", \"id\": \"https://openalex.org/A5016978421\", \"orcid\": \"https://orcid.org/0000-0002-1635-6082\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773303900359,
+    "actual_start_ms": 1773303900361,
+    "pacing_wait_ms": 2,
+    "pacing_jitter_sec": 1.682
+  }
+}

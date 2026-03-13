@@ -1,0 +1,89 @@
+{
+  "doi": "10.1149/1945-7111/ae16da",
+  "pdf_filename": "10.1149_1945-7111_ae16da.pdf",
+  "json_filename": "10.1149_1945-7111_ae16da.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_1945-7111_ae16da.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4415487305",
+    "doi": "10.1149/1945-7111/ae16da",
+    "title": "Intimate Interfacial Contact Between the Electrode and Sulfide-based Solid Electrolytes by Hot-Pressing for High-Performance All-Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "Journal of The Electrochemical Society",
+      "id": "https://openalex.org/S138759888",
+      "type": "journal",
+      "issn_l": "0013-4651",
+      "issn": [
+        "0013-4651",
+        "1945-7111"
+      ]
+    },
+    "publication_date": "2025-10-23",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.32465191,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Young‐Geun Lee",
+    "authors_display": "Young‐Geun Lee; Jay Whitacre",
+    "authors": [
+      {
+        "display_name": "Young‐Geun Lee",
+        "id": "https://openalex.org/A5019958515",
+        "orcid": "https://orcid.org/0000-0002-4229-5084",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jay Whitacre",
+        "id": "https://openalex.org/A5079385957",
+        "orcid": "https://orcid.org/0000-0002-3439-4111",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4415487305",
+    "doi": "10.1149/1945-7111/ae16da",
+    "title": "Intimate Interfacial Contact Between the Electrode and Sulfide-based Solid Electrolytes by Hot-Pressing for High-Performance All-Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "Journal of The Electrochemical Society",
+    "journal_id": "https://openalex.org/S138759888",
+    "journal_type": "journal",
+    "journal_issn_l": "0013-4651",
+    "journal_issn_json": "[\"0013-4651\", \"1945-7111\"]",
+    "publication_date": "2025-10-23",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.32465191,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Young‐Geun Lee",
+    "authors_display": "Young‐Geun Lee; Jay Whitacre",
+    "authors_json": "[{\"display_name\": \"Young‐Geun Lee\", \"id\": \"https://openalex.org/A5019958515\", \"orcid\": \"https://orcid.org/0000-0002-4229-5084\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Jay Whitacre\", \"id\": \"https://openalex.org/A5079385957\", \"orcid\": \"https://orcid.org/0000-0002-3439-4111\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773308917149,
+    "actual_start_ms": 1773308917149,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.109
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "doi": "10.1021/acs.chemmater.9b04541",
+  "pdf_filename": "10.1021_acs.chemmater.9b04541.pdf",
+  "json_filename": "10.1021_acs.chemmater.9b04541.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.chemmater.9b04541.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3005514679",
+    "doi": "10.1021/acs.chemmater.9b04541",
+    "title": "Computational Investigation of Halogen-Substituted Na Argyrodites as Solid-State Superionic Conductors",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2020-02-06",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.75566563,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Bin Ouyang",
+    "authors_display": "Bin Ouyang; Yan Wang; Yingzhi Sun; Gerbrand Ceder",
+    "authors": [
+      {
+        "display_name": "Bin Ouyang",
+        "id": "https://openalex.org/A5070260665",
+        "orcid": "https://orcid.org/0000-0002-8181-6815",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yan Wang",
+        "id": "https://openalex.org/A5100322823",
+        "orcid": "https://orcid.org/0000-0002-8648-2172",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yingzhi Sun",
+        "id": "https://openalex.org/A5100556435",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gerbrand Ceder",
+        "id": "https://openalex.org/A5014983956",
+        "orcid": "https://orcid.org/0000-0001-9275-3605",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3005514679",
+    "doi": "10.1021/acs.chemmater.9b04541",
+    "title": "Computational Investigation of Halogen-Substituted Na Argyrodites as Solid-State Superionic Conductors",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2020-02-06",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.75566563,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Bin Ouyang",
+    "authors_display": "Bin Ouyang; Yan Wang; Yingzhi Sun; Gerbrand Ceder",
+    "authors_json": "[{\"display_name\": \"Bin Ouyang\", \"id\": \"https://openalex.org/A5070260665\", \"orcid\": \"https://orcid.org/0000-0002-8181-6815\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yan Wang\", \"id\": \"https://openalex.org/A5100322823\", \"orcid\": \"https://orcid.org/0000-0002-8648-2172\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yingzhi Sun\", \"id\": \"https://openalex.org/A5100556435\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gerbrand Ceder\", \"id\": \"https://openalex.org/A5014983956\", \"orcid\": \"https://orcid.org/0000-0001-9275-3605\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302814195,
+    "actual_start_ms": 1773302817906,
+    "pacing_wait_ms": 3711,
+    "pacing_jitter_sec": 1.457
+  }
+}

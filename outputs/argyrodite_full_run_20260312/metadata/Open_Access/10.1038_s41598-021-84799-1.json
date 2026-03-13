@@ -1,0 +1,116 @@
+{
+  "doi": "10.1038/s41598-021-84799-1",
+  "pdf_filename": "10.1038_s41598-021-84799-1.pdf",
+  "json_filename": "10.1038_s41598-021-84799-1.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s41598-021-84799-1.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3133830795",
+    "doi": "10.1038/s41598-021-84799-1",
+    "title": "Effect of surface carbonates on the cyclability of LiNbO3-coated NCM622 in all-solid-state batteries with lithium thiophosphate electrolytes",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Scientific Reports",
+      "id": "https://openalex.org/S196734849",
+      "type": "journal",
+      "issn_l": "2045-2322",
+      "issn": [
+        "2045-2322"
+      ]
+    },
+    "publication_date": "2021-03-08",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 45,
+    "citation_normalized_percentile": 0.91678498,
+    "pdf_url": "https://www.nature.com/articles/s41598-021-84799-1.pdf",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "A‐Young Kim",
+    "authors_display": "A‐Young Kim; Florian Strauss; Timo Bartsch; Jun Hao Teo; Jürgen Janek; Torsten Brezesinski",
+    "authors": [
+      {
+        "display_name": "A‐Young Kim",
+        "id": "https://openalex.org/A5103217051",
+        "orcid": "https://orcid.org/0000-0001-6124-0807",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Florian Strauss",
+        "id": "https://openalex.org/A5019742727",
+        "orcid": "https://orcid.org/0000-0001-5817-6349",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Timo Bartsch",
+        "id": "https://openalex.org/A5035203411",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Hao Teo",
+        "id": "https://openalex.org/A5045966184",
+        "orcid": "https://orcid.org/0000-0002-0343-669X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Torsten Brezesinski",
+        "id": "https://openalex.org/A5030005479",
+        "orcid": "https://orcid.org/0000-0002-4336-263X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3133830795",
+    "doi": "10.1038/s41598-021-84799-1",
+    "title": "Effect of surface carbonates on the cyclability of LiNbO3-coated NCM622 in all-solid-state batteries with lithium thiophosphate electrolytes",
+    "publisher": "Nature Portfolio",
+    "journal": "Scientific Reports",
+    "journal_id": "https://openalex.org/S196734849",
+    "journal_type": "journal",
+    "journal_issn_l": "2045-2322",
+    "journal_issn_json": "[\"2045-2322\"]",
+    "publication_date": "2021-03-08",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 45,
+    "citation_normalized_percentile": 0.91678498,
+    "pdf_url": "https://www.nature.com/articles/s41598-021-84799-1.pdf",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "A‐Young Kim",
+    "authors_display": "A‐Young Kim; Florian Strauss; Timo Bartsch; Jun Hao Teo; Jürgen Janek; Torsten Brezesinski",
+    "authors_json": "[{\"display_name\": \"A‐Young Kim\", \"id\": \"https://openalex.org/A5103217051\", \"orcid\": \"https://orcid.org/0000-0001-6124-0807\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Florian Strauss\", \"id\": \"https://openalex.org/A5019742727\", \"orcid\": \"https://orcid.org/0000-0001-5817-6349\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Timo Bartsch\", \"id\": \"https://openalex.org/A5035203411\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun Hao Teo\", \"id\": \"https://openalex.org/A5045966184\", \"orcid\": \"https://orcid.org/0000-0002-0343-669X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Torsten Brezesinski\", \"id\": \"https://openalex.org/A5030005479\", \"orcid\": \"https://orcid.org/0000-0002-4336-263X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773308128622,
+    "actual_start_ms": 1773308130131,
+    "pacing_wait_ms": 1509,
+    "pacing_jitter_sec": 0.81
+  }
+}

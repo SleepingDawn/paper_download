@@ -1,0 +1,103 @@
+{
+  "doi": "10.1038/s41563-025-02238-2",
+  "pdf_filename": "10.1038_s41563-025-02238-2.pdf",
+  "json_filename": "10.1038_s41563-025-02238-2.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1038_s41563-025-02238-2.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4410521435",
+    "doi": "10.1038/s41563-025-02238-2",
+    "title": "Suppressing argyrodite oxidation by tuning the host structure for high-areal-capacity all-solid-state lithium–sulfur batteries",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Materials",
+      "id": "https://openalex.org/S103895331",
+      "type": "journal",
+      "issn_l": "1476-1122",
+      "issn": [
+        "1476-1122",
+        "1476-4660"
+      ]
+    },
+    "publication_date": "2025-05-20",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 24,
+    "citation_normalized_percentile": 0.99482334,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Zhuo Yu",
+    "authors_display": "Zhuo Yu; Baltej Singh; Yue Yu; Linda F. Nazar",
+    "authors": [
+      {
+        "display_name": "Zhuo Yu",
+        "id": "https://openalex.org/A5108943884",
+        "orcid": "https://orcid.org/0000-0003-2929-7138",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Baltej Singh",
+        "id": "https://openalex.org/A5101710442",
+        "orcid": "https://orcid.org/0000-0002-6993-494X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yue Yu",
+        "id": "https://openalex.org/A5100397949",
+        "orcid": "https://orcid.org/0000-0001-9998-6524",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Linda F. Nazar",
+        "id": "https://openalex.org/A5079626231",
+        "orcid": "https://orcid.org/0000-0002-3314-8197",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4410521435",
+    "doi": "10.1038/s41563-025-02238-2",
+    "title": "Suppressing argyrodite oxidation by tuning the host structure for high-areal-capacity all-solid-state lithium–sulfur batteries",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Materials",
+    "journal_id": "https://openalex.org/S103895331",
+    "journal_type": "journal",
+    "journal_issn_l": "1476-1122",
+    "journal_issn_json": "[\"1476-1122\", \"1476-4660\"]",
+    "publication_date": "2025-05-20",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 24,
+    "citation_normalized_percentile": 0.99482334,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Zhuo Yu",
+    "authors_display": "Zhuo Yu; Baltej Singh; Yue Yu; Linda F. Nazar",
+    "authors_json": "[{\"display_name\": \"Zhuo Yu\", \"id\": \"https://openalex.org/A5108943884\", \"orcid\": \"https://orcid.org/0000-0003-2929-7138\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Baltej Singh\", \"id\": \"https://openalex.org/A5101710442\", \"orcid\": \"https://orcid.org/0000-0002-6993-494X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yue Yu\", \"id\": \"https://openalex.org/A5100397949\", \"orcid\": \"https://orcid.org/0000-0001-9998-6524\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Linda F. Nazar\", \"id\": \"https://openalex.org/A5079626231\", \"orcid\": \"https://orcid.org/0000-0002-3314-8197\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.nature.com/articles/s41563-025-02238-2",
+    "landing_title": "Suppressing argyrodite oxidation by tuning the host structure for high-areal-capacity all-solid-state lithium–sulfur batteries | Nature Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1038_s41563-025-02238-2.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773307616415,
+    "actual_start_ms": 1773307617920,
+    "pacing_wait_ms": 1504,
+    "pacing_jitter_sec": 1.067
+  }
+}

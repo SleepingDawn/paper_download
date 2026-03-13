@@ -1,0 +1,109 @@
+{
+  "doi": "10.3390/nano12244355",
+  "pdf_filename": "10.3390_nano12244355.pdf",
+  "json_filename": "10.3390_nano12244355.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_nano12244355.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4311724400",
+    "doi": "10.3390/nano12244355",
+    "title": "Cl- and Al-Doped Argyrodite Solid Electrolyte Li6PS5Cl for All-Solid-State Lithium Batteries with Improved Ionic Conductivity",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Nanomaterials",
+      "id": "https://openalex.org/S2764646681",
+      "type": "journal",
+      "issn_l": "2079-4991",
+      "issn": [
+        "2079-4991"
+      ]
+    },
+    "publication_date": "2022-12-07",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.87964185,
+    "pdf_url": "https://www.mdpi.com/2079-4991/12/24/4355/pdf?version=1670400996",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Yeong Jun Choi",
+    "authors_display": "Yeong Jun Choi; Sun‐I Kim; Mingyu Son; Jung Woo Lee; Duck Hyun Lee",
+    "authors": [
+      {
+        "display_name": "Yeong Jun Choi",
+        "id": "https://openalex.org/A5012194609",
+        "orcid": "https://orcid.org/0000-0003-3419-589X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sun‐I Kim",
+        "id": "https://openalex.org/A5035332881",
+        "orcid": "https://orcid.org/0009-0008-6652-2967",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mingyu Son",
+        "id": "https://openalex.org/A5031531335",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jung Woo Lee",
+        "id": "https://openalex.org/A5106822982",
+        "orcid": "https://orcid.org/0000-0003-4705-9248",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Duck Hyun Lee",
+        "id": "https://openalex.org/A5088066175",
+        "orcid": "https://orcid.org/0000-0002-7250-5302",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4311724400",
+    "doi": "10.3390/nano12244355",
+    "title": "Cl- and Al-Doped Argyrodite Solid Electrolyte Li6PS5Cl for All-Solid-State Lithium Batteries with Improved Ionic Conductivity",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Nanomaterials",
+    "journal_id": "https://openalex.org/S2764646681",
+    "journal_type": "journal",
+    "journal_issn_l": "2079-4991",
+    "journal_issn_json": "[\"2079-4991\"]",
+    "publication_date": "2022-12-07",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.87964185,
+    "pdf_url": "https://www.mdpi.com/2079-4991/12/24/4355/pdf?version=1670400996",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Yeong Jun Choi",
+    "authors_display": "Yeong Jun Choi; Sun‐I Kim; Mingyu Son; Jung Woo Lee; Duck Hyun Lee",
+    "authors_json": "[{\"display_name\": \"Yeong Jun Choi\", \"id\": \"https://openalex.org/A5012194609\", \"orcid\": \"https://orcid.org/0000-0003-3419-589X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Sun‐I Kim\", \"id\": \"https://openalex.org/A5035332881\", \"orcid\": \"https://orcid.org/0009-0008-6652-2967\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mingyu Son\", \"id\": \"https://openalex.org/A5031531335\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jung Woo Lee\", \"id\": \"https://openalex.org/A5106822982\", \"orcid\": \"https://orcid.org/0000-0003-4705-9248\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Duck Hyun Lee\", \"id\": \"https://openalex.org/A5088066175\", \"orcid\": \"https://orcid.org/0000-0002-7250-5302\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773309230739,
+    "actual_start_ms": 1773309232241,
+    "pacing_wait_ms": 1502,
+    "pacing_jitter_sec": 1.606
+  }
+}

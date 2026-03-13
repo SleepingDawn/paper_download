@@ -1,0 +1,95 @@
+{
+  "doi": "10.3390/batteries9100503",
+  "pdf_filename": "10.3390_batteries9100503.pdf",
+  "json_filename": "10.3390_batteries9100503.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_batteries9100503.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4387331540",
+    "doi": "10.3390/batteries9100503",
+    "title": "New Insights of Infiltration Process of Argyrodite Li6PS5Cl Solid Electrolyte into Conventional Lithium-Ion Electrodes for Solid-State Batteries",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Batteries",
+      "id": "https://openalex.org/S2737090608",
+      "type": "journal",
+      "issn_l": "2313-0105",
+      "issn": [
+        "2313-0105"
+      ]
+    },
+    "publication_date": "2023-10-04",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.80773545,
+    "pdf_url": "https://www.mdpi.com/2313-0105/9/10/503/pdf?version=1696410920",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Artur Tron",
+    "authors_display": "Artur Tron; Andrea Paolella; Alexander Beutl",
+    "authors": [
+      {
+        "display_name": "Artur Tron",
+        "id": "https://openalex.org/A5002945442",
+        "orcid": "https://orcid.org/0000-0002-6565-8247",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Andrea Paolella",
+        "id": "https://openalex.org/A5042467922",
+        "orcid": "https://orcid.org/0000-0003-0986-6460",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alexander Beutl",
+        "id": "https://openalex.org/A5062737645",
+        "orcid": "https://orcid.org/0000-0002-7098-619X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4387331540",
+    "doi": "10.3390/batteries9100503",
+    "title": "New Insights of Infiltration Process of Argyrodite Li6PS5Cl Solid Electrolyte into Conventional Lithium-Ion Electrodes for Solid-State Batteries",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Batteries",
+    "journal_id": "https://openalex.org/S2737090608",
+    "journal_type": "journal",
+    "journal_issn_l": "2313-0105",
+    "journal_issn_json": "[\"2313-0105\"]",
+    "publication_date": "2023-10-04",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.80773545,
+    "pdf_url": "https://www.mdpi.com/2313-0105/9/10/503/pdf?version=1696410920",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Artur Tron",
+    "authors_display": "Artur Tron; Andrea Paolella; Alexander Beutl",
+    "authors_json": "[{\"display_name\": \"Artur Tron\", \"id\": \"https://openalex.org/A5002945442\", \"orcid\": \"https://orcid.org/0000-0002-6565-8247\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Andrea Paolella\", \"id\": \"https://openalex.org/A5042467922\", \"orcid\": \"https://orcid.org/0000-0003-0986-6460\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alexander Beutl\", \"id\": \"https://openalex.org/A5062737645\", \"orcid\": \"https://orcid.org/0000-0002-7098-619X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773309532856,
+    "actual_start_ms": 1773309534356,
+    "pacing_wait_ms": 1499,
+    "pacing_jitter_sec": 1.758
+  }
+}

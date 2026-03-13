@@ -1,0 +1,180 @@
+{
+  "doi": "10.1002/exp.20240050",
+  "pdf_filename": "10.1002_exp.20240050.pdf",
+  "json_filename": "10.1002_exp.20240050.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_exp.20240050.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413607194",
+    "doi": "10.1002/exp.20240050",
+    "title": "Elucidating and Optimizing I Occupation in Lithium Argyrodite Solid Electrolytes for Advanced All‐Solid‐State Li Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Exploration",
+      "id": "https://openalex.org/S4210208535",
+      "type": "journal",
+      "issn_l": "2766-2098",
+      "issn": [
+        "2766-2098",
+        "2766-8509"
+      ]
+    },
+    "publication_date": "2025-08-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.86045869,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/EXP.20240050",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Zhi-Kai Huang",
+    "authors_display": "Zhi-Kai Huang; Wenrui Sun; Shuaiyu He; Huan Hu; Xue Li; Ke Huang; Zhi‐Hao Yan; Gencai Guo; Yaojie Lei; Liwen Yang; Jianyu Huang; Gang Wang; Yaru Liang; Guobao Xu; Xingqiao Wu",
+    "authors": [
+      {
+        "display_name": "Zhi-Kai Huang",
+        "id": "https://openalex.org/A5053768392",
+        "orcid": "https://orcid.org/0000-0003-1252-2001",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenrui Sun",
+        "id": "https://openalex.org/A5102690874",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuaiyu He",
+        "id": "https://openalex.org/A5111047435",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Huan Hu",
+        "id": "https://openalex.org/A5101873903",
+        "orcid": "https://orcid.org/0000-0003-0119-5789",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xue Li",
+        "id": "https://openalex.org/A5004419874",
+        "orcid": "https://orcid.org/0000-0001-8572-3686",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ke Huang",
+        "id": "https://openalex.org/A5072293041",
+        "orcid": "https://orcid.org/0000-0002-7763-5210",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhi‐Hao Yan",
+        "id": "https://openalex.org/A5112379497",
+        "orcid": "https://orcid.org/0009-0003-2858-3703",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gencai Guo",
+        "id": "https://openalex.org/A5101478817",
+        "orcid": "https://orcid.org/0000-0002-1171-5162",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yaojie Lei",
+        "id": "https://openalex.org/A5070208660",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liwen Yang",
+        "id": "https://openalex.org/A5002593397",
+        "orcid": "https://orcid.org/0000-0003-1001-4601",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianyu Huang",
+        "id": "https://openalex.org/A5019862006",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gang Wang",
+        "id": "https://openalex.org/A5100367421",
+        "orcid": "https://orcid.org/0000-0002-9297-136X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yaru Liang",
+        "id": "https://openalex.org/A5032414197",
+        "orcid": "https://orcid.org/0000-0002-9694-8714",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Guobao Xu",
+        "id": "https://openalex.org/A5103135301",
+        "orcid": "https://orcid.org/0000-0001-8072-4428",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xingqiao Wu",
+        "id": "https://openalex.org/A5045688312",
+        "orcid": "https://orcid.org/0000-0002-3140-6981",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413607194",
+    "doi": "10.1002/exp.20240050",
+    "title": "Elucidating and Optimizing I Occupation in Lithium Argyrodite Solid Electrolytes for Advanced All‐Solid‐State Li Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "Exploration",
+    "journal_id": "https://openalex.org/S4210208535",
+    "journal_type": "journal",
+    "journal_issn_l": "2766-2098",
+    "journal_issn_json": "[\"2766-2098\", \"2766-8509\"]",
+    "publication_date": "2025-08-25",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.86045869,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/EXP.20240050",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Zhi-Kai Huang",
+    "authors_display": "Zhi-Kai Huang; Wenrui Sun; Shuaiyu He; Huan Hu; Xue Li; Ke Huang; Zhi‐Hao Yan; Gencai Guo; Yaojie Lei; Liwen Yang; Jianyu Huang; Gang Wang; Yaru Liang; Guobao Xu; Xingqiao Wu",
+    "authors_json": "[{\"display_name\": \"Zhi-Kai Huang\", \"id\": \"https://openalex.org/A5053768392\", \"orcid\": \"https://orcid.org/0000-0003-1252-2001\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Wenrui Sun\", \"id\": \"https://openalex.org/A5102690874\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuaiyu He\", \"id\": \"https://openalex.org/A5111047435\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Huan Hu\", \"id\": \"https://openalex.org/A5101873903\", \"orcid\": \"https://orcid.org/0000-0003-0119-5789\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xue Li\", \"id\": \"https://openalex.org/A5004419874\", \"orcid\": \"https://orcid.org/0000-0001-8572-3686\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ke Huang\", \"id\": \"https://openalex.org/A5072293041\", \"orcid\": \"https://orcid.org/0000-0002-7763-5210\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhi‐Hao Yan\", \"id\": \"https://openalex.org/A5112379497\", \"orcid\": \"https://orcid.org/0009-0003-2858-3703\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gencai Guo\", \"id\": \"https://openalex.org/A5101478817\", \"orcid\": \"https://orcid.org/0000-0002-1171-5162\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yaojie Lei\", \"id\": \"https://openalex.org/A5070208660\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liwen Yang\", \"id\": \"https://openalex.org/A5002593397\", \"orcid\": \"https://orcid.org/0000-0003-1001-4601\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianyu Huang\", \"id\": \"https://openalex.org/A5019862006\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gang Wang\", \"id\": \"https://openalex.org/A5100367421\", \"orcid\": \"https://orcid.org/0000-0002-9297-136X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yaru Liang\", \"id\": \"https://openalex.org/A5032414197\", \"orcid\": \"https://orcid.org/0000-0002-9694-8714\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Guobao Xu\", \"id\": \"https://openalex.org/A5103135301\", \"orcid\": \"https://orcid.org/0000-0001-8072-4428\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xingqiao Wu\", \"id\": \"https://openalex.org/A5045688312\", \"orcid\": \"https://orcid.org/0000-0002-3140-6981\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://onlinelibrary.wiley.com/doi/10.1002/EXP.20240050",
+    "landing_title": "Elucidating and Optimizing I Occupation in Lithium Argyrodite Solid Electrolytes for Advanced All‐Solid‐State Li Metal Batteries - Huang - 2025 - Exploration - Wiley Online Library",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1002_exp.20240050.pdf",
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308393792,
+    "actual_start_ms": 1773308402322,
+    "pacing_wait_ms": 8529,
+    "pacing_jitter_sec": 1.523
+  }
+}

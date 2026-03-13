@@ -1,0 +1,102 @@
+{
+  "doi": "10.1016/j.egyai.2022.100159",
+  "pdf_filename": "10.1016_j.egyai.2022.100159.pdf",
+  "json_filename": "10.1016_j.egyai.2022.100159.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.egyai.2022.100159.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4226364056",
+    "doi": "10.1016/j.egyai.2022.100159",
+    "title": "Unsupervised machine learning to classify crystal structures according to their structural distortion: A case study on Li-argyrodite solid-state electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy and AI",
+      "id": "https://openalex.org/S4210241048",
+      "type": "journal",
+      "issn_l": "2666-5468",
+      "issn": [
+        "2666-5468"
+      ]
+    },
+    "publication_date": "2022-04-08",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.59059804,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "A. Gallo‐Bueno",
+    "authors_display": "A. Gallo‐Bueno; Marine Reynaud; Montse Casas‐Cabanas; Javier Carrasco",
+    "authors": [
+      {
+        "display_name": "A. Gallo‐Bueno",
+        "id": "https://openalex.org/A5019791884",
+        "orcid": "https://orcid.org/0000-0003-4500-6417",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marine Reynaud",
+        "id": "https://openalex.org/A5022301001",
+        "orcid": "https://orcid.org/0000-0002-0156-8701",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Montse Casas‐Cabanas",
+        "id": "https://openalex.org/A5058578086",
+        "orcid": "https://orcid.org/0000-0002-9298-2333",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Javier Carrasco",
+        "id": "https://openalex.org/A5072947717",
+        "orcid": "https://orcid.org/0000-0003-3117-6933",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4226364056",
+    "doi": "10.1016/j.egyai.2022.100159",
+    "title": "Unsupervised machine learning to classify crystal structures according to their structural distortion: A case study on Li-argyrodite solid-state electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": "Energy and AI",
+    "journal_id": "https://openalex.org/S4210241048",
+    "journal_type": "journal",
+    "journal_issn_l": "2666-5468",
+    "journal_issn_json": "[\"2666-5468\"]",
+    "publication_date": "2022-04-08",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.59059804,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "A. Gallo‐Bueno",
+    "authors_display": "A. Gallo‐Bueno; Marine Reynaud; Montse Casas‐Cabanas; Javier Carrasco",
+    "authors_json": "[{\"display_name\": \"A. Gallo‐Bueno\", \"id\": \"https://openalex.org/A5019791884\", \"orcid\": \"https://orcid.org/0000-0003-4500-6417\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Marine Reynaud\", \"id\": \"https://openalex.org/A5022301001\", \"orcid\": \"https://orcid.org/0000-0002-0156-8701\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Montse Casas‐Cabanas\", \"id\": \"https://openalex.org/A5058578086\", \"orcid\": \"https://orcid.org/0000-0002-9298-2333\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Javier Carrasco\", \"id\": \"https://openalex.org/A5072947717\", \"orcid\": \"https://orcid.org/0000-0003-3117-6933\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2666546822000180?via%3Dihub",
+    "landing_title": "Unsupervised machine learning to classify crystal structures according to their structural distortion: A case study on Li-argyrodite solid-state electrolytes - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773305395803,
+    "actual_start_ms": 1773305442498,
+    "pacing_wait_ms": 46694,
+    "pacing_jitter_sec": 1.681
+  }
+}

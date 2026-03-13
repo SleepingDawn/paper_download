@@ -1,0 +1,161 @@
+{
+  "doi": "10.1149/ma2025-015579mtgabs",
+  "pdf_filename": "10.1149_ma2025-015579mtgabs.pdf",
+  "json_filename": "10.1149_ma2025-015579mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2025-015579mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4412509754",
+    "doi": "10.1149/ma2025-015579mtgabs",
+    "title": "Reaction-Induced Stress at Argyrodite Sulfide/Li-Metal Interface—Tension or Compression?",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2025-07-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.1982834,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Changmin Shi",
+    "authors_display": "Changmin Shi; Pradeep R. Guduru; Yue Qi; Yan Yao; Jun Lou; Siyuan Song; Akshay Pakhare; Gregory Pustorino; Qing Ai; Cristina López-Pernía; Lihong Zhao; Brian W. Sheldon",
+    "authors": [
+      {
+        "display_name": "Changmin Shi",
+        "id": "https://openalex.org/A5063504385",
+        "orcid": "https://orcid.org/0000-0003-3661-7267",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Pradeep R. Guduru",
+        "id": "https://openalex.org/A5081569962",
+        "orcid": "https://orcid.org/0000-0002-4494-3348",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yue Qi",
+        "id": "https://openalex.org/A5100747624",
+        "orcid": "https://orcid.org/0000-0001-5331-1193",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yan Yao",
+        "id": "https://openalex.org/A5100634102",
+        "orcid": "https://orcid.org/0000-0001-8514-6997",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Lou",
+        "id": "https://openalex.org/A5018666422",
+        "orcid": "https://orcid.org/0000-0002-4351-9561",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Siyuan Song",
+        "id": "https://openalex.org/A5036877616",
+        "orcid": "https://orcid.org/0000-0002-4362-2657",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Akshay Pakhare",
+        "id": "https://openalex.org/A5055335266",
+        "orcid": "https://orcid.org/0009-0004-4284-1710",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gregory Pustorino",
+        "id": "https://openalex.org/A5119020632",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qing Ai",
+        "id": "https://openalex.org/A5084336869",
+        "orcid": "https://orcid.org/0000-0002-9675-7555",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cristina López-Pernía",
+        "id": "https://openalex.org/A5066579775",
+        "orcid": "https://orcid.org/0000-0002-5493-1914",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lihong Zhao",
+        "id": "https://openalex.org/A5010176826",
+        "orcid": "https://orcid.org/0000-0003-2308-1053",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Brian W. Sheldon",
+        "id": "https://openalex.org/A5085691864",
+        "orcid": "https://orcid.org/0000-0002-9593-891X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4412509754",
+    "doi": "10.1149/ma2025-015579mtgabs",
+    "title": "Reaction-Induced Stress at Argyrodite Sulfide/Li-Metal Interface—Tension or Compression?",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2025-07-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.1982834,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Changmin Shi",
+    "authors_display": "Changmin Shi; Pradeep R. Guduru; Yue Qi; Yan Yao; Jun Lou; Siyuan Song; Akshay Pakhare; Gregory Pustorino; Qing Ai; Cristina López-Pernía; Lihong Zhao; Brian W. Sheldon",
+    "authors_json": "[{\"display_name\": \"Changmin Shi\", \"id\": \"https://openalex.org/A5063504385\", \"orcid\": \"https://orcid.org/0000-0003-3661-7267\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Pradeep R. Guduru\", \"id\": \"https://openalex.org/A5081569962\", \"orcid\": \"https://orcid.org/0000-0002-4494-3348\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yue Qi\", \"id\": \"https://openalex.org/A5100747624\", \"orcid\": \"https://orcid.org/0000-0001-5331-1193\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yan Yao\", \"id\": \"https://openalex.org/A5100634102\", \"orcid\": \"https://orcid.org/0000-0001-8514-6997\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun Lou\", \"id\": \"https://openalex.org/A5018666422\", \"orcid\": \"https://orcid.org/0000-0002-4351-9561\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Siyuan Song\", \"id\": \"https://openalex.org/A5036877616\", \"orcid\": \"https://orcid.org/0000-0002-4362-2657\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Akshay Pakhare\", \"id\": \"https://openalex.org/A5055335266\", \"orcid\": \"https://orcid.org/0009-0004-4284-1710\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gregory Pustorino\", \"id\": \"https://openalex.org/A5119020632\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qing Ai\", \"id\": \"https://openalex.org/A5084336869\", \"orcid\": \"https://orcid.org/0000-0002-9675-7555\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cristina López-Pernía\", \"id\": \"https://openalex.org/A5066579775\", \"orcid\": \"https://orcid.org/0000-0002-5493-1914\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lihong Zhao\", \"id\": \"https://openalex.org/A5010176826\", \"orcid\": \"https://orcid.org/0000-0003-2308-1053\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Brian W. Sheldon\", \"id\": \"https://openalex.org/A5085691864\", \"orcid\": \"https://orcid.org/0000-0002-9593-891X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773308173893,
+    "actual_start_ms": 1773308173893,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.339
+  }
+}

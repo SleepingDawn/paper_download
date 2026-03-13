@@ -1,0 +1,109 @@
+{
+  "doi": "10.1002/advs.202302521",
+  "pdf_filename": "10.1002_advs.202302521.pdf",
+  "json_filename": "10.1002_advs.202302521.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_advs.202302521.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4377861978",
+    "doi": "10.1002/advs.202302521",
+    "title": "Non‐Linear Kinetics of The Lithium Metal Anode on Li<sub>6</sub>PS<sub>5</sub>Cl at High Current Density: Dendrite Growth and the Role of Lithium Microstructure on Creep",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Science",
+      "id": "https://openalex.org/S2737737698",
+      "type": "journal",
+      "issn_l": "2198-3844",
+      "issn": [
+        "2198-3844"
+      ]
+    },
+    "publication_date": "2023-05-23",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.86557923,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202302521",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Dheeraj K. Singh",
+    "authors_display": "Dheeraj K. Singh; Till Fuchs; Christian Krempaszky; Boris Mogwitz; Jürgen Janek",
+    "authors": [
+      {
+        "display_name": "Dheeraj K. Singh",
+        "id": "https://openalex.org/A5003589984",
+        "orcid": "https://orcid.org/0000-0001-8370-9549",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Till Fuchs",
+        "id": "https://openalex.org/A5026425699",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Christian Krempaszky",
+        "id": "https://openalex.org/A5015316181",
+        "orcid": "https://orcid.org/0000-0001-6366-2472",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Boris Mogwitz",
+        "id": "https://openalex.org/A5025523898",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4377861978",
+    "doi": "10.1002/advs.202302521",
+    "title": "Non‐Linear Kinetics of The Lithium Metal Anode on Li<sub>6</sub>PS<sub>5</sub>Cl at High Current Density: Dendrite Growth and the Role of Lithium Microstructure on Creep",
+    "publisher": "Wiley",
+    "journal": "Advanced Science",
+    "journal_id": "https://openalex.org/S2737737698",
+    "journal_type": "journal",
+    "journal_issn_l": "2198-3844",
+    "journal_issn_json": "[\"2198-3844\"]",
+    "publication_date": "2023-05-23",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.86557923,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202302521",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Dheeraj K. Singh",
+    "authors_display": "Dheeraj K. Singh; Till Fuchs; Christian Krempaszky; Boris Mogwitz; Jürgen Janek",
+    "authors_json": "[{\"display_name\": \"Dheeraj K. Singh\", \"id\": \"https://openalex.org/A5003589984\", \"orcid\": \"https://orcid.org/0000-0001-8370-9549\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Till Fuchs\", \"id\": \"https://openalex.org/A5026425699\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Christian Krempaszky\", \"id\": \"https://openalex.org/A5015316181\", \"orcid\": \"https://orcid.org/0000-0001-6366-2472\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Boris Mogwitz\", \"id\": \"https://openalex.org/A5025523898\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773304785686,
+    "actual_start_ms": 1773304785686,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.999
+  }
+}

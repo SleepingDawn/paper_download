@@ -1,0 +1,138 @@
+{
+  "doi": "10.1016/j.matt.2022.08.029",
+  "pdf_filename": "10.1016_j.matt.2022.08.029.pdf",
+  "json_filename": "10.1016_j.matt.2022.08.029.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.matt.2022.08.029.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4297374041",
+    "doi": "10.1016/j.matt.2022.08.029",
+    "title": "Enhanced ionic conductivity and lack of paddle-wheel effect in pseudohalogen-substituted Li argyrodites",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Matter",
+      "id": "https://openalex.org/S4210178557",
+      "type": "journal",
+      "issn_l": "2590-2385",
+      "issn": [
+        "2590-2385",
+        "2590-2393"
+      ]
+    },
+    "publication_date": "2022-09-27",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 48,
+    "citation_normalized_percentile": 0.94828832,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Yingzhi Sun",
+    "authors_display": "Yingzhi Sun; Bin Ouyang; Yan Wang; Yaqian Zhang; Shuo Sun; Zijian Cai; Valentina Lacivita; Yinsheng Guo; Gerbrand Ceder",
+    "authors": [
+      {
+        "display_name": "Yingzhi Sun",
+        "id": "https://openalex.org/A5100556435",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bin Ouyang",
+        "id": "https://openalex.org/A5070260665",
+        "orcid": "https://orcid.org/0000-0002-8181-6815",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yan Wang",
+        "id": "https://openalex.org/A5100322888",
+        "orcid": "https://orcid.org/0000-0003-1060-2956",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yaqian Zhang",
+        "id": "https://openalex.org/A5100761531",
+        "orcid": "https://orcid.org/0000-0002-4692-3033",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuo Sun",
+        "id": "https://openalex.org/A5064391462",
+        "orcid": "https://orcid.org/0000-0001-6092-7148",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zijian Cai",
+        "id": "https://openalex.org/A5043857893",
+        "orcid": "https://orcid.org/0000-0002-4908-3180",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Valentina Lacivita",
+        "id": "https://openalex.org/A5019818337",
+        "orcid": "https://orcid.org/0000-0002-2800-4471",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yinsheng Guo",
+        "id": "https://openalex.org/A5000696026",
+        "orcid": "https://orcid.org/0000-0002-0571-8447",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gerbrand Ceder",
+        "id": "https://openalex.org/A5014983956",
+        "orcid": "https://orcid.org/0000-0001-9275-3605",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4297374041",
+    "doi": "10.1016/j.matt.2022.08.029",
+    "title": "Enhanced ionic conductivity and lack of paddle-wheel effect in pseudohalogen-substituted Li argyrodites",
+    "publisher": "Elsevier BV",
+    "journal": "Matter",
+    "journal_id": "https://openalex.org/S4210178557",
+    "journal_type": "journal",
+    "journal_issn_l": "2590-2385",
+    "journal_issn_json": "[\"2590-2385\", \"2590-2393\"]",
+    "publication_date": "2022-09-27",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 48,
+    "citation_normalized_percentile": 0.94828832,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Yingzhi Sun",
+    "authors_display": "Yingzhi Sun; Bin Ouyang; Yan Wang; Yaqian Zhang; Shuo Sun; Zijian Cai; Valentina Lacivita; Yinsheng Guo; Gerbrand Ceder",
+    "authors_json": "[{\"display_name\": \"Yingzhi Sun\", \"id\": \"https://openalex.org/A5100556435\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Bin Ouyang\", \"id\": \"https://openalex.org/A5070260665\", \"orcid\": \"https://orcid.org/0000-0002-8181-6815\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yan Wang\", \"id\": \"https://openalex.org/A5100322888\", \"orcid\": \"https://orcid.org/0000-0003-1060-2956\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yaqian Zhang\", \"id\": \"https://openalex.org/A5100761531\", \"orcid\": \"https://orcid.org/0000-0002-4692-3033\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuo Sun\", \"id\": \"https://openalex.org/A5064391462\", \"orcid\": \"https://orcid.org/0000-0001-6092-7148\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zijian Cai\", \"id\": \"https://openalex.org/A5043857893\", \"orcid\": \"https://orcid.org/0000-0002-4908-3180\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Valentina Lacivita\", \"id\": \"https://openalex.org/A5019818337\", \"orcid\": \"https://orcid.org/0000-0002-2800-4471\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yinsheng Guo\", \"id\": \"https://openalex.org/A5000696026\", \"orcid\": \"https://orcid.org/0000-0002-0571-8447\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gerbrand Ceder\", \"id\": \"https://openalex.org/A5014983956\", \"orcid\": \"https://orcid.org/0000-0001-9275-3605\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301993318,
+    "actual_start_ms": 1773302000021,
+    "pacing_wait_ms": 6703,
+    "pacing_jitter_sec": 1.483
+  }
+}

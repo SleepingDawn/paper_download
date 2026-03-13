@@ -1,0 +1,121 @@
+{
+  "doi": "10.26434/chemrxiv.14479215.v1",
+  "pdf_filename": "10.26434_chemrxiv.14479215.v1.pdf",
+  "json_filename": "10.26434_chemrxiv.14479215.v1.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.26434_chemrxiv.14479215.v1.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3159895009",
+    "doi": "10.26434/chemrxiv.14479215.v1",
+    "title": "High Energy Density Single Crystal NMC/Li6PS5Cl Cathodes for All-Solid-State Lithium Metal Batteries",
+    "publisher": null,
+    "journal": {
+      "name": null,
+      "id": null,
+      "type": null,
+      "issn_l": null,
+      "issn": []
+    },
+    "publication_date": "2021-04-26",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.71177277,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Christopher Doerrer",
+    "authors_display": "Christopher Doerrer; Isaac Capone; Sudarshan Narayanan; Junliang Liu; C.R.M. Grovenor; Mauro Pasta; Patrick S. Grant",
+    "authors": [
+      {
+        "display_name": "Christopher Doerrer",
+        "id": "https://openalex.org/A5039888032",
+        "orcid": "https://orcid.org/0000-0003-0166-6333",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Isaac Capone",
+        "id": "https://openalex.org/A5021208480",
+        "orcid": "https://orcid.org/0000-0003-0114-8405",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sudarshan Narayanan",
+        "id": "https://openalex.org/A5048969462",
+        "orcid": "https://orcid.org/0000-0001-7026-5010",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junliang Liu",
+        "id": "https://openalex.org/A5100606615",
+        "orcid": "https://orcid.org/0000-0002-9278-6463",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "C.R.M. Grovenor",
+        "id": "https://openalex.org/A5110346944",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mauro Pasta",
+        "id": "https://openalex.org/A5011547289",
+        "orcid": "https://orcid.org/0000-0002-2613-4555",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Patrick S. Grant",
+        "id": "https://openalex.org/A5041676080",
+        "orcid": "https://orcid.org/0000-0002-7942-7837",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3159895009",
+    "doi": "10.26434/chemrxiv.14479215.v1",
+    "title": "High Energy Density Single Crystal NMC/Li6PS5Cl Cathodes for All-Solid-State Lithium Metal Batteries",
+    "publisher": null,
+    "journal": null,
+    "journal_id": null,
+    "journal_type": null,
+    "journal_issn_l": null,
+    "journal_issn_json": "[]",
+    "publication_date": "2021-04-26",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.71177277,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Christopher Doerrer",
+    "authors_display": "Christopher Doerrer; Isaac Capone; Sudarshan Narayanan; Junliang Liu; C.R.M. Grovenor; Mauro Pasta; Patrick S. Grant",
+    "authors_json": "[{\"display_name\": \"Christopher Doerrer\", \"id\": \"https://openalex.org/A5039888032\", \"orcid\": \"https://orcid.org/0000-0003-0166-6333\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Isaac Capone\", \"id\": \"https://openalex.org/A5021208480\", \"orcid\": \"https://orcid.org/0000-0003-0114-8405\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sudarshan Narayanan\", \"id\": \"https://openalex.org/A5048969462\", \"orcid\": \"https://orcid.org/0000-0001-7026-5010\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junliang Liu\", \"id\": \"https://openalex.org/A5100606615\", \"orcid\": \"https://orcid.org/0000-0002-9278-6463\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"C.R.M. Grovenor\", \"id\": \"https://openalex.org/A5110346944\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mauro Pasta\", \"id\": \"https://openalex.org/A5011547289\", \"orcid\": \"https://orcid.org/0000-0002-2613-4555\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Patrick S. Grant\", \"id\": \"https://openalex.org/A5041676080\", \"orcid\": \"https://orcid.org/0000-0002-7942-7837\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv.14479215.v1",
+    "landing_title": "High Energy Density Single Crystal NMC/Li6PS5Cl Cathodes for All-Solid-State Lithium Metal Batteries | ChemRxiv",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.26434_chemrxiv.14479215.v1.pdf",
+    "scheduler_publisher": "10.26434",
+    "scheduled_start_ms": 1773309764022,
+    "actual_start_ms": 1773309764022,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.552
+  }
+}

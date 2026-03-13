@@ -1,0 +1,98 @@
+{
+  "doi": "10.1149/ma2022-023224mtgabs",
+  "pdf_filename": "10.1149_ma2022-023224mtgabs.pdf",
+  "json_filename": "10.1149_ma2022-023224mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2022-023224mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4309821711",
+    "doi": "10.1149/ma2022-023224mtgabs",
+    "title": "Development of Large Area All Solid-State Lithium-Ion Cells Using Scalable and Manufacturable Coating Processes",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2022-10-09",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.09944562,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Andrew M. Colclasure",
+    "authors_display": "Andrew M. Colclasure; Ryan Brow; Maxwell C. Schulze",
+    "authors": [
+      {
+        "display_name": "Andrew M. Colclasure",
+        "id": "https://openalex.org/A5061800926",
+        "orcid": "https://orcid.org/0000-0002-9574-5106",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ryan Brow",
+        "id": "https://openalex.org/A5018479205",
+        "orcid": "https://orcid.org/0000-0001-5984-2446",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maxwell C. Schulze",
+        "id": "https://openalex.org/A5004592482",
+        "orcid": "https://orcid.org/0000-0001-8368-4054",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4309821711",
+    "doi": "10.1149/ma2022-023224mtgabs",
+    "title": "Development of Large Area All Solid-State Lithium-Ion Cells Using Scalable and Manufacturable Coating Processes",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2022-10-09",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.09944562,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Andrew M. Colclasure",
+    "authors_display": "Andrew M. Colclasure; Ryan Brow; Maxwell C. Schulze",
+    "authors_json": "[{\"display_name\": \"Andrew M. Colclasure\", \"id\": \"https://openalex.org/A5061800926\", \"orcid\": \"https://orcid.org/0000-0002-9574-5106\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ryan Brow\", \"id\": \"https://openalex.org/A5018479205\", \"orcid\": \"https://orcid.org/0000-0001-5984-2446\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maxwell C. Schulze\", \"id\": \"https://openalex.org/A5004592482\", \"orcid\": \"https://orcid.org/0000-0001-8368-4054\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773303962566,
+    "actual_start_ms": 1773303962567,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.934
+  }
+}

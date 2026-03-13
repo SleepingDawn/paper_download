@@ -1,0 +1,158 @@
+{
+  "doi": "10.1021/acsaem.5c01460",
+  "pdf_filename": "10.1021_acsaem.5c01460.pdf",
+  "json_filename": "10.1021_acsaem.5c01460.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.5c01460.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413214949",
+    "doi": "10.1021/acsaem.5c01460",
+    "title": "Synergistic Regulation of Zn and F in Li<sub>6</sub>PS<sub>5</sub>Cl for Enhancing Interface Stability and Suppressing Lithium Dendrites in All-Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2025-08-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.24207585,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Ruiqi Guo",
+    "authors_display": "Ruiqi Guo; Kaidi Kang; Bingguang Ye; W. Shan; Pinyi Wang; Songjie Li; Xin Feng; Ai Gao; Ran Zhao; Xinran Wang; Chuan Wu; Ying Bai",
+    "authors": [
+      {
+        "display_name": "Ruiqi Guo",
+        "id": "https://openalex.org/A5005948711",
+        "orcid": "https://orcid.org/0009-0005-7466-0743",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kaidi Kang",
+        "id": "https://openalex.org/A5114715787",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bingguang Ye",
+        "id": "https://openalex.org/A5111609617",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "W. Shan",
+        "id": "https://openalex.org/A5111543900",
+        "orcid": "https://orcid.org/0009-0002-8358-7769",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pinyi Wang",
+        "id": "https://openalex.org/A5020630157",
+        "orcid": "https://orcid.org/0000-0002-7253-0794",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Songjie Li",
+        "id": "https://openalex.org/A5101498050",
+        "orcid": "https://orcid.org/0000-0001-5712-2226",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xin Feng",
+        "id": "https://openalex.org/A5101201640",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ai Gao",
+        "id": "https://openalex.org/A5069944531",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ran Zhao",
+        "id": "https://openalex.org/A5039706337",
+        "orcid": "https://orcid.org/0000-0002-1251-7977",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinran Wang",
+        "id": "https://openalex.org/A5100458476",
+        "orcid": "https://orcid.org/0000-0002-2911-9051",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chuan Wu",
+        "id": "https://openalex.org/A5078076737",
+        "orcid": "https://orcid.org/0000-0003-3878-179X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ying Bai",
+        "id": "https://openalex.org/A5083304485",
+        "orcid": "https://orcid.org/0000-0003-3645-4357",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413214949",
+    "doi": "10.1021/acsaem.5c01460",
+    "title": "Synergistic Regulation of Zn and F in Li<sub>6</sub>PS<sub>5</sub>Cl for Enhancing Interface Stability and Suppressing Lithium Dendrites in All-Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2025-08-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.24207585,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Ruiqi Guo",
+    "authors_display": "Ruiqi Guo; Kaidi Kang; Bingguang Ye; W. Shan; Pinyi Wang; Songjie Li; Xin Feng; Ai Gao; Ran Zhao; Xinran Wang; Chuan Wu; Ying Bai",
+    "authors_json": "[{\"display_name\": \"Ruiqi Guo\", \"id\": \"https://openalex.org/A5005948711\", \"orcid\": \"https://orcid.org/0009-0005-7466-0743\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Kaidi Kang\", \"id\": \"https://openalex.org/A5114715787\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bingguang Ye\", \"id\": \"https://openalex.org/A5111609617\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"W. Shan\", \"id\": \"https://openalex.org/A5111543900\", \"orcid\": \"https://orcid.org/0009-0002-8358-7769\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pinyi Wang\", \"id\": \"https://openalex.org/A5020630157\", \"orcid\": \"https://orcid.org/0000-0002-7253-0794\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Songjie Li\", \"id\": \"https://openalex.org/A5101498050\", \"orcid\": \"https://orcid.org/0000-0001-5712-2226\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xin Feng\", \"id\": \"https://openalex.org/A5101201640\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ai Gao\", \"id\": \"https://openalex.org/A5069944531\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ran Zhao\", \"id\": \"https://openalex.org/A5039706337\", \"orcid\": \"https://orcid.org/0000-0002-1251-7977\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinran Wang\", \"id\": \"https://openalex.org/A5100458476\", \"orcid\": \"https://orcid.org/0000-0002-2911-9051\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Chuan Wu\", \"id\": \"https://openalex.org/A5078076737\", \"orcid\": \"https://orcid.org/0000-0003-3878-179X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ying Bai\", \"id\": \"https://openalex.org/A5083304485\", \"orcid\": \"https://orcid.org/0000-0003-3645-4357\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.5c01460",
+    "landing_title": "Synergistic Regulation of Zn and F in Li6PS5Cl for Enhancing Interface Stability and Suppressing Lithium Dendrites in All-Solid-State Lithium Batteries | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsaem.5c01460.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308651214,
+    "actual_start_ms": 1773308659055,
+    "pacing_wait_ms": 7840,
+    "pacing_jitter_sec": 0.831
+  }
+}

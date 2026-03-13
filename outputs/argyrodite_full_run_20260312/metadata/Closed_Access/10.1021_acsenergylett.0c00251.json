@@ -1,0 +1,116 @@
+{
+  "doi": "10.1021/acsenergylett.0c00251",
+  "pdf_filename": "10.1021_acsenergylett.0c00251.pdf",
+  "json_filename": "10.1021_acsenergylett.0c00251.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.0c00251.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3005194822",
+    "doi": "10.1021/acsenergylett.0c00251",
+    "title": "Thin and Flexible Solid Electrolyte Membranes with Ultrahigh Thermal Stability Derived from Solution-Processable Li Argyrodites for All-Solid-State Li-Ion Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2020-02-07",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 203,
+    "citation_normalized_percentile": 0.99158592,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Dong Hyeon Kim",
+    "authors_display": "Dong Hyeon Kim; Yong-Hyeok Lee; Yong Bae Song; Hiram Kwak; Sang‐Young Lee; Yoon Seok Jung",
+    "authors": [
+      {
+        "display_name": "Dong Hyeon Kim",
+        "id": "https://openalex.org/A5100786605",
+        "orcid": "https://orcid.org/0000-0002-5953-8433",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong-Hyeok Lee",
+        "id": "https://openalex.org/A5044980890",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong Bae Song",
+        "id": "https://openalex.org/A5065770134",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hiram Kwak",
+        "id": "https://openalex.org/A5081127519",
+        "orcid": "https://orcid.org/0009-0005-1624-0388",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang‐Young Lee",
+        "id": "https://openalex.org/A5002813719",
+        "orcid": "https://orcid.org/0000-0001-7153-0517",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yoon Seok Jung",
+        "id": "https://openalex.org/A5045334638",
+        "orcid": "https://orcid.org/0000-0003-0357-9508",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3005194822",
+    "doi": "10.1021/acsenergylett.0c00251",
+    "title": "Thin and Flexible Solid Electrolyte Membranes with Ultrahigh Thermal Stability Derived from Solution-Processable Li Argyrodites for All-Solid-State Li-Ion Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2020-02-07",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 203,
+    "citation_normalized_percentile": 0.99158592,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Dong Hyeon Kim",
+    "authors_display": "Dong Hyeon Kim; Yong-Hyeok Lee; Yong Bae Song; Hiram Kwak; Sang‐Young Lee; Yoon Seok Jung",
+    "authors_json": "[{\"display_name\": \"Dong Hyeon Kim\", \"id\": \"https://openalex.org/A5100786605\", \"orcid\": \"https://orcid.org/0000-0002-5953-8433\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yong-Hyeok Lee\", \"id\": \"https://openalex.org/A5044980890\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong Bae Song\", \"id\": \"https://openalex.org/A5065770134\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hiram Kwak\", \"id\": \"https://openalex.org/A5081127519\", \"orcid\": \"https://orcid.org/0009-0005-1624-0388\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang‐Young Lee\", \"id\": \"https://openalex.org/A5002813719\", \"orcid\": \"https://orcid.org/0000-0001-7153-0517\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yoon Seok Jung\", \"id\": \"https://openalex.org/A5045334638\", \"orcid\": \"https://orcid.org/0000-0003-0357-9508\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301541240,
+    "actual_start_ms": 1773301542740,
+    "pacing_wait_ms": 1500,
+    "pacing_jitter_sec": 0.756
+  }
+}

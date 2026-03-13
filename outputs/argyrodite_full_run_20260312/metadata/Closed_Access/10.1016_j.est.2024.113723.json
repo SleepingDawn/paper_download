@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.est.2024.113723",
+  "pdf_filename": "10.1016_j.est.2024.113723.pdf",
+  "json_filename": "10.1016_j.est.2024.113723.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.est.2024.113723.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4402550617",
+    "doi": "10.1016/j.est.2024.113723",
+    "title": "The higher the better? Thermal stability and electrochemical properties of Cl-rich lithium argyrodite solid state electrolyte",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Storage",
+      "id": "https://openalex.org/S2764865925",
+      "type": "journal",
+      "issn_l": "2352-152X",
+      "issn": [
+        "2352-152X",
+        "2352-1538"
+      ]
+    },
+    "publication_date": "2024-09-15",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.69742608,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Yi Duan",
+    "authors_display": "Yi Duan; Xiaopeng Qi; Xiangtao Bai; Tianwei Yu; Yanlong Wu; Zenghua Chang; Jiantao Wang",
+    "authors": [
+      {
+        "display_name": "Yi Duan",
+        "id": "https://openalex.org/A5075688300",
+        "orcid": "https://orcid.org/0009-0003-0575-1647",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaopeng Qi",
+        "id": "https://openalex.org/A5052278320",
+        "orcid": "https://orcid.org/0000-0003-0432-0178",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiangtao Bai",
+        "id": "https://openalex.org/A5103397592",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tianwei Yu",
+        "id": "https://openalex.org/A5003488754",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanlong Wu",
+        "id": "https://openalex.org/A5102408866",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zenghua Chang",
+        "id": "https://openalex.org/A5101815905",
+        "orcid": "https://orcid.org/0000-0002-2328-4478",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiantao Wang",
+        "id": "https://openalex.org/A5100632945",
+        "orcid": "https://orcid.org/0000-0002-4773-5229",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4402550617",
+    "doi": "10.1016/j.est.2024.113723",
+    "title": "The higher the better? Thermal stability and electrochemical properties of Cl-rich lithium argyrodite solid state electrolyte",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Storage",
+    "journal_id": "https://openalex.org/S2764865925",
+    "journal_type": "journal",
+    "journal_issn_l": "2352-152X",
+    "journal_issn_json": "[\"2352-152X\", \"2352-1538\"]",
+    "publication_date": "2024-09-15",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.69742608,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Yi Duan",
+    "authors_display": "Yi Duan; Xiaopeng Qi; Xiangtao Bai; Tianwei Yu; Yanlong Wu; Zenghua Chang; Jiantao Wang",
+    "authors_json": "[{\"display_name\": \"Yi Duan\", \"id\": \"https://openalex.org/A5075688300\", \"orcid\": \"https://orcid.org/0009-0003-0575-1647\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Xiaopeng Qi\", \"id\": \"https://openalex.org/A5052278320\", \"orcid\": \"https://orcid.org/0000-0003-0432-0178\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiangtao Bai\", \"id\": \"https://openalex.org/A5103397592\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tianwei Yu\", \"id\": \"https://openalex.org/A5003488754\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanlong Wu\", \"id\": \"https://openalex.org/A5102408866\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zenghua Chang\", \"id\": \"https://openalex.org/A5101815905\", \"orcid\": \"https://orcid.org/0000-0002-2328-4478\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiantao Wang\", \"id\": \"https://openalex.org/A5100632945\", \"orcid\": \"https://orcid.org/0000-0002-4773-5229\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2352152X24033097?via%3Dihub",
+    "landing_title": "The higher the better? Thermal stability and electrochemical properties of Cl-rich lithium argyrodite solid state electrolyte - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773307309751,
+    "actual_start_ms": 1773307345824,
+    "pacing_wait_ms": 36072,
+    "pacing_jitter_sec": 1.738
+  }
+}

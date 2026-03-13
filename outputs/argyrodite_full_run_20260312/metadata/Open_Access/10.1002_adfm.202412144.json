@@ -1,0 +1,166 @@
+{
+  "doi": "10.1002/adfm.202412144",
+  "pdf_filename": "10.1002_adfm.202412144.pdf",
+  "json_filename": "10.1002_adfm.202412144.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_adfm.202412144.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4403294781",
+    "doi": "10.1002/adfm.202412144",
+    "title": "Regulating p‐Band Center of Sulfur in Li‐Argyrodite to Stabilize Dual Solid–Solid Interface for Robust All‐Solid‐State Lithium–Sulfur Battery",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2024-10-10",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.9442401,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202412144",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Chong Liu",
+    "authors_display": "Chong Liu; Tianran Zhang; Ruoyu Wang; Butian Chen; Dewen Wang; Tenghui Wang; Ziyi Yang; Tao Liu; Qianjiang Mao; Taiguang Li; Jicheng Zhang; Xiaobai Ma; Xiangfeng Liu",
+    "authors": [
+      {
+        "display_name": "Chong Liu",
+        "id": "https://openalex.org/A5100412251",
+        "orcid": "https://orcid.org/0000-0003-2322-8721",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tianran Zhang",
+        "id": "https://openalex.org/A5013342444",
+        "orcid": "https://orcid.org/0000-0003-2837-4971",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ruoyu Wang",
+        "id": "https://openalex.org/A5100653717",
+        "orcid": "https://orcid.org/0009-0001-4225-8013",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Butian Chen",
+        "id": "https://openalex.org/A5023606280",
+        "orcid": "https://orcid.org/0000-0002-9268-7916",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dewen Wang",
+        "id": "https://openalex.org/A5069973371",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tenghui Wang",
+        "id": "https://openalex.org/A5052057343",
+        "orcid": "https://orcid.org/0000-0003-1605-4153",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziyi Yang",
+        "id": "https://openalex.org/A5012198854",
+        "orcid": "https://orcid.org/0000-0002-6666-4972",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tao Liu",
+        "id": "https://openalex.org/A5100664699",
+        "orcid": "https://orcid.org/0000-0003-3466-0923",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qianjiang Mao",
+        "id": "https://openalex.org/A5090228636",
+        "orcid": "https://orcid.org/0009-0001-7432-9533",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Taiguang Li",
+        "id": "https://openalex.org/A5057138167",
+        "orcid": "https://orcid.org/0009-0006-0933-8712",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jicheng Zhang",
+        "id": "https://openalex.org/A5100729893",
+        "orcid": "https://orcid.org/0000-0002-4052-9932",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaobai Ma",
+        "id": "https://openalex.org/A5032918589",
+        "orcid": "https://orcid.org/0000-0002-6891-5536",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiangfeng Liu",
+        "id": "https://openalex.org/A5058350031",
+        "orcid": "https://orcid.org/0000-0001-9633-7721",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4403294781",
+    "doi": "10.1002/adfm.202412144",
+    "title": "Regulating p‐Band Center of Sulfur in Li‐Argyrodite to Stabilize Dual Solid–Solid Interface for Robust All‐Solid‐State Lithium–Sulfur Battery",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2024-10-10",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.9442401,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202412144",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Chong Liu",
+    "authors_display": "Chong Liu; Tianran Zhang; Ruoyu Wang; Butian Chen; Dewen Wang; Tenghui Wang; Ziyi Yang; Tao Liu; Qianjiang Mao; Taiguang Li; Jicheng Zhang; Xiaobai Ma; Xiangfeng Liu",
+    "authors_json": "[{\"display_name\": \"Chong Liu\", \"id\": \"https://openalex.org/A5100412251\", \"orcid\": \"https://orcid.org/0000-0003-2322-8721\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Tianran Zhang\", \"id\": \"https://openalex.org/A5013342444\", \"orcid\": \"https://orcid.org/0000-0003-2837-4971\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ruoyu Wang\", \"id\": \"https://openalex.org/A5100653717\", \"orcid\": \"https://orcid.org/0009-0001-4225-8013\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Butian Chen\", \"id\": \"https://openalex.org/A5023606280\", \"orcid\": \"https://orcid.org/0000-0002-9268-7916\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dewen Wang\", \"id\": \"https://openalex.org/A5069973371\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tenghui Wang\", \"id\": \"https://openalex.org/A5052057343\", \"orcid\": \"https://orcid.org/0000-0003-1605-4153\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ziyi Yang\", \"id\": \"https://openalex.org/A5012198854\", \"orcid\": \"https://orcid.org/0000-0002-6666-4972\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tao Liu\", \"id\": \"https://openalex.org/A5100664699\", \"orcid\": \"https://orcid.org/0000-0003-3466-0923\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qianjiang Mao\", \"id\": \"https://openalex.org/A5090228636\", \"orcid\": \"https://orcid.org/0009-0001-7432-9533\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Taiguang Li\", \"id\": \"https://openalex.org/A5057138167\", \"orcid\": \"https://orcid.org/0009-0006-0933-8712\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jicheng Zhang\", \"id\": \"https://openalex.org/A5100729893\", \"orcid\": \"https://orcid.org/0000-0002-4052-9932\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaobai Ma\", \"id\": \"https://openalex.org/A5032918589\", \"orcid\": \"https://orcid.org/0000-0002-6891-5536\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiangfeng Liu\", \"id\": \"https://openalex.org/A5058350031\", \"orcid\": \"https://orcid.org/0000-0001-9633-7721\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773304448824,
+    "actual_start_ms": 1773304448825,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.162
+  }
+}

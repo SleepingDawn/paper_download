@@ -1,0 +1,109 @@
+{
+  "doi": "10.1021/acselectrochem.4c00228",
+  "pdf_filename": "10.1021_acselectrochem.4c00228.pdf",
+  "json_filename": "10.1021_acselectrochem.4c00228.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acselectrochem.4c00228.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4406847419",
+    "doi": "10.1021/acselectrochem.4c00228",
+    "title": "Effect of Temperature during Open Vessel Sintering on Li<sub>6</sub>PS<sub>5</sub>Cl Solid-State Electrolyte Powders for Use in Cathode Composite Electrodes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS electrochemistry.",
+      "id": "https://openalex.org/S4404674019",
+      "type": "journal",
+      "issn_l": "2997-0571",
+      "issn": [
+        "2997-0571"
+      ]
+    },
+    "publication_date": "2025-01-27",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.89850795,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Zachary Warren",
+    "authors_display": "Zachary Warren; Miguel Seghers; Pierre Boissière; M. Aparicio; Nataly Carolina Rosero‐Navarro",
+    "authors": [
+      {
+        "display_name": "Zachary Warren",
+        "id": "https://openalex.org/A5100286827",
+        "orcid": "https://orcid.org/0000-0002-4246-8598",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Miguel Seghers",
+        "id": "https://openalex.org/A5116042593",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pierre Boissière",
+        "id": "https://openalex.org/A5116042594",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "M. Aparicio",
+        "id": "https://openalex.org/A5036073309",
+        "orcid": "https://orcid.org/0000-0003-3024-0593",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nataly Carolina Rosero‐Navarro",
+        "id": "https://openalex.org/A5062791599",
+        "orcid": "https://orcid.org/0000-0001-6838-2875",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4406847419",
+    "doi": "10.1021/acselectrochem.4c00228",
+    "title": "Effect of Temperature during Open Vessel Sintering on Li<sub>6</sub>PS<sub>5</sub>Cl Solid-State Electrolyte Powders for Use in Cathode Composite Electrodes",
+    "publisher": "American Chemical Society",
+    "journal": "ACS electrochemistry.",
+    "journal_id": "https://openalex.org/S4404674019",
+    "journal_type": "journal",
+    "journal_issn_l": "2997-0571",
+    "journal_issn_json": "[\"2997-0571\"]",
+    "publication_date": "2025-01-27",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.89850795,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Zachary Warren",
+    "authors_display": "Zachary Warren; Miguel Seghers; Pierre Boissière; M. Aparicio; Nataly Carolina Rosero‐Navarro",
+    "authors_json": "[{\"display_name\": \"Zachary Warren\", \"id\": \"https://openalex.org/A5100286827\", \"orcid\": \"https://orcid.org/0000-0002-4246-8598\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Miguel Seghers\", \"id\": \"https://openalex.org/A5116042593\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pierre Boissière\", \"id\": \"https://openalex.org/A5116042594\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"M. Aparicio\", \"id\": \"https://openalex.org/A5036073309\", \"orcid\": \"https://orcid.org/0000-0003-3024-0593\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nataly Carolina Rosero‐Navarro\", \"id\": \"https://openalex.org/A5062791599\", \"orcid\": \"https://orcid.org/0000-0001-6838-2875\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acselectrochem.4c00228",
+    "landing_title": "Effect of Temperature during Open Vessel Sintering on Li6PS5Cl Solid-State Electrolyte Powders for Use in Cathode Composite Electrodes | ACS Electrochemistry",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acselectrochem.4c00228.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773306903537,
+    "actual_start_ms": 1773306903537,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.857
+  }
+}

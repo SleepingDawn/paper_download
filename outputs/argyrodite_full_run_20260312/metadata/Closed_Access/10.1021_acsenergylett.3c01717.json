@@ -1,0 +1,109 @@
+{
+  "doi": "10.1021/acsenergylett.3c01717",
+  "pdf_filename": "10.1021_acsenergylett.3c01717.pdf",
+  "json_filename": "10.1021_acsenergylett.3c01717.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.3c01717.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4388128541",
+    "doi": "10.1021/acsenergylett.3c01717",
+    "title": "Waxing Bare High-Voltage Cathode Surfaces to Enable Sulfide Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2023-11-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 32,
+    "citation_normalized_percentile": 0.9508068,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Yangyang Huang",
+    "authors_display": "Yangyang Huang; Laidong Zhou; Chang Li; Zhuo Yu; Linda F. Nazar",
+    "authors": [
+      {
+        "display_name": "Yangyang Huang",
+        "id": "https://openalex.org/A5110830089",
+        "orcid": "https://orcid.org/0009-0001-8694-5755",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Laidong Zhou",
+        "id": "https://openalex.org/A5025003275",
+        "orcid": "https://orcid.org/0000-0002-8556-3296",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chang Li",
+        "id": "https://openalex.org/A5100629150",
+        "orcid": "https://orcid.org/0000-0001-5420-3856",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhuo Yu",
+        "id": "https://openalex.org/A5100696410",
+        "orcid": "https://orcid.org/0000-0002-0235-2769",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Linda F. Nazar",
+        "id": "https://openalex.org/A5079626231",
+        "orcid": "https://orcid.org/0000-0002-3314-8197",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4388128541",
+    "doi": "10.1021/acsenergylett.3c01717",
+    "title": "Waxing Bare High-Voltage Cathode Surfaces to Enable Sulfide Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2023-11-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 32,
+    "citation_normalized_percentile": 0.9508068,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Yangyang Huang",
+    "authors_display": "Yangyang Huang; Laidong Zhou; Chang Li; Zhuo Yu; Linda F. Nazar",
+    "authors_json": "[{\"display_name\": \"Yangyang Huang\", \"id\": \"https://openalex.org/A5110830089\", \"orcid\": \"https://orcid.org/0009-0001-8694-5755\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Laidong Zhou\", \"id\": \"https://openalex.org/A5025003275\", \"orcid\": \"https://orcid.org/0000-0002-8556-3296\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chang Li\", \"id\": \"https://openalex.org/A5100629150\", \"orcid\": \"https://orcid.org/0000-0001-5420-3856\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhuo Yu\", \"id\": \"https://openalex.org/A5100696410\", \"orcid\": \"https://orcid.org/0000-0002-0235-2769\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Linda F. Nazar\", \"id\": \"https://openalex.org/A5079626231\", \"orcid\": \"https://orcid.org/0000-0002-3314-8197\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302701638,
+    "actual_start_ms": 1773302703216,
+    "pacing_wait_ms": 1578,
+    "pacing_jitter_sec": 1.624
+  }
+}

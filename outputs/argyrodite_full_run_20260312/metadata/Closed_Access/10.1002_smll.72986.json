@@ -1,0 +1,152 @@
+{
+  "doi": "10.1002/smll.72986",
+  "pdf_filename": "10.1002_smll.72986.pdf",
+  "json_filename": "10.1002_smll.72986.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_smll.72986.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7133296903",
+    "doi": "10.1002/smll.72986",
+    "title": "Toward Affordable All‐Solid‐State Lithium Batteries: A Novel Li <sub>2</sub> S‐Free Synthesis for High‐Performance Sulfide Electrolytes with $16.85/Kg Low Cost",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2026-03-03",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.83683017,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Gang Peng",
+    "authors_display": "Gang Peng; Zhouyu Huang; Zhan Wu; Haiyuan Zhang; Dan Li; Wenlong Song; Yang Xia; Ruyi Fang; Wenkui Zhang; Xinyong Tao; Jun Zhang",
+    "authors": [
+      {
+        "display_name": "Gang Peng",
+        "id": "https://openalex.org/A5033777525",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhouyu Huang",
+        "id": "https://openalex.org/A5114111746",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhan Wu",
+        "id": "https://openalex.org/A5086058691",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Haiyuan Zhang",
+        "id": "https://openalex.org/A5127964527",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dan Li",
+        "id": "https://openalex.org/A5127918857",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenlong Song",
+        "id": "https://openalex.org/A5025785236",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yang Xia",
+        "id": "https://openalex.org/A5127954467",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ruyi Fang",
+        "id": "https://openalex.org/A5127970428",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenkui Zhang",
+        "id": "https://openalex.org/A5127953056",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinyong Tao",
+        "id": "https://openalex.org/A5122766357",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Zhang",
+        "id": "https://openalex.org/A5127958553",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7133296903",
+    "doi": "10.1002/smll.72986",
+    "title": "Toward Affordable All‐Solid‐State Lithium Batteries: A Novel Li <sub>2</sub> S‐Free Synthesis for High‐Performance Sulfide Electrolytes with $16.85/Kg Low Cost",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2026-03-03",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.83683017,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Gang Peng",
+    "authors_display": "Gang Peng; Zhouyu Huang; Zhan Wu; Haiyuan Zhang; Dan Li; Wenlong Song; Yang Xia; Ruyi Fang; Wenkui Zhang; Xinyong Tao; Jun Zhang",
+    "authors_json": "[{\"display_name\": \"Gang Peng\", \"id\": \"https://openalex.org/A5033777525\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Zhouyu Huang\", \"id\": \"https://openalex.org/A5114111746\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhan Wu\", \"id\": \"https://openalex.org/A5086058691\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Haiyuan Zhang\", \"id\": \"https://openalex.org/A5127964527\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dan Li\", \"id\": \"https://openalex.org/A5127918857\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wenlong Song\", \"id\": \"https://openalex.org/A5025785236\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yang Xia\", \"id\": \"https://openalex.org/A5127954467\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ruyi Fang\", \"id\": \"https://openalex.org/A5127970428\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wenkui Zhang\", \"id\": \"https://openalex.org/A5127953056\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinyong Tao\", \"id\": \"https://openalex.org/A5122766357\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun Zhang\", \"id\": \"https://openalex.org/A5127958553\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773310949872,
+    "actual_start_ms": 1773310949872,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.291
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "doi": "10.63282/3050-922x.ijeret-v7i1p109",
+  "pdf_filename": "10.63282_3050-922x.ijeret-v7i1p109.pdf",
+  "json_filename": "10.63282_3050-922x.ijeret-v7i1p109.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.63282_3050-922x.ijeret-v7i1p109.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7128485921",
+    "doi": "10.63282/3050-922x.ijeret-v7i1p109",
+    "title": "Chemomechanically Tuned Li–In/Sn Intermetallic Anodes for Sulfide SSBs: Composition–Transport Coupling and Pressure-Stabilized Interfaces",
+    "publisher": "International Journal of Emerging Research in Engineering and Technology",
+    "journal": {
+      "name": "International Journal of Emerging Research in Engineering and Technology",
+      "id": "https://openalex.org/S5407047513",
+      "type": "journal",
+      "issn_l": "3050-922X",
+      "issn": [
+        "3050-922X"
+      ]
+    },
+    "publication_date": "2026-01-01",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.53927844,
+    "pdf_url": "https://ijeret.org/index.php/ijeret/article/download/420/401",
+    "open_access": true,
+    "author_count": 1,
+    "first_author": "Samarth Patel",
+    "authors_display": "Samarth Patel",
+    "authors": [
+      {
+        "display_name": "Samarth Patel",
+        "id": "https://openalex.org/A5125495829",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7128485921",
+    "doi": "10.63282/3050-922x.ijeret-v7i1p109",
+    "title": "Chemomechanically Tuned Li–In/Sn Intermetallic Anodes for Sulfide SSBs: Composition–Transport Coupling and Pressure-Stabilized Interfaces",
+    "publisher": "International Journal of Emerging Research in Engineering and Technology",
+    "journal": "International Journal of Emerging Research in Engineering and Technology",
+    "journal_id": "https://openalex.org/S5407047513",
+    "journal_type": "journal",
+    "journal_issn_l": "3050-922X",
+    "journal_issn_json": "[\"3050-922X\"]",
+    "publication_date": "2026-01-01",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.53927844,
+    "pdf_url": "https://ijeret.org/index.php/ijeret/article/download/420/401",
+    "open_access": true,
+    "author_count": 1,
+    "first_author": "Samarth Patel",
+    "authors_display": "Samarth Patel",
+    "authors_json": "[{\"display_name\": \"Samarth Patel\", \"id\": \"https://openalex.org/A5125495829\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.63282",
+    "scheduled_start_ms": 1773311413976,
+    "actual_start_ms": 1773311413977,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.116
+  }
+}

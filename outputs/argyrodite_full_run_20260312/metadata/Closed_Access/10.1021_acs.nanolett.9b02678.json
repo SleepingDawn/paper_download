@@ -1,0 +1,138 @@
+{
+  "doi": "10.1021/acs.nanolett.9b02678",
+  "pdf_filename": "10.1021_acs.nanolett.9b02678.pdf",
+  "json_filename": "10.1021_acs.nanolett.9b02678.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.nanolett.9b02678.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2975499462",
+    "doi": "10.1021/acs.nanolett.9b02678",
+    "title": "Stable Thiophosphate-Based All-Solid-State Lithium Batteries through Conformally Interfacial Nanocoating",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Nano Letters",
+      "id": "https://openalex.org/S143846845",
+      "type": "journal",
+      "issn_l": "1530-6984",
+      "issn": [
+        "1530-6984",
+        "1530-6992"
+      ]
+    },
+    "publication_date": "2019-09-23",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 179,
+    "citation_normalized_percentile": 0.98264209,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Daxian Cao",
+    "authors_display": "Daxian Cao; Yubin Zhang; Adelaide M. Nolan; Xiao Sun; Chao Liu; Jinzhi Sheng; Yifei Mo; Yan Wang; Hongli Zhu",
+    "authors": [
+      {
+        "display_name": "Daxian Cao",
+        "id": "https://openalex.org/A5091648041",
+        "orcid": "https://orcid.org/0000-0003-1191-5954",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yubin Zhang",
+        "id": "https://openalex.org/A5100700242",
+        "orcid": "https://orcid.org/0000-0002-8301-2108",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Adelaide M. Nolan",
+        "id": "https://openalex.org/A5046377236",
+        "orcid": "https://orcid.org/0000-0002-5309-5643",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao Sun",
+        "id": "https://openalex.org/A5074070055",
+        "orcid": "https://orcid.org/0000-0002-0449-7603",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chao Liu",
+        "id": "https://openalex.org/A5100719626",
+        "orcid": "https://orcid.org/0000-0002-5284-5465",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinzhi Sheng",
+        "id": "https://openalex.org/A5085726736",
+        "orcid": "https://orcid.org/0000-0001-9780-1194",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yifei Mo",
+        "id": "https://openalex.org/A5043347975",
+        "orcid": "https://orcid.org/0000-0002-8162-4629",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yan Wang",
+        "id": "https://openalex.org/A5100322888",
+        "orcid": "https://orcid.org/0000-0003-1060-2956",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hongli Zhu",
+        "id": "https://openalex.org/A5028366101",
+        "orcid": "https://orcid.org/0000-0003-1733-4333",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2975499462",
+    "doi": "10.1021/acs.nanolett.9b02678",
+    "title": "Stable Thiophosphate-Based All-Solid-State Lithium Batteries through Conformally Interfacial Nanocoating",
+    "publisher": "American Chemical Society",
+    "journal": "Nano Letters",
+    "journal_id": "https://openalex.org/S143846845",
+    "journal_type": "journal",
+    "journal_issn_l": "1530-6984",
+    "journal_issn_json": "[\"1530-6984\", \"1530-6992\"]",
+    "publication_date": "2019-09-23",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 179,
+    "citation_normalized_percentile": 0.98264209,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Daxian Cao",
+    "authors_display": "Daxian Cao; Yubin Zhang; Adelaide M. Nolan; Xiao Sun; Chao Liu; Jinzhi Sheng; Yifei Mo; Yan Wang; Hongli Zhu",
+    "authors_json": "[{\"display_name\": \"Daxian Cao\", \"id\": \"https://openalex.org/A5091648041\", \"orcid\": \"https://orcid.org/0000-0003-1191-5954\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yubin Zhang\", \"id\": \"https://openalex.org/A5100700242\", \"orcid\": \"https://orcid.org/0000-0002-8301-2108\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Adelaide M. Nolan\", \"id\": \"https://openalex.org/A5046377236\", \"orcid\": \"https://orcid.org/0000-0002-5309-5643\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiao Sun\", \"id\": \"https://openalex.org/A5074070055\", \"orcid\": \"https://orcid.org/0000-0002-0449-7603\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chao Liu\", \"id\": \"https://openalex.org/A5100719626\", \"orcid\": \"https://orcid.org/0000-0002-5284-5465\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinzhi Sheng\", \"id\": \"https://openalex.org/A5085726736\", \"orcid\": \"https://orcid.org/0000-0001-9780-1194\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yifei Mo\", \"id\": \"https://openalex.org/A5043347975\", \"orcid\": \"https://orcid.org/0000-0002-8162-4629\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yan Wang\", \"id\": \"https://openalex.org/A5100322888\", \"orcid\": \"https://orcid.org/0000-0003-1060-2956\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Hongli Zhu\", \"id\": \"https://openalex.org/A5028366101\", \"orcid\": \"https://orcid.org/0000-0003-1733-4333\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301614719,
+    "actual_start_ms": 1773301616580,
+    "pacing_wait_ms": 1860,
+    "pacing_jitter_sec": 1.148
+  }
+}

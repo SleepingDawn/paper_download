@@ -1,0 +1,89 @@
+{
+  "doi": "10.1007/s11837-022-05472-0",
+  "pdf_filename": "10.1007_s11837-022-05472-0.pdf",
+  "json_filename": "10.1007_s11837-022-05472-0.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s11837-022-05472-0.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4295096613",
+    "doi": "10.1007/s11837-022-05472-0",
+    "title": "Ab initio Interfacial Chemical Stability of Argyrodite Sulfide Electrolytes and Layered-Structure Cathodes in Solid-State Lithium Batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "JOM",
+      "id": "https://openalex.org/S116826539",
+      "type": "journal",
+      "issn_l": "1047-4838",
+      "issn": [
+        "1047-4838",
+        "1543-1851"
+      ]
+    },
+    "publication_date": "2022-09-08",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.72932745,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Yi-Tzu Wu",
+    "authors_display": "Yi-Tzu Wu; Ping‐Chun Tsai",
+    "authors": [
+      {
+        "display_name": "Yi-Tzu Wu",
+        "id": "https://openalex.org/A5019858310",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ping‐Chun Tsai",
+        "id": "https://openalex.org/A5102442209",
+        "orcid": "https://orcid.org/0000-0003-4435-7768",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4295096613",
+    "doi": "10.1007/s11837-022-05472-0",
+    "title": "Ab initio Interfacial Chemical Stability of Argyrodite Sulfide Electrolytes and Layered-Structure Cathodes in Solid-State Lithium Batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": "JOM",
+    "journal_id": "https://openalex.org/S116826539",
+    "journal_type": "journal",
+    "journal_issn_l": "1047-4838",
+    "journal_issn_json": "[\"1047-4838\", \"1543-1851\"]",
+    "publication_date": "2022-09-08",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.72932745,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Yi-Tzu Wu",
+    "authors_display": "Yi-Tzu Wu; Ping‐Chun Tsai",
+    "authors_json": "[{\"display_name\": \"Yi-Tzu Wu\", \"id\": \"https://openalex.org/A5019858310\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ping‐Chun Tsai\", \"id\": \"https://openalex.org/A5102442209\", \"orcid\": \"https://orcid.org/0000-0003-4435-7768\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773309027102,
+    "actual_start_ms": 1773309028608,
+    "pacing_wait_ms": 1505,
+    "pacing_jitter_sec": 0.863
+  }
+}

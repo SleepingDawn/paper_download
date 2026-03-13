@@ -1,0 +1,144 @@
+{
+  "doi": "10.1021/acsaem.0c02321",
+  "pdf_filename": "10.1021_acsaem.0c02321.pdf",
+  "json_filename": "10.1021_acsaem.0c02321.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.0c02321.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3119613192",
+    "doi": "10.1021/acsaem.0c02321",
+    "title": "Origin of the Outstanding Performance of Dual Halide Doped Li<sub>7</sub>P<sub>2</sub>S<sub>8</sub>X (X = I, Br) Solid Electrolytes for All-Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2021-01-06",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 52,
+    "citation_normalized_percentile": 0.9431929,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Anh Dinh Bui",
+    "authors_display": "Anh Dinh Bui; Sunhwa Choi; Hae Young Choi; You‐Jin Lee; Chil‐Hoon Doh; Jun‐Woo Park; Byung Gon Kim; Won–Jae Lee; Sang‐Min Lee; Yoon‐Cheol Ha",
+    "authors": [
+      {
+        "display_name": "Anh Dinh Bui",
+        "id": "https://openalex.org/A5000746000",
+        "orcid": "https://orcid.org/0000-0002-9660-6132",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sunhwa Choi",
+        "id": "https://openalex.org/A5071120440",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hae Young Choi",
+        "id": "https://openalex.org/A5101886896",
+        "orcid": "https://orcid.org/0000-0002-5282-0970",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "You‐Jin Lee",
+        "id": "https://openalex.org/A5007359456",
+        "orcid": "https://orcid.org/0000-0002-9133-7893",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chil‐Hoon Doh",
+        "id": "https://openalex.org/A5062176928",
+        "orcid": "https://orcid.org/0000-0002-2181-5060",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun‐Woo Park",
+        "id": "https://openalex.org/A5118844308",
+        "orcid": "https://orcid.org/0000-0002-1446-8822",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byung Gon Kim",
+        "id": "https://openalex.org/A5101614289",
+        "orcid": "https://orcid.org/0000-0002-3471-3020",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Won–Jae Lee",
+        "id": "https://openalex.org/A5100429497",
+        "orcid": "https://orcid.org/0000-0002-1303-4600",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang‐Min Lee",
+        "id": "https://openalex.org/A5100319606",
+        "orcid": "https://orcid.org/0000-0003-3650-289X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoon‐Cheol Ha",
+        "id": "https://openalex.org/A5086764992",
+        "orcid": "https://orcid.org/0000-0001-5769-1461",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3119613192",
+    "doi": "10.1021/acsaem.0c02321",
+    "title": "Origin of the Outstanding Performance of Dual Halide Doped Li<sub>7</sub>P<sub>2</sub>S<sub>8</sub>X (X = I, Br) Solid Electrolytes for All-Solid-State Lithium Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2021-01-06",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 52,
+    "citation_normalized_percentile": 0.9431929,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Anh Dinh Bui",
+    "authors_display": "Anh Dinh Bui; Sunhwa Choi; Hae Young Choi; You‐Jin Lee; Chil‐Hoon Doh; Jun‐Woo Park; Byung Gon Kim; Won–Jae Lee; Sang‐Min Lee; Yoon‐Cheol Ha",
+    "authors_json": "[{\"display_name\": \"Anh Dinh Bui\", \"id\": \"https://openalex.org/A5000746000\", \"orcid\": \"https://orcid.org/0000-0002-9660-6132\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Sunhwa Choi\", \"id\": \"https://openalex.org/A5071120440\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hae Young Choi\", \"id\": \"https://openalex.org/A5101886896\", \"orcid\": \"https://orcid.org/0000-0002-5282-0970\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"You‐Jin Lee\", \"id\": \"https://openalex.org/A5007359456\", \"orcid\": \"https://orcid.org/0000-0002-9133-7893\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chil‐Hoon Doh\", \"id\": \"https://openalex.org/A5062176928\", \"orcid\": \"https://orcid.org/0000-0002-2181-5060\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun‐Woo Park\", \"id\": \"https://openalex.org/A5118844308\", \"orcid\": \"https://orcid.org/0000-0002-1446-8822\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byung Gon Kim\", \"id\": \"https://openalex.org/A5101614289\", \"orcid\": \"https://orcid.org/0000-0002-3471-3020\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Won–Jae Lee\", \"id\": \"https://openalex.org/A5100429497\", \"orcid\": \"https://orcid.org/0000-0002-1303-4600\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang‐Min Lee\", \"id\": \"https://openalex.org/A5100319606\", \"orcid\": \"https://orcid.org/0000-0003-3650-289X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoon‐Cheol Ha\", \"id\": \"https://openalex.org/A5086764992\", \"orcid\": \"https://orcid.org/0000-0001-5769-1461\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302114407,
+    "actual_start_ms": 1773302115906,
+    "pacing_wait_ms": 1499,
+    "pacing_jitter_sec": 1.216
+  }
+}

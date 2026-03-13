@@ -1,0 +1,165 @@
+{
+  "doi": "10.1021/acsenergylett.3c01047",
+  "pdf_filename": "10.1021_acsenergylett.3c01047.pdf",
+  "json_filename": "10.1021_acsenergylett.3c01047.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.3c01047.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4384823675",
+    "doi": "10.1021/acsenergylett.3c01047",
+    "title": "Surface Engineering Strategy Enables 4.5 V Sulfide-Based All-Solid-State Batteries with High Cathode Loading and Long Cycle Life",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2023-07-19",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 73,
+    "citation_normalized_percentile": 0.98735442,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 13,
+    "first_author": "Kangjun Wang",
+    "authors_display": "Kangjun Wang; Ziteng Liang; Suting Weng; Yu Ding; Yu Su; Yuqi Wu; Haoyue Zhong; Ang Fu; Yiou Sun; Mingzeng Luo; Jiawei Yan; Xuefeng Wang; Yong Yang",
+    "authors": [
+      {
+        "display_name": "Kangjun Wang",
+        "id": "https://openalex.org/A5101777169",
+        "orcid": "https://orcid.org/0000-0002-9050-1233",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziteng Liang",
+        "id": "https://openalex.org/A5052631926",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Suting Weng",
+        "id": "https://openalex.org/A5015012914",
+        "orcid": "https://orcid.org/0000-0003-3494-7326",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Ding",
+        "id": "https://openalex.org/A5102011813",
+        "orcid": "https://orcid.org/0000-0003-0546-0244",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Su",
+        "id": "https://openalex.org/A5034682544",
+        "orcid": "https://orcid.org/0000-0002-1438-1989",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuqi Wu",
+        "id": "https://openalex.org/A5102922988",
+        "orcid": "https://orcid.org/0000-0002-5162-6471",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haoyue Zhong",
+        "id": "https://openalex.org/A5078960812",
+        "orcid": "https://orcid.org/0009-0008-7389-6764",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ang Fu",
+        "id": "https://openalex.org/A5054567548",
+        "orcid": "https://orcid.org/0000-0002-2578-6412",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yiou Sun",
+        "id": "https://openalex.org/A5084509762",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mingzeng Luo",
+        "id": "https://openalex.org/A5055218354",
+        "orcid": "https://orcid.org/0000-0002-1992-8656",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiawei Yan",
+        "id": "https://openalex.org/A5025021829",
+        "orcid": "https://orcid.org/0000-0002-0045-6169",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xuefeng Wang",
+        "id": "https://openalex.org/A5100451947",
+        "orcid": "https://orcid.org/0000-0001-9666-8942",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong Yang",
+        "id": "https://openalex.org/A5100402375",
+        "orcid": "https://orcid.org/0000-0002-9928-7165",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4384823675",
+    "doi": "10.1021/acsenergylett.3c01047",
+    "title": "Surface Engineering Strategy Enables 4.5 V Sulfide-Based All-Solid-State Batteries with High Cathode Loading and Long Cycle Life",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2023-07-19",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 73,
+    "citation_normalized_percentile": 0.98735442,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 13,
+    "first_author": "Kangjun Wang",
+    "authors_display": "Kangjun Wang; Ziteng Liang; Suting Weng; Yu Ding; Yu Su; Yuqi Wu; Haoyue Zhong; Ang Fu; Yiou Sun; Mingzeng Luo; Jiawei Yan; Xuefeng Wang; Yong Yang",
+    "authors_json": "[{\"display_name\": \"Kangjun Wang\", \"id\": \"https://openalex.org/A5101777169\", \"orcid\": \"https://orcid.org/0000-0002-9050-1233\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ziteng Liang\", \"id\": \"https://openalex.org/A5052631926\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Suting Weng\", \"id\": \"https://openalex.org/A5015012914\", \"orcid\": \"https://orcid.org/0000-0003-3494-7326\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Ding\", \"id\": \"https://openalex.org/A5102011813\", \"orcid\": \"https://orcid.org/0000-0003-0546-0244\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Su\", \"id\": \"https://openalex.org/A5034682544\", \"orcid\": \"https://orcid.org/0000-0002-1438-1989\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuqi Wu\", \"id\": \"https://openalex.org/A5102922988\", \"orcid\": \"https://orcid.org/0000-0002-5162-6471\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haoyue Zhong\", \"id\": \"https://openalex.org/A5078960812\", \"orcid\": \"https://orcid.org/0009-0008-7389-6764\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ang Fu\", \"id\": \"https://openalex.org/A5054567548\", \"orcid\": \"https://orcid.org/0000-0002-2578-6412\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yiou Sun\", \"id\": \"https://openalex.org/A5084509762\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mingzeng Luo\", \"id\": \"https://openalex.org/A5055218354\", \"orcid\": \"https://orcid.org/0000-0002-1992-8656\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiawei Yan\", \"id\": \"https://openalex.org/A5025021829\", \"orcid\": \"https://orcid.org/0000-0002-0045-6169\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xuefeng Wang\", \"id\": \"https://openalex.org/A5100451947\", \"orcid\": \"https://orcid.org/0000-0001-9666-8942\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong Yang\", \"id\": \"https://openalex.org/A5100402375\", \"orcid\": \"https://orcid.org/0000-0002-9928-7165\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301933472,
+    "actual_start_ms": 1773301935417,
+    "pacing_wait_ms": 1944,
+    "pacing_jitter_sec": 0.848
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "doi": "10.1021/acsami.4c11458",
+  "pdf_filename": "10.1021_acsami.4c11458.pdf",
+  "json_filename": "10.1021_acsami.4c11458.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.4c11458.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4402939852",
+    "doi": "10.1021/acsami.4c11458",
+    "title": "Evidencing Phase Transformations of Li<sub>6</sub>PS<sub>5</sub>Cl Argyrodite under Ambient Air and Dry Room Exposure",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2024-09-28",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.93419373,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Paul Naillou",
+    "authors_display": "Paul Naillou; Adrien Boulineau; Éric De Vito; R. Ramos; Philippe Azaïs",
+    "authors": [
+      {
+        "display_name": "Paul Naillou",
+        "id": "https://openalex.org/A5095098567",
+        "orcid": "https://orcid.org/0000-0002-7876-0785",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Adrien Boulineau",
+        "id": "https://openalex.org/A5030226927",
+        "orcid": "https://orcid.org/0000-0002-1743-1603",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Éric De Vito",
+        "id": "https://openalex.org/A5004003565",
+        "orcid": "https://orcid.org/0000-0001-8520-5272",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "R. Ramos",
+        "id": "https://openalex.org/A5039293335",
+        "orcid": "https://orcid.org/0000-0003-0627-6959",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Philippe Azaïs",
+        "id": "https://openalex.org/A5035557696",
+        "orcid": "https://orcid.org/0000-0003-2507-325X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4402939852",
+    "doi": "10.1021/acsami.4c11458",
+    "title": "Evidencing Phase Transformations of Li<sub>6</sub>PS<sub>5</sub>Cl Argyrodite under Ambient Air and Dry Room Exposure",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2024-09-28",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.93419373,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Paul Naillou",
+    "authors_display": "Paul Naillou; Adrien Boulineau; Éric De Vito; R. Ramos; Philippe Azaïs",
+    "authors_json": "[{\"display_name\": \"Paul Naillou\", \"id\": \"https://openalex.org/A5095098567\", \"orcid\": \"https://orcid.org/0000-0002-7876-0785\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Adrien Boulineau\", \"id\": \"https://openalex.org/A5030226927\", \"orcid\": \"https://orcid.org/0000-0002-1743-1603\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Éric De Vito\", \"id\": \"https://openalex.org/A5004003565\", \"orcid\": \"https://orcid.org/0000-0001-8520-5272\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"R. Ramos\", \"id\": \"https://openalex.org/A5039293335\", \"orcid\": \"https://orcid.org/0000-0003-0627-6959\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Philippe Azaïs\", \"id\": \"https://openalex.org/A5035557696\", \"orcid\": \"https://orcid.org/0000-0003-2507-325X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsami.4c11458",
+    "landing_title": "Evidencing Phase Transformations of Li6PS5Cl Argyrodite under Ambient Air and Dry Room Exposure | ACS Applied Materials & Interfaces",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acsami.4c11458.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773303540104,
+    "actual_start_ms": 1773303547827,
+    "pacing_wait_ms": 7723,
+    "pacing_jitter_sec": 0.72
+  }
+}

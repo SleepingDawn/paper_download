@@ -1,0 +1,117 @@
+{
+  "doi": "10.1016/j.ensm.2025.104125",
+  "pdf_filename": "10.1016_j.ensm.2025.104125.pdf",
+  "json_filename": "10.1016_j.ensm.2025.104125.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2025.104125.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4407405988",
+    "doi": "10.1016/j.ensm.2025.104125",
+    "title": "S-p and p-p orbital hybridization induced electronic structure reconfiguration toward manipulating redox behavior of Li-Argyrodite electrolyte for enhanced lithium-compatibility",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2025-02-12",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.86433581,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Jianji Ke",
+    "authors_display": "Jianji Ke; Guofeng Xu; Furong Liu; Mengru Wu; Han Bao; Zulfiqar Ali",
+    "authors": [
+      {
+        "display_name": "Jianji Ke",
+        "id": "https://openalex.org/A5042033661",
+        "orcid": "https://orcid.org/0000-0001-5199-0436",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guofeng Xu",
+        "id": "https://openalex.org/A5062325629",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Furong Liu",
+        "id": "https://openalex.org/A5110067842",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mengru Wu",
+        "id": "https://openalex.org/A5109923308",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Han Bao",
+        "id": "https://openalex.org/A5076763918",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zulfiqar Ali",
+        "id": "https://openalex.org/A5100626293",
+        "orcid": "https://orcid.org/0009-0008-9930-1845",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4407405988",
+    "doi": "10.1016/j.ensm.2025.104125",
+    "title": "S-p and p-p orbital hybridization induced electronic structure reconfiguration toward manipulating redox behavior of Li-Argyrodite electrolyte for enhanced lithium-compatibility",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2025-02-12",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.86433581,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Jianji Ke",
+    "authors_display": "Jianji Ke; Guofeng Xu; Furong Liu; Mengru Wu; Han Bao; Zulfiqar Ali",
+    "authors_json": "[{\"display_name\": \"Jianji Ke\", \"id\": \"https://openalex.org/A5042033661\", \"orcid\": \"https://orcid.org/0000-0001-5199-0436\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Guofeng Xu\", \"id\": \"https://openalex.org/A5062325629\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Furong Liu\", \"id\": \"https://openalex.org/A5110067842\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mengru Wu\", \"id\": \"https://openalex.org/A5109923308\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Han Bao\", \"id\": \"https://openalex.org/A5076763918\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zulfiqar Ali\", \"id\": \"https://openalex.org/A5100626293\", \"orcid\": \"https://orcid.org/0009-0008-9930-1845\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2405829725001254?via%3Dihub",
+    "landing_title": "S-p and p-p orbital hybridization induced electronic structure reconfiguration toward manipulating redox behavior of Li-Argyrodite electrolyte for enhanced lithium-compatibility - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773316158476,
+    "actual_start_ms": 1773316158477,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.295
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "doi": "10.1021/acsami.1c07952",
+  "pdf_filename": "10.1021_acsami.1c07952.pdf",
+  "json_filename": "10.1021_acsami.1c07952.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsami.1c07952.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4246658713",
+    "doi": "10.1021/acsami.1c07952",
+    "title": "High Energy Density Single-Crystal NMC/Li <sub>6</sub> PS <sub>5</sub> Cl Cathodes for All-Solid-State Lithium-Metal Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2021-07-29",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 119,
+    "citation_normalized_percentile": 0.98222535,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Christopher Doerrer",
+    "authors_display": "Christopher Doerrer; Isaac Capone; Sudarshan Narayanan; Junliang Liu; C.R.M. Grovenor; Mauro Pasta; Patrick S. Grant",
+    "authors": [
+      {
+        "display_name": "Christopher Doerrer",
+        "id": "https://openalex.org/A5039888032",
+        "orcid": "https://orcid.org/0000-0003-0166-6333",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Isaac Capone",
+        "id": "https://openalex.org/A5021208480",
+        "orcid": "https://orcid.org/0000-0003-0114-8405",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sudarshan Narayanan",
+        "id": "https://openalex.org/A5048969462",
+        "orcid": "https://orcid.org/0000-0001-7026-5010",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junliang Liu",
+        "id": "https://openalex.org/A5100606615",
+        "orcid": "https://orcid.org/0000-0002-9278-6463",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "C.R.M. Grovenor",
+        "id": "https://openalex.org/A5085419549",
+        "orcid": "https://orcid.org/0000-0001-6425-354X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mauro Pasta",
+        "id": "https://openalex.org/A5011547289",
+        "orcid": "https://orcid.org/0000-0002-2613-4555",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Patrick S. Grant",
+        "id": "https://openalex.org/A5041676080",
+        "orcid": "https://orcid.org/0000-0002-7942-7837",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4246658713",
+    "doi": "10.1021/acsami.1c07952",
+    "title": "High Energy Density Single-Crystal NMC/Li <sub>6</sub> PS <sub>5</sub> Cl Cathodes for All-Solid-State Lithium-Metal Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2021-07-29",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 119,
+    "citation_normalized_percentile": 0.98222535,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Christopher Doerrer",
+    "authors_display": "Christopher Doerrer; Isaac Capone; Sudarshan Narayanan; Junliang Liu; C.R.M. Grovenor; Mauro Pasta; Patrick S. Grant",
+    "authors_json": "[{\"display_name\": \"Christopher Doerrer\", \"id\": \"https://openalex.org/A5039888032\", \"orcid\": \"https://orcid.org/0000-0003-0166-6333\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Isaac Capone\", \"id\": \"https://openalex.org/A5021208480\", \"orcid\": \"https://orcid.org/0000-0003-0114-8405\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sudarshan Narayanan\", \"id\": \"https://openalex.org/A5048969462\", \"orcid\": \"https://orcid.org/0000-0001-7026-5010\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junliang Liu\", \"id\": \"https://openalex.org/A5100606615\", \"orcid\": \"https://orcid.org/0000-0002-9278-6463\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"C.R.M. Grovenor\", \"id\": \"https://openalex.org/A5085419549\", \"orcid\": \"https://orcid.org/0000-0001-6425-354X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mauro Pasta\", \"id\": \"https://openalex.org/A5011547289\", \"orcid\": \"https://orcid.org/0000-0002-2613-4555\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Patrick S. Grant\", \"id\": \"https://openalex.org/A5041676080\", \"orcid\": \"https://orcid.org/0000-0002-7942-7837\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301721077,
+    "actual_start_ms": 1773301723922,
+    "pacing_wait_ms": 2845,
+    "pacing_jitter_sec": 0.709
+  }
+}

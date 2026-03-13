@@ -1,0 +1,138 @@
+{
+  "doi": "10.1002/aenm.202570088",
+  "pdf_filename": "10.1002_aenm.202570088.pdf",
+  "json_filename": "10.1002_aenm.202570088.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202570088.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4410837707",
+    "doi": "10.1002/aenm.202570088",
+    "title": "Breaking the Upper Limit of Substitution Concentration in Li Argyrodite Solid Electrolytes Using a Single‐Solvent‐Mediated Approach (Adv. Energy Mater. 20/2025)",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2025-05-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.12396497,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202570088",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Ji Woong Choi",
+    "authors_display": "Ji Woong Choi; W.N. Kim; Suk‐Ho Hwang; Sung‐Chul Kim; Y. S. Shin; Sangdoo Ahn; Young Joo Lee; Jin Gu Kang; Dong‐Wan Kim",
+    "authors": [
+      {
+        "display_name": "Ji Woong Choi",
+        "id": "https://openalex.org/A5102899684",
+        "orcid": "https://orcid.org/0000-0003-1850-4189",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "W.N. Kim",
+        "id": "https://openalex.org/A5071377787",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Suk‐Ho Hwang",
+        "id": "https://openalex.org/A5088096172",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sung‐Chul Kim",
+        "id": "https://openalex.org/A5100718932",
+        "orcid": "https://orcid.org/0000-0003-0512-1154",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Y. S. Shin",
+        "id": "https://openalex.org/A5108980768",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sangdoo Ahn",
+        "id": "https://openalex.org/A5036312296",
+        "orcid": "https://orcid.org/0000-0003-3803-9210",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young Joo Lee",
+        "id": "https://openalex.org/A5100698635",
+        "orcid": "https://orcid.org/0000-0002-5782-6431",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jin Gu Kang",
+        "id": "https://openalex.org/A5101453039",
+        "orcid": "https://orcid.org/0000-0002-3154-0697",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Wan Kim",
+        "id": "https://openalex.org/A5016978421",
+        "orcid": "https://orcid.org/0000-0002-1635-6082",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4410837707",
+    "doi": "10.1002/aenm.202570088",
+    "title": "Breaking the Upper Limit of Substitution Concentration in Li Argyrodite Solid Electrolytes Using a Single‐Solvent‐Mediated Approach (Adv. Energy Mater. 20/2025)",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2025-05-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.12396497,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202570088",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Ji Woong Choi",
+    "authors_display": "Ji Woong Choi; W.N. Kim; Suk‐Ho Hwang; Sung‐Chul Kim; Y. S. Shin; Sangdoo Ahn; Young Joo Lee; Jin Gu Kang; Dong‐Wan Kim",
+    "authors_json": "[{\"display_name\": \"Ji Woong Choi\", \"id\": \"https://openalex.org/A5102899684\", \"orcid\": \"https://orcid.org/0000-0003-1850-4189\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"W.N. Kim\", \"id\": \"https://openalex.org/A5071377787\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Suk‐Ho Hwang\", \"id\": \"https://openalex.org/A5088096172\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sung‐Chul Kim\", \"id\": \"https://openalex.org/A5100718932\", \"orcid\": \"https://orcid.org/0000-0003-0512-1154\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Y. S. Shin\", \"id\": \"https://openalex.org/A5108980768\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sangdoo Ahn\", \"id\": \"https://openalex.org/A5036312296\", \"orcid\": \"https://orcid.org/0000-0003-3803-9210\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young Joo Lee\", \"id\": \"https://openalex.org/A5100698635\", \"orcid\": \"https://orcid.org/0000-0002-5782-6431\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jin Gu Kang\", \"id\": \"https://openalex.org/A5101453039\", \"orcid\": \"https://orcid.org/0000-0002-3154-0697\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Wan Kim\", \"id\": \"https://openalex.org/A5016978421\", \"orcid\": \"https://orcid.org/0000-0002-1635-6082\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773309679940,
+    "actual_start_ms": 1773309681370,
+    "pacing_wait_ms": 1429,
+    "pacing_jitter_sec": 0.887
+  }
+}

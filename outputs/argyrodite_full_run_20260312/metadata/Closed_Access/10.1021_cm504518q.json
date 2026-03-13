@@ -1,0 +1,145 @@
+{
+  "doi": "10.1021/cm504518q",
+  "pdf_filename": "10.1021_cm504518q.pdf",
+  "json_filename": "10.1021_cm504518q.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_cm504518q.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2329219932",
+    "doi": "10.1021/cm504518q",
+    "title": "Computational Identification and Experimental Realization of Lithium Vacancy Introduction into the Olivine LiMgPO<sub>4</sub>",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2015-02-12",
+    "publication_year": 2015,
+    "work_type": "article",
+    "cited_by_count": 33,
+    "citation_normalized_percentile": 0.93405107,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Leopoldo Enciso-Maldonado",
+    "authors_display": "Leopoldo Enciso-Maldonado; Matthew S. Dyer; Michael D. Jones; Ming Li; Julia L. Payne; Michael J. Pitcher; Mona Omir; John B. Claridge; Frédéric Blanc; Matthew J. Rosseinsky",
+    "authors": [
+      {
+        "display_name": "Leopoldo Enciso-Maldonado",
+        "id": "https://openalex.org/A5031600173",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Matthew S. Dyer",
+        "id": "https://openalex.org/A5091597124",
+        "orcid": "https://orcid.org/0000-0002-4923-3003",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michael D. Jones",
+        "id": "https://openalex.org/A5103503422",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ming Li",
+        "id": "https://openalex.org/A5100351441",
+        "orcid": "https://orcid.org/0000-0002-5456-5846",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Julia L. Payne",
+        "id": "https://openalex.org/A5050099609",
+        "orcid": "https://orcid.org/0000-0003-3324-6018",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michael J. Pitcher",
+        "id": "https://openalex.org/A5019895789",
+        "orcid": "https://orcid.org/0000-0003-2044-6774",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mona Omir",
+        "id": "https://openalex.org/A5062536685",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "John B. Claridge",
+        "id": "https://openalex.org/A5089917898",
+        "orcid": "https://orcid.org/0000-0003-4849-6714",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Frédéric Blanc",
+        "id": "https://openalex.org/A5019002599",
+        "orcid": "https://orcid.org/0000-0001-9171-1454",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Matthew J. Rosseinsky",
+        "id": "https://openalex.org/A5054755054",
+        "orcid": "https://orcid.org/0000-0002-7077-6125",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2329219932",
+    "doi": "10.1021/cm504518q",
+    "title": "Computational Identification and Experimental Realization of Lithium Vacancy Introduction into the Olivine LiMgPO<sub>4</sub>",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2015-02-12",
+    "publication_year": 2015,
+    "work_type": "article",
+    "cited_by_count": 33,
+    "citation_normalized_percentile": 0.93405107,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Leopoldo Enciso-Maldonado",
+    "authors_display": "Leopoldo Enciso-Maldonado; Matthew S. Dyer; Michael D. Jones; Ming Li; Julia L. Payne; Michael J. Pitcher; Mona Omir; John B. Claridge; Frédéric Blanc; Matthew J. Rosseinsky",
+    "authors_json": "[{\"display_name\": \"Leopoldo Enciso-Maldonado\", \"id\": \"https://openalex.org/A5031600173\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Matthew S. Dyer\", \"id\": \"https://openalex.org/A5091597124\", \"orcid\": \"https://orcid.org/0000-0002-4923-3003\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Michael D. Jones\", \"id\": \"https://openalex.org/A5103503422\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ming Li\", \"id\": \"https://openalex.org/A5100351441\", \"orcid\": \"https://orcid.org/0000-0002-5456-5846\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Julia L. Payne\", \"id\": \"https://openalex.org/A5050099609\", \"orcid\": \"https://orcid.org/0000-0003-3324-6018\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Michael J. Pitcher\", \"id\": \"https://openalex.org/A5019895789\", \"orcid\": \"https://orcid.org/0000-0003-2044-6774\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mona Omir\", \"id\": \"https://openalex.org/A5062536685\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"John B. Claridge\", \"id\": \"https://openalex.org/A5089917898\", \"orcid\": \"https://orcid.org/0000-0003-4849-6714\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Frédéric Blanc\", \"id\": \"https://openalex.org/A5019002599\", \"orcid\": \"https://orcid.org/0000-0001-9171-1454\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Matthew J. Rosseinsky\", \"id\": \"https://openalex.org/A5054755054\", \"orcid\": \"https://orcid.org/0000-0002-7077-6125\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302684936,
+    "actual_start_ms": 1773302686439,
+    "pacing_wait_ms": 1502,
+    "pacing_jitter_sec": 1.059
+  }
+}

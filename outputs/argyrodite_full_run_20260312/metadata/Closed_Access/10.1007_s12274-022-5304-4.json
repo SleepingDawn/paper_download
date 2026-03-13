@@ -1,0 +1,103 @@
+{
+  "doi": "10.1007/s12274-022-5304-4",
+  "pdf_filename": "10.1007_s12274-022-5304-4.pdf",
+  "json_filename": "10.1007_s12274-022-5304-4.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s12274-022-5304-4.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4311308287",
+    "doi": "10.1007/s12274-022-5304-4",
+    "title": "A robust solid electrolyte interphase enabled by solvate ionic liquid for high-performance sulfide-based all-solid-state lithium metal batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Nano Research",
+      "id": "https://openalex.org/S173461644",
+      "type": "journal",
+      "issn_l": "1998-0000",
+      "issn": [
+        "1998-0000",
+        "1998-0124"
+      ]
+    },
+    "publication_date": "2022-12-13",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 20,
+    "citation_normalized_percentile": 0.8442435,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Jingguang Yi",
+    "authors_display": "Jingguang Yi; Chong Yan; Dan Zhou; Li‐Zhen Fan",
+    "authors": [
+      {
+        "display_name": "Jingguang Yi",
+        "id": "https://openalex.org/A5061697940",
+        "orcid": "https://orcid.org/0009-0003-4537-5690",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chong Yan",
+        "id": "https://openalex.org/A5036751362",
+        "orcid": "https://orcid.org/0000-0001-9521-4981",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dan Zhou",
+        "id": "https://openalex.org/A5003139285",
+        "orcid": "https://orcid.org/0000-0002-5051-9682",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Li‐Zhen Fan",
+        "id": "https://openalex.org/A5036874871",
+        "orcid": "https://orcid.org/0000-0003-2270-4458",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4311308287",
+    "doi": "10.1007/s12274-022-5304-4",
+    "title": "A robust solid electrolyte interphase enabled by solvate ionic liquid for high-performance sulfide-based all-solid-state lithium metal batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Nano Research",
+    "journal_id": "https://openalex.org/S173461644",
+    "journal_type": "journal",
+    "journal_issn_l": "1998-0000",
+    "journal_issn_json": "[\"1998-0000\", \"1998-0124\"]",
+    "publication_date": "2022-12-13",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 20,
+    "citation_normalized_percentile": 0.8442435,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Jingguang Yi",
+    "authors_display": "Jingguang Yi; Chong Yan; Dan Zhou; Li‐Zhen Fan",
+    "authors_json": "[{\"display_name\": \"Jingguang Yi\", \"id\": \"https://openalex.org/A5061697940\", \"orcid\": \"https://orcid.org/0009-0003-4537-5690\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Chong Yan\", \"id\": \"https://openalex.org/A5036751362\", \"orcid\": \"https://orcid.org/0000-0001-9521-4981\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dan Zhou\", \"id\": \"https://openalex.org/A5003139285\", \"orcid\": \"https://orcid.org/0000-0002-5051-9682\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Li‐Zhen Fan\", \"id\": \"https://openalex.org/A5036874871\", \"orcid\": \"https://orcid.org/0000-0003-2270-4458\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://link.springer.com/article/10.1007/s12274-022-5304-4",
+    "landing_title": "A robust solid electrolyte interphase enabled by solvate ionic liquid for high-performance sulfide-based all-solid-state lithium metal batteries | Nano Research | Springer Nature Link",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1007_s12274-022-5304-4.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773308517226,
+    "actual_start_ms": 1773308518735,
+    "pacing_wait_ms": 1509,
+    "pacing_jitter_sec": 1.761
+  }
+}

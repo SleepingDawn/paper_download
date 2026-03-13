@@ -1,0 +1,96 @@
+{
+  "doi": "10.1016/j.jpowsour.2021.230031",
+  "pdf_filename": "10.1016_j.jpowsour.2021.230031.pdf",
+  "json_filename": "10.1016_j.jpowsour.2021.230031.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.jpowsour.2021.230031.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3163898761",
+    "doi": "10.1016/j.jpowsour.2021.230031",
+    "title": "Electrochemical performance of the mixed solid electrolyte (100-x)Li3SI-xLi6PS5Cl (x = 0, 10, 20, and 30) for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Power Sources",
+      "id": "https://openalex.org/S177147899",
+      "type": "journal",
+      "issn_l": "0378-7753",
+      "issn": [
+        "0378-7753",
+        "1873-2755"
+      ]
+    },
+    "publication_date": "2021-05-19",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.76803232,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Min-ho Park",
+    "authors_display": "Min-ho Park; Rajesh Rajagopal; Kwang‐Sun Ryu",
+    "authors": [
+      {
+        "display_name": "Min-ho Park",
+        "id": "https://openalex.org/A5103097228",
+        "orcid": "https://orcid.org/0000-0001-9643-2710",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rajesh Rajagopal",
+        "id": "https://openalex.org/A5034649463",
+        "orcid": "https://orcid.org/0000-0001-7009-4266",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kwang‐Sun Ryu",
+        "id": "https://openalex.org/A5032691935",
+        "orcid": "https://orcid.org/0000-0002-8758-0495",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3163898761",
+    "doi": "10.1016/j.jpowsour.2021.230031",
+    "title": "Electrochemical performance of the mixed solid electrolyte (100-x)Li3SI-xLi6PS5Cl (x = 0, 10, 20, and 30) for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Power Sources",
+    "journal_id": "https://openalex.org/S177147899",
+    "journal_type": "journal",
+    "journal_issn_l": "0378-7753",
+    "journal_issn_json": "[\"0378-7753\", \"1873-2755\"]",
+    "publication_date": "2021-05-19",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.76803232,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Min-ho Park",
+    "authors_display": "Min-ho Park; Rajesh Rajagopal; Kwang‐Sun Ryu",
+    "authors_json": "[{\"display_name\": \"Min-ho Park\", \"id\": \"https://openalex.org/A5103097228\", \"orcid\": \"https://orcid.org/0000-0001-9643-2710\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Rajesh Rajagopal\", \"id\": \"https://openalex.org/A5034649463\", \"orcid\": \"https://orcid.org/0000-0001-7009-4266\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kwang‐Sun Ryu\", \"id\": \"https://openalex.org/A5032691935\", \"orcid\": \"https://orcid.org/0000-0002-8758-0495\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773304113366,
+    "actual_start_ms": 1773304303303,
+    "pacing_wait_ms": 189936,
+    "pacing_jitter_sec": 1.143
+  }
+}

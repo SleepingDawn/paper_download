@@ -1,0 +1,105 @@
+{
+  "doi": "10.1149/ma2025-016702mtgabs",
+  "pdf_filename": "10.1149_ma2025-016702mtgabs.pdf",
+  "json_filename": "10.1149_ma2025-016702mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2025-016702mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4412509546",
+    "doi": "10.1149/ma2025-016702mtgabs",
+    "title": "Enhancing the Interfacial Stability between Li<sub>6</sub>PS<sub>5</sub>cl Argyrodite Sulfide Solid Electrolyte and Lithium Anode through in-Situ Formed Lif-Rich SEI Layer and a Flexible Sulfide Composite Solid Electrolyte",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2025-07-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.19629884,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Gashahun Gobena Serbesa",
+    "authors_display": "Gashahun Gobena Serbesa; Zabish Bilew Muche; Chun‐Chen Yang; Bing−Joe Hwang",
+    "authors": [
+      {
+        "display_name": "Gashahun Gobena Serbesa",
+        "id": "https://openalex.org/A5119020562",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zabish Bilew Muche",
+        "id": "https://openalex.org/A5092988455",
+        "orcid": "https://orcid.org/0009-0003-8630-7205",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chun‐Chen Yang",
+        "id": "https://openalex.org/A5058388363",
+        "orcid": "https://orcid.org/0000-0002-3832-9800",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bing−Joe Hwang",
+        "id": "https://openalex.org/A5030917995",
+        "orcid": "https://orcid.org/0000-0002-3873-2149",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4412509546",
+    "doi": "10.1149/ma2025-016702mtgabs",
+    "title": "Enhancing the Interfacial Stability between Li<sub>6</sub>PS<sub>5</sub>cl Argyrodite Sulfide Solid Electrolyte and Lithium Anode through in-Situ Formed Lif-Rich SEI Layer and a Flexible Sulfide Composite Solid Electrolyte",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2025-07-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.19629884,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Gashahun Gobena Serbesa",
+    "authors_display": "Gashahun Gobena Serbesa; Zabish Bilew Muche; Chun‐Chen Yang; Bing−Joe Hwang",
+    "authors_json": "[{\"display_name\": \"Gashahun Gobena Serbesa\", \"id\": \"https://openalex.org/A5119020562\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Zabish Bilew Muche\", \"id\": \"https://openalex.org/A5092988455\", \"orcid\": \"https://orcid.org/0009-0003-8630-7205\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chun‐Chen Yang\", \"id\": \"https://openalex.org/A5058388363\", \"orcid\": \"https://orcid.org/0000-0002-3832-9800\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bing−Joe Hwang\", \"id\": \"https://openalex.org/A5030917995\", \"orcid\": \"https://orcid.org/0000-0002-3873-2149\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773308004164,
+    "actual_start_ms": 1773308004475,
+    "pacing_wait_ms": 310,
+    "pacing_jitter_sec": 1.232
+  }
+}

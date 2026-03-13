@@ -1,0 +1,114 @@
+{
+  "doi": "10.1021/acssuschemeng.5c02978.s002",
+  "pdf_filename": "10.1021_acssuschemeng.5c02978.s002.pdf",
+  "json_filename": "10.1021_acssuschemeng.5c02978.s002.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acssuschemeng.5c02978.s002.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7111081342",
+    "doi": "10.1021/acssuschemeng.5c02978.s002",
+    "title": "Dynamic Covalentand Ionic Bond Reorganization forSelf-Adaptive Interphase Enhancing the Electrochemical Stability ofLi<sub>6</sub>PS<sub>5</sub>Cl with Lithium Anode",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": {
+      "name": "Figshare",
+      "id": "https://openalex.org/S4377196282",
+      "type": "repository",
+      "issn_l": null,
+      "issn": []
+    },
+    "publication_date": "2025-06-17",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.53757093,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Junmin Ke (21559643)",
+    "authors_display": "Junmin Ke (21559643); Mengru Wu (7860683); Han Bao (1905496); Jianghao Zhao (19931694); Furong Liu (213764); Guofeng Xu (1743574)",
+    "authors": [
+      {
+        "display_name": "Junmin Ke (21559643)",
+        "id": null,
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Mengru Wu (7860683)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Han Bao (1905496)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianghao Zhao (19931694)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Furong Liu (213764)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guofeng Xu (1743574)",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7111081342",
+    "doi": "10.1021/acssuschemeng.5c02978.s002",
+    "title": "Dynamic Covalentand Ionic Bond Reorganization forSelf-Adaptive Interphase Enhancing the Electrochemical Stability ofLi<sub>6</sub>PS<sub>5</sub>Cl with Lithium Anode",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": "Figshare",
+    "journal_id": "https://openalex.org/S4377196282",
+    "journal_type": "repository",
+    "journal_issn_l": null,
+    "journal_issn_json": "[]",
+    "publication_date": "2025-06-17",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.53757093,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Junmin Ke (21559643)",
+    "authors_display": "Junmin Ke (21559643); Mengru Wu (7860683); Han Bao (1905496); Jianghao Zhao (19931694); Furong Liu (213764); Guofeng Xu (1743574)",
+    "authors_json": "[{\"display_name\": \"Junmin Ke (21559643)\", \"id\": null, \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Mengru Wu (7860683)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Han Bao (1905496)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianghao Zhao (19931694)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Furong Liu (213764)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guofeng Xu (1743574)\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "direct_pdf_handoff",
+    "landing_url": "https://doi.org/10.1021/acssuschemeng.5c02978.s002",
+    "landing_title": "새 탭",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acssuschemeng.5c02978.s002.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773309614418,
+    "actual_start_ms": 1773309614419,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.204
+  }
+}

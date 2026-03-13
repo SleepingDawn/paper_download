@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.cej.2024.154534",
+  "pdf_filename": "10.1016_j.cej.2024.154534.pdf",
+  "json_filename": "10.1016_j.cej.2024.154534.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.cej.2024.154534.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4401284001",
+    "doi": "10.1016/j.cej.2024.154534",
+    "title": "Accelerating ionic–electronic percolation pathways via catecholate coordination of bioinspired-polymer dopamine in all-solid-state composite cathode",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chemical Engineering Journal",
+      "id": "https://openalex.org/S149937609",
+      "type": "journal",
+      "issn_l": "1385-8947",
+      "issn": [
+        "1385-8947",
+        "1873-3212"
+      ]
+    },
+    "publication_date": "2024-08-03",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.8076154,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Thuy Hoai Linh Vuong",
+    "authors_display": "Thuy Hoai Linh Vuong; Naila Riaz Mastoi; Jae Seok Nam; Weerawat To A Ran; Cheayeon Ha; Min‐Sik Park; Young‐Jun Kim",
+    "authors": [
+      {
+        "display_name": "Thuy Hoai Linh Vuong",
+        "id": "https://openalex.org/A5086646037",
+        "orcid": "https://orcid.org/0000-0002-0776-1481",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Naila Riaz Mastoi",
+        "id": "https://openalex.org/A5026608373",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jae Seok Nam",
+        "id": "https://openalex.org/A5026712211",
+        "orcid": "https://orcid.org/0000-0002-6770-1069",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Weerawat To A Ran",
+        "id": "https://openalex.org/A5054921866",
+        "orcid": "https://orcid.org/0000-0002-1719-5137",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cheayeon Ha",
+        "id": "https://openalex.org/A5109758135",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Min‐Sik Park",
+        "id": "https://openalex.org/A5100736623",
+        "orcid": "https://orcid.org/0000-0002-3490-2999",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Young‐Jun Kim",
+        "id": "https://openalex.org/A5100357166",
+        "orcid": "https://orcid.org/0000-0002-9103-7065",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4401284001",
+    "doi": "10.1016/j.cej.2024.154534",
+    "title": "Accelerating ionic–electronic percolation pathways via catecholate coordination of bioinspired-polymer dopamine in all-solid-state composite cathode",
+    "publisher": "Elsevier BV",
+    "journal": "Chemical Engineering Journal",
+    "journal_id": "https://openalex.org/S149937609",
+    "journal_type": "journal",
+    "journal_issn_l": "1385-8947",
+    "journal_issn_json": "[\"1385-8947\", \"1873-3212\"]",
+    "publication_date": "2024-08-03",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.8076154,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Thuy Hoai Linh Vuong",
+    "authors_display": "Thuy Hoai Linh Vuong; Naila Riaz Mastoi; Jae Seok Nam; Weerawat To A Ran; Cheayeon Ha; Min‐Sik Park; Young‐Jun Kim",
+    "authors_json": "[{\"display_name\": \"Thuy Hoai Linh Vuong\", \"id\": \"https://openalex.org/A5086646037\", \"orcid\": \"https://orcid.org/0000-0002-0776-1481\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Naila Riaz Mastoi\", \"id\": \"https://openalex.org/A5026608373\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jae Seok Nam\", \"id\": \"https://openalex.org/A5026712211\", \"orcid\": \"https://orcid.org/0000-0002-6770-1069\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Weerawat To A Ran\", \"id\": \"https://openalex.org/A5054921866\", \"orcid\": \"https://orcid.org/0000-0002-1719-5137\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cheayeon Ha\", \"id\": \"https://openalex.org/A5109758135\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Min‐Sik Park\", \"id\": \"https://openalex.org/A5100736623\", \"orcid\": \"https://orcid.org/0000-0002-3490-2999\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Young‐Jun Kim\", \"id\": \"https://openalex.org/A5100357166\", \"orcid\": \"https://orcid.org/0000-0002-9103-7065\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S138589472406025X?via%3Dihub",
+    "landing_title": "Accelerating ionic–electronic percolation pathways via catecholate coordination of bioinspired-polymer dopamine in all-solid-state composite cathode - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773305740003,
+    "actual_start_ms": 1773305758985,
+    "pacing_wait_ms": 18982,
+    "pacing_jitter_sec": 0.842
+  }
+}

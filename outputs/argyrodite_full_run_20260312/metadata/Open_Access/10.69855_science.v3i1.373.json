@@ -1,0 +1,102 @@
+{
+  "doi": "10.69855/science.v3i1.373",
+  "pdf_filename": "10.69855_science.v3i1.373.pdf",
+  "json_filename": "10.69855_science.v3i1.373.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.69855_science.v3i1.373.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7127043180",
+    "doi": "10.69855/science.v3i1.373",
+    "title": "Study on Material Innovation and Electrochemical Performance in Solid-State Battery Technology for Sustainable Energy Applications",
+    "publisher": "Science Get Journal.",
+    "journal": {
+      "name": "Science Get Journal.",
+      "id": "https://openalex.org/S4404661871",
+      "type": "journal",
+      "issn_l": "3062-6595",
+      "issn": [
+        "3062-6595"
+      ]
+    },
+    "publication_date": "2026-01-28",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.5430476,
+    "pdf_url": "https://gpijournal.com/index.php/science/article/download/373/335",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Herlina Rahim",
+    "authors_display": "Herlina Rahim; Rozlinda Dewi; Venny Yusiana; Rismen Sinambela",
+    "authors": [
+      {
+        "display_name": "Herlina Rahim",
+        "id": "https://openalex.org/A5124749718",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Rozlinda Dewi",
+        "id": "https://openalex.org/A5124725909",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Venny Yusiana",
+        "id": "https://openalex.org/A5124727814",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rismen Sinambela",
+        "id": "https://openalex.org/A5124704265",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7127043180",
+    "doi": "10.69855/science.v3i1.373",
+    "title": "Study on Material Innovation and Electrochemical Performance in Solid-State Battery Technology for Sustainable Energy Applications",
+    "publisher": "Science Get Journal.",
+    "journal": "Science Get Journal.",
+    "journal_id": "https://openalex.org/S4404661871",
+    "journal_type": "journal",
+    "journal_issn_l": "3062-6595",
+    "journal_issn_json": "[\"3062-6595\"]",
+    "publication_date": "2026-01-28",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.5430476,
+    "pdf_url": "https://gpijournal.com/index.php/science/article/download/373/335",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Herlina Rahim",
+    "authors_display": "Herlina Rahim; Rozlinda Dewi; Venny Yusiana; Rismen Sinambela",
+    "authors_json": "[{\"display_name\": \"Herlina Rahim\", \"id\": \"https://openalex.org/A5124749718\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Rozlinda Dewi\", \"id\": \"https://openalex.org/A5124725909\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Venny Yusiana\", \"id\": \"https://openalex.org/A5124727814\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rismen Sinambela\", \"id\": \"https://openalex.org/A5124704265\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.69855",
+    "scheduled_start_ms": 1773311402503,
+    "actual_start_ms": 1773311403256,
+    "pacing_wait_ms": 753,
+    "pacing_jitter_sec": 1.637
+  }
+}

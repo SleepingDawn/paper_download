@@ -1,0 +1,131 @@
+{
+  "doi": "10.1021/acsnano.4c06345",
+  "pdf_filename": "10.1021_acsnano.4c06345.pdf",
+  "json_filename": "10.1021_acsnano.4c06345.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsnano.4c06345.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4401632755",
+    "doi": "10.1021/acsnano.4c06345",
+    "title": "Oxygen Substitution to Enhance Chemo-Mechanical Stability at the Cathode-Sulfide Electrolyte Interface in All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Nano",
+      "id": "https://openalex.org/S145476921",
+      "type": "journal",
+      "issn_l": "1936-0851",
+      "issn": [
+        "1936-0851",
+        "1936-086X"
+      ]
+    },
+    "publication_date": "2024-08-16",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.91369341,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Taesoon Hwang",
+    "authors_display": "Taesoon Hwang; Jong-Hyuk Bae; So-Ri Lee; Heetaek Park; Jun-Woo Park; Yoon‐Cheol Ha; You‐Jin Lee; Kyeongjae Cho",
+    "authors": [
+      {
+        "display_name": "Taesoon Hwang",
+        "id": "https://openalex.org/A5066579076",
+        "orcid": "https://orcid.org/0000-0002-1264-1265",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jong-Hyuk Bae",
+        "id": "https://openalex.org/A5029630657",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "So-Ri Lee",
+        "id": "https://openalex.org/A5008918123",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Heetaek Park",
+        "id": "https://openalex.org/A5025088024",
+        "orcid": "https://orcid.org/0000-0003-2799-5354",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun-Woo Park",
+        "id": "https://openalex.org/A5113829959",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoon‐Cheol Ha",
+        "id": "https://openalex.org/A5086764992",
+        "orcid": "https://orcid.org/0000-0001-5769-1461",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "You‐Jin Lee",
+        "id": "https://openalex.org/A5007359456",
+        "orcid": "https://orcid.org/0000-0002-9133-7893",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Kyeongjae Cho",
+        "id": "https://openalex.org/A5004018821",
+        "orcid": "https://orcid.org/0000-0003-2698-7774",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4401632755",
+    "doi": "10.1021/acsnano.4c06345",
+    "title": "Oxygen Substitution to Enhance Chemo-Mechanical Stability at the Cathode-Sulfide Electrolyte Interface in All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Nano",
+    "journal_id": "https://openalex.org/S145476921",
+    "journal_type": "journal",
+    "journal_issn_l": "1936-0851",
+    "journal_issn_json": "[\"1936-0851\", \"1936-086X\"]",
+    "publication_date": "2024-08-16",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.91369341,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Taesoon Hwang",
+    "authors_display": "Taesoon Hwang; Jong-Hyuk Bae; So-Ri Lee; Heetaek Park; Jun-Woo Park; Yoon‐Cheol Ha; You‐Jin Lee; Kyeongjae Cho",
+    "authors_json": "[{\"display_name\": \"Taesoon Hwang\", \"id\": \"https://openalex.org/A5066579076\", \"orcid\": \"https://orcid.org/0000-0002-1264-1265\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jong-Hyuk Bae\", \"id\": \"https://openalex.org/A5029630657\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"So-Ri Lee\", \"id\": \"https://openalex.org/A5008918123\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Heetaek Park\", \"id\": \"https://openalex.org/A5025088024\", \"orcid\": \"https://orcid.org/0000-0003-2799-5354\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun-Woo Park\", \"id\": \"https://openalex.org/A5113829959\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoon‐Cheol Ha\", \"id\": \"https://openalex.org/A5086764992\", \"orcid\": \"https://orcid.org/0000-0001-5769-1461\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"You‐Jin Lee\", \"id\": \"https://openalex.org/A5007359456\", \"orcid\": \"https://orcid.org/0000-0002-9133-7893\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Kyeongjae Cho\", \"id\": \"https://openalex.org/A5004018821\", \"orcid\": \"https://orcid.org/0000-0003-2698-7774\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsnano.4c06345",
+    "landing_title": "Oxygen Substitution to Enhance Chemo-Mechanical Stability at the Cathode-Sulfide Electrolyte Interface in All-Solid-State Batteries | ACS Nano",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsnano.4c06345.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773304398659,
+    "actual_start_ms": 1773304406953,
+    "pacing_wait_ms": 8293,
+    "pacing_jitter_sec": 1.171
+  }
+}

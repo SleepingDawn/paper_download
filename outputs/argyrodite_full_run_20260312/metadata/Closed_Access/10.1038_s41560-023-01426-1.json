@@ -1,0 +1,137 @@
+{
+  "doi": "10.1038/s41560-023-01426-1",
+  "pdf_filename": "10.1038_s41560-023-01426-1.pdf",
+  "json_filename": "10.1038_s41560-023-01426-1.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1038_s41560-023-01426-1.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4390669214",
+    "doi": "10.1038/s41560-023-01426-1",
+    "title": "Lithium anode interlayer design for all-solid-state lithium-metal batteries",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Energy",
+      "id": "https://openalex.org/S2764528046",
+      "type": "journal",
+      "issn_l": "2058-7546",
+      "issn": [
+        "2058-7546"
+      ]
+    },
+    "publication_date": "2024-01-08",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 175,
+    "citation_normalized_percentile": 0.99937528,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zeyi Wang",
+    "authors_display": "Zeyi Wang; Jiale Xia; Xiao Ji; Yijie Liu; Jiaxun Zhang; Xinzi He; Weiran Zhang; Hongli Wan; Chunsheng Wang",
+    "authors": [
+      {
+        "display_name": "Zeyi Wang",
+        "id": "https://openalex.org/A5108149520",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiale Xia",
+        "id": "https://openalex.org/A5025673142",
+        "orcid": "https://orcid.org/0000-0002-4319-455X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao Ji",
+        "id": "https://openalex.org/A5037907028",
+        "orcid": "https://orcid.org/0000-0002-7043-5945",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yijie Liu",
+        "id": "https://openalex.org/A5101726853",
+        "orcid": "https://orcid.org/0009-0007-6512-9648",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiaxun Zhang",
+        "id": "https://openalex.org/A5075523554",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinzi He",
+        "id": "https://openalex.org/A5049658337",
+        "orcid": "https://orcid.org/0000-0003-1516-1870",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Weiran Zhang",
+        "id": "https://openalex.org/A5070165151",
+        "orcid": "https://orcid.org/0000-0003-3292-6388",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongli Wan",
+        "id": "https://openalex.org/A5063926457",
+        "orcid": "https://orcid.org/0009-0002-8115-0336",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chunsheng Wang",
+        "id": "https://openalex.org/A5100331428",
+        "orcid": "https://orcid.org/0000-0002-8626-6381",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4390669214",
+    "doi": "10.1038/s41560-023-01426-1",
+    "title": "Lithium anode interlayer design for all-solid-state lithium-metal batteries",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Energy",
+    "journal_id": "https://openalex.org/S2764528046",
+    "journal_type": "journal",
+    "journal_issn_l": "2058-7546",
+    "journal_issn_json": "[\"2058-7546\"]",
+    "publication_date": "2024-01-08",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 175,
+    "citation_normalized_percentile": 0.99937528,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zeyi Wang",
+    "authors_display": "Zeyi Wang; Jiale Xia; Xiao Ji; Yijie Liu; Jiaxun Zhang; Xinzi He; Weiran Zhang; Hongli Wan; Chunsheng Wang",
+    "authors_json": "[{\"display_name\": \"Zeyi Wang\", \"id\": \"https://openalex.org/A5108149520\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jiale Xia\", \"id\": \"https://openalex.org/A5025673142\", \"orcid\": \"https://orcid.org/0000-0002-4319-455X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiao Ji\", \"id\": \"https://openalex.org/A5037907028\", \"orcid\": \"https://orcid.org/0000-0002-7043-5945\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yijie Liu\", \"id\": \"https://openalex.org/A5101726853\", \"orcid\": \"https://orcid.org/0009-0007-6512-9648\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiaxun Zhang\", \"id\": \"https://openalex.org/A5075523554\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinzi He\", \"id\": \"https://openalex.org/A5049658337\", \"orcid\": \"https://orcid.org/0000-0003-1516-1870\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Weiran Zhang\", \"id\": \"https://openalex.org/A5070165151\", \"orcid\": \"https://orcid.org/0000-0003-3292-6388\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongli Wan\", \"id\": \"https://openalex.org/A5063926457\", \"orcid\": \"https://orcid.org/0009-0002-8115-0336\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Chunsheng Wang\", \"id\": \"https://openalex.org/A5100331428\", \"orcid\": \"https://orcid.org/0000-0002-8626-6381\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.nature.com/articles/s41560-023-01426-1",
+    "landing_title": "Lithium anode interlayer design for all-solid-state lithium-metal batteries | Nature Energy",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1038_s41560-023-01426-1.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773307369518,
+    "actual_start_ms": 1773307371019,
+    "pacing_wait_ms": 1500,
+    "pacing_jitter_sec": 1.461
+  }
+}

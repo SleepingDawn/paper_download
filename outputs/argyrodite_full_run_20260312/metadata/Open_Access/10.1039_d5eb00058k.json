@@ -1,0 +1,151 @@
+{
+  "doi": "10.1039/d5eb00058k",
+  "pdf_filename": "10.1039_d5eb00058k.pdf",
+  "json_filename": "10.1039_d5eb00058k.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_d5eb00058k.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409088910",
+    "doi": "10.1039/d5eb00058k",
+    "title": "Probing the electrochemical behaviour of lithium imide as an electrolyte for solid-state batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "EES batteries.",
+      "id": "https://openalex.org/S4404663996",
+      "type": "journal",
+      "issn_l": "3033-4071",
+      "issn": [
+        "3033-4071"
+      ]
+    },
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.94780395,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/eb/d5eb00058k",
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Jeremy Paul Lowen",
+    "authors_display": "Jeremy Paul Lowen; Teresa Insinna; T.V. Beatriceveena; Mark P. Stockham; Bo Dong; Sarah J. Day; Clare P. Grey; Emma Kendrick; Peter R. Slater; Paul A. Anderson; Joshua W. Makepeace",
+    "authors": [
+      {
+        "display_name": "Jeremy Paul Lowen",
+        "id": "https://openalex.org/A5003798253",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Teresa Insinna",
+        "id": "https://openalex.org/A5055245131",
+        "orcid": "https://orcid.org/0000-0001-6484-4323",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "T.V. Beatriceveena",
+        "id": "https://openalex.org/A5087178025",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mark P. Stockham",
+        "id": "https://openalex.org/A5051109272",
+        "orcid": "https://orcid.org/0000-0001-7254-0266",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bo Dong",
+        "id": "https://openalex.org/A5100746748",
+        "orcid": "https://orcid.org/0000-0003-0964-5852",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sarah J. Day",
+        "id": "https://openalex.org/A5020276350",
+        "orcid": "https://orcid.org/0000-0003-1059-8475",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Clare P. Grey",
+        "id": "https://openalex.org/A5088159296",
+        "orcid": "https://orcid.org/0000-0001-5572-192X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Emma Kendrick",
+        "id": "https://openalex.org/A5053424857",
+        "orcid": "https://orcid.org/0000-0002-4219-964X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peter R. Slater",
+        "id": "https://openalex.org/A5087896936",
+        "orcid": "https://orcid.org/0000-0002-6280-7673",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Paul A. Anderson",
+        "id": "https://openalex.org/A5103217887",
+        "orcid": "https://orcid.org/0000-0002-0613-7281",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joshua W. Makepeace",
+        "id": "https://openalex.org/A5086102520",
+        "orcid": "https://orcid.org/0000-0002-7107-0845",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409088910",
+    "doi": "10.1039/d5eb00058k",
+    "title": "Probing the electrochemical behaviour of lithium imide as an electrolyte for solid-state batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "EES batteries.",
+    "journal_id": "https://openalex.org/S4404663996",
+    "journal_type": "journal",
+    "journal_issn_l": "3033-4071",
+    "journal_issn_json": "[\"3033-4071\"]",
+    "publication_date": "2025-01-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.94780395,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2025/eb/d5eb00058k",
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Jeremy Paul Lowen",
+    "authors_display": "Jeremy Paul Lowen; Teresa Insinna; T.V. Beatriceveena; Mark P. Stockham; Bo Dong; Sarah J. Day; Clare P. Grey; Emma Kendrick; Peter R. Slater; Paul A. Anderson; Joshua W. Makepeace",
+    "authors_json": "[{\"display_name\": \"Jeremy Paul Lowen\", \"id\": \"https://openalex.org/A5003798253\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Teresa Insinna\", \"id\": \"https://openalex.org/A5055245131\", \"orcid\": \"https://orcid.org/0000-0001-6484-4323\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"T.V. Beatriceveena\", \"id\": \"https://openalex.org/A5087178025\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mark P. Stockham\", \"id\": \"https://openalex.org/A5051109272\", \"orcid\": \"https://orcid.org/0000-0001-7254-0266\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bo Dong\", \"id\": \"https://openalex.org/A5100746748\", \"orcid\": \"https://orcid.org/0000-0003-0964-5852\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sarah J. Day\", \"id\": \"https://openalex.org/A5020276350\", \"orcid\": \"https://orcid.org/0000-0003-1059-8475\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Clare P. Grey\", \"id\": \"https://openalex.org/A5088159296\", \"orcid\": \"https://orcid.org/0000-0001-5572-192X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Emma Kendrick\", \"id\": \"https://openalex.org/A5053424857\", \"orcid\": \"https://orcid.org/0000-0002-4219-964X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peter R. Slater\", \"id\": \"https://openalex.org/A5087896936\", \"orcid\": \"https://orcid.org/0000-0002-6280-7673\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Paul A. Anderson\", \"id\": \"https://openalex.org/A5103217887\", \"orcid\": \"https://orcid.org/0000-0002-0613-7281\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Joshua W. Makepeace\", \"id\": \"https://openalex.org/A5086102520\", \"orcid\": \"https://orcid.org/0000-0002-7107-0845\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773309588923,
+    "actual_start_ms": 1773309588923,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.218
+  }
+}

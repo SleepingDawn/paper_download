@@ -1,0 +1,133 @@
+{
+  "doi": "10.1149/ma2021-016318mtgabs",
+  "pdf_filename": "10.1149_ma2021-016318mtgabs.pdf",
+  "json_filename": "10.1149_ma2021-016318mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2021-016318mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W3185814930",
+    "doi": "10.1149/ma2021-016318mtgabs",
+    "title": "Stability of Interfaces in All-Solid-State Lithium Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2021-05-30",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.07287468,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Cédric Barcha",
+    "authors_display": "Cédric Barcha; Vincent Seznéc; Nathalie Delpuech; Rémi Dedryvère; Lénaïc Madec; Christophe Lethien; Maxime Hallot; Christian Masquelier",
+    "authors": [
+      {
+        "display_name": "Cédric Barcha",
+        "id": "https://openalex.org/A5031906143",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Vincent Seznéc",
+        "id": "https://openalex.org/A5088541476",
+        "orcid": "https://orcid.org/0000-0001-5233-5943",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nathalie Delpuech",
+        "id": "https://openalex.org/A5060538082",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rémi Dedryvère",
+        "id": "https://openalex.org/A5079560240",
+        "orcid": "https://orcid.org/0000-0001-5125-640X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lénaïc Madec",
+        "id": "https://openalex.org/A5038118006",
+        "orcid": "https://orcid.org/0000-0002-7681-1681",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Christophe Lethien",
+        "id": "https://openalex.org/A5071570961",
+        "orcid": "https://orcid.org/0000-0001-8906-8308",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maxime Hallot",
+        "id": "https://openalex.org/A5073897441",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Christian Masquelier",
+        "id": "https://openalex.org/A5018313760",
+        "orcid": "https://orcid.org/0000-0001-7289-1015",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3185814930",
+    "doi": "10.1149/ma2021-016318mtgabs",
+    "title": "Stability of Interfaces in All-Solid-State Lithium Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2021-05-30",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.07287468,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Cédric Barcha",
+    "authors_display": "Cédric Barcha; Vincent Seznéc; Nathalie Delpuech; Rémi Dedryvère; Lénaïc Madec; Christophe Lethien; Maxime Hallot; Christian Masquelier",
+    "authors_json": "[{\"display_name\": \"Cédric Barcha\", \"id\": \"https://openalex.org/A5031906143\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Vincent Seznéc\", \"id\": \"https://openalex.org/A5088541476\", \"orcid\": \"https://orcid.org/0000-0001-5233-5943\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nathalie Delpuech\", \"id\": \"https://openalex.org/A5060538082\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rémi Dedryvère\", \"id\": \"https://openalex.org/A5079560240\", \"orcid\": \"https://orcid.org/0000-0001-5125-640X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lénaïc Madec\", \"id\": \"https://openalex.org/A5038118006\", \"orcid\": \"https://orcid.org/0000-0002-7681-1681\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Christophe Lethien\", \"id\": \"https://openalex.org/A5071570961\", \"orcid\": \"https://orcid.org/0000-0001-8906-8308\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maxime Hallot\", \"id\": \"https://openalex.org/A5073897441\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Christian Masquelier\", \"id\": \"https://openalex.org/A5018313760\", \"orcid\": \"https://orcid.org/0000-0001-7289-1015\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773303163246,
+    "actual_start_ms": 1773303164747,
+    "pacing_wait_ms": 1501,
+    "pacing_jitter_sec": 0.939
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "doi": "10.1002/advs.202270182",
+  "pdf_filename": "10.1002_advs.202270182.pdf",
+  "json_filename": "10.1002_advs.202270182.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_advs.202270182.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4302281995",
+    "doi": "10.1002/advs.202270182",
+    "title": "Optimal Composition of Li Argyrodite with Harmonious Conductivity and Chemical/Electrochemical Stability: Fine‐Tuned Via Tandem Particle Swarm Optimization (Adv. Sci. 28/2022)",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Science",
+      "id": "https://openalex.org/S2737737698",
+      "type": "journal",
+      "issn_l": "2198-3844",
+      "issn": [
+        "2198-3844"
+      ]
+    },
+    "publication_date": "2022-10-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.09288842,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202270182",
+    "open_access": true,
+    "author_count": 16,
+    "first_author": "Sunggeun Shim",
+    "authors_display": "Sunggeun Shim; Woon Bae Park; Jungmin Han; Jinhyeok Lee; Byung Do Lee; Jin‐Woong Lee; Jung Yong Seo; S. J. Richard Prabakar; Su Cheol Han; Satendra Pal Singh; Chan‐Cuk Hwang; Docheon Ahn; Sang-Il Han; Kyusung Park; Kee‐Sun Sohn; Myoungho Pyo",
+    "authors": [
+      {
+        "display_name": "Sunggeun Shim",
+        "id": "https://openalex.org/A5027678764",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Woon Bae Park",
+        "id": "https://openalex.org/A5063137731",
+        "orcid": "https://orcid.org/0000-0002-0631-1905",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jungmin Han",
+        "id": "https://openalex.org/A5102034867",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinhyeok Lee",
+        "id": "https://openalex.org/A5088463789",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byung Do Lee",
+        "id": "https://openalex.org/A5010478453",
+        "orcid": "https://orcid.org/0000-0002-1660-7339",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jin‐Woong Lee",
+        "id": "https://openalex.org/A5032495369",
+        "orcid": "https://orcid.org/0000-0002-5251-1756",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jung Yong Seo",
+        "id": "https://openalex.org/A5013236497",
+        "orcid": "https://orcid.org/0000-0001-9622-1411",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "S. J. Richard Prabakar",
+        "id": "https://openalex.org/A5020923461",
+        "orcid": "https://orcid.org/0000-0001-5339-5876",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Su Cheol Han",
+        "id": "https://openalex.org/A5069918318",
+        "orcid": "https://orcid.org/0000-0001-7748-673X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Satendra Pal Singh",
+        "id": "https://openalex.org/A5065686685",
+        "orcid": "https://orcid.org/0000-0001-8526-3923",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chan‐Cuk Hwang",
+        "id": "https://openalex.org/A5108687388",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Docheon Ahn",
+        "id": "https://openalex.org/A5009404946",
+        "orcid": "https://orcid.org/0000-0003-1841-5418",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang-Il Han",
+        "id": "https://openalex.org/A5110741595",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyusung Park",
+        "id": "https://openalex.org/A5027145934",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kee‐Sun Sohn",
+        "id": "https://openalex.org/A5033246805",
+        "orcid": "https://orcid.org/0000-0002-7496-2283",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Myoungho Pyo",
+        "id": "https://openalex.org/A5009210723",
+        "orcid": "https://orcid.org/0000-0001-6411-7548",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4302281995",
+    "doi": "10.1002/advs.202270182",
+    "title": "Optimal Composition of Li Argyrodite with Harmonious Conductivity and Chemical/Electrochemical Stability: Fine‐Tuned Via Tandem Particle Swarm Optimization (Adv. Sci. 28/2022)",
+    "publisher": "Wiley",
+    "journal": "Advanced Science",
+    "journal_id": "https://openalex.org/S2737737698",
+    "journal_type": "journal",
+    "journal_issn_l": "2198-3844",
+    "journal_issn_json": "[\"2198-3844\"]",
+    "publication_date": "2022-10-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.09288842,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202270182",
+    "open_access": true,
+    "author_count": 16,
+    "first_author": "Sunggeun Shim",
+    "authors_display": "Sunggeun Shim; Woon Bae Park; Jungmin Han; Jinhyeok Lee; Byung Do Lee; Jin‐Woong Lee; Jung Yong Seo; S. J. Richard Prabakar; Su Cheol Han; Satendra Pal Singh; Chan‐Cuk Hwang; Docheon Ahn; Sang-Il Han; Kyusung Park; Kee‐Sun Sohn; Myoungho Pyo",
+    "authors_json": "[{\"display_name\": \"Sunggeun Shim\", \"id\": \"https://openalex.org/A5027678764\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Woon Bae Park\", \"id\": \"https://openalex.org/A5063137731\", \"orcid\": \"https://orcid.org/0000-0002-0631-1905\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jungmin Han\", \"id\": \"https://openalex.org/A5102034867\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinhyeok Lee\", \"id\": \"https://openalex.org/A5088463789\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byung Do Lee\", \"id\": \"https://openalex.org/A5010478453\", \"orcid\": \"https://orcid.org/0000-0002-1660-7339\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jin‐Woong Lee\", \"id\": \"https://openalex.org/A5032495369\", \"orcid\": \"https://orcid.org/0000-0002-5251-1756\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jung Yong Seo\", \"id\": \"https://openalex.org/A5013236497\", \"orcid\": \"https://orcid.org/0000-0001-9622-1411\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"S. J. Richard Prabakar\", \"id\": \"https://openalex.org/A5020923461\", \"orcid\": \"https://orcid.org/0000-0001-5339-5876\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Su Cheol Han\", \"id\": \"https://openalex.org/A5069918318\", \"orcid\": \"https://orcid.org/0000-0001-7748-673X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Satendra Pal Singh\", \"id\": \"https://openalex.org/A5065686685\", \"orcid\": \"https://orcid.org/0000-0001-8526-3923\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chan‐Cuk Hwang\", \"id\": \"https://openalex.org/A5108687388\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Docheon Ahn\", \"id\": \"https://openalex.org/A5009404946\", \"orcid\": \"https://orcid.org/0000-0003-1841-5418\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang-Il Han\", \"id\": \"https://openalex.org/A5110741595\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyusung Park\", \"id\": \"https://openalex.org/A5027145934\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kee‐Sun Sohn\", \"id\": \"https://openalex.org/A5033246805\", \"orcid\": \"https://orcid.org/0000-0002-7496-2283\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Myoungho Pyo\", \"id\": \"https://openalex.org/A5009210723\", \"orcid\": \"https://orcid.org/0000-0001-6411-7548\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773309397636,
+    "actual_start_ms": 1773309397636,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.941
+  }
+}

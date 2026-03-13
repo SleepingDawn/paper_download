@@ -1,0 +1,311 @@
+{
+  "generated_at": 1773319120,
+  "input_total_before_precheck": 1070,
+  "total_papers": 1070,
+  "after_first_pass": "deep",
+  "non_interactive": true,
+  "precheck_landing": false,
+  "paths": {
+    "run_output_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/argyrodite_full_run_20260312",
+    "pdf_output_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312",
+    "open_access_pdf_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access",
+    "closed_access_pdf_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access"
+  },
+  "download_browser": {
+    "execution_env": "desktop",
+    "headless": true,
+    "deep_retry_headless": false,
+    "abort_on_landing_block": true,
+    "profile_mode": "auto",
+    "profile_name": "Default",
+    "persistent_profile_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/.chrome_user_data",
+    "runtime_profile_root": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312",
+    "session_seed_root": ""
+  },
+  "download_scheduler": {
+    "publisher_cooldown_sec": 7.0,
+    "global_start_spacing_sec": 1.5,
+    "jitter_min_sec": 0.7,
+    "jitter_max_sec": 1.8,
+    "worker_max_tasks_per_child": null
+  },
+  "landing_precheck": {
+    "executed": false
+  },
+  "integrated_landing": {
+    "attempted": 365,
+    "not_attempted": 705,
+    "success": 345,
+    "access_rights_failures": 0,
+    "direct_pdf_handoff": 17,
+    "raw_success_rate": 0.9452,
+    "adjusted_denominator": 365,
+    "adjusted_success_rate": 0.9452,
+    "state_counts": {
+      "success_landing": 328,
+      "challenge_or_block": 19,
+      "doi_not_found": 1,
+      "direct_pdf_handoff": 17
+    }
+  },
+  "first_pass": {
+    "success": 991,
+    "failed": 79,
+    "fail_reasons": {
+      "FAIL_CAPTCHA": 1,
+      "FAIL_BLOCK": 16,
+      "FAIL_ACCESS_RIGHTS": 0,
+      "FAIL_DOI_NOT_FOUND": 1,
+      "FAIL_WRONG_MIME": 0,
+      "FAIL_VIEWER_HTML": 0,
+      "FAIL_HTTP_STATUS": 0,
+      "FAIL_TIMEOUT/NETWORK": 0,
+      "FAIL_PDF_MAGIC": 0,
+      "FAIL_TOO_SMALL": 0,
+      "FAIL_NO_CANDIDATE": 61,
+      "FAIL_REDIRECT_LOOP": 0,
+      "FAIL_UNKNOWN": 0
+    }
+  },
+  "deep_retry": {
+    "executed": true,
+    "total": 78,
+    "success": 22,
+    "failed": 56,
+    "fail_reasons": {
+      "FAIL_CAPTCHA": 3,
+      "FAIL_BLOCK": 16,
+      "FAIL_ACCESS_RIGHTS": 0,
+      "FAIL_DOI_NOT_FOUND": 0,
+      "FAIL_WRONG_MIME": 0,
+      "FAIL_VIEWER_HTML": 0,
+      "FAIL_HTTP_STATUS": 0,
+      "FAIL_TIMEOUT/NETWORK": 0,
+      "FAIL_PDF_MAGIC": 0,
+      "FAIL_TOO_SMALL": 0,
+      "FAIL_NO_CANDIDATE": 37,
+      "FAIL_REDIRECT_LOOP": 0,
+      "FAIL_UNKNOWN": 0
+    }
+  },
+  "elapsed_seconds": 17702.43,
+  "live_attempt_metrics": {
+    "count": 446,
+    "success_rate": 0.4395,
+    "median_latency_ms": 1015,
+    "reason_distribution": {
+      "FAIL_TIMEOUT/NETWORK": 77,
+      "SUCCESS": 196,
+      "FAIL_WRONG_MIME": 83,
+      "FAIL_VIEWER_HTML": 90
+    },
+    "by_strategy": {
+      "cffi_baseline": {
+        "count": 446,
+        "success_rate": 0.4395,
+        "median_latency_ms": 1015
+      }
+    },
+    "by_domain": {
+      "www.sciencedirect.com": {
+        "count": 17,
+        "success_rate": 0.0,
+        "median_latency_ms": 126
+      },
+      "pdf.sciencedirectassets.com": {
+        "count": 112,
+        "success_rate": 1.0,
+        "median_latency_ms": 1118
+      },
+      "pubs.acs.org": {
+        "count": 89,
+        "success_rate": 0.0337,
+        "median_latency_ms": 684
+      },
+      "onlinelibrary.wiley.com": {
+        "count": 75,
+        "success_rate": 0.0267,
+        "median_latency_ms": 814
+      },
+      "www.cell.com": {
+        "count": 5,
+        "success_rate": 0.0,
+        "median_latency_ms": 4410
+      },
+      "nature.com": {
+        "count": 23,
+        "success_rate": 0.0,
+        "median_latency_ms": 4399
+      },
+      "www.nature.com": {
+        "count": 14,
+        "success_rate": 1.0,
+        "median_latency_ms": 2296
+      },
+      "link.springer.com": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 2330
+      },
+      "advanced.onlinelibrary.wiley.com": {
+        "count": 3,
+        "success_rate": 0.3333,
+        "median_latency_ms": 1239
+      },
+      "pubs.rsc.org": {
+        "count": 22,
+        "success_rate": 0.4091,
+        "median_latency_ms": 12859
+      },
+      "iopscience.iop.org": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 9621
+      },
+      "www.mdpi.com": {
+        "count": 6,
+        "success_rate": 1.0,
+        "median_latency_ms": 1109
+      },
+      "mdpi-res.com": {
+        "count": 12,
+        "success_rate": 1.0,
+        "median_latency_ms": 1898
+      },
+      "chemrxiv.org": {
+        "count": 6,
+        "success_rate": 0.1667,
+        "median_latency_ms": 1251
+      },
+      "www.jstage.jst.go.jp": {
+        "count": 7,
+        "success_rate": 1.0,
+        "median_latency_ms": 17098
+      },
+      "visnyk-khim.uzhnu.edu.ua": {
+        "count": 4,
+        "success_rate": 1.0,
+        "median_latency_ms": 4151
+      },
+      "watermark02.silverchair.com": {
+        "count": 7,
+        "success_rate": 1.0,
+        "median_latency_ms": 28612
+      },
+      "public-pages-files-2025.frontiersin.org": {
+        "count": 2,
+        "success_rate": 1.0,
+        "median_latency_ms": 5908
+      },
+      "academic.oup.com": {
+        "count": 5,
+        "success_rate": 0.0,
+        "median_latency_ms": 65
+      },
+      "journals.iucr.org": {
+        "count": 3,
+        "success_rate": 1.0,
+        "median_latency_ms": 2384
+      },
+      "asmedigitalcollection.asme.org": {
+        "count": 10,
+        "success_rate": 0.0,
+        "median_latency_ms": 1097
+      },
+      "www.jecst.org": {
+        "count": 2,
+        "success_rate": 1.0,
+        "median_latency_ms": 535
+      },
+      "www.worldscientific.com": {
+        "count": 2,
+        "success_rate": 1.0,
+        "median_latency_ms": 12038
+      },
+      "journals.aps.org": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 3134
+      },
+      "www.whxb.pku.edu.cn": {
+        "count": 2,
+        "success_rate": 0.0,
+        "median_latency_ms": 1716
+      },
+      "kjmm.org": {
+        "count": 2,
+        "success_rate": 0.0,
+        "median_latency_ms": 159
+      },
+      "f.oaes.cc": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 4384
+      },
+      "doi.org": {
+        "count": 2,
+        "success_rate": 0.0,
+        "median_latency_ms": 716
+      },
+      "repository.tudelft.nl": {
+        "count": 1,
+        "success_rate": 0.0,
+        "median_latency_ms": 4333
+      },
+      "diffusion.publia.org": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 3608
+      },
+      "egu2020.eu": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 2346
+      },
+      "www.bio-conferences.org": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 7820
+      },
+      "gpijournal.com": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 3657
+      },
+      "ijeret.org": {
+        "count": 1,
+        "success_rate": 1.0,
+        "median_latency_ms": 5753
+      },
+      "sv16020.ub.uni-giessen.de:4000": {
+        "count": 4,
+        "success_rate": 0.0,
+        "median_latency_ms": 60030
+      }
+    }
+  },
+  "effective_rates": {
+    "download_raw_success_rate": 0.9262,
+    "download_adjusted_success_rate": 0.9262,
+    "end_to_end_adjusted_success_rate": 0.9262
+  },
+  "artifacts": {
+    "results_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/argyrodite_full_run_20260312/openalex_search_results_parallel.csv",
+    "failed_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/argyrodite_full_run_20260312/failed_papers.csv",
+    "failed_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/argyrodite_full_run_20260312/failed_papers.jsonl",
+    "attempts_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/argyrodite_full_run_20260312/download_attempts.jsonl",
+    "attempts_summary_json": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/argyrodite_full_run_20260312/download_attempts_summary.json",
+    "summary_json": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/argyrodite_full_run_20260312/summary.json",
+    "pdf_root_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312",
+    "metadata_root_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/argyrodite_full_run_20260312/metadata"
+  },
+  "metadata_sidecars": {
+    "root_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/argyrodite_full_run_20260312/metadata",
+    "written": 856,
+    "missing_pdf": 157
+  },
+  "process_cleanup": {
+    "startup_orphan_reaped": 0,
+    "shutdown_orphan_reaped": 0
+  }
+}

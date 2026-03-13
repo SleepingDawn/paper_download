@@ -1,0 +1,130 @@
+{
+  "doi": "10.2139/ssrn.4211153",
+  "pdf_filename": "10.2139_ssrn.4211153.pdf",
+  "json_filename": "10.2139_ssrn.4211153.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.4211153.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4295860272",
+    "doi": "10.2139/ssrn.4211153",
+    "title": "Lithium-Enhanced Functionalized Carbon Nanofibers as a Mixed Electronic/Ionic Conductor for Sulfide All Solid-State Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Tom James Embleton",
+    "authors_display": "Tom James Embleton; Jeongsik Yun; Jae Hong Choi; Jongho Kim; Kyungmok Ko; Jin‐Soo Kim; Yoonkook Son; Pilgun Oh",
+    "authors": [
+      {
+        "display_name": "Tom James Embleton",
+        "id": "https://openalex.org/A5017548561",
+        "orcid": "https://orcid.org/0000-0002-6557-2996",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jeongsik Yun",
+        "id": "https://openalex.org/A5013688652",
+        "orcid": "https://orcid.org/0000-0003-1933-699X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jae Hong Choi",
+        "id": "https://openalex.org/A5061983829",
+        "orcid": "https://orcid.org/0000-0001-7537-9113",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jongho Kim",
+        "id": "https://openalex.org/A5100427727",
+        "orcid": "https://orcid.org/0000-0001-9317-7494",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyungmok Ko",
+        "id": "https://openalex.org/A5046707437",
+        "orcid": "https://orcid.org/0000-0001-6076-3366",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jin‐Soo Kim",
+        "id": "https://openalex.org/A5100390255",
+        "orcid": "https://orcid.org/0000-0001-8217-5071",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoonkook Son",
+        "id": "https://openalex.org/A5028102444",
+        "orcid": "https://orcid.org/0000-0003-2666-1790",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pilgun Oh",
+        "id": "https://openalex.org/A5051578878",
+        "orcid": "https://orcid.org/0000-0001-8601-8380",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4295860272",
+    "doi": "10.2139/ssrn.4211153",
+    "title": "Lithium-Enhanced Functionalized Carbon Nanofibers as a Mixed Electronic/Ionic Conductor for Sulfide All Solid-State Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Tom James Embleton",
+    "authors_display": "Tom James Embleton; Jeongsik Yun; Jae Hong Choi; Jongho Kim; Kyungmok Ko; Jin‐Soo Kim; Yoonkook Son; Pilgun Oh",
+    "authors_json": "[{\"display_name\": \"Tom James Embleton\", \"id\": \"https://openalex.org/A5017548561\", \"orcid\": \"https://orcid.org/0000-0002-6557-2996\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Jeongsik Yun\", \"id\": \"https://openalex.org/A5013688652\", \"orcid\": \"https://orcid.org/0000-0003-1933-699X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jae Hong Choi\", \"id\": \"https://openalex.org/A5061983829\", \"orcid\": \"https://orcid.org/0000-0001-7537-9113\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jongho Kim\", \"id\": \"https://openalex.org/A5100427727\", \"orcid\": \"https://orcid.org/0000-0001-9317-7494\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyungmok Ko\", \"id\": \"https://openalex.org/A5046707437\", \"orcid\": \"https://orcid.org/0000-0001-6076-3366\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jin‐Soo Kim\", \"id\": \"https://openalex.org/A5100390255\", \"orcid\": \"https://orcid.org/0000-0001-8217-5071\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoonkook Son\", \"id\": \"https://openalex.org/A5028102444\", \"orcid\": \"https://orcid.org/0000-0003-2666-1790\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pilgun Oh\", \"id\": \"https://openalex.org/A5051578878\", \"orcid\": \"https://orcid.org/0000-0001-8601-8380\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_CAPTCHA",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4211153&__cf_chl_rt_tk=IA1UJUPGLEQksZRCq.niAFMbN9.aex2nGvSbNCBOzhA-1773312735-1.0.1.1-2nJlPjP8gC_JZ4yJES3b5xwkXHWeZnhZWo7WjfDOS7c",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.4211153.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773312713830,
+    "actual_start_ms": 1773312713832,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.203
+  }
+}

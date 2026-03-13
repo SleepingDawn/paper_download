@@ -1,0 +1,131 @@
+{
+  "doi": "10.1016/j.ensm.2025.104760",
+  "pdf_filename": "10.1016_j.ensm.2025.104760.pdf",
+  "json_filename": "10.1016_j.ensm.2025.104760.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.ensm.2025.104760.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4416665973",
+    "doi": "10.1016/j.ensm.2025.104760",
+    "title": "Low-pressure cycling of lithium metal anodes with argyrodite solid-state electrolytes enabled by an Sb-based interfacial layer",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2025-11-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.804886,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Jaka Šivavec",
+    "authors_display": "Jaka Šivavec; Matthias Klimpel; Julian F. Baumgärtner; Huanyu Zhang; Beyzanur Erdivan; Roland Widmer; Maksym V. Kovalenko; Kostiantyn V. Kravchyk",
+    "authors": [
+      {
+        "display_name": "Jaka Šivavec",
+        "id": "https://openalex.org/A5114689872",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Matthias Klimpel",
+        "id": "https://openalex.org/A5015199024",
+        "orcid": "https://orcid.org/0000-0002-2775-2371",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Julian F. Baumgärtner",
+        "id": "https://openalex.org/A5050858878",
+        "orcid": "https://orcid.org/0000-0003-3287-0775",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Huanyu Zhang",
+        "id": "https://openalex.org/A5101468622",
+        "orcid": "https://orcid.org/0000-0001-7337-0748",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Beyzanur Erdivan",
+        "id": "https://openalex.org/A5120428105",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Roland Widmer",
+        "id": "https://openalex.org/A5082997521",
+        "orcid": "https://orcid.org/0000-0002-9226-3136",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maksym V. Kovalenko",
+        "id": "https://openalex.org/A5034871143",
+        "orcid": "https://orcid.org/0000-0002-6396-8938",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kostiantyn V. Kravchyk",
+        "id": "https://openalex.org/A5071297486",
+        "orcid": "https://orcid.org/0000-0001-6149-193X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4416665973",
+    "doi": "10.1016/j.ensm.2025.104760",
+    "title": "Low-pressure cycling of lithium metal anodes with argyrodite solid-state electrolytes enabled by an Sb-based interfacial layer",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2025-11-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.804886,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Jaka Šivavec",
+    "authors_display": "Jaka Šivavec; Matthias Klimpel; Julian F. Baumgärtner; Huanyu Zhang; Beyzanur Erdivan; Roland Widmer; Maksym V. Kovalenko; Kostiantyn V. Kravchyk",
+    "authors_json": "[{\"display_name\": \"Jaka Šivavec\", \"id\": \"https://openalex.org/A5114689872\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Matthias Klimpel\", \"id\": \"https://openalex.org/A5015199024\", \"orcid\": \"https://orcid.org/0000-0002-2775-2371\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Julian F. Baumgärtner\", \"id\": \"https://openalex.org/A5050858878\", \"orcid\": \"https://orcid.org/0000-0003-3287-0775\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Huanyu Zhang\", \"id\": \"https://openalex.org/A5101468622\", \"orcid\": \"https://orcid.org/0000-0001-7337-0748\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Beyzanur Erdivan\", \"id\": \"https://openalex.org/A5120428105\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Roland Widmer\", \"id\": \"https://openalex.org/A5082997521\", \"orcid\": \"https://orcid.org/0000-0002-9226-3136\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maksym V. Kovalenko\", \"id\": \"https://openalex.org/A5034871143\", \"orcid\": \"https://orcid.org/0000-0002-6396-8938\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kostiantyn V. Kravchyk\", \"id\": \"https://openalex.org/A5071297486\", \"orcid\": \"https://orcid.org/0000-0001-6149-193X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2405829725007585?via%3Dihub",
+    "landing_title": "Low-pressure cycling of lithium metal anodes with argyrodite solid-state electrolytes enabled by an Sb-based interfacial layer - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773308635423,
+    "actual_start_ms": 1773308635423,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.759
+  }
+}

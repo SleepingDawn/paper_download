@@ -1,0 +1,89 @@
+{
+  "doi": "10.1007/s12206-023-0731-z",
+  "pdf_filename": "10.1007_s12206-023-0731-z.pdf",
+  "json_filename": "10.1007_s12206-023-0731-z.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s12206-023-0731-z.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4385478216",
+    "doi": "10.1007/s12206-023-0731-z",
+    "title": "Improving the energy density of all-solid-state batteries by maximizing the contact area between the solid electrolyte and electrode, and stress issues",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Journal of Mechanical Science and Technology",
+      "id": "https://openalex.org/S11422300",
+      "type": "journal",
+      "issn_l": "1738-494X",
+      "issn": [
+        "1738-494X",
+        "1976-3824"
+      ]
+    },
+    "publication_date": "2023-08-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.7447727,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Rongzhen Zheng",
+    "authors_display": "Rongzhen Zheng; Cheol Kim",
+    "authors": [
+      {
+        "display_name": "Rongzhen Zheng",
+        "id": "https://openalex.org/A5026082249",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cheol Kim",
+        "id": "https://openalex.org/A5101947408",
+        "orcid": "https://orcid.org/0000-0003-1160-5585",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4385478216",
+    "doi": "10.1007/s12206-023-0731-z",
+    "title": "Improving the energy density of all-solid-state batteries by maximizing the contact area between the solid electrolyte and electrode, and stress issues",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Journal of Mechanical Science and Technology",
+    "journal_id": "https://openalex.org/S11422300",
+    "journal_type": "journal",
+    "journal_issn_l": "1738-494X",
+    "journal_issn_json": "[\"1738-494X\", \"1976-3824\"]",
+    "publication_date": "2023-08-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.7447727,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Rongzhen Zheng",
+    "authors_display": "Rongzhen Zheng; Cheol Kim",
+    "authors_json": "[{\"display_name\": \"Rongzhen Zheng\", \"id\": \"https://openalex.org/A5026082249\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Cheol Kim\", \"id\": \"https://openalex.org/A5101947408\", \"orcid\": \"https://orcid.org/0000-0003-1160-5585\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://link.springer.com/article/10.1007/s12206-023-0731-z",
+    "landing_title": "Improving the energy density of all-solid-state batteries by maximizing the contact area between the solid electrolyte and electrode, and stress issues | Journal of Mechanical Science and Technology | Springer Nature Link",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1007_s12206-023-0731-z.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773309240177,
+    "actual_start_ms": 1773309240438,
+    "pacing_wait_ms": 261,
+    "pacing_jitter_sec": 0.922
+  }
+}

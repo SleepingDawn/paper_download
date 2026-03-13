@@ -1,0 +1,135 @@
+{
+  "doi": "10.1021/acs.chemmater.5c00125.s001",
+  "pdf_filename": "10.1021_acs.chemmater.5c00125.s001.pdf",
+  "json_filename": "10.1021_acs.chemmater.5c00125.s001.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.chemmater.5c00125.s001.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7111358783",
+    "doi": "10.1021/acs.chemmater.5c00125.s001",
+    "title": "Moisture-StableArgyrodites with High Ionic Conductivityvia Crystal Structure Engineering: Li<sub>6+<i>x</i></sub>M<sub><i>x</i></sub>As<sub>1–<i>x</i></sub>S<sub>5</sub>I (M = Ge, Sn)",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": {
+      "name": "Figshare",
+      "id": "https://openalex.org/S4377196282",
+      "type": "repository",
+      "issn_l": null,
+      "issn": []
+    },
+    "publication_date": "2025-05-15",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.54785941,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Jihun Roh (15411343)",
+    "authors_display": "Jihun Roh (15411343); Joowon Kim (2813560); Hyungjin Lee (1611301); Namgyu Do (17024270); Jeyne Lyoo (9624102); Alicia María Manjón-Sanz (13283350); Ginga Kitahara (21366868); Shuki Torii (1616257); Seung-Tae Hong (2442292)",
+    "authors": [
+      {
+        "display_name": "Jihun Roh (15411343)",
+        "id": null,
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Joowon Kim (2813560)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyungjin Lee (1611301)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Namgyu Do (17024270)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeyne Lyoo (9624102)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alicia María Manjón-Sanz (13283350)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ginga Kitahara (21366868)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuki Torii (1616257)",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung-Tae Hong (2442292)",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7111358783",
+    "doi": "10.1021/acs.chemmater.5c00125.s001",
+    "title": "Moisture-StableArgyrodites with High Ionic Conductivityvia Crystal Structure Engineering: Li<sub>6+<i>x</i></sub>M<sub><i>x</i></sub>As<sub>1–<i>x</i></sub>S<sub>5</sub>I (M = Ge, Sn)",
+    "publisher": "Figshare (United Kingdom)",
+    "journal": "Figshare",
+    "journal_id": "https://openalex.org/S4377196282",
+    "journal_type": "repository",
+    "journal_issn_l": null,
+    "journal_issn_json": "[]",
+    "publication_date": "2025-05-15",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.54785941,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Jihun Roh (15411343)",
+    "authors_display": "Jihun Roh (15411343); Joowon Kim (2813560); Hyungjin Lee (1611301); Namgyu Do (17024270); Jeyne Lyoo (9624102); Alicia María Manjón-Sanz (13283350); Ginga Kitahara (21366868); Shuki Torii (1616257); Seung-Tae Hong (2442292)",
+    "authors_json": "[{\"display_name\": \"Jihun Roh (15411343)\", \"id\": null, \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Joowon Kim (2813560)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyungjin Lee (1611301)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Namgyu Do (17024270)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeyne Lyoo (9624102)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alicia María Manjón-Sanz (13283350)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ginga Kitahara (21366868)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuki Torii (1616257)\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seung-Tae Hong (2442292)\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "direct_pdf_handoff",
+    "landing_url": "https://doi.org/10.1021/acs.chemmater.5c00125.s001",
+    "landing_title": "새 탭",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acs.chemmater.5c00125.s001.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773310184515,
+    "actual_start_ms": 1773310186062,
+    "pacing_wait_ms": 1547,
+    "pacing_jitter_sec": 0.954
+  }
+}

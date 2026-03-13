@@ -1,0 +1,123 @@
+{
+  "doi": "10.1002/batt.202400731",
+  "pdf_filename": "10.1002_batt.202400731.pdf",
+  "json_filename": "10.1002_batt.202400731.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_batt.202400731.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4406055612",
+    "doi": "10.1002/batt.202400731",
+    "title": "On the Feasibility of Pairing Pyrochlore Iron(III) Hydroxy Fluoride Cathode with Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Solid‐State Electrolyte for Low‐Cost All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Batteries & Supercaps",
+      "id": "https://openalex.org/S4210241147",
+      "type": "journal",
+      "issn_l": "2566-6223",
+      "issn": [
+        "2566-6223"
+      ]
+    },
+    "publication_date": "2025-01-04",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.89888226,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/batt.202400731",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Jaka Šivavec",
+    "authors_display": "Jaka Šivavec; Julian F. Baumgärtner; Dragos Stoian; Matthias Klimpel; Wouter van Beek; Maksym V. Kovalenko; Kostiantyn V. Kravchyk",
+    "authors": [
+      {
+        "display_name": "Jaka Šivavec",
+        "id": "https://openalex.org/A5114689872",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Julian F. Baumgärtner",
+        "id": "https://openalex.org/A5050858878",
+        "orcid": "https://orcid.org/0000-0003-3287-0775",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dragos Stoian",
+        "id": "https://openalex.org/A5026194866",
+        "orcid": "https://orcid.org/0000-0002-2436-6483",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Matthias Klimpel",
+        "id": "https://openalex.org/A5015199024",
+        "orcid": "https://orcid.org/0000-0002-2775-2371",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wouter van Beek",
+        "id": "https://openalex.org/A5001599602",
+        "orcid": "https://orcid.org/0000-0003-0250-9655",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maksym V. Kovalenko",
+        "id": "https://openalex.org/A5034871143",
+        "orcid": "https://orcid.org/0000-0002-6396-8938",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Kostiantyn V. Kravchyk",
+        "id": "https://openalex.org/A5071297486",
+        "orcid": "https://orcid.org/0000-0001-6149-193X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4406055612",
+    "doi": "10.1002/batt.202400731",
+    "title": "On the Feasibility of Pairing Pyrochlore Iron(III) Hydroxy Fluoride Cathode with Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Solid‐State Electrolyte for Low‐Cost All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": "Batteries & Supercaps",
+    "journal_id": "https://openalex.org/S4210241147",
+    "journal_type": "journal",
+    "journal_issn_l": "2566-6223",
+    "journal_issn_json": "[\"2566-6223\"]",
+    "publication_date": "2025-01-04",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.89888226,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/batt.202400731",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Jaka Šivavec",
+    "authors_display": "Jaka Šivavec; Julian F. Baumgärtner; Dragos Stoian; Matthias Klimpel; Wouter van Beek; Maksym V. Kovalenko; Kostiantyn V. Kravchyk",
+    "authors_json": "[{\"display_name\": \"Jaka Šivavec\", \"id\": \"https://openalex.org/A5114689872\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Julian F. Baumgärtner\", \"id\": \"https://openalex.org/A5050858878\", \"orcid\": \"https://orcid.org/0000-0003-3287-0775\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dragos Stoian\", \"id\": \"https://openalex.org/A5026194866\", \"orcid\": \"https://orcid.org/0000-0002-2436-6483\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Matthias Klimpel\", \"id\": \"https://openalex.org/A5015199024\", \"orcid\": \"https://orcid.org/0000-0002-2775-2371\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wouter van Beek\", \"id\": \"https://openalex.org/A5001599602\", \"orcid\": \"https://orcid.org/0000-0003-0250-9655\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maksym V. Kovalenko\", \"id\": \"https://openalex.org/A5034871143\", \"orcid\": \"https://orcid.org/0000-0002-6396-8938\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Kostiantyn V. Kravchyk\", \"id\": \"https://openalex.org/A5071297486\", \"orcid\": \"https://orcid.org/0000-0001-6149-193X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773307337085,
+    "actual_start_ms": 1773307337086,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.764
+  }
+}

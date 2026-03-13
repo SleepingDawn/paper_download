@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.joule.2024.07.006",
+  "pdf_filename": "10.1016_j.joule.2024.07.006.pdf",
+  "json_filename": "10.1016_j.joule.2024.07.006.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.joule.2024.07.006.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4401512079",
+    "doi": "10.1016/j.joule.2024.07.006",
+    "title": "Quantifying multiphase SEI growth in sulfide solid electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Joule",
+      "id": "https://openalex.org/S2898305631",
+      "type": "journal",
+      "issn_l": "2542-4351",
+      "issn": [
+        "2542-4351",
+        "2542-4785"
+      ]
+    },
+    "publication_date": "2024-08-12",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 45,
+    "citation_normalized_percentile": 0.98723373,
+    "pdf_url": "http://www.cell.com/article/S2542435124003350/pdf",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Christoph D. Alt",
+    "authors_display": "Christoph D. Alt; Nadia U.C.B. Müller; Luise M. Riegger; Burak Aktekin; Philip Minnmann; Klaus Peppler; Jürgen Janek",
+    "authors": [
+      {
+        "display_name": "Christoph D. Alt",
+        "id": "https://openalex.org/A5111042187",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nadia U.C.B. Müller",
+        "id": "https://openalex.org/A5107952980",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Luise M. Riegger",
+        "id": "https://openalex.org/A5030107416",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Burak Aktekin",
+        "id": "https://openalex.org/A5042507134",
+        "orcid": "https://orcid.org/0000-0002-8659-7519",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Philip Minnmann",
+        "id": "https://openalex.org/A5065526283",
+        "orcid": "https://orcid.org/0000-0002-9646-0487",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Klaus Peppler",
+        "id": "https://openalex.org/A5054593241",
+        "orcid": "https://orcid.org/0000-0002-6174-6645",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4401512079",
+    "doi": "10.1016/j.joule.2024.07.006",
+    "title": "Quantifying multiphase SEI growth in sulfide solid electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": "Joule",
+    "journal_id": "https://openalex.org/S2898305631",
+    "journal_type": "journal",
+    "journal_issn_l": "2542-4351",
+    "journal_issn_json": "[\"2542-4351\", \"2542-4785\"]",
+    "publication_date": "2024-08-12",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 45,
+    "citation_normalized_percentile": 0.98723373,
+    "pdf_url": "http://www.cell.com/article/S2542435124003350/pdf",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Christoph D. Alt",
+    "authors_display": "Christoph D. Alt; Nadia U.C.B. Müller; Luise M. Riegger; Burak Aktekin; Philip Minnmann; Klaus Peppler; Jürgen Janek",
+    "authors_json": "[{\"display_name\": \"Christoph D. Alt\", \"id\": \"https://openalex.org/A5111042187\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Nadia U.C.B. Müller\", \"id\": \"https://openalex.org/A5107952980\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Luise M. Riegger\", \"id\": \"https://openalex.org/A5030107416\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Burak Aktekin\", \"id\": \"https://openalex.org/A5042507134\", \"orcid\": \"https://orcid.org/0000-0002-8659-7519\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Philip Minnmann\", \"id\": \"https://openalex.org/A5065526283\", \"orcid\": \"https://orcid.org/0000-0002-9646-0487\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Klaus Peppler\", \"id\": \"https://openalex.org/A5054593241\", \"orcid\": \"https://orcid.org/0000-0002-6174-6645\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302025730,
+    "actual_start_ms": 1773302032515,
+    "pacing_wait_ms": 6785,
+    "pacing_jitter_sec": 1.285
+  }
+}

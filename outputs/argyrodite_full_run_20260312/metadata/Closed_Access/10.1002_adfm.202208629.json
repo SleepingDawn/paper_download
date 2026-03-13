@@ -1,0 +1,131 @@
+{
+  "doi": "10.1002/adfm.202208629",
+  "pdf_filename": "10.1002_adfm.202208629.pdf",
+  "json_filename": "10.1002_adfm.202208629.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_adfm.202208629.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4295700664",
+    "doi": "10.1002/adfm.202208629",
+    "title": "Highly Reversible Lithium Host Materials for High‐Energy‐Density Anode‐Free Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2022-09-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 81,
+    "citation_normalized_percentile": 0.97802046,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Sung‐Jin Cho",
+    "authors_display": "Sung‐Jin Cho; Dong Yeon Kim; Jungin Lee; Jisu Kang; Hyeongseok Lee; Gahyun Kim; Dong‐Hwa Seo; Soojin Park",
+    "authors": [
+      {
+        "display_name": "Sung‐Jin Cho",
+        "id": "https://openalex.org/A5101979084",
+        "orcid": "https://orcid.org/0000-0002-1741-2031",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong Yeon Kim",
+        "id": "https://openalex.org/A5100667191",
+        "orcid": "https://orcid.org/0000-0001-7798-1108",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jungin Lee",
+        "id": "https://openalex.org/A5004902602",
+        "orcid": "https://orcid.org/0000-0003-0390-119X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jisu Kang",
+        "id": "https://openalex.org/A5079436434",
+        "orcid": "https://orcid.org/0000-0003-3734-1995",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyeongseok Lee",
+        "id": "https://openalex.org/A5004604396",
+        "orcid": "https://orcid.org/0009-0000-7253-3648",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gahyun Kim",
+        "id": "https://openalex.org/A5066469925",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Hwa Seo",
+        "id": "https://openalex.org/A5074384928",
+        "orcid": "https://orcid.org/0000-0002-7200-7186",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Soojin Park",
+        "id": "https://openalex.org/A5100447428",
+        "orcid": "https://orcid.org/0000-0003-3878-6515",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4295700664",
+    "doi": "10.1002/adfm.202208629",
+    "title": "Highly Reversible Lithium Host Materials for High‐Energy‐Density Anode‐Free Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2022-09-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 81,
+    "citation_normalized_percentile": 0.97802046,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Sung‐Jin Cho",
+    "authors_display": "Sung‐Jin Cho; Dong Yeon Kim; Jungin Lee; Jisu Kang; Hyeongseok Lee; Gahyun Kim; Dong‐Hwa Seo; Soojin Park",
+    "authors_json": "[{\"display_name\": \"Sung‐Jin Cho\", \"id\": \"https://openalex.org/A5101979084\", \"orcid\": \"https://orcid.org/0000-0002-1741-2031\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Dong Yeon Kim\", \"id\": \"https://openalex.org/A5100667191\", \"orcid\": \"https://orcid.org/0000-0001-7798-1108\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jungin Lee\", \"id\": \"https://openalex.org/A5004902602\", \"orcid\": \"https://orcid.org/0000-0003-0390-119X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jisu Kang\", \"id\": \"https://openalex.org/A5079436434\", \"orcid\": \"https://orcid.org/0000-0003-3734-1995\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyeongseok Lee\", \"id\": \"https://openalex.org/A5004604396\", \"orcid\": \"https://orcid.org/0009-0000-7253-3648\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gahyun Kim\", \"id\": \"https://openalex.org/A5066469925\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Hwa Seo\", \"id\": \"https://openalex.org/A5074384928\", \"orcid\": \"https://orcid.org/0000-0002-7200-7186\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Soojin Park\", \"id\": \"https://openalex.org/A5100447428\", \"orcid\": \"https://orcid.org/0000-0003-3878-6515\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302835276,
+    "actual_start_ms": 1773302836778,
+    "pacing_wait_ms": 1501,
+    "pacing_jitter_sec": 1.523
+  }
+}

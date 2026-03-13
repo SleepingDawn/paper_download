@@ -1,0 +1,138 @@
+{
+  "doi": "10.1016/j.nanoen.2024.109436",
+  "pdf_filename": "10.1016_j.nanoen.2024.109436.pdf",
+  "json_filename": "10.1016_j.nanoen.2024.109436.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.nanoen.2024.109436.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4392345481",
+    "doi": "10.1016/j.nanoen.2024.109436",
+    "title": "Highly reliable and large-scale simulations of promising argyrodite solid-state electrolytes using a machine-learned moment tensor potential",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Nano Energy",
+      "id": "https://openalex.org/S2497301991",
+      "type": "journal",
+      "issn_l": "2211-2855",
+      "issn": [
+        "2211-2855",
+        "2211-3282"
+      ]
+    },
+    "publication_date": "2024-03-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 20,
+    "citation_normalized_percentile": 0.94966255,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Ji Hoon Kim",
+    "authors_display": "Ji Hoon Kim; Byeongsun Jun; Yong Jun Jang; Sun Ho Choi; Seong Hyeon Choi; Sung Man Cho; Yong-Gu Kim; Byung‐Hyun Kim; Sang Uck Lee",
+    "authors": [
+      {
+        "display_name": "Ji Hoon Kim",
+        "id": "https://openalex.org/A5100410812",
+        "orcid": "https://orcid.org/0000-0003-2012-9904",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byeongsun Jun",
+        "id": "https://openalex.org/A5076863865",
+        "orcid": "https://orcid.org/0000-0003-2127-8565",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong Jun Jang",
+        "id": "https://openalex.org/A5111869307",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sun Ho Choi",
+        "id": "https://openalex.org/A5111131676",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seong Hyeon Choi",
+        "id": "https://openalex.org/A5111052647",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sung Man Cho",
+        "id": "https://openalex.org/A5076442225",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong-Gu Kim",
+        "id": "https://openalex.org/A5048426949",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byung‐Hyun Kim",
+        "id": "https://openalex.org/A5101472216",
+        "orcid": "https://orcid.org/0000-0003-2493-5452",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang Uck Lee",
+        "id": "https://openalex.org/A5083443128",
+        "orcid": "https://orcid.org/0000-0001-9596-2349",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4392345481",
+    "doi": "10.1016/j.nanoen.2024.109436",
+    "title": "Highly reliable and large-scale simulations of promising argyrodite solid-state electrolytes using a machine-learned moment tensor potential",
+    "publisher": "Elsevier BV",
+    "journal": "Nano Energy",
+    "journal_id": "https://openalex.org/S2497301991",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-2855",
+    "journal_issn_json": "[\"2211-2855\", \"2211-3282\"]",
+    "publication_date": "2024-03-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 20,
+    "citation_normalized_percentile": 0.94966255,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Ji Hoon Kim",
+    "authors_display": "Ji Hoon Kim; Byeongsun Jun; Yong Jun Jang; Sun Ho Choi; Seong Hyeon Choi; Sung Man Cho; Yong-Gu Kim; Byung‐Hyun Kim; Sang Uck Lee",
+    "authors_json": "[{\"display_name\": \"Ji Hoon Kim\", \"id\": \"https://openalex.org/A5100410812\", \"orcid\": \"https://orcid.org/0000-0003-2012-9904\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Byeongsun Jun\", \"id\": \"https://openalex.org/A5076863865\", \"orcid\": \"https://orcid.org/0000-0003-2127-8565\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong Jun Jang\", \"id\": \"https://openalex.org/A5111869307\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sun Ho Choi\", \"id\": \"https://openalex.org/A5111131676\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seong Hyeon Choi\", \"id\": \"https://openalex.org/A5111052647\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sung Man Cho\", \"id\": \"https://openalex.org/A5076442225\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong-Gu Kim\", \"id\": \"https://openalex.org/A5048426949\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byung‐Hyun Kim\", \"id\": \"https://openalex.org/A5101472216\", \"orcid\": \"https://orcid.org/0000-0003-2493-5452\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang Uck Lee\", \"id\": \"https://openalex.org/A5083443128\", \"orcid\": \"https://orcid.org/0000-0001-9596-2349\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302679277,
+    "actual_start_ms": 1773302684932,
+    "pacing_wait_ms": 5655,
+    "pacing_jitter_sec": 1.669
+  }
+}

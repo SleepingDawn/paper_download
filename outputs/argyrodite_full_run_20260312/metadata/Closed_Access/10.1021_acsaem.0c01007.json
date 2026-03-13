@@ -1,0 +1,102 @@
+{
+  "doi": "10.1021/acsaem.0c01007",
+  "pdf_filename": "10.1021_acsaem.0c01007.pdf",
+  "json_filename": "10.1021_acsaem.0c01007.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.0c01007.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3036076909",
+    "doi": "10.1021/acsaem.0c01007",
+    "title": "Flow-Oriented Synthesis of Li<sub>2</sub>S and Li<sub>3</sub>PS<sub>4</sub>·3THF: Opening Up a Completely Solvent-Based Solid Electrolyte Value Chain",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2020-06-19",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 27,
+    "citation_normalized_percentile": 0.83864034,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Marc Duchardt",
+    "authors_display": "Marc Duchardt; Mirko Diels; Bernhard Roling; Stefanie Dehnen",
+    "authors": [
+      {
+        "display_name": "Marc Duchardt",
+        "id": "https://openalex.org/A5033769555",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mirko Diels",
+        "id": "https://openalex.org/A5004657817",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bernhard Roling",
+        "id": "https://openalex.org/A5041594139",
+        "orcid": "https://orcid.org/0000-0001-7383-1495",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Stefanie Dehnen",
+        "id": "https://openalex.org/A5076273697",
+        "orcid": "https://orcid.org/0009-0007-0660-2298",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3036076909",
+    "doi": "10.1021/acsaem.0c01007",
+    "title": "Flow-Oriented Synthesis of Li<sub>2</sub>S and Li<sub>3</sub>PS<sub>4</sub>·3THF: Opening Up a Completely Solvent-Based Solid Electrolyte Value Chain",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2020-06-19",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 27,
+    "citation_normalized_percentile": 0.83864034,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Marc Duchardt",
+    "authors_display": "Marc Duchardt; Mirko Diels; Bernhard Roling; Stefanie Dehnen",
+    "authors_json": "[{\"display_name\": \"Marc Duchardt\", \"id\": \"https://openalex.org/A5033769555\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Mirko Diels\", \"id\": \"https://openalex.org/A5004657817\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bernhard Roling\", \"id\": \"https://openalex.org/A5041594139\", \"orcid\": \"https://orcid.org/0000-0001-7383-1495\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Stefanie Dehnen\", \"id\": \"https://openalex.org/A5076273697\", \"orcid\": \"https://orcid.org/0009-0007-0660-2298\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302806168,
+    "actual_start_ms": 1773302809439,
+    "pacing_wait_ms": 3270,
+    "pacing_jitter_sec": 1.755
+  }
+}

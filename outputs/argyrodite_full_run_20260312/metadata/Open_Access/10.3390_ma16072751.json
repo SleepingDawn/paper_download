@@ -1,0 +1,102 @@
+{
+  "doi": "10.3390/ma16072751",
+  "pdf_filename": "10.3390_ma16072751.pdf",
+  "json_filename": "10.3390_ma16072751.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_ma16072751.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4361276229",
+    "doi": "10.3390/ma16072751",
+    "title": "Sn-Substituted Argyrodite Li6PS5Cl Solid Electrolyte for Improving Interfacial and Atmospheric Stability",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Materials",
+      "id": "https://openalex.org/S18714766",
+      "type": "journal",
+      "issn_l": "1996-1944",
+      "issn": [
+        "1996-1944"
+      ]
+    },
+    "publication_date": "2023-03-29",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.7992838,
+    "pdf_url": "https://www.mdpi.com/1996-1944/16/7/2751/pdf?version=1680098320",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Seulgi Kang",
+    "authors_display": "Seulgi Kang; Dae-Hyun Kim; Bo-Joong Kim; Chang‐Bun Yoon",
+    "authors": [
+      {
+        "display_name": "Seulgi Kang",
+        "id": "https://openalex.org/A5102885569",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dae-Hyun Kim",
+        "id": "https://openalex.org/A5100733975",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bo-Joong Kim",
+        "id": "https://openalex.org/A5036571042",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chang‐Bun Yoon",
+        "id": "https://openalex.org/A5034229485",
+        "orcid": "https://orcid.org/0000-0002-9640-0804",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4361276229",
+    "doi": "10.3390/ma16072751",
+    "title": "Sn-Substituted Argyrodite Li6PS5Cl Solid Electrolyte for Improving Interfacial and Atmospheric Stability",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Materials",
+    "journal_id": "https://openalex.org/S18714766",
+    "journal_type": "journal",
+    "journal_issn_l": "1996-1944",
+    "journal_issn_json": "[\"1996-1944\"]",
+    "publication_date": "2023-03-29",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.7992838,
+    "pdf_url": "https://www.mdpi.com/1996-1944/16/7/2751/pdf?version=1680098320",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Seulgi Kang",
+    "authors_display": "Seulgi Kang; Dae-Hyun Kim; Bo-Joong Kim; Chang‐Bun Yoon",
+    "authors_json": "[{\"display_name\": \"Seulgi Kang\", \"id\": \"https://openalex.org/A5102885569\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Dae-Hyun Kim\", \"id\": \"https://openalex.org/A5100733975\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bo-Joong Kim\", \"id\": \"https://openalex.org/A5036571042\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chang‐Bun Yoon\", \"id\": \"https://openalex.org/A5034229485\", \"orcid\": \"https://orcid.org/0000-0002-9640-0804\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773309467288,
+    "actual_start_ms": 1773309468789,
+    "pacing_wait_ms": 1501,
+    "pacing_jitter_sec": 1.484
+  }
+}

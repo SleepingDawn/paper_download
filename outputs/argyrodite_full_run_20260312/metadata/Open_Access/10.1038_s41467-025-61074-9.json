@@ -1,0 +1,165 @@
+{
+  "doi": "10.1038/s41467-025-61074-9",
+  "pdf_filename": "10.1038_s41467-025-61074-9.pdf",
+  "json_filename": "10.1038_s41467-025-61074-9.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s41467-025-61074-9.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4411882161",
+    "doi": "10.1038/s41467-025-61074-9",
+    "title": "Silver exsolution from Li-argyrodite electrolytes for initially anode-free all-solid-state batteries",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Communications",
+      "id": "https://openalex.org/S64187185",
+      "type": "journal",
+      "issn_l": "2041-1723",
+      "issn": [
+        "2041-1723"
+      ]
+    },
+    "publication_date": "2025-07-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.97240266,
+    "pdf_url": "https://www.nature.com/articles/s41467-025-61074-9.pdf",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Seung Ho Choi",
+    "authors_display": "Seung Ho Choi; Chang Hoon Baek; Jihoon Oh; Geung-Jong Lee; Minsoo Kim; Hyesu Lee; Dong‐Joo Yoo; Yoon Seok Jung; Kyung-Su Kim; Ji‐Sang Yu; Woosuk Cho; Haesun Park; Jang Wook Choi",
+    "authors": [
+      {
+        "display_name": "Seung Ho Choi",
+        "id": "https://openalex.org/A5044412412",
+        "orcid": "https://orcid.org/0000-0002-3114-0095",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chang Hoon Baek",
+        "id": "https://openalex.org/A5112237554",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jihoon Oh",
+        "id": "https://openalex.org/A5067287907",
+        "orcid": "https://orcid.org/0000-0002-3603-6975",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Geung-Jong Lee",
+        "id": "https://openalex.org/A5031398027",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Minsoo Kim",
+        "id": "https://openalex.org/A5100362653",
+        "orcid": "https://orcid.org/0000-0001-7705-1381",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyesu Lee",
+        "id": "https://openalex.org/A5049690662",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Joo Yoo",
+        "id": "https://openalex.org/A5022475364",
+        "orcid": "https://orcid.org/0000-0001-5656-8613",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoon Seok Jung",
+        "id": "https://openalex.org/A5045334638",
+        "orcid": "https://orcid.org/0000-0003-0357-9508",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung-Su Kim",
+        "id": "https://openalex.org/A5100374557",
+        "orcid": "https://orcid.org/0009-0005-3151-4113",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji‐Sang Yu",
+        "id": "https://openalex.org/A5101630653",
+        "orcid": "https://orcid.org/0000-0001-9759-1297",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Woosuk Cho",
+        "id": "https://openalex.org/A5065789071",
+        "orcid": "https://orcid.org/0000-0003-1715-325X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haesun Park",
+        "id": "https://openalex.org/A5048375813",
+        "orcid": "https://orcid.org/0000-0001-6266-8151",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jang Wook Choi",
+        "id": "https://openalex.org/A5091329617",
+        "orcid": "https://orcid.org/0000-0001-8783-0901",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4411882161",
+    "doi": "10.1038/s41467-025-61074-9",
+    "title": "Silver exsolution from Li-argyrodite electrolytes for initially anode-free all-solid-state batteries",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Communications",
+    "journal_id": "https://openalex.org/S64187185",
+    "journal_type": "journal",
+    "journal_issn_l": "2041-1723",
+    "journal_issn_json": "[\"2041-1723\"]",
+    "publication_date": "2025-07-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.97240266,
+    "pdf_url": "https://www.nature.com/articles/s41467-025-61074-9.pdf",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Seung Ho Choi",
+    "authors_display": "Seung Ho Choi; Chang Hoon Baek; Jihoon Oh; Geung-Jong Lee; Minsoo Kim; Hyesu Lee; Dong‐Joo Yoo; Yoon Seok Jung; Kyung-Su Kim; Ji‐Sang Yu; Woosuk Cho; Haesun Park; Jang Wook Choi",
+    "authors_json": "[{\"display_name\": \"Seung Ho Choi\", \"id\": \"https://openalex.org/A5044412412\", \"orcid\": \"https://orcid.org/0000-0002-3114-0095\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Chang Hoon Baek\", \"id\": \"https://openalex.org/A5112237554\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jihoon Oh\", \"id\": \"https://openalex.org/A5067287907\", \"orcid\": \"https://orcid.org/0000-0002-3603-6975\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Geung-Jong Lee\", \"id\": \"https://openalex.org/A5031398027\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Minsoo Kim\", \"id\": \"https://openalex.org/A5100362653\", \"orcid\": \"https://orcid.org/0000-0001-7705-1381\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyesu Lee\", \"id\": \"https://openalex.org/A5049690662\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Joo Yoo\", \"id\": \"https://openalex.org/A5022475364\", \"orcid\": \"https://orcid.org/0000-0001-5656-8613\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoon Seok Jung\", \"id\": \"https://openalex.org/A5045334638\", \"orcid\": \"https://orcid.org/0000-0003-0357-9508\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung-Su Kim\", \"id\": \"https://openalex.org/A5100374557\", \"orcid\": \"https://orcid.org/0009-0005-3151-4113\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ji‐Sang Yu\", \"id\": \"https://openalex.org/A5101630653\", \"orcid\": \"https://orcid.org/0000-0001-9759-1297\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Woosuk Cho\", \"id\": \"https://openalex.org/A5065789071\", \"orcid\": \"https://orcid.org/0000-0003-1715-325X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haesun Park\", \"id\": \"https://openalex.org/A5048375813\", \"orcid\": \"https://orcid.org/0000-0001-6266-8151\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jang Wook Choi\", \"id\": \"https://openalex.org/A5091329617\", \"orcid\": \"https://orcid.org/0000-0001-8783-0901\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773309122497,
+    "actual_start_ms": 1773309123997,
+    "pacing_wait_ms": 1500,
+    "pacing_jitter_sec": 1.786
+  }
+}

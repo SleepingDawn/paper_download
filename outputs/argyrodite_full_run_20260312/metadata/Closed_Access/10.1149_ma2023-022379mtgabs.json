@@ -1,0 +1,161 @@
+{
+  "doi": "10.1149/ma2023-022379mtgabs",
+  "pdf_filename": "10.1149_ma2023-022379mtgabs.pdf",
+  "json_filename": "10.1149_ma2023-022379mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2023-022379mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4391662649",
+    "doi": "10.1149/ma2023-022379mtgabs",
+    "title": "(Invited) Chemomechanical Phenomena during Lithium Metal Plating",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2023-12-22",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.13697202,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Brian W. Sheldon",
+    "authors_display": "Brian W. Sheldon; Jung Hwi Cho; Xingcheng Xiao; Huajian Gao; Christos E. Athanasiou; Xing Liu; Cole D. Fincher; W. Craig Carter; Yet‐Ming Chiang; Kunjoong Kim; Jennifer L. M. Rupp; Changmin Shi",
+    "authors": [
+      {
+        "display_name": "Brian W. Sheldon",
+        "id": "https://openalex.org/A5085691864",
+        "orcid": "https://orcid.org/0000-0002-9593-891X",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jung Hwi Cho",
+        "id": "https://openalex.org/A5084250694",
+        "orcid": "https://orcid.org/0000-0002-4376-441X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xingcheng Xiao",
+        "id": "https://openalex.org/A5040210986",
+        "orcid": "https://orcid.org/0000-0002-0138-059X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Huajian Gao",
+        "id": "https://openalex.org/A5001073146",
+        "orcid": "https://orcid.org/0000-0002-8656-846X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Christos E. Athanasiou",
+        "id": "https://openalex.org/A5087518328",
+        "orcid": "https://orcid.org/0000-0002-0812-4062",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xing Liu",
+        "id": "https://openalex.org/A5100646456",
+        "orcid": "https://orcid.org/0000-0002-8448-9696",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cole D. Fincher",
+        "id": "https://openalex.org/A5039719377",
+        "orcid": "https://orcid.org/0000-0002-8009-7484",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "W. Craig Carter",
+        "id": "https://openalex.org/A5089998070",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yet‐Ming Chiang",
+        "id": "https://openalex.org/A5060617433",
+        "orcid": "https://orcid.org/0000-0002-0833-7674",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kunjoong Kim",
+        "id": "https://openalex.org/A5059425518",
+        "orcid": "https://orcid.org/0000-0002-5223-9553",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jennifer L. M. Rupp",
+        "id": "https://openalex.org/A5037550650",
+        "orcid": "https://orcid.org/0000-0001-7160-0108",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Changmin Shi",
+        "id": "https://openalex.org/A5037928170",
+        "orcid": "https://orcid.org/0000-0003-1978-7352",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4391662649",
+    "doi": "10.1149/ma2023-022379mtgabs",
+    "title": "(Invited) Chemomechanical Phenomena during Lithium Metal Plating",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2023-12-22",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.13697202,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Brian W. Sheldon",
+    "authors_display": "Brian W. Sheldon; Jung Hwi Cho; Xingcheng Xiao; Huajian Gao; Christos E. Athanasiou; Xing Liu; Cole D. Fincher; W. Craig Carter; Yet‐Ming Chiang; Kunjoong Kim; Jennifer L. M. Rupp; Changmin Shi",
+    "authors_json": "[{\"display_name\": \"Brian W. Sheldon\", \"id\": \"https://openalex.org/A5085691864\", \"orcid\": \"https://orcid.org/0000-0002-9593-891X\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Jung Hwi Cho\", \"id\": \"https://openalex.org/A5084250694\", \"orcid\": \"https://orcid.org/0000-0002-4376-441X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xingcheng Xiao\", \"id\": \"https://openalex.org/A5040210986\", \"orcid\": \"https://orcid.org/0000-0002-0138-059X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Huajian Gao\", \"id\": \"https://openalex.org/A5001073146\", \"orcid\": \"https://orcid.org/0000-0002-8656-846X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Christos E. Athanasiou\", \"id\": \"https://openalex.org/A5087518328\", \"orcid\": \"https://orcid.org/0000-0002-0812-4062\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xing Liu\", \"id\": \"https://openalex.org/A5100646456\", \"orcid\": \"https://orcid.org/0000-0002-8448-9696\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cole D. Fincher\", \"id\": \"https://openalex.org/A5039719377\", \"orcid\": \"https://orcid.org/0000-0002-8009-7484\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"W. Craig Carter\", \"id\": \"https://openalex.org/A5089998070\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yet‐Ming Chiang\", \"id\": \"https://openalex.org/A5060617433\", \"orcid\": \"https://orcid.org/0000-0002-0833-7674\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kunjoong Kim\", \"id\": \"https://openalex.org/A5059425518\", \"orcid\": \"https://orcid.org/0000-0002-5223-9553\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jennifer L. M. Rupp\", \"id\": \"https://openalex.org/A5037550650\", \"orcid\": \"https://orcid.org/0000-0001-7160-0108\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Changmin Shi\", \"id\": \"https://openalex.org/A5037928170\", \"orcid\": \"https://orcid.org/0000-0003-1978-7352\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773305175761,
+    "actual_start_ms": 1773305177136,
+    "pacing_wait_ms": 1375,
+    "pacing_jitter_sec": 1.498
+  }
+}

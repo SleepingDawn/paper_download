@@ -1,0 +1,131 @@
+{
+  "doi": "10.1021/acs.jpcc.2c05336",
+  "pdf_filename": "10.1021_acs.jpcc.2c05336.pdf",
+  "json_filename": "10.1021_acs.jpcc.2c05336.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.jpcc.2c05336.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4302742826",
+    "doi": "10.1021/acs.jpcc.2c05336",
+    "title": "Interfacial Stability of Layered LiNi<sub><i>x</i></sub>Mn<sub><i>y</i></sub>Co<sub>1–<i>x</i>–<i>y</i></sub>O<sub>2</sub> Cathodes with Sulfide Solid Electrolytes in All-Solid-State Rechargeable Lithium-Ion Batteries from First-Principles Calculations",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "The Journal of Physical Chemistry C",
+      "id": "https://openalex.org/S95739953",
+      "type": "journal",
+      "issn_l": "1932-7447",
+      "issn": [
+        "1932-7447",
+        "1932-7455"
+      ]
+    },
+    "publication_date": "2022-10-06",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.82627365,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.jpcc.2c05336",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Hideyuki Komatsu",
+    "authors_display": "Hideyuki Komatsu; Swastika Banerjee; Manas Likhit Holekevi Chandrappa; Ji Qi; Balachandran Radhakrishnan; Shigemasa Kuwata; Kazuyuki Sakamoto; Shyue Ping Ong",
+    "authors": [
+      {
+        "display_name": "Hideyuki Komatsu",
+        "id": "https://openalex.org/A5090949699",
+        "orcid": "https://orcid.org/0000-0002-3622-7296",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Swastika Banerjee",
+        "id": "https://openalex.org/A5101807680",
+        "orcid": "https://orcid.org/0000-0001-8202-4628",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Manas Likhit Holekevi Chandrappa",
+        "id": "https://openalex.org/A5012916824",
+        "orcid": "https://orcid.org/0000-0002-7397-3087",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji Qi",
+        "id": "https://openalex.org/A5080546669",
+        "orcid": "https://orcid.org/0000-0001-5808-9931",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Balachandran Radhakrishnan",
+        "id": "https://openalex.org/A5043286827",
+        "orcid": "https://orcid.org/0000-0002-9823-7297",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shigemasa Kuwata",
+        "id": "https://openalex.org/A5070183804",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kazuyuki Sakamoto",
+        "id": "https://openalex.org/A5090387057",
+        "orcid": "https://orcid.org/0000-0001-9507-6435",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shyue Ping Ong",
+        "id": "https://openalex.org/A5002723657",
+        "orcid": "https://orcid.org/0000-0001-5726-2587",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4302742826",
+    "doi": "10.1021/acs.jpcc.2c05336",
+    "title": "Interfacial Stability of Layered LiNi<sub><i>x</i></sub>Mn<sub><i>y</i></sub>Co<sub>1–<i>x</i>–<i>y</i></sub>O<sub>2</sub> Cathodes with Sulfide Solid Electrolytes in All-Solid-State Rechargeable Lithium-Ion Batteries from First-Principles Calculations",
+    "publisher": "American Chemical Society",
+    "journal": "The Journal of Physical Chemistry C",
+    "journal_id": "https://openalex.org/S95739953",
+    "journal_type": "journal",
+    "journal_issn_l": "1932-7447",
+    "journal_issn_json": "[\"1932-7447\", \"1932-7455\"]",
+    "publication_date": "2022-10-06",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.82627365,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.jpcc.2c05336",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Hideyuki Komatsu",
+    "authors_display": "Hideyuki Komatsu; Swastika Banerjee; Manas Likhit Holekevi Chandrappa; Ji Qi; Balachandran Radhakrishnan; Shigemasa Kuwata; Kazuyuki Sakamoto; Shyue Ping Ong",
+    "authors_json": "[{\"display_name\": \"Hideyuki Komatsu\", \"id\": \"https://openalex.org/A5090949699\", \"orcid\": \"https://orcid.org/0000-0002-3622-7296\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Swastika Banerjee\", \"id\": \"https://openalex.org/A5101807680\", \"orcid\": \"https://orcid.org/0000-0001-8202-4628\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Manas Likhit Holekevi Chandrappa\", \"id\": \"https://openalex.org/A5012916824\", \"orcid\": \"https://orcid.org/0000-0002-7397-3087\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ji Qi\", \"id\": \"https://openalex.org/A5080546669\", \"orcid\": \"https://orcid.org/0000-0001-5808-9931\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Balachandran Radhakrishnan\", \"id\": \"https://openalex.org/A5043286827\", \"orcid\": \"https://orcid.org/0000-0002-9823-7297\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shigemasa Kuwata\", \"id\": \"https://openalex.org/A5070183804\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kazuyuki Sakamoto\", \"id\": \"https://openalex.org/A5090387057\", \"orcid\": \"https://orcid.org/0000-0001-9507-6435\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shyue Ping Ong\", \"id\": \"https://openalex.org/A5002723657\", \"orcid\": \"https://orcid.org/0000-0001-5726-2587\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302890963,
+    "actual_start_ms": 1773302893874,
+    "pacing_wait_ms": 2910,
+    "pacing_jitter_sec": 0.945
+  }
+}

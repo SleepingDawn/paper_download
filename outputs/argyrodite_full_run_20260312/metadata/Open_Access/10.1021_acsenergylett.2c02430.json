@@ -1,0 +1,193 @@
+{
+  "doi": "10.1021/acsenergylett.2c02430",
+  "pdf_filename": "10.1021_acsenergylett.2c02430.pdf",
+  "json_filename": "10.1021_acsenergylett.2c02430.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsenergylett.2c02430.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4317862990",
+    "doi": "10.1021/acsenergylett.2c02430",
+    "title": "High-Spatial-Resolution Quantitative Chemomechanical Mapping of Organic Composite Cathodes for Sulfide-Based Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2023-01-24",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.91264041,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 17,
+    "first_author": "Qing Ai",
+    "authors_display": "Qing Ai; Zhaoyang Chen; Boyu Zhang; Fan Wang; Tianshu Zhai; Yifeng Liu; Yifan Zhu; Tanguy Terlier; Qiyi Fang; Yanliang Liang; Lihong Zhao; Chaoshan Wu; Hua Guo; Zheng Fan; Ming Tang; Yan Yao; Jun Lou",
+    "authors": [
+      {
+        "display_name": "Qing Ai",
+        "id": "https://openalex.org/A5059667364",
+        "orcid": "https://orcid.org/0000-0002-6086-5431",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhaoyang Chen",
+        "id": "https://openalex.org/A5100669603",
+        "orcid": "https://orcid.org/0000-0003-1580-0185",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Boyu Zhang",
+        "id": "https://openalex.org/A5100714037",
+        "orcid": "https://orcid.org/0000-0002-7027-4942",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fan Wang",
+        "id": "https://openalex.org/A5100380562",
+        "orcid": "https://orcid.org/0000-0003-2482-4613",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tianshu Zhai",
+        "id": "https://openalex.org/A5112670354",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yifeng Liu",
+        "id": "https://openalex.org/A5100782689",
+        "orcid": "https://orcid.org/0009-0003-9435-1441",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yifan Zhu",
+        "id": "https://openalex.org/A5024456829",
+        "orcid": "https://orcid.org/0000-0002-9816-5764",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tanguy Terlier",
+        "id": "https://openalex.org/A5007125686",
+        "orcid": "https://orcid.org/0000-0002-4092-0771",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qiyi Fang",
+        "id": "https://openalex.org/A5088848610",
+        "orcid": "https://orcid.org/0000-0001-8435-636X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanliang Liang",
+        "id": "https://openalex.org/A5043474041",
+        "orcid": "https://orcid.org/0000-0001-6771-5172",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lihong Zhao",
+        "id": "https://openalex.org/A5010176826",
+        "orcid": "https://orcid.org/0000-0003-2308-1053",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chaoshan Wu",
+        "id": "https://openalex.org/A5010169114",
+        "orcid": "https://orcid.org/0000-0003-3458-8300",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hua Guo",
+        "id": "https://openalex.org/A5101659881",
+        "orcid": "https://orcid.org/0000-0002-7582-4229",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zheng Fan",
+        "id": "https://openalex.org/A5050996662",
+        "orcid": "https://orcid.org/0000-0001-8137-516X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ming Tang",
+        "id": "https://openalex.org/A5077500012",
+        "orcid": "https://orcid.org/0000-0001-7194-3485",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yan Yao",
+        "id": "https://openalex.org/A5079917819",
+        "orcid": "https://orcid.org/0000-0002-8785-5030",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jun Lou",
+        "id": "https://openalex.org/A5018666422",
+        "orcid": "https://orcid.org/0000-0002-4351-9561",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4317862990",
+    "doi": "10.1021/acsenergylett.2c02430",
+    "title": "High-Spatial-Resolution Quantitative Chemomechanical Mapping of Organic Composite Cathodes for Sulfide-Based Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2023-01-24",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.91264041,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 17,
+    "first_author": "Qing Ai",
+    "authors_display": "Qing Ai; Zhaoyang Chen; Boyu Zhang; Fan Wang; Tianshu Zhai; Yifeng Liu; Yifan Zhu; Tanguy Terlier; Qiyi Fang; Yanliang Liang; Lihong Zhao; Chaoshan Wu; Hua Guo; Zheng Fan; Ming Tang; Yan Yao; Jun Lou",
+    "authors_json": "[{\"display_name\": \"Qing Ai\", \"id\": \"https://openalex.org/A5059667364\", \"orcid\": \"https://orcid.org/0000-0002-6086-5431\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Zhaoyang Chen\", \"id\": \"https://openalex.org/A5100669603\", \"orcid\": \"https://orcid.org/0000-0003-1580-0185\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Boyu Zhang\", \"id\": \"https://openalex.org/A5100714037\", \"orcid\": \"https://orcid.org/0000-0002-7027-4942\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fan Wang\", \"id\": \"https://openalex.org/A5100380562\", \"orcid\": \"https://orcid.org/0000-0003-2482-4613\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tianshu Zhai\", \"id\": \"https://openalex.org/A5112670354\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yifeng Liu\", \"id\": \"https://openalex.org/A5100782689\", \"orcid\": \"https://orcid.org/0009-0003-9435-1441\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yifan Zhu\", \"id\": \"https://openalex.org/A5024456829\", \"orcid\": \"https://orcid.org/0000-0002-9816-5764\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tanguy Terlier\", \"id\": \"https://openalex.org/A5007125686\", \"orcid\": \"https://orcid.org/0000-0002-4092-0771\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qiyi Fang\", \"id\": \"https://openalex.org/A5088848610\", \"orcid\": \"https://orcid.org/0000-0001-8435-636X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanliang Liang\", \"id\": \"https://openalex.org/A5043474041\", \"orcid\": \"https://orcid.org/0000-0001-6771-5172\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lihong Zhao\", \"id\": \"https://openalex.org/A5010176826\", \"orcid\": \"https://orcid.org/0000-0003-2308-1053\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chaoshan Wu\", \"id\": \"https://openalex.org/A5010169114\", \"orcid\": \"https://orcid.org/0000-0003-3458-8300\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hua Guo\", \"id\": \"https://openalex.org/A5101659881\", \"orcid\": \"https://orcid.org/0000-0002-7582-4229\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Zheng Fan\", \"id\": \"https://openalex.org/A5050996662\", \"orcid\": \"https://orcid.org/0000-0001-8137-516X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ming Tang\", \"id\": \"https://openalex.org/A5077500012\", \"orcid\": \"https://orcid.org/0000-0001-7194-3485\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yan Yao\", \"id\": \"https://openalex.org/A5079917819\", \"orcid\": \"https://orcid.org/0000-0002-8785-5030\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jun Lou\", \"id\": \"https://openalex.org/A5018666422\", \"orcid\": \"https://orcid.org/0000-0002-4351-9561\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.2c02430",
+    "landing_title": "High-Spatial-Resolution Quantitative Chemomechanical Mapping of Organic Composite Cathodes for Sulfide-Based Solid-State Batteries | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsenergylett.2c02430.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302946461,
+    "actual_start_ms": 1773302946461,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.968
+  }
+}

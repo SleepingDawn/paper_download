@@ -1,0 +1,130 @@
+{
+  "doi": "10.1002/batt.202300211",
+  "pdf_filename": "10.1002_batt.202300211.pdf",
+  "json_filename": "10.1002_batt.202300211.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_batt.202300211.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4381185342",
+    "doi": "10.1002/batt.202300211",
+    "title": "Investigating the Influence of the Effective Ionic Transport on the Electrochemical Performance of Si/C‐Argyrodite Solid‐State Composites",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Batteries & Supercaps",
+      "id": "https://openalex.org/S4210241147",
+      "type": "journal",
+      "issn_l": "2566-6223",
+      "issn": [
+        "2566-6223"
+      ]
+    },
+    "publication_date": "2023-06-19",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.83299759,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/batt.202300211",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Yannik Rudel",
+    "authors_display": "Yannik Rudel; Moumita Rana; Justine Ruhl; Carolin Rosenbach; Jannes Müller; Peter Michalowski; Arno Kwade; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Yannik Rudel",
+        "id": "https://openalex.org/A5046598366",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Moumita Rana",
+        "id": "https://openalex.org/A5036296867",
+        "orcid": "https://orcid.org/0000-0002-9348-4491",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Justine Ruhl",
+        "id": "https://openalex.org/A5028274412",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Carolin Rosenbach",
+        "id": "https://openalex.org/A5072648110",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jannes Müller",
+        "id": "https://openalex.org/A5088577169",
+        "orcid": "https://orcid.org/0000-0002-7381-5070",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peter Michalowski",
+        "id": "https://openalex.org/A5078649071",
+        "orcid": "https://orcid.org/0000-0001-6738-8108",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Arno Kwade",
+        "id": "https://openalex.org/A5005901248",
+        "orcid": "https://orcid.org/0000-0002-6348-7309",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4381185342",
+    "doi": "10.1002/batt.202300211",
+    "title": "Investigating the Influence of the Effective Ionic Transport on the Electrochemical Performance of Si/C‐Argyrodite Solid‐State Composites",
+    "publisher": "Wiley",
+    "journal": "Batteries & Supercaps",
+    "journal_id": "https://openalex.org/S4210241147",
+    "journal_type": "journal",
+    "journal_issn_l": "2566-6223",
+    "journal_issn_json": "[\"2566-6223\"]",
+    "publication_date": "2023-06-19",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.83299759,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/batt.202300211",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Yannik Rudel",
+    "authors_display": "Yannik Rudel; Moumita Rana; Justine Ruhl; Carolin Rosenbach; Jannes Müller; Peter Michalowski; Arno Kwade; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Yannik Rudel\", \"id\": \"https://openalex.org/A5046598366\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Moumita Rana\", \"id\": \"https://openalex.org/A5036296867\", \"orcid\": \"https://orcid.org/0000-0002-9348-4491\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Justine Ruhl\", \"id\": \"https://openalex.org/A5028274412\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Carolin Rosenbach\", \"id\": \"https://openalex.org/A5072648110\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jannes Müller\", \"id\": \"https://openalex.org/A5088577169\", \"orcid\": \"https://orcid.org/0000-0002-7381-5070\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peter Michalowski\", \"id\": \"https://openalex.org/A5078649071\", \"orcid\": \"https://orcid.org/0000-0001-6738-8108\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Arno Kwade\", \"id\": \"https://openalex.org/A5005901248\", \"orcid\": \"https://orcid.org/0000-0002-6348-7309\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773305554849,
+    "actual_start_ms": 1773305554850,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.653
+  }
+}

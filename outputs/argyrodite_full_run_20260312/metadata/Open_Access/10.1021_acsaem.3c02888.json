@@ -1,0 +1,130 @@
+{
+  "doi": "10.1021/acsaem.3c02888",
+  "pdf_filename": "10.1021_acsaem.3c02888.pdf",
+  "json_filename": "10.1021_acsaem.3c02888.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsaem.3c02888.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4390928689",
+    "doi": "10.1021/acsaem.3c02888",
+    "title": "Quantification of Hydrogen Sulfide Development during the Production of All-Solid-State Batteries with Argyrodite Sulfide-Based Separators",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2024-01-16",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 29,
+    "citation_normalized_percentile": 0.97144128,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acsaem.3c02888",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Timon Scharmann",
+    "authors_display": "Timon Scharmann; Canel Özcelikman; Do Minh Nguyen; Carina Amata Heck; Christian Wacker; Peter Michalowski; Arno Kwade; Klaus Dröder",
+    "authors": [
+      {
+        "display_name": "Timon Scharmann",
+        "id": "https://openalex.org/A5063396292",
+        "orcid": "https://orcid.org/0009-0006-9185-3122",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Canel Özcelikman",
+        "id": "https://openalex.org/A5093690500",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Do Minh Nguyen",
+        "id": "https://openalex.org/A5034248034",
+        "orcid": "https://orcid.org/0000-0002-8015-9286",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Carina Amata Heck",
+        "id": "https://openalex.org/A5038402023",
+        "orcid": "https://orcid.org/0000-0001-8054-5059",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Christian Wacker",
+        "id": "https://openalex.org/A5062502728",
+        "orcid": "https://orcid.org/0000-0001-6357-6689",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peter Michalowski",
+        "id": "https://openalex.org/A5078649071",
+        "orcid": "https://orcid.org/0000-0001-6738-8108",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Arno Kwade",
+        "id": "https://openalex.org/A5005901248",
+        "orcid": "https://orcid.org/0000-0002-6348-7309",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Klaus Dröder",
+        "id": "https://openalex.org/A5084792933",
+        "orcid": "https://orcid.org/0000-0002-6424-4384",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4390928689",
+    "doi": "10.1021/acsaem.3c02888",
+    "title": "Quantification of Hydrogen Sulfide Development during the Production of All-Solid-State Batteries with Argyrodite Sulfide-Based Separators",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2024-01-16",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 29,
+    "citation_normalized_percentile": 0.97144128,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acsaem.3c02888",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Timon Scharmann",
+    "authors_display": "Timon Scharmann; Canel Özcelikman; Do Minh Nguyen; Carina Amata Heck; Christian Wacker; Peter Michalowski; Arno Kwade; Klaus Dröder",
+    "authors_json": "[{\"display_name\": \"Timon Scharmann\", \"id\": \"https://openalex.org/A5063396292\", \"orcid\": \"https://orcid.org/0009-0006-9185-3122\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Canel Özcelikman\", \"id\": \"https://openalex.org/A5093690500\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Do Minh Nguyen\", \"id\": \"https://openalex.org/A5034248034\", \"orcid\": \"https://orcid.org/0000-0002-8015-9286\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Carina Amata Heck\", \"id\": \"https://openalex.org/A5038402023\", \"orcid\": \"https://orcid.org/0000-0001-8054-5059\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Christian Wacker\", \"id\": \"https://openalex.org/A5062502728\", \"orcid\": \"https://orcid.org/0000-0001-6357-6689\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peter Michalowski\", \"id\": \"https://openalex.org/A5078649071\", \"orcid\": \"https://orcid.org/0000-0001-6738-8108\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Arno Kwade\", \"id\": \"https://openalex.org/A5005901248\", \"orcid\": \"https://orcid.org/0000-0002-6348-7309\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Klaus Dröder\", \"id\": \"https://openalex.org/A5084792933\", \"orcid\": \"https://orcid.org/0000-0002-6424-4384\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302718000,
+    "actual_start_ms": 1773302719591,
+    "pacing_wait_ms": 1590,
+    "pacing_jitter_sec": 1.374
+  }
+}

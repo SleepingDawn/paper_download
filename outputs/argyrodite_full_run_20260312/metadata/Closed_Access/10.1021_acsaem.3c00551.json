@@ -1,0 +1,95 @@
+{
+  "doi": "10.1021/acsaem.3c00551",
+  "pdf_filename": "10.1021_acsaem.3c00551.pdf",
+  "json_filename": "10.1021_acsaem.3c00551.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.3c00551.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4377693235",
+    "doi": "10.1021/acsaem.3c00551",
+    "title": "I-Rich Thioantimonate Argyrodite Glass-Ceramic Electrolyte with High Air Stability and Compatibility with Lithium",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2023-05-23",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.73970778,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Hak-Min Kim",
+    "authors_display": "Hak-Min Kim; Yuvaraj Subramanian; Kwang‐Sun Ryu",
+    "authors": [
+      {
+        "display_name": "Hak-Min Kim",
+        "id": "https://openalex.org/A5102814529",
+        "orcid": "https://orcid.org/0000-0003-0001-7411",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuvaraj Subramanian",
+        "id": "https://openalex.org/A5104119459",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kwang‐Sun Ryu",
+        "id": "https://openalex.org/A5032691935",
+        "orcid": "https://orcid.org/0000-0002-8758-0495",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4377693235",
+    "doi": "10.1021/acsaem.3c00551",
+    "title": "I-Rich Thioantimonate Argyrodite Glass-Ceramic Electrolyte with High Air Stability and Compatibility with Lithium",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2023-05-23",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.73970778,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Hak-Min Kim",
+    "authors_display": "Hak-Min Kim; Yuvaraj Subramanian; Kwang‐Sun Ryu",
+    "authors_json": "[{\"display_name\": \"Hak-Min Kim\", \"id\": \"https://openalex.org/A5102814529\", \"orcid\": \"https://orcid.org/0000-0003-0001-7411\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yuvaraj Subramanian\", \"id\": \"https://openalex.org/A5104119459\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kwang‐Sun Ryu\", \"id\": \"https://openalex.org/A5032691935\", \"orcid\": \"https://orcid.org/0000-0002-8758-0495\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.3c00551",
+    "landing_title": "I-Rich Thioantimonate Argyrodite Glass-Ceramic Electrolyte with High Air Stability and Compatibility with Lithium | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsaem.3c00551.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773305857198,
+    "actual_start_ms": 1773305865490,
+    "pacing_wait_ms": 8292,
+    "pacing_jitter_sec": 1.061
+  }
+}

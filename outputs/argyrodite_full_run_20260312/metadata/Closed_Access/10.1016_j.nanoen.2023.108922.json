@@ -1,0 +1,138 @@
+{
+  "doi": "10.1016/j.nanoen.2023.108922",
+  "pdf_filename": "10.1016_j.nanoen.2023.108922.pdf",
+  "json_filename": "10.1016_j.nanoen.2023.108922.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.nanoen.2023.108922.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4386826052",
+    "doi": "10.1016/j.nanoen.2023.108922",
+    "title": "Dendrite-free lithium-metal all-solid-state batteries by solid-phase passivation",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Nano Energy",
+      "id": "https://openalex.org/S2497301991",
+      "type": "journal",
+      "issn_l": "2211-2855",
+      "issn": [
+        "2211-2855",
+        "2211-3282"
+      ]
+    },
+    "publication_date": "2023-09-18",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 35,
+    "citation_normalized_percentile": 0.95643747,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Qifa Gao",
+    "authors_display": "Qifa Gao; Dengxu Wu; Xiang Zhu; Pushun Lu; Tenghuan Ma; Ming Yang; Liquan Chen; Hong Li; Fan Wu",
+    "authors": [
+      {
+        "display_name": "Qifa Gao",
+        "id": "https://openalex.org/A5023056428",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dengxu Wu",
+        "id": "https://openalex.org/A5046515234",
+        "orcid": "https://orcid.org/0000-0002-2361-1205",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiang Zhu",
+        "id": "https://openalex.org/A5048538041",
+        "orcid": "https://orcid.org/0000-0002-6952-4019",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pushun Lu",
+        "id": "https://openalex.org/A5026316143",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tenghuan Ma",
+        "id": "https://openalex.org/A5052455872",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ming Yang",
+        "id": "https://openalex.org/A5055474079",
+        "orcid": "https://orcid.org/0000-0002-9846-0405",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liquan Chen",
+        "id": "https://openalex.org/A5101604337",
+        "orcid": "https://orcid.org/0000-0001-5058-9552",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Li",
+        "id": "https://openalex.org/A5100339418",
+        "orcid": "https://orcid.org/0000-0002-8659-086X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fan Wu",
+        "id": "https://openalex.org/A5065133070",
+        "orcid": "https://orcid.org/0000-0001-8009-3945",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4386826052",
+    "doi": "10.1016/j.nanoen.2023.108922",
+    "title": "Dendrite-free lithium-metal all-solid-state batteries by solid-phase passivation",
+    "publisher": "Elsevier BV",
+    "journal": "Nano Energy",
+    "journal_id": "https://openalex.org/S2497301991",
+    "journal_type": "journal",
+    "journal_issn_l": "2211-2855",
+    "journal_issn_json": "[\"2211-2855\", \"2211-3282\"]",
+    "publication_date": "2023-09-18",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 35,
+    "citation_normalized_percentile": 0.95643747,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Qifa Gao",
+    "authors_display": "Qifa Gao; Dengxu Wu; Xiang Zhu; Pushun Lu; Tenghuan Ma; Ming Yang; Liquan Chen; Hong Li; Fan Wu",
+    "authors_json": "[{\"display_name\": \"Qifa Gao\", \"id\": \"https://openalex.org/A5023056428\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Dengxu Wu\", \"id\": \"https://openalex.org/A5046515234\", \"orcid\": \"https://orcid.org/0000-0002-2361-1205\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiang Zhu\", \"id\": \"https://openalex.org/A5048538041\", \"orcid\": \"https://orcid.org/0000-0002-6952-4019\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pushun Lu\", \"id\": \"https://openalex.org/A5026316143\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tenghuan Ma\", \"id\": \"https://openalex.org/A5052455872\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ming Yang\", \"id\": \"https://openalex.org/A5055474079\", \"orcid\": \"https://orcid.org/0000-0002-9846-0405\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liquan Chen\", \"id\": \"https://openalex.org/A5101604337\", \"orcid\": \"https://orcid.org/0000-0001-5058-9552\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Li\", \"id\": \"https://openalex.org/A5100339418\", \"orcid\": \"https://orcid.org/0000-0002-8659-086X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fan Wu\", \"id\": \"https://openalex.org/A5065133070\", \"orcid\": \"https://orcid.org/0000-0001-8009-3945\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302206164,
+    "actual_start_ms": 1773302214700,
+    "pacing_wait_ms": 8535,
+    "pacing_jitter_sec": 1.533
+  }
+}

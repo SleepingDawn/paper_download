@@ -1,0 +1,137 @@
+{
+  "doi": "10.1016/j.xcrp.2024.102228",
+  "pdf_filename": "10.1016_j.xcrp.2024.102228.pdf",
+  "json_filename": "10.1016_j.xcrp.2024.102228.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.xcrp.2024.102228.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4403065663",
+    "doi": "10.1016/j.xcrp.2024.102228",
+    "title": "High-entropy sulfide argyrodite electrolytes for all-solid-state lithium-sulfur batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Cell Reports Physical Science",
+      "id": "https://openalex.org/S4210216867",
+      "type": "journal",
+      "issn_l": "2666-3864",
+      "issn": [
+        "2666-3864"
+      ]
+    },
+    "publication_date": "2024-10-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.94416275,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Hua Guo",
+    "authors_display": "Hua Guo; Junhao Li; Matthew Burton; John Cattermull; Yi Liang; Yvonne Chart; Gregory J. Rees; Jack Aspinall; Mauro Pasta",
+    "authors": [
+      {
+        "display_name": "Hua Guo",
+        "id": "https://openalex.org/A5101659881",
+        "orcid": "https://orcid.org/0000-0002-7582-4229",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Junhao Li",
+        "id": "https://openalex.org/A5103246482",
+        "orcid": "https://orcid.org/0009-0004-0526-0730",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Matthew Burton",
+        "id": "https://openalex.org/A5044192890",
+        "orcid": "https://orcid.org/0000-0002-0376-6322",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "John Cattermull",
+        "id": "https://openalex.org/A5039395848",
+        "orcid": "https://orcid.org/0009-0006-5209-3132",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yi Liang",
+        "id": "https://openalex.org/A5100552308",
+        "orcid": "https://orcid.org/0000-0002-7260-4861",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yvonne Chart",
+        "id": "https://openalex.org/A5051501257",
+        "orcid": "https://orcid.org/0000-0003-0523-8627",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gregory J. Rees",
+        "id": "https://openalex.org/A5028405313",
+        "orcid": "https://orcid.org/0000-0002-7514-1516",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jack Aspinall",
+        "id": "https://openalex.org/A5010339771",
+        "orcid": "https://orcid.org/0000-0002-6470-3915",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mauro Pasta",
+        "id": "https://openalex.org/A5011547289",
+        "orcid": "https://orcid.org/0000-0002-2613-4555",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4403065663",
+    "doi": "10.1016/j.xcrp.2024.102228",
+    "title": "High-entropy sulfide argyrodite electrolytes for all-solid-state lithium-sulfur batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Cell Reports Physical Science",
+    "journal_id": "https://openalex.org/S4210216867",
+    "journal_type": "journal",
+    "journal_issn_l": "2666-3864",
+    "journal_issn_json": "[\"2666-3864\"]",
+    "publication_date": "2024-10-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.94416275,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Hua Guo",
+    "authors_display": "Hua Guo; Junhao Li; Matthew Burton; John Cattermull; Yi Liang; Yvonne Chart; Gregory J. Rees; Jack Aspinall; Mauro Pasta",
+    "authors_json": "[{\"display_name\": \"Hua Guo\", \"id\": \"https://openalex.org/A5101659881\", \"orcid\": \"https://orcid.org/0000-0002-7582-4229\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Junhao Li\", \"id\": \"https://openalex.org/A5103246482\", \"orcid\": \"https://orcid.org/0009-0004-0526-0730\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Matthew Burton\", \"id\": \"https://openalex.org/A5044192890\", \"orcid\": \"https://orcid.org/0000-0002-0376-6322\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"John Cattermull\", \"id\": \"https://openalex.org/A5039395848\", \"orcid\": \"https://orcid.org/0009-0006-5209-3132\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yi Liang\", \"id\": \"https://openalex.org/A5100552308\", \"orcid\": \"https://orcid.org/0000-0002-7260-4861\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yvonne Chart\", \"id\": \"https://openalex.org/A5051501257\", \"orcid\": \"https://orcid.org/0000-0003-0523-8627\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gregory J. Rees\", \"id\": \"https://openalex.org/A5028405313\", \"orcid\": \"https://orcid.org/0000-0002-7514-1516\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jack Aspinall\", \"id\": \"https://openalex.org/A5010339771\", \"orcid\": \"https://orcid.org/0000-0002-6470-3915\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mauro Pasta\", \"id\": \"https://openalex.org/A5011547289\", \"orcid\": \"https://orcid.org/0000-0002-2613-4555\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302829656,
+    "actual_start_ms": 1773302831410,
+    "pacing_wait_ms": 1754,
+    "pacing_jitter_sec": 1.742
+  }
+}

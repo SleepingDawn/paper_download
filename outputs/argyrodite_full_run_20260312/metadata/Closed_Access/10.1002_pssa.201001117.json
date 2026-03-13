@@ -1,0 +1,89 @@
+{
+  "doi": "10.1002/pssa.201001117",
+  "pdf_filename": "10.1002_pssa.201001117.pdf",
+  "json_filename": "10.1002_pssa.201001117.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_pssa.201001117.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W1984099483",
+    "doi": "10.1002/pssa.201001117",
+    "title": "Studies of lithium argyrodite solid electrolytes for all‐solid‐state batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "physica status solidi (a)",
+      "id": "https://openalex.org/S7159504",
+      "type": "journal",
+      "issn_l": "1862-6300",
+      "issn": [
+        "1862-6300",
+        "1862-6319"
+      ]
+    },
+    "publication_date": "2011-06-30",
+    "publication_year": 2011,
+    "work_type": "article",
+    "cited_by_count": 355,
+    "citation_normalized_percentile": 0.95449228,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "R. Prasada Rao",
+    "authors_display": "R. Prasada Rao; Stefan Adams",
+    "authors": [
+      {
+        "display_name": "R. Prasada Rao",
+        "id": "https://openalex.org/A5020388351",
+        "orcid": "https://orcid.org/0000-0002-4022-2340",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Stefan Adams",
+        "id": "https://openalex.org/A5050140273",
+        "orcid": "https://orcid.org/0000-0003-0710-135X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W1984099483",
+    "doi": "10.1002/pssa.201001117",
+    "title": "Studies of lithium argyrodite solid electrolytes for all‐solid‐state batteries",
+    "publisher": "Wiley",
+    "journal": "physica status solidi (a)",
+    "journal_id": "https://openalex.org/S7159504",
+    "journal_type": "journal",
+    "journal_issn_l": "1862-6300",
+    "journal_issn_json": "[\"1862-6300\", \"1862-6319\"]",
+    "publication_date": "2011-06-30",
+    "publication_year": 2011,
+    "work_type": "article",
+    "cited_by_count": 355,
+    "citation_normalized_percentile": 0.95449228,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "R. Prasada Rao",
+    "authors_display": "R. Prasada Rao; Stefan Adams",
+    "authors_json": "[{\"display_name\": \"R. Prasada Rao\", \"id\": \"https://openalex.org/A5020388351\", \"orcid\": \"https://orcid.org/0000-0002-4022-2340\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Stefan Adams\", \"id\": \"https://openalex.org/A5050140273\", \"orcid\": \"https://orcid.org/0000-0003-0710-135X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302506836,
+    "actual_start_ms": 1773302508338,
+    "pacing_wait_ms": 1502,
+    "pacing_jitter_sec": 1.681
+  }
+}

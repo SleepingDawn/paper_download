@@ -1,0 +1,124 @@
+{
+  "doi": "10.1039/c9dt03247a",
+  "pdf_filename": "10.1039_c9dt03247a.pdf",
+  "json_filename": "10.1039_c9dt03247a.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_c9dt03247a.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2972748280",
+    "doi": "10.1039/c9dt03247a",
+    "title": "Effect of anion substitution on the structural and transport properties of argyrodites Cu<sub>7</sub>PSe<sub>6−x</sub>S<sub>x</sub>",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Dalton Transactions",
+      "id": "https://openalex.org/S166159787",
+      "type": "journal",
+      "issn_l": "1477-9226",
+      "issn": [
+        "1477-9226",
+        "1477-9234"
+      ]
+    },
+    "publication_date": "2019-01-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.82073984,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Friederike Reißig",
+    "authors_display": "Friederike Reißig; Barbara K. Heep; Martin Panthöfer; Max Wood; Shashwat Anand; G. Jeffrey Snyder; Wolfgang Tremel",
+    "authors": [
+      {
+        "display_name": "Friederike Reißig",
+        "id": "https://openalex.org/A5031182572",
+        "orcid": "https://orcid.org/0000-0002-4762-5273",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Barbara K. Heep",
+        "id": "https://openalex.org/A5073127553",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Panthöfer",
+        "id": "https://openalex.org/A5040110713",
+        "orcid": "https://orcid.org/0000-0001-6888-5552",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Max Wood",
+        "id": "https://openalex.org/A5049903404",
+        "orcid": "https://orcid.org/0000-0003-2758-6155",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shashwat Anand",
+        "id": "https://openalex.org/A5044748420",
+        "orcid": "https://orcid.org/0000-0001-8805-1547",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "G. Jeffrey Snyder",
+        "id": "https://openalex.org/A5049121943",
+        "orcid": "https://orcid.org/0000-0003-1414-8682",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang Tremel",
+        "id": "https://openalex.org/A5033441578",
+        "orcid": "https://orcid.org/0000-0002-4536-994X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2972748280",
+    "doi": "10.1039/c9dt03247a",
+    "title": "Effect of anion substitution on the structural and transport properties of argyrodites Cu<sub>7</sub>PSe<sub>6−x</sub>S<sub>x</sub>",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Dalton Transactions",
+    "journal_id": "https://openalex.org/S166159787",
+    "journal_type": "journal",
+    "journal_issn_l": "1477-9226",
+    "journal_issn_json": "[\"1477-9226\", \"1477-9234\"]",
+    "publication_date": "2019-01-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.82073984,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Friederike Reißig",
+    "authors_display": "Friederike Reißig; Barbara K. Heep; Martin Panthöfer; Max Wood; Shashwat Anand; G. Jeffrey Snyder; Wolfgang Tremel",
+    "authors_json": "[{\"display_name\": \"Friederike Reißig\", \"id\": \"https://openalex.org/A5031182572\", \"orcid\": \"https://orcid.org/0000-0002-4762-5273\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Barbara K. Heep\", \"id\": \"https://openalex.org/A5073127553\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Martin Panthöfer\", \"id\": \"https://openalex.org/A5040110713\", \"orcid\": \"https://orcid.org/0000-0001-6888-5552\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Max Wood\", \"id\": \"https://openalex.org/A5049903404\", \"orcid\": \"https://orcid.org/0000-0003-2758-6155\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shashwat Anand\", \"id\": \"https://openalex.org/A5044748420\", \"orcid\": \"https://orcid.org/0000-0001-8805-1547\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"G. Jeffrey Snyder\", \"id\": \"https://openalex.org/A5049121943\", \"orcid\": \"https://orcid.org/0000-0003-1414-8682\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang Tremel\", \"id\": \"https://openalex.org/A5033441578\", \"orcid\": \"https://orcid.org/0000-0002-4536-994X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773308211553,
+    "actual_start_ms": 1773308211553,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.165
+  }
+}

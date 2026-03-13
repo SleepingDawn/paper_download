@@ -1,0 +1,145 @@
+{
+  "doi": "10.1021/acs.nanolett.0c01028",
+  "pdf_filename": "10.1021_acs.nanolett.0c01028.pdf",
+  "json_filename": "10.1021_acs.nanolett.0c01028.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.nanolett.0c01028.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3020851521",
+    "doi": "10.1021/acs.nanolett.0c01028",
+    "title": "Tailoring Solution-Processable Li Argyrodites Li<sub>6+<i>x</i></sub>P<sub>1–<i>x</i></sub>M<sub><i>x</i></sub>S<sub>5</sub>I (M = Ge, Sn) and Their Microstructural Evolution Revealed by Cryo-TEM for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Nano Letters",
+      "id": "https://openalex.org/S143846845",
+      "type": "journal",
+      "issn_l": "1530-6984",
+      "issn": [
+        "1530-6984",
+        "1530-6992"
+      ]
+    },
+    "publication_date": "2020-05-05",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 86,
+    "citation_normalized_percentile": 0.97539706,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Yong Bae Song",
+    "authors_display": "Yong Bae Song; Dong Hyeon Kim; Hiram Kwak; Daseul Han; Sujin Kang; Jong‐Hoon Lee; Seong‐Min Bak; Kyung‐Wan Nam; Hyun‐Wook Lee; Yoon Seok Jung",
+    "authors": [
+      {
+        "display_name": "Yong Bae Song",
+        "id": "https://openalex.org/A5065770134",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong Hyeon Kim",
+        "id": "https://openalex.org/A5100786605",
+        "orcid": "https://orcid.org/0000-0002-5953-8433",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hiram Kwak",
+        "id": "https://openalex.org/A5081127519",
+        "orcid": "https://orcid.org/0009-0005-1624-0388",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daseul Han",
+        "id": "https://openalex.org/A5079757093",
+        "orcid": "https://orcid.org/0000-0001-9560-9246",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sujin Kang",
+        "id": "https://openalex.org/A5102075409",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jong‐Hoon Lee",
+        "id": "https://openalex.org/A5101779818",
+        "orcid": "https://orcid.org/0000-0001-8889-5504",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seong‐Min Bak",
+        "id": "https://openalex.org/A5036821112",
+        "orcid": "https://orcid.org/0000-0002-1626-5949",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung‐Wan Nam",
+        "id": "https://openalex.org/A5047805438",
+        "orcid": "https://orcid.org/0000-0001-6278-6369",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyun‐Wook Lee",
+        "id": "https://openalex.org/A5037158942",
+        "orcid": "https://orcid.org/0000-0001-9074-1619",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yoon Seok Jung",
+        "id": "https://openalex.org/A5045334638",
+        "orcid": "https://orcid.org/0000-0003-0357-9508",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3020851521",
+    "doi": "10.1021/acs.nanolett.0c01028",
+    "title": "Tailoring Solution-Processable Li Argyrodites Li<sub>6+<i>x</i></sub>P<sub>1–<i>x</i></sub>M<sub><i>x</i></sub>S<sub>5</sub>I (M = Ge, Sn) and Their Microstructural Evolution Revealed by Cryo-TEM for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "Nano Letters",
+    "journal_id": "https://openalex.org/S143846845",
+    "journal_type": "journal",
+    "journal_issn_l": "1530-6984",
+    "journal_issn_json": "[\"1530-6984\", \"1530-6992\"]",
+    "publication_date": "2020-05-05",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 86,
+    "citation_normalized_percentile": 0.97539706,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Yong Bae Song",
+    "authors_display": "Yong Bae Song; Dong Hyeon Kim; Hiram Kwak; Daseul Han; Sujin Kang; Jong‐Hoon Lee; Seong‐Min Bak; Kyung‐Wan Nam; Hyun‐Wook Lee; Yoon Seok Jung",
+    "authors_json": "[{\"display_name\": \"Yong Bae Song\", \"id\": \"https://openalex.org/A5065770134\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Dong Hyeon Kim\", \"id\": \"https://openalex.org/A5100786605\", \"orcid\": \"https://orcid.org/0000-0002-5953-8433\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hiram Kwak\", \"id\": \"https://openalex.org/A5081127519\", \"orcid\": \"https://orcid.org/0009-0005-1624-0388\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daseul Han\", \"id\": \"https://openalex.org/A5079757093\", \"orcid\": \"https://orcid.org/0000-0001-9560-9246\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sujin Kang\", \"id\": \"https://openalex.org/A5102075409\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jong‐Hoon Lee\", \"id\": \"https://openalex.org/A5101779818\", \"orcid\": \"https://orcid.org/0000-0001-8889-5504\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seong‐Min Bak\", \"id\": \"https://openalex.org/A5036821112\", \"orcid\": \"https://orcid.org/0000-0002-1626-5949\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung‐Wan Nam\", \"id\": \"https://openalex.org/A5047805438\", \"orcid\": \"https://orcid.org/0000-0001-6278-6369\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyun‐Wook Lee\", \"id\": \"https://openalex.org/A5037158942\", \"orcid\": \"https://orcid.org/0000-0001-9074-1619\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yoon Seok Jung\", \"id\": \"https://openalex.org/A5045334638\", \"orcid\": \"https://orcid.org/0000-0003-0357-9508\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301875662,
+    "actual_start_ms": 1773301877299,
+    "pacing_wait_ms": 1636,
+    "pacing_jitter_sec": 1.248
+  }
+}

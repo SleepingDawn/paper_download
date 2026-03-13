@@ -1,0 +1,116 @@
+{
+  "doi": "10.1016/j.mtsust.2023.100614",
+  "pdf_filename": "10.1016_j.mtsust.2023.100614.pdf",
+  "json_filename": "10.1016_j.mtsust.2023.100614.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.mtsust.2023.100614.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4389264612",
+    "doi": "10.1016/j.mtsust.2023.100614",
+    "title": "Comprehending garnet solid electrolytes and interfaces in all-solid lithium-ion batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Materials Today Sustainability",
+      "id": "https://openalex.org/S4210183045",
+      "type": "journal",
+      "issn_l": "2589-2347",
+      "issn": [
+        "2589-2347"
+      ]
+    },
+    "publication_date": "2023-12-02",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.82569622,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "D. Lakshmi",
+    "authors_display": "D. Lakshmi; Sri Vaishnavi Thummalapalli; Nathan Fonseca; Hassan Nazir; Kennan Song; A.M. Kannan",
+    "authors": [
+      {
+        "display_name": "D. Lakshmi",
+        "id": "https://openalex.org/A5014800468",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Sri Vaishnavi Thummalapalli",
+        "id": "https://openalex.org/A5092554561",
+        "orcid": "https://orcid.org/0009-0002-5903-6131",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nathan Fonseca",
+        "id": "https://openalex.org/A5079338698",
+        "orcid": "https://orcid.org/0000-0002-6297-1705",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hassan Nazir",
+        "id": "https://openalex.org/A5100901099",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kennan Song",
+        "id": "https://openalex.org/A5101274384",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "A.M. Kannan",
+        "id": "https://openalex.org/A5059355213",
+        "orcid": "https://orcid.org/0000-0002-8412-1680",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4389264612",
+    "doi": "10.1016/j.mtsust.2023.100614",
+    "title": "Comprehending garnet solid electrolytes and interfaces in all-solid lithium-ion batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Materials Today Sustainability",
+    "journal_id": "https://openalex.org/S4210183045",
+    "journal_type": "journal",
+    "journal_issn_l": "2589-2347",
+    "journal_issn_json": "[\"2589-2347\"]",
+    "publication_date": "2023-12-02",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.82569622,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "D. Lakshmi",
+    "authors_display": "D. Lakshmi; Sri Vaishnavi Thummalapalli; Nathan Fonseca; Hassan Nazir; Kennan Song; A.M. Kannan",
+    "authors_json": "[{\"display_name\": \"D. Lakshmi\", \"id\": \"https://openalex.org/A5014800468\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Sri Vaishnavi Thummalapalli\", \"id\": \"https://openalex.org/A5092554561\", \"orcid\": \"https://orcid.org/0009-0002-5903-6131\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nathan Fonseca\", \"id\": \"https://openalex.org/A5079338698\", \"orcid\": \"https://orcid.org/0000-0002-6297-1705\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hassan Nazir\", \"id\": \"https://openalex.org/A5100901099\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kennan Song\", \"id\": \"https://openalex.org/A5101274384\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"A.M. Kannan\", \"id\": \"https://openalex.org/A5059355213\", \"orcid\": \"https://orcid.org/0000-0002-8412-1680\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2589234723003019?via%3Dihub",
+    "landing_title": "Comprehending garnet solid electrolytes and interfaces in all-solid lithium-ion batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773304168332,
+    "actual_start_ms": 1773304256957,
+    "pacing_wait_ms": 88623,
+    "pacing_jitter_sec": 0.987
+  }
+}

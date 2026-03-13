@@ -1,0 +1,135 @@
+{
+  "doi": "10.26434/chemrxiv-2025-gbmnz",
+  "pdf_filename": "10.26434_chemrxiv-2025-gbmnz.pdf",
+  "json_filename": "10.26434_chemrxiv-2025-gbmnz.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.26434_chemrxiv-2025-gbmnz.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4417101280",
+    "doi": "10.26434/chemrxiv-2025-gbmnz",
+    "title": "Towards Correlated High-Resolution &lt;i&gt;Operando&lt;/i&gt; 4D Neutron and X-ray Imaging for Solid-State Batteries",
+    "publisher": null,
+    "journal": {
+      "name": null,
+      "id": null,
+      "type": null,
+      "issn_l": null,
+      "issn": []
+    },
+    "publication_date": "2025-12-07",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.41929456,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "R. S. Young",
+    "authors_display": "R. S. Young; Matthew P. Jones; Paul Naillou; Ji Hu; A. Lo; Lukas Helfen; W. Kockelmann; Alexander J. E. Rettie; Rhodri Jervis",
+    "authors": [
+      {
+        "display_name": "R. S. Young",
+        "id": "https://openalex.org/A5021234946",
+        "orcid": "https://orcid.org/0000-0002-4478-7656",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Matthew P. Jones",
+        "id": "https://openalex.org/A5043658432",
+        "orcid": "https://orcid.org/0000-0001-6628-1464",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Paul Naillou",
+        "id": "https://openalex.org/A5095098567",
+        "orcid": "https://orcid.org/0000-0002-7876-0785",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji Hu",
+        "id": "https://openalex.org/A5020045333",
+        "orcid": "https://orcid.org/0000-0003-2889-0853",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "A. Lo",
+        "id": "https://openalex.org/A5045621397",
+        "orcid": "https://orcid.org/0000-0002-3927-2594",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lukas Helfen",
+        "id": "https://openalex.org/A5013254222",
+        "orcid": "https://orcid.org/0000-0002-5243-2310",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "W. Kockelmann",
+        "id": "https://openalex.org/A5026386568",
+        "orcid": "https://orcid.org/0000-0003-2325-5076",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alexander J. E. Rettie",
+        "id": "https://openalex.org/A5067116911",
+        "orcid": "https://orcid.org/0000-0002-2482-9732",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rhodri Jervis",
+        "id": "https://openalex.org/A5058730172",
+        "orcid": "https://orcid.org/0000-0003-2784-7802",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4417101280",
+    "doi": "10.26434/chemrxiv-2025-gbmnz",
+    "title": "Towards Correlated High-Resolution &lt;i&gt;Operando&lt;/i&gt; 4D Neutron and X-ray Imaging for Solid-State Batteries",
+    "publisher": null,
+    "journal": null,
+    "journal_id": null,
+    "journal_type": null,
+    "journal_issn_l": null,
+    "journal_issn_json": "[]",
+    "publication_date": "2025-12-07",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.41929456,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "R. S. Young",
+    "authors_display": "R. S. Young; Matthew P. Jones; Paul Naillou; Ji Hu; A. Lo; Lukas Helfen; W. Kockelmann; Alexander J. E. Rettie; Rhodri Jervis",
+    "authors_json": "[{\"display_name\": \"R. S. Young\", \"id\": \"https://openalex.org/A5021234946\", \"orcid\": \"https://orcid.org/0000-0002-4478-7656\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Matthew P. Jones\", \"id\": \"https://openalex.org/A5043658432\", \"orcid\": \"https://orcid.org/0000-0001-6628-1464\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Paul Naillou\", \"id\": \"https://openalex.org/A5095098567\", \"orcid\": \"https://orcid.org/0000-0002-7876-0785\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ji Hu\", \"id\": \"https://openalex.org/A5020045333\", \"orcid\": \"https://orcid.org/0000-0003-2889-0853\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"A. Lo\", \"id\": \"https://openalex.org/A5045621397\", \"orcid\": \"https://orcid.org/0000-0002-3927-2594\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lukas Helfen\", \"id\": \"https://openalex.org/A5013254222\", \"orcid\": \"https://orcid.org/0000-0002-5243-2310\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"W. Kockelmann\", \"id\": \"https://openalex.org/A5026386568\", \"orcid\": \"https://orcid.org/0000-0003-2325-5076\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alexander J. E. Rettie\", \"id\": \"https://openalex.org/A5067116911\", \"orcid\": \"https://orcid.org/0000-0002-2482-9732\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rhodri Jervis\", \"id\": \"https://openalex.org/A5058730172\", \"orcid\": \"https://orcid.org/0000-0003-2784-7802\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv-2025-gbmnz",
+    "landing_title": "Towards Correlated High-Resolution <i>Operando</i> 4D Neutron and X-ray Imaging for Solid-State Batteries | ChemRxiv",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.26434_chemrxiv-2025-gbmnz.pdf",
+    "scheduler_publisher": "10.26434",
+    "scheduled_start_ms": 1773310217874,
+    "actual_start_ms": 1773310217875,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.677
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "doi": "10.1021/acsenergylett.4c02016",
+  "pdf_filename": "10.1021_acsenergylett.4c02016.pdf",
+  "json_filename": "10.1021_acsenergylett.4c02016.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.4c02016.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4403414547",
+    "doi": "10.1021/acsenergylett.4c02016",
+    "title": "Dual-Function ZnO-Li<sub>3</sub>TaO<sub>4</sub> Surface Modification of Single-Crystalline Ni-Rich Cathodes for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2024-10-15",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.93293615,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Jun Pyo Son",
+    "authors_display": "Jun Pyo Son; Jae‐Seung Kim; Chang-Gi Lee; Juhyoun Park; Jong Seok Kim; Se‐Ho Kim; Baptiste Gault; Dong‐Hwa Seo; Yoon Seok Jung",
+    "authors": [
+      {
+        "display_name": "Jun Pyo Son",
+        "id": "https://openalex.org/A5082729561",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jae‐Seung Kim",
+        "id": "https://openalex.org/A5102899682",
+        "orcid": "https://orcid.org/0000-0003-3052-6444",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chang-Gi Lee",
+        "id": "https://openalex.org/A5112840535",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Juhyoun Park",
+        "id": "https://openalex.org/A5052005718",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jong Seok Kim",
+        "id": "https://openalex.org/A5047892072",
+        "orcid": "https://orcid.org/0000-0003-3243-3890",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Se‐Ho Kim",
+        "id": "https://openalex.org/A5101763187",
+        "orcid": "https://orcid.org/0000-0003-1227-8897",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Baptiste Gault",
+        "id": "https://openalex.org/A5086156055",
+        "orcid": "https://orcid.org/0000-0002-4934-0458",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Hwa Seo",
+        "id": "https://openalex.org/A5074384928",
+        "orcid": "https://orcid.org/0000-0002-7200-7186",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoon Seok Jung",
+        "id": "https://openalex.org/A5045334638",
+        "orcid": "https://orcid.org/0000-0003-0357-9508",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4403414547",
+    "doi": "10.1021/acsenergylett.4c02016",
+    "title": "Dual-Function ZnO-Li<sub>3</sub>TaO<sub>4</sub> Surface Modification of Single-Crystalline Ni-Rich Cathodes for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2024-10-15",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.93293615,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Jun Pyo Son",
+    "authors_display": "Jun Pyo Son; Jae‐Seung Kim; Chang-Gi Lee; Juhyoun Park; Jong Seok Kim; Se‐Ho Kim; Baptiste Gault; Dong‐Hwa Seo; Yoon Seok Jung",
+    "authors_json": "[{\"display_name\": \"Jun Pyo Son\", \"id\": \"https://openalex.org/A5082729561\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jae‐Seung Kim\", \"id\": \"https://openalex.org/A5102899682\", \"orcid\": \"https://orcid.org/0000-0003-3052-6444\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chang-Gi Lee\", \"id\": \"https://openalex.org/A5112840535\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Juhyoun Park\", \"id\": \"https://openalex.org/A5052005718\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jong Seok Kim\", \"id\": \"https://openalex.org/A5047892072\", \"orcid\": \"https://orcid.org/0000-0003-3243-3890\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Se‐Ho Kim\", \"id\": \"https://openalex.org/A5101763187\", \"orcid\": \"https://orcid.org/0000-0003-1227-8897\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Baptiste Gault\", \"id\": \"https://openalex.org/A5086156055\", \"orcid\": \"https://orcid.org/0000-0002-4934-0458\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Hwa Seo\", \"id\": \"https://openalex.org/A5074384928\", \"orcid\": \"https://orcid.org/0000-0002-7200-7186\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoon Seok Jung\", \"id\": \"https://openalex.org/A5045334638\", \"orcid\": \"https://orcid.org/0000-0003-0357-9508\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.4c02016",
+    "landing_title": "Dual-Function ZnO-Li3TaO4 Surface Modification of Single-Crystalline Ni-Rich Cathodes for All-Solid-State Batteries | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsenergylett.4c02016.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773303798031,
+    "actual_start_ms": 1773303798031,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.711
+  }
+}

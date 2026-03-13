@@ -1,0 +1,138 @@
+{
+  "doi": "10.1039/d4ta03873h",
+  "pdf_filename": "10.1039_d4ta03873h.pdf",
+  "json_filename": "10.1039_d4ta03873h.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d4ta03873h.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4402380070",
+    "doi": "10.1039/d4ta03873h",
+    "title": "High performance P-based argyrodite sulfide electrolytes enabled by Sb-based argyrodite doping for all-solid-state lithium metal batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.90534959,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zhihui Ma",
+    "authors_display": "Zhihui Ma; Ping Li; Jie Shi; Feng Sun; Yidi Fu; Zhen Wang; Yixing Fang; Junmei Han; Xuanhui Qu",
+    "authors": [
+      {
+        "display_name": "Zhihui Ma",
+        "id": "https://openalex.org/A5015881958",
+        "orcid": "https://orcid.org/0000-0002-4306-3736",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ping Li",
+        "id": "https://openalex.org/A5100435557",
+        "orcid": "https://orcid.org/0000-0003-0280-6860",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jie Shi",
+        "id": "https://openalex.org/A5109446464",
+        "orcid": "https://orcid.org/0000-0002-1068-5109",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Feng Sun",
+        "id": "https://openalex.org/A5100651291",
+        "orcid": "https://orcid.org/0000-0003-1355-2069",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yidi Fu",
+        "id": "https://openalex.org/A5113374957",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhen Wang",
+        "id": "https://openalex.org/A5100422310",
+        "orcid": "https://orcid.org/0000-0002-2516-4752",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yixing Fang",
+        "id": "https://openalex.org/A5027873825",
+        "orcid": "https://orcid.org/0000-0001-8871-2915",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junmei Han",
+        "id": "https://openalex.org/A5114223816",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xuanhui Qu",
+        "id": "https://openalex.org/A5073931088",
+        "orcid": "https://orcid.org/0000-0002-2943-3008",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4402380070",
+    "doi": "10.1039/d4ta03873h",
+    "title": "High performance P-based argyrodite sulfide electrolytes enabled by Sb-based argyrodite doping for all-solid-state lithium metal batteries",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 12,
+    "citation_normalized_percentile": 0.90534959,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zhihui Ma",
+    "authors_display": "Zhihui Ma; Ping Li; Jie Shi; Feng Sun; Yidi Fu; Zhen Wang; Yixing Fang; Junmei Han; Xuanhui Qu",
+    "authors_json": "[{\"display_name\": \"Zhihui Ma\", \"id\": \"https://openalex.org/A5015881958\", \"orcid\": \"https://orcid.org/0000-0002-4306-3736\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ping Li\", \"id\": \"https://openalex.org/A5100435557\", \"orcid\": \"https://orcid.org/0000-0003-0280-6860\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jie Shi\", \"id\": \"https://openalex.org/A5109446464\", \"orcid\": \"https://orcid.org/0000-0002-1068-5109\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Feng Sun\", \"id\": \"https://openalex.org/A5100651291\", \"orcid\": \"https://orcid.org/0000-0003-1355-2069\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yidi Fu\", \"id\": \"https://openalex.org/A5113374957\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhen Wang\", \"id\": \"https://openalex.org/A5100422310\", \"orcid\": \"https://orcid.org/0000-0002-2516-4752\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yixing Fang\", \"id\": \"https://openalex.org/A5027873825\", \"orcid\": \"https://orcid.org/0000-0001-8871-2915\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junmei Han\", \"id\": \"https://openalex.org/A5114223816\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xuanhui Qu\", \"id\": \"https://openalex.org/A5073931088\", \"orcid\": \"https://orcid.org/0000-0002-2943-3008\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://doi.org/10.1039/d4ta03873h",
+    "landing_title": "새 탭",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773313691954,
+    "actual_start_ms": 1773313691955,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.569
+  }
+}

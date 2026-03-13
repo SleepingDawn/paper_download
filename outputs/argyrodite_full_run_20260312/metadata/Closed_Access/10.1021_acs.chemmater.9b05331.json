@@ -1,0 +1,124 @@
+{
+  "doi": "10.1021/acs.chemmater.9b05331",
+  "pdf_filename": "10.1021_acs.chemmater.9b05331.pdf",
+  "json_filename": "10.1021_acs.chemmater.9b05331.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.chemmater.9b05331.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3015574865",
+    "doi": "10.1021/acs.chemmater.9b05331",
+    "title": "Fast Ion Conduction and Its Origin in Li<sub>6–<i>x</i></sub>PS<sub>5–<i>x</i></sub>Br<sub>1+<i>x</i></sub>",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2020-04-10",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 136,
+    "citation_normalized_percentile": 0.98091421,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Pengbo Wang",
+    "authors_display": "Pengbo Wang; Haoyu Liu; Sawankumar V. Patel; Xuyong Feng; Po‐Hsiu Chien; Yan Wang; Yan‐Yan Hu",
+    "authors": [
+      {
+        "display_name": "Pengbo Wang",
+        "id": "https://openalex.org/A5062069628",
+        "orcid": "https://orcid.org/0000-0002-5740-6912",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haoyu Liu",
+        "id": "https://openalex.org/A5100444755",
+        "orcid": "https://orcid.org/0000-0002-6741-7295",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sawankumar V. Patel",
+        "id": "https://openalex.org/A5005113583",
+        "orcid": "https://orcid.org/0000-0002-5293-9330",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xuyong Feng",
+        "id": "https://openalex.org/A5010856605",
+        "orcid": "https://orcid.org/0009-0005-5363-671X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Po‐Hsiu Chien",
+        "id": "https://openalex.org/A5059953572",
+        "orcid": "https://orcid.org/0000-0002-1607-1271",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yan Wang",
+        "id": "https://openalex.org/A5100322823",
+        "orcid": "https://orcid.org/0000-0002-8648-2172",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yan‐Yan Hu",
+        "id": "https://openalex.org/A5078089711",
+        "orcid": "https://orcid.org/0000-0003-0677-5897",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3015574865",
+    "doi": "10.1021/acs.chemmater.9b05331",
+    "title": "Fast Ion Conduction and Its Origin in Li<sub>6–<i>x</i></sub>PS<sub>5–<i>x</i></sub>Br<sub>1+<i>x</i></sub>",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2020-04-10",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 136,
+    "citation_normalized_percentile": 0.98091421,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Pengbo Wang",
+    "authors_display": "Pengbo Wang; Haoyu Liu; Sawankumar V. Patel; Xuyong Feng; Po‐Hsiu Chien; Yan Wang; Yan‐Yan Hu",
+    "authors_json": "[{\"display_name\": \"Pengbo Wang\", \"id\": \"https://openalex.org/A5062069628\", \"orcid\": \"https://orcid.org/0000-0002-5740-6912\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Haoyu Liu\", \"id\": \"https://openalex.org/A5100444755\", \"orcid\": \"https://orcid.org/0000-0002-6741-7295\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sawankumar V. Patel\", \"id\": \"https://openalex.org/A5005113583\", \"orcid\": \"https://orcid.org/0000-0002-5293-9330\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xuyong Feng\", \"id\": \"https://openalex.org/A5010856605\", \"orcid\": \"https://orcid.org/0009-0005-5363-671X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Po‐Hsiu Chien\", \"id\": \"https://openalex.org/A5059953572\", \"orcid\": \"https://orcid.org/0000-0002-1607-1271\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yan Wang\", \"id\": \"https://openalex.org/A5100322823\", \"orcid\": \"https://orcid.org/0000-0002-8648-2172\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yan‐Yan Hu\", \"id\": \"https://openalex.org/A5078089711\", \"orcid\": \"https://orcid.org/0000-0003-0677-5897\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301696400,
+    "actual_start_ms": 1773301699976,
+    "pacing_wait_ms": 3575,
+    "pacing_jitter_sec": 1.088
+  }
+}

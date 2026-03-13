@@ -1,0 +1,103 @@
+{
+  "doi": "10.1039/c3cp44379e",
+  "pdf_filename": "10.1039_c3cp44379e.pdf",
+  "json_filename": "10.1039_c3cp44379e.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_c3cp44379e.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2160297238",
+    "doi": "10.1039/c3cp44379e",
+    "title": "Long-range Li+ dynamics in the lithium argyrodite Li7PSe6 as probed by rotating-frame spin–lattice relaxation NMR",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Physical Chemistry Chemical Physics",
+      "id": "https://openalex.org/S181332294",
+      "type": "journal",
+      "issn_l": "1463-9076",
+      "issn": [
+        "1463-9076",
+        "1463-9084"
+      ]
+    },
+    "publication_date": "2013-01-01",
+    "publication_year": 2013,
+    "work_type": "article",
+    "cited_by_count": 91,
+    "citation_normalized_percentile": 0.95388417,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2013/cp/c3cp44379e",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "V. Epp",
+    "authors_display": "V. Epp; Özgül Gün; H. J. Deiseroth; Martin Wilkening",
+    "authors": [
+      {
+        "display_name": "V. Epp",
+        "id": "https://openalex.org/A5010699709",
+        "orcid": "https://orcid.org/0000-0002-4868-2683",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Özgül Gün",
+        "id": "https://openalex.org/A5036415905",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "H. J. Deiseroth",
+        "id": "https://openalex.org/A5110619788",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Wilkening",
+        "id": "https://openalex.org/A5024063649",
+        "orcid": "https://orcid.org/0000-0001-9706-4892",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2160297238",
+    "doi": "10.1039/c3cp44379e",
+    "title": "Long-range Li+ dynamics in the lithium argyrodite Li7PSe6 as probed by rotating-frame spin–lattice relaxation NMR",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Physical Chemistry Chemical Physics",
+    "journal_id": "https://openalex.org/S181332294",
+    "journal_type": "journal",
+    "journal_issn_l": "1463-9076",
+    "journal_issn_json": "[\"1463-9076\", \"1463-9084\"]",
+    "publication_date": "2013-01-01",
+    "publication_year": 2013,
+    "work_type": "article",
+    "cited_by_count": 91,
+    "citation_normalized_percentile": 0.95388417,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2013/cp/c3cp44379e",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "V. Epp",
+    "authors_display": "V. Epp; Özgül Gün; H. J. Deiseroth; Martin Wilkening",
+    "authors_json": "[{\"display_name\": \"V. Epp\", \"id\": \"https://openalex.org/A5010699709\", \"orcid\": \"https://orcid.org/0000-0002-4868-2683\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Özgül Gün\", \"id\": \"https://openalex.org/A5036415905\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"H. J. Deiseroth\", \"id\": \"https://openalex.org/A5110619788\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Martin Wilkening\", \"id\": \"https://openalex.org/A5024063649\", \"orcid\": \"https://orcid.org/0000-0001-9706-4892\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773307500329,
+    "actual_start_ms": 1773307500329,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.024
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "doi": "10.1007/s12598-021-01827-9",
+  "pdf_filename": "10.1007_s12598-021-01827-9.pdf",
+  "json_filename": "10.1007_s12598-021-01827-9.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s12598-021-01827-9.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3200040751",
+    "doi": "10.1007/s12598-021-01827-9",
+    "title": "Synthetic optimization and application of Li‐argyrodite Li <sub>6</sub> PS <sub>5</sub> I in solid‐state battery at different temperatures",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Rare Metals",
+      "id": "https://openalex.org/S172552266",
+      "type": "journal",
+      "issn_l": "1001-0521",
+      "issn": [
+        "1001-0521",
+        "1867-7185"
+      ]
+    },
+    "publication_date": "2021-09-15",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.87455138,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Zhen-Yuan He",
+    "authors_display": "Zhen-Yuan He; Ziqi Zhang; Ming Yu; Chuang Yu; Haotian Ren; Jun Zhang; Linfeng Peng; Long Zhang; Shijie Cheng; Jia Xie",
+    "authors": [
+      {
+        "display_name": "Zhen-Yuan He",
+        "id": "https://openalex.org/A5054608573",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ziqi Zhang",
+        "id": "https://openalex.org/A5100404389",
+        "orcid": "https://orcid.org/0000-0002-6251-0087",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ming Yu",
+        "id": "https://openalex.org/A5100971373",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haotian Ren",
+        "id": "https://openalex.org/A5035771659",
+        "orcid": "https://orcid.org/0000-0001-9525-9629",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Zhang",
+        "id": "https://openalex.org/A5100400217",
+        "orcid": "https://orcid.org/0000-0001-7835-9871",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Linfeng Peng",
+        "id": "https://openalex.org/A5101094536",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Long Zhang",
+        "id": "https://openalex.org/A5100363525",
+        "orcid": "https://orcid.org/0000-0002-4861-1471",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Cheng",
+        "id": "https://openalex.org/A5024186253",
+        "orcid": "https://orcid.org/0000-0002-8752-4311",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jia Xie",
+        "id": "https://openalex.org/A5081117176",
+        "orcid": "https://orcid.org/0000-0002-8731-295X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3200040751",
+    "doi": "10.1007/s12598-021-01827-9",
+    "title": "Synthetic optimization and application of Li‐argyrodite Li <sub>6</sub> PS <sub>5</sub> I in solid‐state battery at different temperatures",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Rare Metals",
+    "journal_id": "https://openalex.org/S172552266",
+    "journal_type": "journal",
+    "journal_issn_l": "1001-0521",
+    "journal_issn_json": "[\"1001-0521\", \"1867-7185\"]",
+    "publication_date": "2021-09-15",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.87455138,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Zhen-Yuan He",
+    "authors_display": "Zhen-Yuan He; Ziqi Zhang; Ming Yu; Chuang Yu; Haotian Ren; Jun Zhang; Linfeng Peng; Long Zhang; Shijie Cheng; Jia Xie",
+    "authors_json": "[{\"display_name\": \"Zhen-Yuan He\", \"id\": \"https://openalex.org/A5054608573\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ziqi Zhang\", \"id\": \"https://openalex.org/A5100404389\", \"orcid\": \"https://orcid.org/0000-0002-6251-0087\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ming Yu\", \"id\": \"https://openalex.org/A5100971373\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haotian Ren\", \"id\": \"https://openalex.org/A5035771659\", \"orcid\": \"https://orcid.org/0000-0001-9525-9629\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun Zhang\", \"id\": \"https://openalex.org/A5100400217\", \"orcid\": \"https://orcid.org/0000-0001-7835-9871\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Linfeng Peng\", \"id\": \"https://openalex.org/A5101094536\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Long Zhang\", \"id\": \"https://openalex.org/A5100363525\", \"orcid\": \"https://orcid.org/0000-0002-4861-1471\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Cheng\", \"id\": \"https://openalex.org/A5024186253\", \"orcid\": \"https://orcid.org/0000-0002-8752-4311\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jia Xie\", \"id\": \"https://openalex.org/A5081117176\", \"orcid\": \"https://orcid.org/0000-0002-8731-295X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773308427714,
+    "actual_start_ms": 1773308429216,
+    "pacing_wait_ms": 1502,
+    "pacing_jitter_sec": 1.72
+  }
+}

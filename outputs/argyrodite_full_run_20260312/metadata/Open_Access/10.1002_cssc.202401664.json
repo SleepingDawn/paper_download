@@ -1,0 +1,117 @@
+{
+  "doi": "10.1002/cssc.202401664",
+  "pdf_filename": "10.1002_cssc.202401664.pdf",
+  "json_filename": "10.1002_cssc.202401664.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_cssc.202401664.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4404127904",
+    "doi": "10.1002/cssc.202401664",
+    "title": "Bismuth and Fluorine Dual‐Doping of Lithium Argyrodite toward High‐Performance All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "ChemSusChem",
+      "id": "https://openalex.org/S193447295",
+      "type": "journal",
+      "issn_l": "1864-5631",
+      "issn": [
+        "1864-5631",
+        "1864-564X"
+      ]
+    },
+    "publication_date": "2024-11-07",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.76437987,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/cssc.202401664",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Ziling Jiang",
+    "authors_display": "Ziling Jiang; Yujie Xiao; Lin Li; Siwu Li; Qiyue Luo; Chuang Yu",
+    "authors": [
+      {
+        "display_name": "Ziling Jiang",
+        "id": "https://openalex.org/A5102661771",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yujie Xiao",
+        "id": "https://openalex.org/A5073304349",
+        "orcid": "https://orcid.org/0000-0003-2095-3477",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lin Li",
+        "id": "https://openalex.org/A5100722609",
+        "orcid": "https://orcid.org/0000-0002-4938-1217",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Siwu Li",
+        "id": "https://openalex.org/A5083989267",
+        "orcid": "https://orcid.org/0000-0002-0484-8629",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qiyue Luo",
+        "id": "https://openalex.org/A5039050510",
+        "orcid": "https://orcid.org/0000-0002-6502-4316",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4404127904",
+    "doi": "10.1002/cssc.202401664",
+    "title": "Bismuth and Fluorine Dual‐Doping of Lithium Argyrodite toward High‐Performance All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "ChemSusChem",
+    "journal_id": "https://openalex.org/S193447295",
+    "journal_type": "journal",
+    "journal_issn_l": "1864-5631",
+    "journal_issn_json": "[\"1864-5631\", \"1864-564X\"]",
+    "publication_date": "2024-11-07",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.76437987,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/cssc.202401664",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Ziling Jiang",
+    "authors_display": "Ziling Jiang; Yujie Xiao; Lin Li; Siwu Li; Qiyue Luo; Chuang Yu",
+    "authors_json": "[{\"display_name\": \"Ziling Jiang\", \"id\": \"https://openalex.org/A5102661771\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yujie Xiao\", \"id\": \"https://openalex.org/A5073304349\", \"orcid\": \"https://orcid.org/0000-0003-2095-3477\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lin Li\", \"id\": \"https://openalex.org/A5100722609\", \"orcid\": \"https://orcid.org/0000-0002-4938-1217\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Siwu Li\", \"id\": \"https://openalex.org/A5083989267\", \"orcid\": \"https://orcid.org/0000-0002-0484-8629\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qiyue Luo\", \"id\": \"https://openalex.org/A5039050510\", \"orcid\": \"https://orcid.org/0000-0002-6502-4316\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773306828097,
+    "actual_start_ms": 1773306828098,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.723
+  }
+}

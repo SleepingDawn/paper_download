@@ -1,0 +1,117 @@
+{
+  "doi": "10.1021/acs.chemmater.2c02106",
+  "pdf_filename": "10.1021_acs.chemmater.2c02106.pdf",
+  "json_filename": "10.1021_acs.chemmater.2c02106.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.chemmater.2c02106.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4304194043",
+    "doi": "10.1021/acs.chemmater.2c02106",
+    "title": "Thermal Runaway Behavior of Li<sub>6</sub>PS<sub>5</sub>Cl Solid Electrolytes for LiNi<sub>0.8</sub>Co<sub>0.1</sub>Mn<sub>0.1</sub>O<sub>2</sub> and LiFePO<sub>4</sub> in All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2022-10-11",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 98,
+    "citation_normalized_percentile": 0.98399432,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Tae-Hun Kim",
+    "authors_display": "Tae-Hun Kim; Kanghyeon Kim; Seunghyun Lee; Gawon Song; Min Soo Jung; Kyu Tae Lee",
+    "authors": [
+      {
+        "display_name": "Tae-Hun Kim",
+        "id": "https://openalex.org/A5100387023",
+        "orcid": "https://orcid.org/0009-0003-7223-4332",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kanghyeon Kim",
+        "id": "https://openalex.org/A5060692350",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seunghyun Lee",
+        "id": "https://openalex.org/A5100426787",
+        "orcid": "https://orcid.org/0000-0002-2477-1243",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gawon Song",
+        "id": "https://openalex.org/A5082884513",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Min Soo Jung",
+        "id": "https://openalex.org/A5034380302",
+        "orcid": "https://orcid.org/0000-0002-9288-1866",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyu Tae Lee",
+        "id": "https://openalex.org/A5016289652",
+        "orcid": "https://orcid.org/0000-0003-2769-3372",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4304194043",
+    "doi": "10.1021/acs.chemmater.2c02106",
+    "title": "Thermal Runaway Behavior of Li<sub>6</sub>PS<sub>5</sub>Cl Solid Electrolytes for LiNi<sub>0.8</sub>Co<sub>0.1</sub>Mn<sub>0.1</sub>O<sub>2</sub> and LiFePO<sub>4</sub> in All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2022-10-11",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 98,
+    "citation_normalized_percentile": 0.98399432,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Tae-Hun Kim",
+    "authors_display": "Tae-Hun Kim; Kanghyeon Kim; Seunghyun Lee; Gawon Song; Min Soo Jung; Kyu Tae Lee",
+    "authors_json": "[{\"display_name\": \"Tae-Hun Kim\", \"id\": \"https://openalex.org/A5100387023\", \"orcid\": \"https://orcid.org/0009-0003-7223-4332\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Kanghyeon Kim\", \"id\": \"https://openalex.org/A5060692350\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seunghyun Lee\", \"id\": \"https://openalex.org/A5100426787\", \"orcid\": \"https://orcid.org/0000-0002-2477-1243\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gawon Song\", \"id\": \"https://openalex.org/A5082884513\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Min Soo Jung\", \"id\": \"https://openalex.org/A5034380302\", \"orcid\": \"https://orcid.org/0000-0002-9288-1866\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyu Tae Lee\", \"id\": \"https://openalex.org/A5016289652\", \"orcid\": \"https://orcid.org/0000-0003-2769-3372\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301826274,
+    "actual_start_ms": 1773301827775,
+    "pacing_wait_ms": 1500,
+    "pacing_jitter_sec": 1.473
+  }
+}

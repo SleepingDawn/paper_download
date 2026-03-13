@@ -1,0 +1,110 @@
+{
+  "doi": "10.1016/j.ensm.2025.104050",
+  "pdf_filename": "10.1016_j.ensm.2025.104050.pdf",
+  "json_filename": "10.1016_j.ensm.2025.104050.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.ensm.2025.104050.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4406602429",
+    "doi": "10.1016/j.ensm.2025.104050",
+    "title": "Direct observation of Li6PS5Cl–NMC electrochemical reactivity in all-solid-state cells",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2025-01-20",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.9626437,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Paul Naillou",
+    "authors_display": "Paul Naillou; Adrien Boulineau; Éric De Vito; Enora Lavanant; Philippe Azaïs",
+    "authors": [
+      {
+        "display_name": "Paul Naillou",
+        "id": "https://openalex.org/A5095098567",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Adrien Boulineau",
+        "id": "https://openalex.org/A5030226927",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Éric De Vito",
+        "id": "https://openalex.org/A5004003565",
+        "orcid": "https://orcid.org/0000-0001-8520-5272",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Enora Lavanant",
+        "id": "https://openalex.org/A5014722031",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Philippe Azaïs",
+        "id": "https://openalex.org/A5035557696",
+        "orcid": "https://orcid.org/0000-0003-2507-325X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4406602429",
+    "doi": "10.1016/j.ensm.2025.104050",
+    "title": "Direct observation of Li6PS5Cl–NMC electrochemical reactivity in all-solid-state cells",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2025-01-20",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.9626437,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Paul Naillou",
+    "authors_display": "Paul Naillou; Adrien Boulineau; Éric De Vito; Enora Lavanant; Philippe Azaïs",
+    "authors_json": "[{\"display_name\": \"Paul Naillou\", \"id\": \"https://openalex.org/A5095098567\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Adrien Boulineau\", \"id\": \"https://openalex.org/A5030226927\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Éric De Vito\", \"id\": \"https://openalex.org/A5004003565\", \"orcid\": \"https://orcid.org/0000-0001-8520-5272\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Enora Lavanant\", \"id\": \"https://openalex.org/A5014722031\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Philippe Azaïs\", \"id\": \"https://openalex.org/A5035557696\", \"orcid\": \"https://orcid.org/0000-0003-2507-325X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2405829725000510?via%3Dihub",
+    "landing_title": "Direct observation of Li6PS5Cl–NMC electrochemical reactivity in all-solid-state cells - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773305270442,
+    "actual_start_ms": 1773305275722,
+    "pacing_wait_ms": 5279,
+    "pacing_jitter_sec": 0.762
+  }
+}

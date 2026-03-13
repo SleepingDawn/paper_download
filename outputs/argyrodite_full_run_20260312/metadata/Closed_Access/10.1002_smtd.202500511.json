@@ -1,0 +1,116 @@
+{
+  "doi": "10.1002/smtd.202500511",
+  "pdf_filename": "10.1002_smtd.202500511.pdf",
+  "json_filename": "10.1002_smtd.202500511.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_smtd.202500511.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4410587323",
+    "doi": "10.1002/smtd.202500511",
+    "title": "Ce/O Co‐Substitution Strategy Enhanced Stability of Sulfide Electrolyte for All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small Methods",
+      "id": "https://openalex.org/S4210232622",
+      "type": "journal",
+      "issn_l": "2366-9608",
+      "issn": [
+        "2366-9608"
+      ]
+    },
+    "publication_date": "2025-05-22",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.8296732,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "M. G. Zhao",
+    "authors_display": "M. G. Zhao; Jie Zhang; Lihua Pu; Ling Huang; Jun Jin; Zhaoyin Wen",
+    "authors": [
+      {
+        "display_name": "M. G. Zhao",
+        "id": "https://openalex.org/A5008934975",
+        "orcid": "https://orcid.org/0000-0001-8785-6941",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jie Zhang",
+        "id": "https://openalex.org/A5115590908",
+        "orcid": "https://orcid.org/0009-0004-7346-8541",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lihua Pu",
+        "id": "https://openalex.org/A5102224419",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ling Huang",
+        "id": "https://openalex.org/A5023817828",
+        "orcid": "https://orcid.org/0000-0003-0888-4536",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Jin",
+        "id": "https://openalex.org/A5019364340",
+        "orcid": "https://orcid.org/0000-0003-0722-0279",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zhaoyin Wen",
+        "id": "https://openalex.org/A5100444419",
+        "orcid": "https://orcid.org/0000-0003-1698-7420",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4410587323",
+    "doi": "10.1002/smtd.202500511",
+    "title": "Ce/O Co‐Substitution Strategy Enhanced Stability of Sulfide Electrolyte for All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "Small Methods",
+    "journal_id": "https://openalex.org/S4210232622",
+    "journal_type": "journal",
+    "journal_issn_l": "2366-9608",
+    "journal_issn_json": "[\"2366-9608\"]",
+    "publication_date": "2025-05-22",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.8296732,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "M. G. Zhao",
+    "authors_display": "M. G. Zhao; Jie Zhang; Lihua Pu; Ling Huang; Jun Jin; Zhaoyin Wen",
+    "authors_json": "[{\"display_name\": \"M. G. Zhao\", \"id\": \"https://openalex.org/A5008934975\", \"orcid\": \"https://orcid.org/0000-0001-8785-6941\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jie Zhang\", \"id\": \"https://openalex.org/A5115590908\", \"orcid\": \"https://orcid.org/0009-0004-7346-8541\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lihua Pu\", \"id\": \"https://openalex.org/A5102224419\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ling Huang\", \"id\": \"https://openalex.org/A5023817828\", \"orcid\": \"https://orcid.org/0000-0003-0888-4536\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun Jin\", \"id\": \"https://openalex.org/A5019364340\", \"orcid\": \"https://orcid.org/0000-0003-0722-0279\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Zhaoyin Wen\", \"id\": \"https://openalex.org/A5100444419\", \"orcid\": \"https://orcid.org/0000-0003-1698-7420\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308565772,
+    "actual_start_ms": 1773308565772,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.905
+  }
+}

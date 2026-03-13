@@ -1,0 +1,140 @@
+{
+  "doi": "10.1149/ma2025-013325mtgabs",
+  "pdf_filename": "10.1149_ma2025-013325mtgabs.pdf",
+  "json_filename": "10.1149_ma2025-013325mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2025-013325mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4412509945",
+    "doi": "10.1149/ma2025-013325mtgabs",
+    "title": "Oxysulfide Solid Electrolyte with Better Safety and Cost Reduction",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2025-07-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.19751704,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Fabien Nassoy",
+    "authors_display": "Fabien Nassoy; Emmanuelle Garitte; Alexis Péréa; Sergey Krachkovskiy; Wen Zhu; Jean-François Filion; David Rozon; Benoît Fleutot; Chisu Kim",
+    "authors": [
+      {
+        "display_name": "Fabien Nassoy",
+        "id": "https://openalex.org/A5047032573",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Emmanuelle Garitte",
+        "id": "https://openalex.org/A5016845336",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alexis Péréa",
+        "id": "https://openalex.org/A5091497742",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sergey Krachkovskiy",
+        "id": "https://openalex.org/A5091410179",
+        "orcid": "https://orcid.org/0000-0002-6213-5619",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wen Zhu",
+        "id": "https://openalex.org/A5015380869",
+        "orcid": "https://orcid.org/0000-0003-0175-5686",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jean-François Filion",
+        "id": "https://openalex.org/A5119020683",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "David Rozon",
+        "id": "https://openalex.org/A5053102393",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Benoît Fleutot",
+        "id": "https://openalex.org/A5017510915",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chisu Kim",
+        "id": "https://openalex.org/A5048454523",
+        "orcid": "https://orcid.org/0000-0002-0024-5767",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4412509945",
+    "doi": "10.1149/ma2025-013325mtgabs",
+    "title": "Oxysulfide Solid Electrolyte with Better Safety and Cost Reduction",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2025-07-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.19751704,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Fabien Nassoy",
+    "authors_display": "Fabien Nassoy; Emmanuelle Garitte; Alexis Péréa; Sergey Krachkovskiy; Wen Zhu; Jean-François Filion; David Rozon; Benoît Fleutot; Chisu Kim",
+    "authors_json": "[{\"display_name\": \"Fabien Nassoy\", \"id\": \"https://openalex.org/A5047032573\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Emmanuelle Garitte\", \"id\": \"https://openalex.org/A5016845336\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alexis Péréa\", \"id\": \"https://openalex.org/A5091497742\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sergey Krachkovskiy\", \"id\": \"https://openalex.org/A5091410179\", \"orcid\": \"https://orcid.org/0000-0002-6213-5619\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wen Zhu\", \"id\": \"https://openalex.org/A5015380869\", \"orcid\": \"https://orcid.org/0000-0003-0175-5686\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jean-François Filion\", \"id\": \"https://openalex.org/A5119020683\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"David Rozon\", \"id\": \"https://openalex.org/A5053102393\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Benoît Fleutot\", \"id\": \"https://openalex.org/A5017510915\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chisu Kim\", \"id\": \"https://openalex.org/A5048454523\", \"orcid\": \"https://orcid.org/0000-0002-0024-5767\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773308291580,
+    "actual_start_ms": 1773308291580,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.06
+  }
+}

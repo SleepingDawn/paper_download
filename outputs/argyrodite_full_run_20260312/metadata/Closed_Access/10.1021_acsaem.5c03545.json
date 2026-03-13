@@ -1,0 +1,123 @@
+{
+  "doi": "10.1021/acsaem.5c03545",
+  "pdf_filename": "10.1021_acsaem.5c03545.pdf",
+  "json_filename": "10.1021_acsaem.5c03545.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.5c03545.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7122820281",
+    "doi": "10.1021/acsaem.5c03545",
+    "title": "Computational Discovery of Li <sub>6</sub> PO <sub>5</sub> I: An Oxide Argyrodite for Solid-State Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2026-01-12",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.15968243,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Nane Petrosyan",
+    "authors_display": "Nane Petrosyan; A. A. Hunanyan; Olgert L. Dallakyan; Luiza G. Khachatryan; Mikayel T. Sahakyan; Mikayel S. Chobanyan; Hayk Zakaryan",
+    "authors": [
+      {
+        "display_name": "Nane Petrosyan",
+        "id": "https://openalex.org/A5105104674",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "A. A. Hunanyan",
+        "id": "https://openalex.org/A5033050699",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Olgert L. Dallakyan",
+        "id": "https://openalex.org/A5104687627",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Luiza G. Khachatryan",
+        "id": "https://openalex.org/A5119524161",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mikayel T. Sahakyan",
+        "id": "https://openalex.org/A5119524160",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mikayel S. Chobanyan",
+        "id": "https://openalex.org/A5099086500",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hayk Zakaryan",
+        "id": "https://openalex.org/A5042986797",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7122820281",
+    "doi": "10.1021/acsaem.5c03545",
+    "title": "Computational Discovery of Li <sub>6</sub> PO <sub>5</sub> I: An Oxide Argyrodite for Solid-State Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2026-01-12",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.15968243,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Nane Petrosyan",
+    "authors_display": "Nane Petrosyan; A. A. Hunanyan; Olgert L. Dallakyan; Luiza G. Khachatryan; Mikayel T. Sahakyan; Mikayel S. Chobanyan; Hayk Zakaryan",
+    "authors_json": "[{\"display_name\": \"Nane Petrosyan\", \"id\": \"https://openalex.org/A5105104674\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"A. A. Hunanyan\", \"id\": \"https://openalex.org/A5033050699\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Olgert L. Dallakyan\", \"id\": \"https://openalex.org/A5104687627\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Luiza G. Khachatryan\", \"id\": \"https://openalex.org/A5119524161\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mikayel T. Sahakyan\", \"id\": \"https://openalex.org/A5119524160\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mikayel S. Chobanyan\", \"id\": \"https://openalex.org/A5099086500\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hayk Zakaryan\", \"id\": \"https://openalex.org/A5042986797\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.5c03545",
+    "landing_title": "Computational Discovery of Li6PO5I: An Oxide Argyrodite for Solid-State Electrolytes | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acsaem.5c03545.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773310415707,
+    "actual_start_ms": 1773310415960,
+    "pacing_wait_ms": 252,
+    "pacing_jitter_sec": 1.407
+  }
+}

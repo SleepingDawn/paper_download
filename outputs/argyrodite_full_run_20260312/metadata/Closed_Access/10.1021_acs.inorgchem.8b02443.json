@@ -1,0 +1,110 @@
+{
+  "doi": "10.1021/acs.inorgchem.8b02443",
+  "pdf_filename": "10.1021_acs.inorgchem.8b02443.pdf",
+  "json_filename": "10.1021_acs.inorgchem.8b02443.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.inorgchem.8b02443.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2896152704",
+    "doi": "10.1021/acs.inorgchem.8b02443",
+    "title": "Competing Structural Influences in the Li Superionic Conducting Argyrodites Li<sub>6</sub>PS<sub>5–<i>x</i></sub>Se<i><sub><i>x</i></sub></i>Br (0 ≤ <i>x</i> ≤ 1) upon Se Substitution",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Inorganic Chemistry",
+      "id": "https://openalex.org/S171072222",
+      "type": "journal",
+      "issn_l": "0020-1669",
+      "issn": [
+        "0020-1669",
+        "1520-510X"
+      ]
+    },
+    "publication_date": "2018-10-22",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 107,
+    "citation_normalized_percentile": 0.98019035,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Tim Bernges",
+    "authors_display": "Tim Bernges; Sean P. Culver; Nicolò Minafra; Raimund Koerver; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Tim Bernges",
+        "id": "https://openalex.org/A5068451266",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sean P. Culver",
+        "id": "https://openalex.org/A5085137977",
+        "orcid": "https://orcid.org/0000-0002-4156-6487",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nicolò Minafra",
+        "id": "https://openalex.org/A5057886209",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Raimund Koerver",
+        "id": "https://openalex.org/A5067610455",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2896152704",
+    "doi": "10.1021/acs.inorgchem.8b02443",
+    "title": "Competing Structural Influences in the Li Superionic Conducting Argyrodites Li<sub>6</sub>PS<sub>5–<i>x</i></sub>Se<i><sub><i>x</i></sub></i>Br (0 ≤ <i>x</i> ≤ 1) upon Se Substitution",
+    "publisher": "American Chemical Society",
+    "journal": "Inorganic Chemistry",
+    "journal_id": "https://openalex.org/S171072222",
+    "journal_type": "journal",
+    "journal_issn_l": "0020-1669",
+    "journal_issn_json": "[\"0020-1669\", \"1520-510X\"]",
+    "publication_date": "2018-10-22",
+    "publication_year": 2018,
+    "work_type": "article",
+    "cited_by_count": 107,
+    "citation_normalized_percentile": 0.98019035,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Tim Bernges",
+    "authors_display": "Tim Bernges; Sean P. Culver; Nicolò Minafra; Raimund Koerver; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Tim Bernges\", \"id\": \"https://openalex.org/A5068451266\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Sean P. Culver\", \"id\": \"https://openalex.org/A5085137977\", \"orcid\": \"https://orcid.org/0000-0002-4156-6487\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nicolò Minafra\", \"id\": \"https://openalex.org/A5057886209\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Raimund Koerver\", \"id\": \"https://openalex.org/A5067610455\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301754215,
+    "actual_start_ms": 1773301757591,
+    "pacing_wait_ms": 3376,
+    "pacing_jitter_sec": 1.797
+  }
+}

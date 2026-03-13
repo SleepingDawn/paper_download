@@ -1,0 +1,168 @@
+{
+  "doi": "10.1149/ma2025-02291578mtgabs",
+  "pdf_filename": "10.1149_ma2025-02291578mtgabs.pdf",
+  "json_filename": "10.1149_ma2025-02291578mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2025-02291578mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4416600218",
+    "doi": "10.1149/ma2025-02291578mtgabs",
+    "title": "<i>(Invited)</i> Atomistic Modelling of Electrochemical Ag Exsolution from Ag-Doped Li <sub>6</sub> PS <sub>5</sub> cl",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2025-11-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.384675,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 13,
+    "first_author": "Haesun Park",
+    "authors_display": "Haesun Park; Seung Ho Choi; Chang Hoon Baek; Jihoon Oh; Geung-Jong Lee; Minsoo Kim; Hyesu Lee; Dong‐Joo Yoo; Yoon Seok Jung; Kyung-Su Kim; Ji‐Sang Yu; Woosuk Cho; Jang Wook Choi",
+    "authors": [
+      {
+        "display_name": "Haesun Park",
+        "id": "https://openalex.org/A5048375813",
+        "orcid": "https://orcid.org/0000-0001-6266-8151",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Seung Ho Choi",
+        "id": "https://openalex.org/A5044412412",
+        "orcid": "https://orcid.org/0000-0002-3114-0095",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chang Hoon Baek",
+        "id": "https://openalex.org/A5112237554",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jihoon Oh",
+        "id": "https://openalex.org/A5067287907",
+        "orcid": "https://orcid.org/0000-0002-3603-6975",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Geung-Jong Lee",
+        "id": "https://openalex.org/A5031398027",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Minsoo Kim",
+        "id": "https://openalex.org/A5100362653",
+        "orcid": "https://orcid.org/0000-0001-7705-1381",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyesu Lee",
+        "id": "https://openalex.org/A5052738263",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Joo Yoo",
+        "id": "https://openalex.org/A5022475364",
+        "orcid": "https://orcid.org/0000-0001-5656-8613",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoon Seok Jung",
+        "id": "https://openalex.org/A5045334638",
+        "orcid": "https://orcid.org/0000-0003-0357-9508",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung-Su Kim",
+        "id": "https://openalex.org/A5100374557",
+        "orcid": "https://orcid.org/0009-0005-3151-4113",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji‐Sang Yu",
+        "id": "https://openalex.org/A5101630653",
+        "orcid": "https://orcid.org/0000-0001-9759-1297",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Woosuk Cho",
+        "id": "https://openalex.org/A5065789071",
+        "orcid": "https://orcid.org/0000-0003-1715-325X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jang Wook Choi",
+        "id": "https://openalex.org/A5091329617",
+        "orcid": "https://orcid.org/0000-0001-8783-0901",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4416600218",
+    "doi": "10.1149/ma2025-02291578mtgabs",
+    "title": "<i>(Invited)</i> Atomistic Modelling of Electrochemical Ag Exsolution from Ag-Doped Li <sub>6</sub> PS <sub>5</sub> cl",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2025-11-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.384675,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 13,
+    "first_author": "Haesun Park",
+    "authors_display": "Haesun Park; Seung Ho Choi; Chang Hoon Baek; Jihoon Oh; Geung-Jong Lee; Minsoo Kim; Hyesu Lee; Dong‐Joo Yoo; Yoon Seok Jung; Kyung-Su Kim; Ji‐Sang Yu; Woosuk Cho; Jang Wook Choi",
+    "authors_json": "[{\"display_name\": \"Haesun Park\", \"id\": \"https://openalex.org/A5048375813\", \"orcid\": \"https://orcid.org/0000-0001-6266-8151\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Seung Ho Choi\", \"id\": \"https://openalex.org/A5044412412\", \"orcid\": \"https://orcid.org/0000-0002-3114-0095\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chang Hoon Baek\", \"id\": \"https://openalex.org/A5112237554\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jihoon Oh\", \"id\": \"https://openalex.org/A5067287907\", \"orcid\": \"https://orcid.org/0000-0002-3603-6975\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Geung-Jong Lee\", \"id\": \"https://openalex.org/A5031398027\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Minsoo Kim\", \"id\": \"https://openalex.org/A5100362653\", \"orcid\": \"https://orcid.org/0000-0001-7705-1381\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyesu Lee\", \"id\": \"https://openalex.org/A5052738263\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Joo Yoo\", \"id\": \"https://openalex.org/A5022475364\", \"orcid\": \"https://orcid.org/0000-0001-5656-8613\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoon Seok Jung\", \"id\": \"https://openalex.org/A5045334638\", \"orcid\": \"https://orcid.org/0000-0003-0357-9508\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung-Su Kim\", \"id\": \"https://openalex.org/A5100374557\", \"orcid\": \"https://orcid.org/0009-0005-3151-4113\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ji‐Sang Yu\", \"id\": \"https://openalex.org/A5101630653\", \"orcid\": \"https://orcid.org/0000-0001-9759-1297\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Woosuk Cho\", \"id\": \"https://openalex.org/A5065789071\", \"orcid\": \"https://orcid.org/0000-0003-1715-325X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jang Wook Choi\", \"id\": \"https://openalex.org/A5091329617\", \"orcid\": \"https://orcid.org/0000-0001-8783-0901\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773309298160,
+    "actual_start_ms": 1773309298161,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.017
+  }
+}

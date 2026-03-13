@@ -1,0 +1,119 @@
+{
+  "doi": "10.1149/ma2019-04/6/296",
+  "pdf_filename": "10.1149_ma2019-04_6_296.pdf",
+  "json_filename": "10.1149_ma2019-04_6_296.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2019-04_6_296.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4240130083",
+    "doi": "10.1149/ma2019-04/6/296",
+    "title": "(Invited) Hard Chemistry:  Solid State Electrolytes and Anode Protection for Solid State Lithium and Sodium Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2019-06-30",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.24965687,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Linda F. Nazar",
+    "authors_display": "Linda F. Nazar; Kavish Kaup; Laidong Zhou; Ivan Kochetkov; Zhizhen Zhang; Kern Ho Park",
+    "authors": [
+      {
+        "display_name": "Linda F. Nazar",
+        "id": "https://openalex.org/A5079626231",
+        "orcid": "https://orcid.org/0000-0002-3314-8197",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Kavish Kaup",
+        "id": "https://openalex.org/A5012885186",
+        "orcid": "https://orcid.org/0000-0001-6201-2582",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Laidong Zhou",
+        "id": "https://openalex.org/A5025003275",
+        "orcid": "https://orcid.org/0000-0002-8556-3296",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ivan Kochetkov",
+        "id": "https://openalex.org/A5058794934",
+        "orcid": "https://orcid.org/0000-0001-9602-8697",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhizhen Zhang",
+        "id": "https://openalex.org/A5028577515",
+        "orcid": "https://orcid.org/0000-0002-4238-3447",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kern Ho Park",
+        "id": "https://openalex.org/A5091485561",
+        "orcid": "https://orcid.org/0000-0002-0087-7625",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4240130083",
+    "doi": "10.1149/ma2019-04/6/296",
+    "title": "(Invited) Hard Chemistry:  Solid State Electrolytes and Anode Protection for Solid State Lithium and Sodium Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2019-06-30",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.24965687,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Linda F. Nazar",
+    "authors_display": "Linda F. Nazar; Kavish Kaup; Laidong Zhou; Ivan Kochetkov; Zhizhen Zhang; Kern Ho Park",
+    "authors_json": "[{\"display_name\": \"Linda F. Nazar\", \"id\": \"https://openalex.org/A5079626231\", \"orcid\": \"https://orcid.org/0000-0002-3314-8197\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Kavish Kaup\", \"id\": \"https://openalex.org/A5012885186\", \"orcid\": \"https://orcid.org/0000-0001-6201-2582\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Laidong Zhou\", \"id\": \"https://openalex.org/A5025003275\", \"orcid\": \"https://orcid.org/0000-0002-8556-3296\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ivan Kochetkov\", \"id\": \"https://openalex.org/A5058794934\", \"orcid\": \"https://orcid.org/0000-0001-9602-8697\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhizhen Zhang\", \"id\": \"https://openalex.org/A5028577515\", \"orcid\": \"https://orcid.org/0000-0002-4238-3447\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kern Ho Park\", \"id\": \"https://openalex.org/A5091485561\", \"orcid\": \"https://orcid.org/0000-0002-0087-7625\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773303254854,
+    "actual_start_ms": 1773303254855,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.217
+  }
+}

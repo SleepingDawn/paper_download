@@ -1,0 +1,126 @@
+{
+  "doi": "10.1149/ma2024-0281236mtgabs",
+  "pdf_filename": "10.1149_ma2024-0281236mtgabs.pdf",
+  "json_filename": "10.1149_ma2024-0281236mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2024-0281236mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4405591902",
+    "doi": "10.1149/ma2024-0281236mtgabs",
+    "title": "Optimizing Cathode Processing for Enhanced Performance of Li-S All-Solid-State Batteries with Conversion-Type Active Material",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21859566,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Matilde Pavan",
+    "authors_display": "Matilde Pavan; Konrad Muench; Tim Bernges; Sebastian L. Benz; Anja Henß; Wolfgang G. Zeier; Jürgen Janek",
+    "authors": [
+      {
+        "display_name": "Matilde Pavan",
+        "id": "https://openalex.org/A5049260990",
+        "orcid": "https://orcid.org/0009-0007-5611-7522",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Konrad Muench",
+        "id": "https://openalex.org/A5112899255",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tim Bernges",
+        "id": "https://openalex.org/A5068451266",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sebastian L. Benz",
+        "id": "https://openalex.org/A5102766272",
+        "orcid": "https://orcid.org/0000-0002-0650-984X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anja Henß",
+        "id": "https://openalex.org/A5072831450",
+        "orcid": "https://orcid.org/0000-0001-5009-6512",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405591902",
+    "doi": "10.1149/ma2024-0281236mtgabs",
+    "title": "Optimizing Cathode Processing for Enhanced Performance of Li-S All-Solid-State Batteries with Conversion-Type Active Material",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21859566,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Matilde Pavan",
+    "authors_display": "Matilde Pavan; Konrad Muench; Tim Bernges; Sebastian L. Benz; Anja Henß; Wolfgang G. Zeier; Jürgen Janek",
+    "authors_json": "[{\"display_name\": \"Matilde Pavan\", \"id\": \"https://openalex.org/A5049260990\", \"orcid\": \"https://orcid.org/0009-0007-5611-7522\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Konrad Muench\", \"id\": \"https://openalex.org/A5112899255\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tim Bernges\", \"id\": \"https://openalex.org/A5068451266\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sebastian L. Benz\", \"id\": \"https://openalex.org/A5102766272\", \"orcid\": \"https://orcid.org/0000-0002-0650-984X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anja Henß\", \"id\": \"https://openalex.org/A5072831450\", \"orcid\": \"https://orcid.org/0000-0001-5009-6512\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773306949138,
+    "actual_start_ms": 1773306950024,
+    "pacing_wait_ms": 885,
+    "pacing_jitter_sec": 1.017
+  }
+}

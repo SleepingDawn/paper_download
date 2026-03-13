@@ -1,0 +1,119 @@
+{
+  "doi": "10.1149/ma2024-0281223mtgabs",
+  "pdf_filename": "10.1149_ma2024-0281223mtgabs.pdf",
+  "json_filename": "10.1149_ma2024-0281223mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2024-0281223mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4405591198",
+    "doi": "10.1149/ma2024-0281223mtgabs",
+    "title": "Interfacial Electrochemistry and Mechanics of Carbon Interlayers for Anode-Free Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21754163,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Daniel W. Liao",
+    "authors_display": "Daniel W. Liao; Muzamil Mulla; Hiroki Kawakami; Koichiro Aotani; M.D. Thouless; Neil P. Dasgupta",
+    "authors": [
+      {
+        "display_name": "Daniel W. Liao",
+        "id": "https://openalex.org/A5080486767",
+        "orcid": "https://orcid.org/0000-0003-4601-1453",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Muzamil Mulla",
+        "id": "https://openalex.org/A5012688852",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hiroki Kawakami",
+        "id": "https://openalex.org/A5004530377",
+        "orcid": "https://orcid.org/0009-0007-0515-0445",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Koichiro Aotani",
+        "id": "https://openalex.org/A5078545744",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "M.D. Thouless",
+        "id": "https://openalex.org/A5055335023",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Neil P. Dasgupta",
+        "id": "https://openalex.org/A5004446540",
+        "orcid": "https://orcid.org/0000-0002-5180-4063",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405591198",
+    "doi": "10.1149/ma2024-0281223mtgabs",
+    "title": "Interfacial Electrochemistry and Mechanics of Carbon Interlayers for Anode-Free Solid-State Batteries",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21754163,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Daniel W. Liao",
+    "authors_display": "Daniel W. Liao; Muzamil Mulla; Hiroki Kawakami; Koichiro Aotani; M.D. Thouless; Neil P. Dasgupta",
+    "authors_json": "[{\"display_name\": \"Daniel W. Liao\", \"id\": \"https://openalex.org/A5080486767\", \"orcid\": \"https://orcid.org/0000-0003-4601-1453\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Muzamil Mulla\", \"id\": \"https://openalex.org/A5012688852\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hiroki Kawakami\", \"id\": \"https://openalex.org/A5004530377\", \"orcid\": \"https://orcid.org/0009-0007-0515-0445\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Koichiro Aotani\", \"id\": \"https://openalex.org/A5078545744\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"M.D. Thouless\", \"id\": \"https://openalex.org/A5055335023\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Neil P. Dasgupta\", \"id\": \"https://openalex.org/A5004446540\", \"orcid\": \"https://orcid.org/0000-0002-5180-4063\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773305852920,
+    "actual_start_ms": 1773305852920,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.764
+  }
+}

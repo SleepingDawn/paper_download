@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.ccr.2024.215776",
+  "pdf_filename": "10.1016_j.ccr.2024.215776.pdf",
+  "json_filename": "10.1016_j.ccr.2024.215776.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ccr.2024.215776.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4392792965",
+    "doi": "10.1016/j.ccr.2024.215776",
+    "title": "New insights into Li-argyrodite solid-state electrolytes based on doping strategies",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Coordination Chemistry Reviews",
+      "id": "https://openalex.org/S117186765",
+      "type": "journal",
+      "issn_l": "0010-8545",
+      "issn": [
+        "0010-8545",
+        "1873-3840"
+      ]
+    },
+    "publication_date": "2024-03-14",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 23,
+    "citation_normalized_percentile": 0.95922448,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Daoxi Wang",
+    "authors_display": "Daoxi Wang; Haiting Shi; Shuo Wang; Xianyan Wu; Wanwei Jiang; Shuaitong Liang; Zhiwei Xu",
+    "authors": [
+      {
+        "display_name": "Daoxi Wang",
+        "id": "https://openalex.org/A5056114918",
+        "orcid": "https://orcid.org/0000-0001-9669-4374",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haiting Shi",
+        "id": "https://openalex.org/A5104004301",
+        "orcid": "https://orcid.org/0000-0001-5959-9474",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Shuo Wang",
+        "id": "https://openalex.org/A5100400173",
+        "orcid": "https://orcid.org/0000-0002-7907-9676",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xianyan Wu",
+        "id": "https://openalex.org/A5001148056",
+        "orcid": "https://orcid.org/0000-0002-1582-2205",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wanwei Jiang",
+        "id": "https://openalex.org/A5102515950",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuaitong Liang",
+        "id": "https://openalex.org/A5068220629",
+        "orcid": "https://orcid.org/0000-0001-8053-2004",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhiwei Xu",
+        "id": "https://openalex.org/A5020907360",
+        "orcid": "https://orcid.org/0000-0002-8067-5344",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4392792965",
+    "doi": "10.1016/j.ccr.2024.215776",
+    "title": "New insights into Li-argyrodite solid-state electrolytes based on doping strategies",
+    "publisher": "Elsevier BV",
+    "journal": "Coordination Chemistry Reviews",
+    "journal_id": "https://openalex.org/S117186765",
+    "journal_type": "journal",
+    "journal_issn_l": "0010-8545",
+    "journal_issn_json": "[\"0010-8545\", \"1873-3840\"]",
+    "publication_date": "2024-03-14",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 23,
+    "citation_normalized_percentile": 0.95922448,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Daoxi Wang",
+    "authors_display": "Daoxi Wang; Haiting Shi; Shuo Wang; Xianyan Wu; Wanwei Jiang; Shuaitong Liang; Zhiwei Xu",
+    "authors_json": "[{\"display_name\": \"Daoxi Wang\", \"id\": \"https://openalex.org/A5056114918\", \"orcid\": \"https://orcid.org/0000-0001-9669-4374\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Haiting Shi\", \"id\": \"https://openalex.org/A5104004301\", \"orcid\": \"https://orcid.org/0000-0001-5959-9474\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Shuo Wang\", \"id\": \"https://openalex.org/A5100400173\", \"orcid\": \"https://orcid.org/0000-0002-7907-9676\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xianyan Wu\", \"id\": \"https://openalex.org/A5001148056\", \"orcid\": \"https://orcid.org/0000-0002-1582-2205\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wanwei Jiang\", \"id\": \"https://openalex.org/A5102515950\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuaitong Liang\", \"id\": \"https://openalex.org/A5068220629\", \"orcid\": \"https://orcid.org/0000-0001-8053-2004\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhiwei Xu\", \"id\": \"https://openalex.org/A5020907360\", \"orcid\": \"https://orcid.org/0000-0002-8067-5344\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302483919,
+    "actual_start_ms": 1773302585529,
+    "pacing_wait_ms": 101610,
+    "pacing_jitter_sec": 1.641
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "doi": "10.1016/j.electacta.2025.147185",
+  "pdf_filename": "10.1016_j.electacta.2025.147185.pdf",
+  "json_filename": "10.1016_j.electacta.2025.147185.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.electacta.2025.147185.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413292495",
+    "doi": "10.1016/j.electacta.2025.147185",
+    "title": "Enhanced ionic conductivity and interfacial compatibility in BH4––based lithium argyrodite solid electrolytes via Cu+ doping",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Electrochimica Acta",
+      "id": "https://openalex.org/S198339081",
+      "type": "journal",
+      "issn_l": "0013-4686",
+      "issn": [
+        "0013-4686",
+        "1873-3859"
+      ]
+    },
+    "publication_date": "2025-08-18",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.247446,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Hyeonjun Hong",
+    "authors_display": "Hyeonjun Hong; Jaeseong Yoo; Hyunsuk Noh; Sungchul Bae; Jin Young Kim; Jae‐Hun Kim",
+    "authors": [
+      {
+        "display_name": "Hyeonjun Hong",
+        "id": "https://openalex.org/A5102251100",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jaeseong Yoo",
+        "id": "https://openalex.org/A5038167550",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyunsuk Noh",
+        "id": "https://openalex.org/A5108274296",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sungchul Bae",
+        "id": "https://openalex.org/A5018701685",
+        "orcid": "https://orcid.org/0000-0002-8511-6939",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jin Young Kim",
+        "id": "https://openalex.org/A5100417186",
+        "orcid": "https://orcid.org/0000-0003-4822-3804",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jae‐Hun Kim",
+        "id": "https://openalex.org/A5100772899",
+        "orcid": "https://orcid.org/0000-0002-4252-2590",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413292495",
+    "doi": "10.1016/j.electacta.2025.147185",
+    "title": "Enhanced ionic conductivity and interfacial compatibility in BH4––based lithium argyrodite solid electrolytes via Cu+ doping",
+    "publisher": "Elsevier BV",
+    "journal": "Electrochimica Acta",
+    "journal_id": "https://openalex.org/S198339081",
+    "journal_type": "journal",
+    "journal_issn_l": "0013-4686",
+    "journal_issn_json": "[\"0013-4686\", \"1873-3859\"]",
+    "publication_date": "2025-08-18",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.247446,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Hyeonjun Hong",
+    "authors_display": "Hyeonjun Hong; Jaeseong Yoo; Hyunsuk Noh; Sungchul Bae; Jin Young Kim; Jae‐Hun Kim",
+    "authors_json": "[{\"display_name\": \"Hyeonjun Hong\", \"id\": \"https://openalex.org/A5102251100\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jaeseong Yoo\", \"id\": \"https://openalex.org/A5038167550\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyunsuk Noh\", \"id\": \"https://openalex.org/A5108274296\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sungchul Bae\", \"id\": \"https://openalex.org/A5018701685\", \"orcid\": \"https://orcid.org/0000-0002-8511-6939\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jin Young Kim\", \"id\": \"https://openalex.org/A5100417186\", \"orcid\": \"https://orcid.org/0000-0003-4822-3804\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jae‐Hun Kim\", \"id\": \"https://openalex.org/A5100772899\", \"orcid\": \"https://orcid.org/0000-0002-4252-2590\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S0013468625015440?via%3Dihub",
+    "landing_title": "Enhanced ionic conductivity and interfacial compatibility in BH4––based lithium argyrodite solid electrolytes via Cu+ doping - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773309189949,
+    "actual_start_ms": 1773309189949,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.052
+  }
+}

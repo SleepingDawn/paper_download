@@ -1,0 +1,187 @@
+{
+  "doi": "10.1002/aenm.202470092",
+  "pdf_filename": "10.1002_aenm.202470092.pdf",
+  "json_filename": "10.1002_aenm.202470092.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202470092.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4399821373",
+    "doi": "10.1002/aenm.202470092",
+    "title": "Mechanical Milling – Induced Microstructure Changes in Argyrodite LPSCl Solid‐State Electrolyte Critically Affect Electrochemical Stability (Adv. Energy Mater. 23/2024)",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2024-06-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.39050493,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202470092",
+    "open_access": true,
+    "author_count": 16,
+    "first_author": "Yixian Wang",
+    "authors_display": "Yixian Wang; Hongchang Hao; Kaustubh G. Naik; Bairav S. Vishnugopi; Cole D. Fincher; Qianqian Yan; Vikalp Raj; Hugo Celio; Guang Yang; Hong Fang; Yet‐Ming Chiang; Frédéric A. Perras; Puru Jena; John Watt; Partha P. Mukherjee; David Mitlin",
+    "authors": [
+      {
+        "display_name": "Yixian Wang",
+        "id": "https://openalex.org/A5101784896",
+        "orcid": "https://orcid.org/0000-0001-6107-8352",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hongchang Hao",
+        "id": "https://openalex.org/A5047306146",
+        "orcid": "https://orcid.org/0000-0003-4190-4105",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kaustubh G. Naik",
+        "id": "https://openalex.org/A5028243107",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bairav S. Vishnugopi",
+        "id": "https://openalex.org/A5011168368",
+        "orcid": "https://orcid.org/0009-0002-6357-9358",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cole D. Fincher",
+        "id": "https://openalex.org/A5039719377",
+        "orcid": "https://orcid.org/0000-0002-8009-7484",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qianqian Yan",
+        "id": "https://openalex.org/A5101449772",
+        "orcid": "https://orcid.org/0000-0003-2852-4044",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vikalp Raj",
+        "id": "https://openalex.org/A5071449978",
+        "orcid": "https://orcid.org/0000-0001-5873-5446",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hugo Celio",
+        "id": "https://openalex.org/A5000791602",
+        "orcid": "https://orcid.org/0000-0001-9066-9952",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guang Yang",
+        "id": "https://openalex.org/A5075057187",
+        "orcid": "https://orcid.org/0000-0003-0583-6272",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Fang",
+        "id": "https://openalex.org/A5012866011",
+        "orcid": "https://orcid.org/0000-0002-0968-8687",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yet‐Ming Chiang",
+        "id": "https://openalex.org/A5060617433",
+        "orcid": "https://orcid.org/0000-0002-0833-7674",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Frédéric A. Perras",
+        "id": "https://openalex.org/A5050679087",
+        "orcid": "https://orcid.org/0000-0002-2662-5119",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Puru Jena",
+        "id": "https://openalex.org/A5004635120",
+        "orcid": "https://orcid.org/0000-0002-2316-859X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "John Watt",
+        "id": "https://openalex.org/A5082628784",
+        "orcid": "https://orcid.org/0000-0002-8012-9837",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Partha P. Mukherjee",
+        "id": "https://openalex.org/A5058780839",
+        "orcid": "https://orcid.org/0000-0001-7900-7261",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "David Mitlin",
+        "id": "https://openalex.org/A5086743052",
+        "orcid": "https://orcid.org/0000-0002-7556-3575",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4399821373",
+    "doi": "10.1002/aenm.202470092",
+    "title": "Mechanical Milling – Induced Microstructure Changes in Argyrodite LPSCl Solid‐State Electrolyte Critically Affect Electrochemical Stability (Adv. Energy Mater. 23/2024)",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2024-06-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.39050493,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202470092",
+    "open_access": true,
+    "author_count": 16,
+    "first_author": "Yixian Wang",
+    "authors_display": "Yixian Wang; Hongchang Hao; Kaustubh G. Naik; Bairav S. Vishnugopi; Cole D. Fincher; Qianqian Yan; Vikalp Raj; Hugo Celio; Guang Yang; Hong Fang; Yet‐Ming Chiang; Frédéric A. Perras; Puru Jena; John Watt; Partha P. Mukherjee; David Mitlin",
+    "authors_json": "[{\"display_name\": \"Yixian Wang\", \"id\": \"https://openalex.org/A5101784896\", \"orcid\": \"https://orcid.org/0000-0001-6107-8352\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hongchang Hao\", \"id\": \"https://openalex.org/A5047306146\", \"orcid\": \"https://orcid.org/0000-0003-4190-4105\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kaustubh G. Naik\", \"id\": \"https://openalex.org/A5028243107\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bairav S. Vishnugopi\", \"id\": \"https://openalex.org/A5011168368\", \"orcid\": \"https://orcid.org/0009-0002-6357-9358\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cole D. Fincher\", \"id\": \"https://openalex.org/A5039719377\", \"orcid\": \"https://orcid.org/0000-0002-8009-7484\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qianqian Yan\", \"id\": \"https://openalex.org/A5101449772\", \"orcid\": \"https://orcid.org/0000-0003-2852-4044\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Vikalp Raj\", \"id\": \"https://openalex.org/A5071449978\", \"orcid\": \"https://orcid.org/0000-0001-5873-5446\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hugo Celio\", \"id\": \"https://openalex.org/A5000791602\", \"orcid\": \"https://orcid.org/0000-0001-9066-9952\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guang Yang\", \"id\": \"https://openalex.org/A5075057187\", \"orcid\": \"https://orcid.org/0000-0003-0583-6272\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Fang\", \"id\": \"https://openalex.org/A5012866011\", \"orcid\": \"https://orcid.org/0000-0002-0968-8687\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yet‐Ming Chiang\", \"id\": \"https://openalex.org/A5060617433\", \"orcid\": \"https://orcid.org/0000-0002-0833-7674\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Frédéric A. Perras\", \"id\": \"https://openalex.org/A5050679087\", \"orcid\": \"https://orcid.org/0000-0002-2662-5119\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Puru Jena\", \"id\": \"https://openalex.org/A5004635120\", \"orcid\": \"https://orcid.org/0000-0002-2316-859X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"John Watt\", \"id\": \"https://openalex.org/A5082628784\", \"orcid\": \"https://orcid.org/0000-0002-8012-9837\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Partha P. Mukherjee\", \"id\": \"https://openalex.org/A5058780839\", \"orcid\": \"https://orcid.org/0000-0001-7900-7261\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"David Mitlin\", \"id\": \"https://openalex.org/A5086743052\", \"orcid\": \"https://orcid.org/0000-0002-7556-3575\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308757572,
+    "actual_start_ms": 1773308757572,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.465
+  }
+}

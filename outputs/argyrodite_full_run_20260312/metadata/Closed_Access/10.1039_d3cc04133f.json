@@ -1,0 +1,96 @@
+{
+  "doi": "10.1039/d3cc04133f",
+  "pdf_filename": "10.1039_d3cc04133f.pdf",
+  "json_filename": "10.1039_d3cc04133f.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d3cc04133f.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4387403889",
+    "doi": "10.1039/d3cc04133f",
+    "title": "Re-sintering induced ionic conductivity recovery for air-exposed Li<sub>5.4</sub>PS<sub>4.4</sub>Cl<sub>1.6</sub> argyrodite sulfide electrolyte",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Chemical Communications",
+      "id": "https://openalex.org/S152760256",
+      "type": "journal",
+      "issn_l": "1359-7345",
+      "issn": [
+        "1359-7345",
+        "1364-548X"
+      ]
+    },
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.79127371,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Jie Chen",
+    "authors_display": "Jie Chen; Hannan Chen; Bingbing Tian",
+    "authors": [
+      {
+        "display_name": "Jie Chen",
+        "id": "https://openalex.org/A5100332940",
+        "orcid": "https://orcid.org/0000-0002-6134-6246",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hannan Chen",
+        "id": "https://openalex.org/A5087286261",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bingbing Tian",
+        "id": "https://openalex.org/A5029006725",
+        "orcid": "https://orcid.org/0000-0003-1508-6217",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4387403889",
+    "doi": "10.1039/d3cc04133f",
+    "title": "Re-sintering induced ionic conductivity recovery for air-exposed Li<sub>5.4</sub>PS<sub>4.4</sub>Cl<sub>1.6</sub> argyrodite sulfide electrolyte",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Chemical Communications",
+    "journal_id": "https://openalex.org/S152760256",
+    "journal_type": "journal",
+    "journal_issn_l": "1359-7345",
+    "journal_issn_json": "[\"1359-7345\", \"1364-548X\"]",
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.79127371,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Jie Chen",
+    "authors_display": "Jie Chen; Hannan Chen; Bingbing Tian",
+    "authors_json": "[{\"display_name\": \"Jie Chen\", \"id\": \"https://openalex.org/A5100332940\", \"orcid\": \"https://orcid.org/0000-0002-6134-6246\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hannan Chen\", \"id\": \"https://openalex.org/A5087286261\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bingbing Tian\", \"id\": \"https://openalex.org/A5029006725\", \"orcid\": \"https://orcid.org/0000-0003-1508-6217\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.rsc.org/en/content/articlelanding/2023/cc/d3cc04133f",
+    "landing_title": "Re-sintering induced ionic conductivity recovery for air-exposed Li5.4PS4.4Cl1.6 argyrodite sulfide electrolyte - Chemical Communications (RSC Publishing)",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773314274393,
+    "actual_start_ms": 1773314274394,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.785
+  }
+}

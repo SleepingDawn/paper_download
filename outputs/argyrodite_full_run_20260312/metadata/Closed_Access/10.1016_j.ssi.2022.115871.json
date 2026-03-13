@@ -1,0 +1,131 @@
+{
+  "doi": "10.1016/j.ssi.2022.115871",
+  "pdf_filename": "10.1016_j.ssi.2022.115871.pdf",
+  "json_filename": "10.1016_j.ssi.2022.115871.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ssi.2022.115871.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4210965928",
+    "doi": "10.1016/j.ssi.2022.115871",
+    "title": "Achieving superior ionic conductivity of Li6PS5I via introducing LiCl",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Solid State Ionics",
+      "id": "https://openalex.org/S101472891",
+      "type": "journal",
+      "issn_l": "0167-2738",
+      "issn": [
+        "0167-2738",
+        "1872-7689"
+      ]
+    },
+    "publication_date": "2022-02-09",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 24,
+    "citation_normalized_percentile": 0.86869885,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Cong Liao",
+    "authors_display": "Cong Liao; Chuang Yu; Linfeng Peng; Xuefei Miao; Shuai Chen; Ziqi Zhang; Shijie Cheng; Jia Xie",
+    "authors": [
+      {
+        "display_name": "Cong Liao",
+        "id": "https://openalex.org/A5102095751",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Linfeng Peng",
+        "id": "https://openalex.org/A5101094536",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xuefei Miao",
+        "id": "https://openalex.org/A5076669737",
+        "orcid": "https://orcid.org/0000-0003-4930-9108",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuai Chen",
+        "id": "https://openalex.org/A5000249135",
+        "orcid": "https://orcid.org/0000-0001-8566-601X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziqi Zhang",
+        "id": "https://openalex.org/A5100404389",
+        "orcid": "https://orcid.org/0000-0002-6251-0087",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Cheng",
+        "id": "https://openalex.org/A5024186253",
+        "orcid": "https://orcid.org/0000-0002-8752-4311",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jia Xie",
+        "id": "https://openalex.org/A5081117176",
+        "orcid": "https://orcid.org/0000-0002-8731-295X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4210965928",
+    "doi": "10.1016/j.ssi.2022.115871",
+    "title": "Achieving superior ionic conductivity of Li6PS5I via introducing LiCl",
+    "publisher": "Elsevier BV",
+    "journal": "Solid State Ionics",
+    "journal_id": "https://openalex.org/S101472891",
+    "journal_type": "journal",
+    "journal_issn_l": "0167-2738",
+    "journal_issn_json": "[\"0167-2738\", \"1872-7689\"]",
+    "publication_date": "2022-02-09",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 24,
+    "citation_normalized_percentile": 0.86869885,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Cong Liao",
+    "authors_display": "Cong Liao; Chuang Yu; Linfeng Peng; Xuefei Miao; Shuai Chen; Ziqi Zhang; Shijie Cheng; Jia Xie",
+    "authors_json": "[{\"display_name\": \"Cong Liao\", \"id\": \"https://openalex.org/A5102095751\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Linfeng Peng\", \"id\": \"https://openalex.org/A5101094536\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xuefei Miao\", \"id\": \"https://openalex.org/A5076669737\", \"orcid\": \"https://orcid.org/0000-0003-4930-9108\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuai Chen\", \"id\": \"https://openalex.org/A5000249135\", \"orcid\": \"https://orcid.org/0000-0001-8566-601X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ziqi Zhang\", \"id\": \"https://openalex.org/A5100404389\", \"orcid\": \"https://orcid.org/0000-0002-6251-0087\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Cheng\", \"id\": \"https://openalex.org/A5024186253\", \"orcid\": \"https://orcid.org/0000-0002-8752-4311\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jia Xie\", \"id\": \"https://openalex.org/A5081117176\", \"orcid\": \"https://orcid.org/0000-0002-8731-295X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302466724,
+    "actual_start_ms": 1773302491127,
+    "pacing_wait_ms": 24402,
+    "pacing_jitter_sec": 1.71
+  }
+}

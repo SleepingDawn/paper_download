@@ -1,0 +1,123 @@
+{
+  "doi": "10.1002/advs.202204942",
+  "pdf_filename": "10.1002_advs.202204942.pdf",
+  "json_filename": "10.1002_advs.202204942.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_advs.202204942.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4311201196",
+    "doi": "10.1002/advs.202204942",
+    "title": "Lithium Superionic Conduction in BH<sub>4</sub>‐Substituted Thiophosphate Solid Electrolytes",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Science",
+      "id": "https://openalex.org/S2737737698",
+      "type": "journal",
+      "issn_l": "2198-3844",
+      "issn": [
+        "2198-3844"
+      ]
+    },
+    "publication_date": "2022-12-11",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 29,
+    "citation_normalized_percentile": 0.90435801,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Yong‐Jin Jang",
+    "authors_display": "Yong‐Jin Jang; Hyungeun Seo; Young‐Su Lee; Sora Kang; Woosuk Cho; Young Whan Cho; Jae‐Hun Kim",
+    "authors": [
+      {
+        "display_name": "Yong‐Jin Jang",
+        "id": "https://openalex.org/A5007817200",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyungeun Seo",
+        "id": "https://openalex.org/A5077193801",
+        "orcid": "https://orcid.org/0000-0001-8854-4448",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young‐Su Lee",
+        "id": "https://openalex.org/A5054146335",
+        "orcid": "https://orcid.org/0000-0002-3160-6633",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sora Kang",
+        "id": "https://openalex.org/A5026516537",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Woosuk Cho",
+        "id": "https://openalex.org/A5065789071",
+        "orcid": "https://orcid.org/0000-0003-1715-325X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young Whan Cho",
+        "id": "https://openalex.org/A5055493675",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jae‐Hun Kim",
+        "id": "https://openalex.org/A5100772899",
+        "orcid": "https://orcid.org/0000-0002-4252-2590",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4311201196",
+    "doi": "10.1002/advs.202204942",
+    "title": "Lithium Superionic Conduction in BH<sub>4</sub>‐Substituted Thiophosphate Solid Electrolytes",
+    "publisher": "Wiley",
+    "journal": "Advanced Science",
+    "journal_id": "https://openalex.org/S2737737698",
+    "journal_type": "journal",
+    "journal_issn_l": "2198-3844",
+    "journal_issn_json": "[\"2198-3844\"]",
+    "publication_date": "2022-12-11",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 29,
+    "citation_normalized_percentile": 0.90435801,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Yong‐Jin Jang",
+    "authors_display": "Yong‐Jin Jang; Hyungeun Seo; Young‐Su Lee; Sora Kang; Woosuk Cho; Young Whan Cho; Jae‐Hun Kim",
+    "authors_json": "[{\"display_name\": \"Yong‐Jin Jang\", \"id\": \"https://openalex.org/A5007817200\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hyungeun Seo\", \"id\": \"https://openalex.org/A5077193801\", \"orcid\": \"https://orcid.org/0000-0001-8854-4448\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young‐Su Lee\", \"id\": \"https://openalex.org/A5054146335\", \"orcid\": \"https://orcid.org/0000-0002-3160-6633\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sora Kang\", \"id\": \"https://openalex.org/A5026516537\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Woosuk Cho\", \"id\": \"https://openalex.org/A5065789071\", \"orcid\": \"https://orcid.org/0000-0003-1715-325X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young Whan Cho\", \"id\": \"https://openalex.org/A5055493675\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jae‐Hun Kim\", \"id\": \"https://openalex.org/A5100772899\", \"orcid\": \"https://orcid.org/0000-0002-4252-2590\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773303593602,
+    "actual_start_ms": 1773303593602,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.755
+  }
+}

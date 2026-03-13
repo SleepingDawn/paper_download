@@ -1,0 +1,130 @@
+{
+  "doi": "10.1021/acsenergylett.1c01063",
+  "pdf_filename": "10.1021_acsenergylett.1c01063.pdf",
+  "json_filename": "10.1021_acsenergylett.1c01063.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsenergylett.1c01063.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3189958147",
+    "doi": "10.1021/acsenergylett.1c01063",
+    "title": "Rate Limitations in Composite Solid-State Battery Electrodes: Revealing Heterogeneity with <i>Operando</i> Microscopy",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2021-08-04",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 65,
+    "citation_normalized_percentile": 0.94832199,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Andrew L. Davis",
+    "authors_display": "Andrew L. Davis; Vishwas Goel; Daniel W. Liao; Mark N. Main; Eric Kazyak; John Lee; Katsuyo Thornton; Neil P. Dasgupta",
+    "authors": [
+      {
+        "display_name": "Andrew L. Davis",
+        "id": "https://openalex.org/A5031013715",
+        "orcid": "https://orcid.org/0000-0002-4264-5259",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vishwas Goel",
+        "id": "https://openalex.org/A5001840122",
+        "orcid": "https://orcid.org/0000-0002-5513-6584",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniel W. Liao",
+        "id": "https://openalex.org/A5080486767",
+        "orcid": "https://orcid.org/0000-0003-4601-1453",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mark N. Main",
+        "id": "https://openalex.org/A5029805785",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Eric Kazyak",
+        "id": "https://openalex.org/A5067207500",
+        "orcid": "https://orcid.org/0000-0001-5099-3985",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "John Lee",
+        "id": "https://openalex.org/A5100383930",
+        "orcid": "https://orcid.org/0000-0002-5890-602X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Katsuyo Thornton",
+        "id": "https://openalex.org/A5033451427",
+        "orcid": "https://orcid.org/0000-0002-1227-5293",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Neil P. Dasgupta",
+        "id": "https://openalex.org/A5004446540",
+        "orcid": "https://orcid.org/0000-0002-5180-4063",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3189958147",
+    "doi": "10.1021/acsenergylett.1c01063",
+    "title": "Rate Limitations in Composite Solid-State Battery Electrodes: Revealing Heterogeneity with <i>Operando</i> Microscopy",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2021-08-04",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 65,
+    "citation_normalized_percentile": 0.94832199,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Andrew L. Davis",
+    "authors_display": "Andrew L. Davis; Vishwas Goel; Daniel W. Liao; Mark N. Main; Eric Kazyak; John Lee; Katsuyo Thornton; Neil P. Dasgupta",
+    "authors_json": "[{\"display_name\": \"Andrew L. Davis\", \"id\": \"https://openalex.org/A5031013715\", \"orcid\": \"https://orcid.org/0000-0002-4264-5259\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Vishwas Goel\", \"id\": \"https://openalex.org/A5001840122\", \"orcid\": \"https://orcid.org/0000-0002-5513-6584\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniel W. Liao\", \"id\": \"https://openalex.org/A5080486767\", \"orcid\": \"https://orcid.org/0000-0003-4601-1453\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mark N. Main\", \"id\": \"https://openalex.org/A5029805785\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Eric Kazyak\", \"id\": \"https://openalex.org/A5067207500\", \"orcid\": \"https://orcid.org/0000-0001-5099-3985\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"John Lee\", \"id\": \"https://openalex.org/A5100383930\", \"orcid\": \"https://orcid.org/0000-0002-5890-602X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Katsuyo Thornton\", \"id\": \"https://openalex.org/A5033451427\", \"orcid\": \"https://orcid.org/0000-0002-1227-5293\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Neil P. Dasgupta\", \"id\": \"https://openalex.org/A5004446540\", \"orcid\": \"https://orcid.org/0000-0002-5180-4063\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301983719,
+    "actual_start_ms": 1773301985219,
+    "pacing_wait_ms": 1500,
+    "pacing_jitter_sec": 1.225
+  }
+}

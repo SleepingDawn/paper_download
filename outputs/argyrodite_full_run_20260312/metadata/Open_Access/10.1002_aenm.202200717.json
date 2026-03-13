@@ -1,0 +1,194 @@
+{
+  "doi": "10.1002/aenm.202200717",
+  "pdf_filename": "10.1002_aenm.202200717.pdf",
+  "json_filename": "10.1002_aenm.202200717.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202200717.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4288058471",
+    "doi": "10.1002/aenm.202200717",
+    "title": "Considering the Role of Ion Transport in Diffuson‐Dominated Thermal Conductivity",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2022-04-27",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 61,
+    "citation_normalized_percentile": 0.96623174,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202200717",
+    "open_access": true,
+    "author_count": 17,
+    "first_author": "Tim Bernges",
+    "authors_display": "Tim Bernges; Riley Hanus; Bjöern Wankmiller; Kazuki Imasato; Siqi Lin; Michael Ghidiu; Marius Gerlitz; Martin Peterlechner; Samuel Graham; Geoffroy Hautier; Yanzhong Pei; Michael Ryan Hansen; Gerhard Wilde; G. Jeffrey Snyder; Janine George; Matthias T. Agne; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Tim Bernges",
+        "id": "https://openalex.org/A5068451266",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Riley Hanus",
+        "id": "https://openalex.org/A5088482117",
+        "orcid": "https://orcid.org/0000-0002-6242-0647",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bjöern Wankmiller",
+        "id": "https://openalex.org/A5026677548",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kazuki Imasato",
+        "id": "https://openalex.org/A5015288454",
+        "orcid": "https://orcid.org/0000-0001-7294-1780",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Siqi Lin",
+        "id": "https://openalex.org/A5032585581",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michael Ghidiu",
+        "id": "https://openalex.org/A5015154762",
+        "orcid": "https://orcid.org/0000-0002-0599-9824",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marius Gerlitz",
+        "id": "https://openalex.org/A5005799142",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Peterlechner",
+        "id": "https://openalex.org/A5041157553",
+        "orcid": "https://orcid.org/0000-0002-4019-8811",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Samuel Graham",
+        "id": "https://openalex.org/A5039403990",
+        "orcid": "https://orcid.org/0000-0002-1299-1636",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Geoffroy Hautier",
+        "id": "https://openalex.org/A5027208775",
+        "orcid": "https://orcid.org/0000-0003-1754-2220",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanzhong Pei",
+        "id": "https://openalex.org/A5062606091",
+        "orcid": "https://orcid.org/0000-0003-1612-3294",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michael Ryan Hansen",
+        "id": "https://openalex.org/A5090003045",
+        "orcid": "https://orcid.org/0000-0001-7114-8051",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gerhard Wilde",
+        "id": "https://openalex.org/A5051284757",
+        "orcid": "https://orcid.org/0000-0001-8001-5998",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "G. Jeffrey Snyder",
+        "id": "https://openalex.org/A5049121943",
+        "orcid": "https://orcid.org/0000-0003-1414-8682",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Janine George",
+        "id": "https://openalex.org/A5084420654",
+        "orcid": "https://orcid.org/0000-0001-8907-0336",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Matthias T. Agne",
+        "id": "https://openalex.org/A5012639226",
+        "orcid": "https://orcid.org/0000-0001-8270-5730",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4288058471",
+    "doi": "10.1002/aenm.202200717",
+    "title": "Considering the Role of Ion Transport in Diffuson‐Dominated Thermal Conductivity",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2022-04-27",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 61,
+    "citation_normalized_percentile": 0.96623174,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202200717",
+    "open_access": true,
+    "author_count": 17,
+    "first_author": "Tim Bernges",
+    "authors_display": "Tim Bernges; Riley Hanus; Bjöern Wankmiller; Kazuki Imasato; Siqi Lin; Michael Ghidiu; Marius Gerlitz; Martin Peterlechner; Samuel Graham; Geoffroy Hautier; Yanzhong Pei; Michael Ryan Hansen; Gerhard Wilde; G. Jeffrey Snyder; Janine George; Matthias T. Agne; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Tim Bernges\", \"id\": \"https://openalex.org/A5068451266\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Riley Hanus\", \"id\": \"https://openalex.org/A5088482117\", \"orcid\": \"https://orcid.org/0000-0002-6242-0647\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bjöern Wankmiller\", \"id\": \"https://openalex.org/A5026677548\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kazuki Imasato\", \"id\": \"https://openalex.org/A5015288454\", \"orcid\": \"https://orcid.org/0000-0001-7294-1780\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Siqi Lin\", \"id\": \"https://openalex.org/A5032585581\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Michael Ghidiu\", \"id\": \"https://openalex.org/A5015154762\", \"orcid\": \"https://orcid.org/0000-0002-0599-9824\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marius Gerlitz\", \"id\": \"https://openalex.org/A5005799142\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Martin Peterlechner\", \"id\": \"https://openalex.org/A5041157553\", \"orcid\": \"https://orcid.org/0000-0002-4019-8811\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Samuel Graham\", \"id\": \"https://openalex.org/A5039403990\", \"orcid\": \"https://orcid.org/0000-0002-1299-1636\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Geoffroy Hautier\", \"id\": \"https://openalex.org/A5027208775\", \"orcid\": \"https://orcid.org/0000-0003-1754-2220\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanzhong Pei\", \"id\": \"https://openalex.org/A5062606091\", \"orcid\": \"https://orcid.org/0000-0003-1612-3294\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Michael Ryan Hansen\", \"id\": \"https://openalex.org/A5090003045\", \"orcid\": \"https://orcid.org/0000-0001-7114-8051\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gerhard Wilde\", \"id\": \"https://openalex.org/A5051284757\", \"orcid\": \"https://orcid.org/0000-0001-8001-5998\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"G. Jeffrey Snyder\", \"id\": \"https://openalex.org/A5049121943\", \"orcid\": \"https://orcid.org/0000-0003-1414-8682\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Janine George\", \"id\": \"https://openalex.org/A5084420654\", \"orcid\": \"https://orcid.org/0000-0001-8907-0336\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Matthias T. Agne\", \"id\": \"https://openalex.org/A5012639226\", \"orcid\": \"https://orcid.org/0000-0001-8270-5730\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302885920,
+    "actual_start_ms": 1773302887899,
+    "pacing_wait_ms": 1979,
+    "pacing_jitter_sec": 1.269
+  }
+}

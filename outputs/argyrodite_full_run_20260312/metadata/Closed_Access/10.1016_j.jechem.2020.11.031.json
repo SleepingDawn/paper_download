@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.jechem.2020.11.031",
+  "pdf_filename": "10.1016_j.jechem.2020.11.031.pdf",
+  "json_filename": "10.1016_j.jechem.2020.11.031.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.jechem.2020.11.031.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3128514933",
+    "doi": "10.1016/j.jechem.2020.11.031",
+    "title": "Sn-O dual-doped Li-argyrodite electrolytes with enhanced electrochemical performance",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Chemistry",
+      "id": "https://openalex.org/S2500128275",
+      "type": "journal",
+      "issn_l": "2095-4956",
+      "issn": [
+        "2095-4956",
+        "2096-885X"
+      ]
+    },
+    "publication_date": "2020-12-11",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 82,
+    "citation_normalized_percentile": 0.93958329,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Ting Chen",
+    "authors_display": "Ting Chen; Dewu Zeng; Long Zhang; Meng Yang; Dawei Song; Xinlin Yan; Chuang Yu",
+    "authors": [
+      {
+        "display_name": "Ting Chen",
+        "id": "https://openalex.org/A5100663544",
+        "orcid": "https://orcid.org/0000-0002-9060-9834",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dewu Zeng",
+        "id": "https://openalex.org/A5010222791",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Long Zhang",
+        "id": "https://openalex.org/A5100363525",
+        "orcid": "https://orcid.org/0000-0002-4861-1471",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Meng Yang",
+        "id": "https://openalex.org/A5005595160",
+        "orcid": "https://orcid.org/0000-0003-2862-2015",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dawei Song",
+        "id": "https://openalex.org/A5109772595",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinlin Yan",
+        "id": "https://openalex.org/A5065866946",
+        "orcid": "https://orcid.org/0000-0003-0745-4446",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3128514933",
+    "doi": "10.1016/j.jechem.2020.11.031",
+    "title": "Sn-O dual-doped Li-argyrodite electrolytes with enhanced electrochemical performance",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Chemistry",
+    "journal_id": "https://openalex.org/S2500128275",
+    "journal_type": "journal",
+    "journal_issn_l": "2095-4956",
+    "journal_issn_json": "[\"2095-4956\", \"2096-885X\"]",
+    "publication_date": "2020-12-11",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 82,
+    "citation_normalized_percentile": 0.93958329,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Ting Chen",
+    "authors_display": "Ting Chen; Dewu Zeng; Long Zhang; Meng Yang; Dawei Song; Xinlin Yan; Chuang Yu",
+    "authors_json": "[{\"display_name\": \"Ting Chen\", \"id\": \"https://openalex.org/A5100663544\", \"orcid\": \"https://orcid.org/0000-0002-9060-9834\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Dewu Zeng\", \"id\": \"https://openalex.org/A5010222791\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Long Zhang\", \"id\": \"https://openalex.org/A5100363525\", \"orcid\": \"https://orcid.org/0000-0002-4861-1471\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Meng Yang\", \"id\": \"https://openalex.org/A5005595160\", \"orcid\": \"https://orcid.org/0000-0003-2862-2015\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dawei Song\", \"id\": \"https://openalex.org/A5109772595\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinlin Yan\", \"id\": \"https://openalex.org/A5065866946\", \"orcid\": \"https://orcid.org/0000-0003-0745-4446\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301723926,
+    "actual_start_ms": 1773301729194,
+    "pacing_wait_ms": 5268,
+    "pacing_jitter_sec": 0.985
+  }
+}

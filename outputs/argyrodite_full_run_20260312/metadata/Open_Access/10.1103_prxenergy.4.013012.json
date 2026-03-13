@@ -1,0 +1,102 @@
+{
+  "doi": "10.1103/prxenergy.4.013012",
+  "pdf_filename": "10.1103_prxenergy.4.013012.pdf",
+  "json_filename": "10.1103_prxenergy.4.013012.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1103_prxenergy.4.013012.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408783911",
+    "doi": "10.1103/prxenergy.4.013012",
+    "title": "Lonesome <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\" overflow=\"scroll\"><mml:mi>Ag</mml:mi></mml:math> Atoms Drive Ultralow Thermal Conductivity in Argyrodite <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\" overflow=\"scroll\"><mml:msub><mml:mi>Ag</mml:mi><mml:mn>8</mml:mn></mml:msub><mml:msub><mml:mrow><mml:mi>Sn</mml:mi><mml:mi>Se</mml:mi></mml:mrow><mml:mn>6</mml:mn></mml:msub></mml:math>",
+    "publisher": "American Physical Society",
+    "journal": {
+      "name": "PRX Energy",
+      "id": "https://openalex.org/S4387279496",
+      "type": "journal",
+      "issn_l": "2768-5608",
+      "issn": [
+        "2768-5608"
+      ]
+    },
+    "publication_date": "2025-03-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.86235599,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Yatian Zhang",
+    "authors_display": "Yatian Zhang; Thomas Frauenheim; Traian Dumitrică; Zhen Tong",
+    "authors": [
+      {
+        "display_name": "Yatian Zhang",
+        "id": "https://openalex.org/A5017996928",
+        "orcid": "https://orcid.org/0000-0003-4902-2887",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Thomas Frauenheim",
+        "id": "https://openalex.org/A5033437756",
+        "orcid": "https://orcid.org/0000-0002-3073-0616",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Traian Dumitrică",
+        "id": "https://openalex.org/A5003377020",
+        "orcid": "https://orcid.org/0000-0001-6320-1625",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhen Tong",
+        "id": "https://openalex.org/A5028934062",
+        "orcid": "https://orcid.org/0000-0002-3932-6687",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408783911",
+    "doi": "10.1103/prxenergy.4.013012",
+    "title": "Lonesome <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\" overflow=\"scroll\"><mml:mi>Ag</mml:mi></mml:math> Atoms Drive Ultralow Thermal Conductivity in Argyrodite <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\" overflow=\"scroll\"><mml:msub><mml:mi>Ag</mml:mi><mml:mn>8</mml:mn></mml:msub><mml:msub><mml:mrow><mml:mi>Sn</mml:mi><mml:mi>Se</mml:mi></mml:mrow><mml:mn>6</mml:mn></mml:msub></mml:math>",
+    "publisher": "American Physical Society",
+    "journal": "PRX Energy",
+    "journal_id": "https://openalex.org/S4387279496",
+    "journal_type": "journal",
+    "journal_issn_l": "2768-5608",
+    "journal_issn_json": "[\"2768-5608\"]",
+    "publication_date": "2025-03-24",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.86235599,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Yatian Zhang",
+    "authors_display": "Yatian Zhang; Thomas Frauenheim; Traian Dumitrică; Zhen Tong",
+    "authors_json": "[{\"display_name\": \"Yatian Zhang\", \"id\": \"https://openalex.org/A5017996928\", \"orcid\": \"https://orcid.org/0000-0003-4902-2887\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Thomas Frauenheim\", \"id\": \"https://openalex.org/A5033437756\", \"orcid\": \"https://orcid.org/0000-0002-3073-0616\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Traian Dumitrică\", \"id\": \"https://openalex.org/A5003377020\", \"orcid\": \"https://orcid.org/0000-0001-6320-1625\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhen Tong\", \"id\": \"https://openalex.org/A5028934062\", \"orcid\": \"https://orcid.org/0000-0002-3932-6687\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://journals.aps.org/prxenergy/abstract/10.1103/PRXEnergy.4.013012?__cf_chl_rt_tk=3xt2i2SqjdqEw8gsy_lpwJ637XOKG9mzNEqk1ro0k3g-1773316996-1.0.1.1-4bNUHtZfoF4SPW_hBX2la0IfPGDVPOj_cO2GVlOyE9I",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.1103_prxenergy.4.013012.pdf",
+    "scheduler_publisher": "aps",
+    "scheduled_start_ms": 1773316985320,
+    "actual_start_ms": 1773316985321,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.063
+  }
+}

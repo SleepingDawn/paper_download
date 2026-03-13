@@ -1,0 +1,95 @@
+{
+  "doi": "10.3390/batteries12020060",
+  "pdf_filename": "10.3390_batteries12020060.pdf",
+  "json_filename": "10.3390_batteries12020060.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_batteries12020060.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7128777841",
+    "doi": "10.3390/batteries12020060",
+    "title": "When Electrolytes Are Semiconductors: A Feature, Not a Bug for Solid-State Batteries",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Batteries",
+      "id": "https://openalex.org/S2737090608",
+      "type": "journal",
+      "issn_l": "2313-0105",
+      "issn": [
+        "2313-0105"
+      ]
+    },
+    "publication_date": "2026-02-13",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.7347046,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Beatriz M. Gomes",
+    "authors_display": "Beatriz M. Gomes; Manuela C. Baptista; M. Helena Braga",
+    "authors": [
+      {
+        "display_name": "Beatriz M. Gomes",
+        "id": "https://openalex.org/A5125991655",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Manuela C. Baptista",
+        "id": "https://openalex.org/A5061599115",
+        "orcid": "https://orcid.org/0000-0002-8933-2751",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "M. Helena Braga",
+        "id": "https://openalex.org/A5125990024",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7128777841",
+    "doi": "10.3390/batteries12020060",
+    "title": "When Electrolytes Are Semiconductors: A Feature, Not a Bug for Solid-State Batteries",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Batteries",
+    "journal_id": "https://openalex.org/S2737090608",
+    "journal_type": "journal",
+    "journal_issn_l": "2313-0105",
+    "journal_issn_json": "[\"2313-0105\"]",
+    "publication_date": "2026-02-13",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.7347046,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Beatriz M. Gomes",
+    "authors_display": "Beatriz M. Gomes; Manuela C. Baptista; M. Helena Braga",
+    "authors_json": "[{\"display_name\": \"Beatriz M. Gomes\", \"id\": \"https://openalex.org/A5125991655\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Manuela C. Baptista\", \"id\": \"https://openalex.org/A5061599115\", \"orcid\": \"https://orcid.org/0000-0002-8933-2751\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"M. Helena Braga\", \"id\": \"https://openalex.org/A5125990024\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.mdpi.com/2313-0105/12/2/60",
+    "landing_title": "When Electrolytes Are Semiconductors: A Feature, Not a Bug for Solid-State Batteries",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773311032344,
+    "actual_start_ms": 1773311032344,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.494
+  }
+}

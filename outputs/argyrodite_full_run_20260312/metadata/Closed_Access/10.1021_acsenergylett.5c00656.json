@@ -1,0 +1,130 @@
+{
+  "doi": "10.1021/acsenergylett.5c00656",
+  "pdf_filename": "10.1021_acsenergylett.5c00656.pdf",
+  "json_filename": "10.1021_acsenergylett.5c00656.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.5c00656.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409414139",
+    "doi": "10.1021/acsenergylett.5c00656",
+    "title": "Surface-Modified Lithium Enabling High-Performance All-Solid-State Lithium Metal Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2025-04-14",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.96298495,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Hui‐Tae Sim",
+    "authors_display": "Hui‐Tae Sim; Myung-Keun Oh; Hyojin Kim; Ye‐Eun Park; Yun-Sun Cho; Jaeyoung Choi; Seong-Jin Park; Dong‐Won Kim",
+    "authors": [
+      {
+        "display_name": "Hui‐Tae Sim",
+        "id": "https://openalex.org/A5008817800",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Myung-Keun Oh",
+        "id": "https://openalex.org/A5104241365",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyojin Kim",
+        "id": "https://openalex.org/A5063084718",
+        "orcid": "https://orcid.org/0000-0002-5319-1360",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ye‐Eun Park",
+        "id": "https://openalex.org/A5064813673",
+        "orcid": "https://orcid.org/0000-0003-3936-0452",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yun-Sun Cho",
+        "id": "https://openalex.org/A5109750852",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jaeyoung Choi",
+        "id": "https://openalex.org/A5101821584",
+        "orcid": "https://orcid.org/0009-0002-1690-0081",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seong-Jin Park",
+        "id": "https://openalex.org/A5110021879",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Dong‐Won Kim",
+        "id": "https://openalex.org/A5100691394",
+        "orcid": "https://orcid.org/0000-0002-1735-0272",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409414139",
+    "doi": "10.1021/acsenergylett.5c00656",
+    "title": "Surface-Modified Lithium Enabling High-Performance All-Solid-State Lithium Metal Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2025-04-14",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.96298495,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Hui‐Tae Sim",
+    "authors_display": "Hui‐Tae Sim; Myung-Keun Oh; Hyojin Kim; Ye‐Eun Park; Yun-Sun Cho; Jaeyoung Choi; Seong-Jin Park; Dong‐Won Kim",
+    "authors_json": "[{\"display_name\": \"Hui‐Tae Sim\", \"id\": \"https://openalex.org/A5008817800\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Myung-Keun Oh\", \"id\": \"https://openalex.org/A5104241365\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyojin Kim\", \"id\": \"https://openalex.org/A5063084718\", \"orcid\": \"https://orcid.org/0000-0002-5319-1360\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ye‐Eun Park\", \"id\": \"https://openalex.org/A5064813673\", \"orcid\": \"https://orcid.org/0000-0003-3936-0452\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yun-Sun Cho\", \"id\": \"https://openalex.org/A5109750852\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jaeyoung Choi\", \"id\": \"https://openalex.org/A5101821584\", \"orcid\": \"https://orcid.org/0009-0002-1690-0081\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seong-Jin Park\", \"id\": \"https://openalex.org/A5110021879\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Dong‐Won Kim\", \"id\": \"https://openalex.org/A5100691394\", \"orcid\": \"https://orcid.org/0000-0002-1735-0272\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.5c00656",
+    "landing_title": "Surface-Modified Lithium Enabling High-Performance All-Solid-State Lithium Metal Batteries | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsenergylett.5c00656.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773305657967,
+    "actual_start_ms": 1773305687383,
+    "pacing_wait_ms": 29415,
+    "pacing_jitter_sec": 1.286
+  }
+}

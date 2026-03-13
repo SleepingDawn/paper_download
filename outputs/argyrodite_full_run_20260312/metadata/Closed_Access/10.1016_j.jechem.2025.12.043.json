@@ -1,0 +1,110 @@
+{
+  "doi": "10.1016/j.jechem.2025.12.043",
+  "pdf_filename": "10.1016_j.jechem.2025.12.043.pdf",
+  "json_filename": "10.1016_j.jechem.2025.12.043.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.jechem.2025.12.043.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7117743256",
+    "doi": "10.1016/j.jechem.2025.12.043",
+    "title": "Degradation mechanisms of composite cathodes in argyrodite-based all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Chemistry",
+      "id": "https://openalex.org/S2500128275",
+      "type": "journal",
+      "issn_l": "2095-4956",
+      "issn": [
+        "2095-4956",
+        "2096-885X"
+      ]
+    },
+    "publication_date": "2025-12-31",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.60079792,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Chanyou Chung",
+    "authors_display": "Chanyou Chung; Jangwhan Seok; Subin Ahn; Subin Heo; Won-Sub Yoon",
+    "authors": [
+      {
+        "display_name": "Chanyou Chung",
+        "id": "https://openalex.org/A5107536668",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jangwhan Seok",
+        "id": "https://openalex.org/A5047722136",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Subin Ahn",
+        "id": "https://openalex.org/A5121604483",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Subin Heo",
+        "id": "https://openalex.org/A5068517482",
+        "orcid": "https://orcid.org/0000-0002-4700-1014",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Won-Sub Yoon",
+        "id": "https://openalex.org/A5121664970",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7117743256",
+    "doi": "10.1016/j.jechem.2025.12.043",
+    "title": "Degradation mechanisms of composite cathodes in argyrodite-based all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Chemistry",
+    "journal_id": "https://openalex.org/S2500128275",
+    "journal_type": "journal",
+    "journal_issn_l": "2095-4956",
+    "journal_issn_json": "[\"2095-4956\", \"2096-885X\"]",
+    "publication_date": "2025-12-31",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.60079792,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Chanyou Chung",
+    "authors_display": "Chanyou Chung; Jangwhan Seok; Subin Ahn; Subin Heo; Won-Sub Yoon",
+    "authors_json": "[{\"display_name\": \"Chanyou Chung\", \"id\": \"https://openalex.org/A5107536668\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jangwhan Seok\", \"id\": \"https://openalex.org/A5047722136\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Subin Ahn\", \"id\": \"https://openalex.org/A5121604483\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Subin Heo\", \"id\": \"https://openalex.org/A5068517482\", \"orcid\": \"https://orcid.org/0000-0002-4700-1014\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Won-Sub Yoon\", \"id\": \"https://openalex.org/A5121664970\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2095495625010563?via%3Dihub",
+    "landing_title": "Degradation mechanisms of composite cathodes in argyrodite-based all-solid-state batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773309789087,
+    "actual_start_ms": 1773309789714,
+    "pacing_wait_ms": 626,
+    "pacing_jitter_sec": 0.829
+  }
+}

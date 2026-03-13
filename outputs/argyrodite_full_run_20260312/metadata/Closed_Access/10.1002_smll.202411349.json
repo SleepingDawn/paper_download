@@ -1,0 +1,138 @@
+{
+  "doi": "10.1002/smll.202411349",
+  "pdf_filename": "10.1002_smll.202411349.pdf",
+  "json_filename": "10.1002_smll.202411349.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_smll.202411349.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4407807954",
+    "doi": "10.1002/smll.202411349",
+    "title": "Fluoride‐rich Sulfide Solid Electrolyte With Ultrahigh Air Stability for All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2025-02-21",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.96749942,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Seung-Woo Lee",
+    "authors_display": "Seung-Woo Lee; Jeongheon Kim; Chang Hun Park; Seung Ho Lee; Seunggun Choi; Joonhyeok Park; Jaeik Kim; Ungyu Paik; Taeseup Song",
+    "authors": [
+      {
+        "display_name": "Seung-Woo Lee",
+        "id": "https://openalex.org/A5100758501",
+        "orcid": "https://orcid.org/0000-0001-7329-065X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeongheon Kim",
+        "id": "https://openalex.org/A5021259651",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chang Hun Park",
+        "id": "https://openalex.org/A5006923870",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung Ho Lee",
+        "id": "https://openalex.org/A5007056280",
+        "orcid": "https://orcid.org/0009-0008-1965-6663",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seunggun Choi",
+        "id": "https://openalex.org/A5038492169",
+        "orcid": "https://orcid.org/0000-0002-9798-2690",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joonhyeok Park",
+        "id": "https://openalex.org/A5035773037",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jaeik Kim",
+        "id": "https://openalex.org/A5064486248",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ungyu Paik",
+        "id": "https://openalex.org/A5008170808",
+        "orcid": "https://orcid.org/0000-0002-6626-7643",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Taeseup Song",
+        "id": "https://openalex.org/A5034961161",
+        "orcid": "https://orcid.org/0000-0002-1174-334X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4407807954",
+    "doi": "10.1002/smll.202411349",
+    "title": "Fluoride‐rich Sulfide Solid Electrolyte With Ultrahigh Air Stability for All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2025-02-21",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.96749942,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Seung-Woo Lee",
+    "authors_display": "Seung-Woo Lee; Jeongheon Kim; Chang Hun Park; Seung Ho Lee; Seunggun Choi; Joonhyeok Park; Jaeik Kim; Ungyu Paik; Taeseup Song",
+    "authors_json": "[{\"display_name\": \"Seung-Woo Lee\", \"id\": \"https://openalex.org/A5100758501\", \"orcid\": \"https://orcid.org/0000-0001-7329-065X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jeongheon Kim\", \"id\": \"https://openalex.org/A5021259651\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chang Hun Park\", \"id\": \"https://openalex.org/A5006923870\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seung Ho Lee\", \"id\": \"https://openalex.org/A5007056280\", \"orcid\": \"https://orcid.org/0009-0008-1965-6663\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seunggun Choi\", \"id\": \"https://openalex.org/A5038492169\", \"orcid\": \"https://orcid.org/0000-0002-9798-2690\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Joonhyeok Park\", \"id\": \"https://openalex.org/A5035773037\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jaeik Kim\", \"id\": \"https://openalex.org/A5064486248\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ungyu Paik\", \"id\": \"https://openalex.org/A5008170808\", \"orcid\": \"https://orcid.org/0000-0002-6626-7643\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Taeseup Song\", \"id\": \"https://openalex.org/A5034961161\", \"orcid\": \"https://orcid.org/0000-0002-1174-334X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773306209417,
+    "actual_start_ms": 1773306209417,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.688
+  }
+}

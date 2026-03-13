@@ -1,0 +1,117 @@
+{
+  "doi": "10.1016/j.ssc.2023.115245",
+  "pdf_filename": "10.1016_j.ssc.2023.115245.pdf",
+  "json_filename": "10.1016_j.ssc.2023.115245.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ssc.2023.115245.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4379795374",
+    "doi": "10.1016/j.ssc.2023.115245",
+    "title": "First principles study of the structural, mechanical and optical properties of argyrodite-structured Ag6PS5X (X= Br, I) compounds",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Solid State Communications",
+      "id": "https://openalex.org/S82088436",
+      "type": "journal",
+      "issn_l": "0038-1098",
+      "issn": [
+        "0038-1098",
+        "1879-2766"
+      ]
+    },
+    "publication_date": "2023-06-07",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.784641,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Muhammad Munsif",
+    "authors_display": "Muhammad Munsif; R. Neffati; Matiullah Shah; Suliman Khan; Muhammad Waqar Ashraf; G. Murtaza",
+    "authors": [
+      {
+        "display_name": "Muhammad Munsif",
+        "id": "https://openalex.org/A5030272979",
+        "orcid": "https://orcid.org/0000-0001-9031-780X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "R. Neffati",
+        "id": "https://openalex.org/A5034756042",
+        "orcid": "https://orcid.org/0000-0002-9886-6595",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Matiullah Shah",
+        "id": "https://openalex.org/A5082166207",
+        "orcid": "https://orcid.org/0000-0003-0751-4859",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Suliman Khan",
+        "id": "https://openalex.org/A5010847880",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Muhammad Waqar Ashraf",
+        "id": "https://openalex.org/A5101822437",
+        "orcid": "https://orcid.org/0000-0002-7087-9714",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "G. Murtaza",
+        "id": "https://openalex.org/A5025462876",
+        "orcid": "https://orcid.org/0000-0001-5520-2265",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4379795374",
+    "doi": "10.1016/j.ssc.2023.115245",
+    "title": "First principles study of the structural, mechanical and optical properties of argyrodite-structured Ag6PS5X (X= Br, I) compounds",
+    "publisher": "Elsevier BV",
+    "journal": "Solid State Communications",
+    "journal_id": "https://openalex.org/S82088436",
+    "journal_type": "journal",
+    "journal_issn_l": "0038-1098",
+    "journal_issn_json": "[\"0038-1098\", \"1879-2766\"]",
+    "publication_date": "2023-06-07",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.784641,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Muhammad Munsif",
+    "authors_display": "Muhammad Munsif; R. Neffati; Matiullah Shah; Suliman Khan; Muhammad Waqar Ashraf; G. Murtaza",
+    "authors_json": "[{\"display_name\": \"Muhammad Munsif\", \"id\": \"https://openalex.org/A5030272979\", \"orcid\": \"https://orcid.org/0000-0001-9031-780X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"R. Neffati\", \"id\": \"https://openalex.org/A5034756042\", \"orcid\": \"https://orcid.org/0000-0002-9886-6595\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Matiullah Shah\", \"id\": \"https://openalex.org/A5082166207\", \"orcid\": \"https://orcid.org/0000-0003-0751-4859\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Suliman Khan\", \"id\": \"https://openalex.org/A5010847880\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Muhammad Waqar Ashraf\", \"id\": \"https://openalex.org/A5101822437\", \"orcid\": \"https://orcid.org/0000-0002-7087-9714\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"G. Murtaza\", \"id\": \"https://openalex.org/A5025462876\", \"orcid\": \"https://orcid.org/0000-0001-5520-2265\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S0038109823001825?via%3Dihub",
+    "landing_title": "First principles study of the structural, mechanical and optical properties of argyrodite-structured Ag6PS5X (X= Br, I) compounds - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773305116516,
+    "actual_start_ms": 1773305139021,
+    "pacing_wait_ms": 22505,
+    "pacing_jitter_sec": 1.343
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "doi": "10.1021/acsaem.1c02892",
+  "pdf_filename": "10.1021_acsaem.1c02892.pdf",
+  "json_filename": "10.1021_acsaem.1c02892.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.1c02892.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3214007348",
+    "doi": "10.1021/acsaem.1c02892",
+    "title": "Borohydride Substitution Effects of Li<sub>6</sub>PS<sub>5</sub>Cl Solid Electrolyte",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2021-11-04",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.80557034,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Heng Wang",
+    "authors_display": "Heng Wang; Ling Gao; Zhaoxin Lu; Ya Tang; Daixin Ye; Guowei Zhao; Hongbin Zhao; Jiujun Zhang",
+    "authors": [
+      {
+        "display_name": "Heng Wang",
+        "id": "https://openalex.org/A5100453992",
+        "orcid": "https://orcid.org/0009-0008-1739-3871",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ling Gao",
+        "id": "https://openalex.org/A5070902118",
+        "orcid": "https://orcid.org/0000-0002-3171-591X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhaoxin Lu",
+        "id": "https://openalex.org/A5103665956",
+        "orcid": "https://orcid.org/0000-0001-9288-7419",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ya Tang",
+        "id": "https://openalex.org/A5076144371",
+        "orcid": "https://orcid.org/0000-0002-3825-7309",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Daixin Ye",
+        "id": "https://openalex.org/A5055593637",
+        "orcid": "https://orcid.org/0000-0001-6020-429X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guowei Zhao",
+        "id": "https://openalex.org/A5058242527",
+        "orcid": "https://orcid.org/0000-0002-4344-3923",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hongbin Zhao",
+        "id": "https://openalex.org/A5102018883",
+        "orcid": "https://orcid.org/0000-0002-5712-2493",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jiujun Zhang",
+        "id": "https://openalex.org/A5101499775",
+        "orcid": "https://orcid.org/0000-0002-6858-4060",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3214007348",
+    "doi": "10.1021/acsaem.1c02892",
+    "title": "Borohydride Substitution Effects of Li<sub>6</sub>PS<sub>5</sub>Cl Solid Electrolyte",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2021-11-04",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 25,
+    "citation_normalized_percentile": 0.80557034,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Heng Wang",
+    "authors_display": "Heng Wang; Ling Gao; Zhaoxin Lu; Ya Tang; Daixin Ye; Guowei Zhao; Hongbin Zhao; Jiujun Zhang",
+    "authors_json": "[{\"display_name\": \"Heng Wang\", \"id\": \"https://openalex.org/A5100453992\", \"orcid\": \"https://orcid.org/0009-0008-1739-3871\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ling Gao\", \"id\": \"https://openalex.org/A5070902118\", \"orcid\": \"https://orcid.org/0000-0002-3171-591X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhaoxin Lu\", \"id\": \"https://openalex.org/A5103665956\", \"orcid\": \"https://orcid.org/0000-0001-9288-7419\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ya Tang\", \"id\": \"https://openalex.org/A5076144371\", \"orcid\": \"https://orcid.org/0000-0002-3825-7309\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Daixin Ye\", \"id\": \"https://openalex.org/A5055593637\", \"orcid\": \"https://orcid.org/0000-0001-6020-429X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guowei Zhao\", \"id\": \"https://openalex.org/A5058242527\", \"orcid\": \"https://orcid.org/0000-0002-4344-3923\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Hongbin Zhao\", \"id\": \"https://openalex.org/A5102018883\", \"orcid\": \"https://orcid.org/0000-0002-5712-2493\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jiujun Zhang\", \"id\": \"https://openalex.org/A5101499775\", \"orcid\": \"https://orcid.org/0000-0002-6858-4060\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302839926,
+    "actual_start_ms": 1773302843201,
+    "pacing_wait_ms": 3274,
+    "pacing_jitter_sec": 0.771
+  }
+}

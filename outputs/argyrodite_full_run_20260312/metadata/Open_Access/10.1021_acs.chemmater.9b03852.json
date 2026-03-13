@@ -1,0 +1,152 @@
+{
+  "doi": "10.1021/acs.chemmater.9b03852",
+  "pdf_filename": "10.1021_acs.chemmater.9b03852.pdf",
+  "json_filename": "10.1021_acs.chemmater.9b03852.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.chemmater.9b03852.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2987353534",
+    "doi": "10.1021/acs.chemmater.9b03852",
+    "title": "Rapid Crystallization and Kinetic Freezing of Site-Disorder in the Lithium Superionic Argyrodite Li <sub>6</sub> PS <sub>5</sub> Br",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2019-11-15",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 114,
+    "citation_normalized_percentile": 0.97830388,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Ajay Gautam",
+    "authors_display": "Ajay Gautam; Marcel Sadowski; Nils Prinz; Henrik Eickhoff; Nicolò Minafra; Michael Ghidiu; Sean P. Culver; Karsten Albe; Thomas F. Fässler; Mirijam Zobel; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Ajay Gautam",
+        "id": "https://openalex.org/A5103972491",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marcel Sadowski",
+        "id": "https://openalex.org/A5001622557",
+        "orcid": "https://orcid.org/0000-0001-9869-6162",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nils Prinz",
+        "id": "https://openalex.org/A5091335869",
+        "orcid": "https://orcid.org/0000-0001-5738-3928",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Henrik Eickhoff",
+        "id": "https://openalex.org/A5033103828",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nicolò Minafra",
+        "id": "https://openalex.org/A5057886209",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michael Ghidiu",
+        "id": "https://openalex.org/A5015154762",
+        "orcid": "https://orcid.org/0000-0002-0599-9824",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sean P. Culver",
+        "id": "https://openalex.org/A5085137977",
+        "orcid": "https://orcid.org/0000-0002-4156-6487",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Karsten Albe",
+        "id": "https://openalex.org/A5020304363",
+        "orcid": "https://orcid.org/0000-0003-4669-8056",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Thomas F. Fässler",
+        "id": "https://openalex.org/A5007240588",
+        "orcid": "https://orcid.org/0000-0001-9460-8882",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mirijam Zobel",
+        "id": "https://openalex.org/A5079797982",
+        "orcid": "https://orcid.org/0000-0002-8207-8316",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2987353534",
+    "doi": "10.1021/acs.chemmater.9b03852",
+    "title": "Rapid Crystallization and Kinetic Freezing of Site-Disorder in the Lithium Superionic Argyrodite Li <sub>6</sub> PS <sub>5</sub> Br",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2019-11-15",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 114,
+    "citation_normalized_percentile": 0.97830388,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Ajay Gautam",
+    "authors_display": "Ajay Gautam; Marcel Sadowski; Nils Prinz; Henrik Eickhoff; Nicolò Minafra; Michael Ghidiu; Sean P. Culver; Karsten Albe; Thomas F. Fässler; Mirijam Zobel; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Ajay Gautam\", \"id\": \"https://openalex.org/A5103972491\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Marcel Sadowski\", \"id\": \"https://openalex.org/A5001622557\", \"orcid\": \"https://orcid.org/0000-0001-9869-6162\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nils Prinz\", \"id\": \"https://openalex.org/A5091335869\", \"orcid\": \"https://orcid.org/0000-0001-5738-3928\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Henrik Eickhoff\", \"id\": \"https://openalex.org/A5033103828\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nicolò Minafra\", \"id\": \"https://openalex.org/A5057886209\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Michael Ghidiu\", \"id\": \"https://openalex.org/A5015154762\", \"orcid\": \"https://orcid.org/0000-0002-0599-9824\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sean P. Culver\", \"id\": \"https://openalex.org/A5085137977\", \"orcid\": \"https://orcid.org/0000-0002-4156-6487\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Karsten Albe\", \"id\": \"https://openalex.org/A5020304363\", \"orcid\": \"https://orcid.org/0000-0003-4669-8056\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Thomas F. Fässler\", \"id\": \"https://openalex.org/A5007240588\", \"orcid\": \"https://orcid.org/0000-0001-9460-8882\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mirijam Zobel\", \"id\": \"https://openalex.org/A5079797982\", \"orcid\": \"https://orcid.org/0000-0002-8207-8316\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301729199,
+    "actual_start_ms": 1773301731797,
+    "pacing_wait_ms": 2598,
+    "pacing_jitter_sec": 0.868
+  }
+}

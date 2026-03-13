@@ -1,0 +1,124 @@
+{
+  "doi": "10.1002/aenm.202003369",
+  "pdf_filename": "10.1002_aenm.202003369.pdf",
+  "json_filename": "10.1002_aenm.202003369.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202003369.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3115899579",
+    "doi": "10.1002/aenm.202003369",
+    "title": "Engineering the Site‐Disorder and Lithium Distribution in the Lithium Superionic Argyrodite Li<sub>6</sub>PS<sub>5</sub>Br",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2020-12-28",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 121,
+    "citation_normalized_percentile": 0.97004788,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202003369",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Ajay Gautam",
+    "authors_display": "Ajay Gautam; Marcel Sadowski; Michael Ghidiu; Nicolò Minafra; Anatoliy Senyshyn; Karsten Albe; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Ajay Gautam",
+        "id": "https://openalex.org/A5103972491",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marcel Sadowski",
+        "id": "https://openalex.org/A5001622557",
+        "orcid": "https://orcid.org/0000-0001-9869-6162",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michael Ghidiu",
+        "id": "https://openalex.org/A5015154762",
+        "orcid": "https://orcid.org/0000-0002-0599-9824",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nicolò Minafra",
+        "id": "https://openalex.org/A5057886209",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anatoliy Senyshyn",
+        "id": "https://openalex.org/A5016832643",
+        "orcid": "https://orcid.org/0000-0002-1473-8992",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Karsten Albe",
+        "id": "https://openalex.org/A5020304363",
+        "orcid": "https://orcid.org/0000-0003-4669-8056",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3115899579",
+    "doi": "10.1002/aenm.202003369",
+    "title": "Engineering the Site‐Disorder and Lithium Distribution in the Lithium Superionic Argyrodite Li<sub>6</sub>PS<sub>5</sub>Br",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2020-12-28",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 121,
+    "citation_normalized_percentile": 0.97004788,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202003369",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Ajay Gautam",
+    "authors_display": "Ajay Gautam; Marcel Sadowski; Michael Ghidiu; Nicolò Minafra; Anatoliy Senyshyn; Karsten Albe; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Ajay Gautam\", \"id\": \"https://openalex.org/A5103972491\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Marcel Sadowski\", \"id\": \"https://openalex.org/A5001622557\", \"orcid\": \"https://orcid.org/0000-0001-9869-6162\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Michael Ghidiu\", \"id\": \"https://openalex.org/A5015154762\", \"orcid\": \"https://orcid.org/0000-0002-0599-9824\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nicolò Minafra\", \"id\": \"https://openalex.org/A5057886209\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anatoliy Senyshyn\", \"id\": \"https://openalex.org/A5016832643\", \"orcid\": \"https://orcid.org/0000-0002-1473-8992\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Karsten Albe\", \"id\": \"https://openalex.org/A5020304363\", \"orcid\": \"https://orcid.org/0000-0003-4669-8056\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302694590,
+    "actual_start_ms": 1773302696855,
+    "pacing_wait_ms": 2265,
+    "pacing_jitter_sec": 1.718
+  }
+}

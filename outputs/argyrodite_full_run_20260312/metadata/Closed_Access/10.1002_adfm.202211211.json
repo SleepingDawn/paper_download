@@ -1,0 +1,159 @@
+{
+  "doi": "10.1002/adfm.202211211",
+  "pdf_filename": "10.1002_adfm.202211211.pdf",
+  "json_filename": "10.1002_adfm.202211211.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_adfm.202211211.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4311882049",
+    "doi": "10.1002/adfm.202211211",
+    "title": "Wide‐Temperature, Long‐Cycling, and High‐Loading Pyrite All‐Solid‐State Batteries Enabled by Argyrodite Thioarsenate Superionic Conductor",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2022-12-08",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 75,
+    "citation_normalized_percentile": 0.97738316,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Pushun Lu",
+    "authors_display": "Pushun Lu; Yu Xia; Yuli Huang; Zhendong Li; Yujing Wu; Xue Wang; Guochen Sun; Shaochen Shi; Zhengju Sha; Liquan Chen; Hong Li; Fan Wu",
+    "authors": [
+      {
+        "display_name": "Pushun Lu",
+        "id": "https://openalex.org/A5026316143",
+        "orcid": "https://orcid.org/0000-0002-1381-5837",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Xia",
+        "id": "https://openalex.org/A5100374654",
+        "orcid": "https://orcid.org/0009-0004-9087-9414",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuli Huang",
+        "id": "https://openalex.org/A5102431474",
+        "orcid": "https://orcid.org/0000-0001-9282-096X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhendong Li",
+        "id": "https://openalex.org/A5100693968",
+        "orcid": "https://orcid.org/0000-0002-1750-1050",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yujing Wu",
+        "id": "https://openalex.org/A5002653322",
+        "orcid": "https://orcid.org/0000-0001-5688-9839",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xue Wang",
+        "id": "https://openalex.org/A5100422548",
+        "orcid": "https://orcid.org/0000-0001-8239-3693",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guochen Sun",
+        "id": "https://openalex.org/A5077800727",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shaochen Shi",
+        "id": "https://openalex.org/A5066683121",
+        "orcid": "https://orcid.org/0000-0003-3457-403X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhengju Sha",
+        "id": "https://openalex.org/A5056628683",
+        "orcid": "https://orcid.org/0009-0006-0797-1266",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liquan Chen",
+        "id": "https://openalex.org/A5101604337",
+        "orcid": "https://orcid.org/0000-0001-5058-9552",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Li",
+        "id": "https://openalex.org/A5100339418",
+        "orcid": "https://orcid.org/0000-0002-8659-086X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fan Wu",
+        "id": "https://openalex.org/A5065133070",
+        "orcid": "https://orcid.org/0000-0001-8009-3945",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4311882049",
+    "doi": "10.1002/adfm.202211211",
+    "title": "Wide‐Temperature, Long‐Cycling, and High‐Loading Pyrite All‐Solid‐State Batteries Enabled by Argyrodite Thioarsenate Superionic Conductor",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2022-12-08",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 75,
+    "citation_normalized_percentile": 0.97738316,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Pushun Lu",
+    "authors_display": "Pushun Lu; Yu Xia; Yuli Huang; Zhendong Li; Yujing Wu; Xue Wang; Guochen Sun; Shaochen Shi; Zhengju Sha; Liquan Chen; Hong Li; Fan Wu",
+    "authors_json": "[{\"display_name\": \"Pushun Lu\", \"id\": \"https://openalex.org/A5026316143\", \"orcid\": \"https://orcid.org/0000-0002-1381-5837\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yu Xia\", \"id\": \"https://openalex.org/A5100374654\", \"orcid\": \"https://orcid.org/0009-0004-9087-9414\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuli Huang\", \"id\": \"https://openalex.org/A5102431474\", \"orcid\": \"https://orcid.org/0000-0001-9282-096X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhendong Li\", \"id\": \"https://openalex.org/A5100693968\", \"orcid\": \"https://orcid.org/0000-0002-1750-1050\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yujing Wu\", \"id\": \"https://openalex.org/A5002653322\", \"orcid\": \"https://orcid.org/0000-0001-5688-9839\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xue Wang\", \"id\": \"https://openalex.org/A5100422548\", \"orcid\": \"https://orcid.org/0000-0001-8239-3693\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guochen Sun\", \"id\": \"https://openalex.org/A5077800727\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shaochen Shi\", \"id\": \"https://openalex.org/A5066683121\", \"orcid\": \"https://orcid.org/0000-0003-3457-403X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhengju Sha\", \"id\": \"https://openalex.org/A5056628683\", \"orcid\": \"https://orcid.org/0009-0006-0797-1266\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liquan Chen\", \"id\": \"https://openalex.org/A5101604337\", \"orcid\": \"https://orcid.org/0000-0001-5058-9552\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Li\", \"id\": \"https://openalex.org/A5100339418\", \"orcid\": \"https://orcid.org/0000-0002-8659-086X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fan Wu\", \"id\": \"https://openalex.org/A5065133070\", \"orcid\": \"https://orcid.org/0000-0001-8009-3945\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302860469,
+    "actual_start_ms": 1773302861974,
+    "pacing_wait_ms": 1504,
+    "pacing_jitter_sec": 1.507
+  }
+}

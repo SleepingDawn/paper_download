@@ -1,0 +1,208 @@
+{
+  "doi": "10.1002/smll.202408824",
+  "pdf_filename": "10.1002_smll.202408824.pdf",
+  "json_filename": "10.1002_smll.202408824.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_smll.202408824.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4404619058",
+    "doi": "10.1002/smll.202408824",
+    "title": "Cross‐Linked Polyamide‐Integrated Argyrodite Li <sub>6</sub> PS <sub>5</sub> Cl for All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.84158766,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202408824",
+    "open_access": true,
+    "author_count": 19,
+    "first_author": "Yang Xu",
+    "authors_display": "Yang Xu; Zhiqiang Fang; Junyi Yue; Limin Wang; Zaifa Wang; Simeng Zhang; Mengzhu Liu; Zimujun Ye; Ran Liu; Xiaolong Yan; Han Xu; Yueyue Wang; Changtai Zhao; Biwei Xiao; Xianbao Wang; Wei Xiao; Xiaona Li; Tao Mei; Jianwen Liang",
+    "authors": [
+      {
+        "display_name": "Yang Xu",
+        "id": "https://openalex.org/A5006507348",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhiqiang Fang",
+        "id": "https://openalex.org/A5007157272",
+        "orcid": "https://orcid.org/0000-0002-0844-7507",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junyi Yue",
+        "id": "https://openalex.org/A5104287750",
+        "orcid": "https://orcid.org/0009-0007-3898-8279",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Limin Wang",
+        "id": "https://openalex.org/A5100436492",
+        "orcid": "https://orcid.org/0000-0001-9618-9239",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zaifa Wang",
+        "id": "https://openalex.org/A5047726485",
+        "orcid": "https://orcid.org/0009-0005-8270-7943",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Simeng Zhang",
+        "id": "https://openalex.org/A5039135711",
+        "orcid": "https://orcid.org/0000-0002-2884-7786",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mengzhu Liu",
+        "id": "https://openalex.org/A5036181497",
+        "orcid": "https://orcid.org/0000-0003-2940-2495",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zimujun Ye",
+        "id": "https://openalex.org/A5070683890",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ran Liu",
+        "id": "https://openalex.org/A5100448098",
+        "orcid": "https://orcid.org/0000-0002-1657-9542",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaolong Yan",
+        "id": "https://openalex.org/A5024427304",
+        "orcid": "https://orcid.org/0000-0002-0395-8973",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Han Xu",
+        "id": "https://openalex.org/A5085322409",
+        "orcid": "https://orcid.org/0000-0002-3211-7081",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yueyue Wang",
+        "id": "https://openalex.org/A5100742005",
+        "orcid": "https://orcid.org/0009-0003-6861-6012",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Changtai Zhao",
+        "id": "https://openalex.org/A5073834352",
+        "orcid": "https://orcid.org/0000-0001-8630-9188",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Biwei Xiao",
+        "id": "https://openalex.org/A5050550782",
+        "orcid": "https://orcid.org/0000-0001-7750-8855",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xianbao Wang",
+        "id": "https://openalex.org/A5101930625",
+        "orcid": "https://orcid.org/0000-0001-7765-4027",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei Xiao",
+        "id": "https://openalex.org/A5085538289",
+        "orcid": "https://orcid.org/0000-0001-5244-797X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaona Li",
+        "id": "https://openalex.org/A5100667276",
+        "orcid": "https://orcid.org/0000-0001-6713-2997",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Tao Mei",
+        "id": "https://openalex.org/A5101517781",
+        "orcid": "https://orcid.org/0000-0003-2789-7009",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jianwen Liang",
+        "id": "https://openalex.org/A5070818496",
+        "orcid": "https://orcid.org/0000-0003-4055-1301",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4404619058",
+    "doi": "10.1002/smll.202408824",
+    "title": "Cross‐Linked Polyamide‐Integrated Argyrodite Li <sub>6</sub> PS <sub>5</sub> Cl for All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.84158766,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202408824",
+    "open_access": true,
+    "author_count": 19,
+    "first_author": "Yang Xu",
+    "authors_display": "Yang Xu; Zhiqiang Fang; Junyi Yue; Limin Wang; Zaifa Wang; Simeng Zhang; Mengzhu Liu; Zimujun Ye; Ran Liu; Xiaolong Yan; Han Xu; Yueyue Wang; Changtai Zhao; Biwei Xiao; Xianbao Wang; Wei Xiao; Xiaona Li; Tao Mei; Jianwen Liang",
+    "authors_json": "[{\"display_name\": \"Yang Xu\", \"id\": \"https://openalex.org/A5006507348\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Zhiqiang Fang\", \"id\": \"https://openalex.org/A5007157272\", \"orcid\": \"https://orcid.org/0000-0002-0844-7507\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junyi Yue\", \"id\": \"https://openalex.org/A5104287750\", \"orcid\": \"https://orcid.org/0009-0007-3898-8279\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Limin Wang\", \"id\": \"https://openalex.org/A5100436492\", \"orcid\": \"https://orcid.org/0000-0001-9618-9239\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zaifa Wang\", \"id\": \"https://openalex.org/A5047726485\", \"orcid\": \"https://orcid.org/0009-0005-8270-7943\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Simeng Zhang\", \"id\": \"https://openalex.org/A5039135711\", \"orcid\": \"https://orcid.org/0000-0002-2884-7786\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mengzhu Liu\", \"id\": \"https://openalex.org/A5036181497\", \"orcid\": \"https://orcid.org/0000-0003-2940-2495\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zimujun Ye\", \"id\": \"https://openalex.org/A5070683890\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ran Liu\", \"id\": \"https://openalex.org/A5100448098\", \"orcid\": \"https://orcid.org/0000-0002-1657-9542\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaolong Yan\", \"id\": \"https://openalex.org/A5024427304\", \"orcid\": \"https://orcid.org/0000-0002-0395-8973\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Han Xu\", \"id\": \"https://openalex.org/A5085322409\", \"orcid\": \"https://orcid.org/0000-0002-3211-7081\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yueyue Wang\", \"id\": \"https://openalex.org/A5100742005\", \"orcid\": \"https://orcid.org/0009-0003-6861-6012\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Changtai Zhao\", \"id\": \"https://openalex.org/A5073834352\", \"orcid\": \"https://orcid.org/0000-0001-8630-9188\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Biwei Xiao\", \"id\": \"https://openalex.org/A5050550782\", \"orcid\": \"https://orcid.org/0000-0001-7750-8855\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xianbao Wang\", \"id\": \"https://openalex.org/A5101930625\", \"orcid\": \"https://orcid.org/0000-0001-7765-4027\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei Xiao\", \"id\": \"https://openalex.org/A5085538289\", \"orcid\": \"https://orcid.org/0000-0001-5244-797X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaona Li\", \"id\": \"https://openalex.org/A5100667276\", \"orcid\": \"https://orcid.org/0000-0001-6713-2997\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Tao Mei\", \"id\": \"https://openalex.org/A5101517781\", \"orcid\": \"https://orcid.org/0000-0003-2789-7009\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jianwen Liang\", \"id\": \"https://openalex.org/A5070818496\", \"orcid\": \"https://orcid.org/0000-0003-4055-1301\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773306588683,
+    "actual_start_ms": 1773306589946,
+    "pacing_wait_ms": 1262,
+    "pacing_jitter_sec": 1.565
+  }
+}

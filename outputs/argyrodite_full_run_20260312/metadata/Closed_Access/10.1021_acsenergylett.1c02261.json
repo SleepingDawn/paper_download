@@ -1,0 +1,165 @@
+{
+  "doi": "10.1021/acsenergylett.1c02261",
+  "pdf_filename": "10.1021_acsenergylett.1c02261.pdf",
+  "json_filename": "10.1021_acsenergylett.1c02261.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.1c02261.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4213213078",
+    "doi": "10.1021/acsenergylett.1c02261",
+    "title": "Solvent-Free Approach for Interweaving Freestanding and Ultrathin Inorganic Solid Electrolyte Membranes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2021-12-27",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 206,
+    "citation_normalized_percentile": 0.99366419,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 13,
+    "first_author": "Changhong Wang",
+    "authors_display": "Changhong Wang; Ruizhi Yu; Hui Duan; Qingwen Lu; Qizheng Li; Keegan R. Adair; Danni Bao; Yang Liu; Rong Yang; Jiantao Wang; Shangqian Zhao; Huan Huang; Xueliang Sun",
+    "authors": [
+      {
+        "display_name": "Changhong Wang",
+        "id": "https://openalex.org/A5100427140",
+        "orcid": "https://orcid.org/0000-0002-4201-0130",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ruizhi Yu",
+        "id": "https://openalex.org/A5053263235",
+        "orcid": "https://orcid.org/0000-0002-3601-7870",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hui Duan",
+        "id": "https://openalex.org/A5113749732",
+        "orcid": "https://orcid.org/0000-0003-3886-654X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qingwen Lu",
+        "id": "https://openalex.org/A5114164450",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qizheng Li",
+        "id": "https://openalex.org/A5022360343",
+        "orcid": "https://orcid.org/0000-0003-2080-0948",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Keegan R. Adair",
+        "id": "https://openalex.org/A5072392667",
+        "orcid": "https://orcid.org/0000-0002-8680-3378",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Danni Bao",
+        "id": "https://openalex.org/A5017808445",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Liu",
+        "id": "https://openalex.org/A5100355783",
+        "orcid": "https://orcid.org/0000-0002-0747-1038",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rong Yang",
+        "id": "https://openalex.org/A5072472914",
+        "orcid": "https://orcid.org/0000-0001-6427-026X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiantao Wang",
+        "id": "https://openalex.org/A5100632945",
+        "orcid": "https://orcid.org/0000-0002-4773-5229",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Shangqian Zhao",
+        "id": "https://openalex.org/A5063496829",
+        "orcid": "https://orcid.org/0000-0003-1605-9974",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Huan Huang",
+        "id": "https://openalex.org/A5100670327",
+        "orcid": "https://orcid.org/0000-0001-5651-3831",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xueliang Sun",
+        "id": "https://openalex.org/A5027533708",
+        "orcid": "https://orcid.org/0000-0003-0374-1245",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4213213078",
+    "doi": "10.1021/acsenergylett.1c02261",
+    "title": "Solvent-Free Approach for Interweaving Freestanding and Ultrathin Inorganic Solid Electrolyte Membranes",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2021-12-27",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 206,
+    "citation_normalized_percentile": 0.99366419,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 13,
+    "first_author": "Changhong Wang",
+    "authors_display": "Changhong Wang; Ruizhi Yu; Hui Duan; Qingwen Lu; Qizheng Li; Keegan R. Adair; Danni Bao; Yang Liu; Rong Yang; Jiantao Wang; Shangqian Zhao; Huan Huang; Xueliang Sun",
+    "authors_json": "[{\"display_name\": \"Changhong Wang\", \"id\": \"https://openalex.org/A5100427140\", \"orcid\": \"https://orcid.org/0000-0002-4201-0130\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ruizhi Yu\", \"id\": \"https://openalex.org/A5053263235\", \"orcid\": \"https://orcid.org/0000-0002-3601-7870\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hui Duan\", \"id\": \"https://openalex.org/A5113749732\", \"orcid\": \"https://orcid.org/0000-0003-3886-654X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qingwen Lu\", \"id\": \"https://openalex.org/A5114164450\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qizheng Li\", \"id\": \"https://openalex.org/A5022360343\", \"orcid\": \"https://orcid.org/0000-0003-2080-0948\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Keegan R. Adair\", \"id\": \"https://openalex.org/A5072392667\", \"orcid\": \"https://orcid.org/0000-0002-8680-3378\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Danni Bao\", \"id\": \"https://openalex.org/A5017808445\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Liu\", \"id\": \"https://openalex.org/A5100355783\", \"orcid\": \"https://orcid.org/0000-0002-0747-1038\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rong Yang\", \"id\": \"https://openalex.org/A5072472914\", \"orcid\": \"https://orcid.org/0000-0001-6427-026X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiantao Wang\", \"id\": \"https://openalex.org/A5100632945\", \"orcid\": \"https://orcid.org/0000-0002-4773-5229\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Shangqian Zhao\", \"id\": \"https://openalex.org/A5063496829\", \"orcid\": \"https://orcid.org/0000-0003-1605-9974\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Huan Huang\", \"id\": \"https://openalex.org/A5100670327\", \"orcid\": \"https://orcid.org/0000-0001-5651-3831\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xueliang Sun\", \"id\": \"https://openalex.org/A5027533708\", \"orcid\": \"https://orcid.org/0000-0003-0374-1245\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301533163,
+    "actual_start_ms": 1773301534955,
+    "pacing_wait_ms": 1792,
+    "pacing_jitter_sec": 1.011
+  }
+}

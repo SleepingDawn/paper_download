@@ -1,0 +1,103 @@
+{
+  "doi": "10.1149/1945-7111/ad01e3",
+  "pdf_filename": "10.1149_1945-7111_ad01e3.pdf",
+  "json_filename": "10.1149_1945-7111_ad01e3.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1149_1945-7111_ad01e3.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4387483883",
+    "doi": "10.1149/1945-7111/ad01e3",
+    "title": "Critical Current Density Measurements of Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Solid Electrolyte at Ambient Pressure",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "Journal of The Electrochemical Society",
+      "id": "https://openalex.org/S138759888",
+      "type": "journal",
+      "issn_l": "0013-4651",
+      "issn": [
+        "0013-4651",
+        "1945-7111"
+      ]
+    },
+    "publication_date": "2023-10-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.87826266,
+    "pdf_url": "https://iopscience.iop.org/article/10.1149/1945-7111/ad01e3/pdf",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Artur Tron",
+    "authors_display": "Artur Tron; Ander Orue; Pedro López‐Aranguren; Alexander Beutl",
+    "authors": [
+      {
+        "display_name": "Artur Tron",
+        "id": "https://openalex.org/A5002945442",
+        "orcid": "https://orcid.org/0000-0002-6565-8247",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ander Orue",
+        "id": "https://openalex.org/A5073676071",
+        "orcid": "https://orcid.org/0000-0001-5802-4193",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Pedro López‐Aranguren",
+        "id": "https://openalex.org/A5010080494",
+        "orcid": "https://orcid.org/0000-0001-6912-2055",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alexander Beutl",
+        "id": "https://openalex.org/A5062737645",
+        "orcid": "https://orcid.org/0000-0002-7098-619X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4387483883",
+    "doi": "10.1149/1945-7111/ad01e3",
+    "title": "Critical Current Density Measurements of Argyrodite Li<sub>6</sub>PS<sub>5</sub>Cl Solid Electrolyte at Ambient Pressure",
+    "publisher": "Institute of Physics",
+    "journal": "Journal of The Electrochemical Society",
+    "journal_id": "https://openalex.org/S138759888",
+    "journal_type": "journal",
+    "journal_issn_l": "0013-4651",
+    "journal_issn_json": "[\"0013-4651\", \"1945-7111\"]",
+    "publication_date": "2023-10-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 16,
+    "citation_normalized_percentile": 0.87826266,
+    "pdf_url": "https://iopscience.iop.org/article/10.1149/1945-7111/ad01e3/pdf",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Artur Tron",
+    "authors_display": "Artur Tron; Ander Orue; Pedro López‐Aranguren; Alexander Beutl",
+    "authors_json": "[{\"display_name\": \"Artur Tron\", \"id\": \"https://openalex.org/A5002945442\", \"orcid\": \"https://orcid.org/0000-0002-6565-8247\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ander Orue\", \"id\": \"https://openalex.org/A5073676071\", \"orcid\": \"https://orcid.org/0000-0001-5802-4193\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Pedro López‐Aranguren\", \"id\": \"https://openalex.org/A5010080494\", \"orcid\": \"https://orcid.org/0000-0001-6912-2055\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alexander Beutl\", \"id\": \"https://openalex.org/A5062737645\", \"orcid\": \"https://orcid.org/0000-0002-7098-619X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773302122406,
+    "actual_start_ms": 1773302123906,
+    "pacing_wait_ms": 1500,
+    "pacing_jitter_sec": 1.372
+  }
+}

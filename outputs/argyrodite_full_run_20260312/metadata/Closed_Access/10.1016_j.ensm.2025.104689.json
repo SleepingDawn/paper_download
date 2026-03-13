@@ -1,0 +1,187 @@
+{
+  "doi": "10.1016/j.ensm.2025.104689",
+  "pdf_filename": "10.1016_j.ensm.2025.104689.pdf",
+  "json_filename": "10.1016_j.ensm.2025.104689.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2025.104689.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4415316503",
+    "doi": "10.1016/j.ensm.2025.104689",
+    "title": "Low-cost high-air-stability argyrodite electrolyte delivering excellent interface compatibility in all-solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2025-10-18",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.79577508,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 16,
+    "first_author": "Xin Zhang",
+    "authors_display": "Xin Zhang; Hongming Yi; Yonghao Shi; Kangjun Lu; Miao Zhang; Dewei Zhang; Hao Zeng; Shuaishuai Zhang; JI Dengyue; Pengyu Chen; Bingqing Xu; Chuanjin Tian; Zheng Li; Zhang Xue; Xue Zhang; Xue Zhang",
+    "authors": [
+      {
+        "display_name": "Xin Zhang",
+        "id": "https://openalex.org/A5100327456",
+        "orcid": "https://orcid.org/0009-0009-2502-2840",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hongming Yi",
+        "id": "https://openalex.org/A5014281463",
+        "orcid": "https://orcid.org/0000-0002-9483-2777",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yonghao Shi",
+        "id": "https://openalex.org/A5077726776",
+        "orcid": "https://orcid.org/0009-0002-2171-3491",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kangjun Lu",
+        "id": "https://openalex.org/A5091146285",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Miao Zhang",
+        "id": "https://openalex.org/A5100376491",
+        "orcid": "https://orcid.org/0000-0003-2554-1252",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dewei Zhang",
+        "id": "https://openalex.org/A5008677493",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hao Zeng",
+        "id": "https://openalex.org/A5070370474",
+        "orcid": "https://orcid.org/0000-0002-8835-3032",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuaishuai Zhang",
+        "id": "https://openalex.org/A5050451872",
+        "orcid": "https://orcid.org/0000-0002-1441-4840",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "JI Dengyue",
+        "id": "https://openalex.org/A5005930547",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pengyu Chen",
+        "id": "https://openalex.org/A5100317509",
+        "orcid": "https://orcid.org/0000-0002-0420-8576",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bingqing Xu",
+        "id": "https://openalex.org/A5008518213",
+        "orcid": "https://orcid.org/0000-0003-0372-2837",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuanjin Tian",
+        "id": "https://openalex.org/A5064470419",
+        "orcid": "https://orcid.org/0000-0001-6794-1073",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zheng Li",
+        "id": "https://openalex.org/A5087432492",
+        "orcid": "https://orcid.org/0000-0001-6946-3474",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zhang Xue",
+        "id": "https://openalex.org/A5101099306",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xue Zhang",
+        "id": null,
+        "orcid": "https://orcid.org/0009-0002-9466-2314",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xue Zhang",
+        "id": null,
+        "orcid": "https://orcid.org/0009-0002-9466-2314",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4415316503",
+    "doi": "10.1016/j.ensm.2025.104689",
+    "title": "Low-cost high-air-stability argyrodite electrolyte delivering excellent interface compatibility in all-solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2025-10-18",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.79577508,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 16,
+    "first_author": "Xin Zhang",
+    "authors_display": "Xin Zhang; Hongming Yi; Yonghao Shi; Kangjun Lu; Miao Zhang; Dewei Zhang; Hao Zeng; Shuaishuai Zhang; JI Dengyue; Pengyu Chen; Bingqing Xu; Chuanjin Tian; Zheng Li; Zhang Xue; Xue Zhang; Xue Zhang",
+    "authors_json": "[{\"display_name\": \"Xin Zhang\", \"id\": \"https://openalex.org/A5100327456\", \"orcid\": \"https://orcid.org/0009-0009-2502-2840\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hongming Yi\", \"id\": \"https://openalex.org/A5014281463\", \"orcid\": \"https://orcid.org/0000-0002-9483-2777\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yonghao Shi\", \"id\": \"https://openalex.org/A5077726776\", \"orcid\": \"https://orcid.org/0009-0002-2171-3491\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kangjun Lu\", \"id\": \"https://openalex.org/A5091146285\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Miao Zhang\", \"id\": \"https://openalex.org/A5100376491\", \"orcid\": \"https://orcid.org/0000-0003-2554-1252\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dewei Zhang\", \"id\": \"https://openalex.org/A5008677493\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hao Zeng\", \"id\": \"https://openalex.org/A5070370474\", \"orcid\": \"https://orcid.org/0000-0002-8835-3032\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuaishuai Zhang\", \"id\": \"https://openalex.org/A5050451872\", \"orcid\": \"https://orcid.org/0000-0002-1441-4840\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"JI Dengyue\", \"id\": \"https://openalex.org/A5005930547\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pengyu Chen\", \"id\": \"https://openalex.org/A5100317509\", \"orcid\": \"https://orcid.org/0000-0002-0420-8576\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bingqing Xu\", \"id\": \"https://openalex.org/A5008518213\", \"orcid\": \"https://orcid.org/0000-0003-0372-2837\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuanjin Tian\", \"id\": \"https://openalex.org/A5064470419\", \"orcid\": \"https://orcid.org/0000-0001-6794-1073\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zheng Li\", \"id\": \"https://openalex.org/A5087432492\", \"orcid\": \"https://orcid.org/0000-0001-6946-3474\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Zhang Xue\", \"id\": \"https://openalex.org/A5101099306\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xue Zhang\", \"id\": null, \"orcid\": \"https://orcid.org/0009-0002-9466-2314\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xue Zhang\", \"id\": null, \"orcid\": \"https://orcid.org/0009-0002-9466-2314\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2405829725006877?via%3Dihub",
+    "landing_title": "Low-cost high-air-stability argyrodite electrolyte delivering excellent interface compatibility in all-solid-state lithium metal batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773308929381,
+    "actual_start_ms": 1773308929381,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.338
+  }
+}

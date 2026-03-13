@@ -1,0 +1,137 @@
+{
+  "doi": "10.1021/acsenergylett.2c02699",
+  "pdf_filename": "10.1021_acsenergylett.2c02699.pdf",
+  "json_filename": "10.1021_acsenergylett.2c02699.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsenergylett.2c02699.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4318985163",
+    "doi": "10.1021/acsenergylett.2c02699",
+    "title": "Lithiation Gradients and Tortuosity Factors in Thick NMC111-Argyrodite Solid-State Cathodes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2023-02-02",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 45,
+    "citation_normalized_percentile": 0.96992858,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Alyssa M. Stavola",
+    "authors_display": "Alyssa M. Stavola; Xiao Sun; Dominick P. Guida; Andrea M. Bruck; Daxian Cao; John Okasinski; Andrew Chihpin Chuang; Hongli Zhu; Joshua W. Gallaway",
+    "authors": [
+      {
+        "display_name": "Alyssa M. Stavola",
+        "id": "https://openalex.org/A5048789904",
+        "orcid": "https://orcid.org/0000-0002-9100-4925",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao Sun",
+        "id": "https://openalex.org/A5074070055",
+        "orcid": "https://orcid.org/0000-0002-0449-7603",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dominick P. Guida",
+        "id": "https://openalex.org/A5060890384",
+        "orcid": "https://orcid.org/0000-0002-4744-6830",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andrea M. Bruck",
+        "id": "https://openalex.org/A5014895444",
+        "orcid": "https://orcid.org/0000-0002-2113-066X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daxian Cao",
+        "id": "https://openalex.org/A5091648041",
+        "orcid": "https://orcid.org/0000-0003-1191-5954",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "John Okasinski",
+        "id": "https://openalex.org/A5056746405",
+        "orcid": "https://orcid.org/0000-0001-9056-0623",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andrew Chihpin Chuang",
+        "id": "https://openalex.org/A5048370832",
+        "orcid": "https://orcid.org/0000-0003-0295-381X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongli Zhu",
+        "id": "https://openalex.org/A5028366101",
+        "orcid": "https://orcid.org/0000-0003-1733-4333",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Joshua W. Gallaway",
+        "id": "https://openalex.org/A5076768489",
+        "orcid": "https://orcid.org/0000-0002-6798-7781",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4318985163",
+    "doi": "10.1021/acsenergylett.2c02699",
+    "title": "Lithiation Gradients and Tortuosity Factors in Thick NMC111-Argyrodite Solid-State Cathodes",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2023-02-02",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 45,
+    "citation_normalized_percentile": 0.96992858,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Alyssa M. Stavola",
+    "authors_display": "Alyssa M. Stavola; Xiao Sun; Dominick P. Guida; Andrea M. Bruck; Daxian Cao; John Okasinski; Andrew Chihpin Chuang; Hongli Zhu; Joshua W. Gallaway",
+    "authors_json": "[{\"display_name\": \"Alyssa M. Stavola\", \"id\": \"https://openalex.org/A5048789904\", \"orcid\": \"https://orcid.org/0000-0002-9100-4925\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Xiao Sun\", \"id\": \"https://openalex.org/A5074070055\", \"orcid\": \"https://orcid.org/0000-0002-0449-7603\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dominick P. Guida\", \"id\": \"https://openalex.org/A5060890384\", \"orcid\": \"https://orcid.org/0000-0002-4744-6830\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Andrea M. Bruck\", \"id\": \"https://openalex.org/A5014895444\", \"orcid\": \"https://orcid.org/0000-0002-2113-066X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daxian Cao\", \"id\": \"https://openalex.org/A5091648041\", \"orcid\": \"https://orcid.org/0000-0003-1191-5954\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"John Okasinski\", \"id\": \"https://openalex.org/A5056746405\", \"orcid\": \"https://orcid.org/0000-0001-9056-0623\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Andrew Chihpin Chuang\", \"id\": \"https://openalex.org/A5048370832\", \"orcid\": \"https://orcid.org/0000-0003-0295-381X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongli Zhu\", \"id\": \"https://openalex.org/A5028366101\", \"orcid\": \"https://orcid.org/0000-0003-1733-4333\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Joshua W. Gallaway\", \"id\": \"https://openalex.org/A5076768489\", \"orcid\": \"https://orcid.org/0000-0002-6798-7781\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302230925,
+    "actual_start_ms": 1773302232425,
+    "pacing_wait_ms": 1499,
+    "pacing_jitter_sec": 1.322
+  }
+}

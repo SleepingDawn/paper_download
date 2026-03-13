@@ -1,0 +1,117 @@
+{
+  "doi": "10.1021/acs.chemmater.4c00979",
+  "pdf_filename": "10.1021_acs.chemmater.4c00979.pdf",
+  "json_filename": "10.1021_acs.chemmater.4c00979.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.chemmater.4c00979.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4402816018",
+    "doi": "10.1021/acs.chemmater.4c00979",
+    "title": "Site Disorder Drives Cyanide Dynamics and Fast Ion Transport in Li<sub>6</sub>PS<sub>5</sub>CN",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2024-09-25",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.44001198,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "C. Ray",
+    "authors_display": "C. Ray; Yi Yao; Shelby L. Galinat; Bennett Addison; Volker Blüm; Annalise E. Maughan",
+    "authors": [
+      {
+        "display_name": "C. Ray",
+        "id": "https://openalex.org/A5113400305",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yi Yao",
+        "id": "https://openalex.org/A5102644915",
+        "orcid": "https://orcid.org/0000-0003-0583-4082",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shelby L. Galinat",
+        "id": "https://openalex.org/A5107549251",
+        "orcid": "https://orcid.org/0000-0002-8520-0997",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bennett Addison",
+        "id": "https://openalex.org/A5091378871",
+        "orcid": "https://orcid.org/0000-0003-0763-3137",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Volker Blüm",
+        "id": "https://openalex.org/A5050792689",
+        "orcid": "https://orcid.org/0000-0001-8660-7230",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Annalise E. Maughan",
+        "id": "https://openalex.org/A5048237898",
+        "orcid": "https://orcid.org/0000-0002-3292-4799",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4402816018",
+    "doi": "10.1021/acs.chemmater.4c00979",
+    "title": "Site Disorder Drives Cyanide Dynamics and Fast Ion Transport in Li<sub>6</sub>PS<sub>5</sub>CN",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2024-09-25",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.44001198,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "C. Ray",
+    "authors_display": "C. Ray; Yi Yao; Shelby L. Galinat; Bennett Addison; Volker Blüm; Annalise E. Maughan",
+    "authors_json": "[{\"display_name\": \"C. Ray\", \"id\": \"https://openalex.org/A5113400305\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Yi Yao\", \"id\": \"https://openalex.org/A5102644915\", \"orcid\": \"https://orcid.org/0000-0003-0583-4082\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shelby L. Galinat\", \"id\": \"https://openalex.org/A5107549251\", \"orcid\": \"https://orcid.org/0000-0002-8520-0997\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bennett Addison\", \"id\": \"https://openalex.org/A5091378871\", \"orcid\": \"https://orcid.org/0000-0003-0763-3137\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Volker Blüm\", \"id\": \"https://openalex.org/A5050792689\", \"orcid\": \"https://orcid.org/0000-0001-8660-7230\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Annalise E. Maughan\", \"id\": \"https://openalex.org/A5048237898\", \"orcid\": \"https://orcid.org/0000-0002-3292-4799\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.chemmater.4c00979",
+    "landing_title": "Site Disorder Drives Cyanide Dynamics and Fast Ion Transport in Li6PS5CN | Chemistry of Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acs.chemmater.4c00979.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308246189,
+    "actual_start_ms": 1773308254961,
+    "pacing_wait_ms": 8772,
+    "pacing_jitter_sec": 1.772
+  }
+}

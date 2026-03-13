@@ -1,0 +1,95 @@
+{
+  "doi": "10.2139/ssrn.4358283",
+  "pdf_filename": "10.2139_ssrn.4358283.pdf",
+  "json_filename": "10.2139_ssrn.4358283.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.4358283.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4320736723",
+    "doi": "10.2139/ssrn.4358283",
+    "title": "Cork: Enabler of Sustainable and Efficient Coaxial Structural Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Mafalda Valente",
+    "authors_display": "Mafalda Valente; Sara P. Magalhães da Silva; Maria Helena Braga",
+    "authors": [
+      {
+        "display_name": "Mafalda Valente",
+        "id": "https://openalex.org/A5102871756",
+        "orcid": "https://orcid.org/0000-0003-0081-9270",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Sara P. Magalhães da Silva",
+        "id": "https://openalex.org/A5039242745",
+        "orcid": "https://orcid.org/0000-0001-9930-9486",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maria Helena Braga",
+        "id": "https://openalex.org/A5089673050",
+        "orcid": "https://orcid.org/0000-0003-4577-2154",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4320736723",
+    "doi": "10.2139/ssrn.4358283",
+    "title": "Cork: Enabler of Sustainable and Efficient Coaxial Structural Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Mafalda Valente",
+    "authors_display": "Mafalda Valente; Sara P. Magalhães da Silva; Maria Helena Braga",
+    "authors_json": "[{\"display_name\": \"Mafalda Valente\", \"id\": \"https://openalex.org/A5102871756\", \"orcid\": \"https://orcid.org/0000-0003-0081-9270\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Sara P. Magalhães da Silva\", \"id\": \"https://openalex.org/A5039242745\", \"orcid\": \"https://orcid.org/0000-0001-9930-9486\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maria Helena Braga\", \"id\": \"https://openalex.org/A5089673050\", \"orcid\": \"https://orcid.org/0000-0003-4577-2154\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4358283&__cf_chl_rt_tk=Mx.9PkCBOm83EwX0zDgXJcNEKCkLunxLPlqx9MbDkSk-1773313683-1.0.1.1-2JidcRdIqV23_o8LjUo_i57E3f8NkSLt4v5AoLKaw0w",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.4358283.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773313662269,
+    "actual_start_ms": 1773313662271,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.502
+  }
+}

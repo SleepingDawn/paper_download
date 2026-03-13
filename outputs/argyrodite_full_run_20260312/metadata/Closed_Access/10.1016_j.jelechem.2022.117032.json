@@ -1,0 +1,152 @@
+{
+  "doi": "10.1016/j.jelechem.2022.117032",
+  "pdf_filename": "10.1016_j.jelechem.2022.117032.pdf",
+  "json_filename": "10.1016_j.jelechem.2022.117032.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.jelechem.2022.117032.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4310553570",
+    "doi": "10.1016/j.jelechem.2022.117032",
+    "title": "Sulfide solid electrolyte thin film with high ionic conductive from slurry-casting strategy for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Electroanalytical Chemistry",
+      "id": "https://openalex.org/S143604795",
+      "type": "journal",
+      "issn_l": "1572-6657",
+      "issn": [
+        "1572-6657",
+        "1873-2569"
+      ]
+    },
+    "publication_date": "2022-11-30",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 21,
+    "citation_normalized_percentile": 0.86021927,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Ziyi Zhang",
+    "authors_display": "Ziyi Zhang; Lin Zhang; Jianwei Li; Yuanyuan Li; Kangrong Lai; Shengnan Zhang; Guoqing Zhao; Dongming Liu; Zhenjie Xi; Chan Liu; Lijie Ci",
+    "authors": [
+      {
+        "display_name": "Ziyi Zhang",
+        "id": "https://openalex.org/A5100338123",
+        "orcid": "https://orcid.org/0009-0006-8541-1432",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lin Zhang",
+        "id": "https://openalex.org/A5100351890",
+        "orcid": "https://orcid.org/0000-0002-8697-8936",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jianwei Li",
+        "id": "https://openalex.org/A5100410885",
+        "orcid": "https://orcid.org/0000-0002-3682-6934",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuanyuan Li",
+        "id": "https://openalex.org/A5111296078",
+        "orcid": "https://orcid.org/0000-0002-0444-1087",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kangrong Lai",
+        "id": "https://openalex.org/A5072683219",
+        "orcid": "https://orcid.org/0000-0002-0090-8049",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Shengnan Zhang",
+        "id": "https://openalex.org/A5100750749",
+        "orcid": "https://orcid.org/0000-0003-3284-7954",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guoqing Zhao",
+        "id": "https://openalex.org/A5101871664",
+        "orcid": "https://orcid.org/0000-0001-6351-4285",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dongming Liu",
+        "id": "https://openalex.org/A5100764055",
+        "orcid": "https://orcid.org/0000-0003-4530-9530",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhenjie Xi",
+        "id": "https://openalex.org/A5040707756",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chan Liu",
+        "id": "https://openalex.org/A5101763294",
+        "orcid": "https://orcid.org/0000-0001-9564-8982",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lijie Ci",
+        "id": "https://openalex.org/A5039201636",
+        "orcid": "https://orcid.org/0000-0002-1759-105X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4310553570",
+    "doi": "10.1016/j.jelechem.2022.117032",
+    "title": "Sulfide solid electrolyte thin film with high ionic conductive from slurry-casting strategy for all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Electroanalytical Chemistry",
+    "journal_id": "https://openalex.org/S143604795",
+    "journal_type": "journal",
+    "journal_issn_l": "1572-6657",
+    "journal_issn_json": "[\"1572-6657\", \"1873-2569\"]",
+    "publication_date": "2022-11-30",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 21,
+    "citation_normalized_percentile": 0.86021927,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Ziyi Zhang",
+    "authors_display": "Ziyi Zhang; Lin Zhang; Jianwei Li; Yuanyuan Li; Kangrong Lai; Shengnan Zhang; Guoqing Zhao; Dongming Liu; Zhenjie Xi; Chan Liu; Lijie Ci",
+    "authors_json": "[{\"display_name\": \"Ziyi Zhang\", \"id\": \"https://openalex.org/A5100338123\", \"orcid\": \"https://orcid.org/0009-0006-8541-1432\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Lin Zhang\", \"id\": \"https://openalex.org/A5100351890\", \"orcid\": \"https://orcid.org/0000-0002-8697-8936\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jianwei Li\", \"id\": \"https://openalex.org/A5100410885\", \"orcid\": \"https://orcid.org/0000-0002-3682-6934\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuanyuan Li\", \"id\": \"https://openalex.org/A5111296078\", \"orcid\": \"https://orcid.org/0000-0002-0444-1087\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kangrong Lai\", \"id\": \"https://openalex.org/A5072683219\", \"orcid\": \"https://orcid.org/0000-0002-0090-8049\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Shengnan Zhang\", \"id\": \"https://openalex.org/A5100750749\", \"orcid\": \"https://orcid.org/0000-0003-3284-7954\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guoqing Zhao\", \"id\": \"https://openalex.org/A5101871664\", \"orcid\": \"https://orcid.org/0000-0001-6351-4285\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dongming Liu\", \"id\": \"https://openalex.org/A5100764055\", \"orcid\": \"https://orcid.org/0000-0003-4530-9530\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhenjie Xi\", \"id\": \"https://openalex.org/A5040707756\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chan Liu\", \"id\": \"https://openalex.org/A5101763294\", \"orcid\": \"https://orcid.org/0000-0001-9564-8982\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lijie Ci\", \"id\": \"https://openalex.org/A5039201636\", \"orcid\": \"https://orcid.org/0000-0002-1759-105X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302612008,
+    "actual_start_ms": 1773302618968,
+    "pacing_wait_ms": 6960,
+    "pacing_jitter_sec": 1.462
+  }
+}

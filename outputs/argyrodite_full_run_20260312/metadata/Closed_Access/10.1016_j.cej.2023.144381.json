@@ -1,0 +1,152 @@
+{
+  "doi": "10.1016/j.cej.2023.144381",
+  "pdf_filename": "10.1016_j.cej.2023.144381.pdf",
+  "json_filename": "10.1016_j.cej.2023.144381.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.cej.2023.144381.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4381952059",
+    "doi": "10.1016/j.cej.2023.144381",
+    "title": "Customizing the morphology and microstructure of single-crystalline Ni-rich layered cathode materials for all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chemical Engineering Journal",
+      "id": "https://openalex.org/S149937609",
+      "type": "journal",
+      "issn_l": "1385-8947",
+      "issn": [
+        "1385-8947",
+        "1873-3212"
+      ]
+    },
+    "publication_date": "2023-06-25",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.9324911,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Jae Yup Jung",
+    "authors_display": "Jae Yup Jung; Kyungsu Kim; Joo Hyeong Suh; Hyun‐seung Kim; Min Jae You; Kern Ho Park; Junho Song; Ji‐Sang Yu; Jong‐Won Lee; Woosuk Cho; Min‐Sik Park",
+    "authors": [
+      {
+        "display_name": "Jae Yup Jung",
+        "id": "https://openalex.org/A5104134495",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyungsu Kim",
+        "id": "https://openalex.org/A5000349069",
+        "orcid": "https://orcid.org/0000-0001-6622-6545",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joo Hyeong Suh",
+        "id": "https://openalex.org/A5034560843",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyun‐seung Kim",
+        "id": "https://openalex.org/A5080992477",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Min Jae You",
+        "id": "https://openalex.org/A5064595659",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kern Ho Park",
+        "id": "https://openalex.org/A5091485561",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junho Song",
+        "id": "https://openalex.org/A5050921897",
+        "orcid": "https://orcid.org/0000-0003-4205-1829",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji‐Sang Yu",
+        "id": "https://openalex.org/A5101630653",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jong‐Won Lee",
+        "id": "https://openalex.org/A5118899095",
+        "orcid": "https://orcid.org/0000-0002-8713-7143",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Woosuk Cho",
+        "id": "https://openalex.org/A5065789071",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Min‐Sik Park",
+        "id": "https://openalex.org/A5100736623",
+        "orcid": "https://orcid.org/0000-0002-3490-2999",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4381952059",
+    "doi": "10.1016/j.cej.2023.144381",
+    "title": "Customizing the morphology and microstructure of single-crystalline Ni-rich layered cathode materials for all-solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Chemical Engineering Journal",
+    "journal_id": "https://openalex.org/S149937609",
+    "journal_type": "journal",
+    "journal_issn_l": "1385-8947",
+    "journal_issn_json": "[\"1385-8947\", \"1873-3212\"]",
+    "publication_date": "2023-06-25",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.9324911,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Jae Yup Jung",
+    "authors_display": "Jae Yup Jung; Kyungsu Kim; Joo Hyeong Suh; Hyun‐seung Kim; Min Jae You; Kern Ho Park; Junho Song; Ji‐Sang Yu; Jong‐Won Lee; Woosuk Cho; Min‐Sik Park",
+    "authors_json": "[{\"display_name\": \"Jae Yup Jung\", \"id\": \"https://openalex.org/A5104134495\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Kyungsu Kim\", \"id\": \"https://openalex.org/A5000349069\", \"orcid\": \"https://orcid.org/0000-0001-6622-6545\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Joo Hyeong Suh\", \"id\": \"https://openalex.org/A5034560843\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyun‐seung Kim\", \"id\": \"https://openalex.org/A5080992477\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Min Jae You\", \"id\": \"https://openalex.org/A5064595659\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kern Ho Park\", \"id\": \"https://openalex.org/A5091485561\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junho Song\", \"id\": \"https://openalex.org/A5050921897\", \"orcid\": \"https://orcid.org/0000-0003-4205-1829\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ji‐Sang Yu\", \"id\": \"https://openalex.org/A5101630653\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jong‐Won Lee\", \"id\": \"https://openalex.org/A5118899095\", \"orcid\": \"https://orcid.org/0000-0002-8713-7143\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Woosuk Cho\", \"id\": \"https://openalex.org/A5065789071\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Min‐Sik Park\", \"id\": \"https://openalex.org/A5100736623\", \"orcid\": \"https://orcid.org/0000-0002-3490-2999\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302378551,
+    "actual_start_ms": 1773302385451,
+    "pacing_wait_ms": 6899,
+    "pacing_jitter_sec": 1.397
+  }
+}

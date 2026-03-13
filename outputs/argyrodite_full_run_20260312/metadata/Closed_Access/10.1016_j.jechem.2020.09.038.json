@@ -1,0 +1,117 @@
+{
+  "doi": "10.1016/j.jechem.2020.09.038",
+  "pdf_filename": "10.1016_j.jechem.2020.09.038.pdf",
+  "json_filename": "10.1016_j.jechem.2020.09.038.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.jechem.2020.09.038.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3092129317",
+    "doi": "10.1016/j.jechem.2020.09.038",
+    "title": "Enabling high-performance all-solid-state lithium batteries with high ionic conductive sulfide-based composite solid electrolyte and ex-situ artificial SEI film",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Chemistry",
+      "id": "https://openalex.org/S2500128275",
+      "type": "journal",
+      "issn_l": "2095-4956",
+      "issn": [
+        "2095-4956",
+        "2096-885X"
+      ]
+    },
+    "publication_date": "2020-10-07",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 74,
+    "citation_normalized_percentile": 0.94569994,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Jingguang Yi",
+    "authors_display": "Jingguang Yi; Dan Zhou; Yuhao Liang; Hong Liu; Haifang Ni; Li‐Zhen Fan",
+    "authors": [
+      {
+        "display_name": "Jingguang Yi",
+        "id": "https://openalex.org/A5061697940",
+        "orcid": "https://orcid.org/0009-0003-4537-5690",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dan Zhou",
+        "id": "https://openalex.org/A5003139285",
+        "orcid": "https://orcid.org/0000-0002-5051-9682",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuhao Liang",
+        "id": "https://openalex.org/A5102543677",
+        "orcid": "https://orcid.org/0009-0008-9516-6594",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Liu",
+        "id": "https://openalex.org/A5062205333",
+        "orcid": "https://orcid.org/0000-0001-6083-4101",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haifang Ni",
+        "id": "https://openalex.org/A5005600054",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Li‐Zhen Fan",
+        "id": "https://openalex.org/A5036874871",
+        "orcid": "https://orcid.org/0000-0003-2270-4458",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3092129317",
+    "doi": "10.1016/j.jechem.2020.09.038",
+    "title": "Enabling high-performance all-solid-state lithium batteries with high ionic conductive sulfide-based composite solid electrolyte and ex-situ artificial SEI film",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Chemistry",
+    "journal_id": "https://openalex.org/S2500128275",
+    "journal_type": "journal",
+    "journal_issn_l": "2095-4956",
+    "journal_issn_json": "[\"2095-4956\", \"2096-885X\"]",
+    "publication_date": "2020-10-07",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 74,
+    "citation_normalized_percentile": 0.94569994,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Jingguang Yi",
+    "authors_display": "Jingguang Yi; Dan Zhou; Yuhao Liang; Hong Liu; Haifang Ni; Li‐Zhen Fan",
+    "authors_json": "[{\"display_name\": \"Jingguang Yi\", \"id\": \"https://openalex.org/A5061697940\", \"orcid\": \"https://orcid.org/0009-0003-4537-5690\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Dan Zhou\", \"id\": \"https://openalex.org/A5003139285\", \"orcid\": \"https://orcid.org/0000-0002-5051-9682\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuhao Liang\", \"id\": \"https://openalex.org/A5102543677\", \"orcid\": \"https://orcid.org/0009-0008-9516-6594\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Liu\", \"id\": \"https://openalex.org/A5062205333\", \"orcid\": \"https://orcid.org/0000-0001-6083-4101\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haifang Ni\", \"id\": \"https://openalex.org/A5005600054\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Li‐Zhen Fan\", \"id\": \"https://openalex.org/A5036874871\", \"orcid\": \"https://orcid.org/0000-0003-2270-4458\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301757595,
+    "actual_start_ms": 1773301762867,
+    "pacing_wait_ms": 5272,
+    "pacing_jitter_sec": 1.486
+  }
+}

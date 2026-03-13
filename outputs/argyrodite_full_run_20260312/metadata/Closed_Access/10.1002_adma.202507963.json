@@ -1,0 +1,173 @@
+{
+  "doi": "10.1002/adma.202507963",
+  "pdf_filename": "10.1002_adma.202507963.pdf",
+  "json_filename": "10.1002_adma.202507963.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_adma.202507963.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4412509510",
+    "doi": "10.1002/adma.202507963",
+    "title": "Highly Deformable, Ion‐Conductive Borohydride‐Substituted Sulfide Electrolyte for Superior Performance at Low Stack Pressure",
+    "publisher": "Advanced Materials",
+    "journal": {
+      "name": "Advanced Materials",
+      "id": "https://openalex.org/S99352657",
+      "type": "journal",
+      "issn_l": "0935-9648",
+      "issn": [
+        "0935-9648",
+        "1521-4095"
+      ]
+    },
+    "publication_date": "2025-07-21",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.88827338,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 14,
+    "first_author": "Shunsuke Kawaguchi",
+    "authors_display": "Shunsuke Kawaguchi; Naomi Fukiya; Kouhei Ehara; Tomoyuki Ichikawa; Masahiro Yoshimura; Eishi Iso; Yuji C. Sasaki; Yuhei Horisawa; Yoshiteru Mizukoshi; Masaki Shimada; Naoya Ishida; Minoru Kuzuhara; Koji Kawamoto; Takuhiro Miyuki",
+    "authors": [
+      {
+        "display_name": "Shunsuke Kawaguchi",
+        "id": "https://openalex.org/A5111521797",
+        "orcid": "https://orcid.org/0009-0001-8083-6777",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Naomi Fukiya",
+        "id": "https://openalex.org/A5093292867",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kouhei Ehara",
+        "id": "https://openalex.org/A5002230349",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tomoyuki Ichikawa",
+        "id": "https://openalex.org/A5113951460",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masahiro Yoshimura",
+        "id": "https://openalex.org/A5069234280",
+        "orcid": "https://orcid.org/0000-0003-1810-0301",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Eishi Iso",
+        "id": "https://openalex.org/A5119020547",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuji C. Sasaki",
+        "id": "https://openalex.org/A5011889510",
+        "orcid": "https://orcid.org/0000-0003-3403-237X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuhei Horisawa",
+        "id": "https://openalex.org/A5007779799",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoshiteru Mizukoshi",
+        "id": "https://openalex.org/A5052347612",
+        "orcid": "https://orcid.org/0000-0003-2544-7346",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masaki Shimada",
+        "id": "https://openalex.org/A5076574116",
+        "orcid": "https://orcid.org/0000-0002-2987-6992",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Naoya Ishida",
+        "id": "https://openalex.org/A5040287496",
+        "orcid": "https://orcid.org/0000-0003-3707-6781",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Minoru Kuzuhara",
+        "id": "https://openalex.org/A5052229850",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Koji Kawamoto",
+        "id": "https://openalex.org/A5108423077",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Takuhiro Miyuki",
+        "id": "https://openalex.org/A5027930140",
+        "orcid": "https://orcid.org/0000-0003-1361-3239",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4412509510",
+    "doi": "10.1002/adma.202507963",
+    "title": "Highly Deformable, Ion‐Conductive Borohydride‐Substituted Sulfide Electrolyte for Superior Performance at Low Stack Pressure",
+    "publisher": "Advanced Materials",
+    "journal": "Advanced Materials",
+    "journal_id": "https://openalex.org/S99352657",
+    "journal_type": "journal",
+    "journal_issn_l": "0935-9648",
+    "journal_issn_json": "[\"0935-9648\", \"1521-4095\"]",
+    "publication_date": "2025-07-21",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.88827338,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 14,
+    "first_author": "Shunsuke Kawaguchi",
+    "authors_display": "Shunsuke Kawaguchi; Naomi Fukiya; Kouhei Ehara; Tomoyuki Ichikawa; Masahiro Yoshimura; Eishi Iso; Yuji C. Sasaki; Yuhei Horisawa; Yoshiteru Mizukoshi; Masaki Shimada; Naoya Ishida; Minoru Kuzuhara; Koji Kawamoto; Takuhiro Miyuki",
+    "authors_json": "[{\"display_name\": \"Shunsuke Kawaguchi\", \"id\": \"https://openalex.org/A5111521797\", \"orcid\": \"https://orcid.org/0009-0001-8083-6777\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Naomi Fukiya\", \"id\": \"https://openalex.org/A5093292867\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kouhei Ehara\", \"id\": \"https://openalex.org/A5002230349\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tomoyuki Ichikawa\", \"id\": \"https://openalex.org/A5113951460\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masahiro Yoshimura\", \"id\": \"https://openalex.org/A5069234280\", \"orcid\": \"https://orcid.org/0000-0003-1810-0301\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Eishi Iso\", \"id\": \"https://openalex.org/A5119020547\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuji C. Sasaki\", \"id\": \"https://openalex.org/A5011889510\", \"orcid\": \"https://orcid.org/0000-0003-3403-237X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuhei Horisawa\", \"id\": \"https://openalex.org/A5007779799\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoshiteru Mizukoshi\", \"id\": \"https://openalex.org/A5052347612\", \"orcid\": \"https://orcid.org/0000-0003-2544-7346\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masaki Shimada\", \"id\": \"https://openalex.org/A5076574116\", \"orcid\": \"https://orcid.org/0000-0002-2987-6992\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Naoya Ishida\", \"id\": \"https://openalex.org/A5040287496\", \"orcid\": \"https://orcid.org/0000-0003-3707-6781\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Minoru Kuzuhara\", \"id\": \"https://openalex.org/A5052229850\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Koji Kawamoto\", \"id\": \"https://openalex.org/A5108423077\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Takuhiro Miyuki\", \"id\": \"https://openalex.org/A5027930140\", \"orcid\": \"https://orcid.org/0000-0003-1361-3239\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773307993588,
+    "actual_start_ms": 1773307993588,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.445
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "doi": "10.1002/batt.202400048",
+  "pdf_filename": "10.1002_batt.202400048.pdf",
+  "json_filename": "10.1002_batt.202400048.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_batt.202400048.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4393199201",
+    "doi": "10.1002/batt.202400048",
+    "title": "ZnO Substitution in Argyrodite Li<sub>5.5+3x</sub>Zn<sub>x</sub>P<sub>1‐x</sub>O<sub>x</sub>S<sub>4.5‐x</sub>Br<sub>1.5</sub> Electrolyte with Enhanced Interface Performance for All‐Solid‐State Battery",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Batteries & Supercaps",
+      "id": "https://openalex.org/S4210241147",
+      "type": "journal",
+      "issn_l": "2566-6223",
+      "issn": [
+        "2566-6223"
+      ]
+    },
+    "publication_date": "2024-03-25",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.79706608,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/batt.202400048",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Xizhong Lin",
+    "authors_display": "Xizhong Lin; Dabing Li; Yaru Li; Xiaoxue Zhao; Yang Li; Li‐Zhen Fan",
+    "authors": [
+      {
+        "display_name": "Xizhong Lin",
+        "id": "https://openalex.org/A5102635792",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dabing Li",
+        "id": "https://openalex.org/A5016499715",
+        "orcid": "https://orcid.org/0000-0001-5353-1460",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yaru Li",
+        "id": "https://openalex.org/A5100633787",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaoxue Zhao",
+        "id": "https://openalex.org/A5003267298",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Li",
+        "id": "https://openalex.org/A5100421315",
+        "orcid": "https://orcid.org/0000-0001-7252-854X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Li‐Zhen Fan",
+        "id": "https://openalex.org/A5036874871",
+        "orcid": "https://orcid.org/0000-0003-2270-4458",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4393199201",
+    "doi": "10.1002/batt.202400048",
+    "title": "ZnO Substitution in Argyrodite Li<sub>5.5+3x</sub>Zn<sub>x</sub>P<sub>1‐x</sub>O<sub>x</sub>S<sub>4.5‐x</sub>Br<sub>1.5</sub> Electrolyte with Enhanced Interface Performance for All‐Solid‐State Battery",
+    "publisher": "Wiley",
+    "journal": "Batteries & Supercaps",
+    "journal_id": "https://openalex.org/S4210241147",
+    "journal_type": "journal",
+    "journal_issn_l": "2566-6223",
+    "journal_issn_json": "[\"2566-6223\"]",
+    "publication_date": "2024-03-25",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.79706608,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/batt.202400048",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Xizhong Lin",
+    "authors_display": "Xizhong Lin; Dabing Li; Yaru Li; Xiaoxue Zhao; Yang Li; Li‐Zhen Fan",
+    "authors_json": "[{\"display_name\": \"Xizhong Lin\", \"id\": \"https://openalex.org/A5102635792\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Dabing Li\", \"id\": \"https://openalex.org/A5016499715\", \"orcid\": \"https://orcid.org/0000-0001-5353-1460\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yaru Li\", \"id\": \"https://openalex.org/A5100633787\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaoxue Zhao\", \"id\": \"https://openalex.org/A5003267298\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Li\", \"id\": \"https://openalex.org/A5100421315\", \"orcid\": \"https://orcid.org/0000-0001-7252-854X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Li‐Zhen Fan\", \"id\": \"https://openalex.org/A5036874871\", \"orcid\": \"https://orcid.org/0000-0003-2270-4458\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773307119978,
+    "actual_start_ms": 1773307119978,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.102
+  }
+}

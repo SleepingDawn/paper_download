@@ -1,0 +1,109 @@
+{
+  "doi": "10.1021/acsaem.5c01188",
+  "pdf_filename": "10.1021_acsaem.5c01188.pdf",
+  "json_filename": "10.1021_acsaem.5c01188.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.5c01188.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4412551285",
+    "doi": "10.1021/acsaem.5c01188",
+    "title": "Gas–Solid Reaction Dynamics on Li<sub>6</sub>PS<sub>5</sub>Cl Surfaces: A Case Study of the Influence of CO<sub>2</sub> and CO<sub>2</sub>/O<sub>2</sub> Atmospheres Using AIMD and MLFF Simulations",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2025-07-22",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.84350888,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Zicun Li",
+    "authors_display": "Zicun Li; Xinguo Ren; Jinbin Li; Ruijuan Xiao; Hong Li",
+    "authors": [
+      {
+        "display_name": "Zicun Li",
+        "id": "https://openalex.org/A5027122077",
+        "orcid": "https://orcid.org/0000-0001-8778-2567",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinguo Ren",
+        "id": "https://openalex.org/A5061281482",
+        "orcid": "https://orcid.org/0000-0002-3360-2281",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jinbin Li",
+        "id": "https://openalex.org/A5109076227",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ruijuan Xiao",
+        "id": "https://openalex.org/A5024499457",
+        "orcid": "https://orcid.org/0000-0003-0930-9576",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hong Li",
+        "id": "https://openalex.org/A5100339418",
+        "orcid": "https://orcid.org/0000-0002-8659-086X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4412551285",
+    "doi": "10.1021/acsaem.5c01188",
+    "title": "Gas–Solid Reaction Dynamics on Li<sub>6</sub>PS<sub>5</sub>Cl Surfaces: A Case Study of the Influence of CO<sub>2</sub> and CO<sub>2</sub>/O<sub>2</sub> Atmospheres Using AIMD and MLFF Simulations",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2025-07-22",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.84350888,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Zicun Li",
+    "authors_display": "Zicun Li; Xinguo Ren; Jinbin Li; Ruijuan Xiao; Hong Li",
+    "authors_json": "[{\"display_name\": \"Zicun Li\", \"id\": \"https://openalex.org/A5027122077\", \"orcid\": \"https://orcid.org/0000-0001-8778-2567\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Xinguo Ren\", \"id\": \"https://openalex.org/A5061281482\", \"orcid\": \"https://orcid.org/0000-0002-3360-2281\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jinbin Li\", \"id\": \"https://openalex.org/A5109076227\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ruijuan Xiao\", \"id\": \"https://openalex.org/A5024499457\", \"orcid\": \"https://orcid.org/0000-0003-0930-9576\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Hong Li\", \"id\": \"https://openalex.org/A5100339418\", \"orcid\": \"https://orcid.org/0000-0002-8659-086X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.5c01188",
+    "landing_title": "Gas–Solid Reaction Dynamics on Li6PS5Cl Surfaces: A Case Study of the Influence of CO2 and CO2/O2 Atmospheres Using AIMD and MLFF Simulations | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acsaem.5c01188.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773307691980,
+    "actual_start_ms": 1773307708718,
+    "pacing_wait_ms": 16737,
+    "pacing_jitter_sec": 1.28
+  }
+}

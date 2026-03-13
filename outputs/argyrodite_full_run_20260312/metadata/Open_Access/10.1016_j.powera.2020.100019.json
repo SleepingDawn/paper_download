@@ -1,0 +1,95 @@
+{
+  "doi": "10.1016/j.powera.2020.100019",
+  "pdf_filename": "10.1016_j.powera.2020.100019.pdf",
+  "json_filename": "10.1016_j.powera.2020.100019.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.powera.2020.100019.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3044879928",
+    "doi": "10.1016/j.powera.2020.100019",
+    "title": "In situ X-ray computational tomography measurement of single particle behavior of sulfide solid electrolyte under high-pressure compression",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Power Sources Advances",
+      "id": "https://openalex.org/S4210178997",
+      "type": "journal",
+      "issn_l": "2666-2485",
+      "issn": [
+        "2666-2485"
+      ]
+    },
+    "publication_date": "2020-07-23",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.74719959,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Manabu Kodama",
+    "authors_display": "Manabu Kodama; Akiyoshi Ohashi; Shuichiro Hirai",
+    "authors": [
+      {
+        "display_name": "Manabu Kodama",
+        "id": "https://openalex.org/A5044669749",
+        "orcid": "https://orcid.org/0000-0002-6870-2450",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Akiyoshi Ohashi",
+        "id": "https://openalex.org/A5071042090",
+        "orcid": "https://orcid.org/0000-0003-2213-3915",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuichiro Hirai",
+        "id": "https://openalex.org/A5112061271",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3044879928",
+    "doi": "10.1016/j.powera.2020.100019",
+    "title": "In situ X-ray computational tomography measurement of single particle behavior of sulfide solid electrolyte under high-pressure compression",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Power Sources Advances",
+    "journal_id": "https://openalex.org/S4210178997",
+    "journal_type": "journal",
+    "journal_issn_l": "2666-2485",
+    "journal_issn_json": "[\"2666-2485\"]",
+    "publication_date": "2020-07-23",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.74719959,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Manabu Kodama",
+    "authors_display": "Manabu Kodama; Akiyoshi Ohashi; Shuichiro Hirai",
+    "authors_json": "[{\"display_name\": \"Manabu Kodama\", \"id\": \"https://openalex.org/A5044669749\", \"orcid\": \"https://orcid.org/0000-0002-6870-2450\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Akiyoshi Ohashi\", \"id\": \"https://openalex.org/A5071042090\", \"orcid\": \"https://orcid.org/0000-0003-2213-3915\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuichiro Hirai\", \"id\": \"https://openalex.org/A5112061271\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773303303704,
+    "actual_start_ms": 1773303312098,
+    "pacing_wait_ms": 8394,
+    "pacing_jitter_sec": 1.39
+  }
+}

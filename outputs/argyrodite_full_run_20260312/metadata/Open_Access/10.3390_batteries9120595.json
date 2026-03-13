@@ -1,0 +1,95 @@
+{
+  "doi": "10.3390/batteries9120595",
+  "pdf_filename": "10.3390_batteries9120595.pdf",
+  "json_filename": "10.3390_batteries9120595.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_batteries9120595.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4389782275",
+    "doi": "10.3390/batteries9120595",
+    "title": "Percolation Behavior of a Sulfide Electrolyte–Carbon Additive Matrix for Composite Cathodes in All-Solid-State Batteries",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Batteries",
+      "id": "https://openalex.org/S2737090608",
+      "type": "journal",
+      "issn_l": "2313-0105",
+      "issn": [
+        "2313-0105"
+      ]
+    },
+    "publication_date": "2023-12-15",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.79425164,
+    "pdf_url": "https://www.mdpi.com/2313-0105/9/12/595/pdf?version=1702631023",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Elias Reisacher",
+    "authors_display": "Elias Reisacher; Pınar Kaya; Volker Knoblauch",
+    "authors": [
+      {
+        "display_name": "Elias Reisacher",
+        "id": "https://openalex.org/A5092517270",
+        "orcid": "https://orcid.org/0009-0006-2075-7117",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Pınar Kaya",
+        "id": "https://openalex.org/A5022658309",
+        "orcid": "https://orcid.org/0000-0001-7813-4023",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Volker Knoblauch",
+        "id": "https://openalex.org/A5008262100",
+        "orcid": "https://orcid.org/0000-0001-9075-9085",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4389782275",
+    "doi": "10.3390/batteries9120595",
+    "title": "Percolation Behavior of a Sulfide Electrolyte–Carbon Additive Matrix for Composite Cathodes in All-Solid-State Batteries",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Batteries",
+    "journal_id": "https://openalex.org/S2737090608",
+    "journal_type": "journal",
+    "journal_issn_l": "2313-0105",
+    "journal_issn_json": "[\"2313-0105\"]",
+    "publication_date": "2023-12-15",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 9,
+    "citation_normalized_percentile": 0.79425164,
+    "pdf_url": "https://www.mdpi.com/2313-0105/9/12/595/pdf?version=1702631023",
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "Elias Reisacher",
+    "authors_display": "Elias Reisacher; Pınar Kaya; Volker Knoblauch",
+    "authors_json": "[{\"display_name\": \"Elias Reisacher\", \"id\": \"https://openalex.org/A5092517270\", \"orcid\": \"https://orcid.org/0009-0006-2075-7117\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Pınar Kaya\", \"id\": \"https://openalex.org/A5022658309\", \"orcid\": \"https://orcid.org/0000-0001-7813-4023\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Volker Knoblauch\", \"id\": \"https://openalex.org/A5008262100\", \"orcid\": \"https://orcid.org/0000-0001-9075-9085\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773309639952,
+    "actual_start_ms": 1773309641460,
+    "pacing_wait_ms": 1508,
+    "pacing_jitter_sec": 1.206
+  }
+}

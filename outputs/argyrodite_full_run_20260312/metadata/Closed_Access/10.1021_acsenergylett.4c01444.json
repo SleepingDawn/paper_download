@@ -1,0 +1,102 @@
+{
+  "doi": "10.1021/acsenergylett.4c01444",
+  "pdf_filename": "10.1021_acsenergylett.4c01444.pdf",
+  "json_filename": "10.1021_acsenergylett.4c01444.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.4c01444.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4400107507",
+    "doi": "10.1021/acsenergylett.4c01444",
+    "title": "Toward High-Capacity Li–S Solid-State Batteries: The Role of Partial Ionic Transport in the Catholyte",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2024-06-28",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.7737696,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Henry M. Woolley",
+    "authors_display": "Henry M. Woolley; Martin Lange; Elina Nazmutdinova; Nella M. Vargas‐Barbosa",
+    "authors": [
+      {
+        "display_name": "Henry M. Woolley",
+        "id": "https://openalex.org/A5028275506",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Lange",
+        "id": "https://openalex.org/A5062147292",
+        "orcid": "https://orcid.org/0000-0002-4045-3915",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Elina Nazmutdinova",
+        "id": "https://openalex.org/A5089098628",
+        "orcid": "https://orcid.org/0000-0002-6514-2750",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nella M. Vargas‐Barbosa",
+        "id": "https://openalex.org/A5040044322",
+        "orcid": "https://orcid.org/0000-0002-6357-017X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4400107507",
+    "doi": "10.1021/acsenergylett.4c01444",
+    "title": "Toward High-Capacity Li–S Solid-State Batteries: The Role of Partial Ionic Transport in the Catholyte",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2024-06-28",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.7737696,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Henry M. Woolley",
+    "authors_display": "Henry M. Woolley; Martin Lange; Elina Nazmutdinova; Nella M. Vargas‐Barbosa",
+    "authors_json": "[{\"display_name\": \"Henry M. Woolley\", \"id\": \"https://openalex.org/A5028275506\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Martin Lange\", \"id\": \"https://openalex.org/A5062147292\", \"orcid\": \"https://orcid.org/0000-0002-4045-3915\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Elina Nazmutdinova\", \"id\": \"https://openalex.org/A5089098628\", \"orcid\": \"https://orcid.org/0000-0002-6514-2750\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nella M. Vargas‐Barbosa\", \"id\": \"https://openalex.org/A5040044322\", \"orcid\": \"https://orcid.org/0000-0002-6357-017X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773306633277,
+    "actual_start_ms": 1773306641923,
+    "pacing_wait_ms": 8646,
+    "pacing_jitter_sec": 1.644
+  }
+}

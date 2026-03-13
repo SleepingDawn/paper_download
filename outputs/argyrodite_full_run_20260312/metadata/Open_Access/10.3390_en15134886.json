@@ -1,0 +1,116 @@
+{
+  "doi": "10.3390/en15134886",
+  "pdf_filename": "10.3390_en15134886.pdf",
+  "json_filename": "10.3390_en15134886.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_en15134886.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4283794314",
+    "doi": "10.3390/en15134886",
+    "title": "Effects of Coating on the Electrochemical Performance of a Nickel-Rich Cathode Active Material",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Energies",
+      "id": "https://openalex.org/S198098182",
+      "type": "journal",
+      "issn_l": "1996-1073",
+      "issn": [
+        "1996-1073"
+      ]
+    },
+    "publication_date": "2022-07-03",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.72763296,
+    "pdf_url": "https://www.mdpi.com/1996-1073/15/13/4886/pdf?version=1656991227",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Eman Hassan",
+    "authors_display": "Eman Hassan; M. Amiriyan; Dominic Frisone; Joshua Dunham; Rashid Farahati; Siamak Farhad",
+    "authors": [
+      {
+        "display_name": "Eman Hassan",
+        "id": "https://openalex.org/A5016436600",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "M. Amiriyan",
+        "id": "https://openalex.org/A5073158914",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dominic Frisone",
+        "id": "https://openalex.org/A5053795979",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joshua Dunham",
+        "id": "https://openalex.org/A5112904604",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rashid Farahati",
+        "id": "https://openalex.org/A5090120643",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Siamak Farhad",
+        "id": "https://openalex.org/A5061550343",
+        "orcid": "https://orcid.org/0000-0002-5810-166X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4283794314",
+    "doi": "10.3390/en15134886",
+    "title": "Effects of Coating on the Electrochemical Performance of a Nickel-Rich Cathode Active Material",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Energies",
+    "journal_id": "https://openalex.org/S198098182",
+    "journal_type": "journal",
+    "journal_issn_l": "1996-1073",
+    "journal_issn_json": "[\"1996-1073\"]",
+    "publication_date": "2022-07-03",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.72763296,
+    "pdf_url": "https://www.mdpi.com/1996-1073/15/13/4886/pdf?version=1656991227",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Eman Hassan",
+    "authors_display": "Eman Hassan; M. Amiriyan; Dominic Frisone; Joshua Dunham; Rashid Farahati; Siamak Farhad",
+    "authors_json": "[{\"display_name\": \"Eman Hassan\", \"id\": \"https://openalex.org/A5016436600\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"M. Amiriyan\", \"id\": \"https://openalex.org/A5073158914\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dominic Frisone\", \"id\": \"https://openalex.org/A5053795979\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Joshua Dunham\", \"id\": \"https://openalex.org/A5112904604\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rashid Farahati\", \"id\": \"https://openalex.org/A5090120643\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Siamak Farhad\", \"id\": \"https://openalex.org/A5061550343\", \"orcid\": \"https://orcid.org/0000-0002-5810-166X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773309596850,
+    "actual_start_ms": 1773309598352,
+    "pacing_wait_ms": 1501,
+    "pacing_jitter_sec": 1.599
+  }
+}

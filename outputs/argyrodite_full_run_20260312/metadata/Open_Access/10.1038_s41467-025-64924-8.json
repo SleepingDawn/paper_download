@@ -1,0 +1,109 @@
+{
+  "doi": "10.1038/s41467-025-64924-8",
+  "pdf_filename": "10.1038_s41467-025-64924-8.pdf",
+  "json_filename": "10.1038_s41467-025-64924-8.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s41467-025-64924-8.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4416185930",
+    "doi": "10.1038/s41467-025-64924-8",
+    "title": "Advancing sulfide solid electrolytes via green Li2S synthesis",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Nature Communications",
+      "id": "https://openalex.org/S64187185",
+      "type": "journal",
+      "issn_l": "2041-1723",
+      "issn": [
+        "2041-1723"
+      ]
+    },
+    "publication_date": "2025-11-13",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.90534583,
+    "pdf_url": "https://www.nature.com/articles/s41467-025-64924-8.pdf",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Yi Zhang",
+    "authors_display": "Yi Zhang; Ling Gao; Haoran Zheng; Hongyang Zhao; Guowei Zhao",
+    "authors": [
+      {
+        "display_name": "Yi Zhang",
+        "id": "https://openalex.org/A5118278151",
+        "orcid": "https://orcid.org/0000-0003-2423-2175",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ling Gao",
+        "id": "https://openalex.org/A5070902118",
+        "orcid": "https://orcid.org/0000-0002-3171-591X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haoran Zheng",
+        "id": "https://openalex.org/A5047428207",
+        "orcid": "https://orcid.org/0000-0001-8558-7979",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongyang Zhao",
+        "id": "https://openalex.org/A5023780872",
+        "orcid": "https://orcid.org/0000-0003-3531-2955",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Guowei Zhao",
+        "id": "https://openalex.org/A5058242527",
+        "orcid": "https://orcid.org/0000-0002-4344-3923",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4416185930",
+    "doi": "10.1038/s41467-025-64924-8",
+    "title": "Advancing sulfide solid electrolytes via green Li2S synthesis",
+    "publisher": "Nature Portfolio",
+    "journal": "Nature Communications",
+    "journal_id": "https://openalex.org/S64187185",
+    "journal_type": "journal",
+    "journal_issn_l": "2041-1723",
+    "journal_issn_json": "[\"2041-1723\"]",
+    "publication_date": "2025-11-13",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.90534583,
+    "pdf_url": "https://www.nature.com/articles/s41467-025-64924-8.pdf",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Yi Zhang",
+    "authors_display": "Yi Zhang; Ling Gao; Haoran Zheng; Hongyang Zhao; Guowei Zhao",
+    "authors_json": "[{\"display_name\": \"Yi Zhang\", \"id\": \"https://openalex.org/A5118278151\", \"orcid\": \"https://orcid.org/0000-0003-2423-2175\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ling Gao\", \"id\": \"https://openalex.org/A5070902118\", \"orcid\": \"https://orcid.org/0000-0002-3171-591X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haoran Zheng\", \"id\": \"https://openalex.org/A5047428207\", \"orcid\": \"https://orcid.org/0000-0001-8558-7979\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongyang Zhao\", \"id\": \"https://openalex.org/A5023780872\", \"orcid\": \"https://orcid.org/0000-0003-3531-2955\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Guowei Zhao\", \"id\": \"https://openalex.org/A5058242527\", \"orcid\": \"https://orcid.org/0000-0002-4344-3923\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773309788203,
+    "actual_start_ms": 1773309788203,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.568
+  }
+}

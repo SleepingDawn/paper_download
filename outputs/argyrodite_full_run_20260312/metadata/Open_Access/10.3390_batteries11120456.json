@@ -1,0 +1,144 @@
+{
+  "doi": "10.3390/batteries11120456",
+  "pdf_filename": "10.3390_batteries11120456.pdf",
+  "json_filename": "10.3390_batteries11120456.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_batteries11120456.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4417226303",
+    "doi": "10.3390/batteries11120456",
+    "title": "First-Principles Calculation Study on the Interfacial Stability Between Zr and F Co-Doped Li6PS5Cl and Lithium Metal Anode",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Batteries",
+      "id": "https://openalex.org/S2737090608",
+      "type": "journal",
+      "issn_l": "2313-0105",
+      "issn": [
+        "2313-0105"
+      ]
+    },
+    "publication_date": "2025-12-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.42682623,
+    "pdf_url": "https://www.mdpi.com/2313-0105/11/12/456/pdf?version=1765441050",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Junbo Zhang",
+    "authors_display": "Junbo Zhang; Hailong Zhang; Binbin Chen; Yanjun Ji; Cheng Qian; J. D. Wang; Yu Wang; Tiantian Bao; Peipei Chen; Jie Mei",
+    "authors": [
+      {
+        "display_name": "Junbo Zhang",
+        "id": "https://openalex.org/A5070299189",
+        "orcid": "https://orcid.org/0009-0006-1468-5620",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hailong Zhang",
+        "id": "https://openalex.org/A5100377422",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Binbin Chen",
+        "id": "https://openalex.org/A5100687667",
+        "orcid": "https://orcid.org/0000-0001-7533-0686",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanjun Ji",
+        "id": "https://openalex.org/A5101434145",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cheng Qian",
+        "id": "https://openalex.org/A5063443294",
+        "orcid": "https://orcid.org/0000-0002-4225-1866",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J. D. Wang",
+        "id": "https://openalex.org/A5030760301",
+        "orcid": "https://orcid.org/0009-0003-7192-7452",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Wang",
+        "id": "https://openalex.org/A5100423473",
+        "orcid": "https://orcid.org/0000-0002-8833-9564",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tiantian Bao",
+        "id": "https://openalex.org/A5111368515",
+        "orcid": "https://orcid.org/0009-0001-8194-8914",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peipei Chen",
+        "id": "https://openalex.org/A5011454527",
+        "orcid": "https://orcid.org/0009-0008-0934-552X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jie Mei",
+        "id": "https://openalex.org/A5013365903",
+        "orcid": "https://orcid.org/0000-0001-7799-8129",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4417226303",
+    "doi": "10.3390/batteries11120456",
+    "title": "First-Principles Calculation Study on the Interfacial Stability Between Zr and F Co-Doped Li6PS5Cl and Lithium Metal Anode",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Batteries",
+    "journal_id": "https://openalex.org/S2737090608",
+    "journal_type": "journal",
+    "journal_issn_l": "2313-0105",
+    "journal_issn_json": "[\"2313-0105\"]",
+    "publication_date": "2025-12-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.42682623,
+    "pdf_url": "https://www.mdpi.com/2313-0105/11/12/456/pdf?version=1765441050",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Junbo Zhang",
+    "authors_display": "Junbo Zhang; Hailong Zhang; Binbin Chen; Yanjun Ji; Cheng Qian; J. D. Wang; Yu Wang; Tiantian Bao; Peipei Chen; Jie Mei",
+    "authors_json": "[{\"display_name\": \"Junbo Zhang\", \"id\": \"https://openalex.org/A5070299189\", \"orcid\": \"https://orcid.org/0009-0006-1468-5620\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hailong Zhang\", \"id\": \"https://openalex.org/A5100377422\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Binbin Chen\", \"id\": \"https://openalex.org/A5100687667\", \"orcid\": \"https://orcid.org/0000-0001-7533-0686\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanjun Ji\", \"id\": \"https://openalex.org/A5101434145\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cheng Qian\", \"id\": \"https://openalex.org/A5063443294\", \"orcid\": \"https://orcid.org/0000-0002-4225-1866\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J. D. Wang\", \"id\": \"https://openalex.org/A5030760301\", \"orcid\": \"https://orcid.org/0009-0003-7192-7452\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Wang\", \"id\": \"https://openalex.org/A5100423473\", \"orcid\": \"https://orcid.org/0000-0002-8833-9564\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tiantian Bao\", \"id\": \"https://openalex.org/A5111368515\", \"orcid\": \"https://orcid.org/0009-0001-8194-8914\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peipei Chen\", \"id\": \"https://openalex.org/A5011454527\", \"orcid\": \"https://orcid.org/0009-0008-0934-552X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jie Mei\", \"id\": \"https://openalex.org/A5013365903\", \"orcid\": \"https://orcid.org/0000-0001-7799-8129\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773310699195,
+    "actual_start_ms": 1773310699195,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.496
+  }
+}

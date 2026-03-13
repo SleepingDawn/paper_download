@@ -1,0 +1,109 @@
+{
+  "doi": "10.1021/acsaem.1c02187",
+  "pdf_filename": "10.1021_acsaem.1c02187.pdf",
+  "json_filename": "10.1021_acsaem.1c02187.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsaem.1c02187.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3216544659",
+    "doi": "10.1021/acsaem.1c02187",
+    "title": "In Search of the Best Solid Electrolyte-Layered Oxide Pairing for Assembling Practical All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2021-11-23",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 52,
+    "citation_normalized_percentile": 0.94083706,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Tuncay Koç",
+    "authors_display": "Tuncay Koç; Florencia Marchini; Gwenaëlle Rousse; Romain Dugas; Jean‐Marie Tarascon",
+    "authors": [
+      {
+        "display_name": "Tuncay Koç",
+        "id": "https://openalex.org/A5079971526",
+        "orcid": "https://orcid.org/0000-0002-4091-3192",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Florencia Marchini",
+        "id": "https://openalex.org/A5031655066",
+        "orcid": "https://orcid.org/0000-0002-5103-1718",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gwenaëlle Rousse",
+        "id": "https://openalex.org/A5053511672",
+        "orcid": "https://orcid.org/0000-0001-8877-0015",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Romain Dugas",
+        "id": "https://openalex.org/A5035542534",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jean‐Marie Tarascon",
+        "id": "https://openalex.org/A5019830612",
+        "orcid": "https://orcid.org/0000-0002-7059-6845",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3216544659",
+    "doi": "10.1021/acsaem.1c02187",
+    "title": "In Search of the Best Solid Electrolyte-Layered Oxide Pairing for Assembling Practical All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2021-11-23",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 52,
+    "citation_normalized_percentile": 0.94083706,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Tuncay Koç",
+    "authors_display": "Tuncay Koç; Florencia Marchini; Gwenaëlle Rousse; Romain Dugas; Jean‐Marie Tarascon",
+    "authors_json": "[{\"display_name\": \"Tuncay Koç\", \"id\": \"https://openalex.org/A5079971526\", \"orcid\": \"https://orcid.org/0000-0002-4091-3192\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Florencia Marchini\", \"id\": \"https://openalex.org/A5031655066\", \"orcid\": \"https://orcid.org/0000-0002-5103-1718\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gwenaëlle Rousse\", \"id\": \"https://openalex.org/A5053511672\", \"orcid\": \"https://orcid.org/0000-0001-8877-0015\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Romain Dugas\", \"id\": \"https://openalex.org/A5035542534\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jean‐Marie Tarascon\", \"id\": \"https://openalex.org/A5019830612\", \"orcid\": \"https://orcid.org/0000-0002-7059-6845\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302098017,
+    "actual_start_ms": 1773302099516,
+    "pacing_wait_ms": 1499,
+    "pacing_jitter_sec": 1.594
+  }
+}

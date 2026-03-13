@@ -1,0 +1,125 @@
+{
+  "generated_at": 1773373656,
+  "input_total_before_precheck": 2,
+  "total_papers": 2,
+  "after_first_pass": "stop",
+  "non_interactive": true,
+  "precheck_landing": false,
+  "paths": {
+    "run_output_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/kjmm_ceramist_probe_20260313_run",
+    "pdf_output_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/kjmm_ceramist_probe_20260313_run",
+    "open_access_pdf_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/kjmm_ceramist_probe_20260313_run/Open_Access",
+    "closed_access_pdf_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/kjmm_ceramist_probe_20260313_run/Closed_Access"
+  },
+  "download_browser": {
+    "execution_env": "desktop",
+    "headless": true,
+    "deep_retry_headless": true,
+    "abort_on_landing_block": true,
+    "profile_mode": "auto",
+    "profile_name": "Default",
+    "persistent_profile_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/.chrome_user_data",
+    "runtime_profile_root": "/tmp/seyong/download_runtime_profiles/kjmm_ceramist_probe_20260313_run",
+    "session_seed_root": ""
+  },
+  "download_scheduler": {
+    "publisher_cooldown_sec": 7.0,
+    "global_start_spacing_sec": 1.5,
+    "jitter_min_sec": 0.7,
+    "jitter_max_sec": 1.8,
+    "worker_max_tasks_per_child": null
+  },
+  "landing_precheck": {
+    "executed": false
+  },
+  "integrated_landing": {
+    "attempted": 2,
+    "not_attempted": 0,
+    "success": 2,
+    "access_rights_failures": 0,
+    "direct_pdf_handoff": 0,
+    "raw_success_rate": 1.0,
+    "adjusted_denominator": 2,
+    "adjusted_success_rate": 1.0,
+    "state_counts": {
+      "success_landing": 2
+    }
+  },
+  "first_pass": {
+    "success": 1,
+    "failed": 1,
+    "fail_reasons": {
+      "FAIL_CAPTCHA": 0,
+      "FAIL_BLOCK": 0,
+      "FAIL_ACCESS_RIGHTS": 0,
+      "FAIL_DOI_NOT_FOUND": 0,
+      "FAIL_SSRN_CHALLENGE": 0,
+      "FAIL_WRONG_MIME": 0,
+      "FAIL_VIEWER_HTML": 0,
+      "FAIL_HTTP_STATUS": 0,
+      "FAIL_TIMEOUT/NETWORK": 0,
+      "FAIL_PDF_MAGIC": 0,
+      "FAIL_TOO_SMALL": 0,
+      "FAIL_NO_CANDIDATE": 1,
+      "FAIL_REDIRECT_LOOP": 0,
+      "FAIL_UNKNOWN": 0
+    }
+  },
+  "deep_retry": {
+    "executed": false,
+    "total": 0,
+    "success": 0,
+    "failed": 0,
+    "fail_reasons": {
+      "FAIL_CAPTCHA": 0,
+      "FAIL_BLOCK": 0,
+      "FAIL_ACCESS_RIGHTS": 0,
+      "FAIL_DOI_NOT_FOUND": 0,
+      "FAIL_SSRN_CHALLENGE": 0,
+      "FAIL_WRONG_MIME": 0,
+      "FAIL_VIEWER_HTML": 0,
+      "FAIL_HTTP_STATUS": 0,
+      "FAIL_TIMEOUT/NETWORK": 0,
+      "FAIL_PDF_MAGIC": 0,
+      "FAIL_TOO_SMALL": 0,
+      "FAIL_NO_CANDIDATE": 0,
+      "FAIL_REDIRECT_LOOP": 0,
+      "FAIL_UNKNOWN": 0
+    }
+  },
+  "elapsed_seconds": 68.24,
+  "live_attempt_metrics": {
+    "count": 0,
+    "success_rate": 0.0,
+    "median_latency_ms": 0,
+    "reason_distribution": {},
+    "by_strategy": {},
+    "by_domain": {}
+  },
+  "effective_rates": {
+    "download_raw_success_rate": 0.5,
+    "download_adjusted_success_rate": 0.5,
+    "end_to_end_adjusted_success_rate": 0.5
+  },
+  "artifacts": {
+    "results_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/kjmm_ceramist_probe_20260313_run/openalex_search_results_parallel.csv",
+    "failed_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/kjmm_ceramist_probe_20260313_run/failed_papers.csv",
+    "failed_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/kjmm_ceramist_probe_20260313_run/failed_papers.jsonl",
+    "attempts_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/kjmm_ceramist_probe_20260313_run/download_attempts.jsonl",
+    "attempts_summary_json": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/kjmm_ceramist_probe_20260313_run/download_attempts_summary.json",
+    "summary_json": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/kjmm_ceramist_probe_20260313_run/summary.json",
+    "pdf_root_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/kjmm_ceramist_probe_20260313_run",
+    "metadata_root_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/kjmm_ceramist_probe_20260313_run/metadata"
+  },
+  "metadata_sidecars": {
+    "root_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/kjmm_ceramist_probe_20260313_run/metadata",
+    "written": 2,
+    "missing_pdf": 1,
+    "skipped": 0,
+    "removed_stale_skip_sidecars": 0
+  },
+  "process_cleanup": {
+    "startup_orphan_reaped": 0,
+    "shutdown_orphan_reaped": 0
+  }
+}

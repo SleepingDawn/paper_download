@@ -1,0 +1,173 @@
+{
+  "doi": "10.1142/s1793604722400021",
+  "pdf_filename": "10.1142_s1793604722400021.pdf",
+  "json_filename": "10.1142_s1793604722400021.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1142_s1793604722400021.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4309074169",
+    "doi": "10.1142/s1793604722400021",
+    "title": "Lithium phosphosulfide electrolytes for solid-state batteries: Part II",
+    "publisher": "World Scientific",
+    "journal": {
+      "name": "Functional Materials Letters",
+      "id": "https://openalex.org/S67457907",
+      "type": "journal",
+      "issn_l": "1793-6047",
+      "issn": [
+        "1793-6047",
+        "1793-7213"
+      ]
+    },
+    "publication_date": "2022-10-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.73232516,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 14,
+    "first_author": "Xin Lu",
+    "authors_display": "Xin Lu; Chih‐Long Tsai; Shicheng Yu; Hongying He; Osmane Camara; Hermann Tempel; Zigeng Liu; Anna Windmüller; Evgeny V. Alekseev; S. Kocher; Shibabrata Basak; Li Lü; Rüdiger‐A. Eichel; Hans Kungl",
+    "authors": [
+      {
+        "display_name": "Xin Lu",
+        "id": "https://openalex.org/A5058595584",
+        "orcid": "https://orcid.org/0000-0002-6631-7532",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chih‐Long Tsai",
+        "id": "https://openalex.org/A5051420300",
+        "orcid": "https://orcid.org/0000-0001-8103-3514",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shicheng Yu",
+        "id": "https://openalex.org/A5027317768",
+        "orcid": "https://orcid.org/0000-0002-6619-3330",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongying He",
+        "id": "https://openalex.org/A5040535540",
+        "orcid": "https://orcid.org/0000-0001-5284-676X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Osmane Camara",
+        "id": "https://openalex.org/A5070742016",
+        "orcid": "https://orcid.org/0000-0003-1143-9150",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hermann Tempel",
+        "id": "https://openalex.org/A5014866560",
+        "orcid": "https://orcid.org/0000-0002-9794-6403",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zigeng Liu",
+        "id": "https://openalex.org/A5088886059",
+        "orcid": "https://orcid.org/0000-0002-2955-5080",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anna Windmüller",
+        "id": "https://openalex.org/A5091711294",
+        "orcid": "https://orcid.org/0000-0003-2829-3362",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Evgeny V. Alekseev",
+        "id": "https://openalex.org/A5069665652",
+        "orcid": "https://orcid.org/0000-0002-4919-5211",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "S. Kocher",
+        "id": "https://openalex.org/A5031236316",
+        "orcid": "https://orcid.org/0000-0001-9501-1703",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shibabrata Basak",
+        "id": "https://openalex.org/A5029866201",
+        "orcid": "https://orcid.org/0000-0002-4331-4742",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Li Lü",
+        "id": "https://openalex.org/A5100386321",
+        "orcid": "https://orcid.org/0000-0002-3794-2793",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rüdiger‐A. Eichel",
+        "id": "https://openalex.org/A5089732516",
+        "orcid": "https://orcid.org/0000-0002-0013-6325",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hans Kungl",
+        "id": "https://openalex.org/A5009074830",
+        "orcid": "https://orcid.org/0000-0003-3142-3906",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4309074169",
+    "doi": "10.1142/s1793604722400021",
+    "title": "Lithium phosphosulfide electrolytes for solid-state batteries: Part II",
+    "publisher": "World Scientific",
+    "journal": "Functional Materials Letters",
+    "journal_id": "https://openalex.org/S67457907",
+    "journal_type": "journal",
+    "journal_issn_l": "1793-6047",
+    "journal_issn_json": "[\"1793-6047\", \"1793-7213\"]",
+    "publication_date": "2022-10-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.73232516,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 14,
+    "first_author": "Xin Lu",
+    "authors_display": "Xin Lu; Chih‐Long Tsai; Shicheng Yu; Hongying He; Osmane Camara; Hermann Tempel; Zigeng Liu; Anna Windmüller; Evgeny V. Alekseev; S. Kocher; Shibabrata Basak; Li Lü; Rüdiger‐A. Eichel; Hans Kungl",
+    "authors_json": "[{\"display_name\": \"Xin Lu\", \"id\": \"https://openalex.org/A5058595584\", \"orcid\": \"https://orcid.org/0000-0002-6631-7532\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Chih‐Long Tsai\", \"id\": \"https://openalex.org/A5051420300\", \"orcid\": \"https://orcid.org/0000-0001-8103-3514\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shicheng Yu\", \"id\": \"https://openalex.org/A5027317768\", \"orcid\": \"https://orcid.org/0000-0002-6619-3330\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongying He\", \"id\": \"https://openalex.org/A5040535540\", \"orcid\": \"https://orcid.org/0000-0001-5284-676X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Osmane Camara\", \"id\": \"https://openalex.org/A5070742016\", \"orcid\": \"https://orcid.org/0000-0003-1143-9150\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hermann Tempel\", \"id\": \"https://openalex.org/A5014866560\", \"orcid\": \"https://orcid.org/0000-0002-9794-6403\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zigeng Liu\", \"id\": \"https://openalex.org/A5088886059\", \"orcid\": \"https://orcid.org/0000-0002-2955-5080\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anna Windmüller\", \"id\": \"https://openalex.org/A5091711294\", \"orcid\": \"https://orcid.org/0000-0003-2829-3362\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Evgeny V. Alekseev\", \"id\": \"https://openalex.org/A5069665652\", \"orcid\": \"https://orcid.org/0000-0002-4919-5211\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"S. Kocher\", \"id\": \"https://openalex.org/A5031236316\", \"orcid\": \"https://orcid.org/0000-0001-9501-1703\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shibabrata Basak\", \"id\": \"https://openalex.org/A5029866201\", \"orcid\": \"https://orcid.org/0000-0002-4331-4742\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Li Lü\", \"id\": \"https://openalex.org/A5100386321\", \"orcid\": \"https://orcid.org/0000-0002-3794-2793\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rüdiger‐A. Eichel\", \"id\": \"https://openalex.org/A5089732516\", \"orcid\": \"https://orcid.org/0000-0002-0013-6325\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hans Kungl\", \"id\": \"https://openalex.org/A5009074830\", \"orcid\": \"https://orcid.org/0000-0003-3142-3906\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.worldscientific.com/doi/10.1142/S1793604722400021",
+    "landing_title": "Lithium phosphosulfide electrolytes for solid-state batteries: Part II | Functional Materials Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1142_s1793604722400021.pdf",
+    "scheduler_publisher": "10.1142",
+    "scheduled_start_ms": 1773311001313,
+    "actual_start_ms": 1773311001314,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.278
+  }
+}

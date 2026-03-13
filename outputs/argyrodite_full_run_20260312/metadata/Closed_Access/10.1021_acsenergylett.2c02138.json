@@ -1,0 +1,158 @@
+{
+  "doi": "10.1021/acsenergylett.2c02138",
+  "pdf_filename": "10.1021_acsenergylett.2c02138.pdf",
+  "json_filename": "10.1021_acsenergylett.2c02138.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.2c02138.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4313528991",
+    "doi": "10.1021/acsenergylett.2c02138",
+    "title": "Overcoming the Interfacial Challenges of LiFePO <sub>4</sub> in Inorganic All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2023-01-03",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 70,
+    "citation_normalized_percentile": 0.98614541,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Ashley Cronk",
+    "authors_display": "Ashley Cronk; Yu‐Ting Chen; Grayson Deysher; So‐Yeon Ham; Hedi Yang; Phillip Ridley; Baharak Sayahpour; Long H. B. Nguyen; Jin An Sam Oh; Jihyun Jang; Darren H. S. Tan; Ying Shirley Meng",
+    "authors": [
+      {
+        "display_name": "Ashley Cronk",
+        "id": "https://openalex.org/A5013964673",
+        "orcid": "https://orcid.org/0000-0001-6147-4662",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu‐Ting Chen",
+        "id": "https://openalex.org/A5100436559",
+        "orcid": "https://orcid.org/0000-0001-9525-8407",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Grayson Deysher",
+        "id": "https://openalex.org/A5049158258",
+        "orcid": "https://orcid.org/0000-0003-0482-8991",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "So‐Yeon Ham",
+        "id": "https://openalex.org/A5019174049",
+        "orcid": "https://orcid.org/0000-0001-8761-5742",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hedi Yang",
+        "id": "https://openalex.org/A5113214275",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Phillip Ridley",
+        "id": "https://openalex.org/A5007131843",
+        "orcid": "https://orcid.org/0000-0002-5152-6673",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Baharak Sayahpour",
+        "id": "https://openalex.org/A5065527184",
+        "orcid": "https://orcid.org/0000-0003-0200-6636",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Long H. B. Nguyen",
+        "id": "https://openalex.org/A5086866654",
+        "orcid": "https://orcid.org/0000-0001-7823-1595",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jin An Sam Oh",
+        "id": "https://openalex.org/A5010344100",
+        "orcid": "https://orcid.org/0000-0001-9336-234X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jihyun Jang",
+        "id": "https://openalex.org/A5005463849",
+        "orcid": "https://orcid.org/0000-0001-8438-140X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Darren H. S. Tan",
+        "id": "https://openalex.org/A5081998769",
+        "orcid": "https://orcid.org/0000-0001-6568-4771",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ying Shirley Meng",
+        "id": "https://openalex.org/A5087291851",
+        "orcid": "https://orcid.org/0000-0001-8936-8845",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4313528991",
+    "doi": "10.1021/acsenergylett.2c02138",
+    "title": "Overcoming the Interfacial Challenges of LiFePO <sub>4</sub> in Inorganic All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2023-01-03",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 70,
+    "citation_normalized_percentile": 0.98614541,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Ashley Cronk",
+    "authors_display": "Ashley Cronk; Yu‐Ting Chen; Grayson Deysher; So‐Yeon Ham; Hedi Yang; Phillip Ridley; Baharak Sayahpour; Long H. B. Nguyen; Jin An Sam Oh; Jihyun Jang; Darren H. S. Tan; Ying Shirley Meng",
+    "authors_json": "[{\"display_name\": \"Ashley Cronk\", \"id\": \"https://openalex.org/A5013964673\", \"orcid\": \"https://orcid.org/0000-0001-6147-4662\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yu‐Ting Chen\", \"id\": \"https://openalex.org/A5100436559\", \"orcid\": \"https://orcid.org/0000-0001-9525-8407\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Grayson Deysher\", \"id\": \"https://openalex.org/A5049158258\", \"orcid\": \"https://orcid.org/0000-0003-0482-8991\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"So‐Yeon Ham\", \"id\": \"https://openalex.org/A5019174049\", \"orcid\": \"https://orcid.org/0000-0001-8761-5742\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hedi Yang\", \"id\": \"https://openalex.org/A5113214275\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Phillip Ridley\", \"id\": \"https://openalex.org/A5007131843\", \"orcid\": \"https://orcid.org/0000-0002-5152-6673\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Baharak Sayahpour\", \"id\": \"https://openalex.org/A5065527184\", \"orcid\": \"https://orcid.org/0000-0003-0200-6636\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Long H. B. Nguyen\", \"id\": \"https://openalex.org/A5086866654\", \"orcid\": \"https://orcid.org/0000-0001-7823-1595\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jin An Sam Oh\", \"id\": \"https://openalex.org/A5010344100\", \"orcid\": \"https://orcid.org/0000-0001-9336-234X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jihyun Jang\", \"id\": \"https://openalex.org/A5005463849\", \"orcid\": \"https://orcid.org/0000-0001-8438-140X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Darren H. S. Tan\", \"id\": \"https://openalex.org/A5081998769\", \"orcid\": \"https://orcid.org/0000-0001-6568-4771\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ying Shirley Meng\", \"id\": \"https://openalex.org/A5087291851\", \"orcid\": \"https://orcid.org/0000-0001-8936-8845\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301966924,
+    "actual_start_ms": 1773301968442,
+    "pacing_wait_ms": 1517,
+    "pacing_jitter_sec": 1.044
+  }
+}

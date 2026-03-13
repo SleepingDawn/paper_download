@@ -1,0 +1,131 @@
+{
+  "doi": "10.1016/j.est.2023.107480",
+  "pdf_filename": "10.1016_j.est.2023.107480.pdf",
+  "json_filename": "10.1016_j.est.2023.107480.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.est.2023.107480.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4367399664",
+    "doi": "10.1016/j.est.2023.107480",
+    "title": "Film processing of Li6PS5Cl electrolyte using different binders and their combinations",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Storage",
+      "id": "https://openalex.org/S2764865925",
+      "type": "journal",
+      "issn_l": "2352-152X",
+      "issn": [
+        "2352-152X",
+        "2352-1538"
+      ]
+    },
+    "publication_date": "2023-04-29",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 32,
+    "citation_normalized_percentile": 0.94917674,
+    "pdf_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2352152X23008770-ga1_lrg.jpg",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Artur Tron",
+    "authors_display": "Artur Tron; Raad Hamid; Ningxin Zhang; Andrea Paolella; Paul Wulfert‐Holzmann; Vladislav Kolotygin; Pedro López‐Aranguren; Alexander Beutl",
+    "authors": [
+      {
+        "display_name": "Artur Tron",
+        "id": "https://openalex.org/A5002945442",
+        "orcid": "https://orcid.org/0000-0002-6565-8247",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Raad Hamid",
+        "id": "https://openalex.org/A5029052364",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ningxin Zhang",
+        "id": "https://openalex.org/A5044548137",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andrea Paolella",
+        "id": "https://openalex.org/A5042467922",
+        "orcid": "https://orcid.org/0000-0003-0986-6460",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Paul Wulfert‐Holzmann",
+        "id": "https://openalex.org/A5062000786",
+        "orcid": "https://orcid.org/0000-0003-3840-0432",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vladislav Kolotygin",
+        "id": "https://openalex.org/A5084570121",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pedro López‐Aranguren",
+        "id": "https://openalex.org/A5010080494",
+        "orcid": "https://orcid.org/0000-0001-6912-2055",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alexander Beutl",
+        "id": "https://openalex.org/A5062737645",
+        "orcid": "https://orcid.org/0000-0002-7098-619X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4367399664",
+    "doi": "10.1016/j.est.2023.107480",
+    "title": "Film processing of Li6PS5Cl electrolyte using different binders and their combinations",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Storage",
+    "journal_id": "https://openalex.org/S2764865925",
+    "journal_type": "journal",
+    "journal_issn_l": "2352-152X",
+    "journal_issn_json": "[\"2352-152X\", \"2352-1538\"]",
+    "publication_date": "2023-04-29",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 32,
+    "citation_normalized_percentile": 0.94917674,
+    "pdf_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2352152X23008770-ga1_lrg.jpg",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Artur Tron",
+    "authors_display": "Artur Tron; Raad Hamid; Ningxin Zhang; Andrea Paolella; Paul Wulfert‐Holzmann; Vladislav Kolotygin; Pedro López‐Aranguren; Alexander Beutl",
+    "authors_json": "[{\"display_name\": \"Artur Tron\", \"id\": \"https://openalex.org/A5002945442\", \"orcid\": \"https://orcid.org/0000-0002-6565-8247\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Raad Hamid\", \"id\": \"https://openalex.org/A5029052364\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ningxin Zhang\", \"id\": \"https://openalex.org/A5044548137\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Andrea Paolella\", \"id\": \"https://openalex.org/A5042467922\", \"orcid\": \"https://orcid.org/0000-0003-0986-6460\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Paul Wulfert‐Holzmann\", \"id\": \"https://openalex.org/A5062000786\", \"orcid\": \"https://orcid.org/0000-0003-3840-0432\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Vladislav Kolotygin\", \"id\": \"https://openalex.org/A5084570121\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pedro López‐Aranguren\", \"id\": \"https://openalex.org/A5010080494\", \"orcid\": \"https://orcid.org/0000-0001-6912-2055\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alexander Beutl\", \"id\": \"https://openalex.org/A5062737645\", \"orcid\": \"https://orcid.org/0000-0002-7098-619X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302249368,
+    "actual_start_ms": 1773302328393,
+    "pacing_wait_ms": 79025,
+    "pacing_jitter_sec": 1.735
+  }
+}

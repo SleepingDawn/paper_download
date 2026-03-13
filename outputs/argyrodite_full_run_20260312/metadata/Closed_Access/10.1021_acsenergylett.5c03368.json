@@ -1,0 +1,88 @@
+{
+  "doi": "10.1021/acsenergylett.5c03368",
+  "pdf_filename": "10.1021_acsenergylett.5c03368.pdf",
+  "json_filename": "10.1021_acsenergylett.5c03368.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.5c03368.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7117711630",
+    "doi": "10.1021/acsenergylett.5c03368",
+    "title": "Challenges in Transitioning from Pellet to Practical Argyrodite-Based All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2025-12-31",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.81760286,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Alexander Forster",
+    "authors_display": "Alexander Forster; Ali Coşkun",
+    "authors": [
+      {
+        "display_name": "Alexander Forster",
+        "id": "https://openalex.org/A5084178492",
+        "orcid": "https://orcid.org/0000-0001-7101-6411",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ali Coşkun",
+        "id": "https://openalex.org/A5027891269",
+        "orcid": "https://orcid.org/0000-0002-4760-1546",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7117711630",
+    "doi": "10.1021/acsenergylett.5c03368",
+    "title": "Challenges in Transitioning from Pellet to Practical Argyrodite-Based All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2025-12-31",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.81760286,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Alexander Forster",
+    "authors_display": "Alexander Forster; Ali Coşkun",
+    "authors_json": "[{\"display_name\": \"Alexander Forster\", \"id\": \"https://openalex.org/A5084178492\", \"orcid\": \"https://orcid.org/0000-0001-7101-6411\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Ali Coşkun\", \"id\": \"https://openalex.org/A5027891269\", \"orcid\": \"https://orcid.org/0000-0002-4760-1546\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.5c03368",
+    "landing_title": "Challenges in Transitioning from Pellet to Practical Argyrodite-Based All-Solid-State Batteries | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsenergylett.5c03368.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308141525,
+    "actual_start_ms": 1773308150033,
+    "pacing_wait_ms": 8508,
+    "pacing_jitter_sec": 1.505
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "doi": "10.1149/ma2019-02/7/685",
+  "pdf_filename": "10.1149_ma2019-02_7_685.pdf",
+  "json_filename": "10.1149_ma2019-02_7_685.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2019-02_7_685.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4251711446",
+    "doi": "10.1149/ma2019-02/7/685",
+    "title": "Synthesis, Structure, and Electrochemical Properties of Anion-Doped Li<sub>10</sub>GeP<sub>2</sub>S<sub>12</sub>-Type Solid Electrolyte in the Li–Si–P–S System",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2019-09-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.25905133,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Satoshi Hori",
+    "authors_display": "Satoshi Hori; Yuxiang Li; Daiki Hayashi; Xueying Sun; Kota Suzuki; Masaaki Hirayama; Ryoji Kanno",
+    "authors": [
+      {
+        "display_name": "Satoshi Hori",
+        "id": "https://openalex.org/A5023011533",
+        "orcid": "https://orcid.org/0000-0001-7845-3518",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yuxiang Li",
+        "id": "https://openalex.org/A5100341659",
+        "orcid": "https://orcid.org/0000-0003-2148-5732",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daiki Hayashi",
+        "id": "https://openalex.org/A5012083255",
+        "orcid": "https://orcid.org/0009-0002-2888-6010",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xueying Sun",
+        "id": "https://openalex.org/A5101594298",
+        "orcid": "https://orcid.org/0000-0002-6658-7989",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kota Suzuki",
+        "id": "https://openalex.org/A5046895954",
+        "orcid": "https://orcid.org/0000-0002-2473-0724",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masaaki Hirayama",
+        "id": "https://openalex.org/A5052056108",
+        "orcid": "https://orcid.org/0000-0003-4804-4208",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ryoji Kanno",
+        "id": "https://openalex.org/A5049374070",
+        "orcid": "https://orcid.org/0000-0002-0593-2515",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4251711446",
+    "doi": "10.1149/ma2019-02/7/685",
+    "title": "Synthesis, Structure, and Electrochemical Properties of Anion-Doped Li<sub>10</sub>GeP<sub>2</sub>S<sub>12</sub>-Type Solid Electrolyte in the Li–Si–P–S System",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2019-09-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.25905133,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Satoshi Hori",
+    "authors_display": "Satoshi Hori; Yuxiang Li; Daiki Hayashi; Xueying Sun; Kota Suzuki; Masaaki Hirayama; Ryoji Kanno",
+    "authors_json": "[{\"display_name\": \"Satoshi Hori\", \"id\": \"https://openalex.org/A5023011533\", \"orcid\": \"https://orcid.org/0000-0001-7845-3518\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Yuxiang Li\", \"id\": \"https://openalex.org/A5100341659\", \"orcid\": \"https://orcid.org/0000-0003-2148-5732\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daiki Hayashi\", \"id\": \"https://openalex.org/A5012083255\", \"orcid\": \"https://orcid.org/0009-0002-2888-6010\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xueying Sun\", \"id\": \"https://openalex.org/A5101594298\", \"orcid\": \"https://orcid.org/0000-0002-6658-7989\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kota Suzuki\", \"id\": \"https://openalex.org/A5046895954\", \"orcid\": \"https://orcid.org/0000-0002-2473-0724\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masaaki Hirayama\", \"id\": \"https://openalex.org/A5052056108\", \"orcid\": \"https://orcid.org/0000-0003-4804-4208\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ryoji Kanno\", \"id\": \"https://openalex.org/A5049374070\", \"orcid\": \"https://orcid.org/0000-0002-0593-2515\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773303336379,
+    "actual_start_ms": 1773303336380,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.054
+  }
+}

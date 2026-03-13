@@ -1,0 +1,105 @@
+{
+  "doi": "10.1149/ma2024-0281092mtgabs",
+  "pdf_filename": "10.1149_ma2024-0281092mtgabs.pdf",
+  "json_filename": "10.1149_ma2024-0281092mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2024-0281092mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4405592019",
+    "doi": "10.1149/ma2024-0281092mtgabs",
+    "title": "Surface Reaction of Argyrodite-Type Sulfide Solid Electrolyte in Air with a Dew Point of −20°C",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21868074,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Hikaru Sano",
+    "authors_display": "Hikaru Sano; Misae Otoyama; Yusuke Morino; Daisuke Itô",
+    "authors": [
+      {
+        "display_name": "Hikaru Sano",
+        "id": "https://openalex.org/A5002686051",
+        "orcid": "https://orcid.org/0000-0002-7557-0767",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Misae Otoyama",
+        "id": "https://openalex.org/A5076397746",
+        "orcid": "https://orcid.org/0000-0002-1897-6672",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yusuke Morino",
+        "id": "https://openalex.org/A5082471934",
+        "orcid": "https://orcid.org/0000-0002-6973-7786",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daisuke Itô",
+        "id": "https://openalex.org/A5103124585",
+        "orcid": "https://orcid.org/0009-0006-9296-1926",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405592019",
+    "doi": "10.1149/ma2024-0281092mtgabs",
+    "title": "Surface Reaction of Argyrodite-Type Sulfide Solid Electrolyte in Air with a Dew Point of −20°C",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2024-11-22",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.21868074,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Hikaru Sano",
+    "authors_display": "Hikaru Sano; Misae Otoyama; Yusuke Morino; Daisuke Itô",
+    "authors_json": "[{\"display_name\": \"Hikaru Sano\", \"id\": \"https://openalex.org/A5002686051\", \"orcid\": \"https://orcid.org/0000-0002-7557-0767\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Misae Otoyama\", \"id\": \"https://openalex.org/A5076397746\", \"orcid\": \"https://orcid.org/0000-0002-1897-6672\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yusuke Morino\", \"id\": \"https://openalex.org/A5082471934\", \"orcid\": \"https://orcid.org/0000-0002-6973-7786\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daisuke Itô\", \"id\": \"https://openalex.org/A5103124585\", \"orcid\": \"https://orcid.org/0009-0006-9296-1926\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773307128443,
+    "actual_start_ms": 1773307128444,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.196
+  }
+}

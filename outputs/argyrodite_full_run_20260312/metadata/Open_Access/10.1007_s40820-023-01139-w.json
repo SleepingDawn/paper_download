@@ -1,0 +1,145 @@
+{
+  "doi": "10.1007/s40820-023-01139-w",
+  "pdf_filename": "10.1007_s40820-023-01139-w.pdf",
+  "json_filename": "10.1007_s40820-023-01139-w.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1007_s40820-023-01139-w.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4384126764",
+    "doi": "10.1007/s40820-023-01139-w",
+    "title": "Elucidating Ion Transport Phenomena in Sulfide/Polymer Composite Electrolytes for Practical Solid-State Batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Nano-Micro Letters",
+      "id": "https://openalex.org/S9070373",
+      "type": "journal",
+      "issn_l": "2150-5551",
+      "issn": [
+        "2150-5551",
+        "2311-6706"
+      ]
+    },
+    "publication_date": "2023-07-13",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 27,
+    "citation_normalized_percentile": 0.93553387,
+    "pdf_url": "https://link.springer.com/content/pdf/10.1007/s40820-023-01139-w.pdf",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Kyeongseok Oh",
+    "authors_display": "Kyeongseok Oh; Ji Eun Lee; Yong-Hyeok Lee; Yi-Su Jeong; Imanuel Kristanto; Hong‐Seok Min; Sangmo Kim; Young Jun Hong; Sang Kyu Kwak; Sang‐Young Lee",
+    "authors": [
+      {
+        "display_name": "Kyeongseok Oh",
+        "id": "https://openalex.org/A5061586249",
+        "orcid": "https://orcid.org/0000-0001-5166-3793",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ji Eun Lee",
+        "id": "https://openalex.org/A5118899219",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong-Hyeok Lee",
+        "id": "https://openalex.org/A5062549985",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yi-Su Jeong",
+        "id": "https://openalex.org/A5111008209",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Imanuel Kristanto",
+        "id": "https://openalex.org/A5025415211",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong‐Seok Min",
+        "id": "https://openalex.org/A5114002104",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sangmo Kim",
+        "id": "https://openalex.org/A5068370310",
+        "orcid": "https://orcid.org/0000-0002-7371-208X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young Jun Hong",
+        "id": "https://openalex.org/A5102087507",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang Kyu Kwak",
+        "id": "https://openalex.org/A5021793622",
+        "orcid": "https://orcid.org/0000-0002-0332-1534",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang‐Young Lee",
+        "id": "https://openalex.org/A5002813719",
+        "orcid": "https://orcid.org/0000-0001-7153-0517",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4384126764",
+    "doi": "10.1007/s40820-023-01139-w",
+    "title": "Elucidating Ion Transport Phenomena in Sulfide/Polymer Composite Electrolytes for Practical Solid-State Batteries",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Nano-Micro Letters",
+    "journal_id": "https://openalex.org/S9070373",
+    "journal_type": "journal",
+    "journal_issn_l": "2150-5551",
+    "journal_issn_json": "[\"2150-5551\", \"2311-6706\"]",
+    "publication_date": "2023-07-13",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 27,
+    "citation_normalized_percentile": 0.93553387,
+    "pdf_url": "https://link.springer.com/content/pdf/10.1007/s40820-023-01139-w.pdf",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Kyeongseok Oh",
+    "authors_display": "Kyeongseok Oh; Ji Eun Lee; Yong-Hyeok Lee; Yi-Su Jeong; Imanuel Kristanto; Hong‐Seok Min; Sangmo Kim; Young Jun Hong; Sang Kyu Kwak; Sang‐Young Lee",
+    "authors_json": "[{\"display_name\": \"Kyeongseok Oh\", \"id\": \"https://openalex.org/A5061586249\", \"orcid\": \"https://orcid.org/0000-0001-5166-3793\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ji Eun Lee\", \"id\": \"https://openalex.org/A5118899219\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong-Hyeok Lee\", \"id\": \"https://openalex.org/A5062549985\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yi-Su Jeong\", \"id\": \"https://openalex.org/A5111008209\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Imanuel Kristanto\", \"id\": \"https://openalex.org/A5025415211\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong‐Seok Min\", \"id\": \"https://openalex.org/A5114002104\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sangmo Kim\", \"id\": \"https://openalex.org/A5068370310\", \"orcid\": \"https://orcid.org/0000-0002-7371-208X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young Jun Hong\", \"id\": \"https://openalex.org/A5102087507\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang Kyu Kwak\", \"id\": \"https://openalex.org/A5021793622\", \"orcid\": \"https://orcid.org/0000-0002-0332-1534\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang‐Young Lee\", \"id\": \"https://openalex.org/A5002813719\", \"orcid\": \"https://orcid.org/0000-0001-7153-0517\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773308359520,
+    "actual_start_ms": 1773308361029,
+    "pacing_wait_ms": 1509,
+    "pacing_jitter_sec": 1.063
+  }
+}

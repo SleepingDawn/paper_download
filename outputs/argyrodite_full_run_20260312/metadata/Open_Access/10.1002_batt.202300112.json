@@ -1,0 +1,179 @@
+{
+  "doi": "10.1002/batt.202300112",
+  "pdf_filename": "10.1002_batt.202300112.pdf",
+  "json_filename": "10.1002_batt.202300112.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_batt.202300112.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4361205056",
+    "doi": "10.1002/batt.202300112",
+    "title": "Solution‐Processed Synthesis of Nano‐Sized Argyrodite Solid Electrolytes with Cavitation Effect for High Performance All‐Solid‐State Lithium‐Ion Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Batteries & Supercaps",
+      "id": "https://openalex.org/S4210241147",
+      "type": "journal",
+      "issn_l": "2566-6223",
+      "issn": [
+        "2566-6223"
+      ]
+    },
+    "publication_date": "2023-03-28",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.58196939,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/batt.202300112",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Youngjun Huh",
+    "authors_display": "Youngjun Huh; Hae Gon Lee; Chang‐Min Cho; Jun‐Woo Park; Byung Gon Kim; You‐Jin Lee; Heetaek Park; Yoon‐Cheol Ha; Jeong‐Hee Choi; Jeongdoo Yi; Sang‐Min Lee; Je In Lee; Jun‐Ho Park; Jun‐Ho Park; Jun‐Ho Park",
+    "authors": [
+      {
+        "display_name": "Youngjun Huh",
+        "id": "https://openalex.org/A5017923928",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hae Gon Lee",
+        "id": "https://openalex.org/A5017765445",
+        "orcid": "https://orcid.org/0000-0002-2708-7850",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chang‐Min Cho",
+        "id": "https://openalex.org/A5030858265",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun‐Woo Park",
+        "id": "https://openalex.org/A5118844308",
+        "orcid": "https://orcid.org/0000-0002-1446-8822",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Byung Gon Kim",
+        "id": "https://openalex.org/A5101614289",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "You‐Jin Lee",
+        "id": "https://openalex.org/A5007359456",
+        "orcid": "https://orcid.org/0000-0002-9133-7893",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Heetaek Park",
+        "id": "https://openalex.org/A5025088024",
+        "orcid": "https://orcid.org/0000-0003-2799-5354",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoon‐Cheol Ha",
+        "id": "https://openalex.org/A5086764992",
+        "orcid": "https://orcid.org/0000-0001-5769-1461",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeong‐Hee Choi",
+        "id": "https://openalex.org/A5061430319",
+        "orcid": "https://orcid.org/0000-0001-8081-1732",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeongdoo Yi",
+        "id": "https://openalex.org/A5072490549",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang‐Min Lee",
+        "id": "https://openalex.org/A5100319606",
+        "orcid": "https://orcid.org/0000-0003-3650-289X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Je In Lee",
+        "id": "https://openalex.org/A5002411989",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jun‐Ho Park",
+        "id": "https://openalex.org/A5101965432",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jun‐Ho Park",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0001-8954-3965",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun‐Ho Park",
+        "id": null,
+        "orcid": "https://orcid.org/0000-0001-8954-3965",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4361205056",
+    "doi": "10.1002/batt.202300112",
+    "title": "Solution‐Processed Synthesis of Nano‐Sized Argyrodite Solid Electrolytes with Cavitation Effect for High Performance All‐Solid‐State Lithium‐Ion Batteries",
+    "publisher": "Wiley",
+    "journal": "Batteries & Supercaps",
+    "journal_id": "https://openalex.org/S4210241147",
+    "journal_type": "journal",
+    "journal_issn_l": "2566-6223",
+    "journal_issn_json": "[\"2566-6223\"]",
+    "publication_date": "2023-03-28",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.58196939,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/batt.202300112",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Youngjun Huh",
+    "authors_display": "Youngjun Huh; Hae Gon Lee; Chang‐Min Cho; Jun‐Woo Park; Byung Gon Kim; You‐Jin Lee; Heetaek Park; Yoon‐Cheol Ha; Jeong‐Hee Choi; Jeongdoo Yi; Sang‐Min Lee; Je In Lee; Jun‐Ho Park; Jun‐Ho Park; Jun‐Ho Park",
+    "authors_json": "[{\"display_name\": \"Youngjun Huh\", \"id\": \"https://openalex.org/A5017923928\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hae Gon Lee\", \"id\": \"https://openalex.org/A5017765445\", \"orcid\": \"https://orcid.org/0000-0002-2708-7850\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chang‐Min Cho\", \"id\": \"https://openalex.org/A5030858265\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun‐Woo Park\", \"id\": \"https://openalex.org/A5118844308\", \"orcid\": \"https://orcid.org/0000-0002-1446-8822\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Byung Gon Kim\", \"id\": \"https://openalex.org/A5101614289\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"You‐Jin Lee\", \"id\": \"https://openalex.org/A5007359456\", \"orcid\": \"https://orcid.org/0000-0002-9133-7893\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Heetaek Park\", \"id\": \"https://openalex.org/A5025088024\", \"orcid\": \"https://orcid.org/0000-0003-2799-5354\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoon‐Cheol Ha\", \"id\": \"https://openalex.org/A5086764992\", \"orcid\": \"https://orcid.org/0000-0001-5769-1461\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeong‐Hee Choi\", \"id\": \"https://openalex.org/A5061430319\", \"orcid\": \"https://orcid.org/0000-0001-8081-1732\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeongdoo Yi\", \"id\": \"https://openalex.org/A5072490549\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang‐Min Lee\", \"id\": \"https://openalex.org/A5100319606\", \"orcid\": \"https://orcid.org/0000-0003-3650-289X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Je In Lee\", \"id\": \"https://openalex.org/A5002411989\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jun‐Ho Park\", \"id\": \"https://openalex.org/A5101965432\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jun‐Ho Park\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0001-8954-3965\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun‐Ho Park\", \"id\": null, \"orcid\": \"https://orcid.org/0000-0001-8954-3965\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308044182,
+    "actual_start_ms": 1773308044182,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.297
+  }
+}

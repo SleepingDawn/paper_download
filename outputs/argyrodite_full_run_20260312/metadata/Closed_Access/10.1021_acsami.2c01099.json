@@ -1,0 +1,117 @@
+{
+  "doi": "10.1021/acsami.2c01099",
+  "pdf_filename": "10.1021_acsami.2c01099.pdf",
+  "json_filename": "10.1021_acsami.2c01099.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.2c01099.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4224436060",
+    "doi": "10.1021/acsami.2c01099",
+    "title": "Hydrolysis of Argyrodite Sulfide-Based Separator Sheets for Industrial All-Solid-State Battery Production",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2022-04-26",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 50,
+    "citation_normalized_percentile": 0.95361579,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Célestine Singer",
+    "authors_display": "Célestine Singer; Hans‐Christoph Töpper; Tobias Kutsch; Robin Schuster; Raimund Koerver; Rüdiger Daub",
+    "authors": [
+      {
+        "display_name": "Célestine Singer",
+        "id": "https://openalex.org/A5000768015",
+        "orcid": "https://orcid.org/0000-0002-2778-973X",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hans‐Christoph Töpper",
+        "id": "https://openalex.org/A5037556118",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tobias Kutsch",
+        "id": "https://openalex.org/A5037857134",
+        "orcid": "https://orcid.org/0000-0002-7529-3376",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Robin Schuster",
+        "id": "https://openalex.org/A5060836161",
+        "orcid": "https://orcid.org/0000-0003-4144-8680",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Raimund Koerver",
+        "id": "https://openalex.org/A5067610455",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rüdiger Daub",
+        "id": "https://openalex.org/A5024110966",
+        "orcid": "https://orcid.org/0000-0002-5120-4228",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4224436060",
+    "doi": "10.1021/acsami.2c01099",
+    "title": "Hydrolysis of Argyrodite Sulfide-Based Separator Sheets for Industrial All-Solid-State Battery Production",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2022-04-26",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 50,
+    "citation_normalized_percentile": 0.95361579,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Célestine Singer",
+    "authors_display": "Célestine Singer; Hans‐Christoph Töpper; Tobias Kutsch; Robin Schuster; Raimund Koerver; Rüdiger Daub",
+    "authors_json": "[{\"display_name\": \"Célestine Singer\", \"id\": \"https://openalex.org/A5000768015\", \"orcid\": \"https://orcid.org/0000-0002-2778-973X\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hans‐Christoph Töpper\", \"id\": \"https://openalex.org/A5037556118\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tobias Kutsch\", \"id\": \"https://openalex.org/A5037857134\", \"orcid\": \"https://orcid.org/0000-0002-7529-3376\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Robin Schuster\", \"id\": \"https://openalex.org/A5060836161\", \"orcid\": \"https://orcid.org/0000-0003-4144-8680\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Raimund Koerver\", \"id\": \"https://openalex.org/A5067610455\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rüdiger Daub\", \"id\": \"https://openalex.org/A5024110966\", \"orcid\": \"https://orcid.org/0000-0002-5120-4228\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302130392,
+    "actual_start_ms": 1773302131893,
+    "pacing_wait_ms": 1501,
+    "pacing_jitter_sec": 1.506
+  }
+}

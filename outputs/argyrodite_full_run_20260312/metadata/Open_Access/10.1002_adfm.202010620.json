@@ -1,0 +1,110 @@
+{
+  "doi": "10.1002/adfm.202010620",
+  "pdf_filename": "10.1002_adfm.202010620.pdf",
+  "json_filename": "10.1002_adfm.202010620.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_adfm.202010620.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3132091411",
+    "doi": "10.1002/adfm.202010620",
+    "title": "Linking Solid Electrolyte Degradation to Charge Carrier Transport in the Thiophosphate‐Based Composite Cathode toward Solid‐State Lithium‐Sulfur Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2021-02-24",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 168,
+    "citation_normalized_percentile": 0.99096641,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202010620",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Saneyuki Ohno",
+    "authors_display": "Saneyuki Ohno; Carolin Rosenbach; Georg F. Dewald; Jürgen Janek; Wolfgang G. Zeier",
+    "authors": [
+      {
+        "display_name": "Saneyuki Ohno",
+        "id": "https://openalex.org/A5029516654",
+        "orcid": "https://orcid.org/0000-0001-8192-996X",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Carolin Rosenbach",
+        "id": "https://openalex.org/A5072648110",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Georg F. Dewald",
+        "id": "https://openalex.org/A5017743800",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3132091411",
+    "doi": "10.1002/adfm.202010620",
+    "title": "Linking Solid Electrolyte Degradation to Charge Carrier Transport in the Thiophosphate‐Based Composite Cathode toward Solid‐State Lithium‐Sulfur Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2021-02-24",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 168,
+    "citation_normalized_percentile": 0.99096641,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202010620",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Saneyuki Ohno",
+    "authors_display": "Saneyuki Ohno; Carolin Rosenbach; Georg F. Dewald; Jürgen Janek; Wolfgang G. Zeier",
+    "authors_json": "[{\"display_name\": \"Saneyuki Ohno\", \"id\": \"https://openalex.org/A5029516654\", \"orcid\": \"https://orcid.org/0000-0001-8192-996X\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Carolin Rosenbach\", \"id\": \"https://openalex.org/A5072648110\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Georg F. Dewald\", \"id\": \"https://openalex.org/A5017743800\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302385455,
+    "actual_start_ms": 1773302386954,
+    "pacing_wait_ms": 1498,
+    "pacing_jitter_sec": 1.059
+  }
+}

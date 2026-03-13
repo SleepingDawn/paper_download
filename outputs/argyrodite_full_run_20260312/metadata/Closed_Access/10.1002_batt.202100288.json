@@ -1,0 +1,130 @@
+{
+  "doi": "10.1002/batt.202100288",
+  "pdf_filename": "10.1002_batt.202100288.pdf",
+  "json_filename": "10.1002_batt.202100288.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_batt.202100288.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3213061727",
+    "doi": "10.1002/batt.202100288",
+    "title": "Designing Lithium Argyrodite Solid‐State Electrolytes for High‐Performance All‐Solid‐State Lithium Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Batteries & Supercaps",
+      "id": "https://openalex.org/S4210241147",
+      "type": "journal",
+      "issn_l": "2566-6223",
+      "issn": [
+        "2566-6223"
+      ]
+    },
+    "publication_date": "2021-11-17",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 30,
+    "citation_normalized_percentile": 0.82551382,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Chongxing Li",
+    "authors_display": "Chongxing Li; Shuxian Zhang; Xianguang Miao; Cong Wang; Chengxiang Wang; Zhiwei Zhang; Rutao Wang; Longwei Yin",
+    "authors": [
+      {
+        "display_name": "Chongxing Li",
+        "id": "https://openalex.org/A5079442980",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuxian Zhang",
+        "id": "https://openalex.org/A5101536713",
+        "orcid": "https://orcid.org/0000-0001-8619-1554",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xianguang Miao",
+        "id": "https://openalex.org/A5078813324",
+        "orcid": "https://orcid.org/0000-0002-1218-6733",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cong Wang",
+        "id": "https://openalex.org/A5100390520",
+        "orcid": "https://orcid.org/0000-0003-1130-2488",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chengxiang Wang",
+        "id": "https://openalex.org/A5100779390",
+        "orcid": "https://orcid.org/0000-0002-3907-5582",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhiwei Zhang",
+        "id": "https://openalex.org/A5100347621",
+        "orcid": "https://orcid.org/0000-0003-4404-6257",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rutao Wang",
+        "id": "https://openalex.org/A5103007371",
+        "orcid": "https://orcid.org/0000-0001-5745-8758",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Longwei Yin",
+        "id": "https://openalex.org/A5072199383",
+        "orcid": "https://orcid.org/0000-0003-3768-6846",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3213061727",
+    "doi": "10.1002/batt.202100288",
+    "title": "Designing Lithium Argyrodite Solid‐State Electrolytes for High‐Performance All‐Solid‐State Lithium Batteries",
+    "publisher": "Wiley",
+    "journal": "Batteries & Supercaps",
+    "journal_id": "https://openalex.org/S4210241147",
+    "journal_type": "journal",
+    "journal_issn_l": "2566-6223",
+    "journal_issn_json": "[\"2566-6223\"]",
+    "publication_date": "2021-11-17",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 30,
+    "citation_normalized_percentile": 0.82551382,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Chongxing Li",
+    "authors_display": "Chongxing Li; Shuxian Zhang; Xianguang Miao; Cong Wang; Chengxiang Wang; Zhiwei Zhang; Rutao Wang; Longwei Yin",
+    "authors_json": "[{\"display_name\": \"Chongxing Li\", \"id\": \"https://openalex.org/A5079442980\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Shuxian Zhang\", \"id\": \"https://openalex.org/A5101536713\", \"orcid\": \"https://orcid.org/0000-0001-8619-1554\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xianguang Miao\", \"id\": \"https://openalex.org/A5078813324\", \"orcid\": \"https://orcid.org/0000-0002-1218-6733\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cong Wang\", \"id\": \"https://openalex.org/A5100390520\", \"orcid\": \"https://orcid.org/0000-0003-1130-2488\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chengxiang Wang\", \"id\": \"https://openalex.org/A5100779390\", \"orcid\": \"https://orcid.org/0000-0002-3907-5582\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhiwei Zhang\", \"id\": \"https://openalex.org/A5100347621\", \"orcid\": \"https://orcid.org/0000-0003-4404-6257\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rutao Wang\", \"id\": \"https://openalex.org/A5103007371\", \"orcid\": \"https://orcid.org/0000-0001-5745-8758\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Longwei Yin\", \"id\": \"https://openalex.org/A5072199383\", \"orcid\": \"https://orcid.org/0000-0003-3768-6846\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773303525744,
+    "actual_start_ms": 1773303525744,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.51
+  }
+}

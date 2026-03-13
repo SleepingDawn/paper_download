@@ -1,0 +1,89 @@
+{
+  "doi": "10.1016/j.chempr.2019.08.010",
+  "pdf_filename": "10.1016_j.chempr.2019.08.010.pdf",
+  "json_filename": "10.1016_j.chempr.2019.08.010.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.chempr.2019.08.010.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2972873127",
+    "doi": "10.1016/j.chempr.2019.08.010",
+    "title": "A Solid with Liquid-like Diffusion: A Unique Superionic Conductor",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chem",
+      "id": "https://openalex.org/S2898106599",
+      "type": "journal",
+      "issn_l": "2451-9294",
+      "issn": [
+        "2451-9294",
+        "2451-9308"
+      ]
+    },
+    "publication_date": "2019-09-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.69344755,
+    "pdf_url": "http://www.cell.com/article/S2451929419303791/pdf",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Adelaide M. Nolan",
+    "authors_display": "Adelaide M. Nolan; Yifei Mo",
+    "authors": [
+      {
+        "display_name": "Adelaide M. Nolan",
+        "id": "https://openalex.org/A5046377236",
+        "orcid": "https://orcid.org/0000-0002-5309-5643",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yifei Mo",
+        "id": "https://openalex.org/A5043347975",
+        "orcid": "https://orcid.org/0000-0002-8162-4629",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2972873127",
+    "doi": "10.1016/j.chempr.2019.08.010",
+    "title": "A Solid with Liquid-like Diffusion: A Unique Superionic Conductor",
+    "publisher": "Elsevier BV",
+    "journal": "Chem",
+    "journal_id": "https://openalex.org/S2898106599",
+    "journal_type": "journal",
+    "journal_issn_l": "2451-9294",
+    "journal_issn_json": "[\"2451-9294\", \"2451-9308\"]",
+    "publication_date": "2019-09-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.69344755,
+    "pdf_url": "http://www.cell.com/article/S2451929419303791/pdf",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Adelaide M. Nolan",
+    "authors_display": "Adelaide M. Nolan; Yifei Mo",
+    "authors_json": "[{\"display_name\": \"Adelaide M. Nolan\", \"id\": \"https://openalex.org/A5046377236\", \"orcid\": \"https://orcid.org/0000-0002-5309-5643\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yifei Mo\", \"id\": \"https://openalex.org/A5043347975\", \"orcid\": \"https://orcid.org/0000-0002-8162-4629\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773306141172,
+    "actual_start_ms": 1773306329792,
+    "pacing_wait_ms": 188618,
+    "pacing_jitter_sec": 1.319
+  }
+}

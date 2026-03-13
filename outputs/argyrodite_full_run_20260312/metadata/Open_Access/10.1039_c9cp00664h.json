@@ -1,0 +1,138 @@
+{
+  "doi": "10.1039/c9cp00664h",
+  "pdf_filename": "10.1039_c9cp00664h.pdf",
+  "json_filename": "10.1039_c9cp00664h.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_c9cp00664h.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2925222827",
+    "doi": "10.1039/c9cp00664h",
+    "title": "Substitutional disorder: structure and ion dynamics of the argyrodites Li<sub>6</sub>PS<sub>5</sub>Cl, Li<sub>6</sub>PS<sub>5</sub>Br and Li<sub>6</sub>PS<sub>5</sub>I",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Physical Chemistry Chemical Physics",
+      "id": "https://openalex.org/S181332294",
+      "type": "journal",
+      "issn_l": "1463-9076",
+      "issn": [
+        "1463-9076",
+        "1463-9084"
+      ]
+    },
+    "publication_date": "2019-01-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 221,
+    "citation_normalized_percentile": 0.989878,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2019/cp/c9cp00664h",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Isabel Hanghofer",
+    "authors_display": "Isabel Hanghofer; Marina Brinek; S. L. Eisbacher; Brigitte Bitschnau; Marlena Volck; Volker Hennige; Ilie Hanzu; Daniel Rettenwander; Martin Wilkening",
+    "authors": [
+      {
+        "display_name": "Isabel Hanghofer",
+        "id": "https://openalex.org/A5038314705",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Marina Brinek",
+        "id": "https://openalex.org/A5062131411",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "S. L. Eisbacher",
+        "id": "https://openalex.org/A5025612692",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Brigitte Bitschnau",
+        "id": "https://openalex.org/A5028077419",
+        "orcid": "https://orcid.org/0000-0002-7669-2643",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marlena Volck",
+        "id": "https://openalex.org/A5091036831",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Volker Hennige",
+        "id": "https://openalex.org/A5084418256",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ilie Hanzu",
+        "id": "https://openalex.org/A5057797255",
+        "orcid": "https://orcid.org/0000-0002-9260-9117",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniel Rettenwander",
+        "id": "https://openalex.org/A5017547610",
+        "orcid": "https://orcid.org/0000-0002-2074-941X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Wilkening",
+        "id": "https://openalex.org/A5024063649",
+        "orcid": "https://orcid.org/0000-0001-9706-4892",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2925222827",
+    "doi": "10.1039/c9cp00664h",
+    "title": "Substitutional disorder: structure and ion dynamics of the argyrodites Li<sub>6</sub>PS<sub>5</sub>Cl, Li<sub>6</sub>PS<sub>5</sub>Br and Li<sub>6</sub>PS<sub>5</sub>I",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Physical Chemistry Chemical Physics",
+    "journal_id": "https://openalex.org/S181332294",
+    "journal_type": "journal",
+    "journal_issn_l": "1463-9076",
+    "journal_issn_json": "[\"1463-9076\", \"1463-9084\"]",
+    "publication_date": "2019-01-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 221,
+    "citation_normalized_percentile": 0.989878,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2019/cp/c9cp00664h",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Isabel Hanghofer",
+    "authors_display": "Isabel Hanghofer; Marina Brinek; S. L. Eisbacher; Brigitte Bitschnau; Marlena Volck; Volker Hennige; Ilie Hanzu; Daniel Rettenwander; Martin Wilkening",
+    "authors_json": "[{\"display_name\": \"Isabel Hanghofer\", \"id\": \"https://openalex.org/A5038314705\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Marina Brinek\", \"id\": \"https://openalex.org/A5062131411\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"S. L. Eisbacher\", \"id\": \"https://openalex.org/A5025612692\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Brigitte Bitschnau\", \"id\": \"https://openalex.org/A5028077419\", \"orcid\": \"https://orcid.org/0000-0002-7669-2643\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marlena Volck\", \"id\": \"https://openalex.org/A5091036831\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Volker Hennige\", \"id\": \"https://openalex.org/A5084418256\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ilie Hanzu\", \"id\": \"https://openalex.org/A5057797255\", \"orcid\": \"https://orcid.org/0000-0002-9260-9117\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniel Rettenwander\", \"id\": \"https://openalex.org/A5017547610\", \"orcid\": \"https://orcid.org/0000-0002-2074-941X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Martin Wilkening\", \"id\": \"https://openalex.org/A5024063649\", \"orcid\": \"https://orcid.org/0000-0001-9706-4892\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773307070442,
+    "actual_start_ms": 1773307070779,
+    "pacing_wait_ms": 337,
+    "pacing_jitter_sec": 0.916
+  }
+}

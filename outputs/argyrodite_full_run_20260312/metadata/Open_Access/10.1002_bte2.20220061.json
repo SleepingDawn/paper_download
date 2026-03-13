@@ -1,0 +1,145 @@
+{
+  "doi": "10.1002/bte2.20220061",
+  "pdf_filename": "10.1002_bte2.20220061.pdf",
+  "json_filename": "10.1002_bte2.20220061.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_bte2.20220061.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4316038323",
+    "doi": "10.1002/bte2.20220061",
+    "title": "Digital‐twin‐driven structural and electrochemical analysis of Li<sup>+</sup> single‐ion conducting polymer electrolyte for all‐solid‐state batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Battery energy",
+      "id": "https://openalex.org/S4210239249",
+      "type": "journal",
+      "issn_l": "2768-1688",
+      "issn": [
+        "2768-1688",
+        "2768-1696"
+      ]
+    },
+    "publication_date": "2023-01-13",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.86214845,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/bte2.20220061",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Jongjun Lee",
+    "authors_display": "Jongjun Lee; Seoungwoo Byun; Hyobin Lee; Youngjoon Roh; Dahee Jin; Jaejin Lim; Jihun Song; Cyril Bubu Dzakpasu; Joonam Park; Yong Min Lee",
+    "authors": [
+      {
+        "display_name": "Jongjun Lee",
+        "id": "https://openalex.org/A5069441246",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seoungwoo Byun",
+        "id": "https://openalex.org/A5031336836",
+        "orcid": "https://orcid.org/0000-0002-8951-2373",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyobin Lee",
+        "id": "https://openalex.org/A5011877341",
+        "orcid": "https://orcid.org/0000-0002-3996-3192",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Youngjoon Roh",
+        "id": "https://openalex.org/A5074637675",
+        "orcid": "https://orcid.org/0000-0001-9088-7108",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dahee Jin",
+        "id": "https://openalex.org/A5060489602",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jaejin Lim",
+        "id": "https://openalex.org/A5091461171",
+        "orcid": "https://orcid.org/0000-0003-0717-0742",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jihun Song",
+        "id": "https://openalex.org/A5045983619",
+        "orcid": "https://orcid.org/0000-0003-1370-0279",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cyril Bubu Dzakpasu",
+        "id": "https://openalex.org/A5003007095",
+        "orcid": "https://orcid.org/0000-0002-3901-1941",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joonam Park",
+        "id": "https://openalex.org/A5103260798",
+        "orcid": "https://orcid.org/0000-0002-8000-2131",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yong Min Lee",
+        "id": "https://openalex.org/A5100740899",
+        "orcid": "https://orcid.org/0000-0003-2002-2218",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4316038323",
+    "doi": "10.1002/bte2.20220061",
+    "title": "Digital‐twin‐driven structural and electrochemical analysis of Li<sup>+</sup> single‐ion conducting polymer electrolyte for all‐solid‐state batteries",
+    "publisher": "Wiley",
+    "journal": "Battery energy",
+    "journal_id": "https://openalex.org/S4210239249",
+    "journal_type": "journal",
+    "journal_issn_l": "2768-1688",
+    "journal_issn_json": "[\"2768-1688\", \"2768-1696\"]",
+    "publication_date": "2023-01-13",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.86214845,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/bte2.20220061",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Jongjun Lee",
+    "authors_display": "Jongjun Lee; Seoungwoo Byun; Hyobin Lee; Youngjoon Roh; Dahee Jin; Jaejin Lim; Jihun Song; Cyril Bubu Dzakpasu; Joonam Park; Yong Min Lee",
+    "authors_json": "[{\"display_name\": \"Jongjun Lee\", \"id\": \"https://openalex.org/A5069441246\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Seoungwoo Byun\", \"id\": \"https://openalex.org/A5031336836\", \"orcid\": \"https://orcid.org/0000-0002-8951-2373\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyobin Lee\", \"id\": \"https://openalex.org/A5011877341\", \"orcid\": \"https://orcid.org/0000-0002-3996-3192\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Youngjoon Roh\", \"id\": \"https://openalex.org/A5074637675\", \"orcid\": \"https://orcid.org/0000-0001-9088-7108\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dahee Jin\", \"id\": \"https://openalex.org/A5060489602\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jaejin Lim\", \"id\": \"https://openalex.org/A5091461171\", \"orcid\": \"https://orcid.org/0000-0003-0717-0742\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jihun Song\", \"id\": \"https://openalex.org/A5045983619\", \"orcid\": \"https://orcid.org/0000-0003-1370-0279\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cyril Bubu Dzakpasu\", \"id\": \"https://openalex.org/A5003007095\", \"orcid\": \"https://orcid.org/0000-0002-3901-1941\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Joonam Park\", \"id\": \"https://openalex.org/A5103260798\", \"orcid\": \"https://orcid.org/0000-0002-8000-2131\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yong Min Lee\", \"id\": \"https://openalex.org/A5100740899\", \"orcid\": \"https://orcid.org/0000-0003-2002-2218\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773305104605,
+    "actual_start_ms": 1773305104606,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.792
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "doi": "10.24144/2414-0260.2022.2.16-22",
+  "pdf_filename": "10.24144_2414-0260.2022.2.16-22.pdf",
+  "json_filename": "10.24144_2414-0260.2022.2.16-22.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.24144_2414-0260.2022.2.16-22.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4378376345",
+    "doi": "10.24144/2414-0260.2022.2.16-22",
+    "title": "PREPARATION AND PROPERTIES OF CERAMIC MATERIALS IN THE Ag6PS5I‒Ag7GeS5I SYSTEM",
+    "publisher": "Scientific Bulletin of the Uzhhorod University Series «Chemistry»",
+    "journal": {
+      "name": "Scientific Bulletin of the Uzhhorod University Series «Chemistry»",
+      "id": "https://openalex.org/S4210217543",
+      "type": "journal",
+      "issn_l": "2414-0260",
+      "issn": [
+        "2414-0260"
+      ]
+    },
+    "publication_date": "2023-05-23",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.37267919,
+    "pdf_url": "http://visnyk-khim.uzhnu.edu.ua/article/download/277412/272231",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Т.О. Malakhovska",
+    "authors_display": "Т.О. Malakhovska; A.I. Pogodin; M.J. Filep; М.М. Поп; I.O. Shender; O.P. Kokhan; Yu.P. Zhukova; Yaroslav Studenyak; L.M. Suslikov",
+    "authors": [
+      {
+        "display_name": "Т.О. Malakhovska",
+        "id": "https://openalex.org/A5057564232",
+        "orcid": "https://orcid.org/0000-0001-7309-4894",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "A.I. Pogodin",
+        "id": "https://openalex.org/A5020454096",
+        "orcid": "https://orcid.org/0000-0002-2430-3220",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "M.J. Filep",
+        "id": "https://openalex.org/A5053182495",
+        "orcid": "https://orcid.org/0000-0001-7017-5437",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "М.М. Поп",
+        "id": "https://openalex.org/A5023094255",
+        "orcid": "https://orcid.org/0000-0003-3674-3482",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "I.O. Shender",
+        "id": "https://openalex.org/A5061330455",
+        "orcid": "https://orcid.org/0000-0003-1687-3634",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "O.P. Kokhan",
+        "id": "https://openalex.org/A5032166814",
+        "orcid": "https://orcid.org/0000-0003-1534-6779",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu.P. Zhukova",
+        "id": "https://openalex.org/A5055020212",
+        "orcid": "https://orcid.org/0000-0001-7711-3984",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yaroslav Studenyak",
+        "id": "https://openalex.org/A5028277300",
+        "orcid": "https://orcid.org/0000-0002-8970-2222",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "L.M. Suslikov",
+        "id": "https://openalex.org/A5041185459",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4378376345",
+    "doi": "10.24144/2414-0260.2022.2.16-22",
+    "title": "PREPARATION AND PROPERTIES OF CERAMIC MATERIALS IN THE Ag6PS5I‒Ag7GeS5I SYSTEM",
+    "publisher": "Scientific Bulletin of the Uzhhorod University Series «Chemistry»",
+    "journal": "Scientific Bulletin of the Uzhhorod University Series «Chemistry»",
+    "journal_id": "https://openalex.org/S4210217543",
+    "journal_type": "journal",
+    "journal_issn_l": "2414-0260",
+    "journal_issn_json": "[\"2414-0260\"]",
+    "publication_date": "2023-05-23",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.37267919,
+    "pdf_url": "http://visnyk-khim.uzhnu.edu.ua/article/download/277412/272231",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Т.О. Malakhovska",
+    "authors_display": "Т.О. Malakhovska; A.I. Pogodin; M.J. Filep; М.М. Поп; I.O. Shender; O.P. Kokhan; Yu.P. Zhukova; Yaroslav Studenyak; L.M. Suslikov",
+    "authors_json": "[{\"display_name\": \"Т.О. Malakhovska\", \"id\": \"https://openalex.org/A5057564232\", \"orcid\": \"https://orcid.org/0000-0001-7309-4894\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"A.I. Pogodin\", \"id\": \"https://openalex.org/A5020454096\", \"orcid\": \"https://orcid.org/0000-0002-2430-3220\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"M.J. Filep\", \"id\": \"https://openalex.org/A5053182495\", \"orcid\": \"https://orcid.org/0000-0001-7017-5437\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"М.М. Поп\", \"id\": \"https://openalex.org/A5023094255\", \"orcid\": \"https://orcid.org/0000-0003-3674-3482\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"I.O. Shender\", \"id\": \"https://openalex.org/A5061330455\", \"orcid\": \"https://orcid.org/0000-0003-1687-3634\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"O.P. Kokhan\", \"id\": \"https://openalex.org/A5032166814\", \"orcid\": \"https://orcid.org/0000-0003-1534-6779\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu.P. Zhukova\", \"id\": \"https://openalex.org/A5055020212\", \"orcid\": \"https://orcid.org/0000-0001-7711-3984\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yaroslav Studenyak\", \"id\": \"https://openalex.org/A5028277300\", \"orcid\": \"https://orcid.org/0000-0002-8970-2222\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"L.M. Suslikov\", \"id\": \"https://openalex.org/A5041185459\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.24144",
+    "scheduled_start_ms": 1773310305161,
+    "actual_start_ms": 1773310305161,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.023
+  }
+}

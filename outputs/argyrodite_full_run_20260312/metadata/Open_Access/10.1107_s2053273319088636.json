@@ -1,0 +1,81 @@
+{
+  "doi": "10.1107/s2053273319088636",
+  "pdf_filename": "10.1107_s2053273319088636.pdf",
+  "json_filename": "10.1107_s2053273319088636.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1107_s2053273319088636.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3039516611",
+    "doi": "10.1107/s2053273319088636",
+    "title": "Using nuclear magnetic resonance spectroscopy, neutron and X-ray PDF",
+    "publisher": "Acta Crystallographica Section A Foundations and Advances",
+    "journal": {
+      "name": "Acta Crystallographica Section A Foundations and Advances",
+      "id": "https://openalex.org/S4393918093",
+      "type": "journal",
+      "issn_l": "2053-2733",
+      "issn": [
+        "2053-2733"
+      ]
+    },
+    "publication_date": "2019-08-18",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.06388855,
+    "pdf_url": "http://journals.iucr.org/a/issues/2019/a2/00/a58943/a58943.pdf",
+    "open_access": true,
+    "author_count": 1,
+    "first_author": "Anna‐Lena Hansen",
+    "authors_display": "Anna‐Lena Hansen",
+    "authors": [
+      {
+        "display_name": "Anna‐Lena Hansen",
+        "id": "https://openalex.org/A5090978433",
+        "orcid": "https://orcid.org/0000-0001-5806-9674",
+        "author_position": "first",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3039516611",
+    "doi": "10.1107/s2053273319088636",
+    "title": "Using nuclear magnetic resonance spectroscopy, neutron and X-ray PDF",
+    "publisher": "Acta Crystallographica Section A Foundations and Advances",
+    "journal": "Acta Crystallographica Section A Foundations and Advances",
+    "journal_id": "https://openalex.org/S4393918093",
+    "journal_type": "journal",
+    "journal_issn_l": "2053-2733",
+    "journal_issn_json": "[\"2053-2733\"]",
+    "publication_date": "2019-08-18",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.06388855,
+    "pdf_url": "http://journals.iucr.org/a/issues/2019/a2/00/a58943/a58943.pdf",
+    "open_access": true,
+    "author_count": 1,
+    "first_author": "Anna‐Lena Hansen",
+    "authors_display": "Anna‐Lena Hansen",
+    "authors_json": "[{\"display_name\": \"Anna‐Lena Hansen\", \"id\": \"https://openalex.org/A5090978433\", \"orcid\": \"https://orcid.org/0000-0001-5806-9674\", \"author_position\": \"first\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "10.1107",
+    "scheduled_start_ms": 1773310807234,
+    "actual_start_ms": 1773310807234,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.725
+  }
+}

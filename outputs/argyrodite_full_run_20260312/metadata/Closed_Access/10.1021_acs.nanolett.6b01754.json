@@ -1,0 +1,131 @@
+{
+  "doi": "10.1021/acs.nanolett.6b01754",
+  "pdf_filename": "10.1021_acs.nanolett.6b01754.pdf",
+  "json_filename": "10.1021_acs.nanolett.6b01754.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.nanolett.6b01754.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2464235999",
+    "doi": "10.1021/acs.nanolett.6b01754",
+    "title": "High-Performance All-Solid-State Lithium–Sulfur Battery Enabled by a Mixed-Conductive Li<sub>2</sub>S Nanocomposite",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Nano Letters",
+      "id": "https://openalex.org/S143846845",
+      "type": "journal",
+      "issn_l": "1530-6984",
+      "issn": [
+        "1530-6984",
+        "1530-6992"
+      ]
+    },
+    "publication_date": "2016-06-20",
+    "publication_year": 2016,
+    "work_type": "article",
+    "cited_by_count": 383,
+    "citation_normalized_percentile": 0.99666243,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Fudong Han",
+    "authors_display": "Fudong Han; Jie Yue; Xiulin Fan; Tao Gao; Chao Luo; Zhaohui Ma; Liumin Suo; Chunsheng Wang",
+    "authors": [
+      {
+        "display_name": "Fudong Han",
+        "id": "https://openalex.org/A5000043456",
+        "orcid": "https://orcid.org/0000-0003-2507-4340",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jie Yue",
+        "id": "https://openalex.org/A5111451706",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiulin Fan",
+        "id": "https://openalex.org/A5069242988",
+        "orcid": "https://orcid.org/0000-0001-7294-480X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tao Gao",
+        "id": "https://openalex.org/A5013727422",
+        "orcid": "https://orcid.org/0000-0003-0204-3269",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chao Luo",
+        "id": "https://openalex.org/A5010418552",
+        "orcid": "https://orcid.org/0000-0001-8497-8548",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhaohui Ma",
+        "id": "https://openalex.org/A5074779525",
+        "orcid": "https://orcid.org/0000-0002-3164-6117",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liumin Suo",
+        "id": "https://openalex.org/A5012907961",
+        "orcid": "https://orcid.org/0000-0002-6772-8421",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chunsheng Wang",
+        "id": "https://openalex.org/A5100331428",
+        "orcid": "https://orcid.org/0000-0002-8626-6381",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2464235999",
+    "doi": "10.1021/acs.nanolett.6b01754",
+    "title": "High-Performance All-Solid-State Lithium–Sulfur Battery Enabled by a Mixed-Conductive Li<sub>2</sub>S Nanocomposite",
+    "publisher": "American Chemical Society",
+    "journal": "Nano Letters",
+    "journal_id": "https://openalex.org/S143846845",
+    "journal_type": "journal",
+    "journal_issn_l": "1530-6984",
+    "journal_issn_json": "[\"1530-6984\", \"1530-6992\"]",
+    "publication_date": "2016-06-20",
+    "publication_year": 2016,
+    "work_type": "article",
+    "cited_by_count": 383,
+    "citation_normalized_percentile": 0.99666243,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Fudong Han",
+    "authors_display": "Fudong Han; Jie Yue; Xiulin Fan; Tao Gao; Chao Luo; Zhaohui Ma; Liumin Suo; Chunsheng Wang",
+    "authors_json": "[{\"display_name\": \"Fudong Han\", \"id\": \"https://openalex.org/A5000043456\", \"orcid\": \"https://orcid.org/0000-0003-2507-4340\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Jie Yue\", \"id\": \"https://openalex.org/A5111451706\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiulin Fan\", \"id\": \"https://openalex.org/A5069242988\", \"orcid\": \"https://orcid.org/0000-0001-7294-480X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tao Gao\", \"id\": \"https://openalex.org/A5013727422\", \"orcid\": \"https://orcid.org/0000-0003-0204-3269\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chao Luo\", \"id\": \"https://openalex.org/A5010418552\", \"orcid\": \"https://orcid.org/0000-0001-8497-8548\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhaohui Ma\", \"id\": \"https://openalex.org/A5074779525\", \"orcid\": \"https://orcid.org/0000-0002-3164-6117\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liumin Suo\", \"id\": \"https://openalex.org/A5012907961\", \"orcid\": \"https://orcid.org/0000-0002-6772-8421\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chunsheng Wang\", \"id\": \"https://openalex.org/A5100331428\", \"orcid\": \"https://orcid.org/0000-0002-8626-6381\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301476106,
+    "actual_start_ms": 1773301774941,
+    "pacing_wait_ms": 298833,
+    "pacing_jitter_sec": 1.797
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "doi": "10.1093/nsr/nwag015",
+  "pdf_filename": "10.1093_nsr_nwag015.pdf",
+  "json_filename": "10.1093_nsr_nwag015.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1093_nsr_nwag015.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7120112826",
+    "doi": "10.1093/nsr/nwag015",
+    "title": "Space charge regulation for ultra-stable all-solid-state lithium batteries by engineering of argyrodite electrolyte",
+    "publisher": "Oxford University Press",
+    "journal": {
+      "name": "National Science Review",
+      "id": "https://openalex.org/S2734413303",
+      "type": "journal",
+      "issn_l": "2053-714X",
+      "issn": [
+        "2053-714X",
+        "2095-5138"
+      ]
+    },
+    "publication_date": "2026-01-09",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.10728739,
+    "pdf_url": "https://academic.oup.com/nsr/advance-article-pdf/doi/10.1093/nsr/nwag015/66339782/nwag015.pdf",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Jingjing Wang",
+    "authors_display": "Jingjing Wang; Lu Jia; Yibo Du; Bangjun Guo; Haozhe Geng; Xin Geng; Junbo Hou; Jinhui Zhu; Xiaodong Zhuang",
+    "authors": [
+      {
+        "display_name": "Jingjing Wang",
+        "id": "https://openalex.org/A5122451918",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Lu Jia",
+        "id": "https://openalex.org/A5086909129",
+        "orcid": "https://orcid.org/0000-0002-7680-1037",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yibo Du",
+        "id": "https://openalex.org/A5103199423",
+        "orcid": "https://orcid.org/0009-0007-5668-8253",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bangjun Guo",
+        "id": "https://openalex.org/A5067949900",
+        "orcid": "https://orcid.org/0000-0001-6353-5190",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haozhe Geng",
+        "id": "https://openalex.org/A5111288466",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xin Geng",
+        "id": "https://openalex.org/A5101967110",
+        "orcid": "https://orcid.org/0000-0002-9263-5390",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junbo Hou",
+        "id": "https://openalex.org/A5108975641",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinhui Zhu",
+        "id": "https://openalex.org/A5122500139",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaodong Zhuang",
+        "id": "https://openalex.org/A5122700576",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7120112826",
+    "doi": "10.1093/nsr/nwag015",
+    "title": "Space charge regulation for ultra-stable all-solid-state lithium batteries by engineering of argyrodite electrolyte",
+    "publisher": "Oxford University Press",
+    "journal": "National Science Review",
+    "journal_id": "https://openalex.org/S2734413303",
+    "journal_type": "journal",
+    "journal_issn_l": "2053-714X",
+    "journal_issn_json": "[\"2053-714X\", \"2095-5138\"]",
+    "publication_date": "2026-01-09",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.10728739,
+    "pdf_url": "https://academic.oup.com/nsr/advance-article-pdf/doi/10.1093/nsr/nwag015/66339782/nwag015.pdf",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Jingjing Wang",
+    "authors_display": "Jingjing Wang; Lu Jia; Yibo Du; Bangjun Guo; Haozhe Geng; Xin Geng; Junbo Hou; Jinhui Zhu; Xiaodong Zhuang",
+    "authors_json": "[{\"display_name\": \"Jingjing Wang\", \"id\": \"https://openalex.org/A5122451918\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Lu Jia\", \"id\": \"https://openalex.org/A5086909129\", \"orcid\": \"https://orcid.org/0000-0002-7680-1037\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yibo Du\", \"id\": \"https://openalex.org/A5103199423\", \"orcid\": \"https://orcid.org/0009-0007-5668-8253\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bangjun Guo\", \"id\": \"https://openalex.org/A5067949900\", \"orcid\": \"https://orcid.org/0000-0001-6353-5190\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haozhe Geng\", \"id\": \"https://openalex.org/A5111288466\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xin Geng\", \"id\": \"https://openalex.org/A5101967110\", \"orcid\": \"https://orcid.org/0000-0002-9263-5390\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junbo Hou\", \"id\": \"https://openalex.org/A5108975641\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinhui Zhu\", \"id\": \"https://openalex.org/A5122500139\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaodong Zhuang\", \"id\": \"https://openalex.org/A5122700576\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://academic.oup.com/nsr/advance-article/doi/10.1093/nsr/nwag015/8419696",
+    "landing_title": "Space charge regulation for ultra-stable all-solid-state lithium batteries by engineering of argyrodite electrolyte | National Science Review | Oxford Academic",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1093_nsr_nwag015.pdf",
+    "scheduler_publisher": "10.1093",
+    "scheduled_start_ms": 1773311138606,
+    "actual_start_ms": 1773311138606,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.509
+  }
+}

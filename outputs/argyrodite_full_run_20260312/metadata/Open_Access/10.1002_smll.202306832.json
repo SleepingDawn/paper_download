@@ -1,0 +1,145 @@
+{
+  "doi": "10.1002/smll.202306832",
+  "pdf_filename": "10.1002_smll.202306832.pdf",
+  "json_filename": "10.1002_smll.202306832.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_smll.202306832.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4389070256",
+    "doi": "10.1002/smll.202306832",
+    "title": "Synthetic Tailoring of Ionic Conductivity in Multicationic Substituted, High‐Entropy Lithium Argyrodite Solid Electrolytes",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2023-11-27",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 24,
+    "citation_normalized_percentile": 0.92551278,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202306832",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Jing Lin",
+    "authors_display": "Jing Lin; Mareen Schaller; Gennady Cherkashinin; Sylvio Indris; Jianxuan Du; C. Ritter; Aleksandr Kondrakov; Jürgen Janek; Torsten Brezesinski; Florian Strauss",
+    "authors": [
+      {
+        "display_name": "Jing Lin",
+        "id": "https://openalex.org/A5101982105",
+        "orcid": "https://orcid.org/0000-0002-6403-4803",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mareen Schaller",
+        "id": "https://openalex.org/A5081935806",
+        "orcid": "https://orcid.org/0000-0001-6589-2087",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gennady Cherkashinin",
+        "id": "https://openalex.org/A5044223935",
+        "orcid": "https://orcid.org/0000-0001-8363-6028",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sylvio Indris",
+        "id": "https://openalex.org/A5046099728",
+        "orcid": "https://orcid.org/0000-0002-5100-113X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianxuan Du",
+        "id": "https://openalex.org/A5113186041",
+        "orcid": "https://orcid.org/0009-0007-6826-225X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "C. Ritter",
+        "id": "https://openalex.org/A5043085937",
+        "orcid": "https://orcid.org/0000-0003-3674-3378",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Aleksandr Kondrakov",
+        "id": "https://openalex.org/A5028425268",
+        "orcid": "https://orcid.org/0000-0003-1465-2854",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Torsten Brezesinski",
+        "id": "https://openalex.org/A5030005479",
+        "orcid": "https://orcid.org/0000-0002-4336-263X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Florian Strauss",
+        "id": "https://openalex.org/A5019742727",
+        "orcid": "https://orcid.org/0000-0001-5817-6349",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4389070256",
+    "doi": "10.1002/smll.202306832",
+    "title": "Synthetic Tailoring of Ionic Conductivity in Multicationic Substituted, High‐Entropy Lithium Argyrodite Solid Electrolytes",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2023-11-27",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 24,
+    "citation_normalized_percentile": 0.92551278,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202306832",
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Jing Lin",
+    "authors_display": "Jing Lin; Mareen Schaller; Gennady Cherkashinin; Sylvio Indris; Jianxuan Du; C. Ritter; Aleksandr Kondrakov; Jürgen Janek; Torsten Brezesinski; Florian Strauss",
+    "authors_json": "[{\"display_name\": \"Jing Lin\", \"id\": \"https://openalex.org/A5101982105\", \"orcid\": \"https://orcid.org/0000-0002-6403-4803\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Mareen Schaller\", \"id\": \"https://openalex.org/A5081935806\", \"orcid\": \"https://orcid.org/0000-0001-6589-2087\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gennady Cherkashinin\", \"id\": \"https://openalex.org/A5044223935\", \"orcid\": \"https://orcid.org/0000-0001-8363-6028\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sylvio Indris\", \"id\": \"https://openalex.org/A5046099728\", \"orcid\": \"https://orcid.org/0000-0002-5100-113X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianxuan Du\", \"id\": \"https://openalex.org/A5113186041\", \"orcid\": \"https://orcid.org/0009-0007-6826-225X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"C. Ritter\", \"id\": \"https://openalex.org/A5043085937\", \"orcid\": \"https://orcid.org/0000-0003-3674-3378\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Aleksandr Kondrakov\", \"id\": \"https://openalex.org/A5028425268\", \"orcid\": \"https://orcid.org/0000-0003-1465-2854\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Torsten Brezesinski\", \"id\": \"https://openalex.org/A5030005479\", \"orcid\": \"https://orcid.org/0000-0002-4336-263X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Florian Strauss\", \"id\": \"https://openalex.org/A5019742727\", \"orcid\": \"https://orcid.org/0000-0001-5817-6349\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773304052869,
+    "actual_start_ms": 1773304052870,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.247
+  }
+}

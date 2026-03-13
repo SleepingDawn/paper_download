@@ -1,0 +1,159 @@
+{
+  "doi": "10.1002/aenm.202200660",
+  "pdf_filename": "10.1002_aenm.202200660.pdf",
+  "json_filename": "10.1002_aenm.202200660.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_aenm.202200660.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4280593196",
+    "doi": "10.1002/aenm.202200660",
+    "title": "Super Long‐Cycling All‐Solid‐State Battery with Thin Li <sub>6</sub> PS <sub>5</sub> Cl‐Based Electrolyte",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2022-05-06",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 158,
+    "citation_normalized_percentile": 0.99467091,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Sijie Liu",
+    "authors_display": "Sijie Liu; Le Zhou; Jian Han; Kaihua Wen; Shundong Guan; Chuanjiao Xue; Zheng Zhang; Ben Xu; Yuanhua Lin; Yang Shen; Liangliang Li; Ce‐Wen Nan",
+    "authors": [
+      {
+        "display_name": "Sijie Liu",
+        "id": "https://openalex.org/A5100654021",
+        "orcid": "https://orcid.org/0000-0002-0623-9608",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Le Zhou",
+        "id": "https://openalex.org/A5069992454",
+        "orcid": "https://orcid.org/0000-0001-7697-7369",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jian Han",
+        "id": "https://openalex.org/A5101477194",
+        "orcid": "https://orcid.org/0000-0002-2335-830X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kaihua Wen",
+        "id": "https://openalex.org/A5019746223",
+        "orcid": "https://orcid.org/0000-0002-2497-4307",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shundong Guan",
+        "id": "https://openalex.org/A5008502315",
+        "orcid": "https://orcid.org/0000-0001-7402-0977",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuanjiao Xue",
+        "id": "https://openalex.org/A5004626569",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zheng Zhang",
+        "id": "https://openalex.org/A5100459060",
+        "orcid": "https://orcid.org/0000-0001-6216-6872",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ben Xu",
+        "id": "https://openalex.org/A5113583392",
+        "orcid": "https://orcid.org/0009-0007-3444-0708",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuanhua Lin",
+        "id": "https://openalex.org/A5101549431",
+        "orcid": "https://orcid.org/0000-0002-5652-6701",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Shen",
+        "id": "https://openalex.org/A5091319997",
+        "orcid": "https://orcid.org/0000-0002-1421-0629",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Liangliang Li",
+        "id": "https://openalex.org/A5100739408",
+        "orcid": "https://orcid.org/0000-0001-7808-7052",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ce‐Wen Nan",
+        "id": "https://openalex.org/A5000830544",
+        "orcid": "https://orcid.org/0000-0002-3261-4053",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4280593196",
+    "doi": "10.1002/aenm.202200660",
+    "title": "Super Long‐Cycling All‐Solid‐State Battery with Thin Li <sub>6</sub> PS <sub>5</sub> Cl‐Based Electrolyte",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2022-05-06",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 158,
+    "citation_normalized_percentile": 0.99467091,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Sijie Liu",
+    "authors_display": "Sijie Liu; Le Zhou; Jian Han; Kaihua Wen; Shundong Guan; Chuanjiao Xue; Zheng Zhang; Ben Xu; Yuanhua Lin; Yang Shen; Liangliang Li; Ce‐Wen Nan",
+    "authors_json": "[{\"display_name\": \"Sijie Liu\", \"id\": \"https://openalex.org/A5100654021\", \"orcid\": \"https://orcid.org/0000-0002-0623-9608\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Le Zhou\", \"id\": \"https://openalex.org/A5069992454\", \"orcid\": \"https://orcid.org/0000-0001-7697-7369\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jian Han\", \"id\": \"https://openalex.org/A5101477194\", \"orcid\": \"https://orcid.org/0000-0002-2335-830X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kaihua Wen\", \"id\": \"https://openalex.org/A5019746223\", \"orcid\": \"https://orcid.org/0000-0002-2497-4307\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shundong Guan\", \"id\": \"https://openalex.org/A5008502315\", \"orcid\": \"https://orcid.org/0000-0001-7402-0977\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuanjiao Xue\", \"id\": \"https://openalex.org/A5004626569\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zheng Zhang\", \"id\": \"https://openalex.org/A5100459060\", \"orcid\": \"https://orcid.org/0000-0001-6216-6872\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ben Xu\", \"id\": \"https://openalex.org/A5113583392\", \"orcid\": \"https://orcid.org/0009-0007-3444-0708\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuanhua Lin\", \"id\": \"https://openalex.org/A5101549431\", \"orcid\": \"https://orcid.org/0000-0002-5652-6701\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Shen\", \"id\": \"https://openalex.org/A5091319997\", \"orcid\": \"https://orcid.org/0000-0002-1421-0629\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Liangliang Li\", \"id\": \"https://openalex.org/A5100739408\", \"orcid\": \"https://orcid.org/0000-0001-7808-7052\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ce‐Wen Nan\", \"id\": \"https://openalex.org/A5000830544\", \"orcid\": \"https://orcid.org/0000-0002-3261-4053\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302409282,
+    "actual_start_ms": 1773302410783,
+    "pacing_wait_ms": 1500,
+    "pacing_jitter_sec": 1.057
+  }
+}

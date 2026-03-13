@@ -1,0 +1,117 @@
+{
+  "doi": "10.1021/acs.jpcc.3c02143",
+  "pdf_filename": "10.1021_acs.jpcc.3c02143.pdf",
+  "json_filename": "10.1021_acs.jpcc.3c02143.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.jpcc.3c02143.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4383868363",
+    "doi": "10.1021/acs.jpcc.3c02143",
+    "title": "Hydrogen Components of a Sulfide-based Argyrodite-Type Solid Electrolyte after Moisture Exposure",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "The Journal of Physical Chemistry C",
+      "id": "https://openalex.org/S95739953",
+      "type": "journal",
+      "issn_l": "1932-7447",
+      "issn": [
+        "1932-7447",
+        "1932-7455"
+      ]
+    },
+    "publication_date": "2023-07-10",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.89225956,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Yusuke Morino",
+    "authors_display": "Yusuke Morino; Hikaru Sano; T. Takahashi; Norihiko MIYASHITA; Atsushi Sakuda; Akitoshi Hayashi",
+    "authors": [
+      {
+        "display_name": "Yusuke Morino",
+        "id": "https://openalex.org/A5082471934",
+        "orcid": "https://orcid.org/0000-0002-6973-7786",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hikaru Sano",
+        "id": "https://openalex.org/A5002686051",
+        "orcid": "https://orcid.org/0000-0002-7557-0767",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "T. Takahashi",
+        "id": "https://openalex.org/A5103084662",
+        "orcid": "https://orcid.org/0000-0002-6395-9193",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Norihiko MIYASHITA",
+        "id": "https://openalex.org/A5037023926",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Atsushi Sakuda",
+        "id": "https://openalex.org/A5025626446",
+        "orcid": "https://orcid.org/0000-0002-9214-0347",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Akitoshi Hayashi",
+        "id": "https://openalex.org/A5056798072",
+        "orcid": "https://orcid.org/0000-0001-9503-5561",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4383868363",
+    "doi": "10.1021/acs.jpcc.3c02143",
+    "title": "Hydrogen Components of a Sulfide-based Argyrodite-Type Solid Electrolyte after Moisture Exposure",
+    "publisher": "American Chemical Society",
+    "journal": "The Journal of Physical Chemistry C",
+    "journal_id": "https://openalex.org/S95739953",
+    "journal_type": "journal",
+    "journal_issn_l": "1932-7447",
+    "journal_issn_json": "[\"1932-7447\", \"1932-7455\"]",
+    "publication_date": "2023-07-10",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 18,
+    "citation_normalized_percentile": 0.89225956,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Yusuke Morino",
+    "authors_display": "Yusuke Morino; Hikaru Sano; T. Takahashi; Norihiko MIYASHITA; Atsushi Sakuda; Akitoshi Hayashi",
+    "authors_json": "[{\"display_name\": \"Yusuke Morino\", \"id\": \"https://openalex.org/A5082471934\", \"orcid\": \"https://orcid.org/0000-0002-6973-7786\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hikaru Sano\", \"id\": \"https://openalex.org/A5002686051\", \"orcid\": \"https://orcid.org/0000-0002-7557-0767\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"T. Takahashi\", \"id\": \"https://openalex.org/A5103084662\", \"orcid\": \"https://orcid.org/0000-0002-6395-9193\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Norihiko MIYASHITA\", \"id\": \"https://openalex.org/A5037023926\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Atsushi Sakuda\", \"id\": \"https://openalex.org/A5025626446\", \"orcid\": \"https://orcid.org/0000-0002-9214-0347\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Akitoshi Hayashi\", \"id\": \"https://openalex.org/A5056798072\", \"orcid\": \"https://orcid.org/0000-0001-9503-5561\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.jpcc.3c02143",
+    "landing_title": "Hydrogen Components of a Sulfide-based Argyrodite-Type Solid Electrolyte after Moisture Exposure | The Journal of Physical Chemistry C",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acs.jpcc.3c02143.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773303208964,
+    "actual_start_ms": 1773303256937,
+    "pacing_wait_ms": 47972,
+    "pacing_jitter_sec": 0.947
+  }
+}

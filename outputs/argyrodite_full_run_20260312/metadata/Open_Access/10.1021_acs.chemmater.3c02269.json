@@ -1,0 +1,124 @@
+{
+  "doi": "10.1021/acs.chemmater.3c02269",
+  "pdf_filename": "10.1021_acs.chemmater.3c02269.pdf",
+  "json_filename": "10.1021_acs.chemmater.3c02269.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.chemmater.3c02269.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4390411955",
+    "doi": "10.1021/acs.chemmater.3c02269",
+    "title": "Promoting Fast Ion Conduction in Li-Argyrodite through Lithium Sublattice Engineering",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2023-12-29",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 17,
+    "citation_normalized_percentile": 0.88730051,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Po‐Hsiu Chien",
+    "authors_display": "Po‐Hsiu Chien; Bin Ouyang; Xuyong Feng; Lei Dong; David Mitlin; Jagjit Nanda; Jue Liu",
+    "authors": [
+      {
+        "display_name": "Po‐Hsiu Chien",
+        "id": "https://openalex.org/A5059953572",
+        "orcid": "https://orcid.org/0000-0002-1607-1271",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bin Ouyang",
+        "id": "https://openalex.org/A5070260665",
+        "orcid": "https://orcid.org/0000-0002-8181-6815",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xuyong Feng",
+        "id": "https://openalex.org/A5010856605",
+        "orcid": "https://orcid.org/0009-0005-5363-671X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Lei Dong",
+        "id": "https://openalex.org/A5100342718",
+        "orcid": "https://orcid.org/0000-0002-8759-3130",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "David Mitlin",
+        "id": "https://openalex.org/A5086743052",
+        "orcid": "https://orcid.org/0000-0002-7556-3575",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jagjit Nanda",
+        "id": "https://openalex.org/A5054033892",
+        "orcid": "https://orcid.org/0000-0002-6875-0057",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jue Liu",
+        "id": "https://openalex.org/A5100702265",
+        "orcid": "https://orcid.org/0000-0002-4453-910X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4390411955",
+    "doi": "10.1021/acs.chemmater.3c02269",
+    "title": "Promoting Fast Ion Conduction in Li-Argyrodite through Lithium Sublattice Engineering",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2023-12-29",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 17,
+    "citation_normalized_percentile": 0.88730051,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Po‐Hsiu Chien",
+    "authors_display": "Po‐Hsiu Chien; Bin Ouyang; Xuyong Feng; Lei Dong; David Mitlin; Jagjit Nanda; Jue Liu",
+    "authors_json": "[{\"display_name\": \"Po‐Hsiu Chien\", \"id\": \"https://openalex.org/A5059953572\", \"orcid\": \"https://orcid.org/0000-0002-1607-1271\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Bin Ouyang\", \"id\": \"https://openalex.org/A5070260665\", \"orcid\": \"https://orcid.org/0000-0002-8181-6815\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xuyong Feng\", \"id\": \"https://openalex.org/A5010856605\", \"orcid\": \"https://orcid.org/0009-0005-5363-671X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Lei Dong\", \"id\": \"https://openalex.org/A5100342718\", \"orcid\": \"https://orcid.org/0000-0002-8759-3130\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"David Mitlin\", \"id\": \"https://openalex.org/A5086743052\", \"orcid\": \"https://orcid.org/0000-0002-7556-3575\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jagjit Nanda\", \"id\": \"https://openalex.org/A5054033892\", \"orcid\": \"https://orcid.org/0000-0002-6875-0057\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jue Liu\", \"id\": \"https://openalex.org/A5100702265\", \"orcid\": \"https://orcid.org/0000-0002-4453-910X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.chemmater.3c02269",
+    "landing_title": "Promoting Fast Ion Conduction in Li-Argyrodite through Lithium Sublattice Engineering | Chemistry of Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acs.chemmater.3c02269.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773303410168,
+    "actual_start_ms": 1773303418460,
+    "pacing_wait_ms": 8292,
+    "pacing_jitter_sec": 1.249
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "doi": "10.1002/aenm.202203861",
+  "pdf_filename": "10.1002_aenm.202203861.pdf",
+  "json_filename": "10.1002_aenm.202203861.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202203861.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4323669338",
+    "doi": "10.1002/aenm.202203861",
+    "title": "Organic‐Additive‐Derived Cathode Electrolyte Interphase Layer Mitigating Intertwined Chemical and Mechanical Degradation for Sulfide‐Based Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2023-03-09",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 29,
+    "citation_normalized_percentile": 0.94067696,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202203861",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Chanhyun Park",
+    "authors_display": "Chanhyun Park; Juho Lee; Sangpyo Lee; Yu Han; Jin‐Soo Kim; Sung‐Kyun Jung",
+    "authors": [
+      {
+        "display_name": "Chanhyun Park",
+        "id": "https://openalex.org/A5101704933",
+        "orcid": "https://orcid.org/0000-0003-2231-8071",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Juho Lee",
+        "id": "https://openalex.org/A5100680425",
+        "orcid": "https://orcid.org/0009-0007-1756-9825",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sangpyo Lee",
+        "id": "https://openalex.org/A5078523116",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Han",
+        "id": "https://openalex.org/A5112900246",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jin‐Soo Kim",
+        "id": "https://openalex.org/A5100390255",
+        "orcid": "https://orcid.org/0000-0001-8217-5071",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Sung‐Kyun Jung",
+        "id": "https://openalex.org/A5046353772",
+        "orcid": "https://orcid.org/0000-0002-3708-3757",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4323669338",
+    "doi": "10.1002/aenm.202203861",
+    "title": "Organic‐Additive‐Derived Cathode Electrolyte Interphase Layer Mitigating Intertwined Chemical and Mechanical Degradation for Sulfide‐Based Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2023-03-09",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 29,
+    "citation_normalized_percentile": 0.94067696,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202203861",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Chanhyun Park",
+    "authors_display": "Chanhyun Park; Juho Lee; Sangpyo Lee; Yu Han; Jin‐Soo Kim; Sung‐Kyun Jung",
+    "authors_json": "[{\"display_name\": \"Chanhyun Park\", \"id\": \"https://openalex.org/A5101704933\", \"orcid\": \"https://orcid.org/0000-0003-2231-8071\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Juho Lee\", \"id\": \"https://openalex.org/A5100680425\", \"orcid\": \"https://orcid.org/0009-0007-1756-9825\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sangpyo Lee\", \"id\": \"https://openalex.org/A5078523116\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Han\", \"id\": \"https://openalex.org/A5112900246\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jin‐Soo Kim\", \"id\": \"https://openalex.org/A5100390255\", \"orcid\": \"https://orcid.org/0000-0001-8217-5071\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Sung‐Kyun Jung\", \"id\": \"https://openalex.org/A5046353772\", \"orcid\": \"https://orcid.org/0000-0002-3708-3757\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773303846687,
+    "actual_start_ms": 1773303846689,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 0.904
+  }
+}

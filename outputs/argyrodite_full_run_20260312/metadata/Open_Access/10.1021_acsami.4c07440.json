@@ -1,0 +1,138 @@
+{
+  "doi": "10.1021/acsami.4c07440",
+  "pdf_filename": "10.1021_acsami.4c07440.pdf",
+  "json_filename": "10.1021_acsami.4c07440.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsami.4c07440.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4402031185",
+    "doi": "10.1021/acsami.4c07440",
+    "title": "Ion Transport at Polymer–Argyrodite Interfaces",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2024-08-30",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.78027112,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Yuxi Chen",
+    "authors_display": "Yuxi Chen; Dongyue Liang; Elizabeth Lee; Sokseiha Muy; Maxime Guillaume; Marc‐David Braida; Antoine Emery; Nicola Marzari; Juan Pablo",
+    "authors": [
+      {
+        "display_name": "Yuxi Chen",
+        "id": "https://openalex.org/A5100764263",
+        "orcid": "https://orcid.org/0000-0001-8191-8312",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dongyue Liang",
+        "id": "https://openalex.org/A5084520896",
+        "orcid": "https://orcid.org/0000-0001-8003-7580",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Elizabeth Lee",
+        "id": "https://openalex.org/A5100786315",
+        "orcid": "https://orcid.org/0000-0001-9143-3140",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sokseiha Muy",
+        "id": "https://openalex.org/A5053021924",
+        "orcid": "https://orcid.org/0000-0001-6457-9187",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maxime Guillaume",
+        "id": "https://openalex.org/A5107954834",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marc‐David Braida",
+        "id": "https://openalex.org/A5014842922",
+        "orcid": "https://orcid.org/0000-0002-0718-7280",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Antoine Emery",
+        "id": "https://openalex.org/A5030564890",
+        "orcid": "https://orcid.org/0000-0002-5420-9155",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nicola Marzari",
+        "id": "https://openalex.org/A5005167296",
+        "orcid": "https://orcid.org/0000-0002-9764-0199",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Juan Pablo",
+        "id": "https://openalex.org/A5068853530",
+        "orcid": "https://orcid.org/0000-0002-3526-516X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4402031185",
+    "doi": "10.1021/acsami.4c07440",
+    "title": "Ion Transport at Polymer–Argyrodite Interfaces",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2024-08-30",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.78027112,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Yuxi Chen",
+    "authors_display": "Yuxi Chen; Dongyue Liang; Elizabeth Lee; Sokseiha Muy; Maxime Guillaume; Marc‐David Braida; Antoine Emery; Nicola Marzari; Juan Pablo",
+    "authors_json": "[{\"display_name\": \"Yuxi Chen\", \"id\": \"https://openalex.org/A5100764263\", \"orcid\": \"https://orcid.org/0000-0001-8191-8312\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Dongyue Liang\", \"id\": \"https://openalex.org/A5084520896\", \"orcid\": \"https://orcid.org/0000-0001-8003-7580\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Elizabeth Lee\", \"id\": \"https://openalex.org/A5100786315\", \"orcid\": \"https://orcid.org/0000-0001-9143-3140\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sokseiha Muy\", \"id\": \"https://openalex.org/A5053021924\", \"orcid\": \"https://orcid.org/0000-0001-6457-9187\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maxime Guillaume\", \"id\": \"https://openalex.org/A5107954834\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marc‐David Braida\", \"id\": \"https://openalex.org/A5014842922\", \"orcid\": \"https://orcid.org/0000-0002-0718-7280\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Antoine Emery\", \"id\": \"https://openalex.org/A5030564890\", \"orcid\": \"https://orcid.org/0000-0002-5420-9155\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nicola Marzari\", \"id\": \"https://openalex.org/A5005167296\", \"orcid\": \"https://orcid.org/0000-0002-9764-0199\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Juan Pablo\", \"id\": \"https://openalex.org/A5068853530\", \"orcid\": \"https://orcid.org/0000-0002-3526-516X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsami.4c07440",
+    "landing_title": "Ion Transport at Polymer–Argyrodite Interfaces | ACS Applied Materials & Interfaces",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acsami.4c07440.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773306419760,
+    "actual_start_ms": 1773306427703,
+    "pacing_wait_ms": 7943,
+    "pacing_jitter_sec": 0.94
+  }
+}

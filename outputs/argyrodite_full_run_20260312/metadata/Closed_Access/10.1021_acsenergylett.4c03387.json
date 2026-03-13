@@ -1,0 +1,144 @@
+{
+  "doi": "10.1021/acsenergylett.4c03387",
+  "pdf_filename": "10.1021_acsenergylett.4c03387.pdf",
+  "json_filename": "10.1021_acsenergylett.4c03387.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.4c03387.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4407974910",
+    "doi": "10.1021/acsenergylett.4c03387",
+    "title": "Densifying Solid Electrolytes through Surface Lubrication to Mitigate Shorting of Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2025-02-26",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.97591741,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Mengchen Liu",
+    "authors_display": "Mengchen Liu; E. D. Lu; Shen Wang; Shijie Feng; Junwei Gao; Wenlin Yan; Jeong Woo Oh; Min‐Sang Song; Jian Luo; Ping Liu",
+    "authors": [
+      {
+        "display_name": "Mengchen Liu",
+        "id": "https://openalex.org/A5038127718",
+        "orcid": "https://orcid.org/0009-0003-4047-9116",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "E. D. Lu",
+        "id": "https://openalex.org/A5014052918",
+        "orcid": "https://orcid.org/0000-0002-1323-3079",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shen Wang",
+        "id": "https://openalex.org/A5067647721",
+        "orcid": "https://orcid.org/0000-0002-5013-1039",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Feng",
+        "id": "https://openalex.org/A5079082315",
+        "orcid": "https://orcid.org/0000-0001-5797-8542",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junwei Gao",
+        "id": "https://openalex.org/A5009457931",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenlin Yan",
+        "id": "https://openalex.org/A5036355534",
+        "orcid": "https://orcid.org/0000-0002-1778-3780",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeong Woo Oh",
+        "id": "https://openalex.org/A5106607264",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Min‐Sang Song",
+        "id": "https://openalex.org/A5015453603",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jian Luo",
+        "id": "https://openalex.org/A5071388400",
+        "orcid": "https://orcid.org/0000-0002-5424-0216",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ping Liu",
+        "id": "https://openalex.org/A5100646646",
+        "orcid": "https://orcid.org/0000-0002-1488-1668",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4407974910",
+    "doi": "10.1021/acsenergylett.4c03387",
+    "title": "Densifying Solid Electrolytes through Surface Lubrication to Mitigate Shorting of Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2025-02-26",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 11,
+    "citation_normalized_percentile": 0.97591741,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Mengchen Liu",
+    "authors_display": "Mengchen Liu; E. D. Lu; Shen Wang; Shijie Feng; Junwei Gao; Wenlin Yan; Jeong Woo Oh; Min‐Sang Song; Jian Luo; Ping Liu",
+    "authors_json": "[{\"display_name\": \"Mengchen Liu\", \"id\": \"https://openalex.org/A5038127718\", \"orcid\": \"https://orcid.org/0009-0003-4047-9116\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"E. D. Lu\", \"id\": \"https://openalex.org/A5014052918\", \"orcid\": \"https://orcid.org/0000-0002-1323-3079\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shen Wang\", \"id\": \"https://openalex.org/A5067647721\", \"orcid\": \"https://orcid.org/0000-0002-5013-1039\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Feng\", \"id\": \"https://openalex.org/A5079082315\", \"orcid\": \"https://orcid.org/0000-0001-5797-8542\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junwei Gao\", \"id\": \"https://openalex.org/A5009457931\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wenlin Yan\", \"id\": \"https://openalex.org/A5036355534\", \"orcid\": \"https://orcid.org/0000-0002-1778-3780\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeong Woo Oh\", \"id\": \"https://openalex.org/A5106607264\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Min‐Sang Song\", \"id\": \"https://openalex.org/A5015453603\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jian Luo\", \"id\": \"https://openalex.org/A5071388400\", \"orcid\": \"https://orcid.org/0000-0002-5424-0216\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ping Liu\", \"id\": \"https://openalex.org/A5100646646\", \"orcid\": \"https://orcid.org/0000-0002-1488-1668\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.4c03387",
+    "landing_title": "Densifying Solid Electrolytes through Surface Lubrication to Mitigate Shorting of Solid-State Batteries | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsenergylett.4c03387.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773304714268,
+    "actual_start_ms": 1773304741527,
+    "pacing_wait_ms": 27259,
+    "pacing_jitter_sec": 1.757
+  }
+}

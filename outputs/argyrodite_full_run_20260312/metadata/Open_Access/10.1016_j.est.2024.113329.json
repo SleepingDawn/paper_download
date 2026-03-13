@@ -1,0 +1,166 @@
+{
+  "doi": "10.1016/j.est.2024.113329",
+  "pdf_filename": "10.1016_j.est.2024.113329.pdf",
+  "json_filename": "10.1016_j.est.2024.113329.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.est.2024.113329.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4401670363",
+    "doi": "10.1016/j.est.2024.113329",
+    "title": "Cobalt-free cathodes and silicon thin-film anodes towards high-capacity solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Storage",
+      "id": "https://openalex.org/S2764865925",
+      "type": "journal",
+      "issn_l": "2352-152X",
+      "issn": [
+        "2352-152X",
+        "2352-1538"
+      ]
+    },
+    "publication_date": "2024-08-18",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.69159054,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Ryan Brow",
+    "authors_display": "Ryan Brow; Zachary Berquist; Steven Lee; Trevor R. Martin; Lydia Meyer; Maxwell C. Schulze; Avtar Singh; Ryan J. Tancin; Glenn Teeter; Gabriel M. Veith; Bertrand J. Tremolet de Villers; Andrew M. Colclasure; Arumugam Manthiram",
+    "authors": [
+      {
+        "display_name": "Ryan Brow",
+        "id": "https://openalex.org/A5018479205",
+        "orcid": "https://orcid.org/0000-0001-5984-2446",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zachary Berquist",
+        "id": "https://openalex.org/A5085933352",
+        "orcid": "https://orcid.org/0000-0002-4838-8644",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Steven Lee",
+        "id": "https://openalex.org/A5100666685",
+        "orcid": "https://orcid.org/0000-0002-4935-9263",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Trevor R. Martin",
+        "id": "https://openalex.org/A5022517888",
+        "orcid": "https://orcid.org/0000-0001-5257-5293",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lydia Meyer",
+        "id": "https://openalex.org/A5089974136",
+        "orcid": "https://orcid.org/0000-0002-2361-1512",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Maxwell C. Schulze",
+        "id": "https://openalex.org/A5004592482",
+        "orcid": "https://orcid.org/0000-0001-8368-4054",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Avtar Singh",
+        "id": "https://openalex.org/A5022548683",
+        "orcid": "https://orcid.org/0000-0002-5184-9085",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ryan J. Tancin",
+        "id": "https://openalex.org/A5071737653",
+        "orcid": "https://orcid.org/0000-0001-7973-854X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Glenn Teeter",
+        "id": "https://openalex.org/A5005730457",
+        "orcid": "https://orcid.org/0000-0001-8202-8477",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gabriel M. Veith",
+        "id": "https://openalex.org/A5039183578",
+        "orcid": "https://orcid.org/0000-0002-5186-4461",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bertrand J. Tremolet de Villers",
+        "id": "https://openalex.org/A5058350226",
+        "orcid": "https://orcid.org/0000-0001-8685-539X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andrew M. Colclasure",
+        "id": "https://openalex.org/A5061800926",
+        "orcid": "https://orcid.org/0000-0002-9574-5106",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Arumugam Manthiram",
+        "id": "https://openalex.org/A5066705036",
+        "orcid": "https://orcid.org/0000-0003-0237-9563",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4401670363",
+    "doi": "10.1016/j.est.2024.113329",
+    "title": "Cobalt-free cathodes and silicon thin-film anodes towards high-capacity solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Storage",
+    "journal_id": "https://openalex.org/S2764865925",
+    "journal_type": "journal",
+    "journal_issn_l": "2352-152X",
+    "journal_issn_json": "[\"2352-152X\", \"2352-1538\"]",
+    "publication_date": "2024-08-18",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": 0.69159054,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Ryan Brow",
+    "authors_display": "Ryan Brow; Zachary Berquist; Steven Lee; Trevor R. Martin; Lydia Meyer; Maxwell C. Schulze; Avtar Singh; Ryan J. Tancin; Glenn Teeter; Gabriel M. Veith; Bertrand J. Tremolet de Villers; Andrew M. Colclasure; Arumugam Manthiram",
+    "authors_json": "[{\"display_name\": \"Ryan Brow\", \"id\": \"https://openalex.org/A5018479205\", \"orcid\": \"https://orcid.org/0000-0001-5984-2446\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Zachary Berquist\", \"id\": \"https://openalex.org/A5085933352\", \"orcid\": \"https://orcid.org/0000-0002-4838-8644\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Steven Lee\", \"id\": \"https://openalex.org/A5100666685\", \"orcid\": \"https://orcid.org/0000-0002-4935-9263\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Trevor R. Martin\", \"id\": \"https://openalex.org/A5022517888\", \"orcid\": \"https://orcid.org/0000-0001-5257-5293\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lydia Meyer\", \"id\": \"https://openalex.org/A5089974136\", \"orcid\": \"https://orcid.org/0000-0002-2361-1512\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Maxwell C. Schulze\", \"id\": \"https://openalex.org/A5004592482\", \"orcid\": \"https://orcid.org/0000-0001-8368-4054\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Avtar Singh\", \"id\": \"https://openalex.org/A5022548683\", \"orcid\": \"https://orcid.org/0000-0002-5184-9085\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ryan J. Tancin\", \"id\": \"https://openalex.org/A5071737653\", \"orcid\": \"https://orcid.org/0000-0001-7973-854X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Glenn Teeter\", \"id\": \"https://openalex.org/A5005730457\", \"orcid\": \"https://orcid.org/0000-0001-8202-8477\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gabriel M. Veith\", \"id\": \"https://openalex.org/A5039183578\", \"orcid\": \"https://orcid.org/0000-0002-5186-4461\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bertrand J. Tremolet de Villers\", \"id\": \"https://openalex.org/A5058350226\", \"orcid\": \"https://orcid.org/0000-0001-8685-539X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Andrew M. Colclasure\", \"id\": \"https://openalex.org/A5061800926\", \"orcid\": \"https://orcid.org/0000-0002-9574-5106\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Arumugam Manthiram\", \"id\": \"https://openalex.org/A5066705036\", \"orcid\": \"https://orcid.org/0000-0003-0237-9563\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2352152X24029153?via%3Dihub",
+    "landing_title": "Cobalt-free cathodes and silicon thin-film anodes towards high-capacity solid-state batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773307246388,
+    "actual_start_ms": 1773307252664,
+    "pacing_wait_ms": 6276,
+    "pacing_jitter_sec": 1.084
+  }
+}

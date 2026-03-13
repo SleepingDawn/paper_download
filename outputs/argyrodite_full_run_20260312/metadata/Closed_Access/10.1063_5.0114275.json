@@ -1,0 +1,97 @@
+{
+  "doi": "10.1063/5.0114275",
+  "pdf_filename": "10.1063_5.0114275.pdf",
+  "json_filename": "10.1063_5.0114275.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1063_5.0114275.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4309038907",
+    "doi": "10.1063/5.0114275",
+    "title": "Oxygen doped argyrodite electrolyte for all-solid-state lithium batteries",
+    "publisher": "American Institute of Physics",
+    "journal": {
+      "name": "Applied Physics Letters",
+      "id": "https://openalex.org/S105243760",
+      "type": "journal",
+      "issn_l": "0003-6951",
+      "issn": [
+        "0003-6951",
+        "1077-3118",
+        "1520-8842"
+      ]
+    },
+    "publication_date": "2022-11-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.86687479,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Ming Wu",
+    "authors_display": "Ming Wu; Gaozhan Liu; Xiayin Yao",
+    "authors": [
+      {
+        "display_name": "Ming Wu",
+        "id": "https://openalex.org/A5101180112",
+        "orcid": "https://orcid.org/0009-0004-6574-3320",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gaozhan Liu",
+        "id": "https://openalex.org/A5003110536",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xiayin Yao",
+        "id": "https://openalex.org/A5058800364",
+        "orcid": "https://orcid.org/0000-0002-2224-4247",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4309038907",
+    "doi": "10.1063/5.0114275",
+    "title": "Oxygen doped argyrodite electrolyte for all-solid-state lithium batteries",
+    "publisher": "American Institute of Physics",
+    "journal": "Applied Physics Letters",
+    "journal_id": "https://openalex.org/S105243760",
+    "journal_type": "journal",
+    "journal_issn_l": "0003-6951",
+    "journal_issn_json": "[\"0003-6951\", \"1077-3118\", \"1520-8842\"]",
+    "publication_date": "2022-11-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.86687479,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Ming Wu",
+    "authors_display": "Ming Wu; Gaozhan Liu; Xiayin Yao",
+    "authors_json": "[{\"display_name\": \"Ming Wu\", \"id\": \"https://openalex.org/A5101180112\", \"orcid\": \"https://orcid.org/0009-0004-6574-3320\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Gaozhan Liu\", \"id\": \"https://openalex.org/A5003110536\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xiayin Yao\", \"id\": \"https://openalex.org/A5058800364\", \"orcid\": \"https://orcid.org/0000-0002-2224-4247\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.aip.org/aip/apl/article/121/20/203904/2834803/Oxygen-doped-argyrodite-electrolyte-for-all-solid",
+    "landing_title": "Oxygen doped argyrodite electrolyte for all-solid-state lithium batteries | Applied Physics Letters | AIP Publishing",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "aip",
+    "scheduled_start_ms": 1773310476445,
+    "actual_start_ms": 1773310484309,
+    "pacing_wait_ms": 7863,
+    "pacing_jitter_sec": 0.854
+  }
+}

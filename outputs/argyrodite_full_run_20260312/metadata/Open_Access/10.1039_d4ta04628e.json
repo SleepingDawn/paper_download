@@ -1,0 +1,159 @@
+{
+  "doi": "10.1039/d4ta04628e",
+  "pdf_filename": "10.1039_d4ta04628e.pdf",
+  "json_filename": "10.1039_d4ta04628e.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_d4ta04628e.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4402379574",
+    "doi": "10.1039/d4ta04628e",
+    "title": "Optimizing ionic transport in argyrodites: a unified view on the role of sulfur/halide distribution and local environments",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.9266834,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2024/ta/d4ta04628e",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Anastasia K. Lavrinenko",
+    "authors_display": "Anastasia K. Lavrinenko; Theodosios Famprikis; James A. Quirk; Victor Landgraf; Pedro B. Groszewicz; Jouke R. Heringa; Stef Smeets; Victor Azizi; Simone Ciarella; James A. Dawson; Marnix Wagemaker; Alexandros Vasileiadis",
+    "authors": [
+      {
+        "display_name": "Anastasia K. Lavrinenko",
+        "id": "https://openalex.org/A5028342379",
+        "orcid": "https://orcid.org/0000-0001-9863-8325",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Theodosios Famprikis",
+        "id": "https://openalex.org/A5027910905",
+        "orcid": "https://orcid.org/0000-0002-7946-1445",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "James A. Quirk",
+        "id": "https://openalex.org/A5084926943",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Victor Landgraf",
+        "id": "https://openalex.org/A5025856783",
+        "orcid": "https://orcid.org/0000-0003-2169-6855",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pedro B. Groszewicz",
+        "id": "https://openalex.org/A5086824573",
+        "orcid": "https://orcid.org/0000-0002-5246-6449",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jouke R. Heringa",
+        "id": "https://openalex.org/A5038314843",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Stef Smeets",
+        "id": "https://openalex.org/A5035933096",
+        "orcid": "https://orcid.org/0000-0002-5413-9038",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Victor Azizi",
+        "id": "https://openalex.org/A5073142470",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Simone Ciarella",
+        "id": "https://openalex.org/A5068926040",
+        "orcid": "https://orcid.org/0000-0002-9247-139X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "James A. Dawson",
+        "id": "https://openalex.org/A5033978022",
+        "orcid": "https://orcid.org/0000-0002-3946-5337",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marnix Wagemaker",
+        "id": "https://openalex.org/A5034244816",
+        "orcid": "https://orcid.org/0000-0003-3851-1044",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Alexandros Vasileiadis",
+        "id": "https://openalex.org/A5024365367",
+        "orcid": "https://orcid.org/0000-0001-9761-7936",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4402379574",
+    "doi": "10.1039/d4ta04628e",
+    "title": "Optimizing ionic transport in argyrodites: a unified view on the role of sulfur/halide distribution and local environments",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.9266834,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2024/ta/d4ta04628e",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Anastasia K. Lavrinenko",
+    "authors_display": "Anastasia K. Lavrinenko; Theodosios Famprikis; James A. Quirk; Victor Landgraf; Pedro B. Groszewicz; Jouke R. Heringa; Stef Smeets; Victor Azizi; Simone Ciarella; James A. Dawson; Marnix Wagemaker; Alexandros Vasileiadis",
+    "authors_json": "[{\"display_name\": \"Anastasia K. Lavrinenko\", \"id\": \"https://openalex.org/A5028342379\", \"orcid\": \"https://orcid.org/0000-0001-9863-8325\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Theodosios Famprikis\", \"id\": \"https://openalex.org/A5027910905\", \"orcid\": \"https://orcid.org/0000-0002-7946-1445\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"James A. Quirk\", \"id\": \"https://openalex.org/A5084926943\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Victor Landgraf\", \"id\": \"https://openalex.org/A5025856783\", \"orcid\": \"https://orcid.org/0000-0003-2169-6855\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pedro B. Groszewicz\", \"id\": \"https://openalex.org/A5086824573\", \"orcid\": \"https://orcid.org/0000-0002-5246-6449\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jouke R. Heringa\", \"id\": \"https://openalex.org/A5038314843\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Stef Smeets\", \"id\": \"https://openalex.org/A5035933096\", \"orcid\": \"https://orcid.org/0000-0002-5413-9038\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Victor Azizi\", \"id\": \"https://openalex.org/A5073142470\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Simone Ciarella\", \"id\": \"https://openalex.org/A5068926040\", \"orcid\": \"https://orcid.org/0000-0002-9247-139X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"James A. Dawson\", \"id\": \"https://openalex.org/A5033978022\", \"orcid\": \"https://orcid.org/0000-0002-3946-5337\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marnix Wagemaker\", \"id\": \"https://openalex.org/A5034244816\", \"orcid\": \"https://orcid.org/0000-0003-3851-1044\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Alexandros Vasileiadis\", \"id\": \"https://openalex.org/A5024365367\", \"orcid\": \"https://orcid.org/0000-0001-9761-7936\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773308717876,
+    "actual_start_ms": 1773308717876,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.562
+  }
+}

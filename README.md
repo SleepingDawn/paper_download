@@ -1,361 +1,531 @@
 # Paper Download Pipeline
 
-DOI 목록을 입력받아 PDF를 다운로드하는 파이프라인입니다.  
-`Sci-Hub -> direct OA(CFFI) -> publisher API -> Drission 브라우저` 순서로 시도하며, 실패 원인/로그/스크린샷을 함께 남깁니다.
+DOI 목록을 입력받아 PDF를 내려받는 파이프라인입니다.
 
-현재 다운로드 기본축은 다음과 같습니다.
-- 1차 다운로드는 parser 기준 `--headless`로 제어
-- deep retry는 `--deep-retry-headless`로 별도 제어 가능
-- 랜딩 단계에서 `captcha/challenge/block`가 감지되면 기본적으로 즉시 중단 (`--abort-on-landing-block 1`)
-- `--precheck-landing 1`이면 다운로드 전에 strict landing precheck를 먼저 수행
+이 저장소에서 다루는 핵심 흐름은 두 가지입니다.
 
-최근 반영된 핵심 변경:
-- Springer처럼 `Download PDF` 클릭이 바로 파일 저장으로 이어지는 케이스를 publisher 한정 없이 공통 direct-download 경로에서 감지
-- `page.download(...)` 반환 결과를 직접 확정해 브라우저 다운로드를 놓치지 않도록 보강
-- Elsevier는 article -> viewer -> signed PDF/viewer 다운로드 중심의 `viewer-first` 유지
-- Powdermat는 article page가 agreement 화면으로 덮여도 `view.php?doi=...`의 서버 HTML을 article snapshot으로 재평가하는 fallback 추가
+1. `landing_access_repro.py`
+   DOI 랜딩이 실제 논문 페이지까지 안정적으로 도달하는지 검사합니다.
+2. `parallel_download.py`
+   랜딩 확인과 PDF 다운로드를 한 번에 수행합니다.
 
-## 1. 설치
+이 문서는 실제 사용 예시, 필요한 입력 형식, 기본 세팅, 다운로드 전략, bot-detection 회피 방식, domain별 특수 전략만 정리합니다.
+
+## 설치
 
 ```bash
 cd /Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download
 python3 -m pip install -r requirements.txt
 ```
 
-서버(헤드리스) 환경이면 Chrome/Chromium 설치 후 `CHROME_PATH`를 지정하세요.
-
-## 2. 빠른 실행 예시
-
-### 2-0. 서버(Linux CLI)에서 랜딩만 검사 (다운로드 없음)
-
-`landing_access_repro.py`는 DOI 랜딩 성공 여부만 검사하고, 실패 시 HTML/메타 로그를 남깁니다. 실패 스크린샷은 `--capture-fail-screenshot 1`일 때만 저장됩니다.
-새 분류기는 `success_landing`, `challenge_detected`, `blank_or_incomplete`, `consent_or_interstitial_block`, `broken_js_shell`, `domain_mismatch`, `publisher_error`, `timeout`, `network_error`, `unknown_non_success` 상태를 기록합니다.
-기본 probe 모드는 실험상 더 안정적이었던 `reuse_page`이며, `fresh_tab`은 A/B 비교용으로만 남겨두었습니다.
-현재 기본 실행값은 로컬 랜딩 성공 우선 기준으로 `--workers 1`, `--headless 0`입니다.
-
-먼저 서버에서 브라우저 경로를 확인하세요:
+Chrome/Chromium이 필요합니다. 서버 환경이라면 `CHROME_PATH`를 지정하세요.
 
 ```bash
 which google-chrome || which google-chrome-stable || which chromium-browser || which chromium || which chrome
 ```
 
+## 필요한 입력과 형식
+
+### 1. 다운로드용 CSV
+
+`parallel_download.py --doi_path ...`를 사용할 때는 아래 컬럼을 권장합니다.
+
+필수:
+
+- `doi`
+- `open_access`
+
+강력 권장:
+
+- `publisher`
+- `pdf_url`
+- `title`
+
+주의:
+
+- 현재 다운로드 파이프라인은 `open_access` 컬럼을 실제 경로 분기에 사용합니다.
+- 따라서 `doi`만 넣으면 안 되고, 최소한 `open_access`까지는 있어야 합니다.
+- `open_access` 값은 `True` / `False` 형태를 권장합니다.
+
+예시:
+
+```csv
+doi,publisher,pdf_url,open_access,title
+10.1016/j.scitotenv.2024.172816,Elsevier,,False,Environmental assessment title
+10.1038/s41467-023-41868-5,Nature,https://www.nature.com/articles/s41467-023-41868-5.pdf,True,Nature example title
+10.1109/JEDS.2023.3253137,IEEE,https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10061582,True,IEEE example title
+```
+
+컬럼 설명:
+
+- `doi`: DOI 원문 문자열
+- `publisher`: 퍼블리셔 이름 또는 힌트. 전략 선택 정확도를 높입니다.
+- `pdf_url`: 이미 알고 있는 PDF 또는 viewer URL. OA 논문에서 특히 유용합니다.
+- `open_access`: `True`면 `Open_Access/`, `False`면 `Closed_Access/` 아래로 저장됩니다.
+- `title`: landing 진단과 일부 publisher 보조 복구에 도움을 줍니다.
+
+### 2. 랜딩 검사 입력
+
+`landing_access_repro.py --input ...`는 보통 같은 CSV를 그대로 사용할 수 있습니다.
+
+landing-only 검사에서는 `doi`만 있어도 돌아가지만, 아래 컬럼이 같이 있으면 분류 정확도가 더 좋아집니다.
+
+- `publisher`
+- `title`
+- `pdf_url`
+
+### 3. 검색 기반 실행
+
+CSV가 없으면 `parallel_download.py --query ...`로 OpenAlex 검색 후 다운로드할 수 있습니다.
+
+이 경우 내부에서 CSV를 생성해 같은 파이프라인으로 내려갑니다.
+
+OpenAlex 검색 단계 주의:
+
+- 현재 search는 `type:article`만 수집합니다.
+- SSRN, Zenodo, Figshare 같은 repository DOI가 잡힌 work라도, `title + first author + year` 기준으로 published work가 강하게 매칭되면 검색 단계에서 published DOI로 치환합니다.
+- 이때 원래 repository DOI는 버리지 않고 CSV의 `original_doi` 컬럼에 같이 남깁니다.
+- 반대로 published 후보가 약하면 repository DOI를 그대로 유지합니다.
+
+다운로드 없이 OpenAlex 검색 결과 CSV만 먼저 보고 싶다면, 현재는 별도 CLI 대신 `openalex_search.main_search()`를 직접 호출하는 방식이 가장 간단합니다.
+
+## 기본 세팅
+
+### 다운로드 기본값
+
+`parallel_download.py` 기본값:
+
+- `max_workers=1`
+- `after-first-pass=stop`
+- `precheck-landing=0`
+- `abort-on-landing-block=1`
+- `headless=None`
+- `deep_retry_headless=None`
+- `output_dir=outputs/paper_download_run`
+- `pdf_output_dir=None`
+- `publisher_cooldown_sec=7.0`
+- `global_start_spacing_sec=1.5`
+- `jitter_min_sec=0.7`
+- `jitter_max_sec=1.8`
+
+실제 해석:
+
+- `headless=None`이면 `PDF_BROWSER_HEADLESS` 환경변수를 따릅니다.
+- 환경변수도 없으면 로컬 desktop 기준으로는 사실상 `headful`이지만, `execution-env=linux_cli`면 자동으로 `headless`가 강제됩니다.
+- `deep_retry_headless=None`이면 1차 패스의 `headless` 값을 그대로 따릅니다.
+- `pdf_output_dir`를 생략하면 `pdfs/<run_name>/`를 자동 사용합니다.
+- `abort-on-landing-block=1`이 기본이라, landing에서 `captcha/challenge/block`가 보이면 즉시 중단합니다.
+
+### 랜딩 검사 기본값
+
+`landing_access_repro.py` 기본값:
+
+- `input=ready_to_download.csv`
+- `workers=1`
+- `headless=0`
+- `timeout_sec=15`
+- `per_doi_deadline_sec=45`
+- `max_nav_attempts=2`
+- `probe_page_mode=reuse_page`
+- `capture_fail_screenshot=0`
+- `profile_mode=auto`
+- `profile_name=Default`
+- `persistent_profile_dir=outputs/.chrome_user_data`
+
+실제 해석:
+
+- 기본 랜딩 검사는 로컬 desktop 안정성 기준으로 `headful + single worker`입니다.
+- Linux CLI에서는 `execution-env=linux_cli`가 자동/명시 적용되면 headless-only로 동작합니다.
+- 실패 스크린샷은 기본적으로 저장하지 않고, HTML/JSON 진단 위주로 남깁니다.
+
+## 실제 사용 예시
+
+### 1. 다운로드 전 OpenAlex 검색 CSV만 만들 때
+
+현재 `openalex_search.py`는 독립 CLI 인자를 직접 받지 않으므로, 아래처럼 Python one-liner로 `main_search()`만 호출하는 방식이 가장 안전합니다.
+
 ```bash
-python3 -u landing_access_repro.py \
-  --input ready_to_download.csv \
-  --max-dois 100 \
-  --workers 1 \
-  --startup-retries 3 \
-  --timeout-sec 18 \
-  --per-doi-deadline-sec 75 \
-  --max-nav-attempts 2 \
-  --publisher-cooldown-sec 7 \
-  --global-start-spacing-sec 1.5 \
-  --jitter-min-sec 0.7 \
-  --jitter-max-sec 1.8 \
-  --headless 0 \
-  --no-sandbox 1 \
-  --server-tuned 1 \
-  --single-process 0 \
-  --humanized-browser 1 \
-  --assume-institution-access 1 \
-  --profile-mode auto \
-  --profile-name Default \
-  --persistent-profile-dir outputs/.chrome_user_data \
-  --worker-profile-root "${SLURM_TMPDIR:-/tmp/$USER}/landing_worker_profiles" \
-  --clean-worker-profiles 1 \
-  --capture-fail-artifacts 1 \
-  --capture-fail-screenshot 0 \
-  --capture-success-artifacts 1 \
-  --capture-success-html 0 \
-  --artifact-dir outputs/landing_access_artifacts \
-  --zip-fail-artifacts 1 \
-  --artifact-zip outputs/landing_access_failures.zip \
-  --zip-success-artifacts 1 \
-  --success-artifact-zip outputs/landing_access_successes.zip \
-  --probe-page-mode reuse_page \
-  --output-jsonl outputs/landing_access_repro.top100.jsonl \
-  --report outputs/landing_access_repro.top100.report.json \
-  --report-md outputs/landing_access_repro.top100.report.md
+python3 - <<'PY'
+from openalex_search import main_search
+
+csv_path = main_search(
+    pdf_save_dir="outputs/search_only_run",
+    csv_name="Searched_DOIs.csv",
+    query='("argyrodite*" OR "Li6PS5Cl" OR "Li6PS5Br" OR "Li6PS5I" OR "Li6PS5X") AND ("Li-ion" OR "Lithium-ion" OR "Lithium" OR "solid-state electrolyte*" OR "solid state electrolyte*" OR "solid electrolyte*" OR "SSE*" OR "all-solid-state" OR "ASSB*" OR "solid-state batter*" OR "solid state batter*" OR "SSB*" OR "ionic conduct*")',
+    max_num=5000,
+    citation_percentile=0.99,
+)
+print(csv_path)
+PY
 ```
 
 산출물:
-- `outputs/landing_access_repro.*.jsonl`
-- `outputs/landing_access_repro.*.report.json`
-- `outputs/landing_access_repro.*.report.md`
-- `outputs/landing_access_artifacts/fail/landing_fail_*.html`
-- `outputs/landing_access_artifacts/fail/landing_fail_*.json`
-- `outputs/landing_access_artifacts/fail/landing_fail_*.png` (`--capture-fail-screenshot 1`일 때만 생성)
-- `outputs/landing_access_artifacts/success/landing_success_*.png`
-- `outputs/landing_access_artifacts/success/landing_success_*.json`
-- `outputs/landing_access_failures.zip` (실패 케이스 묶음, `manifest_fail.json` 포함)
-- `outputs/landing_access_successes.zip` (성공 케이스 묶음, `manifest_success.json` 포함)
 
-참고:
-- 로컬 성공 우선 기본값은 `workers=1`, `headless=0`, `probe_page_mode=reuse_page`입니다.
-- 실패 스크린샷 기본값은 `--capture-fail-screenshot 0`입니다. 실패 HTML/JSON만 남기고 싶으면 그대로 두고, PNG까지 필요할 때만 `1`로 켜면 됩니다.
-- 워커 수는 안전상 최대 2로 제한됩니다. 같은 퍼블리셔는 전역 cooldown/jitter를 두고 순차적으로 시작합니다.
-- DOI당 전체 시간은 `--per-doi-deadline-sec`로 하드캡되며 2분 미만으로 유지됩니다.
-- 결과 JSONL/메타에는 `worker_idx`, `probe_page_mode`, `scheduled_start_ms`, `actual_start_ms`, `pacing_wait_ms`, `timing_breakdown`, `attempt_history`가 함께 기록됩니다.
-- `challenge_detected`가 뜬 퍼블리셔는 같은 워커/세션에서 곧바로 다시 두드리지 않도록 추가 holdoff를 둡니다.
-- Elsevier `linkinghub/.../retrieve/pii/...` + 제목 `Redirecting` 상태는 성공으로 보지 않습니다.
-- 스크립트는 DOI/interstitial 페이지에서 추출 가능한 canonical/article URL이 있으면 같은 시도 안에서 1회만 더 따라가고, 그 뒤에도 retrieve/interstitial에 머무르면 비성공으로 기록합니다.
-- `validate.perfdrive.com` 같은 벤더 스크립트 참조만으로는 challenge로 보지 않고, 실제 challenge UI/문구/URL 신호가 있을 때만 `challenge_detected`로 기록합니다.
-- JS shell이 깨져 기사 본문이 렌더링되지 않으면 `broken_js_shell`, publisher metadata와 실제 기사 도메인 계열이 어긋나면 `domain_mismatch`로 별도 기록합니다.
-- `institutional login`, `shibboleth`, `openathens` 같은 내비게이션 문구가 있어도 실제 article metadata와 본문이 충분하면 성공으로 인정합니다. 반대로 본문을 가리는 consent/login/paywall은 계속 비성공으로 유지합니다.
+- `outputs/search_only_run/Searched_DOIs.csv`
 
-실험 비교 예시:
+추가로 확인할 수 있는 컬럼:
+
+- `original_doi`: 원래 OpenAlex가 준 DOI
+- `doi_resolution_method`: `none`, `location`, `title_match`
+- `doi_resolution_confidence`: published DOI 치환 신뢰도
+- `resolved_from_ssrn`: SSRN DOI가 출판본 DOI로 바뀌었는지 여부
+- `resolved_from_repository`: repository DOI가 출판본 DOI로 바뀌었는지 여부
+- `original_source_type`: 원래 OpenAlex source type
+
+### 2. 랜딩만 테스트할 때
+
+다운로드 없이 DOI가 실제 논문 랜딩까지 가는지만 확인합니다.
+
+Linux CLI 환경에서는 headful을 사용할 수 없으므로 `--execution-env linux_cli --headless 1`을 기준으로 운용합니다.
 
 ```bash
-python3 -u landing_experiment_compare.py \
-  --baseline-label baseline_20260308 \
-  --baseline-report outputs/landing_exp_20260308/report.json \
-  --baseline-results outputs/landing_exp_20260308/results.jsonl \
-  --candidate classifier_only=outputs/landing_exp_20260308_batch1/report.json:outputs/landing_exp_20260308_batch1/results.jsonl \
-  --candidate fresh_tab=outputs/landing_exp_20260308_batch2/report.json:outputs/landing_exp_20260308_batch2/results.jsonl \
-  --output-json outputs/landing_exp_20260308_compare/comparison.json \
-  --output-md outputs/landing_exp_20260308_compare/comparison.md
+python3 -u landing_access_repro.py \
+  --input ready_to_download.csv \
+  --workers 1 \
+  --execution-env linux_cli \
+  --headless 1 \
+  --timeout-sec 15 \
+  --per-doi-deadline-sec 45 \
+  --output-jsonl outputs/landing_access_repro.jsonl \
+  --report outputs/landing_access_repro_report.json \
+  --report-md outputs/landing_access_repro_report.md
 ```
 
-### 2-1. DOI CSV로 바로 다운로드
+### 3. 랜딩부터 다운로드까지 한꺼번에 테스트할 때
+
+`precheck-landing 0`이면 별도 선검사 없이, 실제 다운로드 과정 안에서 landing 상태도 같이 기록합니다.
 
 ```bash
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
-  --max_workers 2 \
-  --headless 0 \
+  --max_workers 1 \
+  --execution-env linux_cli \
+  --headless 1 \
   --precheck-landing 0 \
   --abort-on-landing-block 1 \
-  --output_dir outputs/run_ready_w4 \
   --after-first-pass stop \
+  --output_dir outputs/run_all_in_one \
+  --pdf_output_dir pdfs/run_all_in_one \
   --non-interactive
 ```
 
-랜딩 선확인이 필요하면 `--precheck-landing 1`을 추가합니다. 이 옵션은 다운로드 전에 `landing_access_repro.py`를 먼저 실행해 `SUCCESS_ACCESS`로 판정된 DOI만 다운로드 큐에 넣습니다.
+### 4. 랜딩을 먼저 통과한 DOI만 다운로드할 때
 
-1차는 headless, deep retry만 headful로 따로 돌리고 싶으면:
+`precheck-landing 1`이면 landing-only 검사 결과 중 성공한 DOI만 다운로드 큐에 넣습니다.
 
 ```bash
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
-  --max_workers 2 \
+  --max_workers 1 \
+  --execution-env linux_cli \
   --headless 1 \
-  --deep-retry-headless 0 \
   --precheck-landing 1 \
   --abort-on-landing-block 1 \
-  --output_dir outputs/run_ready_w2_deep_headful \
-  --after-first-pass deep \
+  --after-first-pass stop \
+  --output_dir outputs/run_with_precheck \
+  --pdf_output_dir pdfs/run_with_precheck \
   --non-interactive
 ```
 
-### 2-2. 검색 + 다운로드(OpenAlex)
+### 5. Open access만 테스트할 때
+
+현재는 `open access only` 전용 옵션이 없으므로, `open_access=True` 행만 담은 CSV를 따로 만들어 넣는 방식이 가장 안전합니다.
+
+OA-only CSV 생성 예시:
+
+```bash
+python3 - <<'PY'
+import pandas as pd
+df = pd.read_csv('ready_to_download.csv')
+oa = df[df['open_access'] == True].copy()
+oa.to_csv('ready_to_download_oa_only.csv', index=False)
+print(len(oa))
+PY
+```
+
+실행:
 
 ```bash
 python3 -u parallel_download.py \
-  --query "('solid-state electrolyte' OR 'solid electrolyte') AND battery AND Li" \
-  --max_num 300 \
-  --max_workers 2 \
+  --doi_path ready_to_download_oa_only.csv \
+  --max_workers 1 \
+  --execution-env linux_cli \
   --headless 1 \
   --precheck-landing 0 \
-  --abort-on-landing-block 1 \
-  --output_dir outputs/run_search_w2 \
   --after-first-pass stop \
+  --output_dir outputs/run_oa_only \
+  --pdf_output_dir pdfs/run_oa_only \
   --non-interactive
 ```
 
-### 2-3. 1차 실패 건 deep retry까지 수행
+### 6. Headless를 끄고 테스트할 때
+
+기본적으로는 local desktop 안정성 확인에 적합한 설정입니다. Linux CLI에서는 이 설정이 자동으로 headless로 강제됩니다.
 
 ```bash
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
-  --max_workers 2 \
-  --headless 1 \
-  --deep-retry-headless 0 \
+  --max_workers 1 \
+  --headless 0 \
   --precheck-landing 0 \
-  --abort-on-landing-block 1 \
-  --output_dir outputs/run_ready_w4_deep \
-  --after-first-pass deep \
+  --after-first-pass stop \
+  --output_dir outputs/run_headful \
+  --pdf_output_dir pdfs/run_headful \
   --non-interactive
 ```
 
-## 3. 입력 CSV 형식
+### 7. Headless를 켜고 테스트할 때
 
-최소 `doi` 컬럼이 필요합니다.  
-가능하면 아래 컬럼이 있으면 전략 선택이 정확해집니다.
+서버 또는 batch 실행용 기본 예시입니다.
 
-- `doi`
-- `publisher`
-- `pdf_url`
-- `open_access` (`True/False`)
-- `title` (선택)
+```bash
+python3 -u parallel_download.py \
+  --doi_path ready_to_download.csv \
+  --max_workers 1 \
+  --headless 1 \
+  --precheck-landing 0 \
+  --after-first-pass stop \
+  --output_dir outputs/run_headless \
+  --pdf_output_dir pdfs/run_headless \
+  --non-interactive
+```
 
-## 4. 현재 다운로드 전략(실행 순서)
+### 8. Retry 모드를 끄고 테스트할 때
 
-`parallel_download.py` 기준 1차 패스 전략:
+1차 패스만 보고 끝냅니다.
 
-1. `Sci-Hub` (항상 1순위)
-2. `direct OA CFFI` (`pdf_url`이 있으면 바로 시도)
-3. `publisher API` (Elsevier API는 시간 절약을 위해 생략)
-4. `DrissionPage` 브라우저 전략
+```bash
+python3 -u parallel_download.py \
+  --doi_path ready_to_download.csv \
+  --max_workers 1 \
+  --headless 1 \
+  --after-first-pass stop \
+  --output_dir outputs/run_no_retry \
+  --pdf_output_dir pdfs/run_no_retry \
+  --non-interactive
+```
 
-Drission 내부 전략:
+### 9. Retry 모드를 켜고 테스트할 때
 
-- DOI/article landing
-- 랜딩 직후 차단/캡차/인증 요구 판정
-  - 기본값은 `--abort-on-landing-block 1`
-  - 즉 `captcha/challenge/block`가 뜨면 다운로드 단계로 깊게 들어가지 않고 바로 중단
-  - 단 `doi.org` 단계나 기존 soft-continue 예외는 그대로 유지
-- PDF 링크 탐색
-  - `citation_pdf_url` 메타
-  - 버튼 href
-  - HTML 분석(regex/link/iframe)
-- 도메인별 클릭 전략
-  - Elsevier: article -> viewer 2단계 클릭
-  - 고차단/일반 도메인: PDF 버튼 1회 클릭 + 파일 감지
-- direct-download 감지
-  - DOI 진입 직후
-  - PDF 버튼 클릭 직후
-  - navigation으로 PDF URL 이동한 직후
-  - `page.download(...)` 반환 결과
-  - 즉, 특정 퍼블리셔 전용이 아니라 “클릭/이동 후 바로 파일이 생기는 경로”를 공통 처리
-- 링크가 있으면 `page.download` 또는 navigation 다운로드
-- 1차 패스는 빠른 경로만 사용하고 느린 fallback(requests/js/추가 CFFI)은 생략
+1차 실패건만 deep retry를 추가로 수행합니다.
 
-퍼블리셔별 현재 핵심 처리:
-- Elsevier
-  - article page를 먼저 안정화한 뒤 `View PDF`
-  - viewer/signed PDF 경로를 우선 사용
-  - 랜딩 단계에서 challenge가 보이면 기본적으로 즉시 중단
-- Springer
-  - article landing 후 `Download PDF`가 바로 파일 저장으로 이어지는 경로를 generic direct-download/DownloadKit 확정 경로로 처리
-- Powdermat
-  - 브라우저 최종 상태가 agreement로 덮여도 `view.php?doi=...`의 서버 HTML에서 DOI/title/meta가 충분하면 article landing으로 재평가
-
-`--precheck-landing 1`일 때 추가 동작:
-
-- 다운로드 전에 `landing_access_repro.py`를 별도 실행
-- `SUCCESS_ACCESS`만 다운로드 대상으로 유지
-- `FAIL_ACCESS_RIGHTS`는 landing 단계 권한 없음으로 별도 집계
-- `<output_dir>/landing_precheck/` 아래에 precheck 입력/결과/report 저장
-
-## 5. Bot-detection 회피 방식
-
-핵심은 “사람 브라우저처럼 보이되, 실패 시 빠르게 포기”입니다.
-
-- 브라우저 프로파일 보정
-  - OS/헤드리스 환경에 맞는 UA 자동 선택, 언어/윈도우 크기, `AutomationControlled` 비활성화
-  - `eager` load mode
-  - `auto` 프로필 모드에서 고마찰 DOI(Elsevier/AIP/RSC/MDPI)는 시스템 프로필 우선 사용
-  - 시스템 프로필이 없으면 `outputs/.chrome_user_data` 지속 프로필로 자동 fallback
-- 동의/쿠키 배너 자동 처리
-  - `accept/reject/continue`류 버튼 자동 클릭
-- 접근 판정 로직
-  - `detect_access_issue()`로 `FAIL_CAPTCHA/FAIL_BLOCK` 판단
-  - 다운로드 파이프라인은 기본적으로 landing 단계의 `FAIL_CAPTCHA/FAIL_BLOCK`를 hard-fail로 본다 (`--abort-on-landing-block 1`)
-  - 쿠키/동의 오버레이는 차단으로 오판하지 않도록 soft 처리
-  - URL에 challenge 토큰(`__cf_chl_rt_tk`, `/cdn-cgi/challenge` 등)이 있으면 성공으로 보지 않음
-  - `validate user` 페이지는 우회 클릭 없이 차단으로 즉시 분류
-  - `authenticate/password required` 페이지는 즉시 중단
-- 도메인 특화 처리
-  - Elsevier 추천 논문 오클릭 방지: DOI/PII 컨텍스트 가드
-  - 약한 링크(`proceedings`, `toc` 등) 필터링
-
-## 6. 시간 절약 정책
-
-현재는 “논문 전체 하드캡”이 아니라 “각 액션의 대기 상한”을 둡니다.
-
-- 무기한 대기 금지
-  - `page.get(..., timeout=...)`
-  - 파일 감지 대기, CFFI timeout, Sci-Hub 총 시간 제한
-- 액션 간 불필요 sleep 최소화
-  - 클릭 후 대기/파일 안정화 루프를 짧게 유지
-- 1차 패스 fast-path
-  - 느린 우회 전략은 deep 모드에서만 수행
-
-## 7. 주요 환경변수
-
-- parser 옵션을 우선 권장합니다. 특히 `parallel_download.py`는 `--headless`, `--deep-retry-headless`, `--abort-on-landing-block`를 직접 지원합니다.
-- `PDF_BROWSER_HEADLESS=1` : 헤드리스 실행
-- `PDF_ABORT_ON_LANDING_BLOCK=1` : landing 단계에서 captcha/challenge/block 시 즉시 중단
-- `PDF_BROWSER_NO_SANDBOX=1` : 서버 컨테이너에서 필요할 수 있음
-- `PDF_BROWSER_HUMANIZED=1` : 과도한 `--disable-*` 플래그를 줄여 사람 브라우저 지문을 우선
-- `PDF_BROWSER_UA_PLATFORM=linux|mac` : UA 플랫폼 강제(기본은 자동)
-- `CHROME_PATH=/path/to/chrome` : 브라우저 실행 파일 경로
-- `PDF_BROWSER_PROFILE_MODE=auto|temp` : 브라우저 프로필 전략 (`auto` 권장)
-- `PDF_BROWSER_PROFILE_NAME=Default` : 시스템 프로필 이름
-- `PDF_BROWSER_PERSISTENT_PROFILE_DIR=outputs/.chrome_user_data` : 시스템 프로필 미존재 시 fallback 프로필 경로
-- `PDF_ACTION_MAX_WAIT_S=60` : 액션 단위 최대 대기(초)
-- `SCIHUB_MAX_TOTAL_S=20` : Sci-Hub 전체 시도 예산(초)
-- `DIRECT_OA_CFFI_TIMEOUT_S=12` : direct OA CFFI timeout(초)
-- `PDF_IEEE_IFRAME_WAIT_S=8` : IEEE stamp iframe 대기(초)
-- `PDF_PIPELINE_MODE=baseline|candidate` : CFFI 파이프라인 모드
-
-## 8. 산출물
-
-실행 후 아래 파일이 생성됩니다.
-
-- `<output_dir>/openalex_search_results_parallel.csv`
-- `<output_dir>/failed_papers.csv`
-- `<output_dir>/Open_Access/*.pdf`
-- `<output_dir>/Closed_Access/*.pdf`
-- `<output_dir>/Open_Access/logs/download_log_*.txt`
-- `<output_dir>/Closed_Access/logs/download_log_*.txt`
-- `<output_dir>/**/logs/screenshots/final_fail_capture_*.png`
-- `<output_dir>/landing_precheck/landing_input.csv` (`--precheck-landing 1`일 때만 생성)
-- `<output_dir>/landing_precheck/landing_results.jsonl` (`--precheck-landing 1`일 때만 생성)
-- `<output_dir>/landing_precheck/landing_report.json` (`--precheck-landing 1`일 때만 생성)
-- `<output_dir>/landing_precheck/landing_report.md` (`--precheck-landing 1`일 때만 생성)
-- `outputs/summary.json`
-- `outputs/failed_papers.jsonl`
-
-`outputs/summary.json`에는 아래 항목이 포함됩니다.
-
-- `precheck_landing`
-- `download_browser`
-  - `headless`
-  - `deep_retry_headless`
-  - `abort_on_landing_block`
-- `landing_precheck`
-- `effective_rates`
-  - `download_raw_success_rate`
-  - `download_adjusted_success_rate`
-  - `end_to_end_adjusted_success_rate`
-- `outputs/download_attempts.jsonl`
-- `outputs/download_attempts_summary.json`
-
-## 9. 트러블슈팅
-
-### `[CFFI] 실패 reason=FAIL_WRONG_MIME, status=200`
+```bash
+python3 -u parallel_download.py \
+  --doi_path ready_to_download.csv \
+  --max_workers 1 \
+  --execution-env linux_cli \
+  --headless 1 \
+  --deep-retry-headless 1 \
+  --after-first-pass deep \
+  --output_dir outputs/run_with_retry \
+  --pdf_output_dir pdfs/run_with_retry \
+  --non-interactive
+```
 
 의미:
 
-- HTTP는 성공(200)했지만, 응답이 PDF가 아니라 HTML/게이트 페이지
-- 보통 쿠키 페이지, 인증 페이지, 차단 페이지
+- 1차 패스는 `headless`
+- deep retry도 `headless`
+- 1차에서 실패한 논문만 2차로 다시 시도
 
-대응:
+## 결과 파일과 경로 규칙
 
-- 브라우저(Drission) 경로로 넘어가 버튼 클릭 기반 다운로드 시도
-- 인증 요구(`password/authenticate`)는 즉시 실패 처리
+상대 경로를 쓰면 아래처럼 정리됩니다.
 
-### 창/메모리 사용량이 큰 경우
+- `--output_dir run_x` -> `outputs/run_x/`
+- `--pdf_output_dir` 생략 -> `pdfs/run_x/`
 
-- `PDF_BROWSER_HEADLESS=1`
-- `max_workers`를 1~4 수준으로 제한
-- 서버 환경이면 `PDF_BROWSER_NO_SANDBOX=1` 검토
+주요 산출물:
 
-### `BrowserConnectError`가 날 때
+- `<output_dir>/openalex_search_results_parallel.csv`
+- `<output_dir>/failed_papers.csv`
+- `<output_dir>/failed_papers.jsonl`
+- `<output_dir>/download_attempts.jsonl`
+- `<output_dir>/download_attempts_summary.json`
+- `<output_dir>/summary.json`
+- `<output_dir>/metadata/Open_Access/*.json`
+- `<output_dir>/metadata/Closed_Access/*.json`
+- `<output_dir>/Open_Access/logs/download_log_*.txt`
+- `<output_dir>/Closed_Access/logs/download_log_*.txt`
+- `<output_dir>/**/logs/screenshots/final_fail_capture_*.png`
+- `<pdf_output_dir>/Open_Access/*.pdf`
+- `<pdf_output_dir>/Closed_Access/*.pdf`
 
-- 워커 충돌 가능성이 높으므로:
-  - `--worker-profile-root`를 지정해 워커별 프로필 분리
-  - `--clean-worker-profiles 1`로 stale lock 제거
-  - `--startup-retries 3` 이상 사용
-- 실행 전에 Chrome 스모크 체크를 수행하며, 실패하면 `outputs/landing_access_artifacts/chrome_smoke_fail.json`에 stderr를 남깁니다.
-- 스모크 체크는 `single-process` fallback을 자동 시도합니다.
-- `--assume-institution-access 1`이면 soft login/paywall gate를 권한 실패 대신 bot/challenge 의심(`FAIL_BLOCK`)으로 분류합니다.
-- 여전히 실패하면 먼저 `--workers 1`로 단건 검증 후 병렬 수를 올리세요.
+`precheck-landing 1`일 때만 추가 생성:
 
----
+- `<output_dir>/landing_precheck/landing_input.csv`
+- `<output_dir>/landing_precheck/landing_results.jsonl`
+- `<output_dir>/landing_precheck/landing_report.json`
+- `<output_dir>/landing_precheck/landing_report.md`
 
-실무 권장:
+## 실험 보고
 
-- 대량 다운로드는 `top10 -> top50 -> top100` 순으로 확장
-- `--after-first-pass stop`으로 1차 결과를 먼저 확인한 뒤 deep retry 실행
+실측 benchmark와 실패 사례 후속 분석은 루트 `README`에 적지 않고 `experiment/` 아래에 분리합니다.
+
+- 실험 인덱스: `experiment/README.md`
+- 100건 랜덤 benchmark 보고: `experiment/benchmark_random100_seed20260311.md`
+
+## 다운로드 전략
+
+`parallel_download.py`의 1차 패스 순서는 아래와 같습니다.
+
+1. `Sci-Hub`
+2. `direct OA (CFFI)`
+3. `publisher API`
+4. `DrissionPage` 브라우저 다운로드
+
+브라우저 단계는 다시 아래 순서로 동작합니다.
+
+1. DOI 또는 article URL landing
+2. landing에서 `captcha/challenge/block/access-rights` 감지
+3. PDF 후보 탐색
+   - `citation_pdf_url` 메타
+   - 버튼 `href`
+   - HTML 구조 분석
+   - iframe/embed/object
+   - 필요 시 `doi.org`에 남은 랜딩을 최종 article URL로 재해석
+4. 버튼 클릭 또는 viewer 진입
+5. direct-download 감지
+   - DOI 진입 직후
+   - PDF 버튼 클릭 직후
+   - navigation 직후
+   - `page.download(...)` 반환 결과
+6. 필요 시 navigation / requests / JS / cookie-aware CFFI fallback
+
+실무적으로는 아래처럼 이해하면 됩니다.
+
+- OA 논문은 `pdf_url`이나 direct PDF가 있으면 빠르게 끝냅니다.
+- OpenAlex search에서 SSRN/Zenodo/Figshare 같은 repository work가 출판본 DOI로 치환되면, 이후 다운로드는 repository가 아니라 출판본 publisher 전략으로 진행합니다.
+- high-friction publisher는 브라우저와 기존 세션을 사용해 사람 브라우저에 더 가깝게 접근합니다.
+- challenge가 보이면 억지로 더 깊게 두드리기보다 빠르게 종료합니다.
+- `after-first-pass deep`를 켜면 실패한 DOI만 한 번 더 재시도합니다.
+
+## Bot-detection 회피 방식
+
+핵심 원칙은 `사람 브라우저처럼 보이되, 위험한 상태는 빨리 감지하고 멈춘다`입니다.
+
+적용 방식:
+
+- 시스템 Chrome 또는 지속 프로필 재사용
+  - 고마찰 publisher에서는 `profile-mode auto`로 시스템 Chrome 프로필을 우선 사용
+  - 시스템 프로필이 없으면 `outputs/.chrome_user_data`를 fallback으로 사용
+- Humanized browser 설정
+  - UA 자동 선택
+  - 언어, 창 크기, 브라우저 fingerprint 보정
+  - 과도한 자동화 흔적을 줄이는 설정 사용
+- 쿠키/동의 배너 자동 처리
+  - consent, accept, continue, dismiss 계열 버튼 자동 클릭
+- landing hard-fail 정책
+  - `captcha/challenge/block`가 보이면 기본적으로 즉시 종료
+  - 정상 article로 오인한 채 더 깊이 들어가지 않도록 차단
+- publisher pacing
+  - 같은 publisher를 연속으로 세게 치지 않도록 reorder
+- publisher cooldown
+- global start spacing
+- random jitter
+- direct download 우선
+  - 가능한 경우 버튼 클릭 한 번 또는 direct PDF로 끝내고, 불필요한 추가 네비게이션을 줄임
+
+## 운영 팁
+
+- 대량 실행 전에는 먼저 5~10개 DOI로 샘플 검증을 하는 편이 안전합니다.
+- Linux CLI에서는 headful을 쓰지 않으므로 `execution-env=linux_cli` + `1차 headless + deep retry headless` 기준으로 확인하세요.
+- 같은 publisher를 너무 자주 연속해서 재시도하지 않는 것이 중요합니다.
+
+## Domain별 특별 전략
+
+이 섹션은 실제 코드에서 분기하는 전략만 정리합니다.
+
+### Elsevier
+
+Elsevier는 가장 많은 예외 처리가 들어가 있습니다.
+
+- `viewer-first` 전략
+  - article page를 안정화한 뒤 `View PDF`를 누릅니다.
+- DOI/PII 가드
+  - 추천 논문, 관련 논문, 잘못 열린 탭을 피하기 위해 target DOI/PII가 맞는지 확인합니다.
+- retrieve/interstitial 복구
+  - `linkinghub` 또는 retrieve/interstitial에 걸리면 article URL로 복구를 시도합니다.
+- article shell 복구
+  - 본문 없는 shell page가 뜨면 article reopen을 시도합니다.
+- auxiliary overlay 제거
+  - `Reading Assistant`, 추천 패널, overlay/backdrop를 숨기거나 닫습니다.
+- signed PDF viewer 회수
+  - 새 탭으로 열린 signed PDF viewer를 잡아 cookie-aware CFFI로 실제 PDF를 받습니다.
+- headless fresh-tab recovery
+  - headless에서 dead `View PDF` 버튼이 뜨는 경우 새 탭 복구를 한 번 더 시도합니다.
+- signed `papers.cfm/pdfft` navigation recovery
+  - 1차 패스에서도 짧은 navigation recovery를 허용합니다.
+
+### AIP / AVS
+
+- `aip.scitation.org/doi/pdf/...`와 `avs.scitation.org/doi/pdf/...`는 direct PDF로 보이지만 실제로는 JS gate wrapper인 경우가 많습니다.
+- 이 wrapper는 direct OA/API 단계에서 스킵하고 브라우저 landing으로 넘깁니다.
+- 브라우저에서는 `pubs.aip.org/...article-pdf...` 경로를 우선 사용합니다.
+- viewer 또는 article-pdf에서 새 탭/후보 URL을 수집하고, page cookie를 실은 recovery를 시도합니다.
+- 즉, `wrapper 직접 요청`보다 `브라우저로 article-pdf까지 진입`하는 것이 핵심 전략입니다.
+
+### IEEE
+
+- `stamp.jsp`는 최종 PDF가 아닌 중간 viewer인 경우가 많습니다.
+- stamp 페이지에서 iframe의 실제 PDF URL을 추출해 `ielx7/...pdf`로 교체합니다.
+- 버튼 요소가 stale 되더라도 DownloadKit 결과를 직접 확정해 파일을 놓치지 않도록 처리합니다.
+- 실험 기준으로는 현재 main downloader의 stamp/iframe 복구만으로 old-failure 샘플이 성공했기 때문에, title 기반 검색 복구는 아직 landing 진단 전용입니다.
+
+### ACS
+
+- 우선 `pubs.acs.org/doi/pdf/<doi>` direct 경로를 사용합니다.
+- ACS는 중복 다운로드 트리거가 생기기 쉬워 1차 패스에서 일부 브라우저 다운로드 경로를 보수적으로 운용합니다.
+- direct PDF가 막히면 브라우저 경로로 넘어갑니다.
+
+### Wiley
+
+- Wiley API 키가 있으면 TDM API를 우선 사용합니다.
+- 실패 시 `pdfdirect` 또는 일반 `pdf` 경로로 fallback 합니다.
+
+### Springer / Nature
+
+- article landing 후 `Download PDF`가 곧바로 파일 저장으로 이어지는 경로를 공통 direct-download로 잡습니다.
+- Nature 계열은 direct article PDF URL도 우선 시도합니다.
+
+### IOP
+
+- `iopscience.iop.org/article/<doi>/pdf` direct 경로를 우선 사용합니다.
+
+### RSC
+
+- `Download options` 위젯이 지연 로딩되는 경우가 있어 짧은 안정화 대기를 둡니다.
+
+### Powdermat
+
+- agreement 또는 비정상 article shell처럼 보이는 화면이 떠도 서버 HTML을 다시 읽어 article snapshot을 재평가합니다.
+- `10.4150/...` DOI는 article HTML의 `journal_download('pdf', sid, filename)` 패턴을 해석해 `/upload/pdf/<filename>` 또는 `/upload/article/<filename>` direct URL로 복구합니다.
+- 이 경로는 unknown publisher로 분류돼도 작동하며, headless 1차 패스에서 direct PDF로 바로 내려받도록 설계되어 있습니다.
+
+### Ceramist
+
+- `10.31613/...` DOI는 article HTML의 `citation_pdf_url`과 `journal_download("pdf", ...)` 패턴을 직접 읽어 article PDF URL로 복구합니다.
+- 브라우저가 `doi.org`에 머물러도 request 기반 resolver로 direct PDF를 회수합니다.
+
+### KJMM
+
+- `10.3365/...` DOI는 `journal-by-doi.cshtml -> /kjmm/ArticleDetail/RD_R/<idx> -> /Common/pdf_viewer -> /openAccess/cart_openAccess2015.asp` 흐름을 해석해 최종 PDF URL을 찾습니다.
+- 따라서 headless에서 `doi.org`에 머무는 케이스도 site-specific resolver로 복구합니다.
+
+### SSRN
+
+- Sci-Hub는 여전히 1순위로 시도합니다.
+- 다만 official SSRN 경로는 challenge가 반복돼 ROI가 낮아, Sci-Hub 실패 후에는 `FAIL_SSRN_CHALLENGE`로 빠르게 종료하고 deep retry도 하지 않습니다.
+- 검색 단계에서 published DOI로 치환된 work는 이 SSRN fast-fail 경로를 타지 않고, 출판본 DOI 기준 일반 downloader로 내려갑니다.
+
+### Zenodo / Figshare / Repository DOI
+
+- repository landing이 bot wall이나 unusual traffic에 자주 막히는 경우가 있어, 검색 단계에서 먼저 published article DOI로 치환할 수 있으면 그쪽을 우선합니다.
+- 현재는 `title + first author + year`가 강하게 일치하고 journal source가 확인되는 경우에만 보수적으로 치환합니다.
+- published 후보가 약하면 repository DOI를 그대로 유지하고, 다운로드 단계에서 일반 repository 전략을 따릅니다.
+
+### 진단 전용 / 보류
+
+- `old version`, `legacy`, `classic version` 링크를 눌러 깨진 shell을 우회하는 generic fallback은 현재 landing 진단에만 있습니다.
+- 이번 검증에서는 이 fallback이 실제 다운로드 성공률을 바꾼 live 사례를 확보하지 못해 main downloader에는 아직 넣지 않았습니다.
+- `10.7567/...` SSDM/atlas 계열은 단순 extractor보다 접근 제약이 먼저 관찰되어, 현재는 별도 site-specific downloader를 두지 않습니다.

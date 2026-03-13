@@ -1,0 +1,123 @@
+{
+  "doi": "10.1021/acssuschemeng.0c05549",
+  "pdf_filename": "10.1021_acssuschemeng.0c05549.pdf",
+  "json_filename": "10.1021_acssuschemeng.0c05549.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acssuschemeng.0c05549.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3114493777",
+    "doi": "10.1021/acssuschemeng.0c05549",
+    "title": "Superionic Si-Substituted Lithium Argyrodite Sulfide Electrolyte Li<sub>6+<i>x</i></sub>Sb<sub>1–<i>x</i></sub>Si<i><sub>x</sub></i>S<sub>5</sub>I for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Sustainable Chemistry & Engineering",
+      "id": "https://openalex.org/S2502047864",
+      "type": "journal",
+      "issn_l": "2168-0485",
+      "issn": [
+        "2168-0485"
+      ]
+    },
+    "publication_date": "2020-12-21",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 82,
+    "citation_normalized_percentile": 0.95167572,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Yong‐Heum Lee",
+    "authors_display": "Yong‐Heum Lee; Jiwon Jeong; Hee‐Dae Lim; Sang‐Ok Kim; Hun‐Gi Jung; Kyung Yoon Chung; Seungho Yu",
+    "authors": [
+      {
+        "display_name": "Yong‐Heum Lee",
+        "id": "https://openalex.org/A5058851110",
+        "orcid": "https://orcid.org/0000-0002-1241-525X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiwon Jeong",
+        "id": "https://openalex.org/A5063514074",
+        "orcid": "https://orcid.org/0000-0001-9846-5743",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hee‐Dae Lim",
+        "id": "https://openalex.org/A5053314699",
+        "orcid": "https://orcid.org/0000-0002-1379-6832",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang‐Ok Kim",
+        "id": "https://openalex.org/A5081391887",
+        "orcid": "https://orcid.org/0000-0001-5628-9331",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hun‐Gi Jung",
+        "id": "https://openalex.org/A5045467177",
+        "orcid": "https://orcid.org/0000-0002-2162-2680",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung Yoon Chung",
+        "id": "https://openalex.org/A5078491552",
+        "orcid": "https://orcid.org/0000-0002-1273-746X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seungho Yu",
+        "id": "https://openalex.org/A5038742609",
+        "orcid": "https://orcid.org/0000-0003-3912-6463",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3114493777",
+    "doi": "10.1021/acssuschemeng.0c05549",
+    "title": "Superionic Si-Substituted Lithium Argyrodite Sulfide Electrolyte Li<sub>6+<i>x</i></sub>Sb<sub>1–<i>x</i></sub>Si<i><sub>x</sub></i>S<sub>5</sub>I for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "journal_id": "https://openalex.org/S2502047864",
+    "journal_type": "journal",
+    "journal_issn_l": "2168-0485",
+    "journal_issn_json": "[\"2168-0485\"]",
+    "publication_date": "2020-12-21",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 82,
+    "citation_normalized_percentile": 0.95167572,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Yong‐Heum Lee",
+    "authors_display": "Yong‐Heum Lee; Jiwon Jeong; Hee‐Dae Lim; Sang‐Ok Kim; Hun‐Gi Jung; Kyung Yoon Chung; Seungho Yu",
+    "authors_json": "[{\"display_name\": \"Yong‐Heum Lee\", \"id\": \"https://openalex.org/A5058851110\", \"orcid\": \"https://orcid.org/0000-0002-1241-525X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jiwon Jeong\", \"id\": \"https://openalex.org/A5063514074\", \"orcid\": \"https://orcid.org/0000-0001-9846-5743\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hee‐Dae Lim\", \"id\": \"https://openalex.org/A5053314699\", \"orcid\": \"https://orcid.org/0000-0002-1379-6832\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang‐Ok Kim\", \"id\": \"https://openalex.org/A5081391887\", \"orcid\": \"https://orcid.org/0000-0001-5628-9331\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hun‐Gi Jung\", \"id\": \"https://openalex.org/A5045467177\", \"orcid\": \"https://orcid.org/0000-0002-2162-2680\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung Yoon Chung\", \"id\": \"https://openalex.org/A5078491552\", \"orcid\": \"https://orcid.org/0000-0002-1273-746X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seungho Yu\", \"id\": \"https://openalex.org/A5038742609\", \"orcid\": \"https://orcid.org/0000-0003-3912-6463\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301884321,
+    "actual_start_ms": 1773301885819,
+    "pacing_wait_ms": 1498,
+    "pacing_jitter_sec": 1.477
+  }
+}

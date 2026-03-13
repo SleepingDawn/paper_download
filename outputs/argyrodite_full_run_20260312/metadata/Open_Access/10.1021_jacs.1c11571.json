@@ -1,0 +1,118 @@
+{
+  "doi": "10.1021/jacs.1c11571",
+  "pdf_filename": "10.1021_jacs.1c11571.pdf",
+  "json_filename": "10.1021_jacs.1c11571.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_jacs.1c11571.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4206017073",
+    "doi": "10.1021/jacs.1c11571",
+    "title": "Opening Diffusion Pathways through Site Disorder: The Interplay of Local Structure and Ion Dynamics in the Solid Electrolyte Li<sub>6+<i>x</i></sub>P<sub>1–<i>x</i></sub>Ge<sub><i>x</i></sub>S<sub>5</sub>I as Probed by Neutron Diffraction and NMR",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Journal of the American Chemical Society",
+      "id": "https://openalex.org/S111155417",
+      "type": "journal",
+      "issn_l": "0002-7863",
+      "issn": [
+        "0002-7863",
+        "1520-5126",
+        "1943-2984"
+      ]
+    },
+    "publication_date": "2022-01-20",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 92,
+    "citation_normalized_percentile": 0.98295731,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Katharina Hogrefe",
+    "authors_display": "Katharina Hogrefe; Nicolò Minafra; Isabel Hanghofer; Ananya Banik; Wolfgang G. Zeier; Martin Wilkening",
+    "authors": [
+      {
+        "display_name": "Katharina Hogrefe",
+        "id": "https://openalex.org/A5034391825",
+        "orcid": "https://orcid.org/0000-0002-2747-405X",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Nicolò Minafra",
+        "id": "https://openalex.org/A5057886209",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Isabel Hanghofer",
+        "id": "https://openalex.org/A5038314705",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ananya Banik",
+        "id": "https://openalex.org/A5011028807",
+        "orcid": "https://orcid.org/0000-0003-0455-3051",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wolfgang G. Zeier",
+        "id": "https://openalex.org/A5052900478",
+        "orcid": "https://orcid.org/0000-0001-7749-5089",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Martin Wilkening",
+        "id": "https://openalex.org/A5024063649",
+        "orcid": "https://orcid.org/0000-0001-9706-4892",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4206017073",
+    "doi": "10.1021/jacs.1c11571",
+    "title": "Opening Diffusion Pathways through Site Disorder: The Interplay of Local Structure and Ion Dynamics in the Solid Electrolyte Li<sub>6+<i>x</i></sub>P<sub>1–<i>x</i></sub>Ge<sub><i>x</i></sub>S<sub>5</sub>I as Probed by Neutron Diffraction and NMR",
+    "publisher": "American Chemical Society",
+    "journal": "Journal of the American Chemical Society",
+    "journal_id": "https://openalex.org/S111155417",
+    "journal_type": "journal",
+    "journal_issn_l": "0002-7863",
+    "journal_issn_json": "[\"0002-7863\", \"1520-5126\", \"1943-2984\"]",
+    "publication_date": "2022-01-20",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 92,
+    "citation_normalized_percentile": 0.98295731,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Katharina Hogrefe",
+    "authors_display": "Katharina Hogrefe; Nicolò Minafra; Isabel Hanghofer; Ananya Banik; Wolfgang G. Zeier; Martin Wilkening",
+    "authors_json": "[{\"display_name\": \"Katharina Hogrefe\", \"id\": \"https://openalex.org/A5034391825\", \"orcid\": \"https://orcid.org/0000-0002-2747-405X\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Nicolò Minafra\", \"id\": \"https://openalex.org/A5057886209\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Isabel Hanghofer\", \"id\": \"https://openalex.org/A5038314705\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ananya Banik\", \"id\": \"https://openalex.org/A5011028807\", \"orcid\": \"https://orcid.org/0000-0003-0455-3051\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wolfgang G. Zeier\", \"id\": \"https://openalex.org/A5052900478\", \"orcid\": \"https://orcid.org/0000-0001-7749-5089\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Martin Wilkening\", \"id\": \"https://openalex.org/A5024063649\", \"orcid\": \"https://orcid.org/0000-0001-9706-4892\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301842595,
+    "actual_start_ms": 1773301844862,
+    "pacing_wait_ms": 2267,
+    "pacing_jitter_sec": 1.744
+  }
+}

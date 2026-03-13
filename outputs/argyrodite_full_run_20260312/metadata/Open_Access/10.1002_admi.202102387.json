@@ -1,0 +1,130 @@
+{
+  "doi": "10.1002/admi.202102387",
+  "pdf_filename": "10.1002_admi.202102387.pdf",
+  "json_filename": "10.1002_admi.202102387.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_admi.202102387.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4220652932",
+    "doi": "10.1002/admi.202102387",
+    "title": "In Situ Investigation of Lithium Metal–Solid Electrolyte Anode Interfaces with ToF‐SIMS",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Materials Interfaces",
+      "id": "https://openalex.org/S2764385675",
+      "type": "journal",
+      "issn_l": "2196-7350",
+      "issn": [
+        "2196-7350"
+      ]
+    },
+    "publication_date": "2022-03-17",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 95,
+    "citation_normalized_percentile": 0.98430694,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/admi.202102387",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Svenja‐K. Otto",
+    "authors_display": "Svenja‐K. Otto; Luise M. Riegger; Till Fuchs; Sven Kayser; Pascal Schweitzer; Simon Burkhardt; Anja Henß; Jürgen Janek",
+    "authors": [
+      {
+        "display_name": "Svenja‐K. Otto",
+        "id": "https://openalex.org/A5062330925",
+        "orcid": "https://orcid.org/0000-0002-9449-9812",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Luise M. Riegger",
+        "id": "https://openalex.org/A5030107416",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Till Fuchs",
+        "id": "https://openalex.org/A5026425699",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sven Kayser",
+        "id": "https://openalex.org/A5050522214",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pascal Schweitzer",
+        "id": "https://openalex.org/A5013578213",
+        "orcid": "https://orcid.org/0000-0001-6052-3856",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Simon Burkhardt",
+        "id": "https://openalex.org/A5111881645",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anja Henß",
+        "id": "https://openalex.org/A5072831450",
+        "orcid": "https://orcid.org/0000-0001-5009-6512",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4220652932",
+    "doi": "10.1002/admi.202102387",
+    "title": "In Situ Investigation of Lithium Metal–Solid Electrolyte Anode Interfaces with ToF‐SIMS",
+    "publisher": "Wiley",
+    "journal": "Advanced Materials Interfaces",
+    "journal_id": "https://openalex.org/S2764385675",
+    "journal_type": "journal",
+    "journal_issn_l": "2196-7350",
+    "journal_issn_json": "[\"2196-7350\"]",
+    "publication_date": "2022-03-17",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 95,
+    "citation_normalized_percentile": 0.98430694,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/admi.202102387",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Svenja‐K. Otto",
+    "authors_display": "Svenja‐K. Otto; Luise M. Riegger; Till Fuchs; Sven Kayser; Pascal Schweitzer; Simon Burkhardt; Anja Henß; Jürgen Janek",
+    "authors_json": "[{\"display_name\": \"Svenja‐K. Otto\", \"id\": \"https://openalex.org/A5062330925\", \"orcid\": \"https://orcid.org/0000-0002-9449-9812\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Luise M. Riegger\", \"id\": \"https://openalex.org/A5030107416\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Till Fuchs\", \"id\": \"https://openalex.org/A5026425699\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sven Kayser\", \"id\": \"https://openalex.org/A5050522214\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pascal Schweitzer\", \"id\": \"https://openalex.org/A5013578213\", \"orcid\": \"https://orcid.org/0000-0001-6052-3856\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Simon Burkhardt\", \"id\": \"https://openalex.org/A5111881645\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anja Henß\", \"id\": \"https://openalex.org/A5072831450\", \"orcid\": \"https://orcid.org/0000-0001-5009-6512\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302783358,
+    "actual_start_ms": 1773302784859,
+    "pacing_wait_ms": 1501,
+    "pacing_jitter_sec": 1.037
+  }
+}

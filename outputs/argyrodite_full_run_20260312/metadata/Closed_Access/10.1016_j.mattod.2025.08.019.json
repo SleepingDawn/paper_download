@@ -1,0 +1,138 @@
+{
+  "doi": "10.1016/j.mattod.2025.08.019",
+  "pdf_filename": "10.1016_j.mattod.2025.08.019.pdf",
+  "json_filename": "10.1016_j.mattod.2025.08.019.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.mattod.2025.08.019.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413398816",
+    "doi": "10.1016/j.mattod.2025.08.019",
+    "title": "Unravelling the stablization effect of flourination on the interface and bulk phase of electrodes in all-solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Materials Today",
+      "id": "https://openalex.org/S63322718",
+      "type": "journal",
+      "issn_l": "1369-7021",
+      "issn": [
+        "1369-7021",
+        "1873-4103"
+      ]
+    },
+    "publication_date": "2025-08-21",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.85415915,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Ziling Jiang",
+    "authors_display": "Ziling Jiang; Siwu Li; Jie Yang; Miao Deng; Ziyu Lu; Zhenyu Wang; Lin Li; Feixiang Wu; Chuang Yu",
+    "authors": [
+      {
+        "display_name": "Ziling Jiang",
+        "id": "https://openalex.org/A5032247200",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Siwu Li",
+        "id": "https://openalex.org/A5083989267",
+        "orcid": "https://orcid.org/0000-0002-0484-8629",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jie Yang",
+        "id": "https://openalex.org/A5101649440",
+        "orcid": "https://orcid.org/0000-0001-9988-8713",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Miao Deng",
+        "id": "https://openalex.org/A5030649764",
+        "orcid": "https://orcid.org/0000-0001-7146-0619",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziyu Lu",
+        "id": "https://openalex.org/A5112938890",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhenyu Wang",
+        "id": "https://openalex.org/A5034632101",
+        "orcid": "https://orcid.org/0000-0003-0849-6234",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lin Li",
+        "id": "https://openalex.org/A5100412857",
+        "orcid": "https://orcid.org/0000-0002-2444-6694",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Feixiang Wu",
+        "id": "https://openalex.org/A5089699624",
+        "orcid": "https://orcid.org/0000-0002-9688-2428",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413398816",
+    "doi": "10.1016/j.mattod.2025.08.019",
+    "title": "Unravelling the stablization effect of flourination on the interface and bulk phase of electrodes in all-solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Materials Today",
+    "journal_id": "https://openalex.org/S63322718",
+    "journal_type": "journal",
+    "journal_issn_l": "1369-7021",
+    "journal_issn_json": "[\"1369-7021\", \"1873-4103\"]",
+    "publication_date": "2025-08-21",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.85415915,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Ziling Jiang",
+    "authors_display": "Ziling Jiang; Siwu Li; Jie Yang; Miao Deng; Ziyu Lu; Zhenyu Wang; Lin Li; Feixiang Wu; Chuang Yu",
+    "authors_json": "[{\"display_name\": \"Ziling Jiang\", \"id\": \"https://openalex.org/A5032247200\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Siwu Li\", \"id\": \"https://openalex.org/A5083989267\", \"orcid\": \"https://orcid.org/0000-0002-0484-8629\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jie Yang\", \"id\": \"https://openalex.org/A5101649440\", \"orcid\": \"https://orcid.org/0000-0001-9988-8713\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Miao Deng\", \"id\": \"https://openalex.org/A5030649764\", \"orcid\": \"https://orcid.org/0000-0001-7146-0619\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ziyu Lu\", \"id\": \"https://openalex.org/A5112938890\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhenyu Wang\", \"id\": \"https://openalex.org/A5034632101\", \"orcid\": \"https://orcid.org/0000-0003-0849-6234\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lin Li\", \"id\": \"https://openalex.org/A5100412857\", \"orcid\": \"https://orcid.org/0000-0002-2444-6694\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Feixiang Wu\", \"id\": \"https://openalex.org/A5089699624\", \"orcid\": \"https://orcid.org/0000-0002-9688-2428\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S1369702125003554?via%3Dihub",
+    "landing_title": "Unravelling the stablization effect of flourination on the interface and bulk phase of electrodes in all-solid-state lithium metal batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773308007729,
+    "actual_start_ms": 1773308047492,
+    "pacing_wait_ms": 39763,
+    "pacing_jitter_sec": 0.823
+  }
+}

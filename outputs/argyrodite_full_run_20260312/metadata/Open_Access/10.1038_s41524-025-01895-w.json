@@ -1,0 +1,130 @@
+{
+  "doi": "10.1038/s41524-025-01895-w",
+  "pdf_filename": "10.1038_s41524-025-01895-w.pdf",
+  "json_filename": "10.1038_s41524-025-01895-w.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s41524-025-01895-w.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7115686490",
+    "doi": "10.1038/s41524-025-01895-w",
+    "title": "An efficient forgetting-aware fine-tuning framework for pretrained universal machine-learning interatomic potentials",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "npj Computational Materials",
+      "id": "https://openalex.org/S4210232664",
+      "type": "journal",
+      "issn_l": "2057-3960",
+      "issn": [
+        "2057-3960"
+      ]
+    },
+    "publication_date": "2025-12-17",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.5359235,
+    "pdf_url": "https://www.nature.com/articles/s41524-025-01895-w_reference.pdf",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Jisu Kim",
+    "authors_display": "Jisu Kim; Jiho Lee; Sangmin Oh; Yutack Park; Seungwoo Hwang; Seungwu Han; Sungwoo Kang; Youngho Kang",
+    "authors": [
+      {
+        "display_name": "Jisu Kim",
+        "id": null,
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jiho Lee",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sangmin Oh",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yutack Park",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seungwoo Hwang",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seungwu Han",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sungwoo Kang",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Youngho Kang",
+        "id": null,
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7115686490",
+    "doi": "10.1038/s41524-025-01895-w",
+    "title": "An efficient forgetting-aware fine-tuning framework for pretrained universal machine-learning interatomic potentials",
+    "publisher": "Nature Portfolio",
+    "journal": "npj Computational Materials",
+    "journal_id": "https://openalex.org/S4210232664",
+    "journal_type": "journal",
+    "journal_issn_l": "2057-3960",
+    "journal_issn_json": "[\"2057-3960\"]",
+    "publication_date": "2025-12-17",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.5359235,
+    "pdf_url": "https://www.nature.com/articles/s41524-025-01895-w_reference.pdf",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Jisu Kim",
+    "authors_display": "Jisu Kim; Jiho Lee; Sangmin Oh; Yutack Park; Seungwoo Hwang; Seungwu Han; Sungwoo Kang; Youngho Kang",
+    "authors_json": "[{\"display_name\": \"Jisu Kim\", \"id\": null, \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Jiho Lee\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sangmin Oh\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yutack Park\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seungwoo Hwang\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seungwu Han\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sungwoo Kang\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Youngho Kang\", \"id\": null, \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773310405527,
+    "actual_start_ms": 1773310406904,
+    "pacing_wait_ms": 1376,
+    "pacing_jitter_sec": 1.105
+  }
+}

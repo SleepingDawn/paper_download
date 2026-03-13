@@ -15,6 +15,7 @@ from tools_exp import normalize_publisher_label
 STATE_SUCCESS_LANDING = "success_landing"
 STATE_DIRECT_PDF_HANDOFF = "direct_pdf_handoff"
 STATE_CHALLENGE_DETECTED = "challenge_detected"
+STATE_DOI_NOT_FOUND = "doi_not_found"
 STATE_BLANK_OR_INCOMPLETE = "blank_or_incomplete"
 STATE_CONSENT_OR_INTERSTITIAL_BLOCK = "consent_or_interstitial_block"
 STATE_BROKEN_JS_SHELL = "broken_js_shell"
@@ -27,6 +28,7 @@ STATE_UNKNOWN_NON_SUCCESS = "unknown_non_success"
 SUCCESS_STATES = {STATE_SUCCESS_LANDING, STATE_DIRECT_PDF_HANDOFF}
 NON_SUCCESS_STATES = {
     STATE_CHALLENGE_DETECTED,
+    STATE_DOI_NOT_FOUND,
     STATE_BLANK_OR_INCOMPLETE,
     STATE_CONSENT_OR_INTERSTITIAL_BLOCK,
     STATE_BROKEN_JS_SHELL,
@@ -48,6 +50,12 @@ DEFAULT_SETTLE_WAIT_SEC = float(os.getenv("LANDING_SETTLE_WAIT_SEC", "1.2"))
 DEFAULT_STABILIZE_POLLS = int(os.getenv("LANDING_STABILIZE_POLLS", "2"))
 DEFAULT_CHALLENGE_COOLDOWN_MULTIPLIER = float(os.getenv("LANDING_CHALLENGE_COOLDOWN_MULTIPLIER", "2.2"))
 DEFAULT_CHALLENGE_MIN_HOLDOFF_SEC = float(os.getenv("LANDING_CHALLENGE_MIN_HOLDOFF_SEC", "18"))
+PUBLISHER_CHALLENGE_COOLDOWN_MULTIPLIERS = {
+    "spie": float(os.getenv("LANDING_SPIE_CHALLENGE_COOLDOWN_MULTIPLIER", "4.0")),
+}
+PUBLISHER_CHALLENGE_MIN_HOLDOFF_SEC = {
+    "spie": float(os.getenv("LANDING_SPIE_CHALLENGE_MIN_HOLDOFF_SEC", "60")),
+}
 
 DOI_RE = re.compile(r"^10\.\d{4,9}/[-._;()/:A-Za-z0-9]+$")
 DOI_TEXT_RE = re.compile(r"10\.\d{4,9}/[-._;()/:A-Za-z0-9]+", re.IGNORECASE)
@@ -453,9 +461,15 @@ def release_pacing_slot(
         shared_state[active_key] = max(0, current - 1)
         shared_state[f"last_finish::{pub}"] = now
         if str(classifier_state or "") == STATE_CHALLENGE_DETECTED:
+            challenge_multiplier = float(
+                PUBLISHER_CHALLENGE_COOLDOWN_MULTIPLIERS.get(pub, DEFAULT_CHALLENGE_COOLDOWN_MULTIPLIER)
+            )
+            challenge_min_holdoff = float(
+                PUBLISHER_CHALLENGE_MIN_HOLDOFF_SEC.get(pub, DEFAULT_CHALLENGE_MIN_HOLDOFF_SEC)
+            )
             challenge_holdoff = max(
-                DEFAULT_CHALLENGE_MIN_HOLDOFF_SEC,
-                max(0.0, DEFAULT_PER_PUBLISHER_COOLDOWN_SEC) * max(1.0, DEFAULT_CHALLENGE_COOLDOWN_MULTIPLIER),
+                challenge_min_holdoff,
+                max(0.0, DEFAULT_PER_PUBLISHER_COOLDOWN_SEC) * max(1.0, challenge_multiplier),
             )
             shared_state[f"penalty_until::{pub}"] = now + float(challenge_holdoff)
 
@@ -964,6 +978,9 @@ def classify_landing(
         if issue == "FAIL_CAPTCHA":
             reason_codes.append("fail_captcha")
             state = STATE_CHALLENGE_DETECTED
+        elif issue == "FAIL_DOI_NOT_FOUND":
+            reason_codes.append("doi_not_found")
+            state = STATE_DOI_NOT_FOUND
         elif issue == "FAIL_ACCESS_RIGHTS":
             reason_codes.append("access_rights_gate")
             state = STATE_CONSENT_OR_INTERSTITIAL_BLOCK
@@ -1196,4 +1213,3 @@ def compact_text_signature(snapshot: Dict[str, Any]) -> str:
     if not excerpt:
         return ""
     return excerpt[:240]
-

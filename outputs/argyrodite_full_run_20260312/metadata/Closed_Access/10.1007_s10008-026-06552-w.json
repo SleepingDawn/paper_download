@@ -1,0 +1,138 @@
+{
+  "doi": "10.1007/s10008-026-06552-w",
+  "pdf_filename": "10.1007_s10008-026-06552-w.pdf",
+  "json_filename": "10.1007_s10008-026-06552-w.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s10008-026-06552-w.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7133188282",
+    "doi": "10.1007/s10008-026-06552-w",
+    "title": "Degradation mechanism of Ni-rich cathode in all-solid-state batteries at different capacity retention",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Journal of Solid State Electrochemistry",
+      "id": "https://openalex.org/S25422132",
+      "type": "journal",
+      "issn_l": "1432-8488",
+      "issn": [
+        "1432-8488",
+        "1433-0768"
+      ]
+    },
+    "publication_date": "2026-03-02",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.90380667,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Yuan Tian",
+    "authors_display": "Yuan Tian; Bingxue Liu; Jinling Zhao; Chengyu Zhang; Mingjuan Yuan; Qian Zhao; Ling Tang; Lve Wang; Rong Yang",
+    "authors": [
+      {
+        "display_name": "Yuan Tian",
+        "id": "https://openalex.org/A5127782539",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bingxue Liu",
+        "id": "https://openalex.org/A5104224129",
+        "orcid": "https://orcid.org/0000-0002-7335-4710",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinling Zhao",
+        "id": "https://openalex.org/A5100623275",
+        "orcid": "https://orcid.org/0000-0002-8352-7689",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chengyu Zhang",
+        "id": "https://openalex.org/A5127798819",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mingjuan Yuan",
+        "id": "https://openalex.org/A5127795338",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qian Zhao",
+        "id": "https://openalex.org/A5127837766",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ling Tang",
+        "id": "https://openalex.org/A5106418240",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lve Wang",
+        "id": "https://openalex.org/A5127813671",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rong Yang",
+        "id": "https://openalex.org/A5127842789",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7133188282",
+    "doi": "10.1007/s10008-026-06552-w",
+    "title": "Degradation mechanism of Ni-rich cathode in all-solid-state batteries at different capacity retention",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Journal of Solid State Electrochemistry",
+    "journal_id": "https://openalex.org/S25422132",
+    "journal_type": "journal",
+    "journal_issn_l": "1432-8488",
+    "journal_issn_json": "[\"1432-8488\", \"1433-0768\"]",
+    "publication_date": "2026-03-02",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.90380667,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Yuan Tian",
+    "authors_display": "Yuan Tian; Bingxue Liu; Jinling Zhao; Chengyu Zhang; Mingjuan Yuan; Qian Zhao; Ling Tang; Lve Wang; Rong Yang",
+    "authors_json": "[{\"display_name\": \"Yuan Tian\", \"id\": \"https://openalex.org/A5127782539\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Bingxue Liu\", \"id\": \"https://openalex.org/A5104224129\", \"orcid\": \"https://orcid.org/0000-0002-7335-4710\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinling Zhao\", \"id\": \"https://openalex.org/A5100623275\", \"orcid\": \"https://orcid.org/0000-0002-8352-7689\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chengyu Zhang\", \"id\": \"https://openalex.org/A5127798819\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mingjuan Yuan\", \"id\": \"https://openalex.org/A5127795338\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qian Zhao\", \"id\": \"https://openalex.org/A5127837766\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ling Tang\", \"id\": \"https://openalex.org/A5106418240\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lve Wang\", \"id\": \"https://openalex.org/A5127813671\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rong Yang\", \"id\": \"https://openalex.org/A5127842789\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://link.springer.com/article/10.1007/s10008-026-06552-w",
+    "landing_title": "Degradation mechanism of Ni-rich cathode in all-solid-state batteries at different capacity retention | Journal of Solid State Electrochemistry | Springer Nature Link",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1007_s10008-026-06552-w.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773310909986,
+    "actual_start_ms": 1773310909986,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.293
+  }
+}

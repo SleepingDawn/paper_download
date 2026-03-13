@@ -1,0 +1,89 @@
+{
+  "doi": "10.1007/s10008-014-2654-1",
+  "pdf_filename": "10.1007_s10008-014-2654-1.pdf",
+  "json_filename": "10.1007_s10008-014-2654-1.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s10008-014-2654-1.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2057759752",
+    "doi": "10.1007/s10008-014-2654-1",
+    "title": "High performance all-solid-state lithium/sulfur batteries using lithium argyrodite electrolyte",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Journal of Solid State Electrochemistry",
+      "id": "https://openalex.org/S25422132",
+      "type": "journal",
+      "issn_l": "1432-8488",
+      "issn": [
+        "1432-8488",
+        "1433-0768"
+      ]
+    },
+    "publication_date": "2014-10-16",
+    "publication_year": 2014,
+    "work_type": "article",
+    "cited_by_count": 129,
+    "citation_normalized_percentile": 0.9646013,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Maohua Chen",
+    "authors_display": "Maohua Chen; Stefan Adams",
+    "authors": [
+      {
+        "display_name": "Maohua Chen",
+        "id": "https://openalex.org/A5101956758",
+        "orcid": "https://orcid.org/0000-0001-7393-4523",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Stefan Adams",
+        "id": "https://openalex.org/A5050140273",
+        "orcid": "https://orcid.org/0000-0003-0710-135X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2057759752",
+    "doi": "10.1007/s10008-014-2654-1",
+    "title": "High performance all-solid-state lithium/sulfur batteries using lithium argyrodite electrolyte",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Journal of Solid State Electrochemistry",
+    "journal_id": "https://openalex.org/S25422132",
+    "journal_type": "journal",
+    "journal_issn_l": "1432-8488",
+    "journal_issn_json": "[\"1432-8488\", \"1433-0768\"]",
+    "publication_date": "2014-10-16",
+    "publication_year": 2014,
+    "work_type": "article",
+    "cited_by_count": 129,
+    "citation_normalized_percentile": 0.9646013,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Maohua Chen",
+    "authors_display": "Maohua Chen; Stefan Adams",
+    "authors_json": "[{\"display_name\": \"Maohua Chen\", \"id\": \"https://openalex.org/A5101956758\", \"orcid\": \"https://orcid.org/0000-0001-7393-4523\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Stefan Adams\", \"id\": \"https://openalex.org/A5050140273\", \"orcid\": \"https://orcid.org/0000-0003-0710-135X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773307715230,
+    "actual_start_ms": 1773307716738,
+    "pacing_wait_ms": 1508,
+    "pacing_jitter_sec": 1.566
+  }
+}

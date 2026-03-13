@@ -1,0 +1,124 @@
+{
+  "doi": "10.1002/adfm.202404434",
+  "pdf_filename": "10.1002_adfm.202404434.pdf",
+  "json_filename": "10.1002_adfm.202404434.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_adfm.202404434.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4399781461",
+    "doi": "10.1002/adfm.202404434",
+    "title": "The Key Role of Grain Boundary Dynamics in Revolutionizing the Potential of Solid Electrolytes",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2024-06-18",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.94683178,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Yangyang Wang",
+    "authors_display": "Yangyang Wang; Charlotte Thomas; Kaitlin Garman; Hwangsun Kim; Zonghai Chen; Miaofang Chi; Chunmei Ban",
+    "authors": [
+      {
+        "display_name": "Yangyang Wang",
+        "id": "https://openalex.org/A5100345129",
+        "orcid": "https://orcid.org/0000-0002-6648-1260",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Charlotte Thomas",
+        "id": "https://openalex.org/A5113095948",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kaitlin Garman",
+        "id": "https://openalex.org/A5028571402",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hwangsun Kim",
+        "id": "https://openalex.org/A5008301746",
+        "orcid": "https://orcid.org/0000-0002-7943-720X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zonghai Chen",
+        "id": "https://openalex.org/A5103155716",
+        "orcid": "https://orcid.org/0000-0001-5371-9463",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Miaofang Chi",
+        "id": "https://openalex.org/A5046838323",
+        "orcid": "https://orcid.org/0000-0003-0764-1567",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chunmei Ban",
+        "id": "https://openalex.org/A5006964324",
+        "orcid": "https://orcid.org/0000-0002-1472-1496",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4399781461",
+    "doi": "10.1002/adfm.202404434",
+    "title": "The Key Role of Grain Boundary Dynamics in Revolutionizing the Potential of Solid Electrolytes",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2024-06-18",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 19,
+    "citation_normalized_percentile": 0.94683178,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Yangyang Wang",
+    "authors_display": "Yangyang Wang; Charlotte Thomas; Kaitlin Garman; Hwangsun Kim; Zonghai Chen; Miaofang Chi; Chunmei Ban",
+    "authors_json": "[{\"display_name\": \"Yangyang Wang\", \"id\": \"https://openalex.org/A5100345129\", \"orcid\": \"https://orcid.org/0000-0002-6648-1260\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Charlotte Thomas\", \"id\": \"https://openalex.org/A5113095948\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kaitlin Garman\", \"id\": \"https://openalex.org/A5028571402\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hwangsun Kim\", \"id\": \"https://openalex.org/A5008301746\", \"orcid\": \"https://orcid.org/0000-0002-7943-720X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zonghai Chen\", \"id\": \"https://openalex.org/A5103155716\", \"orcid\": \"https://orcid.org/0000-0001-5371-9463\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Miaofang Chi\", \"id\": \"https://openalex.org/A5046838323\", \"orcid\": \"https://orcid.org/0000-0003-0764-1567\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chunmei Ban\", \"id\": \"https://openalex.org/A5006964324\", \"orcid\": \"https://orcid.org/0000-0002-1472-1496\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773304333998,
+    "actual_start_ms": 1773304337341,
+    "pacing_wait_ms": 3342,
+    "pacing_jitter_sec": 1.626
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.mattod.2023.10.003",
+  "pdf_filename": "10.1016_j.mattod.2023.10.003.pdf",
+  "json_filename": "10.1016_j.mattod.2023.10.003.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.mattod.2023.10.003.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4387941157",
+    "doi": "10.1016/j.mattod.2023.10.003",
+    "title": "Solid electrolyte cracking due to lithium filament growth and concept of mechanical reinforcement – An operando study",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Materials Today",
+      "id": "https://openalex.org/S63322718",
+      "type": "journal",
+      "issn_l": "1369-7021",
+      "issn": [
+        "1369-7021",
+        "1873-4103"
+      ]
+    },
+    "publication_date": "2023-10-25",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.86976907,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Jian Duan",
+    "authors_display": "Jian Duan; Till Fuchs; Boris Mogwitz; Philip Minnmann; Tong‐Tong Zuo; Anja Henß; Jürgen Janek",
+    "authors": [
+      {
+        "display_name": "Jian Duan",
+        "id": "https://openalex.org/A5050824850",
+        "orcid": "https://orcid.org/0000-0003-2493-9453",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Till Fuchs",
+        "id": "https://openalex.org/A5026425699",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Boris Mogwitz",
+        "id": "https://openalex.org/A5025523898",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Philip Minnmann",
+        "id": "https://openalex.org/A5065526283",
+        "orcid": "https://orcid.org/0000-0002-9646-0487",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tong‐Tong Zuo",
+        "id": "https://openalex.org/A5072894083",
+        "orcid": "https://orcid.org/0000-0003-3594-7029",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anja Henß",
+        "id": "https://openalex.org/A5072831450",
+        "orcid": "https://orcid.org/0000-0001-5009-6512",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4387941157",
+    "doi": "10.1016/j.mattod.2023.10.003",
+    "title": "Solid electrolyte cracking due to lithium filament growth and concept of mechanical reinforcement – An operando study",
+    "publisher": "Elsevier BV",
+    "journal": "Materials Today",
+    "journal_id": "https://openalex.org/S63322718",
+    "journal_type": "journal",
+    "journal_issn_l": "1369-7021",
+    "journal_issn_json": "[\"1369-7021\", \"1873-4103\"]",
+    "publication_date": "2023-10-25",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.86976907,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Jian Duan",
+    "authors_display": "Jian Duan; Till Fuchs; Boris Mogwitz; Philip Minnmann; Tong‐Tong Zuo; Anja Henß; Jürgen Janek",
+    "authors_json": "[{\"display_name\": \"Jian Duan\", \"id\": \"https://openalex.org/A5050824850\", \"orcid\": \"https://orcid.org/0000-0003-2493-9453\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Till Fuchs\", \"id\": \"https://openalex.org/A5026425699\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Boris Mogwitz\", \"id\": \"https://openalex.org/A5025523898\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Philip Minnmann\", \"id\": \"https://openalex.org/A5065526283\", \"orcid\": \"https://orcid.org/0000-0002-9646-0487\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tong‐Tong Zuo\", \"id\": \"https://openalex.org/A5072894083\", \"orcid\": \"https://orcid.org/0000-0003-3594-7029\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anja Henß\", \"id\": \"https://openalex.org/A5072831450\", \"orcid\": \"https://orcid.org/0000-0001-5009-6512\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S136970212300322X?via%3Dihub",
+    "landing_title": "Solid electrolyte cracking due to lithium filament growth and concept of mechanical reinforcement – An operando study - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773303164751,
+    "actual_start_ms": 1773303171305,
+    "pacing_wait_ms": 6553,
+    "pacing_jitter_sec": 1.057
+  }
+}

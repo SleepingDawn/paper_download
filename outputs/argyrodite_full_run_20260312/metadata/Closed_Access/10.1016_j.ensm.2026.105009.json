@@ -1,0 +1,159 @@
+{
+  "doi": "10.1016/j.ensm.2026.105009",
+  "pdf_filename": "10.1016_j.ensm.2026.105009.pdf",
+  "json_filename": "10.1016_j.ensm.2026.105009.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2026.105009.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7131312721",
+    "doi": "10.1016/j.ensm.2026.105009",
+    "title": "Self-generated phosphate/oxysulfide passivation from dry-processed single-crystal NMC811 stabilizes argyrodite sulfide solid-state battery interfaces",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2026-02-24",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.80129623,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Chanho Kim",
+    "authors_display": "Chanho Kim; Yuanshun Li; Andre Adam; Wenda Wu; Gabriel D. Parker; Inyoung Jang; Yoojin Ahn; Yi‐Feng Su; Harry M. Meyer; Xiao-Ying Yu; J.S. Sharma Nanda; Guang Yang",
+    "authors": [
+      {
+        "display_name": "Chanho Kim",
+        "id": "https://openalex.org/A5102711340",
+        "orcid": "https://orcid.org/0000-0002-7743-040X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuanshun Li",
+        "id": "https://openalex.org/A5114643225",
+        "orcid": "https://orcid.org/0009-0001-8264-1287",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andre Adam",
+        "id": "https://openalex.org/A5037175470",
+        "orcid": "https://orcid.org/0000-0002-4502-3033",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenda Wu",
+        "id": "https://openalex.org/A5059265113",
+        "orcid": "https://orcid.org/0009-0003-3307-687X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gabriel D. Parker",
+        "id": "https://openalex.org/A5015575412",
+        "orcid": "https://orcid.org/0000-0001-9039-4100",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Inyoung Jang",
+        "id": "https://openalex.org/A5017093197",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoojin Ahn",
+        "id": "https://openalex.org/A5051902001",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yi‐Feng Su",
+        "id": "https://openalex.org/A5104353833",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Harry M. Meyer",
+        "id": "https://openalex.org/A5061707133",
+        "orcid": "https://orcid.org/0000-0003-4994-1664",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao-Ying Yu",
+        "id": "https://openalex.org/A5126676216",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J.S. Sharma Nanda",
+        "id": "https://openalex.org/A5033480093",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guang Yang",
+        "id": "https://openalex.org/A5126741180",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7131312721",
+    "doi": "10.1016/j.ensm.2026.105009",
+    "title": "Self-generated phosphate/oxysulfide passivation from dry-processed single-crystal NMC811 stabilizes argyrodite sulfide solid-state battery interfaces",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2026-02-24",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.80129623,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Chanho Kim",
+    "authors_display": "Chanho Kim; Yuanshun Li; Andre Adam; Wenda Wu; Gabriel D. Parker; Inyoung Jang; Yoojin Ahn; Yi‐Feng Su; Harry M. Meyer; Xiao-Ying Yu; J.S. Sharma Nanda; Guang Yang",
+    "authors_json": "[{\"display_name\": \"Chanho Kim\", \"id\": \"https://openalex.org/A5102711340\", \"orcid\": \"https://orcid.org/0000-0002-7743-040X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yuanshun Li\", \"id\": \"https://openalex.org/A5114643225\", \"orcid\": \"https://orcid.org/0009-0001-8264-1287\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Andre Adam\", \"id\": \"https://openalex.org/A5037175470\", \"orcid\": \"https://orcid.org/0000-0002-4502-3033\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wenda Wu\", \"id\": \"https://openalex.org/A5059265113\", \"orcid\": \"https://orcid.org/0009-0003-3307-687X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gabriel D. Parker\", \"id\": \"https://openalex.org/A5015575412\", \"orcid\": \"https://orcid.org/0000-0001-9039-4100\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Inyoung Jang\", \"id\": \"https://openalex.org/A5017093197\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoojin Ahn\", \"id\": \"https://openalex.org/A5051902001\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yi‐Feng Su\", \"id\": \"https://openalex.org/A5104353833\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Harry M. Meyer\", \"id\": \"https://openalex.org/A5061707133\", \"orcid\": \"https://orcid.org/0000-0003-4994-1664\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiao-Ying Yu\", \"id\": \"https://openalex.org/A5126676216\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J.S. Sharma Nanda\", \"id\": \"https://openalex.org/A5033480093\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guang Yang\", \"id\": \"https://openalex.org/A5126741180\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S240582972600142X?via%3Dihub",
+    "landing_title": "Self-generated phosphate/oxysulfide passivation from dry-processed single-crystal NMC811 stabilizes argyrodite sulfide solid-state battery interfaces - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773310414379,
+    "actual_start_ms": 1773310414379,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.7
+  }
+}

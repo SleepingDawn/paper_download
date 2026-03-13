@@ -1,0 +1,145 @@
+{
+  "doi": "10.1002/chem.201000501",
+  "pdf_filename": "10.1002_chem.201000501.pdf",
+  "json_filename": "10.1002_chem.201000501.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_chem.201000501.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2134641529",
+    "doi": "10.1002/chem.201000501",
+    "title": "Atomistic Characterisation of Li<sup>+</sup> Mobility and Conductivity in Li<sub>7−<i>x</i></sub>PS<sub>6−<i>x</i></sub>I<sub><i>x</i></sub> Argyrodites from Molecular Dynamics Simulations, Solid‐State NMR, and Impedance Spectroscopy",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Chemistry - A European Journal",
+      "id": "https://openalex.org/S68911691",
+      "type": "journal",
+      "issn_l": "0947-6539",
+      "issn": [
+        "0947-6539",
+        "1521-3765"
+      ]
+    },
+    "publication_date": "2010-06-11",
+    "publication_year": 2010,
+    "work_type": "article",
+    "cited_by_count": 82,
+    "citation_normalized_percentile": 0.93599093,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Oliver Pecher",
+    "authors_display": "Oliver Pecher; Shiao‐Tong Kong; Thorsten A. Goebel; Vera Nickel; K. Weichert; Christof Reiner; Hans‐Jörg Deiseroth; Joachim Maier; Frank Haarmann; Dirk Zahn",
+    "authors": [
+      {
+        "display_name": "Oliver Pecher",
+        "id": "https://openalex.org/A5005617839",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Shiao‐Tong Kong",
+        "id": "https://openalex.org/A5103451528",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Thorsten A. Goebel",
+        "id": "https://openalex.org/A5026345416",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Vera Nickel",
+        "id": "https://openalex.org/A5080135084",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "K. Weichert",
+        "id": "https://openalex.org/A5017945624",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Christof Reiner",
+        "id": "https://openalex.org/A5013054650",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hans‐Jörg Deiseroth",
+        "id": "https://openalex.org/A5081757254",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joachim Maier",
+        "id": "https://openalex.org/A5055375254",
+        "orcid": "https://orcid.org/0000-0003-2274-6068",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Frank Haarmann",
+        "id": "https://openalex.org/A5052044725",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dirk Zahn",
+        "id": "https://openalex.org/A5046504784",
+        "orcid": "https://orcid.org/0000-0002-4303-3422",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2134641529",
+    "doi": "10.1002/chem.201000501",
+    "title": "Atomistic Characterisation of Li<sup>+</sup> Mobility and Conductivity in Li<sub>7−<i>x</i></sub>PS<sub>6−<i>x</i></sub>I<sub><i>x</i></sub> Argyrodites from Molecular Dynamics Simulations, Solid‐State NMR, and Impedance Spectroscopy",
+    "publisher": "Wiley",
+    "journal": "Chemistry - A European Journal",
+    "journal_id": "https://openalex.org/S68911691",
+    "journal_type": "journal",
+    "journal_issn_l": "0947-6539",
+    "journal_issn_json": "[\"0947-6539\", \"1521-3765\"]",
+    "publication_date": "2010-06-11",
+    "publication_year": 2010,
+    "work_type": "article",
+    "cited_by_count": 82,
+    "citation_normalized_percentile": 0.93599093,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Oliver Pecher",
+    "authors_display": "Oliver Pecher; Shiao‐Tong Kong; Thorsten A. Goebel; Vera Nickel; K. Weichert; Christof Reiner; Hans‐Jörg Deiseroth; Joachim Maier; Frank Haarmann; Dirk Zahn",
+    "authors_json": "[{\"display_name\": \"Oliver Pecher\", \"id\": \"https://openalex.org/A5005617839\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Shiao‐Tong Kong\", \"id\": \"https://openalex.org/A5103451528\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Thorsten A. Goebel\", \"id\": \"https://openalex.org/A5026345416\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Vera Nickel\", \"id\": \"https://openalex.org/A5080135084\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"K. Weichert\", \"id\": \"https://openalex.org/A5017945624\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Christof Reiner\", \"id\": \"https://openalex.org/A5013054650\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hans‐Jörg Deiseroth\", \"id\": \"https://openalex.org/A5081757254\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Joachim Maier\", \"id\": \"https://openalex.org/A5055375254\", \"orcid\": \"https://orcid.org/0000-0003-2274-6068\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Frank Haarmann\", \"id\": \"https://openalex.org/A5052044725\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dirk Zahn\", \"id\": \"https://openalex.org/A5046504784\", \"orcid\": \"https://orcid.org/0000-0002-4303-3422\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302817910,
+    "actual_start_ms": 1773302819645,
+    "pacing_wait_ms": 1734,
+    "pacing_jitter_sec": 1.696
+  }
+}

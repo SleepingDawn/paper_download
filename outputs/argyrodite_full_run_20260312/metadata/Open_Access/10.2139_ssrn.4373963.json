@@ -1,0 +1,123 @@
+{
+  "doi": "10.2139/ssrn.4373963",
+  "pdf_filename": "10.2139_ssrn.4373963.pdf",
+  "json_filename": "10.2139_ssrn.4373963.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.4373963.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4322748635",
+    "doi": "10.2139/ssrn.4373963",
+    "title": "Exploring the Benefits of Li10snp2s12 Core-Shell Structure Cathode Material for Sulfide-Based All Solid-State Batteries to Improve High-Voltage Cycling Performance",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Yongsun Park",
+    "authors_display": "Yongsun Park; Gwangsuk Oh; A‐Young Kim; Hansen Chang; Mahir Uenal; Sang Cheol Nam; Oh‐Min Kwon",
+    "authors": [
+      {
+        "display_name": "Yongsun Park",
+        "id": "https://openalex.org/A5086081556",
+        "orcid": "https://orcid.org/0000-0002-1591-7036",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Gwangsuk Oh",
+        "id": "https://openalex.org/A5022457774",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "A‐Young Kim",
+        "id": "https://openalex.org/A5103217051",
+        "orcid": "https://orcid.org/0000-0001-6124-0807",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hansen Chang",
+        "id": "https://openalex.org/A5036311882",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mahir Uenal",
+        "id": "https://openalex.org/A5054551049",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang Cheol Nam",
+        "id": "https://openalex.org/A5070664981",
+        "orcid": "https://orcid.org/0000-0002-6925-7803",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Oh‐Min Kwon",
+        "id": "https://openalex.org/A5067685949",
+        "orcid": "https://orcid.org/0000-0002-4777-7912",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4322748635",
+    "doi": "10.2139/ssrn.4373963",
+    "title": "Exploring the Benefits of Li10snp2s12 Core-Shell Structure Cathode Material for Sulfide-Based All Solid-State Batteries to Improve High-Voltage Cycling Performance",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Yongsun Park",
+    "authors_display": "Yongsun Park; Gwangsuk Oh; A‐Young Kim; Hansen Chang; Mahir Uenal; Sang Cheol Nam; Oh‐Min Kwon",
+    "authors_json": "[{\"display_name\": \"Yongsun Park\", \"id\": \"https://openalex.org/A5086081556\", \"orcid\": \"https://orcid.org/0000-0002-1591-7036\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Gwangsuk Oh\", \"id\": \"https://openalex.org/A5022457774\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"A‐Young Kim\", \"id\": \"https://openalex.org/A5103217051\", \"orcid\": \"https://orcid.org/0000-0001-6124-0807\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hansen Chang\", \"id\": \"https://openalex.org/A5036311882\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mahir Uenal\", \"id\": \"https://openalex.org/A5054551049\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang Cheol Nam\", \"id\": \"https://openalex.org/A5070664981\", \"orcid\": \"https://orcid.org/0000-0002-6925-7803\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Oh‐Min Kwon\", \"id\": \"https://openalex.org/A5067685949\", \"orcid\": \"https://orcid.org/0000-0002-4777-7912\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4373963&__cf_chl_rt_tk=VEBkEWmN7lT12N9vC99aUapGCaHM93rEBwGfMWWo3M4-1773314265-1.0.1.1-z7FT8Pa9.MSwCqgMDqx0CcFiJqhbMP7qkU2vBy3OZZA",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.4373963.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773314245932,
+    "actual_start_ms": 1773314245932,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.825
+  }
+}

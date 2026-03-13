@@ -1,0 +1,140 @@
+{
+  "doi": "10.1149/ma2020-025926mtgabs",
+  "pdf_filename": "10.1149_ma2020-025926mtgabs.pdf",
+  "json_filename": "10.1149_ma2020-025926mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2020-025926mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W3118064495",
+    "doi": "10.1149/ma2020-025926mtgabs",
+    "title": "Calculational Clarification of the Reduction Factors Against Ionic Conductivity of Solid Electrolyte in All-Solid-State Battery",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2020-11-23",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.14713327,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Kazufumi Otani",
+    "authors_display": "Kazufumi Otani; Takahisa Muta; Terumi Furuta; Mitsuhiro Murata; Masahiro Iwasaki; Takuhiro Miyuki; Gen Inoue; Tomohiro Kaburagi; Yasuo Ishiguro",
+    "authors": [
+      {
+        "display_name": "Kazufumi Otani",
+        "id": "https://openalex.org/A5088470228",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Takahisa Muta",
+        "id": "https://openalex.org/A5064267622",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Terumi Furuta",
+        "id": "https://openalex.org/A5113562153",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mitsuhiro Murata",
+        "id": "https://openalex.org/A5031712101",
+        "orcid": "https://orcid.org/0000-0001-7838-601X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masahiro Iwasaki",
+        "id": "https://openalex.org/A5110657561",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Takuhiro Miyuki",
+        "id": "https://openalex.org/A5027930140",
+        "orcid": "https://orcid.org/0000-0003-1361-3239",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gen Inoue",
+        "id": "https://openalex.org/A5019961023",
+        "orcid": "https://orcid.org/0000-0003-2427-0972",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tomohiro Kaburagi",
+        "id": "https://openalex.org/A5109484547",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yasuo Ishiguro",
+        "id": "https://openalex.org/A5082532715",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3118064495",
+    "doi": "10.1149/ma2020-025926mtgabs",
+    "title": "Calculational Clarification of the Reduction Factors Against Ionic Conductivity of Solid Electrolyte in All-Solid-State Battery",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2020-11-23",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.14713327,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Kazufumi Otani",
+    "authors_display": "Kazufumi Otani; Takahisa Muta; Terumi Furuta; Mitsuhiro Murata; Masahiro Iwasaki; Takuhiro Miyuki; Gen Inoue; Tomohiro Kaburagi; Yasuo Ishiguro",
+    "authors_json": "[{\"display_name\": \"Kazufumi Otani\", \"id\": \"https://openalex.org/A5088470228\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Takahisa Muta\", \"id\": \"https://openalex.org/A5064267622\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Terumi Furuta\", \"id\": \"https://openalex.org/A5113562153\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mitsuhiro Murata\", \"id\": \"https://openalex.org/A5031712101\", \"orcid\": \"https://orcid.org/0000-0001-7838-601X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masahiro Iwasaki\", \"id\": \"https://openalex.org/A5110657561\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Takuhiro Miyuki\", \"id\": \"https://openalex.org/A5027930140\", \"orcid\": \"https://orcid.org/0000-0003-1361-3239\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gen Inoue\", \"id\": \"https://openalex.org/A5019961023\", \"orcid\": \"https://orcid.org/0000-0003-2427-0972\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tomohiro Kaburagi\", \"id\": \"https://openalex.org/A5109484547\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yasuo Ishiguro\", \"id\": \"https://openalex.org/A5082532715\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773303030401,
+    "actual_start_ms": 1773303030402,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.573
+  }
+}

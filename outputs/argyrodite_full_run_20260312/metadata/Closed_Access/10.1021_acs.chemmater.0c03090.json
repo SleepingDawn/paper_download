@@ -1,0 +1,110 @@
+{
+  "doi": "10.1021/acs.chemmater.0c03090",
+  "pdf_filename": "10.1021_acs.chemmater.0c03090.pdf",
+  "json_filename": "10.1021_acs.chemmater.0c03090.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.chemmater.0c03090.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3115232305",
+    "doi": "10.1021/acs.chemmater.0c03090",
+    "title": "Influence of Aliovalent Cation Substitution and Mechanical Compression on Li-Ion Conductivity and Diffusivity in Argyrodite Solid Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2020-12-29",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 107,
+    "citation_normalized_percentile": 0.97155711,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Parvin Adeli",
+    "authors_display": "Parvin Adeli; David Bazak; Ashfia Huq; Gillian R. Goward; Linda F. Nazar",
+    "authors": [
+      {
+        "display_name": "Parvin Adeli",
+        "id": "https://openalex.org/A5065628999",
+        "orcid": "https://orcid.org/0000-0002-0311-0382",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "David Bazak",
+        "id": "https://openalex.org/A5075575224",
+        "orcid": "https://orcid.org/0000-0002-4599-3208",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ashfia Huq",
+        "id": "https://openalex.org/A5072593469",
+        "orcid": "https://orcid.org/0000-0002-8445-9649",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gillian R. Goward",
+        "id": "https://openalex.org/A5018737861",
+        "orcid": "https://orcid.org/0000-0002-7489-3329",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Linda F. Nazar",
+        "id": "https://openalex.org/A5079626231",
+        "orcid": "https://orcid.org/0000-0002-3314-8197",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3115232305",
+    "doi": "10.1021/acs.chemmater.0c03090",
+    "title": "Influence of Aliovalent Cation Substitution and Mechanical Compression on Li-Ion Conductivity and Diffusivity in Argyrodite Solid Electrolytes",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2020-12-29",
+    "publication_year": 2020,
+    "work_type": "article",
+    "cited_by_count": 107,
+    "citation_normalized_percentile": 0.97155711,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Parvin Adeli",
+    "authors_display": "Parvin Adeli; David Bazak; Ashfia Huq; Gillian R. Goward; Linda F. Nazar",
+    "authors_json": "[{\"display_name\": \"Parvin Adeli\", \"id\": \"https://openalex.org/A5065628999\", \"orcid\": \"https://orcid.org/0000-0002-0311-0382\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"David Bazak\", \"id\": \"https://openalex.org/A5075575224\", \"orcid\": \"https://orcid.org/0000-0002-4599-3208\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ashfia Huq\", \"id\": \"https://openalex.org/A5072593469\", \"orcid\": \"https://orcid.org/0000-0002-8445-9649\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gillian R. Goward\", \"id\": \"https://openalex.org/A5018737861\", \"orcid\": \"https://orcid.org/0000-0002-7489-3329\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Linda F. Nazar\", \"id\": \"https://openalex.org/A5079626231\", \"orcid\": \"https://orcid.org/0000-0002-3314-8197\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301762871,
+    "actual_start_ms": 1773301766137,
+    "pacing_wait_ms": 3265,
+    "pacing_jitter_sec": 1.339
+  }
+}

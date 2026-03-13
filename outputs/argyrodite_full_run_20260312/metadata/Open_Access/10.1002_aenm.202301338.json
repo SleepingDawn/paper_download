@@ -1,0 +1,180 @@
+{
+  "doi": "10.1002/aenm.202301338",
+  "pdf_filename": "10.1002_aenm.202301338.pdf",
+  "json_filename": "10.1002_aenm.202301338.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202301338.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4387099334",
+    "doi": "10.1002/aenm.202301338",
+    "title": "Tuned Reactivity at the Lithium Metal–Argyrodite Solid State Electrolyte Interphase",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2023-09-27",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 42,
+    "citation_normalized_percentile": 0.96718356,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Hongchang Hao",
+    "authors_display": "Hongchang Hao; Yijie Liu; Samuel M. Greene; Guang Yang; Kaustubh G. Naik; Bairav S. Vishnugopi; Yixian Wang; Hugo Celio; Andrei Dolocan; Wan‐Yu Tsai; Ruyi Fang; John Watt; Partha P. Mukherjee; Donald J. Siegel; David Mitlin",
+    "authors": [
+      {
+        "display_name": "Hongchang Hao",
+        "id": "https://openalex.org/A5047306146",
+        "orcid": "https://orcid.org/0000-0003-4190-4105",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yijie Liu",
+        "id": "https://openalex.org/A5100654216",
+        "orcid": "https://orcid.org/0000-0003-1870-5191",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Samuel M. Greene",
+        "id": "https://openalex.org/A5032184863",
+        "orcid": "https://orcid.org/0000-0001-5135-5926",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guang Yang",
+        "id": "https://openalex.org/A5075057187",
+        "orcid": "https://orcid.org/0000-0003-0583-6272",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kaustubh G. Naik",
+        "id": "https://openalex.org/A5028243107",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bairav S. Vishnugopi",
+        "id": "https://openalex.org/A5011168368",
+        "orcid": "https://orcid.org/0009-0002-6357-9358",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yixian Wang",
+        "id": "https://openalex.org/A5101784896",
+        "orcid": "https://orcid.org/0000-0001-6107-8352",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hugo Celio",
+        "id": "https://openalex.org/A5000791602",
+        "orcid": "https://orcid.org/0000-0001-9066-9952",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Andrei Dolocan",
+        "id": "https://openalex.org/A5037952567",
+        "orcid": "https://orcid.org/0000-0001-5653-0439",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wan‐Yu Tsai",
+        "id": "https://openalex.org/A5033922371",
+        "orcid": "https://orcid.org/0000-0002-4731-7051",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ruyi Fang",
+        "id": "https://openalex.org/A5035314627",
+        "orcid": "https://orcid.org/0000-0002-2823-8868",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "John Watt",
+        "id": "https://openalex.org/A5082628784",
+        "orcid": "https://orcid.org/0000-0002-8012-9837",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Partha P. Mukherjee",
+        "id": "https://openalex.org/A5058780839",
+        "orcid": "https://orcid.org/0000-0001-7900-7261",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Donald J. Siegel",
+        "id": "https://openalex.org/A5044203460",
+        "orcid": "https://orcid.org/0000-0001-7913-2513",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "David Mitlin",
+        "id": "https://openalex.org/A5086743052",
+        "orcid": "https://orcid.org/0000-0002-7556-3575",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4387099334",
+    "doi": "10.1002/aenm.202301338",
+    "title": "Tuned Reactivity at the Lithium Metal–Argyrodite Solid State Electrolyte Interphase",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2023-09-27",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 42,
+    "citation_normalized_percentile": 0.96718356,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Hongchang Hao",
+    "authors_display": "Hongchang Hao; Yijie Liu; Samuel M. Greene; Guang Yang; Kaustubh G. Naik; Bairav S. Vishnugopi; Yixian Wang; Hugo Celio; Andrei Dolocan; Wan‐Yu Tsai; Ruyi Fang; John Watt; Partha P. Mukherjee; Donald J. Siegel; David Mitlin",
+    "authors_json": "[{\"display_name\": \"Hongchang Hao\", \"id\": \"https://openalex.org/A5047306146\", \"orcid\": \"https://orcid.org/0000-0003-4190-4105\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Yijie Liu\", \"id\": \"https://openalex.org/A5100654216\", \"orcid\": \"https://orcid.org/0000-0003-1870-5191\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Samuel M. Greene\", \"id\": \"https://openalex.org/A5032184863\", \"orcid\": \"https://orcid.org/0000-0001-5135-5926\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guang Yang\", \"id\": \"https://openalex.org/A5075057187\", \"orcid\": \"https://orcid.org/0000-0003-0583-6272\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kaustubh G. Naik\", \"id\": \"https://openalex.org/A5028243107\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bairav S. Vishnugopi\", \"id\": \"https://openalex.org/A5011168368\", \"orcid\": \"https://orcid.org/0009-0002-6357-9358\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yixian Wang\", \"id\": \"https://openalex.org/A5101784896\", \"orcid\": \"https://orcid.org/0000-0001-6107-8352\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hugo Celio\", \"id\": \"https://openalex.org/A5000791602\", \"orcid\": \"https://orcid.org/0000-0001-9066-9952\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Andrei Dolocan\", \"id\": \"https://openalex.org/A5037952567\", \"orcid\": \"https://orcid.org/0000-0001-5653-0439\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wan‐Yu Tsai\", \"id\": \"https://openalex.org/A5033922371\", \"orcid\": \"https://orcid.org/0000-0002-4731-7051\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ruyi Fang\", \"id\": \"https://openalex.org/A5035314627\", \"orcid\": \"https://orcid.org/0000-0002-2823-8868\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"John Watt\", \"id\": \"https://openalex.org/A5082628784\", \"orcid\": \"https://orcid.org/0000-0002-8012-9837\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Partha P. Mukherjee\", \"id\": \"https://openalex.org/A5058780839\", \"orcid\": \"https://orcid.org/0000-0001-7900-7261\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Donald J. Siegel\", \"id\": \"https://openalex.org/A5044203460\", \"orcid\": \"https://orcid.org/0000-0001-7913-2513\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"David Mitlin\", \"id\": \"https://openalex.org/A5086743052\", \"orcid\": \"https://orcid.org/0000-0002-7556-3575\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773303139593,
+    "actual_start_ms": 1773303139594,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.32
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "doi": "10.1021/acsaem.2c02774",
+  "pdf_filename": "10.1021_acsaem.2c02774.pdf",
+  "json_filename": "10.1021_acsaem.2c02774.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.2c02774.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4360951884",
+    "doi": "10.1021/acsaem.2c02774",
+    "title": "High Lithium-Ion Conductivity, Halide-Coated, Ni-Rich NCM Improves Cycling Stability in Sulfide All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2023-03-25",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 34,
+    "citation_normalized_percentile": 0.95368107,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Jing Wang",
+    "authors_display": "Jing Wang; Shangqian Zhao; Anbang Zhang; Haoxiang Zhuo; Gangning Zhang; Fujuan Han; Yi Zhang; Ling Tang; Rong Yang; Lijun Wang; Shigang Lu",
+    "authors": [
+      {
+        "display_name": "Jing Wang",
+        "id": "https://openalex.org/A5115602722",
+        "orcid": "https://orcid.org/0000-0002-2670-719X",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shangqian Zhao",
+        "id": "https://openalex.org/A5063496829",
+        "orcid": "https://orcid.org/0000-0003-1605-9974",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anbang Zhang",
+        "id": "https://openalex.org/A5101519497",
+        "orcid": "https://orcid.org/0000-0003-3289-7281",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haoxiang Zhuo",
+        "id": "https://openalex.org/A5008705920",
+        "orcid": "https://orcid.org/0000-0002-5648-7503",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gangning Zhang",
+        "id": "https://openalex.org/A5078647919",
+        "orcid": "https://orcid.org/0000-0002-7232-4202",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fujuan Han",
+        "id": "https://openalex.org/A5043914810",
+        "orcid": "https://orcid.org/0000-0002-7983-1979",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yi Zhang",
+        "id": "https://openalex.org/A5112447318",
+        "orcid": "https://orcid.org/0009-0009-9735-7498",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ling Tang",
+        "id": "https://openalex.org/A5075375112",
+        "orcid": "https://orcid.org/0000-0002-9241-4328",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rong Yang",
+        "id": "https://openalex.org/A5072472914",
+        "orcid": "https://orcid.org/0000-0001-6427-026X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lijun Wang",
+        "id": "https://openalex.org/A5100603204",
+        "orcid": "https://orcid.org/0000-0001-6823-600X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Shigang Lu",
+        "id": "https://openalex.org/A5061018363",
+        "orcid": "https://orcid.org/0000-0001-9066-7797",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4360951884",
+    "doi": "10.1021/acsaem.2c02774",
+    "title": "High Lithium-Ion Conductivity, Halide-Coated, Ni-Rich NCM Improves Cycling Stability in Sulfide All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2023-03-25",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 34,
+    "citation_normalized_percentile": 0.95368107,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Jing Wang",
+    "authors_display": "Jing Wang; Shangqian Zhao; Anbang Zhang; Haoxiang Zhuo; Gangning Zhang; Fujuan Han; Yi Zhang; Ling Tang; Rong Yang; Lijun Wang; Shigang Lu",
+    "authors_json": "[{\"display_name\": \"Jing Wang\", \"id\": \"https://openalex.org/A5115602722\", \"orcid\": \"https://orcid.org/0000-0002-2670-719X\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Shangqian Zhao\", \"id\": \"https://openalex.org/A5063496829\", \"orcid\": \"https://orcid.org/0000-0003-1605-9974\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anbang Zhang\", \"id\": \"https://openalex.org/A5101519497\", \"orcid\": \"https://orcid.org/0000-0003-3289-7281\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haoxiang Zhuo\", \"id\": \"https://openalex.org/A5008705920\", \"orcid\": \"https://orcid.org/0000-0002-5648-7503\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gangning Zhang\", \"id\": \"https://openalex.org/A5078647919\", \"orcid\": \"https://orcid.org/0000-0002-7232-4202\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fujuan Han\", \"id\": \"https://openalex.org/A5043914810\", \"orcid\": \"https://orcid.org/0000-0002-7983-1979\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yi Zhang\", \"id\": \"https://openalex.org/A5112447318\", \"orcid\": \"https://orcid.org/0009-0009-9735-7498\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ling Tang\", \"id\": \"https://openalex.org/A5075375112\", \"orcid\": \"https://orcid.org/0000-0002-9241-4328\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rong Yang\", \"id\": \"https://openalex.org/A5072472914\", \"orcid\": \"https://orcid.org/0000-0001-6427-026X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lijun Wang\", \"id\": \"https://openalex.org/A5100603204\", \"orcid\": \"https://orcid.org/0000-0001-6823-600X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Shigang Lu\", \"id\": \"https://openalex.org/A5061018363\", \"orcid\": \"https://orcid.org/0000-0001-9066-7797\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302560067,
+    "actual_start_ms": 1773302561567,
+    "pacing_wait_ms": 1500,
+    "pacing_jitter_sec": 1.067
+  }
+}

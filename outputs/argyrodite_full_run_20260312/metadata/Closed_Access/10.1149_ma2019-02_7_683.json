@@ -1,0 +1,119 @@
+{
+  "doi": "10.1149/ma2019-02/7/683",
+  "pdf_filename": "10.1149_ma2019-02_7_683.pdf",
+  "json_filename": "10.1149_ma2019-02_7_683.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2019-02_7_683.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W3163963972",
+    "doi": "10.1149/ma2019-02/7/683",
+    "title": "Lithium Dendrite Growth in All-Solid-State Batteries Based on Li-Argyrodite Li<sub>6</sub>PS<sub>5</sub>cl",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2019-09-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.22444288,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Ruth Schlenker",
+    "authors_display": "Ruth Schlenker; Dominik Stępień; P. Koch; Thomas Hupfer; Sylvio Indris; Helmut Ehrenberg",
+    "authors": [
+      {
+        "display_name": "Ruth Schlenker",
+        "id": "https://openalex.org/A5022660992",
+        "orcid": "https://orcid.org/0000-0001-8949-9984",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Dominik Stępień",
+        "id": "https://openalex.org/A5065258187",
+        "orcid": "https://orcid.org/0000-0001-9486-5395",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "P. Koch",
+        "id": "https://openalex.org/A5025824809",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Thomas Hupfer",
+        "id": "https://openalex.org/A5009700984",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sylvio Indris",
+        "id": "https://openalex.org/A5046099728",
+        "orcid": "https://orcid.org/0000-0002-5100-113X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Helmut Ehrenberg",
+        "id": "https://openalex.org/A5002086034",
+        "orcid": "https://orcid.org/0000-0002-5134-7130",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3163963972",
+    "doi": "10.1149/ma2019-02/7/683",
+    "title": "Lithium Dendrite Growth in All-Solid-State Batteries Based on Li-Argyrodite Li<sub>6</sub>PS<sub>5</sub>cl",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2019-09-01",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.22444288,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Ruth Schlenker",
+    "authors_display": "Ruth Schlenker; Dominik Stępień; P. Koch; Thomas Hupfer; Sylvio Indris; Helmut Ehrenberg",
+    "authors_json": "[{\"display_name\": \"Ruth Schlenker\", \"id\": \"https://openalex.org/A5022660992\", \"orcid\": \"https://orcid.org/0000-0001-8949-9984\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Dominik Stępień\", \"id\": \"https://openalex.org/A5065258187\", \"orcid\": \"https://orcid.org/0000-0001-9486-5395\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"P. Koch\", \"id\": \"https://openalex.org/A5025824809\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Thomas Hupfer\", \"id\": \"https://openalex.org/A5009700984\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sylvio Indris\", \"id\": \"https://openalex.org/A5046099728\", \"orcid\": \"https://orcid.org/0000-0002-5100-113X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Helmut Ehrenberg\", \"id\": \"https://openalex.org/A5002086034\", \"orcid\": \"https://orcid.org/0000-0002-5134-7130\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773303061794,
+    "actual_start_ms": 1773303061794,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.269
+  }
+}

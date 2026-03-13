@@ -1,0 +1,166 @@
+{
+  "doi": "10.1007/s10854-025-14581-w",
+  "pdf_filename": "10.1007_s10854-025-14581-w.pdf",
+  "json_filename": "10.1007_s10854-025-14581-w.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s10854-025-14581-w.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408963085",
+    "doi": "10.1007/s10854-025-14581-w",
+    "title": "Ternary doping enhances the moisture and electrochemical stability of Li5.5PS4.5Cl1.5 solid-state electrolyte",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Journal of Materials Science Materials in Electronics",
+      "id": "https://openalex.org/S189509794",
+      "type": "journal",
+      "issn_l": "0957-4522",
+      "issn": [
+        "0957-4522",
+        "1573-482X"
+      ]
+    },
+    "publication_date": "2025-03-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.81534646,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 13,
+    "first_author": "Chenzhi Cai",
+    "authors_display": "Chenzhi Cai; Kongjun Zhu; Yu Rao; Zhihan Kong; Ziyun Li; Xiaomeng Wu; Yuqing Yang; Miaomiao Huang; Heng Zhou; Kang Yan; Jing Wang; Feng Shi; J. Guo",
+    "authors": [
+      {
+        "display_name": "Chenzhi Cai",
+        "id": "https://openalex.org/A5017528999",
+        "orcid": "https://orcid.org/0009-0001-7070-5183",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Kongjun Zhu",
+        "id": "https://openalex.org/A5001856499",
+        "orcid": "https://orcid.org/0000-0003-0804-8044",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Rao",
+        "id": "https://openalex.org/A5045928826",
+        "orcid": "https://orcid.org/0009-0002-7930-8763",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhihan Kong",
+        "id": "https://openalex.org/A5064283495",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziyun Li",
+        "id": "https://openalex.org/A5100780893",
+        "orcid": "https://orcid.org/0009-0005-1327-3168",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaomeng Wu",
+        "id": "https://openalex.org/A5054474943",
+        "orcid": "https://orcid.org/0000-0002-4534-7476",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuqing Yang",
+        "id": "https://openalex.org/A5016969421",
+        "orcid": "https://orcid.org/0000-0002-5407-5740",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Miaomiao Huang",
+        "id": "https://openalex.org/A5112255439",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Heng Zhou",
+        "id": "https://openalex.org/A5100707854",
+        "orcid": "https://orcid.org/0000-0002-0676-1041",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kang Yan",
+        "id": "https://openalex.org/A5102491805",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jing Wang",
+        "id": "https://openalex.org/A5115589198",
+        "orcid": "https://orcid.org/0009-0002-9470-5804",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Feng Shi",
+        "id": "https://openalex.org/A5101406163",
+        "orcid": "https://orcid.org/0000-0003-4090-6854",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J. Guo",
+        "id": "https://openalex.org/A5100419611",
+        "orcid": "https://orcid.org/0000-0001-8125-9433",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408963085",
+    "doi": "10.1007/s10854-025-14581-w",
+    "title": "Ternary doping enhances the moisture and electrochemical stability of Li5.5PS4.5Cl1.5 solid-state electrolyte",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Journal of Materials Science Materials in Electronics",
+    "journal_id": "https://openalex.org/S189509794",
+    "journal_type": "journal",
+    "journal_issn_l": "0957-4522",
+    "journal_issn_json": "[\"0957-4522\", \"1573-482X\"]",
+    "publication_date": "2025-03-01",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.81534646,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 13,
+    "first_author": "Chenzhi Cai",
+    "authors_display": "Chenzhi Cai; Kongjun Zhu; Yu Rao; Zhihan Kong; Ziyun Li; Xiaomeng Wu; Yuqing Yang; Miaomiao Huang; Heng Zhou; Kang Yan; Jing Wang; Feng Shi; J. Guo",
+    "authors_json": "[{\"display_name\": \"Chenzhi Cai\", \"id\": \"https://openalex.org/A5017528999\", \"orcid\": \"https://orcid.org/0009-0001-7070-5183\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Kongjun Zhu\", \"id\": \"https://openalex.org/A5001856499\", \"orcid\": \"https://orcid.org/0000-0003-0804-8044\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Rao\", \"id\": \"https://openalex.org/A5045928826\", \"orcid\": \"https://orcid.org/0009-0002-7930-8763\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhihan Kong\", \"id\": \"https://openalex.org/A5064283495\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ziyun Li\", \"id\": \"https://openalex.org/A5100780893\", \"orcid\": \"https://orcid.org/0009-0005-1327-3168\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaomeng Wu\", \"id\": \"https://openalex.org/A5054474943\", \"orcid\": \"https://orcid.org/0000-0002-4534-7476\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuqing Yang\", \"id\": \"https://openalex.org/A5016969421\", \"orcid\": \"https://orcid.org/0000-0002-5407-5740\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Miaomiao Huang\", \"id\": \"https://openalex.org/A5112255439\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Heng Zhou\", \"id\": \"https://openalex.org/A5100707854\", \"orcid\": \"https://orcid.org/0000-0002-0676-1041\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kang Yan\", \"id\": \"https://openalex.org/A5102491805\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jing Wang\", \"id\": \"https://openalex.org/A5115589198\", \"orcid\": \"https://orcid.org/0009-0002-9470-5804\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Feng Shi\", \"id\": \"https://openalex.org/A5101406163\", \"orcid\": \"https://orcid.org/0000-0003-4090-6854\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J. Guo\", \"id\": \"https://openalex.org/A5100419611\", \"orcid\": \"https://orcid.org/0000-0001-8125-9433\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://link.springer.com/article/10.1007/s10854-025-14581-w",
+    "landing_title": "Ternary doping enhances the moisture and electrochemical stability of Li5.5PS4.5Cl1.5 solid-state electrolyte | Journal of Materials Science: Materials in Electronics | Springer Nature Link",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1007_s10854-025-14581-w.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773309950435,
+    "actual_start_ms": 1773309950435,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.307
+  }
+}

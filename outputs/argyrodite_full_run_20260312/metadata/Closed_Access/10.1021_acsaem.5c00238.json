@@ -1,0 +1,116 @@
+{
+  "doi": "10.1021/acsaem.5c00238",
+  "pdf_filename": "10.1021_acsaem.5c00238.pdf",
+  "json_filename": "10.1021_acsaem.5c00238.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.5c00238.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409154892",
+    "doi": "10.1021/acsaem.5c00238",
+    "title": "Correlating Electrochemical Behavior with Morphological and Compositional Changes in Sulfide Solid Electrolyte All-Solid-State Batteries after Charge/Discharge Cycles",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2025-04-04",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.06598107,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Yasuhito Aoki",
+    "authors_display": "Yasuhito Aoki; Riko Miyoshi; K. Katō; Sumihisa Ishikawa; Toshikatsu Kojima; Mitsuharu Tabuchi",
+    "authors": [
+      {
+        "display_name": "Yasuhito Aoki",
+        "id": "https://openalex.org/A5080762799",
+        "orcid": "https://orcid.org/0000-0003-2819-5164",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Riko Miyoshi",
+        "id": "https://openalex.org/A5008131927",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "K. Katō",
+        "id": "https://openalex.org/A5019523140",
+        "orcid": "https://orcid.org/0000-0002-5532-2379",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sumihisa Ishikawa",
+        "id": "https://openalex.org/A5041497682",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Toshikatsu Kojima",
+        "id": "https://openalex.org/A5085029905",
+        "orcid": "https://orcid.org/0000-0002-1774-2698",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mitsuharu Tabuchi",
+        "id": "https://openalex.org/A5081830024",
+        "orcid": "https://orcid.org/0000-0002-7418-0505",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409154892",
+    "doi": "10.1021/acsaem.5c00238",
+    "title": "Correlating Electrochemical Behavior with Morphological and Compositional Changes in Sulfide Solid Electrolyte All-Solid-State Batteries after Charge/Discharge Cycles",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2025-04-04",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.06598107,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Yasuhito Aoki",
+    "authors_display": "Yasuhito Aoki; Riko Miyoshi; K. Katō; Sumihisa Ishikawa; Toshikatsu Kojima; Mitsuharu Tabuchi",
+    "authors_json": "[{\"display_name\": \"Yasuhito Aoki\", \"id\": \"https://openalex.org/A5080762799\", \"orcid\": \"https://orcid.org/0000-0003-2819-5164\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Riko Miyoshi\", \"id\": \"https://openalex.org/A5008131927\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"K. Katō\", \"id\": \"https://openalex.org/A5019523140\", \"orcid\": \"https://orcid.org/0000-0002-5532-2379\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sumihisa Ishikawa\", \"id\": \"https://openalex.org/A5041497682\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Toshikatsu Kojima\", \"id\": \"https://openalex.org/A5085029905\", \"orcid\": \"https://orcid.org/0000-0002-1774-2698\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mitsuharu Tabuchi\", \"id\": \"https://openalex.org/A5081830024\", \"orcid\": \"https://orcid.org/0000-0002-7418-0505\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.5c00238",
+    "landing_title": "Correlating Electrochemical Behavior with Morphological and Compositional Changes in Sulfide Solid Electrolyte All-Solid-State Batteries after Charge/Discharge Cycles | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsaem.5c00238.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308480394,
+    "actual_start_ms": 1773308480395,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.372
+  }
+}

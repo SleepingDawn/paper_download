@@ -1,0 +1,103 @@
+{
+  "doi": "10.1016/j.scriptamat.2023.115592",
+  "pdf_filename": "10.1016_j.scriptamat.2023.115592.pdf",
+  "json_filename": "10.1016_j.scriptamat.2023.115592.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.scriptamat.2023.115592.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4379662126",
+    "doi": "10.1016/j.scriptamat.2023.115592",
+    "title": "Optimization of high ionic conducting Br-rich and metal (Sb and Zr) substituted Li-argyrodite and their enhanced air stability and compatibility in lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Scripta Materialia",
+      "id": "https://openalex.org/S105962883",
+      "type": "journal",
+      "issn_l": "1359-6462",
+      "issn": [
+        "1359-6462",
+        "1872-8456"
+      ]
+    },
+    "publication_date": "2023-06-07",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 17,
+    "citation_normalized_percentile": 0.88387839,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Yuvaraj Subramanian",
+    "authors_display": "Yuvaraj Subramanian; Rajesh Rajagopal; Sung Kang; Kwang‐Sun Ryu",
+    "authors": [
+      {
+        "display_name": "Yuvaraj Subramanian",
+        "id": "https://openalex.org/A5104119459",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rajesh Rajagopal",
+        "id": "https://openalex.org/A5034649463",
+        "orcid": "https://orcid.org/0000-0001-7009-4266",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sung Kang",
+        "id": "https://openalex.org/A5101341785",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kwang‐Sun Ryu",
+        "id": "https://openalex.org/A5032691935",
+        "orcid": "https://orcid.org/0000-0002-8758-0495",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4379662126",
+    "doi": "10.1016/j.scriptamat.2023.115592",
+    "title": "Optimization of high ionic conducting Br-rich and metal (Sb and Zr) substituted Li-argyrodite and their enhanced air stability and compatibility in lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Scripta Materialia",
+    "journal_id": "https://openalex.org/S105962883",
+    "journal_type": "journal",
+    "journal_issn_l": "1359-6462",
+    "journal_issn_json": "[\"1359-6462\", \"1872-8456\"]",
+    "publication_date": "2023-06-07",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 17,
+    "citation_normalized_percentile": 0.88387839,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Yuvaraj Subramanian",
+    "authors_display": "Yuvaraj Subramanian; Rajesh Rajagopal; Sung Kang; Kwang‐Sun Ryu",
+    "authors_json": "[{\"display_name\": \"Yuvaraj Subramanian\", \"id\": \"https://openalex.org/A5104119459\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Rajesh Rajagopal\", \"id\": \"https://openalex.org/A5034649463\", \"orcid\": \"https://orcid.org/0000-0001-7009-4266\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sung Kang\", \"id\": \"https://openalex.org/A5101341785\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kwang‐Sun Ryu\", \"id\": \"https://openalex.org/A5032691935\", \"orcid\": \"https://orcid.org/0000-0002-8758-0495\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S1359646223003160?via%3Dihub",
+    "landing_title": "Optimization of high ionic conducting Br-rich and metal (Sb and Zr) substituted Li-argyrodite and their enhanced air stability and compatibility in lithium batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302881129,
+    "actual_start_ms": 1773302954830,
+    "pacing_wait_ms": 73700,
+    "pacing_jitter_sec": 1.273
+  }
+}

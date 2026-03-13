@@ -1,0 +1,121 @@
+{
+  "doi": "10.26434/chemrxiv-2025-k4wd7-v2",
+  "pdf_filename": "10.26434_chemrxiv-2025-k4wd7-v2.pdf",
+  "json_filename": "10.26434_chemrxiv-2025-k4wd7-v2.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.26434_chemrxiv-2025-k4wd7-v2.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4413330979",
+    "doi": "10.26434/chemrxiv-2025-k4wd7-v2",
+    "title": "Operando X-ray Computed Tomography Reveals the Role of Interfacial Nucleation Nanolayers in Suppressing Mechanical Failure in Zero-Excess Lithium All-Solid-State Batteries",
+    "publisher": null,
+    "journal": {
+      "name": null,
+      "id": null,
+      "type": null,
+      "issn_l": null,
+      "issn": []
+    },
+    "publication_date": "2025-08-19",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.25338585,
+    "pdf_url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/689ddb76728bf9025e6a184a/original/operando-x-ray-computed-tomography-reveals-the-role-of-interfacial-nucleation-nanolayers-in-suppressing-mechanical-failure-in-zero-excess-lithium-all-solid-state-batteries.pdf",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Linfeng Xu",
+    "authors_display": "Linfeng Xu; James Le Houx; V. Kachkanov; Jinsong Zhang; Robin Wullich; Thomas J. Schmidt; Mario El Kazzi",
+    "authors": [
+      {
+        "display_name": "Linfeng Xu",
+        "id": "https://openalex.org/A5101412185",
+        "orcid": "https://orcid.org/0009-0003-7888-722X",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "James Le Houx",
+        "id": "https://openalex.org/A5065342554",
+        "orcid": "https://orcid.org/0000-0002-1576-0673",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "V. Kachkanov",
+        "id": "https://openalex.org/A5031661764",
+        "orcid": "https://orcid.org/0000-0002-4129-3669",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinsong Zhang",
+        "id": "https://openalex.org/A5107117635",
+        "orcid": "https://orcid.org/0009-0001-8259-3318",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Robin Wullich",
+        "id": "https://openalex.org/A5092277442",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Thomas J. Schmidt",
+        "id": "https://openalex.org/A5084722596",
+        "orcid": "https://orcid.org/0000-0002-1636-367X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mario El Kazzi",
+        "id": "https://openalex.org/A5066147651",
+        "orcid": "https://orcid.org/0000-0003-2975-0481",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4413330979",
+    "doi": "10.26434/chemrxiv-2025-k4wd7-v2",
+    "title": "Operando X-ray Computed Tomography Reveals the Role of Interfacial Nucleation Nanolayers in Suppressing Mechanical Failure in Zero-Excess Lithium All-Solid-State Batteries",
+    "publisher": null,
+    "journal": null,
+    "journal_id": null,
+    "journal_type": null,
+    "journal_issn_l": null,
+    "journal_issn_json": "[]",
+    "publication_date": "2025-08-19",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.25338585,
+    "pdf_url": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/689ddb76728bf9025e6a184a/original/operando-x-ray-computed-tomography-reveals-the-role-of-interfacial-nucleation-nanolayers-in-suppressing-mechanical-failure-in-zero-excess-lithium-all-solid-state-batteries.pdf",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Linfeng Xu",
+    "authors_display": "Linfeng Xu; James Le Houx; V. Kachkanov; Jinsong Zhang; Robin Wullich; Thomas J. Schmidt; Mario El Kazzi",
+    "authors_json": "[{\"display_name\": \"Linfeng Xu\", \"id\": \"https://openalex.org/A5101412185\", \"orcid\": \"https://orcid.org/0009-0003-7888-722X\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"James Le Houx\", \"id\": \"https://openalex.org/A5065342554\", \"orcid\": \"https://orcid.org/0000-0002-1576-0673\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"V. Kachkanov\", \"id\": \"https://openalex.org/A5031661764\", \"orcid\": \"https://orcid.org/0000-0002-4129-3669\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinsong Zhang\", \"id\": \"https://openalex.org/A5107117635\", \"orcid\": \"https://orcid.org/0009-0001-8259-3318\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Robin Wullich\", \"id\": \"https://openalex.org/A5092277442\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Thomas J. Schmidt\", \"id\": \"https://openalex.org/A5084722596\", \"orcid\": \"https://orcid.org/0000-0002-1636-367X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mario El Kazzi\", \"id\": \"https://openalex.org/A5066147651\", \"orcid\": \"https://orcid.org/0000-0003-2975-0481\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://chemrxiv.org/doi/full/10.26434/chemrxiv-2025-k4wd7-v2",
+    "landing_title": "Operando X-ray Computed Tomography Reveals the Role of Interfacial Nucleation Nanolayers in Suppressing Mechanical Failure in Zero-Excess Lithium All-Solid-State Batteries | ChemRxiv",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.26434_chemrxiv-2025-k4wd7-v2.pdf",
+    "scheduler_publisher": "10.26434",
+    "scheduled_start_ms": 1773309922241,
+    "actual_start_ms": 1773309922242,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.949
+  }
+}

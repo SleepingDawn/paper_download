@@ -1,0 +1,145 @@
+{
+  "doi": "10.1007/s10008-025-06509-5",
+  "pdf_filename": "10.1007_s10008-025-06509-5.pdf",
+  "json_filename": "10.1007_s10008-025-06509-5.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1007_s10008-025-06509-5.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7124712593",
+    "doi": "10.1007/s10008-025-06509-5",
+    "title": "Li-Mg alloy anode enables dendrite-free growth of sulfide-based all-solid-state batteries with low nucleation barriers",
+    "publisher": "Springer Science+Business Media",
+    "journal": {
+      "name": "Journal of Solid State Electrochemistry",
+      "id": "https://openalex.org/S25422132",
+      "type": "journal",
+      "issn_l": "1432-8488",
+      "issn": [
+        "1432-8488",
+        "1433-0768"
+      ]
+    },
+    "publication_date": "2026-01-19",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.27615247,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Surui Ren",
+    "authors_display": "Surui Ren; Wenli Cheng; Xufeng Wang; Jinzhou Sun; Yang Yu; Rongsong Liu; Junxiong Wang; Yajie Song; Qingsong Liu; Nan Sun",
+    "authors": [
+      {
+        "display_name": "Surui Ren",
+        "id": "https://openalex.org/A5123333826",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenli Cheng",
+        "id": "https://openalex.org/A5100515991",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xufeng Wang",
+        "id": "https://openalex.org/A5121460602",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinzhou Sun",
+        "id": "https://openalex.org/A5123299276",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Yu",
+        "id": "https://openalex.org/A5100687570",
+        "orcid": "https://orcid.org/0000-0002-9704-1962",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rongsong Liu",
+        "id": "https://openalex.org/A5123350553",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Junxiong Wang",
+        "id": "https://openalex.org/A5050681387",
+        "orcid": "https://orcid.org/0000-0001-6998-0711",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yajie Song",
+        "id": "https://openalex.org/A5123317902",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qingsong Liu",
+        "id": "https://openalex.org/A5058092354",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nan Sun",
+        "id": "https://openalex.org/A5123344069",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7124712593",
+    "doi": "10.1007/s10008-025-06509-5",
+    "title": "Li-Mg alloy anode enables dendrite-free growth of sulfide-based all-solid-state batteries with low nucleation barriers",
+    "publisher": "Springer Science+Business Media",
+    "journal": "Journal of Solid State Electrochemistry",
+    "journal_id": "https://openalex.org/S25422132",
+    "journal_type": "journal",
+    "journal_issn_l": "1432-8488",
+    "journal_issn_json": "[\"1432-8488\", \"1433-0768\"]",
+    "publication_date": "2026-01-19",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.27615247,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 10,
+    "first_author": "Surui Ren",
+    "authors_display": "Surui Ren; Wenli Cheng; Xufeng Wang; Jinzhou Sun; Yang Yu; Rongsong Liu; Junxiong Wang; Yajie Song; Qingsong Liu; Nan Sun",
+    "authors_json": "[{\"display_name\": \"Surui Ren\", \"id\": \"https://openalex.org/A5123333826\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Wenli Cheng\", \"id\": \"https://openalex.org/A5100515991\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xufeng Wang\", \"id\": \"https://openalex.org/A5121460602\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinzhou Sun\", \"id\": \"https://openalex.org/A5123299276\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Yu\", \"id\": \"https://openalex.org/A5100687570\", \"orcid\": \"https://orcid.org/0000-0002-9704-1962\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rongsong Liu\", \"id\": \"https://openalex.org/A5123350553\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Junxiong Wang\", \"id\": \"https://openalex.org/A5050681387\", \"orcid\": \"https://orcid.org/0000-0001-6998-0711\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yajie Song\", \"id\": \"https://openalex.org/A5123317902\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qingsong Liu\", \"id\": \"https://openalex.org/A5058092354\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nan Sun\", \"id\": \"https://openalex.org/A5123344069\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://link.springer.com/article/10.1007/s10008-025-06509-5",
+    "landing_title": "Li-Mg alloy anode enables dendrite-free growth of sulfide-based all-solid-state batteries with low nucleation barriers | Journal of Solid State Electrochemistry | Springer Nature Link",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1007_s10008-025-06509-5.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773310594456,
+    "actual_start_ms": 1773310594456,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.72
+  }
+}

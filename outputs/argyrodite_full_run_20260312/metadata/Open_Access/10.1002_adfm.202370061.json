@@ -1,0 +1,152 @@
+{
+  "doi": "10.1002/adfm.202370061",
+  "pdf_filename": "10.1002_adfm.202370061.pdf",
+  "json_filename": "10.1002_adfm.202370061.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_adfm.202370061.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4323835291",
+    "doi": "10.1002/adfm.202370061",
+    "title": "Annealing‐Free Thioantimonate Argyrodites with High Li‐Ion Conductivity and Low Elastic Modulus (Adv. Funct. Mater. 11/2023)",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2023-03-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.30808521,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202370061",
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Wo Dum Jung",
+    "authors_display": "Wo Dum Jung; Ji‐Su Kim; Young Jung Kim; Hyeseong Jeong; Daseul Han; Kyung‐Wan Nam; Docheon Ahn; Deok‐Hwang Kwon; Hun‐Gi Jung; Jong‐Ho Lee; Hyoungchul Kim",
+    "authors": [
+      {
+        "display_name": "Wo Dum Jung",
+        "id": "https://openalex.org/A5030517798",
+        "orcid": "https://orcid.org/0000-0002-8544-6583",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ji‐Su Kim",
+        "id": "https://openalex.org/A5052391818",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Young Jung Kim",
+        "id": "https://openalex.org/A5044158086",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyeseong Jeong",
+        "id": "https://openalex.org/A5112900383",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daseul Han",
+        "id": "https://openalex.org/A5079757093",
+        "orcid": "https://orcid.org/0000-0001-9560-9246",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung‐Wan Nam",
+        "id": "https://openalex.org/A5047805438",
+        "orcid": "https://orcid.org/0000-0001-6278-6369",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Docheon Ahn",
+        "id": "https://openalex.org/A5027699664",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Deok‐Hwang Kwon",
+        "id": "https://openalex.org/A5064617680",
+        "orcid": "https://orcid.org/0000-0002-8944-0883",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hun‐Gi Jung",
+        "id": "https://openalex.org/A5045467177",
+        "orcid": "https://orcid.org/0000-0002-2162-2680",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jong‐Ho Lee",
+        "id": "https://openalex.org/A5100423382",
+        "orcid": "https://orcid.org/0000-0003-4481-6258",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyoungchul Kim",
+        "id": "https://openalex.org/A5055060451",
+        "orcid": "https://orcid.org/0000-0003-3109-660X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4323835291",
+    "doi": "10.1002/adfm.202370061",
+    "title": "Annealing‐Free Thioantimonate Argyrodites with High Li‐Ion Conductivity and Low Elastic Modulus (Adv. Funct. Mater. 11/2023)",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2023-03-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.30808521,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202370061",
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Wo Dum Jung",
+    "authors_display": "Wo Dum Jung; Ji‐Su Kim; Young Jung Kim; Hyeseong Jeong; Daseul Han; Kyung‐Wan Nam; Docheon Ahn; Deok‐Hwang Kwon; Hun‐Gi Jung; Jong‐Ho Lee; Hyoungchul Kim",
+    "authors_json": "[{\"display_name\": \"Wo Dum Jung\", \"id\": \"https://openalex.org/A5030517798\", \"orcid\": \"https://orcid.org/0000-0002-8544-6583\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Ji‐Su Kim\", \"id\": \"https://openalex.org/A5052391818\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Young Jung Kim\", \"id\": \"https://openalex.org/A5044158086\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyeseong Jeong\", \"id\": \"https://openalex.org/A5112900383\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daseul Han\", \"id\": \"https://openalex.org/A5079757093\", \"orcid\": \"https://orcid.org/0000-0001-9560-9246\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung‐Wan Nam\", \"id\": \"https://openalex.org/A5047805438\", \"orcid\": \"https://orcid.org/0000-0001-6278-6369\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Docheon Ahn\", \"id\": \"https://openalex.org/A5027699664\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Deok‐Hwang Kwon\", \"id\": \"https://openalex.org/A5064617680\", \"orcid\": \"https://orcid.org/0000-0002-8944-0883\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hun‐Gi Jung\", \"id\": \"https://openalex.org/A5045467177\", \"orcid\": \"https://orcid.org/0000-0002-2162-2680\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jong‐Ho Lee\", \"id\": \"https://openalex.org/A5100423382\", \"orcid\": \"https://orcid.org/0000-0003-4481-6258\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyoungchul Kim\", \"id\": \"https://openalex.org/A5055060451\", \"orcid\": \"https://orcid.org/0000-0003-3109-660X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308597817,
+    "actual_start_ms": 1773308597817,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.772
+  }
+}

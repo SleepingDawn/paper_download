@@ -1,0 +1,102 @@
+{
+  "doi": "10.1021/acsenergylett.9b00610",
+  "pdf_filename": "10.1021_acsenergylett.9b00610.pdf",
+  "json_filename": "10.1021_acsenergylett.9b00610.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsenergylett.9b00610.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2937770950",
+    "doi": "10.1021/acsenergylett.9b00610",
+    "title": "Peeking across Grain Boundaries in a Solid-State Ionic Conductor",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2019-04-15",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 89,
+    "citation_normalized_percentile": 0.9708596,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Swapna Ganapathy",
+    "authors_display": "Swapna Ganapathy; Chuang Yu; Ernst R. H. van Eck; Marnix Wagemaker",
+    "authors": [
+      {
+        "display_name": "Swapna Ganapathy",
+        "id": "https://openalex.org/A5075602037",
+        "orcid": "https://orcid.org/0000-0001-5265-1663",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ernst R. H. van Eck",
+        "id": "https://openalex.org/A5030253796",
+        "orcid": "https://orcid.org/0000-0002-2365-9583",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marnix Wagemaker",
+        "id": "https://openalex.org/A5034244816",
+        "orcid": "https://orcid.org/0000-0003-3851-1044",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2937770950",
+    "doi": "10.1021/acsenergylett.9b00610",
+    "title": "Peeking across Grain Boundaries in a Solid-State Ionic Conductor",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2019-04-15",
+    "publication_year": 2019,
+    "work_type": "article",
+    "cited_by_count": 89,
+    "citation_normalized_percentile": 0.9708596,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Swapna Ganapathy",
+    "authors_display": "Swapna Ganapathy; Chuang Yu; Ernst R. H. van Eck; Marnix Wagemaker",
+    "authors_json": "[{\"display_name\": \"Swapna Ganapathy\", \"id\": \"https://openalex.org/A5075602037\", \"orcid\": \"https://orcid.org/0000-0001-5265-1663\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ernst R. H. van Eck\", \"id\": \"https://openalex.org/A5030253796\", \"orcid\": \"https://orcid.org/0000-0002-2365-9583\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marnix Wagemaker\", \"id\": \"https://openalex.org/A5034244816\", \"orcid\": \"https://orcid.org/0000-0003-3851-1044\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301858878,
+    "actual_start_ms": 1773301861140,
+    "pacing_wait_ms": 2262,
+    "pacing_jitter_sec": 0.929
+  }
+}

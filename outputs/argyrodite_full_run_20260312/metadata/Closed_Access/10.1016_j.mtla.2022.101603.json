@@ -1,0 +1,137 @@
+{
+  "doi": "10.1016/j.mtla.2022.101603",
+  "pdf_filename": "10.1016_j.mtla.2022.101603.pdf",
+  "json_filename": "10.1016_j.mtla.2022.101603.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.mtla.2022.101603.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4306700537",
+    "doi": "10.1016/j.mtla.2022.101603",
+    "title": "Synthesis of Br-rich argyrodite electrolytes enables all-solid-state batteries with superior battery performances at different operating temperatures",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Materialia",
+      "id": "https://openalex.org/S2898317371",
+      "type": "journal",
+      "issn_l": "2589-1529",
+      "issn": [
+        "2589-1529"
+      ]
+    },
+    "publication_date": "2022-10-18",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.86646054,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Cong Liao",
+    "authors_display": "Cong Liao; Chuang Yu; Xuefei Miao; Shaoqing Chen; Linfeng Peng; Chaochao Wei; Zhongkai Wu; Shijie Cheng; Jia Xie",
+    "authors": [
+      {
+        "display_name": "Cong Liao",
+        "id": "https://openalex.org/A5102095751",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xuefei Miao",
+        "id": "https://openalex.org/A5076669737",
+        "orcid": "https://orcid.org/0000-0003-4930-9108",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shaoqing Chen",
+        "id": "https://openalex.org/A5010748983",
+        "orcid": "https://orcid.org/0000-0002-6700-292X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Linfeng Peng",
+        "id": "https://openalex.org/A5101094536",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chaochao Wei",
+        "id": "https://openalex.org/A5113211601",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhongkai Wu",
+        "id": "https://openalex.org/A5027106287",
+        "orcid": "https://orcid.org/0000-0002-9864-2559",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Cheng",
+        "id": "https://openalex.org/A5024186253",
+        "orcid": "https://orcid.org/0000-0002-8752-4311",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jia Xie",
+        "id": "https://openalex.org/A5081117176",
+        "orcid": "https://orcid.org/0000-0002-8731-295X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4306700537",
+    "doi": "10.1016/j.mtla.2022.101603",
+    "title": "Synthesis of Br-rich argyrodite electrolytes enables all-solid-state batteries with superior battery performances at different operating temperatures",
+    "publisher": "Elsevier BV",
+    "journal": "Materialia",
+    "journal_id": "https://openalex.org/S2898317371",
+    "journal_type": "journal",
+    "journal_issn_l": "2589-1529",
+    "journal_issn_json": "[\"2589-1529\"]",
+    "publication_date": "2022-10-18",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 22,
+    "citation_normalized_percentile": 0.86646054,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Cong Liao",
+    "authors_display": "Cong Liao; Chuang Yu; Xuefei Miao; Shaoqing Chen; Linfeng Peng; Chaochao Wei; Zhongkai Wu; Shijie Cheng; Jia Xie",
+    "authors_json": "[{\"display_name\": \"Cong Liao\", \"id\": \"https://openalex.org/A5102095751\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xuefei Miao\", \"id\": \"https://openalex.org/A5076669737\", \"orcid\": \"https://orcid.org/0000-0003-4930-9108\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shaoqing Chen\", \"id\": \"https://openalex.org/A5010748983\", \"orcid\": \"https://orcid.org/0000-0002-6700-292X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Linfeng Peng\", \"id\": \"https://openalex.org/A5101094536\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chaochao Wei\", \"id\": \"https://openalex.org/A5113211601\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhongkai Wu\", \"id\": \"https://openalex.org/A5027106287\", \"orcid\": \"https://orcid.org/0000-0002-9864-2559\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Cheng\", \"id\": \"https://openalex.org/A5024186253\", \"orcid\": \"https://orcid.org/0000-0002-8752-4311\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jia Xie\", \"id\": \"https://openalex.org/A5081117176\", \"orcid\": \"https://orcid.org/0000-0002-8731-295X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2589152922002848?via%3Dihub",
+    "landing_title": "Synthesis of Br-rich argyrodite electrolytes enables all-solid-state batteries with superior battery performances at different operating temperatures - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302508342,
+    "actual_start_ms": 1773302514626,
+    "pacing_wait_ms": 6284,
+    "pacing_jitter_sec": 0.729
+  }
+}

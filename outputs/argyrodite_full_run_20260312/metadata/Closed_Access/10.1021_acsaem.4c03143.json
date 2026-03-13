@@ -1,0 +1,109 @@
+{
+  "doi": "10.1021/acsaem.4c03143",
+  "pdf_filename": "10.1021_acsaem.4c03143.pdf",
+  "json_filename": "10.1021_acsaem.4c03143.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.4c03143.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409715216",
+    "doi": "10.1021/acsaem.4c03143",
+    "title": "Investigation of the Mechanical Properties of Porous Argyrodite Sulfide Electrolytes for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2025-04-23",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.90912157,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Siyuan Song",
+    "authors_display": "Siyuan Song; Changmin Shi; Akshay Pakhare; Brian W. Sheldon; Pradeep R. Guduru",
+    "authors": [
+      {
+        "display_name": "Siyuan Song",
+        "id": "https://openalex.org/A5036877616",
+        "orcid": "https://orcid.org/0000-0002-4362-2657",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Changmin Shi",
+        "id": "https://openalex.org/A5037928170",
+        "orcid": "https://orcid.org/0000-0003-1978-7352",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Akshay Pakhare",
+        "id": "https://openalex.org/A5055335266",
+        "orcid": "https://orcid.org/0009-0004-4284-1710",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Brian W. Sheldon",
+        "id": "https://openalex.org/A5085691864",
+        "orcid": "https://orcid.org/0000-0002-9593-891X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Pradeep R. Guduru",
+        "id": "https://openalex.org/A5081569962",
+        "orcid": "https://orcid.org/0000-0002-4494-3348",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409715216",
+    "doi": "10.1021/acsaem.4c03143",
+    "title": "Investigation of the Mechanical Properties of Porous Argyrodite Sulfide Electrolytes for All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2025-04-23",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.90912157,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Siyuan Song",
+    "authors_display": "Siyuan Song; Changmin Shi; Akshay Pakhare; Brian W. Sheldon; Pradeep R. Guduru",
+    "authors_json": "[{\"display_name\": \"Siyuan Song\", \"id\": \"https://openalex.org/A5036877616\", \"orcid\": \"https://orcid.org/0000-0002-4362-2657\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Changmin Shi\", \"id\": \"https://openalex.org/A5037928170\", \"orcid\": \"https://orcid.org/0000-0003-1978-7352\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Akshay Pakhare\", \"id\": \"https://openalex.org/A5055335266\", \"orcid\": \"https://orcid.org/0009-0004-4284-1710\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Brian W. Sheldon\", \"id\": \"https://openalex.org/A5085691864\", \"orcid\": \"https://orcid.org/0000-0002-9593-891X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Pradeep R. Guduru\", \"id\": \"https://openalex.org/A5081569962\", \"orcid\": \"https://orcid.org/0000-0002-4494-3348\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.4c03143",
+    "landing_title": "Investigation of the Mechanical Properties of Porous Argyrodite Sulfide Electrolytes for All-Solid-State Batteries | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsaem.4c03143.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773307024680,
+    "actual_start_ms": 1773307024681,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.402
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "doi": "10.1021/acsenergylett.1c01447",
+  "pdf_filename": "10.1021_acsenergylett.1c01447.pdf",
+  "json_filename": "10.1021_acsenergylett.1c01447.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.1c01447.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3190426172",
+    "doi": "10.1021/acsenergylett.1c01447",
+    "title": "Cycling Performance and Limitations of LiNiO<sub>2</sub> in Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2021-08-06",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 62,
+    "citation_normalized_percentile": 0.95347246,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Yuan Ma",
+    "authors_display": "Yuan Ma; Jun Hao Teo; David Kitsche; Thomas Diemant; Florian Strauss; Yanjiao Ma; Damian Goonetilleke; Jürgen Janek; Matteo Bianchini; Torsten Brezesinski; Matteo Bianchini; Torsten Brezesinski",
+    "authors": [
+      {
+        "display_name": "Yuan Ma",
+        "id": "https://openalex.org/A5089097249",
+        "orcid": "https://orcid.org/0000-0003-4369-9520",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Hao Teo",
+        "id": "https://openalex.org/A5045966184",
+        "orcid": "https://orcid.org/0000-0002-0343-669X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "David Kitsche",
+        "id": "https://openalex.org/A5091355747",
+        "orcid": "https://orcid.org/0000-0001-7001-1256",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Thomas Diemant",
+        "id": "https://openalex.org/A5075641561",
+        "orcid": "https://orcid.org/0000-0001-9701-9995",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Florian Strauss",
+        "id": "https://openalex.org/A5019742727",
+        "orcid": "https://orcid.org/0000-0001-5817-6349",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanjiao Ma",
+        "id": "https://openalex.org/A5028813051",
+        "orcid": "https://orcid.org/0000-0002-4125-2867",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Damian Goonetilleke",
+        "id": "https://openalex.org/A5088250127",
+        "orcid": "https://orcid.org/0000-0003-1033-4787",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Matteo Bianchini",
+        "id": "https://openalex.org/A5001247598",
+        "orcid": "https://orcid.org/0000-0003-4034-7706",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Torsten Brezesinski",
+        "id": "https://openalex.org/A5030005479",
+        "orcid": "https://orcid.org/0000-0002-4336-263X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Matteo Bianchini",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Torsten Brezesinski",
+        "id": null,
+        "orcid": "https://orcid.org/",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3190426172",
+    "doi": "10.1021/acsenergylett.1c01447",
+    "title": "Cycling Performance and Limitations of LiNiO<sub>2</sub> in Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2021-08-06",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 62,
+    "citation_normalized_percentile": 0.95347246,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Yuan Ma",
+    "authors_display": "Yuan Ma; Jun Hao Teo; David Kitsche; Thomas Diemant; Florian Strauss; Yanjiao Ma; Damian Goonetilleke; Jürgen Janek; Matteo Bianchini; Torsten Brezesinski; Matteo Bianchini; Torsten Brezesinski",
+    "authors_json": "[{\"display_name\": \"Yuan Ma\", \"id\": \"https://openalex.org/A5089097249\", \"orcid\": \"https://orcid.org/0000-0003-4369-9520\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jun Hao Teo\", \"id\": \"https://openalex.org/A5045966184\", \"orcid\": \"https://orcid.org/0000-0002-0343-669X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"David Kitsche\", \"id\": \"https://openalex.org/A5091355747\", \"orcid\": \"https://orcid.org/0000-0001-7001-1256\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Thomas Diemant\", \"id\": \"https://openalex.org/A5075641561\", \"orcid\": \"https://orcid.org/0000-0001-9701-9995\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Florian Strauss\", \"id\": \"https://openalex.org/A5019742727\", \"orcid\": \"https://orcid.org/0000-0001-5817-6349\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanjiao Ma\", \"id\": \"https://openalex.org/A5028813051\", \"orcid\": \"https://orcid.org/0000-0002-4125-2867\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Damian Goonetilleke\", \"id\": \"https://openalex.org/A5088250127\", \"orcid\": \"https://orcid.org/0000-0003-1033-4787\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Matteo Bianchini\", \"id\": \"https://openalex.org/A5001247598\", \"orcid\": \"https://orcid.org/0000-0003-4034-7706\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Torsten Brezesinski\", \"id\": \"https://openalex.org/A5030005479\", \"orcid\": \"https://orcid.org/0000-0002-4336-263X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Matteo Bianchini\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Torsten Brezesinski\", \"id\": null, \"orcid\": \"https://orcid.org/\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302007933,
+    "actual_start_ms": 1773302009903,
+    "pacing_wait_ms": 1970,
+    "pacing_jitter_sec": 1.37
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "doi": "10.1002/ange.202316837",
+  "pdf_filename": "10.1002_ange.202316837.pdf",
+  "json_filename": "10.1002_ange.202316837.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_ange.202316837.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4391608061",
+    "doi": "10.1002/ange.202316837",
+    "title": "Nanoscale Visualization of Lithium Plating/Stripping Tuned by On‐site Formed Solid Electrolyte Interphase in All‐Solid‐State Lithium‐Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Angewandte Chemie",
+      "id": "https://openalex.org/S4210200754",
+      "type": "journal",
+      "issn_l": "0044-8249",
+      "issn": [
+        "0044-8249",
+        "1521-3757"
+      ]
+    },
+    "publication_date": "2024-02-07",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.46594893,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/ange.202316837",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Zhenzhen Shen",
+    "authors_display": "Zhenzhen Shen; Xusheng Zhang; Jing Wan; Gui‐Xian Liu; Jianxin Tian; Bing Liu; Yu‐Guo Guo; Rui Wen",
+    "authors": [
+      {
+        "display_name": "Zhenzhen Shen",
+        "id": "https://openalex.org/A5102206701",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xusheng Zhang",
+        "id": "https://openalex.org/A5026604896",
+        "orcid": "https://orcid.org/0000-0002-3039-9222",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jing Wan",
+        "id": "https://openalex.org/A5047486682",
+        "orcid": "https://orcid.org/0000-0002-0531-5197",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gui‐Xian Liu",
+        "id": "https://openalex.org/A5049027988",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jianxin Tian",
+        "id": "https://openalex.org/A5053268781",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bing Liu",
+        "id": "https://openalex.org/A5070851801",
+        "orcid": "https://orcid.org/0000-0003-4297-157X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu‐Guo Guo",
+        "id": "https://openalex.org/A5070372567",
+        "orcid": "https://orcid.org/0000-0003-0322-8476",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rui Wen",
+        "id": "https://openalex.org/A5020848795",
+        "orcid": "https://orcid.org/0000-0002-8522-2053",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4391608061",
+    "doi": "10.1002/ange.202316837",
+    "title": "Nanoscale Visualization of Lithium Plating/Stripping Tuned by On‐site Formed Solid Electrolyte Interphase in All‐Solid‐State Lithium‐Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "Angewandte Chemie",
+    "journal_id": "https://openalex.org/S4210200754",
+    "journal_type": "journal",
+    "journal_issn_l": "0044-8249",
+    "journal_issn_json": "[\"0044-8249\", \"1521-3757\"]",
+    "publication_date": "2024-02-07",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.46594893,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/ange.202316837",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Zhenzhen Shen",
+    "authors_display": "Zhenzhen Shen; Xusheng Zhang; Jing Wan; Gui‐Xian Liu; Jianxin Tian; Bing Liu; Yu‐Guo Guo; Rui Wen",
+    "authors_json": "[{\"display_name\": \"Zhenzhen Shen\", \"id\": \"https://openalex.org/A5102206701\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Xusheng Zhang\", \"id\": \"https://openalex.org/A5026604896\", \"orcid\": \"https://orcid.org/0000-0002-3039-9222\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jing Wan\", \"id\": \"https://openalex.org/A5047486682\", \"orcid\": \"https://orcid.org/0000-0002-0531-5197\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gui‐Xian Liu\", \"id\": \"https://openalex.org/A5049027988\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jianxin Tian\", \"id\": \"https://openalex.org/A5053268781\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bing Liu\", \"id\": \"https://openalex.org/A5070851801\", \"orcid\": \"https://orcid.org/0000-0003-4297-157X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu‐Guo Guo\", \"id\": \"https://openalex.org/A5070372567\", \"orcid\": \"https://orcid.org/0000-0003-0322-8476\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rui Wen\", \"id\": \"https://openalex.org/A5020848795\", \"orcid\": \"https://orcid.org/0000-0002-8522-2053\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308652721,
+    "actual_start_ms": 1773308652721,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.03
+  }
+}

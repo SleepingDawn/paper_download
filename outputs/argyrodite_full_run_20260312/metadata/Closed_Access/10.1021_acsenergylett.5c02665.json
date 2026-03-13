@@ -1,0 +1,137 @@
+{
+  "doi": "10.1021/acsenergylett.5c02665",
+  "pdf_filename": "10.1021_acsenergylett.5c02665.pdf",
+  "json_filename": "10.1021_acsenergylett.5c02665.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.5c02665.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4416211162",
+    "doi": "10.1021/acsenergylett.5c02665",
+    "title": "A Nondeposition Solid-Solution Li Alloy Anode for Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2025-11-14",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.36308142,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zhaoming Tong",
+    "authors_display": "Zhaoming Tong; Shuhao Wang; Xinqi Wei; Yanpeng Guo; Haoyue Liang; Xingguo Zhong; Xizheng Liu; Tianyou Zhai; Huiqiao Li",
+    "authors": [
+      {
+        "display_name": "Zhaoming Tong",
+        "id": "https://openalex.org/A5014009407",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuhao Wang",
+        "id": "https://openalex.org/A5100648794",
+        "orcid": "https://orcid.org/0000-0003-3206-2073",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinqi Wei",
+        "id": "https://openalex.org/A5023178704",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanpeng Guo",
+        "id": "https://openalex.org/A5042681505",
+        "orcid": "https://orcid.org/0000-0003-2563-4985",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haoyue Liang",
+        "id": "https://openalex.org/A5038320181",
+        "orcid": "https://orcid.org/0000-0002-8758-8091",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xingguo Zhong",
+        "id": "https://openalex.org/A5003796323",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xizheng Liu",
+        "id": "https://openalex.org/A5037694550",
+        "orcid": "https://orcid.org/0000-0001-5641-3849",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tianyou Zhai",
+        "id": "https://openalex.org/A5018294251",
+        "orcid": "https://orcid.org/0000-0003-0985-4806",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Huiqiao Li",
+        "id": "https://openalex.org/A5028386144",
+        "orcid": "https://orcid.org/0000-0001-8114-2542",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4416211162",
+    "doi": "10.1021/acsenergylett.5c02665",
+    "title": "A Nondeposition Solid-Solution Li Alloy Anode for Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2025-11-14",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.36308142,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Zhaoming Tong",
+    "authors_display": "Zhaoming Tong; Shuhao Wang; Xinqi Wei; Yanpeng Guo; Haoyue Liang; Xingguo Zhong; Xizheng Liu; Tianyou Zhai; Huiqiao Li",
+    "authors_json": "[{\"display_name\": \"Zhaoming Tong\", \"id\": \"https://openalex.org/A5014009407\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Shuhao Wang\", \"id\": \"https://openalex.org/A5100648794\", \"orcid\": \"https://orcid.org/0000-0003-3206-2073\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinqi Wei\", \"id\": \"https://openalex.org/A5023178704\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanpeng Guo\", \"id\": \"https://openalex.org/A5042681505\", \"orcid\": \"https://orcid.org/0000-0003-2563-4985\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haoyue Liang\", \"id\": \"https://openalex.org/A5038320181\", \"orcid\": \"https://orcid.org/0000-0002-8758-8091\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xingguo Zhong\", \"id\": \"https://openalex.org/A5003796323\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xizheng Liu\", \"id\": \"https://openalex.org/A5037694550\", \"orcid\": \"https://orcid.org/0000-0001-5641-3849\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tianyou Zhai\", \"id\": \"https://openalex.org/A5018294251\", \"orcid\": \"https://orcid.org/0000-0003-0985-4806\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Huiqiao Li\", \"id\": \"https://openalex.org/A5028386144\", \"orcid\": \"https://orcid.org/0000-0001-8114-2542\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.5c02665",
+    "landing_title": "A Nondeposition Solid-Solution Li Alloy Anode for Solid-State Batteries | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsenergylett.5c02665.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308933820,
+    "actual_start_ms": 1773308933821,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.364
+  }
+}

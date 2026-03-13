@@ -7,7 +7,11 @@ CHROME_PATH = "/usr/bin/google-chrome"  # 리눅스 예시
 WILEY_API_KEY = "b4b01dd9-bf66-4a57-a791-0e7f3ff95a39"
 
 DEFAULT_DOWNLOAD_DIR = "./downloaded_files"
-DEFAULT_OUTPUT_DIR = "./Solid_State_Electrolyte_Battery_Li_Papers"
+DEFAULT_OUTPUT_DIR = "outputs/paper_download_run"
+DEFAULT_DOWNLOAD_PUBLISHER_COOLDOWN_SEC = float(os.getenv("DOWNLOAD_PER_PUBLISHER_COOLDOWN_SEC", "7"))
+DEFAULT_DOWNLOAD_GLOBAL_START_SPACING_SEC = float(os.getenv("DOWNLOAD_GLOBAL_START_SPACING_SEC", "1.5"))
+DEFAULT_DOWNLOAD_JITTER_MIN_SEC = float(os.getenv("DOWNLOAD_JITTER_MIN_SEC", "0.7"))
+DEFAULT_DOWNLOAD_JITTER_MAX_SEC = float(os.getenv("DOWNLOAD_JITTER_MAX_SEC", "1.8"))
 
 def get_config():
     parser = argparse.ArgumentParser(description="OpenAlex Paper Downloader with DrissionPage")
@@ -27,7 +31,13 @@ def get_config():
                         help="병렬 다운로드 프로세스 수 (기본값: 1)")
     
     parser.add_argument("--output_dir", type=str, default=DEFAULT_OUTPUT_DIR,
-                        help=f"결과 저장 경로 (기본값: {DEFAULT_OUTPUT_DIR})")
+                        help=f"런 산출물 저장 경로. 상대 경로는 outputs/ 아래로 정리됨 (기본값: {DEFAULT_OUTPUT_DIR})")
+    parser.add_argument(
+        "--pdf_output_dir",
+        type=str,
+        default=None,
+        help="PDF 저장 루트. 미지정 시 pdfs/<run_name> 사용",
+    )
     
     # 외부 doi list import
     parser.add_argument("--doi_path", type=str, default = None,
@@ -60,6 +70,13 @@ def get_config():
         help="브라우저 다운로드 1차 패스 headless 모드. 미지정 시 PDF_BROWSER_HEADLESS 환경변수를 따른다.",
     )
     parser.add_argument(
+        "--execution-env",
+        type=str,
+        default=os.environ.get("PDF_BROWSER_EXECUTION_ENV", "auto"),
+        choices=["auto", "desktop", "linux_cli"],
+        help="브라우저 실행 환경. linux_cli면 headful 요청을 무시하고 headless만 사용합니다.",
+    )
+    parser.add_argument(
         "--deep-retry-headless",
         type=int,
         default=None,
@@ -72,6 +89,55 @@ def get_config():
         default=1,
         choices=[0, 1],
         help="다운로드 전 landing 단계에서 captcha/challenge/block를 감지하면 즉시 중단할지 여부. 기본값: 1",
+    )
+    parser.add_argument(
+        "--publisher-cooldown-sec",
+        type=float,
+        default=DEFAULT_DOWNLOAD_PUBLISHER_COOLDOWN_SEC,
+        help=f"같은 publisher 재시작 전 최소 간격(초). 기본값: {DEFAULT_DOWNLOAD_PUBLISHER_COOLDOWN_SEC}",
+    )
+    parser.add_argument(
+        "--global-start-spacing-sec",
+        type=float,
+        default=DEFAULT_DOWNLOAD_GLOBAL_START_SPACING_SEC,
+        help=f"전체 DOI 시작 간 최소 간격(초). 기본값: {DEFAULT_DOWNLOAD_GLOBAL_START_SPACING_SEC}",
+    )
+    parser.add_argument(
+        "--jitter-min-sec",
+        type=float,
+        default=DEFAULT_DOWNLOAD_JITTER_MIN_SEC,
+        help=f"publisher pacing jitter 최소값(초). 기본값: {DEFAULT_DOWNLOAD_JITTER_MIN_SEC}",
+    )
+    parser.add_argument(
+        "--jitter-max-sec",
+        type=float,
+        default=DEFAULT_DOWNLOAD_JITTER_MAX_SEC,
+        help=f"publisher pacing jitter 최대값(초). 기본값: {DEFAULT_DOWNLOAD_JITTER_MAX_SEC}",
+    )
+    parser.add_argument(
+        "--profile-mode",
+        type=str,
+        default=os.environ.get("PDF_BROWSER_PROFILE_MODE", "auto"),
+        choices=["auto", "temp", "persistent", "system"],
+        help="브라우저 세션 전략. auto는 고마찰 DOI에서만 stateful 프로필을 사용합니다.",
+    )
+    parser.add_argument(
+        "--profile-name",
+        type=str,
+        default=os.environ.get("PDF_BROWSER_PROFILE_NAME", "Default"),
+        help="재사용할 Chrome 프로필 이름",
+    )
+    parser.add_argument(
+        "--persistent-profile-dir",
+        type=str,
+        default=os.environ.get("PDF_BROWSER_PERSISTENT_PROFILE_DIR", "outputs/.chrome_user_data"),
+        help="시스템 프로필이 없을 때 사용할 지속 프로필 루트",
+    )
+    parser.add_argument(
+        "--runtime-profile-root",
+        type=str,
+        default=os.environ.get("PDF_BROWSER_RUNTIME_PROFILE_ROOT", ""),
+        help="다운로드 실행 중 사용할 런타임 프로필 루트. 미지정 시 SLURM_TMPDIR 또는 /tmp/$USER 아래를 사용",
     )
 
     args = parser.parse_args()

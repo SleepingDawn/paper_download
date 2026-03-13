@@ -1,0 +1,88 @@
+{
+  "doi": "10.3390/en18133391",
+  "pdf_filename": "10.3390_en18133391.pdf",
+  "json_filename": "10.3390_en18133391.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_en18133391.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4411802031",
+    "doi": "10.3390/en18133391",
+    "title": "Environmental Stability of Li6PS5Cl0.5Br0.5 Electrolyte During Lithium Battery Manufacturing and a Simplified Test Protocol",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Energies",
+      "id": "https://openalex.org/S198098182",
+      "type": "journal",
+      "issn_l": "1996-1073",
+      "issn": [
+        "1996-1073"
+      ]
+    },
+    "publication_date": "2025-06-27",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.73349964,
+    "pdf_url": "https://www.mdpi.com/1996-1073/18/13/3391/pdf?version=1751029332",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Eman Hassan",
+    "authors_display": "Eman Hassan; Siamak Farhad",
+    "authors": [
+      {
+        "display_name": "Eman Hassan",
+        "id": "https://openalex.org/A5016436600",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Siamak Farhad",
+        "id": "https://openalex.org/A5061550343",
+        "orcid": "https://orcid.org/0000-0002-5810-166X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4411802031",
+    "doi": "10.3390/en18133391",
+    "title": "Environmental Stability of Li6PS5Cl0.5Br0.5 Electrolyte During Lithium Battery Manufacturing and a Simplified Test Protocol",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Energies",
+    "journal_id": "https://openalex.org/S198098182",
+    "journal_type": "journal",
+    "journal_issn_l": "1996-1073",
+    "journal_issn_json": "[\"1996-1073\"]",
+    "publication_date": "2025-06-27",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.73349964,
+    "pdf_url": "https://www.mdpi.com/1996-1073/18/13/3391/pdf?version=1751029332",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Eman Hassan",
+    "authors_display": "Eman Hassan; Siamak Farhad",
+    "authors_json": "[{\"display_name\": \"Eman Hassan\", \"id\": \"https://openalex.org/A5016436600\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Siamak Farhad\", \"id\": \"https://openalex.org/A5061550343\", \"orcid\": \"https://orcid.org/0000-0002-5810-166X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773310283508,
+    "actual_start_ms": 1773310283509,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.767
+  }
+}

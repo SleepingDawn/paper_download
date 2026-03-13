@@ -1,0 +1,96 @@
+{
+  "doi": "10.1016/j.elecom.2024.107753",
+  "pdf_filename": "10.1016_j.elecom.2024.107753.pdf",
+  "json_filename": "10.1016_j.elecom.2024.107753.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.elecom.2024.107753.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4396855079",
+    "doi": "10.1016/j.elecom.2024.107753",
+    "title": "Isotropic cell design enables low-pressure lithium metal solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Electrochemistry Communications",
+      "id": "https://openalex.org/S1342386",
+      "type": "journal",
+      "issn_l": "1388-2481",
+      "issn": [
+        "1388-2481",
+        "1873-1902"
+      ]
+    },
+    "publication_date": "2024-05-13",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.6031119,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "William W. Fitzhugh",
+    "authors_display": "William W. Fitzhugh; Luhan Ye; Xin Li",
+    "authors": [
+      {
+        "display_name": "William W. Fitzhugh",
+        "id": "https://openalex.org/A5006631993",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Luhan Ye",
+        "id": "https://openalex.org/A5055524453",
+        "orcid": "https://orcid.org/0000-0002-2684-424X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xin Li",
+        "id": "https://openalex.org/A5100353767",
+        "orcid": "https://orcid.org/0000-0001-9390-0830",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4396855079",
+    "doi": "10.1016/j.elecom.2024.107753",
+    "title": "Isotropic cell design enables low-pressure lithium metal solid-state batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Electrochemistry Communications",
+    "journal_id": "https://openalex.org/S1342386",
+    "journal_type": "journal",
+    "journal_issn_l": "1388-2481",
+    "journal_issn_json": "[\"1388-2481\", \"1873-1902\"]",
+    "publication_date": "2024-05-13",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.6031119,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 3,
+    "first_author": "William W. Fitzhugh",
+    "authors_display": "William W. Fitzhugh; Luhan Ye; Xin Li",
+    "authors_json": "[{\"display_name\": \"William W. Fitzhugh\", \"id\": \"https://openalex.org/A5006631993\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Luhan Ye\", \"id\": \"https://openalex.org/A5055524453\", \"orcid\": \"https://orcid.org/0000-0002-2684-424X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xin Li\", \"id\": \"https://openalex.org/A5100353767\", \"orcid\": \"https://orcid.org/0000-0001-9390-0830\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S1388248124000961?via%3Dihub",
+    "landing_title": "Isotropic cell design enables low-pressure lithium metal solid-state batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773308132230,
+    "actual_start_ms": 1773308136877,
+    "pacing_wait_ms": 4647,
+    "pacing_jitter_sec": 1.248
+  }
+}

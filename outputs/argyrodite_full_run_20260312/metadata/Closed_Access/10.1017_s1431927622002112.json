@@ -1,0 +1,103 @@
+{
+  "doi": "10.1017/s1431927622002112",
+  "pdf_filename": "10.1017_s1431927622002112.pdf",
+  "json_filename": "10.1017_s1431927622002112.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1017_s1431927622002112.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4286461709",
+    "doi": "10.1017/s1431927622002112",
+    "title": "Deterioration Mechanisms during Exposure to Humidity-Controlled Air of Argyrodite Solid Electrolytes for All-solid-state Batteries",
+    "publisher": "Oxford University Press",
+    "journal": {
+      "name": "Microscopy and Microanalysis",
+      "id": "https://openalex.org/S98208149",
+      "type": "journal",
+      "issn_l": "1431-9276",
+      "issn": [
+        "1431-9276",
+        "1435-8115"
+      ]
+    },
+    "publication_date": "2022-07-22",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.6331052,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Hirofumi Tsukasaki",
+    "authors_display": "Hirofumi Tsukasaki; Hikaru Sano; Yusuke Morino; Shigeo Mori",
+    "authors": [
+      {
+        "display_name": "Hirofumi Tsukasaki",
+        "id": "https://openalex.org/A5016252105",
+        "orcid": "https://orcid.org/0000-0003-0523-5469",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hikaru Sano",
+        "id": "https://openalex.org/A5002686051",
+        "orcid": "https://orcid.org/0000-0002-7557-0767",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yusuke Morino",
+        "id": "https://openalex.org/A5082471934",
+        "orcid": "https://orcid.org/0000-0002-6973-7786",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shigeo Mori",
+        "id": "https://openalex.org/A5101113604",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4286461709",
+    "doi": "10.1017/s1431927622002112",
+    "title": "Deterioration Mechanisms during Exposure to Humidity-Controlled Air of Argyrodite Solid Electrolytes for All-solid-state Batteries",
+    "publisher": "Oxford University Press",
+    "journal": "Microscopy and Microanalysis",
+    "journal_id": "https://openalex.org/S98208149",
+    "journal_type": "journal",
+    "journal_issn_l": "1431-9276",
+    "journal_issn_json": "[\"1431-9276\", \"1435-8115\"]",
+    "publication_date": "2022-07-22",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.6331052,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Hirofumi Tsukasaki",
+    "authors_display": "Hirofumi Tsukasaki; Hikaru Sano; Yusuke Morino; Shigeo Mori",
+    "authors_json": "[{\"display_name\": \"Hirofumi Tsukasaki\", \"id\": \"https://openalex.org/A5016252105\", \"orcid\": \"https://orcid.org/0000-0003-0523-5469\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hikaru Sano\", \"id\": \"https://openalex.org/A5002686051\", \"orcid\": \"https://orcid.org/0000-0002-7557-0767\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yusuke Morino\", \"id\": \"https://openalex.org/A5082471934\", \"orcid\": \"https://orcid.org/0000-0002-6973-7786\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shigeo Mori\", \"id\": \"https://openalex.org/A5101113604\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://academic.oup.com/mam/article/28/S1/338/6995788",
+    "landing_title": "Deterioration Mechanisms during Exposure to Humidity-Controlled Air of Argyrodite Solid Electrolytes for All-solid-state Batteries | Microscopy and Microanalysis | Oxford Academic",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1017_s1431927622002112.pdf",
+    "scheduler_publisher": "10.1017",
+    "scheduled_start_ms": 1773311098239,
+    "actual_start_ms": 1773311099512,
+    "pacing_wait_ms": 1272,
+    "pacing_jitter_sec": 1.038
+  }
+}

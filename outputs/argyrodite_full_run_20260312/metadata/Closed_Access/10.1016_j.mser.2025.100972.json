@@ -1,0 +1,124 @@
+{
+  "doi": "10.1016/j.mser.2025.100972",
+  "pdf_filename": "10.1016_j.mser.2025.100972.pdf",
+  "json_filename": "10.1016_j.mser.2025.100972.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.mser.2025.100972.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408595361",
+    "doi": "10.1016/j.mser.2025.100972",
+    "title": "All wet-coating process for chemical stable antimony and selenium dual-doped argyrodite electrolyte based all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Materials Science and Engineering R Reports",
+      "id": "https://openalex.org/S1018252914",
+      "type": "journal",
+      "issn_l": "0927-796X",
+      "issn": [
+        "0927-796X",
+        "1879-212X"
+      ]
+    },
+    "publication_date": "2025-03-19",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 24,
+    "citation_normalized_percentile": 0.99446483,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Jing Zhang",
+    "authors_display": "Jing Zhang; Xingyue Xiao; Jinghui Chen; Hongli Wan; Ni Zhang; Gaozhan Liu; Xiayin Yao",
+    "authors": [
+      {
+        "display_name": "Jing Zhang",
+        "id": "https://openalex.org/A5100345361",
+        "orcid": "https://orcid.org/0000-0002-0734-3263",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xingyue Xiao",
+        "id": "https://openalex.org/A5113076648",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jinghui Chen",
+        "id": "https://openalex.org/A5107074131",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongli Wan",
+        "id": "https://openalex.org/A5063926457",
+        "orcid": "https://orcid.org/0009-0002-8115-0336",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ni Zhang",
+        "id": "https://openalex.org/A5100319343",
+        "orcid": "https://orcid.org/0000-0002-2440-6174",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Gaozhan Liu",
+        "id": "https://openalex.org/A5003110536",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xiayin Yao",
+        "id": "https://openalex.org/A5058800364",
+        "orcid": "https://orcid.org/0000-0002-2224-4247",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408595361",
+    "doi": "10.1016/j.mser.2025.100972",
+    "title": "All wet-coating process for chemical stable antimony and selenium dual-doped argyrodite electrolyte based all-solid-state lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Materials Science and Engineering R Reports",
+    "journal_id": "https://openalex.org/S1018252914",
+    "journal_type": "journal",
+    "journal_issn_l": "0927-796X",
+    "journal_issn_json": "[\"0927-796X\", \"1879-212X\"]",
+    "publication_date": "2025-03-19",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 24,
+    "citation_normalized_percentile": 0.99446483,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 7,
+    "first_author": "Jing Zhang",
+    "authors_display": "Jing Zhang; Xingyue Xiao; Jinghui Chen; Hongli Wan; Ni Zhang; Gaozhan Liu; Xiayin Yao",
+    "authors_json": "[{\"display_name\": \"Jing Zhang\", \"id\": \"https://openalex.org/A5100345361\", \"orcid\": \"https://orcid.org/0000-0002-0734-3263\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Xingyue Xiao\", \"id\": \"https://openalex.org/A5113076648\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jinghui Chen\", \"id\": \"https://openalex.org/A5107074131\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongli Wan\", \"id\": \"https://openalex.org/A5063926457\", \"orcid\": \"https://orcid.org/0009-0002-8115-0336\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ni Zhang\", \"id\": \"https://openalex.org/A5100319343\", \"orcid\": \"https://orcid.org/0000-0002-2440-6174\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Gaozhan Liu\", \"id\": \"https://openalex.org/A5003110536\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xiayin Yao\", \"id\": \"https://openalex.org/A5058800364\", \"orcid\": \"https://orcid.org/0000-0002-2224-4247\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Yearly TOP 1.0% cited",
+    "priority": 1,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301510601,
+    "actual_start_ms": 1773301516182,
+    "pacing_wait_ms": 5581,
+    "pacing_jitter_sec": 0.889
+  }
+}

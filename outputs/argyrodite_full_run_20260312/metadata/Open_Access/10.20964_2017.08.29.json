@@ -1,0 +1,144 @@
+{
+  "doi": "10.20964/2017.08.29",
+  "pdf_filename": "10.20964_2017.08.29.pdf",
+  "json_filename": "10.20964_2017.08.29.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.20964_2017.08.29.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2735509743",
+    "doi": "10.20964/2017.08.29",
+    "title": "Fabrication and Electrochemical Properties of Li4Ti5O12@Li6PS5Cl for All-solid-state Lithium Batteries using Simple Mechanical Method",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "International Journal of Electrochemical Science",
+      "id": "https://openalex.org/S48583931",
+      "type": "journal",
+      "issn_l": "1452-3981",
+      "issn": [
+        "1452-3981"
+      ]
+    },
+    "publication_date": "2017-07-16",
+    "publication_year": 2017,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.85691777,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Ailing Hwang",
+    "authors_display": "Ailing Hwang; Yulin Ma; Yi Cao; Qin Li; Long Wang; Xinqun Cheng; Pengjian Zuo; Chunyu Du; Yunzhi Gao; Geping Yin",
+    "authors": [
+      {
+        "display_name": "Ailing Hwang",
+        "id": "https://openalex.org/A5033469586",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yulin Ma",
+        "id": "https://openalex.org/A5071018574",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yi Cao",
+        "id": "https://openalex.org/A5101870551",
+        "orcid": "https://orcid.org/0000-0003-2365-1255",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qin Li",
+        "id": "https://openalex.org/A5072601558",
+        "orcid": "https://orcid.org/0000-0001-5015-0750",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Long Wang",
+        "id": "https://openalex.org/A5100447559",
+        "orcid": "https://orcid.org/0000-0002-4519-2400",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinqun Cheng",
+        "id": "https://openalex.org/A5042529104",
+        "orcid": "https://orcid.org/0000-0001-8041-7882",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pengjian Zuo",
+        "id": "https://openalex.org/A5101475382",
+        "orcid": "https://orcid.org/0000-0001-8777-5105",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chunyu Du",
+        "id": "https://openalex.org/A5049242658",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yunzhi Gao",
+        "id": "https://openalex.org/A5076855541",
+        "orcid": "https://orcid.org/0000-0002-4411-8399",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Geping Yin",
+        "id": "https://openalex.org/A5100644105",
+        "orcid": "https://orcid.org/0000-0002-8804-6550",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2735509743",
+    "doi": "10.20964/2017.08.29",
+    "title": "Fabrication and Electrochemical Properties of Li4Ti5O12@Li6PS5Cl for All-solid-state Lithium Batteries using Simple Mechanical Method",
+    "publisher": "Elsevier BV",
+    "journal": "International Journal of Electrochemical Science",
+    "journal_id": "https://openalex.org/S48583931",
+    "journal_type": "journal",
+    "journal_issn_l": "1452-3981",
+    "journal_issn_json": "[\"1452-3981\"]",
+    "publication_date": "2017-07-16",
+    "publication_year": 2017,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.85691777,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 10,
+    "first_author": "Ailing Hwang",
+    "authors_display": "Ailing Hwang; Yulin Ma; Yi Cao; Qin Li; Long Wang; Xinqun Cheng; Pengjian Zuo; Chunyu Du; Yunzhi Gao; Geping Yin",
+    "authors_json": "[{\"display_name\": \"Ailing Hwang\", \"id\": \"https://openalex.org/A5033469586\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Yulin Ma\", \"id\": \"https://openalex.org/A5071018574\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yi Cao\", \"id\": \"https://openalex.org/A5101870551\", \"orcid\": \"https://orcid.org/0000-0003-2365-1255\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qin Li\", \"id\": \"https://openalex.org/A5072601558\", \"orcid\": \"https://orcid.org/0000-0001-5015-0750\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Long Wang\", \"id\": \"https://openalex.org/A5100447559\", \"orcid\": \"https://orcid.org/0000-0002-4519-2400\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinqun Cheng\", \"id\": \"https://openalex.org/A5042529104\", \"orcid\": \"https://orcid.org/0000-0001-8041-7882\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pengjian Zuo\", \"id\": \"https://openalex.org/A5101475382\", \"orcid\": \"https://orcid.org/0000-0001-8777-5105\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chunyu Du\", \"id\": \"https://openalex.org/A5049242658\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yunzhi Gao\", \"id\": \"https://openalex.org/A5076855541\", \"orcid\": \"https://orcid.org/0000-0002-4411-8399\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Geping Yin\", \"id\": \"https://openalex.org/A5100644105\", \"orcid\": \"https://orcid.org/0000-0002-8804-6550\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302395092,
+    "actual_start_ms": 1773302401475,
+    "pacing_wait_ms": 6382,
+    "pacing_jitter_sec": 0.891
+  }
+}

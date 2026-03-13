@@ -1,0 +1,137 @@
+{
+  "doi": "10.2139/ssrn.4297410",
+  "pdf_filename": "10.2139_ssrn.4297410.pdf",
+  "json_filename": "10.2139_ssrn.4297410.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.4297410.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4312718028",
+    "doi": "10.2139/ssrn.4297410",
+    "title": "AC Impedance Analysis of NCM523 Composite Electrodes in All-Solid-State Three Electrode Cells and Their Degradation Behavior",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Goro Fukunishi",
+    "authors_display": "Goro Fukunishi; Mayu Tabuchi; Atsunori Ikezawa; Takeyoshi Okajima; Fusao Kitamura; Kota Suzuki; Masaaki Hirayama; Ryoji Kanno; Hajime Arai",
+    "authors": [
+      {
+        "display_name": "Goro Fukunishi",
+        "id": "https://openalex.org/A5045526672",
+        "orcid": "https://orcid.org/0000-0001-9692-6884",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Mayu Tabuchi",
+        "id": "https://openalex.org/A5084536864",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Atsunori Ikezawa",
+        "id": "https://openalex.org/A5000098401",
+        "orcid": "https://orcid.org/0000-0002-8857-7159",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Takeyoshi Okajima",
+        "id": "https://openalex.org/A5111770344",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fusao Kitamura",
+        "id": "https://openalex.org/A5112499061",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kota Suzuki",
+        "id": "https://openalex.org/A5046895954",
+        "orcid": "https://orcid.org/0000-0002-2473-0724",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Masaaki Hirayama",
+        "id": "https://openalex.org/A5052056108",
+        "orcid": "https://orcid.org/0000-0003-4804-4208",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ryoji Kanno",
+        "id": "https://openalex.org/A5020726738",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hajime Arai",
+        "id": "https://openalex.org/A5057468274",
+        "orcid": "https://orcid.org/0000-0001-6695-637X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4312718028",
+    "doi": "10.2139/ssrn.4297410",
+    "title": "AC Impedance Analysis of NCM523 Composite Electrodes in All-Solid-State Three Electrode Cells and Their Degradation Behavior",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Goro Fukunishi",
+    "authors_display": "Goro Fukunishi; Mayu Tabuchi; Atsunori Ikezawa; Takeyoshi Okajima; Fusao Kitamura; Kota Suzuki; Masaaki Hirayama; Ryoji Kanno; Hajime Arai",
+    "authors_json": "[{\"display_name\": \"Goro Fukunishi\", \"id\": \"https://openalex.org/A5045526672\", \"orcid\": \"https://orcid.org/0000-0001-9692-6884\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Mayu Tabuchi\", \"id\": \"https://openalex.org/A5084536864\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Atsunori Ikezawa\", \"id\": \"https://openalex.org/A5000098401\", \"orcid\": \"https://orcid.org/0000-0002-8857-7159\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Takeyoshi Okajima\", \"id\": \"https://openalex.org/A5111770344\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fusao Kitamura\", \"id\": \"https://openalex.org/A5112499061\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kota Suzuki\", \"id\": \"https://openalex.org/A5046895954\", \"orcid\": \"https://orcid.org/0000-0002-2473-0724\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Masaaki Hirayama\", \"id\": \"https://openalex.org/A5052056108\", \"orcid\": \"https://orcid.org/0000-0003-4804-4208\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ryoji Kanno\", \"id\": \"https://openalex.org/A5020726738\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hajime Arai\", \"id\": \"https://openalex.org/A5057468274\", \"orcid\": \"https://orcid.org/0000-0001-6695-637X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4297410&__cf_chl_rt_tk=RIxTnnuozB.2__8dYy8SihQ6.NXCn17jtppKz8P26ko-1773311857-1.0.1.1-9AJbUkGRtMO72YuSg.7a4DbVj64j3biAeWixPvGeGMk",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.4297410.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773311848595,
+    "actual_start_ms": 1773311848597,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.318
+  }
+}

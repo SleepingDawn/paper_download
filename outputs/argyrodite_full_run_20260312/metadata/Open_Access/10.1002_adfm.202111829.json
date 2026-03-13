@@ -1,0 +1,166 @@
+{
+  "doi": "10.1002/adfm.202111829",
+  "pdf_filename": "10.1002_adfm.202111829.pdf",
+  "json_filename": "10.1002_adfm.202111829.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_adfm.202111829.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4213439436",
+    "doi": "10.1002/adfm.202111829",
+    "title": "Advanced Nanoparticle Coatings for Stabilizing Layered Ni‐Rich Oxide Cathodes in Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2022-02-24",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 93,
+    "citation_normalized_percentile": 0.98526563,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202111829",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Yuan Ma",
+    "authors_display": "Yuan Ma; Jun Hao Teo; Felix Walther; Yanjiao Ma; Ruizhuo Zhang; Andrey Mazilkin; Yushu Tang; Damian Goonetilleke; Jürgen Janek; Matteo Bianchini; Torsten Brezesinski; Matteo Bianchini; Torsten Brezesinski",
+    "authors": [
+      {
+        "display_name": "Yuan Ma",
+        "id": "https://openalex.org/A5089097249",
+        "orcid": "https://orcid.org/0000-0003-4369-9520",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Hao Teo",
+        "id": "https://openalex.org/A5045966184",
+        "orcid": "https://orcid.org/0000-0002-0343-669X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Felix Walther",
+        "id": "https://openalex.org/A5070817363",
+        "orcid": "https://orcid.org/0000-0002-5843-4237",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanjiao Ma",
+        "id": "https://openalex.org/A5028813051",
+        "orcid": "https://orcid.org/0000-0002-4125-2867",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ruizhuo Zhang",
+        "id": "https://openalex.org/A5036391168",
+        "orcid": "https://orcid.org/0000-0003-0292-5026",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Andrey Mazilkin",
+        "id": "https://openalex.org/A5023740382",
+        "orcid": "https://orcid.org/0000-0001-7805-8526",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yushu Tang",
+        "id": "https://openalex.org/A5068901767",
+        "orcid": "https://orcid.org/0000-0002-8223-0744",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Damian Goonetilleke",
+        "id": "https://openalex.org/A5088250127",
+        "orcid": "https://orcid.org/0000-0003-1033-4787",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jürgen Janek",
+        "id": "https://openalex.org/A5084882618",
+        "orcid": "https://orcid.org/0000-0002-9221-4756",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Matteo Bianchini",
+        "id": "https://openalex.org/A5001247598",
+        "orcid": "https://orcid.org/0000-0003-4034-7706",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Torsten Brezesinski",
+        "id": "https://openalex.org/A5030005479",
+        "orcid": "https://orcid.org/0000-0002-4336-263X",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Matteo Bianchini",
+        "id": null,
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Torsten Brezesinski",
+        "id": null,
+        "orcid": "https://orcid.org/",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4213439436",
+    "doi": "10.1002/adfm.202111829",
+    "title": "Advanced Nanoparticle Coatings for Stabilizing Layered Ni‐Rich Oxide Cathodes in Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2022-02-24",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 93,
+    "citation_normalized_percentile": 0.98526563,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202111829",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Yuan Ma",
+    "authors_display": "Yuan Ma; Jun Hao Teo; Felix Walther; Yanjiao Ma; Ruizhuo Zhang; Andrey Mazilkin; Yushu Tang; Damian Goonetilleke; Jürgen Janek; Matteo Bianchini; Torsten Brezesinski; Matteo Bianchini; Torsten Brezesinski",
+    "authors_json": "[{\"display_name\": \"Yuan Ma\", \"id\": \"https://openalex.org/A5089097249\", \"orcid\": \"https://orcid.org/0000-0003-4369-9520\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jun Hao Teo\", \"id\": \"https://openalex.org/A5045966184\", \"orcid\": \"https://orcid.org/0000-0002-0343-669X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Felix Walther\", \"id\": \"https://openalex.org/A5070817363\", \"orcid\": \"https://orcid.org/0000-0002-5843-4237\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanjiao Ma\", \"id\": \"https://openalex.org/A5028813051\", \"orcid\": \"https://orcid.org/0000-0002-4125-2867\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ruizhuo Zhang\", \"id\": \"https://openalex.org/A5036391168\", \"orcid\": \"https://orcid.org/0000-0003-0292-5026\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Andrey Mazilkin\", \"id\": \"https://openalex.org/A5023740382\", \"orcid\": \"https://orcid.org/0000-0001-7805-8526\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yushu Tang\", \"id\": \"https://openalex.org/A5068901767\", \"orcid\": \"https://orcid.org/0000-0002-8223-0744\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Damian Goonetilleke\", \"id\": \"https://openalex.org/A5088250127\", \"orcid\": \"https://orcid.org/0000-0003-1033-4787\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jürgen Janek\", \"id\": \"https://openalex.org/A5084882618\", \"orcid\": \"https://orcid.org/0000-0002-9221-4756\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Matteo Bianchini\", \"id\": \"https://openalex.org/A5001247598\", \"orcid\": \"https://orcid.org/0000-0003-4034-7706\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Torsten Brezesinski\", \"id\": \"https://openalex.org/A5030005479\", \"orcid\": \"https://orcid.org/0000-0002-4336-263X\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Matteo Bianchini\", \"id\": null, \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Torsten Brezesinski\", \"id\": null, \"orcid\": \"https://orcid.org/\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302791858,
+    "actual_start_ms": 1773302793358,
+    "pacing_wait_ms": 1499,
+    "pacing_jitter_sec": 0.748
+  }
+}

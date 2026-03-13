@@ -1,0 +1,96 @@
+{
+  "doi": "10.1021/acs.chemmater.6b03630",
+  "pdf_filename": "10.1021_acs.chemmater.6b03630.pdf",
+  "json_filename": "10.1021_acs.chemmater.6b03630.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.chemmater.6b03630.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W2531676002",
+    "doi": "10.1021/acs.chemmater.6b03630",
+    "title": "Diffusion Mechanism of Li Argyrodite Solid Electrolytes for Li-Ion Batteries and Prediction of Optimized Halogen Doping: The Effect of Li Vacancies, Halogens, and Halogen Disorder",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2016-10-14",
+    "publication_year": 2016,
+    "work_type": "article",
+    "cited_by_count": 339,
+    "citation_normalized_percentile": 0.98544065,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Niek J. J. de Klerk",
+    "authors_display": "Niek J. J. de Klerk; Irek Rosłoń; Marnix Wagemaker",
+    "authors": [
+      {
+        "display_name": "Niek J. J. de Klerk",
+        "id": "https://openalex.org/A5081312429",
+        "orcid": "https://orcid.org/0000-0002-5100-4883",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Irek Rosłoń",
+        "id": "https://openalex.org/A5082947931",
+        "orcid": "https://orcid.org/0000-0002-7371-2768",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marnix Wagemaker",
+        "id": "https://openalex.org/A5034244816",
+        "orcid": "https://orcid.org/0000-0003-3851-1044",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2531676002",
+    "doi": "10.1021/acs.chemmater.6b03630",
+    "title": "Diffusion Mechanism of Li Argyrodite Solid Electrolytes for Li-Ion Batteries and Prediction of Optimized Halogen Doping: The Effect of Li Vacancies, Halogens, and Halogen Disorder",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2016-10-14",
+    "publication_year": 2016,
+    "work_type": "article",
+    "cited_by_count": 339,
+    "citation_normalized_percentile": 0.98544065,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Niek J. J. de Klerk",
+    "authors_display": "Niek J. J. de Klerk; Irek Rosłoń; Marnix Wagemaker",
+    "authors_json": "[{\"display_name\": \"Niek J. J. de Klerk\", \"id\": \"https://openalex.org/A5081312429\", \"orcid\": \"https://orcid.org/0000-0002-5100-4883\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Irek Rosłoń\", \"id\": \"https://openalex.org/A5082947931\", \"orcid\": \"https://orcid.org/0000-0002-7371-2768\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marnix Wagemaker\", \"id\": \"https://openalex.org/A5034244816\", \"orcid\": \"https://orcid.org/0000-0003-3851-1044\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301581975,
+    "actual_start_ms": 1773301583555,
+    "pacing_wait_ms": 1579,
+    "pacing_jitter_sec": 1.03
+  }
+}

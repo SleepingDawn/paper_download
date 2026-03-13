@@ -1,0 +1,180 @@
+{
+  "doi": "10.1039/d2ta08148b",
+  "pdf_filename": "10.1039_d2ta08148b.pdf",
+  "json_filename": "10.1039_d2ta08148b.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1039_d2ta08148b.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4313637939",
+    "doi": "10.1039/d2ta08148b",
+    "title": "Enhancing the interfacial stability between argyrodite sulfide-based solid electrolytes and lithium electrodes through CO<sub>2</sub> adsorption",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "Journal of Materials Chemistry A",
+      "id": "https://openalex.org/S2764437742",
+      "type": "journal",
+      "issn_l": "2050-7488",
+      "issn": [
+        "2050-7488",
+        "2050-7496"
+      ]
+    },
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 21,
+    "citation_normalized_percentile": 0.90779964,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 15,
+    "first_author": "Shi‐Kai Jiang",
+    "authors_display": "Shi‐Kai Jiang; Sheng‐Chiang Yang; Wei‐Hsiang Huang; Hung-Yi Sung; Ruoyun Lin; Jhao-Nan Li; Bo‐Yang Tsai; Tripti Agnihotri; Yosef Nikodimos; Chia‐Hsin Wang; Shawn D. Lin; Chun‐Chieh Wang; She‐Huang Wu; Wei‐Nien Su; Bing−Joe Hwang",
+    "authors": [
+      {
+        "display_name": "Shi‐Kai Jiang",
+        "id": "https://openalex.org/A5065128662",
+        "orcid": "https://orcid.org/0000-0002-9533-9642",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sheng‐Chiang Yang",
+        "id": "https://openalex.org/A5058781576",
+        "orcid": "https://orcid.org/0000-0002-8888-6381",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei‐Hsiang Huang",
+        "id": "https://openalex.org/A5078062437",
+        "orcid": "https://orcid.org/0000-0001-9503-0373",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hung-Yi Sung",
+        "id": "https://openalex.org/A5023777698",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ruoyun Lin",
+        "id": "https://openalex.org/A5032718305",
+        "orcid": "https://orcid.org/0000-0002-9779-1552",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jhao-Nan Li",
+        "id": "https://openalex.org/A5076626831",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bo‐Yang Tsai",
+        "id": "https://openalex.org/A5009079835",
+        "orcid": "https://orcid.org/0000-0002-7122-4752",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tripti Agnihotri",
+        "id": "https://openalex.org/A5022210358",
+        "orcid": "https://orcid.org/0000-0001-7988-0538",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yosef Nikodimos",
+        "id": "https://openalex.org/A5082309206",
+        "orcid": "https://orcid.org/0000-0002-2929-3965",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chia‐Hsin Wang",
+        "id": "https://openalex.org/A5045121576",
+        "orcid": "https://orcid.org/0000-0003-3108-4422",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shawn D. Lin",
+        "id": "https://openalex.org/A5039490165",
+        "orcid": "https://orcid.org/0000-0002-5245-0543",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chun‐Chieh Wang",
+        "id": "https://openalex.org/A5101564912",
+        "orcid": "https://orcid.org/0000-0001-5099-876X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "She‐Huang Wu",
+        "id": "https://openalex.org/A5087838064",
+        "orcid": "https://orcid.org/0000-0003-1165-9444",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Wei‐Nien Su",
+        "id": "https://openalex.org/A5031136629",
+        "orcid": "https://orcid.org/0000-0003-1494-2675",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Bing−Joe Hwang",
+        "id": "https://openalex.org/A5030917995",
+        "orcid": "https://orcid.org/0000-0002-3873-2149",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4313637939",
+    "doi": "10.1039/d2ta08148b",
+    "title": "Enhancing the interfacial stability between argyrodite sulfide-based solid electrolytes and lithium electrodes through CO<sub>2</sub> adsorption",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "Journal of Materials Chemistry A",
+    "journal_id": "https://openalex.org/S2764437742",
+    "journal_type": "journal",
+    "journal_issn_l": "2050-7488",
+    "journal_issn_json": "[\"2050-7488\", \"2050-7496\"]",
+    "publication_date": "2023-01-01",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 21,
+    "citation_normalized_percentile": 0.90779964,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 15,
+    "first_author": "Shi‐Kai Jiang",
+    "authors_display": "Shi‐Kai Jiang; Sheng‐Chiang Yang; Wei‐Hsiang Huang; Hung-Yi Sung; Ruoyun Lin; Jhao-Nan Li; Bo‐Yang Tsai; Tripti Agnihotri; Yosef Nikodimos; Chia‐Hsin Wang; Shawn D. Lin; Chun‐Chieh Wang; She‐Huang Wu; Wei‐Nien Su; Bing−Joe Hwang",
+    "authors_json": "[{\"display_name\": \"Shi‐Kai Jiang\", \"id\": \"https://openalex.org/A5065128662\", \"orcid\": \"https://orcid.org/0000-0002-9533-9642\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Sheng‐Chiang Yang\", \"id\": \"https://openalex.org/A5058781576\", \"orcid\": \"https://orcid.org/0000-0002-8888-6381\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei‐Hsiang Huang\", \"id\": \"https://openalex.org/A5078062437\", \"orcid\": \"https://orcid.org/0000-0001-9503-0373\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hung-Yi Sung\", \"id\": \"https://openalex.org/A5023777698\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ruoyun Lin\", \"id\": \"https://openalex.org/A5032718305\", \"orcid\": \"https://orcid.org/0000-0002-9779-1552\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jhao-Nan Li\", \"id\": \"https://openalex.org/A5076626831\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bo‐Yang Tsai\", \"id\": \"https://openalex.org/A5009079835\", \"orcid\": \"https://orcid.org/0000-0002-7122-4752\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tripti Agnihotri\", \"id\": \"https://openalex.org/A5022210358\", \"orcid\": \"https://orcid.org/0000-0001-7988-0538\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yosef Nikodimos\", \"id\": \"https://openalex.org/A5082309206\", \"orcid\": \"https://orcid.org/0000-0002-2929-3965\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chia‐Hsin Wang\", \"id\": \"https://openalex.org/A5045121576\", \"orcid\": \"https://orcid.org/0000-0003-3108-4422\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shawn D. Lin\", \"id\": \"https://openalex.org/A5039490165\", \"orcid\": \"https://orcid.org/0000-0002-5245-0543\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chun‐Chieh Wang\", \"id\": \"https://openalex.org/A5101564912\", \"orcid\": \"https://orcid.org/0000-0001-5099-876X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"She‐Huang Wu\", \"id\": \"https://openalex.org/A5087838064\", \"orcid\": \"https://orcid.org/0000-0003-1165-9444\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Wei‐Nien Su\", \"id\": \"https://openalex.org/A5031136629\", \"orcid\": \"https://orcid.org/0000-0003-1494-2675\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Bing−Joe Hwang\", \"id\": \"https://openalex.org/A5030917995\", \"orcid\": \"https://orcid.org/0000-0002-3873-2149\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.rsc.org/en/content/articlelanding/2023/ta/d2ta08148b",
+    "landing_title": "Enhancing the interfacial stability between argyrodite sulfide-based solid electrolytes and lithium electrodes through CO2 adsorption - Journal of Materials Chemistry A (RSC Publishing)",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/stateful_system",
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773312489665,
+    "actual_start_ms": 1773312489667,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.026
+  }
+}

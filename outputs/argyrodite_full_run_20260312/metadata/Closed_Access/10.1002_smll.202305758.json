@@ -1,0 +1,131 @@
+{
+  "doi": "10.1002/smll.202305758",
+  "pdf_filename": "10.1002_smll.202305758.pdf",
+  "json_filename": "10.1002_smll.202305758.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_smll.202305758.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4388498328",
+    "doi": "10.1002/smll.202305758",
+    "title": "Enhanced Electrochemical Stability and Extended Cycle Life in Sulfide‐Based All‐Solid‐State Batteries: The Role of Li<sub>10</sub>SnP<sub>2</sub>S<sub>12</sub> Coating on Ni‐Rich NCM Cathode",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2023-11-07",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.87023211,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Yongsun Park",
+    "authors_display": "Yongsun Park; Joon Ha Chang; Gwangseok Oh; A‐Young Kim; Hansen Chang; Mahir Uenal; Sang Cheol Nam; Ohmin Kwon",
+    "authors": [
+      {
+        "display_name": "Yongsun Park",
+        "id": "https://openalex.org/A5086081556",
+        "orcid": "https://orcid.org/0000-0002-1591-7036",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Joon Ha Chang",
+        "id": "https://openalex.org/A5070152745",
+        "orcid": "https://orcid.org/0000-0001-8877-9917",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gwangseok Oh",
+        "id": "https://openalex.org/A5070133990",
+        "orcid": "https://orcid.org/0000-0001-9850-4511",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "A‐Young Kim",
+        "id": "https://openalex.org/A5103217051",
+        "orcid": "https://orcid.org/0000-0001-6124-0807",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hansen Chang",
+        "id": "https://openalex.org/A5036311882",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mahir Uenal",
+        "id": "https://openalex.org/A5054551049",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang Cheol Nam",
+        "id": "https://openalex.org/A5070664981",
+        "orcid": "https://orcid.org/0000-0002-6925-7803",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ohmin Kwon",
+        "id": "https://openalex.org/A5007946814",
+        "orcid": "https://orcid.org/0000-0003-3169-4829",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4388498328",
+    "doi": "10.1002/smll.202305758",
+    "title": "Enhanced Electrochemical Stability and Extended Cycle Life in Sulfide‐Based All‐Solid‐State Batteries: The Role of Li<sub>10</sub>SnP<sub>2</sub>S<sub>12</sub> Coating on Ni‐Rich NCM Cathode",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2023-11-07",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.87023211,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Yongsun Park",
+    "authors_display": "Yongsun Park; Joon Ha Chang; Gwangseok Oh; A‐Young Kim; Hansen Chang; Mahir Uenal; Sang Cheol Nam; Ohmin Kwon",
+    "authors_json": "[{\"display_name\": \"Yongsun Park\", \"id\": \"https://openalex.org/A5086081556\", \"orcid\": \"https://orcid.org/0000-0002-1591-7036\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Joon Ha Chang\", \"id\": \"https://openalex.org/A5070152745\", \"orcid\": \"https://orcid.org/0000-0001-8877-9917\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gwangseok Oh\", \"id\": \"https://openalex.org/A5070133990\", \"orcid\": \"https://orcid.org/0000-0001-9850-4511\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"A‐Young Kim\", \"id\": \"https://openalex.org/A5103217051\", \"orcid\": \"https://orcid.org/0000-0001-6124-0807\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hansen Chang\", \"id\": \"https://openalex.org/A5036311882\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mahir Uenal\", \"id\": \"https://openalex.org/A5054551049\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang Cheol Nam\", \"id\": \"https://openalex.org/A5070664981\", \"orcid\": \"https://orcid.org/0000-0002-6925-7803\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ohmin Kwon\", \"id\": \"https://openalex.org/A5007946814\", \"orcid\": \"https://orcid.org/0000-0003-3169-4829\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773304910207,
+    "actual_start_ms": 1773304910207,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.142
+  }
+}

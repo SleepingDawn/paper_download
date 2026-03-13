@@ -1,0 +1,140 @@
+{
+  "doi": "10.1149/ma2023-016977mtgabs",
+  "pdf_filename": "10.1149_ma2023-016977mtgabs.pdf",
+  "json_filename": "10.1149_ma2023-016977mtgabs.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1149_ma2023-016977mtgabs.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4386866851",
+    "doi": "10.1149/ma2023-016977mtgabs",
+    "title": "Operando Characterization of Plating and Stripping Dynamics of Li-Mg Alloy Anode and Sulfide Solid Electrolyte Interface",
+    "publisher": "Institute of Physics",
+    "journal": {
+      "name": "ECS Meeting Abstracts",
+      "id": "https://openalex.org/S4210168594",
+      "type": "journal",
+      "issn_l": "1091-8213",
+      "issn": [
+        "1091-8213",
+        "2151-2035",
+        "2151-2043",
+        "2152-8365"
+      ]
+    },
+    "publication_date": "2023-08-28",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.10564376,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Lihong Zhao",
+    "authors_display": "Lihong Zhao; Chaoshan Wu; Qing Ai; Liqun Guo; Zhaoyang Chen; Yanliang Liang; Jun Lou; Zheng Fan; Yan Yao",
+    "authors": [
+      {
+        "display_name": "Lihong Zhao",
+        "id": "https://openalex.org/A5010176826",
+        "orcid": "https://orcid.org/0000-0003-2308-1053",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chaoshan Wu",
+        "id": "https://openalex.org/A5010169114",
+        "orcid": "https://orcid.org/0000-0003-3458-8300",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qing Ai",
+        "id": "https://openalex.org/A5059667364",
+        "orcid": "https://orcid.org/0000-0002-6086-5431",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Liqun Guo",
+        "id": "https://openalex.org/A5011658294",
+        "orcid": "https://orcid.org/0009-0003-4274-8201",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhaoyang Chen",
+        "id": "https://openalex.org/A5100669603",
+        "orcid": "https://orcid.org/0000-0003-1580-0185",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yanliang Liang",
+        "id": "https://openalex.org/A5043474041",
+        "orcid": "https://orcid.org/0000-0001-6771-5172",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Lou",
+        "id": "https://openalex.org/A5018666422",
+        "orcid": "https://orcid.org/0000-0002-4351-9561",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zheng Fan",
+        "id": "https://openalex.org/A5050996662",
+        "orcid": "https://orcid.org/0000-0001-8137-516X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yan Yao",
+        "id": "https://openalex.org/A5079917819",
+        "orcid": "https://orcid.org/0000-0002-8785-5030",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4386866851",
+    "doi": "10.1149/ma2023-016977mtgabs",
+    "title": "Operando Characterization of Plating and Stripping Dynamics of Li-Mg Alloy Anode and Sulfide Solid Electrolyte Interface",
+    "publisher": "Institute of Physics",
+    "journal": "ECS Meeting Abstracts",
+    "journal_id": "https://openalex.org/S4210168594",
+    "journal_type": "journal",
+    "journal_issn_l": "1091-8213",
+    "journal_issn_json": "[\"1091-8213\", \"2151-2035\", \"2151-2043\", \"2152-8365\"]",
+    "publication_date": "2023-08-28",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.10564376,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Lihong Zhao",
+    "authors_display": "Lihong Zhao; Chaoshan Wu; Qing Ai; Liqun Guo; Zhaoyang Chen; Yanliang Liang; Jun Lou; Zheng Fan; Yan Yao",
+    "authors_json": "[{\"display_name\": \"Lihong Zhao\", \"id\": \"https://openalex.org/A5010176826\", \"orcid\": \"https://orcid.org/0000-0003-2308-1053\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Chaoshan Wu\", \"id\": \"https://openalex.org/A5010169114\", \"orcid\": \"https://orcid.org/0000-0003-3458-8300\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qing Ai\", \"id\": \"https://openalex.org/A5059667364\", \"orcid\": \"https://orcid.org/0000-0002-6086-5431\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Liqun Guo\", \"id\": \"https://openalex.org/A5011658294\", \"orcid\": \"https://orcid.org/0009-0003-4274-8201\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhaoyang Chen\", \"id\": \"https://openalex.org/A5100669603\", \"orcid\": \"https://orcid.org/0000-0003-1580-0185\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yanliang Liang\", \"id\": \"https://openalex.org/A5043474041\", \"orcid\": \"https://orcid.org/0000-0001-6771-5172\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun Lou\", \"id\": \"https://openalex.org/A5018666422\", \"orcid\": \"https://orcid.org/0000-0002-4351-9561\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zheng Fan\", \"id\": \"https://openalex.org/A5050996662\", \"orcid\": \"https://orcid.org/0000-0001-8137-516X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yan Yao\", \"id\": \"https://openalex.org/A5079917819\", \"orcid\": \"https://orcid.org/0000-0002-8785-5030\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (skip)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "iop",
+    "scheduled_start_ms": 1773304168330,
+    "actual_start_ms": 1773304168330,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.354
+  }
+}

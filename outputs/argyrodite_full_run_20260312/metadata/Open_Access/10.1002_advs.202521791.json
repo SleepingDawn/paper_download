@@ -1,0 +1,102 @@
+{
+  "doi": "10.1002/advs.202521791",
+  "pdf_filename": "10.1002_advs.202521791.pdf",
+  "json_filename": "10.1002_advs.202521791.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_advs.202521791.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7119523723",
+    "doi": "10.1002/advs.202521791",
+    "title": "Synergistic Effects of Solid Electrolyte Mild Sintering and Lithium Surface Passivation for Enhanced Lithium Metal Cycling in All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Science",
+      "id": "https://openalex.org/S2737737698",
+      "type": "journal",
+      "issn_l": "2198-3844",
+      "issn": [
+        "2198-3844"
+      ]
+    },
+    "publication_date": "2026-01-08",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.98487414,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202521791",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Jinsong Zhang",
+    "authors_display": "Jinsong Zhang; Robin Wullich; Thomas J. Schmidt; Mario El Kazzi",
+    "authors": [
+      {
+        "display_name": "Jinsong Zhang",
+        "id": "https://openalex.org/A5122353066",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Robin Wullich",
+        "id": "https://openalex.org/A5092277442",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Thomas J. Schmidt",
+        "id": "https://openalex.org/A5084722596",
+        "orcid": "https://orcid.org/0000-0002-1636-367X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mario El Kazzi",
+        "id": "https://openalex.org/A5122361892",
+        "orcid": null,
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7119523723",
+    "doi": "10.1002/advs.202521791",
+    "title": "Synergistic Effects of Solid Electrolyte Mild Sintering and Lithium Surface Passivation for Enhanced Lithium Metal Cycling in All‐Solid‐State Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Science",
+    "journal_id": "https://openalex.org/S2737737698",
+    "journal_type": "journal",
+    "journal_issn_l": "2198-3844",
+    "journal_issn_json": "[\"2198-3844\"]",
+    "publication_date": "2026-01-08",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.98487414,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/advs.202521791",
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Jinsong Zhang",
+    "authors_display": "Jinsong Zhang; Robin Wullich; Thomas J. Schmidt; Mario El Kazzi",
+    "authors_json": "[{\"display_name\": \"Jinsong Zhang\", \"id\": \"https://openalex.org/A5122353066\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Robin Wullich\", \"id\": \"https://openalex.org/A5092277442\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Thomas J. Schmidt\", \"id\": \"https://openalex.org/A5084722596\", \"orcid\": \"https://orcid.org/0000-0002-1636-367X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mario El Kazzi\", \"id\": \"https://openalex.org/A5122361892\", \"orcid\": null, \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308820139,
+    "actual_start_ms": 1773308820139,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.793
+  }
+}

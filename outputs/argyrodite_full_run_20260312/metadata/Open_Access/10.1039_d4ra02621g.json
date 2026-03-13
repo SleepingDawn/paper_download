@@ -1,0 +1,109 @@
+{
+  "doi": "10.1039/d4ra02621g",
+  "pdf_filename": "10.1039_d4ra02621g.pdf",
+  "json_filename": "10.1039_d4ra02621g.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1039_d4ra02621g.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4398179866",
+    "doi": "10.1039/d4ra02621g",
+    "title": "AC conductivity study of mechanochemically synthesized solid electrolytes of Li<sub>6−<i>a</i></sub>M<sub><i>a</i>/<i>n</i></sub><sup><i>n</i></sup>PS<sub>5</sub>Cl (M = Ca, Mg, Ba, Zn, Al, Y)",
+    "publisher": "Royal Society of Chemistry",
+    "journal": {
+      "name": "RSC Advances",
+      "id": "https://openalex.org/S2481244646",
+      "type": "journal",
+      "issn_l": "2046-2069",
+      "issn": [
+        "2046-2069"
+      ]
+    },
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.82677269,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2024/ra/d4ra02621g",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Tran Viet Toan",
+    "authors_display": "Tran Viet Toan; Lưu Tuấn Anh; Nguyễn Thị Minh Nguyệt; Trần Anh Tú; Nguyễn Hữu Huy Phúc",
+    "authors": [
+      {
+        "display_name": "Tran Viet Toan",
+        "id": "https://openalex.org/A5067385457",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lưu Tuấn Anh",
+        "id": "https://openalex.org/A5010489045",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nguyễn Thị Minh Nguyệt",
+        "id": "https://openalex.org/A5101445939",
+        "orcid": "https://orcid.org/0000-0003-0088-550X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Trần Anh Tú",
+        "id": "https://openalex.org/A5027756520",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nguyễn Hữu Huy Phúc",
+        "id": "https://openalex.org/A5084522721",
+        "orcid": "https://orcid.org/0000-0001-8793-6132",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4398179866",
+    "doi": "10.1039/d4ra02621g",
+    "title": "AC conductivity study of mechanochemically synthesized solid electrolytes of Li<sub>6−<i>a</i></sub>M<sub><i>a</i>/<i>n</i></sub><sup><i>n</i></sup>PS<sub>5</sub>Cl (M = Ca, Mg, Ba, Zn, Al, Y)",
+    "publisher": "Royal Society of Chemistry",
+    "journal": "RSC Advances",
+    "journal_id": "https://openalex.org/S2481244646",
+    "journal_type": "journal",
+    "journal_issn_l": "2046-2069",
+    "journal_issn_json": "[\"2046-2069\"]",
+    "publication_date": "2024-01-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.82677269,
+    "pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2024/ra/d4ra02621g",
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Tran Viet Toan",
+    "authors_display": "Tran Viet Toan; Lưu Tuấn Anh; Nguyễn Thị Minh Nguyệt; Trần Anh Tú; Nguyễn Hữu Huy Phúc",
+    "authors_json": "[{\"display_name\": \"Tran Viet Toan\", \"id\": \"https://openalex.org/A5067385457\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Lưu Tuấn Anh\", \"id\": \"https://openalex.org/A5010489045\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nguyễn Thị Minh Nguyệt\", \"id\": \"https://openalex.org/A5101445939\", \"orcid\": \"https://orcid.org/0000-0003-0088-550X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Trần Anh Tú\", \"id\": \"https://openalex.org/A5027756520\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nguyễn Hữu Huy Phúc\", \"id\": \"https://openalex.org/A5084522721\", \"orcid\": \"https://orcid.org/0000-0001-8793-6132\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "rsc",
+    "scheduled_start_ms": 1773309347236,
+    "actual_start_ms": 1773309347236,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.236
+  }
+}

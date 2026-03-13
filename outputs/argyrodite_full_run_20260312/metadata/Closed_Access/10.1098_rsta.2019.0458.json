@@ -1,0 +1,89 @@
+{
+  "doi": "10.1098/rsta.2019.0458",
+  "pdf_filename": "10.1098_rsta.2019.0458.pdf",
+  "json_filename": "10.1098_rsta.2019.0458.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1098_rsta.2019.0458.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3206222438",
+    "doi": "10.1098/rsta.2019.0458",
+    "title": "Influence of Br <sup>−</sup> /S <sup>2−</sup> site-exchange on Li diffusion mechanism in Li <sub>6</sub> PS <sub>5</sub> Br: a computational study",
+    "publisher": "Royal Society",
+    "journal": {
+      "name": "Philosophical Transactions of the Royal Society A Mathematical Physical and Engineering Sciences",
+      "id": "https://openalex.org/S99517592",
+      "type": "journal",
+      "issn_l": "1364-503X",
+      "issn": [
+        "1364-503X",
+        "1471-2962"
+      ]
+    },
+    "publication_date": "2021-10-11",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.6096313,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Marcel Sadowski",
+    "authors_display": "Marcel Sadowski; Karsten Albe",
+    "authors": [
+      {
+        "display_name": "Marcel Sadowski",
+        "id": "https://openalex.org/A5001622557",
+        "orcid": "https://orcid.org/0000-0001-9869-6162",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Karsten Albe",
+        "id": "https://openalex.org/A5020304363",
+        "orcid": "https://orcid.org/0000-0003-4669-8056",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3206222438",
+    "doi": "10.1098/rsta.2019.0458",
+    "title": "Influence of Br <sup>−</sup> /S <sup>2−</sup> site-exchange on Li diffusion mechanism in Li <sub>6</sub> PS <sub>5</sub> Br: a computational study",
+    "publisher": "Royal Society",
+    "journal": "Philosophical Transactions of the Royal Society A Mathematical Physical and Engineering Sciences",
+    "journal_id": "https://openalex.org/S99517592",
+    "journal_type": "journal",
+    "journal_issn_l": "1364-503X",
+    "journal_issn_json": "[\"1364-503X\", \"1471-2962\"]",
+    "publication_date": "2021-10-11",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.6096313,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "Marcel Sadowski",
+    "authors_display": "Marcel Sadowski; Karsten Albe",
+    "authors_json": "[{\"display_name\": \"Marcel Sadowski\", \"id\": \"https://openalex.org/A5001622557\", \"orcid\": \"https://orcid.org/0000-0001-9869-6162\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Karsten Albe\", \"id\": \"https://openalex.org/A5020304363\", \"orcid\": \"https://orcid.org/0000-0003-4669-8056\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://royalsocietypublishing.org/rsta/article/379/2211/20190458/111952/Influence-of-Br-S2-site-exchange-on-Li-diffusion",
+    "landing_title": "Influence of Br−/S2− site-exchange on Li diffusion mechanism in Li6PS5Br: a computational study | Philosophical Transactions of the Royal Society A | The Royal Society",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1098_rsta.2019.0458.pdf",
+    "scheduler_publisher": "10.1098",
+    "scheduled_start_ms": 1773311114726,
+    "actual_start_ms": 1773311114727,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.54
+  }
+}

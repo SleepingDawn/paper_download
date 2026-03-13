@@ -1,0 +1,124 @@
+{
+  "doi": "10.1002/aenm.202470217",
+  "pdf_filename": "10.1002_aenm.202470217.pdf",
+  "json_filename": "10.1002_aenm.202470217.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202470217.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4405870247",
+    "doi": "10.1002/aenm.202470217",
+    "title": "Lithium Localization by Anions in Argyrodite Solid Electrolytes from Machine‐Learning‐based Simulations (Adv. Energy Mater. 48/2024)",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2024-12-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.228568,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202470217",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Hyun‐Jae Lee",
+    "authors_display": "Hyun‐Jae Lee; Hyeonjung Kim; Sungyoung Ji; Kyuri Choi; Ho Sang Choi; Woosang Lim; Byungju Lee",
+    "authors": [
+      {
+        "display_name": "Hyun‐Jae Lee",
+        "id": "https://openalex.org/A5023316412",
+        "orcid": "https://orcid.org/0000-0002-0550-3083",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hyeonjung Kim",
+        "id": "https://openalex.org/A5005307155",
+        "orcid": "https://orcid.org/0000-0002-9185-8269",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sungyoung Ji",
+        "id": "https://openalex.org/A5111361714",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyuri Choi",
+        "id": "https://openalex.org/A5109115772",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ho Sang Choi",
+        "id": "https://openalex.org/A5112521994",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Woosang Lim",
+        "id": "https://openalex.org/A5111066596",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byungju Lee",
+        "id": "https://openalex.org/A5001538891",
+        "orcid": "https://orcid.org/0000-0002-8640-2689",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4405870247",
+    "doi": "10.1002/aenm.202470217",
+    "title": "Lithium Localization by Anions in Argyrodite Solid Electrolytes from Machine‐Learning‐based Simulations (Adv. Energy Mater. 48/2024)",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2024-12-01",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.228568,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202470217",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Hyun‐Jae Lee",
+    "authors_display": "Hyun‐Jae Lee; Hyeonjung Kim; Sungyoung Ji; Kyuri Choi; Ho Sang Choi; Woosang Lim; Byungju Lee",
+    "authors_json": "[{\"display_name\": \"Hyun‐Jae Lee\", \"id\": \"https://openalex.org/A5023316412\", \"orcid\": \"https://orcid.org/0000-0002-0550-3083\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hyeonjung Kim\", \"id\": \"https://openalex.org/A5005307155\", \"orcid\": \"https://orcid.org/0000-0002-9185-8269\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sungyoung Ji\", \"id\": \"https://openalex.org/A5111361714\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyuri Choi\", \"id\": \"https://openalex.org/A5109115772\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ho Sang Choi\", \"id\": \"https://openalex.org/A5112521994\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Woosang Lim\", \"id\": \"https://openalex.org/A5111066596\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byungju Lee\", \"id\": \"https://openalex.org/A5001538891\", \"orcid\": \"https://orcid.org/0000-0002-8640-2689\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773309522499,
+    "actual_start_ms": 1773309522499,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.387
+  }
+}

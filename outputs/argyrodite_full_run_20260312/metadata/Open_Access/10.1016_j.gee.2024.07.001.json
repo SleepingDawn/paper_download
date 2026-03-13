@@ -1,0 +1,152 @@
+{
+  "doi": "10.1016/j.gee.2024.07.001",
+  "pdf_filename": "10.1016_j.gee.2024.07.001.pdf",
+  "json_filename": "10.1016_j.gee.2024.07.001.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.gee.2024.07.001.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4400336764",
+    "doi": "10.1016/j.gee.2024.07.001",
+    "title": "Synergistic Li6PS5Cl@Li3OCl composite electrolyte for high-performance all-solid-state lithium batteries",
+    "publisher": "KeAi",
+    "journal": {
+      "name": "Green Energy & Environment",
+      "id": "https://openalex.org/S2898348030",
+      "type": "journal",
+      "issn_l": "2096-2797",
+      "issn": [
+        "2096-2797",
+        "2468-0257"
+      ]
+    },
+    "publication_date": "2024-07-03",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.91249294,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Yuzhe Zhang",
+    "authors_display": "Yuzhe Zhang; Haolong Chang; Aiguo Han; Shijie Xu; Xinyu Wang; Shunjin Yang; Xiaohu Hu; Yujiang Sun; Xiao Sun; Xing Chen; Yongan Yang",
+    "authors": [
+      {
+        "display_name": "Yuzhe Zhang",
+        "id": "https://openalex.org/A5100727265",
+        "orcid": "https://orcid.org/0009-0004-1819-1279",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haolong Chang",
+        "id": "https://openalex.org/A5102597457",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Aiguo Han",
+        "id": "https://openalex.org/A5078927438",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Xu",
+        "id": "https://openalex.org/A5061038297",
+        "orcid": "https://orcid.org/0000-0002-1586-8457",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinyu Wang",
+        "id": "https://openalex.org/A5100352826",
+        "orcid": "https://orcid.org/0000-0003-0418-6503",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shunjin Yang",
+        "id": "https://openalex.org/A5078781368",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaohu Hu",
+        "id": "https://openalex.org/A5018154304",
+        "orcid": "https://orcid.org/0000-0002-4720-7848",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yujiang Sun",
+        "id": "https://openalex.org/A5033208975",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao Sun",
+        "id": "https://openalex.org/A5058777377",
+        "orcid": "https://orcid.org/0000-0001-8232-9958",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xing Chen",
+        "id": "https://openalex.org/A5022226185",
+        "orcid": "https://orcid.org/0000-0002-1223-298X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yongan Yang",
+        "id": "https://openalex.org/A5015906224",
+        "orcid": "https://orcid.org/0000-0003-1451-2923",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4400336764",
+    "doi": "10.1016/j.gee.2024.07.001",
+    "title": "Synergistic Li6PS5Cl@Li3OCl composite electrolyte for high-performance all-solid-state lithium batteries",
+    "publisher": "KeAi",
+    "journal": "Green Energy & Environment",
+    "journal_id": "https://openalex.org/S2898348030",
+    "journal_type": "journal",
+    "journal_issn_l": "2096-2797",
+    "journal_issn_json": "[\"2096-2797\", \"2468-0257\"]",
+    "publication_date": "2024-07-03",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.91249294,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 11,
+    "first_author": "Yuzhe Zhang",
+    "authors_display": "Yuzhe Zhang; Haolong Chang; Aiguo Han; Shijie Xu; Xinyu Wang; Shunjin Yang; Xiaohu Hu; Yujiang Sun; Xiao Sun; Xing Chen; Yongan Yang",
+    "authors_json": "[{\"display_name\": \"Yuzhe Zhang\", \"id\": \"https://openalex.org/A5100727265\", \"orcid\": \"https://orcid.org/0009-0004-1819-1279\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Haolong Chang\", \"id\": \"https://openalex.org/A5102597457\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Aiguo Han\", \"id\": \"https://openalex.org/A5078927438\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Xu\", \"id\": \"https://openalex.org/A5061038297\", \"orcid\": \"https://orcid.org/0000-0002-1586-8457\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinyu Wang\", \"id\": \"https://openalex.org/A5100352826\", \"orcid\": \"https://orcid.org/0000-0003-0418-6503\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shunjin Yang\", \"id\": \"https://openalex.org/A5078781368\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaohu Hu\", \"id\": \"https://openalex.org/A5018154304\", \"orcid\": \"https://orcid.org/0000-0002-4720-7848\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yujiang Sun\", \"id\": \"https://openalex.org/A5033208975\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiao Sun\", \"id\": \"https://openalex.org/A5058777377\", \"orcid\": \"https://orcid.org/0000-0001-8232-9958\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xing Chen\", \"id\": \"https://openalex.org/A5022226185\", \"orcid\": \"https://orcid.org/0000-0002-1223-298X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yongan Yang\", \"id\": \"https://openalex.org/A5015906224\", \"orcid\": \"https://orcid.org/0000-0003-1451-2923\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2468025724001808?via%3Dihub",
+    "landing_title": "Synergistic Li6PS5Cl@Li3OCl composite electrolyte for high-performance all-solid-state lithium batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773303395295,
+    "actual_start_ms": 1773303396799,
+    "pacing_wait_ms": 1503,
+    "pacing_jitter_sec": 0.962
+  }
+}

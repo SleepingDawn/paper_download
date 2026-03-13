@@ -1,0 +1,137 @@
+{
+  "doi": "10.2139/ssrn.4310665",
+  "pdf_filename": "10.2139_ssrn.4310665.pdf",
+  "json_filename": "10.2139_ssrn.4310665.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.4310665.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4312801341",
+    "doi": "10.2139/ssrn.4310665",
+    "title": "Ag Nanoparticles Incorporated Interlayer Enables Ultrahigh Critical Current Density for Li6ps5cl-Based All-Solid-State Lithium Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Bo Pang",
+    "authors_display": "Bo Pang; Zhan Wu; Wenkui Zhang; Hui Huang; Yongping Gan; Yang Xia; Xinping He; Xinhui Xia; Jun Zhang",
+    "authors": [
+      {
+        "display_name": "Bo Pang",
+        "id": "https://openalex.org/A5076770031",
+        "orcid": "https://orcid.org/0000-0002-7040-0363",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Zhan Wu",
+        "id": "https://openalex.org/A5086058691",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenkui Zhang",
+        "id": "https://openalex.org/A5076433410",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hui Huang",
+        "id": "https://openalex.org/A5100682379",
+        "orcid": "https://orcid.org/0000-0002-9737-9584",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yongping Gan",
+        "id": "https://openalex.org/A5052969011",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Xia",
+        "id": "https://openalex.org/A5023904009",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinping He",
+        "id": "https://openalex.org/A5107966481",
+        "orcid": "https://orcid.org/0000-0002-8846-5210",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinhui Xia",
+        "id": "https://openalex.org/A5069358349",
+        "orcid": "https://orcid.org/0000-0002-5976-5337",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Zhang",
+        "id": "https://openalex.org/A5100433102",
+        "orcid": "https://orcid.org/0000-0002-0644-9154",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4312801341",
+    "doi": "10.2139/ssrn.4310665",
+    "title": "Ag Nanoparticles Incorporated Interlayer Enables Ultrahigh Critical Current Density for Li6ps5cl-Based All-Solid-State Lithium Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 3,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Bo Pang",
+    "authors_display": "Bo Pang; Zhan Wu; Wenkui Zhang; Hui Huang; Yongping Gan; Yang Xia; Xinping He; Xinhui Xia; Jun Zhang",
+    "authors_json": "[{\"display_name\": \"Bo Pang\", \"id\": \"https://openalex.org/A5076770031\", \"orcid\": \"https://orcid.org/0000-0002-7040-0363\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Zhan Wu\", \"id\": \"https://openalex.org/A5086058691\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wenkui Zhang\", \"id\": \"https://openalex.org/A5076433410\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hui Huang\", \"id\": \"https://openalex.org/A5100682379\", \"orcid\": \"https://orcid.org/0000-0002-9737-9584\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yongping Gan\", \"id\": \"https://openalex.org/A5052969011\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Xia\", \"id\": \"https://openalex.org/A5023904009\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinping He\", \"id\": \"https://openalex.org/A5107966481\", \"orcid\": \"https://orcid.org/0000-0002-8846-5210\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinhui Xia\", \"id\": \"https://openalex.org/A5069358349\", \"orcid\": \"https://orcid.org/0000-0002-5976-5337\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun Zhang\", \"id\": \"https://openalex.org/A5100433102\", \"orcid\": \"https://orcid.org/0000-0002-0644-9154\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4310665&__cf_chl_rt_tk=WYymF7nXX0i_lzDhpk9BsHX8qqJ1LlokJJHVZ4R95FA-1773311597-1.0.1.1-9b2V8d7kwZKicYl4LT0D4mTxCf63.IYQXgRbNUkLyMw",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.4310665.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773311576807,
+    "actual_start_ms": 1773311576808,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.692
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "doi": "10.1021/acsaem.4c00127",
+  "pdf_filename": "10.1021_acsaem.4c00127.pdf",
+  "json_filename": "10.1021_acsaem.4c00127.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.4c00127.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4392381364",
+    "doi": "10.1021/acsaem.4c00127",
+    "title": "High-Performance Sulfide All-Solid-State Batteries Enabled by High-Voltage Ni-Rich Cathode with a Conformal and Conductive Protective Layer",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2024-03-04",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.84316334,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Xing Zhou",
+    "authors_display": "Xing Zhou; Linghao Deng; Kai Zhang; Zhiyong Zhang; Lili Zhang; Zhi Li; Taoyi Kong; Yihua Xie; Yonggang Wang",
+    "authors": [
+      {
+        "display_name": "Xing Zhou",
+        "id": "https://openalex.org/A5100861021",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Linghao Deng",
+        "id": "https://openalex.org/A5111139443",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kai Zhang",
+        "id": "https://openalex.org/A5100323904",
+        "orcid": "https://orcid.org/0000-0001-8038-745X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhiyong Zhang",
+        "id": "https://openalex.org/A5100352615",
+        "orcid": "https://orcid.org/0000-0003-1622-3447",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lili Zhang",
+        "id": "https://openalex.org/A5100461206",
+        "orcid": "https://orcid.org/0000-0002-9143-9320",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhi Li",
+        "id": "https://openalex.org/A5100382265",
+        "orcid": "https://orcid.org/0000-0002-2211-2092",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Taoyi Kong",
+        "id": "https://openalex.org/A5008540970",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yihua Xie",
+        "id": "https://openalex.org/A5102216140",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yonggang Wang",
+        "id": "https://openalex.org/A5100764817",
+        "orcid": "https://orcid.org/0000-0002-2447-4679",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4392381364",
+    "doi": "10.1021/acsaem.4c00127",
+    "title": "High-Performance Sulfide All-Solid-State Batteries Enabled by High-Voltage Ni-Rich Cathode with a Conformal and Conductive Protective Layer",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2024-03-04",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.84316334,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Xing Zhou",
+    "authors_display": "Xing Zhou; Linghao Deng; Kai Zhang; Zhiyong Zhang; Lili Zhang; Zhi Li; Taoyi Kong; Yihua Xie; Yonggang Wang",
+    "authors_json": "[{\"display_name\": \"Xing Zhou\", \"id\": \"https://openalex.org/A5100861021\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Linghao Deng\", \"id\": \"https://openalex.org/A5111139443\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kai Zhang\", \"id\": \"https://openalex.org/A5100323904\", \"orcid\": \"https://orcid.org/0000-0001-8038-745X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhiyong Zhang\", \"id\": \"https://openalex.org/A5100352615\", \"orcid\": \"https://orcid.org/0000-0003-1622-3447\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lili Zhang\", \"id\": \"https://openalex.org/A5100461206\", \"orcid\": \"https://orcid.org/0000-0002-9143-9320\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhi Li\", \"id\": \"https://openalex.org/A5100382265\", \"orcid\": \"https://orcid.org/0000-0002-2211-2092\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Taoyi Kong\", \"id\": \"https://openalex.org/A5008540970\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yihua Xie\", \"id\": \"https://openalex.org/A5102216140\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yonggang Wang\", \"id\": \"https://openalex.org/A5100764817\", \"orcid\": \"https://orcid.org/0000-0002-2447-4679\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.4c00127",
+    "landing_title": "High-Performance Sulfide All-Solid-State Batteries Enabled by High-Voltage Ni-Rich Cathode with a Conformal and Conductive Protective Layer | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acsaem.4c00127.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773305454389,
+    "actual_start_ms": 1773305462890,
+    "pacing_wait_ms": 8501,
+    "pacing_jitter_sec": 1.497
+  }
+}

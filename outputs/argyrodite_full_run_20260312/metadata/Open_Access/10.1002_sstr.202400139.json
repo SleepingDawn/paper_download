@@ -1,0 +1,123 @@
+{
+  "doi": "10.1002/sstr.202400139",
+  "pdf_filename": "10.1002_sstr.202400139.pdf",
+  "json_filename": "10.1002_sstr.202400139.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_sstr.202400139.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4401100958",
+    "doi": "10.1002/sstr.202400139",
+    "title": "Unveiling the Reactivity and the Li‐Ion Exchange at the PEO‐Li<sub>6</sub>PS<sub>5</sub>Cl Interphase: Insights from Solid‐State NMR",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small Structures",
+      "id": "https://openalex.org/S4210224134",
+      "type": "journal",
+      "issn_l": "2688-4062",
+      "issn": [
+        "2688-4062"
+      ]
+    },
+    "publication_date": "2024-07-28",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.80442903,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/sstr.202400139",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Pedram Ghorbanzade",
+    "authors_display": "Pedram Ghorbanzade; Arianna Pesce; Michel Armand; Kerman Gómez; Devaraj Shanmukaraj; Pedro López‐Aranguren; Juan Miguel López del Amo",
+    "authors": [
+      {
+        "display_name": "Pedram Ghorbanzade",
+        "id": "https://openalex.org/A5006356897",
+        "orcid": "https://orcid.org/0000-0002-9228-7373",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Arianna Pesce",
+        "id": "https://openalex.org/A5022392061",
+        "orcid": "https://orcid.org/0000-0002-6461-5296",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michel Armand",
+        "id": "https://openalex.org/A5055227491",
+        "orcid": "https://orcid.org/0000-0002-1303-9233",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kerman Gómez",
+        "id": "https://openalex.org/A5108563777",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Devaraj Shanmukaraj",
+        "id": "https://openalex.org/A5001523923",
+        "orcid": "https://orcid.org/0000-0001-8315-2699",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pedro López‐Aranguren",
+        "id": "https://openalex.org/A5010080494",
+        "orcid": "https://orcid.org/0000-0001-6912-2055",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Juan Miguel López del Amo",
+        "id": "https://openalex.org/A5071518935",
+        "orcid": "https://orcid.org/0000-0002-2315-5414",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4401100958",
+    "doi": "10.1002/sstr.202400139",
+    "title": "Unveiling the Reactivity and the Li‐Ion Exchange at the PEO‐Li<sub>6</sub>PS<sub>5</sub>Cl Interphase: Insights from Solid‐State NMR",
+    "publisher": "Wiley",
+    "journal": "Small Structures",
+    "journal_id": "https://openalex.org/S4210224134",
+    "journal_type": "journal",
+    "journal_issn_l": "2688-4062",
+    "journal_issn_json": "[\"2688-4062\"]",
+    "publication_date": "2024-07-28",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.80442903,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/sstr.202400139",
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Pedram Ghorbanzade",
+    "authors_display": "Pedram Ghorbanzade; Arianna Pesce; Michel Armand; Kerman Gómez; Devaraj Shanmukaraj; Pedro López‐Aranguren; Juan Miguel López del Amo",
+    "authors_json": "[{\"display_name\": \"Pedram Ghorbanzade\", \"id\": \"https://openalex.org/A5006356897\", \"orcid\": \"https://orcid.org/0000-0002-9228-7373\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Arianna Pesce\", \"id\": \"https://openalex.org/A5022392061\", \"orcid\": \"https://orcid.org/0000-0002-6461-5296\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Michel Armand\", \"id\": \"https://openalex.org/A5055227491\", \"orcid\": \"https://orcid.org/0000-0002-1303-9233\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kerman Gómez\", \"id\": \"https://openalex.org/A5108563777\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Devaraj Shanmukaraj\", \"id\": \"https://openalex.org/A5001523923\", \"orcid\": \"https://orcid.org/0000-0001-8315-2699\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pedro López‐Aranguren\", \"id\": \"https://openalex.org/A5010080494\", \"orcid\": \"https://orcid.org/0000-0001-6912-2055\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Juan Miguel López del Amo\", \"id\": \"https://openalex.org/A5071518935\", \"orcid\": \"https://orcid.org/0000-0002-2315-5414\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773307005179,
+    "actual_start_ms": 1773307005179,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.426
+  }
+}

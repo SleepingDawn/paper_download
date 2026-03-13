@@ -1,0 +1,131 @@
+{
+  "doi": "10.1021/acsami.3c11542",
+  "pdf_filename": "10.1021_acsami.3c11542.pdf",
+  "json_filename": "10.1021_acsami.3c11542.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsami.3c11542.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4389398974",
+    "doi": "10.1021/acsami.3c11542",
+    "title": "Targeting the Right Metrics for an Efficient Solvent-Free Formulation of PEO:LiTFSI:Li<sub>6</sub>PS<sub>5</sub>Cl Hybrid Solid Electrolyte",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2023-12-06",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.72788489,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Ronan Chometon",
+    "authors_display": "Ronan Chometon; Michaël Deschamps; Romain Dugas; Elisa Quemin; Benjamin Hennequart; Marc Deschamps; Jean‐Marie Tarascon; Christel Laberty‐Robert",
+    "authors": [
+      {
+        "display_name": "Ronan Chometon",
+        "id": "https://openalex.org/A5027363171",
+        "orcid": "https://orcid.org/0000-0001-9026-4082",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Michaël Deschamps",
+        "id": "https://openalex.org/A5106331218",
+        "orcid": "https://orcid.org/0000-0001-8309-3932",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Romain Dugas",
+        "id": "https://openalex.org/A5035542534",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Elisa Quemin",
+        "id": "https://openalex.org/A5088042759",
+        "orcid": "https://orcid.org/0000-0003-3617-3352",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Benjamin Hennequart",
+        "id": "https://openalex.org/A5046768685",
+        "orcid": "https://orcid.org/0000-0002-0325-7691",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marc Deschamps",
+        "id": "https://openalex.org/A5105422737",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jean‐Marie Tarascon",
+        "id": "https://openalex.org/A5019830612",
+        "orcid": "https://orcid.org/0000-0002-7059-6845",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Christel Laberty‐Robert",
+        "id": "https://openalex.org/A5012012193",
+        "orcid": "https://orcid.org/0000-0003-3230-3164",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4389398974",
+    "doi": "10.1021/acsami.3c11542",
+    "title": "Targeting the Right Metrics for an Efficient Solvent-Free Formulation of PEO:LiTFSI:Li<sub>6</sub>PS<sub>5</sub>Cl Hybrid Solid Electrolyte",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2023-12-06",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 6,
+    "citation_normalized_percentile": 0.72788489,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Ronan Chometon",
+    "authors_display": "Ronan Chometon; Michaël Deschamps; Romain Dugas; Elisa Quemin; Benjamin Hennequart; Marc Deschamps; Jean‐Marie Tarascon; Christel Laberty‐Robert",
+    "authors_json": "[{\"display_name\": \"Ronan Chometon\", \"id\": \"https://openalex.org/A5027363171\", \"orcid\": \"https://orcid.org/0000-0001-9026-4082\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Michaël Deschamps\", \"id\": \"https://openalex.org/A5106331218\", \"orcid\": \"https://orcid.org/0000-0001-8309-3932\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Romain Dugas\", \"id\": \"https://openalex.org/A5035542534\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Elisa Quemin\", \"id\": \"https://openalex.org/A5088042759\", \"orcid\": \"https://orcid.org/0000-0003-3617-3352\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Benjamin Hennequart\", \"id\": \"https://openalex.org/A5046768685\", \"orcid\": \"https://orcid.org/0000-0002-0325-7691\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marc Deschamps\", \"id\": \"https://openalex.org/A5105422737\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jean‐Marie Tarascon\", \"id\": \"https://openalex.org/A5019830612\", \"orcid\": \"https://orcid.org/0000-0002-7059-6845\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Christel Laberty‐Robert\", \"id\": \"https://openalex.org/A5012012193\", \"orcid\": \"https://orcid.org/0000-0003-3230-3164\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsami.3c11542",
+    "landing_title": "Targeting the Right Metrics for an Efficient Solvent-Free Formulation of PEO:LiTFSI:Li6PS5Cl Hybrid Solid Electrolyte | ACS Applied Materials & Interfaces",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acsami.3c11542.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773306321380,
+    "actual_start_ms": 1773306321380,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.962
+  }
+}

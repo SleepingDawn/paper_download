@@ -1,0 +1,110 @@
+{
+  "doi": "10.31613/ceramist.2024.00094",
+  "pdf_filename": "10.31613_ceramist.2024.00094.pdf",
+  "json_filename": "10.31613_ceramist.2024.00094.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.31613_ceramist.2024.00094.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4403093943",
+    "doi": "10.31613/ceramist.2024.00094",
+    "title": "Influence of the Binder properties on Silicon Anode for Solid-State Batteries",
+    "publisher": "Ceramist",
+    "journal": {
+      "name": "Ceramist",
+      "id": "https://openalex.org/S4210195695",
+      "type": "journal",
+      "issn_l": "1226-976X",
+      "issn": [
+        "1226-976X",
+        "2586-0631"
+      ]
+    },
+    "publication_date": "2024-09-30",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.14840943,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Heetae Tak",
+    "authors_display": "Heetae Tak; Yuna Ko; S Oh; Yechan Park; Hyun Jung Park",
+    "authors": [
+      {
+        "display_name": "Heetae Tak",
+        "id": "https://openalex.org/A5112914438",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yuna Ko",
+        "id": "https://openalex.org/A5108995670",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "S Oh",
+        "id": "https://openalex.org/A5113029820",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yechan Park",
+        "id": "https://openalex.org/A5111351814",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyun Jung Park",
+        "id": "https://openalex.org/A5101798349",
+        "orcid": "https://orcid.org/0000-0001-9008-0224",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4403093943",
+    "doi": "10.31613/ceramist.2024.00094",
+    "title": "Influence of the Binder properties on Silicon Anode for Solid-State Batteries",
+    "publisher": "Ceramist",
+    "journal": "Ceramist",
+    "journal_id": "https://openalex.org/S4210195695",
+    "journal_type": "journal",
+    "journal_issn_l": "1226-976X",
+    "journal_issn_json": "[\"1226-976X\", \"2586-0631\"]",
+    "publication_date": "2024-09-30",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.14840943,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 5,
+    "first_author": "Heetae Tak",
+    "authors_display": "Heetae Tak; Yuna Ko; S Oh; Yechan Park; Hyun Jung Park",
+    "authors_json": "[{\"display_name\": \"Heetae Tak\", \"id\": \"https://openalex.org/A5112914438\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Yuna Ko\", \"id\": \"https://openalex.org/A5108995670\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"S Oh\", \"id\": \"https://openalex.org/A5113029820\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yechan Park\", \"id\": \"https://openalex.org/A5111351814\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyun Jung Park\", \"id\": \"https://openalex.org/A5101798349\", \"orcid\": \"https://orcid.org/0000-0001-9008-0224\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://ceramist.or.kr/authors/copyright_transfer_agreement.php",
+    "landing_title": "Ceramist",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.31613_ceramist.2024.00094.pdf",
+    "scheduler_publisher": "10.31613",
+    "scheduled_start_ms": 1773318434368,
+    "actual_start_ms": 1773318434369,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.399
+  }
+}

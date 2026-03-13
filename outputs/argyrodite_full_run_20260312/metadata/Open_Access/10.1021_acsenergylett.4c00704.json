@@ -1,0 +1,123 @@
+{
+  "doi": "10.1021/acsenergylett.4c00704",
+  "pdf_filename": "10.1021_acsenergylett.4c00704.pdf",
+  "json_filename": "10.1021_acsenergylett.4c00704.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acsenergylett.4c00704.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4399850797",
+    "doi": "10.1021/acsenergylett.4c00704",
+    "title": "Hydride-Based Interlayer for Solid-State Anode-Free Battery",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2024-06-20",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.92664032,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Yonglin Huang",
+    "authors_display": "Yonglin Huang; Yuxuan Zhang; Ruixin Wu; Bowen Shao; Ruihao Deng; Ratnottam Das; Fudong Han",
+    "authors": [
+      {
+        "display_name": "Yonglin Huang",
+        "id": "https://openalex.org/A5042708724",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuxuan Zhang",
+        "id": "https://openalex.org/A5085644710",
+        "orcid": "https://orcid.org/0000-0002-0083-1408",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ruixin Wu",
+        "id": "https://openalex.org/A5101289809",
+        "orcid": "https://orcid.org/0009-0002-5632-5157",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bowen Shao",
+        "id": "https://openalex.org/A5031119317",
+        "orcid": "https://orcid.org/0000-0001-5138-5164",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ruihao Deng",
+        "id": "https://openalex.org/A5102530906",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ratnottam Das",
+        "id": "https://openalex.org/A5102530905",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Fudong Han",
+        "id": "https://openalex.org/A5000043456",
+        "orcid": "https://orcid.org/0000-0003-2507-4340",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4399850797",
+    "doi": "10.1021/acsenergylett.4c00704",
+    "title": "Hydride-Based Interlayer for Solid-State Anode-Free Battery",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2024-06-20",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.92664032,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 7,
+    "first_author": "Yonglin Huang",
+    "authors_display": "Yonglin Huang; Yuxuan Zhang; Ruixin Wu; Bowen Shao; Ruihao Deng; Ratnottam Das; Fudong Han",
+    "authors_json": "[{\"display_name\": \"Yonglin Huang\", \"id\": \"https://openalex.org/A5042708724\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yuxuan Zhang\", \"id\": \"https://openalex.org/A5085644710\", \"orcid\": \"https://orcid.org/0000-0002-0083-1408\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ruixin Wu\", \"id\": \"https://openalex.org/A5101289809\", \"orcid\": \"https://orcid.org/0009-0002-5632-5157\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bowen Shao\", \"id\": \"https://openalex.org/A5031119317\", \"orcid\": \"https://orcid.org/0000-0001-5138-5164\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ruihao Deng\", \"id\": \"https://openalex.org/A5102530906\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ratnottam Das\", \"id\": \"https://openalex.org/A5102530905\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Fudong Han\", \"id\": \"https://openalex.org/A5000043456\", \"orcid\": \"https://orcid.org/0000-0003-2507-4340\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsenergylett.4c00704",
+    "landing_title": "Hydride-Based Interlayer for Solid-State Anode-Free Battery | ACS Energy Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsenergylett.4c00704.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773303963762,
+    "actual_start_ms": 1773303972055,
+    "pacing_wait_ms": 8292,
+    "pacing_jitter_sec": 1.119
+  }
+}

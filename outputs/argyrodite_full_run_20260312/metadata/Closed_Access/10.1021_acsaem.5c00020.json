@@ -1,0 +1,151 @@
+{
+  "doi": "10.1021/acsaem.5c00020",
+  "pdf_filename": "10.1021_acsaem.5c00020.pdf",
+  "json_filename": "10.1021_acsaem.5c00020.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.5c00020.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408323025",
+    "doi": "10.1021/acsaem.5c00020",
+    "title": "Hot Pressing Argyrodite Solid Electrolyte Powders Results in &gt;2 mS cm<sup>–1</sup> Ionic Conductivity at 20 °C and &lt;1 MPa Operating Pressure",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2025-03-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.69288566,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Karl Larson",
+    "authors_display": "Karl Larson; Yang Wang; Bhuvsmita Bhargava; Ravindra Kumar Bhardwaj; Osma Gomez; Adam Antar; Gary W. Rubloff; David Zitoun; Alexander C. Kozen; Sang Bok Lee; Paul Albertus",
+    "authors": [
+      {
+        "display_name": "Karl Larson",
+        "id": "https://openalex.org/A5049440018",
+        "orcid": "https://orcid.org/0009-0005-0946-0243",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Wang",
+        "id": "https://openalex.org/A5100644336",
+        "orcid": "https://orcid.org/0000-0001-8219-9014",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bhuvsmita Bhargava",
+        "id": "https://openalex.org/A5046685662",
+        "orcid": "https://orcid.org/0009-0007-1268-6635",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ravindra Kumar Bhardwaj",
+        "id": "https://openalex.org/A5063499170",
+        "orcid": "https://orcid.org/0009-0007-6161-8989",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Osma Gomez",
+        "id": "https://openalex.org/A5111069929",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Adam Antar",
+        "id": "https://openalex.org/A5035744722",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gary W. Rubloff",
+        "id": "https://openalex.org/A5091599487",
+        "orcid": "https://orcid.org/0000-0002-1901-3982",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "David Zitoun",
+        "id": "https://openalex.org/A5078348497",
+        "orcid": "https://orcid.org/0000-0003-3383-6165",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alexander C. Kozen",
+        "id": "https://openalex.org/A5082268294",
+        "orcid": "https://orcid.org/0000-0002-5311-2757",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sang Bok Lee",
+        "id": "https://openalex.org/A5101730214",
+        "orcid": "https://orcid.org/0000-0003-1375-7099",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Paul Albertus",
+        "id": "https://openalex.org/A5070643778",
+        "orcid": "https://orcid.org/0000-0003-0072-0529",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408323025",
+    "doi": "10.1021/acsaem.5c00020",
+    "title": "Hot Pressing Argyrodite Solid Electrolyte Powders Results in &gt;2 mS cm<sup>–1</sup> Ionic Conductivity at 20 °C and &lt;1 MPa Operating Pressure",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2025-03-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.69288566,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 11,
+    "first_author": "Karl Larson",
+    "authors_display": "Karl Larson; Yang Wang; Bhuvsmita Bhargava; Ravindra Kumar Bhardwaj; Osma Gomez; Adam Antar; Gary W. Rubloff; David Zitoun; Alexander C. Kozen; Sang Bok Lee; Paul Albertus",
+    "authors_json": "[{\"display_name\": \"Karl Larson\", \"id\": \"https://openalex.org/A5049440018\", \"orcid\": \"https://orcid.org/0009-0005-0946-0243\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yang Wang\", \"id\": \"https://openalex.org/A5100644336\", \"orcid\": \"https://orcid.org/0000-0001-8219-9014\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bhuvsmita Bhargava\", \"id\": \"https://openalex.org/A5046685662\", \"orcid\": \"https://orcid.org/0009-0007-1268-6635\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ravindra Kumar Bhardwaj\", \"id\": \"https://openalex.org/A5063499170\", \"orcid\": \"https://orcid.org/0009-0007-6161-8989\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Osma Gomez\", \"id\": \"https://openalex.org/A5111069929\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Adam Antar\", \"id\": \"https://openalex.org/A5035744722\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gary W. Rubloff\", \"id\": \"https://openalex.org/A5091599487\", \"orcid\": \"https://orcid.org/0000-0002-1901-3982\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"David Zitoun\", \"id\": \"https://openalex.org/A5078348497\", \"orcid\": \"https://orcid.org/0000-0003-3383-6165\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alexander C. Kozen\", \"id\": \"https://openalex.org/A5082268294\", \"orcid\": \"https://orcid.org/0000-0002-5311-2757\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sang Bok Lee\", \"id\": \"https://openalex.org/A5101730214\", \"orcid\": \"https://orcid.org/0000-0003-1375-7099\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Paul Albertus\", \"id\": \"https://openalex.org/A5070643778\", \"orcid\": \"https://orcid.org/0000-0003-0072-0529\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsaem.5c00020",
+    "landing_title": "Hot Pressing Argyrodite Solid Electrolyte Powders Results in >2 mS cm–1 Ionic Conductivity at 20 °C and <1 MPa Operating Pressure | ACS Applied Energy Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsaem.5c00020.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773308305445,
+    "actual_start_ms": 1773308314041,
+    "pacing_wait_ms": 8595,
+    "pacing_jitter_sec": 1.585
+  }
+}

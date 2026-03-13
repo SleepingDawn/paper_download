@@ -1,0 +1,117 @@
+{
+  "doi": "10.1021/acs.chemmater.4c01049",
+  "pdf_filename": "10.1021_acs.chemmater.4c01049.pdf",
+  "json_filename": "10.1021_acs.chemmater.4c01049.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1021_acs.chemmater.4c01049.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408613473",
+    "doi": "10.1021/acs.chemmater.4c01049",
+    "title": "Optimizing Ionic Conductivity of Lithium in Li<sub>7</sub>PS<sub>6</sub> Argyrodite via Dopant Engineering",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2025-03-19",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.90544344,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.chemmater.4c01049?ref=article_openPDF",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Sokseiha Muy",
+    "authors_display": "Sokseiha Muy; Thierry Le Mercier; Marion Dufour; Marc‐David Braida; Antoine Emery; Nicola Marzari",
+    "authors": [
+      {
+        "display_name": "Sokseiha Muy",
+        "id": "https://openalex.org/A5053021924",
+        "orcid": "https://orcid.org/0000-0001-6457-9187",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Thierry Le Mercier",
+        "id": "https://openalex.org/A5107300627",
+        "orcid": "https://orcid.org/0000-0003-0653-8234",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marion Dufour",
+        "id": "https://openalex.org/A5079214462",
+        "orcid": "https://orcid.org/0000-0001-9588-9524",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Marc‐David Braida",
+        "id": "https://openalex.org/A5014842922",
+        "orcid": "https://orcid.org/0000-0002-0718-7280",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Antoine Emery",
+        "id": "https://openalex.org/A5030564890",
+        "orcid": "https://orcid.org/0000-0002-5420-9155",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Nicola Marzari",
+        "id": "https://openalex.org/A5005167296",
+        "orcid": "https://orcid.org/0000-0002-9764-0199",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408613473",
+    "doi": "10.1021/acs.chemmater.4c01049",
+    "title": "Optimizing Ionic Conductivity of Lithium in Li<sub>7</sub>PS<sub>6</sub> Argyrodite via Dopant Engineering",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2025-03-19",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.90544344,
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.chemmater.4c01049?ref=article_openPDF",
+    "open_access": true,
+    "author_count": 6,
+    "first_author": "Sokseiha Muy",
+    "authors_display": "Sokseiha Muy; Thierry Le Mercier; Marion Dufour; Marc‐David Braida; Antoine Emery; Nicola Marzari",
+    "authors_json": "[{\"display_name\": \"Sokseiha Muy\", \"id\": \"https://openalex.org/A5053021924\", \"orcid\": \"https://orcid.org/0000-0001-6457-9187\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Thierry Le Mercier\", \"id\": \"https://openalex.org/A5107300627\", \"orcid\": \"https://orcid.org/0000-0003-0653-8234\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marion Dufour\", \"id\": \"https://openalex.org/A5079214462\", \"orcid\": \"https://orcid.org/0000-0001-9588-9524\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Marc‐David Braida\", \"id\": \"https://openalex.org/A5014842922\", \"orcid\": \"https://orcid.org/0000-0002-0718-7280\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Antoine Emery\", \"id\": \"https://openalex.org/A5030564890\", \"orcid\": \"https://orcid.org/0000-0002-5420-9155\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Nicola Marzari\", \"id\": \"https://openalex.org/A5005167296\", \"orcid\": \"https://orcid.org/0000-0002-9764-0199\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.chemmater.4c01049",
+    "landing_title": "Optimizing Ionic Conductivity of Lithium in Li7PS6 Argyrodite via Dopant Engineering | Chemistry of Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1021_acs.chemmater.4c01049.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773306959756,
+    "actual_start_ms": 1773306959757,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.168
+  }
+}

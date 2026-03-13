@@ -1,0 +1,117 @@
+{
+  "doi": "10.1016/j.cej.2022.140605",
+  "pdf_filename": "10.1016_j.cej.2022.140605.pdf",
+  "json_filename": "10.1016_j.cej.2022.140605.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.cej.2022.140605.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4310020200",
+    "doi": "10.1016/j.cej.2022.140605",
+    "title": "Long cycle life all-solid-state batteries enabled by solvent-free approach for sulfide solid electrolyte and cathode films",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chemical Engineering Journal",
+      "id": "https://openalex.org/S149937609",
+      "type": "journal",
+      "issn_l": "1385-8947",
+      "issn": [
+        "1385-8947",
+        "1873-3212"
+      ]
+    },
+    "publication_date": "2022-11-26",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 60,
+    "citation_normalized_percentile": 0.96448902,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Jianwei Li",
+    "authors_display": "Jianwei Li; Yuanyuan Li; Shengnan Zhang; Ziyi Zhang; Deping Li; Lijie Ci",
+    "authors": [
+      {
+        "display_name": "Jianwei Li",
+        "id": "https://openalex.org/A5100410885",
+        "orcid": "https://orcid.org/0000-0002-3682-6934",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuanyuan Li",
+        "id": "https://openalex.org/A5111296078",
+        "orcid": "https://orcid.org/0000-0002-0444-1087",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shengnan Zhang",
+        "id": "https://openalex.org/A5100750749",
+        "orcid": "https://orcid.org/0000-0003-3284-7954",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ziyi Zhang",
+        "id": "https://openalex.org/A5100338123",
+        "orcid": "https://orcid.org/0009-0006-8541-1432",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Deping Li",
+        "id": "https://openalex.org/A5036460561",
+        "orcid": "https://orcid.org/0000-0002-2116-5184",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lijie Ci",
+        "id": "https://openalex.org/A5039201636",
+        "orcid": "https://orcid.org/0000-0002-1759-105X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4310020200",
+    "doi": "10.1016/j.cej.2022.140605",
+    "title": "Long cycle life all-solid-state batteries enabled by solvent-free approach for sulfide solid electrolyte and cathode films",
+    "publisher": "Elsevier BV",
+    "journal": "Chemical Engineering Journal",
+    "journal_id": "https://openalex.org/S149937609",
+    "journal_type": "journal",
+    "journal_issn_l": "1385-8947",
+    "journal_issn_json": "[\"1385-8947\", \"1873-3212\"]",
+    "publication_date": "2022-11-26",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 60,
+    "citation_normalized_percentile": 0.96448902,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Jianwei Li",
+    "authors_display": "Jianwei Li; Yuanyuan Li; Shengnan Zhang; Ziyi Zhang; Deping Li; Lijie Ci",
+    "authors_json": "[{\"display_name\": \"Jianwei Li\", \"id\": \"https://openalex.org/A5100410885\", \"orcid\": \"https://orcid.org/0000-0002-3682-6934\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yuanyuan Li\", \"id\": \"https://openalex.org/A5111296078\", \"orcid\": \"https://orcid.org/0000-0002-0444-1087\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shengnan Zhang\", \"id\": \"https://openalex.org/A5100750749\", \"orcid\": \"https://orcid.org/0000-0003-3284-7954\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ziyi Zhang\", \"id\": \"https://openalex.org/A5100338123\", \"orcid\": \"https://orcid.org/0009-0006-8541-1432\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Deping Li\", \"id\": \"https://openalex.org/A5036460561\", \"orcid\": \"https://orcid.org/0000-0002-2116-5184\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lijie Ci\", \"id\": \"https://openalex.org/A5039201636\", \"orcid\": \"https://orcid.org/0000-0002-1759-105X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301903124,
+    "actual_start_ms": 1773301908391,
+    "pacing_wait_ms": 5267,
+    "pacing_jitter_sec": 1.079
+  }
+}

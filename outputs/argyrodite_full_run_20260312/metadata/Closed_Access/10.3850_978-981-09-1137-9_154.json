@@ -1,0 +1,93 @@
+{
+  "doi": "10.3850/978-981-09-1137-9_154",
+  "pdf_filename": "10.3850_978-981-09-1137-9_154.pdf",
+  "json_filename": "10.3850_978-981-09-1137-9_154.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.3850_978-981-09-1137-9_154.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W2314595919",
+    "doi": "10.3850/978-981-09-1137-9_154",
+    "title": "All-Solid-State Lithium Batteries Using Li6PS5Br Solid Electrolyte",
+    "publisher": null,
+    "journal": {
+      "name": null,
+      "id": null,
+      "type": null,
+      "issn_l": null,
+      "issn": []
+    },
+    "publication_date": "2014-01-01",
+    "publication_year": 2014,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.18495378,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Maohua Chen",
+    "authors_display": "Maohua Chen; R. Prasada Rao; Stefan Adams",
+    "authors": [
+      {
+        "display_name": "Maohua Chen",
+        "id": "https://openalex.org/A5101956758",
+        "orcid": "https://orcid.org/0000-0001-7393-4523",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "R. Prasada Rao",
+        "id": "https://openalex.org/A5020388351",
+        "orcid": "https://orcid.org/0000-0002-4022-2340",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Stefan Adams",
+        "id": "https://openalex.org/A5050140273",
+        "orcid": "https://orcid.org/0000-0003-0710-135X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W2314595919",
+    "doi": "10.3850/978-981-09-1137-9_154",
+    "title": "All-Solid-State Lithium Batteries Using Li6PS5Br Solid Electrolyte",
+    "publisher": null,
+    "journal": null,
+    "journal_id": null,
+    "journal_type": null,
+    "journal_issn_l": null,
+    "journal_issn_json": "[]",
+    "publication_date": "2014-01-01",
+    "publication_year": 2014,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.18495378,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Maohua Chen",
+    "authors_display": "Maohua Chen; R. Prasada Rao; Stefan Adams",
+    "authors_json": "[{\"display_name\": \"Maohua Chen\", \"id\": \"https://openalex.org/A5101956758\", \"orcid\": \"https://orcid.org/0000-0001-7393-4523\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"R. Prasada Rao\", \"id\": \"https://openalex.org/A5020388351\", \"orcid\": \"https://orcid.org/0000-0002-4022-2340\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Stefan Adams\", \"id\": \"https://openalex.org/A5050140273\", \"orcid\": \"https://orcid.org/0000-0003-0710-135X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_NO_CANDIDATE",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://rpsonline.com.sg/proceedings/9789810911379/html/154.xml",
+    "landing_title": "rpsonline.com.sg/proceedings/9789810911379/html/154.xml",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.3850_978-981-09-1137-9_154.pdf",
+    "scheduler_publisher": "10.3850",
+    "scheduled_start_ms": 1773317995460,
+    "actual_start_ms": 1773317995461,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.187
+  }
+}

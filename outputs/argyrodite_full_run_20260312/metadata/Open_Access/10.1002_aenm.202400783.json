@@ -1,0 +1,159 @@
+{
+  "doi": "10.1002/aenm.202400783",
+  "pdf_filename": "10.1002_aenm.202400783.pdf",
+  "json_filename": "10.1002_aenm.202400783.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_aenm.202400783.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4399019176",
+    "doi": "10.1002/aenm.202400783",
+    "title": "Inhibiting Dendrites by Uniformizing Microstructure of Superionic Lithium Argyrodites for All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Energy Materials",
+      "id": "https://openalex.org/S2502627819",
+      "type": "journal",
+      "issn_l": "1614-6832",
+      "issn": [
+        "1614-6832",
+        "1614-6840"
+      ]
+    },
+    "publication_date": "2024-05-25",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 44,
+    "citation_normalized_percentile": 0.98621099,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202400783",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Yu Liu",
+    "authors_display": "Yu Liu; Han Su; Yu Zhong; Matthew Zheng; Yang Hu; Feipeng Zhao; Jung Tae Kim; Yingjie Gao; Jing Luo; Xiaoting Lin; Jiangping Tu; Xueliang Sun",
+    "authors": [
+      {
+        "display_name": "Yu Liu",
+        "id": "https://openalex.org/A5010502185",
+        "orcid": "https://orcid.org/0000-0002-0779-1488",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Han Su",
+        "id": "https://openalex.org/A5102774121",
+        "orcid": "https://orcid.org/0000-0003-4260-8340",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Zhong",
+        "id": "https://openalex.org/A5035255049",
+        "orcid": "https://orcid.org/0000-0002-0075-8562",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Matthew Zheng",
+        "id": "https://openalex.org/A5012313498",
+        "orcid": "https://orcid.org/0000-0002-7005-2522",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Hu",
+        "id": "https://openalex.org/A5100319524",
+        "orcid": "https://orcid.org/0000-0003-2731-335X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Feipeng Zhao",
+        "id": "https://openalex.org/A5087765157",
+        "orcid": "https://orcid.org/0000-0003-2686-6956",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jung Tae Kim",
+        "id": "https://openalex.org/A5103057160",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yingjie Gao",
+        "id": "https://openalex.org/A5101659398",
+        "orcid": "https://orcid.org/0000-0002-6853-7870",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jing Luo",
+        "id": "https://openalex.org/A5037743899",
+        "orcid": "https://orcid.org/0000-0003-3844-9746",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaoting Lin",
+        "id": "https://openalex.org/A5014765328",
+        "orcid": "https://orcid.org/0000-0002-1218-1895",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jiangping Tu",
+        "id": "https://openalex.org/A5066207937",
+        "orcid": "https://orcid.org/0000-0002-7928-1583",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Xueliang Sun",
+        "id": "https://openalex.org/A5027533708",
+        "orcid": "https://orcid.org/0000-0003-0374-1245",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4399019176",
+    "doi": "10.1002/aenm.202400783",
+    "title": "Inhibiting Dendrites by Uniformizing Microstructure of Superionic Lithium Argyrodites for All‐Solid‐State Lithium Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Energy Materials",
+    "journal_id": "https://openalex.org/S2502627819",
+    "journal_type": "journal",
+    "journal_issn_l": "1614-6832",
+    "journal_issn_json": "[\"1614-6832\", \"1614-6840\"]",
+    "publication_date": "2024-05-25",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 44,
+    "citation_normalized_percentile": 0.98621099,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aenm.202400783",
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Yu Liu",
+    "authors_display": "Yu Liu; Han Su; Yu Zhong; Matthew Zheng; Yang Hu; Feipeng Zhao; Jung Tae Kim; Yingjie Gao; Jing Luo; Xiaoting Lin; Jiangping Tu; Xueliang Sun",
+    "authors_json": "[{\"display_name\": \"Yu Liu\", \"id\": \"https://openalex.org/A5010502185\", \"orcid\": \"https://orcid.org/0000-0002-0779-1488\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Han Su\", \"id\": \"https://openalex.org/A5102774121\", \"orcid\": \"https://orcid.org/0000-0003-4260-8340\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Zhong\", \"id\": \"https://openalex.org/A5035255049\", \"orcid\": \"https://orcid.org/0000-0002-0075-8562\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Matthew Zheng\", \"id\": \"https://openalex.org/A5012313498\", \"orcid\": \"https://orcid.org/0000-0002-7005-2522\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Hu\", \"id\": \"https://openalex.org/A5100319524\", \"orcid\": \"https://orcid.org/0000-0003-2731-335X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Feipeng Zhao\", \"id\": \"https://openalex.org/A5087765157\", \"orcid\": \"https://orcid.org/0000-0003-2686-6956\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jung Tae Kim\", \"id\": \"https://openalex.org/A5103057160\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yingjie Gao\", \"id\": \"https://openalex.org/A5101659398\", \"orcid\": \"https://orcid.org/0000-0002-6853-7870\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jing Luo\", \"id\": \"https://openalex.org/A5037743899\", \"orcid\": \"https://orcid.org/0000-0003-3844-9746\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaoting Lin\", \"id\": \"https://openalex.org/A5014765328\", \"orcid\": \"https://orcid.org/0000-0002-1218-1895\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jiangping Tu\", \"id\": \"https://openalex.org/A5066207937\", \"orcid\": \"https://orcid.org/0000-0002-7928-1583\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Xueliang Sun\", \"id\": \"https://openalex.org/A5027533708\", \"orcid\": \"https://orcid.org/0000-0003-0374-1245\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773303046950,
+    "actual_start_ms": 1773303046951,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.767
+  }
+}

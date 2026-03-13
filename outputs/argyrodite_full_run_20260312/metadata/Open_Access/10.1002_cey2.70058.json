@@ -1,0 +1,180 @@
+{
+  "doi": "10.1002/cey2.70058",
+  "pdf_filename": "10.1002_cey2.70058.pdf",
+  "json_filename": "10.1002_cey2.70058.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_cey2.70058.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4414127964",
+    "doi": "10.1002/cey2.70058",
+    "title": "Boosting the Power Characteristics of All‐Solid‐State Batteries Through Improved Electrochemical Stability: Site‐Specific Nb Doping in Argyrodite",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Carbon Energy",
+      "id": "https://openalex.org/S4210201120",
+      "type": "journal",
+      "issn_l": "2096-9570",
+      "issn": [
+        "2096-9570",
+        "2637-9368"
+      ]
+    },
+    "publication_date": "2025-09-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.24947457,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/cey2.70058",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Yongsun Park",
+    "authors_display": "Yongsun Park; So Yi Lee; H. Kim; Moon Hyung Jang; Sunho Ko; Gwangseok Oh; Seung‐Deok Seo; Min Jae You; Han‐Jun Kim; Min-Wook Pin; Robson S. Monteiro; Seungho Yu; Kyung‐Wan Nam; Sang Cheol Nam; Ohmin Kwon",
+    "authors": [
+      {
+        "display_name": "Yongsun Park",
+        "id": "https://openalex.org/A5086081556",
+        "orcid": "https://orcid.org/0000-0002-1591-7036",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "So Yi Lee",
+        "id": "https://openalex.org/A5032089593",
+        "orcid": "https://orcid.org/0000-0002-8905-2469",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "H. Kim",
+        "id": "https://openalex.org/A5111313710",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Moon Hyung Jang",
+        "id": "https://openalex.org/A5073447320",
+        "orcid": "https://orcid.org/0000-0001-5601-8021",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sunho Ko",
+        "id": "https://openalex.org/A5053730523",
+        "orcid": "https://orcid.org/0000-0002-7367-2436",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gwangseok Oh",
+        "id": "https://openalex.org/A5070133990",
+        "orcid": "https://orcid.org/0000-0001-9850-4511",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung‐Deok Seo",
+        "id": "https://openalex.org/A5057214200",
+        "orcid": "https://orcid.org/0000-0002-0269-948X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Min Jae You",
+        "id": "https://openalex.org/A5064595659",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Han‐Jun Kim",
+        "id": "https://openalex.org/A5100722342",
+        "orcid": "https://orcid.org/0000-0001-9238-7238",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Min-Wook Pin",
+        "id": "https://openalex.org/A5008168528",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Robson S. Monteiro",
+        "id": "https://openalex.org/A5072536716",
+        "orcid": "https://orcid.org/0000-0003-0818-7431",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seungho Yu",
+        "id": "https://openalex.org/A5038742609",
+        "orcid": "https://orcid.org/0000-0003-3912-6463",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyung‐Wan Nam",
+        "id": "https://openalex.org/A5047805438",
+        "orcid": "https://orcid.org/0000-0001-6278-6369",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Sang Cheol Nam",
+        "id": "https://openalex.org/A5070664981",
+        "orcid": "https://orcid.org/0000-0002-6925-7803",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Ohmin Kwon",
+        "id": "https://openalex.org/A5007946814",
+        "orcid": "https://orcid.org/0000-0003-3169-4829",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4414127964",
+    "doi": "10.1002/cey2.70058",
+    "title": "Boosting the Power Characteristics of All‐Solid‐State Batteries Through Improved Electrochemical Stability: Site‐Specific Nb Doping in Argyrodite",
+    "publisher": "Wiley",
+    "journal": "Carbon Energy",
+    "journal_id": "https://openalex.org/S4210201120",
+    "journal_type": "journal",
+    "journal_issn_l": "2096-9570",
+    "journal_issn_json": "[\"2096-9570\", \"2637-9368\"]",
+    "publication_date": "2025-09-11",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.24947457,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/cey2.70058",
+    "open_access": true,
+    "author_count": 15,
+    "first_author": "Yongsun Park",
+    "authors_display": "Yongsun Park; So Yi Lee; H. Kim; Moon Hyung Jang; Sunho Ko; Gwangseok Oh; Seung‐Deok Seo; Min Jae You; Han‐Jun Kim; Min-Wook Pin; Robson S. Monteiro; Seungho Yu; Kyung‐Wan Nam; Sang Cheol Nam; Ohmin Kwon",
+    "authors_json": "[{\"display_name\": \"Yongsun Park\", \"id\": \"https://openalex.org/A5086081556\", \"orcid\": \"https://orcid.org/0000-0002-1591-7036\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"So Yi Lee\", \"id\": \"https://openalex.org/A5032089593\", \"orcid\": \"https://orcid.org/0000-0002-8905-2469\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"H. Kim\", \"id\": \"https://openalex.org/A5111313710\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Moon Hyung Jang\", \"id\": \"https://openalex.org/A5073447320\", \"orcid\": \"https://orcid.org/0000-0001-5601-8021\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sunho Ko\", \"id\": \"https://openalex.org/A5053730523\", \"orcid\": \"https://orcid.org/0000-0002-7367-2436\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gwangseok Oh\", \"id\": \"https://openalex.org/A5070133990\", \"orcid\": \"https://orcid.org/0000-0001-9850-4511\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seung‐Deok Seo\", \"id\": \"https://openalex.org/A5057214200\", \"orcid\": \"https://orcid.org/0000-0002-0269-948X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Min Jae You\", \"id\": \"https://openalex.org/A5064595659\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Han‐Jun Kim\", \"id\": \"https://openalex.org/A5100722342\", \"orcid\": \"https://orcid.org/0000-0001-9238-7238\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Min-Wook Pin\", \"id\": \"https://openalex.org/A5008168528\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Robson S. Monteiro\", \"id\": \"https://openalex.org/A5072536716\", \"orcid\": \"https://orcid.org/0000-0003-0818-7431\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seungho Yu\", \"id\": \"https://openalex.org/A5038742609\", \"orcid\": \"https://orcid.org/0000-0003-3912-6463\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyung‐Wan Nam\", \"id\": \"https://openalex.org/A5047805438\", \"orcid\": \"https://orcid.org/0000-0001-6278-6369\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Sang Cheol Nam\", \"id\": \"https://openalex.org/A5070664981\", \"orcid\": \"https://orcid.org/0000-0002-6925-7803\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Ohmin Kwon\", \"id\": \"https://openalex.org/A5007946814\", \"orcid\": \"https://orcid.org/0000-0003-3169-4829\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773309811449,
+    "actual_start_ms": 1773309811449,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.073
+  }
+}

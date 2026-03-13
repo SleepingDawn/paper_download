@@ -1,0 +1,131 @@
+{
+  "doi": "10.1002/adfm.202203858",
+  "pdf_filename": "10.1002_adfm.202203858.pdf",
+  "json_filename": "10.1002_adfm.202203858.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_adfm.202203858.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4282027129",
+    "doi": "10.1002/adfm.202203858",
+    "title": "High Air Stability and Excellent Li Metal Compatibility of Argyrodite‐Based Electrolyte Enabling Superior All‐Solid‐State Li Metal Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2022-05-26",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 111,
+    "citation_normalized_percentile": 0.98907622,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Hong Liu",
+    "authors_display": "Hong Liu; Qisi Zhu; Chao Wang; Guoxu Wang; Yuhao Liang; Dabing Li; Lei Gao; Li‐Zhen Fan",
+    "authors": [
+      {
+        "display_name": "Hong Liu",
+        "id": "https://openalex.org/A5101900181",
+        "orcid": "https://orcid.org/0009-0002-1030-2275",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qisi Zhu",
+        "id": "https://openalex.org/A5028366803",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chao Wang",
+        "id": "https://openalex.org/A5029230127",
+        "orcid": "https://orcid.org/0000-0002-4674-4502",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guoxu Wang",
+        "id": "https://openalex.org/A5070614461",
+        "orcid": "https://orcid.org/0000-0002-6511-5074",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuhao Liang",
+        "id": "https://openalex.org/A5102543677",
+        "orcid": "https://orcid.org/0009-0008-9516-6594",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dabing Li",
+        "id": "https://openalex.org/A5016499715",
+        "orcid": "https://orcid.org/0000-0001-5353-1460",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lei Gao",
+        "id": "https://openalex.org/A5100776957",
+        "orcid": "https://orcid.org/0000-0002-1565-3309",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Li‐Zhen Fan",
+        "id": "https://openalex.org/A5036874871",
+        "orcid": "https://orcid.org/0000-0003-2270-4458",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4282027129",
+    "doi": "10.1002/adfm.202203858",
+    "title": "High Air Stability and Excellent Li Metal Compatibility of Argyrodite‐Based Electrolyte Enabling Superior All‐Solid‐State Li Metal Batteries",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2022-05-26",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 111,
+    "citation_normalized_percentile": 0.98907622,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 8,
+    "first_author": "Hong Liu",
+    "authors_display": "Hong Liu; Qisi Zhu; Chao Wang; Guoxu Wang; Yuhao Liang; Dabing Li; Lei Gao; Li‐Zhen Fan",
+    "authors_json": "[{\"display_name\": \"Hong Liu\", \"id\": \"https://openalex.org/A5101900181\", \"orcid\": \"https://orcid.org/0009-0002-1030-2275\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Qisi Zhu\", \"id\": \"https://openalex.org/A5028366803\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chao Wang\", \"id\": \"https://openalex.org/A5029230127\", \"orcid\": \"https://orcid.org/0000-0002-4674-4502\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guoxu Wang\", \"id\": \"https://openalex.org/A5070614461\", \"orcid\": \"https://orcid.org/0000-0002-6511-5074\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuhao Liang\", \"id\": \"https://openalex.org/A5102543677\", \"orcid\": \"https://orcid.org/0009-0008-9516-6594\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dabing Li\", \"id\": \"https://openalex.org/A5016499715\", \"orcid\": \"https://orcid.org/0000-0001-5353-1460\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lei Gao\", \"id\": \"https://openalex.org/A5100776957\", \"orcid\": \"https://orcid.org/0000-0002-1565-3309\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Li‐Zhen Fan\", \"id\": \"https://openalex.org/A5036874871\", \"orcid\": \"https://orcid.org/0000-0003-2270-4458\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302728262,
+    "actual_start_ms": 1773302730551,
+    "pacing_wait_ms": 2289,
+    "pacing_jitter_sec": 1.571
+  }
+}

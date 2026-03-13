@@ -1,0 +1,103 @@
+{
+  "doi": "10.1016/j.est.2025.116081",
+  "pdf_filename": "10.1016_j.est.2025.116081.pdf",
+  "json_filename": "10.1016_j.est.2025.116081.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.est.2025.116081.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408193942",
+    "doi": "10.1016/j.est.2025.116081",
+    "title": "Mechanical modelling approach for the simulation of solid-state electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Journal of Energy Storage",
+      "id": "https://openalex.org/S2764865925",
+      "type": "journal",
+      "issn_l": "2352-152X",
+      "issn": [
+        "2352-152X",
+        "2352-1538"
+      ]
+    },
+    "publication_date": "2025-03-06",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.69501253,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Nico Körber",
+    "authors_display": "Nico Körber; Luca Zimmerer; Kai Peter Birke; Benedikt Frieß",
+    "authors": [
+      {
+        "display_name": "Nico Körber",
+        "id": "https://openalex.org/A5025139801",
+        "orcid": "https://orcid.org/0000-0002-2444-2159",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Luca Zimmerer",
+        "id": "https://openalex.org/A5116538167",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kai Peter Birke",
+        "id": "https://openalex.org/A5086918908",
+        "orcid": "https://orcid.org/0000-0002-9679-2369",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Benedikt Frieß",
+        "id": "https://openalex.org/A5062739849",
+        "orcid": "https://orcid.org/0000-0003-1029-413X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408193942",
+    "doi": "10.1016/j.est.2025.116081",
+    "title": "Mechanical modelling approach for the simulation of solid-state electrolytes",
+    "publisher": "Elsevier BV",
+    "journal": "Journal of Energy Storage",
+    "journal_id": "https://openalex.org/S2764865925",
+    "journal_type": "journal",
+    "journal_issn_l": "2352-152X",
+    "journal_issn_json": "[\"2352-152X\", \"2352-1538\"]",
+    "publication_date": "2025-03-06",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.69501253,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 4,
+    "first_author": "Nico Körber",
+    "authors_display": "Nico Körber; Luca Zimmerer; Kai Peter Birke; Benedikt Frieß",
+    "authors_json": "[{\"display_name\": \"Nico Körber\", \"id\": \"https://openalex.org/A5025139801\", \"orcid\": \"https://orcid.org/0000-0002-2444-2159\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Luca Zimmerer\", \"id\": \"https://openalex.org/A5116538167\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kai Peter Birke\", \"id\": \"https://openalex.org/A5086918908\", \"orcid\": \"https://orcid.org/0000-0002-9679-2369\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Benedikt Frieß\", \"id\": \"https://openalex.org/A5062739849\", \"orcid\": \"https://orcid.org/0000-0003-1029-413X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2352152X25007947?via%3Dihub",
+    "landing_title": "Mechanical modelling approach for the simulation of solid-state electrolytes - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773308727206,
+    "actual_start_ms": 1773308727207,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.205
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "doi": "10.1002/smll.202409536",
+  "pdf_filename": "10.1002_smll.202409536.pdf",
+  "json_filename": "10.1002_smll.202409536.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_smll.202409536.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408162282",
+    "doi": "10.1002/smll.202409536",
+    "title": "Toward 500 Wh Kg<sup>−1</sup> in Specific Energy with Ultrahigh Areal Capacity All‐Solid‐State Lithium–Sulfur Batteries",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2025-03-04",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.95305487,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202409536",
+    "open_access": true,
+    "author_count": 14,
+    "first_author": "Yi Lin",
+    "authors_display": "Yi Lin; Lucy G. Somervill; Rehan Rashid; Rodolfo I. Ledesma; Jin Ho Kang; Alison R. Kavanagh; Jason S. Packard; Coby H. Scrudder; Abigail L. Durgin; V. Yamakov; Ji Su; Donald A. Dornbusch; Rocco P. Viggiano; John W. Connell",
+    "authors": [
+      {
+        "display_name": "Yi Lin",
+        "id": "https://openalex.org/A5049650135",
+        "orcid": "https://orcid.org/0000-0002-1828-3518",
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Lucy G. Somervill",
+        "id": "https://openalex.org/A5116503977",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rehan Rashid",
+        "id": "https://openalex.org/A5109608001",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rodolfo I. Ledesma",
+        "id": "https://openalex.org/A5115549547",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jin Ho Kang",
+        "id": "https://openalex.org/A5077875068",
+        "orcid": "https://orcid.org/0009-0008-1468-4753",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alison R. Kavanagh",
+        "id": "https://openalex.org/A5116503978",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jason S. Packard",
+        "id": "https://openalex.org/A5116503979",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Coby H. Scrudder",
+        "id": "https://openalex.org/A5093461968",
+        "orcid": "https://orcid.org/0000-0003-0308-7757",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Abigail L. Durgin",
+        "id": "https://openalex.org/A5116503980",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "V. Yamakov",
+        "id": "https://openalex.org/A5013359582",
+        "orcid": "https://orcid.org/0000-0001-5528-9030",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ji Su",
+        "id": "https://openalex.org/A5037259125",
+        "orcid": "https://orcid.org/0000-0003-2258-162X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Donald A. Dornbusch",
+        "id": "https://openalex.org/A5091539860",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Rocco P. Viggiano",
+        "id": "https://openalex.org/A5059086511",
+        "orcid": "https://orcid.org/0000-0001-7538-6700",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "John W. Connell",
+        "id": "https://openalex.org/A5108031614",
+        "orcid": "https://orcid.org/0000-0002-2676-8363",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408162282",
+    "doi": "10.1002/smll.202409536",
+    "title": "Toward 500 Wh Kg<sup>−1</sup> in Specific Energy with Ultrahigh Areal Capacity All‐Solid‐State Lithium–Sulfur Batteries",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2025-03-04",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 7,
+    "citation_normalized_percentile": 0.95305487,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.202409536",
+    "open_access": true,
+    "author_count": 14,
+    "first_author": "Yi Lin",
+    "authors_display": "Yi Lin; Lucy G. Somervill; Rehan Rashid; Rodolfo I. Ledesma; Jin Ho Kang; Alison R. Kavanagh; Jason S. Packard; Coby H. Scrudder; Abigail L. Durgin; V. Yamakov; Ji Su; Donald A. Dornbusch; Rocco P. Viggiano; John W. Connell",
+    "authors_json": "[{\"display_name\": \"Yi Lin\", \"id\": \"https://openalex.org/A5049650135\", \"orcid\": \"https://orcid.org/0000-0002-1828-3518\", \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Lucy G. Somervill\", \"id\": \"https://openalex.org/A5116503977\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rehan Rashid\", \"id\": \"https://openalex.org/A5109608001\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rodolfo I. Ledesma\", \"id\": \"https://openalex.org/A5115549547\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jin Ho Kang\", \"id\": \"https://openalex.org/A5077875068\", \"orcid\": \"https://orcid.org/0009-0008-1468-4753\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alison R. Kavanagh\", \"id\": \"https://openalex.org/A5116503978\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jason S. Packard\", \"id\": \"https://openalex.org/A5116503979\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Coby H. Scrudder\", \"id\": \"https://openalex.org/A5093461968\", \"orcid\": \"https://orcid.org/0000-0003-0308-7757\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Abigail L. Durgin\", \"id\": \"https://openalex.org/A5116503980\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"V. Yamakov\", \"id\": \"https://openalex.org/A5013359582\", \"orcid\": \"https://orcid.org/0000-0001-5528-9030\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ji Su\", \"id\": \"https://openalex.org/A5037259125\", \"orcid\": \"https://orcid.org/0000-0003-2258-162X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Donald A. Dornbusch\", \"id\": \"https://openalex.org/A5091539860\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Rocco P. Viggiano\", \"id\": \"https://openalex.org/A5059086511\", \"orcid\": \"https://orcid.org/0000-0001-7538-6700\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"John W. Connell\", \"id\": \"https://openalex.org/A5108031614\", \"orcid\": \"https://orcid.org/0000-0002-2676-8363\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773306948517,
+    "actual_start_ms": 1773306948517,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.481
+  }
+}

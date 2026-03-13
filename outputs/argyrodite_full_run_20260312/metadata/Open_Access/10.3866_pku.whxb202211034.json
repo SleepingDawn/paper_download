@@ -1,0 +1,130 @@
+{
+  "doi": "10.3866/pku.whxb202211034",
+  "pdf_filename": "10.3866_pku.whxb202211034.pdf",
+  "json_filename": "10.3866_pku.whxb202211034.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3866_pku.whxb202211034.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4313180728",
+    "doi": "10.3866/pku.whxb202211034",
+    "title": "Recent Progress on Lithium Argyrodite Solid-State Electrolytes",
+    "publisher": "Peking University Press",
+    "journal": {
+      "name": "Acta Physico-Chimica Sinica",
+      "id": "https://openalex.org/S138757394",
+      "type": "journal",
+      "issn_l": "1000-6818",
+      "issn": [
+        "1000-6818"
+      ]
+    },
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.89165298,
+    "pdf_url": "http://www.whxb.pku.edu.cn/CN/article/downloadArticleFile.do?attachType=PDF&id=37344",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Linfeng Peng",
+    "authors_display": "Linfeng Peng; Chuang Yu; Chaochao Wei; Cong Liao; Shuai Chen; Long Zhang; Shijie Cheng; Jia Xie",
+    "authors": [
+      {
+        "display_name": "Linfeng Peng",
+        "id": "https://openalex.org/A5101094536",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5042248392",
+        "orcid": "https://orcid.org/0000-0003-3185-3578",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chaochao Wei",
+        "id": "https://openalex.org/A5113211601",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cong Liao",
+        "id": "https://openalex.org/A5100570273",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuai Chen",
+        "id": "https://openalex.org/A5000249135",
+        "orcid": "https://orcid.org/0000-0001-8566-601X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Long Zhang",
+        "id": "https://openalex.org/A5100363525",
+        "orcid": "https://orcid.org/0000-0002-4861-1471",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Cheng",
+        "id": "https://openalex.org/A5103912345",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jia Xie",
+        "id": "https://openalex.org/A5081117176",
+        "orcid": "https://orcid.org/0000-0002-8731-295X",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4313180728",
+    "doi": "10.3866/pku.whxb202211034",
+    "title": "Recent Progress on Lithium Argyrodite Solid-State Electrolytes",
+    "publisher": "Peking University Press",
+    "journal": "Acta Physico-Chimica Sinica",
+    "journal_id": "https://openalex.org/S138757394",
+    "journal_type": "journal",
+    "journal_issn_l": "1000-6818",
+    "journal_issn_json": "[\"1000-6818\"]",
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 26,
+    "citation_normalized_percentile": 0.89165298,
+    "pdf_url": "http://www.whxb.pku.edu.cn/CN/article/downloadArticleFile.do?attachType=PDF&id=37344",
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Linfeng Peng",
+    "authors_display": "Linfeng Peng; Chuang Yu; Chaochao Wei; Cong Liao; Shuai Chen; Long Zhang; Shijie Cheng; Jia Xie",
+    "authors_json": "[{\"display_name\": \"Linfeng Peng\", \"id\": \"https://openalex.org/A5101094536\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5042248392\", \"orcid\": \"https://orcid.org/0000-0003-3185-3578\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chaochao Wei\", \"id\": \"https://openalex.org/A5113211601\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cong Liao\", \"id\": \"https://openalex.org/A5100570273\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuai Chen\", \"id\": \"https://openalex.org/A5000249135\", \"orcid\": \"https://orcid.org/0000-0001-8566-601X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Long Zhang\", \"id\": \"https://openalex.org/A5100363525\", \"orcid\": \"https://orcid.org/0000-0002-4861-1471\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Cheng\", \"id\": \"https://openalex.org/A5103912345\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jia Xie\", \"id\": \"https://openalex.org/A5081117176\", \"orcid\": \"https://orcid.org/0000-0002-8731-295X\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.whxb.pku.edu.cn/EN/10.3866/PKU.WHXB202211034",
+    "landing_title": "Recent Progress on Lithium Argyrodite Solid-State Electrolytes",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.3866_pku.whxb202211034.pdf",
+    "scheduler_publisher": "10.3866",
+    "scheduled_start_ms": 1773315966842,
+    "actual_start_ms": 1773315966843,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.057
+  }
+}

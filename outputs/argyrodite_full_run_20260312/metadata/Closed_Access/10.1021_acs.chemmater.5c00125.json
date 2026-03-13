@@ -1,0 +1,138 @@
+{
+  "doi": "10.1021/acs.chemmater.5c00125",
+  "pdf_filename": "10.1021_acs.chemmater.5c00125.pdf",
+  "json_filename": "10.1021_acs.chemmater.5c00125.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acs.chemmater.5c00125.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4410413237",
+    "doi": "10.1021/acs.chemmater.5c00125",
+    "title": "Moisture-Stable Argyrodites with High Ionic Conductivity via Crystal Structure Engineering: Li<sub>6+<i>x</i></sub>M<sub><i>x</i></sub>As<sub>1–<i>x</i></sub>S<sub>5</sub>I (M = Ge, Sn)",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "Chemistry of Materials",
+      "id": "https://openalex.org/S66104727",
+      "type": "journal",
+      "issn_l": "0897-4756",
+      "issn": [
+        "0897-4756",
+        "1520-5002"
+      ]
+    },
+    "publication_date": "2025-05-15",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.77466688,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Jihun Roh",
+    "authors_display": "Jihun Roh; J.S. Kim; Hyungjin Lee; Namgyu Do; Jeyne Lyoo; Alicia Manjón‐Sanz; Ginga Kitahara; Shuki Torii; Seung‐Tae Hong",
+    "authors": [
+      {
+        "display_name": "Jihun Roh",
+        "id": "https://openalex.org/A5002861008",
+        "orcid": "https://orcid.org/0000-0003-4234-4170",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J.S. Kim",
+        "id": "https://openalex.org/A5024399541",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hyungjin Lee",
+        "id": "https://openalex.org/A5067369046",
+        "orcid": "https://orcid.org/0000-0002-1671-8004",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Namgyu Do",
+        "id": "https://openalex.org/A5092919726",
+        "orcid": "https://orcid.org/0009-0007-2185-7643",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeyne Lyoo",
+        "id": "https://openalex.org/A5069758648",
+        "orcid": "https://orcid.org/0000-0002-3690-6360",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Alicia Manjón‐Sanz",
+        "id": "https://openalex.org/A5003111437",
+        "orcid": "https://orcid.org/0000-0002-7091-3484",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ginga Kitahara",
+        "id": "https://openalex.org/A5046687134",
+        "orcid": "https://orcid.org/0000-0002-4700-0468",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shuki Torii",
+        "id": "https://openalex.org/A5059990858",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung‐Tae Hong",
+        "id": "https://openalex.org/A5020859301",
+        "orcid": "https://orcid.org/0000-0002-5768-121X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4410413237",
+    "doi": "10.1021/acs.chemmater.5c00125",
+    "title": "Moisture-Stable Argyrodites with High Ionic Conductivity via Crystal Structure Engineering: Li<sub>6+<i>x</i></sub>M<sub><i>x</i></sub>As<sub>1–<i>x</i></sub>S<sub>5</sub>I (M = Ge, Sn)",
+    "publisher": "American Chemical Society",
+    "journal": "Chemistry of Materials",
+    "journal_id": "https://openalex.org/S66104727",
+    "journal_type": "journal",
+    "journal_issn_l": "0897-4756",
+    "journal_issn_json": "[\"0897-4756\", \"1520-5002\"]",
+    "publication_date": "2025-05-15",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.77466688,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Jihun Roh",
+    "authors_display": "Jihun Roh; J.S. Kim; Hyungjin Lee; Namgyu Do; Jeyne Lyoo; Alicia Manjón‐Sanz; Ginga Kitahara; Shuki Torii; Seung‐Tae Hong",
+    "authors_json": "[{\"display_name\": \"Jihun Roh\", \"id\": \"https://openalex.org/A5002861008\", \"orcid\": \"https://orcid.org/0000-0003-4234-4170\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"J.S. Kim\", \"id\": \"https://openalex.org/A5024399541\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hyungjin Lee\", \"id\": \"https://openalex.org/A5067369046\", \"orcid\": \"https://orcid.org/0000-0002-1671-8004\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Namgyu Do\", \"id\": \"https://openalex.org/A5092919726\", \"orcid\": \"https://orcid.org/0009-0007-2185-7643\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeyne Lyoo\", \"id\": \"https://openalex.org/A5069758648\", \"orcid\": \"https://orcid.org/0000-0002-3690-6360\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Alicia Manjón‐Sanz\", \"id\": \"https://openalex.org/A5003111437\", \"orcid\": \"https://orcid.org/0000-0002-7091-3484\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ginga Kitahara\", \"id\": \"https://openalex.org/A5046687134\", \"orcid\": \"https://orcid.org/0000-0002-4700-0468\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shuki Torii\", \"id\": \"https://openalex.org/A5059990858\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Seung‐Tae Hong\", \"id\": \"https://openalex.org/A5020859301\", \"orcid\": \"https://orcid.org/0000-0002-5768-121X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acs.chemmater.5c00125",
+    "landing_title": "Moisture-Stable Argyrodites with High Ionic Conductivity via Crystal Structure Engineering: Li6+xMxAs1–xS5I (M = Ge, Sn) | Chemistry of Materials",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acs.chemmater.5c00125.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773307645474,
+    "actual_start_ms": 1773307655049,
+    "pacing_wait_ms": 9575,
+    "pacing_jitter_sec": 1.556
+  }
+}

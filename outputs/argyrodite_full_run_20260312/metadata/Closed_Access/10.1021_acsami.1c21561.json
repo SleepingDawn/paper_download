@@ -1,0 +1,138 @@
+{
+  "doi": "10.1021/acsami.1c21561",
+  "pdf_filename": "10.1021_acsami.1c21561.pdf",
+  "json_filename": "10.1021_acsami.1c21561.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsami.1c21561.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4205541965",
+    "doi": "10.1021/acsami.1c21561",
+    "title": "Enhancing Moisture and Electrochemical Stability of the Li<sub>5.5</sub>PS<sub>4.5</sub>Cl<sub>1.5</sub> Electrolyte by Oxygen Doping",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Materials & Interfaces",
+      "id": "https://openalex.org/S164001016",
+      "type": "journal",
+      "issn_l": "1944-8244",
+      "issn": [
+        "1944-8244",
+        "1944-8252"
+      ]
+    },
+    "publication_date": "2022-01-17",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 102,
+    "citation_normalized_percentile": 0.98714583,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Linfeng Peng",
+    "authors_display": "Linfeng Peng; Shaoqing Chen; Chuang Yu; Chaochao Wei; Cong Liao; Zhongkai Wu; Hsing‐Lin Wang; Shijie Cheng; Jia Xie",
+    "authors": [
+      {
+        "display_name": "Linfeng Peng",
+        "id": "https://openalex.org/A5101094536",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shaoqing Chen",
+        "id": "https://openalex.org/A5010748983",
+        "orcid": "https://orcid.org/0000-0002-6700-292X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chuang Yu",
+        "id": "https://openalex.org/A5008927032",
+        "orcid": "https://orcid.org/0000-0002-3518-1230",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Chaochao Wei",
+        "id": "https://openalex.org/A5113211601",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Cong Liao",
+        "id": "https://openalex.org/A5102095751",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhongkai Wu",
+        "id": "https://openalex.org/A5027106287",
+        "orcid": "https://orcid.org/0000-0002-9864-2559",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hsing‐Lin Wang",
+        "id": "https://openalex.org/A5084795513",
+        "orcid": "https://orcid.org/0000-0002-8600-1762",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Shijie Cheng",
+        "id": "https://openalex.org/A5024186253",
+        "orcid": "https://orcid.org/0000-0002-8752-4311",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jia Xie",
+        "id": "https://openalex.org/A5081117176",
+        "orcid": "https://orcid.org/0000-0002-8731-295X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4205541965",
+    "doi": "10.1021/acsami.1c21561",
+    "title": "Enhancing Moisture and Electrochemical Stability of the Li<sub>5.5</sub>PS<sub>4.5</sub>Cl<sub>1.5</sub> Electrolyte by Oxygen Doping",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Materials & Interfaces",
+    "journal_id": "https://openalex.org/S164001016",
+    "journal_type": "journal",
+    "journal_issn_l": "1944-8244",
+    "journal_issn_json": "[\"1944-8244\", \"1944-8252\"]",
+    "publication_date": "2022-01-17",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 102,
+    "citation_normalized_percentile": 0.98714583,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Linfeng Peng",
+    "authors_display": "Linfeng Peng; Shaoqing Chen; Chuang Yu; Chaochao Wei; Cong Liao; Zhongkai Wu; Hsing‐Lin Wang; Shijie Cheng; Jia Xie",
+    "authors_json": "[{\"display_name\": \"Linfeng Peng\", \"id\": \"https://openalex.org/A5101094536\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Shaoqing Chen\", \"id\": \"https://openalex.org/A5010748983\", \"orcid\": \"https://orcid.org/0000-0002-6700-292X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chuang Yu\", \"id\": \"https://openalex.org/A5008927032\", \"orcid\": \"https://orcid.org/0000-0002-3518-1230\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Chaochao Wei\", \"id\": \"https://openalex.org/A5113211601\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Cong Liao\", \"id\": \"https://openalex.org/A5102095751\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zhongkai Wu\", \"id\": \"https://openalex.org/A5027106287\", \"orcid\": \"https://orcid.org/0000-0002-9864-2559\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hsing‐Lin Wang\", \"id\": \"https://openalex.org/A5084795513\", \"orcid\": \"https://orcid.org/0000-0002-8600-1762\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Shijie Cheng\", \"id\": \"https://openalex.org/A5024186253\", \"orcid\": \"https://orcid.org/0000-0002-8752-4311\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jia Xie\", \"id\": \"https://openalex.org/A5081117176\", \"orcid\": \"https://orcid.org/0000-0002-8731-295X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773301774947,
+    "actual_start_ms": 1773301783471,
+    "pacing_wait_ms": 8523,
+    "pacing_jitter_sec": 1.518
+  }
+}

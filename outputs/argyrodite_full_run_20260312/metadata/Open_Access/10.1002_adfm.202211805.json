@@ -1,0 +1,138 @@
+{
+  "doi": "10.1002/adfm.202211805",
+  "pdf_filename": "10.1002_adfm.202211805.pdf",
+  "json_filename": "10.1002_adfm.202211805.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1002_adfm.202211805.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4313256928",
+    "doi": "10.1002/adfm.202211805",
+    "title": "Sn‐O Dual‐Substituted Chlorine‐Rich Argyrodite Electrolyte with Enhanced Moisture and Electrochemical Stability",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Advanced Functional Materials",
+      "id": "https://openalex.org/S135204980",
+      "type": "journal",
+      "issn_l": "1616-301X",
+      "issn": [
+        "1616-301X",
+        "1616-3028"
+      ]
+    },
+    "publication_date": "2022-12-26",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 37,
+    "citation_normalized_percentile": 0.92893336,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202211805",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Guoyao Li",
+    "authors_display": "Guoyao Li; Shaoping Wu; Hongpeng Zheng; Yu Yang; Jingyu Cai; Hong Zhu; Xiao Huang; Hezhou Liu; Huanan Duan",
+    "authors": [
+      {
+        "display_name": "Guoyao Li",
+        "id": "https://openalex.org/A5039110448",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shaoping Wu",
+        "id": "https://openalex.org/A5104031327",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hongpeng Zheng",
+        "id": "https://openalex.org/A5034078440",
+        "orcid": "https://orcid.org/0000-0002-8694-0081",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yu Yang",
+        "id": "https://openalex.org/A5100659238",
+        "orcid": "https://orcid.org/0000-0002-4518-3299",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jingyu Cai",
+        "id": "https://openalex.org/A5002297098",
+        "orcid": "https://orcid.org/0000-0002-0233-3007",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hong Zhu",
+        "id": "https://openalex.org/A5052109054",
+        "orcid": "https://orcid.org/0000-0001-7919-5661",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao Huang",
+        "id": "https://openalex.org/A5031030218",
+        "orcid": "https://orcid.org/0000-0002-4068-5468",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hezhou Liu",
+        "id": "https://openalex.org/A5036524122",
+        "orcid": "https://orcid.org/0000-0002-3521-1970",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Huanan Duan",
+        "id": "https://openalex.org/A5070856326",
+        "orcid": "https://orcid.org/0000-0003-3052-3905",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4313256928",
+    "doi": "10.1002/adfm.202211805",
+    "title": "Sn‐O Dual‐Substituted Chlorine‐Rich Argyrodite Electrolyte with Enhanced Moisture and Electrochemical Stability",
+    "publisher": "Wiley",
+    "journal": "Advanced Functional Materials",
+    "journal_id": "https://openalex.org/S135204980",
+    "journal_type": "journal",
+    "journal_issn_l": "1616-301X",
+    "journal_issn_json": "[\"1616-301X\", \"1616-3028\"]",
+    "publication_date": "2022-12-26",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 37,
+    "citation_normalized_percentile": 0.92893336,
+    "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adfm.202211805",
+    "open_access": true,
+    "author_count": 9,
+    "first_author": "Guoyao Li",
+    "authors_display": "Guoyao Li; Shaoping Wu; Hongpeng Zheng; Yu Yang; Jingyu Cai; Hong Zhu; Xiao Huang; Hezhou Liu; Huanan Duan",
+    "authors_json": "[{\"display_name\": \"Guoyao Li\", \"id\": \"https://openalex.org/A5039110448\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Shaoping Wu\", \"id\": \"https://openalex.org/A5104031327\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hongpeng Zheng\", \"id\": \"https://openalex.org/A5034078440\", \"orcid\": \"https://orcid.org/0000-0002-8694-0081\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yu Yang\", \"id\": \"https://openalex.org/A5100659238\", \"orcid\": \"https://orcid.org/0000-0002-4518-3299\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jingyu Cai\", \"id\": \"https://openalex.org/A5002297098\", \"orcid\": \"https://orcid.org/0000-0002-0233-3007\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hong Zhu\", \"id\": \"https://openalex.org/A5052109054\", \"orcid\": \"https://orcid.org/0000-0001-7919-5661\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiao Huang\", \"id\": \"https://openalex.org/A5031030218\", \"orcid\": \"https://orcid.org/0000-0002-4068-5468\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hezhou Liu\", \"id\": \"https://openalex.org/A5036524122\", \"orcid\": \"https://orcid.org/0000-0002-3521-1970\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Huanan Duan\", \"id\": \"https://openalex.org/A5070856326\", \"orcid\": \"https://orcid.org/0000-0003-3052-3905\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773303302024,
+    "actual_start_ms": 1773303302024,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.44
+  }
+}

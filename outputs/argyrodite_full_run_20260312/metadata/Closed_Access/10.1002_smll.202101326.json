@@ -1,0 +1,138 @@
+{
+  "doi": "10.1002/smll.202101326",
+  "pdf_filename": "10.1002_smll.202101326.pdf",
+  "json_filename": "10.1002_smll.202101326.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_smll.202101326.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W3186717434",
+    "doi": "10.1002/smll.202101326",
+    "title": "Unprecedented Self‐Healing Effect of Li<sub>6</sub>PS<sub>5</sub>Cl‐Based All‐Solid‐State Lithium Battery",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Small",
+      "id": "https://openalex.org/S94619837",
+      "type": "journal",
+      "issn_l": "1613-6810",
+      "issn": [
+        "1613-6810",
+        "1613-6829"
+      ]
+    },
+    "publication_date": "2021-07-31",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 76,
+    "citation_normalized_percentile": 0.9735245,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Chao Zheng",
+    "authors_display": "Chao Zheng; Jun Zhang; Yang Xia; Hui Huang; Yongping Gan; Chu Liang; Xinping He; Xinyong Tao; Wenkui Zhang",
+    "authors": [
+      {
+        "display_name": "Chao Zheng",
+        "id": "https://openalex.org/A5101527422",
+        "orcid": "https://orcid.org/0009-0007-7767-2410",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Zhang",
+        "id": "https://openalex.org/A5100433102",
+        "orcid": "https://orcid.org/0000-0002-0644-9154",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yang Xia",
+        "id": "https://openalex.org/A5038721930",
+        "orcid": "https://orcid.org/0000-0001-9627-4898",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hui Huang",
+        "id": "https://openalex.org/A5100684575",
+        "orcid": "https://orcid.org/0000-0002-2328-0215",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yongping Gan",
+        "id": "https://openalex.org/A5087884098",
+        "orcid": "https://orcid.org/0000-0002-7110-1066",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chu Liang",
+        "id": "https://openalex.org/A5100748497",
+        "orcid": "https://orcid.org/0000-0003-0942-5307",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinping He",
+        "id": "https://openalex.org/A5107966481",
+        "orcid": "https://orcid.org/0000-0002-8846-5210",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinyong Tao",
+        "id": "https://openalex.org/A5040525905",
+        "orcid": "https://orcid.org/0000-0003-4084-7743",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenkui Zhang",
+        "id": "https://openalex.org/A5026329021",
+        "orcid": "https://orcid.org/0000-0002-6416-6275",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W3186717434",
+    "doi": "10.1002/smll.202101326",
+    "title": "Unprecedented Self‐Healing Effect of Li<sub>6</sub>PS<sub>5</sub>Cl‐Based All‐Solid‐State Lithium Battery",
+    "publisher": "Wiley",
+    "journal": "Small",
+    "journal_id": "https://openalex.org/S94619837",
+    "journal_type": "journal",
+    "journal_issn_l": "1613-6810",
+    "journal_issn_json": "[\"1613-6810\", \"1613-6829\"]",
+    "publication_date": "2021-07-31",
+    "publication_year": 2021,
+    "work_type": "article",
+    "cited_by_count": 76,
+    "citation_normalized_percentile": 0.9735245,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Chao Zheng",
+    "authors_display": "Chao Zheng; Jun Zhang; Yang Xia; Hui Huang; Yongping Gan; Chu Liang; Xinping He; Xinyong Tao; Wenkui Zhang",
+    "authors_json": "[{\"display_name\": \"Chao Zheng\", \"id\": \"https://openalex.org/A5101527422\", \"orcid\": \"https://orcid.org/0009-0007-7767-2410\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jun Zhang\", \"id\": \"https://openalex.org/A5100433102\", \"orcid\": \"https://orcid.org/0000-0002-0644-9154\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yang Xia\", \"id\": \"https://openalex.org/A5038721930\", \"orcid\": \"https://orcid.org/0000-0001-9627-4898\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hui Huang\", \"id\": \"https://openalex.org/A5100684575\", \"orcid\": \"https://orcid.org/0000-0002-2328-0215\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yongping Gan\", \"id\": \"https://openalex.org/A5087884098\", \"orcid\": \"https://orcid.org/0000-0002-7110-1066\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chu Liang\", \"id\": \"https://openalex.org/A5100748497\", \"orcid\": \"https://orcid.org/0000-0003-0942-5307\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinping He\", \"id\": \"https://openalex.org/A5107966481\", \"orcid\": \"https://orcid.org/0000-0002-8846-5210\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinyong Tao\", \"id\": \"https://openalex.org/A5040525905\", \"orcid\": \"https://orcid.org/0000-0003-4084-7743\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wenkui Zhang\", \"id\": \"https://openalex.org/A5026329021\", \"orcid\": \"https://orcid.org/0000-0002-6416-6275\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773302851787,
+    "actual_start_ms": 1773302853299,
+    "pacing_wait_ms": 1511,
+    "pacing_jitter_sec": 0.804
+  }
+}

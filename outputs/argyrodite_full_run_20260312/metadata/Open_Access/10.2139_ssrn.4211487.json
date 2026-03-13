@@ -1,0 +1,158 @@
+{
+  "doi": "10.2139/ssrn.4211487",
+  "pdf_filename": "10.2139_ssrn.4211487.pdf",
+  "json_filename": "10.2139_ssrn.4211487.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.2139_ssrn.4211487.pdf",
+  "pdf_exists": false,
+  "openalex": {
+    "id": "https://openalex.org/W4295858338",
+    "doi": "10.2139/ssrn.4211487",
+    "title": "Solution-Processed Synthesis of Nano-Sized Argyrodite Solid Electrolytes with Cavitation Effect for High Performance All-Solid-State Li-Ion Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": {
+      "name": "SSRN Electronic Journal",
+      "id": "https://openalex.org/S4210172589",
+      "type": "repository",
+      "issn_l": "1556-5068",
+      "issn": [
+        "1556-5068"
+      ]
+    },
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Youngjun Huh",
+    "authors_display": "Youngjun Huh; Hae Gon Lee; Chang-Min Cho; Jun‐Woo Park; Byung Gon Kim; You‐Jin Lee; Yoon‐Cheol Ha; Jeong‐Hee Choi; Jeongdoo Yi; Sangmin Lee; Je In Lee; Jun‐Ho Park",
+    "authors": [
+      {
+        "display_name": "Youngjun Huh",
+        "id": "https://openalex.org/A5017923928",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Hae Gon Lee",
+        "id": "https://openalex.org/A5017765445",
+        "orcid": "https://orcid.org/0000-0002-2708-7850",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Chang-Min Cho",
+        "id": "https://openalex.org/A5077997963",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun‐Woo Park",
+        "id": "https://openalex.org/A5118844308",
+        "orcid": "https://orcid.org/0000-0002-1446-8822",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Byung Gon Kim",
+        "id": "https://openalex.org/A5101614289",
+        "orcid": "https://orcid.org/0000-0002-3471-3020",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "You‐Jin Lee",
+        "id": "https://openalex.org/A5007359456",
+        "orcid": "https://orcid.org/0000-0002-9133-7893",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yoon‐Cheol Ha",
+        "id": "https://openalex.org/A5086764992",
+        "orcid": "https://orcid.org/0000-0001-5769-1461",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeong‐Hee Choi",
+        "id": "https://openalex.org/A5101527770",
+        "orcid": "https://orcid.org/0000-0003-2018-2828",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeongdoo Yi",
+        "id": "https://openalex.org/A5072490549",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sangmin Lee",
+        "id": "https://openalex.org/A5100319590",
+        "orcid": "https://orcid.org/0000-0001-5380-2275",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Je In Lee",
+        "id": "https://openalex.org/A5002411989",
+        "orcid": "https://orcid.org/0000-0001-9110-8030",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun‐Ho Park",
+        "id": "https://openalex.org/A5101965432",
+        "orcid": "https://orcid.org/0000-0001-8954-3965",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4295858338",
+    "doi": "10.2139/ssrn.4211487",
+    "title": "Solution-Processed Synthesis of Nano-Sized Argyrodite Solid Electrolytes with Cavitation Effect for High Performance All-Solid-State Li-Ion Batteries",
+    "publisher": "RELX Group (Netherlands)",
+    "journal": "SSRN Electronic Journal",
+    "journal_id": "https://openalex.org/S4210172589",
+    "journal_type": "repository",
+    "journal_issn_l": "1556-5068",
+    "journal_issn_json": "[\"1556-5068\"]",
+    "publication_date": "2022-01-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": null,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 12,
+    "first_author": "Youngjun Huh",
+    "authors_display": "Youngjun Huh; Hae Gon Lee; Chang-Min Cho; Jun‐Woo Park; Byung Gon Kim; You‐Jin Lee; Yoon‐Cheol Ha; Jeong‐Hee Choi; Jeongdoo Yi; Sangmin Lee; Je In Lee; Jun‐Ho Park",
+    "authors_json": "[{\"display_name\": \"Youngjun Huh\", \"id\": \"https://openalex.org/A5017923928\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Hae Gon Lee\", \"id\": \"https://openalex.org/A5017765445\", \"orcid\": \"https://orcid.org/0000-0002-2708-7850\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Chang-Min Cho\", \"id\": \"https://openalex.org/A5077997963\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun‐Woo Park\", \"id\": \"https://openalex.org/A5118844308\", \"orcid\": \"https://orcid.org/0000-0002-1446-8822\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Byung Gon Kim\", \"id\": \"https://openalex.org/A5101614289\", \"orcid\": \"https://orcid.org/0000-0002-3471-3020\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"You‐Jin Lee\", \"id\": \"https://openalex.org/A5007359456\", \"orcid\": \"https://orcid.org/0000-0002-9133-7893\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yoon‐Cheol Ha\", \"id\": \"https://openalex.org/A5086764992\", \"orcid\": \"https://orcid.org/0000-0001-5769-1461\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeong‐Hee Choi\", \"id\": \"https://openalex.org/A5101527770\", \"orcid\": \"https://orcid.org/0000-0003-2018-2828\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeongdoo Yi\", \"id\": \"https://openalex.org/A5072490549\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sangmin Lee\", \"id\": \"https://openalex.org/A5100319590\", \"orcid\": \"https://orcid.org/0000-0001-5380-2275\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Je In Lee\", \"id\": \"https://openalex.org/A5002411989\", \"orcid\": \"https://orcid.org/0000-0001-9110-8030\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun‐Ho Park\", \"id\": \"https://openalex.org/A5101965432\", \"orcid\": \"https://orcid.org/0000-0001-8954-3965\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "FAIL_BLOCK",
+    "landing_attempted": true,
+    "landing_success": false,
+    "landing_state": "challenge_or_block",
+    "landing_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4211487",
+    "landing_title": "Just a moment...",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73558.pdf/temp/10.2139_ssrn.4211487.pdf",
+    "scheduler_publisher": "10.2139",
+    "scheduled_start_ms": 1773312575644,
+    "actual_start_ms": 1773312575645,
+    "pacing_wait_ms": 1,
+    "pacing_jitter_sec": 1.727
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "doi": "10.1021/acsenergylett.4c01084",
+  "pdf_filename": "10.1021_acsenergylett.4c01084.pdf",
+  "json_filename": "10.1021_acsenergylett.4c01084.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsenergylett.4c01084.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4400353311",
+    "doi": "10.1021/acsenergylett.4c01084",
+    "title": "Ionocovalency of the Central Metal Halide Bond-Dependent Chemical Compatibility of Halide Solid Electrolytes with Li<sub>6</sub>PS<sub>5</sub>Cl",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Energy Letters",
+      "id": "https://openalex.org/S2764414965",
+      "type": "journal",
+      "issn_l": "2380-8195",
+      "issn": [
+        "2380-8195"
+      ]
+    },
+    "publication_date": "2024-07-05",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 39,
+    "citation_normalized_percentile": 0.98318999,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Subha Samanta",
+    "authors_display": "Subha Samanta; Susmita Bera; Ripan K. Biswas; Sukanta K. Mondal; Lily Mandal; Abhik Banerjee",
+    "authors": [
+      {
+        "display_name": "Subha Samanta",
+        "id": "https://openalex.org/A5046222032",
+        "orcid": "https://orcid.org/0000-0002-6023-3493",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Susmita Bera",
+        "id": "https://openalex.org/A5108952216",
+        "orcid": "https://orcid.org/0009-0009-8878-042X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ripan K. Biswas",
+        "id": "https://openalex.org/A5026402279",
+        "orcid": "https://orcid.org/0000-0002-3753-9160",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sukanta K. Mondal",
+        "id": "https://openalex.org/A5050694178",
+        "orcid": "https://orcid.org/0000-0002-1880-1127",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Lily Mandal",
+        "id": "https://openalex.org/A5089823885",
+        "orcid": "https://orcid.org/0000-0001-9010-2403",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Abhik Banerjee",
+        "id": "https://openalex.org/A5068954455",
+        "orcid": "https://orcid.org/0000-0003-2379-298X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4400353311",
+    "doi": "10.1021/acsenergylett.4c01084",
+    "title": "Ionocovalency of the Central Metal Halide Bond-Dependent Chemical Compatibility of Halide Solid Electrolytes with Li<sub>6</sub>PS<sub>5</sub>Cl",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Energy Letters",
+    "journal_id": "https://openalex.org/S2764414965",
+    "journal_type": "journal",
+    "journal_issn_l": "2380-8195",
+    "journal_issn_json": "[\"2380-8195\"]",
+    "publication_date": "2024-07-05",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 39,
+    "citation_normalized_percentile": 0.98318999,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Subha Samanta",
+    "authors_display": "Subha Samanta; Susmita Bera; Ripan K. Biswas; Sukanta K. Mondal; Lily Mandal; Abhik Banerjee",
+    "authors_json": "[{\"display_name\": \"Subha Samanta\", \"id\": \"https://openalex.org/A5046222032\", \"orcid\": \"https://orcid.org/0000-0002-6023-3493\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Susmita Bera\", \"id\": \"https://openalex.org/A5108952216\", \"orcid\": \"https://orcid.org/0009-0009-8878-042X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ripan K. Biswas\", \"id\": \"https://openalex.org/A5026402279\", \"orcid\": \"https://orcid.org/0000-0002-3753-9160\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sukanta K. Mondal\", \"id\": \"https://openalex.org/A5050694178\", \"orcid\": \"https://orcid.org/0000-0002-1880-1127\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Lily Mandal\", \"id\": \"https://openalex.org/A5089823885\", \"orcid\": \"https://orcid.org/0000-0001-9010-2403\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Abhik Banerjee\", \"id\": \"https://openalex.org/A5068954455\", \"orcid\": \"https://orcid.org/0000-0003-2379-298X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302377049,
+    "actual_start_ms": 1773302378547,
+    "pacing_wait_ms": 1497,
+    "pacing_jitter_sec": 1.226
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "doi": "10.1002/anie.202500388",
+  "pdf_filename": "10.1002_anie.202500388.pdf",
+  "json_filename": "10.1002_anie.202500388.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_anie.202500388.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4410196590",
+    "doi": "10.1002/anie.202500388",
+    "title": "A Core‐Shell Structured Argyrodite‐Type Electrolyte Enabling Elevated Chemical/Electrochemical Stability",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "Angewandte Chemie International Edition",
+      "id": "https://openalex.org/S67393510",
+      "type": "journal",
+      "issn_l": "1433-7851",
+      "issn": [
+        "1433-7851",
+        "1521-3773"
+      ]
+    },
+    "publication_date": "2025-05-08",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.82577924,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Shijie Lu",
+    "authors_display": "Shijie Lu; Yuxiang Zhang; Haijian Lv; Xinyu Zhang; Tianwen Yang; Zihan Li; Ming Ma; Xinyue Xu; Daobin Mu",
+    "authors": [
+      {
+        "display_name": "Shijie Lu",
+        "id": "https://openalex.org/A5110817739",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuxiang Zhang",
+        "id": "https://openalex.org/A5100443143",
+        "orcid": "https://orcid.org/0000-0001-5953-4910",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haijian Lv",
+        "id": "https://openalex.org/A5010807158",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinyu Zhang",
+        "id": "https://openalex.org/A5100390725",
+        "orcid": "https://orcid.org/0000-0003-3054-4597",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tianwen Yang",
+        "id": "https://openalex.org/A5102520174",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zihan Li",
+        "id": "https://openalex.org/A5100672514",
+        "orcid": "https://orcid.org/0009-0004-3839-0611",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ming Ma",
+        "id": "https://openalex.org/A5102735034",
+        "orcid": "https://orcid.org/0000-0001-8461-9836",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinyue Xu",
+        "id": "https://openalex.org/A5022627742",
+        "orcid": "https://orcid.org/0000-0001-7434-690X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daobin Mu",
+        "id": "https://openalex.org/A5027692432",
+        "orcid": "https://orcid.org/0000-0001-7604-3363",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4410196590",
+    "doi": "10.1002/anie.202500388",
+    "title": "A Core‐Shell Structured Argyrodite‐Type Electrolyte Enabling Elevated Chemical/Electrochemical Stability",
+    "publisher": "Wiley",
+    "journal": "Angewandte Chemie International Edition",
+    "journal_id": "https://openalex.org/S67393510",
+    "journal_type": "journal",
+    "journal_issn_l": "1433-7851",
+    "journal_issn_json": "[\"1433-7851\", \"1521-3773\"]",
+    "publication_date": "2025-05-08",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.82577924,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Shijie Lu",
+    "authors_display": "Shijie Lu; Yuxiang Zhang; Haijian Lv; Xinyu Zhang; Tianwen Yang; Zihan Li; Ming Ma; Xinyue Xu; Daobin Mu",
+    "authors_json": "[{\"display_name\": \"Shijie Lu\", \"id\": \"https://openalex.org/A5110817739\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yuxiang Zhang\", \"id\": \"https://openalex.org/A5100443143\", \"orcid\": \"https://orcid.org/0000-0001-5953-4910\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haijian Lv\", \"id\": \"https://openalex.org/A5010807158\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinyu Zhang\", \"id\": \"https://openalex.org/A5100390725\", \"orcid\": \"https://orcid.org/0000-0003-3054-4597\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tianwen Yang\", \"id\": \"https://openalex.org/A5102520174\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zihan Li\", \"id\": \"https://openalex.org/A5100672514\", \"orcid\": \"https://orcid.org/0009-0004-3839-0611\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ming Ma\", \"id\": \"https://openalex.org/A5102735034\", \"orcid\": \"https://orcid.org/0000-0001-8461-9836\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinyue Xu\", \"id\": \"https://openalex.org/A5022627742\", \"orcid\": \"https://orcid.org/0000-0001-7434-690X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daobin Mu\", \"id\": \"https://openalex.org/A5027692432\", \"orcid\": \"https://orcid.org/0000-0001-7604-3363\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (api)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773308261127,
+    "actual_start_ms": 1773308261127,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.997
+  }
+}

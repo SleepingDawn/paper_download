@@ -1,0 +1,88 @@
+{
+  "doi": "10.1038/s43246-025-00960-7",
+  "pdf_filename": "10.1038_s43246-025-00960-7.pdf",
+  "json_filename": "10.1038_s43246-025-00960-7.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1038_s43246-025-00960-7.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4416092970",
+    "doi": "10.1038/s43246-025-00960-7",
+    "title": "Electrolyte strategies for practically viable all-solid-state lithium-sulfur batteries",
+    "publisher": "Nature Portfolio",
+    "journal": {
+      "name": "Communications Materials",
+      "id": "https://openalex.org/S4210233566",
+      "type": "journal",
+      "issn_l": "2662-4443",
+      "issn": [
+        "2662-4443"
+      ]
+    },
+    "publication_date": "2025-11-10",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.35370764,
+    "pdf_url": "https://www.nature.com/articles/s43246-025-00960-7.pdf",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Gordon Jarrold",
+    "authors_display": "Gordon Jarrold; Arumugam Manthiram",
+    "authors": [
+      {
+        "display_name": "Gordon Jarrold",
+        "id": "https://openalex.org/A5119369988",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Arumugam Manthiram",
+        "id": "https://openalex.org/A5066705036",
+        "orcid": "https://orcid.org/0000-0003-0237-9563",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4416092970",
+    "doi": "10.1038/s43246-025-00960-7",
+    "title": "Electrolyte strategies for practically viable all-solid-state lithium-sulfur batteries",
+    "publisher": "Nature Portfolio",
+    "journal": "Communications Materials",
+    "journal_id": "https://openalex.org/S4210233566",
+    "journal_type": "journal",
+    "journal_issn_l": "2662-4443",
+    "journal_issn_json": "[\"2662-4443\"]",
+    "publication_date": "2025-11-10",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.35370764,
+    "pdf_url": "https://www.nature.com/articles/s43246-025-00960-7.pdf",
+    "open_access": true,
+    "author_count": 2,
+    "first_author": "Gordon Jarrold",
+    "authors_display": "Gordon Jarrold; Arumugam Manthiram",
+    "authors_json": "[{\"display_name\": \"Gordon Jarrold\", \"id\": \"https://openalex.org/A5119369988\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Arumugam Manthiram\", \"id\": \"https://openalex.org/A5066705036\", \"orcid\": \"https://orcid.org/0000-0003-0237-9563\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773310183045,
+    "actual_start_ms": 1773310183045,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.769
+  }
+}

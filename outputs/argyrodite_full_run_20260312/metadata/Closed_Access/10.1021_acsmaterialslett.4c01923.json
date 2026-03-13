@@ -1,0 +1,158 @@
+{
+  "doi": "10.1021/acsmaterialslett.4c01923",
+  "pdf_filename": "10.1021_acsmaterialslett.4c01923.pdf",
+  "json_filename": "10.1021_acsmaterialslett.4c01923.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsmaterialslett.4c01923.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4404260467",
+    "doi": "10.1021/acsmaterialslett.4c01923",
+    "title": "Suppressing Atmospheric Degradation of Sulfide-Based Solid Electrolytes via Ultrathin Metal Oxide Layers",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Materials Letters",
+      "id": "https://openalex.org/S4210213087",
+      "type": "journal",
+      "issn_l": "2639-4979",
+      "issn": [
+        "2639-4979"
+      ]
+    },
+    "publication_date": "2024-11-12",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.78701243,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Taewoo Kim",
+    "authors_display": "Taewoo Kim; Zachary D. Hood; Aditya Sundar; Anil U. Mane; Francisco Lagunas; Khagesh Kumar; Neelam Sunariwal; Jordi Cabana; Sanja Tepavcevic; Jeffrey W. Elam; Peter Zapol; Justin G. Connell",
+    "authors": [
+      {
+        "display_name": "Taewoo Kim",
+        "id": "https://openalex.org/A5100400947",
+        "orcid": "https://orcid.org/0000-0002-5501-3146",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zachary D. Hood",
+        "id": "https://openalex.org/A5044352220",
+        "orcid": "https://orcid.org/0000-0002-5720-4392",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Aditya Sundar",
+        "id": "https://openalex.org/A5090664865",
+        "orcid": "https://orcid.org/0000-0003-4098-6225",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Anil U. Mane",
+        "id": "https://openalex.org/A5007776434",
+        "orcid": "https://orcid.org/0000-0003-1490-4476",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Francisco Lagunas",
+        "id": "https://openalex.org/A5003607463",
+        "orcid": "https://orcid.org/0000-0002-6377-683X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Khagesh Kumar",
+        "id": "https://openalex.org/A5019184137",
+        "orcid": "https://orcid.org/0000-0001-8010-0877",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Neelam Sunariwal",
+        "id": "https://openalex.org/A5002900885",
+        "orcid": "https://orcid.org/0000-0002-5115-8700",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jordi Cabana",
+        "id": "https://openalex.org/A5052912774",
+        "orcid": "https://orcid.org/0000-0002-2353-5986",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sanja Tepavcevic",
+        "id": "https://openalex.org/A5063769230",
+        "orcid": "https://orcid.org/0000-0003-0151-8832",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jeffrey W. Elam",
+        "id": "https://openalex.org/A5055809181",
+        "orcid": "https://orcid.org/0000-0002-5861-2996",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Peter Zapol",
+        "id": "https://openalex.org/A5014585812",
+        "orcid": "https://orcid.org/0000-0003-0570-9169",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Justin G. Connell",
+        "id": "https://openalex.org/A5046520763",
+        "orcid": "https://orcid.org/0000-0002-2979-2131",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4404260467",
+    "doi": "10.1021/acsmaterialslett.4c01923",
+    "title": "Suppressing Atmospheric Degradation of Sulfide-Based Solid Electrolytes via Ultrathin Metal Oxide Layers",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Materials Letters",
+    "journal_id": "https://openalex.org/S4210213087",
+    "journal_type": "journal",
+    "journal_issn_l": "2639-4979",
+    "journal_issn_json": "[\"2639-4979\"]",
+    "publication_date": "2024-11-12",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 5,
+    "citation_normalized_percentile": 0.78701243,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 12,
+    "first_author": "Taewoo Kim",
+    "authors_display": "Taewoo Kim; Zachary D. Hood; Aditya Sundar; Anil U. Mane; Francisco Lagunas; Khagesh Kumar; Neelam Sunariwal; Jordi Cabana; Sanja Tepavcevic; Jeffrey W. Elam; Peter Zapol; Justin G. Connell",
+    "authors_json": "[{\"display_name\": \"Taewoo Kim\", \"id\": \"https://openalex.org/A5100400947\", \"orcid\": \"https://orcid.org/0000-0002-5501-3146\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Zachary D. Hood\", \"id\": \"https://openalex.org/A5044352220\", \"orcid\": \"https://orcid.org/0000-0002-5720-4392\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Aditya Sundar\", \"id\": \"https://openalex.org/A5090664865\", \"orcid\": \"https://orcid.org/0000-0003-4098-6225\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Anil U. Mane\", \"id\": \"https://openalex.org/A5007776434\", \"orcid\": \"https://orcid.org/0000-0003-1490-4476\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Francisco Lagunas\", \"id\": \"https://openalex.org/A5003607463\", \"orcid\": \"https://orcid.org/0000-0002-6377-683X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Khagesh Kumar\", \"id\": \"https://openalex.org/A5019184137\", \"orcid\": \"https://orcid.org/0000-0001-8010-0877\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Neelam Sunariwal\", \"id\": \"https://openalex.org/A5002900885\", \"orcid\": \"https://orcid.org/0000-0002-5115-8700\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jordi Cabana\", \"id\": \"https://openalex.org/A5052912774\", \"orcid\": \"https://orcid.org/0000-0002-2353-5986\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sanja Tepavcevic\", \"id\": \"https://openalex.org/A5063769230\", \"orcid\": \"https://orcid.org/0000-0003-0151-8832\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jeffrey W. Elam\", \"id\": \"https://openalex.org/A5055809181\", \"orcid\": \"https://orcid.org/0000-0002-5861-2996\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Peter Zapol\", \"id\": \"https://openalex.org/A5014585812\", \"orcid\": \"https://orcid.org/0000-0003-0570-9169\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Justin G. Connell\", \"id\": \"https://openalex.org/A5046520763\", \"orcid\": \"https://orcid.org/0000-0002-2979-2131\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acsmaterialslett.4c01923",
+    "landing_title": "Suppressing Atmospheric Degradation of Sulfide-Based Solid Electrolytes via Ultrathin Metal Oxide Layers | ACS Materials Letters",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/temp/10.1021_acsmaterialslett.4c01923.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773306579490,
+    "actual_start_ms": 1773306588253,
+    "pacing_wait_ms": 8762,
+    "pacing_jitter_sec": 1.76
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "doi": "10.1016/j.cclet.2024.109775",
+  "pdf_filename": "10.1016_j.cclet.2024.109775.pdf",
+  "json_filename": "10.1016_j.cclet.2024.109775.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.cclet.2024.109775.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4392859698",
+    "doi": "10.1016/j.cclet.2024.109775",
+    "title": "Enhancing moisture and electrochemical stability of the Li5.7PS4.7Cl1.3 electrolyte by boron nitride coating for all-solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Chinese Chemical Letters",
+      "id": "https://openalex.org/S167919573",
+      "type": "journal",
+      "issn_l": "1001-8417",
+      "issn": [
+        "1001-8417",
+        "1878-5964"
+      ]
+    },
+    "publication_date": "2024-03-15",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.7231034,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Jie Chen",
+    "authors_display": "Jie Chen; Hannan Chen; Bingbing Tian",
+    "authors": [
+      {
+        "display_name": "Jie Chen",
+        "id": "https://openalex.org/A5100332940",
+        "orcid": "https://orcid.org/0000-0002-6134-6246",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hannan Chen",
+        "id": "https://openalex.org/A5087286261",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Bingbing Tian",
+        "id": "https://openalex.org/A5029006725",
+        "orcid": "https://orcid.org/0000-0003-1508-6217",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4392859698",
+    "doi": "10.1016/j.cclet.2024.109775",
+    "title": "Enhancing moisture and electrochemical stability of the Li5.7PS4.7Cl1.3 electrolyte by boron nitride coating for all-solid-state lithium metal batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Chinese Chemical Letters",
+    "journal_id": "https://openalex.org/S167919573",
+    "journal_type": "journal",
+    "journal_issn_l": "1001-8417",
+    "journal_issn_json": "[\"1001-8417\", \"1878-5964\"]",
+    "publication_date": "2024-03-15",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 4,
+    "citation_normalized_percentile": 0.7231034,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "Jie Chen",
+    "authors_display": "Jie Chen; Hannan Chen; Bingbing Tian",
+    "authors_json": "[{\"display_name\": \"Jie Chen\", \"id\": \"https://openalex.org/A5100332940\", \"orcid\": \"https://orcid.org/0000-0002-6134-6246\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Hannan Chen\", \"id\": \"https://openalex.org/A5087286261\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Bingbing Tian\", \"id\": \"https://openalex.org/A5029006725\", \"orcid\": \"https://orcid.org/0000-0003-1508-6217\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S1001841724002948?via%3Dihub",
+    "landing_title": "Enhancing moisture and electrochemical stability of the Li5.7PS4.7Cl1.3 electrolyte by boron nitride coating for all-solid-state lithium metal batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773307077499,
+    "actual_start_ms": 1773307077499,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.76
+  }
+}

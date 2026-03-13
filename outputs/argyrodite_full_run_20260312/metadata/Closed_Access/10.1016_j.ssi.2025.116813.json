@@ -1,0 +1,89 @@
+{
+  "doi": "10.1016/j.ssi.2025.116813",
+  "pdf_filename": "10.1016_j.ssi.2025.116813.pdf",
+  "json_filename": "10.1016_j.ssi.2025.116813.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ssi.2025.116813.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4408423915",
+    "doi": "10.1016/j.ssi.2025.116813",
+    "title": "SiO2 doped halogen-rich argyrodites for high-performance all-solid-state lithium–sulfur batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Solid State Ionics",
+      "id": "https://openalex.org/S101472891",
+      "type": "journal",
+      "issn_l": "0167-2738",
+      "issn": [
+        "0167-2738",
+        "1872-7689"
+      ]
+    },
+    "publication_date": "2025-03-14",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.69440098,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "J. Zhuo",
+    "authors_display": "J. Zhuo; Zhifeng Yao",
+    "authors": [
+      {
+        "display_name": "J. Zhuo",
+        "id": "https://openalex.org/A5103157451",
+        "orcid": "https://orcid.org/0000-0002-6227-3368",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zhifeng Yao",
+        "id": "https://openalex.org/A5101917777",
+        "orcid": "https://orcid.org/0000-0002-6700-9857",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4408423915",
+    "doi": "10.1016/j.ssi.2025.116813",
+    "title": "SiO2 doped halogen-rich argyrodites for high-performance all-solid-state lithium–sulfur batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Solid State Ionics",
+    "journal_id": "https://openalex.org/S101472891",
+    "journal_type": "journal",
+    "journal_issn_l": "0167-2738",
+    "journal_issn_json": "[\"0167-2738\", \"1872-7689\"]",
+    "publication_date": "2025-03-14",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 1,
+    "citation_normalized_percentile": 0.69440098,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 2,
+    "first_author": "J. Zhuo",
+    "authors_display": "J. Zhuo; Zhifeng Yao",
+    "authors_json": "[{\"display_name\": \"J. Zhuo\", \"id\": \"https://openalex.org/A5103157451\", \"orcid\": \"https://orcid.org/0000-0002-6227-3368\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Zhifeng Yao\", \"id\": \"https://openalex.org/A5101917777\", \"orcid\": \"https://orcid.org/0000-0002-6700-9857\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S0167273825000323?via%3Dihub",
+    "landing_title": "SiO2 doped halogen-rich argyrodites for high-performance all-solid-state lithium–sulfur batteries - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773308434183,
+    "actual_start_ms": 1773308434183,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.763
+  }
+}

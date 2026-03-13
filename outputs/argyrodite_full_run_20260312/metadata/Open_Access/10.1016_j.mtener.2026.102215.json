@@ -1,0 +1,102 @@
+{
+  "doi": "10.1016/j.mtener.2026.102215",
+  "pdf_filename": "10.1016_j.mtener.2026.102215.pdf",
+  "json_filename": "10.1016_j.mtener.2026.102215.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.mtener.2026.102215.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W7125605415",
+    "doi": "10.1016/j.mtener.2026.102215",
+    "title": "Following reaction kinetics in multiphase systems using local descriptors from machine-learned interatomic potentials: Application to the solid electrolyte interphase",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Materials Today Energy",
+      "id": "https://openalex.org/S2898308537",
+      "type": "journal",
+      "issn_l": "2468-6069",
+      "issn": [
+        "2468-6069"
+      ]
+    },
+    "publication_date": "2026-01-24",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.29618289,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Agnieszka Warnicka",
+    "authors_display": "Agnieszka Warnicka; Gracie Chaney; Mathieu Salanne; Ambroise van Roekeghem",
+    "authors": [
+      {
+        "display_name": "Agnieszka Warnicka",
+        "id": "https://openalex.org/A5123741369",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Gracie Chaney",
+        "id": "https://openalex.org/A5123768055",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mathieu Salanne",
+        "id": "https://openalex.org/A5039582862",
+        "orcid": "https://orcid.org/0000-0002-1753-491X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ambroise van Roekeghem",
+        "id": "https://openalex.org/A5027398903",
+        "orcid": "https://orcid.org/0000-0003-2679-3072",
+        "author_position": "last",
+        "is_corresponding": false
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W7125605415",
+    "doi": "10.1016/j.mtener.2026.102215",
+    "title": "Following reaction kinetics in multiphase systems using local descriptors from machine-learned interatomic potentials: Application to the solid electrolyte interphase",
+    "publisher": "Elsevier BV",
+    "journal": "Materials Today Energy",
+    "journal_id": "https://openalex.org/S2898308537",
+    "journal_type": "journal",
+    "journal_issn_l": "2468-6069",
+    "journal_issn_json": "[\"2468-6069\"]",
+    "publication_date": "2026-01-24",
+    "publication_year": 2026,
+    "work_type": "article",
+    "cited_by_count": 0,
+    "citation_normalized_percentile": 0.29618289,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 4,
+    "first_author": "Agnieszka Warnicka",
+    "authors_display": "Agnieszka Warnicka; Gracie Chaney; Mathieu Salanne; Ambroise van Roekeghem",
+    "authors_json": "[{\"display_name\": \"Agnieszka Warnicka\", \"id\": \"https://openalex.org/A5123741369\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}, {\"display_name\": \"Gracie Chaney\", \"id\": \"https://openalex.org/A5123768055\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mathieu Salanne\", \"id\": \"https://openalex.org/A5039582862\", \"orcid\": \"https://orcid.org/0000-0002-1753-491X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ambroise van Roekeghem\", \"id\": \"https://openalex.org/A5027398903\", \"orcid\": \"https://orcid.org/0000-0003-2679-3072\", \"author_position\": \"last\", \"is_corresponding\": false}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2468606926000286?via%3Dihub",
+    "landing_title": "Following reaction kinetics in multiphase systems using local descriptors from machine-learned interatomic potentials: Application to the solid electrolyte interphase - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73570.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773309956263,
+    "actual_start_ms": 1773309956263,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.691
+  }
+}

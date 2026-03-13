@@ -1,0 +1,81 @@
+{
+  "doi": "10.1016/j.nxmate.2025.100657",
+  "pdf_filename": "10.1016_j.nxmate.2025.100657.pdf",
+  "json_filename": "10.1016_j.nxmate.2025.100657.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1016_j.nxmate.2025.100657.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4409571229",
+    "doi": "10.1016/j.nxmate.2025.100657",
+    "title": "Ionic transport mechanisms in inorganic solid electrolytes: Interface, NMR and DNP studies",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Next Materials",
+      "id": "https://openalex.org/S4387287712",
+      "type": "journal",
+      "issn_l": "2949-8228",
+      "issn": [
+        "2949-8228"
+      ]
+    },
+    "publication_date": "2025-04-18",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.83504135,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 1,
+    "first_author": "Vestince Balidi Mbayachi",
+    "authors_display": "Vestince Balidi Mbayachi",
+    "authors": [
+      {
+        "display_name": "Vestince Balidi Mbayachi",
+        "id": "https://openalex.org/A5066412177",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4409571229",
+    "doi": "10.1016/j.nxmate.2025.100657",
+    "title": "Ionic transport mechanisms in inorganic solid electrolytes: Interface, NMR and DNP studies",
+    "publisher": "Elsevier BV",
+    "journal": "Next Materials",
+    "journal_id": "https://openalex.org/S4387287712",
+    "journal_type": "journal",
+    "journal_issn_l": "2949-8228",
+    "journal_issn_json": "[\"2949-8228\"]",
+    "publication_date": "2025-04-18",
+    "publication_year": 2025,
+    "work_type": "article",
+    "cited_by_count": 2,
+    "citation_normalized_percentile": 0.83504135,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 1,
+    "first_author": "Vestince Balidi Mbayachi",
+    "authors_display": "Vestince Balidi Mbayachi",
+    "authors_json": "[{\"display_name\": \"Vestince Balidi Mbayachi\", \"id\": \"https://openalex.org/A5066412177\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://www.sciencedirect.com/science/article/pii/S2949822825001753?via%3Dihub",
+    "landing_title": "Ionic transport mechanisms in inorganic solid electrolytes: Interface, NMR and DNP studies - ScienceDirect",
+    "browser_session_mode": "stateful",
+    "browser_session_source": "system_clone",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/stateful_system",
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773307959640,
+    "actual_start_ms": 1773308001460,
+    "pacing_wait_ms": 41824,
+    "pacing_jitter_sec": 0.872
+  }
+}

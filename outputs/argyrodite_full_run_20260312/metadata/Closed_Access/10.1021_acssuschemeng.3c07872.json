@@ -1,0 +1,179 @@
+{
+  "doi": "10.1021/acssuschemeng.3c07872",
+  "pdf_filename": "10.1021_acssuschemeng.3c07872.pdf",
+  "json_filename": "10.1021_acssuschemeng.3c07872.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acssuschemeng.3c07872.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4391464216",
+    "doi": "10.1021/acssuschemeng.3c07872",
+    "title": "A Green Method of Synthesizing Battery-Grade Lithium Sulfide: Hydrogen Reduction of Lithium Sulfate",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Sustainable Chemistry & Engineering",
+      "id": "https://openalex.org/S2502047864",
+      "type": "journal",
+      "issn_l": "2168-0485",
+      "issn": [
+        "2168-0485"
+      ]
+    },
+    "publication_date": "2024-02-02",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.90837787,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 15,
+    "first_author": "Yujiang Sun",
+    "authors_display": "Yujiang Sun; Xin Zhang; Shijie Xu; Shunjin Yang; Xinyu Wang; Xiaorou Cao; Xiao Sun; Yuzhe Zhang; Dehang Ren; Xiaohu Hu; Haoyu Yang; Qiaran Zhang; Zongjing Lu; Xuejing Zhang; Yongan Yang",
+    "authors": [
+      {
+        "display_name": "Yujiang Sun",
+        "id": "https://openalex.org/A5033208975",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xin Zhang",
+        "id": "https://openalex.org/A5100327353",
+        "orcid": "https://orcid.org/0000-0001-7740-3308",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shijie Xu",
+        "id": "https://openalex.org/A5061038297",
+        "orcid": "https://orcid.org/0000-0002-1586-8457",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shunjin Yang",
+        "id": "https://openalex.org/A5078781368",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinyu Wang",
+        "id": "https://openalex.org/A5100352826",
+        "orcid": "https://orcid.org/0000-0003-0418-6503",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaorou Cao",
+        "id": "https://openalex.org/A5039747660",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiao Sun",
+        "id": "https://openalex.org/A5047325086",
+        "orcid": "https://orcid.org/0000-0001-9169-3356",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuzhe Zhang",
+        "id": "https://openalex.org/A5100727265",
+        "orcid": "https://orcid.org/0009-0004-1819-1279",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dehang Ren",
+        "id": "https://openalex.org/A5101299967",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiaohu Hu",
+        "id": "https://openalex.org/A5018154304",
+        "orcid": "https://orcid.org/0000-0002-4720-7848",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Haoyu Yang",
+        "id": "https://openalex.org/A5106407124",
+        "orcid": "https://orcid.org/0009-0004-1512-2278",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Qiaran Zhang",
+        "id": "https://openalex.org/A5064072441",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zongjing Lu",
+        "id": "https://openalex.org/A5060922479",
+        "orcid": "https://orcid.org/0009-0009-0189-4599",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xuejing Zhang",
+        "id": "https://openalex.org/A5100461952",
+        "orcid": "https://orcid.org/0000-0002-0048-4442",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yongan Yang",
+        "id": "https://openalex.org/A5015906224",
+        "orcid": "https://orcid.org/0000-0003-1451-2923",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4391464216",
+    "doi": "10.1021/acssuschemeng.3c07872",
+    "title": "A Green Method of Synthesizing Battery-Grade Lithium Sulfide: Hydrogen Reduction of Lithium Sulfate",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "journal_id": "https://openalex.org/S2502047864",
+    "journal_type": "journal",
+    "journal_issn_l": "2168-0485",
+    "journal_issn_json": "[\"2168-0485\"]",
+    "publication_date": "2024-02-02",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 13,
+    "citation_normalized_percentile": 0.90837787,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 15,
+    "first_author": "Yujiang Sun",
+    "authors_display": "Yujiang Sun; Xin Zhang; Shijie Xu; Shunjin Yang; Xinyu Wang; Xiaorou Cao; Xiao Sun; Yuzhe Zhang; Dehang Ren; Xiaohu Hu; Haoyu Yang; Qiaran Zhang; Zongjing Lu; Xuejing Zhang; Yongan Yang",
+    "authors_json": "[{\"display_name\": \"Yujiang Sun\", \"id\": \"https://openalex.org/A5033208975\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Xin Zhang\", \"id\": \"https://openalex.org/A5100327353\", \"orcid\": \"https://orcid.org/0000-0001-7740-3308\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shijie Xu\", \"id\": \"https://openalex.org/A5061038297\", \"orcid\": \"https://orcid.org/0000-0002-1586-8457\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shunjin Yang\", \"id\": \"https://openalex.org/A5078781368\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinyu Wang\", \"id\": \"https://openalex.org/A5100352826\", \"orcid\": \"https://orcid.org/0000-0003-0418-6503\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaorou Cao\", \"id\": \"https://openalex.org/A5039747660\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiao Sun\", \"id\": \"https://openalex.org/A5047325086\", \"orcid\": \"https://orcid.org/0000-0001-9169-3356\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuzhe Zhang\", \"id\": \"https://openalex.org/A5100727265\", \"orcid\": \"https://orcid.org/0009-0004-1819-1279\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dehang Ren\", \"id\": \"https://openalex.org/A5101299967\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiaohu Hu\", \"id\": \"https://openalex.org/A5018154304\", \"orcid\": \"https://orcid.org/0000-0002-4720-7848\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Haoyu Yang\", \"id\": \"https://openalex.org/A5106407124\", \"orcid\": \"https://orcid.org/0009-0004-1512-2278\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Qiaran Zhang\", \"id\": \"https://openalex.org/A5064072441\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zongjing Lu\", \"id\": \"https://openalex.org/A5060922479\", \"orcid\": \"https://orcid.org/0009-0009-0189-4599\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xuejing Zhang\", \"id\": \"https://openalex.org/A5100461952\", \"orcid\": \"https://orcid.org/0000-0002-0048-4442\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yongan Yang\", \"id\": \"https://openalex.org/A5015906224\", \"orcid\": \"https://orcid.org/0000-0003-1451-2923\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://pubs.acs.org/doi/10.1021/acssuschemeng.3c07872",
+    "landing_title": "A Green Method of Synthesizing Battery-Grade Lithium Sulfide: Hydrogen Reduction of Lithium Sulfate | ACS Sustainable Chemistry & Engineering",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73568.pdf/temp/10.1021_acssuschemeng.3c07872.pdf",
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773304248966,
+    "actual_start_ms": 1773304248966,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 1.584
+  }
+}

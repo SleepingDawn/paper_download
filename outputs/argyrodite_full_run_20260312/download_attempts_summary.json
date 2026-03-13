@@ -1,0 +1,195 @@
+{
+  "count": 446,
+  "success_rate": 0.4395,
+  "median_latency_ms": 1015,
+  "reason_distribution": {
+    "FAIL_TIMEOUT/NETWORK": 77,
+    "SUCCESS": 196,
+    "FAIL_WRONG_MIME": 83,
+    "FAIL_VIEWER_HTML": 90
+  },
+  "by_strategy": {
+    "cffi_baseline": {
+      "count": 446,
+      "success_rate": 0.4395,
+      "median_latency_ms": 1015
+    }
+  },
+  "by_domain": {
+    "www.sciencedirect.com": {
+      "count": 17,
+      "success_rate": 0.0,
+      "median_latency_ms": 126
+    },
+    "pdf.sciencedirectassets.com": {
+      "count": 112,
+      "success_rate": 1.0,
+      "median_latency_ms": 1118
+    },
+    "pubs.acs.org": {
+      "count": 89,
+      "success_rate": 0.0337,
+      "median_latency_ms": 684
+    },
+    "onlinelibrary.wiley.com": {
+      "count": 75,
+      "success_rate": 0.0267,
+      "median_latency_ms": 814
+    },
+    "www.cell.com": {
+      "count": 5,
+      "success_rate": 0.0,
+      "median_latency_ms": 4410
+    },
+    "nature.com": {
+      "count": 23,
+      "success_rate": 0.0,
+      "median_latency_ms": 4399
+    },
+    "www.nature.com": {
+      "count": 14,
+      "success_rate": 1.0,
+      "median_latency_ms": 2296
+    },
+    "link.springer.com": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 2330
+    },
+    "advanced.onlinelibrary.wiley.com": {
+      "count": 3,
+      "success_rate": 0.3333,
+      "median_latency_ms": 1239
+    },
+    "pubs.rsc.org": {
+      "count": 22,
+      "success_rate": 0.4091,
+      "median_latency_ms": 12859
+    },
+    "iopscience.iop.org": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 9621
+    },
+    "www.mdpi.com": {
+      "count": 6,
+      "success_rate": 1.0,
+      "median_latency_ms": 1109
+    },
+    "mdpi-res.com": {
+      "count": 12,
+      "success_rate": 1.0,
+      "median_latency_ms": 1898
+    },
+    "chemrxiv.org": {
+      "count": 6,
+      "success_rate": 0.1667,
+      "median_latency_ms": 1251
+    },
+    "www.jstage.jst.go.jp": {
+      "count": 7,
+      "success_rate": 1.0,
+      "median_latency_ms": 17098
+    },
+    "visnyk-khim.uzhnu.edu.ua": {
+      "count": 4,
+      "success_rate": 1.0,
+      "median_latency_ms": 4151
+    },
+    "watermark02.silverchair.com": {
+      "count": 7,
+      "success_rate": 1.0,
+      "median_latency_ms": 28612
+    },
+    "public-pages-files-2025.frontiersin.org": {
+      "count": 2,
+      "success_rate": 1.0,
+      "median_latency_ms": 5908
+    },
+    "academic.oup.com": {
+      "count": 5,
+      "success_rate": 0.0,
+      "median_latency_ms": 65
+    },
+    "journals.iucr.org": {
+      "count": 3,
+      "success_rate": 1.0,
+      "median_latency_ms": 2384
+    },
+    "asmedigitalcollection.asme.org": {
+      "count": 10,
+      "success_rate": 0.0,
+      "median_latency_ms": 1097
+    },
+    "www.jecst.org": {
+      "count": 2,
+      "success_rate": 1.0,
+      "median_latency_ms": 535
+    },
+    "www.worldscientific.com": {
+      "count": 2,
+      "success_rate": 1.0,
+      "median_latency_ms": 12038
+    },
+    "journals.aps.org": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 3134
+    },
+    "www.whxb.pku.edu.cn": {
+      "count": 2,
+      "success_rate": 0.0,
+      "median_latency_ms": 1716
+    },
+    "kjmm.org": {
+      "count": 2,
+      "success_rate": 0.0,
+      "median_latency_ms": 159
+    },
+    "f.oaes.cc": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 4384
+    },
+    "doi.org": {
+      "count": 2,
+      "success_rate": 0.0,
+      "median_latency_ms": 716
+    },
+    "repository.tudelft.nl": {
+      "count": 1,
+      "success_rate": 0.0,
+      "median_latency_ms": 4333
+    },
+    "diffusion.publia.org": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 3608
+    },
+    "egu2020.eu": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 2346
+    },
+    "www.bio-conferences.org": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 7820
+    },
+    "gpijournal.com": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 3657
+    },
+    "ijeret.org": {
+      "count": 1,
+      "success_rate": 1.0,
+      "median_latency_ms": 5753
+    },
+    "sv16020.ub.uni-giessen.de:4000": {
+      "count": 4,
+      "success_rate": 0.0,
+      "median_latency_ms": 60030
+    }
+  }
+}

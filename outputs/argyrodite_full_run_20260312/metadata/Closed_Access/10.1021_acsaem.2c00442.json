@@ -1,0 +1,95 @@
+{
+  "doi": "10.1021/acsaem.2c00442",
+  "pdf_filename": "10.1021_acsaem.2c00442.pdf",
+  "json_filename": "10.1021_acsaem.2c00442.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.2c00442.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4221081740",
+    "doi": "10.1021/acsaem.2c00442",
+    "title": "Argyrodite Superionic Conductors Fabricated from Metathesis-Derived Li<sub>2</sub>S",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2022-03-31",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.78498327,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "William Hayden Smith",
+    "authors_display": "William Hayden Smith; Saeed Ahmadi Vaselabadi; Colin A. Wolden",
+    "authors": [
+      {
+        "display_name": "William Hayden Smith",
+        "id": "https://openalex.org/A5111596490",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Saeed Ahmadi Vaselabadi",
+        "id": "https://openalex.org/A5008604634",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Colin A. Wolden",
+        "id": "https://openalex.org/A5038166967",
+        "orcid": "https://orcid.org/0000-0001-6576-048X",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4221081740",
+    "doi": "10.1021/acsaem.2c00442",
+    "title": "Argyrodite Superionic Conductors Fabricated from Metathesis-Derived Li<sub>2</sub>S",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2022-03-31",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 14,
+    "citation_normalized_percentile": 0.78498327,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 3,
+    "first_author": "William Hayden Smith",
+    "authors_display": "William Hayden Smith; Saeed Ahmadi Vaselabadi; Colin A. Wolden",
+    "authors_json": "[{\"display_name\": \"William Hayden Smith\", \"id\": \"https://openalex.org/A5111596490\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Saeed Ahmadi Vaselabadi\", \"id\": \"https://openalex.org/A5008604634\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Colin A. Wolden\", \"id\": \"https://openalex.org/A5038166967\", \"orcid\": \"https://orcid.org/0000-0001-6576-048X\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773304121102,
+    "actual_start_ms": 1773304129390,
+    "pacing_wait_ms": 8288,
+    "pacing_jitter_sec": 1.282
+  }
+}

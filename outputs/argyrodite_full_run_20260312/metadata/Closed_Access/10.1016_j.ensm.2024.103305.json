@@ -1,0 +1,110 @@
+{
+  "doi": "10.1016/j.ensm.2024.103305",
+  "pdf_filename": "10.1016_j.ensm.2024.103305.pdf",
+  "json_filename": "10.1016_j.ensm.2024.103305.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2024.103305.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4392769376",
+    "doi": "10.1016/j.ensm.2024.103305",
+    "title": "Roles of cation-doped Li-argyrodite electrolytes on the efficiency of all-solid-state-lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2024-03-13",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 20,
+    "citation_normalized_percentile": 0.94992535,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Berhanu Degagsa Dandena",
+    "authors_display": "Berhanu Degagsa Dandena; Dah‐Shyang Tsai; She‐Huang Wu; Wei‐Nien Su; Bing−Joe Hwang",
+    "authors": [
+      {
+        "display_name": "Berhanu Degagsa Dandena",
+        "id": "https://openalex.org/A5093428323",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dah‐Shyang Tsai",
+        "id": "https://openalex.org/A5049957160",
+        "orcid": "https://orcid.org/0000-0001-8067-9540",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "She‐Huang Wu",
+        "id": "https://openalex.org/A5087838064",
+        "orcid": "https://orcid.org/0000-0003-1165-9444",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wei‐Nien Su",
+        "id": "https://openalex.org/A5031136629",
+        "orcid": "https://orcid.org/0000-0003-1494-2675",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Bing−Joe Hwang",
+        "id": "https://openalex.org/A5030917995",
+        "orcid": "https://orcid.org/0000-0002-3873-2149",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4392769376",
+    "doi": "10.1016/j.ensm.2024.103305",
+    "title": "Roles of cation-doped Li-argyrodite electrolytes on the efficiency of all-solid-state-lithium batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2024-03-13",
+    "publication_year": 2024,
+    "work_type": "article",
+    "cited_by_count": 20,
+    "citation_normalized_percentile": 0.94992535,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Berhanu Degagsa Dandena",
+    "authors_display": "Berhanu Degagsa Dandena; Dah‐Shyang Tsai; She‐Huang Wu; Wei‐Nien Su; Bing−Joe Hwang",
+    "authors_json": "[{\"display_name\": \"Berhanu Degagsa Dandena\", \"id\": \"https://openalex.org/A5093428323\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Dah‐Shyang Tsai\", \"id\": \"https://openalex.org/A5049957160\", \"orcid\": \"https://orcid.org/0000-0001-8067-9540\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"She‐Huang Wu\", \"id\": \"https://openalex.org/A5087838064\", \"orcid\": \"https://orcid.org/0000-0003-1165-9444\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wei‐Nien Su\", \"id\": \"https://openalex.org/A5031136629\", \"orcid\": \"https://orcid.org/0000-0003-1494-2675\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Bing−Joe Hwang\", \"id\": \"https://openalex.org/A5030917995\", \"orcid\": \"https://orcid.org/0000-0002-3873-2149\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773302689452,
+    "actual_start_ms": 1773302693080,
+    "pacing_wait_ms": 3627,
+    "pacing_jitter_sec": 1.141
+  }
+}

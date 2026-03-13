@@ -1,0 +1,117 @@
+{
+  "doi": "10.1016/j.ensm.2022.11.023",
+  "pdf_filename": "10.1016_j.ensm.2022.11.023.pdf",
+  "json_filename": "10.1016_j.ensm.2022.11.023.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1016_j.ensm.2022.11.023.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4309023034",
+    "doi": "10.1016/j.ensm.2022.11.023",
+    "title": "Insights on lithium plating behavior in graphite-based all-solid-state lithium-ion batteries",
+    "publisher": "Elsevier BV",
+    "journal": {
+      "name": "Energy storage materials",
+      "id": "https://openalex.org/S2764728150",
+      "type": "journal",
+      "issn_l": "2405-8289",
+      "issn": [
+        "2405-8289",
+        "2405-8297"
+      ]
+    },
+    "publication_date": "2022-11-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 65,
+    "citation_normalized_percentile": 0.97062896,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Zhihua Zhang",
+    "authors_display": "Zhihua Zhang; Jia Wang; Yuming Jin; Gaozhan Liu; Shujiao Yang; Xiayin Yao",
+    "authors": [
+      {
+        "display_name": "Zhihua Zhang",
+        "id": "https://openalex.org/A5101950695",
+        "orcid": "https://orcid.org/0000-0002-7439-2874",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jia Wang",
+        "id": "https://openalex.org/A5100404623",
+        "orcid": "https://orcid.org/0000-0001-8530-8132",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yuming Jin",
+        "id": "https://openalex.org/A5028599992",
+        "orcid": "https://orcid.org/0000-0001-8976-0038",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Gaozhan Liu",
+        "id": "https://openalex.org/A5003110536",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Shujiao Yang",
+        "id": "https://openalex.org/A5045947777",
+        "orcid": "https://orcid.org/0000-0003-2213-6809",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xiayin Yao",
+        "id": "https://openalex.org/A5058800364",
+        "orcid": "https://orcid.org/0000-0002-2224-4247",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4309023034",
+    "doi": "10.1016/j.ensm.2022.11.023",
+    "title": "Insights on lithium plating behavior in graphite-based all-solid-state lithium-ion batteries",
+    "publisher": "Elsevier BV",
+    "journal": "Energy storage materials",
+    "journal_id": "https://openalex.org/S2764728150",
+    "journal_type": "journal",
+    "journal_issn_l": "2405-8289",
+    "journal_issn_json": "[\"2405-8289\", \"2405-8297\"]",
+    "publication_date": "2022-11-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 65,
+    "citation_normalized_percentile": 0.97062896,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 6,
+    "first_author": "Zhihua Zhang",
+    "authors_display": "Zhihua Zhang; Jia Wang; Yuming Jin; Gaozhan Liu; Shujiao Yang; Xiayin Yao",
+    "authors_json": "[{\"display_name\": \"Zhihua Zhang\", \"id\": \"https://openalex.org/A5101950695\", \"orcid\": \"https://orcid.org/0000-0002-7439-2874\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Jia Wang\", \"id\": \"https://openalex.org/A5100404623\", \"orcid\": \"https://orcid.org/0000-0001-8530-8132\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yuming Jin\", \"id\": \"https://openalex.org/A5028599992\", \"orcid\": \"https://orcid.org/0000-0001-8976-0038\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Gaozhan Liu\", \"id\": \"https://openalex.org/A5003110536\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Shujiao Yang\", \"id\": \"https://openalex.org/A5045947777\", \"orcid\": \"https://orcid.org/0000-0003-2213-6809\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xiayin Yao\", \"id\": \"https://openalex.org/A5058800364\", \"orcid\": \"https://orcid.org/0000-0002-2224-4247\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "elsevier",
+    "scheduled_start_ms": 1773301861144,
+    "actual_start_ms": 1773301958888,
+    "pacing_wait_ms": 97744,
+    "pacing_jitter_sec": 1.732
+  }
+}

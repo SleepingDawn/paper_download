@@ -1,0 +1,131 @@
+{
+  "doi": "10.1557/s43579-023-00423-5",
+  "pdf_filename": "10.1557_s43579-023-00423-5.pdf",
+  "json_filename": "10.1557_s43579-023-00423-5.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.1557_s43579-023-00423-5.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4385987316",
+    "doi": "10.1557/s43579-023-00423-5",
+    "title": "Navigating the complexities of solvent and binder selection for solution processing of sulfide solid-state electrolytes",
+    "publisher": "Springer Nature",
+    "journal": {
+      "name": "MRS Communications",
+      "id": "https://openalex.org/S2486144580",
+      "type": "journal",
+      "issn_l": "2159-6859",
+      "issn": [
+        "2159-6859",
+        "2159-6867"
+      ]
+    },
+    "publication_date": "2023-08-18",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.8064109,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Anna Mills",
+    "authors_display": "Anna Mills; Wan‐Yu Tsai; Teerth Brahmbhatt; Ethan C. Self; Beth L. Armstrong; Daniel T. Hallinan; Jagjit Nanda; Guang Yang",
+    "authors": [
+      {
+        "display_name": "Anna Mills",
+        "id": "https://openalex.org/A5059730894",
+        "orcid": "https://orcid.org/0000-0002-8273-2883",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wan‐Yu Tsai",
+        "id": "https://openalex.org/A5033922371",
+        "orcid": "https://orcid.org/0000-0002-4731-7051",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Teerth Brahmbhatt",
+        "id": "https://openalex.org/A5026195269",
+        "orcid": "https://orcid.org/0000-0002-3410-3599",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Ethan C. Self",
+        "id": "https://openalex.org/A5084122532",
+        "orcid": "https://orcid.org/0000-0001-6006-6317",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Beth L. Armstrong",
+        "id": "https://openalex.org/A5081743475",
+        "orcid": "https://orcid.org/0000-0001-7149-3576",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Daniel T. Hallinan",
+        "id": "https://openalex.org/A5036506213",
+        "orcid": "https://orcid.org/0000-0002-3819-0992",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jagjit Nanda",
+        "id": "https://openalex.org/A5054033892",
+        "orcid": "https://orcid.org/0000-0002-6875-0057",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Guang Yang",
+        "id": "https://openalex.org/A5075057187",
+        "orcid": "https://orcid.org/0000-0003-0583-6272",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4385987316",
+    "doi": "10.1557/s43579-023-00423-5",
+    "title": "Navigating the complexities of solvent and binder selection for solution processing of sulfide solid-state electrolytes",
+    "publisher": "Springer Nature",
+    "journal": "MRS Communications",
+    "journal_id": "https://openalex.org/S2486144580",
+    "journal_type": "journal",
+    "journal_issn_l": "2159-6859",
+    "journal_issn_json": "[\"2159-6859\", \"2159-6867\"]",
+    "publication_date": "2023-08-18",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 10,
+    "citation_normalized_percentile": 0.8064109,
+    "pdf_url": null,
+    "open_access": true,
+    "author_count": 8,
+    "first_author": "Anna Mills",
+    "authors_display": "Anna Mills; Wan‐Yu Tsai; Teerth Brahmbhatt; Ethan C. Self; Beth L. Armstrong; Daniel T. Hallinan; Jagjit Nanda; Guang Yang",
+    "authors_json": "[{\"display_name\": \"Anna Mills\", \"id\": \"https://openalex.org/A5059730894\", \"orcid\": \"https://orcid.org/0000-0002-8273-2883\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Wan‐Yu Tsai\", \"id\": \"https://openalex.org/A5033922371\", \"orcid\": \"https://orcid.org/0000-0002-4731-7051\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Teerth Brahmbhatt\", \"id\": \"https://openalex.org/A5026195269\", \"orcid\": \"https://orcid.org/0000-0002-3410-3599\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Ethan C. Self\", \"id\": \"https://openalex.org/A5084122532\", \"orcid\": \"https://orcid.org/0000-0001-6006-6317\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Beth L. Armstrong\", \"id\": \"https://openalex.org/A5081743475\", \"orcid\": \"https://orcid.org/0000-0001-7149-3576\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Daniel T. Hallinan\", \"id\": \"https://openalex.org/A5036506213\", \"orcid\": \"https://orcid.org/0000-0002-3819-0992\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jagjit Nanda\", \"id\": \"https://openalex.org/A5054033892\", \"orcid\": \"https://orcid.org/0000-0002-6875-0057\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Guang Yang\", \"id\": \"https://openalex.org/A5075057187\", \"orcid\": \"https://orcid.org/0000-0003-0583-6272\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (drission)",
+    "landing_attempted": true,
+    "landing_success": true,
+    "landing_state": "success_landing",
+    "landing_url": "https://link.springer.com/article/10.1557/s43579-023-00423-5",
+    "landing_title": "Navigating the complexities of solvent and binder selection for solution processing of sulfide solid-state electrolytes | MRS Communications | Springer Nature Link",
+    "browser_session_mode": "temp",
+    "browser_session_source": "temp",
+    "browser_profile_name": "Default",
+    "browser_user_data_dir": "/tmp/seyong/download_runtime_profiles/argyrodite_full_run_20260312/pid_73569.pdf/temp/10.1557_s43579-023-00423-5.pdf",
+    "scheduler_publisher": "nature",
+    "scheduled_start_ms": 1773308967114,
+    "actual_start_ms": 1773308968619,
+    "pacing_wait_ms": 1505,
+    "pacing_jitter_sec": 0.971
+  }
+}

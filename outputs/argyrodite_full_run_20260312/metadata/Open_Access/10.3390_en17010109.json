@@ -1,0 +1,165 @@
+{
+  "doi": "10.3390/en17010109",
+  "pdf_filename": "10.3390_en17010109.pdf",
+  "json_filename": "10.3390_en17010109.json",
+  "access_bucket": "Open_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Open_Access/10.3390_en17010109.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4390176479",
+    "doi": "10.3390/en17010109",
+    "title": "Analyzing the Effect of Nano-Sized Conductive Additive Content on Cathode Electrode Performance in Sulfide All-Solid-State Lithium-Ion Batteries",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": {
+      "name": "Energies",
+      "id": "https://openalex.org/S198098182",
+      "type": "journal",
+      "issn_l": "1996-1073",
+      "issn": [
+        "1996-1073"
+      ]
+    },
+    "publication_date": "2023-12-24",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.77615573,
+    "pdf_url": "https://www.mdpi.com/1996-1073/17/1/109/pdf?version=1703409432",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Jae Hong Choi",
+    "authors_display": "Jae Hong Choi; Sumyeong Choi; Tom James Embleton; Kyungmok Ko; Kashif Saleem Saqib; Jahanzaib Ali; Mi-Na Jo; J. H. Hwang; Sung-Woo Park; Minhu Kim; Mingi Hwang; Heesoo Lim; Pilgun Oh",
+    "authors": [
+      {
+        "display_name": "Jae Hong Choi",
+        "id": "https://openalex.org/A5061983829",
+        "orcid": "https://orcid.org/0000-0001-7537-9113",
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sumyeong Choi",
+        "id": "https://openalex.org/A5001225424",
+        "orcid": "https://orcid.org/0000-0002-1103-9416",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Tom James Embleton",
+        "id": "https://openalex.org/A5017548561",
+        "orcid": "https://orcid.org/0000-0002-6557-2996",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kyungmok Ko",
+        "id": "https://openalex.org/A5046707437",
+        "orcid": "https://orcid.org/0000-0001-6076-3366",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Kashif Saleem Saqib",
+        "id": "https://openalex.org/A5046258023",
+        "orcid": "https://orcid.org/0000-0003-1557-7227",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jahanzaib Ali",
+        "id": "https://openalex.org/A5031022742",
+        "orcid": "https://orcid.org/0000-0003-3084-416X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mi-Na Jo",
+        "id": "https://openalex.org/A5074790607",
+        "orcid": "https://orcid.org/0000-0001-6201-8511",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "J. H. Hwang",
+        "id": "https://openalex.org/A5101845130",
+        "orcid": "https://orcid.org/0000-0002-2393-9294",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sung-Woo Park",
+        "id": "https://openalex.org/A5100324414",
+        "orcid": "https://orcid.org/0009-0006-0282-2843",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Minhu Kim",
+        "id": "https://openalex.org/A5109668214",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Mingi Hwang",
+        "id": "https://openalex.org/A5087123092",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Heesoo Lim",
+        "id": "https://openalex.org/A5061709620",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Pilgun Oh",
+        "id": "https://openalex.org/A5051578878",
+        "orcid": "https://orcid.org/0000-0001-8601-8380",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4390176479",
+    "doi": "10.3390/en17010109",
+    "title": "Analyzing the Effect of Nano-Sized Conductive Additive Content on Cathode Electrode Performance in Sulfide All-Solid-State Lithium-Ion Batteries",
+    "publisher": "Multidisciplinary Digital Publishing Institute",
+    "journal": "Energies",
+    "journal_id": "https://openalex.org/S198098182",
+    "journal_type": "journal",
+    "journal_issn_l": "1996-1073",
+    "journal_issn_json": "[\"1996-1073\"]",
+    "publication_date": "2023-12-24",
+    "publication_year": 2023,
+    "work_type": "article",
+    "cited_by_count": 8,
+    "citation_normalized_percentile": 0.77615573,
+    "pdf_url": "https://www.mdpi.com/1996-1073/17/1/109/pdf?version=1703409432",
+    "open_access": true,
+    "author_count": 13,
+    "first_author": "Jae Hong Choi",
+    "authors_display": "Jae Hong Choi; Sumyeong Choi; Tom James Embleton; Kyungmok Ko; Kashif Saleem Saqib; Jahanzaib Ali; Mi-Na Jo; J. H. Hwang; Sung-Woo Park; Minhu Kim; Mingi Hwang; Heesoo Lim; Pilgun Oh",
+    "authors_json": "[{\"display_name\": \"Jae Hong Choi\", \"id\": \"https://openalex.org/A5061983829\", \"orcid\": \"https://orcid.org/0000-0001-7537-9113\", \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Sumyeong Choi\", \"id\": \"https://openalex.org/A5001225424\", \"orcid\": \"https://orcid.org/0000-0002-1103-9416\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Tom James Embleton\", \"id\": \"https://openalex.org/A5017548561\", \"orcid\": \"https://orcid.org/0000-0002-6557-2996\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kyungmok Ko\", \"id\": \"https://openalex.org/A5046707437\", \"orcid\": \"https://orcid.org/0000-0001-6076-3366\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Kashif Saleem Saqib\", \"id\": \"https://openalex.org/A5046258023\", \"orcid\": \"https://orcid.org/0000-0003-1557-7227\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jahanzaib Ali\", \"id\": \"https://openalex.org/A5031022742\", \"orcid\": \"https://orcid.org/0000-0003-3084-416X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mi-Na Jo\", \"id\": \"https://openalex.org/A5074790607\", \"orcid\": \"https://orcid.org/0000-0001-6201-8511\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"J. H. Hwang\", \"id\": \"https://openalex.org/A5101845130\", \"orcid\": \"https://orcid.org/0000-0002-2393-9294\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sung-Woo Park\", \"id\": \"https://openalex.org/A5100324414\", \"orcid\": \"https://orcid.org/0009-0006-0282-2843\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Minhu Kim\", \"id\": \"https://openalex.org/A5109668214\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Mingi Hwang\", \"id\": \"https://openalex.org/A5087123092\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Heesoo Lim\", \"id\": \"https://openalex.org/A5061709620\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Pilgun Oh\", \"id\": \"https://openalex.org/A5051578878\", \"orcid\": \"https://orcid.org/0000-0001-8601-8380\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (direct_oa)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "mdpi",
+    "scheduled_start_ms": 1773309753357,
+    "actual_start_ms": 1773309754858,
+    "pacing_wait_ms": 1501,
+    "pacing_jitter_sec": 1.0
+  }
+}

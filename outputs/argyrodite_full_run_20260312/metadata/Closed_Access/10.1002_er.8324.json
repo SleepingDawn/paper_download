@@ -1,0 +1,110 @@
+{
+  "doi": "10.1002/er.8324",
+  "pdf_filename": "10.1002_er.8324.pdf",
+  "json_filename": "10.1002_er.8324.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1002_er.8324.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4283767022",
+    "doi": "10.1002/er.8324",
+    "title": "One‐pot aprotic solvent‐enabled synthesis of superionic <scp>Li‐argyrodite</scp> solid electrolyte",
+    "publisher": "Wiley",
+    "journal": {
+      "name": "International Journal of Energy Research",
+      "id": "https://openalex.org/S32776067",
+      "type": "journal",
+      "issn_l": "0363-907X",
+      "issn": [
+        "0363-907X",
+        "1099-114X"
+      ]
+    },
+    "publication_date": "2022-07-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.80010621,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Young Jin Heo",
+    "authors_display": "Young Jin Heo; Seung‐Deok Seo; Suk‐Ho Hwang; Sun Hee Choi; Dong‐Wan Kim",
+    "authors": [
+      {
+        "display_name": "Young Jin Heo",
+        "id": "https://openalex.org/A5076032134",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Seung‐Deok Seo",
+        "id": "https://openalex.org/A5057214200",
+        "orcid": "https://orcid.org/0000-0002-0269-948X",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Suk‐Ho Hwang",
+        "id": "https://openalex.org/A5088096172",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Sun Hee Choi",
+        "id": "https://openalex.org/A5043269336",
+        "orcid": "https://orcid.org/0000-0001-6093-7573",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Dong‐Wan Kim",
+        "id": "https://openalex.org/A5016978421",
+        "orcid": "https://orcid.org/0000-0002-1635-6082",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4283767022",
+    "doi": "10.1002/er.8324",
+    "title": "One‐pot aprotic solvent‐enabled synthesis of superionic <scp>Li‐argyrodite</scp> solid electrolyte",
+    "publisher": "Wiley",
+    "journal": "International Journal of Energy Research",
+    "journal_id": "https://openalex.org/S32776067",
+    "journal_type": "journal",
+    "journal_issn_l": "0363-907X",
+    "journal_issn_json": "[\"0363-907X\", \"1099-114X\"]",
+    "publication_date": "2022-07-01",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 15,
+    "citation_normalized_percentile": 0.80010621,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 5,
+    "first_author": "Young Jin Heo",
+    "authors_display": "Young Jin Heo; Seung‐Deok Seo; Suk‐Ho Hwang; Sun Hee Choi; Dong‐Wan Kim",
+    "authors_json": "[{\"display_name\": \"Young Jin Heo\", \"id\": \"https://openalex.org/A5076032134\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Seung‐Deok Seo\", \"id\": \"https://openalex.org/A5057214200\", \"orcid\": \"https://orcid.org/0000-0002-0269-948X\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Suk‐Ho Hwang\", \"id\": \"https://openalex.org/A5088096172\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Sun Hee Choi\", \"id\": \"https://openalex.org/A5043269336\", \"orcid\": \"https://orcid.org/0000-0001-6093-7573\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Dong‐Wan Kim\", \"id\": \"https://openalex.org/A5016978421\", \"orcid\": \"https://orcid.org/0000-0002-1635-6082\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "wiley",
+    "scheduled_start_ms": 1773304732765,
+    "actual_start_ms": 1773304732765,
+    "pacing_wait_ms": 0,
+    "pacing_jitter_sec": 0.799
+  }
+}

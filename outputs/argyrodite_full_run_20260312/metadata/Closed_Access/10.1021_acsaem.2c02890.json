@@ -1,0 +1,137 @@
+{
+  "doi": "10.1021/acsaem.2c02890",
+  "pdf_filename": "10.1021_acsaem.2c02890.pdf",
+  "json_filename": "10.1021_acsaem.2c02890.json",
+  "access_bucket": "Closed_Access",
+  "pdf_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/pdfs/argyrodite_full_run_20260312/Closed_Access/10.1021_acsaem.2c02890.pdf",
+  "pdf_exists": true,
+  "openalex": {
+    "id": "https://openalex.org/W4308965413",
+    "doi": "10.1021/acsaem.2c02890",
+    "title": "A ″Reinforced Concrete″ Structure of Silicon Embedded into an In Situ Grown Carbon Nanotube Scaffold as a High-Performance Anode for Sulfide-Based All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": {
+      "name": "ACS Applied Energy Materials",
+      "id": "https://openalex.org/S4210188958",
+      "type": "journal",
+      "issn_l": "2574-0962",
+      "issn": [
+        "2574-0962"
+      ]
+    },
+    "publication_date": "2022-11-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 28,
+    "citation_normalized_percentile": 0.89509497,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Liuyi Hu",
+    "authors_display": "Liuyi Hu; Yan Xiang; Zefeng Fu; Jun Zhang; Yang Xia; Wenkui Zhang; Yongping Gan; Xinping He; Hui Huang",
+    "authors": [
+      {
+        "display_name": "Liuyi Hu",
+        "id": "https://openalex.org/A5077965010",
+        "orcid": null,
+        "author_position": "first",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yan Xiang",
+        "id": "https://openalex.org/A5100611578",
+        "orcid": "https://orcid.org/0000-0001-9948-7207",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Zefeng Fu",
+        "id": "https://openalex.org/A5064437753",
+        "orcid": null,
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Jun Zhang",
+        "id": "https://openalex.org/A5100433102",
+        "orcid": "https://orcid.org/0000-0002-0644-9154",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Yang Xia",
+        "id": "https://openalex.org/A5038721930",
+        "orcid": "https://orcid.org/0000-0001-9627-4898",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Wenkui Zhang",
+        "id": "https://openalex.org/A5026329021",
+        "orcid": "https://orcid.org/0000-0002-6416-6275",
+        "author_position": "middle",
+        "is_corresponding": true
+      },
+      {
+        "display_name": "Yongping Gan",
+        "id": "https://openalex.org/A5087884098",
+        "orcid": "https://orcid.org/0000-0002-7110-1066",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Xinping He",
+        "id": "https://openalex.org/A5107966481",
+        "orcid": "https://orcid.org/0000-0002-8846-5210",
+        "author_position": "middle",
+        "is_corresponding": false
+      },
+      {
+        "display_name": "Hui Huang",
+        "id": "https://openalex.org/A5060776374",
+        "orcid": "https://orcid.org/0000-0001-6436-4995",
+        "author_position": "last",
+        "is_corresponding": true
+      }
+    ]
+  },
+  "record": {
+    "openalex_id": "https://openalex.org/W4308965413",
+    "doi": "10.1021/acsaem.2c02890",
+    "title": "A ″Reinforced Concrete″ Structure of Silicon Embedded into an In Situ Grown Carbon Nanotube Scaffold as a High-Performance Anode for Sulfide-Based All-Solid-State Batteries",
+    "publisher": "American Chemical Society",
+    "journal": "ACS Applied Energy Materials",
+    "journal_id": "https://openalex.org/S4210188958",
+    "journal_type": "journal",
+    "journal_issn_l": "2574-0962",
+    "journal_issn_json": "[\"2574-0962\"]",
+    "publication_date": "2022-11-14",
+    "publication_year": 2022,
+    "work_type": "article",
+    "cited_by_count": 28,
+    "citation_normalized_percentile": 0.89509497,
+    "pdf_url": null,
+    "open_access": false,
+    "author_count": 9,
+    "first_author": "Liuyi Hu",
+    "authors_display": "Liuyi Hu; Yan Xiang; Zefeng Fu; Jun Zhang; Yang Xia; Wenkui Zhang; Yongping Gan; Xinping He; Hui Huang",
+    "authors_json": "[{\"display_name\": \"Liuyi Hu\", \"id\": \"https://openalex.org/A5077965010\", \"orcid\": null, \"author_position\": \"first\", \"is_corresponding\": false}, {\"display_name\": \"Yan Xiang\", \"id\": \"https://openalex.org/A5100611578\", \"orcid\": \"https://orcid.org/0000-0001-9948-7207\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Zefeng Fu\", \"id\": \"https://openalex.org/A5064437753\", \"orcid\": null, \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Jun Zhang\", \"id\": \"https://openalex.org/A5100433102\", \"orcid\": \"https://orcid.org/0000-0002-0644-9154\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Yang Xia\", \"id\": \"https://openalex.org/A5038721930\", \"orcid\": \"https://orcid.org/0000-0001-9627-4898\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Wenkui Zhang\", \"id\": \"https://openalex.org/A5026329021\", \"orcid\": \"https://orcid.org/0000-0002-6416-6275\", \"author_position\": \"middle\", \"is_corresponding\": true}, {\"display_name\": \"Yongping Gan\", \"id\": \"https://openalex.org/A5087884098\", \"orcid\": \"https://orcid.org/0000-0002-7110-1066\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Xinping He\", \"id\": \"https://openalex.org/A5107966481\", \"orcid\": \"https://orcid.org/0000-0002-8846-5210\", \"author_position\": \"middle\", \"is_corresponding\": false}, {\"display_name\": \"Hui Huang\", \"id\": \"https://openalex.org/A5060776374\", \"orcid\": \"https://orcid.org/0000-0001-6436-4995\", \"author_position\": \"last\", \"is_corresponding\": true}]",
+    "source": "Overall Top Citation",
+    "priority": 2,
+    "download_status": "Success (scihub)",
+    "landing_attempted": false,
+    "landing_success": false,
+    "landing_state": "not_attempted",
+    "landing_url": null,
+    "landing_title": null,
+    "browser_session_mode": null,
+    "browser_session_source": null,
+    "browser_profile_name": null,
+    "browser_user_data_dir": null,
+    "scheduler_publisher": "acs",
+    "scheduled_start_ms": 1773302790313,
+    "actual_start_ms": 1773302791854,
+    "pacing_wait_ms": 1540,
+    "pacing_jitter_sec": 1.492
+  }
+}
