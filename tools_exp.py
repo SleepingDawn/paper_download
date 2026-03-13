@@ -23,6 +23,8 @@ from pdf_pipeline import (
     REASON_FAIL_HTTP_STATUS,
     REASON_FAIL_REDIRECT_LOOP,
     REASON_FAIL_TIMEOUT_NETWORK,
+    REASON_FAIL_VIEWER_HTML,
+    REASON_FAIL_WRONG_MIME,
     append_metrics_jsonl,
     download_pdf,
 )
@@ -65,6 +67,14 @@ AUTO_PROFILE_DOI_PREFIXES = (
     "10.1116",  # AVS(AIP platform)
     "10.1039",  # RSC
     "10.3390",  # MDPI
+)
+SHARED_TEMP_PROFILE_BUCKETS = (
+    ("10.1016", "elsevier"),
+    ("10.1021", "acs"),
+    ("10.1063", "aip"),
+    ("10.1088", "iop"),
+    ("10.1109", "ieee"),
+    ("10.1117", "spie"),
 )
 
 
@@ -639,6 +649,14 @@ def _download_stateful_profile_isolation_enabled() -> bool:
     return raw in ("1", "true", "yes", "on")
 
 
+def _shared_temp_profile_bucket_for_doi(doi_url: str) -> str:
+    doi_norm = _doi_from_doi_url(doi_url)
+    for prefix, bucket in SHARED_TEMP_PROFILE_BUCKETS:
+        if doi_norm.startswith(prefix):
+            return bucket
+    return ""
+
+
 def build_download_browser_session_plan(
     doi_url: str,
     runtime_profile_root: str = "",
@@ -656,18 +674,32 @@ def build_download_browser_session_plan(
     worker_key = _sanitize_doi_to_filename(worker_label or f"pid_{os.getpid()}") or f"pid_{os.getpid()}"
 
     if not _stateful_profile_requested(doi_url, profile_mode):
-        temp_root = os.path.join(runtime_root, worker_key, "temp", doi_key)
+        shared_bucket = _shared_temp_profile_bucket_for_doi(doi_url)
+        if shared_bucket:
+            temp_root = os.path.join(runtime_root, worker_key, "temp_shared", shared_bucket)
+            cleanup_on_close = False
+            cleanup_dir = ""
+            session_source = f"temp_shared:{shared_bucket}"
+            cache_key = f"temp_shared:{worker_key}:{shared_bucket}"
+            browser_identity = f"{worker_key}:temp_shared:{shared_bucket}"
+        else:
+            temp_root = os.path.join(runtime_root, worker_key, "temp", doi_key)
+            cleanup_on_close = True
+            cleanup_dir = temp_root
+            session_source = "temp"
+            cache_key = f"temp:{worker_key}:{doi_key}"
+            browser_identity = f"{worker_key}:temp:{doi_key}"
         os.makedirs(temp_root, exist_ok=True)
         return {
             "session_mode": "temp",
-            "session_source": "temp",
+            "session_source": session_source,
             "profile_mode": profile_mode,
             "profile_name": "Default",
             "user_data_dir": temp_root,
-            "cache_key": f"temp:{worker_key}:{doi_key}",
-            "browser_identity": f"{worker_key}:temp:{doi_key}",
-            "cleanup_on_close": True,
-            "cleanup_dir": temp_root,
+            "cache_key": cache_key,
+            "browser_identity": browser_identity,
+            "cleanup_on_close": cleanup_on_close,
+            "cleanup_dir": cleanup_dir,
         }
 
     stateful_source, stateful_source_kind = _resolve_stateful_profile_source(
@@ -2445,7 +2477,7 @@ def _is_low_trust_elsevier_session_source(session_source: str) -> bool:
     low = str(session_source or "").strip().lower()
     if not low:
         return True
-    return low == "temp" or low.startswith("persistent_fallback")
+    return low == "temp" or low.startswith("temp_shared") or low.startswith("persistent_fallback")
 
 
 def _select_elsevier_pdf_control_snapshot(page) -> Dict[str, Any]:
@@ -4016,6 +4048,13 @@ def _try_cookie_cffi_candidate_urls(page, candidate_urls, target_path: str, logg
         url = str(raw or "").strip()
         if not url or url in seen:
             continue
+        low = url.lower()
+        if low.startswith(("javascript:", "blob:", "data:")):
+            continue
+        if "stamp.jsp" in low and "stamppdf/getpdf.jsp" not in low:
+            recovered_stamp = _recover_ieee_stamp_pdf_url(url)
+            if recovered_stamp:
+                url = recovered_stamp
         seen.add(url)
         urls.append(url)
 
@@ -4094,6 +4133,239 @@ def _should_soft_continue_issue(
         return _has_article_signal(title=title, html=html) or _has_pdf_action_signal(title=title, html=html)
 
     return False
+
+
+def _looks_like_challenge_url(url: str = "") -> bool:
+    low = str(url or "").strip().lower()
+    if not low:
+        return False
+    markers = (
+        "__cf_chl_rt_tk=",
+        "/cdn-cgi/challenge",
+        "/cdn-cgi/l/chk_captcha",
+        "challenges.cloudflare.com",
+        "validate.perfdrive.com",
+        "/captcha/",
+    )
+    return any(marker in low for marker in markers)
+
+
+def _publisher_bootstrap_url_for_doi(doi_norm: str = "") -> str:
+    doi_norm = str(doi_norm or "").strip().lower()
+    if doi_norm.startswith("10.1016"):
+        return "https://www.sciencedirect.com/"
+    if doi_norm.startswith("10.1021"):
+        return "https://pubs.acs.org/"
+    if doi_norm.startswith("10.1063") or doi_norm.startswith("10.1116"):
+        return "https://pubs.aip.org/"
+    if doi_norm.startswith("10.1088"):
+        return "https://iopscience.iop.org/"
+    return ""
+
+
+def _should_prebootstrap_low_trust_publisher(doi_norm: str = "", session_source: str = "") -> bool:
+    doi_norm = str(doi_norm or "").strip().lower()
+    source = str(session_source or "").strip().lower()
+    if not doi_norm.startswith(("10.1016", "10.1021", "10.1063", "10.1116", "10.1088")):
+        return False
+    if not source:
+        return True
+    return source == "temp" or source.startswith("temp_shared") or source.startswith("persistent_fallback")
+
+
+def _session_bootstrap_marker_path(session_plan: Dict[str, Any], bootstrap_key: str) -> str:
+    user_data_dir = os.path.abspath(str((session_plan or {}).get("user_data_dir") or "").strip())
+    key = _sanitize_doi_to_filename(str(bootstrap_key or "").strip().lower()) or "bootstrap"
+    if not user_data_dir:
+        return ""
+    return os.path.join(user_data_dir, f".codex_bootstrap_{key}.ready")
+
+
+def _maybe_bootstrap_low_trust_publisher_session(
+    page,
+    doi_norm: str,
+    session_plan: Dict[str, Any],
+    logger=None,
+    timeout_s: int = 10,
+) -> bool:
+    if page is None:
+        return False
+    session_source = str((session_plan or {}).get("session_source") or "")
+    if not _should_prebootstrap_low_trust_publisher(doi_norm, session_source=session_source):
+        return False
+    bootstrap_url = _publisher_bootstrap_url_for_doi(doi_norm)
+    if not bootstrap_url:
+        return False
+
+    marker_path = _session_bootstrap_marker_path(session_plan or {}, bootstrap_url)
+    if marker_path and os.path.exists(marker_path):
+        return True
+
+    try:
+        if logger:
+            logger.info(
+                "     [Drission] low-trust publisher bootstrap 선행 방문: "
+                f"{bootstrap_url} (source={session_source or 'unknown'})"
+            )
+        page.get(bootstrap_url, retry=0, interval=0.3, timeout=min(max(6, int(timeout_s)), 12))
+        _dismiss_cookie_or_consent_banner(page, logger=logger)
+        try:
+            _dismiss_elsevier_aux_overlays(page, logger=logger)
+        except Exception:
+            pass
+        time.sleep(1.0)
+        if marker_path:
+            try:
+                with open(marker_path, "w", encoding="utf-8") as f:
+                    f.write(f"{int(time.time())}\n{bootstrap_url}\n")
+            except Exception:
+                pass
+        return True
+    except Exception as e:
+        if logger:
+            logger.info(f"     [Drission] publisher bootstrap 실패(계속): {e}")
+        return False
+
+
+def _resolve_preferred_browser_entry_url(
+    doi_url: str,
+    doi_norm: str = "",
+    session_source: str = "",
+    logger=None,
+) -> str:
+    raw = str(doi_url or "").strip()
+    if not raw:
+        return ""
+    if not _should_prebootstrap_low_trust_publisher(doi_norm, session_source=session_source):
+        return raw
+    resolved_target = _resolve_doi_redirect_target(raw, logger=logger)
+    if resolved_target and not _looks_like_challenge_url(resolved_target):
+        return resolved_target
+    return raw
+
+
+def _snapshot_page_access_issue(page) -> Dict[str, Any]:
+    if page is None:
+        return {
+            "issue": "FAIL_BLOCK",
+            "evidence": ["page_missing"],
+            "title": "",
+            "html": "",
+            "url": "",
+            "domain": "",
+        }
+    try:
+        title = str(getattr(page, "title", "") or "")
+    except Exception:
+        title = ""
+    try:
+        html = str(getattr(page, "html", "") or "")
+    except Exception:
+        html = ""
+    try:
+        url = str(getattr(page, "url", "") or "")
+    except Exception:
+        url = ""
+    domain = _extract_domain(url)
+    issue, evidence = detect_access_issue(title=title, html=html, url=url, domain=domain)
+    return {
+        "issue": issue,
+        "evidence": list(evidence or []),
+        "title": title,
+        "html": html,
+        "url": url,
+        "domain": domain,
+    }
+
+
+def _wait_for_challenge_clear(page, logger=None, timeout_s: int = 8) -> Dict[str, Any]:
+    deadline = time.time() + max(2, int(timeout_s))
+    last_snapshot = _snapshot_page_access_issue(page)
+    while time.time() < deadline:
+        if last_snapshot.get("issue") not in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
+            return last_snapshot
+        time.sleep(1.0)
+        _dismiss_cookie_or_consent_banner(page, logger=logger)
+        try:
+            _dismiss_elsevier_aux_overlays(page, logger=logger)
+        except Exception:
+            pass
+        last_snapshot = _snapshot_page_access_issue(page)
+    return last_snapshot
+
+
+def _attempt_publisher_landing_challenge_recovery(
+    page,
+    doi_url: str,
+    doi_norm: str,
+    logger=None,
+    timeout_s: int = 10,
+) -> tuple[Any, Dict[str, Any], bool]:
+    snapshot = _wait_for_challenge_clear(page, logger=logger, timeout_s=min(10, timeout_s))
+    if snapshot.get("issue") not in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
+        if logger:
+            logger.info("        [LandingRecovery] challenge settle 후 landing 복구")
+        return page, snapshot, True
+
+    bootstrap_url = _publisher_bootstrap_url_for_doi(doi_norm)
+    if bootstrap_url:
+        try:
+            if logger:
+                logger.info(f"        [LandingRecovery] bootstrap 페이지 선행 방문: {bootstrap_url}")
+            page.get(bootstrap_url, retry=0, interval=0.3, timeout=min(timeout_s, 12))
+            _dismiss_cookie_or_consent_banner(page, logger=logger)
+            time.sleep(1.0)
+        except Exception as e:
+            if logger:
+                logger.info(f"        [LandingRecovery] bootstrap 실패(계속): {e}")
+
+    targets = []
+    seen = set()
+
+    def _push(url: str) -> None:
+        raw = str(url or "").strip()
+        if not raw:
+            return
+        if raw in seen:
+            return
+        seen.add(raw)
+        targets.append(raw)
+
+    current_url = str(snapshot.get("url") or "").strip()
+    if str(doi_norm or "").startswith("10.1016"):
+        target_pii = _extract_sciencedirect_pii_from_url(current_url) or _extract_sciencedirect_pii_from_text(snapshot.get("html") or "")
+        for candidate in _build_elsevier_article_candidates(
+            target_pii,
+            current_url,
+            _resolve_doi_redirect_target(doi_url, logger=logger),
+        ):
+            _push(candidate)
+    else:
+        resolved_target = _resolve_doi_redirect_target(doi_url, logger=logger)
+        _push(resolved_target)
+        if current_url and (not _looks_like_challenge_url(current_url)):
+            _push(current_url)
+
+    for target in targets:
+        if _looks_like_challenge_url(target):
+            continue
+        try:
+            if logger:
+                logger.info(f"        [LandingRecovery] target 재진입: {target}")
+            page.get(target, retry=0, interval=0.3, timeout=min(timeout_s, 12))
+            _dismiss_cookie_or_consent_banner(page, logger=logger)
+            settled = _wait_for_challenge_clear(page, logger=logger, timeout_s=min(10, timeout_s))
+            if settled.get("issue") not in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
+                if logger:
+                    logger.info("        [LandingRecovery] target 재진입 성공")
+                return page, settled, True
+            snapshot = settled
+        except Exception as e:
+            if logger:
+                logger.info(f"        [LandingRecovery] target 재진입 실패(계속): {e}")
+            continue
+
+    return page, snapshot, False
 
 
 def _has_doi_not_found_signal(title: str = "", html: str = "", url: str = "", domain: str = "") -> bool:
@@ -4283,6 +4555,24 @@ def _resolve_pdf_pipeline_mode() -> str:
             pass
 
     return "baseline"
+
+
+def _should_force_candidate_retry(url: str, final_url: str, reason: str) -> bool:
+    if reason not in (REASON_FAIL_VIEWER_HTML, REASON_FAIL_WRONG_MIME):
+        return False
+    blob = f"{url or ''} {final_url or ''}".lower()
+    candidate_markers = (
+        "sciencedirect.com",
+        "/pdfft",
+        "ieeexplore.ieee.org",
+        "stamppdf/getpdf.jsp",
+        "stamp.jsp",
+        "onlinelibrary.wiley.com",
+        "advanced.onlinelibrary.wiley.com",
+        "/doi/pdf",
+        "/articlepdf",
+    )
+    return any(marker in blob for marker in candidate_markers)
 
 
 # =======================================================
@@ -4700,6 +4990,44 @@ def download_with_cffi(
             phase="direct",
         )
 
+        # IEEE/Elsevier/Wiley의 direct PDF wrapper는 baseline에서 viewer HTML로
+        # 되돌아오는 경우가 많아, 고마찰 URL에 한해 candidate expansion을 1회 더 시도한다.
+        if pipeline_mode == "baseline" and _should_force_candidate_retry(url, attempt.final_url, attempt.reason):
+            if logger:
+                logger.info(
+                    "        [CFFI] viewer HTML/wrong mime 감지 -> candidate recovery 재시도 "
+                    f"(url={attempt.final_url or url})"
+                )
+            candidate_attempt = download_pdf(
+                url,
+                save_path,
+                strategy_mode="candidate",
+                timeout=timeout,
+                min_size=1024,
+                headers=headers,
+                cookies=cookies,
+                strategy_name="cffi_candidate",
+                phase="direct_candidate_recovery",
+                max_viewer_hops=2,
+            )
+            candidate_finished_at_ms = int(time.time() * 1000)
+            candidate_started_at_ms = max(0, candidate_finished_at_ms - int(candidate_attempt.elapsed_ms or 0))
+            append_metrics_jsonl(
+                os.path.abspath(
+                    os.environ.get("PDF_ATTEMPTS_JSONL", os.path.join("outputs", "download_attempts.jsonl"))
+                ),
+                candidate_attempt,
+                extra={
+                    "timestamp_ms": candidate_finished_at_ms,
+                    "started_at_ms": candidate_started_at_ms,
+                    "finished_at_ms": candidate_finished_at_ms,
+                    "recovered_from_reason": attempt.reason,
+                    **(metrics_extra or {}),
+                },
+            )
+            if candidate_attempt.success or candidate_attempt.reason != attempt.reason:
+                attempt = candidate_attempt
+
         # 계측 누적 (append-only)
         metrics_path = os.path.abspath(
             os.environ.get("PDF_ATTEMPTS_JSONL", os.path.join("outputs", "download_attempts.jsonl"))
@@ -4879,6 +5207,20 @@ def download_with_drission(
                 "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
             }
         return False
+
+    _maybe_bootstrap_low_trust_publisher_session(
+        page,
+        doi_norm_preview,
+        session_plan=session_plan,
+        logger=logger,
+        timeout_s=10 if mode == "deep" else 8,
+    )
+    preferred_entry_url = _resolve_preferred_browser_entry_url(
+        doi_url,
+        doi_norm=doi_norm_preview,
+        session_source=elsevier_session_source,
+        logger=logger,
+    ) or doi_url
     
     if mode == "first":
         # 요청 반영: first pass는 항상 1회만 시도한다.
@@ -4968,11 +5310,12 @@ def download_with_drission(
                     continue
             
             
-            logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {doi_url}")
+            current_entry_url = preferred_entry_url or doi_url
+            logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {current_entry_url}")
             
             # 페이지 접속
             landing_initial_files = _get_current_files(browser_tmp_dir)
-            page.get(doi_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
+            page.get(current_entry_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
             _dismiss_cookie_or_consent_banner(page, logger=logger)
             current_domain = _extract_domain(page.url)
             referer_url = page.url
@@ -5017,7 +5360,7 @@ def download_with_drission(
                 logger.info(f"        [Drission] 예상외 랜딩({page.url}) 감지 -> DOI 재요청 1회")
                 try:
                     retry_initial_files = _get_current_files(browser_tmp_dir)
-                    page.get(doi_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
+                    page.get(current_entry_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
                     _dismiss_cookie_or_consent_banner(page, logger=logger)
                     current_domain = _extract_domain(page.url)
                     referer_url = page.url
@@ -5198,6 +5541,8 @@ def download_with_drission(
                             timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S),
                         )
                         _dismiss_cookie_or_consent_banner(page, logger=logger)
+                        if "spiedigitallibrary.org" in _extract_domain(page.url):
+                            _wait_for_spie_article_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 7)
                         current_domain = _extract_domain(page.url)
                         referer_url = page.url
                         page_title = page.title or ""
@@ -5235,6 +5580,31 @@ def download_with_drission(
                 url=page.url or "",
                 domain=current_domain,
             )
+            if issue in ("FAIL_CAPTCHA", "FAIL_BLOCK") and current_domain and (not current_domain.endswith("doi.org")):
+                page, recovery_snapshot, recovered = _attempt_publisher_landing_challenge_recovery(
+                    page,
+                    doi_url=doi_url,
+                    doi_norm=doi_norm,
+                    logger=logger,
+                    timeout_s=14 if is_elsevier_doi else 10,
+                )
+                if recovered:
+                    current_domain = _extract_domain(page.url)
+                    referer_url = page.url
+                    page_title = page.title or page_title
+                    page_html = page.html or page_html
+                    issue, evidence = detect_access_issue(
+                        title=page_title,
+                        html=page_html,
+                        url=page.url or "",
+                        domain=current_domain,
+                    )
+                else:
+                    page_title = str(recovery_snapshot.get("title") or page_title)
+                    page_html = str(recovery_snapshot.get("html") or page_html)
+                    current_domain = str(recovery_snapshot.get("domain") or current_domain)
+                    issue = str(recovery_snapshot.get("issue") or issue or "")
+                    evidence = list(recovery_snapshot.get("evidence") or evidence or [])
             # 요청사항 반영:
             # hard-fail 판단은 landing 단계에서만 수행하고, 이후 단계는 다운로드 시도까지 진행한다.
             if issue == "FAIL_DOI_NOT_FOUND":

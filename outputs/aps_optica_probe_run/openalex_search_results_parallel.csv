@@ -1,5 +1,0 @@
-﻿doi,publisher,pdf_url,open_access,title,download_status,landing_attempted,landing_success,landing_state,landing_url,landing_title,scheduler_publisher,scheduled_start_ms,actual_start_ms,pacing_wait_ms,pacing_jitter_sec
-10.1103/physrevb.90.155405,,,False,Band alignment of semiconductors from density-functional theory and many-body perturbation theory,Success (scihub),False,False,not_attempted,,,aps,1773131071553,1773131071554,0,1.671
-10.1103/physrevlett.109.096803,,,True,Giant Ambipolar Rashba Effect in the Semiconductor BiTeI,Success (scihub),False,False,not_attempted,,,aps,1773131077181,1773131082656,5474,0.992
-10.1364/oe.24.00a312,,,True,Luminescent colloidal carbon dots: optical properties and effects of doping [Invited],Success (scihub),False,False,not_attempted,,,optica,1773131074660,1773131074661,0,1.441
-10.1364/oe.17.018364,,,True,Deposition of carbon nanotubes around microfiber via evanascent light,Success (scihub),False,False,not_attempted,,,optica,1773131092153,1773131092154,0,1.164

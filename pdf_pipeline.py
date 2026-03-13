@@ -6,7 +6,7 @@ from dataclasses import dataclass, asdict
 from typing import Any, Dict, List, Optional, Tuple
 from urllib import error as urllib_error
 from urllib import request as urllib_request
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urlencode, urljoin, urlparse
 
 REASON_FAIL_WRONG_MIME = "FAIL_WRONG_MIME"
 REASON_FAIL_VIEWER_HTML = "FAIL_VIEWER_HTML"
@@ -83,8 +83,71 @@ def _extract_pdf_candidates(base_url: str, html: str) -> List[str]:
             if not raw or "javascript:" in raw.lower():
                 continue
             resolved = urljoin(base_url, raw)
-            if ".pdf" in resolved.lower() or "pdf" in raw.lower():
+            resolved_low = resolved.lower()
+            raw_low = raw.lower()
+            if any(
+                token in resolved_low or token in raw_low
+                for token in (
+                    ".pdf",
+                    "/pdfft",
+                    "/articlepdf",
+                    "/doi/pdf",
+                    "stamppdf/getpdf.jsp",
+                    "stamp.jsp",
+                    "viewpdf",
+                    "download=true",
+                    "pdf",
+                )
+            ):
                 candidates.append(resolved)
+
+    base_low = (base_url or "").lower()
+    arnumber = ""
+    m = re.search(r"[?&]arnumber=(\d+)", base_low)
+    if not m:
+        m = re.search(r"/document/(\d+)", base_low)
+    if not m:
+        m = re.search(r'"arnumber"\s*:\s*"?(\\d+)"?', html, flags=re.IGNORECASE)
+    if m:
+        arnumber = str(m.group(1) or "").strip()
+    if arnumber:
+        candidates.append(f"https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber={arnumber}&ref=")
+        candidates.append(f"https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber={arnumber}")
+
+    pii = ""
+    m = re.search(r"/pii/([A-Z0-9]+)", base_url, flags=re.IGNORECASE)
+    if not m:
+        m = re.search(r"/pii/([A-Z0-9]+)", html, flags=re.IGNORECASE)
+    if m:
+        pii = str(m.group(1) or "").strip().upper()
+    if pii:
+        md5 = ""
+        pid = ""
+        path = "science/article/pii"
+        ext = "/pdfft"
+        m = re.search(r'"md5":"([^"]+)"', html, flags=re.IGNORECASE)
+        if m:
+            md5 = str(m.group(1) or "").strip()
+        m = re.search(r'"pid":"([^"]+)"', html, flags=re.IGNORECASE)
+        if m:
+            pid = str(m.group(1) or "").strip()
+        m = re.search(r'"path":"([^"]+)"', html, flags=re.IGNORECASE)
+        if m:
+            path = str(m.group(1) or "").strip().strip("/") or path
+        m = re.search(r'"pdfextension":"([^"]+)"', html, flags=re.IGNORECASE)
+        if m:
+            ext = str(m.group(1) or "").strip() or ext
+        if not ext.startswith("/"):
+            ext = "/" + ext
+        pdfft_url = f"https://www.sciencedirect.com/{path}/{pii}{ext}"
+        query = {}
+        if md5:
+            query["md5"] = md5
+        if pid:
+            query["pid"] = pid
+        if query:
+            pdfft_url += "?" + urlencode(query)
+        candidates.append(pdfft_url)
 
     uniq = []
     seen = set()
@@ -92,7 +155,7 @@ def _extract_pdf_candidates(base_url: str, html: str) -> List[str]:
         if c not in seen:
             uniq.append(c)
             seen.add(c)
-    return uniq[:5]
+    return uniq[:8]
 
 
 def _classify_non_pdf(content_type: str, body: bytes) -> Optional[str]:

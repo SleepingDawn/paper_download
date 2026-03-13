@@ -8,3 +8,7 @@
   - `ready_to_download.csv`에서 seed `20260311`로 샘플링한 100건 입력
 - `benchmark_random100_seed20260311.md`
   - 실행 조건, 실측 결과, 실패 사례 후속 분석, 시사점 정리
+- `publisher_triage_benchmark_20260313.csv`
+  - 주요 publisher를 균형 있게 뽑아 landing / viewer / direct control 문제를 분리해서 보는 입력
+- `publisher_triage_benchmark_20260313.md`
+  - 생성 규칙, 권장 실행 명령, publisher별 분석 포인트 정리
