@@ -20,7 +20,6 @@ from landing_classifier import (
     reorder_inputs_for_pacing,
     reserve_pacing_slot,
 )
-from openalex_search import main_search
 from tools_exp import (
     _sanitize_doi_to_filename,
     coerce_headless_for_execution_env,
@@ -28,6 +27,7 @@ from tools_exp import (
     download_with_cffi,
     download_with_drission,
     normalize_publisher_label,
+    reap_stale_drission_orphan_browsers,
     resolve_browser_execution_env,
     resolve_browser_executable,
     setup_logger,
@@ -39,6 +39,7 @@ REASON_FAIL_CAPTCHA = "FAIL_CAPTCHA"
 REASON_FAIL_BLOCK = "FAIL_BLOCK"
 REASON_FAIL_ACCESS_RIGHTS = "FAIL_ACCESS_RIGHTS"
 REASON_FAIL_DOI_NOT_FOUND = "FAIL_DOI_NOT_FOUND"
+REASON_FAIL_SSRN_CHALLENGE = "FAIL_SSRN_CHALLENGE"
 REASON_FAIL_WRONG_MIME = "FAIL_WRONG_MIME"
 REASON_FAIL_VIEWER_HTML = "FAIL_VIEWER_HTML"
 REASON_FAIL_HTTP_STATUS = "FAIL_HTTP_STATUS"
@@ -57,6 +58,7 @@ FAILURE_REASON_ORDER = [
     REASON_FAIL_BLOCK,
     REASON_FAIL_ACCESS_RIGHTS,
     REASON_FAIL_DOI_NOT_FOUND,
+    REASON_FAIL_SSRN_CHALLENGE,
     REASON_FAIL_WRONG_MIME,
     REASON_FAIL_VIEWER_HTML,
     REASON_FAIL_HTTP_STATUS,
@@ -102,7 +104,6 @@ SCHEDULER_TO_DOWNLOAD_LABEL = {
 
 API_SUPPORTED_PUBLISHERS = {"aip", "iop", "nature", "springer", "wiley"}
 
-
 def _resolve_worker_max_tasks_per_child() -> Optional[int]:
     # macOS spawn + Manager proxy 조합에서는 worker recycle이 future 정리 단계에서
     # 영구 대기를 유발할 수 있어 기본 비활성화한다.
@@ -120,23 +121,22 @@ def _resolve_worker_max_tasks_per_child() -> Optional[int]:
         return None
     return max(1, value)
 
-
 def _process_pool_supports_max_tasks_per_child() -> bool:
     try:
         return "max_tasks_per_child" in inspect.signature(ProcessPoolExecutor).parameters
     except Exception:
         return False
-
-
 NON_RETRYABLE_TERMINAL_REASONS = {
     REASON_FAIL_CAPTCHA,
     REASON_FAIL_BLOCK,
     REASON_FAIL_ACCESS_RIGHTS,
     REASON_FAIL_DOI_NOT_FOUND,
+    REASON_FAIL_SSRN_CHALLENGE,
 }
 NON_DEEP_RETRY_REASONS = {
     REASON_FAIL_ACCESS_RIGHTS,
     REASON_FAIL_DOI_NOT_FOUND,
+    REASON_FAIL_SSRN_CHALLENGE,
 }
 
 
@@ -292,6 +292,8 @@ def _normalize_reason(reason: Optional[str], http_status: Optional[int] = None) 
         return REASON_FAIL_ACCESS_RIGHTS
     if reason == "FAIL_DOI_NOT_FOUND":
         return REASON_FAIL_DOI_NOT_FOUND
+    if reason == "FAIL_SSRN_CHALLENGE":
+        return REASON_FAIL_SSRN_CHALLENGE
     if reason == "FAIL_BLOCK":
         return REASON_FAIL_HTTP_STATUS if http_status else REASON_FAIL_BLOCK
     return reason
@@ -387,6 +389,7 @@ def _prepare_download_records(df: pd.DataFrame) -> List[Dict[str, Any]]:
         doi = str(rec.get("doi", "") or "").strip()
         publisher = str(rec.get("publisher", "") or "").strip()
         pdf_url = str(rec.get("pdf_url", "") or "").strip()
+        rec["open_access"] = _coerce_boolish(rec.get("open_access"))
         rec["_row_index"] = idx
         rec["scheduler_publisher"] = estimate_publisher_key(doi, input_publisher=publisher, pdf_url=pdf_url)
         records.append(rec)
@@ -432,6 +435,7 @@ def _single_download_attempt(
     pdf_url_oa = str(row_data.get("pdf_url", "")).strip()
     filename = _sanitize_doi_to_filename(doi)
     full_path = os.path.join(pdf_save_dir, filename)
+    is_ssrn_doi = doi.lower().startswith("10.2139/ssrn.")
 
     if publisher == "arxiv" or "arxiv.org" in pdf_url_oa.lower() or doi.lower().startswith("10.1149/ma"):
         skip_reason = "policy_skip"
@@ -468,6 +472,18 @@ def _single_download_attempt(
     except Exception as e:
         logger.warning(f"   Sci-Hub 다운로드 에러: {e}")
         attempt_trace.append({"strategy": "scihub", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
+
+    if is_ssrn_doi:
+        logger.info(f"[FastFail] SSRN official-path fast-fail 정책 적용: doi={doi}")
+        return {
+            **result,
+            "status": REASON_FAIL_SSRN_CHALLENGE,
+            "reason": REASON_FAIL_SSRN_CHALLENGE,
+            "method": "policy",
+            "success": False,
+            "stage": "policy",
+            "evidence": ["ssrn_official_path_fast_fail_after_scihub"],
+        }
 
     if pdf_url_oa and pdf_url_oa.lower() not in ("none", "nan") and len(pdf_url_oa) > 10:
         if _is_browser_only_pdf_wrapper(pdf_url_oa):
@@ -893,6 +909,156 @@ def _summarize_live_attempt_metrics(attempts_jsonl_path: str, out_path: str) -> 
     return payload
 
 
+def _json_safe_value(value: Any) -> Any:
+    if value is None:
+        return None
+    if isinstance(value, dict):
+        return {str(k): _json_safe_value(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_json_safe_value(v) for v in value]
+    if isinstance(value, pd.Timestamp):
+        return value.isoformat()
+    if hasattr(value, "item"):
+        try:
+            value = value.item()
+        except Exception:
+            pass
+    try:
+        if pd.isna(value):
+            return None
+    except Exception:
+        pass
+    if isinstance(value, (str, int, float, bool)):
+        return value
+    return str(value)
+
+
+def _parse_json_column(value: Any, default: Any) -> Any:
+    if value is None:
+        return default
+    try:
+        if pd.isna(value):
+            return default
+    except Exception:
+        pass
+    if isinstance(value, (list, dict)):
+        return value
+    raw = str(value).strip()
+    if not raw:
+        return default
+    try:
+        return json.loads(raw)
+    except Exception:
+        return default
+
+
+def _coerce_boolish(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    try:
+        if pd.isna(value):
+            return False
+    except Exception:
+        pass
+    if isinstance(value, (int, float)):
+        return bool(value)
+    raw = str(value or "").strip().lower()
+    if raw in {"1", "true", "yes", "y", "on"}:
+        return True
+    if raw in {"0", "false", "no", "n", "off", ""}:
+        return False
+    return bool(value)
+
+
+def _write_metadata_sidecars(df: pd.DataFrame, metadata_root_dir: str, pdf_root_dir: str) -> Dict[str, Any]:
+    os.makedirs(metadata_root_dir, exist_ok=True)
+    written = 0
+    missing_pdf = 0
+    skipped = 0
+    removed_stale_skip_sidecars = 0
+
+    for _, row in df.iterrows():
+        doi = str(row.get("doi") or "").strip()
+        if not doi:
+            continue
+
+        pdf_filename = _sanitize_doi_to_filename(doi)
+        json_filename = os.path.splitext(pdf_filename)[0] + ".json"
+        is_open_access = _coerce_boolish(row.get("open_access"))
+        access_dir = "Open_Access" if is_open_access else "Closed_Access"
+        download_status = str(row.get("download_status") or "").strip().lower()
+        if download_status == "skipped":
+            skipped += 1
+            for skip_bucket in ("Open_Access", "Closed_Access"):
+                stale_path = os.path.join(metadata_root_dir, skip_bucket, json_filename)
+                if os.path.exists(stale_path):
+                    try:
+                        os.remove(stale_path)
+                        removed_stale_skip_sidecars += 1
+                    except OSError:
+                        pass
+            continue
+
+        pdf_path = os.path.join(pdf_root_dir, access_dir, pdf_filename)
+        pdf_exists = os.path.exists(pdf_path)
+        if not pdf_exists:
+            missing_pdf += 1
+
+        out_dir = os.path.join(metadata_root_dir, access_dir)
+        os.makedirs(out_dir, exist_ok=True)
+        out_path = os.path.join(out_dir, json_filename)
+
+        row_payload = {str(k): _json_safe_value(v) for k, v in row.to_dict().items()}
+        journal_issn = _parse_json_column(row.get("journal_issn_json"), [])
+        authors = _parse_json_column(row.get("authors_json"), [])
+        openalex_payload = {
+            "id": _json_safe_value(row.get("openalex_id")),
+            "doi": doi,
+            "title": _json_safe_value(row.get("title")),
+            "publisher": _json_safe_value(row.get("publisher")),
+            "journal": {
+                "name": _json_safe_value(row.get("journal")),
+                "id": _json_safe_value(row.get("journal_id")),
+                "type": _json_safe_value(row.get("journal_type")),
+                "issn_l": _json_safe_value(row.get("journal_issn_l")),
+                "issn": journal_issn if isinstance(journal_issn, list) else [],
+            },
+            "publication_date": _json_safe_value(row.get("publication_date")),
+            "publication_year": _json_safe_value(row.get("publication_year")),
+            "work_type": _json_safe_value(row.get("work_type")),
+            "cited_by_count": _json_safe_value(row.get("cited_by_count")),
+            "citation_normalized_percentile": _json_safe_value(row.get("citation_normalized_percentile")),
+            "pdf_url": _json_safe_value(row.get("pdf_url")),
+            "open_access": bool(is_open_access),
+            "author_count": _json_safe_value(row.get("author_count")),
+            "first_author": _json_safe_value(row.get("first_author")),
+            "authors_display": _json_safe_value(row.get("authors_display")),
+            "authors": authors if isinstance(authors, list) else [],
+        }
+        payload = {
+            "doi": doi,
+            "pdf_filename": pdf_filename,
+            "json_filename": json_filename,
+            "access_bucket": access_dir,
+            "pdf_path": os.path.abspath(pdf_path),
+            "pdf_exists": bool(pdf_exists),
+            "openalex": openalex_payload,
+            "record": row_payload,
+        }
+
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        written += 1
+
+    return {
+        "root_dir": os.path.abspath(metadata_root_dir),
+        "written": int(written),
+        "missing_pdf": int(missing_pdf),
+        "skipped": int(skipped),
+        "removed_stale_skip_sidecars": int(removed_stale_skip_sidecars),
+    }
+
+
 def _discover_session_seed_root(worker_profile_root: str, profile_name: str) -> str:
     base = os.path.abspath(str(worker_profile_root or "").strip())
     profile_name = str(profile_name or "Default").strip() or "Default"
@@ -1062,6 +1228,8 @@ def main(
     effective_worker_max_tasks_per_child = (
         worker_max_tasks_per_child if worker_recycle_supported else None
     )
+    startup_orphan_reaped = 0
+    shutdown_orphan_reaped = 0
 
     run_output_dir = _resolve_run_output_dir(output_dir)
     pdf_root_dir = _resolve_pdf_output_dir(pdf_output_dir, run_output_dir)
@@ -1075,6 +1243,7 @@ def main(
     os.makedirs(ca_pdf_dir, exist_ok=True)
     os.makedirs(oa_artifact_dir, exist_ok=True)
     os.makedirs(ca_artifact_dir, exist_ok=True)
+    startup_orphan_reaped = reap_stale_drission_orphan_browsers(current_pid=os.getpid())
 
     failed_jsonl_path = os.path.join(run_output_dir, "failed_papers.jsonl")
     summary_json_path = os.path.join(run_output_dir, "summary.json")
@@ -1104,13 +1273,18 @@ def main(
         else query
     )
 
-    csv_path = doi_path or main_search(
-        run_output_dir,
-        "Searched_DOIs.csv",
-        ta_query,
-        max_num=max_num,
-        citation_percentile=citation_percentile,
-    )
+    if doi_path:
+        csv_path = doi_path
+    else:
+        from openalex_search import main_search
+
+        csv_path = main_search(
+            run_output_dir,
+            "Searched_DOIs.csv",
+            ta_query,
+            max_num=max_num,
+            citation_percentile=citation_percentile,
+        )
     df = pd.read_csv(csv_path)
 
     print(f"\n중복 및 doi 누락 제거 전 논문 수: {len(df)}건")
@@ -1125,6 +1299,8 @@ def main(
     else:
         worker_recycle_label = str(effective_worker_max_tasks_per_child)
     print(f"worker recycle(max_tasks_per_child): {worker_recycle_label}")
+    if startup_orphan_reaped:
+        print(f"시작 전 stale headless Chrome 정리: {startup_orphan_reaped}개")
 
     requested_headless = _env_flag("PDF_BROWSER_HEADLESS", 0) if headless is None else bool(headless)
     requested_deep_retry_headless = requested_headless if deep_retry_headless is None else bool(deep_retry_headless)
@@ -1288,6 +1464,13 @@ def main(
     df["pacing_wait_ms"] = [int(r.get("pacing_wait_ms", 0) or 0) for r in final_results]
     df["pacing_jitter_sec"] = [float(r.get("pacing_jitter_sec", 0.0) or 0.0) for r in final_results]
 
+    metadata_dir = os.path.join(run_output_dir, "metadata")
+    metadata_manifest = _write_metadata_sidecars(
+        df=df,
+        metadata_root_dir=metadata_dir,
+        pdf_root_dir=pdf_root_dir,
+    )
+
     full_csv_path = os.path.join(run_output_dir, "openalex_search_results_parallel.csv")
     df.to_csv(full_csv_path, index=False, encoding="utf-8-sig")
 
@@ -1295,6 +1478,7 @@ def main(
     failed_csv_path = os.path.join(run_output_dir, "failed_papers.csv")
     failed_df.to_csv(failed_csv_path, index=False, encoding="utf-8-sig")
 
+    shutdown_orphan_reaped = reap_stale_drission_orphan_browsers(current_pid=os.getpid())
     live_metrics = _summarize_live_attempt_metrics(attempts_jsonl_path, attempts_summary_path)
     integrated_landing_metrics = _summarize_integrated_landing(final_results)
 
@@ -1376,6 +1560,12 @@ def main(
             "attempts_summary_json": attempts_summary_path,
             "summary_json": summary_json_path,
             "pdf_root_dir": pdf_root_dir,
+            "metadata_root_dir": metadata_manifest.get("root_dir", metadata_dir),
+        },
+        "metadata_sidecars": metadata_manifest,
+        "process_cleanup": {
+            "startup_orphan_reaped": int(startup_orphan_reaped),
+            "shutdown_orphan_reaped": int(shutdown_orphan_reaped),
         },
     }
 
@@ -1390,6 +1580,12 @@ def main(
     print(f"의사결정: {decision}")
     print(f"실패 로그(JSONL): {failed_jsonl_path}")
     print(f"요약(JSON): {summary_json_path}")
+    print(f"메타데이터(JSON) 경로: {metadata_manifest.get('root_dir', metadata_dir)}")
+    if startup_orphan_reaped or shutdown_orphan_reaped:
+        print(
+            "stale headless Chrome 정리: "
+            f"start={int(startup_orphan_reaped)}, end={int(shutdown_orphan_reaped)}"
+        )
     print("=" * 60)
 
 
