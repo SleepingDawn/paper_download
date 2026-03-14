@@ -7,7 +7,13 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 
-from linux_headless_suite_lib import GROUP_DISPLAY_NAMES, GROUP_ORDER, load_csv_rows, parse_bool, write_json
+from linux_headless_suite_lib import (
+    GROUP_DISPLAY_NAMES,
+    GROUP_ORDER,
+    RECENT_YEAR_FLOOR,
+    load_csv_rows,
+    write_json,
+)
 
 
 LANDING_BUCKET_ORDER = [
@@ -23,7 +29,9 @@ LANDING_BUCKET_ORDER = [
 ]
 
 DOWNLOAD_BUCKET_ORDER = [
-    "download_success",
+    "publisher_native_download",
+    "scihub_assisted_download",
+    "download_success_unknown",
     "landing_success_no_download",
     "challenge_or_interstitial",
     "blank_or_incomplete",
@@ -34,6 +42,19 @@ DOWNLOAD_BUCKET_ORDER = [
     "missing",
     "other_non_success",
 ]
+SUCCESS_DOWNLOAD_BUCKETS = {
+    "publisher_native_download",
+    "scihub_assisted_download",
+    "download_success_unknown",
+}
+FAILURE_BUCKETS = {
+    "challenge_or_interstitial",
+    "blank_or_incomplete",
+    "timeout_or_error",
+    "environment_or_config_failure",
+    "access_rights",
+    "doi_not_found",
+}
 
 
 def normalize_doi(value: Any) -> str:
@@ -94,36 +115,56 @@ def landing_bucket_from_record(record: Dict[str, Any]) -> str:
     return "other_non_success"
 
 
+def download_succeeded(record: Dict[str, Any]) -> bool:
+    status = str(record.get("download_status") or "").strip().lower()
+    return status.startswith("success")
+
+
+def download_source_bucket_from_record(record: Dict[str, Any]) -> str:
+    if not record or not download_succeeded(record):
+        return ""
+    source = str(record.get("download_source_category") or "").strip().lower()
+    method = str(record.get("download_method") or "").strip().lower()
+    stage = str(record.get("download_result_stage") or "").strip().lower()
+    status = str(record.get("download_status") or "").strip().lower()
+
+    if source == "publisher_native" or method in {"drission", "direct_oa", "api"}:
+        return "publisher_native_download"
+    if source == "scihub_assisted" or "scihub" in method or stage == "scihub" or "scihub" in status:
+        return "scihub_assisted_download"
+    return "download_success_unknown"
+
+
+def download_bucket_from_record(record: Dict[str, Any]) -> str:
+    if not record:
+        return "missing"
+    success_bucket = download_source_bucket_from_record(record)
+    if success_bucket:
+        return success_bucket
+    legacy_bucket = str(record.get("experiment_download_bucket") or "").strip()
+    if legacy_bucket == "download_success":
+        return "download_success_unknown"
+    if legacy_bucket:
+        return legacy_bucket
+    return "missing"
+
+
 def combined_bucket(landing_bucket: str, download_bucket: str) -> str:
-    if download_bucket == "download_success":
-        return "download_success"
+    if download_bucket in SUCCESS_DOWNLOAD_BUCKETS:
+        return download_bucket
     if download_bucket == "missing":
-        if landing_bucket in {
-            "challenge_or_interstitial",
-            "blank_or_incomplete",
-            "timeout_or_error",
-            "environment_or_config_failure",
-            "access_rights",
-            "doi_not_found",
-        }:
+        if landing_bucket in FAILURE_BUCKETS:
             return landing_bucket
         if landing_bucket == "landing_success":
             return "missing"
         if landing_bucket == "missing":
             return "missing"
         return "other_non_success"
-    if download_bucket == "landing_success_no_download" or landing_bucket == "landing_success":
-        return "landed_no_download"
-    for bucket in (
-        "challenge_or_interstitial",
-        "blank_or_incomplete",
-        "timeout_or_error",
-        "environment_or_config_failure",
-        "access_rights",
-        "doi_not_found",
-    ):
+    for bucket in FAILURE_BUCKETS:
         if download_bucket == bucket or landing_bucket == bucket:
             return bucket
+    if download_bucket == "landing_success_no_download" or landing_bucket == "landing_success":
+        return "landing_success_no_download"
     return "other_non_success"
 
 
@@ -142,6 +183,9 @@ def markdown_report(summary: Dict[str, Any]) -> str:
         "",
         f"- suite: `{summary['suite']}`",
         f"- sample_total: `{summary['sample_total']}`",
+        f"- recent_year_floor: `{summary['recent_year_floor']}`",
+        f"- recent_primary_total: `{summary['validation_cohort_counts'].get('recent_primary', 0)}`",
+        f"- legacy_fallback_total: `{summary['validation_cohort_counts'].get('legacy_fallback', 0)}`",
         f"- landing_probe_records: `{summary['landing_probe_records']}`",
         f"- download_records: `{summary['download_records']}`",
         "",
@@ -154,9 +198,15 @@ def markdown_report(summary: Dict[str, Any]) -> str:
     lines.extend(["", "### Download", ""])
     for bucket in DOWNLOAD_BUCKET_ORDER:
         lines.append(f"- {bucket}: {summary['download_bucket_counts'].get(bucket, 0)}")
+    lines.extend(["", "## Validation Cohorts", ""])
+    for cohort, count in summary["validation_cohort_counts"].items():
+        lines.append(f"- {cohort}: {count}")
     lines.extend(["", "## Combined", ""])
     for bucket, count in summary["combined_bucket_counts"].items():
         lines.append(f"- {bucket}: {count}")
+    lines.extend(["", "## Cohort Breakdown", ""])
+    for cohort, counts in summary["validation_cohort_combined_bucket_counts"].items():
+        lines.append(f"- {cohort}: {json.dumps(counts, ensure_ascii=False)}")
     lines.extend(["", "## Publisher Breakdown", ""])
     for row in summary["publisher_breakdown"]:
         lines.append(
@@ -164,8 +214,10 @@ def markdown_report(summary: Dict[str, Any]) -> str:
             f"{row['publisher_display_name']} ({row['publisher_group']}): "
             f"sample={row['sample_total']}, "
             f"landing_success={row['landing_success']}, "
-            f"download_success={row['download_success']}, "
-            f"landed_no_download={row['landed_no_download']}, "
+            f"publisher_native={row['publisher_native_download']}, "
+            f"scihub={row['scihub_assisted_download']}, "
+            f"unknown_success={row['download_success_unknown']}, "
+            f"landing_success_no_download={row['landing_success_no_download']}, "
             f"env_fail={row['environment_or_config_failure']}"
         )
     blocked_items = list(summary.get("blocked_items") or [])
@@ -206,6 +258,8 @@ def main() -> int:
     landing_probe_bucket_counts = Counter()
     download_bucket_counts = Counter()
     combined_bucket_counts = Counter()
+    validation_cohort_counts = Counter()
+    validation_cohort_combined_bucket_counts: Dict[str, Counter] = defaultdict(Counter)
     merged_rows: List[Dict[str, Any]] = []
     blocked_items: List[str] = []
 
@@ -218,25 +272,32 @@ def main() -> int:
         landing = landing_by_doi.get(doi, {})
         download = download_by_doi.get(doi, {})
         landing_bucket = landing_bucket_from_record(landing) if landing else "missing"
-        download_bucket = str(download.get("experiment_download_bucket") or "").strip() or "missing"
+        download_bucket = download_bucket_from_record(download)
         combined = combined_bucket(landing_bucket, download_bucket)
+        validation_cohort = str(sample.get("validation_cohort") or "")
 
         landing_probe_bucket_counts[landing_bucket] += 1
         download_bucket_counts[download_bucket] += 1
         combined_bucket_counts[combined] += 1
+        validation_cohort_counts[validation_cohort or "unknown"] += 1
+        validation_cohort_combined_bucket_counts[validation_cohort or "unknown"][combined] += 1
 
         merged_rows.append(
             {
                 "suite_name": sample.get("suite_name", args.suite),
                 "experiment_publisher_group": sample.get("experiment_publisher_group", ""),
                 "publisher_display_name": sample.get("publisher_display_name", ""),
+                "selection_reason": sample.get("selection_reason", ""),
                 "selection_bucket": sample.get("selection_bucket", ""),
                 "suite_slot_bucket": sample.get("suite_slot_bucket", ""),
+                "validation_cohort": sample.get("validation_cohort", ""),
+                "scihub_confound_risk": sample.get("scihub_confound_risk", ""),
                 "source_open_access": sample.get("source_open_access", ""),
                 "source_has_pdf_url": sample.get("source_has_pdf_url", ""),
                 "doi": doi,
                 "title": sample.get("title", ""),
                 "publisher": sample.get("publisher", ""),
+                "publication_year": sample.get("publication_year", ""),
                 "landing_probe_bucket": landing_bucket,
                 "landing_probe_state": landing.get("classifier_state", ""),
                 "landing_probe_outcome": landing.get("outcome", ""),
@@ -244,6 +305,8 @@ def main() -> int:
                 "landing_probe_url": landing.get("resolved_url", ""),
                 "landing_probe_session_source": landing.get("browser_session_source", ""),
                 "download_status": download.get("download_status", ""),
+                "download_method": download.get("download_method", ""),
+                "download_source_category": download.get("download_source_category", ""),
                 "download_result_reason": download.get("download_result_reason", ""),
                 "download_result_stage": download.get("download_result_stage", ""),
                 "download_result_domain": download.get("download_result_domain", ""),
@@ -265,8 +328,10 @@ def main() -> int:
             "blank_or_incomplete": 0,
             "timeout_or_error": 0,
             "environment_or_config_failure": 0,
-            "download_success": 0,
-            "landed_no_download": 0,
+            "publisher_native_download": 0,
+            "scihub_assisted_download": 0,
+            "download_success_unknown": 0,
+            "landing_success_no_download": 0,
             "missing_records": 0,
         }
     )
@@ -278,18 +343,13 @@ def main() -> int:
         bucket["publisher_display_name"] = row.get("publisher_display_name") or GROUP_DISPLAY_NAMES.get(group, group)
         bucket["sample_total"] += 1
         combined = str(row.get("combined_bucket") or "")
-        if combined == "download_success":
-            bucket["download_success"] += 1
-        elif combined == "landed_no_download":
-            bucket["landed_no_download"] += 1
+        if combined in SUCCESS_DOWNLOAD_BUCKETS:
+            bucket[combined] += 1
+        elif combined == "landing_success_no_download":
+            bucket["landing_success_no_download"] += 1
         elif combined == "missing":
             bucket["missing_records"] += 1
-        elif combined in {
-            "challenge_or_interstitial",
-            "blank_or_incomplete",
-            "timeout_or_error",
-            "environment_or_config_failure",
-        }:
+        elif combined in FAILURE_BUCKETS:
             bucket[combined] += 1
         if str(row.get("landing_probe_bucket") or "") == "landing_success":
             bucket["landing_success"] += 1
@@ -311,9 +371,15 @@ def main() -> int:
 
     summary = {
         "suite": args.suite,
+        "recent_year_floor": RECENT_YEAR_FLOOR,
         "sample_total": len(sample_rows),
         "landing_probe_records": len(landing_rows),
         "download_records": len(download_rows),
+        "validation_cohort_counts": dict(sorted((k, int(v)) for k, v in validation_cohort_counts.items())),
+        "validation_cohort_combined_bucket_counts": {
+            cohort: dict(sorted((bucket, int(count)) for bucket, count in counts.items()))
+            for cohort, counts in sorted(validation_cohort_combined_bucket_counts.items())
+        },
         "landing_probe_bucket_counts": {
             bucket: int(landing_probe_bucket_counts.get(bucket, 0)) for bucket in LANDING_BUCKET_ORDER
         },
@@ -331,13 +397,17 @@ def main() -> int:
         "suite_name",
         "experiment_publisher_group",
         "publisher_display_name",
+        "selection_reason",
         "selection_bucket",
         "suite_slot_bucket",
+        "validation_cohort",
+        "scihub_confound_risk",
         "source_open_access",
         "source_has_pdf_url",
         "doi",
         "title",
         "publisher",
+        "publication_year",
         "landing_probe_bucket",
         "landing_probe_state",
         "landing_probe_outcome",
@@ -345,6 +415,8 @@ def main() -> int:
         "landing_probe_url",
         "landing_probe_session_source",
         "download_status",
+        "download_method",
+        "download_source_category",
         "download_result_reason",
         "download_result_stage",
         "download_result_domain",
@@ -363,8 +435,10 @@ def main() -> int:
         "blank_or_incomplete",
         "timeout_or_error",
         "environment_or_config_failure",
-        "download_success",
-        "landed_no_download",
+        "publisher_native_download",
+        "scihub_assisted_download",
+        "download_success_unknown",
+        "landing_success_no_download",
         "missing_records",
     ]
 

@@ -59,6 +59,12 @@ DEFAULT_BUCKET_SLOTS = [
     "direct_pdf_closed",
 ]
 
+RECENT_YEAR_FLOOR = 2024
+VALIDATION_COHORT_RECENT = "recent_primary"
+VALIDATION_COHORT_LEGACY = "legacy_fallback"
+SCIHUB_CONFOUND_RISK_LOWER = "lower_recent"
+SCIHUB_CONFOUND_RISK_HIGHER = "higher_legacy"
+
 PILOT_TARGETS = {
     "acs": 1,
     "elsevier": 1,
@@ -313,16 +319,31 @@ def selection_bucket(row: Dict[str, Any]) -> str:
     return "landing_closed"
 
 
+def validation_cohort_for_year(year: int) -> str:
+    if int(year or 0) >= RECENT_YEAR_FLOOR:
+        return VALIDATION_COHORT_RECENT
+    return VALIDATION_COHORT_LEGACY
+
+
+def scihub_confound_risk_for_year(year: int) -> str:
+    if int(year or 0) >= RECENT_YEAR_FLOOR:
+        return SCIHUB_CONFOUND_RISK_LOWER
+    return SCIHUB_CONFOUND_RISK_HIGHER
+
+
 def candidate_sort_key(row: Dict[str, Any]) -> tuple[Any, ...]:
     bucket = clean_text(row.get("selection_bucket"))
     try:
         bucket_rank = SELECTION_BUCKET_ORDER.index(bucket)
     except ValueError:
         bucket_rank = len(SELECTION_BUCKET_ORDER)
+    publication_year = parse_int(row.get("publication_year"))
+    recent_rank = 0 if publication_year >= RECENT_YEAR_FLOOR else 1
     return (
+        recent_rank,
         bucket_rank,
+        -publication_year,
         -parse_int(row.get("cited_by_count")),
-        -parse_int(row.get("publication_year")),
         normalize_doi(row.get("doi")),
     )
 
@@ -343,6 +364,9 @@ def load_source_rows(csv_path: Path) -> List[Dict[str, Any]]:
             row["source_has_pdf_url"] = has_pdf_url(raw_row.get("pdf_url"))
             row["experiment_publisher_group"] = experiment_publisher_group(raw_row)
             row["selection_bucket"] = selection_bucket(row)
+            publication_year = parse_int(raw_row.get("publication_year"))
+            row["validation_cohort"] = validation_cohort_for_year(publication_year)
+            row["scihub_confound_risk"] = scihub_confound_risk_for_year(publication_year)
             row["publisher_display_name"] = GROUP_DISPLAY_NAMES.get(
                 row["experiment_publisher_group"], row["experiment_publisher_group"]
             )
@@ -363,6 +387,42 @@ def preferred_bucket_slots(group: str, target_count: int) -> List[str]:
     while len(base) < target_count:
         base.extend(DEFAULT_BUCKET_SLOTS)
     return base[:target_count]
+
+
+def _find_candidate(
+    candidates: Sequence[Dict[str, Any]],
+    chosen_dois: set[str],
+    *,
+    preferred_bucket: str | None,
+    validation_cohort: str | None,
+) -> Dict[str, Any] | None:
+    for candidate in candidates:
+        doi = normalize_doi(candidate.get("doi"))
+        if doi in chosen_dois:
+            continue
+        if preferred_bucket and clean_text(candidate.get("selection_bucket")) != preferred_bucket:
+            continue
+        if validation_cohort and clean_text(candidate.get("validation_cohort")) != validation_cohort:
+            continue
+        return candidate
+    return None
+
+
+def _selection_reason(
+    candidate: Dict[str, Any],
+    *,
+    preferred_bucket: str,
+    matched_bucket: bool,
+    matched_recent: bool,
+) -> str:
+    selected_bucket = clean_text(candidate.get("selection_bucket"))
+    if matched_recent and matched_bucket:
+        return f"preferred_recent:{preferred_bucket}"
+    if matched_recent:
+        return f"fill_recent:{selected_bucket}"
+    if matched_bucket:
+        return f"fallback_legacy:{preferred_bucket}"
+    return f"fill_legacy:{selected_bucket}"
 
 
 def build_suite_selection(
@@ -390,33 +450,68 @@ def build_suite_selection(
         chosen_dois = set()
 
         for slot_idx, bucket_name in enumerate(preferred_slots, start=1):
-            for candidate in candidates:
-                doi = normalize_doi(candidate.get("doi"))
-                if doi in chosen_dois:
-                    continue
-                if clean_text(candidate.get("selection_bucket")) != bucket_name:
-                    continue
-                enriched = dict(candidate)
-                enriched["suite_name"] = suite_name
-                enriched["suite_slot_index"] = slot_idx
-                enriched["suite_slot_bucket"] = bucket_name
-                enriched["selection_reason"] = f"preferred:{bucket_name}"
-                chosen.append(enriched)
-                chosen_dois.add(doi)
-                break
+            candidate = (
+                _find_candidate(
+                    candidates,
+                    chosen_dois,
+                    preferred_bucket=bucket_name,
+                    validation_cohort=VALIDATION_COHORT_RECENT,
+                )
+                or _find_candidate(
+                    candidates,
+                    chosen_dois,
+                    preferred_bucket=None,
+                    validation_cohort=VALIDATION_COHORT_RECENT,
+                )
+                or _find_candidate(
+                    candidates,
+                    chosen_dois,
+                    preferred_bucket=bucket_name,
+                    validation_cohort=None,
+                )
+                or _find_candidate(
+                    candidates,
+                    chosen_dois,
+                    preferred_bucket=None,
+                    validation_cohort=None,
+                )
+            )
+            if not candidate:
+                continue
+            doi = normalize_doi(candidate.get("doi"))
+            enriched = dict(candidate)
+            enriched["suite_name"] = suite_name
+            enriched["suite_slot_index"] = slot_idx
+            enriched["suite_slot_bucket"] = bucket_name
+            enriched["selection_reason"] = _selection_reason(
+                candidate,
+                preferred_bucket=bucket_name,
+                matched_bucket=clean_text(candidate.get("selection_bucket")) == bucket_name,
+                matched_recent=clean_text(candidate.get("validation_cohort")) == VALIDATION_COHORT_RECENT,
+            )
+            chosen.append(enriched)
+            chosen_dois.add(doi)
 
         if len(chosen) < target_count:
-            for candidate in candidates:
-                doi = normalize_doi(candidate.get("doi"))
-                if doi in chosen_dois:
-                    continue
-                enriched = dict(candidate)
-                enriched["suite_name"] = suite_name
-                enriched["suite_slot_index"] = len(chosen) + 1
-                enriched["suite_slot_bucket"] = clean_text(candidate.get("selection_bucket"))
-                enriched["selection_reason"] = f"fill:{clean_text(candidate.get('selection_bucket'))}"
-                chosen.append(enriched)
-                chosen_dois.add(doi)
+            for cohort in (VALIDATION_COHORT_RECENT, VALIDATION_COHORT_LEGACY):
+                for candidate in candidates:
+                    doi = normalize_doi(candidate.get("doi"))
+                    if doi in chosen_dois:
+                        continue
+                    if clean_text(candidate.get("validation_cohort")) != cohort:
+                        continue
+                    enriched = dict(candidate)
+                    enriched["suite_name"] = suite_name
+                    enriched["suite_slot_index"] = len(chosen) + 1
+                    enriched["suite_slot_bucket"] = clean_text(candidate.get("selection_bucket"))
+                    if cohort == VALIDATION_COHORT_RECENT:
+                        enriched["selection_reason"] = f"fill_recent:{clean_text(candidate.get('selection_bucket'))}"
+                    else:
+                        enriched["selection_reason"] = f"fill_legacy:{clean_text(candidate.get('selection_bucket'))}"
+                    chosen.append(enriched)
+                    chosen_dois.add(doi)
+                    if len(chosen) >= target_count:
+                        break
                 if len(chosen) >= target_count:
                     break
 
@@ -448,6 +543,7 @@ def build_suite_selection(
         "selected_rows": selected,
         "gaps": gaps,
         "selected_counts": summarize_group_distribution(selected, "experiment_publisher_group"),
+        "validation_cohort_counts": summarize_group_distribution(selected, "validation_cohort"),
     }
 
 
@@ -465,14 +561,17 @@ def manifest_payload(
             "execution_env": "linux_server",
             "headless": True,
         },
+        "recent_year_floor": RECENT_YEAR_FLOOR,
         "publisher_distribution_raw": summarize_group_distribution(rows, "publisher"),
         "publisher_distribution_grouped": summarize_group_distribution(rows, "experiment_publisher_group"),
+        "validation_cohort_distribution": summarize_group_distribution(rows, "validation_cohort"),
         "selection_bucket_distribution": summarize_group_distribution(rows, "selection_bucket"),
         "suites": {
             name: {
                 "targets": suite.get("targets", {}),
                 "selected_total": len(suite.get("selected_rows", [])),
                 "selected_counts": suite.get("selected_counts", []),
+                "validation_cohort_counts": suite.get("validation_cohort_counts", []),
                 "gaps": suite.get("gaps", []),
                 "explicit_coverage": ["rsc", "cell"],
             }
@@ -491,6 +590,8 @@ def write_csv(path: Path, rows: Sequence[Dict[str, Any]]) -> None:
         "suite_slot_bucket",
         "selection_reason",
         "selection_bucket",
+        "validation_cohort",
+        "scihub_confound_risk",
         "source_open_access",
         "source_has_pdf_url",
         "doi",

@@ -6,6 +6,7 @@
     "execution_env": "linux_server",
     "headless": true
   },
+  "recent_year_floor": 2024,
   "publisher_distribution_raw": [
     {
       "key": "American Chemical Society",
@@ -266,6 +267,16 @@
       "count": 5
     }
   ],
+  "validation_cohort_distribution": [
+    {
+      "key": "legacy_fallback",
+      "count": 970
+    },
+    {
+      "key": "recent_primary",
+      "count": 138
+    }
+  ],
   "selection_bucket_distribution": [
     {
       "key": "landing_closed",
@@ -339,6 +350,16 @@
         },
         {
           "key": "wiley",
+          "count": 1
+        }
+      ],
+      "validation_cohort_counts": [
+        {
+          "key": "recent_primary",
+          "count": 12
+        },
+        {
+          "key": "legacy_fallback",
           "count": 1
         }
       ],
@@ -417,6 +438,16 @@
         {
           "key": "taylor_and_francis",
           "count": 1
+        }
+      ],
+      "validation_cohort_counts": [
+        {
+          "key": "recent_primary",
+          "count": 26
+        },
+        {
+          "key": "legacy_fallback",
+          "count": 5
         }
       ],
       "gaps": [],

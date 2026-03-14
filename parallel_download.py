@@ -4,6 +4,7 @@ import os
 import subprocess
 import sys
 import time
+from collections import Counter
 from contextlib import contextmanager
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from multiprocessing import Manager
@@ -142,6 +143,12 @@ EXPERIMENT_DOWNLOAD_BUCKET_ORDER = [
     "access_rights",
     "doi_not_found",
     "other_non_success",
+]
+DOWNLOAD_SOURCE_CATEGORY_ORDER = [
+    "publisher_native",
+    "scihub_assisted",
+    "unknown_success",
+    "not_downloaded",
 ]
 
 
@@ -455,20 +462,36 @@ def _classify_experiment_download_bucket(result: Dict[str, Any]) -> str:
     return "other_non_success"
 
 
+def _classify_download_source_category(result: Dict[str, Any]) -> str:
+    if not bool(result.get("success")):
+        return "not_downloaded"
+    method = str(result.get("method") or "").strip().lower()
+    stage = str(result.get("stage") or "").strip().lower()
+    if method == "scihub" or stage == "scihub":
+        return "scihub_assisted"
+    if method in {"drission", "direct_oa", "api"}:
+        return "publisher_native"
+    return "unknown_success"
+
+
 def _summarize_experiment_outcomes(results: List[Dict[str, Any]]) -> Dict[str, Any]:
     landing_counts = {key: 0 for key in EXPERIMENT_LANDING_BUCKET_ORDER}
     download_counts = {key: 0 for key in EXPERIMENT_DOWNLOAD_BUCKET_ORDER}
+    source_counts = {key: 0 for key in DOWNLOAD_SOURCE_CATEGORY_ORDER}
     matrix_counts: Dict[str, int] = {}
     for rec in results:
         landing_bucket = _classify_experiment_landing_bucket(rec)
         download_bucket = _classify_experiment_download_bucket(rec)
+        source_bucket = _classify_download_source_category(rec)
         landing_counts[landing_bucket] = landing_counts.get(landing_bucket, 0) + 1
         download_counts[download_bucket] = download_counts.get(download_bucket, 0) + 1
+        source_counts[source_bucket] = source_counts.get(source_bucket, 0) + 1
         combo_key = f"{landing_bucket} -> {download_bucket}"
         matrix_counts[combo_key] = matrix_counts.get(combo_key, 0) + 1
     return {
         "landing_bucket_counts": landing_counts,
         "download_bucket_counts": download_counts,
+        "download_source_category_counts": source_counts,
         "landing_to_download_matrix": dict(sorted(matrix_counts.items())),
     }
 
@@ -1573,6 +1596,8 @@ def main(
     df["browser_session_source"] = [str(r.get("browser_session_source") or "") for r in final_results]
     df["browser_profile_name"] = [str(r.get("browser_profile_name") or "") for r in final_results]
     df["browser_user_data_dir"] = [str(r.get("browser_user_data_dir") or "") for r in final_results]
+    df["download_method"] = [str(r.get("method") or "") for r in final_results]
+    df["download_source_category"] = [_classify_download_source_category(r) for r in final_results]
     df["download_result_reason"] = [str(r.get("reason") or "") for r in final_results]
     df["download_result_stage"] = [str(r.get("stage") or "") for r in final_results]
     df["download_result_domain"] = [str(r.get("domain") or "") for r in final_results]
@@ -1606,6 +1631,8 @@ def main(
     live_metrics = _summarize_live_attempt_metrics(attempts_jsonl_path, attempts_summary_path)
     integrated_landing_metrics = _summarize_integrated_landing(final_results)
     experiment_outcomes = _summarize_experiment_outcomes(final_results)
+    download_method_counts = Counter(str(r.get("method") or "unknown") for r in final_results)
+    download_source_category_counts = Counter(_classify_download_source_category(r) for r in final_results)
 
     summary_payload = {
         "generated_at": int(time.time()),
@@ -1644,6 +1671,11 @@ def main(
         "landing_precheck": landing_precheck_metrics,
         "integrated_landing": integrated_landing_metrics,
         "experiment_outcomes": experiment_outcomes,
+        "download_method_counts": dict(sorted(download_method_counts.items())),
+        "download_source_category_counts": {
+            key: int(download_source_category_counts.get(key, 0))
+            for key in DOWNLOAD_SOURCE_CATEGORY_ORDER
+        },
         "first_pass": {
             "success": int(sum(1 for r in first_results if r.get("success"))),
             "failed": int(sum(1 for r in first_results if not r.get("success"))),
