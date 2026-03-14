@@ -9,7 +9,7 @@ import shlex
 import socket
 import subprocess
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -31,7 +31,7 @@ def shell_join(cmd: List[str]) -> str:
 
 
 def utc_now_iso() -> str:
-    return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def read_text_command(cmd: List[str], cwd: Path) -> str:
