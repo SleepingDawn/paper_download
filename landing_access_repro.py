@@ -71,7 +71,10 @@ from tools_exp import (
     build_landing_browser_session_plan,
     coerce_headless_for_execution_env,
     detect_access_issue,
+    ensure_runtime_profile_ready,
+    resolve_browser_executable,
     resolve_browser_execution_env,
+    resolve_runtime_preset,
 )
 
 OUT_SUCCESS_ACCESS = "SUCCESS_ACCESS"
@@ -161,36 +164,7 @@ def _browser_for_worker(
 
 
 def _resolve_browser_path(preferred_path: str) -> str:
-    candidates = []
-    if preferred_path:
-        candidates.append(preferred_path)
-    env_path = str(os.environ.get("CHROME_PATH", "")).strip()
-    if env_path:
-        candidates.append(env_path)
-
-    for name in ("chrome", "Google Chrome"):
-        path = shutil.which(name)
-        if path:
-            candidates.append(path)
-
-    candidates.extend(
-        [
-            "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-            os.path.expanduser("~/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
-            "/Applications/Chromium.app/Contents/MacOS/Chromium",
-            os.path.expanduser("~/Applications/Chromium.app/Contents/MacOS/Chromium"),
-        ]
-    )
-
-    seen = set()
-    for path in candidates:
-        candidate = str(path or "").strip()
-        if not candidate or candidate in seen:
-            continue
-        seen.add(candidate)
-        if os.path.isfile(candidate) and os.access(candidate, os.X_OK):
-            return candidate
-    return ""
+    return resolve_browser_executable(preferred_path)
 
 
 def _pick_free_local_port() -> int:
@@ -2722,12 +2696,27 @@ def main() -> None:
     parser.add_argument("--progress-every", type=int, default=25)
     parser.add_argument("--chrome-path", type=str, default=os.environ.get("CHROME_PATH", ""))
     parser.add_argument("--headless", type=int, default=DEFAULT_LOCAL_HEADLESS, choices=[0, 1])
-    parser.add_argument("--execution-env", type=str, default=os.environ.get("PDF_BROWSER_EXECUTION_ENV", "auto"), choices=["auto", "desktop"])
+    parser.add_argument(
+        "--runtime-preset",
+        type=str,
+        default=os.environ.get("PDF_BROWSER_RUNTIME_PRESET", "auto"),
+        choices=["auto", "local_mac", "linux_cli_seeded"],
+    )
+    parser.add_argument(
+        "--execution-env",
+        type=str,
+        default=os.environ.get("PDF_BROWSER_EXECUTION_ENV", "auto"),
+        choices=["auto", "desktop", "linux_server"],
+    )
     parser.add_argument("--humanized-browser", type=int, default=1, choices=[0, 1])
     parser.add_argument("--assume-institution-access", type=int, default=1, choices=[0, 1])
-    parser.add_argument("--profile-mode", type=str, default="auto")
-    parser.add_argument("--profile-name", type=str, default="Default")
-    parser.add_argument("--persistent-profile-dir", type=str, default="outputs/.chrome_user_data")
+    parser.add_argument("--profile-mode", type=str, default=os.environ.get("PDF_BROWSER_PROFILE_MODE", "auto"))
+    parser.add_argument("--profile-name", type=str, default=os.environ.get("PDF_BROWSER_PROFILE_NAME", "Default"))
+    parser.add_argument(
+        "--persistent-profile-dir",
+        type=str,
+        default=os.environ.get("PDF_BROWSER_PERSISTENT_PROFILE_DIR", "outputs/.chrome_user_data"),
+    )
     parser.add_argument("--worker-profile-root", type=str, default="")
     parser.add_argument("--clean-worker-profiles", type=int, default=1, choices=[0, 1])
     parser.add_argument("--capture-fail-artifacts", type=int, default=1, choices=[0, 1])
@@ -2756,6 +2745,8 @@ def main() -> None:
     workers = min(requested_workers, SAFE_LANDING_MAX_WORKERS, len(ordered_records))
     chunks = chunk_inputs_round_robin(ordered_records, workers)
 
+    resolved_runtime_preset = resolve_runtime_preset(args.runtime_preset)
+    os.environ["PDF_BROWSER_RUNTIME_PRESET"] = resolved_runtime_preset
     resolved_execution_env = resolve_browser_execution_env(args.execution_env)
     requested_headless = bool(int(args.headless))
     resolved_headless = coerce_headless_for_execution_env(
@@ -2767,9 +2758,18 @@ def main() -> None:
     os.environ["PDF_BROWSER_HEADLESS"] = "1" if resolved_headless else "0"
     os.environ["PDF_BROWSER_HUMANIZED"] = "1" if int(args.humanized_browser) == 1 else "0"
     os.environ["PDF_ASSUME_INSTITUTION_ACCESS"] = "1" if int(args.assume_institution_access) == 1 else "0"
-    os.environ["PDF_BROWSER_PROFILE_MODE"] = str(args.profile_mode or "auto").strip()
-    os.environ["PDF_BROWSER_PROFILE_NAME"] = str(args.profile_name or "Default").strip() or "Default"
-    os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = os.path.abspath(str(args.persistent_profile_dir))
+    resolved_profile_mode = str(args.profile_mode or "auto").strip() or "auto"
+    resolved_profile_name = str(args.profile_name or "Default").strip() or "Default"
+    resolved_persistent_profile_dir = os.path.abspath(str(args.persistent_profile_dir))
+    os.environ["PDF_BROWSER_PROFILE_MODE"] = resolved_profile_mode
+    os.environ["PDF_BROWSER_PROFILE_NAME"] = resolved_profile_name
+    os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = resolved_persistent_profile_dir
+    profile_inspection = ensure_runtime_profile_ready(
+        runtime_preset=resolved_runtime_preset,
+        profile_mode=resolved_profile_mode,
+        persistent_profile_dir=resolved_persistent_profile_dir,
+        profile_name=resolved_profile_name,
+    )
 
     worker_profile_root = str(args.worker_profile_root or "").strip()
     run_base = os.path.join("/tmp", os.environ.get("USER", "user"))
@@ -2796,13 +2796,25 @@ def main() -> None:
         raise RuntimeError(
             "Chrome/Chromium executable not found. "
             "Set --chrome-path or CHROME_PATH. "
-            "Tried chrome/Google Chrome plus common macOS app paths."
+            "Tried PATH plus common Linux/macOS app paths."
         )
 
     print(json.dumps({"resolved_chrome_path": chrome_path}, ensure_ascii=False), flush=True)
+    print(json.dumps({"runtime_preset": resolved_runtime_preset}, ensure_ascii=False), flush=True)
     print(json.dumps({"execution_env": resolved_execution_env}, ensure_ascii=False), flush=True)
     print(json.dumps({"worker_profile_root": worker_profile_root}, ensure_ascii=False), flush=True)
     print(json.dumps({"worker_download_root": worker_download_root}, ensure_ascii=False), flush=True)
+    if profile_inspection.get("checked"):
+        print(
+            json.dumps(
+                {
+                    "seed_profile_root": profile_inspection.get("profile_root", ""),
+                    "seed_profile_ok": bool(profile_inspection.get("ok")),
+                },
+                ensure_ascii=False,
+            ),
+            flush=True,
+        )
     if workers != requested_workers:
         print(
             json.dumps(
@@ -2906,6 +2918,7 @@ def main() -> None:
         "sample_size": len(ordered_records),
         "workers_requested": requested_workers,
         "workers_effective": workers,
+        "runtime_preset": resolved_runtime_preset,
         "execution_env": resolved_execution_env,
         "headless": bool(resolved_headless),
         "headless_requested": bool(requested_headless),
@@ -2921,6 +2934,8 @@ def main() -> None:
         "profile_mode": os.environ.get("PDF_BROWSER_PROFILE_MODE", ""),
         "profile_name": os.environ.get("PDF_BROWSER_PROFILE_NAME", ""),
         "persistent_profile_dir": os.environ.get("PDF_BROWSER_PERSISTENT_PROFILE_DIR", ""),
+        "seed_profile_checked": bool(profile_inspection.get("checked")),
+        "seed_profile_ok": bool(profile_inspection.get("ok")),
         "worker_profile_root": worker_profile_root,
         "probe_page_mode": str(args.probe_page_mode or PROBE_PAGE_MODE_REUSE),
         "capture_fail_artifacts": bool(int(args.capture_fail_artifacts)),

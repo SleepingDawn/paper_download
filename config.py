@@ -1,8 +1,7 @@
 import argparse
 import os
 
-CHROME_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"  # macOS 예시
-# CHROME_PATH = "C:/Program Files/Google/Chrome/Application/chrome.exe"  # 윈도우 예시
+CHROME_PATH = os.environ.get("CHROME_PATH", "")
 
 WILEY_API_KEY = "b4b01dd9-bf66-4a57-a791-0e7f3ff95a39"
 
@@ -63,6 +62,16 @@ def get_config():
         help="다운로드 전 landing_access_repro.py로 랜딩 성공 여부를 먼저 확인하고, 성공 DOI만 다운로드에 투입",
     )
     parser.add_argument(
+        "--runtime-preset",
+        type=str,
+        default=os.environ.get("PDF_BROWSER_RUNTIME_PRESET", "auto"),
+        choices=["auto", "local_mac", "linux_cli_seeded"],
+        help=(
+            "브라우저 런타임 preset. local_mac은 기존 로컬 Mac 기준 동작을 유지하고, "
+            "linux_cli_seeded는 /docs의 Linux seeded profile 문서를 따르는 서버 preset입니다."
+        ),
+    )
+    parser.add_argument(
         "--headless",
         type=int,
         default=None,
@@ -73,8 +82,8 @@ def get_config():
         "--execution-env",
         type=str,
         default=os.environ.get("PDF_BROWSER_EXECUTION_ENV", "auto"),
-        choices=["auto", "desktop"],
-        help="브라우저 실행 환경. local_mac 기준으로는 auto와 desktop이 동일하게 동작합니다.",
+        choices=["auto", "desktop", "linux_server"],
+        help="브라우저 실행 환경. auto는 preset/플랫폼에 따라 desktop 또는 linux_server로 해석됩니다.",
     )
     parser.add_argument(
         "--deep-retry-headless",
@@ -131,7 +140,7 @@ def get_config():
         "--persistent-profile-dir",
         type=str,
         default=os.environ.get("PDF_BROWSER_PERSISTENT_PROFILE_DIR", "outputs/.chrome_user_data"),
-        help="시스템 프로필이 없을 때 사용할 지속 프로필 루트",
+        help="지속 프로필 루트. linux_cli_seeded에서는 /docs 기준 Linux user-data-dir root를 지정합니다.",
     )
     parser.add_argument(
         "--runtime-profile-root",

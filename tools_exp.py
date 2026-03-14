@@ -45,6 +45,13 @@ BEST_BROWSER_UA_MAC = (
 BEST_BROWSER_UA = BEST_BROWSER_UA_MAC
 BEST_BROWSER_WINDOW = "1728,1117"
 MAX_ACTION_WAIT_S = int(os.getenv("PDF_ACTION_MAX_WAIT_S", "60"))
+RUNTIME_PRESET_AUTO = "auto"
+RUNTIME_PRESET_LOCAL_MAC = "local_mac"
+RUNTIME_PRESET_LINUX_CLI_SEEDED = "linux_cli_seeded"
+EXECUTION_ENV_DESKTOP = "desktop"
+EXECUTION_ENV_LINUX_SERVER = "linux_server"
+PROFILE_READY_MARKER = ".codex_profile_seed_ready"
+DEFAULT_PERSISTENT_PROFILE_DIR = os.path.abspath(os.path.join("outputs", ".chrome_user_data"))
 HIGH_FRICTION_DOMAINS = (
     "acs.org",
     "sciencedirect.com",
@@ -336,27 +343,75 @@ def _resolve_best_browser_ua() -> str:
     return BEST_BROWSER_UA_MAC
 
 
-def resolve_browser_executable(preferred_path: str = "", logger=None) -> str:
-    candidates = []
+def _normalize_runtime_preset(runtime_preset: str = "") -> str:
+    raw = str(runtime_preset or os.getenv("PDF_BROWSER_RUNTIME_PRESET", "auto")).strip().lower().replace("-", "_")
+    aliases = {
+        "": RUNTIME_PRESET_AUTO,
+        "default": RUNTIME_PRESET_AUTO,
+        "local": RUNTIME_PRESET_LOCAL_MAC,
+        "localmac": RUNTIME_PRESET_LOCAL_MAC,
+        "mac": RUNTIME_PRESET_LOCAL_MAC,
+        "macos": RUNTIME_PRESET_LOCAL_MAC,
+        "linux": RUNTIME_PRESET_LINUX_CLI_SEEDED,
+        "linux_seed": RUNTIME_PRESET_LINUX_CLI_SEEDED,
+        "linux_seeded": RUNTIME_PRESET_LINUX_CLI_SEEDED,
+        "linux_server": RUNTIME_PRESET_LINUX_CLI_SEEDED,
+        "server": RUNTIME_PRESET_LINUX_CLI_SEEDED,
+    }
+    normalized = aliases.get(raw, raw)
+    if normalized in (RUNTIME_PRESET_AUTO, RUNTIME_PRESET_LOCAL_MAC, RUNTIME_PRESET_LINUX_CLI_SEEDED):
+        return normalized
+    return RUNTIME_PRESET_AUTO
+
+
+def resolve_runtime_preset(runtime_preset: str = "") -> str:
+    return _normalize_runtime_preset(runtime_preset)
+
+
+def _linux_display_available() -> bool:
+    return bool(os.getenv("DISPLAY") or os.getenv("WAYLAND_DISPLAY"))
+
+
+def _browser_executable_candidates(preferred_path: str = "") -> list[str]:
+    candidates: list[str] = []
     if preferred_path:
         candidates.append(preferred_path)
+
     env_path = str(os.environ.get("CHROME_PATH", "")).strip()
     if env_path:
         candidates.append(env_path)
-    for name in ("chrome", "Google Chrome"):
-        p = shutil.which(name)
-        if p:
-            candidates.append(p)
+
+    for name in (
+        "google-chrome",
+        "google-chrome-stable",
+        "chromium",
+        "chromium-browser",
+        "chrome",
+        "Google Chrome",
+    ):
+        path = shutil.which(name)
+        if path:
+            candidates.append(path)
+
     candidates.extend(
         [
+            "/usr/bin/google-chrome",
+            "/usr/bin/google-chrome-stable",
+            "/usr/bin/chromium",
+            "/usr/bin/chromium-browser",
+            "/snap/bin/chromium",
             "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
             os.path.expanduser("~/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
             "/Applications/Chromium.app/Contents/MacOS/Chromium",
             os.path.expanduser("~/Applications/Chromium.app/Contents/MacOS/Chromium"),
         ]
     )
+    return candidates
+
+
+def resolve_browser_executable(preferred_path: str = "", logger=None) -> str:
     seen = set()
-    for path in candidates:
+    for path in _browser_executable_candidates(preferred_path):
         p = str(path or "").strip()
         if not p or p in seen:
             continue
@@ -371,6 +426,9 @@ def resolve_browser_executable(preferred_path: str = "", logger=None) -> str:
 def _find_system_chrome_user_data_dir(profile_name: str = "Default") -> str:
     candidates = [
         os.path.expanduser("~/Library/Application Support/Google/Chrome"),
+        os.path.expanduser("~/.config/google-chrome"),
+        os.path.expanduser("~/.config/google-chrome-beta"),
+        os.path.expanduser("~/.config/chromium"),
     ]
     for base in candidates:
         if os.path.isdir(os.path.join(base, profile_name)):
@@ -403,9 +461,12 @@ def _normalize_execution_env(execution_env: str = "") -> str:
         "local_desktop": "desktop",
         "mac": "desktop",
         "macos": "desktop",
+        "linux": EXECUTION_ENV_LINUX_SERVER,
+        "server": EXECUTION_ENV_LINUX_SERVER,
+        "cli": EXECUTION_ENV_LINUX_SERVER,
     }
     normalized = aliases.get(raw, raw)
-    if normalized in ("auto", "desktop"):
+    if normalized in ("auto", EXECUTION_ENV_DESKTOP, EXECUTION_ENV_LINUX_SERVER):
         return normalized
     return "auto"
 
@@ -414,11 +475,94 @@ def resolve_browser_execution_env(execution_env: str = "") -> str:
     normalized = _normalize_execution_env(execution_env)
     if normalized != "auto":
         return normalized
-    return "desktop"
+    if resolve_runtime_preset() == RUNTIME_PRESET_LINUX_CLI_SEEDED:
+        return EXECUTION_ENV_LINUX_SERVER
+    if sys.platform.startswith("linux") and not _linux_display_available():
+        return EXECUTION_ENV_LINUX_SERVER
+    return EXECUTION_ENV_DESKTOP
 
 
 def coerce_headless_for_execution_env(headless: bool, execution_env: str = "", logger=None, context: str = "browser") -> bool:
-    return bool(headless)
+    requested = bool(headless)
+    resolved_env = resolve_browser_execution_env(execution_env)
+    if resolved_env == EXECUTION_ENV_LINUX_SERVER:
+        if not requested and logger:
+            prefix = f"{context}: " if context else ""
+            logger.warning(f"     [Drission] {prefix}linux_server 환경에서는 headful을 허용하지 않아 headless로 강제합니다.")
+        return True
+    return requested
+
+
+def inspect_browser_profile_root(profile_root: str, profile_name: str = "Default") -> Dict[str, Any]:
+    root = os.path.abspath(str(profile_root or "").strip()) if str(profile_root or "").strip() else ""
+    profile_name = str(profile_name or "Default").strip() or "Default"
+    profile_dir = os.path.join(root, profile_name) if root else ""
+    preferences_path = os.path.join(profile_dir, "Preferences") if profile_dir else ""
+    local_state_path = os.path.join(root, "Local State") if root else ""
+    cookie_paths = [
+        os.path.join(profile_dir, "Network", "Cookies"),
+        os.path.join(profile_dir, "Cookies"),
+    ]
+    storage_dirs = [
+        os.path.join(profile_dir, "Local Storage"),
+        os.path.join(profile_dir, "IndexedDB"),
+    ]
+    profile_dir_exists = bool(profile_dir and os.path.isdir(profile_dir))
+    preferences_exists = bool(preferences_path and os.path.isfile(preferences_path))
+    return {
+        "profile_root": root,
+        "profile_name": profile_name,
+        "root_exists": bool(root and os.path.isdir(root)),
+        "profile_dir": profile_dir,
+        "profile_dir_exists": profile_dir_exists,
+        "preferences_path": preferences_path,
+        "preferences_exists": preferences_exists,
+        "local_state_path": local_state_path,
+        "local_state_exists": bool(local_state_path and os.path.isfile(local_state_path)),
+        "marker_path": os.path.join(root, PROFILE_READY_MARKER) if root else "",
+        "marker_exists": bool(root and os.path.isfile(os.path.join(root, PROFILE_READY_MARKER))),
+        "cookie_paths": cookie_paths,
+        "cookie_exists": any(os.path.isfile(path) for path in cookie_paths),
+        "storage_dirs": storage_dirs,
+        "storage_exists": any(os.path.isdir(path) for path in storage_dirs),
+        "ok": bool(profile_dir_exists and preferences_exists),
+    }
+
+
+def ensure_runtime_profile_ready(
+    runtime_preset: str = "",
+    profile_mode: str = "",
+    persistent_profile_dir: str = "",
+    profile_name: str = "Default",
+) -> Dict[str, Any]:
+    preset = resolve_runtime_preset(runtime_preset)
+    normalized_mode = _normalize_profile_mode(profile_mode)
+    inspection = inspect_browser_profile_root(
+        persistent_profile_dir or DEFAULT_PERSISTENT_PROFILE_DIR,
+        profile_name=profile_name,
+    )
+    inspection["runtime_preset"] = preset
+    inspection["profile_mode"] = normalized_mode
+    inspection["checked"] = bool(
+        preset == RUNTIME_PRESET_LINUX_CLI_SEEDED and normalized_mode != "temp"
+    )
+    if not inspection["checked"]:
+        return inspection
+    if inspection["ok"]:
+        return inspection
+
+    missing = []
+    if not inspection["root_exists"]:
+        missing.append("profile root")
+    if not inspection["profile_dir_exists"]:
+        missing.append(f"{inspection['profile_name']}/")
+    if not inspection["preferences_exists"]:
+        missing.append(f"{inspection['profile_name']}/Preferences")
+    missing_desc = ", ".join(missing) if missing else "required profile files"
+    raise RuntimeError(
+        "linux_cli_seeded preset requires a Linux Chrome user-data-dir root "
+        f"with {missing_desc}. Set --persistent-profile-dir to the extracted Linux seed profile root."
+    )
 
 
 def _stateful_profile_requested(doi_url: str, profile_mode: str = "") -> bool:
@@ -439,15 +583,25 @@ def _landing_stateful_profile_isolation_enabled() -> bool:
 def _resolve_stateful_profile_source(profile_name: str, profile_mode: str, session_seed_root: str = "") -> tuple[str, str]:
     profile_name = str(profile_name or "Default").strip() or "Default"
     normalized_mode = _normalize_profile_mode(profile_mode)
+    runtime_preset = resolve_runtime_preset()
     seed_root = os.path.abspath(str(session_seed_root or "").strip()) if str(session_seed_root or "").strip() else ""
     persistent_dir = os.getenv(
         "PDF_BROWSER_PERSISTENT_PROFILE_DIR",
-        os.path.abspath(os.path.join("outputs", ".chrome_user_data")),
-    ).strip() or os.path.abspath(os.path.join("outputs", ".chrome_user_data"))
+        DEFAULT_PERSISTENT_PROFILE_DIR,
+    ).strip() or DEFAULT_PERSISTENT_PROFILE_DIR
     persistent_dir = os.path.abspath(persistent_dir)
 
     if seed_root and os.path.isdir(os.path.join(seed_root, profile_name)):
         return seed_root, "precheck_seed"
+
+    if runtime_preset == RUNTIME_PRESET_LINUX_CLI_SEEDED:
+        ensure_runtime_profile_ready(
+            runtime_preset=runtime_preset,
+            profile_mode=normalized_mode,
+            persistent_profile_dir=persistent_dir,
+            profile_name=profile_name,
+        )
+        return persistent_dir, "linux_seed"
 
     if normalized_mode == "persistent":
         os.makedirs(persistent_dir, exist_ok=True)
@@ -465,7 +619,7 @@ def _seed_profile_root_for_runtime(source_root: str, target_root: str, profile_n
     source_root = os.path.abspath(str(source_root or "").strip())
     target_root = os.path.abspath(str(target_root or "").strip())
     profile_name = str(profile_name or "Default").strip() or "Default"
-    marker_path = os.path.join(target_root, ".codex_profile_seed_ready")
+    marker_path = os.path.join(target_root, PROFILE_READY_MARKER)
     target_profile_dir = os.path.join(target_root, profile_name)
     if os.path.isfile(marker_path) and os.path.isdir(target_profile_dir):
         return target_root
@@ -728,6 +882,11 @@ def _apply_best_browser_profile(co: ChromiumOptions) -> None:
     co.set_argument("--no-default-browser-check")
     co.set_argument(f"--window-size={BEST_BROWSER_WINDOW}")
     co.set_argument(f"--lang={BEST_BROWSER_LANG}")
+    if execution_env == EXECUTION_ENV_LINUX_SERVER:
+        co.set_argument("--disable-dev-shm-usage")
+        if os.getenv("PDF_BROWSER_NO_SANDBOX", "").strip().lower() in ("1", "true", "yes", "on"):
+            co.set_argument("--no-sandbox")
+            co.set_argument("--disable-setuid-sandbox")
     co.set_pref("intl.accept_languages", BEST_BROWSER_LANG_PREF)
     co.set_pref("credentials_enable_service", False)
     co.set_pref("profile.password_manager_enabled", False)

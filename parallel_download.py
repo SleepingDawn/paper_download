@@ -13,7 +13,11 @@ from tqdm import tqdm
 
 from config import get_config
 from landing_classifier import (
+    STATE_BLANK_OR_INCOMPLETE,
+    STATE_BROKEN_JS_SHELL,
     STATE_CHALLENGE_DETECTED,
+    STATE_CONSENT_OR_INTERSTITIAL_BLOCK,
+    STATE_DOI_NOT_FOUND,
     estimate_publisher_key,
     release_pacing_slot,
     reorder_inputs_for_pacing,
@@ -25,10 +29,12 @@ from tools_exp import (
     download_using_api,
     download_with_cffi,
     download_with_drission,
+    ensure_runtime_profile_ready,
     normalize_publisher_label,
     reap_stale_drission_orphan_browsers,
     resolve_browser_execution_env,
     resolve_browser_executable,
+    resolve_runtime_preset,
     setup_logger,
     try_manual_scihub,
 )
@@ -107,6 +113,28 @@ NON_DEEP_RETRY_REASONS = {
     REASON_FAIL_DOI_NOT_FOUND,
     REASON_FAIL_SSRN_CHALLENGE,
 }
+EXPERIMENT_LANDING_BUCKET_ORDER = [
+    "landing_success",
+    "challenge_or_interstitial",
+    "blank_or_incomplete",
+    "timeout_or_error",
+    "environment_or_config_failure",
+    "access_rights",
+    "doi_not_found",
+    "not_attempted",
+    "other_non_success",
+]
+EXPERIMENT_DOWNLOAD_BUCKET_ORDER = [
+    "download_success",
+    "landing_success_no_download",
+    "challenge_or_interstitial",
+    "blank_or_incomplete",
+    "timeout_or_error",
+    "environment_or_config_failure",
+    "access_rights",
+    "doi_not_found",
+    "other_non_success",
+]
 
 
 def _resolve_run_output_dir(output_dir: str) -> str:
@@ -323,6 +351,117 @@ def _summarize_integrated_landing(results: List[Dict[str, Any]]) -> Dict[str, An
         "adjusted_denominator": adjusted_denominator,
         "adjusted_success_rate": round(success / adjusted_denominator, 4) if adjusted_denominator else 0.0,
         "state_counts": state_counts,
+    }
+
+
+def _has_environment_or_config_failure(result: Dict[str, Any]) -> bool:
+    stage = str(result.get("stage") or "").strip().lower()
+    reason = str(result.get("reason") or "").strip()
+    evidence_blob = " ".join(str(item) for item in (result.get("evidence") or [])).lower()
+    if stage in {"drission-init", "browser-init", "config"}:
+        return True
+    if any(
+        marker in evidence_blob
+        for marker in (
+            "browser_executable_not_found",
+            "browser_init_failed",
+            "chrome_smoke_failed",
+            "persistent_profile_dir",
+            "linux_cli_seeded",
+            "profile seed",
+        )
+    ):
+        return True
+    return bool(reason == REASON_FAIL_UNKNOWN and stage in {"init", "drission-init"})
+
+
+def _classify_experiment_landing_bucket(result: Dict[str, Any]) -> str:
+    if bool(result.get("landing_success")):
+        return "landing_success"
+
+    landing_state = str(result.get("landing_state") or "").strip().lower()
+    reason = str(result.get("reason") or "").strip()
+    if landing_state in {
+        STATE_CHALLENGE_DETECTED,
+        STATE_CONSENT_OR_INTERSTITIAL_BLOCK,
+    } or reason in {
+        REASON_FAIL_CAPTCHA,
+        REASON_FAIL_BLOCK,
+        REASON_FAIL_SSRN_CHALLENGE,
+    }:
+        return "challenge_or_interstitial"
+    if landing_state in {
+        STATE_BLANK_OR_INCOMPLETE,
+        STATE_BROKEN_JS_SHELL,
+    }:
+        return "blank_or_incomplete"
+    if landing_state in {"timeout", "network_error"} or reason in {
+        REASON_FAIL_TIMEOUT_NETWORK,
+        REASON_FAIL_HTTP_STATUS,
+    }:
+        return "timeout_or_error"
+    if _has_environment_or_config_failure(result):
+        return "environment_or_config_failure"
+    if reason == REASON_FAIL_ACCESS_RIGHTS:
+        return "access_rights"
+    if landing_state == STATE_DOI_NOT_FOUND or reason == REASON_FAIL_DOI_NOT_FOUND:
+        return "doi_not_found"
+    if not bool(result.get("landing_attempted")):
+        return "not_attempted"
+    return "other_non_success"
+
+
+def _classify_experiment_download_bucket(result: Dict[str, Any]) -> str:
+    if bool(result.get("success")):
+        return "download_success"
+    if _has_environment_or_config_failure(result):
+        return "environment_or_config_failure"
+    if bool(result.get("landing_success")):
+        return "landing_success_no_download"
+
+    landing_state = str(result.get("landing_state") or "").strip().lower()
+    reason = str(result.get("reason") or "").strip()
+    if landing_state in {
+        STATE_CHALLENGE_DETECTED,
+        STATE_CONSENT_OR_INTERSTITIAL_BLOCK,
+    } or reason in {
+        REASON_FAIL_CAPTCHA,
+        REASON_FAIL_BLOCK,
+        REASON_FAIL_SSRN_CHALLENGE,
+    }:
+        return "challenge_or_interstitial"
+    if landing_state in {
+        STATE_BLANK_OR_INCOMPLETE,
+        STATE_BROKEN_JS_SHELL,
+    }:
+        return "blank_or_incomplete"
+    if landing_state in {"timeout", "network_error"} or reason in {
+        REASON_FAIL_TIMEOUT_NETWORK,
+        REASON_FAIL_HTTP_STATUS,
+    }:
+        return "timeout_or_error"
+    if reason == REASON_FAIL_ACCESS_RIGHTS:
+        return "access_rights"
+    if landing_state == STATE_DOI_NOT_FOUND or reason == REASON_FAIL_DOI_NOT_FOUND:
+        return "doi_not_found"
+    return "other_non_success"
+
+
+def _summarize_experiment_outcomes(results: List[Dict[str, Any]]) -> Dict[str, Any]:
+    landing_counts = {key: 0 for key in EXPERIMENT_LANDING_BUCKET_ORDER}
+    download_counts = {key: 0 for key in EXPERIMENT_DOWNLOAD_BUCKET_ORDER}
+    matrix_counts: Dict[str, int] = {}
+    for rec in results:
+        landing_bucket = _classify_experiment_landing_bucket(rec)
+        download_bucket = _classify_experiment_download_bucket(rec)
+        landing_counts[landing_bucket] = landing_counts.get(landing_bucket, 0) + 1
+        download_counts[download_bucket] = download_counts.get(download_bucket, 0) + 1
+        combo_key = f"{landing_bucket} -> {download_bucket}"
+        matrix_counts[combo_key] = matrix_counts.get(combo_key, 0) + 1
+    return {
+        "landing_bucket_counts": landing_counts,
+        "download_bucket_counts": download_counts,
+        "landing_to_download_matrix": dict(sorted(matrix_counts.items())),
     }
 
 
@@ -1022,6 +1161,7 @@ def _run_landing_precheck(
     max_workers: int,
     headless: bool,
     execution_env: str,
+    runtime_preset: str,
 ) -> tuple[pd.DataFrame, Dict[str, Any]]:
     landing_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "landing_access_repro.py")
     precheck_dir = os.path.join(run_output_dir, "landing_precheck")
@@ -1045,8 +1185,16 @@ def _run_landing_precheck(
         str(max(1, min(int(max_workers), 2))),
         "--headless",
         "1" if bool(headless) else "0",
+        "--runtime-preset",
+        str(runtime_preset or "auto"),
         "--execution-env",
         str(execution_env or "auto"),
+        "--profile-mode",
+        str(os.environ.get("PDF_BROWSER_PROFILE_MODE", "auto")),
+        "--profile-name",
+        str(os.environ.get("PDF_BROWSER_PROFILE_NAME", "Default")),
+        "--persistent-profile-dir",
+        str(os.environ.get("PDF_BROWSER_PERSISTENT_PROFILE_DIR", "outputs/.chrome_user_data")),
         "--progress-every",
         "100",
         "--capture-fail-artifacts",
@@ -1153,6 +1301,7 @@ def main(
     global_start_spacing_sec=1.5,
     jitter_min_sec=0.7,
     jitter_max_sec=1.8,
+    runtime_preset="auto",
     profile_mode="auto",
     profile_name="Default",
     persistent_profile_dir="outputs/.chrome_user_data",
@@ -1183,12 +1332,23 @@ def main(
     attempts_jsonl_path = os.path.join(run_output_dir, "download_attempts.jsonl")
     attempts_summary_path = os.path.join(run_output_dir, "download_attempts_summary.json")
     os.environ["PDF_ATTEMPTS_JSONL"] = attempts_jsonl_path
+    resolved_runtime_preset = resolve_runtime_preset(runtime_preset)
+    os.environ["PDF_BROWSER_RUNTIME_PRESET"] = resolved_runtime_preset
     resolved_execution_env = resolve_browser_execution_env(execution_env)
     os.environ["PDF_BROWSER_EXECUTION_ENV"] = resolved_execution_env
-    os.environ["PDF_BROWSER_PROFILE_MODE"] = str(profile_mode or "auto").strip().lower() or "auto"
-    os.environ["PDF_BROWSER_PROFILE_NAME"] = str(profile_name or "Default").strip() or "Default"
-    os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = os.path.abspath(
+    resolved_profile_mode = str(profile_mode or "auto").strip().lower() or "auto"
+    resolved_profile_name = str(profile_name or "Default").strip() or "Default"
+    resolved_persistent_profile_dir = os.path.abspath(
         str(persistent_profile_dir or "outputs/.chrome_user_data")
+    )
+    os.environ["PDF_BROWSER_PROFILE_MODE"] = resolved_profile_mode
+    os.environ["PDF_BROWSER_PROFILE_NAME"] = resolved_profile_name
+    os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = resolved_persistent_profile_dir
+    profile_inspection = ensure_runtime_profile_ready(
+        runtime_preset=resolved_runtime_preset,
+        profile_mode=resolved_profile_mode,
+        persistent_profile_dir=resolved_persistent_profile_dir,
+        profile_name=resolved_profile_name,
     )
     os.environ.pop("PDF_BROWSER_SESSION_SEED_ROOT", None)
     runtime_profile_root = str(runtime_profile_root or "").strip()
@@ -1249,8 +1409,15 @@ def main(
         f"브라우저 모드(first/deep): {'headless' if resolved_headless else 'headful'} / "
         f"{'headless' if resolved_deep_retry_headless else 'headful'}"
     )
+    print(f"런타임 preset: {resolved_runtime_preset}")
     print(f"브라우저 실행 환경: {resolved_execution_env}")
     print(f"landing challenge/block 즉시 중단: {resolved_abort_on_landing_block}")
+    if profile_inspection.get("checked"):
+        print(
+            "Linux seeded profile: "
+            f"{profile_inspection.get('profile_root')} "
+            f"(ok={bool(profile_inspection.get('ok'))})"
+        )
     print(
         "download publisher pacing: "
         f"cooldown={float(publisher_cooldown_sec):.1f}s, "
@@ -1272,6 +1439,7 @@ def main(
             max_workers=max_workers,
             headless=resolved_headless,
             execution_env=resolved_execution_env,
+            runtime_preset=resolved_runtime_preset,
         )
         print(
             f"Landing precheck 완료: 성공={landing_precheck_metrics.get('landing_success', 0)} / "
@@ -1386,6 +1554,15 @@ def main(
     df["browser_session_source"] = [str(r.get("browser_session_source") or "") for r in final_results]
     df["browser_profile_name"] = [str(r.get("browser_profile_name") or "") for r in final_results]
     df["browser_user_data_dir"] = [str(r.get("browser_user_data_dir") or "") for r in final_results]
+    df["download_result_reason"] = [str(r.get("reason") or "") for r in final_results]
+    df["download_result_stage"] = [str(r.get("stage") or "") for r in final_results]
+    df["download_result_domain"] = [str(r.get("domain") or "") for r in final_results]
+    df["download_http_status"] = [str(r.get("http_status") or "") for r in final_results]
+    df["download_evidence"] = [
+        json.dumps(list(r.get("evidence") or []), ensure_ascii=False) for r in final_results
+    ]
+    df["experiment_landing_bucket"] = [_classify_experiment_landing_bucket(r) for r in final_results]
+    df["experiment_download_bucket"] = [_classify_experiment_download_bucket(r) for r in final_results]
     df["scheduler_publisher"] = [str(r.get("scheduler_publisher") or "") for r in final_results]
     df["scheduled_start_ms"] = [int(r.get("scheduled_start_ms", 0) or 0) for r in final_results]
     df["actual_start_ms"] = [int(r.get("actual_start_ms", 0) or 0) for r in final_results]
@@ -1409,6 +1586,7 @@ def main(
     shutdown_orphan_reaped = reap_stale_drission_orphan_browsers(current_pid=os.getpid())
     live_metrics = _summarize_live_attempt_metrics(attempts_jsonl_path, attempts_summary_path)
     integrated_landing_metrics = _summarize_integrated_landing(final_results)
+    experiment_outcomes = _summarize_experiment_outcomes(final_results)
 
     summary_payload = {
         "generated_at": int(time.time()),
@@ -1424,6 +1602,7 @@ def main(
             "closed_access_pdf_dir": ca_pdf_dir,
         },
         "download_browser": {
+            "runtime_preset": resolved_runtime_preset,
             "execution_env": resolved_execution_env,
             "headless": bool(resolved_headless),
             "deep_retry_headless": bool(resolved_deep_retry_headless),
@@ -1431,6 +1610,8 @@ def main(
             "profile_mode": os.environ.get("PDF_BROWSER_PROFILE_MODE", ""),
             "profile_name": os.environ.get("PDF_BROWSER_PROFILE_NAME", ""),
             "persistent_profile_dir": os.environ.get("PDF_BROWSER_PERSISTENT_PROFILE_DIR", ""),
+            "seed_profile_checked": bool(profile_inspection.get("checked")),
+            "seed_profile_ok": bool(profile_inspection.get("ok")),
             "runtime_profile_root": os.environ.get("PDF_BROWSER_RUNTIME_PROFILE_ROOT", ""),
             "session_seed_root": os.environ.get("PDF_BROWSER_SESSION_SEED_ROOT", ""),
         },
@@ -1443,6 +1624,7 @@ def main(
         },
         "landing_precheck": landing_precheck_metrics,
         "integrated_landing": integrated_landing_metrics,
+        "experiment_outcomes": experiment_outcomes,
         "first_pass": {
             "success": int(sum(1 for r in first_results if r.get("success"))),
             "failed": int(sum(1 for r in first_results if not r.get("success"))),
@@ -1536,6 +1718,7 @@ if __name__ == "__main__":
         global_start_spacing_sec=args.global_start_spacing_sec,
         jitter_min_sec=args.jitter_min_sec,
         jitter_max_sec=args.jitter_max_sec,
+        runtime_preset=args.runtime_preset,
         profile_mode=args.profile_mode,
         profile_name=args.profile_name,
         persistent_profile_dir=args.persistent_profile_dir,

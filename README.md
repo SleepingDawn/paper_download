@@ -21,6 +21,7 @@ python3 -m pip install -r requirements.txt
 Chrome/Chromium이 필요합니다. PATH에서 자동으로 찾지 못하면 `CHROME_PATH`를 지정하세요.
 
 ```bash
+command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser
 ls "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 ```
 
@@ -99,6 +100,7 @@ OpenAlex 검색 단계 주의:
 - `after-first-pass=stop`
 - `precheck-landing=0`
 - `abort-on-landing-block=1`
+- `runtime_preset=auto`
 - `headless=None`
 - `deep_retry_headless=None`
 - `output_dir=outputs/paper_download_run`
@@ -110,8 +112,11 @@ OpenAlex 검색 단계 주의:
 
 실제 해석:
 
+- `runtime_preset=auto`는 기존 local desktop 동작을 유지하되, display가 없는 Linux에서는 `linux_server`로 해석합니다.
 - `headless=None`이면 `PDF_BROWSER_HEADLESS` 환경변수를 따릅니다.
 - 환경변수도 없으면 local desktop 기준으로 `headful`로 동작합니다.
+- `linux_server`로 해석되면 headful 요청이 들어와도 headless로 강제합니다.
+- `linux_cli_seeded` preset은 `/docs/linux_seed_profile_setup.md` 기준 Linux seeded profile root를 `persistent_profile_dir`로 받아, stateful 세션에서 macOS 시스템 프로필 대신 그 경로를 사용합니다.
 - `deep_retry_headless=None`이면 1차 패스의 `headless` 값을 그대로 따릅니다.
 - `pdf_output_dir`를 생략하면 `pdfs/<run_name>/`를 자동 사용합니다.
 - `abort-on-landing-block=1`이 기본이라, landing에서 `captcha/challenge/block`가 보이면 즉시 중단합니다.
@@ -135,7 +140,28 @@ OpenAlex 검색 단계 주의:
 실제 해석:
 
 - 기본 랜딩 검사는 local desktop 안정성 기준으로 `headful + single worker`입니다.
+- 단, `linux_cli_seeded` 또는 display 없는 Linux에서는 `headless`로 강제됩니다.
 - 실패 스크린샷은 기본적으로 저장하지 않고, HTML/JSON 진단 위주로 남깁니다.
+
+### Linux 서버 preset
+
+Linux 서버에서는 `/docs/linux_seed_profile_setup.md`를 기준으로 profile을 준비한 뒤, 아래처럼 `linux_cli_seeded` preset을 쓰는 것이 기준 경로입니다.
+
+```bash
+python3 -u parallel_download.py \
+  --runtime-preset linux_cli_seeded \
+  --persistent-profile-dir /path/to/linux_chrome_user_data_seed \
+  --profile-name Default \
+  --doi_path ready_to_download.csv \
+  --max_workers 1 \
+  --non-interactive
+```
+
+중요:
+
+- `linux_cli_seeded`는 GUI/headful을 허용하지 않습니다.
+- `persistent_profile_dir`는 tar를 푼 최상위 `user-data-dir` root여야 하며, 최소 `Default/Preferences`가 있어야 합니다.
+- stateful 세션이 필요한 DOI만 seeded profile clone을 쓰고, 나머지 흐름은 기존 `local_mac` baseline 제어 흐름을 유지합니다.
 
 ## 실제 사용 예시
 

@@ -1,0 +1,429 @@
+{
+  "source_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/ready_to_download.csv",
+  "source_total": 1108,
+  "linux_runtime_defaults": {
+    "runtime_preset": "linux_cli_seeded",
+    "execution_env": "linux_server",
+    "headless": true
+  },
+  "publisher_distribution_raw": [
+    {
+      "key": "American Chemical Society",
+      "count": 309
+    },
+    {
+      "key": "Elsevier BV",
+      "count": 257
+    },
+    {
+      "key": "Wiley",
+      "count": 125
+    },
+    {
+      "key": "American Institute of Physics",
+      "count": 97
+    },
+    {
+      "key": "Nature Portfolio",
+      "count": 45
+    },
+    {
+      "key": "Institute of Physics",
+      "count": 35
+    },
+    {
+      "key": "Multidisciplinary Digital Publishing Institute",
+      "count": 31
+    },
+    {
+      "key": "Royal Society of Chemistry",
+      "count": 30
+    },
+    {
+      "key": "Advanced Materials",
+      "count": 27
+    },
+    {
+      "key": "Springer Science+Business Media",
+      "count": 21
+    },
+    {
+      "key": "(blank)",
+      "count": 19
+    },
+    {
+      "key": "IOP Publishing",
+      "count": 17
+    },
+    {
+      "key": "Institute of Electrical and Electronics Engineers",
+      "count": 14
+    },
+    {
+      "key": "Chinese Chemical Society",
+      "count": 13
+    },
+    {
+      "key": "Taylor & Francis",
+      "count": 6
+    },
+    {
+      "key": "American Physical Society",
+      "count": 5
+    },
+    {
+      "key": "SPIE",
+      "count": 5
+    },
+    {
+      "key": "Springer Nature",
+      "count": 5
+    },
+    {
+      "key": "Cambridge University Press",
+      "count": 4
+    },
+    {
+      "key": "American Association for the Advancement of Science",
+      "count": 3
+    },
+    {
+      "key": "Hindawi Publishing Corporation",
+      "count": 3
+    },
+    {
+      "key": "Journal of Vacuum Science & Technology B Nanotechnology and Microelectronics Materials Processing Measurement and Phenomena",
+      "count": 3
+    },
+    {
+      "key": "American Scientific Publishers",
+      "count": 2
+    },
+    {
+      "key": "De Gruyter",
+      "count": 2
+    },
+    {
+      "key": "Frontiers Media",
+      "count": 2
+    },
+    {
+      "key": "Hanguk bunmal jaeryo hakoeji",
+      "count": 2
+    },
+    {
+      "key": "Optica Publishing Group",
+      "count": 2
+    },
+    {
+      "key": "Science Press",
+      "count": 2
+    },
+    {
+      "key": "2017 IEEE 44th Photovoltaic Specialist Conference (PVSC)",
+      "count": 1
+    },
+    {
+      "key": "Annual Reviews",
+      "count": 1
+    },
+    {
+      "key": "Bentham Science Publishers",
+      "count": 1
+    },
+    {
+      "key": "BioMed Central",
+      "count": 1
+    },
+    {
+      "key": "Ceramic Society of Japan",
+      "count": 1
+    },
+    {
+      "key": "De Gruyter Open",
+      "count": 1
+    },
+    {
+      "key": "Emerald Publishing Limited",
+      "count": 1
+    },
+    {
+      "key": "Future Medicine",
+      "count": 1
+    },
+    {
+      "key": "Georg Thieme Verlag",
+      "count": 1
+    },
+    {
+      "key": "IEEE Sensors Council",
+      "count": 1
+    },
+    {
+      "key": "Institute of Electrical Engineers of Japan",
+      "count": 1
+    },
+    {
+      "key": "Ivyspring International Publisher",
+      "count": 1
+    },
+    {
+      "key": "Journal of Micro/Nanopatterning Materials and Metrology",
+      "count": 1
+    },
+    {
+      "key": "Journal of Modern Nanotechnology",
+      "count": 1
+    },
+    {
+      "key": "Royal Netherlands Academy of Arts and Sciences",
+      "count": 1
+    },
+    {
+      "key": "Royal Society",
+      "count": 1
+    },
+    {
+      "key": "SAGE Publishing",
+      "count": 1
+    },
+    {
+      "key": "Scientific and Technological Research Council of Turkey (TUBITAK)",
+      "count": 1
+    },
+    {
+      "key": "Scientific.net",
+      "count": 1
+    },
+    {
+      "key": "Surface Innovations",
+      "count": 1
+    },
+    {
+      "key": "The Society of Photopolymer Science and Technology (SPST)",
+      "count": 1
+    },
+    {
+      "key": "The Surface Finishing Society of Japan",
+      "count": 1
+    }
+  ],
+  "publisher_distribution_grouped": [
+    {
+      "key": "acs",
+      "count": 309
+    },
+    {
+      "key": "elsevier",
+      "count": 249
+    },
+    {
+      "key": "wiley",
+      "count": 152
+    },
+    {
+      "key": "aip",
+      "count": 100
+    },
+    {
+      "key": "other",
+      "count": 69
+    },
+    {
+      "key": "iop",
+      "count": 52
+    },
+    {
+      "key": "nature",
+      "count": 49
+    },
+    {
+      "key": "mdpi",
+      "count": 31
+    },
+    {
+      "key": "rsc",
+      "count": 30
+    },
+    {
+      "key": "ieee",
+      "count": 26
+    },
+    {
+      "key": "springer",
+      "count": 22
+    },
+    {
+      "key": "cell",
+      "count": 8
+    },
+    {
+      "key": "taylor_and_francis",
+      "count": 6
+    },
+    {
+      "key": "aps",
+      "count": 5
+    }
+  ],
+  "selection_bucket_distribution": [
+    {
+      "key": "landing_closed",
+      "count": 698
+    },
+    {
+      "key": "direct_pdf_oa",
+      "count": 210
+    },
+    {
+      "key": "landing_oa",
+      "count": 200
+    }
+  ],
+  "suites": {
+    "pilot": {
+      "targets": {
+        "acs": 1,
+        "elsevier": 1,
+        "cell": 2,
+        "wiley": 1,
+        "aip": 1,
+        "nature": 1,
+        "springer": 1,
+        "rsc": 2,
+        "iop": 1,
+        "mdpi": 1,
+        "ieee": 1
+      },
+      "selected_total": 13,
+      "selected_counts": [
+        {
+          "key": "cell",
+          "count": 2
+        },
+        {
+          "key": "rsc",
+          "count": 2
+        },
+        {
+          "key": "acs",
+          "count": 1
+        },
+        {
+          "key": "aip",
+          "count": 1
+        },
+        {
+          "key": "elsevier",
+          "count": 1
+        },
+        {
+          "key": "ieee",
+          "count": 1
+        },
+        {
+          "key": "iop",
+          "count": 1
+        },
+        {
+          "key": "mdpi",
+          "count": 1
+        },
+        {
+          "key": "nature",
+          "count": 1
+        },
+        {
+          "key": "springer",
+          "count": 1
+        },
+        {
+          "key": "wiley",
+          "count": 1
+        }
+      ],
+      "gaps": [],
+      "explicit_coverage": [
+        "rsc",
+        "cell"
+      ]
+    },
+    "full": {
+      "targets": {
+        "acs": 3,
+        "elsevier": 3,
+        "cell": 3,
+        "wiley": 3,
+        "aip": 3,
+        "nature": 3,
+        "springer": 2,
+        "rsc": 3,
+        "iop": 2,
+        "mdpi": 2,
+        "ieee": 2,
+        "aps": 1,
+        "taylor_and_francis": 1
+      },
+      "selected_total": 31,
+      "selected_counts": [
+        {
+          "key": "acs",
+          "count": 3
+        },
+        {
+          "key": "aip",
+          "count": 3
+        },
+        {
+          "key": "cell",
+          "count": 3
+        },
+        {
+          "key": "elsevier",
+          "count": 3
+        },
+        {
+          "key": "nature",
+          "count": 3
+        },
+        {
+          "key": "rsc",
+          "count": 3
+        },
+        {
+          "key": "wiley",
+          "count": 3
+        },
+        {
+          "key": "ieee",
+          "count": 2
+        },
+        {
+          "key": "iop",
+          "count": 2
+        },
+        {
+          "key": "mdpi",
+          "count": 2
+        },
+        {
+          "key": "springer",
+          "count": 2
+        },
+        {
+          "key": "aps",
+          "count": 1
+        },
+        {
+          "key": "taylor_and_francis",
+          "count": 1
+        }
+      ],
+      "gaps": [],
+      "explicit_coverage": [
+        "rsc",
+        "cell"
+      ]
+    }
+  }
+}
