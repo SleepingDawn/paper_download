@@ -66,6 +66,11 @@ HIGH_FRICTION_DOMAINS = (
     "tandfonline.com",
     "ieeexplore.ieee.org",
 )
+AIP_ARTICLE_HOST_MARKERS = (
+    "pubs.aip.org",
+    "aip.scitation.org",
+    "avs.scitation.org",
+)
 AUTO_PROFILE_DOI_PREFIXES = (
     "10.1016",  # Elsevier
     "10.1063",  # AIP
@@ -725,6 +730,7 @@ def build_landing_browser_session_plan(doi_url: str, worker_profile_root: str, w
     os.makedirs(worker_profile_root, exist_ok=True)
 
     profile_mode = _normalize_profile_mode()
+    doi_norm = _doi_from_doi_url(doi_url)
     profile_name = os.getenv("PDF_BROWSER_PROFILE_NAME", "Default").strip() or "Default"
     temp_profile_name = f"worker_{int(worker_idx)}"
     temp_user_data_dir = os.path.join(worker_profile_root, temp_profile_name)
@@ -743,7 +749,7 @@ def build_landing_browser_session_plan(doi_url: str, worker_profile_root: str, w
     stateful_requested, decision_reason = _stateful_profile_decision(doi_url, profile_mode)
     if (
         not stateful_requested
-        and _doi_from_doi_url(doi_url).startswith("10.1016")
+        and doi_norm.startswith("10.1016")
         and resolve_runtime_preset() == RUNTIME_PRESET_LINUX_CLI_SEEDED
         and resolve_browser_execution_env() == EXECUTION_ENV_LINUX_SERVER
         and profile_mode == "auto"
@@ -761,6 +767,28 @@ def build_landing_browser_session_plan(doi_url: str, worker_profile_root: str, w
             )
             stateful_requested = True
             decision_reason = "landing_elsevier_official_retrieve_prefers_stateful"
+        except Exception:
+            pass
+    if (
+        not stateful_requested
+        and doi_norm.startswith(("10.1063", "10.1116"))
+        and resolve_runtime_preset() == RUNTIME_PRESET_LINUX_CLI_SEEDED
+        and resolve_browser_execution_env() == EXECUTION_ENV_LINUX_SERVER
+        and profile_mode == "auto"
+        and os.getenv("PDF_BROWSER_LANDING_AIP_PREFER_STATEFUL", "1").strip().lower() in ("1", "true", "yes", "on")
+    ):
+        try:
+            ensure_runtime_profile_ready(
+                runtime_preset=resolve_runtime_preset(),
+                profile_mode=profile_mode,
+                persistent_profile_dir=os.getenv(
+                    "PDF_BROWSER_PERSISTENT_PROFILE_DIR",
+                    DEFAULT_PERSISTENT_PROFILE_DIR,
+                ),
+                profile_name=profile_name,
+            )
+            stateful_requested = True
+            decision_reason = "landing_aip_official_entry_prefers_stateful"
         except Exception:
             pass
     plan["session_decision_reason"] = decision_reason
@@ -827,6 +855,51 @@ def build_download_browser_session_plan(
     doi_key = _sanitize_doi_to_filename(doi_norm) or "unknown_doi"
     worker_key = _sanitize_doi_to_filename(worker_label or f"pid_{os.getpid()}") or f"pid_{os.getpid()}"
     stateful_requested, decision_reason = _stateful_profile_decision(doi_url, profile_mode)
+
+    if (
+        not stateful_requested
+        and doi_norm.startswith("10.1016")
+        and resolve_runtime_preset() == RUNTIME_PRESET_LINUX_CLI_SEEDED
+        and resolve_browser_execution_env() == EXECUTION_ENV_LINUX_SERVER
+        and profile_mode == "auto"
+        and os.getenv("PDF_BROWSER_DOWNLOAD_ELSEVIER_PREFER_STATEFUL", "1").strip().lower() in ("1", "true", "yes", "on")
+    ):
+        try:
+            ensure_runtime_profile_ready(
+                runtime_preset=resolve_runtime_preset(),
+                profile_mode=profile_mode,
+                persistent_profile_dir=os.getenv(
+                    "PDF_BROWSER_PERSISTENT_PROFILE_DIR",
+                    DEFAULT_PERSISTENT_PROFILE_DIR,
+                ),
+                profile_name=profile_name,
+            )
+            stateful_requested = True
+            decision_reason = "download_elsevier_official_retrieve_prefers_stateful"
+        except Exception:
+            pass
+    if (
+        not stateful_requested
+        and doi_norm.startswith(("10.1063", "10.1116"))
+        and resolve_runtime_preset() == RUNTIME_PRESET_LINUX_CLI_SEEDED
+        and resolve_browser_execution_env() == EXECUTION_ENV_LINUX_SERVER
+        and profile_mode == "auto"
+        and os.getenv("PDF_BROWSER_DOWNLOAD_AIP_PREFER_STATEFUL", "1").strip().lower() in ("1", "true", "yes", "on")
+    ):
+        try:
+            ensure_runtime_profile_ready(
+                runtime_preset=resolve_runtime_preset(),
+                profile_mode=profile_mode,
+                persistent_profile_dir=os.getenv(
+                    "PDF_BROWSER_PERSISTENT_PROFILE_DIR",
+                    DEFAULT_PERSISTENT_PROFILE_DIR,
+                ),
+                profile_name=profile_name,
+            )
+            stateful_requested = True
+            decision_reason = "download_aip_official_entry_prefers_stateful"
+        except Exception:
+            pass
 
     if not stateful_requested:
         temp_root = os.path.join(runtime_root, worker_key, "temp", doi_key)
@@ -2078,6 +2151,196 @@ def _looks_like_elsevier_problem_shell(title: str = "", html: str = "") -> bool:
     )
 
 
+def _normalize_aip_entry_url(url: str, prefer_abstract: bool = True) -> str:
+    raw = str(url or "").strip()
+    if not raw:
+        return ""
+    parsed = urlparse(raw)
+    path = parsed.path or ""
+    normalized_path = path
+    if prefer_abstract and re.search(r"/article/", path, flags=re.IGNORECASE):
+        normalized_path = re.sub(r"/article/", "/article-abstract/", path, count=1, flags=re.IGNORECASE)
+    return urlunparse(parsed._replace(path=normalized_path, query="", fragment=""))
+
+
+def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
+    doi_norm = _doi_from_doi_url(doi_url)
+    plan = {
+        "entry_strategy": "",
+        "entry_url": "",
+        "entry_resolved_url": "",
+        "entry_browser_url": "",
+        "entry_browser_kind": "",
+        "entry_handoff_url": "",
+        "entry_redirect_chain_summary": [],
+        "entry_fallback_used": False,
+        "entry_fallback_reason": "",
+        "entry_safe_to_proceed": False,
+        "entry_browser_open_skipped": False,
+        "entry_preflight_issue": "",
+        "entry_preflight_evidence": [],
+        "entry_preflight_http_status": None,
+        "entry_preflight_url": "",
+        "entry_preflight_title": "",
+        "entry_preflight_html": "",
+    }
+    if not doi_norm.startswith(("10.1063", "10.1116")):
+        return plan
+
+    plan["entry_strategy"] = "aip_official_doi_resolve"
+    prefer_abstract = os.getenv("PDF_BROWSER_LANDING_AIP_PREFER_ABSTRACT", "1").strip().lower() in ("1", "true", "yes", "on")
+    headers = {
+        "User-Agent": _resolve_best_browser_ua(),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": BEST_BROWSER_ACCEPT_LANGUAGE,
+    }
+
+    try:
+        session = requests.Session()
+        resolve_resp = session.get(str(doi_url or "").strip(), headers=headers, allow_redirects=True, timeout=10)
+    except Exception as exc:
+        plan["entry_browser_open_skipped"] = True
+        plan["entry_preflight_issue"] = "PRECHECK_RESOLVE_FAILED"
+        plan["entry_preflight_evidence"] = [f"resolve_exception={_exc_message(exc)[:200]}"]
+        return plan
+
+    resolve_html = str(resolve_resp.text or "")
+    resolve_final_url = str(resolve_resp.url or "").strip()
+    plan["entry_resolved_url"] = resolve_final_url
+    plan["entry_redirect_chain_summary"] = _response_redirect_chain_summary(resolve_resp)
+
+    candidate_url = ""
+    fallback_reason = ""
+    if resolve_final_url:
+        candidate_url = resolve_final_url
+        fallback_reason = "response_final_url"
+    if resolve_html and resolve_final_url:
+        try:
+            soup = BeautifulSoup(resolve_html, "html.parser")
+            for tag_name, attr_name, attr_value, value_key in (
+                ("link", "rel", "canonical", "href"),
+                ("meta", "property", "og:url", "content"),
+                ("meta", "name", "citation_abstract_html_url", "content"),
+                ("meta", "name", "citation_fulltext_html_url", "content"),
+            ):
+                node = soup.find(tag_name, attrs={attr_name: attr_value})
+                if not node:
+                    continue
+                cand = str(node.get(value_key) or "").strip()
+                if not cand:
+                    continue
+                cand = urljoin(resolve_final_url, cand)
+                cand_domain = _extract_domain(cand)
+                if cand_domain and any(
+                    cand_domain == host or cand_domain.endswith(f".{host}") for host in AIP_ARTICLE_HOST_MARKERS
+                ):
+                    candidate_url = cand
+                    fallback_reason = f"meta_{tag_name}_{value_key}"
+                    break
+        except Exception:
+            pass
+
+    normalized_entry_url = _normalize_aip_entry_url(candidate_url, prefer_abstract=prefer_abstract)
+    if normalized_entry_url:
+        plan["entry_url"] = normalized_entry_url
+        if normalized_entry_url != str(candidate_url or "").strip():
+            plan["entry_fallback_used"] = True
+            plan["entry_fallback_reason"] = "prefer_article_abstract_queryless"
+        elif fallback_reason and fallback_reason != "response_final_url":
+            plan["entry_fallback_used"] = True
+            plan["entry_fallback_reason"] = fallback_reason
+    elif candidate_url:
+        plan["entry_url"] = str(candidate_url).strip()
+        if fallback_reason and fallback_reason != "response_final_url":
+            plan["entry_fallback_used"] = True
+            plan["entry_fallback_reason"] = fallback_reason
+
+    plan["entry_browser_url"] = str(plan.get("entry_url") or plan.get("entry_resolved_url") or doi_url).strip()
+    browser_url = str(plan.get("entry_browser_url") or "")
+    if "/article-abstract/" in browser_url.lower():
+        plan["entry_browser_kind"] = "canonical_article_abstract"
+    elif "/article/" in browser_url.lower():
+        plan["entry_browser_kind"] = "canonical_article"
+    else:
+        plan["entry_browser_kind"] = "resolved_final"
+
+    preflight_url = str(plan.get("entry_browser_url") or "").strip()
+    if not preflight_url:
+        plan["entry_browser_open_skipped"] = True
+        plan["entry_preflight_issue"] = "PRECHECK_NO_ENTRY_URL"
+        plan["entry_preflight_evidence"] = ["missing_aip_entry_url"]
+        return plan
+
+    try:
+        preflight_resp = session.get(
+            preflight_url,
+            headers={**headers, "Referer": str(doi_url or "").strip()},
+            allow_redirects=True,
+            timeout=10,
+        )
+    except Exception as exc:
+        plan["entry_browser_open_skipped"] = True
+        plan["entry_preflight_issue"] = "PRECHECK_REQUEST_FAILED"
+        plan["entry_preflight_evidence"] = [f"preflight_exception={_exc_message(exc)[:200]}"]
+        return plan
+
+    preflight_html = str(preflight_resp.text or "")
+    preflight_title = _extract_html_title(preflight_html)
+    preflight_final_url = str(preflight_resp.url or preflight_url).strip()
+    preflight_issue, preflight_evidence = detect_access_issue(
+        title=preflight_title,
+        html=preflight_html,
+        http_status=getattr(preflight_resp, "status_code", None),
+        url=preflight_final_url,
+        domain="",
+    )
+    plan["entry_preflight_http_status"] = int(getattr(preflight_resp, "status_code", 0) or 0) or None
+    plan["entry_preflight_url"] = preflight_final_url
+    plan["entry_preflight_title"] = preflight_title[:240]
+    plan["entry_preflight_html"] = preflight_html
+    plan["entry_preflight_issue"] = str(preflight_issue or "")
+    plan["entry_preflight_evidence"] = list(dict.fromkeys(list(preflight_evidence or [])))
+
+    entry_domain = _extract_domain(preflight_url)
+    safe_domain = bool(entry_domain) and any(
+        entry_domain == host or entry_domain.endswith(f".{host}") for host in AIP_ARTICLE_HOST_MARKERS
+    )
+    if preflight_issue == "FAIL_DOI_NOT_FOUND":
+        plan["entry_browser_open_skipped"] = True
+    elif not safe_domain:
+        plan["entry_browser_open_skipped"] = True
+        if not plan["entry_preflight_issue"]:
+            plan["entry_preflight_issue"] = "PRECHECK_UNSAFE_ENTRY_DOMAIN"
+            plan["entry_preflight_evidence"] = [f"entry_domain={entry_domain or 'unknown'}"]
+    else:
+        plan["entry_safe_to_proceed"] = not bool(preflight_issue)
+
+    if logger and plan["entry_strategy"]:
+        logger.info(
+            "        [AIP] entry_strategy=%s, entry_url=%s, safe_to_proceed=%s, browser_open_skipped=%s"
+            % (
+                plan["entry_strategy"],
+                plan["entry_browser_url"] or doi_url,
+                bool(plan["entry_safe_to_proceed"]),
+                bool(plan["entry_browser_open_skipped"]),
+            )
+        )
+        if plan["entry_redirect_chain_summary"]:
+            logger.info(
+                "        [AIP] redirect_chain=%s"
+                % " -> ".join(str(item) for item in list(plan["entry_redirect_chain_summary"])[:6])
+            )
+        if plan["entry_preflight_issue"]:
+            logger.info(
+                "        [AIP] preflight_issue=%s evidence=%s"
+                % (
+                    plan["entry_preflight_issue"],
+                    list(plan["entry_preflight_evidence"] or []),
+                )
+            )
+    return plan
+
+
 def build_elsevier_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
     doi_norm = _doi_from_doi_url(doi_url)
     plan = {
@@ -2249,6 +2512,9 @@ def _resolve_doi_redirect_target(doi_url: str, logger=None) -> str:
     if not raw:
         return ""
     doi_norm = _doi_from_doi_url(raw)
+    if doi_norm.startswith(("10.1063", "10.1116")):
+        aip_plan = build_aip_safe_entry_plan(raw, logger=logger)
+        return str(aip_plan.get("entry_browser_url") or aip_plan.get("entry_resolved_url") or "")
     if doi_norm.startswith("10.1016"):
         elsevier_plan = build_elsevier_safe_entry_plan(raw, logger=logger)
         if elsevier_plan.get("entry_browser_open_skipped"):
@@ -4244,6 +4510,17 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
     access_gate = _classify_access_gate(title=title, html=html)
     assume_inst_access = os.getenv("PDF_ASSUME_INSTITUTION_ACCESS", "0").strip().lower() in ("1", "true", "yes")
     rich_article_abstract = article_like and ("citation_doi" in h or "citation_title" in h) and ("abstract" in h)
+    aip_summary_landing = (
+        any(d == host or d.endswith(f".{host}") for host in AIP_ARTICLE_HOST_MARKERS)
+        and article_like
+        and ("citation_doi" in h or "citation_title" in h)
+        and (
+            "/article-abstract/" in u
+            or "citation_abstract_html_url" in h
+            or "publicationcontenttitle" in h
+            or "article__headline" in h
+        )
+    )
     challenge_url_markers = (
         "__cf_chl_rt_tk=",
         "/cdn-cgi/challenge",
@@ -4265,12 +4542,18 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
         return "FAIL_DOI_NOT_FOUND", evidence
 
     if auth_required_like:
+        if aip_summary_landing:
+            evidence.append("soft=aip_summary_landing_with_access_banner")
+            return None, evidence
         if rich_article_abstract or (article_like and pdf_action_like):
             evidence.append("soft=auth_header_present_on_article")
             return None, evidence
         evidence.append("keyword=auth_required")
         return "FAIL_ACCESS_RIGHTS", evidence
     if access_gate == "hard_rights":
+        if aip_summary_landing:
+            evidence.append("soft=aip_summary_landing_with_access_banner")
+            return None, evidence
         evidence.append("keyword=access_rights_required_hard")
         return "FAIL_ACCESS_RIGHTS", evidence
     if access_gate == "soft_gate":
@@ -4854,6 +5137,160 @@ def download_with_cffi(url, save_path, referer=None, cookies=None, ua=None, logg
             return {"ok": False, "reason": reason, "evidence": [str(e)], "http_status": None}
         return False
 
+
+def _entry_plan_detail(plan: Dict[str, Any]) -> Dict[str, Any]:
+    entry_plan = dict(plan or {})
+    return {
+        "entry_strategy": str(entry_plan.get("entry_strategy") or ""),
+        "entry_url": str(entry_plan.get("entry_url") or ""),
+        "entry_browser_url": str(entry_plan.get("entry_browser_url") or ""),
+        "entry_browser_kind": str(entry_plan.get("entry_browser_kind") or ""),
+        "entry_handoff_url": str(entry_plan.get("entry_handoff_url") or ""),
+        "entry_resolved_url": str(entry_plan.get("entry_resolved_url") or ""),
+        "entry_redirect_chain_summary": list(entry_plan.get("entry_redirect_chain_summary") or []),
+        "entry_fallback_used": bool(entry_plan.get("entry_fallback_used")),
+        "entry_fallback_reason": str(entry_plan.get("entry_fallback_reason") or ""),
+        "entry_preflight_issue": str(entry_plan.get("entry_preflight_issue") or ""),
+        "entry_preflight_evidence": list(entry_plan.get("entry_preflight_evidence") or []),
+        "entry_preflight_http_status": entry_plan.get("entry_preflight_http_status"),
+        "entry_browser_open_skipped": bool(entry_plan.get("entry_browser_open_skipped")),
+    }
+
+
+def _should_skip_elsevier_browser_open(entry_plan: Dict[str, Any]) -> bool:
+    issue = str(entry_plan.get("entry_preflight_issue") or "").strip()
+    if not issue:
+        return False
+    if issue in ("PRECHECK_RESOLVE_FAILED", "PRECHECK_NO_ENTRY_URL", "PRECHECK_REQUEST_FAILED", "FAIL_DOI_NOT_FOUND"):
+        return True
+    return False
+
+
+def _should_skip_download_entry_browser_open(doi_norm: str, entry_plan: Dict[str, Any]) -> bool:
+    if not entry_plan:
+        return False
+    if str(doi_norm or "").startswith("10.1016"):
+        return _should_skip_elsevier_browser_open(entry_plan)
+    return bool(entry_plan.get("entry_browser_open_skipped"))
+
+
+def _build_download_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
+    doi_norm = _doi_from_doi_url(doi_url)
+    if doi_norm.startswith("10.1016"):
+        return build_elsevier_safe_entry_plan(doi_url, logger=logger)
+    if doi_norm.startswith(("10.1063", "10.1116")):
+        return build_aip_safe_entry_plan(doi_url, logger=logger)
+    return {}
+
+
+def _is_aip_article_url(url: str) -> bool:
+    low = str(url or "").strip().lower()
+    return any(host in low for host in AIP_ARTICLE_HOST_MARKERS) and "/article" in low
+
+
+def _looks_like_aip_blank_or_incomplete_page(final_url: str, title: str, html: str) -> bool:
+    if not _is_aip_article_url(final_url):
+        return False
+    if not str(title or "").strip():
+        return True
+    text = re.sub(r"<[^>]+>", " ", str(html or ""))
+    text = re.sub(r"\s+", " ", text).strip().lower()
+    if len(text) >= 220:
+        return False
+    blob = " ".join(
+        [
+            str(title or "").lower(),
+            text[:4000],
+        ]
+    )
+    if any(token in blob for token in ("abstract", "publicationcontenttitle", "article__headline", "citation_title")):
+        return False
+    return True
+
+
+def _recover_aip_download_landing(
+    page: ChromiumPage,
+    *,
+    doi_url: str,
+    title: str,
+    html: str,
+    entry_plan: Dict[str, Any],
+    logger=None,
+    timeout_s: float = 8.0,
+) -> tuple[ChromiumPage, str, str, Dict[str, Any]]:
+    recovery_meta = {
+        "landing_recovery_attempted": False,
+        "landing_recovery_strategy": "",
+        "landing_recovery_outcome": "",
+    }
+    if page is None:
+        return page, title, html, recovery_meta
+
+    current_url = str(getattr(page, "url", "") or "")
+    issue, _ = detect_access_issue(title=title, html=html, url=current_url, domain="")
+    blank_like = _looks_like_empty_rendered_page(title=title, html=html) or _looks_like_aip_blank_or_incomplete_page(
+        current_url,
+        title,
+        html,
+    )
+    partial_article = _is_aip_article_url(current_url) and not _has_article_signal(title=title, html=html)
+    if issue not in ("FAIL_BLOCK", "FAIL_CAPTCHA") and not blank_like and not partial_article:
+        return page, title, html, recovery_meta
+
+    targets = []
+    seen = {current_url.strip().lower()}
+    for strategy, candidate in (
+        ("canonical_entry", str(entry_plan.get("entry_browser_url") or "").strip()),
+        ("resolved_article", str(entry_plan.get("entry_resolved_url") or "").strip()),
+        ("entry_candidate", str(entry_plan.get("entry_url") or "").strip()),
+    ):
+        if not candidate:
+            continue
+        key = candidate.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        targets.append((strategy, candidate))
+
+    for strategy, target_url in targets[:3]:
+        try:
+            page.get(target_url, retry=0, interval=0.4, timeout=max(3, min(int(timeout_s), MAX_ACTION_WAIT_S)))
+            page = _adopt_latest_tab(page, logger=logger)
+            _dismiss_cookie_or_consent_banner(page, logger=logger)
+            time.sleep(0.7)
+            current_url = str(getattr(page, "url", "") or target_url)
+            title = str(getattr(page, "title", "") or title)
+            html = str(getattr(page, "html", "") or html)
+            recovery_meta["landing_recovery_attempted"] = True
+            recovery_meta["landing_recovery_strategy"] = strategy
+            next_issue, _ = detect_access_issue(title=title, html=html, url=current_url, domain="")
+            next_blank = _looks_like_empty_rendered_page(title=title, html=html) or _looks_like_aip_blank_or_incomplete_page(
+                current_url,
+                title,
+                html,
+            )
+            if not next_issue and not next_blank and _is_aip_article_url(current_url):
+                recovery_meta["landing_recovery_outcome"] = "recovered_to_article_page"
+                return page, title, html, recovery_meta
+        except Exception as exc:
+            _raise_if_browser_disconnect(exc, logger=logger, context="aip-download-recovery")
+
+    if recovery_meta["landing_recovery_attempted"]:
+        current_url = str(getattr(page, "url", "") or "")
+        final_issue, _ = detect_access_issue(title=title, html=html, url=current_url, domain="")
+        final_blank = _looks_like_empty_rendered_page(title=title, html=html) or _looks_like_aip_blank_or_incomplete_page(
+            current_url,
+            title,
+            html,
+        )
+        if final_issue in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
+            recovery_meta["landing_recovery_outcome"] = "still_challenged_after_canonical_entry"
+        elif final_blank:
+            recovery_meta["landing_recovery_outcome"] = "still_blank_after_canonical_entry"
+        else:
+            recovery_meta["landing_recovery_outcome"] = "not_recovered"
+    return page, title, html, recovery_meta
+
 # =======================================================
 # DrissionPage 크롤러
 # =======================================================
@@ -4891,61 +5328,69 @@ def download_with_drission(
 
     doi_norm_preview = _doi_from_doi_url(doi_url)
     is_elsevier_preview = doi_norm_preview.startswith("10.1016")
-    elsevier_entry_plan: Dict[str, Any] = {}
-    if is_elsevier_preview:
-        elsevier_entry_plan = build_elsevier_safe_entry_plan(doi_url, logger=logger)
-        if bool(elsevier_entry_plan.get("entry_browser_open_skipped")):
-            try:
-                if os.path.exists(browser_tmp_dir):
-                    shutil.rmtree(browser_tmp_dir)
-                if os.path.isdir(browser_tmp_root) and not os.listdir(browser_tmp_root):
-                    os.rmdir(browser_tmp_root)
-            except Exception:
-                pass
-            early_reason = str(elsevier_entry_plan.get("entry_preflight_issue") or "").strip()
-            if early_reason not in {"FAIL_BLOCK", "FAIL_CAPTCHA", "FAIL_ACCESS_RIGHTS"}:
-                early_reason = "FAIL_BLOCK"
-            early_evidence = list(elsevier_entry_plan.get("entry_preflight_evidence") or [])
-            early_evidence = list(
-                dict.fromkeys(
-                    early_evidence
-                    + [
-                        f"entry_strategy={elsevier_entry_plan.get('entry_strategy') or ''}",
-                        "elsevier_browser_open_skipped=1",
-                    ]
-                )
+    is_aip_preview = doi_norm_preview.startswith(("10.1063", "10.1116"))
+    publisher_entry_plan: Dict[str, Any] = _build_download_entry_plan(doi_url, logger=logger)
+    entry_plan_detail = _entry_plan_detail(publisher_entry_plan)
+    if _should_skip_download_entry_browser_open(doi_norm_preview, publisher_entry_plan):
+        entry_label = "elsevier" if is_elsevier_preview else ("aip" if is_aip_preview else "entry")
+        entry_issue = str(publisher_entry_plan.get("entry_preflight_issue") or "").strip()
+        if is_elsevier_preview:
+            if entry_issue not in {"FAIL_BLOCK", "FAIL_CAPTCHA", "FAIL_ACCESS_RIGHTS"}:
+                entry_issue = "FAIL_BLOCK"
+        elif not entry_issue:
+            entry_issue = "FAIL_BLOCK"
+        try:
+            if os.path.exists(browser_tmp_dir):
+                shutil.rmtree(browser_tmp_dir)
+            if os.path.isdir(browser_tmp_root) and not os.listdir(browser_tmp_root):
+                os.rmdir(browser_tmp_root)
+        except Exception:
+            pass
+        early_evidence = list(publisher_entry_plan.get("entry_preflight_evidence") or [])
+        early_evidence = list(
+            dict.fromkeys(
+                early_evidence
+                + [
+                    f"entry_strategy={publisher_entry_plan.get('entry_strategy') or ''}",
+                    f"{entry_label}_browser_open_skipped=1",
+                ]
             )
-            early_payload = {
-                "ok": False,
-                "reason": early_reason,
-                "evidence": early_evidence,
-                "stage": "elsevier-preflight",
-                "domain": _extract_domain(
-                    str(elsevier_entry_plan.get("entry_preflight_url") or elsevier_entry_plan.get("entry_url") or doi_url)
-                ),
-                "http_status": elsevier_entry_plan.get("entry_preflight_http_status"),
-                "landing_attempted": True,
-                "landing_success": False,
-                "landing_state": "challenge_or_block",
-                "landing_url": str(elsevier_entry_plan.get("entry_preflight_url") or elsevier_entry_plan.get("entry_url") or ""),
-                "landing_title": str(elsevier_entry_plan.get("entry_preflight_title") or ""),
-                "browser_session_mode": "",
-                "browser_session_source": "",
-                "browser_session_decision_reason": "",
-                "browser_profile_name": "",
-                "browser_user_data_dir": "",
-                "entry_strategy": str(elsevier_entry_plan.get("entry_strategy") or ""),
-                "entry_url": str(elsevier_entry_plan.get("entry_url") or ""),
-                "entry_resolved_url": str(elsevier_entry_plan.get("entry_resolved_url") or ""),
-                "entry_redirect_chain_summary": list(elsevier_entry_plan.get("entry_redirect_chain_summary") or []),
-                "entry_fallback_used": bool(elsevier_entry_plan.get("entry_fallback_used")),
-                "entry_fallback_reason": str(elsevier_entry_plan.get("entry_fallback_reason") or ""),
-                "entry_preflight_issue": str(elsevier_entry_plan.get("entry_preflight_issue") or ""),
-                "entry_preflight_evidence": list(elsevier_entry_plan.get("entry_preflight_evidence") or []),
-                "entry_preflight_http_status": elsevier_entry_plan.get("entry_preflight_http_status"),
-                "entry_browser_open_skipped": bool(elsevier_entry_plan.get("entry_browser_open_skipped")),
-            }
-            return early_payload if return_detail else False
+        )
+        early_payload = {
+            "ok": False,
+            "reason": entry_issue,
+            "evidence": early_evidence,
+            "stage": f"{entry_label}-preflight",
+            "domain": _extract_domain(
+                str(
+                    publisher_entry_plan.get("entry_preflight_url")
+                    or publisher_entry_plan.get("entry_browser_url")
+                    or publisher_entry_plan.get("entry_url")
+                    or doi_url
+                )
+            ),
+            "http_status": publisher_entry_plan.get("entry_preflight_http_status"),
+            "landing_attempted": True,
+            "landing_success": False,
+            "landing_state": "challenge_or_block",
+            "landing_url": str(
+                publisher_entry_plan.get("entry_preflight_url")
+                or publisher_entry_plan.get("entry_browser_url")
+                or publisher_entry_plan.get("entry_url")
+                or ""
+            ),
+            "landing_title": str(publisher_entry_plan.get("entry_preflight_title") or ""),
+            "browser_session_mode": "",
+            "browser_session_source": "",
+            "browser_session_decision_reason": "",
+            "browser_profile_name": "",
+            "browser_user_data_dir": "",
+            "landing_recovery_attempted": False,
+            "landing_recovery_strategy": "",
+            "landing_recovery_outcome": "",
+        }
+        early_payload.update(entry_plan_detail)
+        return early_payload if return_detail else False
     resolved_browser = resolve_browser_executable(chrome_path, logger=logger)
     session_plan = build_download_browser_session_plan(
         doi_url,
@@ -4955,7 +5400,7 @@ def download_with_drission(
     )
     if not resolved_browser:
         if return_detail:
-            return {
+            payload = {
                 "ok": False,
                 "reason": "FAIL_NETWORK",
                 "evidence": ["browser_executable_not_found"],
@@ -4967,17 +5412,12 @@ def download_with_drission(
                 "browser_session_decision_reason": str(session_plan.get("session_decision_reason") or ""),
                 "browser_profile_name": str(session_plan.get("profile_name") or ""),
                 "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
-                "entry_strategy": str(elsevier_entry_plan.get("entry_strategy") or ""),
-                "entry_url": str(elsevier_entry_plan.get("entry_url") or ""),
-                "entry_resolved_url": str(elsevier_entry_plan.get("entry_resolved_url") or ""),
-                "entry_redirect_chain_summary": list(elsevier_entry_plan.get("entry_redirect_chain_summary") or []),
-                "entry_fallback_used": bool(elsevier_entry_plan.get("entry_fallback_used")),
-                "entry_fallback_reason": str(elsevier_entry_plan.get("entry_fallback_reason") or ""),
-                "entry_preflight_issue": str(elsevier_entry_plan.get("entry_preflight_issue") or ""),
-                "entry_preflight_evidence": list(elsevier_entry_plan.get("entry_preflight_evidence") or []),
-                "entry_preflight_http_status": elsevier_entry_plan.get("entry_preflight_http_status"),
-                "entry_browser_open_skipped": bool(elsevier_entry_plan.get("entry_browser_open_skipped")),
+                "landing_recovery_attempted": False,
+                "landing_recovery_strategy": "",
+                "landing_recovery_outcome": "",
             }
+            payload.update(entry_plan_detail)
+            return payload
         return False
 
     # --- 옵션 설정 ---
@@ -5012,7 +5452,7 @@ def download_with_drission(
     if page is None:
         if logger: logger.error(f"     [Drission] 브라우저 초기화 최종 실패. 이 논문은 스킵합니다.")
         if return_detail:
-            return {
+            payload = {
                 "ok": False,
                 "reason": "FAIL_NETWORK",
                 "evidence": ["browser_init_failed"],
@@ -5024,17 +5464,12 @@ def download_with_drission(
                 "browser_session_decision_reason": str(session_plan.get("session_decision_reason") or ""),
                 "browser_profile_name": str(session_plan.get("profile_name") or ""),
                 "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
-                "entry_strategy": str(elsevier_entry_plan.get("entry_strategy") or ""),
-                "entry_url": str(elsevier_entry_plan.get("entry_url") or ""),
-                "entry_resolved_url": str(elsevier_entry_plan.get("entry_resolved_url") or ""),
-                "entry_redirect_chain_summary": list(elsevier_entry_plan.get("entry_redirect_chain_summary") or []),
-                "entry_fallback_used": bool(elsevier_entry_plan.get("entry_fallback_used")),
-                "entry_fallback_reason": str(elsevier_entry_plan.get("entry_fallback_reason") or ""),
-                "entry_preflight_issue": str(elsevier_entry_plan.get("entry_preflight_issue") or ""),
-                "entry_preflight_evidence": list(elsevier_entry_plan.get("entry_preflight_evidence") or []),
-                "entry_preflight_http_status": elsevier_entry_plan.get("entry_preflight_http_status"),
-                "entry_browser_open_skipped": bool(elsevier_entry_plan.get("entry_browser_open_skipped")),
+                "landing_recovery_attempted": False,
+                "landing_recovery_strategy": "",
+                "landing_recovery_outcome": "",
             }
+            payload.update(entry_plan_detail)
+            return payload
         return False
     
     if mode == "first":
@@ -5047,6 +5482,9 @@ def download_with_drission(
     landing_state = "not_attempted"
     landing_url = ""
     landing_title = ""
+    landing_recovery_attempted = False
+    landing_recovery_strategy = ""
+    landing_recovery_outcome = ""
 
     def _set_landing_state(state: str, success: bool, page_obj=None):
         nonlocal landing_attempted, landing_success, landing_state, landing_url, landing_title
@@ -5063,6 +5501,18 @@ def download_with_drission(
                 landing_title = target_page.title or landing_title
             except Exception:
                 pass
+
+    def _refresh_page_context(page_obj, *, sync_tab: bool = True):
+        target_page = page_obj
+        if target_page is not None and sync_tab:
+            target_page = _adopt_latest_tab(target_page, logger=logger)
+        if target_page is not None:
+            _dismiss_cookie_or_consent_banner(target_page, logger=logger)
+        current = _extract_domain(getattr(target_page, "url", "") or "")
+        referer = str(getattr(target_page, "url", "") or "")
+        title = str(getattr(target_page, "title", "") or "")
+        html = str(getattr(target_page, "html", "") or "")
+        return target_page, current, referer, title, html
 
     def _detail(ok, reason, evidence=None, stage="drission", http_status=None):
         payload = {
@@ -5082,17 +5532,11 @@ def download_with_drission(
             "browser_session_decision_reason": str(session_plan.get("session_decision_reason") or ""),
             "browser_profile_name": str(session_plan.get("profile_name") or ""),
             "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
-            "entry_strategy": str(elsevier_entry_plan.get("entry_strategy") or ""),
-            "entry_url": str(elsevier_entry_plan.get("entry_url") or ""),
-            "entry_resolved_url": str(elsevier_entry_plan.get("entry_resolved_url") or ""),
-            "entry_redirect_chain_summary": list(elsevier_entry_plan.get("entry_redirect_chain_summary") or []),
-            "entry_fallback_used": bool(elsevier_entry_plan.get("entry_fallback_used")),
-            "entry_fallback_reason": str(elsevier_entry_plan.get("entry_fallback_reason") or ""),
-            "entry_preflight_issue": str(elsevier_entry_plan.get("entry_preflight_issue") or ""),
-            "entry_preflight_evidence": list(elsevier_entry_plan.get("entry_preflight_evidence") or []),
-            "entry_preflight_http_status": elsevier_entry_plan.get("entry_preflight_http_status"),
-            "entry_browser_open_skipped": bool(elsevier_entry_plan.get("entry_browser_open_skipped")),
+            "landing_recovery_attempted": landing_recovery_attempted,
+            "landing_recovery_strategy": landing_recovery_strategy,
+            "landing_recovery_outcome": landing_recovery_outcome,
         }
+        payload.update(entry_plan_detail)
         return payload if return_detail else ok
 
     def _ret(ok, reason, evidence=None, stage="drission", http_status=None):
@@ -5134,24 +5578,37 @@ def download_with_drission(
                 if page is None:
                     if logger: logger.error(f"     [Drission] 브라우저 생성 실패 (재시도 {attempt}). 다음 시도로 넘어갑니다.")
                     continue
-            
+            landing_recovery_attempted = False
+            landing_recovery_strategy = ""
+            landing_recovery_outcome = ""
             
             nav_url = doi_url
-            if is_elsevier_preview:
-                nav_url = str(elsevier_entry_plan.get("entry_url") or nav_url)
-                if logger and attempt == 1 and elsevier_entry_plan.get("entry_strategy"):
+            if publisher_entry_plan:
+                nav_url = str(
+                    publisher_entry_plan.get("entry_browser_url")
+                    or publisher_entry_plan.get("entry_resolved_url")
+                    or publisher_entry_plan.get("entry_url")
+                    or nav_url
+                )
+                if logger and attempt == 1 and publisher_entry_plan.get("entry_strategy"):
+                    plan_label = "Elsevier" if is_elsevier_preview else ("AIP" if is_aip_preview else "Entry")
                     logger.info(
-                        "     [Drission] Elsevier entry_strategy=%s fallback_used=%s"
+                        "     [Drission] %s entry_strategy=%s browser_kind=%s fallback_used=%s"
                         % (
-                            elsevier_entry_plan.get("entry_strategy"),
-                            bool(elsevier_entry_plan.get("entry_fallback_used")),
+                            plan_label,
+                            publisher_entry_plan.get("entry_strategy"),
+                            publisher_entry_plan.get("entry_browser_kind") or "",
+                            bool(publisher_entry_plan.get("entry_fallback_used")),
                         )
                     )
-                    if elsevier_entry_plan.get("entry_redirect_chain_summary"):
+                    if publisher_entry_plan.get("entry_redirect_chain_summary"):
                         logger.info(
-                            "        [Elsevier] redirect_chain=%s"
-                            % " -> ".join(
-                                str(item) for item in list(elsevier_entry_plan.get("entry_redirect_chain_summary") or [])[:6]
+                            "        [%s] redirect_chain=%s"
+                            % (
+                                plan_label,
+                                " -> ".join(
+                                    str(item) for item in list(publisher_entry_plan.get("entry_redirect_chain_summary") or [])[:6]
+                                ),
                             )
                         )
             logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {nav_url}")
@@ -5159,17 +5616,24 @@ def download_with_drission(
             # 페이지 접속
             landing_initial_files = _get_current_files(browser_tmp_dir)
             page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
-            _dismiss_cookie_or_consent_banner(page, logger=logger)
-            current_domain = _extract_domain(page.url)
-            referer_url = page.url
-            page_title = page.title or ""
-            page_html = page.html or ""
+            page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page)
             if "spiedigitallibrary.org" in current_domain:
                 _wait_for_spie_article_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 7)
-                current_domain = _extract_domain(page.url)
-                referer_url = page.url
-                page_title = page.title or ""
-                page_html = page.html or ""
+                page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page, sync_tab=False)
+            if is_aip_preview:
+                page, page_title, page_html, aip_recovery_meta = _recover_aip_download_landing(
+                    page,
+                    doi_url=doi_url,
+                    title=page_title,
+                    html=page_html,
+                    entry_plan=publisher_entry_plan,
+                    logger=logger,
+                    timeout_s=8 if mode == "deep" else 6,
+                )
+                landing_recovery_attempted = bool(aip_recovery_meta.get("landing_recovery_attempted"))
+                landing_recovery_strategy = str(aip_recovery_meta.get("landing_recovery_strategy") or "")
+                landing_recovery_outcome = str(aip_recovery_meta.get("landing_recovery_outcome") or "")
+                page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page, sync_tab=False)
             if _capture_direct_downloaded_pdf(
                 download_dir=browser_tmp_dir,
                 initial_files=landing_initial_files,
@@ -5204,17 +5668,26 @@ def download_with_drission(
                 try:
                     retry_initial_files = _get_current_files(browser_tmp_dir)
                     page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
-                    _dismiss_cookie_or_consent_banner(page, logger=logger)
-                    current_domain = _extract_domain(page.url)
-                    referer_url = page.url
-                    page_title = page.title or ""
-                    page_html = page.html or ""
+                    page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page)
                     if "spiedigitallibrary.org" in current_domain:
                         _wait_for_spie_article_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 7)
-                        current_domain = _extract_domain(page.url)
-                        referer_url = page.url
-                        page_title = page.title or ""
-                        page_html = page.html or ""
+                        page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page, sync_tab=False)
+                    if is_aip_preview:
+                        page, page_title, page_html, aip_recovery_meta = _recover_aip_download_landing(
+                            page,
+                            doi_url=doi_url,
+                            title=page_title,
+                            html=page_html,
+                            entry_plan=publisher_entry_plan,
+                            logger=logger,
+                            timeout_s=8 if mode == "deep" else 6,
+                        )
+                        landing_recovery_attempted = bool(aip_recovery_meta.get("landing_recovery_attempted")) or landing_recovery_attempted
+                        if aip_recovery_meta.get("landing_recovery_strategy"):
+                            landing_recovery_strategy = str(aip_recovery_meta.get("landing_recovery_strategy") or "")
+                        if aip_recovery_meta.get("landing_recovery_outcome"):
+                            landing_recovery_outcome = str(aip_recovery_meta.get("landing_recovery_outcome") or "")
+                        page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page, sync_tab=False)
                     if _capture_direct_downloaded_pdf(
                         download_dir=browser_tmp_dir,
                         initial_files=retry_initial_files,

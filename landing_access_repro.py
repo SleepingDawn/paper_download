@@ -70,6 +70,7 @@ from tools_exp import (
     _has_pdf_action_signal,
     _is_elsevier_retrieve_url,
     _sanitize_doi_to_filename,
+    build_aip_safe_entry_plan,
     build_elsevier_safe_entry_plan,
     build_landing_browser_session_plan,
     coerce_headless_for_execution_env,
@@ -95,6 +96,8 @@ DEFAULT_LOCAL_HEADLESS = 0
 DEFAULT_LOCAL_TIMEOUT_SEC = 15.0
 DEFAULT_LOCAL_PER_DOI_DEADLINE_SEC = 45.0
 ELSEVIER_ARTICLE_HOST_MARKERS = ("sciencedirect.com", "cell.com", "thelancet.com")
+AIP_ARTICLE_HOST_MARKERS = ("pubs.aip.org", "avs.scitation.org", "aip.scitation.org")
+AIP_DOI_PREFIXES = ("10.1063/", "10.1116/")
 PDF_MIME_MARKERS = ("application/pdf", "application/x-pdf")
 PDF_URL_MARKERS = (".pdf", "/pdf", "download=true", "pdfft")
 APS_JOURNAL_SLUGS = {
@@ -1474,6 +1477,152 @@ def _resolve_elsevier_retrieve_entry_url(entry_plan: Dict[str, Any], current_url
     return ""
 
 
+def _is_aip_doi(doi: str) -> bool:
+    return _normalize_doi_text(doi).startswith(AIP_DOI_PREFIXES)
+
+
+def _is_aip_article_url(url: str) -> bool:
+    low = str(url or "").strip().lower()
+    return any(host in low for host in AIP_ARTICLE_HOST_MARKERS) and "/article" in low
+
+
+def _looks_like_aip_blank_or_incomplete(final_url: str, title: str, snapshot: Dict[str, Any], html: str) -> bool:
+    if not _is_aip_article_url(final_url):
+        return False
+    if not str(title or "").strip():
+        return True
+    body_text_len = int(snapshot.get("body_text_len", 0) or 0)
+    main_text_len = int(snapshot.get("main_text_len", 0) or 0)
+    parsed_main_text_len = int(snapshot.get("parsed_main_text_len", 0) or 0)
+    if max(body_text_len, main_text_len, parsed_main_text_len) >= 180:
+        return False
+    blob = " ".join(
+        [
+            str(title or "").lower(),
+            str(snapshot.get("h1_text") or "").lower(),
+            str(html or "").lower()[:8000],
+        ]
+    )
+    if any(token in blob for token in ("abstract", "publicationcontenttitle", "article__headline", "citation_title")):
+        return False
+    return True
+
+
+def _recover_aip_canonical_landing(
+    page: ChromiumPage,
+    *,
+    doi: str,
+    final_url: str,
+    title: str,
+    html: str,
+    snapshot: Dict[str, Any],
+    entry_plan: Dict[str, Any],
+    deadline_monotonic: float,
+    navigation_chain: List[Dict[str, str]],
+    attempt_timing: Dict[str, Any],
+    tab_transition_events: List[Dict[str, Any]],
+) -> Tuple[str, str, str, Dict[str, Any], Dict[str, Any]]:
+    recovery_meta = {
+        "initial_landing_type": "",
+        "landing_recovery_attempted": False,
+        "landing_recovery_strategy": "",
+        "landing_recovery_outcome": "",
+    }
+    if page is None or time.monotonic() >= deadline_monotonic or not _is_aip_doi(doi):
+        return final_url, title, html, snapshot, recovery_meta
+
+    issue, _ = detect_access_issue(title=title, html=html, url=final_url, domain="")
+    blank_like = _looks_like_blank_screen_context(final_url, title, html) or _looks_like_aip_blank_or_incomplete(
+        final_url=final_url,
+        title=title,
+        snapshot=snapshot,
+        html=html,
+    )
+    if issue in (OUT_FAIL_BLOCK, OUT_FAIL_CAPTCHA):
+        recovery_meta["initial_landing_type"] = "aip_challenge_interstitial"
+    elif blank_like:
+        recovery_meta["initial_landing_type"] = "aip_blank_or_incomplete"
+    elif _is_aip_article_url(final_url) and not _has_article_signal(title=title, html=html):
+        recovery_meta["initial_landing_type"] = "aip_partial_article"
+
+    targets: List[Tuple[str, str]] = []
+    seen = set()
+    for strategy, candidate in (
+        ("canonical_entry", str(entry_plan.get("entry_browser_url") or "").strip()),
+        ("resolved_article", str(entry_plan.get("entry_resolved_url") or "").strip()),
+        ("entry_candidate", str(entry_plan.get("entry_url") or "").strip()),
+    ):
+        if not candidate:
+            continue
+        key = candidate.lower()
+        if key in seen or key == str(final_url or "").strip().lower():
+            continue
+        seen.add(key)
+        targets.append((strategy, candidate))
+
+    if not recovery_meta["initial_landing_type"] or not targets:
+        if recovery_meta["initial_landing_type"] and not targets:
+            recovery_meta["landing_recovery_outcome"] = "no_alternate_entry_available"
+        return final_url, title, html, snapshot, recovery_meta
+
+    for idx, (strategy, target_url) in enumerate(targets, start=1):
+        if time.monotonic() >= deadline_monotonic:
+            break
+        timeout = _remaining_budget(deadline_monotonic, min(DEFAULT_LOCAL_TIMEOUT_SEC, 10.0), floor_sec=3.0)
+        started = time.perf_counter()
+        page.get(target_url, retry=0, interval=0.4, timeout=timeout)
+        attempt_timing[f"aip_recovery_{idx}_ms"] = int((time.perf_counter() - started) * 1000)
+        _append_nav_step(navigation_chain, f"aip_recovery_{idx}", target_url, page.url or target_url)
+        page = _adopt_latest_probe_tab(
+            page,
+            navigation_chain=navigation_chain,
+            attempt_timing=attempt_timing,
+            tab_transition_events=tab_transition_events,
+            step_label=f"aip_recovery_{idx}_tab_sync",
+            force=True,
+        )
+        _dismiss_cookie_or_consent_banner(page)
+        stabilized_title, stabilized_html, stabilized_snapshot = stabilize_page_state(
+            page,
+            title=str(page.title or title),
+            html=str(page.html or html),
+            deadline_monotonic=deadline_monotonic,
+            settle_wait_sec=0.7,
+            stabilize_polls=4,
+        )
+        final_url = str(page.url or target_url)
+        title = stabilized_title
+        html = stabilized_html
+        snapshot = stabilized_snapshot
+        recovery_meta["landing_recovery_attempted"] = True
+        recovery_meta["landing_recovery_strategy"] = strategy
+        next_issue, _ = detect_access_issue(title=title, html=html, url=final_url, domain="")
+        next_blank = _looks_like_blank_screen_context(final_url, title, html) or _looks_like_aip_blank_or_incomplete(
+            final_url=final_url,
+            title=title,
+            snapshot=snapshot,
+            html=html,
+        )
+        if not next_issue and not next_blank and _is_aip_article_url(final_url):
+            recovery_meta["landing_recovery_outcome"] = "recovered_to_article_page"
+            return final_url, title, html, snapshot, recovery_meta
+
+    if recovery_meta["landing_recovery_attempted"]:
+        last_issue, _ = detect_access_issue(title=title, html=html, url=final_url, domain="")
+        if last_issue in (OUT_FAIL_BLOCK, OUT_FAIL_CAPTCHA):
+            recovery_meta["landing_recovery_outcome"] = "still_challenged_after_canonical_entry"
+        elif _looks_like_blank_screen_context(final_url, title, html) or _looks_like_aip_blank_or_incomplete(
+            final_url=final_url,
+            title=title,
+            snapshot=snapshot,
+            html=html,
+        ):
+            recovery_meta["landing_recovery_outcome"] = "still_blank_after_canonical_entry"
+        else:
+            recovery_meta["landing_recovery_outcome"] = "not_recovered"
+    return final_url, title, html, snapshot, recovery_meta
+
+
 def _recover_elsevier_via_retrieve_link(
     page: ChromiumPage,
     *,
@@ -1975,6 +2124,9 @@ def _build_artifact_zip(records: List[Dict[str, Any]], artifact_dir: str, zip_pa
                     "entry_preflight_issue": rec.get("entry_preflight_issue", ""),
                     "entry_browser_open_skipped": rec.get("entry_browser_open_skipped", False),
                     "initial_landing_type": rec.get("initial_landing_type", ""),
+                    "landing_recovery_attempted": rec.get("landing_recovery_attempted", False),
+                    "landing_recovery_strategy": rec.get("landing_recovery_strategy", ""),
+                    "landing_recovery_outcome": rec.get("landing_recovery_outcome", ""),
                     "shell_recovery_attempted": rec.get("shell_recovery_attempted", False),
                     "shell_recovery_strategy": rec.get("shell_recovery_strategy", ""),
                     "shell_recovery_outcome": rec.get("shell_recovery_outcome", ""),
@@ -2085,6 +2237,9 @@ def _save_probe_artifacts(
             "entry_preflight_http_status": record.get("entry_preflight_http_status", ""),
             "entry_browser_open_skipped": bool(record.get("entry_browser_open_skipped")),
             "initial_landing_type": record.get("initial_landing_type", ""),
+            "landing_recovery_attempted": bool(record.get("landing_recovery_attempted")),
+            "landing_recovery_strategy": record.get("landing_recovery_strategy", ""),
+            "landing_recovery_outcome": record.get("landing_recovery_outcome", ""),
             "shell_recovery_attempted": bool(record.get("shell_recovery_attempted")),
             "shell_recovery_strategy": record.get("shell_recovery_strategy", ""),
             "shell_recovery_outcome": record.get("shell_recovery_outcome", ""),
@@ -2154,6 +2309,9 @@ def _probe_one(
     shell_recovery_attempted = False
     shell_recovery_strategy = ""
     shell_recovery_outcome = ""
+    landing_recovery_attempted = False
+    landing_recovery_strategy = ""
+    landing_recovery_outcome = ""
     reclassified_after_detector_fix = False
     reclassification_reason = ""
     tab_transition_events: List[Dict[str, Any]] = []
@@ -2249,6 +2407,78 @@ def _probe_one(
                     _append_nav_step(
                         navigation_chain,
                         "elsevier_preflight_skip",
+                        str(entry_plan.get("entry_browser_url") or entry_plan.get("entry_url") or doi_url),
+                        final_url or doi_url,
+                    )
+                    attempt_timing["entry_browser_open_skipped"] = True
+                    entry_browser_open_skipped = True
+                    attempt_timing["entry_preflight_issue"] = issue
+                    attempt_timing["attempt_elapsed_ms"] = int((time.perf_counter() - attempt_started) * 1000)
+                    timing_breakdown["attempts"].append(attempt_timing)
+                    attempt_history.append(
+                        {
+                            "attempt": attempt_idx + 1,
+                            "classifier_state": classifier_state,
+                            "reason_codes": reason_codes[:8],
+                            "final_url": final_url,
+                            "timing_ms": dict(attempt_timing),
+                        }
+                    )
+                    try:
+                        page.listen.stop()
+                        page.listen.clear()
+                    except Exception:
+                        pass
+                    break
+                entry_url = str(
+                    entry_plan.get("entry_browser_url")
+                    or entry_plan.get("entry_resolved_url")
+                    or entry_plan.get("entry_url")
+                    or ""
+                )
+            elif _is_aip_doi(doi):
+                entry_plan = build_aip_safe_entry_plan(doi_url)
+                if entry_plan.get("entry_strategy"):
+                    attempt_timing["entry_strategy"] = str(entry_plan.get("entry_strategy") or "")
+                if entry_plan.get("entry_browser_url"):
+                    attempt_timing["entry_browser_url"] = str(entry_plan.get("entry_browser_url") or "")
+                if entry_plan.get("entry_url"):
+                    attempt_timing["entry_url_candidate"] = str(entry_plan.get("entry_url") or "")
+                if entry_plan.get("entry_redirect_chain_summary"):
+                    attempt_timing["entry_redirect_chain_summary"] = list(entry_plan.get("entry_redirect_chain_summary") or [])
+                if entry_plan.get("entry_fallback_reason"):
+                    attempt_timing["entry_fallback_reason"] = str(entry_plan.get("entry_fallback_reason") or "")
+                if entry_plan.get("entry_resolved_url"):
+                    _append_nav_step(
+                        navigation_chain,
+                        "aip_resolve",
+                        doi_url,
+                        str(entry_plan.get("entry_resolved_url") or doi_url),
+                    )
+                if bool(entry_plan.get("entry_browser_open_skipped")):
+                    final_url = str(
+                        entry_plan.get("entry_preflight_url")
+                        or entry_plan.get("entry_browser_url")
+                        or entry_plan.get("entry_url")
+                        or entry_plan.get("entry_resolved_url")
+                        or doi_url
+                    )
+                    title = str(entry_plan.get("entry_preflight_title") or "")
+                    html = str(entry_plan.get("entry_preflight_html") or "")
+                    issue = str(entry_plan.get("entry_preflight_issue") or "FAIL_BLOCK")
+                    issue_evidence = list(entry_plan.get("entry_preflight_evidence") or [])
+                    if issue == OUT_FAIL_DOI_NOT_FOUND:
+                        classifier_state = STATE_DOI_NOT_FOUND
+                    elif issue == OUT_FAIL_ACCESS_RIGHTS:
+                        classifier_state = STATE_CONSENT_OR_INTERSTITIAL_BLOCK
+                    elif issue in (OUT_FAIL_BLOCK, OUT_FAIL_CAPTCHA):
+                        classifier_state = STATE_CHALLENGE_DETECTED
+                    else:
+                        classifier_state = STATE_UNKNOWN_NON_SUCCESS
+                    reason_codes = list(dict.fromkeys(issue_evidence + ["aip_preflight_skip"]))
+                    _append_nav_step(
+                        navigation_chain,
+                        "aip_preflight_skip",
                         str(entry_plan.get("entry_browser_url") or entry_plan.get("entry_url") or doi_url),
                         final_url or doi_url,
                     )
@@ -2539,6 +2769,24 @@ def _probe_one(
                 title, html, snapshot = stabilize_page_state(page, title=title, html=html, deadline_monotonic=deadline)
                 attempt_timing["preferred_handoff_stabilize_ms"] = int((time.perf_counter() - stabilize_started) * 1000)
                 final_url = page.url or final_url or preferred_article_url
+            if _is_aip_doi(doi):
+                final_url, title, html, snapshot, aip_recovery_meta = _recover_aip_canonical_landing(
+                    page=page,
+                    doi=doi,
+                    final_url=final_url,
+                    title=title,
+                    html=html,
+                    snapshot=snapshot,
+                    entry_plan=entry_plan,
+                    deadline_monotonic=deadline,
+                    navigation_chain=navigation_chain,
+                    attempt_timing=attempt_timing,
+                    tab_transition_events=tab_transition_events,
+                )
+                initial_landing_type = str(aip_recovery_meta.get("initial_landing_type") or initial_landing_type)
+                landing_recovery_attempted = bool(aip_recovery_meta.get("landing_recovery_attempted") or landing_recovery_attempted)
+                landing_recovery_strategy = str(aip_recovery_meta.get("landing_recovery_strategy") or landing_recovery_strategy)
+                landing_recovery_outcome = str(aip_recovery_meta.get("landing_recovery_outcome") or landing_recovery_outcome)
             final_url, title, html, snapshot, elsevier_shell_action, shell_recovery_meta = _recover_elsevier_article_shell(
                 page=page,
                 doi=doi,
@@ -2558,6 +2806,10 @@ def _probe_one(
             shell_recovery_attempted = bool(shell_recovery_meta.get("shell_recovery_attempted") or shell_recovery_attempted)
             shell_recovery_strategy = str(shell_recovery_meta.get("shell_recovery_strategy") or shell_recovery_strategy)
             shell_recovery_outcome = str(shell_recovery_meta.get("shell_recovery_outcome") or shell_recovery_outcome)
+            if shell_recovery_attempted:
+                landing_recovery_attempted = True
+                landing_recovery_strategy = shell_recovery_strategy or landing_recovery_strategy
+                landing_recovery_outcome = shell_recovery_outcome or landing_recovery_outcome
             issue, issue_evidence = detect_access_issue(title=title, html=html, url=final_url, domain="")
             article_signal = bool(_has_article_signal(title=title, html=html))
             pdf_action_signal = bool(_has_pdf_action_signal(title=title, html=html))
@@ -2590,6 +2842,19 @@ def _probe_one(
             snapshot_signal_summary = dict(classified.get("signal_summary") or {})
             reclassified_after_detector_fix = bool(classified.get("reclassified_after_detector_fix"))
             reclassification_reason = str(classified.get("reclassification_reason") or "")
+            if (
+                scheduler_publisher == "elsevier"
+                and initial_landing_type == "elsevier_article_shell"
+                and shell_recovery_attempted
+                and shell_recovery_outcome != "recovered_to_article_page"
+                and classifier_state in SUCCESS_STATES
+            ):
+                classifier_state = STATE_BLANK_OR_INCOMPLETE
+                reason_codes = list(dict.fromkeys(["elsevier_article_shell_unrecovered"] + list(reason_codes or [])))
+                snapshot_signal_summary = dict(snapshot_signal_summary)
+                snapshot_signal_summary["shell_recovery_outcome"] = shell_recovery_outcome or "unrecovered"
+                reclassified_after_detector_fix = True
+                reclassification_reason = "elsevier_shell_only_not_true_landing"
 
             if classifier_state == STATE_BROKEN_JS_SHELL and attempt_idx == 0 and time.monotonic() < deadline:
                 recovery_started = time.perf_counter()
@@ -3036,6 +3301,9 @@ def _probe_one(
         "entry_preflight_http_status": entry_plan.get("entry_preflight_http_status"),
         "entry_browser_open_skipped": bool(entry_browser_open_skipped),
         "initial_landing_type": initial_landing_type,
+        "landing_recovery_attempted": bool(landing_recovery_attempted),
+        "landing_recovery_strategy": landing_recovery_strategy,
+        "landing_recovery_outcome": landing_recovery_outcome,
         "shell_recovery_attempted": bool(shell_recovery_attempted),
         "shell_recovery_strategy": shell_recovery_strategy,
         "shell_recovery_outcome": shell_recovery_outcome,
