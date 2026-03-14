@@ -18,10 +18,10 @@ cd /Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download
 python3 -m pip install -r requirements.txt
 ```
 
-Chrome/Chromium이 필요합니다. 서버 환경이라면 `CHROME_PATH`를 지정하세요.
+Chrome/Chromium이 필요합니다. PATH에서 자동으로 찾지 못하면 `CHROME_PATH`를 지정하세요.
 
 ```bash
-which google-chrome || which google-chrome-stable || which chromium-browser || which chromium || which chrome
+ls "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 ```
 
 ## 필요한 입력과 형식
@@ -111,7 +111,7 @@ OpenAlex 검색 단계 주의:
 실제 해석:
 
 - `headless=None`이면 `PDF_BROWSER_HEADLESS` 환경변수를 따릅니다.
-- 환경변수도 없으면 로컬 desktop 기준으로는 사실상 `headful`이지만, `execution-env=linux_cli`면 자동으로 `headless`가 강제됩니다.
+- 환경변수도 없으면 local desktop 기준으로 `headful`로 동작합니다.
 - `deep_retry_headless=None`이면 1차 패스의 `headless` 값을 그대로 따릅니다.
 - `pdf_output_dir`를 생략하면 `pdfs/<run_name>/`를 자동 사용합니다.
 - `abort-on-landing-block=1`이 기본이라, landing에서 `captcha/challenge/block`가 보이면 즉시 중단합니다.
@@ -134,8 +134,7 @@ OpenAlex 검색 단계 주의:
 
 실제 해석:
 
-- 기본 랜딩 검사는 로컬 desktop 안정성 기준으로 `headful + single worker`입니다.
-- Linux CLI에서는 `execution-env=linux_cli`가 자동/명시 적용되면 headless-only로 동작합니다.
+- 기본 랜딩 검사는 local desktop 안정성 기준으로 `headful + single worker`입니다.
 - 실패 스크린샷은 기본적으로 저장하지 않고, HTML/JSON 진단 위주로 남깁니다.
 
 ## 실제 사용 예시
@@ -176,13 +175,10 @@ PY
 
 다운로드 없이 DOI가 실제 논문 랜딩까지 가는지만 확인합니다.
 
-Linux CLI 환경에서는 headful을 사용할 수 없으므로 `--execution-env linux_cli --headless 1`을 기준으로 운용합니다.
-
 ```bash
 python3 -u landing_access_repro.py \
   --input ready_to_download.csv \
   --workers 1 \
-  --execution-env linux_cli \
   --headless 1 \
   --timeout-sec 15 \
   --per-doi-deadline-sec 45 \
@@ -199,7 +195,6 @@ python3 -u landing_access_repro.py \
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
   --max_workers 1 \
-  --execution-env linux_cli \
   --headless 1 \
   --precheck-landing 0 \
   --abort-on-landing-block 1 \
@@ -217,7 +212,6 @@ python3 -u parallel_download.py \
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
   --max_workers 1 \
-  --execution-env linux_cli \
   --headless 1 \
   --precheck-landing 1 \
   --abort-on-landing-block 1 \
@@ -249,7 +243,6 @@ PY
 python3 -u parallel_download.py \
   --doi_path ready_to_download_oa_only.csv \
   --max_workers 1 \
-  --execution-env linux_cli \
   --headless 1 \
   --precheck-landing 0 \
   --after-first-pass stop \
@@ -260,7 +253,7 @@ python3 -u parallel_download.py \
 
 ### 6. Headless를 끄고 테스트할 때
 
-기본적으로는 local desktop 안정성 확인에 적합한 설정입니다. Linux CLI에서는 이 설정이 자동으로 headless로 강제됩니다.
+기본적으로는 local desktop 안정성 확인에 적합한 설정입니다.
 
 ```bash
 python3 -u parallel_download.py \
@@ -313,7 +306,6 @@ python3 -u parallel_download.py \
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
   --max_workers 1 \
-  --execution-env linux_cli \
   --headless 1 \
   --deep-retry-headless 1 \
   --after-first-pass deep \
@@ -429,7 +421,6 @@ python3 -u parallel_download.py \
 ## 운영 팁
 
 - 대량 실행 전에는 먼저 5~10개 DOI로 샘플 검증을 하는 편이 안전합니다.
-- Linux CLI에서는 headful을 쓰지 않으므로 `execution-env=linux_cli` + `1차 headless + deep retry headless` 기준으로 확인하세요.
 - 같은 publisher를 너무 자주 연속해서 재시도하지 않는 것이 중요합니다.
 
 ## Domain별 특별 전략

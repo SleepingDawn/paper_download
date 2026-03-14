@@ -1,0 +1,101 @@
+{
+  "generated_at": 1773478350,
+  "input_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/_smoke_local_mac_20260314.csv",
+  "sample_size": 1,
+  "workers_requested": 1,
+  "workers_effective": 1,
+  "execution_env": "desktop",
+  "headless": true,
+  "headless_requested": true,
+  "humanized_browser": "1",
+  "assume_institution_access": true,
+  "startup_retries": 3,
+  "timeout_sec": 15.0,
+  "per_doi_deadline_sec": 45.0,
+  "max_nav_attempts": 2,
+  "publisher_cooldown_sec": 7.0,
+  "global_start_spacing_sec": 1.5,
+  "jitter_sec": [
+    0.7,
+    1.8
+  ],
+  "profile_mode": "auto",
+  "profile_name": "Default",
+  "persistent_profile_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/.chrome_user_data",
+  "worker_profile_root": "/tmp/seyong/landing_worker_profiles",
+  "probe_page_mode": "reuse_page",
+  "capture_fail_artifacts": false,
+  "capture_fail_screenshot": false,
+  "capture_success_artifacts": false,
+  "capture_success_html": false,
+  "criteria": "success_landing only when expected publisher/target is reached, visible content is populated, article metadata or stable article markers exist, and no challenge/interstitial/blank heuristics fire.",
+  "summary": {
+    "total_valid": 1,
+    "success_ratio": 0.0,
+    "classifier_counts": {
+      "consent_or_interstitial_block": 1
+    },
+    "outcome_counts": {
+      "FAIL_BLOCK": 1
+    },
+    "top_reason_codes": [
+      [
+        "consent_overlay_marker",
+        1
+      ],
+      [
+        "content_populated",
+        1
+      ],
+      [
+        "expected_domain_match",
+        1
+      ]
+    ],
+    "publisher_breakdown": [
+      {
+        "publisher": "10.31613",
+        "sample_size": 1,
+        "counts": {
+          "consent_or_interstitial_block": 1
+        }
+      }
+    ],
+    "legacy_success_like_count": 1,
+    "legacy_reclassified_non_success": [
+      {
+        "doi": "10.31613/ceramist.2024.00094",
+        "publisher": "Ceramist",
+        "final_url": "https://ceramist.or.kr/authors/copyright_transfer_agreement.php",
+        "title": "Ceramist",
+        "classifier_state": "consent_or_interstitial_block",
+        "reason_codes": [
+          "consent_overlay_marker",
+          "content_populated",
+          "expected_domain_match"
+        ]
+      }
+    ],
+    "p50_elapsed_ms": 25539.0,
+    "p90_elapsed_ms": 25539.0,
+    "domain_breakdown_top20": [
+      {
+        "domain": "ceramist.or.kr",
+        "sample_size": 1,
+        "counts": {
+          "consent_or_interstitial_block": 1
+        },
+        "p50_elapsed_ms": 25539.0,
+        "p90_elapsed_ms": 25539.0
+      }
+    ]
+  },
+  "publishers_covered": [
+    "Ceramist"
+  ],
+  "remaining_weak_spots": [],
+  "output_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/_smoke_local_mac_landing.jsonl",
+  "artifact_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/_smoke_local_mac_landing_artifacts",
+  "failure_artifact_zip": "",
+  "success_artifact_zip": ""
+}

@@ -168,21 +168,17 @@ def _resolve_browser_path(preferred_path: str) -> str:
     if env_path:
         candidates.append(env_path)
 
-    for name in ("google-chrome", "google-chrome-stable", "chromium-browser", "chromium", "chrome"):
+    for name in ("chrome", "Google Chrome"):
         path = shutil.which(name)
         if path:
             candidates.append(path)
 
     candidates.extend(
         [
-            "/usr/bin/google-chrome",
-            "/usr/bin/google-chrome-stable",
-            "/usr/bin/chromium-browser",
-            "/usr/bin/chromium",
-            "/opt/google/chrome/chrome",
-            "/usr/local/bin/chrome",
-            "/home/yongyong0206/chrome-linux64/chrome",
             "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+            os.path.expanduser("~/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
+            "/Applications/Chromium.app/Contents/MacOS/Chromium",
+            os.path.expanduser("~/Applications/Chromium.app/Contents/MacOS/Chromium"),
         ]
     )
 
@@ -205,7 +201,7 @@ def _pick_free_local_port() -> int:
     return port
 
 
-def _run_chrome_smoke(chrome_path: str, profile_root: str, no_sandbox: bool, single_process: bool) -> Dict[str, str]:
+def _run_chrome_smoke(chrome_path: str, profile_root: str) -> Dict[str, str]:
     smoke_dir = os.path.join(profile_root, "_smoke")
     shutil.rmtree(smoke_dir, ignore_errors=True)
     os.makedirs(smoke_dir, exist_ok=True)
@@ -230,11 +226,6 @@ def _run_chrome_smoke(chrome_path: str, profile_root: str, no_sandbox: bool, sin
         "--remote-debugging-address=127.0.0.1",
         "about:blank",
     ]
-    if no_sandbox:
-        cmd.append("--no-sandbox")
-    if single_process:
-        cmd.extend(["--single-process", "--no-zygote"])
-
     proc = None
     try:
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -251,13 +242,13 @@ def _run_chrome_smoke(chrome_path: str, profile_root: str, no_sandbox: bool, sin
                         "ok": "1",
                         "stderr": "",
                         "stdout": version_body[-500:],
-                        "mode": "single" if single_process else "normal",
+                        "mode": "normal",
                         "returncode": "0",
                     }
             except Exception:
                 time.sleep(0.5)
     except Exception as e:
-        return {"ok": "0", "stderr": str(e), "stdout": "", "mode": "single" if single_process else "normal"}
+        return {"ok": "0", "stderr": str(e), "stdout": "", "mode": "normal"}
     finally:
         if proc is not None:
             try:
@@ -283,7 +274,7 @@ def _run_chrome_smoke(chrome_path: str, profile_root: str, no_sandbox: bool, sin
         "ok": "0",
         "stderr": (err or "")[-2000:],
         "stdout": (out or "")[-500:],
-        "mode": "single" if single_process else "normal",
+        "mode": "normal",
         "returncode": str(proc.returncode if proc is not None and proc.returncode is not None else -1),
     }
 
@@ -2731,10 +2722,7 @@ def main() -> None:
     parser.add_argument("--progress-every", type=int, default=25)
     parser.add_argument("--chrome-path", type=str, default=os.environ.get("CHROME_PATH", ""))
     parser.add_argument("--headless", type=int, default=DEFAULT_LOCAL_HEADLESS, choices=[0, 1])
-    parser.add_argument("--execution-env", type=str, default=os.environ.get("PDF_BROWSER_EXECUTION_ENV", "auto"), choices=["auto", "desktop", "linux_cli"])
-    parser.add_argument("--no-sandbox", type=int, default=1, choices=[0, 1])
-    parser.add_argument("--server-tuned", type=int, default=1, choices=[0, 1])
-    parser.add_argument("--single-process", type=int, default=0, choices=[0, 1])
+    parser.add_argument("--execution-env", type=str, default=os.environ.get("PDF_BROWSER_EXECUTION_ENV", "auto"), choices=["auto", "desktop"])
     parser.add_argument("--humanized-browser", type=int, default=1, choices=[0, 1])
     parser.add_argument("--assume-institution-access", type=int, default=1, choices=[0, 1])
     parser.add_argument("--profile-mode", type=str, default="auto")
@@ -2775,13 +2763,8 @@ def main() -> None:
         resolved_execution_env,
         context="landing_precheck",
     )
-    if resolved_execution_env == "linux_cli" and not requested_headless:
-        print(json.dumps({"execution_env": resolved_execution_env, "headless_forced": True}, ensure_ascii=False), flush=True)
     os.environ["PDF_BROWSER_EXECUTION_ENV"] = resolved_execution_env
     os.environ["PDF_BROWSER_HEADLESS"] = "1" if resolved_headless else "0"
-    os.environ["PDF_BROWSER_NO_SANDBOX"] = "1" if int(args.no_sandbox) == 1 else "0"
-    os.environ["PDF_BROWSER_SERVER_TUNED"] = "1" if int(args.server_tuned) == 1 else "0"
-    os.environ["PDF_BROWSER_SINGLE_PROCESS"] = "1" if int(args.single_process) == 1 else "0"
     os.environ["PDF_BROWSER_HUMANIZED"] = "1" if int(args.humanized_browser) == 1 else "0"
     os.environ["PDF_ASSUME_INSTITUTION_ACCESS"] = "1" if int(args.assume_institution_access) == 1 else "0"
     os.environ["PDF_BROWSER_PROFILE_MODE"] = str(args.profile_mode or "auto").strip()
@@ -2789,7 +2772,7 @@ def main() -> None:
     os.environ["PDF_BROWSER_PERSISTENT_PROFILE_DIR"] = os.path.abspath(str(args.persistent_profile_dir))
 
     worker_profile_root = str(args.worker_profile_root or "").strip()
-    run_base = os.environ.get("SLURM_TMPDIR", "").strip() or os.path.join("/tmp", os.environ.get("USER", "user"))
+    run_base = os.path.join("/tmp", os.environ.get("USER", "user"))
     if not worker_profile_root:
         worker_profile_root = os.path.join(run_base, "landing_worker_profiles")
     worker_profile_root = os.path.abspath(worker_profile_root)
@@ -2813,7 +2796,7 @@ def main() -> None:
         raise RuntimeError(
             "Chrome/Chromium executable not found. "
             "Set --chrome-path or CHROME_PATH. "
-            "Tried google-chrome/google-chrome-stable/chromium-browser/chromium/chrome plus the macOS app path."
+            "Tried chrome/Google Chrome plus common macOS app paths."
         )
 
     print(json.dumps({"resolved_chrome_path": chrome_path}, ensure_ascii=False), flush=True)
@@ -2833,32 +2816,17 @@ def main() -> None:
             flush=True,
         )
 
-    smoke_normal = _run_chrome_smoke(
-        chrome_path=chrome_path,
-        profile_root=worker_profile_root,
-        no_sandbox=bool(int(args.no_sandbox)),
-        single_process=False,
-    )
+    smoke_normal = _run_chrome_smoke(chrome_path=chrome_path, profile_root=worker_profile_root)
     if smoke_normal.get("ok") != "1":
-        smoke_single = _run_chrome_smoke(
-            chrome_path=chrome_path,
-            profile_root=worker_profile_root,
-            no_sandbox=bool(int(args.no_sandbox)),
-            single_process=True,
-        )
-        if smoke_single.get("ok") == "1":
-            os.environ["PDF_BROWSER_SINGLE_PROCESS"] = "1"
-            print(json.dumps({"chrome_smoke": "single-process-fallback-ok"}, ensure_ascii=False), flush=True)
-        else:
-            artifact_smoke = os.path.abspath(os.path.join(args.artifact_dir, "chrome_smoke_fail.json"))
-            with open(artifact_smoke, "w", encoding="utf-8") as f:
-                json.dump(
-                    {"normal": smoke_normal, "single": smoke_single, "chrome_path": chrome_path},
-                    f,
-                    ensure_ascii=False,
-                    indent=2,
-                )
-            raise RuntimeError(f"chrome_smoke_failed: {artifact_smoke}")
+        artifact_smoke = os.path.abspath(os.path.join(args.artifact_dir, "chrome_smoke_fail.json"))
+        with open(artifact_smoke, "w", encoding="utf-8") as f:
+            json.dump(
+                {"normal": smoke_normal, "chrome_path": chrome_path},
+                f,
+                ensure_ascii=False,
+                indent=2,
+            )
+        raise RuntimeError(f"chrome_smoke_failed: {artifact_smoke}")
     else:
         print(json.dumps({"chrome_smoke": "ok"}, ensure_ascii=False), flush=True)
 
@@ -2941,9 +2909,6 @@ def main() -> None:
         "execution_env": resolved_execution_env,
         "headless": bool(resolved_headless),
         "headless_requested": bool(requested_headless),
-        "no_sandbox": bool(int(args.no_sandbox)),
-        "server_tuned": bool(int(args.server_tuned)),
-        "single_process": os.environ.get("PDF_BROWSER_SINGLE_PROCESS", "0"),
         "humanized_browser": os.environ.get("PDF_BROWSER_HUMANIZED", "1"),
         "assume_institution_access": bool(int(args.assume_institution_access)),
         "startup_retries": int(args.startup_retries),

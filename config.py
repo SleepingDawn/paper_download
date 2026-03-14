@@ -1,8 +1,8 @@
 import argparse
 import os
 
-CHROME_PATH = "/usr/bin/google-chrome"  # 리눅스 예시
-# CHROME_PATH = "C:/Program Files/Google/Chrome/Application/chrome.exe" # 윈도우 예시
+CHROME_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"  # macOS 예시
+# CHROME_PATH = "C:/Program Files/Google/Chrome/Application/chrome.exe"  # 윈도우 예시
 
 WILEY_API_KEY = "b4b01dd9-bf66-4a57-a791-0e7f3ff95a39"
 
@@ -73,8 +73,8 @@ def get_config():
         "--execution-env",
         type=str,
         default=os.environ.get("PDF_BROWSER_EXECUTION_ENV", "auto"),
-        choices=["auto", "desktop", "linux_cli"],
-        help="브라우저 실행 환경. linux_cli면 headful 요청을 무시하고 headless만 사용합니다.",
+        choices=["auto", "desktop"],
+        help="브라우저 실행 환경. local_mac 기준으로는 auto와 desktop이 동일하게 동작합니다.",
     )
     parser.add_argument(
         "--deep-retry-headless",
@@ -137,7 +137,7 @@ def get_config():
         "--runtime-profile-root",
         type=str,
         default=os.environ.get("PDF_BROWSER_RUNTIME_PROFILE_ROOT", ""),
-        help="다운로드 실행 중 사용할 런타임 프로필 루트. 미지정 시 SLURM_TMPDIR 또는 /tmp/$USER 아래를 사용",
+        help="다운로드 실행 중 사용할 런타임 프로필 루트. 미지정 시 /tmp/$USER 아래를 사용",
     )
 
     args = parser.parse_args()

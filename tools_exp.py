@@ -41,12 +41,8 @@ BEST_BROWSER_UA_MAC = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
 )
-BEST_BROWSER_UA_LINUX = (
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
-)
 # Backward-compat constant. Runtime selection is done by _resolve_best_browser_ua().
-BEST_BROWSER_UA = BEST_BROWSER_UA_LINUX
+BEST_BROWSER_UA = BEST_BROWSER_UA_MAC
 BEST_BROWSER_WINDOW = "1728,1117"
 MAX_ACTION_WAIT_S = int(os.getenv("PDF_ACTION_MAX_WAIT_S", "60"))
 HIGH_FRICTION_DOMAINS = (
@@ -337,16 +333,7 @@ def _resolve_best_browser_ua() -> str:
     override = os.getenv("PDF_BROWSER_UA", "").strip()
     if override:
         return override
-
-    forced = os.getenv("PDF_BROWSER_UA_PLATFORM", "").strip().lower()
-    if forced in ("mac", "macos", "darwin"):
-        return BEST_BROWSER_UA_MAC
-    if forced in ("linux", "server"):
-        return BEST_BROWSER_UA_LINUX
-
-    if sys.platform == "darwin":
-        return BEST_BROWSER_UA_MAC
-    return BEST_BROWSER_UA_LINUX
+    return BEST_BROWSER_UA_MAC
 
 
 def resolve_browser_executable(preferred_path: str = "", logger=None) -> str:
@@ -356,20 +343,16 @@ def resolve_browser_executable(preferred_path: str = "", logger=None) -> str:
     env_path = str(os.environ.get("CHROME_PATH", "")).strip()
     if env_path:
         candidates.append(env_path)
-    for name in ("google-chrome", "google-chrome-stable", "chromium-browser", "chromium", "chrome"):
+    for name in ("chrome", "Google Chrome"):
         p = shutil.which(name)
         if p:
             candidates.append(p)
     candidates.extend(
         [
-            "/usr/bin/google-chrome",
-            "/usr/bin/google-chrome-stable",
-            "/usr/bin/chromium-browser",
-            "/usr/bin/chromium",
-            "/opt/google/chrome/chrome",
-            "/usr/local/bin/chrome",
-            "/home/yongyong0206/chrome-linux64/chrome",
             "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+            os.path.expanduser("~/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
+            "/Applications/Chromium.app/Contents/MacOS/Chromium",
+            os.path.expanduser("~/Applications/Chromium.app/Contents/MacOS/Chromium"),
         ]
     )
     seen = set()
@@ -388,8 +371,6 @@ def resolve_browser_executable(preferred_path: str = "", logger=None) -> str:
 def _find_system_chrome_user_data_dir(profile_name: str = "Default") -> str:
     candidates = [
         os.path.expanduser("~/Library/Application Support/Google/Chrome"),
-        os.path.expanduser("~/.config/google-chrome"),
-        os.path.expanduser("~/.config/google-chrome-beta"),
     ]
     for base in candidates:
         if os.path.isdir(os.path.join(base, profile_name)):
@@ -422,13 +403,9 @@ def _normalize_execution_env(execution_env: str = "") -> str:
         "local_desktop": "desktop",
         "mac": "desktop",
         "macos": "desktop",
-        "server": "linux_cli",
-        "linuxcli": "linux_cli",
-        "hpc": "linux_cli",
-        "slurm": "linux_cli",
     }
     normalized = aliases.get(raw, raw)
-    if normalized in ("auto", "desktop", "linux_cli"):
+    if normalized in ("auto", "desktop"):
         return normalized
     return "auto"
 
@@ -437,21 +414,11 @@ def resolve_browser_execution_env(execution_env: str = "") -> str:
     normalized = _normalize_execution_env(execution_env)
     if normalized != "auto":
         return normalized
-    if sys.platform.startswith("linux"):
-        if any(os.environ.get(name, "").strip() for name in ("DISPLAY", "WAYLAND_DISPLAY", "MIR_SOCKET")):
-            return "desktop"
-        return "linux_cli"
     return "desktop"
 
 
 def coerce_headless_for_execution_env(headless: bool, execution_env: str = "", logger=None, context: str = "browser") -> bool:
-    requested = bool(headless)
-    resolved_env = resolve_browser_execution_env(execution_env)
-    if resolved_env == "linux_cli" and not requested:
-        if logger:
-            logger.info(f"     [Drission] {context}: linux_cli 환경이므로 headless=1로 강제")
-        return True
-    return requested
+    return bool(headless)
 
 
 def _stateful_profile_requested(doi_url: str, profile_mode: str = "") -> bool:
@@ -599,7 +566,7 @@ def _default_runtime_profile_root() -> str:
     explicit = os.getenv("PDF_BROWSER_RUNTIME_PROFILE_ROOT", "").strip()
     if explicit:
         return os.path.abspath(explicit)
-    run_base = os.environ.get("SLURM_TMPDIR", "").strip() or os.path.join("/tmp", os.environ.get("USER", "user"))
+    run_base = os.path.join("/tmp", os.environ.get("USER", "user"))
     return os.path.abspath(os.path.join(run_base, "download_runtime_profiles"))
 
 
@@ -748,9 +715,6 @@ def _apply_best_browser_profile(co: ChromiumOptions) -> None:
     execution_env = resolve_browser_execution_env()
     headless = os.getenv("PDF_BROWSER_HEADLESS", "0").strip().lower() in ("1", "true", "yes")
     headless = coerce_headless_for_execution_env(headless, execution_env, context="browser_profile")
-    no_sandbox = os.getenv("PDF_BROWSER_NO_SANDBOX", "0").strip().lower() in ("1", "true", "yes")
-    server_tuned = os.getenv("PDF_BROWSER_SERVER_TUNED", "0").strip().lower() in ("1", "true", "yes")
-    single_process = os.getenv("PDF_BROWSER_SINGLE_PROCESS", "0").strip().lower() in ("1", "true", "yes")
     humanized = os.getenv("PDF_BROWSER_HUMANIZED", "1").strip().lower() in ("1", "true", "yes")
 
     if headless:
@@ -770,22 +734,13 @@ def _apply_best_browser_profile(co: ChromiumOptions) -> None:
     co.set_argument("--start-maximized")
     co.set_argument("--password-store=basic")
     co.set_argument("--use-mock-keychain")
-    if server_tuned:
-        # 지문 일관성을 우선한다. 강한 disable 플래그는 opt-out일 때만 사용.
-        co.set_argument("--disable-dev-shm-usage")
-        if not humanized:
-            co.set_argument("--disable-background-networking")
-            co.set_argument("--disable-component-update")
-            co.set_argument("--disable-domain-reliability")
-            co.set_argument("--metrics-recording-only")
-            co.set_argument("--disable-sync")
-            co.set_argument("--disable-features=MediaRouter,OptimizationHints")
-    if single_process:
-        co.set_argument("--single-process")
-        co.set_argument("--no-zygote")
-    if no_sandbox:
-        co.set_argument("--no-sandbox")
-        co.set_argument("--disable-dev-shm-usage")
+    if not humanized:
+        co.set_argument("--disable-background-networking")
+        co.set_argument("--disable-component-update")
+        co.set_argument("--disable-domain-reliability")
+        co.set_argument("--metrics-recording-only")
+        co.set_argument("--disable-sync")
+        co.set_argument("--disable-features=MediaRouter,OptimizationHints")
     co.set_user_agent(_resolve_best_browser_ua())
     try:
         co.set_load_mode("eager")

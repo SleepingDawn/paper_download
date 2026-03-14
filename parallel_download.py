@@ -1193,7 +1193,7 @@ def main(
     os.environ.pop("PDF_BROWSER_SESSION_SEED_ROOT", None)
     runtime_profile_root = str(runtime_profile_root or "").strip()
     if not runtime_profile_root:
-        runtime_base = os.environ.get("SLURM_TMPDIR", "").strip() or os.path.join("/tmp", os.environ.get("USER", "user"))
+        runtime_base = os.path.join("/tmp", os.environ.get("USER", "user"))
         runtime_label = os.path.basename(os.path.normpath(run_output_dir)) or "paper_download_run"
         runtime_profile_root = os.path.join(runtime_base, "download_runtime_profiles", runtime_label)
     os.environ["PDF_BROWSER_RUNTIME_PROFILE_ROOT"] = os.path.abspath(runtime_profile_root)
@@ -1245,8 +1245,6 @@ def main(
         context="download_deep_retry",
     )
     resolved_abort_on_landing_block = bool(abort_on_landing_block)
-    if resolved_execution_env == "linux_cli" and (not requested_headless or not requested_deep_retry_headless):
-        print("execution_env=linux_cli 이므로 headful 요청은 무시하고 headless로 강제합니다.")
     print(
         f"브라우저 모드(first/deep): {'headless' if resolved_headless else 'headful'} / "
         f"{'headless' if resolved_deep_retry_headless else 'headful'}"
