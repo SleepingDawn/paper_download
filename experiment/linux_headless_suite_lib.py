@@ -4,6 +4,7 @@ import csv
 import json
 import re
 from collections import Counter, defaultdict
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Sequence
 from urllib.parse import urlparse
@@ -64,6 +65,21 @@ VALIDATION_COHORT_RECENT = "recent_primary"
 VALIDATION_COHORT_LEGACY = "legacy_fallback"
 SCIHUB_CONFOUND_RISK_LOWER = "lower_recent"
 SCIHUB_CONFOUND_RISK_HIGHER = "higher_legacy"
+PRIOR_ATTEMPT_STATE_FRESH = "fresh"
+PRIOR_ATTEMPT_STATE_REUSED = "reused"
+RETRY_ACTION_FIRST_ATTEMPT = "first_attempt"
+RETRY_ACTION_REPEATED_ATTEMPT = "repeated_attempt"
+RETRY_ACTION_CONTROLLED_RETRY = "controlled_retry"
+RETRY_ACTION_SKIPPED = "skipped_due_to_retry_protection"
+ATTEMPT_SUCCESS_BUCKETS = {
+    "publisher_native_download",
+    "scihub_assisted_download",
+    "download_success_unknown",
+}
+ATTEMPT_HARD_BLOCK_BUCKETS = {
+    "challenge_or_interstitial",
+    "access_rights",
+}
 
 PILOT_TARGETS = {
     "acs": 1,
@@ -153,6 +169,10 @@ def default_input_csv() -> Path:
 
 def default_suite_dir() -> Path:
     return repo_root() / "experiment" / "linux_headless_suite"
+
+
+def default_attempt_ledger_path() -> Path:
+    return repo_root() / "outputs" / "linux_headless_suite_attempt_ledger.jsonl"
 
 
 def parse_bool(value: Any) -> bool:
@@ -331,7 +351,135 @@ def scihub_confound_risk_for_year(year: int) -> str:
     return SCIHUB_CONFOUND_RISK_HIGHER
 
 
-def candidate_sort_key(row: Dict[str, Any]) -> tuple[Any, ...]:
+def parse_timestamp(value: Any) -> datetime | None:
+    raw = clean_text(value)
+    if not raw:
+        return None
+    if raw.endswith("Z"):
+        raw = raw[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(raw)
+    except Exception:
+        return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=timezone.utc)
+    return parsed
+
+
+def attempt_root_cause_family(combined_bucket: Any) -> str:
+    bucket = clean_text(combined_bucket)
+    if bucket in ATTEMPT_SUCCESS_BUCKETS:
+        return "success"
+    if bucket == "landing_success_no_download":
+        return "post_landing_download_failure"
+    if bucket == "challenge_or_interstitial":
+        return "challenge_or_interstitial"
+    if bucket == "blank_or_incomplete":
+        return "blank_or_incomplete"
+    if bucket == "timeout_or_error":
+        return "timeout_or_error"
+    if bucket == "environment_or_config_failure":
+        return "environment_or_config_failure"
+    if bucket == "access_rights":
+        return "access_rights"
+    if bucket == "doi_not_found":
+        return "doi_not_found"
+    if bucket == "missing":
+        return "missing"
+    return "other_non_success"
+
+
+def load_attempt_ledger(path: Path | None) -> List[Dict[str, Any]]:
+    if path is None or not path.exists():
+        return []
+    rows: List[Dict[str, Any]] = []
+    with path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                payload = json.loads(line)
+            except Exception:
+                continue
+            if isinstance(payload, dict):
+                rows.append(payload)
+    return rows
+
+
+def build_attempt_index(entries: Sequence[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    index: Dict[str, Dict[str, Any]] = {}
+    for entry in entries:
+        doi = normalize_doi(entry.get("doi"))
+        if not doi:
+            continue
+        bucket = clean_text(entry.get("combined_bucket"))
+        attempted_at = parse_timestamp(entry.get("attempted_at"))
+        aggregate = index.setdefault(
+            doi,
+            {
+                "doi": doi,
+                "attempt_count": 0,
+                "success_count": 0,
+                "hard_block_count": 0,
+                "publisher_group": clean_text(entry.get("experiment_publisher_group")),
+                "publication_year": parse_int(entry.get("publication_year")),
+                "last_attempted_at": "",
+                "last_combined_bucket": "",
+                "last_root_cause_family": "",
+                "last_run_id": "",
+            },
+        )
+        aggregate["attempt_count"] += 1
+        if bucket in ATTEMPT_SUCCESS_BUCKETS:
+            aggregate["success_count"] += 1
+        if bucket in ATTEMPT_HARD_BLOCK_BUCKETS:
+            aggregate["hard_block_count"] += 1
+        root_cause_family = attempt_root_cause_family(bucket)
+        last_attempted_at = parse_timestamp(aggregate.get("last_attempted_at"))
+        if attempted_at and (last_attempted_at is None or attempted_at >= last_attempted_at):
+            aggregate["last_attempted_at"] = attempted_at.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+            aggregate["last_combined_bucket"] = bucket
+            aggregate["last_root_cause_family"] = root_cause_family
+            aggregate["last_run_id"] = clean_text(entry.get("run_id"))
+    return index
+
+
+def prior_attempt_summary(row: Dict[str, Any], attempt_index: Dict[str, Dict[str, Any]] | None) -> Dict[str, Any]:
+    prior = dict((attempt_index or {}).get(normalize_doi(row.get("doi")), {}))
+    attempt_count = parse_int(prior.get("attempt_count"))
+    success_count = parse_int(prior.get("success_count"))
+    hard_block_count = parse_int(prior.get("hard_block_count"))
+    return {
+        "prior_attempt_state": PRIOR_ATTEMPT_STATE_FRESH if attempt_count <= 0 else PRIOR_ATTEMPT_STATE_REUSED,
+        "prior_attempt_count": attempt_count,
+        "prior_success_count": success_count,
+        "prior_hard_block_count": hard_block_count,
+        "prior_last_combined_bucket": clean_text(prior.get("last_combined_bucket")),
+        "prior_last_root_cause_family": clean_text(prior.get("last_root_cause_family")),
+        "prior_last_attempted_at": clean_text(prior.get("last_attempted_at")),
+        "prior_last_run_id": clean_text(prior.get("last_run_id")),
+    }
+
+
+def annotate_row_with_attempt_history(
+    row: Dict[str, Any],
+    attempt_index: Dict[str, Dict[str, Any]] | None,
+    *,
+    retry_action: str = "",
+    retry_reason: str = "",
+) -> Dict[str, Any]:
+    enriched = dict(row)
+    enriched.update(prior_attempt_summary(enriched, attempt_index))
+    enriched["retry_protection_action"] = clean_text(retry_action)
+    enriched["retry_protection_reason"] = clean_text(retry_reason)
+    return enriched
+
+
+def candidate_sort_key(
+    row: Dict[str, Any],
+    attempt_index: Dict[str, Dict[str, Any]] | None = None,
+) -> tuple[Any, ...]:
     bucket = clean_text(row.get("selection_bucket"))
     try:
         bucket_rank = SELECTION_BUCKET_ORDER.index(bucket)
@@ -339,7 +487,11 @@ def candidate_sort_key(row: Dict[str, Any]) -> tuple[Any, ...]:
         bucket_rank = len(SELECTION_BUCKET_ORDER)
     publication_year = parse_int(row.get("publication_year"))
     recent_rank = 0 if publication_year >= RECENT_YEAR_FLOOR else 1
+    prior = prior_attempt_summary(row, attempt_index)
     return (
+        parse_int(prior.get("prior_attempt_count")),
+        1 if parse_int(prior.get("prior_hard_block_count")) > 0 else 0,
+        1 if parse_int(prior.get("prior_success_count")) > 0 else 0,
         recent_rank,
         bucket_rank,
         -publication_year,
@@ -429,13 +581,15 @@ def build_suite_selection(
     rows: Sequence[Dict[str, Any]],
     suite_name: str,
     targets: Dict[str, int],
+    *,
+    attempt_index: Dict[str, Dict[str, Any]] | None = None,
 ) -> Dict[str, Any]:
     grouped: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
     for row in rows:
         grouped[str(row.get("experiment_publisher_group") or "other")].append(dict(row))
 
     for group_rows in grouped.values():
-        group_rows.sort(key=candidate_sort_key)
+        group_rows.sort(key=lambda row: candidate_sort_key(row, attempt_index=attempt_index))
 
     selected: List[Dict[str, Any]] = []
     gaps: List[Dict[str, Any]] = []
@@ -479,7 +633,7 @@ def build_suite_selection(
             if not candidate:
                 continue
             doi = normalize_doi(candidate.get("doi"))
-            enriched = dict(candidate)
+            enriched = annotate_row_with_attempt_history(candidate, attempt_index)
             enriched["suite_name"] = suite_name
             enriched["suite_slot_index"] = slot_idx
             enriched["suite_slot_bucket"] = bucket_name
@@ -500,7 +654,7 @@ def build_suite_selection(
                         continue
                     if clean_text(candidate.get("validation_cohort")) != cohort:
                         continue
-                    enriched = dict(candidate)
+                    enriched = annotate_row_with_attempt_history(candidate, attempt_index)
                     enriched["suite_name"] = suite_name
                     enriched["suite_slot_index"] = len(chosen) + 1
                     enriched["suite_slot_bucket"] = clean_text(candidate.get("selection_bucket"))
@@ -544,6 +698,7 @@ def build_suite_selection(
         "gaps": gaps,
         "selected_counts": summarize_group_distribution(selected, "experiment_publisher_group"),
         "validation_cohort_counts": summarize_group_distribution(selected, "validation_cohort"),
+        "prior_attempt_state_counts": summarize_group_distribution(selected, "prior_attempt_state"),
     }
 
 
@@ -551,8 +706,13 @@ def manifest_payload(
     source_csv: Path,
     rows: Sequence[Dict[str, Any]],
     suites: Sequence[Dict[str, Any]],
+    *,
+    attempt_ledger_path: Path | None = None,
+    attempt_ledger_entries: Sequence[Dict[str, Any]] | None = None,
 ) -> Dict[str, Any]:
     suites_by_name = {str(item.get("suite_name")): item for item in suites}
+    ledger_entries = list(attempt_ledger_entries or [])
+    ledger_unique_dois = len({normalize_doi(entry.get("doi")) for entry in ledger_entries if normalize_doi(entry.get("doi"))})
     return {
         "source_csv": str(source_csv),
         "source_total": int(len(rows)),
@@ -562,6 +722,11 @@ def manifest_payload(
             "headless": True,
         },
         "recent_year_floor": RECENT_YEAR_FLOOR,
+        "attempt_ledger": {
+            "path": str(attempt_ledger_path) if attempt_ledger_path is not None else "",
+            "entry_total": len(ledger_entries),
+            "unique_doi_total": ledger_unique_dois,
+        },
         "publisher_distribution_raw": summarize_group_distribution(rows, "publisher"),
         "publisher_distribution_grouped": summarize_group_distribution(rows, "experiment_publisher_group"),
         "validation_cohort_distribution": summarize_group_distribution(rows, "validation_cohort"),
@@ -572,6 +737,7 @@ def manifest_payload(
                 "selected_total": len(suite.get("selected_rows", [])),
                 "selected_counts": suite.get("selected_counts", []),
                 "validation_cohort_counts": suite.get("validation_cohort_counts", []),
+                "prior_attempt_state_counts": suite.get("prior_attempt_state_counts", []),
                 "gaps": suite.get("gaps", []),
                 "explicit_coverage": ["rsc", "cell"],
             }
@@ -580,9 +746,8 @@ def manifest_payload(
     }
 
 
-def write_csv(path: Path, rows: Sequence[Dict[str, Any]]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    fieldnames = [
+def sample_csv_fieldnames() -> List[str]:
+    return [
         "suite_name",
         "experiment_publisher_group",
         "publisher_display_name",
@@ -592,6 +757,16 @@ def write_csv(path: Path, rows: Sequence[Dict[str, Any]]) -> None:
         "selection_bucket",
         "validation_cohort",
         "scihub_confound_risk",
+        "prior_attempt_state",
+        "prior_attempt_count",
+        "prior_success_count",
+        "prior_hard_block_count",
+        "prior_last_combined_bucket",
+        "prior_last_root_cause_family",
+        "prior_last_attempted_at",
+        "prior_last_run_id",
+        "retry_protection_action",
+        "retry_protection_reason",
         "source_open_access",
         "source_has_pdf_url",
         "doi",
@@ -603,6 +778,11 @@ def write_csv(path: Path, rows: Sequence[Dict[str, Any]]) -> None:
         "open_access",
         "download_status",
     ]
+
+
+def write_csv(path: Path, rows: Sequence[Dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = sample_csv_fieldnames()
     with path.open("w", encoding="utf-8-sig", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
@@ -626,3 +806,159 @@ def relative_to_repo(path: Path) -> str:
         return str(path.resolve().relative_to(repo_root()))
     except Exception:
         return str(path.resolve())
+
+
+def apply_retry_protection(
+    rows: Sequence[Dict[str, Any]],
+    attempt_index: Dict[str, Dict[str, Any]] | None,
+    *,
+    max_attempts_per_doi: int,
+    cooldown_hours: int,
+    allow_success_reruns: bool,
+    allow_hard_block_reruns: bool,
+    allow_repeated_attempts: bool,
+) -> Dict[str, Any]:
+    now_utc = datetime.now(timezone.utc)
+    allowed_rows: List[Dict[str, Any]] = []
+    skipped_rows: List[Dict[str, Any]] = []
+    action_counts = Counter()
+    skip_reason_counts = Counter()
+
+    for row in rows:
+        prior = prior_attempt_summary(row, attempt_index)
+        prior_attempt_count = parse_int(prior.get("prior_attempt_count"))
+        prior_success_count = parse_int(prior.get("prior_success_count"))
+        prior_hard_block_count = parse_int(prior.get("prior_hard_block_count"))
+        last_attempted_at = parse_timestamp(prior.get("prior_last_attempted_at"))
+        cooldown_active = False
+        if cooldown_hours > 0 and last_attempted_at is not None:
+            cooldown_active = (now_utc - last_attempted_at.astimezone(timezone.utc)) < timedelta(hours=cooldown_hours)
+
+        controlled_retry = False
+        controlled_reason = ""
+        if prior_success_count > 0 and allow_success_reruns:
+            controlled_retry = True
+            controlled_reason = "allow_success_reruns"
+        elif prior_hard_block_count > 0 and allow_hard_block_reruns:
+            controlled_retry = True
+            controlled_reason = "allow_hard_block_reruns"
+        elif prior_attempt_count > 0 and allow_repeated_attempts:
+            controlled_retry = True
+            controlled_reason = "allow_repeated_attempts"
+
+        action = RETRY_ACTION_FIRST_ATTEMPT
+        reason = "unseen_doi"
+        keep_row = True
+        if prior_attempt_count > 0:
+            action = RETRY_ACTION_REPEATED_ATTEMPT
+            reason = "below_retry_threshold"
+            if prior_success_count > 0 and not allow_success_reruns:
+                action = RETRY_ACTION_SKIPPED
+                reason = "prior_success_exists"
+                keep_row = False
+            elif prior_hard_block_count > 0 and not allow_hard_block_reruns:
+                action = RETRY_ACTION_SKIPPED
+                reason = "prior_hard_block_exists"
+                keep_row = False
+            elif max_attempts_per_doi > 0 and prior_attempt_count >= max_attempts_per_doi and not controlled_retry:
+                action = RETRY_ACTION_SKIPPED
+                reason = "max_attempts_reached"
+                keep_row = False
+            elif cooldown_active and not controlled_retry:
+                action = RETRY_ACTION_SKIPPED
+                reason = "cooldown_active"
+                keep_row = False
+            elif controlled_retry:
+                action = RETRY_ACTION_CONTROLLED_RETRY
+                reason = controlled_reason
+
+        enriched = annotate_row_with_attempt_history(
+            row,
+            attempt_index,
+            retry_action=action,
+            retry_reason=reason,
+        )
+        action_counts[action] += 1
+        if action == RETRY_ACTION_SKIPPED:
+            skip_reason_counts[reason] += 1
+            skipped_rows.append(enriched)
+        elif keep_row:
+            allowed_rows.append(enriched)
+        else:
+            skipped_rows.append(enriched)
+
+    return {
+        "allowed_rows": allowed_rows,
+        "skipped_rows": skipped_rows,
+        "action_counts": dict(sorted((key, int(value)) for key, value in action_counts.items())),
+        "skip_reason_counts": dict(sorted((key, int(value)) for key, value in skip_reason_counts.items())),
+    }
+
+
+def append_attempt_ledger(
+    path: Path | None,
+    merged_rows: Sequence[Dict[str, Any]],
+    *,
+    run_id: str,
+    suite_name: str,
+    attempted_at: str,
+) -> Dict[str, Any]:
+    if path is None:
+        return {"ok": False, "reason": "attempt_ledger_disabled"}
+    path.parent.mkdir(parents=True, exist_ok=True)
+    existing_keys = set()
+    if path.exists():
+        with path.open("r", encoding="utf-8") as existing_handle:
+            for line in existing_handle:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    payload = json.loads(line)
+                except Exception:
+                    continue
+                existing_keys.add((clean_text(payload.get("run_id")), normalize_doi(payload.get("doi"))))
+
+    appended = 0
+    duplicate_skips = 0
+    with path.open("a", encoding="utf-8") as handle:
+        for row in merged_rows:
+            doi = normalize_doi(row.get("doi"))
+            if not doi:
+                continue
+            dedup_key = (run_id, doi)
+            if dedup_key in existing_keys:
+                duplicate_skips += 1
+                continue
+            existing_keys.add(dedup_key)
+            combined_bucket = clean_text(row.get("combined_bucket"))
+            payload = {
+                "run_id": run_id,
+                "suite_name": suite_name,
+                "attempted_at": attempted_at,
+                "doi": doi,
+                "experiment_publisher_group": clean_text(row.get("experiment_publisher_group")),
+                "publisher_display_name": clean_text(row.get("publisher_display_name")),
+                "publication_year": parse_int(row.get("publication_year")),
+                "validation_cohort": clean_text(row.get("validation_cohort")),
+                "selection_reason": clean_text(row.get("selection_reason")),
+                "prior_attempt_count": parse_int(row.get("prior_attempt_count")),
+                "retry_protection_action": clean_text(row.get("retry_protection_action")),
+                "retry_protection_reason": clean_text(row.get("retry_protection_reason")),
+                "landing_probe_bucket": clean_text(row.get("landing_probe_bucket")),
+                "download_bucket": clean_text(row.get("download_bucket")),
+                "combined_bucket": combined_bucket,
+                "download_method": clean_text(row.get("download_method")),
+                "download_source_category": clean_text(row.get("download_source_category")),
+                "landing_probe_session_reason": clean_text(row.get("landing_probe_session_reason")),
+                "download_session_reason": clean_text(row.get("download_session_reason")),
+                "root_cause_family": attempt_root_cause_family(combined_bucket),
+            }
+            handle.write(json.dumps(payload, ensure_ascii=False) + "\n")
+            appended += 1
+    return {
+        "ok": True,
+        "path": str(path),
+        "appended_rows": appended,
+        "duplicate_skips": duplicate_skips,
+    }

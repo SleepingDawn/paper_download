@@ -201,6 +201,9 @@ def markdown_report(summary: Dict[str, Any]) -> str:
     lines.extend(["", "## Validation Cohorts", ""])
     for cohort, count in summary["validation_cohort_counts"].items():
         lines.append(f"- {cohort}: {count}")
+    lines.extend(["", "## Retry Protection", ""])
+    for action, count in summary["retry_action_counts"].items():
+        lines.append(f"- {action}: {count}")
     lines.extend(["", "## Combined", ""])
     for bucket, count in summary["combined_bucket_counts"].items():
         lines.append(f"- {bucket}: {count}")
@@ -260,6 +263,7 @@ def main() -> int:
     combined_bucket_counts = Counter()
     validation_cohort_counts = Counter()
     validation_cohort_combined_bucket_counts: Dict[str, Counter] = defaultdict(Counter)
+    retry_action_counts = Counter()
     merged_rows: List[Dict[str, Any]] = []
     blocked_items: List[str] = []
 
@@ -275,12 +279,14 @@ def main() -> int:
         download_bucket = download_bucket_from_record(download)
         combined = combined_bucket(landing_bucket, download_bucket)
         validation_cohort = str(sample.get("validation_cohort") or "")
+        retry_action = str(sample.get("retry_protection_action") or "")
 
         landing_probe_bucket_counts[landing_bucket] += 1
         download_bucket_counts[download_bucket] += 1
         combined_bucket_counts[combined] += 1
         validation_cohort_counts[validation_cohort or "unknown"] += 1
         validation_cohort_combined_bucket_counts[validation_cohort or "unknown"][combined] += 1
+        retry_action_counts[retry_action or "unspecified"] += 1
 
         merged_rows.append(
             {
@@ -292,6 +298,13 @@ def main() -> int:
                 "suite_slot_bucket": sample.get("suite_slot_bucket", ""),
                 "validation_cohort": sample.get("validation_cohort", ""),
                 "scihub_confound_risk": sample.get("scihub_confound_risk", ""),
+                "prior_attempt_state": sample.get("prior_attempt_state", ""),
+                "prior_attempt_count": sample.get("prior_attempt_count", ""),
+                "prior_success_count": sample.get("prior_success_count", ""),
+                "prior_hard_block_count": sample.get("prior_hard_block_count", ""),
+                "prior_last_combined_bucket": sample.get("prior_last_combined_bucket", ""),
+                "retry_protection_action": sample.get("retry_protection_action", ""),
+                "retry_protection_reason": sample.get("retry_protection_reason", ""),
                 "source_open_access": sample.get("source_open_access", ""),
                 "source_has_pdf_url": sample.get("source_has_pdf_url", ""),
                 "doi": doi,
@@ -378,6 +391,7 @@ def main() -> int:
         "landing_probe_records": len(landing_rows),
         "download_records": len(download_rows),
         "validation_cohort_counts": dict(sorted((k, int(v)) for k, v in validation_cohort_counts.items())),
+        "retry_action_counts": dict(sorted((k, int(v)) for k, v in retry_action_counts.items())),
         "validation_cohort_combined_bucket_counts": {
             cohort: dict(sorted((bucket, int(count)) for bucket, count in counts.items()))
             for cohort, counts in sorted(validation_cohort_combined_bucket_counts.items())
@@ -404,6 +418,13 @@ def main() -> int:
         "suite_slot_bucket",
         "validation_cohort",
         "scihub_confound_risk",
+        "prior_attempt_state",
+        "prior_attempt_count",
+        "prior_success_count",
+        "prior_hard_block_count",
+        "prior_last_combined_bucket",
+        "retry_protection_action",
+        "retry_protection_reason",
         "source_open_access",
         "source_has_pdf_url",
         "doi",

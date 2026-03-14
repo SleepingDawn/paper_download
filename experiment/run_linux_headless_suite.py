@@ -13,16 +13,41 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 
-from linux_headless_suite_lib import default_suite_dir, repo_root, write_json
+from linux_headless_suite_lib import (
+    append_attempt_ledger,
+    apply_retry_protection,
+    build_attempt_index,
+    default_attempt_ledger_path,
+    default_suite_dir,
+    load_attempt_ledger,
+    load_csv_rows,
+    repo_root,
+    write_csv,
+    write_json,
+)
 
 
-def build_sample_if_needed(suite_dir: Path, rebuild: bool) -> None:
+def build_sample_if_needed(suite_dir: Path, rebuild: bool, attempt_ledger: Path | None) -> None:
     manifest_path = suite_dir / "suite_manifest.json"
     pilot_path = suite_dir / "pilot_sample.csv"
     full_path = suite_dir / "full_sample.csv"
-    if not rebuild and manifest_path.exists() and pilot_path.exists() and full_path.exists():
+    if (
+        not rebuild
+        and manifest_path.exists()
+        and pilot_path.exists()
+        and full_path.exists()
+        and not (
+            attempt_ledger is not None
+            and attempt_ledger.exists()
+            and attempt_ledger.stat().st_mtime > manifest_path.stat().st_mtime
+        )
+    ):
         return
     cmd = [sys.executable, str(repo_root() / "experiment" / "build_linux_headless_suite.py"), "--output-dir", str(suite_dir)]
+    if attempt_ledger is not None:
+        cmd.extend(["--attempt-ledger", str(attempt_ledger)])
+    else:
+        cmd.append("--ignore-attempt-ledger")
     subprocess.run(cmd, cwd=repo_root(), check=True)
 
 
@@ -84,13 +109,21 @@ def main() -> int:
         type=Path,
         default=Path(os.environ.get("PDF_BROWSER_PERSISTENT_PROFILE_DIR", "")) if os.environ.get("PDF_BROWSER_PERSISTENT_PROFILE_DIR") else None,
     )
+    parser.add_argument("--attempt-ledger", type=Path, default=default_attempt_ledger_path())
+    parser.add_argument("--ignore-attempt-ledger", action="store_true")
+    parser.add_argument("--max-attempts-per-doi", type=int, default=1)
+    parser.add_argument("--retry-cooldown-hours", type=int, default=72)
+    parser.add_argument("--allow-success-reruns", action="store_true")
+    parser.add_argument("--allow-hard-block-reruns", action="store_true")
+    parser.add_argument("--allow-repeated-attempts", action="store_true")
     parser.add_argument("--landing-workers", type=int, default=2)
     parser.add_argument("--download-workers", type=int, default=1)
     parser.add_argument("--after-first-pass", choices=["stop", "deep"], default="stop")
     args = parser.parse_args()
 
     suite_dir = args.suite_dir.resolve()
-    build_sample_if_needed(suite_dir, rebuild=bool(args.rebuild_samples))
+    attempt_ledger_path = None if args.ignore_attempt_ledger else args.attempt_ledger.resolve()
+    build_sample_if_needed(suite_dir, rebuild=bool(args.rebuild_samples), attempt_ledger=attempt_ledger_path)
 
     sample_csv = (args.sample_csv or (suite_dir / f"{args.suite}_sample.csv")).resolve()
     if not sample_csv.exists():
@@ -104,6 +137,40 @@ def main() -> int:
     logs_dir = run_dir / "logs"
     for path in (landing_dir, download_dir, summary_dir, logs_dir):
         path.mkdir(parents=True, exist_ok=True)
+
+    original_sample_csv = sample_csv
+    effective_sample_csv = run_dir / "effective_sample.csv"
+    retry_skip_csv = summary_dir / "retry_protection_skips.csv"
+    retry_skip_json = summary_dir / "retry_protection_skips.json"
+    source_sample_rows = load_csv_rows(original_sample_csv)
+    attempt_ledger_entries = load_attempt_ledger(attempt_ledger_path)
+    attempt_index = build_attempt_index(attempt_ledger_entries)
+    retry_protection = apply_retry_protection(
+        source_sample_rows,
+        attempt_index,
+        max_attempts_per_doi=max(0, int(args.max_attempts_per_doi)),
+        cooldown_hours=max(0, int(args.retry_cooldown_hours)),
+        allow_success_reruns=bool(args.allow_success_reruns),
+        allow_hard_block_reruns=bool(args.allow_hard_block_reruns),
+        allow_repeated_attempts=bool(args.allow_repeated_attempts),
+    )
+    effective_sample_rows = list(retry_protection["allowed_rows"])
+    skipped_sample_rows = list(retry_protection["skipped_rows"])
+    write_csv(effective_sample_csv, effective_sample_rows)
+    write_csv(retry_skip_csv, skipped_sample_rows)
+    write_json(
+        retry_skip_json,
+        {
+            "attempt_ledger_path": str(attempt_ledger_path) if attempt_ledger_path is not None else "",
+            "source_sample_csv": str(original_sample_csv),
+            "source_sample_total": len(source_sample_rows),
+            "effective_sample_total": len(effective_sample_rows),
+            "skipped_total": len(skipped_sample_rows),
+            "action_counts": retry_protection["action_counts"],
+            "skip_reason_counts": retry_protection["skip_reason_counts"],
+        },
+    )
+    sample_csv = effective_sample_csv
 
     profile_dir = args.persistent_profile_dir.resolve() if args.persistent_profile_dir else None
     landing_jsonl = landing_dir / "landing_access_repro.jsonl"
@@ -238,6 +305,7 @@ def main() -> int:
         "suite_dir": str(suite_dir),
         "repo_root": str(repo_root()),
         "sample_csv": str(sample_csv),
+        "source_sample_csv": str(original_sample_csv),
         "run_dir": str(run_dir),
         "host": host_name,
         "user": getpass.getuser(),
@@ -257,12 +325,28 @@ def main() -> int:
         "after_first_pass": str(args.after_first_pass),
         "profile_name": str(args.profile_name),
         "persistent_profile_dir": str(profile_dir) if profile_dir is not None else "",
+        "attempt_ledger_path": str(attempt_ledger_path) if attempt_ledger_path is not None else "",
+        "retry_protection": {
+            "enabled": attempt_ledger_path is not None,
+            "max_attempts_per_doi": int(args.max_attempts_per_doi),
+            "retry_cooldown_hours": int(args.retry_cooldown_hours),
+            "allow_success_reruns": bool(args.allow_success_reruns),
+            "allow_hard_block_reruns": bool(args.allow_hard_block_reruns),
+            "allow_repeated_attempts": bool(args.allow_repeated_attempts),
+            "source_sample_total": len(source_sample_rows),
+            "effective_sample_total": len(effective_sample_rows),
+            "skipped_total": len(skipped_sample_rows),
+            "action_counts": retry_protection["action_counts"],
+            "skip_reason_counts": retry_protection["skip_reason_counts"],
+        },
         "environment_overrides": {
             "CHROME_PATH": str(os.environ.get("CHROME_PATH", "")).strip(),
             "PDF_BROWSER_NO_SANDBOX": str(os.environ.get("PDF_BROWSER_NO_SANDBOX", "")).strip(),
         },
         "paths": {
             "run_dir": str(run_dir),
+            "source_sample_csv": str(original_sample_csv),
+            "effective_sample_csv": str(effective_sample_csv),
             "landing_dir": str(landing_dir),
             "download_dir": str(download_dir),
             "download_run_dir": str(download_run_dir),
@@ -278,6 +362,8 @@ def main() -> int:
             "publisher_summary_csv": str(publisher_csv),
             "summary_json": str(merged_json),
             "summary_md": str(merged_md),
+            "retry_skip_csv": str(retry_skip_csv),
+            "retry_skip_json": str(retry_skip_json),
         },
         "prepared_commands": {
             "landing": landing_cmd,
@@ -291,7 +377,8 @@ def main() -> int:
     }
 
     seed_check_failed = False
-    if args.runtime_preset == "linux_cli_seeded":
+    all_rows_skipped = len(effective_sample_rows) == 0
+    if args.runtime_preset == "linux_cli_seeded" and not all_rows_skipped:
         if profile_dir is None:
             seed_check_failed = True
             execution_manifest["seed_profile_check"] = {
@@ -327,7 +414,16 @@ def main() -> int:
                     "cmd": seed_check_cmd,
                 }
 
-    if args.execute and not seed_check_failed:
+    if args.execute and all_rows_skipped:
+        for stage_name in ("landing", "download", "summarize"):
+            execution_manifest["executed_commands"][stage_name] = {
+                "ok": False,
+                "returncode": None,
+                "skipped": True,
+                "reason": "all_rows_skipped_retry_protection",
+            }
+        execution_manifest["status"] = "skipped_retry_protection_all_rows"
+    elif args.execute and not seed_check_failed:
         if not args.skip_landing:
             execution_manifest["executed_commands"]["landing"] = run_command(
                 landing_cmd,
@@ -369,7 +465,7 @@ def main() -> int:
         }
         execution_manifest["status"] = "blocked_seed_profile"
 
-    if args.execute and execution_manifest.get("status") != "blocked_seed_profile":
+    if args.execute and execution_manifest.get("status") not in {"blocked_seed_profile", "skipped_retry_protection_all_rows"}:
         stage_results = [
             payload
             for payload in execution_manifest["executed_commands"].values()
@@ -382,16 +478,35 @@ def main() -> int:
         else:
             execution_manifest["status"] = "executed_no_stage_records"
     elif not args.execute:
-        execution_manifest["status"] = "prepared_only"
+        execution_manifest["status"] = "prepared_only_all_rows_skipped" if all_rows_skipped else "prepared_only"
+
+    if args.execute and merged_csv.exists() and effective_sample_rows:
+        execution_manifest["attempt_ledger_append"] = append_attempt_ledger(
+            attempt_ledger_path,
+            load_csv_rows(merged_csv),
+            run_id=str(run_dir.name),
+            suite_name=args.suite,
+            attempted_at=utc_now_iso(),
+        )
+    else:
+        execution_manifest["attempt_ledger_append"] = {
+            "ok": False,
+            "reason": "merged_results_missing_or_not_executed",
+        }
     execution_manifest["finished_at"] = utc_now_iso()
 
     manifest_path = run_dir / "execution_manifest.json"
     write_json(manifest_path, execution_manifest)
 
     print(f"sample_csv={sample_csv}")
+    print(f"source_sample_csv={original_sample_csv}")
     print(f"run_dir={run_dir}")
     print(f"shell_script={shell_script_path}")
     print(f"execution_manifest={manifest_path}")
+    print(
+        "retry_protection="
+        f"{json.dumps(execution_manifest['retry_protection'], ensure_ascii=False)}"
+    )
     if execution_manifest["seed_profile_check"] is not None:
         print(f"seed_profile_check={json.dumps(execution_manifest['seed_profile_check'], ensure_ascii=False)}")
     return 0

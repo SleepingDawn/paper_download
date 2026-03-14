@@ -7,6 +7,11 @@
     "headless": true
   },
   "recent_year_floor": 2024,
+  "attempt_ledger": {
+    "path": "",
+    "entry_total": 0,
+    "unique_doi_total": 0
+  },
   "publisher_distribution_raw": [
     {
       "key": "American Chemical Society",
@@ -363,6 +368,12 @@
           "count": 1
         }
       ],
+      "prior_attempt_state_counts": [
+        {
+          "key": "fresh",
+          "count": 13
+        }
+      ],
       "gaps": [],
       "explicit_coverage": [
         "rsc",
@@ -448,6 +459,12 @@
         {
           "key": "legacy_fallback",
           "count": 5
+        }
+      ],
+      "prior_attempt_state_counts": [
+        {
+          "key": "fresh",
+          "count": 31
         }
       ],
       "gaps": [],
