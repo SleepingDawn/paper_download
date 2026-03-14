@@ -74,14 +74,9 @@ FAILURE_REASON_ORDER = [
 
 PACING_PROFILE_OVERRIDES = {
     "elsevier": {
-        "cooldown_multiplier_first": 4.0,
-        "cooldown_multiplier_deep": 6.0,
-        "global_spacing_multiplier": 3.0,
-    },
-    "spie": {
-        "cooldown_multiplier_first": 2.5,
-        "cooldown_multiplier_deep": 4.0,
-        "global_spacing_multiplier": 2.0,
+        "cooldown_multiplier_first": 1.5,
+        "cooldown_multiplier_deep": 2.5,
+        "global_spacing_multiplier": 1.2,
     },
 }
 
@@ -357,6 +352,21 @@ def _result_template(doi: str, attempt: int, mode: str) -> Dict[str, Any]:
     }
 
 
+def _should_policy_skip_download(doi: str, publisher: Optional[str], scheduler_publisher: str, pdf_url: str) -> tuple[bool, str]:
+    doi_low = str(doi or "").strip().lower()
+    publisher_low = str(publisher or "").strip().lower()
+    scheduler_low = str(scheduler_publisher or "").strip().lower()
+    pdf_url_low = str(pdf_url or "").strip().lower()
+
+    if publisher_low == "arxiv" or "arxiv.org" in pdf_url_low:
+        return True, "arxiv_managed_outside_pipeline"
+    if doi_low.startswith("10.1149/ma"):
+        return True, "ecs_meeting_abstract_pattern"
+    if scheduler_low == "spie" or doi_low.startswith("10.1117/") or "spiedigitallibrary.org" in pdf_url_low:
+        return True, "spie_institutional_auth_policy_skip"
+    return False, ""
+
+
 def _status_text(result: Dict[str, Any]) -> str:
     if result.get("success"):
         method = result.get("method") or "unknown"
@@ -522,12 +532,8 @@ def _single_download_attempt(
     full_path = os.path.join(pdf_save_dir, filename)
     is_ssrn_doi = doi.lower().startswith("10.2139/ssrn.")
 
-    if publisher == "arxiv" or "arxiv.org" in pdf_url_oa.lower() or doi.lower().startswith("10.1149/ma"):
-        skip_reason = "policy_skip"
-        if publisher == "arxiv" or "arxiv.org" in pdf_url_oa.lower():
-            skip_reason = "arxiv_managed_outside_pipeline"
-        elif doi.lower().startswith("10.1149/ma"):
-            skip_reason = "ecs_meeting_abstract_pattern"
+    should_skip, skip_reason = _should_policy_skip_download(doi, publisher, scheduler_publisher, pdf_url_oa)
+    if should_skip:
         logger = setup_logger(artifact_dir, filename)
         logger.info(f"[Skip] 다운로드 생략: doi={doi}, reason={skip_reason}")
         return {

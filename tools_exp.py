@@ -9,6 +9,9 @@ import requests
 import base64
 import random
 import json
+import textwrap
+import threading
+import traceback
 from html import unescape as html_unescape
 
 from typing import Any, Dict, Optional, Set
@@ -51,6 +54,18 @@ BEST_BROWSER_UA_LINUX = (
 BEST_BROWSER_UA = BEST_BROWSER_UA_LINUX
 BEST_BROWSER_WINDOW = "1728,1117"
 MAX_ACTION_WAIT_S = int(os.getenv("PDF_ACTION_MAX_WAIT_S", "60"))
+SCREENSHOT_FULL_PAGE_MAX_HEIGHT = int(os.getenv("PDF_SCREENSHOT_FULL_PAGE_MAX_HEIGHT", "12000"))
+SCREENSHOT_CLIP_MAX_WIDTH = int(os.getenv("PDF_SCREENSHOT_CLIP_MAX_WIDTH", "1600"))
+SCREENSHOT_CLIP_MAX_HEIGHT = int(os.getenv("PDF_SCREENSHOT_CLIP_MAX_HEIGHT", "2200"))
+SCREENSHOT_TEXT_SNIPPET_CHARS = int(os.getenv("PDF_SCREENSHOT_TEXT_SNIPPET_CHARS", "2200"))
+DRISSION_FIRST_BASE_TIMEOUT_S = int(os.getenv("PDF_DRISSION_FIRST_BASE_TIMEOUT_S", "8"))
+DRISSION_FIRST_PAGELOAD_TIMEOUT_S = int(os.getenv("PDF_DRISSION_FIRST_PAGELOAD_TIMEOUT_S", "12"))
+DRISSION_FIRST_SCRIPT_TIMEOUT_S = int(os.getenv("PDF_DRISSION_FIRST_SCRIPT_TIMEOUT_S", "8"))
+DRISSION_DEEP_BASE_TIMEOUT_S = int(os.getenv("PDF_DRISSION_DEEP_BASE_TIMEOUT_S", "10"))
+DRISSION_DEEP_PAGELOAD_TIMEOUT_S = int(os.getenv("PDF_DRISSION_DEEP_PAGELOAD_TIMEOUT_S", "18"))
+DRISSION_DEEP_SCRIPT_TIMEOUT_S = int(os.getenv("PDF_DRISSION_DEEP_SCRIPT_TIMEOUT_S", "10"))
+DRISSION_FIRST_FINAL_CFFI_TIMEOUT_S = int(os.getenv("PDF_DRISSION_FIRST_FINAL_CFFI_TIMEOUT_S", "20"))
+DRISSION_DEEP_FINAL_CFFI_TIMEOUT_S = int(os.getenv("PDF_DRISSION_DEEP_FINAL_CFFI_TIMEOUT_S", "45"))
 HIGH_FRICTION_DOMAINS = (
     "acs.org",
     "sciencedirect.com",
@@ -120,6 +135,81 @@ def _exc_message(exc) -> str:
         return str(exc)
     except Exception:
         return repr(exc)
+
+
+_ORIGINAL_THREADING_EXCEPTHOOK = getattr(threading, "excepthook", None)
+_SUPPRESSED_DRISSION_THREAD_SIGNATURES: Set[str] = set()
+
+
+def _classify_nonfatal_drission_thread_exception(args) -> str:
+    if args is None:
+        return ""
+    thread_obj = getattr(args, "thread", None)
+    thread_name = str(getattr(thread_obj, "name", "") or "")
+    if "_handle_immediate_event_loop" not in thread_name and "_handle_event_loop" not in thread_name:
+        return ""
+
+    try:
+        blob = "".join(
+            traceback.format_exception(
+                getattr(args, "exc_type", None),
+                getattr(args, "exc_value", None),
+                getattr(args, "exc_traceback", None),
+            )
+        ).lower()
+    except Exception:
+        blob = str(getattr(args, "exc_value", "") or "").lower()
+
+    if "drissionpage" not in blob and not any(
+        marker in blob
+        for marker in (
+            "method: dom.resolvenode",
+            "method: dom.getouterhtml",
+            "method: page.capturescreenshot",
+            "method: page.getlayoutmetrics",
+            "dictionary changed size during iteration",
+        )
+    ):
+        return ""
+    if "method: dom.resolvenode" in blob:
+        return "DOM.resolveNode timeout"
+    if "method: dom.getouterhtml" in blob:
+        return "DOM.getOuterHTML timeout"
+    if "method: page.capturescreenshot" in blob:
+        return "Page.captureScreenshot timeout"
+    if "method: page.getlayoutmetrics" in blob:
+        return "Page.getLayoutMetrics timeout"
+    if "dictionary changed size during iteration" in blob:
+        return "event-loop dictionary mutation"
+    return ""
+
+
+def _install_drission_thread_exception_filter() -> None:
+    if _ORIGINAL_THREADING_EXCEPTHOOK is None:
+        return
+    if getattr(threading, "_codex_drission_excepthook_installed", False):
+        return
+
+    def _hook(args):
+        signature = _classify_nonfatal_drission_thread_exception(args)
+        if signature:
+            if signature not in _SUPPRESSED_DRISSION_THREAD_SIGNATURES:
+                _SUPPRESSED_DRISSION_THREAD_SIGNATURES.add(signature)
+                try:
+                    sys.stderr.write(
+                        f"[DrissionPage] suppressed non-fatal event-loop exception: {signature}\n"
+                    )
+                    sys.stderr.flush()
+                except Exception:
+                    pass
+            return
+        return _ORIGINAL_THREADING_EXCEPTHOOK(args)
+
+    threading.excepthook = _hook
+    threading._codex_drission_excepthook_installed = True
+
+
+_install_drission_thread_exception_filter()
 
 
 def _maybe_import_psutil():
@@ -994,6 +1084,230 @@ def _wait_for_new_file_diff(download_dir: str, initial_files: Set[str], timeout_
         logger.info("       파일 감지 타임아웃")
     return None
 
+def _capture_screenshot_file(
+    page,
+    path: str,
+    name: str,
+    *,
+    full_page: bool = False,
+    left_top=None,
+    right_bottom=None,
+):
+    kwargs = {"path": path, "name": name, "full_page": bool(full_page)}
+    if left_top is not None or right_bottom is not None:
+        kwargs["full_page"] = False
+        if left_top is not None:
+            kwargs["left_top"] = left_top
+        if right_bottom is not None:
+            kwargs["right_bottom"] = right_bottom
+    return page.get_screenshot(**kwargs)
+
+
+def _capture_element_screenshot(page, path: str, name: str, logger=None):
+    for locator in ("tag:body", "tag:html"):
+        try:
+            el = _ele_quick(page, locator, timeout=0.5)
+        except Exception as e:
+            _raise_if_browser_disconnect(e, logger=logger, context="screenshot-element-locate")
+            el = None
+        if el is None:
+            continue
+        try:
+            return el.get_screenshot(path=path, name=name, scroll_to_center=False)
+        except Exception as e:
+            _raise_if_browser_disconnect(e, logger=logger, context="screenshot-element-capture")
+    return None
+
+
+def _collect_screenshot_context(page, logger=None):
+    ctx = {
+        "url": "",
+        "title": "",
+        "domain": "",
+        "issue": "",
+        "evidence": [],
+        "content_width": 0,
+        "content_height": 0,
+        "viewport_width": 0,
+        "viewport_height": 0,
+        "ready_state": "",
+        "text_snippet": "",
+    }
+    if page is None:
+        return ctx
+
+    try:
+        ctx["url"] = str(getattr(page, "url", "") or "")
+    except Exception as e:
+        _raise_if_browser_disconnect(e, logger=logger, context="screenshot-context-url")
+    try:
+        ctx["title"] = str(getattr(page, "title", "") or "")
+    except Exception as e:
+        _raise_if_browser_disconnect(e, logger=logger, context="screenshot-context-title")
+
+    html = ""
+    try:
+        page.run_js(
+            """
+            (() => {
+              try { window.scrollTo(0, 0); } catch (e) {}
+              try { document.documentElement.style.scrollBehavior = 'auto'; } catch (e) {}
+              return document.readyState || '';
+            })();
+            """
+        )
+    except Exception as e:
+        _raise_if_browser_disconnect(e, logger=logger, context="screenshot-context-scroll-reset")
+
+    try:
+        html = str(getattr(page, "html", "") or "")
+    except Exception as e:
+        _raise_if_browser_disconnect(e, logger=logger, context="screenshot-context-html")
+        html = ""
+
+    try:
+        ctx["domain"] = _extract_domain(ctx["url"])
+        issue, evidence = detect_access_issue(
+            title=ctx["title"],
+            html=html,
+            url=ctx["url"],
+            domain=ctx["domain"],
+        )
+        ctx["issue"] = str(issue or "")
+        ctx["evidence"] = list(evidence or [])[:6]
+    except Exception:
+        pass
+
+    try:
+        content_width, content_height = page.rect.size
+        ctx["content_width"] = int(content_width or 0)
+        ctx["content_height"] = int(content_height or 0)
+    except Exception as e:
+        _raise_if_browser_disconnect(e, logger=logger, context="screenshot-context-content-size")
+    try:
+        viewport_width, viewport_height = page.rect.viewport_size
+        ctx["viewport_width"] = int(viewport_width or 0)
+        ctx["viewport_height"] = int(viewport_height or 0)
+    except Exception as e:
+        _raise_if_browser_disconnect(e, logger=logger, context="screenshot-context-viewport-size")
+    try:
+        ready_state = page.run_js("return document.readyState || '';")
+        ctx["ready_state"] = str(ready_state or "")
+    except Exception as e:
+        _raise_if_browser_disconnect(e, logger=logger, context="screenshot-context-ready-state")
+
+    try:
+        if html:
+            snippet = BeautifulSoup(html, "html.parser").get_text(" ", strip=True)
+            snippet = re.sub(r"\s+", " ", snippet).strip()
+            ctx["text_snippet"] = snippet[:SCREENSHOT_TEXT_SNIPPET_CHARS]
+    except Exception:
+        pass
+
+    return ctx
+
+
+def _should_prefer_viewport_screenshot(ctx: Dict[str, Any]) -> bool:
+    low_url = str(ctx.get("url") or "").lower()
+    low_title = str(ctx.get("title") or "").lower()
+    low_issue = str(ctx.get("issue") or "").lower()
+    content_height = int(ctx.get("content_height") or 0)
+
+    if content_height and content_height > SCREENSHOT_FULL_PAGE_MAX_HEIGHT:
+        return True
+    if any(token in low_title for token in ("new tab", "새 탭", "just a moment", "attention required", "access denied")):
+        return True
+    if low_issue in {"challenge_or_block", "hard_rights", "soft_gate", "auth_required"}:
+        return True
+    risky_url_tokens = (
+        "pdf.sciencedirectassets.com",
+        "/article-pdf/",
+        "stamppdf/getpdf.jsp",
+        "__cf_chl_rt_tk=",
+        "/cdn-cgi/",
+        ".pdf",
+    )
+    if any(token in low_url for token in risky_url_tokens):
+        return True
+    return False
+
+
+def _write_diagnostic_screenshot(path: str, name: str, ctx: Dict[str, Any], attempt_errors, logger=None):
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+    except Exception as e:
+        if logger:
+            logger.warning(f"  진단 스크린샷 렌더러 로드 실패: {e}")
+        return None
+
+    output_path = os.path.join(path, name)
+    url = str(ctx.get("url") or "")
+    title = str(ctx.get("title") or "")
+    issue = str(ctx.get("issue") or "") or "unknown"
+    ready_state = str(ctx.get("ready_state") or "")
+    domain = str(ctx.get("domain") or "")
+    content_size = f"{ctx.get('content_width') or 0}x{ctx.get('content_height') or 0}"
+    viewport_size = f"{ctx.get('viewport_width') or 0}x{ctx.get('viewport_height') or 0}"
+    evidence = ", ".join(str(x) for x in (ctx.get("evidence") or [])[:4]) or "-"
+    snippet = str(ctx.get("text_snippet") or "").strip() or "(page text unavailable)"
+    wrapped_snippet = "\n".join(textwrap.wrap(snippet, width=110))
+    wrapped_errors = "\n".join(
+        f"- {line}"
+        for line in [str(item).strip() for item in attempt_errors if str(item).strip()][:6]
+    ) or "- none"
+
+    lines = [
+        "Diagnostic Screenshot Fallback",
+        "",
+        f"URL: {url or '-'}",
+        f"Title: {title or '-'}",
+        f"Domain: {domain or '-'}",
+        f"Access Issue: {issue}",
+        f"Ready State: {ready_state or '-'}",
+        f"Content Size: {content_size}",
+        f"Viewport Size: {viewport_size}",
+        f"Evidence: {evidence}",
+        "",
+        "Capture Errors:",
+        wrapped_errors,
+        "",
+        "Page Text Snippet:",
+        wrapped_snippet,
+    ]
+
+    fig = None
+    try:
+        fig = plt.figure(figsize=(14, 10), dpi=120, facecolor="#f8fafc")
+        ax = fig.add_axes([0, 0, 1, 1])
+        ax.set_axis_off()
+        ax.text(
+            0.03,
+            0.97,
+            "\n".join(lines),
+            va="top",
+            ha="left",
+            family="monospace",
+            fontsize=10,
+            color="#0f172a",
+        )
+        fig.savefig(output_path, facecolor=fig.get_facecolor(), bbox_inches="tight", pad_inches=0.35)
+        if logger:
+            logger.info(f"  진단 스크린샷 저장 성공: {output_path}")
+        return output_path
+    except Exception as e:
+        if logger:
+            logger.warning(f"  진단 스크린샷 저장 실패: {e}")
+        return None
+    finally:
+        if fig is not None:
+            try:
+                plt.close(fig)
+            except Exception:
+                pass
+
+
 def _safe_screenshot(page, path: str, name: str, logger=None, full_page: bool = True):
     """
     DrissionPage의 get_screenshot 메서드를 사용하여 스크린샷을 저장합니다.
@@ -1002,53 +1316,90 @@ def _safe_screenshot(page, path: str, name: str, logger=None, full_page: bool = 
     """
     if page is None:
         return None
+    attempt_errors = []
     try:
         # 폴더 생성
         if not os.path.exists(path):
             os.makedirs(path, exist_ok=True)
-
-        target_full_page = bool(full_page)
-        try:
-            current_url = str(getattr(page, "url", "") or "").lower()
-        except Exception as e:
-            _raise_if_browser_disconnect(e, logger=logger, context="screenshot-url-check")
-            current_url = ""
-        if target_full_page and any(
-            token in current_url for token in ("sciencedirect.com", "linkinghub.elsevier.com")
-        ):
-            # Elsevier article pages are extremely tall; full-page capture has repeatedly
-            # destabilized Chrome during active download flows on macOS.
-            target_full_page = False
-
-        # DrissionPage get_screenshot 호출
-        saved_path = page.get_screenshot(path=path, name=name, full_page=target_full_page)
-        
-        if logger: 
-            logger.info(f"  스크린샷 저장 성공: {saved_path}")
-        return saved_path
-
     except Exception as e:
         if _is_browser_disconnect_error(e):
             if logger:
                 logger.warning(f"  스크린샷 스킵: 브라우저 연결 종료 ({_exc_message(e)})")
             return None
-        # 전체 페이지 캡처 실패 시 (메모리 부족, 무한 스크롤 등), 보이는 화면(Viewport)만 재시도
+        attempt_errors.append(f"mkdir/setup failed: {_exc_message(e)}")
+
+    ctx = _collect_screenshot_context(page, logger=logger)
+    prefer_viewport = _should_prefer_viewport_screenshot(ctx)
+    viewport_width = int(ctx.get("viewport_width") or 0)
+    viewport_height = int(ctx.get("viewport_height") or 0)
+    clip_right = (
+        min(viewport_width, SCREENSHOT_CLIP_MAX_WIDTH)
+        if viewport_width
+        else SCREENSHOT_CLIP_MAX_WIDTH
+    )
+    clip_bottom = (
+        min(viewport_height, SCREENSHOT_CLIP_MAX_HEIGHT)
+        if viewport_height
+        else SCREENSHOT_CLIP_MAX_HEIGHT
+    )
+
+    capture_steps = []
+    if prefer_viewport:
+        capture_steps.extend(
+            [
+                ("viewport", lambda: _capture_screenshot_file(page, path, name, full_page=False)),
+                (
+                    "clipped-viewport",
+                    lambda: _capture_screenshot_file(
+                        page,
+                        path,
+                        name,
+                        left_top=(0, 0),
+                        right_bottom=(clip_right, clip_bottom),
+                    ),
+                ),
+                ("body-element", lambda: _capture_element_screenshot(page, path, name, logger=logger)),
+            ]
+        )
+        if full_page and int(ctx.get("content_height") or 0) <= SCREENSHOT_FULL_PAGE_MAX_HEIGHT:
+            capture_steps.append(("full-page", lambda: _capture_screenshot_file(page, path, name, full_page=True)))
+    else:
+        if full_page:
+            capture_steps.append(("full-page", lambda: _capture_screenshot_file(page, path, name, full_page=True)))
+        capture_steps.extend(
+            [
+                ("viewport", lambda: _capture_screenshot_file(page, path, name, full_page=False)),
+                (
+                    "clipped-viewport",
+                    lambda: _capture_screenshot_file(
+                        page,
+                        path,
+                        name,
+                        left_top=(0, 0),
+                        right_bottom=(clip_right, clip_bottom),
+                    ),
+                ),
+                ("body-element", lambda: _capture_element_screenshot(page, path, name, logger=logger)),
+            ]
+        )
+
+    for label, capture_fn in capture_steps:
         try:
-            if logger: 
-                logger.warning(f"  전체 페이지 스크린샷 실패 ({e}), 보이는 화면만 캡처 시도...")
-            
-            # 파일명에 visible_ 접두사를 붙여 재시도
-            retry_name = "visible_" + name
-            page.get_screenshot(path=path, name=retry_name, full_page=False)
-            return os.path.join(path, retry_name)
-            
-        except Exception as e2:
-            if _is_browser_disconnect_error(e2) and logger:
-                logger.warning(f"  스크린샷 재시도 스킵: 브라우저 연결 종료 ({_exc_message(e2)})")
-            # 재시도마저 실패한 경우
-            pass
-            # if logger: logger.warning(f"  스크린샷 저장 최종 실패 : {e2}")
-    return None
+            saved_path = capture_fn()
+            if saved_path:
+                if logger:
+                    logger.info(f"  스크린샷 저장 성공[{label}]: {saved_path}")
+                return saved_path
+        except Exception as e:
+            if _is_browser_disconnect_error(e):
+                if logger:
+                    logger.warning(f"  스크린샷 중단[{label}]: 브라우저 연결 종료 ({_exc_message(e)})")
+                return None
+            attempt_errors.append(f"{label}: {_exc_message(e)}")
+            if logger:
+                logger.warning(f"  스크린샷 실패[{label}]: {_exc_message(e)}")
+
+    return _write_diagnostic_screenshot(path, name, ctx, attempt_errors, logger=logger)
 
 
 def _extract_domain(url: str) -> str:
@@ -5343,6 +5694,7 @@ def download_with_drission(
     _apply_browser_session_plan(co, session_plan, logger=logger)
     co.auto_port()
     _apply_best_browser_profile(co)
+    _configure_drission_timeouts(co, mode=mode, is_elsevier_preview=is_elsevier_preview)
     if is_elsevier_preview:
         try:
             co.set_load_mode("normal")
@@ -5744,6 +6096,20 @@ def download_with_drission(
                         [f"unresolved_doi_landing={page.url}", f"title={page_title[:120]}"],
                         stage="landing",
                     )
+
+            if _is_non_downloadable_event_page(
+                url=page.url or "",
+                domain=current_domain,
+                title=page_title,
+                html=page_html,
+            ):
+                _set_landing_state("event_program_page", False)
+                return _ret(
+                    False,
+                    "FAIL_NO_CANDIDATE",
+                    [f"non_downloadable_event_page={page.url}"],
+                    stage="landing",
+                )
 
             if is_elsevier_doi and ("sciencedirect.com" in current_domain):
                 _recover_elsevier_interstitial_article(
@@ -6261,15 +6627,20 @@ def download_with_drission(
                 if mode == "first" and not _should_exhaust_pdf_recovery_in_first_mode(pdf_url, current_domain):
                     return _ret(False, "FAIL_PARSE", ["first_mode_fastpath_exhausted"], stage="drission")
 
+                skip_slow_recovery = mode == "first" and _should_skip_slow_pdf_recovery(pdf_url, current_domain)
+                if skip_slow_recovery and logger:
+                    logger.info("        [Drission] slow requests/js recovery 생략 -> cookie-aware CFFI로 바로 전환")
+
                 if _over_budget():
                     return _ret(False, "FAIL_PARSE", ["budget_exceeded_before_requests"], stage="drission")
 
-                try :
-                    if force_download_with_requests(page, pdf_url, referer_url, full_save_path, logger):
-                        return _ret(True, "SUCCESS", stage="requests-download")
-                except Exception as e:
-                    _raise_if_browser_disconnect(e, logger=logger, context="requests-download")
-                    pass
+                if not skip_slow_recovery:
+                    try :
+                        if force_download_with_requests(page, pdf_url, referer_url, full_save_path, logger):
+                            return _ret(True, "SUCCESS", stage="requests-download")
+                    except Exception as e:
+                        _raise_if_browser_disconnect(e, logger=logger, context="requests-download")
+                        pass
 
                 if _is_valid_pdf(full_save_path):
                     return _ret(True, "SUCCESS", stage="post-requests-file-check")
@@ -6278,7 +6649,7 @@ def download_with_drission(
                     return _ret(False, "FAIL_PARSE", ["budget_exceeded_before_js"], stage="drission")
 
                 # ACS/Elsevier는 JS 주입 성공률이 낮고 오탐 HTML이 많아 1차 패스에서는 생략한다.
-                if not (is_sciencedirect or is_acs):
+                if not (is_sciencedirect or is_acs or skip_slow_recovery):
                     try :
                         if download_pdf_via_js_injection(page, pdf_url, filename, save_dir, logger):
                             return _ret(True, "SUCCESS", stage="js-download")
@@ -6304,7 +6675,7 @@ def download_with_drission(
                         ua=_resolve_best_browser_ua(),
                         logger=logger,
                         return_detail=True,
-                        timeout=120 if mode == "deep" else 60,
+                        timeout=_resolve_final_cffi_timeout(pdf_url, current_domain, mode),
                     )
                     if cffi_result.get("ok"):
                         return _ret(True, "SUCCESS", stage="cffi-download")
@@ -6403,6 +6774,67 @@ def _should_exhaust_pdf_recovery_in_first_mode(pdf_url: str, current_domain: str
             "article-pdf",
         )
     )
+
+
+def _should_skip_slow_pdf_recovery(pdf_url: str, current_domain: str = "") -> bool:
+    blob = f"{pdf_url or ''} {current_domain or ''}".lower()
+    return any(
+        token in blob
+        for token in (
+            "pubs.aip.org",
+            "ieeexplore.ieee.org",
+            "pdf.sciencedirectassets.com",
+            "stamppdf/getpdf.jsp",
+            "article-pdf",
+        )
+    )
+
+
+def _resolve_final_cffi_timeout(pdf_url: str, current_domain: str, mode: str) -> int:
+    timeout_s = DRISSION_DEEP_FINAL_CFFI_TIMEOUT_S if mode == "deep" else DRISSION_FIRST_FINAL_CFFI_TIMEOUT_S
+    blob = f"{pdf_url or ''} {current_domain or ''}".lower()
+    if "pubs.aip.org" in blob or "article-pdf" in blob:
+        return min(timeout_s, 15 if mode == "first" else 24)
+    if "ieeexplore.ieee.org" in blob or "stamppdf/getpdf.jsp" in blob:
+        return min(timeout_s, 15 if mode == "first" else 24)
+    if "pdf.sciencedirectassets.com" in blob:
+        return min(timeout_s, 12 if mode == "first" else 20)
+    return timeout_s
+
+
+def _configure_drission_timeouts(co: ChromiumOptions, mode: str, is_elsevier_preview: bool = False) -> None:
+    if mode == "deep":
+        base_timeout = DRISSION_DEEP_BASE_TIMEOUT_S
+        page_load_timeout = DRISSION_DEEP_PAGELOAD_TIMEOUT_S
+        script_timeout = DRISSION_DEEP_SCRIPT_TIMEOUT_S
+    else:
+        base_timeout = DRISSION_FIRST_BASE_TIMEOUT_S
+        page_load_timeout = DRISSION_FIRST_PAGELOAD_TIMEOUT_S
+        script_timeout = DRISSION_FIRST_SCRIPT_TIMEOUT_S
+    if is_elsevier_preview:
+        page_load_timeout = max(page_load_timeout, 14 if mode == "first" else 20)
+        script_timeout = max(script_timeout, 8 if mode == "first" else 10)
+    try:
+        co.set_timeouts(
+            base=max(3, int(base_timeout)),
+            page_load=max(4, int(page_load_timeout)),
+            script=max(3, int(script_timeout)),
+        )
+    except Exception:
+        pass
+
+
+def _is_non_downloadable_event_page(url: str = "", domain: str = "", title: str = "", html: str = "") -> bool:
+    low_url = str(url or "").lower()
+    low_domain = str(domain or "").lower()
+    blob = f"{title or ''} {html or ''}".lower()
+    if "pub.confit.atlas.jp" in low_domain:
+        return True
+    if "/event/" in low_url and "/presentation/" in low_url:
+        return True
+    if "conference program" in blob and "presentation" in blob:
+        return True
+    return False
 
 
 # =======================================================
