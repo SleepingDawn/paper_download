@@ -1,0 +1,577 @@
+# Linux Headless Landing Experiment Journal
+
+## 1. 개요
+
+이 문서는 `local_mac` 기준 로직을 Linux 서버 headless 환경으로 옮기면서 수행한 landing/download 실험, 운영 스크립트 정비, 분류기 보정, DOI 재시도 억제, publisher별 landing 전략 조정 작업을 한곳에 정리한 실험 저널이다.
+
+핵심 목적은 아래 세 가지였다.
+
+- Linux 서버 headless 환경에서 `DOI -> publisher landing -> 다운로드`가 어디까지 안정적으로 성립하는지 분리 측정
+- `local_mac`에서 동작하던 합리적인 로직은 최대한 보존하고, Linux/headless 차이 때문에 깨지는 층만 보수
+- 반복 실패 DOI를 무의미하게 다시 치지 않도록 실험 설계와 runner를 재구성
+
+이 저널은 다음 근거를 우선 사용한다.
+
+- 저장소 문서: `docs/linux_seed_profile_setup.md`, `experiment/linux_headless_experiment_plan.md`, `experiment/README.md`
+- 저장소 코드/스크립트: `experiment/*.py`, `scripts/*.sh`, `landing_access_repro.py`, `landing_classifier.py`, `tools_exp.py`, `parallel_download.py`
+- git 이력: `codex/linux_exp` 브랜치 최근 커밋
+- 저장소 내부 산출물: `outputs/` 아래 historical run 디렉터리와 seed/profile 흔적
+- 외부 artifact bundle 근거: 사용자 제공 `pilot_20260314_210007_bundle.tar.gz`, `pilot_20260314_213217_bundle.tar.gz`, `pilot_20260314_232524_bundle.tar.gz`, `pilot_20260315_000015_bundle.tar.gz`, `pilot_20260315_004518_bundle.tar.gz`, `pilot_20260315_012307_bundle.tar.gz`
+
+주의:
+
+- 외부 bundle은 저장소 밖 artifact이므로, 본문에서는 "외부 bundle 근거"로 명시한다.
+- 사용자 요청의 세부 문구는 대화 기준으로 복원한 부분이 있으므로, 저장소 파일에 직접 남지 않은 항목은 "대화 요청 기준"이라고 표시한다.
+
+## 2. 사용자 요청과 제약
+
+아래 항목은 대화 요청 기준으로 여러 단계에 걸쳐 반복적으로 명시됐다.
+
+- Linux 서버, no GUI, headful 의존 제거
+- `local_mac`에서 이미 타당한 로직은 보존하고, 필요한 부분만 Linux/headless에 맞게 수정
+- landing 신뢰성을 우선 검증하고, landing과 download를 분리 관찰
+- "무언가 로드됨"을 성공으로 보지 말고, 실제 publisher article/homepage 도달 여부를 엄격히 판정
+- Sci-Hub가 publisher-native 성공률을 가리지 않도록 결과를 분리 집계
+- 2024+ 최근 DOI를 main validation set으로 우선 사용
+- 같은 DOI를 반복 타격하지 말고 retry protection, cooldown, DOI rotation을 도입
+- 서버 경로/환경값을 먼저 수집하고, 추측하지 말 것
+- SSH 세션이 끊겨도 계속 도는 background 실행, persistent log, artifact collector를 제공할 것
+- 실험 제안 시 항상 아래를 함께 적을 것
+  - 어떻게 실행하는지
+  - 중간 로그를 어떻게 보는지
+  - 끝났는지 어떻게 확인하는지
+  - 결과를 어떻게 전달하는지
+- landing 쪽에 넣은 의미 있는 patch는 main download path에도 같이 반영해 둘을 align할 것
+
+## 3. 관련 문서, 스크립트, 근거 파일
+
+### 저장소 문서
+
+- `docs/linux_seed_profile_setup.md`
+  - Linux seed profile 준비, warm-up, packaging, 서버 복사/검증 절차
+- `experiment/linux_headless_experiment_plan.md`
+  - publisher-stratified suite, 2024+ recent cohort, Sci-Hub confound 분리, landing/download bucket 정의
+- `experiment/README.md`
+  - Linux headless 실험 폴더 구조와 운영 스크립트 요약
+
+### 운영 스크립트
+
+- `scripts/prepare_linux_server_env.sh`
+  - `SEED_PROFILE`, `PROFILE_NAME`, `CHROME_PATH`, `PYTHON_BIN`, `RUNS_ROOT`, `LOGS_ROOT`, `COLLECT_ROOT`를 `config/linux_server.env`로 기록
+- `scripts/run_linux_suite_bg.sh`
+  - `nohup` 기반 background launcher
+- `scripts/check_linux_suite_status.sh`
+  - PID, `execution_manifest.json`, stage 로그, stderr tail 확인
+- `scripts/collect_linux_suite_artifacts.sh`
+  - 분석용 tar.gz bundle 생성
+- `scripts/check_linux_seed_profile.py`
+  - seed profile 구조 검증
+
+### 실험 설계/실행 코드
+
+- `experiment/build_linux_headless_suite.py`
+- `experiment/linux_headless_suite_lib.py`
+- `experiment/run_linux_headless_suite.py`
+- `experiment/summarize_linux_headless_suite.py`
+
+### landing/download 핵심 코드
+
+- `landing_access_repro.py`
+- `landing_classifier.py`
+- `tools_exp.py`
+- `parallel_download.py`
+
+## 4. 실험 타임라인
+
+아래 순서는 git 이력, 문서, 외부 bundle 시점, 현재 코드 상태를 합쳐 복원했다.
+
+| 시점 | 근거 | 요약 |
+| --- | --- | --- |
+| `0608e8d` (`local_mac`) | git log | Linux seeded profile 문서가 `local_mac` 계열에 먼저 존재. 이후 Linux 이식의 기준점 역할 |
+| `84ef0f7` | git log | `local_mac` 로직을 Linux로 적응시키는 초기 포팅 작업 |
+| `b102414`, `a8fb665` | git log | Linux 실험 가이드 및 seed profile 검증 절차 추가 |
+| `43b6976`, `5c3b981` | git log + `scripts/prepare_linux_server_env.sh` | 환경 변수 선수집, `config/linux_server.env` 기반 운영 정착 |
+| `41b031a`, `58b225d` | git log | 최근 실험 산출물 리뷰 및 landing/download 문제 보정 |
+| `e254cfb` | git log + `experiment/linux_headless_suite_lib.py` | DOI retry protection, attempt ledger, controlled retry/skip 도입 |
+| `8b57c7b` | git log + Elsevier 관련 코드 | Elsevier landing flow를 direct article 진입에서 official retrieve/handoff 중심으로 재구성 |
+| `cee09cd` | git log + `parallel_download.py`, `tools_exp.py` | landing 쪽 의미를 main download path에도 정렬 |
+| `00d58ca` | git log | seed profile output 충돌 완화, pull 장애 해소 |
+| 외부 bundle `20260314`~`20260315` | 사용자 제공 artifact | Elsevier/AIP/Springer misclassification, blank screenshot, retry pressure, shell recovery, AIP no-retry, AIP DOI-first 진입 문제를 실제 run 단위로 분석 |
+
+## 5. 주요 시도와 패치
+
+### 5.1 Linux seed profile 도입
+
+- 가설
+  - macOS system profile 의존을 제거하고 Linux에서 생성한 seeded profile을 복제해 쓰면 headless server에서도 세션/쿠키를 더 일관되게 재사용할 수 있다.
+- 구현
+  - `docs/linux_seed_profile_setup.md`
+  - `scripts/check_linux_seed_profile.py`
+  - `scripts/build_linux_seed_bundle.sh`
+  - `scripts/package_linux_seed_profile.py`
+- 기대 효과
+  - 서버에서 `persistent-profile-dir`를 명시적으로 관리하고, 런타임 clone을 안전하게 재사용
+- 관찰 결과
+  - seed profile 구조 검증과 env 준비 절차는 정착
+  - 다만 Elsevier/AIP는 seed profile만으로 challenge가 사라지지 않음
+- 배운 점
+  - seeded profile은 필요조건일 수는 있어도 충분조건은 아님
+
+### 5.2 원격 실행, persistent log, artifact 수집 표준화
+
+- 가설
+  - SSH 세션 종료에 영향을 받지 않는 launcher와 표준 로그/수집 경로가 있어야 실험 반복과 분석이 가능하다.
+- 구현
+  - `scripts/prepare_linux_server_env.sh`
+  - `scripts/run_linux_suite_bg.sh`
+  - `scripts/check_linux_suite_status.sh`
+  - `scripts/tail_linux_suite_logs.sh`
+  - `scripts/collect_linux_suite_artifacts.sh`
+  - `config/linux_server.env.example`
+- 기대 효과
+  - 서버 환경값 재사용, 백그라운드 실행, 결과 회수의 반복 가능성 확보
+- 관찰 결과
+  - 현재 운영 워크플로우는 `prepare -> run -> check/tail -> collect`로 정리됨
+  - `execution_manifest.json`, `run_suite.sh`, root launcher log, bundle tar.gz가 공통 산출물로 자리잡음
+- 배운 점
+  - 코드 수정 이전에 환경/경로/로그 표준화가 먼저 되어야 실패 분석 비용이 줄어든다
+
+### 5.3 publisher-stratified suite와 2024+ recent cohort
+
+- 가설
+  - publisher 다양성을 유지하되 2024+ DOI를 우선하면, Sci-Hub confound를 줄이고 publisher-native 후속 로직을 더 직접적으로 볼 수 있다.
+- 구현
+  - `experiment/linux_headless_experiment_plan.md`
+  - `experiment/build_linux_headless_suite.py`
+  - `experiment/linux_headless_suite_lib.py`
+  - `experiment/linux_headless_suite/pilot_sample.csv`
+  - `experiment/linux_headless_suite/full_sample.csv`
+  - `experiment/linux_headless_suite/suite_manifest.json`
+- 기대 효과
+  - recent-primary vs legacy-fallback를 분리 집계
+  - RSC/Cell 포함 유지
+- 관찰 결과
+  - 계획 문서와 suite 산출물에 `validation_cohort`, `scihub_confound_risk`, `selection_reason`가 기록됨
+- 배운 점
+  - 실험 설계가 바뀌지 않으면 코드 개선 효과가 Sci-Hub 성공률에 가려질 수 있다
+
+### 5.4 Sci-Hub confound 분리
+
+- 가설
+  - `download success`를 하나로 보면 publisher-native 성공과 Sci-Hub-assisted 성공이 섞여 해석이 왜곡된다.
+- 구현
+  - `parallel_download.py`
+  - `experiment/summarize_linux_headless_suite.py`
+  - `experiment/linux_headless_experiment_plan.md`
+- 기대 효과
+  - `publisher_native_download`, `scihub_assisted_download`, `download_success_unknown`, `landing_success_no_download` 분리
+- 관찰 결과
+  - 현재 summary JSON/CSV는 source category와 combined bucket을 분리 기록
+- 배운 점
+  - 실험 성공 정의를 바꾸지 않으면 landing/download 개선 여부를 잘못 읽게 된다
+
+### 5.5 DOI retry protection과 rotation
+
+- 가설
+  - 같은 DOI를 반복해서 치는 구조가 challenge/rate-limit/IP risk를 키우며, 근본 원인을 더 흐린다.
+- 구현
+  - `experiment/linux_headless_suite_lib.py`
+  - `experiment/build_linux_headless_suite.py`
+  - `experiment/run_linux_headless_suite.py`
+  - `experiment/summarize_linux_headless_suite.py`
+- 핵심 필드
+  - `prior_attempt_state`, `prior_attempt_count`, `prior_success_count`, `prior_hard_block_count`
+  - `retry_protection_action`, `retry_protection_reason`
+  - `controlled_retry`, `skipped_due_to_retry_protection`
+- 기대 효과
+  - builder가 fresh DOI를 우선 고르고, runner가 stale sample도 다시 필터링
+- 관찰 결과
+  - 코드상 ledger/skip/controlled retry 로직은 도입됨
+  - 현재 로컬 워크스페이스에는 `outputs/linux_headless_suite_attempt_ledger.jsonl` 파일이 보이지 않으므로, 실제 누적 ledger 상태는 별도 확인 필요
+- 배운 점
+  - 반복 실패를 publisher bug로 보기 전에 실험 설계 자체가 같은 DOI를 재타격하고 있지 않은지 먼저 봐야 한다
+
+### 5.6 Elsevier landing 재구성
+
+- 초기 가설
+  - direct `sciencedirect article/pii` 진입이 너무 공격적이어서 challenge/interstitial을 유발한다.
+- 재사용한 `local_mac` 로직
+  - retrieve/handoff/canonical normalize
+  - retrieve 페이지 DOI 클릭 복구
+  - article shell reopen
+  - latest-tab adoption과 hydrate wait
+- 구현 파일
+  - `tools_exp.py`
+  - `landing_access_repro.py`
+  - `landing_classifier.py`
+  - `parallel_download.py`
+  - `experiment/summarize_linux_headless_suite.py`
+- 핵심 변경
+  - official `doi.org -> linkinghub.elsevier.com/retrieve/...` 경로를 먼저 풀고 browser entry 전략에 반영
+  - shell page와 real article page를 분리
+  - `entry_strategy`, `entry_browser_url`, `entry_handoff_url`, `entry_preflight_issue`, `landing_shell_recovery_*` 기록
+  - 분류기가 shell-only page를 진짜 landing으로 세지 않도록 보강
+- 외부 bundle 관찰
+  - `pilot_20260314_210007` / `pilot_20260314_213217`:
+    - Elsevier 1건, Cell 2건이 challenge/interstitial
+  - `pilot_20260315_000015`:
+    - Elsevier 2건이 `success_landing`
+  - `pilot_20260315_012307`:
+    - Elsevier 1건이 `landing_success`, `publisher_native_download`
+- 배운 점
+  - Elsevier는 landing layer가 핵심이며, direct article URL 진입과 shell page 오판이 가장 큰 초기 문제였다
+
+### 5.7 Springer/`10.1007_` 오분류 수정
+
+- 문제
+  - 외부 bundle `pilot_20260314_232524`의 `10.1007/s12598-024-02864-w`는 실제로 Wiley article page에 landed 했는데 `domain_mismatch`로 실패 처리됐다.
+- 증거
+  - fail artifact JSON:
+    - `final_url=https://onlinelibrary.wiley.com/doi/10.1007/s12598-024-02864-w`
+    - `title=... Wiley Online Library`
+    - `reason_codes=["content_populated","doi_match","domain_mismatch_article_like","expected_domain_mismatch","strong_meta_present"]`
+- 구현
+  - `landing_classifier.py`
+- 기대 효과
+  - legitimate cross-host landing을 `success_landing`으로 재분류
+- 관찰 결과
+  - 현재 classifier 코드에는 `reclassified_after_detector_fix`와 cross-host legitimate landing 처리 경로가 존재
+- 남은 점
+  - 이 수정이 실제 server rerun에서 다시 확인됐는지는 저장소 내 최신 bundle 근거가 부족하다 `[blocked]`
+
+### 5.8 AIP blank screenshot 진단과 no-retry patch
+
+- 초기 가설
+  - blank screenshot이 wrong tab, stale handle, about:blank, renderer crash일 수 있다.
+- 외부 bundle 증거
+  - `pilot_20260315_004518`의 `10.1116/6.0003790`
+    - `navigation_chain=pre_reset -> aip_resolve -> doi_get -> aip_recovery_1 -> aip_recovery_2`
+    - `landing_recovery_attempted=true`
+    - `landing_recovery_outcome=still_challenged_after_canonical_entry`
+    - 최종 `challenge_detected`
+  - `pilot_20260315_012307`의 `10.1116/6.0003847`
+    - `entry_strategy=aip_official_doi_resolve`
+    - `entry_browser_url`은 canonical article-abstract
+    - `landing_recovery_outcome=challenge_detected_no_retry`
+    - `runtime_diagnostics.ready_state=complete`
+    - `runtime_diagnostics.tab_state.total_tab_count=1`
+    - `runtime_diagnostics.blank_screenshot_likely=true`
+    - `runtime_diagnostics.blank_screenshot_reason=challenge_shell_unrendered_or_minimally_rendered`
+- 구현
+  - `landing_access_repro.py`
+  - `tools_exp.py`
+  - `experiment/summarize_linux_headless_suite.py`
+- 핵심 변경
+  - runtime diagnostics 추가: readyState, HTML 길이, body text 길이, iframe, viewport, tab count, console/runtime/network summary
+  - delayed screenshot 추가
+  - AIP challenge에서 같은 DOI를 한 시도 안에서 다시 열지 않도록 no-retry 처리
+  - `entry_preflight_issue_overridden` 도입
+- 관찰 결과
+  - 이전 patch는 "patch 미적용"이 아니라 실제 runtime path에 반영돼 있었다
+  - 다만 blank screenshot 감소/진단 강화에는 도움이 됐지만 server AIP landing success 자체는 개선하지 못했다
+- 배운 점
+  - blank screenshot은 tab bug의 강한 증거가 아니라, challenge shell이 거의 렌더되지 않은 headless 화면일 가능성이 높다
+
+### 5.9 AIP DOI-first browser entry 전환
+
+- 새 가설
+  - AIP에서 canonical `article-abstract` URL을 browser가 바로 여는 진입 전략이 server/headless에서 challenge를 더 잘 유발할 수 있다.
+  - browser가 `https://doi.org/...`를 직접 밟고 publisher redirect를 따라가게 하는 편이 더 공식적이고 저마찰일 수 있다.
+- 구현
+  - `tools_exp.py`
+    - `build_aip_safe_entry_plan()`
+    - `entry_browser_kind=official_doi_redirect`
+    - `entry_preflight_url` 분리
+  - `landing_access_repro.py`
+  - `parallel_download.py`
+  - `experiment/summarize_linux_headless_suite.py`
+- 기대 효과
+  - landing path와 download path가 동일한 AIP entry semantics를 사용
+  - preflight 403과 browser landing 결과를 분리 기록
+- 현재 상태
+  - 코드상 DOI-first 경로와 `entry_preflight_url`, `entry_preflight_issue_overridden` 필드는 존재
+  - 그러나 이 최신 AIP strategy가 실제 Linux 서버 bundle에서 성공으로 검증된 근거는 아직 없다 `[blocked]`
+
+### 5.10 landing patch와 main download patch 정렬
+
+- 사용자 요청
+  - landing에서 수정한 의미 있는 로직은 main download path에도 항상 같이 반영
+- 구현
+  - `tools_exp.py` shared entry-plan detail
+  - `parallel_download.py` CSV fields
+  - `experiment/summarize_linux_headless_suite.py` merged summary fields
+- 현재 공통 필드
+  - `entry_strategy`
+  - `entry_browser_url`
+  - `entry_browser_kind`
+  - `entry_preflight_url`
+  - `entry_preflight_issue`
+  - `entry_preflight_issue_overridden`
+  - `landing_recovery_attempted`
+  - `landing_recovery_strategy`
+  - `landing_recovery_outcome`
+- 배운 점
+  - landing과 download가 다른 의미론을 쓰면 결과 비교와 회귀 판정이 불가능해진다
+
+## 6. Publisher별 결과 요약
+
+### Elsevier / Cell-family
+
+- 초기 문제
+  - landing layer에서 direct article 진입이 너무 이르고 공격적이었음
+  - shell page와 real page 구분이 약했음
+- 외부 bundle 관찰
+  - `pilot_20260314_210007` / `pilot_20260314_213217`
+    - Elsevier 1건, Cell 2건 challenge/interstitial
+  - `pilot_20260315_000015`
+    - Elsevier 2건 landing success
+  - `pilot_20260315_012307`
+    - Elsevier 1건 landing success + publisher-native download
+- 현재 판단
+  - Elsevier landing 전략은 초기 direct-entry 단계보다 개선됨
+  - 다만 shell recovery가 명시적으로 필요한 live case를 최신 server bundle에서 다시 검증한 증거는 제한적이다 `[blocked]`
+
+### AIP / `10.1063`, `10.1116`
+
+- 초기 문제
+  - blank screenshot, challenge page, canonical article-abstract direct entry, repeated recovery attempts가 섞여 보였음
+- 외부 bundle 관찰
+  - `pilot_20260314_210007`, `pilot_20260314_213217`: AIP 1건씩 challenge
+  - `pilot_20260314_232524`: `10.1116/6.0004868` challenge
+  - `pilot_20260315_000015`: `10.1116/6.0003941` challenge
+  - `pilot_20260315_004518`: `10.1116/6.0003790` challenge, canonical recovery 두 번 수행
+  - `pilot_20260315_012307`: `10.1116/6.0003847` challenge, no-retry + runtime diagnostics 적용
+- 확인된 사실
+  - blank screenshot은 현재까지 challenge shell을 더 잘 설명한다
+  - no-retry 및 진단 확장은 실제 runtime에 적용됐다
+- 현재 판단
+  - AIP는 landing 전략이 아직 미완성이다
+  - 최신 코드에는 DOI-first browser entry가 구현돼 있지만, server bundle 기반 성공 확인은 아직 부족하다 `[blocked]`
+
+### Springer / `10.1007_`
+
+- 확인된 사실
+  - `pilot_20260314_232524`의 `10.1007/s12598-024-02864-w`는 실제 Wiley article page였는데 실패로 오분류됨
+- 현재 판단
+  - 분류기 보정 방향은 맞다
+  - 실제 server rerun으로 false-failure 감소가 확인됐는지는 미확인 `[blocked]`
+
+### RSC
+
+- 계획상 역할
+  - pilot에서 2건 명시 포함
+  - full에서도 대표 publisher로 유지
+- 관찰
+  - 외부 bundle들에서 RSC는 상대적으로 안정적인 landing/download 축에 속했다
+- 현재 판단
+  - 회귀 감시용 publisher로 계속 포함할 가치가 높다
+
+### 기타 ACS / Wiley / Nature / IOP / MDPI / IEEE
+
+- 최근 pilot bundle들에서 대체로 landing success 축에 존재
+- 다만 Nature/Springer/Wiley는 cross-host, gate, timing 차이가 섞일 수 있어 분류기의 보수적 판정이 필요
+
+## 7. 실패 패턴과 교훈
+
+### 반복적으로 나타난 실패 패턴
+
+- direct article URL을 browser가 너무 일찍 여는 공격적 진입
+- shell page를 real article page와 구분하지 못하는 오판
+- preflight request 결과와 browser landing 결과를 같은 것으로 보는 해석
+- blank screenshot을 tab bug로 과잉 해석하는 문제
+- 동일 DOI를 여러 run에서 반복 타격하는 실험 설계
+
+### 실제로 오분류였던 것
+
+- `10.1007/s12598-024-02864-w`
+  - real landing이었지만 `domain_mismatch` 실패로 처리됨
+
+### blank screenshot이 의미한 것
+
+- 현재까지의 강한 해석
+  - headless에서 거의 렌더되지 않은 challenge/interstitial shell
+- 현재까지의 약한 해석
+  - wrong active tab
+  - stale handle
+  - pure about:blank
+  - zero-size viewport
+
+### tab/page-state 문제
+
+- 의심은 많았지만, AIP latest fail bundle 기준으로는 `total_tab_count=1`, `tab_transition_count=0`, `ready_state=complete`라서 1차 원인으로 보기 어렵다
+- 다만 latest-tab adoption, tab sync, stale context 방어는 Elsevier/AIP 양쪽에서 계속 보강되었다
+
+### `local_mac`가 실제로 도움이 된 부분
+
+- Elsevier:
+  - retrieve-link recovery
+  - handoff/canonical normalize
+  - article shell reopen
+  - tab adoption
+- AIP:
+  - 실질적인 publisher-specific landing recovery는 거의 없었고, generic browser landing 성향 정도만 참고 가능
+
+## 8. 로깅과 운영 워크플로우
+
+### 표준 실행 순서
+
+```bash
+bash scripts/prepare_linux_server_env.sh
+bash scripts/run_linux_suite_bg.sh --suite pilot
+bash scripts/check_linux_suite_status.sh <run-name>
+bash scripts/collect_linux_suite_artifacts.sh <run-name>
+```
+
+### 사용자에게 먼저 수집한 환경값
+
+- `HOME`
+- `PWD`
+- `SEED_PROFILE`
+- `PROFILE_NAME`
+- `CHROME_PATH`
+- `PYTHON_BIN`
+- `VIRTUAL_ENV`
+- `PDF_BROWSER_NO_SANDBOX`
+- `TMPDIR`
+- `XDG_RUNTIME_DIR`
+- `RUNS_ROOT`
+- `LOGS_ROOT`
+- `COLLECT_ROOT`
+
+### run 단위 산출물 구조
+
+- root launcher
+  - `logs/<run>.cmd.sh`
+  - `logs/<run>.log`
+  - `logs/<run>.pid`
+  - `logs/<run>.run_dir`
+- run dir
+  - `execution_manifest.json`
+  - `run_suite.sh`
+  - `logs/seed_profile_check.*`
+  - `logs/landing.*`
+  - `logs/download.*`
+  - `logs/summarize.*`
+  - `landing/landing_access_repro.jsonl`
+  - `landing/landing_access_repro_report.json`
+  - `landing/artifacts/...`
+  - `download/run/openalex_search_results_parallel.csv`
+  - `download/run/summary.json`
+  - `summary/merged_results.csv`
+  - `summary/suite_summary.json`
+  - `summary/retry_protection_skips.csv`
+
+### 최근 확장된 주요 로깅 필드
+
+- landing/download 공통 entry 의미론
+  - `entry_strategy`
+  - `entry_url`
+  - `entry_resolved_url`
+  - `entry_browser_url`
+  - `entry_browser_kind`
+  - `entry_handoff_url`
+  - `entry_preflight_url`
+  - `entry_preflight_issue`
+  - `entry_preflight_issue_overridden`
+- landing quality
+  - `initial_landing_type`
+  - `landing_recovery_attempted`
+  - `landing_recovery_strategy`
+  - `landing_recovery_outcome`
+  - `shell_recovery_*`
+  - `reclassified_after_detector_fix`
+- runtime diagnostics
+  - `readyState`
+  - DOM/visible text 길이
+  - tab count / active tab id
+  - viewport
+  - iframe summary
+  - console/runtime/network summary
+  - `blank_screenshot_likely`
+- retry protection
+  - `prior_attempt_*`
+  - `retry_protection_action`
+  - `retry_protection_reason`
+
+## 9. 현재 상태
+
+### 확인된 개선
+
+- Linux seed profile 준비/검증/패키징 절차가 문서화되고 스크립트화됨
+- server env 수집과 `config/linux_server.env` 기반 재사용 경로가 정착
+- `nohup` 기반 background run, status, log tail, artifact collect 워크플로우가 정착
+- recent 2024+ 중심 suite와 Sci-Hub confound 분리 설계가 문서/코드/산출물에 반영됨
+- retry protection과 DOI rotation 코드가 builder/runner/summary에 반영됨
+- Elsevier landing은 초기 direct-entry 방식보다 공식 retrieve/handoff 중심으로 개선됨
+- `10.1007_`류 cross-host landing 오분류를 고칠 classifier 경로가 추가됨
+- AIP blank screenshot에 대한 runtime diagnostics와 no-retry challenge 처리가 실제 bundle에 반영됨
+- landing 쪽 entry/recovery semantics가 download path와 summary에도 반영됨
+
+### 아직 미검증 또는 근거 부족
+
+- 최신 AIP DOI-first browser entry 전략이 실제 Linux 서버 bundle에서 landing success를 올렸는지 `[blocked]`
+- Elsevier shell recovery가 "shell-only live case"에서 end-to-end로 회복되는지 `[blocked]`
+- `10.1007_` classifier fix가 server rerun에서 false-failure를 실제로 줄였는지 `[blocked]`
+- attempt ledger 파일 자체의 최신 누적 상태는 현재 로컬 워크스페이스에서 확인되지 않음 `[blocked]`
+
+### 구조적 위험
+
+- Elsevier/AIP는 코드 수정만으로 해결되지 않는 publisher-side challenge/IP trust 문제가 남아 있을 수 있음
+- 외부 bundle들이 저장소 밖에 있어 장기 보존성이 낮음
+
+## 10. 다음 권장 작업
+
+1. 최신 코드 기준으로 server pilot를 다시 실행해 AIP DOI-first entry가 실제 bundle에서 어떻게 기록되는지 확인
+   - 우선 확인 필드:
+     - `landing_entry_browser_url`
+     - `landing_entry_browser_kind`
+     - `landing_entry_preflight_url`
+     - `landing_entry_preflight_issue`
+     - `landing_entry_preflight_issue_overridden`
+     - `landing_probe_state`
+2. `10.1007_` 계열 DOI를 fresh/low-frequency 케이스로 1건만 다시 검증해 classifier false negative fix를 server artifact로 재확인
+3. Elsevier shell-like case가 다시 나오면 `landing_shell_recovery_*`와 final classifier를 함께 확인해 live recovery 성공 여부를 증거화
+4. 외부 bundle 중 핵심 run의 `suite_summary.json`, `merged_results.csv`, 대표 fail artifact JSON을 `docs/` 또는 별도 `analysis/` 아래 장기 보존 형태로 남길지 결정
+5. 이후 새 실험 제안 시 아래 4개를 항상 같이 제공
+   - 실행 명령
+   - 중간 로그 확인 명령
+   - 종료 확인 명령
+   - artifact 수집/전달 명령
+
+## 11. 부록: 최근 외부 bundle에서 확인한 대표 상태
+
+### `pilot_20260314_210007`
+
+- `sample_total=13`
+- `combined_bucket_counts={"challenge_or_interstitial":4,"publisher_native_download":9}`
+- landing classifier는 `unknown_non_success` 3건, `challenge_detected` 1건이 섞여 있었음
+
+### `pilot_20260314_213217`
+
+- `sample_total=13`
+- `combined_bucket_counts={"challenge_or_interstitial":4,"publisher_native_download":9}`
+- 동일 실패군이 `challenge_detected`로 더 명확히 정리됨
+
+### `pilot_20260314_232524`
+
+- 대표 실패:
+  - `10.1007/s12598-024-02864-w`: real Wiley landing인데 `domain_mismatch`
+  - `10.1116/6.0004868`: AIP challenge
+
+### `pilot_20260315_000015`
+
+- Elsevier 2건 landing success
+- AIP `10.1116/6.0003941` challenge
+
+### `pilot_20260315_004518`
+
+- AIP `10.1116/6.0003790`
+  - `aip_recovery_1`, `aip_recovery_2`까지 갔지만 여전히 challenge
+
+### `pilot_20260315_012307`
+
+- `sample_total=4`
+- `combined_bucket_counts={"challenge_or_interstitial":1,"publisher_native_download":2,"scihub_assisted_download":1}`
+- AIP `10.1116/6.0003847`
+  - no-retry patch와 runtime diagnostics가 실제로 적용됨
+  - blank screenshot은 challenge shell 해석을 더 강하게 지지
