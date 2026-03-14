@@ -19,3 +19,11 @@
   - landing probe, 다운로드 실행, 요약 리포트 생성을 연결하는 Linux headless runner
 - `summarize_linux_headless_suite.py`
   - landing 결과와 다운로드 결과를 합쳐 publisher별 진단 표를 만드는 요약기
+- `../scripts/run_linux_suite_bg.sh`
+  - SSH가 끊겨도 유지되는 `nohup` 기반 background launcher
+- `../scripts/check_linux_suite_status.sh`
+  - PID, stage 상태, 최근 로그를 확인하는 상태 점검 스크립트
+- `../scripts/tail_linux_suite_logs.sh`
+  - root/stage 로그를 `tail -F`로 보는 보조 스크립트
+- `../scripts/collect_linux_suite_artifacts.sh`
+  - 분석에 필요한 run 산출물을 tar.gz로 묶는 수집 스크립트

@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 import argparse
+import getpass
 import json
 import os
+import platform
 import shlex
+import socket
 import subprocess
 import sys
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -25,6 +28,26 @@ def build_sample_if_needed(suite_dir: Path, rebuild: bool) -> None:
 
 def shell_join(cmd: List[str]) -> str:
     return shlex.join([str(part) for part in cmd])
+
+
+def utc_now_iso() -> str:
+    return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def read_text_command(cmd: List[str], cwd: Path) -> str:
+    try:
+        completed = subprocess.run(
+            cmd,
+            cwd=cwd,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except Exception:
+        return ""
+    if completed.returncode != 0:
+        return ""
+    return str(completed.stdout or "").strip()
 
 
 def run_command(cmd: List[str], cwd: Path, stdout_path: Path, stderr_path: Path) -> Dict[str, Any]:
@@ -87,10 +110,12 @@ def main() -> int:
     landing_report = landing_dir / "landing_access_repro_report.json"
     landing_report_md = landing_dir / "landing_access_repro_report.md"
     landing_artifact_dir = landing_dir / "artifacts"
+    landing_fail_zip = landing_dir / "landing_access_failures.zip"
+    landing_success_zip = landing_dir / "landing_access_successes.zip"
     download_pdf_dir = download_dir / "pdfs"
     download_run_dir = download_dir / "run"
     download_results_csv = download_run_dir / "openalex_search_results_parallel.csv"
-    download_summary_json = download_run_dir / "download_summary.json"
+    download_summary_json = download_run_dir / "summary.json"
     merged_csv = summary_dir / "merged_results.csv"
     publisher_csv = summary_dir / "publisher_summary.csv"
     merged_json = summary_dir / "suite_summary.json"
@@ -115,6 +140,12 @@ def main() -> int:
         str(args.profile_name),
         "--artifact-dir",
         str(landing_artifact_dir),
+        "--capture-fail-screenshot",
+        "1",
+        "--artifact-zip",
+        str(landing_fail_zip),
+        "--success-artifact-zip",
+        str(landing_success_zip),
         "--output-jsonl",
         str(landing_jsonl),
         "--report",
@@ -196,15 +227,58 @@ def main() -> int:
     shell_script_path.write_text("\n".join(shell_lines) + "\n", encoding="utf-8")
     shell_script_path.chmod(0o755)
 
+    host_name = socket.gethostname()
+    git_branch = read_text_command(["git", "branch", "--show-current"], cwd=repo_root())
+    git_commit = read_text_command(["git", "rev-parse", "HEAD"], cwd=repo_root())
+    git_short_commit = read_text_command(["git", "rev-parse", "--short", "HEAD"], cwd=repo_root())
     execution_manifest: Dict[str, Any] = {
+        "generated_at": utc_now_iso(),
+        "run_id": str(run_dir.name),
         "suite": args.suite,
+        "suite_dir": str(suite_dir),
+        "repo_root": str(repo_root()),
         "sample_csv": str(sample_csv),
         "run_dir": str(run_dir),
+        "host": host_name,
+        "user": getpass.getuser(),
+        "platform": platform.platform(),
+        "python_executable": sys.executable,
+        "python_version": sys.version.split()[0],
+        "git_branch": git_branch,
+        "git_commit": git_commit,
+        "git_short_commit": git_short_commit,
         "runtime_preset": args.runtime_preset,
         "execution_env": args.execution_env,
         "headless": bool(args.headless),
+        "skip_landing": bool(args.skip_landing),
+        "skip_download": bool(args.skip_download),
+        "landing_workers": int(args.landing_workers),
+        "download_workers": int(args.download_workers),
+        "after_first_pass": str(args.after_first_pass),
         "profile_name": str(args.profile_name),
         "persistent_profile_dir": str(profile_dir) if profile_dir is not None else "",
+        "environment_overrides": {
+            "CHROME_PATH": str(os.environ.get("CHROME_PATH", "")).strip(),
+            "PDF_BROWSER_NO_SANDBOX": str(os.environ.get("PDF_BROWSER_NO_SANDBOX", "")).strip(),
+        },
+        "paths": {
+            "run_dir": str(run_dir),
+            "landing_dir": str(landing_dir),
+            "download_dir": str(download_dir),
+            "download_run_dir": str(download_run_dir),
+            "summary_dir": str(summary_dir),
+            "logs_dir": str(logs_dir),
+            "landing_artifact_dir": str(landing_artifact_dir),
+            "landing_fail_zip": str(landing_fail_zip),
+            "landing_success_zip": str(landing_success_zip),
+            "download_pdf_dir": str(download_pdf_dir),
+            "download_results_csv": str(download_results_csv),
+            "download_summary_json": str(download_summary_json),
+            "merged_csv": str(merged_csv),
+            "publisher_summary_csv": str(publisher_csv),
+            "summary_json": str(merged_json),
+            "summary_md": str(merged_md),
+        },
         "prepared_commands": {
             "landing": landing_cmd,
             "download": download_cmd,
@@ -213,6 +287,7 @@ def main() -> int:
         "shell_script": str(shell_script_path),
         "seed_profile_check": None,
         "executed_commands": {},
+        "status": "prepared",
     }
 
     seed_check_failed = False
@@ -292,6 +367,23 @@ def main() -> int:
             "skipped": True,
             "reason": "seed_profile_check_failed",
         }
+        execution_manifest["status"] = "blocked_seed_profile"
+
+    if args.execute and execution_manifest.get("status") != "blocked_seed_profile":
+        stage_results = [
+            payload
+            for payload in execution_manifest["executed_commands"].values()
+            if isinstance(payload, dict) and "ok" in payload
+        ]
+        if stage_results and all(bool(payload.get("ok")) for payload in stage_results):
+            execution_manifest["status"] = "completed_ok"
+        elif stage_results:
+            execution_manifest["status"] = "completed_with_failures"
+        else:
+            execution_manifest["status"] = "executed_no_stage_records"
+    elif not args.execute:
+        execution_manifest["status"] = "prepared_only"
+    execution_manifest["finished_at"] = utc_now_iso()
 
     manifest_path = run_dir / "execution_manifest.json"
     write_json(manifest_path, execution_manifest)
