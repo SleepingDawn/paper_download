@@ -14,3 +14,8 @@
   - 생성 규칙, 권장 실행 명령, publisher별 분석 포인트 정리
 - `elsevier_smoke_download_20260313.csv`
   - Linux seeded profile이 실제로 Elsevier landing / PDF discovery를 통과하는지 빠르게 확인하는 2건 smoke 입력
+- `publisher_download_benchmark_20260314.csv`
+  - publisher별 end-to-end download를 비교하기 위한 서버용 benchmark 입력
+- `publisher_download_benchmark_20260314.md`
+  - 권장 detached 실행 명령과 분석 포인트 정리
+  - `scripts/run_publisher_benchmark_detached.sh`로 전체 또는 특정 publisher만 바로 실행 가능

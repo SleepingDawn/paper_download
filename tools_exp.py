@@ -55,6 +55,7 @@ HIGH_FRICTION_DOMAINS = (
     "acs.org",
     "sciencedirect.com",
     "aip.org",
+    "iop.org",
     "journals.aps.org",
     "wiley.com",
     "rsc.org",
@@ -66,7 +67,11 @@ AUTO_PROFILE_DOI_PREFIXES = (
     "10.1016",  # Elsevier
     "10.1063",  # AIP
     "10.1116",  # AVS(AIP platform)
+    "10.1088",  # IOP
+    "10.1149",  # ECS legacy content hosted on IOP
+    "10.7567",  # JJAP hosted on IOP
     "10.1103",  # APS
+    "10.1002",  # Wiley
     "10.1039",  # RSC
     "10.3390",  # MDPI
 )
@@ -76,8 +81,11 @@ SHARED_TEMP_PROFILE_BUCKETS = (
     ("10.1063", "aip"),
     ("10.1103", "aps"),
     ("10.1088", "iop"),
+    ("10.1149", "iop"),
+    ("10.7567", "iop"),
     ("10.1109", "ieee"),
     ("10.1117", "spie"),
+    ("10.1002", "wiley"),
 )
 APS_JOURNAL_SLUGS = {
     "physreva": "pra",
@@ -4279,17 +4287,21 @@ def _publisher_bootstrap_url_for_doi(doi_norm: str = "") -> str:
         return "https://pubs.acs.org/"
     if doi_norm.startswith("10.1063") or doi_norm.startswith("10.1116"):
         return "https://pubs.aip.org/"
+    if doi_norm.startswith(("10.1088", "10.1149", "10.7567")):
+        return "https://iopscience.iop.org/"
     if doi_norm.startswith("10.1103"):
         return "https://journals.aps.org/"
-    if doi_norm.startswith("10.1088"):
-        return "https://iopscience.iop.org/"
+    if doi_norm.startswith("10.1002"):
+        return "https://onlinelibrary.wiley.com/"
     return ""
 
 
 def _should_prebootstrap_low_trust_publisher(doi_norm: str = "", session_source: str = "") -> bool:
     doi_norm = str(doi_norm or "").strip().lower()
     source = str(session_source or "").strip().lower()
-    if not doi_norm.startswith(("10.1016", "10.1021", "10.1063", "10.1116", "10.1088", "10.1103")):
+    if not doi_norm.startswith(
+        ("10.1016", "10.1021", "10.1063", "10.1116", "10.1088", "10.1149", "10.7567", "10.1103", "10.1002")
+    ):
         return False
     if not source:
         return True
