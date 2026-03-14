@@ -3,12 +3,12 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-usage: bash scripts/run_linux_suite_bg.sh --suite {pilot|full} --seed-profile <dir> [options]
+usage: bash scripts/run_linux_suite_bg.sh --suite {pilot|full} [options]
 
 options:
   --suite <pilot|full>          experiment suite
-  --seed-profile <dir>          Linux seeded Chrome user-data-dir root
-  --profile-name <name>         Chrome profile name (default: Default)
+  --seed-profile <dir>          Linux seeded Chrome user-data-dir root (or config/linux_server.env)
+  --profile-name <name>         Chrome profile name (default: Default or config/linux_server.env)
   --run-name <name>             run/log prefix (default: <suite>_YYYYmmdd_HHMMSS)
   --run-dir <dir>               explicit run directory (default: outputs/linux_headless_suite_runs/<run-name>)
   --sample-csv <path>           override suite CSV
@@ -16,16 +16,22 @@ options:
   --download-workers <n>        download workers (default: 1)
   --after-first-pass <mode>     stop|deep (default: stop)
   --headless <0|1>              default: 1
-  --python <path>               python executable (default: current python3)
+  --python <path>               python executable (default: config/linux_server.env or current python3)
   --runtime-preset <value>      default: linux_cli_seeded
   --execution-env <value>       default: linux_server
-  --chrome-path <path>          optional explicit browser binary
-  --no-sandbox <0|1>            export PDF_BROWSER_NO_SANDBOX (default: preserve current env)
+  --chrome-path <path>          optional explicit browser binary (or config/linux_server.env)
+  --no-sandbox <0|1>            export PDF_BROWSER_NO_SANDBOX (default: preserve current env/config)
 EOF
 }
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+# shellcheck source=scripts/_linux_suite_env.sh
+source "$SCRIPT_DIR/_linux_suite_env.sh"
+REPO_ROOT=$(linux_suite_repo_root)
+linux_suite_load_env "$REPO_ROOT"
+RUNS_ROOT=$(linux_suite_runs_root "$REPO_ROOT")
+LOGS_ROOT=$(linux_suite_logs_root "$REPO_ROOT")
+ENV_FILE=$(linux_suite_env_file "$REPO_ROOT")
 
 SUITE=""
 SEED_PROFILE="${SEED_PROFILE:-}"
@@ -93,20 +99,20 @@ if [[ -z "$RUN_NAME" ]]; then
   RUN_NAME="${SUITE}_$(date +%Y%m%d_%H%M%S)"
 fi
 if [[ -z "$RUN_DIR" ]]; then
-  RUN_DIR="$REPO_ROOT/outputs/linux_headless_suite_runs/$RUN_NAME"
+  RUN_DIR="$RUNS_ROOT/$RUN_NAME"
 fi
 
-mkdir -p "$REPO_ROOT/logs"
+mkdir -p "$LOGS_ROOT"
 RUN_DIR_ABS=$("$PYTHON_BIN" - <<PY
 from pathlib import Path
 print(Path("$RUN_DIR").resolve())
 PY
 )
 RUN_NAME=$(basename "$RUN_DIR_ABS")
-CMD_FILE="$REPO_ROOT/logs/${RUN_NAME}.cmd.sh"
-LOG_FILE="$REPO_ROOT/logs/${RUN_NAME}.log"
-PID_FILE="$REPO_ROOT/logs/${RUN_NAME}.pid"
-RUN_DIR_FILE="$REPO_ROOT/logs/${RUN_NAME}.run_dir"
+CMD_FILE="$LOGS_ROOT/${RUN_NAME}.cmd.sh"
+LOG_FILE="$LOGS_ROOT/${RUN_NAME}.log"
+PID_FILE="$LOGS_ROOT/${RUN_NAME}.pid"
+RUN_DIR_FILE="$LOGS_ROOT/${RUN_NAME}.run_dir"
 
 if [[ -f "$PID_FILE" ]]; then
   OLD_PID=$(cat "$PID_FILE" 2>/dev/null || true)
@@ -165,6 +171,7 @@ printf '%s\n' "$RUN_DIR_ABS" >"$RUN_DIR_FILE"
   echo "[launcher] run_dir=$RUN_DIR_ABS"
   echo "[launcher] python=$PYTHON_BIN"
   echo "[launcher] suite=$SUITE"
+  echo "[launcher] env_file=$ENV_FILE"
   echo "[launcher] seed_profile=$SEED_PROFILE"
   echo "[launcher] profile_name=$PROFILE_NAME"
   if [[ -n "$CHROME_PATH_VALUE" ]]; then

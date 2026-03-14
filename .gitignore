@@ -22,5 +22,8 @@ downloaded_files/
 logs/
 *.log
 
+# 서버별 Linux 실험 환경값
+config/linux_server.env
+
 # 맥북 시스템 파일
 .DS_Store

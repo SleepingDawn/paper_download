@@ -13,7 +13,14 @@ if [[ $# -lt 1 ]]; then
 fi
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+# shellcheck source=scripts/_linux_suite_env.sh
+source "$SCRIPT_DIR/_linux_suite_env.sh"
+REPO_ROOT=$(linux_suite_repo_root)
+linux_suite_load_env "$REPO_ROOT"
+RUNS_ROOT=$(linux_suite_runs_root "$REPO_ROOT")
+LOGS_ROOT=$(linux_suite_logs_root "$REPO_ROOT")
+COLLECT_ROOT=$(linux_suite_collect_root "$REPO_ROOT")
+PYTHON_BIN="${PYTHON_BIN:-$(command -v python3)}"
 RUN_REF=$1
 shift
 
@@ -32,18 +39,18 @@ done
 resolve_run_dir() {
   local ref=$1
   if [[ -d "$ref" ]]; then
-    python3 - <<PY
+    "$PYTHON_BIN" - <<PY
 from pathlib import Path
 print(Path("$ref").resolve())
 PY
     return 0
   fi
-  local map_file="$REPO_ROOT/logs/${ref}.run_dir"
+  local map_file="$LOGS_ROOT/${ref}.run_dir"
   if [[ -f "$map_file" ]]; then
     cat "$map_file"
     return 0
   fi
-  local default_dir="$REPO_ROOT/outputs/linux_headless_suite_runs/$ref"
+  local default_dir="$RUNS_ROOT/$ref"
   if [[ -d "$default_dir" ]]; then
     printf '%s\n' "$default_dir"
     return 0
@@ -52,7 +59,7 @@ PY
 }
 
 relpath() {
-  python3 - <<PY
+  "$PYTHON_BIN" - <<PY
 from pathlib import Path
 root = Path("$REPO_ROOT").resolve()
 path = Path("$1").resolve()
@@ -65,7 +72,7 @@ RUN_DIR=$(resolve_run_dir "$RUN_REF") || {
   exit 1
 }
 RUN_NAME=$(basename "$RUN_DIR")
-COLLECT_DIR="$REPO_ROOT/outputs/collected_runs"
+COLLECT_DIR="$COLLECT_ROOT"
 mkdir -p "$COLLECT_DIR"
 if [[ -z "$OUTPUT_PATH" ]]; then
   OUTPUT_PATH="$COLLECT_DIR/${RUN_NAME}_bundle.tar.gz"
@@ -84,10 +91,10 @@ add_if_exists() {
   fi
 }
 
-add_if_exists "$REPO_ROOT/logs/${RUN_NAME}.cmd.sh"
-add_if_exists "$REPO_ROOT/logs/${RUN_NAME}.log"
-add_if_exists "$REPO_ROOT/logs/${RUN_NAME}.pid"
-add_if_exists "$REPO_ROOT/logs/${RUN_NAME}.run_dir"
+add_if_exists "$LOGS_ROOT/${RUN_NAME}.cmd.sh"
+add_if_exists "$LOGS_ROOT/${RUN_NAME}.log"
+add_if_exists "$LOGS_ROOT/${RUN_NAME}.pid"
+add_if_exists "$LOGS_ROOT/${RUN_NAME}.run_dir"
 add_if_exists "$RUN_DIR/execution_manifest.json"
 add_if_exists "$RUN_DIR/run_suite.sh"
 add_if_exists "$RUN_DIR/logs"
