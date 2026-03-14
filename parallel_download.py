@@ -1,6 +1,7 @@
 import json
 import os
 import inspect
+import shutil
 import subprocess
 import sys
 import time
@@ -74,9 +75,9 @@ FAILURE_REASON_ORDER = [
 
 PACING_PROFILE_OVERRIDES = {
     "elsevier": {
-        "cooldown_multiplier_first": 1.5,
-        "cooldown_multiplier_deep": 2.5,
-        "global_spacing_multiplier": 1.2,
+        "cooldown_multiplier_first": 1.15,
+        "cooldown_multiplier_deep": 1.5,
+        "global_spacing_multiplier": 1.0,
     },
 }
 
@@ -262,6 +263,14 @@ def _is_ieee_stamp_pdf_url(url: str) -> bool:
     return "ieeexplore.ieee.org/stamppdf/getpdf.jsp" in low
 
 
+def _coerce_boolish(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return bool(value)
+    return str(value or "").strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
 def _canonicalize_direct_pdf_url(url: str, publisher_key: str = "") -> str:
     raw = str(url or "").strip()
     low = raw.lower()
@@ -275,7 +284,45 @@ def _canonicalize_direct_pdf_url(url: str, publisher_key: str = "") -> str:
     return raw
 
 
-def _should_try_browser_direct_oa_fallback(url: str, publisher_key: str, reason: str) -> bool:
+def _looks_fast_direct_oa_candidate(url: str, publisher_key: str = "") -> bool:
+    low = str(url or "").strip().lower()
+    if not low:
+        return False
+    if _is_browser_only_pdf_wrapper(low) or _is_cookie_sensitive_wiley_pdf_url(low):
+        return False
+    if any(
+        token in low
+        for token in (
+            ".pdf",
+            "/doi/pdf",
+            "/article-pdf/",
+            "/pdfft",
+            "stamppdf/getpdf.jsp",
+        )
+    ):
+        return True
+    return str(publisher_key or "").strip().lower() in {"iop", "ieee", "aip"}
+
+
+def _resolve_scihub_budget_seconds(
+    mode: str,
+    publisher_key: str,
+    pdf_url_oa: str,
+    open_access: bool,
+) -> int:
+    env_key = "SCIHUB_MAX_TOTAL_S_DEEP" if str(mode or "") == "deep" else "SCIHUB_MAX_TOTAL_S_FIRST"
+    default_budget = "12" if str(mode or "") == "deep" else "8"
+    budget = int(os.getenv(env_key, os.getenv("SCIHUB_MAX_TOTAL_S", default_budget)))
+    if _looks_fast_direct_oa_candidate(pdf_url_oa, publisher_key) and open_access:
+        budget = min(budget, 3)
+    elif open_access:
+        budget = min(budget, 5)
+    elif str(publisher_key or "").strip().lower() in {"elsevier", "aip", "ieee", "iop"}:
+        budget = min(budget, 6)
+    return max(0, budget)
+
+
+def _should_use_browser_direct_oa(url: str, publisher_key: str, reason: str = "") -> bool:
     low = str(url or "").strip().lower()
     key = str(publisher_key or "").strip().lower()
     normalized_reason = str(reason or "").strip()
@@ -285,9 +332,8 @@ def _should_try_browser_direct_oa_fallback(url: str, publisher_key: str, reason:
         REASON_FAIL_NO_CANDIDATE,
     ):
         return False
-    if key in {"aip", "ieee", "spie"}:
-        return True
-    return any(
+
+    return key in {"aip", "ieee", "spie"} or any(
         token in low
         for token in (
             "pubs.aip.org/",
@@ -370,8 +416,25 @@ def _should_policy_skip_download(doi: str, publisher: Optional[str], scheduler_p
 def _status_text(result: Dict[str, Any]) -> str:
     if result.get("success"):
         method = result.get("method") or "unknown"
+        if method == "skip":
+            return "Skipped"
         return f"Success ({method})"
     return result.get("reason", REASON_FAIL_UNKNOWN)
+
+
+def _maybe_reset_run_artifacts(run_output_dir: str, pdf_root_dir: str) -> None:
+    if not _env_flag("PDF_CLEAN_RUN_ARTIFACTS", 1):
+        return
+
+    run_output_dir = os.path.abspath(str(run_output_dir or "").strip())
+    pdf_root_dir = os.path.abspath(str(pdf_root_dir or "").strip())
+    if run_output_dir and os.path.isdir(run_output_dir):
+        shutil.rmtree(run_output_dir, ignore_errors=True)
+
+    run_name = os.path.basename(os.path.normpath(run_output_dir))
+    pdf_name = os.path.basename(os.path.normpath(pdf_root_dir))
+    if run_name and pdf_name == run_name and pdf_root_dir and os.path.isdir(pdf_root_dir):
+        shutil.rmtree(pdf_root_dir, ignore_errors=True)
 
 
 def _normalize_reason(reason: Optional[str], http_status: Optional[int] = None) -> str:
@@ -528,6 +591,7 @@ def _single_download_attempt(
     publisher_key = (publisher or "").lower()
     scheduler_publisher = str(row_data.get("scheduler_publisher") or "")
     pdf_url_oa = str(row_data.get("pdf_url", "")).strip()
+    open_access_hint = _coerce_boolish(row_data.get("open_access"))
     filename = _sanitize_doi_to_filename(doi)
     full_path = os.path.join(pdf_save_dir, filename)
     is_ssrn_doi = doi.lower().startswith("10.2139/ssrn.")
@@ -539,7 +603,7 @@ def _single_download_attempt(
         return {
             **result,
             "status": "Skipped",
-            "reason": REASON_SUCCESS,
+            "reason": skip_reason or REASON_SUCCESS,
             "method": "skip",
             "success": True,
             "stage": "skip",
@@ -547,22 +611,37 @@ def _single_download_attempt(
 
     logger = setup_logger(artifact_dir, filename)
     attempt_trace: List[Dict[str, Any]] = []
+    pdf_url_oa = _canonicalize_direct_pdf_url(pdf_url_oa, publisher_key)
+    defer_scihub = open_access_hint and _looks_fast_direct_oa_candidate(pdf_url_oa, publisher_key)
+    scihub_attempted = False
 
-    # 사용자 요청: Sci-Hub를 항상 최우선(1순위)으로 시도.
-    try:
-        scihub_budget = int(os.getenv("SCIHUB_MAX_TOTAL_S", "20"))
-        if try_manual_scihub(doi, pdf_save_dir, logger, max_total_s=scihub_budget):
-            return {
-                **result,
-                "status": "Success",
-                "reason": REASON_SUCCESS,
-                "method": "scihub",
-                "success": True,
-                "stage": "scihub",
-            }
-    except Exception as e:
-        logger.warning(f"   Sci-Hub 다운로드 에러: {e}")
-        attempt_trace.append({"strategy": "scihub", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
+    def _try_scihub_once(stage: str = "scihub") -> Optional[Dict[str, Any]]:
+        nonlocal scihub_attempted
+        if scihub_attempted:
+            return None
+        scihub_attempted = True
+        scihub_budget = _resolve_scihub_budget_seconds(mode, publisher_key, pdf_url_oa, open_access_hint)
+        if scihub_budget <= 0:
+            return None
+        try:
+            if try_manual_scihub(doi, pdf_save_dir, logger, max_total_s=scihub_budget):
+                return {
+                    **result,
+                    "status": "Success",
+                    "reason": REASON_SUCCESS,
+                    "method": "scihub",
+                    "success": True,
+                    "stage": stage,
+                }
+        except Exception as e:
+            logger.warning(f"   Sci-Hub 다운로드 에러: {e}")
+            attempt_trace.append({"strategy": "scihub", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
+        return None
+
+    if not defer_scihub:
+        scihub_result = _try_scihub_once()
+        if scihub_result:
+            return scihub_result
 
     if is_ssrn_doi:
         logger.info(f"[FastFail] SSRN official-path fast-fail 정책 적용: doi={doi}")
@@ -579,7 +658,6 @@ def _single_download_attempt(
     browser_direct_oa_entry = ""
 
     if pdf_url_oa and pdf_url_oa.lower() not in ("none", "nan") and len(pdf_url_oa) > 10:
-        pdf_url_oa = _canonicalize_direct_pdf_url(pdf_url_oa, publisher_key)
         if _is_browser_only_pdf_wrapper(pdf_url_oa):
             logger.info(f"        [DirectOA] browser-only wrapper 스킵: {pdf_url_oa}")
             attempt_trace.append(
@@ -599,13 +677,13 @@ def _single_download_attempt(
                 }
             )
         else:
-            cffi_timeout = int(os.getenv("DIRECT_OA_CFFI_TIMEOUT_S", "12"))
+            cffi_timeout = int(os.getenv("DIRECT_OA_CFFI_TIMEOUT_S", "8" if mode == "first" else "12"))
             cffi_retry_limit = 0
             if _is_rsc_article_pdf_url(pdf_url_oa):
-                cffi_timeout = max(cffi_timeout, int(os.getenv("RSC_DIRECT_OA_TIMEOUT_S", "25")))
+                cffi_timeout = max(cffi_timeout, int(os.getenv("RSC_DIRECT_OA_TIMEOUT_S", "14")))
                 cffi_retry_limit = 1
             elif _is_ieee_stamp_pdf_url(pdf_url_oa):
-                cffi_timeout = max(cffi_timeout, int(os.getenv("IEEE_DIRECT_TIMEOUT_S", "15")))
+                cffi_timeout = max(cffi_timeout, int(os.getenv("IEEE_DIRECT_TIMEOUT_S", "10")))
                 cffi_retry_limit = 1
             cffi = None
             for cffi_try in range(cffi_retry_limit + 1):
@@ -651,7 +729,7 @@ def _single_download_attempt(
                     "stage": "direct_oa",
                     "domain": _domain_from_url(pdf_url_oa),
                 }
-            if _should_try_browser_direct_oa_fallback(pdf_url_oa, publisher_key, cffi.get("reason")):
+            if _should_use_browser_direct_oa(pdf_url_oa, publisher_key, cffi.get("reason")):
                 browser_direct_oa_entry = pdf_url_oa
             attempt_trace.append(
                 {
@@ -790,6 +868,12 @@ def _single_download_attempt(
         )
         if browser_direct.get("success"):
             return browser_direct
+        if defer_scihub:
+            scihub_result = _try_scihub_once(stage="scihub_fallback")
+            if scihub_result:
+                return scihub_result
+        if _should_use_browser_direct_oa(browser_direct_oa_entry, publisher_key, REASON_FAIL_NO_CANDIDATE):
+            return browser_direct
 
     # 지원 함수가 없는 publisher, 그리고 Elsevier/ACS는 브라우저 쿠키 세션 경로를 우선한다.
     skip_api = (publisher_key not in API_SUPPORTED_PUBLISHERS) or (publisher_key in {"elsevier", "acs"})
@@ -838,6 +922,11 @@ def _single_download_attempt(
                 "evidence": [f"skipped_{publisher_key or 'unknown'}_api"],
             }
         )
+
+    if defer_scihub:
+        scihub_result = _try_scihub_once(stage="scihub_fallback")
+        if scihub_result:
+            return scihub_result
 
     return _run_drission_result()
 
@@ -1474,10 +1563,10 @@ def main(
     execution_env="auto",
     deep_retry_headless=None,
     abort_on_landing_block=True,
-    publisher_cooldown_sec=7.0,
-    global_start_spacing_sec=1.5,
-    jitter_min_sec=0.7,
-    jitter_max_sec=1.8,
+    publisher_cooldown_sec=4.0,
+    global_start_spacing_sec=0.8,
+    jitter_min_sec=0.2,
+    jitter_max_sec=0.8,
     profile_mode="auto",
     profile_name="Default",
     persistent_profile_dir="outputs/.chrome_user_data",
@@ -1501,6 +1590,7 @@ def main(
     ca_pdf_dir = os.path.join(pdf_root_dir, "Closed_Access")
     oa_artifact_dir = os.path.join(run_output_dir, "Open_Access")
     ca_artifact_dir = os.path.join(run_output_dir, "Closed_Access")
+    _maybe_reset_run_artifacts(run_output_dir, pdf_root_dir)
     os.makedirs(run_output_dir, exist_ok=True)
     os.makedirs(pdf_root_dir, exist_ok=True)
     os.makedirs(oa_pdf_dir, exist_ok=True)
@@ -1726,6 +1816,11 @@ def main(
     for item in deep_results:
         idx = item["index"]
         final_results[idx] = item
+    df["download_success"] = [bool(r.get("success")) for r in final_results]
+    df["download_method"] = [str(r.get("method") or "") for r in final_results]
+    df["download_reason"] = [str(r.get("reason") or "") for r in final_results]
+    df["download_stage"] = [str(r.get("stage") or "") for r in final_results]
+    df["download_http_status"] = [r.get("http_status") for r in final_results]
     df["landing_attempted"] = [bool(r.get("landing_attempted")) for r in final_results]
     df["landing_success"] = [bool(r.get("landing_success")) for r in final_results]
     df["landing_state"] = [str(r.get("landing_state") or "not_attempted") for r in final_results]
@@ -1751,13 +1846,19 @@ def main(
     full_csv_path = os.path.join(run_output_dir, "openalex_search_results_parallel.csv")
     df.to_csv(full_csv_path, index=False, encoding="utf-8-sig")
 
-    failed_df = df[~df["download_status"].str.contains("Success", case=False, na=False)]
+    failed_df = df[~df["download_success"]]
     failed_csv_path = os.path.join(run_output_dir, "failed_papers.csv")
     failed_df.to_csv(failed_csv_path, index=False, encoding="utf-8-sig")
 
     shutdown_orphan_reaped = reap_stale_drission_orphan_browsers(current_pid=os.getpid())
     live_metrics = _summarize_live_attempt_metrics(attempts_jsonl_path, attempts_summary_path)
     integrated_landing_metrics = _summarize_integrated_landing(final_results)
+
+    success_count = int(sum(1 for r in final_results if r.get("success") and r.get("method") != "skip"))
+    skipped_count = int(sum(1 for r in final_results if r.get("method") == "skip"))
+    failure_count = int(sum(1 for r in final_results if not r.get("success")))
+    effective_total = max(0, len(df) - skipped_count)
+    adjusted_total = max(0, effective_total - int(first_summary.get(REASON_FAIL_ACCESS_RIGHTS, 0)))
 
     summary_payload = {
         "generated_at": int(time.time()),
@@ -1797,9 +1898,13 @@ def main(
         "landing_precheck": landing_precheck_metrics,
         "integrated_landing": integrated_landing_metrics,
         "first_pass": {
-            "success": int(sum(1 for r in first_results if r.get("success"))),
+            "success": int(sum(1 for r in first_results if r.get("success") and r.get("method") != "skip")),
+            "skipped": int(sum(1 for r in first_results if r.get("method") == "skip")),
             "failed": int(sum(1 for r in first_results if not r.get("success"))),
             "fail_reasons": first_summary,
+        },
+        "skipped": {
+            "count": skipped_count,
         },
         "deep_retry": {
             "executed": decision == "deep",
@@ -1812,23 +1917,29 @@ def main(
         "live_attempt_metrics": live_metrics,
         "effective_rates": {
             "download_raw_success_rate": round(
-                sum(1 for r in first_results if r.get("success")) / len(df), 4
+                success_count / effective_total, 4
             )
-            if len(df)
+            if effective_total
             else 0.0,
             "download_adjusted_success_rate": round(
-                sum(1 for r in first_results if r.get("success"))
-                / max(1, len(df) - int(first_summary.get(REASON_FAIL_ACCESS_RIGHTS, 0))),
+                success_count / adjusted_total,
                 4,
             )
-            if (len(df) - int(first_summary.get(REASON_FAIL_ACCESS_RIGHTS, 0))) > 0
+            if adjusted_total > 0
             else 0.0,
             "end_to_end_adjusted_success_rate": round(
-                sum(1 for r in first_results if r.get("success"))
-                / max(1, int(landing_precheck_metrics.get("adjusted_denominator", len(df)) or len(df))),
+                success_count
+                / max(
+                    1,
+                    int(landing_precheck_metrics.get("adjusted_denominator", effective_total) or effective_total)
+                    - skipped_count,
+                ),
                 4,
             )
-            if int(landing_precheck_metrics.get("adjusted_denominator", len(df)) or len(df)) > 0
+            if (
+                int(landing_precheck_metrics.get("adjusted_denominator", effective_total) or effective_total)
+                - skipped_count
+            ) > 0
             else 0.0,
         },
         "artifacts": {
@@ -1854,8 +1965,9 @@ def main(
     print("\n" + "=" * 60)
     print("[작업 완료]")
     print(f"총 논문 수: {len(df)}")
-    print(f"성공: {sum(df['download_status'].str.contains('Success', case=False, na=False))}")
-    print(f"실패: {len(failed_df)}")
+    print(f"성공: {success_count}")
+    print(f"스킵: {skipped_count}")
+    print(f"실패: {failure_count}")
     print(f"의사결정: {decision}")
     print(f"실패 로그(JSONL): {failed_jsonl_path}")
     print(f"요약(JSON): {summary_json_path}")
