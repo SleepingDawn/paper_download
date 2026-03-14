@@ -1703,6 +1703,13 @@ def _is_rsc_article_pdf_url(url: str) -> bool:
     return ("pubs.rsc.org" in low and "/content/articlepdf/" in low and not _is_supporting_info_blob(low))
 
 
+def _is_acs_article_pdf_url(url: str) -> bool:
+    low = str(url or "").strip().lower()
+    if not low:
+        return False
+    return "pubs.acs.org" in low and "/doi/pdf/" in low and not _is_supporting_info_blob(low)
+
+
 def _looks_like_pdf_link(url: str) -> bool:
     low = str(url or "").lower()
     if not low:
@@ -6497,6 +6504,7 @@ def download_with_drission(
                         logger.info(f"        [DSpace] article bitstream PDF URL 복구: {pdf_url}")
 
             ieee_fastpath_url_ready = False
+            acs_fastpath_url_ready = False
             pdf_url_domain = _extract_domain(pdf_url) if pdf_url else ""
             if pdf_url and (
                 "ieeexplore.ieee.org" in str(current_domain or "").lower()
@@ -6514,9 +6522,16 @@ def download_with_drission(
                 )
                 if ieee_fastpath_url_ready and logger:
                     logger.info("        [IEEE] real PDF URL 확보 -> 버튼 클릭 우선 시도 생략")
+            if pdf_url and (
+                "pubs.acs.org" in str(current_domain or "").lower()
+                or "pubs.acs.org" in pdf_url_domain
+            ):
+                acs_fastpath_url_ready = _is_acs_article_pdf_url(pdf_url)
+                if acs_fastpath_url_ready and logger:
+                    logger.info("        [ACS] real PDF URL 확보 -> 버튼 클릭 우선 시도 생략")
             
             # 고차단 도메인은 실제 사용자 행동과 유사하게 버튼 클릭 다운로드를 우선 시도
-            if high_friction and pdf_btn and (not is_sciencedirect) and (not ieee_fastpath_url_ready):
+            if high_friction and pdf_btn and (not is_sciencedirect) and (not ieee_fastpath_url_ready) and (not acs_fastpath_url_ready):
                 if is_rsc and pdf_url and _is_rsc_article_pdf_url(pdf_url):
                     logger.info("        [RSC] articlepdf URL 확보 -> generic 버튼 클릭 우선 시도 생략")
                 else:
@@ -6618,6 +6633,30 @@ def download_with_drission(
                         logger.info(
                             "        [IEEE] fastpath 직접 회수 실패 "
                             f"(reason={ieee_cffi_result.get('reason') or 'unknown'}) -> 기본 다운로드 경로 계속"
+                        )
+                elif acs_fastpath_url_ready:
+                    try:
+                        cookies_list = page.cookies()
+                        current_cookies = {c['name']: c['value'] for c in cookies_list}
+                    except Exception:
+                        current_cookies = {}
+                    logger.info("        [ACS] fastpath cookie-aware 직접 회수 시도")
+                    acs_cffi_result = download_with_cffi(
+                        pdf_url,
+                        full_save_path,
+                        referer=page.url,
+                        cookies=current_cookies,
+                        ua=_resolve_best_browser_ua(),
+                        logger=logger,
+                        return_detail=True,
+                        timeout=10 if mode == "first" else 16,
+                    )
+                    if acs_cffi_result.get("ok"):
+                        return _ret(True, "SUCCESS", stage="acs-fastpath-cffi")
+                    if logger:
+                        logger.info(
+                            "        [ACS] fastpath 직접 회수 실패 "
+                            f"(reason={acs_cffi_result.get('reason') or 'unknown'}) -> 기본 다운로드 경로 계속"
                         )
 
                 # DrissionPage 자체 다운로드 먼저 시도
