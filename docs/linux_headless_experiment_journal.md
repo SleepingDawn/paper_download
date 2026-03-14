@@ -1185,3 +1185,18 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - 해석
   - 어떤 DOI는 journal root가 clean landing이고, 어떤 DOI는 challenge shell이더라도 뒤이은 article landing이 가능했다.
   - 따라서 AIP context bootstrap은 low-friction publisher-page initialization 전략으로 유지할 가치가 있다.
+
+### `aip_context_bootstrap_linux_20260315`
+
+- 실행 위치
+  - `outputs/linux_headless_suite_runs/aip_context_bootstrap_linux_20260315/`
+- 입력 CSV
+  - `outputs/_aip_profile_diag_20260315_input.csv`
+- 결과
+  - `status=skipped_retry_protection_all_rows`
+  - `effective_sample_total=0`
+  - `skip_reason_counts={"prior_success_exists":1}`
+- 해석
+  - 이번 server run은 AIP context bootstrap branch 평가로 이어지지 못했다.
+  - 즉 새로운 성공/실패 근거는 추가되지 않았고, retry protection이 prior-success DOI 재사용을 막은 정상 동작으로 해석하는 편이 맞다.
+  - 다음 server 검증은 fresh/low-frequency AIP DOI로 다시 구성해야 한다.
