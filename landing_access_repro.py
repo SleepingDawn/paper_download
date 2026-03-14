@@ -60,6 +60,7 @@ from landing_classifier import (
 from tools_exp import (
     _apply_best_browser_profile,
     _capture_direct_downloaded_pdf,
+    _click_elsevier_doi_link_in_retrieve,
     _dismiss_cookie_or_consent_banner,
     _extract_elsevier_retrieve_handoff_url,
     _get_current_files,
@@ -68,6 +69,7 @@ from tools_exp import (
     _has_pdf_action_signal,
     _is_elsevier_retrieve_url,
     _sanitize_doi_to_filename,
+    build_elsevier_safe_entry_plan,
     build_landing_browser_session_plan,
     coerce_headless_for_execution_env,
     detect_access_issue,
@@ -75,6 +77,7 @@ from tools_exp import (
     resolve_browser_executable,
     resolve_browser_execution_env,
     resolve_runtime_preset,
+    _wait_for_elsevier_article_ready,
 )
 
 OUT_SUCCESS_ACCESS = "SUCCESS_ACCESS"
@@ -581,31 +584,22 @@ def _headless_preferred_elsevier_urls(url: str) -> List[str]:
 
 
 def _resolve_elsevier_structural_entry_url(doi_url: str) -> str:
-    try:
-        resp = requests.get(
-            str(doi_url or "").strip(),
-            allow_redirects=True,
-            timeout=15,
-            headers={"User-Agent": "Mozilla/5.0"},
-        )
-    except Exception:
-        return ""
+    plan = build_elsevier_safe_entry_plan(doi_url)
+    return str(
+        plan.get("entry_browser_url")
+        or plan.get("entry_resolved_url")
+        or plan.get("entry_url")
+        or ""
+    )
 
-    final_url = str(resp.url or "").strip()
-    html = str(resp.text or "")
-    if not final_url:
-        return ""
-    if _is_elsevier_retrieve_url(final_url):
-        handoff_url = _extract_elsevier_retrieve_handoff_url(final_url, html)
-        redirect_target = _extract_redirect_param(handoff_url, key="Redirect") if handoff_url else ""
-        if redirect_target:
-            candidates = _headless_preferred_elsevier_urls(redirect_target)
-            if candidates and "sciencedirect.com" in candidates[0].lower():
-                return candidates[0]
-        if handoff_url:
-            return handoff_url
-    candidates = _headless_preferred_elsevier_urls(final_url)
-    return candidates[0] if candidates else final_url
+
+def _should_skip_elsevier_browser_open(entry_plan: Dict[str, Any]) -> bool:
+    issue = str(entry_plan.get("entry_preflight_issue") or "").strip()
+    if not issue:
+        return False
+    if issue in ("PRECHECK_RESOLVE_FAILED", "PRECHECK_NO_ENTRY_URL", "PRECHECK_REQUEST_FAILED", OUT_FAIL_DOI_NOT_FOUND):
+        return True
+    return False
 
 
 def _resolve_structural_entry_url(record: Dict[str, Any], doi_url: str) -> str:
@@ -1262,6 +1256,7 @@ def _recover_elsevier_headless_temp_tab(
     doi_url: str,
     final_url: str,
     snapshot: Dict[str, Any],
+    entry_plan: Dict[str, Any],
     deadline_monotonic: float,
     navigation_chain: List[Dict[str, str]],
     attempt_timing: Dict[str, Any],
@@ -1277,6 +1272,10 @@ def _recover_elsevier_headless_temp_tab(
     for raw in (
         _extract_preferred_article_url(final_url=final_url, snapshot=snapshot),
         _normalize_elsevier_article_url(final_url=final_url, snapshot=snapshot),
+        str(entry_plan.get("entry_handoff_url") or ""),
+        str(entry_plan.get("entry_url") or ""),
+        str(entry_plan.get("entry_browser_url") or ""),
+        str(entry_plan.get("entry_resolved_url") or ""),
         _resolve_elsevier_structural_entry_url(doi_url),
         final_url,
     ):
@@ -1637,6 +1636,18 @@ def _build_artifact_zip(records: List[Dict[str, Any]], artifact_dir: str, zip_pa
                     "resolved_url": rec.get("resolved_url", ""),
                     "reason_codes": rec.get("reason_codes", []),
                     "navigation_chain": rec.get("navigation_chain", []),
+                    "entry_strategy": rec.get("entry_strategy", ""),
+                    "entry_url": rec.get("entry_url", ""),
+                    "entry_resolved_url": rec.get("entry_resolved_url", ""),
+                    "entry_browser_url": rec.get("entry_browser_url", ""),
+                    "entry_browser_kind": rec.get("entry_browser_kind", ""),
+                    "entry_handoff_url": rec.get("entry_handoff_url", ""),
+                    "entry_handoff_used": rec.get("entry_handoff_used", False),
+                    "entry_redirect_chain_summary": rec.get("entry_redirect_chain_summary", []),
+                    "entry_fallback_used": rec.get("entry_fallback_used", False),
+                    "entry_fallback_reason": rec.get("entry_fallback_reason", ""),
+                    "entry_preflight_issue": rec.get("entry_preflight_issue", ""),
+                    "entry_browser_open_skipped": rec.get("entry_browser_open_skipped", False),
                     "direct_pdf_path": rec.get("direct_pdf_path", ""),
                     "direct_pdf_event": rec.get("direct_pdf_event", {}),
                     "screenshot_path": rec.get("screenshot_path", ""),
@@ -1680,7 +1691,7 @@ def _save_probe_artifacts(
     html_name = f"{prefix}_{safe}_{ts}.html"
     meta_name = f"{prefix}_{safe}_{ts}.json"
 
-    if include_screenshot:
+    if include_screenshot and not bool(record.get("entry_browser_open_skipped")):
         try:
             page.get_screenshot(path=artifact_bucket_dir, name=screenshot_name, full_page=False)
             out["screenshot"] = os.path.abspath(os.path.join(artifact_bucket_dir, screenshot_name))
@@ -1725,6 +1736,20 @@ def _save_probe_artifacts(
             "legacy_success_like": bool(record.get("legacy_success_like")),
             "dom_signature": record.get("dom_signature", ""),
             "html_len": int(record.get("html_len", 0) or 0),
+            "entry_strategy": record.get("entry_strategy", ""),
+            "entry_url": record.get("entry_url", ""),
+            "entry_resolved_url": record.get("entry_resolved_url", ""),
+            "entry_browser_url": record.get("entry_browser_url", ""),
+            "entry_browser_kind": record.get("entry_browser_kind", ""),
+            "entry_handoff_url": record.get("entry_handoff_url", ""),
+            "entry_handoff_used": bool(record.get("entry_handoff_used")),
+            "entry_redirect_chain_summary": record.get("entry_redirect_chain_summary", []),
+            "entry_fallback_used": bool(record.get("entry_fallback_used")),
+            "entry_fallback_reason": record.get("entry_fallback_reason", ""),
+            "entry_preflight_issue": record.get("entry_preflight_issue", ""),
+            "entry_preflight_evidence": record.get("entry_preflight_evidence", []),
+            "entry_preflight_http_status": record.get("entry_preflight_http_status", ""),
+            "entry_browser_open_skipped": bool(record.get("entry_browser_open_skipped")),
         }
         with open(meta_path, "w", encoding="utf-8") as f:
             json.dump(meta_payload, f, ensure_ascii=False, indent=2)
@@ -1779,6 +1804,10 @@ def _probe_one(
     consent_signal = False
     direct_pdf_path = ""
     direct_pdf_event: Dict[str, Any] = {}
+    entry_plan: Dict[str, Any] = {}
+    entry_browser_open_skipped = False
+    entry_handoff_used = False
+    entry_handoff_url = ""
     attempt_history: List[Dict[str, Any]] = []
     timing_breakdown: Dict[str, Any] = {
         "scheduled_start_ms": int(scheduled_start_ms or 0),
@@ -1825,7 +1854,83 @@ def _probe_one(
             attempt_timing["network_listener"] = bool(listener_started)
 
             step_timeout = _remaining_budget(deadline, timeout_sec, floor_sec=5.0)
-            entry_url = _resolve_structural_entry_url(record=record, doi_url=doi_url)
+            entry_url = ""
+            if doi.startswith("10.1016/"):
+                entry_plan = build_elsevier_safe_entry_plan(doi_url)
+                if entry_plan.get("entry_strategy"):
+                    attempt_timing["entry_strategy"] = str(entry_plan.get("entry_strategy") or "")
+                if entry_plan.get("entry_browser_url"):
+                    attempt_timing["entry_browser_url"] = str(entry_plan.get("entry_browser_url") or "")
+                if entry_plan.get("entry_url"):
+                    attempt_timing["entry_url_candidate"] = str(entry_plan.get("entry_url") or "")
+                if entry_plan.get("entry_handoff_url"):
+                    attempt_timing["entry_handoff_url"] = str(entry_plan.get("entry_handoff_url") or "")[:240]
+                if entry_plan.get("entry_redirect_chain_summary"):
+                    attempt_timing["entry_redirect_chain_summary"] = list(entry_plan.get("entry_redirect_chain_summary") or [])
+                if entry_plan.get("entry_fallback_reason"):
+                    attempt_timing["entry_fallback_reason"] = str(entry_plan.get("entry_fallback_reason") or "")
+                if entry_plan.get("entry_resolved_url"):
+                    _append_nav_step(
+                        navigation_chain,
+                        "elsevier_resolve",
+                        doi_url,
+                        str(entry_plan.get("entry_resolved_url") or doi_url),
+                    )
+                if _should_skip_elsevier_browser_open(entry_plan):
+                    final_url = str(
+                        entry_plan.get("entry_preflight_url")
+                        or entry_plan.get("entry_browser_url")
+                        or entry_plan.get("entry_url")
+                        or entry_plan.get("entry_resolved_url")
+                        or doi_url
+                    )
+                    title = str(entry_plan.get("entry_preflight_title") or "")
+                    html = str(entry_plan.get("entry_preflight_html") or "")
+                    issue = str(entry_plan.get("entry_preflight_issue") or "FAIL_BLOCK")
+                    issue_evidence = list(entry_plan.get("entry_preflight_evidence") or [])
+                    if issue == OUT_FAIL_DOI_NOT_FOUND:
+                        classifier_state = STATE_DOI_NOT_FOUND
+                    elif issue == OUT_FAIL_ACCESS_RIGHTS:
+                        classifier_state = STATE_CONSENT_OR_INTERSTITIAL_BLOCK
+                    elif issue in (OUT_FAIL_BLOCK, OUT_FAIL_CAPTCHA):
+                        classifier_state = STATE_CHALLENGE_DETECTED
+                    else:
+                        classifier_state = STATE_UNKNOWN_NON_SUCCESS
+                    reason_codes = list(dict.fromkeys(issue_evidence + ["elsevier_preflight_skip"]))
+                    _append_nav_step(
+                        navigation_chain,
+                        "elsevier_preflight_skip",
+                        str(entry_plan.get("entry_browser_url") or entry_plan.get("entry_url") or doi_url),
+                        final_url or doi_url,
+                    )
+                    attempt_timing["entry_browser_open_skipped"] = True
+                    entry_browser_open_skipped = True
+                    attempt_timing["entry_preflight_issue"] = issue
+                    attempt_timing["attempt_elapsed_ms"] = int((time.perf_counter() - attempt_started) * 1000)
+                    timing_breakdown["attempts"].append(attempt_timing)
+                    attempt_history.append(
+                        {
+                            "attempt": attempt_idx + 1,
+                            "classifier_state": classifier_state,
+                            "reason_codes": reason_codes[:8],
+                            "final_url": final_url,
+                            "timing_ms": dict(attempt_timing),
+                        }
+                    )
+                    try:
+                        page.listen.stop()
+                        page.listen.clear()
+                    except Exception:
+                        pass
+                    break
+                entry_url = str(
+                    entry_plan.get("entry_browser_url")
+                    or entry_plan.get("entry_resolved_url")
+                    or entry_plan.get("entry_url")
+                    or ""
+                )
+            if not entry_url and not doi.startswith("10.1016/"):
+                entry_url = _resolve_structural_entry_url(record=record, doi_url=doi_url)
             nav_url = entry_url or doi_url
             if entry_url and entry_url.lower() != doi_url.lower():
                 attempt_timing["entry_url_override"] = entry_url
@@ -1834,6 +1939,43 @@ def _probe_one(
             attempt_timing["doi_get_ms"] = int((time.perf_counter() - nav_started) * 1000)
             _append_nav_step(navigation_chain, "doi_get", nav_url, page.url or nav_url)
             _dismiss_cookie_or_consent_banner(page)
+            if (
+                doi.startswith("10.1016/")
+                and _is_elsevier_retrieve_url(page.url or nav_url)
+                and str(entry_plan.get("entry_handoff_url") or "").strip()
+                and time.monotonic() < deadline
+            ):
+                handoff = str(entry_plan.get("entry_handoff_url") or "").strip()
+                handoff_timeout = _remaining_budget(deadline, min(timeout_sec, 12.0), floor_sec=4.0)
+                handoff_started = time.perf_counter()
+                page.get(handoff, retry=0, interval=0.5, timeout=handoff_timeout)
+                attempt_timing["elsevier_initial_handoff_ms"] = int((time.perf_counter() - handoff_started) * 1000)
+                _append_nav_step(navigation_chain, "elsevier_handoff", handoff, page.url or handoff)
+                entry_handoff_used = True
+                entry_handoff_url = handoff
+                _dismiss_cookie_or_consent_banner(page)
+                initial_canonical_url = _normalize_elsevier_article_url(final_url=page.url or handoff, snapshot={})
+                if (
+                    initial_canonical_url
+                    and initial_canonical_url.lower() != str(page.url or "").lower()
+                    and time.monotonic() < deadline
+                ):
+                    canonical_timeout = _remaining_budget(deadline, min(timeout_sec, 8.0), floor_sec=3.0)
+                    canonical_started = time.perf_counter()
+                    page.get(initial_canonical_url, retry=0, interval=0.4, timeout=canonical_timeout)
+                    attempt_timing["elsevier_initial_canonical_ms"] = int((time.perf_counter() - canonical_started) * 1000)
+                    _append_nav_step(
+                        navigation_chain,
+                        "elsevier_canonical",
+                        initial_canonical_url,
+                        page.url or initial_canonical_url,
+                    )
+                    _dismiss_cookie_or_consent_banner(page)
+                try:
+                    wait_budget = _remaining_budget(deadline, min(timeout_sec, 6.0), floor_sec=2.0)
+                    _wait_for_elsevier_article_ready(page, doi, timeout_s=min(6, int(max(2.0, wait_budget))))
+                except Exception:
+                    pass
             if str(record.get("scheduler_publisher") or "") == "powdermat":
                 immediate_url = page.url or nav_url
                 immediate_title = page.title or ""
@@ -1946,13 +2088,29 @@ def _probe_one(
                 title = page.title or title
                 html = page.html or html
                 if _is_elsevier_retrieve_url(final_url):
-                    handoff = _extract_elsevier_retrieve_handoff_url(final_url, html)
+                    clicked = _click_elsevier_doi_link_in_retrieve(page, doi)
+                    if clicked and time.monotonic() < deadline:
+                        click_wait_timeout = _remaining_budget(deadline, min(timeout_sec, 8.0), floor_sec=3.0)
+                        wait_started = time.perf_counter()
+                        _wait_for_elsevier_article_ready(page, doi, timeout_s=min(8, int(max(3.0, click_wait_timeout))))
+                        attempt_timing["elsevier_retrieve_click_wait_ms"] = int((time.perf_counter() - wait_started) * 1000)
+                        _dismiss_cookie_or_consent_banner(page)
+                        final_url = page.url or final_url
+                        title = page.title or title
+                        html = page.html or html
+                        if not _is_elsevier_retrieve_url(final_url):
+                            entry_handoff_used = True
+                            entry_handoff_url = "retrieve_doi_click"
+                            _append_nav_step(navigation_chain, "elsevier_retrieve_click", doi_url, final_url or doi_url)
+                    handoff = _extract_elsevier_retrieve_handoff_url(final_url, html) or str(entry_plan.get("entry_handoff_url") or "")
                     if handoff and time.monotonic() < deadline:
                         handoff_timeout = _remaining_budget(deadline, min(timeout_sec, 12.0), floor_sec=4.0)
                         handoff_started = time.perf_counter()
                         page.get(handoff, retry=0, interval=0.5, timeout=handoff_timeout)
                         attempt_timing["elsevier_handoff_ms"] = int((time.perf_counter() - handoff_started) * 1000)
                         _append_nav_step(navigation_chain, "elsevier_handoff", handoff, page.url or handoff)
+                        entry_handoff_used = True
+                        entry_handoff_url = handoff
                         _dismiss_cookie_or_consent_banner(page)
                         final_url = page.url or final_url
                         title = page.title or title
@@ -2085,7 +2243,6 @@ def _probe_one(
 
             if (
                 classifier_state not in SUCCESS_STATES
-                and classifier_state != STATE_CHALLENGE_DETECTED
                 and str(record.get("scheduler_publisher") or "") == "elsevier"
                 and attempt_idx == 0
                 and time.monotonic() < deadline
@@ -2097,6 +2254,7 @@ def _probe_one(
                     doi_url=doi_url,
                     final_url=final_url,
                     snapshot=snapshot,
+                    entry_plan=entry_plan,
                     deadline_monotonic=deadline,
                     navigation_chain=navigation_chain,
                     attempt_timing=attempt_timing,
@@ -2448,6 +2606,20 @@ def _probe_one(
         "controller_tab_id": str(probe_page_meta.get("controller_tab_id") or ""),
         "probe_tab_id": str(probe_page_meta.get("probe_tab_id") or ""),
         "probe_page_fresh_tab": bool(probe_page_meta.get("fresh_tab")),
+        "entry_strategy": str(entry_plan.get("entry_strategy") or ""),
+        "entry_url": str(entry_plan.get("entry_url") or ""),
+        "entry_resolved_url": str(entry_plan.get("entry_resolved_url") or ""),
+        "entry_browser_url": str(entry_plan.get("entry_browser_url") or ""),
+        "entry_browser_kind": str(entry_plan.get("entry_browser_kind") or ""),
+        "entry_handoff_url": str(entry_handoff_url or entry_plan.get("entry_handoff_url") or ""),
+        "entry_handoff_used": bool(entry_handoff_used),
+        "entry_redirect_chain_summary": list(entry_plan.get("entry_redirect_chain_summary") or []),
+        "entry_fallback_used": bool(entry_plan.get("entry_fallback_used")),
+        "entry_fallback_reason": str(entry_plan.get("entry_fallback_reason") or ""),
+        "entry_preflight_issue": str(entry_plan.get("entry_preflight_issue") or ""),
+        "entry_preflight_evidence": list(entry_plan.get("entry_preflight_evidence") or []),
+        "entry_preflight_http_status": entry_plan.get("entry_preflight_http_status"),
+        "entry_browser_open_skipped": bool(entry_browser_open_skipped),
         "scheduled_start_ms": int(timing_breakdown.get("scheduled_start_ms", 0) or 0),
         "actual_start_ms": int(timing_breakdown.get("actual_start_ms", 0) or 0),
         "pacing_wait_ms": int(timing_breakdown.get("pacing_wait_ms", 0) or 0),

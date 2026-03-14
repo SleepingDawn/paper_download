@@ -1,0 +1,8 @@
+2026/03/13-17:24:44.735 5 Creating DB /home/seyong/chrome-seeds/snu_sciencedirect_seed/Default/Local Storage/leveldb since it was missing.
+2026/03/13-17:24:44.742 5 Reusing MANIFEST /home/seyong/chrome-seeds/snu_sciencedirect_seed/Default/Local Storage/leveldb/MANIFEST-000001
+2026/03/13-17:26:59.370 7 Level-0 table #5: started
+2026/03/13-17:26:59.372 7 Level-0 table #5: 67375 bytes OK
+2026/03/13-17:26:59.374 7 Delete type=0 #3
+2026/03/13-17:27:19.519 7 Level-0 table #7: started
+2026/03/13-17:27:19.521 7 Level-0 table #7: 41221 bytes OK
+2026/03/13-17:27:19.522 7 Delete type=0 #4

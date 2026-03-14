@@ -1,0 +1,23 @@
+{
+  "profile_name": "Default",
+  "source_root": "/home/seyong/chrome-seeds/snu_sciencedirect_seed",
+  "copied_top_level_files": [
+    "Local State",
+    "Last Version"
+  ],
+  "ignore_patterns": [
+    "Singleton*",
+    "LOCK",
+    "lockfile",
+    "Crashpad",
+    "BrowserMetrics",
+    "Code Cache",
+    "GPUCache",
+    "GrShaderCache",
+    "ShaderCache",
+    "DawnCache",
+    "optimization_guide_model_store",
+    "component_crx_cache",
+    "segmentation_platform"
+  ]
+}

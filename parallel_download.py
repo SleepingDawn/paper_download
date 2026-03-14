@@ -1607,6 +1607,20 @@ def main(
     df["browser_session_decision_reason"] = [str(r.get("browser_session_decision_reason") or "") for r in final_results]
     df["browser_profile_name"] = [str(r.get("browser_profile_name") or "") for r in final_results]
     df["browser_user_data_dir"] = [str(r.get("browser_user_data_dir") or "") for r in final_results]
+    df["landing_entry_strategy"] = [str(r.get("entry_strategy") or "") for r in final_results]
+    df["landing_entry_url"] = [str(r.get("entry_url") or "") for r in final_results]
+    df["landing_entry_resolved_url"] = [str(r.get("entry_resolved_url") or "") for r in final_results]
+    df["landing_entry_redirect_chain_summary"] = [
+        json.dumps(list(r.get("entry_redirect_chain_summary") or []), ensure_ascii=False) for r in final_results
+    ]
+    df["landing_entry_fallback_used"] = [bool(r.get("entry_fallback_used")) for r in final_results]
+    df["landing_entry_fallback_reason"] = [str(r.get("entry_fallback_reason") or "") for r in final_results]
+    df["landing_entry_preflight_issue"] = [str(r.get("entry_preflight_issue") or "") for r in final_results]
+    df["landing_entry_preflight_evidence"] = [
+        json.dumps(list(r.get("entry_preflight_evidence") or []), ensure_ascii=False) for r in final_results
+    ]
+    df["landing_entry_preflight_http_status"] = [str(r.get("entry_preflight_http_status") or "") for r in final_results]
+    df["landing_entry_browser_open_skipped"] = [bool(r.get("entry_browser_open_skipped")) for r in final_results]
     df["download_method"] = [str(r.get("method") or "") for r in final_results]
     df["download_source_category"] = [_classify_download_source_category(r) for r in final_results]
     df["download_result_reason"] = [str(r.get("reason") or "") for r in final_results]
