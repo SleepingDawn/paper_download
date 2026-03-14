@@ -70,6 +70,8 @@ AUTO_PROFILE_DOI_PREFIXES = (
     "10.1088",  # IOP
     "10.1149",  # ECS legacy content hosted on IOP
     "10.7567",  # JJAP hosted on IOP
+    "10.1109",  # IEEE
+    "10.1117",  # SPIE
     "10.1103",  # APS
     "10.1002",  # Wiley
     "10.1039",  # RSC
@@ -4111,6 +4113,7 @@ def _collect_pdf_candidate_urls_from_page(page, logger=None) -> list:
             or "silverchair.com/" in low
             or "watermark" in low
             or "stamp.jsp" in low
+            or ("mdpi.com" in low and (low.endswith("/pdf") or "/pdf?" in low))
         ):
             return
         if url in seen:
@@ -4130,6 +4133,10 @@ def _collect_pdf_candidate_urls_from_page(page, logger=None) -> list:
             pass
     else:
         add(current_url)
+    if "spiedigitallibrary.org" in current_low:
+        add(re.sub(r"\.full([?#].*)?$", r".pdf\1", current_url, flags=re.IGNORECASE))
+    if "mdpi.com" in current_low and "/pdf" not in current_low:
+        add(current_url.rstrip("/") + "/pdf")
 
     try:
         meta_pdf = _ele_quick(page, 'css:meta[name="citation_pdf_url"]', timeout=0.2)
@@ -4184,6 +4191,11 @@ def _try_cookie_cffi_candidate_urls(page, candidate_urls, target_path: str, logg
             recovered_stamp = _recover_ieee_stamp_pdf_url(url)
             if recovered_stamp:
                 url = recovered_stamp
+                low = url.lower()
+        if "ieeexplore.ieee.org" in low and "stamppdf/getpdf.jsp" not in low:
+            recovered_ieee = _recover_ieee_stamp_pdf_url(url)
+            if recovered_ieee:
+                url = recovered_ieee
         seen.add(url)
         urls.append(url)
 
@@ -5262,6 +5274,7 @@ def download_with_drission(
     return_detail=False,
     hard_timeout_s=None,
     artifact_root=None,
+    preferred_entry_url_override="",
 ):
     # 폴더 생성
     os.makedirs(save_dir, exist_ok=True)
@@ -5368,12 +5381,14 @@ def download_with_drission(
         logger=logger,
         timeout_s=10 if mode == "deep" else 8,
     )
-    preferred_entry_url = _resolve_preferred_browser_entry_url(
-        doi_url,
-        doi_norm=doi_norm_preview,
-        session_source=elsevier_session_source,
-        logger=logger,
-    ) or doi_url
+    preferred_entry_url = str(preferred_entry_url_override or "").strip()
+    if not preferred_entry_url:
+        preferred_entry_url = _resolve_preferred_browser_entry_url(
+            doi_url,
+            doi_norm=doi_norm_preview,
+            session_source=elsevier_session_source,
+            logger=logger,
+        ) or doi_url
     
     if mode == "first":
         # 요청 반영: first pass는 항상 1회만 시도한다.
@@ -6333,6 +6348,10 @@ def _extract_ieee_arnumber(*candidates: str) -> Optional[str]:
         match = re.search(r"/document/(\d+)", text, re.IGNORECASE)
         if match:
             return match.group(1)
+        if "ieeexplore.ieee.org" in text.lower():
+            match = re.search(r"/(\d{6,})\.pdf(?:$|[?#])", text, re.IGNORECASE)
+            if match:
+                return match.group(1)
     return None
 
 

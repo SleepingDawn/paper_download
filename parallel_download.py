@@ -22,6 +22,7 @@ from landing_classifier import (
     reserve_pacing_slot,
 )
 from tools_exp import (
+    _recover_ieee_stamp_pdf_url,
     _sanitize_doi_to_filename,
     coerce_headless_for_execution_env,
     download_using_api,
@@ -264,6 +265,41 @@ def _is_rsc_article_pdf_url(url: str) -> bool:
 def _is_ieee_stamp_pdf_url(url: str) -> bool:
     low = str(url or "").strip().lower()
     return "ieeexplore.ieee.org/stamppdf/getpdf.jsp" in low
+
+
+def _canonicalize_direct_pdf_url(url: str, publisher_key: str = "") -> str:
+    raw = str(url or "").strip()
+    low = raw.lower()
+    key = str(publisher_key or "").strip().lower()
+    if not raw:
+        return ""
+    if "ieeexplore.ieee.org" in low or key == "ieee":
+        recovered = _recover_ieee_stamp_pdf_url(raw)
+        if recovered:
+            return recovered
+    return raw
+
+
+def _should_try_browser_direct_oa_fallback(url: str, publisher_key: str, reason: str) -> bool:
+    low = str(url or "").strip().lower()
+    key = str(publisher_key or "").strip().lower()
+    normalized_reason = str(reason or "").strip()
+    if normalized_reason not in (
+        REASON_FAIL_TIMEOUT_NETWORK,
+        REASON_FAIL_WRONG_MIME,
+        REASON_FAIL_NO_CANDIDATE,
+    ):
+        return False
+    if key in {"aip", "ieee", "spie"}:
+        return True
+    return any(
+        token in low
+        for token in (
+            "pubs.aip.org/",
+            "ieeexplore.ieee.org/",
+            "spiedigitallibrary.org/",
+        )
+    )
 
 
 def _append_live_attempt_record(record: Dict[str, Any]) -> None:
@@ -534,7 +570,10 @@ def _single_download_attempt(
             "evidence": ["ssrn_official_path_fast_fail_after_scihub"],
         }
 
+    browser_direct_oa_entry = ""
+
     if pdf_url_oa and pdf_url_oa.lower() not in ("none", "nan") and len(pdf_url_oa) > 10:
+        pdf_url_oa = _canonicalize_direct_pdf_url(pdf_url_oa, publisher_key)
         if _is_browser_only_pdf_wrapper(pdf_url_oa):
             logger.info(f"        [DirectOA] browser-only wrapper 스킵: {pdf_url_oa}")
             attempt_trace.append(
@@ -606,6 +645,8 @@ def _single_download_attempt(
                     "stage": "direct_oa",
                     "domain": _domain_from_url(pdf_url_oa),
                 }
+            if _should_try_browser_direct_oa_fallback(pdf_url_oa, publisher_key, cffi.get("reason")):
+                browser_direct_oa_entry = pdf_url_oa
             attempt_trace.append(
                 {
                     "strategy": "direct_oa_cffi",
@@ -624,9 +665,14 @@ def _single_download_attempt(
                     "http_status": cffi.get("http_status"),
                 }
 
-    def _run_drission_result() -> Dict[str, Any]:
+    def _run_drission_result(
+        entry_url_override: str = "",
+        source_stage: str = "browser",
+        source_url: str = "",
+    ) -> Dict[str, Any]:
         chrome_path = resolve_browser_executable(os.environ.get("CHROME_PATH", ""), logger=logger)
         doi_url = f"https://doi.org/{doi}"
+        browser_entry_url = str(entry_url_override or doi_url).strip() or doi_url
         drission_started_ms = int(time.time() * 1000)
         _append_live_attempt_record(
             {
@@ -638,8 +684,8 @@ def _single_download_attempt(
                 "scheduler_publisher": scheduler_publisher,
                 "workflow_attempt": int(attempt),
                 "workflow_mode": mode,
-                "source_stage": "browser_entry",
-                "url": doi_url,
+                "source_stage": source_stage,
+                "url": str(source_url or browser_entry_url),
             }
         )
         with _temporary_browser_env(headless=headless, abort_on_landing_block=abort_on_landing_block):
@@ -653,6 +699,7 @@ def _single_download_attempt(
                 mode=mode,
                 return_detail=True,
                 artifact_root=artifact_dir,
+                preferred_entry_url_override=entry_url_override,
             )
         drission_finished_ms = int(time.time() * 1000)
         _append_live_attempt_record(
@@ -663,8 +710,8 @@ def _single_download_attempt(
                 "strategy": "drission",
                 "phase": str(dr.get("stage") or "drission"),
                 "elapsed_ms": max(0, drission_finished_ms - drission_started_ms),
-                "url": doi_url,
-                "final_url": str(dr.get("landing_url") or doi_url),
+                "url": str(source_url or browser_entry_url),
+                "final_url": str(dr.get("landing_url") or browser_entry_url),
                 "domain": str(dr.get("domain") or ""),
                 "status_code": dr.get("http_status"),
                 "content_type": "",
@@ -689,7 +736,7 @@ def _single_download_attempt(
                 "scheduler_publisher": scheduler_publisher,
                 "workflow_attempt": int(attempt),
                 "workflow_mode": mode,
-                "source_stage": "browser",
+                "source_stage": source_stage,
             }
         )
         if dr.get("ok"):
@@ -697,7 +744,7 @@ def _single_download_attempt(
                 **result,
                 "status": "Success",
                 "reason": REASON_SUCCESS,
-                "method": "drission",
+                "method": "drission" if source_stage == "browser" else source_stage,
                 "success": True,
                 "stage": dr.get("stage", "drission"),
                 "domain": dr.get("domain", ""),
@@ -729,11 +776,20 @@ def _single_download_attempt(
             "browser_user_data_dir": str(dr.get("browser_user_data_dir") or ""),
         }
 
+    if browser_direct_oa_entry:
+        browser_direct = _run_drission_result(
+            entry_url_override=browser_direct_oa_entry,
+            source_stage="direct_oa_browser",
+            source_url=browser_direct_oa_entry,
+        )
+        if browser_direct.get("success"):
+            return browser_direct
+
     # 지원 함수가 없는 publisher, 그리고 Elsevier/ACS는 브라우저 쿠키 세션 경로를 우선한다.
     skip_api = (publisher_key not in API_SUPPORTED_PUBLISHERS) or (publisher_key in {"elsevier", "acs"})
     if not skip_api:
         try:
-            if download_using_api(
+            api_ok = download_using_api(
                 doi,
                 pdf_save_dir,
                 publisher,
@@ -746,7 +802,8 @@ def _single_download_attempt(
                     mode=mode,
                     source_stage="publisher_direct",
                 ),
-            ):
+            )
+            if api_ok:
                 return {
                     **result,
                     "status": "Success",
@@ -755,6 +812,15 @@ def _single_download_attempt(
                     "success": True,
                     "stage": "api",
                 }
+            if publisher_key == "iop":
+                iop_browser_entry = f"https://iopscience.iop.org/article/{doi}/pdf"
+                browser_direct = _run_drission_result(
+                    entry_url_override=iop_browser_entry,
+                    source_stage="publisher_direct_browser",
+                    source_url=iop_browser_entry,
+                )
+                if browser_direct.get("success"):
+                    return browser_direct
         except Exception as e:
             logger.warning(f"   API 다운로드 에러: {e}")
             attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
