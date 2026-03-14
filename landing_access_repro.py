@@ -2441,6 +2441,7 @@ def _probe_one(
         "browser_identity": str(browser_identity or ""),
         "browser_session_mode": str(probe_page_meta.get("browser_session_mode") or ""),
         "browser_session_source": str(probe_page_meta.get("browser_session_source") or ""),
+        "browser_session_decision_reason": str(probe_page_meta.get("browser_session_decision_reason") or ""),
         "browser_profile_name": str(probe_page_meta.get("browser_profile_name") or ""),
         "browser_user_data_dir": str(probe_page_meta.get("browser_user_data_dir") or ""),
         "probe_page_mode": str(probe_page_meta.get("probe_page_mode") or ""),
@@ -2563,6 +2564,7 @@ def _worker_run(
                 page_meta["worker_download_dir"] = os.path.join(os.path.abspath(worker_download_root), download_key)
                 page_meta["browser_session_mode"] = str(session_plan.get("session_mode") or "")
                 page_meta["browser_session_source"] = str(session_plan.get("session_source") or "")
+                page_meta["browser_session_decision_reason"] = str(session_plan.get("session_decision_reason") or "")
                 page_meta["browser_profile_name"] = str(session_plan.get("profile_name") or "")
                 page_meta["browser_user_data_dir"] = str(session_plan.get("user_data_dir") or "")
                 probe_started_ms = _now_ms()

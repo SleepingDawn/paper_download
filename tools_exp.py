@@ -69,6 +69,11 @@ AUTO_PROFILE_DOI_PREFIXES = (
     "10.1039",  # RSC
     "10.3390",  # MDPI
 )
+LINUX_AUTO_TEMP_DOI_PREFIXES = (
+    "10.1016",  # Elsevier / Cell on ScienceDirect often trips Linux seeded sessions.
+    "10.1063",  # AIP
+    "10.1116",  # AVS(AIP platform)
+)
 
 
 class BrowserDisconnectedError(RuntimeError):
@@ -566,13 +571,58 @@ def ensure_runtime_profile_ready(
 
 
 def _stateful_profile_requested(doi_url: str, profile_mode: str = "") -> bool:
+    requested, _ = _stateful_profile_decision(doi_url, profile_mode)
+    return requested
+
+
+def _parse_doi_prefix_override(raw: str) -> tuple[str, ...]:
+    values = []
+    for token in re.split(r"[\s,]+", str(raw or "").strip().lower()):
+        token = token.strip()
+        if not token:
+            continue
+        values.append(token.rstrip("/"))
+    return tuple(dict.fromkeys(values))
+
+
+def _auto_profile_doi_prefixes() -> tuple[str, ...]:
+    override = _parse_doi_prefix_override(os.getenv("PDF_BROWSER_AUTO_STATEFUL_DOI_PREFIXES", ""))
+    return override or AUTO_PROFILE_DOI_PREFIXES
+
+
+def _linux_auto_temp_doi_prefixes() -> tuple[str, ...]:
+    override = _parse_doi_prefix_override(os.getenv("PDF_BROWSER_LINUX_AUTO_TEMP_DOI_PREFIXES", ""))
+    return override or LINUX_AUTO_TEMP_DOI_PREFIXES
+
+
+def _doi_matches_prefixes(doi_norm: str, prefixes: tuple[str, ...]) -> bool:
+    doi_norm = str(doi_norm or "").strip().lower()
+    return any(doi_norm.startswith(prefix) for prefix in prefixes)
+
+
+def _stateful_profile_decision(doi_url: str, profile_mode: str = "") -> tuple[bool, str]:
     normalized_mode = _normalize_profile_mode(profile_mode)
     if normalized_mode == "temp":
-        return False
+        return False, "profile_mode=temp"
     if normalized_mode in ("persistent", "system"):
-        return True
+        return True, f"profile_mode={normalized_mode}"
     doi_norm = _doi_from_doi_url(doi_url)
-    return doi_norm.startswith(AUTO_PROFILE_DOI_PREFIXES)
+    auto_prefixes = _auto_profile_doi_prefixes()
+    if not _doi_matches_prefixes(doi_norm, auto_prefixes):
+        return False, "auto_prefix_miss"
+
+    runtime_preset = resolve_runtime_preset()
+    execution_env = resolve_browser_execution_env()
+    linux_temp_prefixes = _linux_auto_temp_doi_prefixes()
+    if (
+        normalized_mode == "auto"
+        and runtime_preset == RUNTIME_PRESET_LINUX_CLI_SEEDED
+        and execution_env == EXECUTION_ENV_LINUX_SERVER
+        and _doi_matches_prefixes(doi_norm, linux_temp_prefixes)
+    ):
+        return False, "linux_seeded_auto_temp_prefix"
+
+    return True, "auto_prefix_hit"
 
 
 def _landing_stateful_profile_isolation_enabled() -> bool:
@@ -681,9 +731,12 @@ def build_landing_browser_session_plan(doi_url: str, worker_profile_root: str, w
         "user_data_dir": temp_user_data_dir,
         "cache_key": "temp",
         "browser_identity": f"worker_{int(worker_idx)}:temp",
+        "session_decision_reason": "",
     }
 
-    if not _stateful_profile_requested(doi_url, profile_mode):
+    stateful_requested, decision_reason = _stateful_profile_decision(doi_url, profile_mode)
+    plan["session_decision_reason"] = decision_reason
+    if not stateful_requested:
         os.makedirs(temp_user_data_dir, exist_ok=True)
         return plan
 
@@ -713,6 +766,7 @@ def build_landing_browser_session_plan(doi_url: str, worker_profile_root: str, w
         "user_data_dir": actual_user_data_dir,
         "cache_key": f"stateful:{stateful_source_kind}",
         "browser_identity": f"worker_{int(worker_idx)}:stateful:{stateful_source_kind}",
+        "session_decision_reason": decision_reason,
     }
 
 
@@ -744,8 +798,9 @@ def build_download_browser_session_plan(
     doi_norm = _doi_from_doi_url(doi_url)
     doi_key = _sanitize_doi_to_filename(doi_norm) or "unknown_doi"
     worker_key = _sanitize_doi_to_filename(worker_label or f"pid_{os.getpid()}") or f"pid_{os.getpid()}"
+    stateful_requested, decision_reason = _stateful_profile_decision(doi_url, profile_mode)
 
-    if not _stateful_profile_requested(doi_url, profile_mode):
+    if not stateful_requested:
         temp_root = os.path.join(runtime_root, worker_key, "temp", doi_key)
         os.makedirs(temp_root, exist_ok=True)
         return {
@@ -758,6 +813,7 @@ def build_download_browser_session_plan(
             "browser_identity": f"{worker_key}:temp:{doi_key}",
             "cleanup_on_close": True,
             "cleanup_dir": temp_root,
+            "session_decision_reason": decision_reason,
         }
 
     stateful_source, stateful_source_kind = _resolve_stateful_profile_source(
@@ -792,6 +848,7 @@ def build_download_browser_session_plan(
         "browser_identity": f"{worker_key}:stateful:{stateful_source_kind}",
         "cleanup_on_close": False,
         "cleanup_dir": "",
+        "session_decision_reason": decision_reason,
     }
 
 
@@ -806,10 +863,12 @@ def _apply_browser_session_plan(co: ChromiumOptions, session_plan: Dict[str, Any
     co.set_user_data_path(user_data_dir)
     co.set_user(profile_name)
     if logger:
+        reason = str(session_plan.get("session_decision_reason") or "").strip()
         logger.info(
             "     [Drission] 브라우저 세션 적용: "
             f"mode={session_plan.get('session_mode')} source={session_plan.get('session_source')} "
             f"profile={profile_name} root={user_data_dir}"
+            + (f" reason={reason}" if reason else "")
         )
     return True
 
@@ -836,9 +895,8 @@ def _maybe_apply_system_chrome_profile(co: ChromiumOptions, doi_url: str, logger
         os.path.abspath(os.path.join("outputs", ".chrome_user_data")),
     ).strip() or os.path.abspath(os.path.join("outputs", ".chrome_user_data"))
 
-    if profile_mode == "temp":
-        return False
-    if profile_mode == "auto" and not doi_norm.startswith(AUTO_PROFILE_DOI_PREFIXES):
+    requested, _ = _stateful_profile_decision(doi_url, profile_mode)
+    if not requested:
         return False
 
     user_data_dir = _find_system_chrome_user_data_dir(profile_name)
@@ -4567,6 +4625,7 @@ def download_with_drission(
                 "http_status": None,
                 "browser_session_mode": str(session_plan.get("session_mode") or ""),
                 "browser_session_source": str(session_plan.get("session_source") or ""),
+                "browser_session_decision_reason": str(session_plan.get("session_decision_reason") or ""),
                 "browser_profile_name": str(session_plan.get("profile_name") or ""),
                 "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
             }
@@ -4613,6 +4672,7 @@ def download_with_drission(
                 "http_status": None,
                 "browser_session_mode": str(session_plan.get("session_mode") or ""),
                 "browser_session_source": str(session_plan.get("session_source") or ""),
+                "browser_session_decision_reason": str(session_plan.get("session_decision_reason") or ""),
                 "browser_profile_name": str(session_plan.get("profile_name") or ""),
                 "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
             }
@@ -4660,6 +4720,7 @@ def download_with_drission(
             "landing_title": landing_title,
             "browser_session_mode": str(session_plan.get("session_mode") or ""),
             "browser_session_source": str(session_plan.get("session_source") or ""),
+            "browser_session_decision_reason": str(session_plan.get("session_decision_reason") or ""),
             "browser_profile_name": str(session_plan.get("profile_name") or ""),
             "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
         }

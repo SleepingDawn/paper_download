@@ -304,6 +304,7 @@ def main() -> int:
                 "landing_probe_reason_codes": json.dumps(list(landing.get("reason_codes") or []), ensure_ascii=False),
                 "landing_probe_url": landing.get("resolved_url", ""),
                 "landing_probe_session_source": landing.get("browser_session_source", ""),
+                "landing_probe_session_reason": landing.get("browser_session_decision_reason", ""),
                 "download_status": download.get("download_status", ""),
                 "download_method": download.get("download_method", ""),
                 "download_source_category": download.get("download_source_category", ""),
@@ -314,6 +315,7 @@ def main() -> int:
                 "download_bucket": download_bucket,
                 "download_session_source": download.get("browser_session_source", ""),
                 "download_session_mode": download.get("browser_session_mode", ""),
+                "download_session_reason": download.get("browser_session_decision_reason", ""),
                 "combined_bucket": combined,
             }
         )
@@ -414,6 +416,7 @@ def main() -> int:
         "landing_probe_reason_codes",
         "landing_probe_url",
         "landing_probe_session_source",
+        "landing_probe_session_reason",
         "download_status",
         "download_method",
         "download_source_category",
@@ -424,6 +427,7 @@ def main() -> int:
         "download_bucket",
         "download_session_source",
         "download_session_mode",
+        "download_session_reason",
         "combined_bucket",
     ]
     publisher_fields = [

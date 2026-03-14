@@ -158,6 +158,7 @@ CHALLENGE_TEXT_MARKERS = (
     "request blocked",
     "attention required",
     "captcha",
+    "cloudflare_error_1000",
 )
 
 CHALLENGE_HTML_MARKERS = (
@@ -165,6 +166,7 @@ CHALLENGE_HTML_MARKERS = (
     "captcha-box",
     "cf-turnstile",
     "/cdn-cgi/challenge",
+    "cloudflare_error_1000",
 )
 
 BROKEN_JS_SHELL_TITLE_MARKERS = (
@@ -997,6 +999,7 @@ def classify_landing(
                     "unusual traffic",
                     "access denied",
                     "security check",
+                    "cloudflare_error_1000",
                 )
             ):
                 reason_codes.append("fail_block_bot_signal")

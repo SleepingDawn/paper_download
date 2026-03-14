@@ -84,6 +84,7 @@ PACING_PROFILE_OVERRIDES = {
         "global_spacing_multiplier": 2.0,
     },
 }
+API_SUPPORTED_PUBLISHERS = {"wiley", "nature", "acs", "aip", "iop"}
 
 
 def _resolve_worker_max_tasks_per_child() -> Optional[int]:
@@ -676,6 +677,7 @@ def _single_download_attempt(
                 "landing_title": str(dr.get("landing_title") or ""),
                 "browser_session_mode": str(dr.get("browser_session_mode") or ""),
                 "browser_session_source": str(dr.get("browser_session_source") or ""),
+                "browser_session_decision_reason": str(dr.get("browser_session_decision_reason") or ""),
                 "browser_profile_name": str(dr.get("browser_profile_name") or ""),
                 "browser_user_data_dir": str(dr.get("browser_user_data_dir") or ""),
             }
@@ -693,14 +695,22 @@ def _single_download_attempt(
             "landing_title": str(dr.get("landing_title") or ""),
             "browser_session_mode": str(dr.get("browser_session_mode") or ""),
             "browser_session_source": str(dr.get("browser_session_source") or ""),
+            "browser_session_decision_reason": str(dr.get("browser_session_decision_reason") or ""),
             "browser_profile_name": str(dr.get("browser_profile_name") or ""),
             "browser_user_data_dir": str(dr.get("browser_user_data_dir") or ""),
         }
 
     publisher_key = (publisher or "").lower()
-    # Elsevier API 경로는 실효성이 낮고 브라우저 경로와 중복 비용이 커서 생략.
-    skip_api = publisher_key in {"elsevier"}
-    if not skip_api:
+    skip_api_reason = ""
+    # Elsevier API 경로는 실효성이 낮고 브라우저 경로와 중복 비용이 커서 생략한다.
+    if publisher_key == "elsevier":
+        skip_api_reason = "skipped_elsevier_api"
+    elif not publisher_key:
+        skip_api_reason = "skipped_missing_publisher"
+    elif publisher_key not in API_SUPPORTED_PUBLISHERS:
+        skip_api_reason = f"skipped_unsupported_api_publisher:{publisher_key}"
+
+    if not skip_api_reason:
         try:
             if download_using_api(doi, pdf_save_dir, publisher, logger):
                 return {
@@ -715,7 +725,7 @@ def _single_download_attempt(
             logger.warning(f"   API 다운로드 에러: {e}")
             attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
     else:
-        attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_NO_CANDIDATE, "evidence": ["skipped_elsevier_api"]})
+        attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_NO_CANDIDATE, "evidence": [skip_api_reason]})
 
     return _run_drission_result()
 
@@ -1594,6 +1604,7 @@ def main(
     df["landing_title"] = [str(r.get("landing_title") or "") for r in final_results]
     df["browser_session_mode"] = [str(r.get("browser_session_mode") or "") for r in final_results]
     df["browser_session_source"] = [str(r.get("browser_session_source") or "") for r in final_results]
+    df["browser_session_decision_reason"] = [str(r.get("browser_session_decision_reason") or "") for r in final_results]
     df["browser_profile_name"] = [str(r.get("browser_profile_name") or "") for r in final_results]
     df["browser_user_data_dir"] = [str(r.get("browser_user_data_dir") or "") for r in final_results]
     df["download_method"] = [str(r.get("method") or "") for r in final_results]
