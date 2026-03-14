@@ -742,6 +742,24 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - `retry_protection_action`
   - `retry_protection_reason`
 
+### manual visit 진단용 profile snapshot 도구
+
+- 추가 스크립트
+  - `scripts/snapshot_browser_profile_state.py`
+  - `scripts/compare_browser_profile_snapshots.py`
+- 목적
+  - Ubuntu server에서 같은 persistent seed profile과 `Default` profile로 manual DOI landing 1회를 수행하기 전후에
+    - `Local State`
+    - `Cookies`
+    - `Default/Local Storage`
+    - `Default/IndexedDB`
+    의 경로, mtime, size, hash를 남기기 위함
+- 해석 원칙
+  - manual visit이 이후 automation을 일시적으로 개선하더라도, 그것은 우선 session/bootstrap/cookie state warming 진단 신호다.
+  - 이것만으로 landing flow가 구조적으로 해결됐다고 결론 내리면 안 된다.
+  - manual visit 진단은 같은 persistent profile root, 같은 `Default` profile, 가능한 한 같은 outbound network 조건에서 수행돼야 한다.
+  - 다른 VM/다른 IP에서의 manual visit 결과는 server-side AIP failure 원인 해석에 직접 연결하기 어렵다 `[blocked]`.
+
 ## 9. 현재 상태
 
 ### 확인된 개선
@@ -760,6 +778,7 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - AIP download path가 default/new-tab landing을 별도 진단하고 canonical target recovery를 수행하도록 구조화됨
 - AIP download result/metadata/suite summary에 default page, tab transition, final artifact path가 기록됨
 - regression DOI `10.1063/5.0207496` local smoke에서 Google default page symptom이 사라지고 real article landing + download success로 바뀜
+- manual visit 전후 persistent profile 변화를 비교할 snapshot/diff 도구가 추가됨
 
 ### 아직 미검증 또는 근거 부족
 
@@ -807,6 +826,12 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
    - 중간 로그 확인 명령
    - 종료 확인 명령
    - artifact 수집/전달 명령
+7. AIP manual visit 진단은 아래 순서를 지킬 것
+   - manual visit 전 fresh AIP DOI baseline automation 1회
+   - 같은 persistent profile에 대해 before snapshot 저장
+   - 같은 persistent profile root와 `Default` profile로 DOI landing 1회만 수동 방문
+   - 직후 다른 fresh AIP DOI로 post-manual automation 1회
+   - after snapshot과 before/after diff를 bundle에 함께 포함
 
 ## 11. 부록: 최근 외부 bundle에서 확인한 대표 상태
 
@@ -926,3 +951,51 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - 해석
   - structural patch 이후 local headless에서는 Google default page symptom이 사라졌다.
   - 다만 repeated DOI hit는 local에서도 challenge를 다시 유발할 수 있어, AIP 검증은 저빈도/회전이 필수다.
+
+### `aip_micro_20260315_structural_patch_fresh`
+
+- 실행 맥락
+  - Linux `runtime_preset=linux_cli_seeded`
+  - `execution_env=linux_server`
+  - `profile_mode=auto`
+  - `profile_name=Default`
+  - persistent seed profile 검사 결과 `ok=true`
+  - landing/download 모두 stateful clone 사용
+- landing
+  - 입력 DOI:
+    - `10.1063/5.0246311`
+    - `10.1116/6.0004298`
+  - 결과:
+    - `classifier_counts={"challenge_detected":2}`
+    - 두 DOI 모두
+      - `entry_strategy_variant=doi_redirect_only_no_article_preflight`
+      - `entry_redirect_probe_mode=doi_location_only`
+      - `entry_prebrowser_request_count=1`
+      - `tab_transition_count=0`
+      - `total_tab_count=1`
+      - `title=Just a moment...`
+      - challenge HTML dump 저장
+  - 해석
+    - fresh structural patch run에서도 Linux landing은 여전히 "single-tab challenge"였다.
+    - 이 bundle에서는 Google default page symptom이 보이지 않았고, wrong-tab 근거도 없다.
+- download
+  - 결과:
+    - 두 DOI 모두 `FAIL_BLOCK`
+    - `landing_state=challenge_or_block`
+    - `landing_default_page_detected=false`
+    - `landing_tab_transition_count=0`
+    - `landing_final_total_tab_count=1`
+    - `browser_session_source=linux_seed_clone`
+  - 해석
+    - 최신 Linux failure는 challenge/interstitial이 주증상이고, default-page/tab bug는 재현되지 않았다.
+    - 즉 current Linux failure의 우선 원인은 profile/session warming 부족 또는 publisher-side challenge이며, Google default page는 별도 구조 버그였을 가능성이 높다.
+- profile/session reuse 관찰
+  - landing report에는 `session_seed_root=null`이었다.
+  - 현재 suite는 landing과 download를 별도 단계로 돌리며, 이번 run에서는 landing에서 생긴 세션 상태를 download가 이어받지 않았다.
+  - download는 persistent Linux seed profile을 직접 clone한 `linux_seed_clone`만 사용했다.
+- 배운 점
+  - Ubuntu server에서 manual visit이 도움이 된다면, 그 효과는 우선
+    - persistent seed profile에 challenge clearance/cookie/bootstrap state가 기록되었는지
+    - 그 상태가 다음 clone에 전파되는지
+    를 진단하는 신호로 읽어야 한다.
+  - manual visit이 도움이 되더라도 landing flow가 구조적으로 해결됐다는 뜻은 아니다.
