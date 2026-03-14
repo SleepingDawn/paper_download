@@ -871,6 +871,50 @@ def _start_attempt_listener(page: ChromiumPage) -> bool:
         return False
 
 
+def _install_runtime_error_probe(page: ChromiumPage) -> bool:
+    if page is None:
+        return False
+    try:
+        if bool(getattr(page, "_codex_runtime_probe_installed", False)):
+            return True
+    except Exception:
+        pass
+    source = r"""
+(() => {
+  if (window.__codexLandingRuntimeProbeInstalled) return;
+  window.__codexLandingRuntimeProbeInstalled = true;
+  window.__codexLandingRuntimeErrors = { error_events: [], rejection_events: [] };
+  function push(target, payload) {
+    try {
+      const arr = window.__codexLandingRuntimeErrors[target];
+      if (!Array.isArray(arr)) return;
+      arr.push(payload);
+      if (arr.length > 12) arr.splice(0, arr.length - 12);
+    } catch (e) {}
+  }
+  window.addEventListener('error', (ev) => {
+    push('error_events', {
+      message: String((ev && ev.message) || ''),
+      filename: String((ev && ev.filename) || ''),
+      lineno: Number((ev && ev.lineno) || 0),
+      colno: Number((ev && ev.colno) || 0),
+    });
+  }, true);
+  window.addEventListener('unhandledrejection', (ev) => {
+    let reason = '';
+    try { reason = String((ev && ev.reason) || ''); } catch (e) {}
+    push('rejection_events', { reason });
+  });
+})();
+"""
+    try:
+        page.run_cdp("Page.addScriptToEvaluateOnNewDocument", source=source)
+        setattr(page, "_codex_runtime_probe_installed", True)
+        return True
+    except Exception:
+        return False
+
+
 def _drain_listener_packets(page: ChromiumPage, max_count: int = 80, timeout: float = 0.6) -> List[Any]:
     packets: List[Any] = []
     if page is None:
@@ -882,6 +926,214 @@ def _drain_listener_packets(page: ChromiumPage, max_count: int = 80, timeout: fl
     except Exception:
         pass
     return packets
+
+
+def _summarize_listener_packets(packets: Sequence[Any]) -> Dict[str, Any]:
+    status_counts: Dict[str, int] = {}
+    document_chain: List[Dict[str, Any]] = []
+    failures: List[Dict[str, Any]] = []
+    total = 0
+    for packet in packets or ():
+        total += 1
+        url = str(getattr(packet, "url", "") or "").strip()
+        resource_type = str(getattr(packet, "resourceType", "") or "").strip()
+        method = str(getattr(packet, "method", "") or "").strip()
+        is_failed = bool(getattr(packet, "is_failed", False))
+        response = getattr(packet, "response", None)
+        status = None
+        headers = {}
+        try:
+            status = getattr(response, "status", None)
+        except Exception:
+            status = None
+        try:
+            headers = dict(getattr(response, "headers", {}) or {})
+        except Exception:
+            headers = {}
+        status_key = str(int(status)) if isinstance(status, int) or str(status).isdigit() else "none"
+        status_counts[status_key] = status_counts.get(status_key, 0) + 1
+        if resource_type.lower() == "document":
+            document_chain.append(
+                {
+                    "status": status,
+                    "url": url,
+                    "content_type": str(headers.get("content-type") or headers.get("Content-Type") or "")[:120],
+                    "is_failed": is_failed,
+                }
+            )
+        if is_failed or (isinstance(status, int) and status >= 400):
+            if len(failures) < 12:
+                failures.append(
+                    {
+                        "status": status,
+                        "url": url,
+                        "resource_type": resource_type,
+                        "method": method,
+                        "content_type": str(headers.get("content-type") or headers.get("Content-Type") or "")[:120],
+                        "is_failed": is_failed,
+                    }
+                )
+    return {
+        "request_count": total,
+        "status_counts": status_counts,
+        "document_chain": document_chain[:8],
+        "failed_request_count": len(failures),
+        "failed_requests": failures,
+    }
+
+
+def _collect_runtime_page_diagnostics(
+    page: ChromiumPage | None,
+    *,
+    final_url: str,
+    title: str,
+    html: str,
+    snapshot: Dict[str, Any],
+    packets: Sequence[Any],
+    classifier_state: str,
+    issue: str,
+) -> Dict[str, Any]:
+    diagnostics: Dict[str, Any] = {
+        "current_url": str(final_url or ""),
+        "page_title": str(title or "")[:240],
+        "ready_state": str(snapshot.get("ready_state") or ""),
+        "html_len": len(str(html or "")),
+        "body_text_len": int(snapshot.get("body_text_len", 0) or 0),
+        "main_text_len": int(snapshot.get("main_text_len", 0) or 0),
+        "parsed_main_text_len": int(snapshot.get("parsed_main_text_len", 0) or 0),
+        "iframe_count": int(snapshot.get("iframe_count", 0) or 0),
+        "body_child_count": int(snapshot.get("body_child_count", 0) or 0),
+        "tab_state": {
+            "active_tab_id": "",
+            "total_tab_count": 0,
+            "tab_ids": [],
+        },
+        "viewport": {},
+        "iframe_summary": [],
+        "console_runtime_errors": {
+            "capture_available": False,
+            "error_events": [],
+            "rejection_events": [],
+        },
+        "network_summary": _summarize_listener_packets(packets),
+        "blank_screenshot_likely": False,
+        "blank_screenshot_reason": "",
+    }
+    if page is not None:
+        try:
+            tab_ids = [str(x or "") for x in list(getattr(page, "tab_ids", []) or []) if str(x or "").strip()]
+        except Exception:
+            tab_ids = []
+        diagnostics["tab_state"] = {
+            "active_tab_id": str(getattr(page, "tab_id", "") or ""),
+            "total_tab_count": len(tab_ids),
+            "tab_ids": tab_ids[:12],
+        }
+        js = r"""
+return (() => {
+  function clean(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+  const body = document.body;
+  const docEl = document.documentElement;
+  const frames = Array.from(document.querySelectorAll('iframe')).slice(0, 8).map((fr) => ({
+    src: clean(fr.getAttribute('src') || ''),
+    title: clean(fr.getAttribute('title') || ''),
+    width: Number(fr.clientWidth || 0),
+    height: Number(fr.clientHeight || 0),
+  }));
+  const errors = window.__codexLandingRuntimeErrors || { error_events: [], rejection_events: [] };
+  return {
+    ready_state: document.readyState || '',
+    visibility_state: document.visibilityState || '',
+    inner_width: Number(window.innerWidth || 0),
+    inner_height: Number(window.innerHeight || 0),
+    device_pixel_ratio: Number(window.devicePixelRatio || 0),
+    scroll_x: Number(window.scrollX || 0),
+    scroll_y: Number(window.scrollY || 0),
+    body_client_height: Number(body ? body.clientHeight : 0),
+    body_scroll_height: Number(body ? body.scrollHeight : 0),
+    doc_scroll_height: Number(docEl ? docEl.scrollHeight : 0),
+    body_text_len_runtime: clean(body ? (body.innerText || '') : '').length,
+    html_len_runtime: String(docEl ? (docEl.outerHTML || '') : '').length,
+    iframe_summary: frames,
+    error_events: Array.isArray(errors.error_events) ? errors.error_events.slice(-8) : [],
+    rejection_events: Array.isArray(errors.rejection_events) ? errors.rejection_events.slice(-8) : [],
+  };
+})();
+"""
+        try:
+            runtime = page.run_js(js) or {}
+            if isinstance(runtime, dict):
+                diagnostics["ready_state"] = str(runtime.get("ready_state") or diagnostics["ready_state"])
+                diagnostics["viewport"] = {
+                    "visibility_state": str(runtime.get("visibility_state") or ""),
+                    "inner_width": int(runtime.get("inner_width", 0) or 0),
+                    "inner_height": int(runtime.get("inner_height", 0) or 0),
+                    "device_pixel_ratio": float(runtime.get("device_pixel_ratio", 0) or 0.0),
+                    "scroll_x": int(runtime.get("scroll_x", 0) or 0),
+                    "scroll_y": int(runtime.get("scroll_y", 0) or 0),
+                    "body_client_height": int(runtime.get("body_client_height", 0) or 0),
+                    "body_scroll_height": int(runtime.get("body_scroll_height", 0) or 0),
+                    "doc_scroll_height": int(runtime.get("doc_scroll_height", 0) or 0),
+                }
+                diagnostics["iframe_summary"] = list(runtime.get("iframe_summary") or [])
+                raw_error_events = list(runtime.get("error_events") or [])
+                raw_rejection_events = list(runtime.get("rejection_events") or [])
+                error_events = []
+                for item in raw_error_events:
+                    if not isinstance(item, dict):
+                        continue
+                    message = str(item.get("message") or "").strip()
+                    filename = str(item.get("filename") or "").strip()
+                    lineno = int(item.get("lineno", 0) or 0)
+                    colno = int(item.get("colno", 0) or 0)
+                    if not any((message, filename, lineno, colno)):
+                        continue
+                    error_events.append(
+                        {
+                            "message": message,
+                            "filename": filename,
+                            "lineno": lineno,
+                            "colno": colno,
+                        }
+                    )
+                rejection_events = []
+                for item in raw_rejection_events:
+                    if not isinstance(item, dict):
+                        continue
+                    reason = str(item.get("reason") or "").strip()
+                    if not reason:
+                        continue
+                    rejection_events.append({"reason": reason})
+                diagnostics["console_runtime_errors"] = {
+                    "capture_available": True,
+                    "error_events": error_events,
+                    "rejection_events": rejection_events,
+                }
+                diagnostics["body_text_len_runtime"] = int(runtime.get("body_text_len_runtime", 0) or 0)
+                diagnostics["html_len_runtime"] = int(runtime.get("html_len_runtime", 0) or 0)
+        except Exception as exc:
+            diagnostics["console_runtime_errors"] = {
+                "capture_available": False,
+                "error_events": [],
+                "rejection_events": [],
+                "probe_error": str(exc)[:240],
+            }
+
+    body_text_len = int(diagnostics.get("body_text_len_runtime") or diagnostics.get("body_text_len") or 0)
+    html_len = int(diagnostics.get("html_len_runtime") or diagnostics.get("html_len") or 0)
+    title_blob = str(title or "").strip().lower()
+    url_blob = str(final_url or "").lower()
+    if (
+        (classifier_state == STATE_CHALLENGE_DETECTED or issue in (OUT_FAIL_BLOCK, OUT_FAIL_CAPTCHA))
+        and html_len >= 1500
+        and body_text_len <= 24
+        and ("__cf_chl_rt_tk=" in url_blob or "just a moment" in title_blob or "cloudflare_error_1000" in str(html or "").lower())
+    ):
+        diagnostics["blank_screenshot_likely"] = True
+        diagnostics["blank_screenshot_reason"] = "challenge_shell_unrendered_or_minimally_rendered"
+    return diagnostics
 
 
 def _extract_direct_pdf_event(record: Dict[str, Any], packets: Sequence[Any]) -> Dict[str, Any]:
@@ -1540,6 +1792,8 @@ def _recover_aip_canonical_landing(
     )
     if issue in (OUT_FAIL_BLOCK, OUT_FAIL_CAPTCHA):
         recovery_meta["initial_landing_type"] = "aip_challenge_interstitial"
+        recovery_meta["landing_recovery_outcome"] = "challenge_detected_no_retry"
+        return final_url, title, html, snapshot, recovery_meta
     elif blank_like:
         recovery_meta["initial_landing_type"] = "aip_blank_or_incomplete"
     elif _is_aip_article_url(final_url) and not _has_article_signal(title=title, html=html):
@@ -2136,12 +2390,14 @@ def _build_artifact_zip(records: List[Dict[str, Any]], artifact_dir: str, zip_pa
                     "reclassification_reason": rec.get("reclassification_reason", ""),
                     "direct_pdf_path": rec.get("direct_pdf_path", ""),
                     "direct_pdf_event": rec.get("direct_pdf_event", {}),
+                    "runtime_diagnostics": rec.get("runtime_diagnostics", {}),
                     "screenshot_path": rec.get("screenshot_path", ""),
+                    "screenshot_delayed_path": rec.get("screenshot_delayed_path", ""),
                     "html_path": rec.get("html_path", ""),
                     "meta_path": rec.get("meta_path", ""),
                 }
             )
-            for key in ("screenshot_path", "html_path", "meta_path"):
+            for key in ("screenshot_path", "screenshot_delayed_path", "html_path", "meta_path"):
                 path = str(rec.get(key, "") or "").strip()
                 if not path or not os.path.isfile(path):
                     continue
@@ -2162,7 +2418,7 @@ def _save_probe_artifacts(
     include_html: bool,
     include_screenshot: bool = True,
 ) -> Dict[str, str]:
-    out = {"screenshot": "", "html": "", "meta": ""}
+    out = {"screenshot": "", "screenshot_delayed": "", "html": "", "meta": ""}
     if page is None or not artifact_dir:
         return out
 
@@ -2183,6 +2439,20 @@ def _save_probe_artifacts(
             out["screenshot"] = os.path.abspath(os.path.join(artifact_bucket_dir, screenshot_name))
         except Exception:
             pass
+        runtime_diag = dict(record.get("runtime_diagnostics") or {})
+        should_capture_delayed = (
+            not success
+            and str(record.get("scheduler_publisher") or "") == "aip"
+            and bool(runtime_diag.get("blank_screenshot_likely"))
+        )
+        if should_capture_delayed:
+            delayed_name = screenshot_name.replace(".png", "_delayed.png")
+            try:
+                time.sleep(0.9)
+                page.get_screenshot(path=artifact_bucket_dir, name=delayed_name, full_page=False)
+                out["screenshot_delayed"] = os.path.abspath(os.path.join(artifact_bucket_dir, delayed_name))
+            except Exception:
+                pass
 
     if include_html:
         try:
@@ -2235,6 +2505,7 @@ def _save_probe_artifacts(
             "entry_preflight_issue": record.get("entry_preflight_issue", ""),
             "entry_preflight_evidence": record.get("entry_preflight_evidence", []),
             "entry_preflight_http_status": record.get("entry_preflight_http_status", ""),
+            "entry_preflight_issue_overridden": bool(record.get("entry_preflight_issue_overridden")),
             "entry_browser_open_skipped": bool(record.get("entry_browser_open_skipped")),
             "initial_landing_type": record.get("initial_landing_type", ""),
             "landing_recovery_attempted": bool(record.get("landing_recovery_attempted")),
@@ -2247,6 +2518,10 @@ def _save_probe_artifacts(
             "tab_transition_events": record.get("tab_transition_events", []),
             "reclassified_after_detector_fix": bool(record.get("reclassified_after_detector_fix")),
             "reclassification_reason": record.get("reclassification_reason", ""),
+            "runtime_diagnostics": record.get("runtime_diagnostics", {}),
+            "screenshot_path": out.get("screenshot", ""),
+            "screenshot_delayed_path": out.get("screenshot_delayed", ""),
+            "html_path": out.get("html", ""),
         }
         with open(meta_path, "w", encoding="utf-8") as f:
             json.dump(meta_payload, f, ensure_ascii=False, indent=2)
@@ -2325,6 +2600,7 @@ def _probe_one(
         "attempts": [],
     }
     snapshot_signal_summary: Dict[str, Any] = {}
+    runtime_diagnostics: Dict[str, Any] = {}
     artifact_page = page
     temp_artifact_page: ChromiumPage | None = None
     powdermat_success_candidate: Dict[str, Any] = {}
@@ -2359,6 +2635,7 @@ def _probe_one(
                 attempt_timing["pre_reset_ms"] = int((time.perf_counter() - attempt_started) * 1000)
             listener_started = _start_attempt_listener(page)
             attempt_timing["network_listener"] = bool(listener_started)
+            attempt_timing["runtime_probe_installed"] = bool(_install_runtime_error_probe(page))
 
             step_timeout = _remaining_budget(deadline, timeout_sec, floor_sec=5.0)
             entry_url = ""
@@ -3152,6 +3429,17 @@ def _probe_one(
                 reason_codes = list(dict.fromkeys(list(powdermat_success_candidate.get("reason_codes") or reason_codes) + ["powdermat_post_article_redirect"]))
                 snapshot_signal_summary = dict(powdermat_success_candidate.get("signal_summary") or snapshot_signal_summary)
                 attempt_timing["powdermat_preserved_success"] = True
+            attempt_packets = _drain_listener_packets(page, max_count=120, timeout=0.8) if listener_started else []
+            runtime_diagnostics = _collect_runtime_page_diagnostics(
+                page,
+                final_url=final_url,
+                title=title,
+                html=html,
+                snapshot=snapshot,
+                packets=attempt_packets,
+                classifier_state=classifier_state,
+                issue=issue or "",
+            )
             try:
                 page.listen.stop()
                 page.listen.clear()
@@ -3196,6 +3484,30 @@ def _probe_one(
             exception_kind = "timeout" if _looks_like_timeout_error(e) else "network"
             classifier_state = STATE_TIMEOUT if exception_kind == "timeout" else STATE_NETWORK_ERROR
             reason_codes = ["navigation_timeout" if exception_kind == "timeout" else "navigation_network_error"]
+            if page is not None:
+                try:
+                    current_title = page.title or title
+                except Exception:
+                    current_title = title
+                try:
+                    current_html = page.html or html
+                except Exception:
+                    current_html = html
+                try:
+                    current_url = page.url or final_url or doi_url
+                except Exception:
+                    current_url = final_url or doi_url
+                current_snapshot = collect_page_snapshot(page, title=current_title, html=current_html)
+                runtime_diagnostics = _collect_runtime_page_diagnostics(
+                    page,
+                    final_url=current_url,
+                    title=current_title,
+                    html=current_html,
+                    snapshot=current_snapshot,
+                    packets=_drain_listener_packets(page, max_count=80, timeout=0.4),
+                    classifier_state=classifier_state,
+                    issue=exception_kind,
+                )
             try:
                 page.listen.stop()
                 page.listen.clear()
@@ -3262,6 +3574,8 @@ def _probe_one(
     outcome = _compat_outcome_from_state(classifier_state, reason_codes)
     dom_signature = compact_text_signature(snapshot)
     resolved_chain = _dedupe_url_chain(navigation_chain)
+    entry_preflight_issue = str(entry_plan.get("entry_preflight_issue") or "")
+    entry_preflight_issue_overridden = bool(entry_preflight_issue) and classifier_state in SUCCESS_STATES
 
     result = {
         "doi": doi,
@@ -3296,9 +3610,10 @@ def _probe_one(
         "entry_redirect_chain_summary": list(entry_plan.get("entry_redirect_chain_summary") or []),
         "entry_fallback_used": bool(entry_plan.get("entry_fallback_used")),
         "entry_fallback_reason": str(entry_plan.get("entry_fallback_reason") or ""),
-        "entry_preflight_issue": str(entry_plan.get("entry_preflight_issue") or ""),
+        "entry_preflight_issue": entry_preflight_issue,
         "entry_preflight_evidence": list(entry_plan.get("entry_preflight_evidence") or []),
         "entry_preflight_http_status": entry_plan.get("entry_preflight_http_status"),
+        "entry_preflight_issue_overridden": entry_preflight_issue_overridden,
         "entry_browser_open_skipped": bool(entry_browser_open_skipped),
         "initial_landing_type": initial_landing_type,
         "landing_recovery_attempted": bool(landing_recovery_attempted),
@@ -3330,6 +3645,7 @@ def _probe_one(
         "attempt_history": attempt_history,
         "retry_count": max(0, len(attempt_history) - 1),
         "timing_breakdown": timing_breakdown,
+        "runtime_diagnostics": runtime_diagnostics,
         "html_len": len(str(html or "")),
         "elapsed_ms": elapsed_ms,
         "timestamp_ms": _now_ms(),
@@ -3354,6 +3670,7 @@ def _probe_one(
         _close_temporary_tab(page, temp_artifact_page)
 
     result["screenshot_path"] = artifacts.get("screenshot", "")
+    result["screenshot_delayed_path"] = artifacts.get("screenshot_delayed", "")
     result["html_path"] = artifacts.get("html", "")
     result["meta_path"] = artifacts.get("meta", "")
     result.pop("html", None)

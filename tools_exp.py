@@ -5153,6 +5153,7 @@ def _entry_plan_detail(plan: Dict[str, Any]) -> Dict[str, Any]:
         "entry_preflight_issue": str(entry_plan.get("entry_preflight_issue") or ""),
         "entry_preflight_evidence": list(entry_plan.get("entry_preflight_evidence") or []),
         "entry_preflight_http_status": entry_plan.get("entry_preflight_http_status"),
+        "entry_preflight_issue_overridden": False,
         "entry_browser_open_skipped": bool(entry_plan.get("entry_browser_open_skipped")),
     }
 
@@ -5234,6 +5235,9 @@ def _recover_aip_download_landing(
         html,
     )
     partial_article = _is_aip_article_url(current_url) and not _has_article_signal(title=title, html=html)
+    if issue in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
+        recovery_meta["landing_recovery_outcome"] = "challenge_detected_no_retry"
+        return page, title, html, recovery_meta
     if issue not in ("FAIL_BLOCK", "FAIL_CAPTCHA") and not blank_like and not partial_article:
         return page, title, html, recovery_meta
 
@@ -5537,6 +5541,9 @@ def download_with_drission(
             "landing_recovery_outcome": landing_recovery_outcome,
         }
         payload.update(entry_plan_detail)
+        payload["entry_preflight_issue_overridden"] = bool(payload.get("entry_preflight_issue")) and bool(
+            payload.get("landing_success")
+        )
         return payload if return_detail else ok
 
     def _ret(ok, reason, evidence=None, stage="drission", http_status=None):

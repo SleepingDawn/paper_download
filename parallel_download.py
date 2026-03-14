@@ -1623,6 +1623,9 @@ def main(
         json.dumps(list(r.get("entry_preflight_evidence") or []), ensure_ascii=False) for r in final_results
     ]
     df["landing_entry_preflight_http_status"] = [str(r.get("entry_preflight_http_status") or "") for r in final_results]
+    df["landing_entry_preflight_issue_overridden"] = [
+        bool(r.get("entry_preflight_issue_overridden")) for r in final_results
+    ]
     df["landing_entry_browser_open_skipped"] = [bool(r.get("entry_browser_open_skipped")) for r in final_results]
     df["landing_recovery_attempted"] = [bool(r.get("landing_recovery_attempted")) for r in final_results]
     df["landing_recovery_strategy"] = [str(r.get("landing_recovery_strategy") or "") for r in final_results]

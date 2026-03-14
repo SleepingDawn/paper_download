@@ -331,6 +331,7 @@ def main() -> int:
                 "landing_entry_fallback_used": landing.get("entry_fallback_used", ""),
                 "landing_entry_fallback_reason": landing.get("entry_fallback_reason", ""),
                 "landing_entry_preflight_issue": landing.get("entry_preflight_issue", ""),
+                "landing_entry_preflight_issue_overridden": landing.get("entry_preflight_issue_overridden", ""),
                 "landing_entry_browser_open_skipped": landing.get("entry_browser_open_skipped", ""),
                 "landing_initial_landing_type": landing.get("initial_landing_type", ""),
                 "landing_recovery_attempted": landing.get("landing_recovery_attempted", ""),
@@ -360,6 +361,7 @@ def main() -> int:
                 "download_entry_fallback_used": download.get("landing_entry_fallback_used", ""),
                 "download_entry_fallback_reason": download.get("landing_entry_fallback_reason", ""),
                 "download_entry_preflight_issue": download.get("landing_entry_preflight_issue", ""),
+                "download_entry_preflight_issue_overridden": download.get("landing_entry_preflight_issue_overridden", ""),
                 "download_entry_browser_open_skipped": download.get("landing_entry_browser_open_skipped", ""),
                 "combined_bucket": combined,
             }
@@ -481,6 +483,7 @@ def main() -> int:
         "landing_entry_fallback_used",
         "landing_entry_fallback_reason",
         "landing_entry_preflight_issue",
+        "landing_entry_preflight_issue_overridden",
         "landing_entry_browser_open_skipped",
         "landing_initial_landing_type",
         "landing_recovery_attempted",
@@ -510,6 +513,7 @@ def main() -> int:
         "download_entry_fallback_used",
         "download_entry_fallback_reason",
         "download_entry_preflight_issue",
+        "download_entry_preflight_issue_overridden",
         "download_entry_browser_open_skipped",
         "combined_bucket",
     ]
