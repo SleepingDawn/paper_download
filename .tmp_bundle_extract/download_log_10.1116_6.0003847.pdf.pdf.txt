@@ -1,0 +1,15 @@
+[2026-03-15 01:27:32,034] [WARNING] Sci-hub 방법 전부 실패
+[2026-03-15 01:27:32,037] [INFO] Trying download using api or url for publisher : aip, doi : 10.1116/6.0003847
+[2026-03-15 01:27:32,037] [INFO]         [AIP] direct doi/pdf wrapper 스킵 -> browser landing 우선: 10.1116/6.0003847
+[2026-03-15 01:27:32,044] [INFO]      [Drission] 브라우저 실행 파일: /home/yongyong0206/chrome-linux/chrome-linux64/chrome
+[2026-03-15 01:27:33,047] [INFO]         [AIP] entry_strategy=aip_official_doi_resolve, entry_url=https://pubs.aip.org/jva/article-abstract/42/6/062403/3314763/Effect-of-Al-precursor-s-properties-on, safe_to_proceed=False, browser_open_skipped=False
+[2026-03-15 01:27:33,047] [INFO]         [AIP] redirect_chain=302:https://doi.org/10.1116/6.0003847 -> 403:https://pubs.aip.org/jva/article/42/6/062403/3314763/Effect-of-Al-precursor-s-properties-on
+[2026-03-15 01:27:33,047] [INFO]         [AIP] preflight_issue=FAIL_BLOCK evidence=['http_status=403']
+[2026-03-15 01:27:33,054] [INFO]      [Drission] 브라우저 실행 파일: /home/yongyong0206/chrome-linux/chrome-linux64/chrome
+[2026-03-15 01:27:33,057] [INFO]      [Drission] 브라우저 세션 적용: mode=stateful source=linux_seed_clone profile=Default root=/tmp/yongyong0206/download_runtime_profiles/run/pid_3939065.pdf/stateful_linux_seed reason=download_aip_official_entry_prefers_stateful
+[2026-03-15 01:27:33,728] [INFO]      [Drission] AIP entry_strategy=aip_official_doi_resolve browser_kind=canonical_article_abstract fallback_used=True
+[2026-03-15 01:27:33,729] [INFO]         [AIP] redirect_chain=302:https://doi.org/10.1116/6.0003847 -> 403:https://pubs.aip.org/jva/article/42/6/062403/3314763/Effect-of-Al-precursor-s-properties-on
+[2026-03-15 01:27:33,729] [INFO]      [Drission] 접속 시도 (1/1): https://pubs.aip.org/jva/article-abstract/42/6/062403/3314763/Effect-of-Al-precursor-s-properties-on
+[2026-03-15 01:28:17,850] [WARNING]         landing 단계 차단/캡차 감지로 중단: ['url_marker=challenge_or_bot']
+[2026-03-15 01:28:17,988] [INFO]   스크린샷 저장 성공: /home/yongyong0206/paper_search/paper_download/outputs/linux_headless_suite_runs/pilot_20260315_012307/download/run/Closed_Access/logs/screenshots/final_fail_capture_10.1116_6.0003847.pdf.png
+[2026-03-15 01:28:19,258] [INFO]      [Drission] 브라우저 프로세스 강제 종료: 1개 pid-tree 정리 (post-quit-pid)

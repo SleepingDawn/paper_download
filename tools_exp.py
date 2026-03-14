@@ -2189,6 +2189,14 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
 
     plan["entry_strategy"] = "aip_official_doi_resolve"
     prefer_abstract = os.getenv("PDF_BROWSER_LANDING_AIP_PREFER_ABSTRACT", "1").strip().lower() in ("1", "true", "yes", "on")
+    browser_doi_first = os.getenv("PDF_BROWSER_LANDING_AIP_BROWSER_ENTRY", "doi").strip().lower() in (
+        "1",
+        "true",
+        "yes",
+        "on",
+        "doi",
+        "doi_first",
+    )
     headers = {
         "User-Agent": _resolve_best_browser_ua(),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -2255,16 +2263,25 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
             plan["entry_fallback_used"] = True
             plan["entry_fallback_reason"] = fallback_reason
 
-    plan["entry_browser_url"] = str(plan.get("entry_url") or plan.get("entry_resolved_url") or doi_url).strip()
-    browser_url = str(plan.get("entry_browser_url") or "")
-    if "/article-abstract/" in browser_url.lower():
-        plan["entry_browser_kind"] = "canonical_article_abstract"
-    elif "/article/" in browser_url.lower():
-        plan["entry_browser_kind"] = "canonical_article"
+    canonical_entry_url = str(plan.get("entry_url") or plan.get("entry_resolved_url") or "").strip()
+    if browser_doi_first and str(doi_url or "").strip():
+        plan["entry_browser_url"] = str(doi_url or "").strip()
+        plan["entry_browser_kind"] = "official_doi_redirect"
+        if canonical_entry_url and canonical_entry_url.lower() != plan["entry_browser_url"].lower():
+            plan["entry_handoff_url"] = canonical_entry_url
     else:
-        plan["entry_browser_kind"] = "resolved_final"
+        plan["entry_browser_url"] = str(canonical_entry_url or doi_url).strip()
 
-    preflight_url = str(plan.get("entry_browser_url") or "").strip()
+    browser_url = str(plan.get("entry_browser_url") or "")
+    if not plan["entry_browser_kind"]:
+        if "/article-abstract/" in browser_url.lower():
+            plan["entry_browser_kind"] = "canonical_article_abstract"
+        elif "/article/" in browser_url.lower():
+            plan["entry_browser_kind"] = "canonical_article"
+        else:
+            plan["entry_browser_kind"] = "resolved_final"
+
+    preflight_url = str(canonical_entry_url or plan.get("entry_browser_url") or "").strip()
     if not preflight_url:
         plan["entry_browser_open_skipped"] = True
         plan["entry_preflight_issue"] = "PRECHECK_NO_ENTRY_URL"
@@ -2317,10 +2334,11 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
 
     if logger and plan["entry_strategy"]:
         logger.info(
-            "        [AIP] entry_strategy=%s, entry_url=%s, safe_to_proceed=%s, browser_open_skipped=%s"
+            "        [AIP] entry_strategy=%s, browser_url=%s, preflight_url=%s, safe_to_proceed=%s, browser_open_skipped=%s"
             % (
                 plan["entry_strategy"],
                 plan["entry_browser_url"] or doi_url,
+                preflight_url,
                 bool(plan["entry_safe_to_proceed"]),
                 bool(plan["entry_browser_open_skipped"]),
             )
@@ -5150,6 +5168,7 @@ def _entry_plan_detail(plan: Dict[str, Any]) -> Dict[str, Any]:
         "entry_redirect_chain_summary": list(entry_plan.get("entry_redirect_chain_summary") or []),
         "entry_fallback_used": bool(entry_plan.get("entry_fallback_used")),
         "entry_fallback_reason": str(entry_plan.get("entry_fallback_reason") or ""),
+        "entry_preflight_url": str(entry_plan.get("entry_preflight_url") or ""),
         "entry_preflight_issue": str(entry_plan.get("entry_preflight_issue") or ""),
         "entry_preflight_evidence": list(entry_plan.get("entry_preflight_evidence") or []),
         "entry_preflight_http_status": entry_plan.get("entry_preflight_http_status"),

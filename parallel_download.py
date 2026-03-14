@@ -1613,6 +1613,7 @@ def main(
     df["landing_entry_browser_kind"] = [str(r.get("entry_browser_kind") or "") for r in final_results]
     df["landing_entry_handoff_url"] = [str(r.get("entry_handoff_url") or "") for r in final_results]
     df["landing_entry_resolved_url"] = [str(r.get("entry_resolved_url") or "") for r in final_results]
+    df["landing_entry_preflight_url"] = [str(r.get("entry_preflight_url") or "") for r in final_results]
     df["landing_entry_redirect_chain_summary"] = [
         json.dumps(list(r.get("entry_redirect_chain_summary") or []), ensure_ascii=False) for r in final_results
     ]

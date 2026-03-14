@@ -325,6 +325,7 @@ def main() -> int:
                 "landing_entry_browser_kind": landing.get("entry_browser_kind", ""),
                 "landing_entry_handoff_url": landing.get("entry_handoff_url", ""),
                 "landing_entry_handoff_used": landing.get("entry_handoff_used", ""),
+                "landing_entry_preflight_url": landing.get("entry_preflight_url", ""),
                 "landing_entry_redirect_chain_summary": json.dumps(
                     list(landing.get("entry_redirect_chain_summary") or []), ensure_ascii=False
                 ),
@@ -357,6 +358,7 @@ def main() -> int:
                 "download_entry_strategy": download.get("landing_entry_strategy", ""),
                 "download_entry_url": download.get("landing_entry_url", ""),
                 "download_entry_resolved_url": download.get("landing_entry_resolved_url", ""),
+                "download_entry_preflight_url": download.get("landing_entry_preflight_url", ""),
                 "download_entry_redirect_chain_summary": download.get("landing_entry_redirect_chain_summary", ""),
                 "download_entry_fallback_used": download.get("landing_entry_fallback_used", ""),
                 "download_entry_fallback_reason": download.get("landing_entry_fallback_reason", ""),
@@ -479,6 +481,7 @@ def main() -> int:
         "landing_entry_browser_kind",
         "landing_entry_handoff_url",
         "landing_entry_handoff_used",
+        "landing_entry_preflight_url",
         "landing_entry_redirect_chain_summary",
         "landing_entry_fallback_used",
         "landing_entry_fallback_reason",
@@ -509,6 +512,7 @@ def main() -> int:
         "download_entry_strategy",
         "download_entry_url",
         "download_entry_resolved_url",
+        "download_entry_preflight_url",
         "download_entry_redirect_chain_summary",
         "download_entry_fallback_used",
         "download_entry_fallback_reason",
