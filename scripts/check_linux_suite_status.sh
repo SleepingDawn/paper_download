@@ -104,7 +104,11 @@ fi
 
 echo
 echo "[stage outputs]"
-find "$RUN_DIR" -maxdepth 3 -type f | sort | sed -n '1,240p'
+if [[ -d "$RUN_DIR" ]]; then
+  find "$RUN_DIR" -maxdepth 3 -type f | sort | sed -n '1,240p'
+else
+  echo "run_dir_missing=true"
+fi
 
 if [[ -f "$ROOT_LOG" ]]; then
   echo

@@ -77,6 +77,14 @@ if [[ -z "$SEED_PROFILE" ]]; then
   echo "--seed-profile is required" >&2
   exit 1
 fi
+if [[ -z "$PYTHON_BIN" ]]; then
+  echo "python executable not found" >&2
+  exit 1
+fi
+if [[ ! -x "$PYTHON_BIN" ]]; then
+  echo "python executable not executable: $PYTHON_BIN" >&2
+  exit 1
+fi
 if [[ ! -d "$SEED_PROFILE" ]]; then
   echo "seed profile directory not found: $SEED_PROFILE" >&2
   exit 1
@@ -89,7 +97,7 @@ if [[ -z "$RUN_DIR" ]]; then
 fi
 
 mkdir -p "$REPO_ROOT/logs"
-RUN_DIR_ABS=$(python3 - <<PY
+RUN_DIR_ABS=$("$PYTHON_BIN" - <<PY
 from pathlib import Path
 print(Path("$RUN_DIR").resolve())
 PY
@@ -107,6 +115,8 @@ if [[ -f "$PID_FILE" ]]; then
     exit 1
   fi
 fi
+
+mkdir -p "$(dirname "$RUN_DIR_ABS")" "$RUN_DIR_ABS"
 
 EXTRA_ARGS=()
 if [[ -n "$SAMPLE_CSV" ]]; then
@@ -148,8 +158,21 @@ fi
 chmod +x "$CMD_FILE"
 
 printf '%s\n' "$RUN_DIR_ABS" >"$RUN_DIR_FILE"
+: >"$LOG_FILE"
+{
+  echo "[launcher] started_at=$(date -Is)"
+  echo "[launcher] run_name=$RUN_NAME"
+  echo "[launcher] run_dir=$RUN_DIR_ABS"
+  echo "[launcher] python=$PYTHON_BIN"
+  echo "[launcher] suite=$SUITE"
+  echo "[launcher] seed_profile=$SEED_PROFILE"
+  echo "[launcher] profile_name=$PROFILE_NAME"
+  if [[ -n "$CHROME_PATH_VALUE" ]]; then
+    echo "[launcher] chrome_path=$CHROME_PATH_VALUE"
+  fi
+} >>"$LOG_FILE"
 
-nohup bash "$CMD_FILE" >"$LOG_FILE" 2>&1 < /dev/null &
+nohup bash "$CMD_FILE" >>"$LOG_FILE" 2>&1 < /dev/null &
 PID=$!
 printf '%s\n' "$PID" >"$PID_FILE"
 

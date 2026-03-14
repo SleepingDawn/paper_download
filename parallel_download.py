@@ -1,4 +1,5 @@
 import json
+import inspect
 import os
 import subprocess
 import sys
@@ -100,6 +101,13 @@ def _resolve_worker_max_tasks_per_child() -> Optional[int]:
     if value <= 0:
         return None
     return max(1, value)
+
+
+def _process_pool_supports_max_tasks_per_child() -> bool:
+    try:
+        return "max_tasks_per_child" in inspect.signature(ProcessPoolExecutor).parameters
+    except Exception:
+        return sys.version_info >= (3, 11)
 
 NON_RETRYABLE_TERMINAL_REASONS = {
     REASON_FAIL_CAPTCHA,
@@ -805,10 +813,16 @@ def _first_pass(
     rows = _prepare_download_records(df)
     results: List[Dict[str, Any]] = [None] * len(rows)
 
-    with ProcessPoolExecutor(
-        max_workers=max_workers,
-        max_tasks_per_child=worker_max_tasks_per_child,
-    ) as executor:
+    executor_kwargs: Dict[str, Any] = {
+        "max_workers": max_workers,
+    }
+    if (
+        worker_max_tasks_per_child is not None
+        and _process_pool_supports_max_tasks_per_child()
+    ):
+        executor_kwargs["max_tasks_per_child"] = worker_max_tasks_per_child
+
+    with ProcessPoolExecutor(**executor_kwargs) as executor:
         future_to_index = {
             executor.submit(
                 download_process_worker,
@@ -1389,6 +1403,11 @@ def main(
         "worker recycle(max_tasks_per_child): "
         f"{worker_max_tasks_per_child if worker_max_tasks_per_child is not None else 'disabled'}"
     )
+    if worker_max_tasks_per_child is not None and not _process_pool_supports_max_tasks_per_child():
+        print(
+            "worker recycle(max_tasks_per_child) 지원 안 함: "
+            f"python={sys.version.split()[0]} -> disabled"
+        )
     if startup_orphan_reaped:
         print(f"시작 전 stale headless Chrome 정리: {startup_orphan_reaped}개")
 
