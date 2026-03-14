@@ -4174,7 +4174,15 @@ def _collect_pdf_candidate_urls_from_page(page, logger=None) -> list:
     return candidates
 
 
-def _try_cookie_cffi_candidate_urls(page, candidate_urls, target_path: str, logger=None, timeout_s: int = 16, context: str = "candidate-cffi") -> bool:
+def _try_cookie_cffi_candidate_urls(
+    page,
+    candidate_urls,
+    target_path: str,
+    logger=None,
+    timeout_s: int = 16,
+    context: str = "candidate-cffi",
+    referer_override: str = "",
+) -> bool:
     if page is None:
         return False
 
@@ -4206,7 +4214,7 @@ def _try_cookie_cffi_candidate_urls(page, candidate_urls, target_path: str, logg
         cookies = {c["name"]: c["value"] for c in (page.cookies() or [])}
     except Exception:
         cookies = None
-    referer = str(getattr(page, "url", "") or "").strip() or None
+    referer = str(referer_override or "").strip() or str(getattr(page, "url", "") or "").strip() or None
     ua = _resolve_best_browser_ua()
 
     for url in urls:
@@ -4892,7 +4900,7 @@ def force_download_with_requests(page, pdf_url, referer_url, save_path, logger):
 # 3. Navigation Download (DrissionPage 버전)
 # =======================================================
 
-def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
+def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30, referer_hint: str = ""):
     """
     브라우저 네비게이션 -> (가능하면) 버튼 클릭으로 다운로드.
     download_dir 인자는 하위호환을 위해 유지하지만 실제로는 target file path로 사용한다.
@@ -4918,7 +4926,10 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
         page.get(url, retry=0, interval=0.5, timeout=nav_timeout)
         time.sleep(random.uniform(0.4, 0.9))
         _dismiss_cookie_or_consent_banner(page, logger=logger)
-        pdf_like_navigation = any(k in (url or "").lower() for k in (".pdf", "/pdfft", "download=true"))
+        pdf_like_navigation = any(
+            k in (url or "").lower()
+            for k in (".pdf", "/pdfft", "download=true", "stamppdf/getpdf.jsp")
+        )
 
         # direct PDF URL이면 이동만으로 다운로드가 시작될 수 있으므로 먼저 짧게 확인
         if pdf_like_navigation:
@@ -4944,6 +4955,7 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
                 logger=logger,
                 timeout_s=min(max(8, timeout_s), 16),
                 context="navigation-preauth-cffi",
+                referer_override=referer_hint,
             ):
                 logger.info("        navigation 전환 직후 cookie-aware 직접 회수 성공")
                 return target_path
@@ -4980,6 +4992,7 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
             logger=logger,
             timeout_s=min(max(8, timeout_s), 18),
             context="navigation-viewer-candidate",
+            referer_override=referer_hint,
         ):
             logger.info("        viewer 후보 URL 직접 수집 성공")
             return target_path
@@ -5086,6 +5099,7 @@ def download_pdf_via_navigation(page, url, download_dir, logger, timeout_s=30):
             logger=logger,
             timeout_s=min(max(8, timeout_s), 18),
             context="navigation-click-candidate",
+            referer_override=referer_hint,
         ):
             logger.info("        클릭 후 후보 URL 직접 수집 성공")
             return target_path
@@ -6181,7 +6195,14 @@ def download_with_drission(
 
                 if is_sciencedirect and mode == "first" and _looks_like_elsevier_signed_pdf_url(pdf_url):
                     try:
-                        nav_result = download_pdf_via_navigation(page, pdf_url, tmp_save_path, logger, timeout_s=8)
+                        nav_result = download_pdf_via_navigation(
+                            page,
+                            pdf_url,
+                            tmp_save_path,
+                            logger,
+                            timeout_s=8,
+                            referer_hint=referer_url,
+                        )
                         if nav_result == "__ACCESS_RIGHTS_REQUIRED__":
                             return _ret(False, "FAIL_ACCESS_RIGHTS", ["navigation_access_rights_required"], stage="navigation-download")
                         if nav_result:
@@ -6194,7 +6215,14 @@ def download_with_drission(
                 if not is_sciencedirect:
                     try :
                         nav_timeout = 8 if high_friction else 6
-                        nav_result = download_pdf_via_navigation(page, pdf_url, tmp_save_path, logger, timeout_s=nav_timeout)
+                        nav_result = download_pdf_via_navigation(
+                            page,
+                            pdf_url,
+                            tmp_save_path,
+                            logger,
+                            timeout_s=nav_timeout,
+                            referer_hint=referer_url,
+                        )
                         if nav_result == "__ACCESS_RIGHTS_REQUIRED__":
                             return _ret(False, "FAIL_ACCESS_RIGHTS", ["navigation_access_rights_required"], stage="navigation-download")
                         if nav_result:
@@ -6230,7 +6258,7 @@ def download_with_drission(
                         return _ret(True, "SUCCESS", stage="cffi-download")
                     return _ret(False, "FAIL_PARSE", ["sciencedirect_pdf_not_downloadable"], stage="drission")
 
-                if mode == "first":
+                if mode == "first" and not _should_exhaust_pdf_recovery_in_first_mode(pdf_url, current_domain):
                     return _ret(False, "FAIL_PARSE", ["first_mode_fastpath_exhausted"], stage="drission")
 
                 if _over_budget():
@@ -6271,7 +6299,7 @@ def download_with_drission(
                     cffi_result = download_with_cffi(
                         pdf_url,
                         full_save_path,
-                        referer=page.url,
+                        referer=referer_url or page.url,
                         cookies=current_cookies,
                         ua=_resolve_best_browser_ua(),
                         logger=logger,
@@ -6362,6 +6390,21 @@ def _recover_ieee_stamp_pdf_url(*candidates: str) -> Optional[str]:
     return f"https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber={arnumber}&ref="
 
 
+def _should_exhaust_pdf_recovery_in_first_mode(pdf_url: str, current_domain: str = "") -> bool:
+    blob = f"{pdf_url or ''} {current_domain or ''}".lower()
+    return any(
+        token in blob
+        for token in (
+            "pubs.aip.org",
+            "ieeexplore.ieee.org",
+            "spiedigitallibrary.org",
+            "pdf.sciencedirectassets.com",
+            "stamppdf/getpdf.jsp",
+            "article-pdf",
+        )
+    )
+
+
 # =======================================================
 # [핵심] 일반론적 HTML 구조 분석 (IEEE 로직 대폭 강화)
 # =======================================================
@@ -6373,6 +6416,21 @@ def _analyze_html_structure_drission(page, logger):
     current_url = page.url
     page_source = page.html
     logger.info("     [Drission] HTML 구조 정밀 분석 중...")
+    current_low = str(current_url or "").lower()
+
+    if "pdf.sciencedirectassets.com" in current_low and ".pdf" in current_low:
+        logger.info(f"        [ScienceDirect] direct asset PDF 유지: {current_url}")
+        return current_url
+    if "pubs.aip.org" in current_low and "article-pdf" in current_low and ".pdf" in current_low:
+        logger.info(f"        [AIP] direct article-pdf URL 유지: {current_url}")
+        return current_url
+    if "ieeexplore.ieee.org" in current_low and "stamppdf/getpdf.jsp" in current_low:
+        logger.info(f"        [IEEE] stampPDF URL 유지: {current_url}")
+        return current_url
+    if "spiedigitallibrary.org" in current_low and ".full" in current_low:
+        spie_pdf = re.sub(r"\.full([?#].*)?$", r".pdf\1", current_url, flags=re.IGNORECASE)
+        logger.info(f"        [SPIE] .full -> .pdf 후보 복구: {spie_pdf}")
+        return spie_pdf
 
     # -------------------------------------------------------
     # 1. [IEEE 전용] stamp.jsp 페이지 처리
