@@ -58,6 +58,7 @@ from landing_classifier import (
     _strip_visible_text,
 )
 from tools_exp import (
+    _adopt_latest_tab,
     _apply_best_browser_profile,
     _capture_direct_downloaded_pdf,
     _click_elsevier_doi_link_in_retrieve,
@@ -435,6 +436,84 @@ def _prune_extra_tabs(page: ChromiumPage) -> None:
                 pass
     except Exception:
         pass
+
+
+def _looks_like_blank_screen_context(final_url: str, title: str, html: str) -> bool:
+    low_url = str(final_url or "").strip().lower()
+    low_title = str(title or "").strip().lower()
+    html_len = len(str(html or ""))
+    if low_url.startswith("about:blank") or low_url.startswith("chrome://"):
+        return True
+    if _is_elsevier_retrieve_url(low_url):
+        return True
+    if low_title in ("", "about:blank", "loading", "redirecting", "redirecting...", "please wait"):
+        return html_len < 1200
+    if html_len < 220 and (not low_title or low_title == low_url.replace("https://", "").replace("http://", "")):
+        return True
+    return False
+
+
+def _record_tab_transition(
+    tab_transition_events: List[Dict[str, Any]],
+    step_label: str,
+    from_page: ChromiumPage,
+    to_page: ChromiumPage,
+    *,
+    forced: bool = False,
+) -> None:
+    if to_page is None or from_page is None or to_page is from_page:
+        return
+    tab_transition_events.append(
+        {
+            "step": step_label,
+            "forced": bool(forced),
+            "from_tab_id": str(getattr(from_page, "tab_id", "") or ""),
+            "to_tab_id": str(getattr(to_page, "tab_id", "") or ""),
+            "from_url": str(getattr(from_page, "url", "") or ""),
+            "to_url": str(getattr(to_page, "url", "") or ""),
+            "from_title": str(getattr(from_page, "title", "") or "")[:160],
+            "to_title": str(getattr(to_page, "title", "") or "")[:160],
+        }
+    )
+
+
+def _adopt_latest_probe_tab(
+    page: ChromiumPage,
+    *,
+    navigation_chain: List[Dict[str, str]],
+    attempt_timing: Dict[str, Any],
+    tab_transition_events: List[Dict[str, Any]],
+    step_label: str,
+    force: bool = False,
+) -> ChromiumPage:
+    if page is None:
+        return page
+    current_url = str(page.url or "")
+    current_title = str(page.title or "")
+    current_html = ""
+    if not force:
+        try:
+            current_html = str(page.html or "")
+        except Exception:
+            current_html = ""
+        if not _looks_like_blank_screen_context(current_url, current_title, current_html):
+            return page
+    adopted = _adopt_latest_tab(page)
+    if adopted is None or adopted is page:
+        return page
+    _record_tab_transition(tab_transition_events, step_label, page, adopted, forced=force)
+    _append_nav_step(
+        navigation_chain,
+        step_label,
+        current_url or "about:blank",
+        str(getattr(adopted, "url", "") or current_url or "about:blank"),
+    )
+    attempt_timing.setdefault("tab_transition_steps", []).append(step_label)
+    try:
+        _dismiss_cookie_or_consent_banner(adopted)
+    except Exception:
+        pass
+    return adopted
 
 
 def _remaining_budget(deadline_monotonic: float, preferred_sec: float, floor_sec: float = 3.0) -> float:
@@ -890,10 +969,13 @@ def _probe_temp_tab_url(
     step_label: str,
     navigation_chain: List[Dict[str, str]],
     attempt_timing: Dict[str, Any],
+    tab_transition_events: List[Dict[str, Any]] | None = None,
     prefer_earliest_success: bool = False,
     settle_wait_sec: float = 0.6,
     stabilize_polls: int = 4,
 ) -> Dict[str, Any]:
+    if tab_transition_events is None:
+        tab_transition_events = []
     temp_page = _open_temporary_tab(page)
     if temp_page is None or time.monotonic() >= deadline_monotonic:
         _close_temporary_tab(page, temp_page)
@@ -905,6 +987,14 @@ def _probe_temp_tab_url(
         temp_page.get(target_url, retry=0, interval=0.4, timeout=timeout)
         attempt_timing[f"{step_label}_temp_ms"] = int((time.perf_counter() - started) * 1000)
         _append_nav_step(navigation_chain, step_label, target_url, temp_page.url or target_url)
+        temp_page = _adopt_latest_probe_tab(
+            temp_page,
+            navigation_chain=navigation_chain,
+            attempt_timing=attempt_timing,
+            tab_transition_events=tab_transition_events,
+            step_label=f"{step_label}_tab_sync",
+            force=True,
+        )
         _dismiss_cookie_or_consent_banner(temp_page)
 
         immediate_url = temp_page.url or target_url
@@ -1260,6 +1350,7 @@ def _recover_elsevier_headless_temp_tab(
     deadline_monotonic: float,
     navigation_chain: List[Dict[str, str]],
     attempt_timing: Dict[str, Any],
+    tab_transition_events: List[Dict[str, Any]] | None = None,
 ) -> Dict[str, Any]:
     if not _is_headless_browser():
         return {}
@@ -1293,6 +1384,7 @@ def _recover_elsevier_headless_temp_tab(
             step_label=f"elsevier_headless_temp_{idx + 1}",
             navigation_chain=navigation_chain,
             attempt_timing=attempt_timing,
+            tab_transition_events=tab_transition_events,
             prefer_earliest_success=False,
             settle_wait_sec=0.8,
             stabilize_polls=5,
@@ -1370,6 +1462,182 @@ def _looks_like_elsevier_article_shell(final_url: str, title: str, snapshot: Dic
     return True
 
 
+def _resolve_elsevier_retrieve_entry_url(entry_plan: Dict[str, Any], current_url: str = "") -> str:
+    for candidate in (
+        str(current_url or "").strip(),
+        str(entry_plan.get("entry_browser_url") or "").strip(),
+        str(entry_plan.get("entry_resolved_url") or "").strip(),
+        str(entry_plan.get("entry_url") or "").strip(),
+    ):
+        if candidate and _is_elsevier_retrieve_url(candidate):
+            return candidate
+    return ""
+
+
+def _recover_elsevier_via_retrieve_link(
+    page: ChromiumPage,
+    *,
+    doi: str,
+    entry_plan: Dict[str, Any],
+    deadline_monotonic: float,
+    navigation_chain: List[Dict[str, str]],
+    attempt_timing: Dict[str, Any],
+    tab_transition_events: List[Dict[str, Any]],
+    step_prefix: str,
+    settle_wait_sec: float = 0.8,
+    stabilize_polls: int = 5,
+) -> Dict[str, Any]:
+    result = {
+        "page": page,
+        "final_url": str(getattr(page, "url", "") or ""),
+        "title": str(getattr(page, "title", "") or ""),
+        "html": "",
+        "snapshot": {},
+        "attempted": False,
+        "retrieve_opened": False,
+        "doi_click_used": False,
+        "handoff_used": False,
+        "handoff_url": "",
+        "canonical_used": False,
+        "recovery_steps": [],
+    }
+    if page is None or time.monotonic() >= deadline_monotonic:
+        return result
+
+    retrieve_url = _resolve_elsevier_retrieve_entry_url(entry_plan=entry_plan, current_url=result["final_url"])
+    if not retrieve_url and not _is_elsevier_retrieve_url(result["final_url"]):
+        return result
+
+    result["attempted"] = True
+    doi_norm = _normalize_doi_text(doi)
+
+    if retrieve_url and not _is_elsevier_retrieve_url(result["final_url"]) and time.monotonic() < deadline_monotonic:
+        timeout = _remaining_budget(deadline_monotonic, min(DEFAULT_LOCAL_TIMEOUT_SEC, 10.0), floor_sec=4.0)
+        started = time.perf_counter()
+        page.get(retrieve_url, retry=0, interval=0.4, timeout=timeout)
+        attempt_timing[f"{step_prefix}_retrieve_ms"] = int((time.perf_counter() - started) * 1000)
+        _append_nav_step(navigation_chain, f"{step_prefix}_retrieve", retrieve_url, page.url or retrieve_url)
+        page = _adopt_latest_probe_tab(
+            page,
+            navigation_chain=navigation_chain,
+            attempt_timing=attempt_timing,
+            tab_transition_events=tab_transition_events,
+            step_label=f"{step_prefix}_retrieve_tab_sync",
+            force=True,
+        )
+        _dismiss_cookie_or_consent_banner(page)
+        result["retrieve_opened"] = True
+        result["recovery_steps"].append("retrieve_open")
+        result["final_url"] = str(page.url or retrieve_url)
+        result["title"] = str(page.title or "")
+
+    current_url = str(page.url or result["final_url"] or "")
+    current_html = str(page.html or "")
+    if _is_elsevier_retrieve_url(current_url) and time.monotonic() < deadline_monotonic:
+        clicked = _click_elsevier_doi_link_in_retrieve(page, doi_norm)
+        if clicked:
+            result["doi_click_used"] = True
+            result["recovery_steps"].append("retrieve_doi_click")
+            try:
+                wait_timeout = _remaining_budget(deadline_monotonic, 6.0, floor_sec=2.0)
+                _wait_for_elsevier_article_ready(page, doi_norm, timeout_s=min(6, int(max(2.0, wait_timeout))))
+            except Exception:
+                pass
+            page = _adopt_latest_probe_tab(
+                page,
+                navigation_chain=navigation_chain,
+                attempt_timing=attempt_timing,
+                tab_transition_events=tab_transition_events,
+                step_label=f"{step_prefix}_retrieve_click_tab_sync",
+                force=True,
+            )
+            _append_nav_step(navigation_chain, f"{step_prefix}_retrieve_click", current_url, page.url or current_url)
+            _dismiss_cookie_or_consent_banner(page)
+            current_url = str(page.url or current_url)
+            current_html = str(page.html or current_html)
+        if _is_elsevier_retrieve_url(current_url) and time.monotonic() < deadline_monotonic:
+            handoff = (
+                _extract_elsevier_retrieve_handoff_url(current_url, current_html)
+                or str(entry_plan.get("entry_handoff_url") or "").strip()
+            )
+            if handoff:
+                timeout = _remaining_budget(deadline_monotonic, min(DEFAULT_LOCAL_TIMEOUT_SEC, 10.0), floor_sec=4.0)
+                started = time.perf_counter()
+                page.get(handoff, retry=0, interval=0.4, timeout=timeout)
+                attempt_timing[f"{step_prefix}_handoff_ms"] = int((time.perf_counter() - started) * 1000)
+                _append_nav_step(navigation_chain, f"{step_prefix}_handoff", handoff, page.url or handoff)
+                page = _adopt_latest_probe_tab(
+                    page,
+                    navigation_chain=navigation_chain,
+                    attempt_timing=attempt_timing,
+                    tab_transition_events=tab_transition_events,
+                    step_label=f"{step_prefix}_handoff_tab_sync",
+                    force=True,
+                )
+                _dismiss_cookie_or_consent_banner(page)
+                result["handoff_used"] = True
+                result["handoff_url"] = handoff
+                result["recovery_steps"].append("retrieve_handoff")
+                current_url = str(page.url or handoff)
+
+    canonical_url = _normalize_elsevier_article_url(final_url=current_url, snapshot={})
+    if canonical_url and canonical_url.lower() != current_url.lower() and time.monotonic() < deadline_monotonic:
+        timeout = _remaining_budget(deadline_monotonic, min(DEFAULT_LOCAL_TIMEOUT_SEC, 8.0), floor_sec=3.0)
+        started = time.perf_counter()
+        page.get(canonical_url, retry=0, interval=0.4, timeout=timeout)
+        attempt_timing[f"{step_prefix}_canonical_ms"] = int((time.perf_counter() - started) * 1000)
+        _append_nav_step(navigation_chain, f"{step_prefix}_canonical", canonical_url, page.url or canonical_url)
+        page = _adopt_latest_probe_tab(
+            page,
+            navigation_chain=navigation_chain,
+            attempt_timing=attempt_timing,
+            tab_transition_events=tab_transition_events,
+            step_label=f"{step_prefix}_canonical_tab_sync",
+            force=True,
+        )
+        _dismiss_cookie_or_consent_banner(page)
+        result["canonical_used"] = True
+        result["recovery_steps"].append("canonical_normalize")
+        current_url = str(page.url or canonical_url)
+
+    if time.monotonic() < deadline_monotonic:
+        try:
+            wait_timeout = _remaining_budget(deadline_monotonic, 6.0, floor_sec=2.0)
+            _wait_for_elsevier_article_ready(page, doi_norm, timeout_s=min(6, int(max(2.0, wait_timeout))))
+        except Exception:
+            pass
+        page = _adopt_latest_probe_tab(
+            page,
+            navigation_chain=navigation_chain,
+            attempt_timing=attempt_timing,
+            tab_transition_events=tab_transition_events,
+            step_label=f"{step_prefix}_final_tab_sync",
+            force=True,
+        )
+        _dismiss_cookie_or_consent_banner(page)
+
+    final_title = str(page.title or result["title"] or "")
+    final_html = str(page.html or current_html or "")
+    final_title, final_html, final_snapshot = stabilize_page_state(
+        page,
+        title=final_title,
+        html=final_html,
+        deadline_monotonic=deadline_monotonic,
+        settle_wait_sec=settle_wait_sec,
+        stabilize_polls=stabilize_polls,
+    )
+    result.update(
+        {
+            "page": page,
+            "final_url": str(page.url or current_url or result["final_url"] or retrieve_url),
+            "title": final_title,
+            "html": final_html,
+            "snapshot": final_snapshot,
+        }
+    )
+    return result
+
+
 def _recover_elsevier_article_shell(
     page: ChromiumPage,
     doi: str,
@@ -1377,14 +1645,25 @@ def _recover_elsevier_article_shell(
     title: str,
     html: str,
     snapshot: Dict[str, Any],
+    entry_plan: Dict[str, Any],
     deadline_monotonic: float,
     navigation_chain: List[Dict[str, str]],
     attempt_timing: Dict[str, Any],
-) -> Tuple[str, str, str, Dict[str, Any], str]:
+    tab_transition_events: List[Dict[str, Any]],
+) -> Tuple[str, str, str, Dict[str, Any], str, Dict[str, Any]]:
+    recovery_meta = {
+        "initial_landing_type": "",
+        "shell_recovery_attempted": False,
+        "shell_recovery_strategy": "",
+        "shell_recovery_outcome": "",
+    }
     if page is None or time.monotonic() >= deadline_monotonic:
-        return final_url, title, html, snapshot, ""
+        return final_url, title, html, snapshot, "", recovery_meta
     if not _looks_like_elsevier_article_shell(final_url=final_url, title=title, snapshot=snapshot, doi=doi):
-        return final_url, title, html, snapshot, ""
+        return final_url, title, html, snapshot, "", recovery_meta
+
+    recovery_meta["initial_landing_type"] = "elsevier_article_shell"
+    recovery_meta["shell_recovery_attempted"] = True
 
     target_url = ""
     for candidate in (
@@ -1401,6 +1680,32 @@ def _recover_elsevier_article_shell(
         break
 
     action = ""
+    retrieve_recovery = _recover_elsevier_via_retrieve_link(
+        page=page,
+        doi=doi,
+        entry_plan=entry_plan,
+        deadline_monotonic=deadline_monotonic,
+        navigation_chain=navigation_chain,
+        attempt_timing=attempt_timing,
+        tab_transition_events=tab_transition_events,
+        step_prefix="elsevier_shell",
+        settle_wait_sec=0.7,
+        stabilize_polls=4,
+    )
+    if retrieve_recovery.get("attempted"):
+        recovery_meta["shell_recovery_strategy"] = "retrieve_link_recovery"
+        final_url = str(retrieve_recovery.get("final_url") or final_url)
+        title = str(retrieve_recovery.get("title") or title)
+        html = str(retrieve_recovery.get("html") or html)
+        snapshot = dict(retrieve_recovery.get("snapshot") or snapshot)
+        page = retrieve_recovery.get("page") or page
+        used_steps = list(retrieve_recovery.get("recovery_steps") or [])
+        action = "+".join(used_steps) if used_steps else "retrieve_link_recovery"
+        if not _looks_like_elsevier_article_shell(final_url=final_url, title=title, snapshot=snapshot, doi=doi):
+            recovery_meta["shell_recovery_outcome"] = "recovered_to_article_page"
+            return final_url, title, html, snapshot, action, recovery_meta
+        recovery_meta["shell_recovery_outcome"] = "still_shell_after_retrieve_recovery"
+
     if target_url and time.monotonic() < deadline_monotonic:
         timeout = _remaining_budget(deadline_monotonic, min(DEFAULT_LOCAL_TIMEOUT_SEC, 8.0), floor_sec=3.0)
         started = time.perf_counter()
@@ -1408,6 +1713,14 @@ def _recover_elsevier_article_shell(
         attempt_timing["elsevier_shell_reopen_ms"] = int((time.perf_counter() - started) * 1000)
         attempt_timing["elsevier_shell_reopen_url"] = target_url
         _append_nav_step(navigation_chain, "elsevier_shell_reopen", target_url, page.url or target_url)
+        page = _adopt_latest_probe_tab(
+            page,
+            navigation_chain=navigation_chain,
+            attempt_timing=attempt_timing,
+            tab_transition_events=tab_transition_events,
+            step_label="elsevier_shell_reopen_tab_sync",
+            force=True,
+        )
         _dismiss_cookie_or_consent_banner(page)
         final_url = page.url or target_url
         title = page.title or title
@@ -1431,7 +1744,16 @@ def _recover_elsevier_article_shell(
         else:
             action = "hydrate_wait"
 
-    return final_url, title, html, snapshot, action
+    if not recovery_meta["shell_recovery_strategy"]:
+        recovery_meta["shell_recovery_strategy"] = "reopen_exact_article"
+    if not recovery_meta["shell_recovery_outcome"]:
+        recovery_meta["shell_recovery_outcome"] = (
+            "recovered_to_article_page"
+            if not _looks_like_elsevier_article_shell(final_url=final_url, title=title, snapshot=snapshot, doi=doi)
+            else "still_shell_after_reopen"
+        )
+
+    return final_url, title, html, snapshot, action, recovery_meta
 
 
 def _should_try_preferred_article_handoff(final_url: str, title: str, snapshot: Dict[str, Any]) -> bool:
@@ -1552,6 +1874,8 @@ def _evaluate_page_state(
         "classifier_state": classified.get("classifier_state", STATE_UNKNOWN_NON_SUCCESS),
         "reason_codes": list(classified.get("reason_codes", []) or []),
         "signal_summary": dict(classified.get("signal_summary") or {}),
+        "reclassified_after_detector_fix": bool(classified.get("reclassified_after_detector_fix")),
+        "reclassification_reason": str(classified.get("reclassification_reason") or ""),
     }
 
 
@@ -1579,7 +1903,9 @@ def _legacy_verify_landing_success(
         return False
     if article_signal or pdf_action_signal:
         return True
-    if low_title in ("redirecting", "redirecting...", "redirect"):
+    if low_title in ("redirecting", "redirecting...", "redirect", "sciencedirect", "just a moment...", "please wait"):
+        return False
+    if any(marker in low_title for marker in ("just a moment", "security check", "access denied", "verify you are human")):
         return False
     if len(low_title) < 12:
         return False
@@ -1648,6 +1974,14 @@ def _build_artifact_zip(records: List[Dict[str, Any]], artifact_dir: str, zip_pa
                     "entry_fallback_reason": rec.get("entry_fallback_reason", ""),
                     "entry_preflight_issue": rec.get("entry_preflight_issue", ""),
                     "entry_browser_open_skipped": rec.get("entry_browser_open_skipped", False),
+                    "initial_landing_type": rec.get("initial_landing_type", ""),
+                    "shell_recovery_attempted": rec.get("shell_recovery_attempted", False),
+                    "shell_recovery_strategy": rec.get("shell_recovery_strategy", ""),
+                    "shell_recovery_outcome": rec.get("shell_recovery_outcome", ""),
+                    "tab_transition_count": rec.get("tab_transition_count", 0),
+                    "tab_transition_events": rec.get("tab_transition_events", []),
+                    "reclassified_after_detector_fix": rec.get("reclassified_after_detector_fix", False),
+                    "reclassification_reason": rec.get("reclassification_reason", ""),
                     "direct_pdf_path": rec.get("direct_pdf_path", ""),
                     "direct_pdf_event": rec.get("direct_pdf_event", {}),
                     "screenshot_path": rec.get("screenshot_path", ""),
@@ -1750,6 +2084,14 @@ def _save_probe_artifacts(
             "entry_preflight_evidence": record.get("entry_preflight_evidence", []),
             "entry_preflight_http_status": record.get("entry_preflight_http_status", ""),
             "entry_browser_open_skipped": bool(record.get("entry_browser_open_skipped")),
+            "initial_landing_type": record.get("initial_landing_type", ""),
+            "shell_recovery_attempted": bool(record.get("shell_recovery_attempted")),
+            "shell_recovery_strategy": record.get("shell_recovery_strategy", ""),
+            "shell_recovery_outcome": record.get("shell_recovery_outcome", ""),
+            "tab_transition_count": int(record.get("tab_transition_count", 0) or 0),
+            "tab_transition_events": record.get("tab_transition_events", []),
+            "reclassified_after_detector_fix": bool(record.get("reclassified_after_detector_fix")),
+            "reclassification_reason": record.get("reclassification_reason", ""),
         }
         with open(meta_path, "w", encoding="utf-8") as f:
             json.dump(meta_payload, f, ensure_ascii=False, indent=2)
@@ -1808,6 +2150,13 @@ def _probe_one(
     entry_browser_open_skipped = False
     entry_handoff_used = False
     entry_handoff_url = ""
+    initial_landing_type = ""
+    shell_recovery_attempted = False
+    shell_recovery_strategy = ""
+    shell_recovery_outcome = ""
+    reclassified_after_detector_fix = False
+    reclassification_reason = ""
+    tab_transition_events: List[Dict[str, Any]] = []
     attempt_history: List[Dict[str, Any]] = []
     timing_breakdown: Dict[str, Any] = {
         "scheduled_start_ms": int(scheduled_start_ms or 0),
@@ -1938,44 +2287,37 @@ def _probe_one(
             page.get(nav_url, retry=0, interval=0.5, timeout=step_timeout)
             attempt_timing["doi_get_ms"] = int((time.perf_counter() - nav_started) * 1000)
             _append_nav_step(navigation_chain, "doi_get", nav_url, page.url or nav_url)
+            page = _adopt_latest_probe_tab(
+                page,
+                navigation_chain=navigation_chain,
+                attempt_timing=attempt_timing,
+                tab_transition_events=tab_transition_events,
+                step_label="doi_get_tab_sync",
+                force=True,
+            )
             _dismiss_cookie_or_consent_banner(page)
             if (
                 doi.startswith("10.1016/")
-                and _is_elsevier_retrieve_url(page.url or nav_url)
-                and str(entry_plan.get("entry_handoff_url") or "").strip()
                 and time.monotonic() < deadline
+                and (
+                    _is_elsevier_retrieve_url(page.url or nav_url)
+                    or str(entry_plan.get("entry_handoff_url") or "").strip()
+                )
             ):
-                handoff = str(entry_plan.get("entry_handoff_url") or "").strip()
-                handoff_timeout = _remaining_budget(deadline, min(timeout_sec, 12.0), floor_sec=4.0)
-                handoff_started = time.perf_counter()
-                page.get(handoff, retry=0, interval=0.5, timeout=handoff_timeout)
-                attempt_timing["elsevier_initial_handoff_ms"] = int((time.perf_counter() - handoff_started) * 1000)
-                _append_nav_step(navigation_chain, "elsevier_handoff", handoff, page.url or handoff)
-                entry_handoff_used = True
-                entry_handoff_url = handoff
-                _dismiss_cookie_or_consent_banner(page)
-                initial_canonical_url = _normalize_elsevier_article_url(final_url=page.url or handoff, snapshot={})
-                if (
-                    initial_canonical_url
-                    and initial_canonical_url.lower() != str(page.url or "").lower()
-                    and time.monotonic() < deadline
-                ):
-                    canonical_timeout = _remaining_budget(deadline, min(timeout_sec, 8.0), floor_sec=3.0)
-                    canonical_started = time.perf_counter()
-                    page.get(initial_canonical_url, retry=0, interval=0.4, timeout=canonical_timeout)
-                    attempt_timing["elsevier_initial_canonical_ms"] = int((time.perf_counter() - canonical_started) * 1000)
-                    _append_nav_step(
-                        navigation_chain,
-                        "elsevier_canonical",
-                        initial_canonical_url,
-                        page.url or initial_canonical_url,
-                    )
-                    _dismiss_cookie_or_consent_banner(page)
-                try:
-                    wait_budget = _remaining_budget(deadline, min(timeout_sec, 6.0), floor_sec=2.0)
-                    _wait_for_elsevier_article_ready(page, doi, timeout_s=min(6, int(max(2.0, wait_budget))))
-                except Exception:
-                    pass
+                initial_elsevier_recovery = _recover_elsevier_via_retrieve_link(
+                    page=page,
+                    doi=doi,
+                    entry_plan=entry_plan,
+                    deadline_monotonic=deadline,
+                    navigation_chain=navigation_chain,
+                    attempt_timing=attempt_timing,
+                    tab_transition_events=tab_transition_events,
+                    step_prefix="elsevier_initial",
+                )
+                if initial_elsevier_recovery.get("attempted"):
+                    page = initial_elsevier_recovery.get("page") or page
+                    entry_handoff_used = bool(initial_elsevier_recovery.get("handoff_used") or initial_elsevier_recovery.get("doi_click_used"))
+                    entry_handoff_url = str(initial_elsevier_recovery.get("handoff_url") or entry_handoff_url)
             if str(record.get("scheduler_publisher") or "") == "powdermat":
                 immediate_url = page.url or nav_url
                 immediate_title = page.title or ""
@@ -2047,6 +2389,18 @@ def _probe_one(
             attempt_timing["placeholder_wait_ms"] = placeholder_wait_ms
             if placeholder_wait_ms > 0:
                 _append_nav_step(navigation_chain, "placeholder_wait", nav_url, final_url or nav_url)
+            if _looks_like_blank_screen_context(final_url, title, html):
+                page = _adopt_latest_probe_tab(
+                    page,
+                    navigation_chain=navigation_chain,
+                    attempt_timing=attempt_timing,
+                    tab_transition_events=tab_transition_events,
+                    step_label="placeholder_tab_sync",
+                    force=True,
+                )
+                final_url = page.url or final_url or nav_url or doi_url
+                title = page.title or title
+                html = page.html or html
             if not direct_pdf_path and not direct_pdf_event:
                 direct_pdf_path, direct_pdf_event = _capture_direct_pdf_handoff(
                     record=record,
@@ -2094,6 +2448,14 @@ def _probe_one(
                         wait_started = time.perf_counter()
                         _wait_for_elsevier_article_ready(page, doi, timeout_s=min(8, int(max(3.0, click_wait_timeout))))
                         attempt_timing["elsevier_retrieve_click_wait_ms"] = int((time.perf_counter() - wait_started) * 1000)
+                        page = _adopt_latest_probe_tab(
+                            page,
+                            navigation_chain=navigation_chain,
+                            attempt_timing=attempt_timing,
+                            tab_transition_events=tab_transition_events,
+                            step_label="elsevier_retrieve_click_tab_sync",
+                            force=True,
+                        )
                         _dismiss_cookie_or_consent_banner(page)
                         final_url = page.url or final_url
                         title = page.title or title
@@ -2109,6 +2471,14 @@ def _probe_one(
                         page.get(handoff, retry=0, interval=0.5, timeout=handoff_timeout)
                         attempt_timing["elsevier_handoff_ms"] = int((time.perf_counter() - handoff_started) * 1000)
                         _append_nav_step(navigation_chain, "elsevier_handoff", handoff, page.url or handoff)
+                        page = _adopt_latest_probe_tab(
+                            page,
+                            navigation_chain=navigation_chain,
+                            attempt_timing=attempt_timing,
+                            tab_transition_events=tab_transition_events,
+                            step_label="elsevier_handoff_tab_sync",
+                            force=True,
+                        )
                         entry_handoff_used = True
                         entry_handoff_url = handoff
                         _dismiss_cookie_or_consent_banner(page)
@@ -2122,6 +2492,14 @@ def _probe_one(
                 page.get(elsevier_canonical_url, retry=0, interval=0.4, timeout=canonical_timeout)
                 attempt_timing["elsevier_canonical_ms"] = int((time.perf_counter() - canonical_started) * 1000)
                 _append_nav_step(navigation_chain, "elsevier_canonical", elsevier_canonical_url, page.url or elsevier_canonical_url)
+                page = _adopt_latest_probe_tab(
+                    page,
+                    navigation_chain=navigation_chain,
+                    attempt_timing=attempt_timing,
+                    tab_transition_events=tab_transition_events,
+                    step_label="elsevier_canonical_tab_sync",
+                    force=True,
+                )
                 _dismiss_cookie_or_consent_banner(page)
                 final_url = page.url or elsevier_canonical_url
                 title = page.title or title
@@ -2145,6 +2523,14 @@ def _probe_one(
                     preferred_article_url,
                     page.url or preferred_article_url,
                 )
+                page = _adopt_latest_probe_tab(
+                    page,
+                    navigation_chain=navigation_chain,
+                    attempt_timing=attempt_timing,
+                    tab_transition_events=tab_transition_events,
+                    step_label="preferred_handoff_tab_sync",
+                    force=True,
+                )
                 _dismiss_cookie_or_consent_banner(page)
                 final_url = page.url or preferred_article_url
                 title = page.title or title
@@ -2153,19 +2539,25 @@ def _probe_one(
                 title, html, snapshot = stabilize_page_state(page, title=title, html=html, deadline_monotonic=deadline)
                 attempt_timing["preferred_handoff_stabilize_ms"] = int((time.perf_counter() - stabilize_started) * 1000)
                 final_url = page.url or final_url or preferred_article_url
-            final_url, title, html, snapshot, elsevier_shell_action = _recover_elsevier_article_shell(
+            final_url, title, html, snapshot, elsevier_shell_action, shell_recovery_meta = _recover_elsevier_article_shell(
                 page=page,
                 doi=doi,
                 final_url=final_url,
                 title=title,
                 html=html,
                 snapshot=snapshot,
+                entry_plan=entry_plan,
                 deadline_monotonic=deadline,
                 navigation_chain=navigation_chain,
                 attempt_timing=attempt_timing,
+                tab_transition_events=tab_transition_events,
             )
             if elsevier_shell_action:
                 attempt_timing["elsevier_shell_action"] = elsevier_shell_action
+            initial_landing_type = str(shell_recovery_meta.get("initial_landing_type") or initial_landing_type)
+            shell_recovery_attempted = bool(shell_recovery_meta.get("shell_recovery_attempted") or shell_recovery_attempted)
+            shell_recovery_strategy = str(shell_recovery_meta.get("shell_recovery_strategy") or shell_recovery_strategy)
+            shell_recovery_outcome = str(shell_recovery_meta.get("shell_recovery_outcome") or shell_recovery_outcome)
             issue, issue_evidence = detect_access_issue(title=title, html=html, url=final_url, domain="")
             article_signal = bool(_has_article_signal(title=title, html=html))
             pdf_action_signal = bool(_has_pdf_action_signal(title=title, html=html))
@@ -2196,6 +2588,8 @@ def _probe_one(
             classifier_state = classified.get("classifier_state", STATE_UNKNOWN_NON_SUCCESS)
             reason_codes = list(classified.get("reason_codes", []) or [])
             snapshot_signal_summary = dict(classified.get("signal_summary") or {})
+            reclassified_after_detector_fix = bool(classified.get("reclassified_after_detector_fix"))
+            reclassification_reason = str(classified.get("reclassification_reason") or "")
 
             if classifier_state == STATE_BROKEN_JS_SHELL and attempt_idx == 0 and time.monotonic() < deadline:
                 recovery_started = time.perf_counter()
@@ -2240,6 +2634,8 @@ def _probe_one(
                     classifier_state = classified.get("classifier_state", STATE_UNKNOWN_NON_SUCCESS)
                     reason_codes = list(classified.get("reason_codes", []) or [])
                     snapshot_signal_summary = dict(classified.get("signal_summary") or {})
+                    reclassified_after_detector_fix = bool(classified.get("reclassified_after_detector_fix"))
+                    reclassification_reason = str(classified.get("reclassification_reason") or "")
 
             if (
                 classifier_state not in SUCCESS_STATES
@@ -2258,6 +2654,7 @@ def _probe_one(
                     deadline_monotonic=deadline,
                     navigation_chain=navigation_chain,
                     attempt_timing=attempt_timing,
+                    tab_transition_events=tab_transition_events,
                 )
                 if elsevier_temp_recovery:
                     final_url = elsevier_temp_recovery.get("final_url", final_url)
@@ -2273,6 +2670,8 @@ def _probe_one(
                     classifier_state = str(elsevier_temp_recovery.get("classifier_state") or classifier_state)
                     reason_codes = list(elsevier_temp_recovery.get("reason_codes") or reason_codes)
                     snapshot_signal_summary = dict(elsevier_temp_recovery.get("signal_summary") or snapshot_signal_summary)
+                    reclassified_after_detector_fix = bool(elsevier_temp_recovery.get("reclassified_after_detector_fix") or reclassified_after_detector_fix)
+                    reclassification_reason = str(elsevier_temp_recovery.get("reclassification_reason") or reclassification_reason)
                     temp_page = elsevier_temp_recovery.get("page")
                     if classifier_state in SUCCESS_STATES and temp_page is not None:
                         if temp_artifact_page is not None and temp_artifact_page is not temp_page:
@@ -2311,6 +2710,8 @@ def _probe_one(
                     classifier_state = str(ieee_recovery.get("classifier_state") or classifier_state)
                     reason_codes = list(ieee_recovery.get("reason_codes") or reason_codes)
                     snapshot_signal_summary = dict(ieee_recovery.get("signal_summary") or snapshot_signal_summary)
+                    reclassified_after_detector_fix = bool(ieee_recovery.get("reclassified_after_detector_fix") or reclassified_after_detector_fix)
+                    reclassification_reason = str(ieee_recovery.get("reclassification_reason") or reclassification_reason)
                     temp_page = ieee_recovery.get("page")
                     if classifier_state in SUCCESS_STATES and temp_page is not None:
                         if temp_artifact_page is not None and temp_artifact_page is not temp_page:
@@ -2340,6 +2741,14 @@ def _probe_one(
                     attempt_timing["targeted_recovery_ms"] = int((time.perf_counter() - recover_started) * 1000)
                     attempt_timing["targeted_recovery_url"] = targeted_recovery_url
                     _append_nav_step(navigation_chain, "targeted_recovery", targeted_recovery_url, page.url or targeted_recovery_url)
+                    page = _adopt_latest_probe_tab(
+                        page,
+                        navigation_chain=navigation_chain,
+                        attempt_timing=attempt_timing,
+                        tab_transition_events=tab_transition_events,
+                        step_label="targeted_recovery_tab_sync",
+                        force=True,
+                    )
                     _dismiss_cookie_or_consent_banner(page)
                     final_url = page.url or targeted_recovery_url
                     title = page.title or title
@@ -2377,6 +2786,8 @@ def _probe_one(
                     classifier_state = classified.get("classifier_state", STATE_UNKNOWN_NON_SUCCESS)
                     reason_codes = list(classified.get("reason_codes", []) or [])
                     snapshot_signal_summary = dict(classified.get("signal_summary") or {})
+                    reclassified_after_detector_fix = bool(classified.get("reclassified_after_detector_fix"))
+                    reclassification_reason = str(classified.get("reclassification_reason") or "")
 
             if (
                 classifier_state not in SUCCESS_STATES
@@ -2570,6 +2981,8 @@ def _probe_one(
         classifier_state = classified.get("classifier_state", STATE_UNKNOWN_NON_SUCCESS)
         reason_codes = list(classified.get("reason_codes", []) or [])
         snapshot_signal_summary = dict(classified.get("signal_summary") or {})
+        reclassified_after_detector_fix = bool(classified.get("reclassified_after_detector_fix"))
+        reclassification_reason = str(classified.get("reclassification_reason") or "")
     else:
         snapshot_signal_summary = {
             "body_text_len": int(snapshot.get("body_text_len", 0) or 0),
@@ -2606,6 +3019,8 @@ def _probe_one(
         "controller_tab_id": str(probe_page_meta.get("controller_tab_id") or ""),
         "probe_tab_id": str(probe_page_meta.get("probe_tab_id") or ""),
         "probe_page_fresh_tab": bool(probe_page_meta.get("fresh_tab")),
+        "tab_transition_events": list(tab_transition_events),
+        "tab_transition_count": len(tab_transition_events),
         "entry_strategy": str(entry_plan.get("entry_strategy") or ""),
         "entry_url": str(entry_plan.get("entry_url") or ""),
         "entry_resolved_url": str(entry_plan.get("entry_resolved_url") or ""),
@@ -2620,6 +3035,10 @@ def _probe_one(
         "entry_preflight_evidence": list(entry_plan.get("entry_preflight_evidence") or []),
         "entry_preflight_http_status": entry_plan.get("entry_preflight_http_status"),
         "entry_browser_open_skipped": bool(entry_browser_open_skipped),
+        "initial_landing_type": initial_landing_type,
+        "shell_recovery_attempted": bool(shell_recovery_attempted),
+        "shell_recovery_strategy": shell_recovery_strategy,
+        "shell_recovery_outcome": shell_recovery_outcome,
         "scheduled_start_ms": int(timing_breakdown.get("scheduled_start_ms", 0) or 0),
         "actual_start_ms": int(timing_breakdown.get("actual_start_ms", 0) or 0),
         "pacing_wait_ms": int(timing_breakdown.get("pacing_wait_ms", 0) or 0),
@@ -2635,6 +3054,8 @@ def _probe_one(
         "direct_pdf_path": direct_pdf_path,
         "direct_pdf_event": dict(direct_pdf_event or {}),
         "legacy_success_like": bool(legacy_success_like),
+        "reclassified_after_detector_fix": bool(reclassified_after_detector_fix),
+        "reclassification_reason": reclassification_reason,
         "signal_summary": snapshot_signal_summary,
         "dom_signature": dom_signature,
         "expected_domains": list(expected_domains),

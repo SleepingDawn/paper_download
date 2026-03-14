@@ -132,6 +132,10 @@ PUBLISHER_HTML_MARKERS = {
     "wiley": ("article-header__title", "article-section__abstract", "citation_journal_title"),
 }
 
+LEGITIMATE_CROSS_HOST_ARTICLE_DOMAINS = {
+    "10.1007": ("onlinelibrary.wiley.com",),
+}
+
 INTERSTITIAL_TITLES = {
     "redirecting",
     "redirecting...",
@@ -251,6 +255,27 @@ ACCESS_GATE_PAYWALL_MARKERS = (
 
 def _clean_space(value: str) -> str:
     return SPACE_RE.sub(" ", str(value or "")).strip()
+
+
+def _is_legitimate_cross_host_article_landing(
+    doi: str,
+    domain: str,
+    *,
+    doi_present: bool,
+    content_populated: bool,
+    has_strong_meta: bool,
+    has_structured_article: bool,
+    publisher_markers: Sequence[str],
+) -> Tuple[bool, str]:
+    doi_norm = str(doi or "").strip().lower()
+    low_domain = str(domain or "").strip().lower()
+    for prefix, allowed_domains in LEGITIMATE_CROSS_HOST_ARTICLE_DOMAINS.items():
+        if not doi_norm.startswith(prefix):
+            continue
+        if any(low_domain.endswith(str(host).lower()) for host in allowed_domains):
+            if doi_present and content_populated and has_strong_meta and (has_structured_article or publisher_markers):
+                return True, f"cross_host_article={prefix}->{low_domain}"
+    return False, ""
 
 
 def _extract_domain(url: str) -> str:
@@ -963,6 +988,15 @@ def classify_landing(
         and (publisher_markers or has_structured_article)
     )
     strong_article_evidence = bool(expected_domain_match and article_payload_evidence)
+    legitimate_cross_host_landing, cross_host_reason = _is_legitimate_cross_host_article_landing(
+        doi=doi,
+        domain=domain,
+        doi_present=doi_present,
+        content_populated=content_populated,
+        has_strong_meta=has_strong_meta,
+        has_structured_article=has_structured_article,
+        publisher_markers=publisher_markers,
+    )
     signal_summary = {
         "doi_present": doi_present,
         "expected_domain_match": expected_domain_match,
@@ -972,6 +1006,7 @@ def classify_landing(
         "main_text_len": main_text_len,
         "article_payload_evidence": article_payload_evidence,
         "strong_article_evidence": strong_article_evidence,
+        "legitimate_cross_host_landing": legitimate_cross_host_landing,
     }
 
     if issue:
@@ -1049,6 +1084,21 @@ def classify_landing(
         expected_domain_match=expected_domain_match,
     )
     if non_success_state != STATE_UNKNOWN_NON_SUCCESS:
+        if non_success_state == STATE_DOMAIN_MISMATCH and legitimate_cross_host_landing:
+            reason_codes.append("reclassified_cross_host_true_landing")
+            if cross_host_reason:
+                reason_codes.append(cross_host_reason)
+            return {
+                "classifier_state": STATE_SUCCESS_LANDING,
+                "reason_codes": sorted(set(reason_codes)),
+                "domain": domain,
+                "expected_domains": list(expected_domains),
+                "article_markers": article_markers,
+                "publisher_markers": publisher_markers,
+                "signal_summary": signal_summary,
+                "reclassified_after_detector_fix": True,
+                "reclassification_reason": "legitimate_cross_host_article_landing",
+            }
         return {
             "classifier_state": non_success_state,
             "reason_codes": sorted(set(reason_codes)),
@@ -1057,16 +1107,22 @@ def classify_landing(
             "article_markers": article_markers,
             "publisher_markers": publisher_markers,
             "signal_summary": signal_summary,
+            "reclassified_after_detector_fix": False,
+            "reclassification_reason": "",
         }
 
     success_conditions = [
         bool(domain) and not domain.endswith("doi.org"),
-        expected_domain_match,
+        expected_domain_match or legitimate_cross_host_landing,
         content_populated,
         title_populated or has_strong_meta,
         has_structured_article or (doi_present and publisher_markers) or (doi_present and has_strong_meta),
     ]
     if all(success_conditions):
+        if legitimate_cross_host_landing:
+            reason_codes.append("reclassified_cross_host_true_landing")
+            if cross_host_reason:
+                reason_codes.append(cross_host_reason)
         return {
             "classifier_state": STATE_SUCCESS_LANDING,
             "reason_codes": sorted(set(reason_codes)),
@@ -1075,6 +1131,8 @@ def classify_landing(
             "article_markers": article_markers,
             "publisher_markers": publisher_markers,
             "signal_summary": signal_summary,
+            "reclassified_after_detector_fix": bool(legitimate_cross_host_landing),
+            "reclassification_reason": "legitimate_cross_host_article_landing" if legitimate_cross_host_landing else "",
         }
 
     reason_codes.append("insufficient_article_signals")
@@ -1086,6 +1144,8 @@ def classify_landing(
         "article_markers": article_markers,
         "publisher_markers": publisher_markers,
         "signal_summary": signal_summary,
+        "reclassified_after_detector_fix": False,
+        "reclassification_reason": "",
     }
 
 
