@@ -16,7 +16,7 @@
 - 저장소 코드/스크립트: `experiment/*.py`, `scripts/*.sh`, `landing_access_repro.py`, `landing_classifier.py`, `tools_exp.py`, `parallel_download.py`
 - git 이력: `codex/linux_exp` 브랜치 최근 커밋
 - 저장소 내부 산출물: `outputs/` 아래 historical run 디렉터리와 seed/profile 흔적
-- 외부 artifact bundle 근거: 사용자 제공 `pilot_20260314_210007_bundle.tar.gz`, `pilot_20260314_213217_bundle.tar.gz`, `pilot_20260314_232524_bundle.tar.gz`, `pilot_20260315_000015_bundle.tar.gz`, `pilot_20260315_004518_bundle.tar.gz`, `pilot_20260315_012307_bundle.tar.gz`
+- 외부 artifact bundle 근거: 사용자 제공 `pilot_20260314_210007_bundle.tar.gz`, `pilot_20260314_213217_bundle.tar.gz`, `pilot_20260314_232524_bundle.tar.gz`, `pilot_20260315_000015_bundle.tar.gz`, `pilot_20260315_004518_bundle.tar.gz`, `pilot_20260315_012307_bundle.tar.gz`, `pilot_20260315_014015_bundle.tar.gz`
 
 주의:
 
@@ -313,6 +313,79 @@
 - 배운 점
   - landing과 download가 다른 의미론을 쓰면 결과 비교와 회귀 판정이 불가능해진다
 
+### 5.11 AIP prebrowser article preflight 제거와 logging 전파 보강
+
+- 최신 문제 재정의
+  - 외부 bundle `pilot_20260315_014015`의 `10.1116/6.0003261`는 landing probe에서 이미
+    - `entry_strategy=aip_official_doi_resolve`
+    - `entry_browser_kind=official_doi_redirect`
+    - `landing_recovery_outcome=challenge_detected_no_retry`
+    로 기록됐다.
+  - 즉 최신 AIP DOI-first/no-retry patch는 landing runtime path에서 실제로 실행됐다.
+  - 그러나 같은 run의 download metadata sidecar에는 `landing_entry_*`가 비어 있어, "patch가 browser/runtime에 적용됨"과 "최종 metadata/summary에 남음"이 분리돼 있었다.
+  - 또한 코드상 `build_aip_safe_entry_plan()`은 browser가 열리기 전에
+    - DOI resolve `GET`
+    - canonical article/article-abstract preflight `GET`
+    를 수행하고 있었다.
+  - `pilot_20260315_014015` download log에는 browser open 전에 이미
+    - `preflight_issue=FAIL_BLOCK`
+    - redirect chain `302:https://doi.org/... -> 403:https://pubs.aip.org/...`
+    가 찍혔다.
+- 새 가설
+  - 최신 AIP 전략은 "DOI-first"로 보였지만 실제로는 browser 앞단에서 AIP article 리소스를 먼저 1~2번 더 치고 있었다.
+  - 이 prebrowser article preflight가 Linux headless/IP trust 조건에서 challenge 압력을 더 키웠을 가능성이 높다.
+  - 따라서 AIP는 canonical article preflight를 기본값에서 제거하고, DOI redirect target은 "location-only" 수준으로만 가볍게 관찰한 뒤 browser에게 실제 landing을 맡기는 쪽이 더 저마찰이다.
+- 구현
+  - `tools_exp.py`
+    - AIP entry plan을 redirect-location-only probe 기본값으로 변경
+    - browser open 전 article preflight `GET`는 기본 비활성화
+    - 새 필드 추가:
+      - `entry_strategy_variant`
+      - `entry_redirect_probe_mode`
+      - `entry_prebrowser_request_count`
+    - 필요 시 env `PDF_BROWSER_LANDING_AIP_ARTICLE_PREFLIGHT=1`로 이전 preflight 동작을 다시 켤 수 있게 유지
+  - `parallel_download.py`
+    - `download_with_drission()`이 반환한 AIP entry/recovery/challenge detail이 final result/CSV/metadata sidecar까지 전파되도록 보강
+  - `landing_access_repro.py`
+    - AIP entry variant/probe mode/prebrowser request count/challenge bool을 landing artifact JSONL 및 artifact sidecar에 기록
+  - `experiment/summarize_linux_headless_suite.py`
+    - landing/download merged summary에 AIP entry variant/probe mode/request count/challenge bool을 추가
+- 통제 검증
+  - 로컬 headless 검증: `outputs/aip_patch_validation_20260315_local/landing/`
+  - 입력 DOI:
+    - `10.1116/6.0004298`
+    - `10.1063/5.0246311`
+  - 조건:
+    - `local_mac` preset
+    - headless Chrome
+    - worker 1
+    - AIP publisher cooldown 45초
+    - `max_nav_attempts=1`
+    - `PDF_BROWSER_LANDING_AIP_ARTICLE_PREFLIGHT=0`
+  - 결과:
+    - `sample_size=2`
+    - `classifier_counts={"success_landing":2}`
+    - 두 DOI 모두
+      - `entry_strategy=aip_official_doi_resolve`
+      - `entry_strategy_variant=doi_redirect_only_no_article_preflight`
+      - `entry_redirect_probe_mode=doi_location_only`
+      - `entry_prebrowser_request_count=1`
+      - `entry_browser_kind=official_doi_redirect`
+      - `challenge_detected=false`
+      - `tab_transition_count=0`
+      - `runtime_blank=false`
+    - 대표 success artifact:
+      - `outputs/aip_patch_validation_20260315_local/landing/artifacts/success/landing_success_10.1116_6.0004298_1773508422474.json`
+      - `outputs/aip_patch_validation_20260315_local/landing/artifacts/success/landing_success_10.1063_5.0246311_1773508492736.json`
+- 관찰 결과
+  - 최신 Linux fail 근거와 새 local validation을 합치면, AIP 실패의 1차 원인은 tab loss가 아니라 "stable landing 전 challenge 발생"으로 보는 해석이 더 강해졌다.
+  - 동시에 기존 DOI-first patch는 실제 runtime path에 적용돼 있었지만, prebrowser article preflight까지 제거된 것은 이번 patch부터다.
+  - download metadata sidecar의 AIP entry field 누락은 browser/runtime 미적용이 아니라 result propagation bug였다.
+- 배운 점
+  - AIP에서 "official DOI-first"라는 이름만으로 충분하지 않다. browser 앞단에서 article을 또 치면 저마찰 진입이 아니다.
+  - `patch exists in code`와 `patch changed runtime behavior`는 artifact/log/sidecar 각각에서 따로 확인해야 한다.
+  - 새 patch는 local headless에서는 의미 있는 안정화 신호를 보였지만, Linux server/headless 동일 조건에서의 재확인은 아직 남아 있다 `[blocked]`
+
 ## 6. Publisher별 결과 요약
 
 ### Elsevier / Cell-family
@@ -341,12 +414,19 @@
   - `pilot_20260315_000015`: `10.1116/6.0003941` challenge
   - `pilot_20260315_004518`: `10.1116/6.0003790` challenge, canonical recovery 두 번 수행
   - `pilot_20260315_012307`: `10.1116/6.0003847` challenge, no-retry + runtime diagnostics 적용
+  - `pilot_20260315_014015`: `10.1116/6.0003261` challenge, DOI-first + no-retry는 runtime에 실제 적용됐지만 browser 앞단 preflight 403이 선행
+  - local validation `outputs/aip_patch_validation_20260315_local/landing/`
+    - `10.1116/6.0004298`: success landing
+    - `10.1063/5.0246311`: success landing
 - 확인된 사실
   - blank screenshot은 현재까지 challenge shell을 더 잘 설명한다
   - no-retry 및 진단 확장은 실제 runtime에 적용됐다
+  - DOI-first patch도 `pilot_20260315_014015` landing runtime path에 실제 적용됐다
+  - 다만 이전 구현은 browser open 전에 article preflight를 수행하고 있었고, 이 부분이 이번에 제거됐다
 - 현재 판단
-  - AIP는 landing 전략이 아직 미완성이다
-  - 최신 코드에는 DOI-first browser entry가 구현돼 있지만, server bundle 기반 성공 확인은 아직 부족하다 `[blocked]`
+  - AIP 최신 Linux 실패는 주로 challenge/interstitial이 stable landing 전에 발생하는 문제로 보이며, tab/page-context loss는 1차 원인으로 보기 어렵다
+  - 이전 "DOI-first"는 실제 runtime에 적용됐지만 browser 앞단 preflight까지 포함돼 있어 충분히 저마찰하지 않았다
+  - 새 redirect-only/no-article-preflight branch는 local headless에서 2/2 success였지만, Linux server 재검증은 아직 부족하다 `[blocked]`
 
 ### Springer / `10.1007_`
 
@@ -378,6 +458,7 @@
 - direct article URL을 browser가 너무 일찍 여는 공격적 진입
 - shell page를 real article page와 구분하지 못하는 오판
 - preflight request 결과와 browser landing 결과를 같은 것으로 보는 해석
+- browser open 전에 같은 AIP article을 먼저 치는 prebrowser preflight
 - blank screenshot을 tab bug로 과잉 해석하는 문제
 - 동일 DOI를 여러 run에서 반복 타격하는 실험 설계
 
@@ -400,6 +481,12 @@
 
 - 의심은 많았지만, AIP latest fail bundle 기준으로는 `total_tab_count=1`, `tab_transition_count=0`, `ready_state=complete`라서 1차 원인으로 보기 어렵다
 - 다만 latest-tab adoption, tab sync, stale context 방어는 Elsevier/AIP 양쪽에서 계속 보강되었다
+
+### runtime/summary 불일치
+
+- `pilot_20260315_014015`에서는 download stderr/log에 AIP DOI-first branch가 찍혔지만 metadata sidecar의 `landing_entry_*`는 비어 있었다
+- 따라서 일부 요약에서는 AIP latest fail이 `challenge_or_interstitial`보다 `blank_or_incomplete` 쪽으로 더 약하게 보일 수 있었다
+- 이번 patch에서 download result propagation을 보강해 이 불일치를 줄였다
 
 ### `local_mac`가 실제로 도움이 된 부분
 
@@ -465,15 +552,21 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 
 - landing/download 공통 entry 의미론
   - `entry_strategy`
+  - `entry_strategy_variant`
+  - `entry_redirect_probe_mode`
+  - `entry_prebrowser_request_count`
   - `entry_url`
   - `entry_resolved_url`
   - `entry_browser_url`
   - `entry_browser_kind`
   - `entry_handoff_url`
+  - `entry_context_url`
+  - `entry_context_kind`
   - `entry_preflight_url`
   - `entry_preflight_issue`
   - `entry_preflight_issue_overridden`
 - landing quality
+  - `challenge_detected`
   - `initial_landing_type`
   - `landing_recovery_attempted`
   - `landing_recovery_strategy`
@@ -505,11 +598,13 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - Elsevier landing은 초기 direct-entry 방식보다 공식 retrieve/handoff 중심으로 개선됨
 - `10.1007_`류 cross-host landing 오분류를 고칠 classifier 경로가 추가됨
 - AIP blank screenshot에 대한 runtime diagnostics와 no-retry challenge 처리가 실제 bundle에 반영됨
+- AIP redirect-only/no-article-preflight branch와 entry request-count logging이 추가됨
+- AIP download metadata/summary 경로에 entry detail/challenge bool 전파가 보강됨
 - landing 쪽 entry/recovery semantics가 download path와 summary에도 반영됨
 
 ### 아직 미검증 또는 근거 부족
 
-- 최신 AIP DOI-first browser entry 전략이 실제 Linux 서버 bundle에서 landing success를 올렸는지 `[blocked]`
+- 최신 AIP redirect-only/no-article-preflight branch가 실제 Linux 서버 bundle에서 landing success를 올렸는지 `[blocked]`
 - Elsevier shell recovery가 "shell-only live case"에서 end-to-end로 회복되는지 `[blocked]`
 - `10.1007_` classifier fix가 server rerun에서 false-failure를 실제로 줄였는지 `[blocked]`
 - attempt ledger 파일 자체의 최신 누적 상태는 현재 로컬 워크스페이스에서 확인되지 않음 `[blocked]`
@@ -521,18 +616,24 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 
 ## 10. 다음 권장 작업
 
-1. 최신 코드 기준으로 server pilot를 다시 실행해 AIP DOI-first entry가 실제 bundle에서 어떻게 기록되는지 확인
+1. 최신 코드 기준으로 server pilot 또는 AIP micro-run을 다시 실행해 redirect-only/no-article-preflight branch가 Linux bundle에서 어떻게 기록되는지 확인
    - 우선 확인 필드:
      - `landing_entry_browser_url`
      - `landing_entry_browser_kind`
+     - `landing_entry_strategy_variant`
+     - `landing_entry_redirect_probe_mode`
+     - `landing_entry_prebrowser_request_count`
      - `landing_entry_preflight_url`
      - `landing_entry_preflight_issue`
-     - `landing_entry_preflight_issue_overridden`
      - `landing_probe_state`
-2. `10.1007_` 계열 DOI를 fresh/low-frequency 케이스로 1건만 다시 검증해 classifier false negative fix를 server artifact로 재확인
-3. Elsevier shell-like case가 다시 나오면 `landing_shell_recovery_*`와 final classifier를 함께 확인해 live recovery 성공 여부를 증거화
-4. 외부 bundle 중 핵심 run의 `suite_summary.json`, `merged_results.csv`, 대표 fail artifact JSON을 `docs/` 또는 별도 `analysis/` 아래 장기 보존 형태로 남길지 결정
-5. 이후 새 실험 제안 시 아래 4개를 항상 같이 제공
+2. `pilot_20260315_014015`와 동일한 Linux/headless 조건에서 fresh AIP DOI 1~2건만 다시 검증해
+   - challenge가 여전히 first article landing 전에 뜨는지
+   - download metadata sidecar에 `landing_entry_*`가 실제로 채워지는지
+   를 확인
+3. `10.1007_` 계열 DOI를 fresh/low-frequency 케이스로 1건만 다시 검증해 classifier false negative fix를 server artifact로 재확인
+4. Elsevier shell-like case가 다시 나오면 `landing_shell_recovery_*`와 final classifier를 함께 확인해 live recovery 성공 여부를 증거화
+5. 외부 bundle 중 핵심 run의 `suite_summary.json`, `merged_results.csv`, 대표 fail artifact JSON을 `docs/` 또는 별도 `analysis/` 아래 장기 보존 형태로 남길지 결정
+6. 이후 새 실험 제안 시 아래 4개를 항상 같이 제공
    - 실행 명령
    - 중간 로그 확인 명령
    - 종료 확인 명령
@@ -575,3 +676,34 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - AIP `10.1116/6.0003847`
   - no-retry patch와 runtime diagnostics가 실제로 적용됨
   - blank screenshot은 challenge shell 해석을 더 강하게 지지
+
+### `pilot_20260315_014015`
+
+- `sample_total=4`
+- landing probe 쪽 AIP `10.1116/6.0003261`
+  - `entry_strategy=aip_official_doi_resolve`
+  - `entry_browser_kind=official_doi_redirect`
+  - `landing_recovery_outcome=challenge_detected_no_retry`
+  - final HTML은 Cloudflare `Just a moment...`
+  - `tab_transition_count=0`, `ready_state=complete`
+- download log 쪽 동일 DOI
+  - AIP DOI-first branch 로그는 찍혔지만 metadata sidecar의 `landing_entry_*`는 비어 있었음
+  - 이 차이로 combined summary는 AIP를 `blank_or_incomplete` 쪽으로 약하게 반영
+
+### `aip_patch_validation_20260315_local`
+
+- 실행 위치: `outputs/aip_patch_validation_20260315_local/landing/`
+- 입력 DOI:
+  - `10.1116/6.0004298`
+  - `10.1063/5.0246311`
+- 결과:
+  - `sample_total=2`
+  - `classifier_counts={"success_landing":2}`
+  - 두 DOI 모두 `entry_strategy_variant=doi_redirect_only_no_article_preflight`
+  - `entry_redirect_probe_mode=doi_location_only`
+  - `entry_prebrowser_request_count=1`
+  - `challenge_detected=false`
+  - success artifact와 HTML/screenshot이 저장됨
+- 해석
+  - 새 AIP branch는 local headless에서 실제 browser runtime에 적용됐고, low-friction DOI landing이 stable article landing으로 이어졌다
+  - 단, Linux server/headless 동일 조건 재검증은 아직 남아 있다 `[blocked]`

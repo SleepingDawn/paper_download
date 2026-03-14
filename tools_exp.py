@@ -2100,6 +2100,68 @@ def _response_redirect_chain_summary(resp) -> list[str]:
     return chain
 
 
+def _is_redirect_status_code(status_code: Any) -> bool:
+    try:
+        code = int(status_code or 0)
+    except Exception:
+        code = 0
+    return code in (301, 302, 303, 307, 308)
+
+
+def _is_doi_redirect_domain(domain: str) -> bool:
+    raw = str(domain or "").strip().lower()
+    if not raw:
+        return False
+    return raw in {"doi.org", "www.doi.org", "dx.doi.org"} or raw.endswith(".doi.org")
+
+
+def _resolve_redirect_target_without_fetching_body(
+    session: requests.Session,
+    start_url: str,
+    headers: Dict[str, str],
+    *,
+    timeout: float = 10.0,
+    max_hops: int = 4,
+) -> Dict[str, Any]:
+    current_url = str(start_url or "").strip()
+    redirect_chain: list[str] = []
+    request_count = 0
+    final_url = ""
+    error = ""
+
+    for _ in range(max(1, int(max_hops))):
+        if not current_url:
+            break
+        try:
+            resp = session.get(current_url, headers=headers, allow_redirects=False, timeout=timeout)
+        except Exception as exc:
+            error = _exc_message(exc)[:200]
+            break
+        request_count += 1
+        status = getattr(resp, "status_code", None)
+        label = f"{int(status)}:{current_url}" if status else current_url
+        if label not in redirect_chain:
+            redirect_chain.append(label)
+        location = str(resp.headers.get("location") or resp.headers.get("Location") or "").strip()
+        if not _is_redirect_status_code(status) or not location:
+            final_url = str(getattr(resp, "url", "") or current_url).strip()
+            break
+        next_url = urljoin(current_url, location)
+        next_domain = _extract_domain(next_url)
+        if next_url and not _is_doi_redirect_domain(next_domain):
+            redirect_chain.append(f"location:{next_url}")
+            final_url = next_url
+            break
+        current_url = next_url
+
+    return {
+        "final_url": final_url,
+        "redirect_chain_summary": redirect_chain,
+        "request_count": int(request_count),
+        "error": error,
+    }
+
+
 def _normalize_elsevier_entry_url(url: str, prefer_abs: bool = True) -> str:
     raw = str(url or "").strip()
     if not raw:
@@ -2167,11 +2229,16 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
     doi_norm = _doi_from_doi_url(doi_url)
     plan = {
         "entry_strategy": "",
+        "entry_strategy_variant": "",
+        "entry_redirect_probe_mode": "",
+        "entry_prebrowser_request_count": 0,
         "entry_url": "",
         "entry_resolved_url": "",
         "entry_browser_url": "",
         "entry_browser_kind": "",
         "entry_handoff_url": "",
+        "entry_context_url": "",
+        "entry_context_kind": "",
         "entry_redirect_chain_summary": [],
         "entry_fallback_used": False,
         "entry_fallback_reason": "",
@@ -2188,6 +2255,7 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
         return plan
 
     plan["entry_strategy"] = "aip_official_doi_resolve"
+    plan["entry_strategy_variant"] = "doi_redirect_only_no_article_preflight"
     prefer_abstract = os.getenv("PDF_BROWSER_LANDING_AIP_PREFER_ABSTRACT", "1").strip().lower() in ("1", "true", "yes", "on")
     browser_doi_first = os.getenv("PDF_BROWSER_LANDING_AIP_BROWSER_ENTRY", "doi").strip().lower() in (
         "1",
@@ -2197,6 +2265,12 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
         "doi",
         "doi_first",
     )
+    article_preflight_enabled = os.getenv("PDF_BROWSER_LANDING_AIP_ARTICLE_PREFLIGHT", "0").strip().lower() in (
+        "1",
+        "true",
+        "yes",
+        "on",
+    )
     headers = {
         "User-Agent": _resolve_best_browser_ua(),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -2205,17 +2279,41 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
 
     try:
         session = requests.Session()
-        resolve_resp = session.get(str(doi_url or "").strip(), headers=headers, allow_redirects=True, timeout=10)
+        resolve_meta = _resolve_redirect_target_without_fetching_body(
+            session,
+            str(doi_url or "").strip(),
+            headers,
+            timeout=10.0,
+            max_hops=4,
+        )
     except Exception as exc:
         plan["entry_browser_open_skipped"] = True
         plan["entry_preflight_issue"] = "PRECHECK_RESOLVE_FAILED"
         plan["entry_preflight_evidence"] = [f"resolve_exception={_exc_message(exc)[:200]}"]
         return plan
 
-    resolve_html = str(resolve_resp.text or "")
-    resolve_final_url = str(resolve_resp.url or "").strip()
+    resolve_html = ""
+    resolve_final_url = str(resolve_meta.get("final_url") or "").strip()
     plan["entry_resolved_url"] = resolve_final_url
-    plan["entry_redirect_chain_summary"] = _response_redirect_chain_summary(resolve_resp)
+    plan["entry_redirect_chain_summary"] = list(resolve_meta.get("redirect_chain_summary") or [])
+    plan["entry_redirect_probe_mode"] = "doi_location_only"
+    plan["entry_prebrowser_request_count"] = int(resolve_meta.get("request_count", 0) or 0)
+
+    if not resolve_final_url:
+        resolve_error = str(resolve_meta.get("error") or "").strip()
+        plan["entry_redirect_probe_mode"] = "fallback_follow_redirects_get"
+        try:
+            resolve_resp = session.get(str(doi_url or "").strip(), headers=headers, allow_redirects=True, timeout=10)
+        except Exception as exc:
+            plan["entry_browser_open_skipped"] = True
+            plan["entry_preflight_issue"] = "PRECHECK_RESOLVE_FAILED"
+            plan["entry_preflight_evidence"] = [f"resolve_exception={resolve_error or _exc_message(exc)[:200]}"]
+            return plan
+        resolve_html = str(resolve_resp.text or "")
+        resolve_final_url = str(resolve_resp.url or "").strip()
+        plan["entry_resolved_url"] = resolve_final_url
+        plan["entry_redirect_chain_summary"] = _response_redirect_chain_summary(resolve_resp)
+        plan["entry_prebrowser_request_count"] = int(plan.get("entry_prebrowser_request_count", 0) or 0) + 1
 
     candidate_url = ""
     fallback_reason = ""
@@ -2288,59 +2386,68 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
         plan["entry_preflight_evidence"] = ["missing_aip_entry_url"]
         return plan
 
-    try:
-        preflight_resp = session.get(
-            preflight_url,
-            headers={**headers, "Referer": str(doi_url or "").strip()},
-            allow_redirects=True,
-            timeout=10,
-        )
-    except Exception as exc:
-        plan["entry_browser_open_skipped"] = True
-        plan["entry_preflight_issue"] = "PRECHECK_REQUEST_FAILED"
-        plan["entry_preflight_evidence"] = [f"preflight_exception={_exc_message(exc)[:200]}"]
-        return plan
-
-    preflight_html = str(preflight_resp.text or "")
-    preflight_title = _extract_html_title(preflight_html)
-    preflight_final_url = str(preflight_resp.url or preflight_url).strip()
-    preflight_issue, preflight_evidence = detect_access_issue(
-        title=preflight_title,
-        html=preflight_html,
-        http_status=getattr(preflight_resp, "status_code", None),
-        url=preflight_final_url,
-        domain="",
-    )
-    plan["entry_preflight_http_status"] = int(getattr(preflight_resp, "status_code", 0) or 0) or None
-    plan["entry_preflight_url"] = preflight_final_url
-    plan["entry_preflight_title"] = preflight_title[:240]
-    plan["entry_preflight_html"] = preflight_html
-    plan["entry_preflight_issue"] = str(preflight_issue or "")
-    plan["entry_preflight_evidence"] = list(dict.fromkeys(list(preflight_evidence or [])))
-
+    plan["entry_preflight_url"] = preflight_url
     entry_domain = _extract_domain(preflight_url)
     safe_domain = bool(entry_domain) and any(
         entry_domain == host or entry_domain.endswith(f".{host}") for host in AIP_ARTICLE_HOST_MARKERS
     )
-    if preflight_issue == "FAIL_DOI_NOT_FOUND":
-        plan["entry_browser_open_skipped"] = True
+
+    if article_preflight_enabled and safe_domain:
+        plan["entry_strategy_variant"] = "doi_redirect_only_with_article_preflight"
+        plan["entry_redirect_probe_mode"] = str(plan.get("entry_redirect_probe_mode") or "fallback_follow_redirects_get")
+        try:
+            preflight_resp = session.get(
+                preflight_url,
+                headers={**headers, "Referer": str(doi_url or "").strip()},
+                allow_redirects=True,
+                timeout=10,
+            )
+        except Exception as exc:
+            plan["entry_browser_open_skipped"] = True
+            plan["entry_preflight_issue"] = "PRECHECK_REQUEST_FAILED"
+            plan["entry_preflight_evidence"] = [f"preflight_exception={_exc_message(exc)[:200]}"]
+            return plan
+        preflight_html = str(preflight_resp.text or "")
+        preflight_title = _extract_html_title(preflight_html)
+        preflight_final_url = str(preflight_resp.url or preflight_url).strip()
+        preflight_issue, preflight_evidence = detect_access_issue(
+            title=preflight_title,
+            html=preflight_html,
+            http_status=getattr(preflight_resp, "status_code", None),
+            url=preflight_final_url,
+            domain="",
+        )
+        plan["entry_preflight_http_status"] = int(getattr(preflight_resp, "status_code", 0) or 0) or None
+        plan["entry_preflight_url"] = preflight_final_url
+        plan["entry_preflight_title"] = preflight_title[:240]
+        plan["entry_preflight_html"] = preflight_html
+        plan["entry_preflight_issue"] = str(preflight_issue or "")
+        plan["entry_preflight_evidence"] = list(dict.fromkeys(list(preflight_evidence or [])))
+        plan["entry_prebrowser_request_count"] = int(plan.get("entry_prebrowser_request_count", 0) or 0) + 1
+        if preflight_issue == "FAIL_DOI_NOT_FOUND":
+            plan["entry_browser_open_skipped"] = True
+        else:
+            plan["entry_safe_to_proceed"] = not bool(preflight_issue)
     elif not safe_domain:
         plan["entry_browser_open_skipped"] = True
         if not plan["entry_preflight_issue"]:
             plan["entry_preflight_issue"] = "PRECHECK_UNSAFE_ENTRY_DOMAIN"
             plan["entry_preflight_evidence"] = [f"entry_domain={entry_domain or 'unknown'}"]
     else:
-        plan["entry_safe_to_proceed"] = not bool(preflight_issue)
+        plan["entry_safe_to_proceed"] = True
 
     if logger and plan["entry_strategy"]:
         logger.info(
-            "        [AIP] entry_strategy=%s, browser_url=%s, preflight_url=%s, safe_to_proceed=%s, browser_open_skipped=%s"
+            "        [AIP] entry_strategy=%s, variant=%s, browser_url=%s, preflight_url=%s, safe_to_proceed=%s, browser_open_skipped=%s, redirect_probe_mode=%s, prebrowser_request_count=%s"
             % (
                 plan["entry_strategy"],
+                plan["entry_strategy_variant"] or "",
                 plan["entry_browser_url"] or doi_url,
                 preflight_url,
                 bool(plan["entry_safe_to_proceed"]),
                 bool(plan["entry_browser_open_skipped"]),
+                plan["entry_redirect_probe_mode"] or "",
+                int(plan.get("entry_prebrowser_request_count", 0) or 0),
             )
         )
         if plan["entry_redirect_chain_summary"]:
@@ -5160,11 +5267,16 @@ def _entry_plan_detail(plan: Dict[str, Any]) -> Dict[str, Any]:
     entry_plan = dict(plan or {})
     return {
         "entry_strategy": str(entry_plan.get("entry_strategy") or ""),
+        "entry_strategy_variant": str(entry_plan.get("entry_strategy_variant") or ""),
+        "entry_redirect_probe_mode": str(entry_plan.get("entry_redirect_probe_mode") or ""),
+        "entry_prebrowser_request_count": int(entry_plan.get("entry_prebrowser_request_count", 0) or 0),
         "entry_url": str(entry_plan.get("entry_url") or ""),
         "entry_browser_url": str(entry_plan.get("entry_browser_url") or ""),
         "entry_browser_kind": str(entry_plan.get("entry_browser_kind") or ""),
         "entry_handoff_url": str(entry_plan.get("entry_handoff_url") or ""),
         "entry_resolved_url": str(entry_plan.get("entry_resolved_url") or ""),
+        "entry_context_url": str(entry_plan.get("entry_context_url") or ""),
+        "entry_context_kind": str(entry_plan.get("entry_context_kind") or ""),
         "entry_redirect_chain_summary": list(entry_plan.get("entry_redirect_chain_summary") or []),
         "entry_fallback_used": bool(entry_plan.get("entry_fallback_used")),
         "entry_fallback_reason": str(entry_plan.get("entry_fallback_reason") or ""),
@@ -5555,6 +5667,9 @@ def download_with_drission(
             "browser_session_decision_reason": str(session_plan.get("session_decision_reason") or ""),
             "browser_profile_name": str(session_plan.get("profile_name") or ""),
             "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
+            "landing_challenge_detected": bool(
+                landing_state == "challenge_or_block" or str(reason or "") in {"FAIL_BLOCK", "FAIL_CAPTCHA"}
+            ),
             "landing_recovery_attempted": landing_recovery_attempted,
             "landing_recovery_strategy": landing_recovery_strategy,
             "landing_recovery_outcome": landing_recovery_outcome,

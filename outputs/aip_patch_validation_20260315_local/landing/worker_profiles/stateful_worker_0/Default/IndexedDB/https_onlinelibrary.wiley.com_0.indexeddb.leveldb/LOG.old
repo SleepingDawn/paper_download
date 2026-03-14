@@ -1,0 +1,7 @@
+2026/02/09-13:08:13.780 a136 Reusing MANIFEST /Users/seyong/Library/Application Support/Google/Chrome/Default/IndexedDB/https_onlinelibrary.wiley.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/02/09-13:08:13.780 a136 Recovering log #3
+2026/02/09-13:08:13.781 a136 Reusing old log /Users/seyong/Library/Application Support/Google/Chrome/Default/IndexedDB/https_onlinelibrary.wiley.com_0.indexeddb.leveldb/000003.log 
+2026/02/09-13:08:13.800 a136 Level-0 table #5: started
+2026/02/09-13:08:13.801 a136 Level-0 table #5: 2947 bytes OK
+2026/02/09-13:08:13.801 a136 Delete type=0 #3
+2026/02/09-13:08:13.802 a12c Manual compaction at level-0 from '\x00\x02\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at (end)

@@ -1,0 +1,14 @@
+2026/02/02-18:45:07.716 a3aa4 Reusing MANIFEST /Users/seyong/Library/Application Support/Google/Chrome/Default/IndexedDB/https_www.kayak.co.kr_0.indexeddb.leveldb/MANIFEST-000001
+2026/02/02-18:45:07.716 a3aa4 Recovering log #30
+2026/02/02-18:45:07.716 a3aa4 Reusing old log /Users/seyong/Library/Application Support/Google/Chrome/Default/IndexedDB/https_www.kayak.co.kr_0.indexeddb.leveldb/000030.log 
+2026/02/02-18:45:07.716 a3aa4 Delete type=2 #28
+2026/02/02-18:45:07.722 a3aac Level-0 table #35: started
+2026/02/02-18:45:07.723 a3aac Level-0 table #35: 540 bytes OK
+2026/02/02-18:45:07.724 a3aac Delete type=0 #30
+2026/02/02-18:45:07.725 a3aac Manual compaction at level-0 from '\x00\x0b\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0c\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0b\x00\x00\x05' @ 197 : 1
+2026/02/02-18:45:07.725 a3aac Compacting 1@0 + 1@1 files
+2026/02/02-18:45:07.726 a3aac Generated table #36@0: 28 keys, 871 bytes
+2026/02/02-18:45:07.726 a3aac Compacted 1@0 + 1@1 files => 871 bytes
+2026/02/02-18:45:07.726 a3aac compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/02/02-18:45:07.726 a3aac Delete type=2 #35
+2026/02/02-18:45:07.727 a3aac Manual compaction at level-0 from '\x00\x0b\x00\x00\x05' @ 197 : 1 .. '\x00\x0c\x00\x00\x00' @ 0 : 0; will stop at (end)

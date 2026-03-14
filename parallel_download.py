@@ -661,33 +661,7 @@ def _single_download_attempt(
                 return_detail=True,
                 artifact_root=artifact_dir,
             )
-        if dr.get("ok"):
-            return {
-                **result,
-                "status": "Success",
-                "reason": REASON_SUCCESS,
-                "method": "drission",
-                "success": True,
-                "stage": dr.get("stage", "drission"),
-                "domain": dr.get("domain", ""),
-                "landing_attempted": bool(dr.get("landing_attempted")),
-                "landing_success": bool(dr.get("landing_success")),
-                "landing_state": str(dr.get("landing_state") or "not_attempted"),
-                "landing_url": str(dr.get("landing_url") or ""),
-                "landing_title": str(dr.get("landing_title") or ""),
-                "browser_session_mode": str(dr.get("browser_session_mode") or ""),
-                "browser_session_source": str(dr.get("browser_session_source") or ""),
-                "browser_session_decision_reason": str(dr.get("browser_session_decision_reason") or ""),
-                "browser_profile_name": str(dr.get("browser_profile_name") or ""),
-                "browser_user_data_dir": str(dr.get("browser_user_data_dir") or ""),
-            }
-        return {
-            **result,
-            "reason": _normalize_reason(dr.get("reason"), dr.get("http_status")),
-            "stage": dr.get("stage", "drission"),
-            "evidence": dr.get("evidence", ["download_failed"]) + [json.dumps({"trace": attempt_trace}, ensure_ascii=False)],
-            "domain": dr.get("domain", ""),
-            "http_status": dr.get("http_status"),
+        dr_common = {
             "landing_attempted": bool(dr.get("landing_attempted")),
             "landing_success": bool(dr.get("landing_success")),
             "landing_state": str(dr.get("landing_state") or "not_attempted"),
@@ -698,6 +672,50 @@ def _single_download_attempt(
             "browser_session_decision_reason": str(dr.get("browser_session_decision_reason") or ""),
             "browser_profile_name": str(dr.get("browser_profile_name") or ""),
             "browser_user_data_dir": str(dr.get("browser_user_data_dir") or ""),
+            "landing_challenge_detected": bool(dr.get("landing_challenge_detected")),
+            "entry_strategy": str(dr.get("entry_strategy") or ""),
+            "entry_strategy_variant": str(dr.get("entry_strategy_variant") or ""),
+            "entry_redirect_probe_mode": str(dr.get("entry_redirect_probe_mode") or ""),
+            "entry_prebrowser_request_count": int(dr.get("entry_prebrowser_request_count", 0) or 0),
+            "entry_url": str(dr.get("entry_url") or ""),
+            "entry_browser_url": str(dr.get("entry_browser_url") or ""),
+            "entry_browser_kind": str(dr.get("entry_browser_kind") or ""),
+            "entry_handoff_url": str(dr.get("entry_handoff_url") or ""),
+            "entry_resolved_url": str(dr.get("entry_resolved_url") or ""),
+            "entry_context_url": str(dr.get("entry_context_url") or ""),
+            "entry_context_kind": str(dr.get("entry_context_kind") or ""),
+            "entry_redirect_chain_summary": list(dr.get("entry_redirect_chain_summary") or []),
+            "entry_fallback_used": bool(dr.get("entry_fallback_used")),
+            "entry_fallback_reason": str(dr.get("entry_fallback_reason") or ""),
+            "entry_preflight_url": str(dr.get("entry_preflight_url") or ""),
+            "entry_preflight_issue": str(dr.get("entry_preflight_issue") or ""),
+            "entry_preflight_evidence": list(dr.get("entry_preflight_evidence") or []),
+            "entry_preflight_http_status": dr.get("entry_preflight_http_status"),
+            "entry_preflight_issue_overridden": bool(dr.get("entry_preflight_issue_overridden")),
+            "entry_browser_open_skipped": bool(dr.get("entry_browser_open_skipped")),
+            "landing_recovery_attempted": bool(dr.get("landing_recovery_attempted")),
+            "landing_recovery_strategy": str(dr.get("landing_recovery_strategy") or ""),
+            "landing_recovery_outcome": str(dr.get("landing_recovery_outcome") or ""),
+        }
+        if dr.get("ok"):
+            return {
+                **result,
+                "status": "Success",
+                "reason": REASON_SUCCESS,
+                "method": "drission",
+                "success": True,
+                "stage": dr.get("stage", "drission"),
+                "domain": dr.get("domain", ""),
+                **dr_common,
+            }
+        return {
+            **result,
+            "reason": _normalize_reason(dr.get("reason"), dr.get("http_status")),
+            "stage": dr.get("stage", "drission"),
+            "evidence": dr.get("evidence", ["download_failed"]) + [json.dumps({"trace": attempt_trace}, ensure_ascii=False)],
+            "domain": dr.get("domain", ""),
+            "http_status": dr.get("http_status"),
+            **dr_common,
         }
 
     publisher_key = (publisher or "").lower()
@@ -1607,12 +1625,18 @@ def main(
     df["browser_session_decision_reason"] = [str(r.get("browser_session_decision_reason") or "") for r in final_results]
     df["browser_profile_name"] = [str(r.get("browser_profile_name") or "") for r in final_results]
     df["browser_user_data_dir"] = [str(r.get("browser_user_data_dir") or "") for r in final_results]
+    df["landing_challenge_detected"] = [bool(r.get("landing_challenge_detected")) for r in final_results]
     df["landing_entry_strategy"] = [str(r.get("entry_strategy") or "") for r in final_results]
+    df["landing_entry_strategy_variant"] = [str(r.get("entry_strategy_variant") or "") for r in final_results]
+    df["landing_entry_redirect_probe_mode"] = [str(r.get("entry_redirect_probe_mode") or "") for r in final_results]
+    df["landing_entry_prebrowser_request_count"] = [int(r.get("entry_prebrowser_request_count", 0) or 0) for r in final_results]
     df["landing_entry_url"] = [str(r.get("entry_url") or "") for r in final_results]
     df["landing_entry_browser_url"] = [str(r.get("entry_browser_url") or "") for r in final_results]
     df["landing_entry_browser_kind"] = [str(r.get("entry_browser_kind") or "") for r in final_results]
     df["landing_entry_handoff_url"] = [str(r.get("entry_handoff_url") or "") for r in final_results]
     df["landing_entry_resolved_url"] = [str(r.get("entry_resolved_url") or "") for r in final_results]
+    df["landing_entry_context_url"] = [str(r.get("entry_context_url") or "") for r in final_results]
+    df["landing_entry_context_kind"] = [str(r.get("entry_context_kind") or "") for r in final_results]
     df["landing_entry_preflight_url"] = [str(r.get("entry_preflight_url") or "") for r in final_results]
     df["landing_entry_redirect_chain_summary"] = [
         json.dumps(list(r.get("entry_redirect_chain_summary") or []), ensure_ascii=False) for r in final_results

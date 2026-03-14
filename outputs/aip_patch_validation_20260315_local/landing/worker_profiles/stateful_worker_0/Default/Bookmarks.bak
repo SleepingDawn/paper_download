@@ -1,0 +1,679 @@
+{
+   "checksum": "5b33c43d23f97d6043748b94e18ce4a7",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "children": [ {
+               "children": [ {
+                  "date_added": "13304010356124282",
+                  "date_last_used": "0",
+                  "guid": "0f0b7428-7400-4f3c-9a3c-6fbb760c6447",
+                  "id": "23",
+                  "name": "Direct Patterning of Colloidal Quantum Dots with Adaptable Dual-Ligand Surface | Research Square",
+                  "type": "url",
+                  "url": "https://www.researchsquare.com/article/rs-1472258/v1"
+               }, {
+                  "date_added": "13304010356124353",
+                  "date_last_used": "0",
+                  "guid": "e4e9b24d-d8e8-49a6-800d-31b87b1f2490",
+                  "id": "24",
+                  "name": "Direct Patterning of Colloidal Nanocrystals via Thermally Activated Ligand Chemistry",
+                  "type": "url",
+                  "url": "https://pubs.acs.org/doi/pdf/10.1021/acsnano.2c04033"
+               }, {
+                  "date_added": "13304010356124428",
+                  "date_last_used": "0",
+                  "guid": "27354b29-20f8-4d31-a32e-128740411140",
+                  "id": "25",
+                  "name": "Microsoft Word - SI_nn-2022-04033u.R4",
+                  "type": "url",
+                  "url": "https://pubs.acs.org/doi/suppl/10.1021/acsnano.2c04033/suppl_file/nn2c04033_si_001.pdf"
+               }, {
+                  "date_added": "13304010356124472",
+                  "date_last_used": "0",
+                  "guid": "7065373a-b824-4c52-bb64-b62c3fa1c079",
+                  "id": "26",
+                  "name": "Direct Wavelength-Selective Optical and Electron-Beam Lithography of Functional Inorganic Nanomaterials",
+                  "type": "url",
+                  "url": "https://pubs.acs.org/doi/pdf/10.1021/acsnano.9b05491"
+               }, {
+                  "date_added": "13304010356124533",
+                  "date_last_used": "0",
+                  "guid": "63998247-ecd4-49b2-9152-6c19d6e63e14",
+                  "id": "27",
+                  "name": "Palazon, F.; Akkerman, Q. A.; Prato, M.; Manna, L.... - Google Scholar",
+                  "type": "url",
+                  "url": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Palazon%2C+F.%3B+Akkerman%2C+Q.+A.%3B+Prato%2C+M.%3B+Manna%2C+L.+X-Ray+Lithography+on+Perovskite+Nanocrystals+Films%3A+From+Patterning+with+Anion-Exchange+Reactions+to+Enhanced+Stability+in+Air+and+Water.+ACS+Nano+2016%2C+10%2C+1224%E2%88%921230.&btnG="
+               } ],
+               "date_added": "13304010356124238",
+               "date_last_used": "0",
+               "date_modified": "13304010356124533",
+               "guid": "318378ae-d119-4773-ac00-a3b550d5f67c",
+               "id": "22",
+               "name": "08-03-바로 읽어야할 논문",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "date_added": "13304010412820309",
+                  "date_last_used": "0",
+                  "guid": "e37b0f75-04b9-40ba-9e35-17bb160a1f47",
+                  "id": "29",
+                  "name": "‪Moon Sung Kang‬ - ‪Google Scholar‬",
+                  "type": "url",
+                  "url": "https://scholar.google.com/citations?hl=en&user=W6iE1-QAAAAJ&view_op=list_works&sortby=pubdate"
+               }, {
+                  "date_added": "13304010412820383",
+                  "date_last_used": "0",
+                  "guid": "367f6572-1b8a-46d2-861e-7c1bc6fd6a4a",
+                  "id": "30",
+                  "name": "‪Hao Zhang (张昊)‬ - ‪Google Scholar‬",
+                  "type": "url",
+                  "url": "https://scholar.google.com/citations?hl=en&user=PU8PbG4AAAAJ&view_op=list_works&sortby=pubdate"
+               }, {
+                  "date_added": "13304010412820458",
+                  "date_last_used": "0",
+                  "guid": "64933eba-3d12-425a-a6a5-482124fe25f1",
+                  "id": "31",
+                  "name": "‪Dmitri Talapin‬ - ‪Google Scholar‬",
+                  "type": "url",
+                  "url": "https://scholar.google.com/citations?hl=en&user=UfgJCP8AAAAJ&view_op=list_works&sortby=pubdate"
+               }, {
+                  "date_added": "13304010412820497",
+                  "date_last_used": "0",
+                  "guid": "53e0ab86-9c09-4050-8a1e-daa8645d5ab7",
+                  "id": "32",
+                  "name": "Direct optical patterning of perovskite nanocrystals with ligand cross-linkers",
+                  "type": "url",
+                  "url": "https://www.science.org/doi/full/10.1126/sciadv.abm8433"
+               }, {
+                  "date_added": "13304010412820536",
+                  "date_last_used": "0",
+                  "guid": "bd7e1efb-011d-4043-ac35-6bc4f31e567e",
+                  "id": "33",
+                  "name": "Universal direct patterning of colloidal quantum dots by (extreme) ultraviolet and electron beam lithography - Nanoscale (RSC Publishing) DOI:10.1039/D0NR01077D",
+                  "type": "url",
+                  "url": "https://pubs.rsc.org/en/content/articlehtml/2020/nr/d0nr01077d"
+               }, {
+                  "date_added": "13304010412820609",
+                  "date_last_used": "0",
+                  "guid": "eb5d4897-ea27-4f56-85d7-4a6098c9807b",
+                  "id": "34",
+                  "name": "Simple one-pot synthesis and high-resolution patterning of perovskite quantum dots using a photocurable ligand",
+                  "type": "url",
+                  "url": "https://pubs.rsc.org/en/content/articlepdf/2021/cc/d1cc05892d"
+               }, {
+                  "date_added": "13304010412820653",
+                  "date_last_used": "0",
+                  "guid": "2c7a4907-967d-4f2d-88c0-1123410c8290",
+                  "id": "35",
+                  "name": "Giant Stability Enhancement of CsPbX3 Nanocrystal Films by Plasma-Induced Ligand Polymerization",
+                  "type": "url",
+                  "url": "https://pubs.acs.org/doi/pdf/10.1021/acsami.9b12591"
+               } ],
+               "date_added": "13304010412820219",
+               "date_last_used": "0",
+               "date_modified": "13304010412820653",
+               "guid": "fd277b5d-ee9b-469d-8203-1323b59bbec6",
+               "id": "28",
+               "name": "08-03-조금 걸려도 될 논문",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "children": [ {
+                     "date_added": "13304357887797247",
+                     "date_last_used": "0",
+                     "guid": "2bc39839-a81d-45a1-a1fd-0f539211df79",
+                     "id": "38",
+                     "name": "Kawata, S.; Sun, H.; Tanaka, T.; Takada, L. Finer... - Google Scholar",
+                     "type": "url",
+                     "url": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Kawata%2C+S.%3B+Sun%2C+H.%3B+Tanaka%2C+T.%3B+Takada%2C+L.+Finer+Features+for+Functional+Microdevices.+Nature+2001%2C+412%2C+697%E2%88%92698.&btnG="
+                  }, {
+                     "date_added": "13304357887797363",
+                     "date_last_used": "0",
+                     "guid": "ff0af185-c706-4f22-ac46-4bf5b9fbb130",
+                     "id": "39",
+                     "name": "Direct Patterning of Colloidal Quantum Dots with Adaptable Dual-Ligand Surface | Research Square",
+                     "type": "url",
+                     "url": "https://www.researchsquare.com/article/rs-1472258/v1"
+                  }, {
+                     "date_added": "13304357887797423",
+                     "date_last_used": "0",
+                     "guid": "b1bce8c2-d6f4-40d7-8929-5172f71498ca",
+                     "id": "40",
+                     "name": "Microsoft Word - SI_nn-2022-04033u.R4",
+                     "type": "url",
+                     "url": "https://pubs.acs.org/doi/suppl/10.1021/acsnano.2c04033/suppl_file/nn2c04033_si_001.pdf"
+                  }, {
+                     "date_added": "13304357887797478",
+                     "date_last_used": "0",
+                     "guid": "552b60d9-5e04-46ab-ac4b-728c0f2ad59c",
+                     "id": "41",
+                     "name": "Direct Wavelength-Selective Optical and Electron-Beam Lithography of Functional Inorganic Nanomaterials",
+                     "type": "url",
+                     "url": "https://pubs.acs.org/doi/pdf/10.1021/acsnano.9b05491"
+                  }, {
+                     "date_added": "13304357887797531",
+                     "date_last_used": "0",
+                     "guid": "aaa12dc0-00bb-442f-b67d-fe9e0a4c0c09",
+                     "id": "42",
+                     "name": "Thermal scanning probe lithography",
+                     "type": "url",
+                     "url": "https://www.researchgate.net/profile/Giuseppe-Maria-De-Peppo/publication/360389590_Thermal_scanning_probe_lithography/links/629cbfa9c660ab61f8645475/Thermal-scanning-probe-lithography.pdf"
+                  }, {
+                     "date_added": "13304357887797596",
+                     "date_last_used": "0",
+                     "guid": "2f01993f-4ab5-4f6a-b063-374338c92b39",
+                     "id": "43",
+                     "name": "Albisetti, E.; Calo, A.; Zanut, A.; Zheng, X.; de... - Google Scholar",
+                     "type": "url",
+                     "url": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Albisetti%2C+E.%3B+Calo%2C+A.%3B+Zanut%2C+A.%3B+Zheng%2C+X.%3B+de+Peppo%2C+G.+M.%3B+Riedo%2C+E.+Thermal+Scanning+Probe+Lithography.+Nat.+Rev.+Methods+Primers+2022%2C+2+%281%29%2C+32&btnG="
+                  } ],
+                  "date_added": "13304357887797148",
+                  "date_last_used": "0",
+                  "date_modified": "13304357887797596",
+                  "guid": "24e48101-d9cd-4343-81fd-359ca1c79d91",
+                  "id": "37",
+                  "name": "새 폴더",
+                  "type": "folder"
+               }, {
+                  "date_added": "13304706212300007",
+                  "date_last_used": "0",
+                  "guid": "8649ea58-f676-4652-9fa1-49b2f093a6b7",
+                  "id": "44",
+                  "name": "",
+                  "type": "url",
+                  "url": "https://human.ksa.hs.kr/?page_id=39"
+               } ],
+               "date_added": "13304357778489255",
+               "date_last_used": "0",
+               "date_modified": "13304706212300007",
+               "guid": "c99861d3-7720-443a-87fa-3d7b9a0d4fd1",
+               "id": "36",
+               "name": "0804 중요",
+               "type": "folder"
+            }, {
+               "date_added": "13304357794486178",
+               "date_last_used": "0",
+               "guid": "218a95ba-818d-4bc8-adb1-7be4e51e756f",
+               "id": "45",
+               "name": "Albisetti, E.; Calo, A.; Zanut, A.; Zheng, X.; de... - Google Scholar",
+               "type": "url",
+               "url": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Albisetti%2C+E.%3B+Calo%2C+A.%3B+Zanut%2C+A.%3B+Zheng%2C+X.%3B+de+Peppo%2C+G.+M.%3B+Riedo%2C+E.+Thermal+Scanning+Probe+Lithography.+Nat.+Rev.+Methods+Primers+2022%2C+2+%281%29%2C+32&btnG="
+            }, {
+               "children": [ {
+                  "date_added": "13304769942434889",
+                  "date_last_used": "0",
+                  "guid": "a14f6123-917f-42fe-95e5-e027211d7f8d",
+                  "id": "47",
+                  "name": "M.Wang, W.Yueh, K.Gonsalves. J. Fluorine Chem., 129,... - Google Scholar",
+                  "type": "url",
+                  "url": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&as_vis=1&q=M.Wang%2C+W.Yueh%2C+K.Gonsalves.+J.+Fluorine+Chem.%2C+129%2C+607+%282008%29&btnG="
+               }, {
+                  "date_added": "13304769942435019",
+                  "date_last_used": "0",
+                  "guid": "495d2a51-e15e-4538-ba6c-79903413c259",
+                  "id": "48",
+                  "name": "ja",
+                  "type": "url",
+                  "url": "https://www.jstage.jst.go.jp/article/photopolymer1988/15/3/15_3_453/_pdf/-char/ja"
+               }, {
+                  "date_added": "13304769942435091",
+                  "date_last_used": "0",
+                  "guid": "b7e6c77d-866f-4354-ba76-03e55273242b",
+                  "id": "49",
+                  "name": "Low temperature, ion-enhanced, implanted photoresist removal",
+                  "type": "url",
+                  "url": "https://avs.scitation.org/doi/pdf/10.1116/1.2178366"
+               }, {
+                  "date_added": "13304769942435175",
+                  "date_last_used": "0",
+                  "guid": "0a041fd1-9a87-4387-8fdc-57dbea8ccfa1",
+                  "id": "50",
+                  "name": "IEEE Xplore Full-Text PDF:",
+                  "type": "url",
+                  "url": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1309605"
+               }, {
+                  "date_added": "13304769942435249",
+                  "date_last_used": "0",
+                  "guid": "41038e25-e8da-4fa2-9107-5cd2eeb06567",
+                  "id": "51",
+                  "name": "'swelling'의 검색결과 : 네이버 영어사전",
+                  "type": "url",
+                  "url": "https://en.dict.naver.com/#/search?query=swelling&range=all"
+               }, {
+                  "date_added": "13304769942435359",
+                  "date_last_used": "0",
+                  "guid": "ac887687-403f-45b6-b6a9-8d999e9b139d",
+                  "id": "52",
+                  "name": "[Photolithography (2)/S.M.T.] Positive / Negative Lithography",
+                  "type": "url",
+                  "url": "https://lineho.tistory.com/23"
+               }, {
+                  "date_added": "13304769942435459",
+                  "date_last_used": "0",
+                  "guid": "bf426bc6-49b8-4093-8c3b-84e7f43952a0",
+                  "id": "53",
+                  "name": "perfluoroalkyl - Google Search",
+                  "type": "url",
+                  "url": "https://www.google.com/search?q=perfluoroalkyl&ei=1Az2YsmjK9H4hwOUjaeQBQ&ved=0ahUKEwjJ3aLq7sD5AhVR_GEKHZTGCVIQ4dUDCA4&uact=5&oq=perfluoroalkyl&gs_lcp=Cgdnd3Mtd2l6EAMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEOgcIABBHELADOgcIABCwAxBDOgQIABBDOgsILhCABBDHARDRAzoICC4QgAQQ1AI6BQguEIAEOgUIABCRAjoHCAAQgAQQCkoECEEYAEoECEYYAFCUBliMGGDqGWgBcAF4AIABlwGIAewNkgEEMC4xNJgBAKABAcgBCsABAQ&sclient=gws-wiz"
+               }, {
+                  "date_added": "13304769942435579",
+                  "date_last_used": "0",
+                  "guid": "294e6f4d-16f3-41e5-a641-deb8e9f781f5",
+                  "id": "54",
+                  "name": "북마크",
+                  "type": "url",
+                  "url": "chrome://bookmarks/?id=34"
+               } ],
+               "date_added": "13304769942434722",
+               "date_last_used": "0",
+               "date_modified": "13304769942435579",
+               "guid": "91ca329e-dd71-4093-b471-cb90f91d1c6c",
+               "id": "46",
+               "name": "0812 PAG 논문",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "date_added": "13305113627619453",
+                  "date_last_used": "0",
+                  "guid": "6fd19b93-e69d-4c71-963b-2af13f2671dd",
+                  "id": "56",
+                  "name": "‪Moon Sung Kang‬ - ‪Google Scholar‬",
+                  "type": "url",
+                  "url": "https://scholar.google.com/citations?hl=en&user=W6iE1-QAAAAJ&view_op=list_works&sortby=pubdate"
+               }, {
+                  "date_added": "13305113627619533",
+                  "date_last_used": "0",
+                  "guid": "2be33cfc-153d-41f1-b33e-edc23aa0ac4b",
+                  "id": "57",
+                  "name": "‪Hao Zhang (张昊)‬ - ‪Google Scholar‬",
+                  "type": "url",
+                  "url": "https://scholar.google.com/citations?hl=en&user=PU8PbG4AAAAJ&view_op=list_works&sortby=pubdate"
+               }, {
+                  "date_added": "13305113627619592",
+                  "date_last_used": "0",
+                  "guid": "448e6bbb-8df8-427c-888d-556feae551fd",
+                  "id": "58",
+                  "name": "‪Dmitri Talapin‬ - ‪Google Scholar‬",
+                  "type": "url",
+                  "url": "https://scholar.google.com/citations?hl=en&user=UfgJCP8AAAAJ&view_op=list_works&sortby=pubdate"
+               }, {
+                  "date_added": "13305113627619634",
+                  "date_last_used": "0",
+                  "guid": "d1bb8369-2644-40f0-bd28-79e48eaf2cb3",
+                  "id": "59",
+                  "name": "Direct optical patterning of perovskite nanocrystals with ligand cross-linkers | Science Advances",
+                  "type": "url",
+                  "url": "https://www.science.org/doi/full/10.1126/sciadv.abm8433"
+               }, {
+                  "date_added": "13305113627619684",
+                  "date_last_used": "0",
+                  "guid": "6c427c23-d48c-46cb-be0a-72f9f5fbe867",
+                  "id": "60",
+                  "name": "Universal direct patterning of colloidal quantum dots by (extreme) ultraviolet and electron beam lithography - Nanoscale (RSC Publishing) DOI:10.1039/D0NR01077D",
+                  "type": "url",
+                  "url": "https://pubs.rsc.org/en/content/articlehtml/2020/nr/d0nr01077d"
+               }, {
+                  "date_added": "13305113627619736",
+                  "date_last_used": "0",
+                  "guid": "5a55c77f-9954-4b89-b2b4-15d792f18938",
+                  "id": "61",
+                  "name": "Simple one-pot synthesis and high-resolution patterning of perovskite quantum dots using a photocurable ligand",
+                  "type": "url",
+                  "url": "https://pubs.rsc.org/en/content/articlepdf/2021/cc/d1cc05892d"
+               } ],
+               "date_added": "13305113627619305",
+               "date_last_used": "0",
+               "date_modified": "13305113627619736",
+               "guid": "70e9a67e-ab27-4b14-8ff3-100178bf4ad8",
+               "id": "55",
+               "name": "0816 ",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "date_added": "13305397215402335",
+                  "date_last_used": "0",
+                  "guid": "a0783be8-a0dc-4c9b-8024-0c990cacaf31",
+                  "id": "63",
+                  "name": "Simple one-pot synthesis and high-resolution patterning... - Google Scholar",
+                  "type": "url",
+                  "url": "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Simple+one-pot+synthesis+and+high-resolution+patterning+of+perovskite+quantum+dots+using+a+photocurable+ligand&btnG="
+               }, {
+                  "date_added": "13305397215402535",
+                  "date_last_used": "0",
+                  "guid": "4826f791-69b8-41e8-9616-d5a4f541d69c",
+                  "id": "64",
+                  "name": "Binary Heterogeneous Superlattices Assembled from Quantum Dots and Gold Nanoparticles with DNA | Journal of the American Chemical Society",
+                  "type": "url",
+                  "url": "https://pubs.acs.org/doi/full/10.1021/ja111542t"
+               }, {
+                  "date_added": "13305397215402603",
+                  "date_last_used": "0",
+                  "guid": "d8107a74-e5ac-461d-8b77-115bbae43775",
+                  "id": "65",
+                  "name": "untitled",
+                  "type": "url",
+                  "url": "https://www.nature.com/articles/srep08149.pdf"
+               }, {
+                  "date_added": "13305397215402650",
+                  "date_last_used": "0",
+                  "guid": "1890a972-f235-4fe1-8bfb-5b9f3dac3c8e",
+                  "id": "66",
+                  "name": "pubs.acs.org",
+                  "type": "url",
+                  "url": "https://pubs.acs.org/doi/full/10.1021/acs.nanolett.1c03400"
+               }, {
+                  "date_added": "13305397215402683",
+                  "date_last_used": "0",
+                  "guid": "076cea63-ec73-42c6-a806-4a5a639022a9",
+                  "id": "67",
+                  "name": "Sci-Hub | Binary Heterogeneous Superlattices Assembled from Quantum Dots and Gold Nanoparticles with DNA | 10.1021/ja111542t",
+                  "type": "url",
+                  "url": "https://sci-hub.hkvisa.net/10.1021/ja111542t"
+               }, {
+                  "date_added": "13305397215402737",
+                  "date_last_used": "0",
+                  "guid": "a5d7227e-34ce-49b2-8daa-8e51d3a14935",
+                  "id": "68",
+                  "name": "Sci-Hub - search proxy to download article",
+                  "type": "url",
+                  "url": "https://sci-hub.hkvisa.net/https://pubs.rsc.org/en/content/articlelanding/2021/cc/d1cc05892d/unauth"
+               }, {
+                  "date_added": "13305397215402790",
+                  "date_last_used": "0",
+                  "guid": "e829728b-d1e9-46d1-a4df-953a595944f5",
+                  "id": "69",
+                  "name": "Direct optical patterning of perovskite nanocrystals with ligand cross-linkers | Science Advances",
+                  "type": "url",
+                  "url": "https://www.science.org/doi/full/10.1126/sciadv.abm8433"
+               }, {
+                  "date_added": "13305397215402829",
+                  "date_last_used": "0",
+                  "guid": "f5875a01-fa37-4393-87ff-fd77e72e99c4",
+                  "id": "70",
+                  "name": "Universal direct patterning of colloidal quantum dots by (extreme) ultraviolet and electron beam lithography - Nanoscale (RSC Publishing) DOI:10.1039/D0NR01077D",
+                  "type": "url",
+                  "url": "https://pubs.rsc.org/en/content/articlehtml/2020/nr/d0nr01077d"
+               }, {
+                  "date_added": "13305397215402872",
+                  "date_last_used": "0",
+                  "guid": "b7176fab-f00d-452b-bd20-5030abdf512c",
+                  "id": "71",
+                  "name": "Simple one-pot synthesis and high-resolution patterning of perovskite quantum dots using a photocurable ligand",
+                  "type": "url",
+                  "url": "http://lps3.pubs.rsc.org.libproxy.snu.ac.kr/en/content/articlepdf/2021/cc/d1cc05892d"
+               }, {
+                  "date_added": "13305397215402913",
+                  "date_last_used": "0",
+                  "guid": "373f9ea9-542b-4824-a8de-9778e60d4511",
+                  "id": "72",
+                  "name": "서울대학교 중앙도서관 – Seoul National University Library",
+                  "type": "url",
+                  "url": "https://lib.snu.ac.kr/?pds_handle=19820221023261148988302874838525182&calling_system=primo&institute"
+               } ],
+               "date_added": "13305397215402240",
+               "date_last_used": "0",
+               "date_modified": "13305397215402913",
+               "guid": "e901fc67-571b-4199-94cd-2df6fee784d1",
+               "id": "62",
+               "name": "0820",
+               "type": "folder"
+            } ],
+            "date_added": "13304010356123462",
+            "date_last_used": "0",
+            "date_modified": "13304357794486178",
+            "guid": "376a15c9-b35f-4d82-a27f-b033e59a25a8",
+            "id": "21",
+            "name": "OSML",
+            "type": "folder"
+         } ],
+         "date_added": "13412944021224467",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "북마크바",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "children": [ {
+               "date_added": "13381828098439913",
+               "date_last_used": "0",
+               "guid": "6ed46110-3eef-47ae-a948-c93a801e17e1",
+               "id": "6",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "엑셀에서 카카오톡 메세지 보내기 #2 — 엑셀 VBA 공부",
+               "type": "url",
+               "url": "https://cookiexcel.tistory.com/44"
+            }, {
+               "date_added": "13381827822428988",
+               "date_last_used": "0",
+               "guid": "5395fa9b-0485-480c-8768-bfe1b09eb022",
+               "id": "7",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "엑셀 카카오톡 보내기 VBA",
+               "type": "url",
+               "url": "https://www.oppadu.com/%EC%97%91%EC%85%80-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EB%AC%B8%EC%9E%90-%EB%B3%B4%EB%82%B4%EA%B8%B0/#download"
+            }, {
+               "date_added": "13385974686510267",
+               "date_last_used": "0",
+               "guid": "9ddcfac3-0cab-40b7-ad18-0cdb07b6db9a",
+               "id": "8",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "기계적 거동 공부 - Chapter 2 요약",
+               "type": "url",
+               "url": "https://chatgpt.com/g/g-p-67c92f67acf48191a4009fcf5a7892ec-gigyejeog-geodong-gongbu/c/67cd3070-4a80-800d-b37a-934a9393c694"
+            }, {
+               "date_added": "13388584127288945",
+               "date_last_used": "0",
+               "guid": "913a77dc-b877-48d1-ae8a-c533d871dfed",
+               "id": "9",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Multiple grain growth events in liquid phase sintering",
+               "type": "url",
+               "url": "file:///C:/Users/seyon/Downloads/A_1017943524875.pdf"
+            }, {
+               "date_added": "13413021676959203",
+               "date_last_used": "0",
+               "guid": "d56cbdb2-9cec-420e-b4c4-765313514147",
+               "id": "74",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Plasma Etch of IGZO Thin Film and IGZO/SiO2 Interface Diffusion in Inductively Coupled CH4/Ar Plasmas",
+               "type": "url",
+               "url": "https://onlinelibrary.wiley.com/doi/epdf/10.1002/ppap.202400186"
+            }, {
+               "date_added": "13414501294248651",
+               "date_last_used": "0",
+               "guid": "9cc926e6-6fa0-44ca-ab87-8dfcb4651568",
+               "id": "78",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "칭다오항공 유한회사",
+               "type": "url",
+               "url": "https://www.qdairlines.com/book/flightSearch"
+            }, {
+               "date_added": "13414762329811708",
+               "date_last_used": "0",
+               "guid": "4a484c1b-1526-4b2d-893c-60e6b13aaa3d",
+               "id": "76",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "",
+               "type": "url",
+               "url": "https://gemini.google.com/u/1/app/bdbe8f40bec0116f?is_sa=1&is_sa=1&android-min-version=301356232&ios-min-version=322.0&campaign_id=bkws&utm_source=sem&utm_medium=paid-media&utm_campaign=bkws&pt=9008&mt=8&ct=p-growth-sem-bkws&gclsrc=aw.ds&gad_source=1&gad_campaignid=20437330476&gbraid=0AAAAApk5Bhm6I9B75g1ROIo_gRq4yjj1R&gclid=Cj0KCQiAnJHMBhDAARIsABr7b84DXdBrhsa0R4RWUC291xVuzvj6MSHTW9JncbhQjemNEH8ip7hDJ-MaApY-EALw_wcB&pageId=none"
+            }, {
+               "date_added": "13414762494188707",
+               "date_last_used": "0",
+               "guid": "9be36d39-3154-4256-859e-0eaad4e9656c",
+               "id": "77",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "26W_MDIL - 서버 사용법",
+               "type": "url",
+               "url": "https://chatgpt.com/g/g-p-69685f2cea20819197ccfb924050562a-26w-mdil/c/698412f4-ae44-83a9-8683-b1702e2a5668"
+            } ],
+            "date_added": "13381828108394880",
+            "date_last_used": "0",
+            "date_modified": "13414762494188707",
+            "guid": "b832c9ac-ac8b-40b0-9771-be76bc273372",
+            "id": "5",
+            "name": "엑셀 VBA 카카오톡 자동보내기",
+            "type": "folder"
+         }, {
+            "date_added": "13365659907284871",
+            "date_last_used": "0",
+            "guid": "510ddb6d-2718-449e-93a0-2c356f1842dd",
+            "id": "10",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": ":: 서울대학교 포털시스템 ::",
+            "type": "url",
+            "url": "https://my.snu.ac.kr/"
+         }, {
+            "date_added": "13365660062338952",
+            "date_last_used": "0",
+            "guid": "71ed9077-82a0-4b99-be26-4a589b3a93d8",
+            "id": "11",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Materials Science & Engineering, Seoul National University",
+            "type": "url",
+            "url": "https://mse.snu.ac.kr/"
+         }, {
+            "date_added": "13365660118917405",
+            "date_last_used": "0",
+            "guid": "b0583398-2b5e-4970-9839-5f8d658e6cb7",
+            "id": "12",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "연합전공인공지능 - 서울대학교 연합전공 인공지능",
+            "type": "url",
+            "url": "https://imai.snu.ac.kr/"
+         }, {
+            "date_added": "13365660249386003",
+            "date_last_used": "0",
+            "guid": "fe451879-4b8a-4864-85b9-4fb1d6a949c5",
+            "id": "13",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "서울대학교 중앙도서관 – Seoul National University Library",
+            "type": "url",
+            "url": "https://lib.snu.ac.kr/"
+         }, {
+            "date_added": "13365664128972534",
+            "date_last_used": "0",
+            "guid": "90c7a669-f58d-4a11-931e-a93168151401",
+            "id": "14",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "홈 - 넷플릭스",
+            "type": "url",
+            "url": "https://www.netflix.com/browse"
+         }, {
+            "date_added": "13371320413323808",
+            "date_last_used": "0",
+            "guid": "15b04fe6-87bc-4a1d-8cbd-c9570b26ea80",
+            "id": "15",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "대시보드",
+            "type": "url",
+            "url": "https://myetl.snu.ac.kr/"
+         }, {
+            "date_added": "13373343553949325",
+            "date_last_used": "0",
+            "guid": "c9ac4791-08f7-4408-a810-51ceac49ea5b",
+            "id": "16",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "F",
+            "type": "url",
+            "url": "file:///C:/Users/seyon/Downloads/StructuralElasticandElectronicPropertiesofAl-CuIntermetallicsfromFirst-PrinciplesCalculations.pdf"
+         }, {
+            "date_added": "13373617492582093",
+            "date_last_used": "0",
+            "guid": "ceda8ae1-ffa0-4194-be8a-c896c25cb8bf",
+            "id": "17",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "CS 161",
+            "type": "url",
+            "url": "https://web.stanford.edu/class/archive/cs/cs161/cs161.1236/homework.html"
+         }, {
+            "date_added": "13374050815422470",
+            "date_last_used": "0",
+            "guid": "835c954d-35b6-49ed-913f-0303e3761953",
+            "id": "18",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "18.06 Linear Algebra",
+            "type": "url",
+            "url": "https://web.mit.edu/18.06/www/old.shtml"
+         }, {
+            "date_added": "13376386850830493",
+            "date_last_used": "0",
+            "guid": "0a9ff459-ff00-4c84-8691-3abffe4f6b2a",
+            "id": "19",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "서울대학교 아시아연구소 | SNUAC",
+            "type": "url",
+            "url": "https://snuac.snu.ac.kr/"
+         }, {
+            "date_added": "13379016813946188",
+            "date_last_used": "0",
+            "guid": "5d5be0a8-e67c-4aa7-b6af-717034479631",
+            "id": "20",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "`",
+            "type": "url",
+            "url": "https://www.gwanak.go.kr/site/gwanak/04/10402020300002016071302.jsp"
+         } ],
+         "date_added": "13412944021224467",
+         "date_last_used": "0",
+         "date_modified": "13379016813946188",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "기타 북마크",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13412944021224467",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "모바일 북마크",
+         "type": "folder"
+      }
+   },
+   "sync_metadata": "CtoBCrkBCIiBAhKyASAAkgGdAQqaAQoOY2hyb21lX3N5bmNfYm0SBTUxIWJtGhIJXLBEdYJKBgARXLBEdYJKBgAiMQmgrzl1gkoGABACGeE0VS5sRQ/qIAEqGTUxIWJtOjE1MDg0MjY5NzMwMDkzMjA2ODYiMQmgrzl1gkoGABACGeE0VS5sRQ/qIAEqGTUxIWJtOjE1MDg0MjY5NzMwMDkzMjA2ODYprI9GdYJKBgDqAQwIkbyvzAYQgIiUpwMSACoYcVJIR2NzY1hpbWpFaVZwNENKWnVqQT09SAMS7AEIRxLnAQocb09IVjFLNGw5cVdIMVQ1dnV5b3ozcEVPT2dVPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54aTN6Z2pYU2U1TmpQeTdBZTRTYnBPZTVNMjNtQUhrZ252SkU4RjhDVTdNcm9SQ0JVZWVZSDZTLzduQVhobURoQ1hydWhKQT09GAAgACgAMLz+6bih0/kCOKqxjLarMECqsYy2qzBKHEFvUVl4T21rRXdveXRKVVRvK1JoZlJXSHRXYz1aHyId/zI4UnRVbEV3Vi9JRm9tbXJTak40djlUTlozQT1lAAAAABLsAQhBEucBChx3YklHVEdNMDFlZTlJQ2JNQTVUUnJLTDAwdFk9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhnTFpKUmZDNmZRRjVzQkt5SnkvTTZzSk5vcXpIT2FIZ3ZNa0RDQjFRZE1idmFEcDM0dnp3TFNLQ3JOb0VUbFloVktvUkRRPT0YACAAKAAwvP7puKHT+QI4qrGMtqswQKqxjLarMEocZzBSWVpCUnpMV2doNnNZRTh1ZzJSMHIxZjA4PVofIh3dZ0pONGg1K0d3RXFxSnd6VXhXbW9PejlVWTlvPWUAAAAAEuwBCEoS5wEKHHdxQnZRd04wbWkrT1loU3ZOcDRXeEE2RE15Zz0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeFFING1KRk9ZYjNBSEJPR3pNdThwVjR6OUFGNENtVE9zMnJHbTZZNEhOd3BvTTAxRUhSVURJNzdvRW83T0dRRXlSVDQ2TXc9PRgAIAIoAjCvrqCAw4+SAzigm7itvDNAwZu4rbwzShxEdjB3M3pnUkRXd0hhazBodkZyRUZCNHBqWHM9Wh8iHfdNL1U1UjZtUlN4RXVQajk2UmN6STRmckI0U3c9ZZl6EW8S7AEIIhLnAQocb2gzdkRKM3k1Q2NkVytUekdmeEtCTGlWTDBVPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54dEloRi9Ua0lMUzdMVk9PMEgrMFNwQ2tkdFR5YUVDTjlmd08yQXVCd21TakVodmYwN1cxbmVLeVlqNmdDZUU1MW1NZm4xUT09GAAgACgAMI7o26/s0fkCOJTW6KCmMECU1uigpjBKHEk0MzBzU1ZhaitFYjlyb0ltVGdSWERIa1BJMD1aHyId9mViTU53N0hSbEVKUUZLSWliRGJOUFZmMTFsbz1lg9U6qBLrAQg/EuYBChxRdWhXN3BYaWc1MXh4QWFFSGdtb3hucFU1Q289EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5Tnh1RHBXWkh5cHZ0cWE1VGVNYUdXVklrRWt0aHdiZzZEckVxQldBQU55Z1FJTEQ2WitDNkhndE41UkhuanNmUGpaaE1nR1hnPT0YACAAKAAwvP7puKHT+QI4qrGMtqswQKqxjLarMEocMG5adW9TVlMwWGpPMTZJMlBBQ2I0VjhQRFQwPVoeIhx1eFpuNnZNWmxSbndkaEJqTnpvejYvZHNLZFk9ZXt3CH0S7AEIHBLnAQocdzRQR2hRMnFkaW5ZN2psMjFuS2JoNlVTVlpBPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54MnlSbU50akVvc0tRd3pjMFd1blc1N3dLWUdGMUxyZ0xZU20rbzcrRVRkQXhrZWtyK1lqK0lDS2toUmFqdk9JTlhkMFlrdz09GAAgACgAMLqB5bLwqvkCOJTW6KCmMECU1uigpjBKHHNPZmEvVkl6dnUzczBFOGVZTGJBQklzejRqQT1aHyIdpk1lVkVoOWxvUW9qaHB4ak9qSEhSSDJGMnp1MD1lAAAAABLrAQgWEuYBChxRSDJHNEt1c2lKdjA5SEJUZmpGN0FGRnUreWc9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhOUllBRTB4cW0xT3VVcks3bUlJWFl5aVgxbmF1QzFZRWoxM0xWY1NhMjZqZDFNRGl1VVVXSnpGMk1jcFNnbjNoWU04L1lRPT0YACAAKAAwreSipPCq+QI4nJvloKYwQJyb5aCmMEocQnh3eWhFQVlHa0doeHRiV1gvWnZOV2hLY0pnPVoeIhxNbUluMUxOUUhRcG1paTc2REZzU2hGY0djQVE9ZQAAAAAS7AEIQhLnAQocUU9XcG9GdVdmRUhONU5wK0F2SW9xNDVmYW1FPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54c2Y0YnRxUkhRSDFZMXJXdzJPREhBeDNqV0FGdEtyYkFWSTk5TTB0M3pSOTE1VkpPSHM0UGprbTJ5RjV3N3A0bzZxZDZYQT09GAAgACgAMLz+6bih0/kCOKqxjLarMECqsYy2qzBKHDJlOGlLcTdpVkVtRWJBdU1STVY0MTdpbkJLRT1aHyId7jlzeU53cG1PV3JjZjZ0RmthZ0p5UVBrV2dmYz1lAAAAABLsAQhEEucBChxVVitDM0dZU2FBQXlxWXc2UkRtZGlFYXFqVWs9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhQdlZVOG5YbmJxdC9yNE9tbmdRZXoyYXA3TGRCNTJ2K3phZUlTSzFFcGZja0pIdXNWWkVpZlBkaVNXbFlwVXc0Skg5UklnPT0YACAAKAAwvP7puKHT+QI4qrGMtqswQKqxjLarMEocY0cvaTk5QUsvd0NaK3pFZUdkSGRRUzZaUWd3PVofIh37Vk9rczdCZFEvakVKak1hZld4ZytQS0pJVndZPWU62wupEuwBCEYS5wEKHDFSRXVQTWw5cUxXRXlWTnZzVkVLWXJaTlRQOD0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeGtROWhwcE1UNTU2eEtpdUdxalp0QS9nZVJCc3ljV2F6UFh2YjBqSjA4QTZxdGNSdWFIdzlPYjBsdWtwNFV3SFg2RHZvNEE9PRgAIAAoADC8/um4odP5AjiqsYy2qzBAqrGMtqswShxhTCtlK1NJay9rdFR1V3VGWjZLaTFla1VoaGM9Wh8iHf5mNFlPSDBYc25pNzR2RTBGMmNEd1V6UGFiTVk9ZZ8jpSsS7AEIPRLnAQocaDF5TGZNekxVVGEwaVBDK0tMNHFGeDZXZmlvPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54UGhwRGVHT0RLM1plNkh2KytVcUdWbzVkVkZJVXVldHlZc3FDc2JuLzNvMDVXaTdOZ2V0YzJRcDRQUDBtOVE2SUg3a0ZGdz09GAAgACgAMI7o26/s0fkCOOPH766qMEDjx++uqjBKHGhBa2xXaGlSeE9wdVBSTUxRNnpObTlTZVNsUT1aHyId+0tnSGcreEwyeXBZdmFORVZaYlc0ZDJXZTdhUT1lg9U6qBLsAQg8EucBChxqN1Z1RmpuZS9abkliVzg0c3JPRVVRRmFEMHc9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TngrWTZYck9NZXFSU29FSFdBcHJNbEZXNWZOaDFVWUkrSk1jL29KUHoyZW83eE82eFA4ekJYSXhRMTdVRCtSN1l5WDRGSWhRPT0YACAAKAAwuLTXr/nN+QI448fvrqowQOPH766qMEocdjM2NUNJNktrenFnN3pXYUpZM3FtMGFlN3JRPVofIh32VHNPYlF5RlhQL3VCNnl5OEZsaXN0amIrOFhJPWWfI6UrEuwBCD4S5wEKHG5yMEZ6a2MzRFlSRmFiT2Vuc1Y3bE5jUDVrND0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeE9maWxwK21qZlpiU0d4Qkx6eVl0Qk5wbmxHL0tjNGFYRGJ5czZBUFRUZmdIOXFZeWk0dGdLa051c2VDb2RJNktuMGxYSlE9PRgAIAAoADDuysO4odP5AjiqsYy2qzBAqrGMtqswShxLSXo4eU93L3cyTVBCWk9xUmN6eExGWDVjTGM9Wh8iHf52dk5JaWtmaXBTMUswOFYrWjRNZEVMQW1PL1U9ZQAAAAAS7AEIKRLnAQocUnVXbXY0Z2hiZjlzaGhBSm5wTU9pVDZwdFpzPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54b29pL3dkNEFyZ1JJanQrOVFHblY4MjYyWVA4YmNlOGt0aGlDVTNmMmVwNmFHbmpKb0ozMGo5UlZxSnZ2NXphbk1YL3h2Zz09GAAgACgAMLC83uv+tPkCOLXuwManMEC17sDGpzBKHC83SEQ3cXc3Y0sxUHNJTVFuZmkrNXJQUFRoQT1aHyId7WV4NStaNHBYQWxVNyswOHJ0YlRoY0hEZlBEND1lCiqx9RLsAQg7EucBChxIV0xHQmd0Qm1HU2lRNjZFZ2dsRDhJbEd2cTQ9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhYTW5vNkNDOFlZYWhwSUZLV3FuSTh5ckhweDFCVnZEdm1RTUp3RjJWL2FmNmkrWmg1WDZ4RDRkc3M2bTlHMHJOVG1vUzR3PT0YACAAKAAwuLTXr/nN+QI448fvrqowQOPH766qMEocZ1ZPSUd4OHROVUd5V1J5YmtJa2lzUFRjN3Q0PVofIh3tMGNMTXE3QUxjejBoajhWL2V0Q2k2TjJXc1hBPWXHC1l6EuwBCDUS5wEKHDBKVlUwa0N4dndialRub1dBakExMW03d2NQaz0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeFJYWHFXMnhtWmZpM2VRYWxiVXJqdjMrR3ZZbHgzMWdEZ0IvZlpxSmkyODhDU3RjY3FhMXZaRXFLNmZ4cnloNGZ3VVBZbVE9PRgAIAAoADDE9enu/cD5Ajij1/6KqTBAo9f+iqkwShxCbDJKZkQrTmVYRnl0ZStwNmUvZDcwOWxCWnc9Wh8iHftKbXh2UlpzSWJwemJMVmxHR1NzcURTOWR5MWM9ZRAw/+QS7AEINhLnAQoca1g4d2RWWXlTbjNZNU4yZGt1dkx2dGJ6K0N3PRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54ZWJ4cW1HRmJwZ21lMDRhQVFQVm11TnZuMTQ5U2FodWFHalZQUVZGY1BRR1NqZXBqK3c0RHZTaytuR2pTWktSZXRSbUlMUT09GAAgACgAMMT16e79wPkCOKPX/oqpMECj1/6KqTBKHHhEYVZzLzFDTXFpWmc4Zm1Tcmc5SkoybnRTMD1aHyId/WdKcUZOZU9YOG1nQVB6V3NSZHcrc2dwSDFiaz1lLZO4jxLsAQg0EucBChxmN0Z4eGpGZE9lb2pEZzF4OE5mN0NoVHdhZzg9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhCQTB3b2MxTmlENHlBMVk1U1AzUm44RHZwdmFsK0ZSTG9EK2EvRlowQVEyY05IRVBZTTJyS3Q3anhBZ3pHMWdkYXJCT3lBPT0YACAAKAAwxPXp7v3A+QI4o9f+iqkwQKPX/oqpMEocajdGM2Y1eVF0ZmV3U0N1RThxMkdjU3BzcFN3PVofIh33V1BoWSthRzR1d1hmRzV5WmZYbGpDbWZsSmVRPWXP+FkCEusBCDAS5gEKHFhyWk9GaDhnUHlzZEdnSitMNFBMQ3JOV0ZWZz0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeG5sZ0Z1Q0VYaDlTOW1mQTAvUmU2cnpYaEhuQTBTSDNkTjN3TGN5OWZTNUIzNS9Ld2Z4WFdkZlNMS2ZFM2hZUTY1VUdlZUE9PRgAIAAoADDE9enu/cD5Ajij1/6KqTBAo9f+iqkwShxwSmFrR3ZpZmRGRzA2TVl3V1NoamFwOTJjYTA9Wh4iHHRYcUh3Y20ydGNpN2VkMWhuajNFTm9DeDQ3ST1li1ZQZBLsAQgIEucBChwrTGNrd0pDUExuaEtpd29qbVJ5dUdiRTF4a3c9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhjWUZWaEhZbkFCRmZCOEtVcWtxVHYwYXZJMzhwdUtKQ3gyUGFmRE40SGsxUmhvUVBockk5ZlloT1ZqMC9BTWhLYmYzMFVnPT0YACAAKAAwn8S73uKGjAM4rva2zNcyQK72tszXMkocUERnMVFBL1JqMldyQzNCdXpwZzQyazlhZkdBPVofIh3ec1NQTHpHNk4yam9rN0dMWktFcU0yRFpmQStjPWU4FCTFEuwBCEAS5wEKHGFDQlM3Q1o0VEdHdEFGYU15bTI5QUdLekF6WT0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeEhkbnQ2WHkrd0NaQmxBMi8wZGNxdDRFOHJMNitzUlZTVGxoRFNOS0o4WTFrUjMwM3pHMXJMbUlXbEFQcE50cy9KbENTNnc9PRgAIAEoATCg3+app9CSAziqsYy2qzBAhuPt0sQzShxrOWZ5TDdPSUJ6VTduQ2lVMnFqRG9kM1g0c1U9Wh8iHbpXZTVyVk5OemhaZ0xRMTAvUi9IOC9kUUFORGs9ZSkogJ8S7AEIHxLnAQoca0tYS2hiQ3RtcVFNbkt4czFJd3FGelcwWWZvPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54ODF2VHFmYnRaU1VJc3hadVFtWG8xMW82VzBSTG1Rb042biszMzNNVTVBeTJZSllLUGZENzQ2S1lxRzFUa0NNbVNBK0g1dz09GAAgACgAMLqB5bLwqvkCOJTW6KCmMECU1uigpjBKHEx3RlovSUx2QUF4Y1JlN2RrSFFzZmFZNVVGdz1aHyIdsUF0bng3RnNjRnRCVy9va0VMSXVvT3B0WGQ5ST1le3cIfRLrAQgvEuYBChxOcmpkYVQwWmt1WllPR0FuVC9kWG10N252SEU9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhiME9HUVBBQ21NSEY0SW5sbUFCUmhOV1EvZmNOa3VmVkYwR0hmMGV2S2Iwc0piaS9hZm52L3d3bWxmTGtCc1VuckM2SWNRPT0YACAAKAAwxPXp7v3A+QI4otf+iqkwQKLX/oqpMEocN21FZ1RzQ2xHb1VUVnlaeXVHSFRNT1M4dGZBPVoeIhxhSytOeWJ2TGIzSGt5bUIxcXdWR29rcVNLR2c9ZXt3CH0S7AEILhLnAQoccTRkc2k5Y1hTUERnbGx5QVl5Y3FFU1pQN2RnPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54WG5iS0hsVXlJVERCTjZBa2ZXWENCZ3BjWmQxV0xuV3RNVGZheU9abGM3ZmRtSWVWcENBT3NXSjZXL0hxSkFwZXQ5ZVBGUT09GAAgACgAMMT16e79wPkCOKLX/oqpMECi1/6KqTBKHFdYcm95NjlYaC9obldtdHc2ZGNuUW5zcnEvWT1aHyId+ml0K0ZNSTE5K2o4QXFaY1RVbEVDOXhjNVN6OD1lAAAAABLrAQgsEuYBChw3Q2NNV1ZIV2VwWWRvS0lBamZ3cXl6NmlSaG89EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhUekwzSkhCYjZMNDM3OUdrcVZlLzNReCs4Vkh5Q2d3bVdhYWR5Qld4NjRuYmtodFdWOUladzlndzQ1eENvWWFSYU80dU5BPT0YACAAKAAw3bjwuZC/+QI4zPPM7KgwQMzzzOyoMEoceVlQWVhHVUJCVFJlOGNsaGRoWUhNbUE1YjJJPVoeIhxOUFhTRUJLcm5ZbkQxTVg4R0dNcm1PSUFoSXc9ZQAAAAAS7AEIMxLnAQocQmlMN2h0elpiNEo2TWdjWWtNa2d4SGJ4Qm1FPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54bytlbVdUU1Myd003UXRnOTlYV0VjNzM2azNHYms5anRLL1R5Yk1xQnNCNDMrb1ZOM3pJMGViQ2Z3elp6VjBmY1NweEdWZz09GAAgACgAMMT16e79wPkCOKPX/oqpMECj1/6KqTBKHFpXSi83TGlZWlV5NUg1OWs3Mm1FQW5ZNzcxcz1aHyId7kVjbkJuNVZPV3JOajhhR3NvM3R3MjEwdjVZYz1l2Fj/ARLsAQgnEucBChwzQk9PVzFnWXREWE9JL3Nlcm9abGx6M0F5b0k9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5Tng2RXh3aDZrU1ZLY2VyQnR0V0kyVlJTR3oyK0N4eXBSV013Zmc1VWp5VWtFRW5zbFBVN0ZLeGltTGExdmFJU2QyK3plNjh3PT0YACAAKAAwsLze6/60+QI4te7AxqcwQLXuwManMEocWHl6dHErYjdkRW5sazNCTW5YZ0hMWFZ0NVk4PVofIh22N3B5UVNPQ2V3eEd2UzZJUjlPSUFuK05tTUMwPWV1hL7/EuwBCBIS5wEKHFVKYUVSZitreG5IRDZhRHdQbFU0UkF5endncz0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeHJNN2Y1dm5aRDNsRG1PczdRRDZiUXdhRzBrRk1wS3ZCcml6SkxTamxBRnltZFVrd3Z2Y0ZmS2kxcFYrblpYWHl6Z24yVUE9PRgAIAAoADDU2qedqaGJAzi+y9eWqzJAvsvXlqsyShxFWGROU1ZtTnpzZTNta2tNK0dMak8yM0N0NFk9Wh8iHf5nb2R1NXVxaUlaZzFXRHl3dStueURTeWJJV2M9ZdI6kq0S6wEIHhLmAQocUFg1UlBpcHo3V2FBK2lOTTEveWt4TFhpTXhNPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54cXJrcmZrNjVMU3g2aDJ6SDVpRjBJaUtQbVhrYWN6TENBQUR1Ui96c29BbEl1bmpJSkJVRm5tUnNVcjYyS2h6ajZqdy8yUT09GAAgACgAMLqB5bLwqvkCOJTW6KCmMECU1uigpjBKHEoyTUZ3WUVza3BpZno4ZXBxcXgwM3h1cUovST1aHiIcY2VhdjA0WUlmcDV0bE0vOEx3SEpkY2RDLy9vPWV7dwh9EuwBCDoS5wEKHFVuTndoMW9aVCt3dHVLdm51ZC92R1REdnBKVT0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeGF0dko0VXh3SEg1TFRuWjFoK05mZ2p3U1drOEYwTnBrSkM2RlVoT09DUHMwZWZyZy91b09LL2hCcUpid0JzZDIyVmYvL3c9PRgAIAAoADC4tNev+c35Ajjjx++uqjBA48fvrqowShxacnFqcTJGUGx3WGNQSnQzYStmK0s1M0lpYjg9Wh8iHdtudFMzNTJTMlFTaEJ1M2IzQTRLc2haaHFHNG89ZXt3CH0S6wEIJRLmAQocQms0bzdRdlRTZHkzQ0xyZlpHcTQ2YmVveExFPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54WWRqMHhyRy9RaXlpRmFwdytiTUVXb3hyMXhkdmpNRExOcTNjNFpwNkZYSWozYjJuZFlOYzNVZUhhNmpHaTlQN0ViYTBVZz09GAAgACgAMLC83uv+tPkCOLXuwManMEC17sDGpzBKHHgvT2RMZTArSlM1VDRUaElkaUxPSGxVVDZFZz1aHiIcSVRTWTFha080WFhCK0tlbU53OEZrWVdrYnhVPWUAAAAAEuwBCBkS5wEKHHJ3b3lhNnpMMUFSa1gybVRoWFdZT1pWQ3VxOD0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeHdJLzkxa1lMOVNLdWtITGdjUjIyK0RjcGM5dElQTXdWMEN0MVB1aGtEUm83NkFlNUJDL2VCRldtbHFRZi84UUxuSlB0U3c9PRgAIAAoADD04uCX8Kr5Ajicm+WgpjBAnJvloKYwShxEU21ZVk9iL3h6RzR5Wlc4WE11blBnV0pGczQ9Wh8iHbhqeFovOXVxb0JvT1l6SHVYSmF3T2tBQnFHeDA9ZQoqsfUS7AEIIxLnAQocYVdaRjZ1MlZBUE9GSnFXYlMyZis3ZzdOd0VFPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54ckRyN09GNmNIYnRUZ29YaHVGa2JqcVU0ckZLNStsM29DVHMyU3lSVUY4ZFZhQ0FxK3phSGpqWHhLOTF5SnhnVFd0NWJMUT09GAAgACgAMLqB5bLwqvkCOJTW6KCmMECU1uigpjBKHHB2YmwvN25yT3A1WndNWHdqWjE0M0w2UUFMbz1aHyId+1BkYURWMGlkNGpCUjdieWNjRXo1Z0hpR0xUMD1lCiqx9RLrAQgdEuYBChx1NkN0SWZGMmFCQ1dGRzdmODVuMWVjMlNuOUk9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhNNUVwZDhsQWg4dmtqZ3VmMjFjTHFkNThpdGU5V0lqL0MwZVpEQk5XNElWQitUZXVJVnNpZm05N0hhSG90R2wzWlFwNFNnPT0YACAAKAAwuoHlsvCq+QI4lNbooKYwQJTW6KCmMEocTURZTk5qT3A2NFVFWmNYT3pnNkNWaElxTmlvPVoeIhw1elNsY1NmbUlHM0F0MjJWTDRDc2RhR0RSMXc9ZXt3CH0S7AEIDhLnAQocUjk4RmpkOGdFVTgvSTBBVG9PNVIrMXVtUndFPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54UDNiUjJCSUpJdEJMTlY3RTNkbUNWTTh2dWdFOTBNOGxjejJPcm80eFlQaTNoMm5iZXhWUDJza3lqdG5kdXZDSW8zcC9kdz09GAAgACgAMIKbzrGerYcDOMzvzPeLMkDM78z3izJKHE9rdWJoekx1bUp4TjNrUmNHSlU2dnFscEJDbz1aHyId0itWUzBld1NaSUhUYUloWFNRWFYzakVkQ1Y1TT1lQmPjwxLsAQgHEucBChwwcU02cXF1a3FrdFFBZTZSNTIwejB4dmhMeDg9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhGcnhoczJ3L0RuUjVHaVBVeFlLUmQxMUFvSXB0L0dCZDRRbHR1bUZlWTZESFJIUC85aklLMkx5UmdWcEZoRC83eENPdzFRPT0YACAAKAAw5cvN+9WDiwM43baGk8gyQN22hpPIMkoccE96WU8vV0J4WWhqTkx0ekdKdk4zeDFWQUg0PVofIh28Q1BTR3NYV1RFTE91OW5FMmd4V3MyM3JnTzk0PWXoaPUpEusBCBcS5gEKHFlqSHNCdGpCUnJvZlc2MEUzZytqNkwxNzFjbz0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeDlFRmk4b2lvcDBLeGVQZmVzUHAxU1NUQ2dnbFFVbW1OeXRLMXI4VGhzRjZmUnZXTDd2VSs2dmpkd1ZjanUyZnNoOWVxVVE9PRgAIAAoADD04uCX8Kr5Ajicm+WgpjBAnJvloKYwShxpMXVQSWFKTVVsaUJwTGNaNHRmanB3Z1Erems9Wh4iHEU5RXVjcGVzTUpmMHlBSnBmVU43UitoQzJrND1ldYS+/xLsAQgQEucBChxFZ3pZZFphajg3ZkVGOS9RM2JoRExOZVNFakE9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhkeGNhcHl5c216YnhsTEdTbkp0RGhkSi85R3loc04rYXppWDEwMmFOUkVDakxuT2dLQ25zdzcvMkxpTE1YZUJyaUVuQTlBPT0YACAAKAAw49r4vN6MiQM4neO3xagyQJ3jt8WoMkocT3Q0TlZIaDhqSS9tT0g0U2xkSy80WXpUOTFBPVofIh36OUJwMUFwdTNmc3RoeERaNlRqRU43dXA2VGFnPWUAAAAAEu0BCBQS6AEKHEJSOU5ESlZTWVNOQkJtYXN2NnJYWUxqdGRMcz0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeEdnaFNtc2ptNUtHOTQybFhZazRaQUxxT2duV0x4RU9BNlpzaXdWNmJqY0FiU1N1QWxHdE9uUmZXeUlGU01hM0U2UDFaT0E9PRgAIAAoADCS5Pmcm7OKAzj6itTWvTJA+orU1r0yShwzUnZVYXVjcERvSlhDWDhKOEFpektLUGxubXc9WiAiHv+5bGlBWUVoYlJqbE02bkZxRkVQbi93Wml4Z24wPWVrdaqxEusBCAYS5gEKHGRXMFRCSHkybVVnS1pSRzBtZHpJME13bk04MD0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeDV6aW4rVTUzVnZOTjk5dGdwOUpmbkl5QnU5WTlTRlBqME10eTFBRWt6MmlzNU9YaWpxdjBtWlVORy81SDYzWWMvOFdjUXc9PRgAIAEoATCg3+app9CSAziIo5eTyDJAiOPt0sQzShw1M1NYWXJzM2NWRS8xUVRzK24rOTFVL1l3aHc9Wh4iHHlnMGo1OExaa1lXbGFNMHpsRGJZdDU4KzRhOD1l7OTQxxLsAQgTEucBChxXcExwL0hhVDJ5OHlSQ09vNmU2TWQvZXNQdkE9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhjemVwK2ZHcTBrZ3JSbEJWdFdJcHBSbjQ0TG4wTXhveS9qanU0ME9McjBFTDRnMll1WnQwQlhZbGlxUXVhZ21PWCtwNDBBPT0YACAAKAAwq5Tw0afliQM4jvDL8LMyQI7wy/CzMkocLzBSWUFOZk5jT2hQdXlHTSsxRjAyQXF5Zm0wPVofIh3/c25KeTBjWFU5c2ZWSXROaU9TVmtqMTI4d0k0PWWN0OZ3EuwBCBUS5wEKHFg3UTBDVWxORHJndUdzbnlYVm1SUE0ySHpIaz0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeHd2eFBwY1pnNXJBbW4vQ3JKUWd2Z3hTUW9KQ1dlY1Nac3VOZjNGRHRVaThNT000ZkplSkRRM0hwS01Qd01SRmVIQkdkbGc9PRgAIAAoADD04uCX8Kr5Ajicm+WgpjBAnJvloKYwShxka0NzUWJ5NGdLbWFBc3VaNFhPUWZLMlZnUGM9Wh8iHbI4Zk5EVTRwNC8vbWpWSnQ0ZHkyZkcxcFQ2TGs9ZQAAAAAS6wEIChLmAQocc21STW5INGp6ak1wckZObTNyUFZvc1NWTE9jPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54OGQ0WS9odUhEcHhPVG9qL0U1WXdMekJyMWowSVZpd2dhbkNYNHZabEVsRDdJblZWWCtidUVNeGFJalp5NkdqSGhNVlZEQT09GAAgACgAMMbXwdSOrYcDONWZy/WLMkDVmcv1izJKHC9BbDl0Q1JrUlhtTmQvcTVXQXh5RjZIamFUUT1aHiIcMXV6TXJ1aittblFNS1BWT2todVNFYmMyQlNJPWVNoE6QEusBCBgS5gEKHFVoZkhkbEZaMms0T3ZYenh5Qll0THpyWTdrOD0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeHVuVVlsWm44MURKaS9uZm04T1RBTFZsbFR0N0hNbUs3TkJxdVVETzNsY3h1azNIRG1IQUxpTDJmeFBidGdqcHZmMjhqUFE9PRgAIAAoADD04uCX8Kr5Ajicm+WgpjBAnJvloKYwShwvejlMVEtsNjhOUnY0M2QvRHVsSUw4REMwbHM9Wh4iHHBkSi81a0s0dWxiZldGTzNuREJ5RFc2UG93QT1lCiqx9RLsAQgxEucBChxVaW1seHdKNXd5MnVIUEZ4TTVub0MwVDJ4cWs9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhqZVhSalU0ZWtDR0ZLa3NUL1g4VGJLTHJrakpYc25UQXhnOVBUTmkwOU5aUyt0MlZ6YXVndllvU2hnenhmbTc4Vm5vNjJ3PT0YACAAKAAwxPXp7v3A+QI4o9f+iqkwQKPX/oqpMEocMVQ1L3RUMy96cS9HWUtwNU43NzVIMk9nbDhJPVofIh26RGgrN1puMU9PZGhJQU8rdFdhV0NCYWMvQWhVPWUiOEyoEuwBCC0S5wEKHHRQdE1KNjhTWmlRUmlFMWI5dXRnUWVCaGZkWT0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeDJLMG5EamhlUC9nalY2QUcxT3lJanV3VDhWVVZTTnJGU2ZBOFk1WmV3RWdaVG9yR1pGdzRtVGQ0WWFHaVp6QU5YcXNmc0E9PRgAIAAoADDE9OWdt8yLAzi2lbvGpzBAtpW7xqcwShw3a0dpL2xJcExyVmk3ckFLZnFyN2xEQ2k5Qjg9Wh8iHek0TjdpSkg2dVFKVG5uODc3Mk9qeHZuNitDY1k9ZXt3CH0S7AEIKhLnAQocNUhBeVhnOHhNMmxsTU9SV3VyUEZVK2g5UnlnPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54Qjl2TWhLT1dWKzhib0gyeWNNR1RmS2ZaVEhlUStNakZ6Z3BiYVFRNjlSWXBoeDNQN2VYaXN5eGFzU1FjZ2JNZzFsYWVUUT09GAAgACgAMLC83uv+tPkCOLXuwManMEC17sDGpzBKHDJVYmtZaUxKeW45QTVKV0NaRk0xUUVCMEgrZz1aHyId9m85SWxUb1JhbXRXZDFoM0NjcmhUT05qaEtZTT1lPyXqOhLsAQhOEucBChxhMHl1REhhUG1tbWg5NW5oM2ZPR05yTms0elk9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TngwOVh2N1hVREhxWDdkbG5jOGt3WWY1MEdPVWE4ODJ2c2VGZ1YyOTQxemtjRUhHbjVoN1M5bTBac2V5R05yYm9tY3FuQmJnPT0YACAAKAAwtrf39tG6kgM4qPH87sEzQKjx/O7BM0ocVmpMV0JGRXd6VXA3bWUzeWxaR21zQzFpQ3BvPVofIh33dlZmRHpEbDRhYWNtT1NpRFVCc3pjUVZQMjRrPWWZkuXPEqsBCAESpgEKHHl4Si82ZnZrZWNyN2twNUVRekI0dFdMcGRiRT0STlo6QURxdEFaeVhSL0h1THFSdzhsS1BDTGY0SExZQ05qdDFDdVY5YmIyYlFyZWZlaDhYV0I4aEh4Q0ZjVURxNG8wOHlVaWtZRkxpTVBWdhgAIAAoADCaxPrroY2SAzgAQABKHGFSQ1dMZ2hGOWI1SW5xS0lEdnVKL2p2UWtGYz1aAGUAAAAAEuwBCDcS5wEKHFVNYVBVdit0Vm8xZXMwMlRFNFRNMUJWNHVPVT0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeHlRTkpGRjVuT0MzV3AvSGFsaEhYTXczblFIemwyMmJpTEtHUXJIamJMK1AxN0NqQnRSRHZPODY5enVkRkxHLzVPRGVGN1E9PRgAIAAoADCN85+v+c35Ajjjx++uqjBA48fvrqowShxDR1RxODFybmdpR3g3b3JaSndPVmo1K0ZMMGM9Wh8iHf01RGpLRWRVbWY3dDVxWUtscE0rU0llRTJWbGM9ZQAAAAAS7AEIRRLnAQocT2R2ZFBYZXFzNzBjY2NEZmNOR3VxRm5XajBvPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54NXArUG9YbG9qdjlhNFdMa0VIdUIyNXByeVYwZXJtcFVLeHJ6UUlVeUFFc05tQkNOa1ZWeFVVa1IzN1lqSE0yRWNtd1FVQT09GAAgACgAMLz+6bih0/kCOKqxjLarMECqsYy2qzBKHE1CZ0dyaW1FeHhkczlnanNnaXZXRERNZlhLMD1aHyId/St5bk9xOWF5UXZiZnZDMzZXOUhjeEgyait2RT1lxwtZehLrAQgMEuYBChxRaUwrL20wRmh1bzR4NjNyZ0tEUEkvTGI5dGs9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhkMEZZTU9WWGVBUW11cTUrNHRoQ2hnbHZVOXdwSG12dngyZTB1aUp4ZkJOT0lwODRRV3dvTGprUkdBMm5hRWI0eE0rVFNBPT0YACAAKAAw0r63uY+thwM4hY/Y9YsyQIWP2PWLMkoca3JqeElJQkROOU13S1laMkNPODhacHgvenZnPVoeIhxLQjZEUDhRUWRzQWdNNmFEY3lPVVhOQzN6Y0k9ZZhI3EUS7AEISBLnAQocUWN5QVQ1Z3hTWndZMXJmQ0N5eVhNSU9tdWtnPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54NmpPYXNZbFpRdHJwR3kvcU9GU3p1MXd3TWI4VnU2K1lVWVpMSkRqZ0lucFNVN3hZWW93WnpjYktuSHhGT1dhRGdneUtBUT09GAAgACgAMLz+6bih0/kCOKqxjLarMECqsYy2qzBKHC9HNWYwU0d3WXpIQnRZczVxTlYxMm8vSXkwVT1aHyId/3F2b1pjSEpuaFZTOWx0dkQxSWt1bzRpMWJXQT1lPzugyhLsAQhNEucBChxWZmQ2cS8rL1kzRnp2ZU91M2c4VnVOd3hIelk9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhGaWxLOFN1Zm9WUlVrYnJPMUE0UkJsVzgzbHRTNzk2NUgrMGFEZk1aSy9kMm1pRGVpNEJtSjN3SnVZOCtnSWhzWFlrZkNRPT0YACAAKAAw4b/grdTOkgM47KHD68IzQPOj7bfEM0ocRTBNbkVUVkwvU3ArRlM5ZWxHUk5iRmYyMENVPVofIh39RERVZ3U4aTFaNUxvVys4WlYzTGZQUHYwaWRBPWWGpdjIEuwBCCsS5wEKHDVQS0o4U1dYNW9TN2l2N09aMWE0VERNZ1dLVT0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeEJ6dTdXUCtWUE0rNzkxeDJlQlJXWFZ6UkpVVnpST1VyUWgwb0dCa3NCQzB5bzZxOUZWOHJ1Y2NsNTJjVHF1QXg3a1ZVYnc9PRgAIAAoADCwvN7r/rT5Aji17sDGpzBAte7AxqcwShxmYjRkN3JrcWlBNE5Gd2w5R0tiRzU1eVNqcXc9Wh8iHftpTEU1RHZDa0JlN1RoY1ZNVHI2dXhHRjQ5ZWM9ZXt3CH0S7AEIIRLnAQocS05pT1ZGNmI1L29LNEwwODdVOFkvUHd2NmRZPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54OGhXODkzV3lTY25FYWx3cUlsbzJQcnlJREZ3eDNCNEtGcExkVURnL21NN2pVem1hQVM3R0hhVlFLYUV1VnJKQU5RdjFudz09GAAgACgAMLqB5bLwqvkCOJTW6KCmMECU1uigpjBKHDJHbXVqa0duMitVcjhiYmFiaURsUDZGMERhYz1aHyId7G83SWdjMExUTmhCbDIrRkhFYUtGWXVwU2NRWT1lnyOlKxLrAQg4EuYBChxBNUdHQTlJbXdYUUFjVVNUNzU1MklaUnI0Sjg9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhyOUFTdDR5V0htQzhscnFjVUF2NUtPdUJlcnFhVHVVZGZCRzBHZkM4L0VFMGY3cGFnakFsZG5sZHZrQ1laY285b0NkWUt3PT0YACAAKAAwuLTXr/nN+QI448fvrqowQOPH766qMEocaS9NWXplMzVFcG5LVW9KbEkvS0FnSTN6Q05ZPVoeIhxtZlJrMEFZK1RSMkRobERWY3dZMHBKWGVRUzg9ZXt3CH0S6wEIJhLmAQocdDlOYXdHSFRvcisrVXo2YUJEdTVHYytUbmRNPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54UmZwTkJMUVNCOVlYTkNBdXhTWnkxaVJzSDcrZzkyOGJhV1FLS1I3QUt4S0xmeTU5M0dPUkFqNUJ4RmFLT3Jsa3BKcTVhQT09GAAgACgAMLC83uv+tPkCOLXuwManMEC17sDGpzBKHDRzVVk2WCtsSWRhWkVhYUVHcTRFZVNJQmxWRT1aHiIcbVp4cE13Yks5ejh4UUFZSkxWTHRwMXY5VG8wPWV7dwh9EuwBCA0S5wEKHGZlR2ZBeWd0a3J6MTBoTWVnWnlUc1dwajV0VT0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeFlZMEVzdklqbDM1eWxzZkRKZDRLREVDR0lsNkJteUJyVTBFNUJLZGNmNU5hMWpNZE0zMU5JU3ljT1pmMlJkTUlHMGYyVXc9PRgAIAAoADCT95D8j62HAziqiuD1izJAqorg9YsyShxQcVRFVVlKMXQ0NUdKQWN0YytaNllUME1UZTQ9Wh8iHaU4UjV2Z1BMdTc4dnB3WFNyZ0l4ME50cE4zK2c9ZeLHwjwS7AEICRLnAQocYm9hYzRib2NzNXRKaWM1WkYycXZDakZ5NEtZPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54clNOWkhZalB2Rks5T0duQTQxTzZCZUFPazNsOUM3Zm5FT3k0SmR3Z2FBVUxFQjRQN2tMQUN2RGJOY2pzSjZDNjFpN2lkUT09GAAgACgAMP+DvYSmyIwDOLnG2qjhMkC5xtqo4TJKHE5UM3FtRWNRWWJWdE9OdkQ3V1ljYXZXenpSUT1aHyId73hibXFRbkhwN2sxcGMycEtPaGpHR2tOc3BtOD1lAAAAABLsAQgaEucBChxVOGhvNnlaTW9zRmVqNERBWkxwM29TYXQ2WWM9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhxVjdINEVxNTJVOG8yVjhpZEVqaDlRNEg0MUVHQ3NoOVVaWEVZYTR5eEdsQmhYZU0xaU9Tb2lHd0l2M2JOYnowRmhrWWZnPT0YACAAKAAw9OLgl/Cq+QI4nJvloKYwQJyb5aCmMEocVFY0UWRrV0k0YW1hSExnMy9QUDhzUGhadnJRPVofIh3cVlpUS29qa3FHYlprck5MSWVZRk84L3F1eFhzPWUKKrH1EusBCAUS5gEKHHhaT2xVZHVJUENlbFFiQWx0ZDV5KzdmWE1Ucz0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeHZ1Q2M3NHpjT1doMUFsaDk2L25pQUdoM1YzdVJZUG1VZWlDblVrWHJGbUp1Mm1oQm9TU0dHMDdDQ0ZQVEZ4cHVUNityMkE9PRgAIAAoADChi7D61YOLAzjq8JeTyDJA6vCXk8gyShw5RmlPMDA4d21CQlJkRVNOSDRaRzAwejZDdms9Wh4iHC9taHhDa0ZuR0ZKbEVPN1F1VU11WS80UU5LVT1lAAAAABLsAQgbEucBChxGWVBoVjRzV1BFTng5YklIRUsrczR6RDJ2N3M9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhqaThwVkFzLzlPL2g5bkxYQ2RTUzl4WUtaL1FFQmhlWnIxSU4rN3dnblJydnNMRklKYTVxL0JUVjNsM0RpYldWQXRSRWVnPT0YACAAKAAw9OLgl/Cq+QI4nJvloKYwQJyb5aCmMEocbUREdC9WOVo0c1lHdjNBREZhNi9FMjV1WW1BPVofIh3udEY4aEs5dVp6K0F3UHNjbGZoVnRVUEd5T3F3PWV7dwh9EuwBCBES5wEKHDdlSzNVZ2VaMnNOUCtLMEVqQXcrb1VjK2Raaz0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeHYrd3JOT0NRQnVyM20zMTNpMCtMZXBmRnIxRDBYcVdpa2tJOERpTG8rTHZmOFovS1JBeTdSM1BaTENKRkJaZmdEM0FBZ1E9PRgAIAAoADDzivP82pSJAzjm1IfIqTJA5tSHyKkyShw3Tmp5bDJ5aENyWmNmK0NZNGgxQzFucGRnbVU9Wh8iHf1lY1ErTVhXY0k1TTc5RW1KbXRTNnhiaFRsQW89ZQ75VEoS7AEIKBLnAQocZTk0S2h5ZjM5NDJidnZVUHNUY2ZJWjQxcWRFPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54OHRZaTRMT2owb3l1ZGlpMTZxc3JrV2s2d1lXbHRXRDZJQW9Fb0VKK2ZEOW5WdEZMTHlvV2NwdWk4a25IR2MrQXNFWmtSdz09GAAgACgAMLC83uv+tPkCOLXuwManMEC17sDGpzBKHDBtOXFnWUhoaHF6TEdlZy95RG5TdHVlejVvYz1aHyId2zVuK3p4RjduK2pVNThUVkNCSmRFbUhLUHNMTT1lCiqx9RLsAQgyEucBChxNQmZjaHN1aTFaaFM5QmljOXM5a05XRXNmR2M9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5Tnh0bDZDVkVwYi9ZRzNvTWFSRkNQRVJhamtnOVErNTZKZDVRNU9LM21CSFVLNWFha2l4T3Y5UFprVmJ6MnMxRHhCd1pOUFJ3PT0YACAAKAAwxPXp7v3A+QI4o9f+iqkwQKPX/oqpMEocOVdqK0tzTmthQlRtNkYrQlhYKzBXSHA1Tmt3PVofIh3dM1R3RGxLaGxFL05IUm1Fc3BOeW84NkN3YjNNPWVJ9icLEuwBCCAS5wEKHHNQTUYyUitGQzlOWTlnU3pPVUhiVGdWOHU5RT0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeG1Qc0ZYOVR2SzBPQllvRlNHMlBxL2RMRTV4MDJReHJwb1N0dEZMdVJkWlBWSWxEVkpYcGRpYXo3RXNXRHZxTmpQcG9ZaXc9PRgAIAAoADC6geWy8Kr5AjiU1uigpjBAlNbooKYwShw0S25kVG51M2NGWHdsemlYZDFtY2J5bGRRWmc9Wh8iHdhXbTVVdHM0dklTUmtJeHB5Tkc2RmRDZHA3Ukk9ZccLWXoSwwEIAhK+AQocWWNTVG9udkVTUHdxQ3M0TDJjclZodjY4TDk4PRJmWjpBRHF0QVp3VS9ZTnQrS3dtb1NBL29MYWsxc1ZTUG5TTW9hb3dSRUFiNTR3VkovUExSZXBSYnIxYkEvY3dwRWFXaHM1UFpHY2dqdVhPZytKWmQwdnZabDVoQ3ltWTdkbnBTQT09GAAgACgAMJrE+uuhjZIDOABAAEocb1BWa2h3QlJiVjY1S0NXUjIrSU9OSFdvT3U4PVoAZQAAAAAS7AEIDxLnAQocUDIwT2F2M29sY2tJUVR3VzR3Ynp4YTF5TXBzPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54S1lOR0FhWE1LRTBTRlJSdzRHZ0pma2NIbDJiSkxHSzl4cGlhRmtBTEFJUnlYTzNEMTUvL2FVVjU5eTM2ZExPWVZGS3psdz09GAAgACgAMOb20aXy84gDOIyJ3YChMkCMid2AoTJKHEpzSlVJVE12dzlDTWxMOUkxUGVBQTJTMU82QT1aHyId9FIyMTlaeXFOaWFVRFhveFdrSElnVHJlaE1wWT1lYQFIPxLDAQgDEr4BChxuamdEdTg4ZUNydlhwODZwRDdmSEdjcUZwODg9EmZaOkFEcXRBWnc3RFZMR2VoWXZmUksxMXFieTFTd2psaVZXVVA0RDBxUmZZQ1JBMUg3NGpVellVWXM3MS9oWGo2cFF4Zk5sMkd2Q2Npc3hEbUpPbmxQdzViVC8wNFVOZFgvaHNBPT0YACAAKAAwmsT666GNkgM4AEAAShx5ek5CMDFjbjU0QTdjUlUwdVQrL1BnbVR0VW89WgBlAAAAABLsAQhDEucBChxaaWRldzdTaGNubHc2Qk1TUFVCbXROOTlFUGc9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5Tng5N2c5QU9odUNpeFJ5NkgyQ2U1bVVvRnZZUktzWHRGZHBoQjZSRUZGTnptbEJUeVpwWkxjay9VWWs1Nm00clQ3VFdrRlJBPT0YACAAKAAwvP7puKHT+QI4qrGMtqswQKqxjLarMEocbUdjdVVtMmo2R3VxdzRtb2hRNlRSd2c5WDFzPVofIh33RmpTZWVRdTc3cmp6TWxWZWU2bDRKdUhmc25VPWU62wupEusBCAsS5gEKHEJqdzJHRS80eEdPTHhnY1B5bk44OFFpNE1tcz0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeExGeXdEaThzU3lJa1BOQm52a1I5NFR5Nm15V2R0Wmpia1lHS2JpQkVXOE1BNVVsck9DOFNqb3ZQdGdoaUQ1aWtUeWVNV2c9PRgAIAAoADCg0rmej62HAziD1dT1izJAg9XU9YsyShxxQ3JVRHpyU1ZJczlFYVMyZEdkci8xWjI4cnc9Wh4iHDVWZWVyQ2lscmNXdzBhb09aMUJhbmdTcDJ5WT1lmEjcRRLsAQhMEucBChw2a1NvZjhVaHVRSU5laDB5YitYNUJOUHIrQVk9EmZaOkFEcXRBWnlhUERRYWxhS2ZuK3VWWEl2K3V5TnhqOHd6NXJPYU4wbnlZcVhJMmVRWlNyMkdWM2VhK3c4RnhpbXJ0WlpHTDNZb1owYVhyY1dud1pUcCtRK3QxU1JNZGZwakVRPT0YACAAKAAwstm5uJfCkgM4052568IzQNOduevCM0ocVGVkc0w3NEdhUTlmYXdJVUoxWjU5SStwcjhNPVofIh37enlKQzFGTjF2Vm96MjY2R1B6RnRVMkFOZ0hNPWWFcLEEEuwBCCQS5wEKHENzU2FsSVNoMFMwa1FMc09teDhJWWt4NUhBVT0SZlo6QURxdEFaeWFQRFFhbGFLZm4rdVZYSXYrdXlOeHdlSjIxeFhxc25nTTN4VDZlazU4dXNZc29MTVI5dXNrcWNzSkFkVmRyaWh2ZWNZRUErKzh5b0ZubElCMlpReGtVaUs4RVE9PRgAIAAoADDmstW3/rT5Aji5mLrGpzBAuZi6xqcwShxuMFlqUXg3S2c3RWxyNTdWWi9LWXpyUjN3dzQ9Wh8iHdNNUlFDd0w4aEFKUjJ2RVdFMk1nSEcwOGJaajg9ZQAAAAAS7AEIORLnAQocYWhDbHhJcVBPU1cxL3FYbWJoekJrdVMxaUhVPRJmWjpBRHF0QVp5YVBEUWFsYUtmbit1VlhJdit1eU54OTlzMGJmYTJHUzRjWHVBWHJBV0N2eGN2UXhiYTZLeEREQ091RHhIZjdTYlF2S3c1T1p3S2VScnAwNW8rQm9FOHhZSC9BUT09GAAgACgAMLi016/5zfkCOOPH766qMEDjx++uqjBKHFdKTzQ3NzlRZmpSQitlNTBJcUIzQUw1WjFJRT1aHyIdtkJmV1BsZEsyZFJ3L2IxQzhTTzB4VVltNDFCdz1le3cIfTABOAA=",
+   "version": 1
+}
