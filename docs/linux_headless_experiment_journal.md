@@ -542,6 +542,110 @@
     - Google default page는 우리 쪽 landing workflow 결함이 실제로 섞여 있었다.
   - 같은 DOI를 연달아 다시 치면 challenge로 바뀔 수 있으므로, AIP 검증은 fresh/low-frequency와 tight control을 반드시 유지해야 한다.
 
+### 5.13 AIP context bootstrap 전략과 seed-profile warming 해석 분리
+
+- 문제 재정의
+  - 최신 Linux fresh run `aip_micro_20260315_structural_patch_fresh`는
+    - `entry_strategy_variant=doi_redirect_only_no_article_preflight`
+    - `browser_session_source=linux_seed_clone`
+    - `challenge_detected=true`
+    - `tab_transition_count=0`
+    - `title=Just a moment...`
+    로 끝났다.
+  - 반면 `local_mac`와 local `linux_cli_seeded`는 같은 AIP DOI에서 landing success가 반복 관찰됐다.
+  - 따라서 "AIP logic 자체가 항상 틀림"보다는
+    - Linux server outbound network / IP trust
+    - seeded profile continuity 부족
+    - publisher context initialization 부재
+    중 어느 층이 더 큰지 분리할 필요가 있었다.
+- 추가 진단 1: local cold-profile vs stateful-profile
+  - 입력 DOI:
+    - `10.1063/5.0257779`
+  - 실행 A:
+    - `outputs/aip_profile_diag_20260315_local_temp/`
+    - `runtime_preset=local_mac`
+    - `profile_mode=temp`
+  - 결과 A:
+    - `classifier_counts={"success_landing":1}`
+  - 실행 B:
+    - `outputs/aip_profile_diag_20260315_local_linuxseeded/`
+    - `runtime_preset=linux_cli_seeded`
+    - `execution_env=linux_server`
+    - `persistent_profile_dir=outputs/linux_seed_profile_from_docs/linux_chromium_user_data_seed`
+  - 결과 B:
+    - `classifier_counts={"success_landing":1}`
+  - 해석
+    - local AIP success는 "기존 macOS 프로필이 따뜻해서만" 설명되지는 않았다.
+    - cold temp profile과 local linux-seeded clone에서도 article landing 자체는 성립했다.
+    - 따라서 최신 Linux server failure를 pure tab bug나 pure profile absence로만 설명하는 건 부족하다.
+- 새 가설
+  - Linux server에서는 AIP article DOI landing 전에 publisher-side challenge가 너무 일찍 붙는다.
+  - 하지만 local 실험과 manual-warm 관찰을 합치면, "publisher journal/home context를 먼저 여는 bootstrap"이 같은 세션의 뒤이은 DOI/article landing에 도움이 될 수 있다.
+  - 이건 anti-bot 우회가 아니라
+    - legitimate publisher-page landing
+    - DOI/article 접근 전 journal root or publisher root 초기화
+    라는 점에서 strategy-layer 수정으로 볼 수 있다.
+- 구현
+  - `tools_exp.py`
+    - AIP canonical entry에서 journal root / publisher root를 계산하는 `_derive_aip_context_target()` 추가
+    - Linux/server 성격일 때 기본 활성화되는 `_aip_context_bootstrap_enabled()` 추가
+    - `build_aip_safe_entry_plan()`이
+      - `entry_context_url`
+      - `entry_context_kind`
+      - `entry_strategy_variant=doi_redirect_with_context_bootstrap_no_article_preflight`
+      를 기록하도록 수정
+    - download path에 `_maybe_bootstrap_aip_entry_context()`를 넣어 DOI/article 진입 전 AIP context page를 먼저 열고 결과를 기록
+  - `landing_access_repro.py`
+    - landing probe도 같은 `_maybe_bootstrap_aip_entry_context()`를 사용해 DOI navigation 전에 context bootstrap을 수행
+    - 아래 필드를 artifact JSONL / success/fail sidecar에 남김
+      - `entry_context_bootstrap_attempted`
+      - `entry_context_bootstrap_outcome`
+      - `entry_context_bootstrap_final_url`
+      - `entry_context_bootstrap_final_title`
+  - `parallel_download.py`
+    - download CSV / metadata sidecar에 위 context bootstrap 필드 전파
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary에 landing/download context bootstrap 필드 추가
+- 통제 검증
+  - 실행 C:
+    - `outputs/aip_context_bootstrap_validation_20260315_local/`
+    - 입력 DOI `10.1063/5.0257779`
+    - `runtime_preset=linux_cli_seeded`
+    - `execution_env=linux_server`
+  - 결과 C:
+    - 최종 `success_landing`
+    - `entry_strategy_variant=doi_redirect_with_context_bootstrap_no_article_preflight`
+    - `entry_context_url=https://pubs.aip.org/jcp`
+    - `entry_context_bootstrap_attempted=true`
+    - `entry_context_bootstrap_outcome=context_challenge`
+    - 그 뒤 최종 DOI/article landing은 success
+  - 해석 C:
+    - journal root 자체는 challenge로 보였지만, 같은 세션의 뒤이은 DOI/article landing은 성공했다.
+    - 즉 context bootstrap은 "challenge가 없는 homepage를 반드시 먼저 띄운다"라기보다, legitimate context initialization 단계로 읽는 편이 맞다.
+  - 실행 D:
+    - `outputs/aip_context_bootstrap_validation2_20260315_local/`
+    - 입력 DOI `10.1116/6.0004298`
+    - 같은 local `linux_cli_seeded` 조건
+  - 결과 D:
+    - 최종 `success_landing`
+    - `entry_context_url=https://pubs.aip.org/jva`
+    - `entry_context_bootstrap_attempted=true`
+    - `entry_context_bootstrap_outcome=context_ready`
+    - journal root title은 `Journal of Vacuum Science & Technology A | AIP Publishing`
+  - 해석 D:
+    - 두 번째 DOI에서는 context page 자체도 clean landing이었고, 이후 DOI/article landing도 success였다.
+- seed profile 교체 질문에 대한 정리
+  - UTM에서 AIP manual visit 후 그 profile을 새 seed profile로 다시 교체하면 결과가 달라질 수는 있다.
+  - 이유는 현재 Linux workflow가 persistent seed profile을 clone해 쓰기 때문이다.
+  - 그러나 그 의미는 우선
+    - cookie/bootstrap/session state reuse 효과
+    - warmed seed가 다음 clone에 전파되는 효과
+    이지, landing flow가 구조적으로 해결됐다는 뜻은 아니다.
+- 배운 점
+  - local cold-profile success까지 감안하면, AIP current failure를 "profile만 바꾸면 됨"으로 단순화하면 안 된다.
+  - 동시에 manual-warm 가설은 완전히 틀린 게 아니라, "publisher context initialization"이라는 합법적 strategy로 code에 옮길 수 있다.
+  - context page가 challenge를 띄우더라도 같은 세션의 DOI/article landing이 이어서 성공할 수 있으므로, earliest challenge page와 final landing page를 분리 로깅해야 한다.
+
 ## 6. Publisher별 결과 요약
 
 ### Elsevier / Cell-family
@@ -779,6 +883,8 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - AIP download result/metadata/suite summary에 default page, tab transition, final artifact path가 기록됨
 - regression DOI `10.1063/5.0207496` local smoke에서 Google default page symptom이 사라지고 real article landing + download success로 바뀜
 - manual visit 전후 persistent profile 변화를 비교할 snapshot/diff 도구가 추가됨
+- AIP context bootstrap branch가 추가됐고, local `linux_cli_seeded`에서 journal-root bootstrap 후 DOI/article landing success가 재현됨
+- local AIP는 cold temp profile과 local linux-seeded clone에서도 landing success가 관찰돼, pure profile absence만으로는 최신 Linux failure를 설명할 수 없다는 근거가 추가됨
 
 ### 아직 미검증 또는 근거 부족
 
@@ -788,6 +894,7 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - attempt ledger 파일 자체의 최신 누적 상태는 현재 로컬 워크스페이스에서 확인되지 않음 `[blocked]`
 - 새 AIP structural patch가 Linux server/headless에서도 Google default page incidence를 실제로 0으로 낮추는지 `[blocked]`
 - AIP stable landing 이후의 downstream click/download disconnect가 Linux headless에서도 남는지 `[blocked]`
+- 새 AIP context bootstrap branch가 Linux server/headless에서 challenge incidence를 실제로 낮추는지 `[blocked]`
 
 ### 구조적 위험
 
@@ -817,6 +924,8 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
    - challenge가 여전히 first article landing 전에 뜨는지
    - Google default page symptom이 사라졌는지
    - download path에서 canonical recovery가 실제로 쓰였는지
+   - `entry_context_url`, `entry_context_kind`, `entry_context_bootstrap_*`가 실제 runtime artifact와 summary에 남는지
+   - context page 자체가 `context_ready`인지 `context_challenge`인지
    를 확인
 3. `10.1007_` 계열 DOI를 fresh/low-frequency 케이스로 1건만 다시 검증해 classifier false negative fix를 server artifact로 재확인
 4. Elsevier shell-like case가 다시 나오면 `landing_shell_recovery_*`와 final classifier를 함께 확인해 live recovery 성공 여부를 증거화
@@ -999,3 +1108,80 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
     - 그 상태가 다음 clone에 전파되는지
     를 진단하는 신호로 읽어야 한다.
   - manual visit이 도움이 되더라도 landing flow가 구조적으로 해결됐다는 뜻은 아니다.
+
+### `aip_profile_diag_20260315_local_temp`
+
+- 실행 위치
+  - `outputs/aip_profile_diag_20260315_local_temp/`
+- 입력 DOI
+  - `10.1063/5.0257779`
+- 조건
+  - `runtime_preset=local_mac`
+  - `execution_env=desktop`
+  - `profile_mode=temp`
+- 결과
+  - `sample_size=1`
+  - `classifier_counts={"success_landing":1}`
+- 해석
+  - local AIP는 cold temp profile에서도 article landing이 성립했다.
+  - 따라서 local success를 기존 persistent profile warming만으로 설명하는 건 부족하다.
+
+### `aip_profile_diag_20260315_local_linuxseeded`
+
+- 실행 위치
+  - `outputs/aip_profile_diag_20260315_local_linuxseeded/`
+- 입력 DOI
+  - `10.1063/5.0257779`
+- 조건
+  - `runtime_preset=linux_cli_seeded`
+  - `execution_env=linux_server`
+  - `persistent_profile_dir=outputs/linux_seed_profile_from_docs/linux_chromium_user_data_seed`
+- 결과
+  - `sample_size=1`
+  - `classifier_counts={"success_landing":1}`
+- 해석
+  - local 머신에서는 Linux-style seeded clone 경로도 AIP landing을 막지 않았다.
+  - 최신 server failure는 code path 자체보다 server-side challenge 조건이 더 강할 가능성을 지지한다.
+
+### `aip_context_bootstrap_validation_20260315_local`
+
+- 실행 위치
+  - `outputs/aip_context_bootstrap_validation_20260315_local/`
+- 입력 DOI
+  - `10.1063/5.0257779`
+- 조건
+  - `runtime_preset=linux_cli_seeded`
+  - `execution_env=linux_server`
+  - 새 `entry_context_url` / `entry_context_bootstrap_*` branch 포함
+- 결과
+  - `sample_size=1`
+  - `classifier_counts={"success_landing":1}`
+  - artifact에는
+    - `entry_strategy_variant=doi_redirect_with_context_bootstrap_no_article_preflight`
+    - `entry_context_url=https://pubs.aip.org/jcp`
+    - `entry_context_bootstrap_attempted=true`
+    - `entry_context_bootstrap_outcome=context_challenge`
+    - `entry_context_bootstrap_final_title=Just a moment...`
+    가 남음
+- 해석
+  - journal root 자체는 challenge였지만, 같은 세션의 뒤이은 DOI/article landing은 success였다.
+  - context bootstrap은 "무조건 clean homepage"가 아니라 session initialization 단계로 읽는 편이 맞다.
+
+### `aip_context_bootstrap_validation2_20260315_local`
+
+- 실행 위치
+  - `outputs/aip_context_bootstrap_validation2_20260315_local/`
+- 입력 DOI
+  - `10.1116/6.0004298`
+- 결과
+  - `sample_size=1`
+  - `classifier_counts={"success_landing":1}`
+  - artifact에는
+    - `entry_context_url=https://pubs.aip.org/jva`
+    - `entry_context_bootstrap_attempted=true`
+    - `entry_context_bootstrap_outcome=context_ready`
+    - `entry_context_bootstrap_final_title=Journal of Vacuum Science & Technology A | AIP Publishing`
+    가 남음
+- 해석
+  - 어떤 DOI는 journal root가 clean landing이고, 어떤 DOI는 challenge shell이더라도 뒤이은 article landing이 가능했다.
+  - 따라서 AIP context bootstrap은 low-friction publisher-page initialization 전략으로 유지할 가치가 있다.

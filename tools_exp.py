@@ -71,6 +71,7 @@ AIP_ARTICLE_HOST_MARKERS = (
     "aip.scitation.org",
     "avs.scitation.org",
 )
+_AIP_CONTEXT_BOOTSTRAP_CACHE: Set[str] = set()
 AUTO_PROFILE_DOI_PREFIXES = (
     "10.1016",  # Elsevier
     "10.1063",  # AIP
@@ -2225,6 +2226,48 @@ def _normalize_aip_entry_url(url: str, prefer_abstract: bool = True) -> str:
     return urlunparse(parsed._replace(path=normalized_path, query="", fragment=""))
 
 
+def _aip_context_bootstrap_enabled() -> bool:
+    raw = os.getenv("PDF_BROWSER_AIP_CONTEXT_BOOTSTRAP", "auto").strip().lower()
+    if raw in ("0", "false", "no", "off"):
+        return False
+    if raw in ("1", "true", "yes", "on"):
+        return True
+    return (
+        resolve_runtime_preset() == RUNTIME_PRESET_LINUX_CLI_SEEDED
+        or resolve_browser_execution_env() == EXECUTION_ENV_LINUX_SERVER
+    )
+
+
+def _derive_aip_context_target(url: str) -> tuple[str, str]:
+    raw = str(url or "").strip()
+    if not raw:
+        return "", ""
+    parsed = urlparse(raw)
+    if parsed.scheme not in ("http", "https"):
+        return "", ""
+    domain = _extract_domain(raw)
+    if not domain or not any(domain == host or domain.endswith(f".{host}") for host in AIP_ARTICLE_HOST_MARKERS):
+        return "", ""
+
+    path_segments = [seg for seg in str(parsed.path or "").split("/") if seg]
+    journal_context = ""
+    for marker in ("article-abstract", "article", "doi"):
+        if marker not in path_segments:
+            continue
+        idx = path_segments.index(marker)
+        if idx >= 1:
+            journal_context = urlunparse(
+                parsed._replace(path="/" + "/".join(path_segments[:idx]), query="", fragment="")
+            )
+            break
+    publisher_context = urlunparse(parsed._replace(path="/", query="", fragment=""))
+    if journal_context and journal_context.rstrip("/") != publisher_context.rstrip("/"):
+        return journal_context, "journal_root"
+    if publisher_context:
+        return publisher_context, "publisher_root"
+    return "", ""
+
+
 def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
     doi_norm = _doi_from_doi_url(doi_url)
     plan = {
@@ -2362,6 +2405,13 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
             plan["entry_fallback_reason"] = fallback_reason
 
     canonical_entry_url = str(plan.get("entry_url") or plan.get("entry_resolved_url") or "").strip()
+    context_source_url = canonical_entry_url or str(plan.get("entry_resolved_url") or "").strip()
+    if _aip_context_bootstrap_enabled():
+        context_url, context_kind = _derive_aip_context_target(context_source_url)
+        if context_url:
+            plan["entry_context_url"] = context_url
+            plan["entry_context_kind"] = context_kind
+            plan["entry_strategy_variant"] = "doi_redirect_with_context_bootstrap_no_article_preflight"
     if browser_doi_first and str(doi_url or "").strip():
         plan["entry_browser_url"] = str(doi_url or "").strip()
         plan["entry_browser_kind"] = "official_doi_redirect"
@@ -5466,6 +5516,70 @@ def _looks_like_aip_blank_or_incomplete_page(final_url: str, title: str, html: s
     return True
 
 
+def _maybe_bootstrap_aip_entry_context(
+    page: ChromiumPage,
+    *,
+    entry_plan: Dict[str, Any],
+    session_cache_key: str = "",
+    logger=None,
+    timeout_s: float = 6.0,
+) -> tuple[ChromiumPage, Dict[str, Any]]:
+    meta = {
+        "entry_context_bootstrap_attempted": False,
+        "entry_context_bootstrap_outcome": "",
+        "entry_context_bootstrap_final_url": "",
+        "entry_context_bootstrap_final_title": "",
+    }
+    if page is None:
+        meta["entry_context_bootstrap_outcome"] = "page_missing"
+        return page, meta
+
+    context_url = str(entry_plan.get("entry_context_url") or "").strip()
+    if not context_url or not _aip_context_bootstrap_enabled():
+        meta["entry_context_bootstrap_outcome"] = "not_configured"
+        return page, meta
+
+    cache_key = "::".join(
+        part for part in (str(session_cache_key or "").strip(), str(context_url or "").strip()) if part
+    )
+    if cache_key and cache_key in _AIP_CONTEXT_BOOTSTRAP_CACHE:
+        meta["entry_context_bootstrap_outcome"] = "reused_existing_session_context"
+        return page, meta
+
+    try:
+        page.get(
+            context_url,
+            retry=0,
+            interval=0.4,
+            timeout=max(3, min(int(timeout_s), MAX_ACTION_WAIT_S)),
+        )
+        adopted = _adopt_latest_tab(page, logger=logger)
+        if adopted is not None:
+            page = adopted
+        _dismiss_cookie_or_consent_banner(page, logger=logger)
+        time.sleep(0.7)
+        current_url = str(getattr(page, "url", "") or context_url)
+        title = str(getattr(page, "title", "") or "")
+        html = str(getattr(page, "html", "") or "")
+        issue, _ = detect_access_issue(title=title, html=html, url=current_url, domain="")
+        meta["entry_context_bootstrap_attempted"] = True
+        meta["entry_context_bootstrap_final_url"] = current_url
+        meta["entry_context_bootstrap_final_title"] = title[:240]
+        if issue in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
+            meta["entry_context_bootstrap_outcome"] = "context_challenge"
+        elif _detect_browser_default_page_kind(current_url, title, html):
+            meta["entry_context_bootstrap_outcome"] = "context_default_page"
+        else:
+            meta["entry_context_bootstrap_outcome"] = "context_ready"
+            if cache_key:
+                _AIP_CONTEXT_BOOTSTRAP_CACHE.add(cache_key)
+    except Exception as exc:
+        _raise_if_browser_disconnect(exc, logger=logger, context="aip-context-bootstrap")
+        meta["entry_context_bootstrap_attempted"] = True
+        meta["entry_context_bootstrap_outcome"] = f"context_error:{_exc_message(exc)[:120]}"
+    return page, meta
+
+
 def _recover_aip_download_landing(
     page: ChromiumPage,
     *,
@@ -5486,6 +5600,10 @@ def _recover_aip_download_landing(
         "landing_tab_transition_events": [],
         "landing_final_active_tab_id": "",
         "landing_final_total_tab_count": 0,
+        "entry_context_bootstrap_attempted": False,
+        "entry_context_bootstrap_outcome": "",
+        "entry_context_bootstrap_final_url": "",
+        "entry_context_bootstrap_final_title": "",
     }
     if page is None:
         return page, title, html, recovery_meta
@@ -5842,6 +5960,10 @@ def download_with_drission(
     landing_final_screenshot_path = ""
     landing_final_html_path = ""
     landing_timestamp_ms = 0
+    entry_context_bootstrap_attempted = False
+    entry_context_bootstrap_outcome = ""
+    entry_context_bootstrap_final_url = ""
+    entry_context_bootstrap_final_title = ""
 
     def _set_landing_state(state: str, success: bool, page_obj=None):
         nonlocal landing_attempted, landing_success, landing_state, landing_url, landing_title
@@ -5950,6 +6072,10 @@ def download_with_drission(
             "landing_final_total_tab_count": int(landing_final_total_tab_count or 0),
             "landing_final_screenshot_path": str(landing_final_screenshot_path or ""),
             "landing_final_html_path": str(landing_final_html_path or ""),
+            "entry_context_bootstrap_attempted": bool(entry_context_bootstrap_attempted),
+            "entry_context_bootstrap_outcome": str(entry_context_bootstrap_outcome or ""),
+            "entry_context_bootstrap_final_url": str(entry_context_bootstrap_final_url or ""),
+            "entry_context_bootstrap_final_title": str(entry_context_bootstrap_final_title or ""),
         }
         payload.update(entry_plan_detail)
         payload["entry_preflight_issue_overridden"] = bool(payload.get("entry_preflight_issue")) and bool(
@@ -6014,6 +6140,10 @@ def download_with_drission(
             landing_final_screenshot_path = ""
             landing_final_html_path = ""
             landing_timestamp_ms = int(time.time() * 1000)
+            entry_context_bootstrap_attempted = False
+            entry_context_bootstrap_outcome = ""
+            entry_context_bootstrap_final_url = ""
+            entry_context_bootstrap_final_title = ""
             
             nav_url = doi_url
             if publisher_entry_plan:
@@ -6061,6 +6191,34 @@ def download_with_drission(
                         "        [AIP] pre-reset tab_state active=%s total=%s"
                         % (landing_final_active_tab_id or "", int(landing_final_total_tab_count or 0))
                     )
+                page, context_bootstrap_meta = _maybe_bootstrap_aip_entry_context(
+                    page,
+                    entry_plan=publisher_entry_plan,
+                    session_cache_key=str(session_plan.get("user_data_dir") or ""),
+                    logger=logger,
+                    timeout_s=6 if mode != "deep" else 8,
+                )
+                entry_context_bootstrap_attempted = bool(
+                    context_bootstrap_meta.get("entry_context_bootstrap_attempted")
+                )
+                entry_context_bootstrap_outcome = str(
+                    context_bootstrap_meta.get("entry_context_bootstrap_outcome") or ""
+                )
+                entry_context_bootstrap_final_url = str(
+                    context_bootstrap_meta.get("entry_context_bootstrap_final_url") or ""
+                )
+                entry_context_bootstrap_final_title = str(
+                    context_bootstrap_meta.get("entry_context_bootstrap_final_title") or ""
+                )
+                if logger and entry_context_bootstrap_outcome:
+                    logger.info(
+                        "        [AIP] context_bootstrap kind=%s url=%s outcome=%s"
+                        % (
+                            str(publisher_entry_plan.get("entry_context_kind") or ""),
+                            str(publisher_entry_plan.get("entry_context_url") or ""),
+                            entry_context_bootstrap_outcome,
+                        )
+                    )
             page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
             page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
                 page,
@@ -6094,6 +6252,21 @@ def download_with_drission(
                 landing_final_total_tab_count = int(
                     aip_recovery_meta.get("landing_final_total_tab_count", landing_final_total_tab_count) or 0
                 )
+                entry_context_bootstrap_attempted = bool(
+                    aip_recovery_meta.get("entry_context_bootstrap_attempted")
+                ) or entry_context_bootstrap_attempted
+                if aip_recovery_meta.get("entry_context_bootstrap_outcome"):
+                    entry_context_bootstrap_outcome = str(
+                        aip_recovery_meta.get("entry_context_bootstrap_outcome") or ""
+                    )
+                if aip_recovery_meta.get("entry_context_bootstrap_final_url"):
+                    entry_context_bootstrap_final_url = str(
+                        aip_recovery_meta.get("entry_context_bootstrap_final_url") or ""
+                    )
+                if aip_recovery_meta.get("entry_context_bootstrap_final_title"):
+                    entry_context_bootstrap_final_title = str(
+                        aip_recovery_meta.get("entry_context_bootstrap_final_title") or ""
+                    )
                 page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
                     page,
                     sync_tab=False,
@@ -6177,6 +6350,21 @@ def download_with_drission(
                         landing_final_total_tab_count = int(
                             aip_recovery_meta.get("landing_final_total_tab_count", landing_final_total_tab_count) or 0
                         )
+                        entry_context_bootstrap_attempted = bool(
+                            aip_recovery_meta.get("entry_context_bootstrap_attempted")
+                        ) or entry_context_bootstrap_attempted
+                        if aip_recovery_meta.get("entry_context_bootstrap_outcome"):
+                            entry_context_bootstrap_outcome = str(
+                                aip_recovery_meta.get("entry_context_bootstrap_outcome") or ""
+                            )
+                        if aip_recovery_meta.get("entry_context_bootstrap_final_url"):
+                            entry_context_bootstrap_final_url = str(
+                                aip_recovery_meta.get("entry_context_bootstrap_final_url") or ""
+                            )
+                        if aip_recovery_meta.get("entry_context_bootstrap_final_title"):
+                            entry_context_bootstrap_final_title = str(
+                                aip_recovery_meta.get("entry_context_bootstrap_final_title") or ""
+                            )
                         page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
                             page,
                             sync_tab=False,

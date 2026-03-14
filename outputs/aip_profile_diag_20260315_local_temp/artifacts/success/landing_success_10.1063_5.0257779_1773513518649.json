@@ -1,0 +1,236 @@
+{
+  "doi": "10.1063/5.0257779",
+  "input_publisher": "American Institute of Physics",
+  "scheduler_publisher": "aip",
+  "captured_at_ms": 1773513518649,
+  "worker_idx": 0,
+  "browser_identity": "worker_0:temp",
+  "probe_page_mode": "reuse_page",
+  "probe_tab_id": "8C67EDA5C475B7E2BBA27865C2BB1A20",
+  "scheduled_start_ms": 1773513492317,
+  "actual_start_ms": 1773513492317,
+  "pacing_wait_ms": 0,
+  "pacing_penalty_wait_ms": 0,
+  "classifier_state": "success_landing",
+  "outcome": "SUCCESS_ACCESS",
+  "final_url": "https://pubs.aip.org/aip/jcp/article-abstract/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area?redirectedFrom=fulltext",
+  "navigation_chain": [
+    {
+      "step": "pre_reset",
+      "requested_url": "about:blank",
+      "observed_url": "about:blank"
+    },
+    {
+      "step": "aip_resolve",
+      "requested_url": "https://doi.org/10.1063/5.0257779",
+      "observed_url": "https://pubs.aip.org/jcp/article/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area"
+    },
+    {
+      "step": "doi_get",
+      "requested_url": "https://doi.org/10.1063/5.0257779",
+      "observed_url": "https://pubs.aip.org/aip/jcp/article-abstract/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area?redirectedFrom=fulltext"
+    }
+  ],
+  "title": "Layer-by-layer NH3 plasma treatment for area-selective atomic layer deposition of high-quality SiO2 thin films | The Journal of Chemical Physics | AIP Publishing",
+  "reason_codes": [
+    "content_populated",
+    "doi_match",
+    "expected_domain_match",
+    "publisher_marker_present",
+    "strong_meta_present"
+  ],
+  "signal_summary": {
+    "body_text_len": 12396,
+    "main_text_len": 11679,
+    "meta_keys": [
+      "citation_author",
+      "citation_doi",
+      "citation_journal_title",
+      "citation_pdf_url",
+      "citation_title",
+      "dc.identifier",
+      "og:type",
+      "og:url"
+    ]
+  },
+  "timing_breakdown": {
+    "scheduled_start_ms": 1773513492317,
+    "actual_start_ms": 1773513492317,
+    "pacing_wait_ms": 0,
+    "pacing_penalty_wait_ms": 0,
+    "pacing_jitter_sec": 1.311,
+    "attempts": [
+      {
+        "attempt": 1,
+        "pre_reset_ms": 83,
+        "network_listener": true,
+        "runtime_probe_installed": true,
+        "entry_strategy": "aip_official_doi_resolve",
+        "entry_browser_url": "https://doi.org/10.1063/5.0257779",
+        "entry_url_candidate": "https://pubs.aip.org/jcp/article-abstract/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area",
+        "entry_redirect_chain_summary": [
+          "302:https://doi.org/10.1063/5.0257779",
+          "location:https://pubs.aip.org/jcp/article/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area"
+        ],
+        "entry_fallback_reason": "prefer_article_abstract_queryless",
+        "doi_get_ms": 4584,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 103,
+        "attempt_elapsed_ms": 26331
+      }
+    ]
+  },
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "classifier_state": "success_landing",
+      "reason_codes": [
+        "content_populated",
+        "doi_match",
+        "expected_domain_match",
+        "publisher_marker_present",
+        "strong_meta_present"
+      ],
+      "final_url": "https://pubs.aip.org/aip/jcp/article-abstract/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area?redirectedFrom=fulltext",
+      "timing_ms": {
+        "attempt": 1,
+        "pre_reset_ms": 83,
+        "network_listener": true,
+        "runtime_probe_installed": true,
+        "entry_strategy": "aip_official_doi_resolve",
+        "entry_browser_url": "https://doi.org/10.1063/5.0257779",
+        "entry_url_candidate": "https://pubs.aip.org/jcp/article-abstract/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area",
+        "entry_redirect_chain_summary": [
+          "302:https://doi.org/10.1063/5.0257779",
+          "location:https://pubs.aip.org/jcp/article/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area"
+        ],
+        "entry_fallback_reason": "prefer_article_abstract_queryless",
+        "doi_get_ms": 4584,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 103,
+        "attempt_elapsed_ms": 26331
+      }
+    }
+  ],
+  "direct_pdf_path": "",
+  "direct_pdf_event": {},
+  "legacy_success_like": true,
+  "dom_signature": "Skip to Main Content Open Menu header search search input Search input auto suggest filter your search All Content AIP Publishing Portfolio The Journal of Chemical Physics Search Advanced Search | Citation Search Cart Sign In Open Menu HOME",
+  "html_len": 582359,
+  "challenge_detected": false,
+  "entry_strategy": "aip_official_doi_resolve",
+  "entry_strategy_variant": "doi_redirect_only_no_article_preflight",
+  "entry_redirect_probe_mode": "doi_location_only",
+  "entry_prebrowser_request_count": 1,
+  "entry_url": "https://pubs.aip.org/jcp/article-abstract/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area",
+  "entry_resolved_url": "https://pubs.aip.org/jcp/article/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area",
+  "entry_browser_url": "https://doi.org/10.1063/5.0257779",
+  "entry_browser_kind": "official_doi_redirect",
+  "entry_handoff_url": "https://pubs.aip.org/jcp/article-abstract/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area",
+  "entry_handoff_used": false,
+  "entry_context_url": "",
+  "entry_context_kind": "",
+  "entry_redirect_chain_summary": [
+    "302:https://doi.org/10.1063/5.0257779",
+    "location:https://pubs.aip.org/jcp/article/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area"
+  ],
+  "entry_fallback_used": true,
+  "entry_fallback_reason": "prefer_article_abstract_queryless",
+  "entry_preflight_url": "https://pubs.aip.org/jcp/article-abstract/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area",
+  "entry_preflight_issue": "",
+  "entry_preflight_evidence": [],
+  "entry_preflight_http_status": null,
+  "entry_preflight_issue_overridden": false,
+  "entry_browser_open_skipped": false,
+  "initial_landing_type": "",
+  "landing_recovery_attempted": false,
+  "landing_recovery_strategy": "",
+  "landing_recovery_outcome": "",
+  "shell_recovery_attempted": false,
+  "shell_recovery_strategy": "",
+  "shell_recovery_outcome": "",
+  "tab_transition_count": 0,
+  "tab_transition_events": [],
+  "reclassified_after_detector_fix": false,
+  "reclassification_reason": "",
+  "runtime_diagnostics": {
+    "current_url": "https://pubs.aip.org/aip/jcp/article-abstract/162/12/124203/3341058/Layer-by-layer-NH3-plasma-treatment-for-area?redirectedFrom=fulltext",
+    "page_title": "Layer-by-layer NH3 plasma treatment for area-selective atomic layer deposition of high-quality SiO2 thin films | The Journal of Chemical Physics | AIP Publishing",
+    "ready_state": "complete",
+    "html_len": 582359,
+    "body_text_len": 12396,
+    "main_text_len": 11679,
+    "parsed_main_text_len": 18452,
+    "iframe_count": 5,
+    "body_child_count": 28,
+    "tab_state": {
+      "active_tab_id": "8C67EDA5C475B7E2BBA27865C2BB1A20",
+      "total_tab_count": 1,
+      "tab_ids": [
+        "8C67EDA5C475B7E2BBA27865C2BB1A20"
+      ]
+    },
+    "viewport": {
+      "visibility_state": "visible",
+      "inner_width": 1728,
+      "inner_height": 1030,
+      "device_pixel_ratio": 1.0,
+      "scroll_x": 0,
+      "scroll_y": 0,
+      "body_client_height": 1030,
+      "body_scroll_height": 6708,
+      "doc_scroll_height": 6708
+    },
+    "iframe_summary": [
+      {
+        "src": "",
+        "title": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "src": "",
+        "title": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "src": "",
+        "title": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "src": "",
+        "title": "",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "src": "https://cmp.osano.com",
+        "title": "Osano Consent Manager Iframe",
+        "width": 0,
+        "height": 0
+      }
+    ],
+    "console_runtime_errors": {
+      "capture_available": true,
+      "error_events": [],
+      "rejection_events": []
+    },
+    "network_summary": {
+      "request_count": 0,
+      "status_counts": {},
+      "document_chain": [],
+      "failed_request_count": 0,
+      "failed_requests": []
+    },
+    "blank_screenshot_likely": false,
+    "blank_screenshot_reason": "",
+    "body_text_len_runtime": 12396,
+    "html_len_runtime": 582344
+  },
+  "screenshot_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/aip_profile_diag_20260315_local_temp/artifacts/success/landing_success_10.1063_5.0257779_1773513518649.png",
+  "screenshot_delayed_path": "",
+  "html_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/aip_profile_diag_20260315_local_temp/artifacts/success/landing_success_10.1063_5.0257779_1773513518649.html"
+}

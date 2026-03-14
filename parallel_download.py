@@ -694,6 +694,10 @@ def _single_download_attempt(
             "entry_resolved_url": str(dr.get("entry_resolved_url") or ""),
             "entry_context_url": str(dr.get("entry_context_url") or ""),
             "entry_context_kind": str(dr.get("entry_context_kind") or ""),
+            "entry_context_bootstrap_attempted": bool(dr.get("entry_context_bootstrap_attempted")),
+            "entry_context_bootstrap_outcome": str(dr.get("entry_context_bootstrap_outcome") or ""),
+            "entry_context_bootstrap_final_url": str(dr.get("entry_context_bootstrap_final_url") or ""),
+            "entry_context_bootstrap_final_title": str(dr.get("entry_context_bootstrap_final_title") or ""),
             "entry_redirect_chain_summary": list(dr.get("entry_redirect_chain_summary") or []),
             "entry_fallback_used": bool(dr.get("entry_fallback_used")),
             "entry_fallback_reason": str(dr.get("entry_fallback_reason") or ""),
@@ -1659,6 +1663,18 @@ def main(
     df["landing_entry_resolved_url"] = [str(r.get("entry_resolved_url") or "") for r in final_results]
     df["landing_entry_context_url"] = [str(r.get("entry_context_url") or "") for r in final_results]
     df["landing_entry_context_kind"] = [str(r.get("entry_context_kind") or "") for r in final_results]
+    df["landing_entry_context_bootstrap_attempted"] = [
+        bool(r.get("entry_context_bootstrap_attempted")) for r in final_results
+    ]
+    df["landing_entry_context_bootstrap_outcome"] = [
+        str(r.get("entry_context_bootstrap_outcome") or "") for r in final_results
+    ]
+    df["landing_entry_context_bootstrap_final_url"] = [
+        str(r.get("entry_context_bootstrap_final_url") or "") for r in final_results
+    ]
+    df["landing_entry_context_bootstrap_final_title"] = [
+        str(r.get("entry_context_bootstrap_final_title") or "") for r in final_results
+    ]
     df["landing_entry_preflight_url"] = [str(r.get("entry_preflight_url") or "") for r in final_results]
     df["landing_entry_redirect_chain_summary"] = [
         json.dumps(list(r.get("entry_redirect_chain_summary") or []), ensure_ascii=False) for r in final_results

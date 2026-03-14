@@ -58,6 +58,7 @@ from landing_classifier import (
     _strip_visible_text,
 )
 from tools_exp import (
+    _maybe_bootstrap_aip_entry_context,
     _adopt_latest_tab,
     _apply_best_browser_profile,
     _capture_direct_downloaded_pdf,
@@ -2505,6 +2506,10 @@ def _save_probe_artifacts(
             "entry_handoff_used": bool(record.get("entry_handoff_used")),
             "entry_context_url": record.get("entry_context_url", ""),
             "entry_context_kind": record.get("entry_context_kind", ""),
+            "entry_context_bootstrap_attempted": bool(record.get("entry_context_bootstrap_attempted")),
+            "entry_context_bootstrap_outcome": record.get("entry_context_bootstrap_outcome", ""),
+            "entry_context_bootstrap_final_url": record.get("entry_context_bootstrap_final_url", ""),
+            "entry_context_bootstrap_final_title": record.get("entry_context_bootstrap_final_title", ""),
             "entry_redirect_chain_summary": record.get("entry_redirect_chain_summary", []),
             "entry_fallback_used": bool(record.get("entry_fallback_used")),
             "entry_fallback_reason": record.get("entry_fallback_reason", ""),
@@ -2594,6 +2599,10 @@ def _probe_one(
     landing_recovery_attempted = False
     landing_recovery_strategy = ""
     landing_recovery_outcome = ""
+    entry_context_bootstrap_attempted = False
+    entry_context_bootstrap_outcome = ""
+    entry_context_bootstrap_final_url = ""
+    entry_context_bootstrap_final_title = ""
     reclassified_after_detector_fix = False
     reclassification_reason = ""
     tab_transition_events: List[Dict[str, Any]] = []
@@ -2797,6 +2806,35 @@ def _probe_one(
             nav_url = entry_url or doi_url
             if entry_url and entry_url.lower() != doi_url.lower():
                 attempt_timing["entry_url_override"] = entry_url
+            if _is_aip_doi(doi):
+                page, context_bootstrap_meta = _maybe_bootstrap_aip_entry_context(
+                    page,
+                    entry_plan=entry_plan,
+                    session_cache_key=str(probe_page_meta.get("browser_user_data_dir") or ""),
+                    timeout_s=min(step_timeout, 6.0),
+                )
+                entry_context_bootstrap_attempted = bool(
+                    context_bootstrap_meta.get("entry_context_bootstrap_attempted")
+                ) or entry_context_bootstrap_attempted
+                if context_bootstrap_meta.get("entry_context_bootstrap_outcome"):
+                    entry_context_bootstrap_outcome = str(
+                        context_bootstrap_meta.get("entry_context_bootstrap_outcome") or ""
+                    )
+                    attempt_timing["entry_context_bootstrap_outcome"] = entry_context_bootstrap_outcome
+                if context_bootstrap_meta.get("entry_context_bootstrap_final_url"):
+                    entry_context_bootstrap_final_url = str(
+                        context_bootstrap_meta.get("entry_context_bootstrap_final_url") or ""
+                    )
+                    _append_nav_step(
+                        navigation_chain,
+                        "aip_context_bootstrap",
+                        str(entry_plan.get("entry_context_url") or ""),
+                        entry_context_bootstrap_final_url,
+                    )
+                if context_bootstrap_meta.get("entry_context_bootstrap_final_title"):
+                    entry_context_bootstrap_final_title = str(
+                        context_bootstrap_meta.get("entry_context_bootstrap_final_title") or ""
+                    )
             nav_started = time.perf_counter()
             page.get(nav_url, retry=0, interval=0.5, timeout=step_timeout)
             attempt_timing["doi_get_ms"] = int((time.perf_counter() - nav_started) * 1000)
@@ -3620,6 +3658,10 @@ def _probe_one(
         "entry_handoff_used": bool(entry_handoff_used),
         "entry_context_url": str(entry_plan.get("entry_context_url") or ""),
         "entry_context_kind": str(entry_plan.get("entry_context_kind") or ""),
+        "entry_context_bootstrap_attempted": bool(entry_context_bootstrap_attempted),
+        "entry_context_bootstrap_outcome": str(entry_context_bootstrap_outcome or ""),
+        "entry_context_bootstrap_final_url": str(entry_context_bootstrap_final_url or ""),
+        "entry_context_bootstrap_final_title": str(entry_context_bootstrap_final_title or ""),
         "entry_redirect_chain_summary": list(entry_plan.get("entry_redirect_chain_summary") or []),
         "entry_fallback_used": bool(entry_plan.get("entry_fallback_used")),
         "entry_fallback_reason": str(entry_plan.get("entry_fallback_reason") or ""),
