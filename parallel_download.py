@@ -667,12 +667,22 @@ def _single_download_attempt(
             "landing_state": str(dr.get("landing_state") or "not_attempted"),
             "landing_url": str(dr.get("landing_url") or ""),
             "landing_title": str(dr.get("landing_title") or ""),
+            "landing_timestamp_ms": int(dr.get("landing_timestamp_ms", 0) or 0),
+            "landing_initial_target_url": str(dr.get("landing_initial_target_url") or ""),
             "browser_session_mode": str(dr.get("browser_session_mode") or ""),
             "browser_session_source": str(dr.get("browser_session_source") or ""),
             "browser_session_decision_reason": str(dr.get("browser_session_decision_reason") or ""),
             "browser_profile_name": str(dr.get("browser_profile_name") or ""),
             "browser_user_data_dir": str(dr.get("browser_user_data_dir") or ""),
             "landing_challenge_detected": bool(dr.get("landing_challenge_detected")),
+            "landing_default_page_detected": bool(dr.get("landing_default_page_detected")),
+            "landing_default_page_kind": str(dr.get("landing_default_page_kind") or ""),
+            "landing_tab_transition_count": int(dr.get("landing_tab_transition_count", 0) or 0),
+            "landing_tab_transition_events": list(dr.get("landing_tab_transition_events") or []),
+            "landing_final_active_tab_id": str(dr.get("landing_final_active_tab_id") or ""),
+            "landing_final_total_tab_count": int(dr.get("landing_final_total_tab_count", 0) or 0),
+            "landing_final_screenshot_path": str(dr.get("landing_final_screenshot_path") or ""),
+            "landing_final_html_path": str(dr.get("landing_final_html_path") or ""),
             "entry_strategy": str(dr.get("entry_strategy") or ""),
             "entry_strategy_variant": str(dr.get("entry_strategy_variant") or ""),
             "entry_redirect_probe_mode": str(dr.get("entry_redirect_probe_mode") or ""),
@@ -1620,12 +1630,24 @@ def main(
     df["landing_state"] = [str(r.get("landing_state") or "not_attempted") for r in final_results]
     df["landing_url"] = [str(r.get("landing_url") or "") for r in final_results]
     df["landing_title"] = [str(r.get("landing_title") or "") for r in final_results]
+    df["landing_timestamp_ms"] = [int(r.get("landing_timestamp_ms", 0) or 0) for r in final_results]
+    df["landing_initial_target_url"] = [str(r.get("landing_initial_target_url") or "") for r in final_results]
     df["browser_session_mode"] = [str(r.get("browser_session_mode") or "") for r in final_results]
     df["browser_session_source"] = [str(r.get("browser_session_source") or "") for r in final_results]
     df["browser_session_decision_reason"] = [str(r.get("browser_session_decision_reason") or "") for r in final_results]
     df["browser_profile_name"] = [str(r.get("browser_profile_name") or "") for r in final_results]
     df["browser_user_data_dir"] = [str(r.get("browser_user_data_dir") or "") for r in final_results]
     df["landing_challenge_detected"] = [bool(r.get("landing_challenge_detected")) for r in final_results]
+    df["landing_default_page_detected"] = [bool(r.get("landing_default_page_detected")) for r in final_results]
+    df["landing_default_page_kind"] = [str(r.get("landing_default_page_kind") or "") for r in final_results]
+    df["landing_tab_transition_count"] = [int(r.get("landing_tab_transition_count", 0) or 0) for r in final_results]
+    df["landing_tab_transition_events"] = [
+        json.dumps(list(r.get("landing_tab_transition_events") or []), ensure_ascii=False) for r in final_results
+    ]
+    df["landing_final_active_tab_id"] = [str(r.get("landing_final_active_tab_id") or "") for r in final_results]
+    df["landing_final_total_tab_count"] = [int(r.get("landing_final_total_tab_count", 0) or 0) for r in final_results]
+    df["landing_final_screenshot_path"] = [str(r.get("landing_final_screenshot_path") or "") for r in final_results]
+    df["landing_final_html_path"] = [str(r.get("landing_final_html_path") or "") for r in final_results]
     df["landing_entry_strategy"] = [str(r.get("entry_strategy") or "") for r in final_results]
     df["landing_entry_strategy_variant"] = [str(r.get("entry_strategy_variant") or "") for r in final_results]
     df["landing_entry_redirect_probe_mode"] = [str(r.get("entry_redirect_probe_mode") or "") for r in final_results]

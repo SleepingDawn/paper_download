@@ -2639,7 +2639,13 @@ def _resolve_doi_redirect_target(doi_url: str, logger=None) -> str:
     doi_norm = _doi_from_doi_url(raw)
     if doi_norm.startswith(("10.1063", "10.1116")):
         aip_plan = build_aip_safe_entry_plan(raw, logger=logger)
-        return str(aip_plan.get("entry_browser_url") or aip_plan.get("entry_resolved_url") or "")
+        return str(
+            aip_plan.get("entry_url")
+            or aip_plan.get("entry_resolved_url")
+            or aip_plan.get("entry_handoff_url")
+            or aip_plan.get("entry_browser_url")
+            or ""
+        )
     if doi_norm.startswith("10.1016"):
         elsevier_plan = build_elsevier_safe_entry_plan(raw, logger=logger)
         if elsevier_plan.get("entry_browser_open_skipped"):
@@ -2995,6 +3001,46 @@ def _adopt_latest_tab(page, logger=None):
     return page
 
 
+def _record_tab_transition(tab_transition_events, step_label: str, from_page, to_page) -> None:
+    if tab_transition_events is None or from_page is None or to_page is None or from_page is to_page:
+        return
+    tab_transition_events.append(
+        {
+            "step": str(step_label or "").strip() or "tab_adopt",
+            "from_tab_id": str(getattr(from_page, "tab_id", "") or ""),
+            "to_tab_id": str(getattr(to_page, "tab_id", "") or ""),
+            "from_url": str(getattr(from_page, "url", "") or ""),
+            "to_url": str(getattr(to_page, "url", "") or ""),
+            "from_title": str(getattr(from_page, "title", "") or "")[:160],
+            "to_title": str(getattr(to_page, "title", "") or "")[:160],
+        }
+    )
+
+
+def _prune_extra_tabs(page, logger=None) -> None:
+    if page is None:
+        return
+    try:
+        current_tab_id = str(getattr(page, "tab_id", "") or "")
+        tab_ids = [str(tab_id or "") for tab_id in list(getattr(page, "tab_ids", []) or []) if str(tab_id or "").strip()]
+        for tab_id in tab_ids:
+            if not tab_id or tab_id == current_tab_id:
+                continue
+            try:
+                page.close_tabs(tab_id)
+                if logger:
+                    logger.info(f"        [Tab] 불필요 탭 정리: {tab_id[:8]}")
+            except Exception:
+                pass
+        if current_tab_id:
+            try:
+                page.activate_tab(current_tab_id)
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+
 def _open_temporary_tab(page, start_url: str = "about:blank"):
     if page is None:
         return None
@@ -3047,6 +3093,86 @@ def _close_new_tabs_since(page, baseline_tab_ids) -> None:
                 pass
     except Exception:
         pass
+
+
+def _current_tab_state(page) -> Dict[str, Any]:
+    if page is None:
+        return {
+            "active_tab_id": "",
+            "total_tab_count": 0,
+            "tab_ids": [],
+        }
+    try:
+        tab_ids = [str(tab_id or "") for tab_id in list(getattr(page, "tab_ids", []) or []) if str(tab_id or "").strip()]
+    except Exception:
+        tab_ids = []
+    return {
+        "active_tab_id": str(getattr(page, "tab_id", "") or ""),
+        "total_tab_count": len(tab_ids),
+        "tab_ids": tab_ids[:12],
+    }
+
+
+def _detect_browser_default_page_kind(url: str = "", title: str = "", html: str = "") -> str:
+    low_url = str(url or "").strip().lower()
+    low_title = str(title or "").strip().lower()
+    low_html = str(html or "").strip().lower()
+    google_domain = _extract_domain(low_url)
+
+    if low_url.startswith("chrome://newtab") or low_url.startswith("edge://newtab"):
+        return "browser_new_tab_url"
+    if low_title in {"new tab", "새 탭"}:
+        return "browser_new_tab_title"
+    if google_domain.startswith("www.google.") or google_domain == "google.com":
+        return "google_default_page_domain"
+
+    html_markers = (
+        "search google or type a url",
+        "google offered in",
+        "customize chrome",
+        "customise chrome",
+        "for testing",
+    )
+    if any(marker in low_html for marker in html_markers):
+        return "google_default_page_html"
+    return ""
+
+
+def _capture_page_debug_artifacts(page, artifact_root: str, stem: str, logger=None) -> Dict[str, str]:
+    out = {"screenshot_path": "", "html_path": ""}
+    if page is None or not artifact_root:
+        return out
+
+    logs_root = os.path.abspath(os.path.join(artifact_root, "logs"))
+    screenshot_dir = os.path.join(logs_root, "screenshots")
+    html_dir = os.path.join(logs_root, "html")
+    os.makedirs(html_dir, exist_ok=True)
+
+    screenshot_path = _safe_screenshot(
+        page,
+        screenshot_dir,
+        f"{stem}.png",
+        logger=logger,
+        full_page=False,
+    )
+    if screenshot_path:
+        out["screenshot_path"] = os.path.abspath(str(screenshot_path))
+
+    try:
+        html = str(getattr(page, "html", "") or "")
+    except Exception:
+        html = ""
+    if html:
+        html_path = os.path.abspath(os.path.join(html_dir, f"{stem}.html"))
+        try:
+            with open(html_path, "w", encoding="utf-8") as f:
+                f.write(html)
+            out["html_path"] = html_path
+            if logger:
+                logger.info(f"  HTML 저장 성공: {html_path}")
+        except Exception:
+            pass
+    return out
 
 
 def _summarize_elsevier_pdf_control(el) -> str:
@@ -5354,30 +5480,56 @@ def _recover_aip_download_landing(
         "landing_recovery_attempted": False,
         "landing_recovery_strategy": "",
         "landing_recovery_outcome": "",
+        "landing_default_page_detected": False,
+        "landing_default_page_kind": "",
+        "landing_tab_transition_count": 0,
+        "landing_tab_transition_events": [],
+        "landing_final_active_tab_id": "",
+        "landing_final_total_tab_count": 0,
     }
     if page is None:
         return page, title, html, recovery_meta
 
+    def _update_final_tab_state(target_page: ChromiumPage | None) -> None:
+        tab_state = _current_tab_state(target_page)
+        recovery_meta["landing_tab_transition_count"] = len(list(recovery_meta.get("landing_tab_transition_events") or []))
+        recovery_meta["landing_final_active_tab_id"] = str(tab_state.get("active_tab_id") or "")
+        recovery_meta["landing_final_total_tab_count"] = int(tab_state.get("total_tab_count", 0) or 0)
+
+    def _note_default_page(target_url: str, target_title: str, target_html: str) -> str:
+        default_kind = _detect_browser_default_page_kind(target_url, target_title, target_html)
+        if default_kind:
+            recovery_meta["landing_default_page_detected"] = True
+            if not recovery_meta.get("landing_default_page_kind"):
+                recovery_meta["landing_default_page_kind"] = default_kind
+        return default_kind
+
     current_url = str(getattr(page, "url", "") or "")
+    current_domain = _extract_domain(current_url)
+    current_default_kind = _note_default_page(current_url, title, html)
     issue, _ = detect_access_issue(title=title, html=html, url=current_url, domain="")
-    blank_like = _looks_like_empty_rendered_page(title=title, html=html) or _looks_like_aip_blank_or_incomplete_page(
-        current_url,
-        title,
-        html,
+    blank_like = (
+        bool(current_default_kind)
+        or _looks_like_empty_rendered_page(title=title, html=html)
+        or _looks_like_aip_blank_or_incomplete_page(current_url, title, html)
     )
     partial_article = _is_aip_article_url(current_url) and not _has_article_signal(title=title, html=html)
+    unresolved_doi = current_domain.endswith("doi.org")
     if issue in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
         recovery_meta["landing_recovery_outcome"] = "challenge_detected_no_retry"
+        _update_final_tab_state(page)
         return page, title, html, recovery_meta
-    if issue not in ("FAIL_BLOCK", "FAIL_CAPTCHA") and not blank_like and not partial_article:
+    if issue not in ("FAIL_BLOCK", "FAIL_CAPTCHA") and not blank_like and not partial_article and not unresolved_doi:
+        _update_final_tab_state(page)
         return page, title, html, recovery_meta
 
     targets = []
     seen = {current_url.strip().lower()}
     for strategy, candidate in (
-        ("canonical_entry", str(entry_plan.get("entry_browser_url") or "").strip()),
-        ("resolved_article", str(entry_plan.get("entry_resolved_url") or "").strip()),
         ("entry_candidate", str(entry_plan.get("entry_url") or "").strip()),
+        ("resolved_article", str(entry_plan.get("entry_resolved_url") or "").strip()),
+        ("handoff_article", str(entry_plan.get("entry_handoff_url") or "").strip()),
+        ("canonical_entry", str(entry_plan.get("entry_browser_url") or "").strip()),
     ):
         if not candidate:
             continue
@@ -5387,43 +5539,104 @@ def _recover_aip_download_landing(
         seen.add(key)
         targets.append((strategy, candidate))
 
+    allow_fresh_tab_recovery = bool(current_default_kind or unresolved_doi or blank_like)
+    baseline_tab_ids = set(getattr(page, "tab_ids", []) or [])
+
     for strategy, target_url in targets[:3]:
-        try:
-            page.get(target_url, retry=0, interval=0.4, timeout=max(3, min(int(timeout_s), MAX_ACTION_WAIT_S)))
-            page = _adopt_latest_tab(page, logger=logger)
-            _dismiss_cookie_or_consent_banner(page, logger=logger)
-            time.sleep(0.7)
-            current_url = str(getattr(page, "url", "") or target_url)
-            title = str(getattr(page, "title", "") or title)
-            html = str(getattr(page, "html", "") or html)
-            recovery_meta["landing_recovery_attempted"] = True
-            recovery_meta["landing_recovery_strategy"] = strategy
-            next_issue, _ = detect_access_issue(title=title, html=html, url=current_url, domain="")
-            next_blank = _looks_like_empty_rendered_page(title=title, html=html) or _looks_like_aip_blank_or_incomplete_page(
-                current_url,
-                title,
-                html,
-            )
-            if not next_issue and not next_blank and _is_aip_article_url(current_url):
-                recovery_meta["landing_recovery_outcome"] = "recovered_to_article_page"
-                return page, title, html, recovery_meta
-        except Exception as exc:
-            _raise_if_browser_disconnect(exc, logger=logger, context="aip-download-recovery")
+        target_attempts = [("same_tab", page)]
+        if allow_fresh_tab_recovery:
+            temp_page = _open_temporary_tab(page)
+            if temp_page is not None:
+                target_attempts.append(("fresh_tab", temp_page))
+
+        for route, candidate_page in target_attempts:
+            if candidate_page is None:
+                continue
+            close_after = route == "fresh_tab"
+            try:
+                if logger:
+                    logger.info(
+                        "        [AIP] recovery route=%s strategy=%s target=%s"
+                        % (route, strategy, target_url)
+                    )
+                if route == "same_tab" and current_default_kind:
+                    try:
+                        candidate_page.get("about:blank", retry=0, interval=0.2, timeout=5)
+                    except Exception:
+                        pass
+                candidate_page.get(
+                    target_url,
+                    retry=0,
+                    interval=0.4,
+                    timeout=max(3, min(int(timeout_s), MAX_ACTION_WAIT_S)),
+                )
+                adopted = _adopt_latest_tab(candidate_page, logger=logger)
+                if adopted is not None and adopted is not candidate_page:
+                    _record_tab_transition(
+                        recovery_meta["landing_tab_transition_events"],
+                        f"aip_recovery_{route}_{strategy}",
+                        candidate_page,
+                        adopted,
+                    )
+                    candidate_page = adopted
+                    close_after = False
+                _dismiss_cookie_or_consent_banner(candidate_page, logger=logger)
+                time.sleep(0.7)
+                current_url = str(getattr(candidate_page, "url", "") or target_url)
+                title = str(getattr(candidate_page, "title", "") or title)
+                html = str(getattr(candidate_page, "html", "") or html)
+                current_domain = _extract_domain(current_url)
+                next_default_kind = _note_default_page(current_url, title, html)
+                recovery_meta["landing_recovery_attempted"] = True
+                recovery_meta["landing_recovery_strategy"] = f"{strategy}_{route}"
+                next_issue, _ = detect_access_issue(title=title, html=html, url=current_url, domain="")
+                next_blank = (
+                    bool(next_default_kind)
+                    or _looks_like_empty_rendered_page(title=title, html=html)
+                    or _looks_like_aip_blank_or_incomplete_page(current_url, title, html)
+                )
+                next_unresolved_doi = current_domain.endswith("doi.org")
+                if next_issue in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
+                    recovery_meta["landing_recovery_outcome"] = f"challenge_after_{strategy}_{route}"
+                    _update_final_tab_state(candidate_page)
+                    return candidate_page, title, html, recovery_meta
+                if not next_issue and not next_blank and not next_unresolved_doi and _is_aip_article_url(current_url):
+                    recovery_meta["landing_recovery_outcome"] = (
+                        f"recovered_from_default_page_via_{strategy}_{route}"
+                        if recovery_meta["landing_default_page_detected"]
+                        else "recovered_to_article_page"
+                    )
+                    _update_final_tab_state(candidate_page)
+                    return candidate_page, title, html, recovery_meta
+                page = candidate_page
+            except Exception as exc:
+                _raise_if_browser_disconnect(exc, logger=logger, context="aip-download-recovery")
+            finally:
+                if close_after:
+                    _close_temporary_tab(page, candidate_page)
+                    _close_new_tabs_since(page, baseline_tab_ids)
 
     if recovery_meta["landing_recovery_attempted"]:
         current_url = str(getattr(page, "url", "") or "")
         final_issue, _ = detect_access_issue(title=title, html=html, url=current_url, domain="")
-        final_blank = _looks_like_empty_rendered_page(title=title, html=html) or _looks_like_aip_blank_or_incomplete_page(
-            current_url,
-            title,
-            html,
+        final_default_kind = _note_default_page(current_url, title, html)
+        final_blank = (
+            bool(final_default_kind)
+            or _looks_like_empty_rendered_page(title=title, html=html)
+            or _looks_like_aip_blank_or_incomplete_page(current_url, title, html)
         )
+        final_unresolved_doi = _extract_domain(current_url).endswith("doi.org")
         if final_issue in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
             recovery_meta["landing_recovery_outcome"] = "still_challenged_after_canonical_entry"
+        elif final_default_kind:
+            recovery_meta["landing_recovery_outcome"] = f"default_page_persisted:{final_default_kind}"
+        elif final_unresolved_doi:
+            recovery_meta["landing_recovery_outcome"] = "still_on_doi_after_canonical_entry"
         elif final_blank:
             recovery_meta["landing_recovery_outcome"] = "still_blank_after_canonical_entry"
         else:
             recovery_meta["landing_recovery_outcome"] = "not_recovered"
+    _update_final_tab_state(page)
     return page, title, html, recovery_meta
 
 # =======================================================
@@ -5620,9 +5833,20 @@ def download_with_drission(
     landing_recovery_attempted = False
     landing_recovery_strategy = ""
     landing_recovery_outcome = ""
+    landing_initial_target_url = ""
+    landing_default_page_detected = False
+    landing_default_page_kind = ""
+    landing_tab_transition_events = []
+    landing_final_active_tab_id = ""
+    landing_final_total_tab_count = 0
+    landing_final_screenshot_path = ""
+    landing_final_html_path = ""
+    landing_timestamp_ms = 0
 
     def _set_landing_state(state: str, success: bool, page_obj=None):
         nonlocal landing_attempted, landing_success, landing_state, landing_url, landing_title
+        nonlocal landing_final_active_tab_id, landing_final_total_tab_count
+        nonlocal landing_final_screenshot_path, landing_final_html_path
         landing_attempted = True
         landing_success = bool(success)
         landing_state = state
@@ -5636,17 +5860,60 @@ def download_with_drission(
                 landing_title = target_page.title or landing_title
             except Exception:
                 pass
+            tab_state = _current_tab_state(target_page)
+            landing_final_active_tab_id = str(tab_state.get("active_tab_id") or landing_final_active_tab_id)
+            landing_final_total_tab_count = int(tab_state.get("total_tab_count", landing_final_total_tab_count) or 0)
+            if (
+                is_aip_preview
+                and state == "success_landing"
+                and (not landing_final_screenshot_path or not landing_final_html_path)
+            ):
+                try:
+                    artifacts = _capture_page_debug_artifacts(
+                        target_page,
+                        artifact_root,
+                        f"landing_stable_{os.path.splitext(filename)[0]}",
+                        logger=logger,
+                    )
+                    landing_final_screenshot_path = str(
+                        artifacts.get("screenshot_path") or landing_final_screenshot_path or ""
+                    )
+                    landing_final_html_path = str(artifacts.get("html_path") or landing_final_html_path or "")
+                except Exception:
+                    pass
 
-    def _refresh_page_context(page_obj, *, sync_tab: bool = True):
+    def _note_default_landing(url: str = "", title: str = "", html: str = "") -> str:
+        nonlocal landing_default_page_detected, landing_default_page_kind
+        default_kind = _detect_browser_default_page_kind(url, title, html)
+        if default_kind:
+            landing_default_page_detected = True
+            if not landing_default_page_kind:
+                landing_default_page_kind = default_kind
+            if logger:
+                logger.info(
+                    "        [Landing] default page 감지: kind=%s, url=%s, title=%s"
+                    % (default_kind, str(url or "")[:240], str(title or "")[:120])
+                )
+        return default_kind
+
+    def _refresh_page_context(page_obj, *, sync_tab: bool = True, step_label: str = "refresh"):
+        nonlocal landing_final_active_tab_id, landing_final_total_tab_count
         target_page = page_obj
         if target_page is not None and sync_tab:
-            target_page = _adopt_latest_tab(target_page, logger=logger)
+            adopted_page = _adopt_latest_tab(target_page, logger=logger)
+            if adopted_page is not None and adopted_page is not target_page:
+                _record_tab_transition(landing_tab_transition_events, step_label, target_page, adopted_page)
+                target_page = adopted_page
         if target_page is not None:
             _dismiss_cookie_or_consent_banner(target_page, logger=logger)
+        tab_state = _current_tab_state(target_page)
+        landing_final_active_tab_id = str(tab_state.get("active_tab_id") or landing_final_active_tab_id)
+        landing_final_total_tab_count = int(tab_state.get("total_tab_count", landing_final_total_tab_count) or 0)
         current = _extract_domain(getattr(target_page, "url", "") or "")
         referer = str(getattr(target_page, "url", "") or "")
         title = str(getattr(target_page, "title", "") or "")
         html = str(getattr(target_page, "html", "") or "")
+        _note_default_landing(referer, title, html)
         return target_page, current, referer, title, html
 
     def _detail(ok, reason, evidence=None, stage="drission", http_status=None):
@@ -5673,6 +5940,16 @@ def download_with_drission(
             "landing_recovery_attempted": landing_recovery_attempted,
             "landing_recovery_strategy": landing_recovery_strategy,
             "landing_recovery_outcome": landing_recovery_outcome,
+            "landing_timestamp_ms": int(landing_timestamp_ms or 0),
+            "landing_initial_target_url": str(landing_initial_target_url or ""),
+            "landing_default_page_detected": bool(landing_default_page_detected),
+            "landing_default_page_kind": str(landing_default_page_kind or ""),
+            "landing_tab_transition_count": len(landing_tab_transition_events),
+            "landing_tab_transition_events": list(landing_tab_transition_events),
+            "landing_final_active_tab_id": str(landing_final_active_tab_id or ""),
+            "landing_final_total_tab_count": int(landing_final_total_tab_count or 0),
+            "landing_final_screenshot_path": str(landing_final_screenshot_path or ""),
+            "landing_final_html_path": str(landing_final_html_path or ""),
         }
         payload.update(entry_plan_detail)
         payload["entry_preflight_issue_overridden"] = bool(payload.get("entry_preflight_issue")) and bool(
@@ -5681,14 +5958,20 @@ def download_with_drission(
         return payload if return_detail else ok
 
     def _ret(ok, reason, evidence=None, stage="drission", http_status=None):
-        if not ok and page:
+        nonlocal landing_final_screenshot_path, landing_final_html_path
+        if page and ((not ok) or is_aip_preview):
             try:
-                    _safe_screenshot(
-                        page,
-                        os.path.join(artifact_root, "logs", "screenshots"),
-                        f"final_fail_capture_{filename}.png",
-                        logger,
-                    )
+                artifact_suffix = "success" if ok else "fail"
+                artifacts = _capture_page_debug_artifacts(
+                    page,
+                    artifact_root,
+                    f"landing_{artifact_suffix}_{os.path.splitext(filename)[0]}",
+                    logger=logger,
+                )
+                landing_final_screenshot_path = str(
+                    artifacts.get("screenshot_path") or landing_final_screenshot_path or ""
+                )
+                landing_final_html_path = str(artifacts.get("html_path") or landing_final_html_path or "")
             except Exception:
                 pass
         payload = _detail(ok, reason, evidence=evidence, stage=stage, http_status=http_status)
@@ -5722,6 +6005,15 @@ def download_with_drission(
             landing_recovery_attempted = False
             landing_recovery_strategy = ""
             landing_recovery_outcome = ""
+            landing_initial_target_url = ""
+            landing_default_page_detected = False
+            landing_default_page_kind = ""
+            landing_tab_transition_events = []
+            landing_final_active_tab_id = ""
+            landing_final_total_tab_count = 0
+            landing_final_screenshot_path = ""
+            landing_final_html_path = ""
+            landing_timestamp_ms = int(time.time() * 1000)
             
             nav_url = doi_url
             if publisher_entry_plan:
@@ -5752,15 +6044,35 @@ def download_with_drission(
                                 ),
                             )
                         )
+            landing_initial_target_url = str(nav_url or "")
             logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {nav_url}")
             
             # 페이지 접속
             landing_initial_files = _get_current_files(browser_tmp_dir)
+            if is_aip_preview:
+                _prune_extra_tabs(page, logger=logger)
+                try:
+                    page.get("about:blank", retry=0, interval=0.2, timeout=5)
+                except Exception:
+                    pass
+                page, _, _, _, _ = _refresh_page_context(page, sync_tab=False, step_label="aip_pre_reset")
+                if logger:
+                    logger.info(
+                        "        [AIP] pre-reset tab_state active=%s total=%s"
+                        % (landing_final_active_tab_id or "", int(landing_final_total_tab_count or 0))
+                    )
             page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
-            page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page)
+            page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
+                page,
+                step_label="post_nav",
+            )
             if "spiedigitallibrary.org" in current_domain:
                 _wait_for_spie_article_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 7)
-                page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page, sync_tab=False)
+                page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
+                    page,
+                    sync_tab=False,
+                    step_label="post_spie_wait",
+                )
             if is_aip_preview:
                 page, page_title, page_html, aip_recovery_meta = _recover_aip_download_landing(
                     page,
@@ -5774,7 +6086,19 @@ def download_with_drission(
                 landing_recovery_attempted = bool(aip_recovery_meta.get("landing_recovery_attempted"))
                 landing_recovery_strategy = str(aip_recovery_meta.get("landing_recovery_strategy") or "")
                 landing_recovery_outcome = str(aip_recovery_meta.get("landing_recovery_outcome") or "")
-                page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page, sync_tab=False)
+                landing_default_page_detected = bool(aip_recovery_meta.get("landing_default_page_detected")) or landing_default_page_detected
+                if aip_recovery_meta.get("landing_default_page_kind"):
+                    landing_default_page_kind = str(aip_recovery_meta.get("landing_default_page_kind") or "")
+                landing_tab_transition_events.extend(list(aip_recovery_meta.get("landing_tab_transition_events") or []))
+                landing_final_active_tab_id = str(aip_recovery_meta.get("landing_final_active_tab_id") or landing_final_active_tab_id)
+                landing_final_total_tab_count = int(
+                    aip_recovery_meta.get("landing_final_total_tab_count", landing_final_total_tab_count) or 0
+                )
+                page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
+                    page,
+                    sync_tab=False,
+                    step_label="post_aip_recovery",
+                )
             if _capture_direct_downloaded_pdf(
                 download_dir=browser_tmp_dir,
                 initial_files=landing_initial_files,
@@ -5786,11 +6110,13 @@ def download_with_drission(
             ):
                 _set_landing_state("direct_pdf_handoff", True)
                 return _ret(True, "SUCCESS", stage="doi-direct-download")
+            default_page_kind = _note_default_landing(page.url or "", page_title, page_html)
             unexpected_landing = (
                 (not current_domain)
                 or ("google." in current_domain)
                 or page.url.startswith("chrome://")
                 or page.url.startswith("about:blank")
+                or bool(default_page_kind)
             )
             if unexpected_landing:
                 direct_wait_s = 10 if mode == "deep" else 6
@@ -5805,14 +6131,27 @@ def download_with_drission(
                 ):
                     _set_landing_state("direct_pdf_handoff", True)
                     return _ret(True, "SUCCESS", stage="doi-direct-download")
-                logger.info(f"        [Drission] 예상외 랜딩({page.url}) 감지 -> DOI 재요청 1회")
+                logger.info(
+                    f"        [Drission] 예상외 랜딩({page.url}) 감지"
+                    + (f" kind={default_page_kind}" if default_page_kind else "")
+                    + " -> DOI 재요청 1회"
+                )
                 try:
                     retry_initial_files = _get_current_files(browser_tmp_dir)
+                    if is_aip_preview:
+                        _prune_extra_tabs(page, logger=logger)
                     page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
-                    page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page)
+                    page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
+                        page,
+                        step_label="unexpected_retry_nav",
+                    )
                     if "spiedigitallibrary.org" in current_domain:
                         _wait_for_spie_article_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 7)
-                        page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page, sync_tab=False)
+                        page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
+                            page,
+                            sync_tab=False,
+                            step_label="unexpected_retry_spie_wait",
+                        )
                     if is_aip_preview:
                         page, page_title, page_html, aip_recovery_meta = _recover_aip_download_landing(
                             page,
@@ -5828,7 +6167,21 @@ def download_with_drission(
                             landing_recovery_strategy = str(aip_recovery_meta.get("landing_recovery_strategy") or "")
                         if aip_recovery_meta.get("landing_recovery_outcome"):
                             landing_recovery_outcome = str(aip_recovery_meta.get("landing_recovery_outcome") or "")
-                        page, current_domain, referer_url, page_title, page_html = _refresh_page_context(page, sync_tab=False)
+                        landing_default_page_detected = bool(aip_recovery_meta.get("landing_default_page_detected")) or landing_default_page_detected
+                        if aip_recovery_meta.get("landing_default_page_kind"):
+                            landing_default_page_kind = str(aip_recovery_meta.get("landing_default_page_kind") or "")
+                        landing_tab_transition_events.extend(list(aip_recovery_meta.get("landing_tab_transition_events") or []))
+                        landing_final_active_tab_id = str(
+                            aip_recovery_meta.get("landing_final_active_tab_id") or landing_final_active_tab_id
+                        )
+                        landing_final_total_tab_count = int(
+                            aip_recovery_meta.get("landing_final_total_tab_count", landing_final_total_tab_count) or 0
+                        )
+                        page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
+                            page,
+                            sync_tab=False,
+                            step_label="post_aip_retry_recovery",
+                        )
                     if _capture_direct_downloaded_pdf(
                         download_dir=browser_tmp_dir,
                         initial_files=retry_initial_files,
@@ -5840,11 +6193,13 @@ def download_with_drission(
                     ):
                         _set_landing_state("direct_pdf_handoff", True)
                         return _ret(True, "SUCCESS", stage="doi-direct-download")
+                    retry_default_page_kind = _note_default_landing(page.url or "", page_title, page_html)
                     retry_unexpected = (
                         (not current_domain)
                         or ("google." in current_domain)
                         or page.url.startswith("chrome://")
                         or page.url.startswith("about:blank")
+                        or bool(retry_default_page_kind)
                     )
                     if retry_unexpected and _capture_direct_downloaded_pdf(
                         download_dir=browser_tmp_dir,
@@ -5970,7 +6325,14 @@ def download_with_drission(
                             _raise_if_browser_disconnect(e, logger=logger, context="elsevier-article-recover")
                             logger.info(f"        [Elsevier] article URL 복구 이동 실패(계속 진행): {e}")
 
-            if (not current_domain) or ("google." in current_domain) or page.url.startswith("chrome://") or page.url.startswith("about:blank"):
+            final_default_page_kind = _note_default_landing(page.url or "", page_title, page_html)
+            if (
+                (not current_domain)
+                or ("google." in current_domain)
+                or page.url.startswith("chrome://")
+                or page.url.startswith("about:blank")
+                or bool(final_default_page_kind)
+            ):
                 if _capture_direct_downloaded_pdf(
                     download_dir=browser_tmp_dir,
                     initial_files=set(),
@@ -5983,7 +6345,10 @@ def download_with_drission(
                     _set_landing_state("direct_pdf_handoff", True)
                     return _ret(True, "SUCCESS", stage="doi-direct-download")
                 _set_landing_state("blank_or_incomplete", False)
-                return _ret(False, "FAIL_NETWORK", [f"unexpected_landing_page={page.url}"], stage="landing")
+                final_evidence = [f"unexpected_landing_page={page.url}"]
+                if final_default_page_kind:
+                    final_evidence.append(f"default_page_kind={final_default_page_kind}")
+                return _ret(False, "FAIL_NETWORK", final_evidence, stage="landing")
 
             if current_domain.endswith("doi.org"):
                 resolved_target = _resolve_doi_redirect_target(doi_url, logger=logger)
@@ -5998,10 +6363,11 @@ def download_with_drission(
                             timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S),
                         )
                         _dismiss_cookie_or_consent_banner(page, logger=logger)
-                        current_domain = _extract_domain(page.url)
-                        referer_url = page.url
-                        page_title = page.title or ""
-                        page_html = page.html or ""
+                        page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
+                            page,
+                            sync_tab=False,
+                            step_label="doi_resolve_recover",
+                        )
                     except Exception as e:
                         _raise_if_browser_disconnect(e, logger=logger, context="doi-unresolved-recover")
                         if logger:
@@ -6009,12 +6375,20 @@ def download_with_drission(
                 title_blob = str(page_title or "").strip().lower()
                 article_like = _has_article_signal(title=page_title, html=page_html)
                 pdf_action_like = _has_pdf_action_signal(title=page_title, html=page_html)
-                if current_domain.endswith("doi.org") and (title_blob in {"new tab", "새 탭", "google"} or (not article_like and not pdf_action_like)):
+                unresolved_default_page_kind = _note_default_landing(page.url or "", page_title, page_html)
+                if current_domain.endswith("doi.org") and (
+                    bool(unresolved_default_page_kind)
+                    or title_blob in {"new tab", "새 탭", "google"}
+                    or (not article_like and not pdf_action_like)
+                ):
                     _set_landing_state("blank_or_incomplete", False)
+                    unresolved_evidence = [f"unresolved_doi_landing={page.url}", f"title={page_title[:120]}"]
+                    if unresolved_default_page_kind:
+                        unresolved_evidence.append(f"default_page_kind={unresolved_default_page_kind}")
                     return _ret(
                         False,
                         "FAIL_NETWORK",
-                        [f"unresolved_doi_landing={page.url}", f"title={page_title[:120]}"],
+                        unresolved_evidence,
                         stage="landing",
                     )
 

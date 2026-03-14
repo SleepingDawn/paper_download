@@ -1,0 +1,236 @@
+{
+  "doi": "10.1063/5.0207496",
+  "input_publisher": "American Institute of Physics",
+  "scheduler_publisher": "aip",
+  "captured_at_ms": 1773510454536,
+  "worker_idx": 0,
+  "browser_identity": "worker_0:stateful:system",
+  "probe_page_mode": "reuse_page",
+  "probe_tab_id": "E69ED9D3FABFA71474973B1F7A1AE3C2",
+  "scheduled_start_ms": 1773510427841,
+  "actual_start_ms": 1773510427843,
+  "pacing_wait_ms": 1,
+  "pacing_penalty_wait_ms": 0,
+  "classifier_state": "success_landing",
+  "outcome": "SUCCESS_ACCESS",
+  "final_url": "https://pubs.aip.org/aip/jcp/article/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through",
+  "navigation_chain": [
+    {
+      "step": "pre_reset",
+      "requested_url": "about:blank",
+      "observed_url": "about:blank"
+    },
+    {
+      "step": "aip_resolve",
+      "requested_url": "https://doi.org/10.1063/5.0207496",
+      "observed_url": "https://pubs.aip.org/jcp/article/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through"
+    },
+    {
+      "step": "doi_get",
+      "requested_url": "https://doi.org/10.1063/5.0207496",
+      "observed_url": "https://pubs.aip.org/aip/jcp/article/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through"
+    }
+  ],
+  "title": "In situ formation of inhibitor species through catalytic surface reactions during area-selective atomic layer deposition of TaN | The Journal of Chemical Physics | AIP Publishing",
+  "reason_codes": [
+    "content_populated",
+    "doi_match",
+    "expected_domain_match",
+    "publisher_marker_present",
+    "strong_meta_present"
+  ],
+  "signal_summary": {
+    "body_text_len": 53275,
+    "main_text_len": 52558,
+    "meta_keys": [
+      "citation_author",
+      "citation_doi",
+      "citation_journal_title",
+      "citation_pdf_url",
+      "citation_title",
+      "dc.identifier",
+      "og:type",
+      "og:url"
+    ]
+  },
+  "timing_breakdown": {
+    "scheduled_start_ms": 1773510427841,
+    "actual_start_ms": 1773510427843,
+    "pacing_wait_ms": 1,
+    "pacing_penalty_wait_ms": 0,
+    "pacing_jitter_sec": 0.971,
+    "attempts": [
+      {
+        "attempt": 1,
+        "pre_reset_ms": 79,
+        "network_listener": true,
+        "runtime_probe_installed": true,
+        "entry_strategy": "aip_official_doi_resolve",
+        "entry_browser_url": "https://doi.org/10.1063/5.0207496",
+        "entry_url_candidate": "https://pubs.aip.org/jcp/article-abstract/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through",
+        "entry_redirect_chain_summary": [
+          "302:https://doi.org/10.1063/5.0207496",
+          "location:https://pubs.aip.org/jcp/article/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through"
+        ],
+        "entry_fallback_reason": "prefer_article_abstract_queryless",
+        "doi_get_ms": 4768,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 142,
+        "attempt_elapsed_ms": 26692
+      }
+    ]
+  },
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "classifier_state": "success_landing",
+      "reason_codes": [
+        "content_populated",
+        "doi_match",
+        "expected_domain_match",
+        "publisher_marker_present",
+        "strong_meta_present"
+      ],
+      "final_url": "https://pubs.aip.org/aip/jcp/article/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through",
+      "timing_ms": {
+        "attempt": 1,
+        "pre_reset_ms": 79,
+        "network_listener": true,
+        "runtime_probe_installed": true,
+        "entry_strategy": "aip_official_doi_resolve",
+        "entry_browser_url": "https://doi.org/10.1063/5.0207496",
+        "entry_url_candidate": "https://pubs.aip.org/jcp/article-abstract/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through",
+        "entry_redirect_chain_summary": [
+          "302:https://doi.org/10.1063/5.0207496",
+          "location:https://pubs.aip.org/jcp/article/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through"
+        ],
+        "entry_fallback_reason": "prefer_article_abstract_queryless",
+        "doi_get_ms": 4768,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 142,
+        "attempt_elapsed_ms": 26692
+      }
+    }
+  ],
+  "direct_pdf_path": "",
+  "direct_pdf_event": {},
+  "legacy_success_like": true,
+  "dom_signature": "Skip to Main Content Open Menu header search search input Search input auto suggest filter your search All Content AIP Publishing Portfolio The Journal of Chemical Physics Search Advanced Search | Citation Search Cart Sign In Open Menu HOME",
+  "html_len": 446598,
+  "challenge_detected": false,
+  "entry_strategy": "aip_official_doi_resolve",
+  "entry_strategy_variant": "doi_redirect_only_no_article_preflight",
+  "entry_redirect_probe_mode": "doi_location_only",
+  "entry_prebrowser_request_count": 1,
+  "entry_url": "https://pubs.aip.org/jcp/article-abstract/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through",
+  "entry_resolved_url": "https://pubs.aip.org/jcp/article/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through",
+  "entry_browser_url": "https://doi.org/10.1063/5.0207496",
+  "entry_browser_kind": "official_doi_redirect",
+  "entry_handoff_url": "https://pubs.aip.org/jcp/article-abstract/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through",
+  "entry_handoff_used": false,
+  "entry_context_url": "",
+  "entry_context_kind": "",
+  "entry_redirect_chain_summary": [
+    "302:https://doi.org/10.1063/5.0207496",
+    "location:https://pubs.aip.org/jcp/article/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through"
+  ],
+  "entry_fallback_used": true,
+  "entry_fallback_reason": "prefer_article_abstract_queryless",
+  "entry_preflight_url": "https://pubs.aip.org/jcp/article-abstract/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through",
+  "entry_preflight_issue": "",
+  "entry_preflight_evidence": [],
+  "entry_preflight_http_status": null,
+  "entry_preflight_issue_overridden": false,
+  "entry_browser_open_skipped": false,
+  "initial_landing_type": "",
+  "landing_recovery_attempted": false,
+  "landing_recovery_strategy": "",
+  "landing_recovery_outcome": "",
+  "shell_recovery_attempted": false,
+  "shell_recovery_strategy": "",
+  "shell_recovery_outcome": "",
+  "tab_transition_count": 0,
+  "tab_transition_events": [],
+  "reclassified_after_detector_fix": false,
+  "reclassification_reason": "",
+  "runtime_diagnostics": {
+    "current_url": "https://pubs.aip.org/aip/jcp/article/160/20/204701/3294391/In-situ-formation-of-inhibitor-species-through",
+    "page_title": "In situ formation of inhibitor species through catalytic surface reactions during area-selective atomic layer deposition of TaN | The Journal of Chemical Physics | AIP Publishing",
+    "ready_state": "complete",
+    "html_len": 446598,
+    "body_text_len": 53275,
+    "main_text_len": 52558,
+    "parsed_main_text_len": 63459,
+    "iframe_count": 5,
+    "body_child_count": 28,
+    "tab_state": {
+      "active_tab_id": "E69ED9D3FABFA71474973B1F7A1AE3C2",
+      "total_tab_count": 1,
+      "tab_ids": [
+        "E69ED9D3FABFA71474973B1F7A1AE3C2"
+      ]
+    },
+    "viewport": {
+      "visibility_state": "visible",
+      "inner_width": 1728,
+      "inner_height": 1030,
+      "device_pixel_ratio": 1.0,
+      "scroll_x": 0,
+      "scroll_y": 0,
+      "body_client_height": 1030,
+      "body_scroll_height": 21379,
+      "doc_scroll_height": 21379
+    },
+    "iframe_summary": [
+      {
+        "src": "",
+        "title": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "src": "",
+        "title": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "src": "",
+        "title": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "src": "",
+        "title": "",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "src": "https://cmp.osano.com",
+        "title": "Osano Consent Manager Iframe",
+        "width": 0,
+        "height": 0
+      }
+    ],
+    "console_runtime_errors": {
+      "capture_available": true,
+      "error_events": [],
+      "rejection_events": []
+    },
+    "network_summary": {
+      "request_count": 0,
+      "status_counts": {},
+      "document_chain": [],
+      "failed_request_count": 0,
+      "failed_requests": []
+    },
+    "blank_screenshot_likely": false,
+    "blank_screenshot_reason": "",
+    "body_text_len_runtime": 53275,
+    "html_len_runtime": 446583
+  },
+  "screenshot_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/aip_structural_validation_20260315_local/landing/artifacts/success/landing_success_10.1063_5.0207496_1773510454536.png",
+  "screenshot_delayed_path": "",
+  "html_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/aip_structural_validation_20260315_local/landing/artifacts/success/landing_success_10.1063_5.0207496_1773510454536.html"
+}

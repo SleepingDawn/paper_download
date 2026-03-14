@@ -386,6 +386,162 @@
   - `patch exists in code`와 `patch changed runtime behavior`는 artifact/log/sidecar 각각에서 따로 확인해야 한다.
   - 새 patch는 local headless에서는 의미 있는 안정화 신호를 보였지만, Linux server/headless 동일 조건에서의 재확인은 아직 남아 있다 `[blocked]`
 
+### 5.12 AIP blank/Google symptom 분해와 structural landing patch
+
+- 최신 source-of-truth
+  - 외부 bundle `aip_micro_20260315_preflightoff`를 기준으로 다시 확인했다.
+  - landing probe 2건은 둘 다 `challenge_detected=true`였고
+    - `entry_strategy=aip_official_doi_resolve`
+    - `entry_strategy_variant=doi_redirect_only_no_article_preflight`
+    - `entry_redirect_probe_mode=doi_location_only`
+    - `entry_prebrowser_request_count=1`
+    가 실제 artifact JSONL에 기록돼 있었다.
+  - 즉 이전 AIP patch는 "코드에만 있음"이 아니라 최신 실패 런타임에도 실제 적용됐다.
+- blank screen이 의미한 것
+  - bundle의 landing fail artifact는 screenshot이 거의 빈 흰 화면처럼 보였지만, 같은 artifact JSON/HTML에는
+    - `title=Just a moment...`
+    - `challenge_detected=true`
+    - `tab_transition_count=0`
+    - `ready_state=complete`
+    - final HTML에 Cloudflare challenge shell
+    이 남아 있었다.
+  - 따라서 최신 Linux AIP의 blank screen은 주로
+    - wrong active tab
+    - stale page handle
+    - pure `about:blank`
+    - renderer reset
+    보다 "challenge/interstitial shell이 headless에서 거의 비어 보인 상태"를 뜻한다.
+- Google default page가 의미한 것
+  - 같은 bundle의 download metadata record에서 `10.1063/5.0207496`는
+    - `landing_state=blank_or_incomplete`
+    - `landing_url=https://doi.org/10.1063/5.0207496`
+    - `landing_title=New Tab`
+    - fail screenshot은 Google default/new-tab page
+    로 남아 있었다.
+  - 이 symptom은 publisher challenge와 별개로
+    - wrong active tab/page selection
+    - startup/default page context가 실제 target navigation을 덮어씀
+    - unresolved DOI recovery가 canonical target으로 못 넘어감
+    을 강하게 시사한다.
+  - 특히 당시 AIP DOI recovery는 `_resolve_doi_redirect_target()`이 `entry_browser_url`을 먼저 반환해, `doi.org` 진입 케이스에서는 recovery가 DOI URL을 그대로 다시 주는 no-op였다.
+- 새 가설
+  - AIP 실패는 단일 원인보다 두 층으로 나뉜다.
+    - landing probe 층: stable article landing 전에 publisher challenge가 먼저 뜬다.
+    - download browser 층: challenge와 별개로 default/new-tab context를 publisher landing으로 오인할 수 있는 tab lifecycle 결함이 있다.
+  - 따라서 AIP는 retry를 더 쌓는 대신
+    - DOI resolve 후 canonical target 선택을 바로잡고
+    - active tab을 한 탭으로 정리한 뒤
+    - default/new-tab을 publisher landing으로 분류하지 않고
+    - 필요할 때만 canonical target으로 재진입하는 구조가 필요하다.
+- 구현
+  - `tools_exp.py`
+    - `_resolve_doi_redirect_target()`에서 AIP recovery target 우선순위를
+      - `entry_url`
+      - `entry_resolved_url`
+      - `entry_handoff_url`
+      - `entry_browser_url`
+      순으로 바꿨다.
+    - download path에 landing probe와 같은 성격의 tab hygiene를 추가했다.
+      - AIP 진입 전 extra tab prune
+      - `about:blank` pre-reset
+      - active tab / total tab 수 기록
+    - browser default page detector를 추가했다.
+      - `chrome://newtab`
+      - title `New Tab`
+      - Google default/home markers
+    - AIP recovery를 default-page aware 방식으로 재설계했다.
+      - default/new-tab 또는 unresolved DOI이면 canonical target 우선
+      - 필요 시 fresh-tab canonical recovery 1회
+      - challenge가 보이면 no-retry 종료 유지
+    - AIP download 결과에 아래 필드를 추가했다.
+      - `landing_initial_target_url`
+      - `landing_default_page_detected`
+      - `landing_default_page_kind`
+      - `landing_tab_transition_count`
+      - `landing_tab_transition_events`
+      - `landing_final_active_tab_id`
+      - `landing_final_total_tab_count`
+      - `landing_final_screenshot_path`
+      - `landing_final_html_path`
+    - AIP는 stable landing이 확인되는 순간 snapshot을 먼저 남기도록 보강했다.
+  - `parallel_download.py`
+    - 위 landing telemetry가 final CSV와 metadata sidecar `record`까지 남도록 전파했다.
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary에 AIP default-page/tab/artifact 필드를 추가했다.
+- 통제 검증
+  - 입력 CSV: `outputs/_aip_structural_validation_20260315_input.csv`
+  - 실행 1: landing-only local headless
+    - 명령
+      - `python landing_access_repro.py --input outputs/_aip_structural_validation_20260315_input.csv --workers 1 --headless 1 --runtime-preset local_mac --execution-env desktop --artifact-dir outputs/aip_structural_validation_20260315_local/landing/artifacts --output-jsonl outputs/aip_structural_validation_20260315_local/landing/landing_access_repro.jsonl --report outputs/aip_structural_validation_20260315_local/landing/landing_access_repro_report.json --report-md outputs/aip_structural_validation_20260315_local/landing/landing_access_repro_report.md --capture-fail-artifacts 1 --capture-success-artifacts 1 --capture-success-html 1`
+    - 중간 확인
+      - stdout progress line
+      - `outputs/aip_structural_validation_20260315_local/landing/landing_access_repro.jsonl`
+    - 종료 확인
+      - `landing_access_repro_report.json` 생성
+      - process exit `0`
+    - 결과
+      - `sample_size=2`
+      - `classifier_counts={"success_landing":2}`
+      - 두 DOI 모두 `challenge_detected=false`, `tab_transition_count=0`, `total_tab_count=1`
+      - blank screen / Google default page 모두 재현되지 않았다.
+  - 실행 2: download path local smoke
+    - 출력
+      - `outputs/aip_structural_validation_20260315_local/download/download_validation_results.json`
+      - `outputs/aip_structural_validation_20260315_local/download/download_validation.log`
+    - 중간 확인
+      - `tail -n 80 outputs/aip_structural_validation_20260315_local/download/download_validation.log`
+    - 종료 확인
+      - `download_validation_results.json` 생성
+      - process exit `0`
+    - 결과
+      - `10.1063/5.0207496`
+        - `landing_state=success_landing`
+        - `landing_default_page_detected=false`
+        - `landing_final_total_tab_count=1`
+        - download까지 성공
+        - landing screenshot/html path가 기록됨
+      - `10.1116/6.0004298`
+        - `landing_state=success_landing`
+        - `landing_default_page_detected=false`
+        - `landing_final_total_tab_count=1`
+        - 이후 PDF click 단계에서 browser disconnect로 final result는 `FAIL_NETWORK`
+        - 그러나 landing 자체는 real AIP article-abstract page까지 도달했다.
+    - 해석
+      - regression DOI였던 `10.1063/5.0207496`에서 Google default page가 재현되지 않았고, real article landing + download success로 바뀌었다.
+      - 즉 default/new-tab symptom의 주원인은 publisher 자체보다 download path의 tab/target handling 결함 쪽이었다.
+  - 실행 3: controlled single-DOI rerun
+    - 이유
+      - stable landing 직후 snapshot 저장 patch가 실제 failure artifact path도 채우는지 확인하기 위해 `10.1116/6.0004298` 한 건만 즉시 재검증했다.
+    - 출력
+      - `outputs/aip_structural_validation_20260315_local/download_single_10.1116_6.0004298/download_validation_result.json`
+      - `outputs/aip_structural_validation_20260315_local/download_single_10.1116_6.0004298/download_validation.log`
+    - 결과
+      - 같은 DOI를 짧은 간격으로 다시 치자 `landing_state=challenge_or_block`, `reason=FAIL_BLOCK`로 바뀌었다.
+      - fail screenshot/html path는 새 필드에 기록됐다.
+    - 해석
+      - repeated DOI hit 자체가 AIP challenge 확률을 빠르게 올릴 수 있음을 다시 확인했다.
+      - AIP는 patch correctness와 별개로 DOI rotation / low-frequency sampling이 필수다.
+- before vs after
+  - before: `aip_micro_20260315_preflightoff` (Linux headless)
+    - landing probe success `0/2`
+    - blank screenshot `2/2` but 실제 HTML은 challenge shell
+    - Google default page symptom `1/2` in download path
+    - patch branch는 적용됐지만 runtime path가 challenge/default-page로 갈라졌다
+  - after: `aip_structural_validation_20260315_local` (local headless)
+    - landing probe success `2/2`
+    - blank screenshot `0/2`
+    - Google default page symptom `0/2`
+    - download smoke에서 stable landing `2/2`
+    - 그중 `1/2`는 download success, `1/2`는 landing 후 click-stage browser disconnect
+- 배운 점
+  - blank screen과 Google default page는 같은 failure가 아니다.
+    - blank screen은 현재까지 challenge shell 해석이 더 강하다.
+    - Google default page는 tab/page lifecycle 또는 canonical target recovery bug 쪽 신호다.
+  - AIP current workflow를 "그냥 publisher 문제"로만 보면 안 된다.
+    - latest Linux evidence는 challenge를 보여주지만,
+    - Google default page는 우리 쪽 landing workflow 결함이 실제로 섞여 있었다.
+  - 같은 DOI를 연달아 다시 치면 challenge로 바뀔 수 있으므로, AIP 검증은 fresh/low-frequency와 tight control을 반드시 유지해야 한다.
+
 ## 6. Publisher별 결과 요약
 
 ### Elsevier / Cell-family
@@ -601,6 +757,9 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - AIP redirect-only/no-article-preflight branch와 entry request-count logging이 추가됨
 - AIP download metadata/summary 경로에 entry detail/challenge bool 전파가 보강됨
 - landing 쪽 entry/recovery semantics가 download path와 summary에도 반영됨
+- AIP download path가 default/new-tab landing을 별도 진단하고 canonical target recovery를 수행하도록 구조화됨
+- AIP download result/metadata/suite summary에 default page, tab transition, final artifact path가 기록됨
+- regression DOI `10.1063/5.0207496` local smoke에서 Google default page symptom이 사라지고 real article landing + download success로 바뀜
 
 ### 아직 미검증 또는 근거 부족
 
@@ -608,6 +767,8 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - Elsevier shell recovery가 "shell-only live case"에서 end-to-end로 회복되는지 `[blocked]`
 - `10.1007_` classifier fix가 server rerun에서 false-failure를 실제로 줄였는지 `[blocked]`
 - attempt ledger 파일 자체의 최신 누적 상태는 현재 로컬 워크스페이스에서 확인되지 않음 `[blocked]`
+- 새 AIP structural patch가 Linux server/headless에서도 Google default page incidence를 실제로 0으로 낮추는지 `[blocked]`
+- AIP stable landing 이후의 downstream click/download disconnect가 Linux headless에서도 남는지 `[blocked]`
 
 ### 구조적 위험
 
@@ -616,7 +777,7 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 
 ## 10. 다음 권장 작업
 
-1. 최신 코드 기준으로 server pilot 또는 AIP micro-run을 다시 실행해 redirect-only/no-article-preflight branch가 Linux bundle에서 어떻게 기록되는지 확인
+1. 최신 코드 기준으로 Linux server에서 AIP micro-run을 다시 실행해 structural patch가 실제로 적용되는지 확인
    - 우선 확인 필드:
      - `landing_entry_browser_url`
      - `landing_entry_browser_kind`
@@ -626,9 +787,17 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
      - `landing_entry_preflight_url`
      - `landing_entry_preflight_issue`
      - `landing_probe_state`
-2. `pilot_20260315_014015`와 동일한 Linux/headless 조건에서 fresh AIP DOI 1~2건만 다시 검증해
+   - 필수 확인 항목:
+     - `landing_default_page_detected`
+     - `landing_default_page_kind`
+     - `landing_tab_transition_count`
+     - `landing_final_total_tab_count`
+     - `landing_final_screenshot_path`
+     - `landing_final_html_path`
+2. Linux/headless 동일 조건에서 fresh/low-frequency AIP DOI 1~2건만 다시 검증해
    - challenge가 여전히 first article landing 전에 뜨는지
-   - download metadata sidecar에 `landing_entry_*`가 실제로 채워지는지
+   - Google default page symptom이 사라졌는지
+   - download path에서 canonical recovery가 실제로 쓰였는지
    를 확인
 3. `10.1007_` 계열 DOI를 fresh/low-frequency 케이스로 1건만 다시 검증해 classifier false negative fix를 server artifact로 재확인
 4. Elsevier shell-like case가 다시 나오면 `landing_shell_recovery_*`와 final classifier를 함께 확인해 live recovery 성공 여부를 증거화
@@ -707,3 +876,53 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - 해석
   - 새 AIP branch는 local headless에서 실제 browser runtime에 적용됐고, low-friction DOI landing이 stable article landing으로 이어졌다
   - 단, Linux server/headless 동일 조건 재검증은 아직 남아 있다 `[blocked]`
+
+### `aip_micro_20260315_preflightoff`
+
+- landing probe
+  - `sample_total=2`
+  - 두 DOI 모두 `challenge_detected=true`
+  - branch는 실제로
+    - `entry_strategy_variant=doi_redirect_only_no_article_preflight`
+    - `entry_redirect_probe_mode=doi_location_only`
+    - `entry_prebrowser_request_count=1`
+    로 기록됨
+  - blank screenshot은 challenge shell 해석이 더 강함
+- download path
+  - `10.1063/5.0207496`
+    - `landing_title=New Tab`
+    - Google default/new-tab screenshot
+    - `landing_url=https://doi.org/...`
+  - `10.1116/6.0003838`
+    - challenge 쪽으로 종료
+  - 해석
+    - AIP latest failure에는 publisher challenge와 별개로 workflow-level default-page/tab-context 결함이 섞여 있었음
+
+### `aip_structural_validation_20260315_local`
+
+- landing-only
+  - 실행 위치: `outputs/aip_structural_validation_20260315_local/landing/`
+  - 입력 DOI:
+    - `10.1063/5.0207496`
+    - `10.1116/6.0004298`
+  - 결과:
+    - `sample_size=2`
+    - `classifier_counts={"success_landing":2}`
+    - blank / Google default page `0/2`
+- download smoke
+  - 실행 위치: `outputs/aip_structural_validation_20260315_local/download/`
+  - 결과:
+    - `10.1063/5.0207496`
+      - `landing_state=success_landing`
+      - `landing_default_page_detected=false`
+      - download success
+    - `10.1116/6.0004298`
+      - `landing_state=success_landing`
+      - `landing_default_page_detected=false`
+      - 이후 click-stage browser disconnect
+  - controlled rerun:
+    - `outputs/aip_structural_validation_20260315_local/download_single_10.1116_6.0004298/`
+    - 즉시 재시도에서는 `challenge_or_block`로 바뀌어 fail artifact가 저장됨
+- 해석
+  - structural patch 이후 local headless에서는 Google default page symptom이 사라졌다.
+  - 다만 repeated DOI hit는 local에서도 challenge를 다시 유발할 수 있어, AIP 검증은 저빈도/회전이 필수다.
