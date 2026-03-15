@@ -2238,6 +2238,24 @@ def _aip_context_bootstrap_enabled() -> bool:
     )
 
 
+def _resolve_aip_browser_entry_mode(*, has_canonical_entry: bool, has_context_bootstrap: bool) -> str:
+    raw = os.getenv("PDF_BROWSER_LANDING_AIP_BROWSER_ENTRY", "auto").strip().lower()
+    if raw in ("doi", "doi_first", "official_doi_redirect", "1", "true", "yes", "on"):
+        return "doi"
+    if raw in ("publisher", "publisher_direct", "canonical", "canonical_article", "entry"):
+        return "publisher_direct" if has_canonical_entry else "doi"
+    if (
+        has_canonical_entry
+        and has_context_bootstrap
+        and (
+            resolve_runtime_preset() == RUNTIME_PRESET_LINUX_CLI_SEEDED
+            or resolve_browser_execution_env() == EXECUTION_ENV_LINUX_SERVER
+        )
+    ):
+        return "publisher_direct"
+    return "doi"
+
+
 def _derive_aip_context_target(url: str) -> tuple[str, str]:
     raw = str(url or "").strip()
     if not raw:
@@ -2300,14 +2318,6 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
     plan["entry_strategy"] = "aip_official_doi_resolve"
     plan["entry_strategy_variant"] = "doi_redirect_only_no_article_preflight"
     prefer_abstract = os.getenv("PDF_BROWSER_LANDING_AIP_PREFER_ABSTRACT", "1").strip().lower() in ("1", "true", "yes", "on")
-    browser_doi_first = os.getenv("PDF_BROWSER_LANDING_AIP_BROWSER_ENTRY", "doi").strip().lower() in (
-        "1",
-        "true",
-        "yes",
-        "on",
-        "doi",
-        "doi_first",
-    )
     article_preflight_enabled = os.getenv("PDF_BROWSER_LANDING_AIP_ARTICLE_PREFLIGHT", "0").strip().lower() in (
         "1",
         "true",
@@ -2406,13 +2416,25 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
 
     canonical_entry_url = str(plan.get("entry_url") or plan.get("entry_resolved_url") or "").strip()
     context_source_url = canonical_entry_url or str(plan.get("entry_resolved_url") or "").strip()
+    context_bootstrap_configured = False
     if _aip_context_bootstrap_enabled():
         context_url, context_kind = _derive_aip_context_target(context_source_url)
         if context_url:
             plan["entry_context_url"] = context_url
             plan["entry_context_kind"] = context_kind
+            context_bootstrap_configured = True
             plan["entry_strategy_variant"] = "doi_redirect_with_context_bootstrap_no_article_preflight"
-    if browser_doi_first and str(doi_url or "").strip():
+    browser_entry_mode = _resolve_aip_browser_entry_mode(
+        has_canonical_entry=bool(canonical_entry_url),
+        has_context_bootstrap=context_bootstrap_configured,
+    )
+    if browser_entry_mode == "publisher_direct" and canonical_entry_url:
+        plan["entry_browser_url"] = canonical_entry_url
+        if context_bootstrap_configured:
+            plan["entry_strategy_variant"] = "publisher_canonical_with_context_bootstrap_no_article_preflight"
+        else:
+            plan["entry_strategy_variant"] = "publisher_canonical_no_context_no_article_preflight"
+    elif str(doi_url or "").strip():
         plan["entry_browser_url"] = str(doi_url or "").strip()
         plan["entry_browser_kind"] = "official_doi_redirect"
         if canonical_entry_url and canonical_entry_url.lower() != plan["entry_browser_url"].lower():
@@ -2443,7 +2465,14 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
     )
 
     if article_preflight_enabled and safe_domain:
-        plan["entry_strategy_variant"] = "doi_redirect_only_with_article_preflight"
+        current_variant = str(plan.get("entry_strategy_variant") or "doi_redirect_only_no_article_preflight")
+        if current_variant.endswith("_no_article_preflight"):
+            plan["entry_strategy_variant"] = current_variant.replace(
+                "_no_article_preflight",
+                "_with_article_preflight",
+            )
+        else:
+            plan["entry_strategy_variant"] = f"{current_variant}_with_article_preflight"
         plan["entry_redirect_probe_mode"] = str(plan.get("entry_redirect_probe_mode") or "fallback_follow_redirects_get")
         try:
             preflight_resp = session.get(
@@ -2488,11 +2517,13 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
 
     if logger and plan["entry_strategy"]:
         logger.info(
-            "        [AIP] entry_strategy=%s, variant=%s, browser_url=%s, preflight_url=%s, safe_to_proceed=%s, browser_open_skipped=%s, redirect_probe_mode=%s, prebrowser_request_count=%s"
+            "        [AIP] entry_strategy=%s, variant=%s, browser_kind=%s, browser_url=%s, context_url=%s, preflight_url=%s, safe_to_proceed=%s, browser_open_skipped=%s, redirect_probe_mode=%s, prebrowser_request_count=%s"
             % (
                 plan["entry_strategy"],
                 plan["entry_strategy_variant"] or "",
+                plan["entry_browser_kind"] or "",
                 plan["entry_browser_url"] or doi_url,
+                plan["entry_context_url"] or "",
                 preflight_url,
                 bool(plan["entry_safe_to_proceed"]),
                 bool(plan["entry_browser_open_skipped"]),

@@ -885,6 +885,8 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - manual visit 전후 persistent profile 변화를 비교할 snapshot/diff 도구가 추가됨
 - AIP context bootstrap branch가 추가됐고, local `linux_cli_seeded`에서 journal-root bootstrap 후 DOI/article landing success가 재현됨
 - local AIP는 cold temp profile과 local linux-seeded clone에서도 landing success가 관찰돼, pure profile absence만으로는 최신 Linux failure를 설명할 수 없다는 근거가 추가됨
+- AIP browser entry 기본값이 Linux/server 계열에서는 `doi.org` browser-open 대신 resolve된 publisher canonical article entry로 전환되도록 수정됨
+- 새 publisher-direct branch가 local `linux_cli_seeded` 검증에서 실제 runtime으로 실행됐고, `context_challenge` 이후에도 article landing success가 재현됨
 
 ### 아직 미검증 또는 근거 부족
 
@@ -895,6 +897,8 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - 새 AIP structural patch가 Linux server/headless에서도 Google default page incidence를 실제로 0으로 낮추는지 `[blocked]`
 - AIP stable landing 이후의 downstream click/download disconnect가 Linux headless에서도 남는지 `[blocked]`
 - 새 AIP context bootstrap branch가 Linux server/headless에서 challenge incidence를 실제로 낮추는지 `[blocked]`
+- 최신 fresh server run 기준으로는 AIP context bootstrap branch가 실제 runtime에서 실행됐지만 `context_challenge -> challenge_detected_no_retry` 2/2로 끝났고, 아직 Linux server에서 landing success 개선 근거는 없다.
+- 새 publisher-direct AIP branch가 Linux server/headless에서 `doi_redirect` 대비 challenge incidence를 실제로 낮추는지 `[blocked]`
 
 ### 구조적 위험
 
@@ -1200,3 +1204,112 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - 이번 server run은 AIP context bootstrap branch 평가로 이어지지 못했다.
   - 즉 새로운 성공/실패 근거는 추가되지 않았고, retry protection이 prior-success DOI 재사용을 막은 정상 동작으로 해석하는 편이 맞다.
   - 다음 server 검증은 fresh/low-frequency AIP DOI로 다시 구성해야 한다.
+
+### `aip_context_bootstrap_linux_20260315_fresh`
+
+- 실행 위치
+  - bundle extract: `/tmp/aip_context_bootstrap_linux_20260315_fresh/`
+  - run dir: `outputs/linux_headless_suite_runs/aip_context_bootstrap_linux_20260315_fresh/`
+- 입력 DOI
+  - `10.1116/6.0003316`
+  - `10.1063/5.0188699`
+- 실행 맥락
+  - `runtime_preset=linux_cli_seeded`
+  - `execution_env=linux_server`
+  - `profile_mode=auto`
+  - `profile_name=Default`
+  - persistent seed profile 검사 결과 `seed_profile_ok=true`
+  - execution manifest `status=completed_ok`
+- landing
+  - 결과:
+    - `sample_total=2`
+    - `classifier_counts={"challenge_detected":2}`
+    - `combined_bucket_counts={"challenge_or_interstitial":2}`
+  - 두 DOI 공통 artifact:
+    - `entry_strategy_variant=doi_redirect_with_context_bootstrap_no_article_preflight`
+    - `entry_context_bootstrap_attempted=true`
+    - `entry_context_bootstrap_outcome=context_challenge`
+    - `entry_context_bootstrap_final_title=Just a moment...`
+    - `landing_recovery_outcome=challenge_detected_no_retry`
+    - `tab_transition_count=0`
+    - fail HTML에 `Just a moment`와 `__cf_chl_rt_tk`가 남음
+  - DOI별 context page:
+    - `10.1116/6.0003316` -> `entry_context_url=https://pubs.aip.org/jva`
+    - `10.1063/5.0188699` -> `entry_context_url=https://pubs.aip.org/jap`
+  - 해석
+    - 이번 bundle은 새 AIP context-bootstrap patch가 "코드에만 존재"한 것이 아니라 Linux server runtime에서 실제로 적용됐음을 보여준다.
+    - 가장 이른 분기 실패 지점은 DOI handoff 이후가 아니라 journal-root context bootstrap 자체였다.
+    - 즉 이번 failure의 1차 원인은 wrong DOI entry path라기보다, Linux server/headless에서 AIP publisher first-contact가 바로 challenge로 평가되는 쪽에 더 가깝다.
+    - Google default page, wrong active tab, tab-loss 가설은 이번 bundle 근거상 약하다. 두 DOI 모두 single-tab/no-transition 패턴으로 끝났다.
+- download
+  - 결과:
+    - `integrated_landing.state_counts={"challenge_or_block":2}`
+    - 두 DOI 모두 `FAIL_BLOCK`
+    - merged summary 기준
+      - `download_session_source=linux_seed_clone`
+      - `download_challenge_detected=True`
+      - `download_default_page_detected=False`
+      - `download_tab_transition_count=0`
+      - `download_final_total_tab_count=1`
+  - 관찰
+    - `download/run/metadata/*.json` sidecar 일부 필드는 이번 bundle에서도 `null`로 비어 있었다.
+    - 반면 `summary/merged_results.csv`에는 landing/download challenge 필드가 채워져 있었다.
+  - 해석
+    - 원인 분석 자체에는 landing artifact와 merged summary가 충분했지만, download metadata sidecar만으로는 이번 run을 완전히 재구성할 수 없었다.
+    - logging/summary 전파는 일부 경로에서 아직 일관되지 않을 수 있다.
+- profile/session reuse 해석
+  - landing/download 모두 `linux_seed_clone` 기반 stateful clone을 사용했다.
+  - 즉 "persistent seed profile을 아예 안 썼다"는 가설은 이번 bundle과 맞지 않는다.
+  - 다만 persistent seed clone만으로도 server-side first-contact challenge를 피하지는 못했다.
+- 배운 점
+  - AIP context bootstrap은 local에서는 session initialization 전략으로 의미가 있었지만, 최신 Linux server/headless fresh run에서는 challenge를 낮추지 못했다.
+  - 이번 시점에서 AIP Linux failure의 주원인을 "entry path bug"로만 보는 것은 근거가 약하다.
+  - 현재 더 강한 가설은
+    - server/IP 조건에서의 AIP first-contact challenge
+    - warmed session/bootstrap state 부재
+    - 또는 그 둘의 결합
+    이다.
+  - 따라서 다음 단계는 retry를 더 쌓기보다
+    - manual warm-state 진단
+    - seed/profile state carry-over 검증
+    - server와 local의 session initialization 차이 비교
+    쪽이 우선이다.
+
+### `aip_publisher_direct_validation_20260315_local`
+
+- 실행 위치
+  - `outputs/aip_publisher_direct_validation_20260315_local/`
+- 입력 DOI
+  - `10.1063/5.0246311`
+- 왜 테스트했나
+  - 최신 server failure는 `context bootstrap`까지 적용돼도 browser가 여전히 `https://doi.org/...`를 열고 있었다.
+  - local에서는 `context_challenge`가 떠도 뒤이은 article landing이 성공한 사례가 있었으므로, browser-side `doi.org` navigation 자체가 challenge pressure를 더 키우는지 분리할 필요가 있었다.
+  - 따라서 Linux/server 계열 기본 browser entry를 `doi.org`가 아닌 resolve된 AIP canonical article/article-abstract URL로 바꾸는 구조 patch를 검증했다.
+- 적용 패치
+  - `tools_exp.py`
+    - AIP entry plan에 `_resolve_aip_browser_entry_mode()` 추가
+    - Linux `runtime_preset=linux_cli_seeded` 또는 `execution_env=linux_server`이고 `entry_context_url`과 canonical article URL이 있으면 browser entry 기본값을 `publisher_direct`로 전환
+    - 새 runtime variant:
+      - `publisher_canonical_with_context_bootstrap_no_article_preflight`
+      - `publisher_canonical_no_context_no_article_preflight`
+    - logger에 `browser_kind`, `context_url` 출력 추가
+- 결과
+  - `sample_size=1`
+  - `classifier_counts={"success_landing":1}`
+  - runtime artifact에는
+    - `entry_strategy_variant=publisher_canonical_with_context_bootstrap_no_article_preflight`
+    - `entry_browser_url=https://pubs.aip.org/apl/article-abstract/...`
+    - `entry_browser_kind=canonical_article_abstract`
+    - `entry_context_url=https://pubs.aip.org/apl`
+    - `entry_context_bootstrap_outcome=context_challenge`
+    가 남음
+  - navigation chain은
+    - `aip_resolve`
+    - `aip_context_bootstrap`
+    - `doi_get` 단계에서 실제 요청 URL이 `https://pubs.aip.org/apl/article-abstract/...`
+    순서로 기록됨
+- 해석
+  - 새 patch는 runtime에서 실제로 적용됐고, browser는 더 이상 `doi.org`를 열지 않았다.
+  - local 기준으로는 journal-root가 challenge shell이어도, 같은 세션에서 canonical publisher article entry로 바로 들어가면 stable article landing이 가능했다.
+  - 즉 `context bootstrap + publisher direct article entry`는 AIP에 대해 legitimate하고 low-friction한 전략으로 유지할 가치가 있다.
+  - 다만 이것이 Linux server/headless에서도 같은 효과를 내는지는 아직 미검증이다 `[blocked]`.
