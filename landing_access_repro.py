@@ -59,6 +59,7 @@ from landing_classifier import (
 )
 from tools_exp import (
     _maybe_bootstrap_aip_entry_context,
+    _prepare_aip_entry_navigation_page,
     _adopt_latest_tab,
     _apply_best_browser_profile,
     _capture_direct_downloaded_pdf,
@@ -2603,6 +2604,7 @@ def _probe_one(
     entry_context_bootstrap_outcome = ""
     entry_context_bootstrap_final_url = ""
     entry_context_bootstrap_final_title = ""
+    entry_navigation_route = ""
     reclassified_after_detector_fix = False
     reclassification_reason = ""
     tab_transition_events: List[Dict[str, Any]] = []
@@ -2835,6 +2837,22 @@ def _probe_one(
                     entry_context_bootstrap_final_title = str(
                         context_bootstrap_meta.get("entry_context_bootstrap_final_title") or ""
                     )
+                original_page = page
+                page, entry_navigation_route = _prepare_aip_entry_navigation_page(
+                    page,
+                    entry_plan=entry_plan,
+                    context_bootstrap_outcome=entry_context_bootstrap_outcome,
+                )
+                if page is not original_page:
+                    _record_tab_transition(
+                        tab_transition_events,
+                        "aip_context_handoff_tab",
+                        original_page,
+                        page,
+                        forced=True,
+                    )
+                if entry_navigation_route:
+                    attempt_timing["entry_navigation_route"] = entry_navigation_route
             nav_started = time.perf_counter()
             page.get(nav_url, retry=0, interval=0.5, timeout=step_timeout)
             attempt_timing["doi_get_ms"] = int((time.perf_counter() - nav_started) * 1000)
@@ -3662,6 +3680,7 @@ def _probe_one(
         "entry_context_bootstrap_outcome": str(entry_context_bootstrap_outcome or ""),
         "entry_context_bootstrap_final_url": str(entry_context_bootstrap_final_url or ""),
         "entry_context_bootstrap_final_title": str(entry_context_bootstrap_final_title or ""),
+        "entry_navigation_route": str(entry_navigation_route or ""),
         "entry_redirect_chain_summary": list(entry_plan.get("entry_redirect_chain_summary") or []),
         "entry_fallback_used": bool(entry_plan.get("entry_fallback_used")),
         "entry_fallback_reason": str(entry_plan.get("entry_fallback_reason") or ""),

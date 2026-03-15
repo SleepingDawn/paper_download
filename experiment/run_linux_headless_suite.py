@@ -377,6 +377,7 @@ def main() -> int:
     }
 
     seed_check_failed = False
+    source_sample_empty = len(source_sample_rows) == 0
     all_rows_skipped = len(effective_sample_rows) == 0
     if args.runtime_preset == "linux_cli_seeded" and not all_rows_skipped:
         if profile_dir is None:
@@ -414,7 +415,16 @@ def main() -> int:
                     "cmd": seed_check_cmd,
                 }
 
-    if args.execute and all_rows_skipped:
+    if args.execute and source_sample_empty:
+        for stage_name in ("landing", "download", "summarize"):
+            execution_manifest["executed_commands"][stage_name] = {
+                "ok": False,
+                "returncode": None,
+                "skipped": True,
+                "reason": "empty_source_sample",
+            }
+        execution_manifest["status"] = "blocked_empty_source_sample"
+    elif args.execute and all_rows_skipped:
         for stage_name in ("landing", "download", "summarize"):
             execution_manifest["executed_commands"][stage_name] = {
                 "ok": False,
@@ -465,7 +475,11 @@ def main() -> int:
         }
         execution_manifest["status"] = "blocked_seed_profile"
 
-    if args.execute and execution_manifest.get("status") not in {"blocked_seed_profile", "skipped_retry_protection_all_rows"}:
+    if args.execute and execution_manifest.get("status") not in {
+        "blocked_seed_profile",
+        "blocked_empty_source_sample",
+        "skipped_retry_protection_all_rows",
+    }:
         stage_results = [
             payload
             for payload in execution_manifest["executed_commands"].values()
@@ -478,7 +492,10 @@ def main() -> int:
         else:
             execution_manifest["status"] = "executed_no_stage_records"
     elif not args.execute:
-        execution_manifest["status"] = "prepared_only_all_rows_skipped" if all_rows_skipped else "prepared_only"
+        if source_sample_empty:
+            execution_manifest["status"] = "prepared_only_empty_source_sample"
+        else:
+            execution_manifest["status"] = "prepared_only_all_rows_skipped" if all_rows_skipped else "prepared_only"
 
     if args.execute and merged_csv.exists() and effective_sample_rows:
         execution_manifest["attempt_ledger_append"] = append_attempt_ledger(

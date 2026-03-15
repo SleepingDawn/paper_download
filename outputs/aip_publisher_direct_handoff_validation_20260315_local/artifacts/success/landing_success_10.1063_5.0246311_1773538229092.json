@@ -1,0 +1,251 @@
+{
+  "doi": "10.1063/5.0246311",
+  "input_publisher": "American Institute of Physics",
+  "scheduler_publisher": "aip",
+  "captured_at_ms": 1773538229092,
+  "worker_idx": 0,
+  "browser_identity": "worker_0:stateful:linux_seed",
+  "probe_page_mode": "reuse_page",
+  "probe_tab_id": "0E681733BD0663726997348ADDD3EFC9",
+  "scheduled_start_ms": 1773538186135,
+  "actual_start_ms": 1773538186136,
+  "pacing_wait_ms": 0,
+  "pacing_penalty_wait_ms": 0,
+  "classifier_state": "success_landing",
+  "outcome": "SUCCESS_ACCESS",
+  "final_url": "https://pubs.aip.org/aip/apl/article/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+  "navigation_chain": [
+    {
+      "step": "pre_reset",
+      "requested_url": "about:blank",
+      "observed_url": "about:blank"
+    },
+    {
+      "step": "aip_resolve",
+      "requested_url": "https://doi.org/10.1063/5.0246311",
+      "observed_url": "https://pubs.aip.org/apl/article/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition"
+    },
+    {
+      "step": "aip_context_bootstrap",
+      "requested_url": "https://pubs.aip.org/apl",
+      "observed_url": "https://pubs.aip.org/aip/apl"
+    },
+    {
+      "step": "doi_get",
+      "requested_url": "https://pubs.aip.org/apl/article-abstract/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+      "observed_url": "https://pubs.aip.org/aip/apl/article/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition"
+    }
+  ],
+  "title": "Topographically selective atomic layer deposition within trenches enabled by an amorphous carbon inhibition layer | Applied Physics Letters | AIP Publishing",
+  "reason_codes": [
+    "content_populated",
+    "doi_match",
+    "expected_domain_match",
+    "publisher_marker_present",
+    "strong_meta_present"
+  ],
+  "signal_summary": {
+    "body_text_len": 26746,
+    "main_text_len": 26037,
+    "meta_keys": [
+      "citation_author",
+      "citation_doi",
+      "citation_journal_title",
+      "citation_pdf_url",
+      "citation_title",
+      "dc.identifier",
+      "og:type",
+      "og:url"
+    ]
+  },
+  "timing_breakdown": {
+    "scheduled_start_ms": 1773538186135,
+    "actual_start_ms": 1773538186136,
+    "pacing_wait_ms": 0,
+    "pacing_penalty_wait_ms": 0,
+    "pacing_jitter_sec": 0.73,
+    "attempts": [
+      {
+        "attempt": 1,
+        "pre_reset_ms": 80,
+        "network_listener": true,
+        "runtime_probe_installed": true,
+        "entry_strategy": "aip_official_doi_resolve",
+        "entry_browser_url": "https://pubs.aip.org/apl/article-abstract/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+        "entry_url_candidate": "https://pubs.aip.org/apl/article-abstract/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+        "entry_redirect_chain_summary": [
+          "302:https://doi.org/10.1063/5.0246311",
+          "location:https://pubs.aip.org/apl/article/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition"
+        ],
+        "entry_fallback_reason": "prefer_article_abstract_queryless",
+        "entry_url_override": "https://pubs.aip.org/apl/article-abstract/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+        "entry_context_bootstrap_outcome": "context_ready",
+        "entry_navigation_route": "same_tab",
+        "doi_get_ms": 2293,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 85,
+        "attempt_elapsed_ms": 42954
+      }
+    ]
+  },
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "classifier_state": "success_landing",
+      "reason_codes": [
+        "content_populated",
+        "doi_match",
+        "expected_domain_match",
+        "publisher_marker_present",
+        "strong_meta_present"
+      ],
+      "final_url": "https://pubs.aip.org/aip/apl/article/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+      "timing_ms": {
+        "attempt": 1,
+        "pre_reset_ms": 80,
+        "network_listener": true,
+        "runtime_probe_installed": true,
+        "entry_strategy": "aip_official_doi_resolve",
+        "entry_browser_url": "https://pubs.aip.org/apl/article-abstract/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+        "entry_url_candidate": "https://pubs.aip.org/apl/article-abstract/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+        "entry_redirect_chain_summary": [
+          "302:https://doi.org/10.1063/5.0246311",
+          "location:https://pubs.aip.org/apl/article/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition"
+        ],
+        "entry_fallback_reason": "prefer_article_abstract_queryless",
+        "entry_url_override": "https://pubs.aip.org/apl/article-abstract/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+        "entry_context_bootstrap_outcome": "context_ready",
+        "entry_navigation_route": "same_tab",
+        "doi_get_ms": 2293,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 85,
+        "attempt_elapsed_ms": 42954
+      }
+    }
+  ],
+  "direct_pdf_path": "",
+  "direct_pdf_event": {},
+  "legacy_success_like": true,
+  "dom_signature": "Skip to Main Content Open Menu header search search input Search input auto suggest filter your search All Content AIP Publishing Portfolio Applied Physics Letters Search Advanced Search | Citation Search Cart Sign In Open Menu HOME BROWSE ",
+  "html_len": 253432,
+  "challenge_detected": false,
+  "entry_strategy": "aip_official_doi_resolve",
+  "entry_strategy_variant": "publisher_canonical_with_context_bootstrap_no_article_preflight",
+  "entry_redirect_probe_mode": "doi_location_only",
+  "entry_prebrowser_request_count": 1,
+  "entry_url": "https://pubs.aip.org/apl/article-abstract/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+  "entry_resolved_url": "https://pubs.aip.org/apl/article/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+  "entry_browser_url": "https://pubs.aip.org/apl/article-abstract/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+  "entry_browser_kind": "canonical_article_abstract",
+  "entry_handoff_url": "",
+  "entry_handoff_used": false,
+  "entry_context_url": "https://pubs.aip.org/apl",
+  "entry_context_kind": "journal_root",
+  "entry_context_bootstrap_attempted": true,
+  "entry_context_bootstrap_outcome": "context_ready",
+  "entry_context_bootstrap_final_url": "https://pubs.aip.org/aip/apl",
+  "entry_context_bootstrap_final_title": "Applied Physics Letters | AIP Publishing",
+  "entry_redirect_chain_summary": [
+    "302:https://doi.org/10.1063/5.0246311",
+    "location:https://pubs.aip.org/apl/article/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition"
+  ],
+  "entry_fallback_used": true,
+  "entry_fallback_reason": "prefer_article_abstract_queryless",
+  "entry_preflight_url": "https://pubs.aip.org/apl/article-abstract/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+  "entry_preflight_issue": "",
+  "entry_preflight_evidence": [],
+  "entry_preflight_http_status": null,
+  "entry_preflight_issue_overridden": false,
+  "entry_browser_open_skipped": false,
+  "initial_landing_type": "",
+  "landing_recovery_attempted": false,
+  "landing_recovery_strategy": "",
+  "landing_recovery_outcome": "",
+  "shell_recovery_attempted": false,
+  "shell_recovery_strategy": "",
+  "shell_recovery_outcome": "",
+  "tab_transition_count": 0,
+  "tab_transition_events": [],
+  "reclassified_after_detector_fix": false,
+  "reclassification_reason": "",
+  "runtime_diagnostics": {
+    "current_url": "https://pubs.aip.org/aip/apl/article/126/6/063505/3335562/Topographically-selective-atomic-layer-deposition",
+    "page_title": "Topographically selective atomic layer deposition within trenches enabled by an amorphous carbon inhibition layer | Applied Physics Letters | AIP Publishing",
+    "ready_state": "complete",
+    "html_len": 253432,
+    "body_text_len": 26746,
+    "main_text_len": 26037,
+    "parsed_main_text_len": 32318,
+    "iframe_count": 5,
+    "body_child_count": 33,
+    "tab_state": {
+      "active_tab_id": "0E681733BD0663726997348ADDD3EFC9",
+      "total_tab_count": 1,
+      "tab_ids": [
+        "0E681733BD0663726997348ADDD3EFC9"
+      ]
+    },
+    "viewport": {
+      "visibility_state": "visible",
+      "inner_width": 1728,
+      "inner_height": 1030,
+      "device_pixel_ratio": 1.0,
+      "scroll_x": 0,
+      "scroll_y": 0,
+      "body_client_height": 1030,
+      "body_scroll_height": 11865,
+      "doc_scroll_height": 11865
+    },
+    "iframe_summary": [
+      {
+        "src": "",
+        "title": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "src": "",
+        "title": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "src": "",
+        "title": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "src": "",
+        "title": "",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "src": "https://cmp.osano.com",
+        "title": "Osano Consent Manager Iframe",
+        "width": 0,
+        "height": 0
+      }
+    ],
+    "console_runtime_errors": {
+      "capture_available": true,
+      "error_events": [],
+      "rejection_events": []
+    },
+    "network_summary": {
+      "request_count": 0,
+      "status_counts": {},
+      "document_chain": [],
+      "failed_request_count": 0,
+      "failed_requests": []
+    },
+    "blank_screenshot_likely": false,
+    "blank_screenshot_reason": "",
+    "body_text_len_runtime": 26746,
+    "html_len_runtime": 253417
+  },
+  "screenshot_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/aip_publisher_direct_handoff_validation_20260315_local/artifacts/success/landing_success_10.1063_5.0246311_1773538229092.png",
+  "screenshot_delayed_path": "",
+  "html_path": ""
+}

@@ -2238,6 +2238,18 @@ def _aip_context_bootstrap_enabled() -> bool:
     )
 
 
+def _aip_context_challenge_fresh_tab_enabled() -> bool:
+    raw = os.getenv("PDF_BROWSER_AIP_CONTEXT_CHALLENGE_FRESH_TAB", "auto").strip().lower()
+    if raw in ("0", "false", "no", "off"):
+        return False
+    if raw in ("1", "true", "yes", "on"):
+        return True
+    return (
+        resolve_runtime_preset() == RUNTIME_PRESET_LINUX_CLI_SEEDED
+        or resolve_browser_execution_env() == EXECUTION_ENV_LINUX_SERVER
+    )
+
+
 def _resolve_aip_browser_entry_mode(*, has_canonical_entry: bool, has_context_bootstrap: bool) -> str:
     raw = os.getenv("PDF_BROWSER_LANDING_AIP_BROWSER_ENTRY", "auto").strip().lower()
     if raw in ("doi", "doi_first", "official_doi_redirect", "1", "true", "yes", "on"):
@@ -2284,6 +2296,44 @@ def _derive_aip_context_target(url: str) -> tuple[str, str]:
     if publisher_context:
         return publisher_context, "publisher_root"
     return "", ""
+
+
+def _prepare_aip_entry_navigation_page(
+    page,
+    *,
+    entry_plan: Dict[str, Any],
+    context_bootstrap_outcome: str = "",
+    logger=None,
+):
+    route = "same_tab"
+    if page is None:
+        return page, route
+    if str(context_bootstrap_outcome or "").strip() != "context_challenge":
+        return page, route
+    if not _aip_context_challenge_fresh_tab_enabled():
+        return page, route
+
+    browser_url = str(entry_plan.get("entry_browser_url") or "").strip()
+    browser_kind = str(entry_plan.get("entry_browser_kind") or "").strip()
+    browser_domain = _extract_domain(browser_url)
+    if not browser_url or browser_domain in {"doi.org", "dx.doi.org"}:
+        return page, route
+    if not _is_aip_article_url(browser_url):
+        return page, route
+    if browser_kind not in {"canonical_article_abstract", "canonical_article", "resolved_final"}:
+        return page, route
+
+    temp_page = _open_temporary_tab(page)
+    if temp_page is None:
+        if logger:
+            logger.info("        [AIP] context challenge handoff fresh-tab open failed; fallback=same_tab")
+        return page, "same_tab_fallback"
+    if logger:
+        logger.info(
+            "        [AIP] context challenge handoff route=fresh_tab target=%s"
+            % browser_url
+        )
+    return temp_page, "fresh_tab_after_context_challenge"
 
 
 def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
@@ -5995,6 +6045,7 @@ def download_with_drission(
     entry_context_bootstrap_outcome = ""
     entry_context_bootstrap_final_url = ""
     entry_context_bootstrap_final_title = ""
+    entry_navigation_route = ""
 
     def _set_landing_state(state: str, success: bool, page_obj=None):
         nonlocal landing_attempted, landing_success, landing_state, landing_url, landing_title
@@ -6107,6 +6158,7 @@ def download_with_drission(
             "entry_context_bootstrap_outcome": str(entry_context_bootstrap_outcome or ""),
             "entry_context_bootstrap_final_url": str(entry_context_bootstrap_final_url or ""),
             "entry_context_bootstrap_final_title": str(entry_context_bootstrap_final_title or ""),
+            "entry_navigation_route": str(entry_navigation_route or ""),
         }
         payload.update(entry_plan_detail)
         payload["entry_preflight_issue_overridden"] = bool(payload.get("entry_preflight_issue")) and bool(
@@ -6175,6 +6227,7 @@ def download_with_drission(
             entry_context_bootstrap_outcome = ""
             entry_context_bootstrap_final_url = ""
             entry_context_bootstrap_final_title = ""
+            entry_navigation_route = ""
             
             nav_url = doi_url
             if publisher_entry_plan:
@@ -6249,6 +6302,20 @@ def download_with_drission(
                             str(publisher_entry_plan.get("entry_context_url") or ""),
                             entry_context_bootstrap_outcome,
                         )
+                    )
+                original_page = page
+                page, entry_navigation_route = _prepare_aip_entry_navigation_page(
+                    page,
+                    entry_plan=publisher_entry_plan,
+                    context_bootstrap_outcome=entry_context_bootstrap_outcome,
+                    logger=logger,
+                )
+                if page is not original_page:
+                    _record_tab_transition(
+                        landing_tab_transition_events,
+                        "aip_context_handoff_tab",
+                        original_page,
+                        page,
                     )
             page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
             page, current_domain, referer_url, page_title, page_html = _refresh_page_context(

@@ -335,6 +335,7 @@ def main() -> int:
                 "landing_entry_context_bootstrap_outcome": landing.get("entry_context_bootstrap_outcome", ""),
                 "landing_entry_context_bootstrap_final_url": landing.get("entry_context_bootstrap_final_url", ""),
                 "landing_entry_context_bootstrap_final_title": landing.get("entry_context_bootstrap_final_title", ""),
+                "landing_entry_navigation_route": landing.get("entry_navigation_route", ""),
                 "landing_entry_preflight_url": landing.get("entry_preflight_url", ""),
                 "landing_entry_redirect_chain_summary": json.dumps(
                     list(landing.get("entry_redirect_chain_summary") or []), ensure_ascii=False
@@ -387,6 +388,7 @@ def main() -> int:
                 "download_entry_context_bootstrap_outcome": download.get("landing_entry_context_bootstrap_outcome", ""),
                 "download_entry_context_bootstrap_final_url": download.get("landing_entry_context_bootstrap_final_url", ""),
                 "download_entry_context_bootstrap_final_title": download.get("landing_entry_context_bootstrap_final_title", ""),
+                "download_entry_navigation_route": download.get("landing_entry_navigation_route", ""),
                 "download_entry_preflight_url": download.get("landing_entry_preflight_url", ""),
                 "download_entry_redirect_chain_summary": download.get("landing_entry_redirect_chain_summary", ""),
                 "download_entry_fallback_used": download.get("landing_entry_fallback_used", ""),
@@ -520,6 +522,7 @@ def main() -> int:
         "landing_entry_context_bootstrap_outcome",
         "landing_entry_context_bootstrap_final_url",
         "landing_entry_context_bootstrap_final_title",
+        "landing_entry_navigation_route",
         "landing_entry_preflight_url",
         "landing_entry_redirect_chain_summary",
         "landing_entry_fallback_used",
@@ -570,6 +573,7 @@ def main() -> int:
         "download_entry_context_bootstrap_outcome",
         "download_entry_context_bootstrap_final_url",
         "download_entry_context_bootstrap_final_title",
+        "download_entry_navigation_route",
         "download_entry_preflight_url",
         "download_entry_redirect_chain_summary",
         "download_entry_fallback_used",

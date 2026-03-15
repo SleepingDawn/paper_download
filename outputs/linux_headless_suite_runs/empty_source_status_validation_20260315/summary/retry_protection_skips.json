@@ -1,0 +1,9 @@
+{
+  "attempt_ledger_path": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/linux_headless_suite_attempt_ledger.jsonl",
+  "source_sample_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/_empty_aip_validation_20260315.csv",
+  "source_sample_total": 0,
+  "effective_sample_total": 0,
+  "skipped_total": 0,
+  "action_counts": {},
+  "skip_reason_counts": {}
+}

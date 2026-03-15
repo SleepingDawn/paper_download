@@ -698,6 +698,7 @@ def _single_download_attempt(
             "entry_context_bootstrap_outcome": str(dr.get("entry_context_bootstrap_outcome") or ""),
             "entry_context_bootstrap_final_url": str(dr.get("entry_context_bootstrap_final_url") or ""),
             "entry_context_bootstrap_final_title": str(dr.get("entry_context_bootstrap_final_title") or ""),
+            "entry_navigation_route": str(dr.get("entry_navigation_route") or ""),
             "entry_redirect_chain_summary": list(dr.get("entry_redirect_chain_summary") or []),
             "entry_fallback_used": bool(dr.get("entry_fallback_used")),
             "entry_fallback_reason": str(dr.get("entry_fallback_reason") or ""),
@@ -1675,6 +1676,7 @@ def main(
     df["landing_entry_context_bootstrap_final_title"] = [
         str(r.get("entry_context_bootstrap_final_title") or "") for r in final_results
     ]
+    df["landing_entry_navigation_route"] = [str(r.get("entry_navigation_route") or "") for r in final_results]
     df["landing_entry_preflight_url"] = [str(r.get("entry_preflight_url") or "") for r in final_results]
     df["landing_entry_redirect_chain_summary"] = [
         json.dumps(list(r.get("entry_redirect_chain_summary") or []), ensure_ascii=False) for r in final_results

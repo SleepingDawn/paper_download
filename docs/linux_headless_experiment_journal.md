@@ -1330,3 +1330,68 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - 이유는 branch 로직이 아니라 입력 DOI 둘 모두가 이미 hard-block ledger 이력을 갖고 있었기 때문이다.
   - 따라서 이번 결과로는 `publisher_canonical_with_context_bootstrap_no_article_preflight`가 Linux server/headless에서 성공했는지 실패했는지 판단할 수 없다.
   - 다음 server 검증은 반드시 fresh/low-frequency AIP DOI로 다시 구성해야 한다.
+
+### `aip_publisher_direct_linux_20260315_fresh2`
+
+- 실행 위치
+  - `outputs/linux_headless_suite_runs/aip_publisher_direct_linux_20260315_fresh2/`
+- 입력 CSV
+  - `outputs/_aip_publisher_direct_fresh2_20260315.csv`
+- 결과
+  - fresh CSV 생성 단계에서 `rows=0`
+  - 생성된 입력 CSV는 header만 있고 DOI row가 없었다.
+  - run 결과:
+    - `status=skipped_retry_protection_all_rows`
+    - `source_sample_total=0`
+    - `effective_sample_total=0`
+    - `skipped_total=0`
+    - landing/download/summarize 모두 `skipped=true`
+- 해석
+  - 이번 server run은 retry protection에 막힌 것도 아니고 branch가 실패한 것도 아니다.
+  - 더 근본적으로, 현재 `experiment/linux_headless_suite/full_sample.csv` 안에서 server ledger 기준 fresh AIP DOI 후보가 이미 고갈된 상태였다.
+  - 따라서 현 시점의 blocker는 code path가 아니라 fresh DOI pool 부재다.
+  - 이 상태에서는 같은 in-repo sample만 재조합해도 AIP publisher-direct Linux validation을 더 진행할 수 없다 `[blocked]`.
+
+### 5.15 AIP context-challenge handoff 분리와 empty-source status 분리
+
+- 구조 문제
+  - 최신 AIP server bundle들은 `context bootstrap -> challenge`가 먼저 발생했고, 그 뒤 entry navigation도 같은 tab/page를 그대로 사용했다.
+  - 이 구조에서는 challenge shell 컨텍스트와 article navigation 컨텍스트가 분리되지 않아, legitimate publisher-direct entry를 쓰더라도 page lifecycle이 challenge shell에 묶일 위험이 있었다.
+  - 별도로, `source_sample_total=0`인 경우에도 suite status가 `skipped_retry_protection_all_rows`처럼 보이면서 "retry protection이 막았는지", "입력 샘플이 비었는지"가 구분되지 않았다.
+- 적용 패치
+  - `tools_exp.py`
+    - `_aip_context_challenge_fresh_tab_enabled()` 추가
+    - `_prepare_aip_entry_navigation_page()` 추가
+    - `context_bootstrap_outcome=context_challenge`이고 browser entry가 canonical AIP article/article-abstract URL이면, Linux/server 계열에서 fresh tab으로 handoff 후 navigation 하도록 변경
+    - download path에도 같은 handoff 로직 적용
+  - `landing_access_repro.py`
+    - 같은 fresh-tab handoff 로직 적용
+    - 결과 JSONL에 `entry_navigation_route` 기록 추가
+  - `parallel_download.py`
+    - download 결과/CSV에 `landing_entry_navigation_route` 전파 추가
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary에 `landing_entry_navigation_route`, `download_entry_navigation_route` 추가
+  - `experiment/run_linux_headless_suite.py`
+    - `source_sample_total=0`이면 `blocked_empty_source_sample` 상태로 분기
+    - stage skip reason도 `empty_source_sample`로 명시
+- local 검증
+  - `outputs/aip_publisher_direct_handoff_validation_20260315_local/`
+    - DOI `10.1063/5.0246311`
+    - `success_landing`
+    - `entry_strategy_variant=publisher_canonical_with_context_bootstrap_no_article_preflight`
+    - `entry_navigation_route=same_tab`
+    - 이번 run에서는 `entry_context_bootstrap_outcome=context_ready`
+  - `outputs/aip_publisher_direct_handoff_validation2_20260315_local/`
+    - DOI `10.1063/5.0257779`
+    - `success_landing`
+    - `entry_strategy_variant=publisher_canonical_with_context_bootstrap_no_article_preflight`
+    - `entry_navigation_route=same_tab`
+    - 이번 run에서도 `entry_context_bootstrap_outcome=context_ready`
+  - `outputs/linux_headless_suite_runs/empty_source_status_validation_20260315/`
+    - empty CSV로 실행
+    - `status=blocked_empty_source_sample`
+    - landing/download/summarize skip reason이 모두 `empty_source_sample`
+- 해석
+  - AIP publisher-direct entry는 local headless에서 계속 stable landing을 만들고 있다.
+  - 다만 새 fresh-tab handoff branch는 이번 local 검증 2건에서 context page가 모두 `context_ready`여서 live `context_challenge` 케이스로는 아직 실제 실행되지 않았다 `[blocked]`.
+  - empty-input 상태는 이제 retry-protection skip과 구분돼, 최신 `fresh2` 같은 bundle을 더 정확하게 해석할 수 있게 됐다.
