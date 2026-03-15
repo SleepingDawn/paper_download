@@ -1313,3 +1313,20 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - local 기준으로는 journal-root가 challenge shell이어도, 같은 세션에서 canonical publisher article entry로 바로 들어가면 stable article landing이 가능했다.
   - 즉 `context bootstrap + publisher direct article entry`는 AIP에 대해 legitimate하고 low-friction한 전략으로 유지할 가치가 있다.
   - 다만 이것이 Linux server/headless에서도 같은 효과를 내는지는 아직 미검증이다 `[blocked]`.
+
+### `aip_publisher_direct_linux_20260315_fresh`
+
+- 실행 위치
+  - `outputs/linux_headless_suite_runs/aip_publisher_direct_linux_20260315_fresh/`
+- 입력 CSV
+  - `outputs/_aip_context_bootstrap_fresh_20260315.csv`
+- 결과
+  - `status=skipped_retry_protection_all_rows`
+  - `effective_sample_total=0`
+  - `skip_reason_counts={"prior_hard_block_exists":2}`
+  - landing/download/summarize 모두 `skipped=true`
+- 해석
+  - 이번 server run은 새 `publisher_direct` AIP branch를 평가하지 못했다.
+  - 이유는 branch 로직이 아니라 입력 DOI 둘 모두가 이미 hard-block ledger 이력을 갖고 있었기 때문이다.
+  - 따라서 이번 결과로는 `publisher_canonical_with_context_bootstrap_no_article_preflight`가 Linux server/headless에서 성공했는지 실패했는지 판단할 수 없다.
+  - 다음 server 검증은 반드시 fresh/low-frequency AIP DOI로 다시 구성해야 한다.
