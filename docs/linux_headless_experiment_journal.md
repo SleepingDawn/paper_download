@@ -4147,3 +4147,38 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - after startup sanitation is fixed, any remaining AIP failure can then be evaluated as:
     - true AIP challenge/landing logic defect
     - or a still-unfixed browser/runtime issue
+
+### 5.40 rerun after 5.39: startup sanitation improved, but `_safe_exception_text` helper regression blocked progress
+
+- observed from server rerun logs
+  - `drission_startup_verify_20260319_221238`
+  - new stderr evidence showed startup sanitation itself was no longer failing in the old way:
+    - temp/IEEE:
+      - `startup sanitize: strategy=same_tab_keep_one before=1 after=1 closed=0 fresh_tab=0 reset_blank=1`
+    - polluted stateful sessions:
+      - `startup sanitize: strategy=same_tab_keep_one before=10 after=1 closed=9 fresh_tab=0 reset_blank=1`
+  - this is strong evidence that the `startup_sanitize_no_live_tab` pattern from bundle `214740` was materially improved
+
+- new blocker
+  - same rerun then failed with:
+    - `name '_safe_exception_text' is not defined`
+  - this was a local helper regression introduced while replacing exception formatting in startup/diagnostic code
+  - impact:
+    - browser/session flow could now reach publisher landing more often
+    - but the new exception formatting bug interrupted the run before the improved paths could be fully evaluated
+
+- fix
+  - `tools_exp.py`
+    - reintroduced `_safe_exception_text()` as a thin wrapper around `_exc_message()`
+    - this keeps new diagnostic call sites stable without changing semantics
+
+- lightweight verification
+  - `python -m py_compile tools_exp.py parallel_download.py experiment/run_linux_headless_suite.py config.py`
+    - pass
+  - smoke:
+    - `_safe_exception_text(RuntimeError('demo-error')) -> 'demo-error'`
+
+- interpretation
+  - this rerun is still useful:
+    - it strongly suggests the earlier sanitation self-kill was fixed
+    - the next rerun should finally expose the remaining real publisher-side failures again, especially on AIP

@@ -104,6 +104,10 @@ def _exc_message(exc) -> str:
         return repr(exc)
 
 
+def _safe_exception_text(exc) -> str:
+    return _exc_message(exc)
+
+
 def _pick_free_local_port() -> int:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.bind(("127.0.0.1", 0))
