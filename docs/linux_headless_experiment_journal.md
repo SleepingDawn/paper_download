@@ -4000,3 +4000,150 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - but a fresh rerun is still required to prove whether:
     - AIP now reaches deterministic landing more often
     - remaining AIP failures are true publisher-side challenge/landing defects rather than browser-state instability
+
+### 5.39 `drission_startup_verify_20260319_214740_bundle.tar.gz` follow-up: startup sanitation self-kill + missing screenshot evidence
+
+- analyzed bundle
+  - `experiment/results/drission_startup_verify_20260319_214740_bundle.tar.gz`
+
+- files that mattered
+  - root log
+    - `logs/drission_startup_verify_20260319_214740.log`
+  - unified stderr
+    - `outputs/linux_headless_suite_runs/drission_startup_verify_20260319_214740/logs/download.stderr.log`
+  - unified results
+    - `outputs/linux_headless_suite_runs/drission_startup_verify_20260319_214740/download/run/openalex_search_results_parallel.csv`
+    - `outputs/linux_headless_suite_runs/drission_startup_verify_20260319_214740/download/run/failed_papers.jsonl`
+    - per-DOI metadata under:
+      - `outputs/linux_headless_suite_runs/drission_startup_verify_20260319_214740/download/run/metadata/**`
+    - per-DOI logs under:
+      - `outputs/linux_headless_suite_runs/drission_startup_verify_20260319_214740/download/run/*/logs/download_log_*.txt`
+
+- reconstructed failure sequence
+  - Xvfb/headful itself was active:
+    - `headless=0`
+    - `xvfb_enabled=1`
+  - browser launch also succeeded:
+    - each failed DOI has a valid `browser_init_attempts[0].ok=true`
+    - unique `port`
+    - unique per-DOI `user_data_dir`
+  - almost all failures then died at the same place:
+    - `landing_page_disconnect_stage=startup_sanitize`
+    - `landing_startup_sanitize_error=startup_sanitize_no_live_tab`
+  - crucially, even temp-profile rows with `landing_startup_tab_cleanup_before_count=1` still show:
+    - `landing_startup_sanitize_strategy=fresh_blank_tab_keep_one`
+    - `landing_startup_sanitize_fresh_tab_created=True`
+    - `landing_startup_tab_cleanup_after_count=0`
+  - this proves startup sanitation itself was opening a fresh tab too eagerly, then pruning before that tab was stably live
+  - result:
+    - the browser/page was self-killed before real publisher landing started
+    - AIP/Elsevier/IEEE failures in this bundle were mostly general startup-sanitation failures, not publisher-specific landing defects
+
+- screenshot gap root cause
+  - failure screenshots/html were missing because disconnect happened inside `startup_sanitize`
+  - `BrowserDisconnectedError` was caught later, but the exception path closed the page/browser before `_ret()` tried to capture artifacts
+  - therefore:
+    - `landing_final_screenshot_path=""`
+    - `landing_final_html_path=""`
+    - file tree contained no `logs/screenshots/*` nor `logs/html/*` for those failures
+
+- confirmed root causes
+  - `tools_exp.py`
+    - `_sanitize_page_before_attempt()`
+      - opened a fresh blank tab even when there was only one tab and the session could have been cleaned in-place
+      - then pruned tabs before proving that fresh tab was stably accessible
+      - produced `startup_sanitize_no_live_tab`
+    - disconnect evidence capture happened too late
+      - browser/page teardown ran before failure artifacts were captured on disconnect paths
+  - `parallel_download.py`
+    - CSVs exposed detailed landing diagnostics, but `result/source` remained ambiguous in benchmark outputs
+
+- fixes implemented
+  - `tools_exp.py`
+    - `_open_temporary_tab()`
+      - now waits for a stable/live tab handle instead of returning immediately after `new_tab()`
+    - `_stabilize_live_tab()` added
+      - used to resolve a live page handle from current/latest/new tab before destructive tab cleanup
+    - `_prune_extra_tabs()`
+      - now refuses to close tabs if it cannot identify a live active tab first
+      - avoids “close everything and leave zero tabs” behavior
+    - `_sanitize_page_before_attempt()`
+      - changed from “fresh blank tab first” to:
+        - stabilize current page
+        - prune extras on the current page first
+        - use same-tab blank reset whenever possible
+        - only open a fresh blank tab as recovery if same-tab sanitation fails
+      - this makes sanitation deterministic and proactive without self-killing the browser
+    - failure evidence collection
+      - new `_capture_failure_evidence()` helper
+      - disconnect/generic exception paths now attempt screenshot/html capture before teardown
+      - when screenshot/html cannot be captured, a deterministic failure note is written:
+        - `artifact_root/logs/failure_state/landing_fail_<doi>_<stage>.json`
+      - note records:
+        - disconnect stage
+        - startup sanitation state
+        - worker label
+        - display
+        - port
+        - binary path
+        - user-data-dir
+        - best available tab/url/title state
+  - `parallel_download.py`
+    - exports `landing_failure_debug_note_path`
+    - now populates `result`, `source`, `status` from actual final results instead of leaving benchmark rows ambiguous
+
+- how AIP path works after this patch
+  - `build_aip_direct_doi_entry_plan()` chooses:
+    - `entry_strategy=aip_direct_browser_doi`
+    - `entry_strategy_variant=direct_doi_browser_start_no_preanalysis`
+  - `build_download_browser_session_plan()` selects stateful seeded clone for AIP DOI
+  - browser launches under Linux + Xvfb headful
+  - startup sanitation now runs before any real navigation
+    - same-tab keep-one cleanup
+    - same-tab `about:blank` reset
+    - fresh-tab only as recovery
+  - AIP direct DOI handoff may still use a fresh tab later via `_prepare_aip_entry_navigation_page()`
+  - after that handoff, sanitation runs again before DOI navigation
+  - only then does real DOI navigation / AIP recovery / page validation / PDF trigger proceed
+
+- failure evidence expectation after this patch
+  - failure stages that should now produce a screenshot/html or an explicit failure note:
+    - startup sanitation disconnect
+    - main navigation disconnect
+    - generic browser disconnect during landing/download
+    - normal landing failure via `_ret(False, ...)`
+  - if the page is already dead, `failure_state/*.json` should still be present even when screenshot capture is impossible
+
+- lightweight verification
+  - `python -m py_compile tools_exp.py parallel_download.py experiment/run_linux_headless_suite.py config.py`
+    - pass
+  - mock smoke:
+    - `_prune_extra_tabs()` with `tab_id=''` no longer closes the only tab
+  - mock smoke:
+    - `_write_failure_debug_note()` writes deterministic JSON evidence successfully
+
+- re-check command
+  - focused rerun:
+    - `bash scripts/run_linux_suite_bg.sh --suite full --run-name drission_startup_verify_20260319_214740_rerun --seed-profile "$SEED_PROFILE" --profile-name "${PROFILE_NAME:-Default}" --sample-csv outputs/benchmark_inputs/publisher_download_benchmark_startup_verify_20260319.csv --download-workers 3 --after-first-pass stop --runtime-preset linux_cli_seeded --execution-env linux_server --headless 0 --chrome-path "$CHROME_PATH" --xvfb 1 --xvfb-bin "$HOME/.local/bin/Xvfb" --xvfb-display :99`
+  - inspect after rerun:
+    - `outputs/linux_headless_suite_runs/<run>/logs/download.stderr.log`
+    - `outputs/linux_headless_suite_runs/<run>/download/run/openalex_search_results_parallel.csv`
+    - `outputs/linux_headless_suite_runs/<run>/download/run/metadata/**`
+    - `outputs/linux_headless_suite_runs/<run>/download/run/*/logs/screenshots/*`
+    - `outputs/linux_headless_suite_runs/<run>/download/run/*/logs/html/*`
+    - `outputs/linux_headless_suite_runs/<run>/download/run/*/logs/failure_state/*`
+  - key fields
+    - `landing_startup_sanitize_strategy`
+    - `landing_startup_sanitize_error`
+    - `landing_startup_tab_cleanup_before_count`
+    - `landing_startup_tab_cleanup_after_count`
+    - `landing_page_disconnect_stage`
+    - `landing_failure_debug_note_path`
+    - `landing_final_screenshot_path`
+    - `landing_entry_navigation_route`
+
+- remaining uncertainty
+  - fresh rerun is still required to prove that the 214740 bundle’s exact failure shape no longer recurs
+  - after startup sanitation is fixed, any remaining AIP failure can then be evaluated as:
+    - true AIP challenge/landing logic defect
+    - or a still-unfixed browser/runtime issue

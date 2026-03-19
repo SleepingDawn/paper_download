@@ -2640,7 +2640,7 @@ def _prepare_aip_entry_navigation_page(
         and browser_domain in {"doi.org", "dx.doi.org"}
         and browser_kind == "official_doi"
     ):
-        temp_page = _open_temporary_tab(page)
+        temp_page = _open_temporary_tab(page, logger=logger)
         if temp_page is not None:
             _prune_extra_tabs(temp_page, logger=logger)
             if logger:
@@ -2657,7 +2657,7 @@ def _prepare_aip_entry_navigation_page(
     if browser_kind not in {"canonical_article_abstract", "canonical_article", "resolved_final"}:
         return page, route
 
-    temp_page = _open_temporary_tab(page)
+    temp_page = _open_temporary_tab(page, logger=logger)
     if temp_page is None:
         if logger:
             logger.info("        [AIP] context challenge handoff fresh-tab open failed; fallback=same_tab")
@@ -3545,8 +3545,19 @@ def _prune_extra_tabs(page, logger=None) -> None:
     if page is None:
         return
     try:
-        current_tab_id = str(getattr(page, "tab_id", "") or "")
+        stable_page = _stabilize_live_tab(page, logger=logger, wait_s=0.8) or page
+        current_tab_id = str(getattr(stable_page, "tab_id", "") or "")
         tab_ids = [str(tab_id or "") for tab_id in list(getattr(page, "tab_ids", []) or []) if str(tab_id or "").strip()]
+        if (not current_tab_id) and tab_ids:
+            try:
+                current_tab_id = str(tab_ids[-1] or "")
+                stable_page = page.get_tab(current_tab_id) or stable_page
+            except Exception:
+                current_tab_id = ""
+        if not current_tab_id:
+            if logger:
+                logger.info("        [Tab] 불필요 탭 정리 스킵: 활성 탭 식별 실패")
+            return
         for tab_id in tab_ids:
             if not tab_id or tab_id == current_tab_id:
                 continue
@@ -3565,13 +3576,96 @@ def _prune_extra_tabs(page, logger=None) -> None:
         pass
 
 
-def _open_temporary_tab(page, start_url: str = "about:blank"):
+def _page_runtime_ok(page) -> tuple[bool, str]:
+    if page is None:
+        return False, "page_missing"
+    try:
+        _ = str(getattr(page, "tab_id", "") or "")
+        _ = str(getattr(page, "url", "") or "")
+        _ = str(getattr(page, "title", "") or "")
+        return True, ""
+    except Exception as exc:
+        return False, _safe_exception_text(exc)
+
+
+def _stabilize_live_tab(page, logger=None, wait_s: float = 1.5, preferred_tab_ids=None):
+    if page is None:
+        return None
+    preferred = {
+        str(tab_id or "").strip()
+        for tab_id in (preferred_tab_ids or [])
+        if str(tab_id or "").strip()
+    }
+    deadline = time.time() + max(float(wait_s or 0.0), 0.2)
+    last_error = ""
+    while time.time() <= deadline:
+        candidate_ids = []
+        try:
+            tab_ids = [
+                str(tab_id or "").strip()
+                for tab_id in list(getattr(page, "tab_ids", []) or [])
+                if str(tab_id or "").strip()
+            ]
+        except Exception:
+            tab_ids = []
+        if preferred:
+            candidate_ids.extend([tab_id for tab_id in tab_ids if tab_id in preferred])
+        candidate_ids.extend([tab_id for tab_id in tab_ids if tab_id not in candidate_ids])
+        for candidate in [page, getattr(page, "latest_tab", None)]:
+            if candidate is None:
+                continue
+            ok, error = _page_runtime_ok(candidate)
+            if ok:
+                return candidate
+            if error:
+                last_error = error
+        for tab_id in candidate_ids:
+            try:
+                candidate = page.get_tab(tab_id)
+            except Exception:
+                candidate = None
+            if candidate is None:
+                continue
+            ok, error = _page_runtime_ok(candidate)
+            if ok:
+                return candidate
+            if error:
+                last_error = error
+        time.sleep(0.1)
+    if logger and last_error:
+        logger.info(f"        [Tab] live tab stabilization 실패: {last_error}")
+    return None
+
+
+def _open_temporary_tab(page, start_url: str = "about:blank", logger=None):
     if page is None:
         return None
     try:
+        baseline_ids = {
+            str(tab_id or "").strip()
+            for tab_id in list(getattr(page, "tab_ids", []) or [])
+            if str(tab_id or "").strip()
+        }
+    except Exception:
+        baseline_ids = set()
+    try:
         temp_page = page.new_tab(start_url, background=False)
         time.sleep(0.2)
-        return temp_page
+        try:
+            current_ids = {
+                str(tab_id or "").strip()
+                for tab_id in list(getattr(page, "tab_ids", []) or [])
+                if str(tab_id or "").strip()
+            }
+        except Exception:
+            current_ids = set()
+        stable_page = _stabilize_live_tab(
+            temp_page or page,
+            logger=logger,
+            wait_s=2.0,
+            preferred_tab_ids=current_ids - baseline_ids,
+        )
+        return stable_page or temp_page
     except Exception:
         return None
 
@@ -3697,6 +3791,22 @@ def _capture_page_debug_artifacts(page, artifact_root: str, stem: str, logger=No
         except Exception:
             pass
     return out
+
+
+def _write_failure_debug_note(artifact_root: str, stem: str, payload: Dict[str, Any], logger=None) -> str:
+    if not artifact_root or not stem:
+        return ""
+    note_dir = os.path.abspath(os.path.join(artifact_root, "logs", "failure_state"))
+    os.makedirs(note_dir, exist_ok=True)
+    note_path = os.path.abspath(os.path.join(note_dir, f"{stem}.json"))
+    try:
+        with open(note_path, "w", encoding="utf-8") as f:
+            json.dump(payload or {}, f, ensure_ascii=False, indent=2)
+        if logger:
+            logger.info(f"  실패 상태 저장 성공: {note_path}")
+        return note_path
+    except Exception:
+        return ""
 
 
 def _summarize_elsevier_pdf_control(el) -> str:
@@ -4502,7 +4612,7 @@ def _attempt_elsevier_two_step_click_download(
                     f"        [Elsevier] headless fresh-tab recovery 시작: candidates={len(candidates)}"
                 )
             for idx, candidate in enumerate(candidates):
-                temp_page = _open_temporary_tab(page)
+                temp_page = _open_temporary_tab(page, logger=logger)
                 if temp_page is None:
                     break
                 try:
@@ -6198,7 +6308,7 @@ def _recover_aip_download_landing(
     for strategy, target_url in targets[:3]:
         target_attempts = [("same_tab", page)]
         if allow_fresh_tab_recovery:
-            temp_page = _open_temporary_tab(page)
+            temp_page = _open_temporary_tab(page, logger=logger)
             if temp_page is not None:
                 target_attempts.append(("fresh_tab", temp_page))
 
@@ -6611,6 +6721,7 @@ def download_with_drission(
     landing_tab_lifecycle_sequence = []
     landing_final_screenshot_path = ""
     landing_final_html_path = ""
+    landing_failure_debug_note_path = ""
     landing_timestamp_ms = 0
     entry_context_bootstrap_attempted = False
     entry_context_bootstrap_outcome = ""
@@ -6658,18 +6769,76 @@ def download_with_drission(
     def _probe_page_runtime(target_page):
         if target_page is None:
             return False, False, "page_missing"
-        try:
-            _ = str(getattr(target_page, "url", "") or "")
-            _ = str(getattr(target_page, "title", "") or "")
-            return True, True, ""
-        except Exception as exc:
-            return True, False, _safe_exception_text(exc)
+        ok, error = _page_runtime_ok(target_page)
+        return True, bool(ok), str(error or "")
 
     def _mark_page_disconnect(stage: str) -> None:
         nonlocal landing_page_disconnect_observed, landing_page_disconnect_stage
         landing_page_disconnect_observed = True
         if stage and not landing_page_disconnect_stage:
             landing_page_disconnect_stage = stage
+
+    def _capture_failure_evidence(page_obj=None, *, stage_label: str = "", reason: str = "", evidence=None) -> None:
+        nonlocal landing_final_screenshot_path, landing_final_html_path, landing_failure_debug_note_path
+        target_page = page_obj or page
+        stem_base = os.path.splitext(filename)[0]
+        safe_stage = re.sub(r"[^a-zA-Z0-9_.-]+", "_", str(stage_label or "failure")).strip("_") or "failure"
+        if target_page is not None and (not landing_final_screenshot_path or not landing_final_html_path):
+            try:
+                artifacts = _capture_page_debug_artifacts(
+                    target_page,
+                    artifact_root,
+                    f"landing_fail_{stem_base}_{safe_stage}",
+                    logger=logger,
+                )
+                landing_final_screenshot_path = str(
+                    artifacts.get("screenshot_path") or landing_final_screenshot_path or ""
+                )
+                landing_final_html_path = str(artifacts.get("html_path") or landing_final_html_path or "")
+            except Exception:
+                pass
+        note_page = target_page
+        note_payload = {
+            "doi": doi_url,
+            "stage": str(stage_label or ""),
+            "reason": str(reason or ""),
+            "landing_state": str(landing_state or ""),
+            "landing_url": str(landing_url or ""),
+            "landing_title": str(landing_title or ""),
+            "page_disconnect_observed": bool(landing_page_disconnect_observed),
+            "page_disconnect_stage": str(landing_page_disconnect_stage or ""),
+            "startup_sanitize_strategy": str(startup_sanitize_strategy or ""),
+            "startup_sanitize_error": str(startup_sanitize_error or ""),
+            "startup_tab_cleanup_before_count": int(startup_tab_cleanup_before_count or 0),
+            "startup_tab_cleanup_after_count": int(startup_tab_cleanup_after_count or 0),
+            "startup_tab_cleanup_closed_count": int(startup_tab_cleanup_closed_count or 0),
+            "browser_launch_display": str(browser_launch_display or ""),
+            "browser_launch_port": int(browser_launch_port or 0),
+            "browser_launch_binary_path": str(browser_launch_binary_path or ""),
+            "browser_launch_worker_label": str(browser_launch_worker_label or ""),
+            "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
+            "landing_final_screenshot_path": str(landing_final_screenshot_path or ""),
+            "landing_final_html_path": str(landing_final_html_path or ""),
+            "evidence": list(evidence or []),
+            "tab_state": _current_tab_state(note_page),
+        }
+        if note_page is not None:
+            try:
+                note_payload["current_url"] = str(getattr(note_page, "url", "") or "")
+            except Exception as exc:
+                note_payload["current_url_error"] = _safe_exception_text(exc)
+            try:
+                note_payload["current_title"] = str(getattr(note_page, "title", "") or "")
+            except Exception as exc:
+                note_payload["current_title_error"] = _safe_exception_text(exc)
+        note_path = _write_failure_debug_note(
+            artifact_root,
+            f"landing_fail_{stem_base}_{safe_stage}",
+            note_payload,
+            logger=logger,
+        )
+        if note_path:
+            landing_failure_debug_note_path = note_path
 
     def _set_landing_state(state: str, success: bool, page_obj=None):
         nonlocal landing_attempted, landing_success, landing_state, landing_url, landing_title
@@ -6794,6 +6963,7 @@ def download_with_drission(
             "tab_lifecycle_sequence": list(landing_tab_lifecycle_sequence),
             "landing_final_screenshot_path": str(landing_final_screenshot_path or ""),
             "landing_final_html_path": str(landing_final_html_path or ""),
+            "landing_failure_debug_note_path": str(landing_failure_debug_note_path or ""),
             "browser_process_alive": bool(browser_process_alive),
             "page_access_ok": bool(page_access_ok),
             "page_probe_error": str(page_probe_error or ""),
@@ -6838,6 +7008,13 @@ def download_with_drission(
                 landing_final_html_path = str(artifacts.get("html_path") or landing_final_html_path or "")
             except Exception:
                 pass
+        if not ok:
+            _capture_failure_evidence(
+                page,
+                stage_label=str(stage or "drission"),
+                reason=str(reason or ""),
+                evidence=list(evidence or []),
+            )
         payload = _detail(ok, reason, evidence=evidence, stage=stage, http_status=http_status)
         try:
             if os.path.exists(browser_tmp_dir):
@@ -6865,31 +7042,19 @@ def download_with_drission(
         startup_tab_cleanup_after_count = 0
         startup_tab_cleanup_closed_count = 0
         startup_page_reset_to_blank = False
-        startup_sanitize_strategy = "same_tab_already_clean"
+        startup_sanitize_strategy = "same_tab_keep_one"
         startup_sanitize_fresh_tab_created = False
         startup_sanitize_error = ""
 
-        sanitized_page = current_page
-        initial_state = _current_tab_state(current_page)
+        sanitized_page = _stabilize_live_tab(current_page, logger=logger, wait_s=1.0) or current_page
+        initial_state = _current_tab_state(sanitized_page)
         startup_tab_cleanup_before_count = int(initial_state.get("total_tab_count", 0) or 0)
-        current_start_url = str(getattr(current_page, "url", "") or "")
+        current_start_url = str(getattr(sanitized_page, "url", "") or "")
 
-        if startup_tab_cleanup_before_count > 1 or (current_start_url and not current_start_url.startswith("about:blank")):
-            temp_page = _open_temporary_tab(current_page, start_url="about:blank")
-            if temp_page is not None:
-                startup_sanitize_strategy = "fresh_blank_tab_keep_one"
-                startup_sanitize_fresh_tab_created = True
-                _record_tab_transition(
-                    landing_tab_transition_events,
-                    "startup_sanitize_fresh_tab",
-                    current_page,
-                    temp_page,
-                )
-                sanitized_page = temp_page
-            else:
-                startup_sanitize_strategy = "same_tab_keep_one"
+        if startup_tab_cleanup_before_count <= 1 and current_start_url.startswith("about:blank"):
+            startup_sanitize_strategy = "same_tab_already_clean"
 
-        startup_tab_cleanup_applied = bool(startup_tab_cleanup_before_count > 1 or startup_sanitize_fresh_tab_created)
+        startup_tab_cleanup_applied = bool(startup_tab_cleanup_before_count > 1)
         _prune_extra_tabs(sanitized_page, logger=logger)
 
         after_prune_state = _current_tab_state(sanitized_page)
@@ -6901,9 +7066,30 @@ def download_with_drission(
 
         _, page_access_ok, page_probe_error = _probe_page_runtime(sanitized_page)
         if (not page_access_ok) or startup_tab_cleanup_after_count < 1:
-            startup_sanitize_error = str(page_probe_error or "startup_sanitize_no_live_tab")
-            _mark_page_disconnect("startup_sanitize")
-            raise BrowserDisconnectedError(startup_sanitize_error)
+            recovery_page = _open_temporary_tab(current_page, start_url="about:blank", logger=logger)
+            if recovery_page is not None:
+                startup_sanitize_strategy = "fresh_blank_tab_recovery"
+                startup_sanitize_fresh_tab_created = True
+                startup_tab_cleanup_applied = True
+                _record_tab_transition(
+                    landing_tab_transition_events,
+                    "startup_sanitize_fresh_tab_recovery",
+                    current_page,
+                    recovery_page,
+                )
+                sanitized_page = recovery_page
+                _prune_extra_tabs(sanitized_page, logger=logger)
+                after_prune_state = _current_tab_state(sanitized_page)
+                startup_tab_cleanup_after_count = int(after_prune_state.get("total_tab_count", 0) or 0)
+                startup_tab_cleanup_closed_count = max(
+                    int(startup_tab_cleanup_before_count or 0) - int(startup_tab_cleanup_after_count or 0),
+                    0,
+                )
+                _, page_access_ok, page_probe_error = _probe_page_runtime(sanitized_page)
+            if (not page_access_ok) or startup_tab_cleanup_after_count < 1:
+                startup_sanitize_error = str(page_probe_error or "startup_sanitize_no_live_tab")
+                _mark_page_disconnect("startup_sanitize")
+                raise BrowserDisconnectedError(startup_sanitize_error)
 
         sanitized_url = str(getattr(sanitized_page, "url", "") or "")
         if not sanitized_url.startswith("about:blank"):
@@ -6966,6 +7152,7 @@ def download_with_drission(
             landing_tab_lifecycle_sequence = []
             landing_final_screenshot_path = ""
             landing_final_html_path = ""
+            landing_failure_debug_note_path = ""
             landing_timestamp_ms = int(time.time() * 1000)
             entry_context_bootstrap_attempted = False
             entry_context_bootstrap_outcome = ""
@@ -6986,6 +7173,7 @@ def download_with_drission(
             startup_sanitize_error = ""
             
             nav_url = doi_url
+            page = _sanitize_page_before_attempt(page)
             if publisher_entry_plan:
                 nav_url = str(
                     publisher_entry_plan.get("entry_browser_url")
@@ -7015,7 +7203,6 @@ def download_with_drission(
                             )
                         )
             landing_initial_target_url = str(nav_url or "")
-            page = _sanitize_page_before_attempt(page)
             landing_initial_files = _get_current_files(browser_tmp_dir)
             if is_aip_preview:
                 page, _, _, _, _ = _refresh_page_context(page, sync_tab=False, step_label="aip_pre_reset")
@@ -7991,6 +8178,12 @@ def download_with_drission(
                 landing_success = False
                 landing_state = "runtime_disconnect"
             logger.warning(f"        시도 {attempt} 브라우저 연결 종료: {e}")
+            _capture_failure_evidence(
+                page,
+                stage_label=str(landing_page_disconnect_stage or "browser_disconnected"),
+                reason="FAIL_TIMEOUT/NETWORK",
+                evidence=[f"browser_disconnected: {e}"],
+            )
             if page:
                 _close_page_safely(page, logger, session_plan=session_plan)
                 page = None
@@ -8006,6 +8199,12 @@ def download_with_drission(
                     landing_success = False
                     landing_state = "runtime_disconnect"
             logger.warning(f"        시도 {attempt} 에러: {e}")
+            _capture_failure_evidence(
+                page,
+                stage_label=str(landing_page_disconnect_stage or "generic_exception"),
+                reason="FAIL_TIMEOUT/NETWORK" if _is_browser_disconnect_error(e) else "FAIL_NETWORK",
+                evidence=[str(e)],
+            )
             # 에러 발생 시 브라우저 닫고 초기화 (다음 시도에서 재생성)
             if page:
                 _close_page_safely(page, logger, session_plan=session_plan)

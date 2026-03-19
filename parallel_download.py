@@ -693,6 +693,7 @@ def _single_download_attempt(
             "landing_reduced_tab_path_used": bool(dr.get("reduced_tab_path_used")),
             "landing_final_screenshot_path": str(dr.get("landing_final_screenshot_path") or ""),
             "landing_final_html_path": str(dr.get("landing_final_html_path") or ""),
+            "landing_failure_debug_note_path": str(dr.get("landing_failure_debug_note_path") or ""),
             "landing_page_disconnect_observed": bool(dr.get("page_disconnect_observed")),
             "landing_page_disconnect_stage": str(dr.get("page_disconnect_stage") or ""),
             "landing_network_listener_started": bool(dr.get("network_listener_started")),
@@ -1540,6 +1541,9 @@ def main(
     for item in deep_results:
         idx = item["index"]
         final_results[idx] = item
+    df["result"] = [_status_text(r) for r in final_results]
+    df["source"] = [str(r.get("method") or "") for r in final_results]
+    df["status"] = [str(r.get("status") or _status_text(r)) for r in final_results]
     df["landing_attempted"] = [bool(r.get("landing_attempted")) for r in final_results]
     df["landing_success"] = [bool(r.get("landing_success")) for r in final_results]
     df["landing_state"] = [str(r.get("landing_state") or "not_attempted") for r in final_results]
@@ -1576,6 +1580,7 @@ def main(
     df["landing_reduced_tab_path_used"] = [bool(r.get("landing_reduced_tab_path_used")) for r in final_results]
     df["landing_final_screenshot_path"] = [str(r.get("landing_final_screenshot_path") or "") for r in final_results]
     df["landing_final_html_path"] = [str(r.get("landing_final_html_path") or "") for r in final_results]
+    df["landing_failure_debug_note_path"] = [str(r.get("landing_failure_debug_note_path") or "") for r in final_results]
     df["landing_page_disconnect_observed"] = [bool(r.get("landing_page_disconnect_observed")) for r in final_results]
     df["landing_page_disconnect_stage"] = [str(r.get("landing_page_disconnect_stage") or "") for r in final_results]
     df["landing_network_listener_started"] = [bool(r.get("landing_network_listener_started")) for r in final_results]
