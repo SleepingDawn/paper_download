@@ -3035,3 +3035,400 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
     - `xvfb_enabled=1`
     - landing/browser logs에서 `--headless=new`가 사라졌는지
     를 확인하는 것이다.
+
+5.31 `xvfb_headful_probe_20260319_bundle`: headful/Xvfb landing improvement 확인, 하지만 download path는 아직 분리되어 있고 temp cleanup / timeout 문제가 남아 있음
+
+- bundle summary
+  - run: `xvfb_headful_probe_20260319`
+  - manifest:
+    - `status=completed_ok`
+    - `headless=false`
+    - `xvfb_enabled=1`
+    - `Xvfb :99` start/stop 확인
+  - 즉 Xvfb wrapper integration은 real server run에서도 실제로 동작했다.
+
+- landing 결과
+  - `landing_access_repro.jsonl`
+    - `10.1063/5.0207496`
+      - `entry_strategy=aip_direct_browser_doi`
+      - `entry_strategy_variant=direct_doi_browser_start_no_preanalysis`
+      - `resolved_url=https://pubs.aip.org/aip/jcp/article/...`
+      - challenge 없이 stable article landing success
+    - `10.1116/6.0004298`
+      - 같은 direct DOI branch
+      - final URL이 `__cf_chl_rt_tk` challenge URL
+      - `Just a moment...`
+  - important:
+    - startup cleanup patch가 먹어서
+      - `controller_before_open.current_url=about:blank`
+      - `peak_tab_count_observed=1`
+    - 즉 stale startup tabs / 10-tab inflation 문제는 이 run에서는 해소된 것으로 보인다.
+
+- download 결과
+  - `download/run/summary.json`
+    - success 0 / failed 2
+    - bucket:
+      - `challenge_or_interstitial=1`
+      - `timeout_or_error=1`
+  - `download.stderr.log`
+    - download path는 여전히
+      - `entry_strategy=aip_official_doi_resolve`
+      - `variant=publisher_canonical_context_deferred_no_article_preflight`
+      를 사용했다.
+    - 즉 landing probe에서 성공시킨
+      - `aip_direct_browser_doi`
+      - `direct_doi_browser_start_no_preanalysis`
+      가 **download runtime path에는 아직 적용되지 않았다.**
+  - 결론:
+    - current repo는
+      - landing probe AIP path
+      - download-integrated AIP path
+      가 서로 다른 strategy를 쓰고 있다.
+    - therefore landing success 1건이 바로 download path success로 이어지지 않았다.
+
+- PDF file disappearance interpretation
+  - current bundle에는 실제 성공 PDF가 남아 있지 않다.
+  - `find outputs/.../download -type f` 기준으로도
+    - final pdf file은 없고
+    - logs/html/png/json만 남았다.
+  - code 확인:
+    - `tools_exp.py::download_pdf()`
+      - DOI별 임시 download dir를
+        - `artifact_root/.browser_tmp/<doi-key>/`
+        아래에 만든다.
+      - `_ret()`에서 성공/실패와 무관하게
+        - `shutil.rmtree(browser_tmp_dir)`
+        - empty면 `browser_tmp_root`도 정리한다.
+    - 따라서 **final target path로 move되기 전의 파일은 attempt 종료 시 삭제될 수 있다.**
+  - 이 구조는
+    - "강제 종료 직전 temp dir에만 있던 PDF"
+    - "잘못된 파일이라 guard에서 폐기된 PDF"
+    를 bundle에서 보존하지 못한다.
+  - 즉 현재 문제는 "성공 PDF가 삭제됐다"라기보다
+    - temp-stage evidence retention이 부족한 문제에 가깝다.
+
+- metadata sidecar lesson
+  - `download/run/metadata/Closed_Access/*.json`은
+    - result sidecar처럼 보이지만
+    - 실제로는 largely input/OpenAlex snapshot이다.
+  - 그래서 `result`, `downloaded_file`, `file_check`, `landing_entry_strategy`가 대부분 `null`이었다.
+  - 실 download 판단값은
+    - `openalex_search_results_parallel.csv`
+    - `failed_papers.jsonl`
+    - per-doi text log
+    에 있고, metadata json은 forensics용으로는 부족하다.
+
+- timeout slowness interpretation
+  - first DOI는 `download.stderr.log`에서 disconnect가 비교적 이르게 발생했는데도
+    progress bar 완료까지 `319.65s`가 걸렸다.
+  - 현재 code상 nominal per-attempt timeout은
+    - AIP first pass에서 `12s`
+    정도라서,
+    - 이 5분대 지연은 `page.get()` timeout 그 자체로 설명되지 않는다.
+  - strongest current hypothesis:
+    - browser disconnect 이후
+      - process teardown / quit fallback / worker future completion
+      중 한 구간이 과도하게 오래 걸린다.
+  - 다만 bundle만으로는
+    - 정확히 어떤 함수가 300s를 소비했는지는 아직 `[blocked]`
+    - more granular timing log가 필요하다.
+
+- `main` branch + `local_mac` 전략 판단
+  - 이 run은 headful/Xvfb에서 AIP DOI 1건 landing success를 보여줬다.
+  - 따라서
+    - "headful이면 `local_mac` 스타일의 simpler browser path가 다시 먹힐 가능성"
+    은 이전보다 분명히 올라갔다.
+  - 그러나 wholesale rollback to `main`은 아직 성급하다.
+    - 이유:
+      - current server stack에는
+        - Xvfb wrapper
+        - Linux seeded profile clone
+        - startup cleanup
+        - stateful Linux temp/runtime dirs
+        같은 Linux-specific scaffolding이 이미 필요하다고 확인됐기 때문이다.
+  - working conclusion:
+    - **`main/local_mac`의 simpler browser strategy를 참고/부분 이식하는 것은 유망**
+    - but **branch 전체를 그대로 되돌리는 것은 low-risk choice가 아니다**
+  - priority는
+    - current Linux/Xvfb stack 위에
+    - landing/download AIP strategy mismatch를 먼저 해소하는 것이다.
+
+- next fixes implied by this bundle
+  - AIP download path도 landing probe와 같은
+    - `aip_direct_browser_doi`
+    - `direct_doi_browser_start_no_preanalysis`
+    로 맞출 것
+  - temp `.browser_tmp` dir에 있는 downloaded artifact를
+    - failure/kill case에서도 sidecar + preserve copy로 남길 것
+  - disconnect 이후
+    - browser quit
+    - kill tree
+    - future completion
+    단계별 elapsed logging을 추가해 300s stall point를 계측할 것
+
+- 아직 불확실한 것 `[blocked]`
+  - "wrong PDF가 실제로 한 번 final path에 저장되었다가 나중에 삭제된 것"인지는
+    current bundle만으로는 입증되지 않았다 `[blocked]`
+  - disconnect 후 300s stall의 정확한 call site도 아직 `[blocked]`
+
+## 5.32 2026-03-19 Linux + Xvfb headful default화 및 landing/download 정합성 복구
+
+- source of truth
+  - `docs/linux_seed_profile_setup.md`
+  - `docs/xvfb_local_build_guide.md`
+  - `README.md`
+  - current branch `codex/linux_exp`
+  - `local_mac` branch code
+  - latest real run:
+    - `experiment/results/xvfb_headful_probe_20260319_bundle.tar.gz`
+
+- why this turn
+  - user requirement changed:
+    - Linux + Xvfb headful을 optional fallback이 아니라 **default runtime model**로 취급
+    - successful `local_mac` strategy를 가능한 한 재사용
+    - landing/download가 같은 browser/runtime strategy를 유지하도록 강제
+  - bundle evidence상 current repo는
+    - landing AIP path는 `aip_direct_browser_doi`
+    - download AIP path는 `aip_official_doi_resolve`
+    로 이미 drift가 발생해 있었다.
+
+- docs/environment understanding
+  - additional follow-up question은 이번 턴에서 불필요했다.
+  - 이유:
+    - `docs/xvfb_local_build_guide.md`에
+      - `~/.local/bin/Xvfb`
+      - `PATH`
+      - `LD_LIBRARY_PATH`
+      - `DISPLAY`
+      가 source of truth로 이미 정리돼 있었고,
+    - latest server run log에서
+      - Xvfb wrapper start/stop
+      - headful run
+      - AIP landing success 1건
+      이 실제 runtime evidence로 확인됐기 때문이다.
+
+- `local_mac` branch에서 실제로 차용한 핵심
+  - strategy-level:
+    - headful browser request를 굳이 headless로 덮어쓰지 않는다.
+    - browser 밖 pre-analysis보다 browser direct navigation을 우선한다.
+    - same runtime strategy를 landing/download에 같이 적용한다.
+  - not reused literally:
+    - macOS system profile assumptions
+    - local desktop only 전제
+  - Linux adaptation:
+    - Xvfb-backed display를 먼저 보장
+    - Linux seeded profile clone/runtime dir는 그대로 유지
+
+- code drift diagnosis before patch
+  - `landing_access_repro.py`
+    - AIP는 이미 `_build_aip_direct_doi_entry_plan()`
+      - `entry_strategy=aip_direct_browser_doi`
+      - `entry_strategy_variant=direct_doi_browser_start_no_preanalysis`
+      로 단순화되어 있었다.
+  - `tools_exp.py::_build_download_entry_plan()`
+    - AIP에서 아직 `build_aip_safe_entry_plan()`을 호출하고 있었다.
+    - 따라서 real bundle에서 download stderr에
+      - `aip_official_doi_resolve`
+      - `publisher_canonical_context_deferred_no_article_preflight`
+      가 남았다.
+  - suite entrypoints
+    - `scripts/run_linux_suite_bg.sh` default `HEADLESS=1`
+    - `experiment/run_linux_headless_suite.py` default `--headless=1`
+    - docs/README도 Linux server headful이 기본이 아닌 것처럼 설명하고 있었다.
+
+- patches applied
+  - `tools_exp.py`
+    - `ensure_linux_xvfb_headful_runtime()` 추가
+      - `linux_server` + requested headful + no display면
+        - `~/.local/bin/Xvfb`(or env override) 자동 기동
+        - `DISPLAY`, `PATH`, `LD_LIBRARY_PATH` 세팅
+        - 종료 시 clean stop
+      - 이미 display가 있으면 `PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER=1`만 보장
+    - `_linux_server_headful_allowed()` 완화
+      - explicit false가 아니면 `DISPLAY` 존재만으로 headful 허용
+    - `build_aip_direct_doi_entry_plan()`를 `tools_exp.py` 공용 helper로 승격
+    - `_build_download_entry_plan()`에서 AIP default를
+      - `build_aip_safe_entry_plan()`
+      - 에서
+      - `build_aip_direct_doi_entry_plan()`
+      로 변경
+  - `landing_access_repro.py`
+    - local duplicate `_build_aip_direct_doi_entry_plan()`는 공용 helper thin wrapper로 변경
+    - CLI entry에서 `ensure_linux_xvfb_headful_runtime()` 적용
+      - direct invocation도 Xvfb headful default를 따르게 함
+  - `parallel_download.py`
+    - CLI entry에서 `ensure_linux_xvfb_headful_runtime()` 적용
+      - direct invocation도 same default
+  - `experiment/run_linux_headless_suite.py`
+    - `--headless` default `1 -> 0`
+    - description에서 "headless" 고정 표현 제거
+  - `scripts/run_linux_suite_bg.sh`
+    - `HEADLESS=1 -> 0`
+    - help text도 default 0으로 수정
+  - docs
+    - `README.md`
+      - Linux server에서 headless 강제라는 옛 설명 제거
+      - `linux_cli_seeded`를 Xvfb headful default로 다시 기술
+    - `docs/linux_seed_profile_setup.md`
+      - server example에 `--headless 0` 추가
+      - Xvfb guide를 함께 참조하도록 명시
+    - `config.py`
+      - CLI help text를 Linux headful default에 맞게 조정
+
+- verification
+  - `python -m py_compile tools_exp.py landing_access_repro.py parallel_download.py experiment/run_linux_headless_suite.py config.py`
+    - pass
+  - direct helper smoke:
+    - `tools_exp._build_download_entry_plan("https://doi.org/10.1063/5.0207496")`
+    - result:
+      - `entry_strategy=aip_direct_browser_doi`
+      - `entry_strategy_variant=direct_doi_browser_start_no_preanalysis`
+      - `entry_browser_url=https://doi.org/10.1063/5.0207496`
+      - `entry_prebrowser_request_count=0`
+  - Xvfb runtime smoke:
+    - `DISPLAY` 없는 env에서 fake Xvfb binary로 확인
+    - result:
+      - `started=True`
+      - `display=:123`
+      - `coerce_headless_for_execution_env(False, "linux_server") -> False`
+  - suite defaults smoke:
+    - `experiment/run_linux_headless_suite.py` parser default `0`
+    - `scripts/run_linux_suite_bg.sh` default `0`
+
+- working conclusion after patch
+  - Linux + Xvfb headful은 이제
+    - suite launcher
+    - direct landing CLI
+    - direct download CLI
+    에서 모두 default path로 정렬됐다.
+  - AIP strategy는 landing/download 양쪽에서
+    - direct browser DOI
+    - no preanalysis
+    로 다시 sync됐다.
+  - 이는 `local_mac`의 "simpler headful browser path"를
+    Linux/Xvfb stack 위에 가장 작은 범위로 이식한 것이다.
+
+- still not solved this turn
+  - `download_with_drission()` temp `.browser_tmp` artifact retention 부족
+  - disconnect 후 300s stall의 precise timing breakdown
+  - headful direct DOI로도 challenge가 남는 DOI(`10.1116/...`)는 여전히 존재
+
+- next recommended experiments
+  - same Xvfb headful default에서
+    - landing + download가 둘 다 `aip_direct_browser_doi`를 실제 runtime log에 남기는지 확인
+  - fresh/low-frequency AIP DOI로
+    - headful direct DOI landing rate
+    - integrated download follow-through
+    를 재측정
+  - separate follow-up patch:
+    - temp artifact preservation
+    - teardown timing instrumentation
+
+- `[blocked]`
+  - whole `main` branch를 그대로 가져오는 것이 현재 code보다 안전한지는 아직 미입증 `[blocked]`
+  - 이유:
+    - Linux/Xvfb-specific wrapper/profile/runtime scaffolding은 현재 branch에 이미 얹혀 있고,
+    - 이번 turn에서는 strategy-level reuse만 검증했지 branch-level rollback은 검증하지 않았다.
+
+## 5.33. 2026-03-19 Standalone landing 제거 및 download 단일 경로화
+
+- source of truth
+  - `docs/xvfb_local_build_guide.md`
+  - `docs/linux_seed_profile_setup.md`
+  - `docs/linux_headless_experiment_journal.md`
+  - 최신 runtime 근거:
+    - `experiment/results/xvfb_headful_probe_20260319_bundle.tar.gz`
+
+- why
+  - 최신 코드 상태에서도 suite runner는 여전히
+    - standalone `landing_access_repro.py`
+    - integrated `parallel_download.py`
+    를 따로 실행하고 있었다.
+  - 하지만 실제 download flow 안에는 이미
+    - page entry selection
+    - landing success/failure classification
+    - challenge/interstitial detection
+    - landing screenshot/html capture
+    가 들어 있었다.
+  - 결과적으로 landing/download drift를 다시 만들 위험이 컸다.
+
+- what changed
+  - `parallel_download.py`
+    - `precheck-landing`의 실제 선검사 실행 경로 제거
+    - deprecated 안내만 남기고, landing 검증은 항상 download 단일 패스로 수행
+    - integrated landing 진단 필드를 CSV export에 추가
+      - `browser_effective_user_data_dir`
+      - `browser_debug_address`
+      - `landing_peak_tab_count_observed`
+      - `landing_reduced_tab_path_used`
+      - `landing_page_disconnect_*`
+      - `landing_probe_*`
+      - `landing_controller_*`
+      - `landing_startup_tab_cleanup_*`
+      - `landing_tab_lifecycle_sequence`
+      - `landing_js_*`
+      - `landing_cookie/profile diagnostics`
+      - `landing_aip_*`
+      - `landing_entry_preanalysis_ran`
+  - `experiment/run_linux_headless_suite.py`
+    - standalone landing stage 제거
+    - suite는 이제 `download -> summarize`만 실행
+    - `executed_commands.landing`은 `merged_into_download`로 기록
+  - `experiment/summarize_linux_headless_suite.py`
+    - standalone landing JSONL이 없어도, download CSV의 integrated landing 필드로 summary를 생성
+    - download-only run이면 그 데이터를 synthetic landing record로 간주
+    - standalone landing report가 없으면 `download summary.integrated_landing`을 fallback summary로 사용
+  - docs
+    - `README.md`
+      - canonical flow를 `parallel_download.py` 하나로 정리
+      - landing-only usage 제거
+      - `precheck-landing`은 deprecated/no-op로 명시
+    - `docs/linux_seed_profile_setup.md`
+      - landing-only 예시 제거
+      - Linux/Xvfb headful 전제를 다시 명시
+    - `experiment/README.md`
+      - suite runner/summarizer 설명을 integrated flow 기준으로 갱신
+    - `experiment/linux_headless_experiment_plan.md`
+      - landing 측정 도구를 standalone script가 아니라 integrated landing field 기준으로 수정
+    - `config.py`
+      - `--precheck-landing` help를 deprecated/no-op 설명으로 수정
+
+- deleted files
+  - `landing_access_repro.py`
+    - code/scripts/current docs 기준 live reference 제거 후 삭제
+    - historical journal과 archived result bundle 안의 언급은 그대로 유지
+
+- verification
+  - `grep -R "landing_access_repro.py|landing_jsonl|landing-report" ...`
+    - current code/scripts/docs 기준 live reference는 제거됨
+    - 남은 항목은 historical journal, archived result bundle, optional backward-compatible parser arg뿐
+  - `python -m py_compile tools_exp.py parallel_download.py experiment/run_linux_headless_suite.py experiment/summarize_linux_headless_suite.py config.py`
+    - pass
+  - `bash -n scripts/run_linux_suite_bg.sh scripts/with_xvfb.sh`
+    - pass
+  - helper smoke:
+    - `build_aip_direct_doi_entry_plan("10.1063/5.0207496")`
+      - `entry_strategy=aip_direct_browser_doi`
+      - `entry_strategy_variant=direct_doi_browser_start_no_preanalysis`
+    - `coerce_headless_for_execution_env(False, "linux_server")`
+      - `False`
+
+- working conclusion
+  - Linux + Xvfb headful 기본 전략은 유지한 채,
+    landing validation responsibility를 download flow로 완전히 이동했다.
+  - 이제 page-entry behavior의 single source of truth는 `parallel_download.py`다.
+  - suite/summary/docs도 그 전제를 따르도록 맞췄다.
+
+- remaining risks
+  - 일부 historical docs/journal에는 `landing_access_repro.py` 언급이 남아 있다.
+    - 이는 과거 실험 재현 기록이라 의도적으로 유지
+  - `experiment/summarize_linux_headless_suite.py`는 backward compatibility를 위해
+    `--landing-jsonl`, `--landing-report` optional arg를 아직 받는다.
+    - 하지만 current suite path는 더 이상 이를 공급하지 않는다.
+
+- `[blocked]`
+  - merged flow에 대한 실제 Linux server rerun bundle은 아직 없다 `[blocked]`
+  - 즉:
+    - suite runner가 standalone landing 없이도 end-to-end 결과를 안정적으로 내는지
+    - integrated landing summary가 실제 run artifact와 완전히 맞는지
+    는 다음 server run으로 최종 확인이 필요하다.

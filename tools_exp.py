@@ -2,6 +2,7 @@ import os
 import re
 import signal
 import socket
+import subprocess
 import sys
 import time
 import shutil
@@ -10,6 +11,7 @@ import requests
 import base64
 import random
 import json
+from contextlib import contextmanager
 from html import unescape as html_unescape
 
 from typing import Any, Dict, Set
@@ -136,7 +138,7 @@ def _other_download_runner_active(current_pid: Any = None) -> bool:
     except Exception:
         current_pid_int = os.getpid()
 
-    runner_markers = ("parallel_download.py", "landing_access_repro.py")
+    runner_markers = ("parallel_download.py",)
     for proc in psutil.process_iter(["pid", "cmdline"]):
         try:
             pid = int(proc.info.get("pid") or 0)
@@ -408,7 +410,148 @@ def _linux_display_available() -> bool:
 
 def _linux_server_headful_allowed() -> bool:
     raw = os.getenv("PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER", "").strip().lower()
-    return raw in ("1", "true", "yes", "on") and _linux_display_available()
+    if raw in ("0", "false", "no", "off"):
+        return False
+    return _linux_display_available()
+
+
+def _prepend_env_path(var_name: str, values: list[str]) -> str:
+    existing = [part for part in str(os.environ.get(var_name, "")).split(os.pathsep) if part]
+    merged: list[str] = []
+    for value in list(values) + existing:
+        if not value or value in merged:
+            continue
+        merged.append(value)
+    return os.pathsep.join(merged)
+
+
+@contextmanager
+def ensure_linux_xvfb_headful_runtime(
+    requested_headless: bool,
+    execution_env: str = "",
+    logger=None,
+    context: str = "browser",
+):
+    resolved_env = resolve_browser_execution_env(execution_env)
+    if resolved_env != EXECUTION_ENV_LINUX_SERVER or bool(requested_headless):
+        yield {"started": False, "display": os.getenv("DISPLAY", ""), "binary": ""}
+        return
+
+    prev_display = os.environ.get("DISPLAY")
+    prev_path = os.environ.get("PATH")
+    prev_ld_library_path = os.environ.get("LD_LIBRARY_PATH")
+    prev_allow = os.environ.get("PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER")
+    prev_active = os.environ.get("PDF_BROWSER_XVFB_ACTIVE")
+
+    if _linux_display_available():
+        os.environ["PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER"] = "1"
+        try:
+            yield {"started": False, "display": os.getenv("DISPLAY", ""), "binary": ""}
+        finally:
+            if prev_allow is None:
+                os.environ.pop("PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER", None)
+            else:
+                os.environ["PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER"] = prev_allow
+        return
+
+    if str(os.getenv("PDF_BROWSER_XVFB_ACTIVE", "")).strip().lower() in ("1", "true", "yes", "on"):
+        os.environ["PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER"] = "1"
+        try:
+            yield {"started": False, "display": os.getenv("DISPLAY", ""), "binary": ""}
+        finally:
+            if prev_allow is None:
+                os.environ.pop("PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER", None)
+            else:
+                os.environ["PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER"] = prev_allow
+        return
+
+    xvfb_bin = os.path.abspath(
+        str(os.getenv("PDF_BROWSER_XVFB_BIN") or os.getenv("XVFB_BIN") or os.path.expanduser("~/.local/bin/Xvfb")).strip()
+    )
+    xvfb_display = str(os.getenv("PDF_BROWSER_XVFB_DISPLAY") or os.getenv("XVFB_DISPLAY") or ":99").strip() or ":99"
+    xvfb_screen = str(os.getenv("PDF_BROWSER_XVFB_SCREEN") or os.getenv("XVFB_SCREEN") or "1280x1024x24").strip() or "1280x1024x24"
+    xvfb_startup_delay = float(str(os.getenv("PDF_BROWSER_XVFB_STARTUP_DELAY_SEC", "1") or "1").strip() or "1")
+    xvfb_log_path = str(os.getenv("PDF_BROWSER_XVFB_LOG_FILE") or os.getenv("XVFB_LOG_FILE") or "").strip()
+    xvfb_dir = os.path.dirname(xvfb_bin)
+    local_lib = os.path.expanduser("~/.local/lib")
+    local_lib64 = os.path.expanduser("~/.local/lib64")
+
+    if not (os.path.isfile(xvfb_bin) and os.access(xvfb_bin, os.X_OK)):
+        if logger:
+            prefix = f"{context}: " if context else ""
+            logger.warning(
+                f"     [Drission] {prefix}Xvfb binary not found -> headful 유지 불가, expected={xvfb_bin}"
+            )
+        yield {"started": False, "display": "", "binary": xvfb_bin, "missing_binary": True}
+        return
+
+    os.environ["PATH"] = _prepend_env_path("PATH", [xvfb_dir])
+    os.environ["LD_LIBRARY_PATH"] = _prepend_env_path("LD_LIBRARY_PATH", [local_lib, local_lib64])
+    os.environ["DISPLAY"] = xvfb_display
+    os.environ["PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER"] = "1"
+    os.environ["PDF_BROWSER_XVFB_ACTIVE"] = "1"
+
+    log_handle = None
+    process = None
+    try:
+        stdout_target = subprocess.DEVNULL
+        stderr_target = subprocess.DEVNULL
+        if xvfb_log_path:
+            os.makedirs(os.path.dirname(xvfb_log_path) or ".", exist_ok=True)
+            log_handle = open(xvfb_log_path, "a", encoding="utf-8")
+            stdout_target = log_handle
+            stderr_target = log_handle
+        process = subprocess.Popen(
+            [xvfb_bin, xvfb_display, "-screen", "0", xvfb_screen],
+            stdout=stdout_target,
+            stderr=stderr_target,
+        )
+        time.sleep(max(0.2, xvfb_startup_delay))
+        if process.poll() is not None:
+            raise RuntimeError(f"Xvfb failed to start: bin={xvfb_bin} display={xvfb_display}")
+        if logger:
+            prefix = f"{context}: " if context else ""
+            logger.info(
+                f"     [Drission] {prefix}Xvfb started display={xvfb_display} bin={xvfb_bin}"
+            )
+        yield {"started": True, "display": xvfb_display, "binary": xvfb_bin, "pid": int(process.pid)}
+    finally:
+        if process is not None:
+            try:
+                if process.poll() is None:
+                    process.terminate()
+                    try:
+                        process.wait(timeout=5)
+                    except subprocess.TimeoutExpired:
+                        process.kill()
+                        process.wait(timeout=5)
+            except Exception:
+                pass
+        if log_handle is not None:
+            try:
+                log_handle.close()
+            except Exception:
+                pass
+        if prev_display is None:
+            os.environ.pop("DISPLAY", None)
+        else:
+            os.environ["DISPLAY"] = prev_display
+        if prev_path is None:
+            os.environ.pop("PATH", None)
+        else:
+            os.environ["PATH"] = prev_path
+        if prev_ld_library_path is None:
+            os.environ.pop("LD_LIBRARY_PATH", None)
+        else:
+            os.environ["LD_LIBRARY_PATH"] = prev_ld_library_path
+        if prev_allow is None:
+            os.environ.pop("PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER", None)
+        else:
+            os.environ["PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER"] = prev_allow
+        if prev_active is None:
+            os.environ.pop("PDF_BROWSER_XVFB_ACTIVE", None)
+        else:
+            os.environ["PDF_BROWSER_XVFB_ACTIVE"] = prev_active
 
 
 def _browser_executable_candidates(preferred_path: str = "") -> list[str]:
@@ -534,7 +677,9 @@ def coerce_headless_for_execution_env(headless: bool, execution_env: str = "", l
             return False
         if not requested and logger:
             prefix = f"{context}: " if context else ""
-            logger.warning(f"     [Drission] {prefix}linux_server 환경에서는 headful을 허용하지 않아 headless로 강제합니다.")
+            logger.warning(
+                f"     [Drission] {prefix}linux_server 환경에서 DISPLAY/Xvfb가 준비되지 않아 headless로 강제합니다."
+            )
         return True
     return requested
 
@@ -2403,8 +2548,53 @@ def _prepare_aip_entry_navigation_page(
         logger.info(
             "        [AIP] context challenge handoff route=fresh_tab target=%s"
             % browser_url
-        )
+    )
     return temp_page, "fresh_tab_after_context_challenge"
+
+
+def build_aip_direct_doi_entry_plan(doi_url: str) -> Dict[str, Any]:
+    doi_norm = _doi_from_doi_url(doi_url)
+    plan = {
+        "entry_strategy": "",
+        "entry_strategy_variant": "",
+        "entry_redirect_probe_mode": "none",
+        "entry_prebrowser_request_count": 0,
+        "entry_url": "",
+        "entry_resolved_url": "",
+        "entry_browser_url": "",
+        "entry_browser_kind": "",
+        "entry_url_preference": "",
+        "entry_handoff_url": "",
+        "entry_context_url": "",
+        "entry_context_kind": "",
+        "entry_context_bootstrap_mode": "disabled",
+        "entry_redirect_chain_summary": [],
+        "entry_fallback_used": False,
+        "entry_fallback_reason": "",
+        "entry_safe_to_proceed": False,
+        "entry_browser_open_skipped": False,
+        "entry_preflight_issue": "",
+        "entry_preflight_evidence": [],
+        "entry_preflight_http_status": None,
+        "entry_preflight_url": "",
+        "entry_preflight_title": "",
+        "entry_preflight_html": "",
+    }
+    if not doi_norm.startswith(("10.1063", "10.1116")):
+        return plan
+    direct_url = f"https://doi.org/{doi_norm}"
+    plan.update(
+        {
+            "entry_strategy": "aip_direct_browser_doi",
+            "entry_strategy_variant": "direct_doi_browser_start_no_preanalysis",
+            "entry_url": direct_url,
+            "entry_browser_url": direct_url,
+            "entry_browser_kind": "official_doi",
+            "entry_url_preference": "doi_direct",
+            "entry_safe_to_proceed": True,
+        }
+    )
+    return plan
 
 
 def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
@@ -5654,7 +5844,7 @@ def _build_download_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
     if doi_norm.startswith("10.1016"):
         return build_elsevier_safe_entry_plan(doi_url, logger=logger)
     if doi_norm.startswith(("10.1063", "10.1116")):
-        return build_aip_safe_entry_plan(doi_url, logger=logger)
+        return build_aip_direct_doi_entry_plan(doi_url)
     return {}
 
 

@@ -148,6 +148,7 @@ python3 scripts/check_linux_seed_profile.py \
 ```bash
 python3 -u parallel_download.py \
   --runtime-preset linux_cli_seeded \
+  --headless 0 \
   --persistent-profile-dir /path/to/linux_chrome_user_data_seed \
   --profile-name Default \
   --doi_path ready_to_download.csv \
@@ -155,19 +156,12 @@ python3 -u parallel_download.py \
   --non-interactive
 ```
 
-필요하면 랜딩만 먼저 확인:
-
-```bash
-python3 -u landing_access_repro.py \
-  --input ready_to_download.csv \
-  --runtime-preset linux_cli_seeded \
-  --persistent-profile-dir /path/to/linux_chrome_user_data_seed \
-  --profile-name Default
-```
+랜딩 검증은 별도 스크립트가 아니라 `parallel_download.py` 안에서 같이 수행됩니다.
 
 ## 운영 메모
 
 - macOS 기본 Chrome profile을 그대로 복사해서 쓰는 것은 현재 코드와 맞지 않습니다.
+- Linux 서버 실행은 `/docs/xvfb_local_build_guide.md` 기준 Xvfb display를 준비한 headful 경로를 기본으로 가정합니다.
 - full profile을 뜯어오는 방식이라도, Elsevier는 최종적으로 서버 IP 평판 때문에 challenge가 날 수 있습니다.
 - profile은 다운로드 런마다 런타임 clone으로 복사되므로, seed root 자체는 비교적 안전한 원본으로 유지하는 편이 좋습니다.
 - profile을 다시 갱신하고 싶으면 VM에서 추가 warm up 후 새 tar를 다시 만들어 교체하면 됩니다.

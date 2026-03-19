@@ -59,7 +59,7 @@ def get_config():
         type=int,
         default=0,
         choices=[0, 1],
-        help="다운로드 전 landing_access_repro.py로 랜딩 성공 여부를 먼저 확인하고, 성공 DOI만 다운로드에 투입",
+        help="폐기 예정 옵션. landing 검증은 이제 다운로드 흐름 안에서 단일 패스로 수행되며, 1을 줘도 별도 선검사는 실행하지 않습니다.",
     )
     parser.add_argument(
         "--runtime-preset",
@@ -68,7 +68,7 @@ def get_config():
         choices=["auto", "local_mac", "linux_cli_seeded"],
         help=(
             "브라우저 런타임 preset. local_mac은 기존 로컬 Mac 기준 동작을 유지하고, "
-            "linux_cli_seeded는 /docs의 Linux seeded profile 문서를 따르는 서버 preset입니다."
+            "linux_cli_seeded는 /docs의 Linux seeded profile/Xvfb 문서를 따르는 Linux headful 서버 preset입니다."
         ),
     )
     parser.add_argument(
@@ -76,7 +76,7 @@ def get_config():
         type=int,
         default=None,
         choices=[0, 1],
-        help="브라우저 다운로드 1차 패스 headless 모드. 미지정 시 PDF_BROWSER_HEADLESS 환경변수를 따른다.",
+        help="브라우저 다운로드 1차 패스 headless 모드. 미지정 시 환경설정/기본값을 따르며 linux_server에서는 Xvfb headful이 기본입니다.",
     )
     parser.add_argument(
         "--execution-env",

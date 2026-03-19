@@ -15,7 +15,7 @@ options:
   --landing-workers <n>         landing workers (default: 2)
   --download-workers <n>        download workers (default: 1)
   --after-first-pass <mode>     stop|deep (default: stop)
-  --headless <0|1>              default: 1
+  --headless <0|1>              default: 0
   --python <path>               python executable (default: config/linux_server.env or current python3)
   --runtime-preset <value>      default: linux_cli_seeded
   --execution-env <value>       default: linux_server
@@ -46,7 +46,7 @@ SAMPLE_CSV=""
 LANDING_WORKERS=2
 DOWNLOAD_WORKERS=1
 AFTER_FIRST_PASS="stop"
-HEADLESS=1
+HEADLESS=0
 RUNTIME_PRESET="linux_cli_seeded"
 EXECUTION_ENV="linux_server"
 PYTHON_BIN="${PYTHON_BIN:-$(command -v python3)}"

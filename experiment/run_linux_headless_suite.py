@@ -91,7 +91,7 @@ def run_command(cmd: List[str], cwd: Path, stdout_path: Path, stderr_path: Path)
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Prepare or execute Linux headless landing/download experiment suites.")
+    parser = argparse.ArgumentParser(description="Prepare or execute Linux browser landing/download experiment suites.")
     parser.add_argument("--suite", choices=["pilot", "full"], default="pilot")
     parser.add_argument("--suite-dir", type=Path, default=default_suite_dir())
     parser.add_argument("--sample-csv", type=Path, default=None)
@@ -102,7 +102,7 @@ def main() -> int:
     parser.add_argument("--skip-download", action="store_true")
     parser.add_argument("--runtime-preset", choices=["auto", "local_mac", "linux_cli_seeded"], default="linux_cli_seeded")
     parser.add_argument("--execution-env", choices=["auto", "desktop", "linux_server"], default="linux_server")
-    parser.add_argument("--headless", type=int, choices=[0, 1], default=1)
+    parser.add_argument("--headless", type=int, choices=[0, 1], default=0)
     parser.add_argument("--profile-name", type=str, default=os.environ.get("PDF_BROWSER_PROFILE_NAME", "Default"))
     parser.add_argument(
         "--persistent-profile-dir",
@@ -174,12 +174,6 @@ def main() -> int:
     sample_csv = effective_sample_csv
 
     profile_dir = args.persistent_profile_dir.resolve() if args.persistent_profile_dir else None
-    landing_jsonl = landing_dir / "landing_access_repro.jsonl"
-    landing_report = landing_dir / "landing_access_repro_report.json"
-    landing_report_md = landing_dir / "landing_access_repro_report.md"
-    landing_artifact_dir = landing_dir / "artifacts"
-    landing_fail_zip = landing_dir / "landing_access_failures.zip"
-    landing_success_zip = landing_dir / "landing_access_successes.zip"
     download_pdf_dir = download_dir / "pdfs"
     download_run_dir = download_dir / "run"
     download_results_csv = download_run_dir / "openalex_search_results_parallel.csv"
@@ -188,41 +182,6 @@ def main() -> int:
     publisher_csv = summary_dir / "publisher_summary.csv"
     merged_json = summary_dir / "suite_summary.json"
     merged_md = summary_dir / "suite_summary.md"
-
-    landing_cmd = [
-        sys.executable,
-        str(repo_root() / "landing_access_repro.py"),
-        "--input",
-        str(sample_csv),
-        "--workers",
-        str(args.landing_workers),
-        "--headless",
-        str(args.headless),
-        "--runtime-preset",
-        args.runtime_preset,
-        "--execution-env",
-        args.execution_env,
-        "--profile-mode",
-        "auto",
-        "--profile-name",
-        str(args.profile_name),
-        "--artifact-dir",
-        str(landing_artifact_dir),
-        "--capture-fail-screenshot",
-        "1",
-        "--artifact-zip",
-        str(landing_fail_zip),
-        "--success-artifact-zip",
-        str(landing_success_zip),
-        "--output-jsonl",
-        str(landing_jsonl),
-        "--report",
-        str(landing_report),
-        "--report-md",
-        str(landing_report_md),
-    ]
-    if profile_dir is not None:
-        landing_cmd.extend(["--persistent-profile-dir", str(profile_dir)])
 
     download_cmd = [
         sys.executable,
@@ -238,8 +197,6 @@ def main() -> int:
         "--non-interactive",
         "--after-first-pass",
         args.after_first_pass,
-        "--precheck-landing",
-        "0",
         "--headless",
         str(args.headless),
         "--runtime-preset",
@@ -263,10 +220,6 @@ def main() -> int:
         args.suite,
         "--sample-csv",
         str(sample_csv),
-        "--landing-jsonl",
-        str(landing_jsonl),
-        "--landing-report",
-        str(landing_report),
         "--download-results-csv",
         str(download_results_csv),
         "--download-summary-json",
@@ -287,8 +240,6 @@ def main() -> int:
         "set -euo pipefail",
         f"cd {shlex.quote(str(repo_root()))}",
     ]
-    if not args.skip_landing:
-        shell_lines.append(shell_join(landing_cmd))
     if not args.skip_download:
         shell_lines.append(shell_join(download_cmd))
     shell_lines.append(shell_join(summarize_cmd))
@@ -319,7 +270,7 @@ def main() -> int:
         "runtime_preset": args.runtime_preset,
         "execution_env": args.execution_env,
         "headless": bool(args.headless),
-        "skip_landing": bool(args.skip_landing),
+        "skip_landing": True,
         "skip_download": bool(args.skip_download),
         "landing_workers": int(args.landing_workers),
         "download_workers": int(args.download_workers),
@@ -350,14 +301,10 @@ def main() -> int:
             "run_dir": str(run_dir),
             "source_sample_csv": str(original_sample_csv),
             "effective_sample_csv": str(effective_sample_csv),
-            "landing_dir": str(landing_dir),
             "download_dir": str(download_dir),
             "download_run_dir": str(download_run_dir),
             "summary_dir": str(summary_dir),
             "logs_dir": str(logs_dir),
-            "landing_artifact_dir": str(landing_artifact_dir),
-            "landing_fail_zip": str(landing_fail_zip),
-            "landing_success_zip": str(landing_success_zip),
             "download_pdf_dir": str(download_pdf_dir),
             "download_results_csv": str(download_results_csv),
             "download_summary_json": str(download_summary_json),
@@ -369,7 +316,6 @@ def main() -> int:
             "retry_skip_json": str(retry_skip_json),
         },
         "prepared_commands": {
-            "landing": landing_cmd,
             "download": download_cmd,
             "summarize": summarize_cmd,
         },
@@ -427,13 +373,12 @@ def main() -> int:
             }
         execution_manifest["status"] = "blocked_empty_source_sample"
     elif args.execute and not seed_check_failed:
-        if not args.skip_landing:
-            execution_manifest["executed_commands"]["landing"] = run_command(
-                landing_cmd,
-                cwd=repo_root(),
-                stdout_path=logs_dir / "landing.stdout.log",
-                stderr_path=logs_dir / "landing.stderr.log",
-            )
+        execution_manifest["executed_commands"]["landing"] = {
+            "ok": True,
+            "returncode": 0,
+            "skipped": True,
+            "reason": "merged_into_download",
+        }
         if not args.skip_download:
             execution_manifest["executed_commands"]["download"] = run_command(
                 download_cmd,
@@ -442,9 +387,7 @@ def main() -> int:
                 stderr_path=logs_dir / "download.stderr.log",
             )
         if (
-            landing_jsonl.exists()
-            or landing_report.exists()
-            or download_results_csv.exists()
+            download_results_csv.exists()
             or download_summary_json.exists()
         ):
             execution_manifest["executed_commands"]["summarize"] = run_command(
@@ -455,10 +398,10 @@ def main() -> int:
             )
     elif args.execute and seed_check_failed:
         execution_manifest["executed_commands"]["landing"] = {
-            "ok": False,
-            "returncode": None,
+            "ok": True,
+            "returncode": 0,
             "skipped": True,
-            "reason": "seed_profile_check_failed",
+            "reason": "merged_into_download",
         }
         execution_manifest["executed_commands"]["download"] = {
             "ok": False,

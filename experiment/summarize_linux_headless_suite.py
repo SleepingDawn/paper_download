@@ -78,6 +78,33 @@ def read_jsonl(path: Path) -> List[Dict[str, Any]]:
     return rows
 
 
+def parse_bool(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    text = str(value or "").strip().lower()
+    return text in {"1", "true", "yes", "y"}
+
+
+def parse_int(value: Any) -> int:
+    try:
+        return int(value or 0)
+    except (TypeError, ValueError):
+        return 0
+
+
+def parse_json_list(value: Any) -> List[Any]:
+    if isinstance(value, list):
+        return value
+    text = str(value or "").strip()
+    if not text:
+        return []
+    try:
+        parsed = json.loads(text)
+        return parsed if isinstance(parsed, list) else []
+    except json.JSONDecodeError:
+        return []
+
+
 def contains_environment_marker(values: Iterable[Any]) -> bool:
     blob = " ".join(str(item or "") for item in values).lower()
     return any(
@@ -113,6 +140,107 @@ def landing_bucket_from_record(record: Dict[str, Any]) -> str:
     if "institution" in " ".join(str(code or "") for code in reason_codes).lower():
         return "access_rights"
     return "other_non_success"
+
+
+def landing_record_from_download_row(row: Dict[str, Any]) -> Dict[str, Any]:
+    if not row:
+        return {}
+    return {
+        "doi": row.get("doi", ""),
+        "classifier_state": str(row.get("landing_state") or ""),
+        "outcome": str(row.get("landing_state") or ""),
+        "reason_codes": parse_json_list(row.get("download_evidence")),
+        "resolved_url": str(row.get("landing_url") or ""),
+        "browser_session_source": str(row.get("browser_session_source") or ""),
+        "browser_session_decision_reason": str(row.get("browser_session_decision_reason") or ""),
+        "browser_user_data_dir": str(row.get("browser_user_data_dir") or ""),
+        "browser_effective_user_data_dir": str(row.get("browser_effective_user_data_dir") or ""),
+        "browser_debug_address": str(row.get("browser_debug_address") or ""),
+        "aip_first_contact_policy": str(row.get("landing_aip_first_contact_policy") or ""),
+        "aip_low_pressure_first_contact": parse_bool(row.get("landing_aip_low_pressure_first_contact")),
+        "aip_direct_doi_path_used": parse_bool(row.get("landing_aip_direct_doi_path_used")),
+        "aip_alternate_pages_opened": parse_bool(row.get("landing_aip_alternate_pages_opened")),
+        "probe_page_mode_requested": str(row.get("landing_probe_page_mode_requested") or ""),
+        "probe_page_mode_effective": str(row.get("landing_probe_page_mode_effective") or ""),
+        "probe_open_attempts": parse_int(row.get("landing_probe_open_attempts")),
+        "post_open_tab_trim_closed_count": parse_int(row.get("landing_post_open_tab_trim_closed_count")),
+        "probe_open_succeeded": parse_bool(row.get("landing_probe_open_succeeded")),
+        "probe_attach_restart_reason": str(row.get("landing_probe_attach_restart_reason") or ""),
+        "controller_page_reused": parse_bool(row.get("landing_controller_page_reused")),
+        "controller_reuse_allowed": parse_bool(row.get("landing_controller_reuse_allowed")),
+        "controller_restart_reason": str(row.get("landing_controller_restart_reason") or ""),
+        "controller_restart_count": parse_int(row.get("landing_controller_restart_count")),
+        "controller_create_attempts": parse_int(row.get("landing_controller_create_attempts")),
+        "startup_tab_cleanup_applied": parse_bool(row.get("landing_startup_tab_cleanup_applied")),
+        "startup_tab_cleanup_before_count": parse_int(row.get("landing_startup_tab_cleanup_before_count")),
+        "startup_tab_cleanup_after_count": parse_int(row.get("landing_startup_tab_cleanup_after_count")),
+        "startup_tab_cleanup_closed_count": parse_int(row.get("landing_startup_tab_cleanup_closed_count")),
+        "startup_page_reset_to_blank": parse_bool(row.get("landing_startup_page_reset_to_blank")),
+        "browser_process_alive": parse_bool(row.get("landing_probe_browser_process_alive")),
+        "page_access_ok": parse_bool(row.get("landing_probe_page_access_ok")),
+        "page_probe_error": str(row.get("landing_probe_page_probe_error") or ""),
+        "final_active_tab_id": str(row.get("landing_final_active_tab_id") or ""),
+        "final_total_tab_count": parse_int(row.get("landing_final_total_tab_count")),
+        "peak_tab_count_observed": parse_int(row.get("landing_peak_tab_count_observed")),
+        "reduced_tab_path_used": parse_bool(row.get("landing_reduced_tab_path_used")),
+        "tab_lifecycle_sequence": parse_json_list(row.get("landing_tab_lifecycle_sequence")),
+        "page_disconnect_observed": parse_bool(row.get("landing_page_disconnect_observed")),
+        "page_disconnect_stage": str(row.get("landing_page_disconnect_stage") or ""),
+        "network_listener_started": parse_bool(row.get("landing_network_listener_started")),
+        "network_listener_error": str(row.get("landing_network_listener_error") or ""),
+        "runtime_probe_installed": parse_bool(row.get("landing_runtime_probe_installed")),
+        "runtime_probe_error": str(row.get("landing_runtime_probe_error") or ""),
+        "challenge_detected": parse_bool(row.get("landing_challenge_detected")),
+        "entry_strategy": str(row.get("landing_entry_strategy") or ""),
+        "entry_strategy_variant": str(row.get("landing_entry_strategy_variant") or ""),
+        "entry_redirect_probe_mode": str(row.get("landing_entry_redirect_probe_mode") or ""),
+        "entry_prebrowser_request_count": parse_int(row.get("landing_entry_prebrowser_request_count")),
+        "entry_preanalysis_ran": parse_bool(row.get("landing_entry_preanalysis_ran")),
+        "entry_url": str(row.get("landing_entry_url") or ""),
+        "entry_resolved_url": str(row.get("landing_entry_resolved_url") or ""),
+        "entry_browser_url": str(row.get("landing_entry_browser_url") or ""),
+        "entry_browser_kind": str(row.get("landing_entry_browser_kind") or ""),
+        "entry_handoff_url": str(row.get("landing_entry_handoff_url") or ""),
+        "entry_handoff_used": bool(str(row.get("landing_entry_handoff_url") or "").strip()),
+        "entry_context_url": str(row.get("landing_entry_context_url") or ""),
+        "entry_context_kind": str(row.get("landing_entry_context_kind") or ""),
+        "entry_context_bootstrap_mode": str(row.get("landing_entry_context_bootstrap_mode") or ""),
+        "entry_context_bootstrap_attempted": parse_bool(row.get("landing_entry_context_bootstrap_attempted")),
+        "entry_context_bootstrap_outcome": str(row.get("landing_entry_context_bootstrap_outcome") or ""),
+        "entry_context_bootstrap_final_url": str(row.get("landing_entry_context_bootstrap_final_url") or ""),
+        "entry_context_bootstrap_final_title": str(row.get("landing_entry_context_bootstrap_final_title") or ""),
+        "entry_context_bootstrap_cache_hit": parse_bool(row.get("landing_entry_context_bootstrap_cache_hit")),
+        "entry_context_bootstrap_cache_state": str(row.get("landing_entry_context_bootstrap_cache_state") or ""),
+        "entry_navigation_route": str(row.get("landing_entry_navigation_route") or ""),
+        "entry_preflight_url": str(row.get("landing_entry_preflight_url") or ""),
+        "entry_redirect_chain_summary": parse_json_list(row.get("landing_entry_redirect_chain_summary")),
+        "entry_fallback_used": parse_bool(row.get("landing_entry_fallback_used")),
+        "entry_fallback_reason": str(row.get("landing_entry_fallback_reason") or ""),
+        "entry_preflight_issue": str(row.get("landing_entry_preflight_issue") or ""),
+        "entry_preflight_issue_overridden": parse_bool(row.get("landing_entry_preflight_issue_overridden")),
+        "entry_browser_open_skipped": parse_bool(row.get("landing_entry_browser_open_skipped")),
+        "landing_recovery_attempted": parse_bool(row.get("landing_recovery_attempted")),
+        "landing_recovery_strategy": str(row.get("landing_recovery_strategy") or ""),
+        "landing_recovery_outcome": str(row.get("landing_recovery_outcome") or ""),
+        "tab_transition_count": parse_int(row.get("landing_tab_transition_count")),
+        "js_runtime_probe_ok": parse_bool(row.get("landing_js_runtime_probe_ok")),
+        "js_probe_error": str(row.get("landing_js_probe_error") or ""),
+        "navigator_cookie_enabled": row.get("landing_navigator_cookie_enabled"),
+        "document_cookie_len": parse_int(row.get("landing_document_cookie_len")),
+        "challenge_script_present": parse_bool(row.get("landing_challenge_script_present")),
+        "cf_chl_opt_present": parse_bool(row.get("landing_cf_chl_opt_present")),
+        "noscript_cookie_hint_present": parse_bool(row.get("landing_noscript_cookie_hint_present")),
+        "cookie_jar_probe_ok": parse_bool(row.get("landing_cookie_jar_probe_ok")),
+        "cookie_jar_count": parse_int(row.get("landing_cookie_jar_count")),
+        "aip_cookie_count": parse_int(row.get("landing_aip_cookie_count")),
+        "cloudflare_cookie_count": parse_int(row.get("landing_cloudflare_cookie_count")),
+        "profile_cookie_db_exists": parse_bool(row.get("landing_profile_cookie_db_exists")),
+        "profile_cookie_db_writable": parse_bool(row.get("landing_profile_cookie_db_writable")),
+        "profile_storage_exists": parse_bool(row.get("landing_profile_storage_exists")),
+        "profile_preferences_exists": parse_bool(row.get("landing_profile_preferences_exists")),
+        "reclassified_after_detector_fix": parse_bool(row.get("landing_reclassified_after_detector_fix")),
+        "reclassification_reason": str(row.get("landing_reclassification_reason") or ""),
+    }
 
 
 def download_succeeded(record: Dict[str, Any]) -> bool:
@@ -251,11 +379,13 @@ def main() -> int:
     landing_rows: List[Dict[str, Any]] = []
     if args.landing_jsonl and args.landing_jsonl.exists():
         landing_rows = read_jsonl(args.landing_jsonl.resolve())
-    landing_by_doi = {normalize_doi(row.get("doi")): row for row in landing_rows}
 
     download_rows: List[Dict[str, Any]] = []
     if args.download_results_csv and args.download_results_csv.exists():
         download_rows = load_csv_rows(args.download_results_csv.resolve())
+    if not landing_rows and download_rows:
+        landing_rows = [landing_record_from_download_row(row) for row in download_rows]
+    landing_by_doi = {normalize_doi(row.get("doi")): row for row in landing_rows}
     download_by_doi = {normalize_doi(row.get("doi")): row for row in download_rows}
 
     landing_probe_bucket_counts = Counter()
@@ -267,7 +397,7 @@ def main() -> int:
     merged_rows: List[Dict[str, Any]] = []
     blocked_items: List[str] = []
 
-    if not landing_rows:
+    if not landing_rows and not download_rows:
         blocked_items.append("landing_access_repro 결과 JSONL이 없어 landing-only 판단이 부분적입니다.")
     if not download_rows:
         blocked_items.append("parallel_download 결과 CSV가 없어 실다운로드 판단이 부분적입니다.")
@@ -512,6 +642,9 @@ def main() -> int:
         if args.download_summary_json and args.download_summary_json.exists()
         else {}
     )
+    landing_report_summary = landing_report.get("summary", {})
+    if not landing_report_summary and download_summary:
+        landing_report_summary = dict(download_summary.get("integrated_landing", {}) or {})
 
     summary = {
         "suite": args.suite,
@@ -533,7 +666,7 @@ def main() -> int:
         },
         "combined_bucket_counts": dict(sorted((key, int(value)) for key, value in combined_bucket_counts.items())),
         "publisher_breakdown": publisher_rows,
-        "landing_report_summary": landing_report.get("summary", {}),
+        "landing_report_summary": landing_report_summary,
         "download_report_summary": download_summary.get("experiment_outcomes", {}),
         "blocked_items": blocked_items,
     }

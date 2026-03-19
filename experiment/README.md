@@ -16,9 +16,9 @@
 - `build_linux_headless_suite.py`
   - 위 suite CSV/manifest를 재생성하는 샘플 빌더
 - `run_linux_headless_suite.py`
-  - landing probe, 다운로드 실행, 요약 리포트 생성을 연결하는 Linux headless runner
+  - 통합 다운로드 실행과 요약 리포트 생성을 연결하는 Linux Xvfb headful runner
 - `summarize_linux_headless_suite.py`
-  - landing 결과와 다운로드 결과를 합쳐 publisher별 진단 표를 만드는 요약기
+  - 통합 download 결과를 publisher별 진단 표로 요약하는 요약기
 - `../scripts/run_linux_suite_bg.sh`
   - SSH가 끊겨도 유지되는 `nohup` 기반 background launcher
 - `../scripts/prepare_linux_server_env.sh`

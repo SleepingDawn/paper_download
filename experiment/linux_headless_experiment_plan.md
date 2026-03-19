@@ -64,7 +64,7 @@
 
 ### Q1. Linux 서버에서 publisher landing이 실제로 되는가?
 
-- 측정 도구: `landing_access_repro.py`
+- 측정 도구: `parallel_download.py`의 integrated landing 필드
 - 성공 기준:
   - `classifier_state in {success_landing, direct_pdf_handoff}`
   - expected publisher domain에 도달

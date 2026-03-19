@@ -1,7 +1,6 @@
 import json
 import inspect
 import os
-import subprocess
 import sys
 import time
 from collections import Counter
@@ -31,6 +30,7 @@ from tools_exp import (
     download_using_api,
     download_with_cffi,
     download_with_drission,
+    ensure_linux_xvfb_headful_runtime,
     ensure_runtime_profile_ready,
     normalize_publisher_label,
     reap_stale_drission_orphan_browsers,
@@ -57,8 +57,6 @@ REASON_FAIL_NO_CANDIDATE = "FAIL_NO_CANDIDATE"
 REASON_FAIL_REDIRECT_LOOP = "FAIL_REDIRECT_LOOP"
 REASON_FAIL_UNKNOWN = "FAIL_UNKNOWN"
 SAFE_MAX_WORKERS = 5
-LANDING_SUCCESS_OUTCOME = "SUCCESS_ACCESS"
-LANDING_ACCESS_RIGHTS_OUTCOME = "FAIL_ACCESS_RIGHTS"
 
 FAILURE_REASON_ORDER = [
     REASON_FAIL_CAPTCHA,
@@ -674,6 +672,8 @@ def _single_download_attempt(
             "browser_session_decision_reason": str(dr.get("browser_session_decision_reason") or ""),
             "browser_profile_name": str(dr.get("browser_profile_name") or ""),
             "browser_user_data_dir": str(dr.get("browser_user_data_dir") or ""),
+            "browser_effective_user_data_dir": str(dr.get("browser_effective_user_data_dir") or ""),
+            "browser_debug_address": str(dr.get("browser_debug_address") or ""),
             "landing_challenge_detected": bool(dr.get("landing_challenge_detected")),
             "landing_default_page_detected": bool(dr.get("landing_default_page_detected")),
             "landing_default_page_kind": str(dr.get("landing_default_page_kind") or ""),
@@ -681,12 +681,62 @@ def _single_download_attempt(
             "landing_tab_transition_events": list(dr.get("landing_tab_transition_events") or []),
             "landing_final_active_tab_id": str(dr.get("landing_final_active_tab_id") or ""),
             "landing_final_total_tab_count": int(dr.get("landing_final_total_tab_count", 0) or 0),
+            "landing_peak_tab_count_observed": int(dr.get("peak_tab_count_observed", 0) or 0),
+            "landing_reduced_tab_path_used": bool(dr.get("reduced_tab_path_used")),
             "landing_final_screenshot_path": str(dr.get("landing_final_screenshot_path") or ""),
             "landing_final_html_path": str(dr.get("landing_final_html_path") or ""),
+            "landing_page_disconnect_observed": bool(dr.get("page_disconnect_observed")),
+            "landing_page_disconnect_stage": str(dr.get("page_disconnect_stage") or ""),
+            "landing_network_listener_started": bool(dr.get("network_listener_started")),
+            "landing_network_listener_error": str(dr.get("network_listener_error") or ""),
+            "landing_runtime_probe_installed": bool(dr.get("runtime_probe_installed")),
+            "landing_runtime_probe_error": str(dr.get("runtime_probe_error") or ""),
+            "landing_probe_page_mode_requested": str(dr.get("probe_page_mode_requested") or ""),
+            "landing_probe_page_mode_effective": str(dr.get("probe_page_mode_effective") or ""),
+            "landing_probe_open_attempts": int(dr.get("probe_open_attempts", 0) or 0),
+            "landing_probe_open_succeeded": bool(dr.get("probe_open_succeeded")),
+            "landing_probe_attach_restart_reason": str(dr.get("probe_attach_restart_reason") or ""),
+            "landing_probe_browser_process_alive": bool(dr.get("browser_process_alive")),
+            "landing_probe_page_access_ok": bool(dr.get("page_access_ok")),
+            "landing_probe_page_probe_error": str(dr.get("page_probe_error") or ""),
+            "landing_controller_page_reused": bool(dr.get("controller_page_reused")),
+            "landing_controller_reuse_allowed": bool(dr.get("controller_reuse_allowed")),
+            "landing_controller_restart_reason": str(dr.get("controller_restart_reason") or ""),
+            "landing_controller_restart_count": int(dr.get("controller_restart_count", 0) or 0),
+            "landing_controller_create_attempts": int(dr.get("controller_create_attempts", 0) or 0),
+            "landing_startup_tab_cleanup_applied": bool(dr.get("startup_tab_cleanup_applied")),
+            "landing_startup_tab_cleanup_before_count": int(dr.get("startup_tab_cleanup_before_count", 0) or 0),
+            "landing_startup_tab_cleanup_after_count": int(dr.get("startup_tab_cleanup_after_count", 0) or 0),
+            "landing_startup_tab_cleanup_closed_count": int(dr.get("startup_tab_cleanup_closed_count", 0) or 0),
+            "landing_startup_page_reset_to_blank": bool(dr.get("startup_page_reset_to_blank")),
+            "landing_post_open_tab_trim_closed_count": int(dr.get("post_open_tab_trim_closed_count", 0) or 0),
+            "landing_tab_lifecycle_sequence": list(dr.get("tab_lifecycle_sequence") or []),
+            "landing_js_runtime_probe_ok": bool(dr.get("js_runtime_probe_ok")),
+            "landing_js_probe_error": str(dr.get("js_probe_error") or ""),
+            "landing_navigator_cookie_enabled": dr.get("navigator_cookie_enabled"),
+            "landing_document_cookie_len": int(dr.get("document_cookie_len", 0) or 0),
+            "landing_challenge_script_present": bool(dr.get("challenge_script_present")),
+            "landing_cf_chl_opt_present": bool(dr.get("cf_chl_opt_present")),
+            "landing_noscript_cookie_hint_present": bool(dr.get("noscript_cookie_hint_present")),
+            "landing_cookie_jar_probe_ok": bool(dr.get("cookie_jar_probe_ok")),
+            "landing_cookie_jar_count": int(dr.get("cookie_jar_count", 0) or 0),
+            "landing_aip_cookie_count": int(dr.get("aip_cookie_count", 0) or 0),
+            "landing_cloudflare_cookie_count": int(dr.get("cloudflare_cookie_count", 0) or 0),
+            "landing_profile_cookie_db_exists": bool(dr.get("profile_cookie_db_exists")),
+            "landing_profile_cookie_db_writable": bool(dr.get("profile_cookie_db_writable")),
+            "landing_profile_storage_exists": bool(dr.get("profile_storage_exists")),
+            "landing_profile_preferences_exists": bool(dr.get("profile_preferences_exists")),
+            "landing_reclassified_after_detector_fix": bool(dr.get("reclassified_after_detector_fix")),
+            "landing_reclassification_reason": str(dr.get("reclassification_reason") or ""),
+            "landing_aip_first_contact_policy": str(dr.get("aip_first_contact_policy") or ""),
+            "landing_aip_low_pressure_first_contact": bool(dr.get("aip_low_pressure_first_contact")),
+            "landing_aip_direct_doi_path_used": bool(dr.get("aip_direct_doi_path_used")),
+            "landing_aip_alternate_pages_opened": bool(dr.get("aip_alternate_pages_opened")),
             "entry_strategy": str(dr.get("entry_strategy") or ""),
             "entry_strategy_variant": str(dr.get("entry_strategy_variant") or ""),
             "entry_redirect_probe_mode": str(dr.get("entry_redirect_probe_mode") or ""),
             "entry_prebrowser_request_count": int(dr.get("entry_prebrowser_request_count", 0) or 0),
+            "entry_preanalysis_ran": bool(dr.get("entry_preanalysis_ran")),
             "entry_url": str(dr.get("entry_url") or ""),
             "entry_browser_url": str(dr.get("entry_browser_url") or ""),
             "entry_browser_kind": str(dr.get("entry_browser_kind") or ""),
@@ -1218,153 +1268,6 @@ def _write_metadata_sidecars(df: pd.DataFrame, metadata_root_dir: str, pdf_root_
     }
 
 
-def _discover_session_seed_root(worker_profile_root: str, profile_name: str) -> str:
-    base = os.path.abspath(str(worker_profile_root or "").strip())
-    profile_name = str(profile_name or "Default").strip() or "Default"
-    if not base or not os.path.isdir(base):
-        return ""
-
-    marker_hits: List[str] = []
-    for root, _, files in os.walk(base):
-        if ".codex_profile_seed_ready" in files and os.path.isdir(os.path.join(root, profile_name)):
-            marker_hits.append(root)
-    if marker_hits:
-        marker_hits.sort()
-        return marker_hits[0]
-
-    direct_profile = os.path.join(base, profile_name)
-    if os.path.isdir(direct_profile):
-        return base
-    return ""
-
-
-def _run_landing_precheck(
-    df: pd.DataFrame,
-    run_output_dir: str,
-    max_workers: int,
-    headless: bool,
-    execution_env: str,
-    runtime_preset: str,
-) -> tuple[pd.DataFrame, Dict[str, Any]]:
-    landing_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "landing_access_repro.py")
-    precheck_dir = os.path.join(run_output_dir, "landing_precheck")
-    os.makedirs(precheck_dir, exist_ok=True)
-
-    landing_input_csv = os.path.join(precheck_dir, "landing_input.csv")
-    landing_output_jsonl = os.path.join(precheck_dir, "landing_results.jsonl")
-    landing_report_json = os.path.join(precheck_dir, "landing_report.json")
-    landing_report_md = os.path.join(precheck_dir, "landing_report.md")
-    landing_artifact_dir = os.path.join(precheck_dir, "artifacts")
-
-    df.to_csv(landing_input_csv, index=False, encoding="utf-8-sig")
-
-    cmd = [
-        sys.executable,
-        "-u",
-        landing_script,
-        "--input",
-        landing_input_csv,
-        "--workers",
-        str(max(1, min(int(max_workers), 2))),
-        "--headless",
-        "1" if bool(headless) else "0",
-        "--runtime-preset",
-        str(runtime_preset or "auto"),
-        "--execution-env",
-        str(execution_env or "auto"),
-        "--profile-mode",
-        str(os.environ.get("PDF_BROWSER_PROFILE_MODE", "auto")),
-        "--profile-name",
-        str(os.environ.get("PDF_BROWSER_PROFILE_NAME", "Default")),
-        "--persistent-profile-dir",
-        str(os.environ.get("PDF_BROWSER_PERSISTENT_PROFILE_DIR", "outputs/.chrome_user_data")),
-        "--progress-every",
-        "100",
-        "--capture-fail-artifacts",
-        "0",
-        "--capture-success-artifacts",
-        "0",
-        "--zip-fail-artifacts",
-        "0",
-        "--zip-success-artifacts",
-        "0",
-        "--artifact-dir",
-        landing_artifact_dir,
-        "--output-jsonl",
-        landing_output_jsonl,
-        "--report",
-        landing_report_json,
-        "--report-md",
-        landing_report_md,
-    ]
-
-    started = time.time()
-    subprocess.run(cmd, check=True)
-    elapsed = round(time.time() - started, 2)
-
-    landing_report = {}
-    if os.path.exists(landing_report_json):
-        with open(landing_report_json, "r", encoding="utf-8") as f:
-            landing_report = json.load(f)
-    session_seed_root = _discover_session_seed_root(
-        worker_profile_root=str(landing_report.get("worker_profile_root") or ""),
-        profile_name=str(landing_report.get("profile_name") or "Default"),
-    )
-
-    records: List[Dict[str, Any]] = []
-    if os.path.exists(landing_output_jsonl):
-        with open(landing_output_jsonl, "r", encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    records.append(json.loads(line))
-                except json.JSONDecodeError:
-                    continue
-
-    by_doi = {str(r.get("doi") or "").strip().lower(): r for r in records}
-    total_input = int(len(df))
-    success_dois = {
-        doi
-        for doi, rec in by_doi.items()
-        if str(rec.get("outcome") or "") == LANDING_SUCCESS_OUTCOME
-    }
-    access_rights = sum(
-        1 for rec in records if str(rec.get("outcome") or "") == LANDING_ACCESS_RIGHTS_OUTCOME
-    )
-    success = len(success_dois)
-    eligible_df = df[df["doi"].astype(str).str.lower().isin(success_dois)].copy()
-    eligible_df["landing_precheck_outcome"] = eligible_df["doi"].astype(str).str.lower().map(
-        lambda doi: str((by_doi.get(doi) or {}).get("outcome") or "")
-    )
-    eligible_df["landing_precheck_state"] = eligible_df["doi"].astype(str).str.lower().map(
-        lambda doi: str((by_doi.get(doi) or {}).get("classifier_state") or "")
-    )
-
-    adjusted_denominator = max(0, total_input - access_rights)
-    metrics = {
-        "executed": True,
-        "elapsed_seconds": elapsed,
-        "total_input": total_input,
-        "landing_success": success,
-        "access_rights_failures": access_rights,
-        "eligible_for_download": int(len(eligible_df)),
-        "adjusted_denominator": adjusted_denominator,
-        "raw_success_rate": round(success / total_input, 4) if total_input else 0.0,
-        "adjusted_success_rate": round(success / adjusted_denominator, 4) if adjusted_denominator else 0.0,
-        "artifacts": {
-            "input_csv": landing_input_csv,
-            "results_jsonl": landing_output_jsonl,
-            "report_json": landing_report_json,
-            "report_md": landing_report_md,
-        },
-        "session_seed_root": session_seed_root,
-        "report_summary": landing_report.get("summary", {}),
-    }
-    return eligible_df, metrics
-
-
 def main(
     max_num=1000,
     citation_percentile=0.99,
@@ -1518,26 +1421,15 @@ def main(
     input_total_before_precheck = int(len(df))
     landing_precheck_metrics: Dict[str, Any] = {"executed": False}
     if precheck_landing:
-        print("\n" + "=" * 60)
-        print("Landing precheck 시작")
-        print("=" * 60)
-        df, landing_precheck_metrics = _run_landing_precheck(
-            df=df,
-            run_output_dir=run_output_dir,
-            max_workers=max_workers,
-            headless=resolved_headless,
-            execution_env=resolved_execution_env,
-            runtime_preset=resolved_runtime_preset,
-        )
-        print(
-            f"Landing precheck 완료: 성공={landing_precheck_metrics.get('landing_success', 0)} / "
-            f"권한없음={landing_precheck_metrics.get('access_rights_failures', 0)} / "
-            f"다운로드 투입={landing_precheck_metrics.get('eligible_for_download', 0)}"
-        )
-        session_seed_root = str(landing_precheck_metrics.get("session_seed_root") or "").strip()
-        if session_seed_root:
-            os.environ["PDF_BROWSER_SESSION_SEED_ROOT"] = session_seed_root
-            print(f"landing session seed root: {session_seed_root}")
+        print("\n[deprecated] precheck-landing=1 요청은 무시됩니다. landing 검증은 이제 download flow 안에서 단일 패스로 수행됩니다.")
+        landing_precheck_metrics = {
+            "executed": False,
+            "mode": "integrated_download_only",
+            "deprecated_requested": True,
+            "total_input": int(len(df)),
+            "eligible_for_download": int(len(df)),
+            "adjusted_denominator": int(len(df)),
+        }
 
     with Manager() as manager:
         pacing_state = manager.dict()
@@ -1645,6 +1537,8 @@ def main(
     df["browser_session_decision_reason"] = [str(r.get("browser_session_decision_reason") or "") for r in final_results]
     df["browser_profile_name"] = [str(r.get("browser_profile_name") or "") for r in final_results]
     df["browser_user_data_dir"] = [str(r.get("browser_user_data_dir") or "") for r in final_results]
+    df["browser_effective_user_data_dir"] = [str(r.get("browser_effective_user_data_dir") or "") for r in final_results]
+    df["browser_debug_address"] = [str(r.get("browser_debug_address") or "") for r in final_results]
     df["landing_challenge_detected"] = [bool(r.get("landing_challenge_detected")) for r in final_results]
     df["landing_default_page_detected"] = [bool(r.get("landing_default_page_detected")) for r in final_results]
     df["landing_default_page_kind"] = [str(r.get("landing_default_page_kind") or "") for r in final_results]
@@ -1654,12 +1548,64 @@ def main(
     ]
     df["landing_final_active_tab_id"] = [str(r.get("landing_final_active_tab_id") or "") for r in final_results]
     df["landing_final_total_tab_count"] = [int(r.get("landing_final_total_tab_count", 0) or 0) for r in final_results]
+    df["landing_peak_tab_count_observed"] = [int(r.get("landing_peak_tab_count_observed", 0) or 0) for r in final_results]
+    df["landing_reduced_tab_path_used"] = [bool(r.get("landing_reduced_tab_path_used")) for r in final_results]
     df["landing_final_screenshot_path"] = [str(r.get("landing_final_screenshot_path") or "") for r in final_results]
     df["landing_final_html_path"] = [str(r.get("landing_final_html_path") or "") for r in final_results]
+    df["landing_page_disconnect_observed"] = [bool(r.get("landing_page_disconnect_observed")) for r in final_results]
+    df["landing_page_disconnect_stage"] = [str(r.get("landing_page_disconnect_stage") or "") for r in final_results]
+    df["landing_network_listener_started"] = [bool(r.get("landing_network_listener_started")) for r in final_results]
+    df["landing_network_listener_error"] = [str(r.get("landing_network_listener_error") or "") for r in final_results]
+    df["landing_runtime_probe_installed"] = [bool(r.get("landing_runtime_probe_installed")) for r in final_results]
+    df["landing_runtime_probe_error"] = [str(r.get("landing_runtime_probe_error") or "") for r in final_results]
+    df["landing_probe_page_mode_requested"] = [str(r.get("landing_probe_page_mode_requested") or "") for r in final_results]
+    df["landing_probe_page_mode_effective"] = [str(r.get("landing_probe_page_mode_effective") or "") for r in final_results]
+    df["landing_probe_open_attempts"] = [int(r.get("landing_probe_open_attempts", 0) or 0) for r in final_results]
+    df["landing_probe_open_succeeded"] = [bool(r.get("landing_probe_open_succeeded")) for r in final_results]
+    df["landing_probe_attach_restart_reason"] = [str(r.get("landing_probe_attach_restart_reason") or "") for r in final_results]
+    df["landing_probe_browser_process_alive"] = [bool(r.get("landing_probe_browser_process_alive")) for r in final_results]
+    df["landing_probe_page_access_ok"] = [bool(r.get("landing_probe_page_access_ok")) for r in final_results]
+    df["landing_probe_page_probe_error"] = [str(r.get("landing_probe_page_probe_error") or "") for r in final_results]
+    df["landing_controller_page_reused"] = [bool(r.get("landing_controller_page_reused")) for r in final_results]
+    df["landing_controller_reuse_allowed"] = [bool(r.get("landing_controller_reuse_allowed")) for r in final_results]
+    df["landing_controller_restart_reason"] = [str(r.get("landing_controller_restart_reason") or "") for r in final_results]
+    df["landing_controller_restart_count"] = [int(r.get("landing_controller_restart_count", 0) or 0) for r in final_results]
+    df["landing_controller_create_attempts"] = [int(r.get("landing_controller_create_attempts", 0) or 0) for r in final_results]
+    df["landing_startup_tab_cleanup_applied"] = [bool(r.get("landing_startup_tab_cleanup_applied")) for r in final_results]
+    df["landing_startup_tab_cleanup_before_count"] = [int(r.get("landing_startup_tab_cleanup_before_count", 0) or 0) for r in final_results]
+    df["landing_startup_tab_cleanup_after_count"] = [int(r.get("landing_startup_tab_cleanup_after_count", 0) or 0) for r in final_results]
+    df["landing_startup_tab_cleanup_closed_count"] = [int(r.get("landing_startup_tab_cleanup_closed_count", 0) or 0) for r in final_results]
+    df["landing_startup_page_reset_to_blank"] = [bool(r.get("landing_startup_page_reset_to_blank")) for r in final_results]
+    df["landing_post_open_tab_trim_closed_count"] = [int(r.get("landing_post_open_tab_trim_closed_count", 0) or 0) for r in final_results]
+    df["landing_tab_lifecycle_sequence"] = [
+        json.dumps(list(r.get("landing_tab_lifecycle_sequence") or []), ensure_ascii=False) for r in final_results
+    ]
+    df["landing_js_runtime_probe_ok"] = [bool(r.get("landing_js_runtime_probe_ok")) for r in final_results]
+    df["landing_js_probe_error"] = [str(r.get("landing_js_probe_error") or "") for r in final_results]
+    df["landing_navigator_cookie_enabled"] = [str(r.get("landing_navigator_cookie_enabled") or "") for r in final_results]
+    df["landing_document_cookie_len"] = [int(r.get("landing_document_cookie_len", 0) or 0) for r in final_results]
+    df["landing_challenge_script_present"] = [bool(r.get("landing_challenge_script_present")) for r in final_results]
+    df["landing_cf_chl_opt_present"] = [bool(r.get("landing_cf_chl_opt_present")) for r in final_results]
+    df["landing_noscript_cookie_hint_present"] = [bool(r.get("landing_noscript_cookie_hint_present")) for r in final_results]
+    df["landing_cookie_jar_probe_ok"] = [bool(r.get("landing_cookie_jar_probe_ok")) for r in final_results]
+    df["landing_cookie_jar_count"] = [int(r.get("landing_cookie_jar_count", 0) or 0) for r in final_results]
+    df["landing_aip_cookie_count"] = [int(r.get("landing_aip_cookie_count", 0) or 0) for r in final_results]
+    df["landing_cloudflare_cookie_count"] = [int(r.get("landing_cloudflare_cookie_count", 0) or 0) for r in final_results]
+    df["landing_profile_cookie_db_exists"] = [bool(r.get("landing_profile_cookie_db_exists")) for r in final_results]
+    df["landing_profile_cookie_db_writable"] = [bool(r.get("landing_profile_cookie_db_writable")) for r in final_results]
+    df["landing_profile_storage_exists"] = [bool(r.get("landing_profile_storage_exists")) for r in final_results]
+    df["landing_profile_preferences_exists"] = [bool(r.get("landing_profile_preferences_exists")) for r in final_results]
+    df["landing_reclassified_after_detector_fix"] = [bool(r.get("landing_reclassified_after_detector_fix")) for r in final_results]
+    df["landing_reclassification_reason"] = [str(r.get("landing_reclassification_reason") or "") for r in final_results]
+    df["landing_aip_first_contact_policy"] = [str(r.get("landing_aip_first_contact_policy") or "") for r in final_results]
+    df["landing_aip_low_pressure_first_contact"] = [bool(r.get("landing_aip_low_pressure_first_contact")) for r in final_results]
+    df["landing_aip_direct_doi_path_used"] = [bool(r.get("landing_aip_direct_doi_path_used")) for r in final_results]
+    df["landing_aip_alternate_pages_opened"] = [bool(r.get("landing_aip_alternate_pages_opened")) for r in final_results]
     df["landing_entry_strategy"] = [str(r.get("entry_strategy") or "") for r in final_results]
     df["landing_entry_strategy_variant"] = [str(r.get("entry_strategy_variant") or "") for r in final_results]
     df["landing_entry_redirect_probe_mode"] = [str(r.get("entry_redirect_probe_mode") or "") for r in final_results]
     df["landing_entry_prebrowser_request_count"] = [int(r.get("entry_prebrowser_request_count", 0) or 0) for r in final_results]
+    df["landing_entry_preanalysis_ran"] = [bool(r.get("entry_preanalysis_ran")) for r in final_results]
     df["landing_entry_url"] = [str(r.get("entry_url") or "") for r in final_results]
     df["landing_entry_browser_url"] = [str(r.get("entry_browser_url") or "") for r in final_results]
     df["landing_entry_browser_kind"] = [str(r.get("entry_browser_kind") or "") for r in final_results]
@@ -1861,28 +1807,34 @@ def main(
 
 if __name__ == "__main__":
     args = get_config()
-    main(
-        max_num=args.max_num,
-        citation_percentile=args.citation_percentile,
-        query=args.query,
-        max_workers=args.max_workers,
-        output_dir=args.output_dir,
-        pdf_output_dir=args.pdf_output_dir,
-        doi_path=args.doi_path,
-        after_first_pass=args.after_first_pass,
-        non_interactive=args.non_interactive,
-        precheck_landing=bool(int(args.precheck_landing)),
-        headless=args.headless,
-        execution_env=args.execution_env,
-        deep_retry_headless=args.deep_retry_headless,
-        abort_on_landing_block=bool(int(args.abort_on_landing_block)),
-        publisher_cooldown_sec=args.publisher_cooldown_sec,
-        global_start_spacing_sec=args.global_start_spacing_sec,
-        jitter_min_sec=args.jitter_min_sec,
-        jitter_max_sec=args.jitter_max_sec,
-        runtime_preset=args.runtime_preset,
-        profile_mode=args.profile_mode,
-        profile_name=args.profile_name,
-        persistent_profile_dir=args.persistent_profile_dir,
-        runtime_profile_root=args.runtime_profile_root,
-    )
+    requested_headless = _env_flag("PDF_BROWSER_HEADLESS", 0) if args.headless is None else bool(args.headless)
+    with ensure_linux_xvfb_headful_runtime(
+        requested_headless,
+        args.execution_env,
+        context="download_cli",
+    ):
+        main(
+            max_num=args.max_num,
+            citation_percentile=args.citation_percentile,
+            query=args.query,
+            max_workers=args.max_workers,
+            output_dir=args.output_dir,
+            pdf_output_dir=args.pdf_output_dir,
+            doi_path=args.doi_path,
+            after_first_pass=args.after_first_pass,
+            non_interactive=args.non_interactive,
+            precheck_landing=bool(int(args.precheck_landing)),
+            headless=args.headless,
+            execution_env=args.execution_env,
+            deep_retry_headless=args.deep_retry_headless,
+            abort_on_landing_block=bool(int(args.abort_on_landing_block)),
+            publisher_cooldown_sec=args.publisher_cooldown_sec,
+            global_start_spacing_sec=args.global_start_spacing_sec,
+            jitter_min_sec=args.jitter_min_sec,
+            jitter_max_sec=args.jitter_max_sec,
+            runtime_preset=args.runtime_preset,
+            profile_mode=args.profile_mode,
+            profile_name=args.profile_name,
+            persistent_profile_dir=args.persistent_profile_dir,
+            runtime_profile_root=args.runtime_profile_root,
+        )

@@ -2,12 +2,10 @@
 
 DOI 목록을 입력받아 PDF를 내려받는 파이프라인입니다.
 
-이 저장소에서 다루는 핵심 흐름은 두 가지입니다.
+이 저장소의 기준 실행 흐름은 하나입니다.
 
-1. `landing_access_repro.py`
-   DOI 랜딩이 실제 논문 페이지까지 안정적으로 도달하는지 검사합니다.
-2. `parallel_download.py`
-   랜딩 확인과 PDF 다운로드를 한 번에 수행합니다.
+1. `parallel_download.py`
+   DOI 랜딩 검증과 PDF 다운로드를 한 번의 브라우저 세션 안에서 함께 수행합니다.
 
 이 문서는 실제 사용 예시, 필요한 입력 형식, 기본 세팅, 다운로드 전략, bot-detection 회피 방식, domain별 특수 전략만 정리합니다.
 
@@ -65,11 +63,10 @@ doi,publisher,pdf_url,open_access,title
 - `open_access`: `True`면 `Open_Access/`, `False`면 `Closed_Access/` 아래로 저장됩니다.
 - `title`: landing 진단과 일부 publisher 보조 복구에 도움을 줍니다.
 
-### 2. 랜딩 검사 입력
+### 2. 통합 랜딩/다운로드 입력
 
-`landing_access_repro.py --input ...`는 보통 같은 CSV를 그대로 사용할 수 있습니다.
-
-landing-only 검사에서는 `doi`만 있어도 돌아가지만, 아래 컬럼이 같이 있으면 분류 정확도가 더 좋아집니다.
+랜딩 검증은 별도 스크립트가 아니라 `parallel_download.py` 내부에서 수행됩니다.
+따라서 같은 CSV를 랜딩 확인과 다운로드에 같이 사용합니다. 아래 컬럼이 있으면 분류 정확도가 더 좋아집니다.
 
 - `publisher`
 - `title`
@@ -98,7 +95,6 @@ OpenAlex 검색 단계 주의:
 
 - `max_workers=1`
 - `after-first-pass=stop`
-- `precheck-landing=0`
 - `abort-on-landing-block=1`
 - `runtime_preset=auto`
 - `headless=None`
@@ -114,34 +110,12 @@ OpenAlex 검색 단계 주의:
 
 - `runtime_preset=auto`는 기존 local desktop 동작을 유지하되, display가 없는 Linux에서는 `linux_server`로 해석합니다.
 - `headless=None`이면 `PDF_BROWSER_HEADLESS` 환경변수를 따릅니다.
-- 환경변수도 없으면 local desktop 기준으로 `headful`로 동작합니다.
-- `linux_server`로 해석되면 headful 요청이 들어와도 headless로 강제합니다.
-- `linux_cli_seeded` preset은 `/docs/linux_seed_profile_setup.md` 기준 Linux seeded profile root를 `persistent_profile_dir`로 받아, stateful 세션에서 macOS 시스템 프로필 대신 그 경로를 사용합니다.
+- 환경변수도 없으면 기본값은 `headful`이며, Linux 서버에서는 Xvfb display를 준비해 같은 headful 경로를 유지합니다.
+- `linux_cli_seeded` preset은 `/docs/linux_seed_profile_setup.md`와 `/docs/xvfb_local_build_guide.md` 기준 Linux seeded profile root + Xvfb headful 실행을 기본으로 사용합니다.
 - `deep_retry_headless=None`이면 1차 패스의 `headless` 값을 그대로 따릅니다.
 - `pdf_output_dir`를 생략하면 `pdfs/<run_name>/`를 자동 사용합니다.
 - `abort-on-landing-block=1`이 기본이라, landing에서 `captcha/challenge/block`가 보이면 즉시 중단합니다.
-
-### 랜딩 검사 기본값
-
-`landing_access_repro.py` 기본값:
-
-- `input=ready_to_download.csv`
-- `workers=1`
-- `headless=0`
-- `timeout_sec=15`
-- `per_doi_deadline_sec=45`
-- `max_nav_attempts=2`
-- `probe_page_mode=reuse_page`
-- `capture_fail_screenshot=0`
-- `profile_mode=auto`
-- `profile_name=Default`
-- `persistent_profile_dir=outputs/.chrome_user_data`
-
-실제 해석:
-
-- 기본 랜딩 검사는 local desktop 안정성 기준으로 `headful + single worker`입니다.
-- 단, `linux_cli_seeded` 또는 display 없는 Linux에서는 `headless`로 강제됩니다.
-- 실패 스크린샷은 기본적으로 저장하지 않고, HTML/JSON 진단 위주로 남깁니다.
+- `precheck-landing` 옵션은 더 이상 별도 선검사를 실행하지 않으며, 1을 줘도 통합 다운로드 흐름 안에서만 랜딩이 평가됩니다.
 
 ### Linux 서버 preset
 
@@ -150,6 +124,7 @@ Linux 서버에서는 `/docs/linux_seed_profile_setup.md`를 기준으로 profil
 ```bash
 python3 -u parallel_download.py \
   --runtime-preset linux_cli_seeded \
+  --headless 0 \
   --persistent-profile-dir /path/to/linux_chrome_user_data_seed \
   --profile-name Default \
   --doi_path ready_to_download.csv \
@@ -159,9 +134,9 @@ python3 -u parallel_download.py \
 
 중요:
 
-- `linux_cli_seeded`는 GUI/headful을 허용하지 않습니다.
+- `linux_cli_seeded`는 Linux seeded profile + Xvfb headful을 기본 전제로 둡니다.
 - `persistent_profile_dir`는 tar를 푼 최상위 `user-data-dir` root여야 하며, 최소 `Default/Preferences`가 있어야 합니다.
-- stateful 세션이 필요한 DOI만 seeded profile clone을 쓰고, 나머지 흐름은 기존 `local_mac` baseline 제어 흐름을 유지합니다.
+- stateful 세션이 필요한 DOI만 seeded profile clone을 쓰고, 브라우저 제어 흐름은 가능한 한 `local_mac` baseline의 단순한 headful navigation을 재사용합니다.
 
 ## 실제 사용 예시
 
@@ -197,32 +172,15 @@ PY
 - `resolved_from_repository`: repository DOI가 출판본 DOI로 바뀌었는지 여부
 - `original_source_type`: 원래 OpenAlex source type
 
-### 2. 랜딩만 테스트할 때
+### 2. 랜딩부터 다운로드까지 한꺼번에 테스트할 때
 
-다운로드 없이 DOI가 실제 논문 랜딩까지 가는지만 확인합니다.
-
-```bash
-python3 -u landing_access_repro.py \
-  --input ready_to_download.csv \
-  --workers 1 \
-  --headless 1 \
-  --timeout-sec 15 \
-  --per-doi-deadline-sec 45 \
-  --output-jsonl outputs/landing_access_repro.jsonl \
-  --report outputs/landing_access_repro_report.json \
-  --report-md outputs/landing_access_repro_report.md
-```
-
-### 3. 랜딩부터 다운로드까지 한꺼번에 테스트할 때
-
-`precheck-landing 0`이면 별도 선검사 없이, 실제 다운로드 과정 안에서 landing 상태도 같이 기록합니다.
+랜딩은 항상 다운로드 흐름 안에서 같이 기록됩니다.
 
 ```bash
 python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
   --max_workers 1 \
   --headless 1 \
-  --precheck-landing 0 \
   --abort-on-landing-block 1 \
   --after-first-pass stop \
   --output_dir outputs/run_all_in_one \
@@ -230,24 +188,7 @@ python3 -u parallel_download.py \
   --non-interactive
 ```
 
-### 4. 랜딩을 먼저 통과한 DOI만 다운로드할 때
-
-`precheck-landing 1`이면 landing-only 검사 결과 중 성공한 DOI만 다운로드 큐에 넣습니다.
-
-```bash
-python3 -u parallel_download.py \
-  --doi_path ready_to_download.csv \
-  --max_workers 1 \
-  --headless 1 \
-  --precheck-landing 1 \
-  --abort-on-landing-block 1 \
-  --after-first-pass stop \
-  --output_dir outputs/run_with_precheck \
-  --pdf_output_dir pdfs/run_with_precheck \
-  --non-interactive
-```
-
-### 5. Open access만 테스트할 때
+### 3. Open access만 테스트할 때
 
 현재는 `open access only` 전용 옵션이 없으므로, `open_access=True` 행만 담은 CSV를 따로 만들어 넣는 방식이 가장 안전합니다.
 
@@ -270,14 +211,13 @@ python3 -u parallel_download.py \
   --doi_path ready_to_download_oa_only.csv \
   --max_workers 1 \
   --headless 1 \
-  --precheck-landing 0 \
   --after-first-pass stop \
   --output_dir outputs/run_oa_only \
   --pdf_output_dir pdfs/run_oa_only \
   --non-interactive
 ```
 
-### 6. Headless를 끄고 테스트할 때
+### 4. Headless를 끄고 테스트할 때
 
 기본적으로는 local desktop 안정성 확인에 적합한 설정입니다.
 
@@ -286,14 +226,13 @@ python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
   --max_workers 1 \
   --headless 0 \
-  --precheck-landing 0 \
   --after-first-pass stop \
   --output_dir outputs/run_headful \
   --pdf_output_dir pdfs/run_headful \
   --non-interactive
 ```
 
-### 7. Headless를 켜고 테스트할 때
+### 5. Headless를 켜고 테스트할 때
 
 서버 또는 batch 실행용 기본 예시입니다.
 
@@ -302,14 +241,13 @@ python3 -u parallel_download.py \
   --doi_path ready_to_download.csv \
   --max_workers 1 \
   --headless 1 \
-  --precheck-landing 0 \
   --after-first-pass stop \
   --output_dir outputs/run_headless \
   --pdf_output_dir pdfs/run_headless \
   --non-interactive
 ```
 
-### 8. Retry 모드를 끄고 테스트할 때
+### 6. Retry 모드를 끄고 테스트할 때
 
 1차 패스만 보고 끝냅니다.
 
@@ -324,7 +262,7 @@ python3 -u parallel_download.py \
   --non-interactive
 ```
 
-### 9. Retry 모드를 켜고 테스트할 때
+### 7. Retry 모드를 켜고 테스트할 때
 
 1차 실패건만 deep retry를 추가로 수행합니다.
 
@@ -368,13 +306,6 @@ python3 -u parallel_download.py \
 - `<output_dir>/**/logs/screenshots/final_fail_capture_*.png`
 - `<pdf_output_dir>/Open_Access/*.pdf`
 - `<pdf_output_dir>/Closed_Access/*.pdf`
-
-`precheck-landing 1`일 때만 추가 생성:
-
-- `<output_dir>/landing_precheck/landing_input.csv`
-- `<output_dir>/landing_precheck/landing_results.jsonl`
-- `<output_dir>/landing_precheck/landing_report.json`
-- `<output_dir>/landing_precheck/landing_report.md`
 
 ## 실험 보고
 
