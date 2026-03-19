@@ -168,6 +168,7 @@ def main() -> int:
             "skipped_total": len(skipped_sample_rows),
             "action_counts": retry_protection["action_counts"],
             "skip_reason_counts": retry_protection["skip_reason_counts"],
+            "repeated_reason_counts": retry_protection.get("repeated_reason_counts", {}),
         },
     )
     sample_csv = effective_sample_csv
@@ -327,7 +328,8 @@ def main() -> int:
         "persistent_profile_dir": str(profile_dir) if profile_dir is not None else "",
         "attempt_ledger_path": str(attempt_ledger_path) if attempt_ledger_path is not None else "",
         "retry_protection": {
-            "enabled": attempt_ledger_path is not None,
+            "enabled": False,
+            "mode": "annotate_only",
             "max_attempts_per_doi": int(args.max_attempts_per_doi),
             "retry_cooldown_hours": int(args.retry_cooldown_hours),
             "allow_success_reruns": bool(args.allow_success_reruns),
@@ -338,6 +340,7 @@ def main() -> int:
             "skipped_total": len(skipped_sample_rows),
             "action_counts": retry_protection["action_counts"],
             "skip_reason_counts": retry_protection["skip_reason_counts"],
+            "repeated_reason_counts": retry_protection.get("repeated_reason_counts", {}),
         },
         "environment_overrides": {
             "CHROME_PATH": str(os.environ.get("CHROME_PATH", "")).strip(),
@@ -378,8 +381,7 @@ def main() -> int:
 
     seed_check_failed = False
     source_sample_empty = len(source_sample_rows) == 0
-    all_rows_skipped = len(effective_sample_rows) == 0
-    if args.runtime_preset == "linux_cli_seeded" and not all_rows_skipped:
+    if args.runtime_preset == "linux_cli_seeded" and not source_sample_empty:
         if profile_dir is None:
             seed_check_failed = True
             execution_manifest["seed_profile_check"] = {
@@ -424,15 +426,6 @@ def main() -> int:
                 "reason": "empty_source_sample",
             }
         execution_manifest["status"] = "blocked_empty_source_sample"
-    elif args.execute and all_rows_skipped:
-        for stage_name in ("landing", "download", "summarize"):
-            execution_manifest["executed_commands"][stage_name] = {
-                "ok": False,
-                "returncode": None,
-                "skipped": True,
-                "reason": "all_rows_skipped_retry_protection",
-            }
-        execution_manifest["status"] = "skipped_retry_protection_all_rows"
     elif args.execute and not seed_check_failed:
         if not args.skip_landing:
             execution_manifest["executed_commands"]["landing"] = run_command(
@@ -478,7 +471,6 @@ def main() -> int:
     if args.execute and execution_manifest.get("status") not in {
         "blocked_seed_profile",
         "blocked_empty_source_sample",
-        "skipped_retry_protection_all_rows",
     }:
         stage_results = [
             payload
@@ -495,7 +487,7 @@ def main() -> int:
         if source_sample_empty:
             execution_manifest["status"] = "prepared_only_empty_source_sample"
         else:
-            execution_manifest["status"] = "prepared_only_all_rows_skipped" if all_rows_skipped else "prepared_only"
+            execution_manifest["status"] = "prepared_only"
 
     if args.execute and merged_csv.exists() and effective_sample_rows:
         execution_manifest["attempt_ledger_append"] = append_attempt_ledger(

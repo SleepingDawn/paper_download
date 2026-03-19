@@ -1528,3 +1528,68 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - 이번 patch는 "context bootstrap을 제거"한 것이 아니라, "initial first-contact ordering에서 뒤로 미룬 것"이다.
   - local 검증 기준으로는 strategy branch가 의도대로 바뀌었고, bootstrap challenge surface를 first-contact에서 제거할 수 있었다.
   - 다만 Linux server/IP에서 실제 `context_challenge` 빈도가 줄어드는지는 아직 별도 fresh DOI 검증이 필요하다 `[blocked]`.
+
+## 5.18 Retry protection explicit blocking 제거
+
+- 배경
+  - Linux server 실험에서 가장 자주 나온 launcher 상태 중 하나가
+    - `status=skipped_retry_protection_all_rows`
+  - 대표 로그:
+    - `retry_protection={"enabled": true, "max_attempts_per_doi": 1, "retry_cooldown_hours": 72, "allow_success_reruns": false, "allow_hard_block_reruns": false, "allow_repeated_attempts": false, "source_sample_total": 2, "effective_sample_total": 0, "skipped_total": 2, "action_counts": {"skipped_due_to_retry_protection": 2}, "skip_reason_counts": {"max_attempts_reached": 1, "prior_hard_block_exists": 1}}`
+  - 이 상태는 실제 AIP landing branch 평가 전에 sample 자체를 비워 버렸고, 결과적으로 strategy 개선 여부보다 "실행이 됐는가"가 먼저 막혔다.
+- 원인 코드
+  - `experiment/linux_headless_suite_lib.py`
+    - `apply_retry_protection()`
+    - 아래 이유들에서 `keep_row=False`로 row를 sample에서 제거하고 있었다.
+      - `prior_success_exists`
+      - `prior_hard_block_exists`
+      - `max_attempts_reached`
+      - `cooldown_active`
+  - `experiment/run_linux_headless_suite.py`
+    - `effective_sample_rows = retry_protection["allowed_rows"]`
+    - `skipped_sample_rows = retry_protection["skipped_rows"]`
+    - `len(effective_sample_rows) == 0`이면
+      - `status=skipped_retry_protection_all_rows`
+      - stage reason `all_rows_skipped_retry_protection`
+      로 종료했다.
+- 적용 패치
+  - `experiment/linux_headless_suite_lib.py`
+    - retry protection을 blocking에서 annotate-only로 변경
+    - 반복/성공/하드블록/쿨다운 이력은 여전히
+      - `retry_protection_action`
+      - `retry_protection_reason`
+      로 기록하지만
+    - row를 sample에서 제거하지 않도록 수정
+    - `skipped_rows=[]` 고정
+    - 새 요약 필드:
+      - `repeated_reason_counts`
+  - `experiment/run_linux_headless_suite.py`
+    - execution manifest의 `retry_protection`을
+      - `enabled=false`
+      - `mode=annotate_only`
+      로 표기
+    - `skipped_retry_protection_all_rows` 및 `all_rows_skipped_retry_protection` 종료 경로 제거
+    - source sample이 비지 않은 한 seed check와 실험 stage가 실제로 진행되도록 변경
+- 검증
+  - 문법 검증:
+    - `python -m py_compile experiment/linux_headless_suite_lib.py experiment/run_linux_headless_suite.py experiment/build_linux_headless_suite.py experiment/summarize_linux_headless_suite.py`
+  - 함수 단위 smoke:
+    - prior attempt 3회, success 1회, hard block 1회인 DOI를 넣고 `apply_retry_protection()` 호출
+    - 결과:
+      - `allowed=1`
+      - `skipped=0`
+      - `action=repeated_attempt`
+      - `reason=prior_success_exists`
+      - `repeated_reason_counts={"prior_success_exists": 1}`
+- before vs after
+  - before:
+    - 반복 DOI는 `effective_sample_total=0`이 될 수 있었고
+    - suite 자체가 실행되지 않았다.
+  - after:
+    - 같은 DOI도 sample에 남고
+    - 이전 이력은 annotate-only로 남는다.
+    - 즉 "연속 시도 차단"은 제거되고 "연속 시도 기록"만 남는다.
+- 배운 점
+  - 현재 AIP 문제는 first-contact challenge 자체가 핵심인데, retry protection이 실험 관찰을 더 자주 막고 있었다.
+  - attempt ledger는 진단용 metadata로는 유용하지만, row exclusion policy로 쓰면 AIP 원인 검증을 방해한다.
+  - candidate selection에서 prior attempt를 정렬 키로 쓰는 부분은 남아 있다. 이건 차단이 아니라 우선순위 편향이므로 이번 변경 범위에서는 유지했다.

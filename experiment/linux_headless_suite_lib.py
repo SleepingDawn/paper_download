@@ -70,7 +70,6 @@ PRIOR_ATTEMPT_STATE_REUSED = "reused"
 RETRY_ACTION_FIRST_ATTEMPT = "first_attempt"
 RETRY_ACTION_REPEATED_ATTEMPT = "repeated_attempt"
 RETRY_ACTION_CONTROLLED_RETRY = "controlled_retry"
-RETRY_ACTION_SKIPPED = "skipped_due_to_retry_protection"
 ATTEMPT_SUCCESS_BUCKETS = {
     "publisher_native_download",
     "scihub_assisted_download",
@@ -820,9 +819,8 @@ def apply_retry_protection(
 ) -> Dict[str, Any]:
     now_utc = datetime.now(timezone.utc)
     allowed_rows: List[Dict[str, Any]] = []
-    skipped_rows: List[Dict[str, Any]] = []
     action_counts = Counter()
-    skip_reason_counts = Counter()
+    repeated_reason_counts = Counter()
 
     for row in rows:
         prior = prior_attempt_summary(row, attempt_index)
@@ -848,26 +846,17 @@ def apply_retry_protection(
 
         action = RETRY_ACTION_FIRST_ATTEMPT
         reason = "unseen_doi"
-        keep_row = True
         if prior_attempt_count > 0:
             action = RETRY_ACTION_REPEATED_ATTEMPT
             reason = "below_retry_threshold"
             if prior_success_count > 0 and not allow_success_reruns:
-                action = RETRY_ACTION_SKIPPED
                 reason = "prior_success_exists"
-                keep_row = False
             elif prior_hard_block_count > 0 and not allow_hard_block_reruns:
-                action = RETRY_ACTION_SKIPPED
                 reason = "prior_hard_block_exists"
-                keep_row = False
             elif max_attempts_per_doi > 0 and prior_attempt_count >= max_attempts_per_doi and not controlled_retry:
-                action = RETRY_ACTION_SKIPPED
                 reason = "max_attempts_reached"
-                keep_row = False
             elif cooldown_active and not controlled_retry:
-                action = RETRY_ACTION_SKIPPED
                 reason = "cooldown_active"
-                keep_row = False
             elif controlled_retry:
                 action = RETRY_ACTION_CONTROLLED_RETRY
                 reason = controlled_reason
@@ -879,19 +868,16 @@ def apply_retry_protection(
             retry_reason=reason,
         )
         action_counts[action] += 1
-        if action == RETRY_ACTION_SKIPPED:
-            skip_reason_counts[reason] += 1
-            skipped_rows.append(enriched)
-        elif keep_row:
-            allowed_rows.append(enriched)
-        else:
-            skipped_rows.append(enriched)
+        if action != RETRY_ACTION_FIRST_ATTEMPT:
+            repeated_reason_counts[reason] += 1
+        allowed_rows.append(enriched)
 
     return {
         "allowed_rows": allowed_rows,
-        "skipped_rows": skipped_rows,
+        "skipped_rows": [],
         "action_counts": dict(sorted((key, int(value)) for key, value in action_counts.items())),
-        "skip_reason_counts": dict(sorted((key, int(value)) for key, value in skip_reason_counts.items())),
+        "skip_reason_counts": {},
+        "repeated_reason_counts": dict(sorted((key, int(value)) for key, value in repeated_reason_counts.items())),
     }
 
 
