@@ -2273,7 +2273,16 @@ def _aip_context_challenge_fresh_tab_enabled() -> bool:
         return False
     if raw in ("1", "true", "yes", "on"):
         return True
-    return (
+    return False
+
+
+def _aip_fresh_tab_recovery_enabled() -> bool:
+    raw = os.getenv("PDF_BROWSER_AIP_FRESH_TAB_RECOVERY", "auto").strip().lower()
+    if raw in ("0", "false", "no", "off"):
+        return False
+    if raw in ("1", "true", "yes", "on"):
+        return True
+    return not (
         resolve_runtime_preset() == RUNTIME_PRESET_LINUX_CLI_SEEDED
         or resolve_browser_execution_env() == EXECUTION_ENV_LINUX_SERVER
     )
@@ -5827,7 +5836,7 @@ def _recover_aip_download_landing(
         seen.add(key)
         targets.append((strategy, candidate))
 
-    allow_fresh_tab_recovery = bool(current_default_kind or unresolved_doi or blank_like)
+    allow_fresh_tab_recovery = bool(current_default_kind or unresolved_doi or blank_like) and _aip_fresh_tab_recovery_enabled()
     baseline_tab_ids = set(getattr(page, "tab_ids", []) or [])
 
     for strategy, target_url in targets[:3]:

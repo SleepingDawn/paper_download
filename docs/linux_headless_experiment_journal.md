@@ -2389,4 +2389,167 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
     - attach race
     중 무엇이 주원인인지는 아직 `[blocked]`
   - `fresh_tab` default가 server에서 도움이 되는지, 아니면 `reuse_page` override가 더 나은지는 실제 micro-run 전까지 `[blocked]`
+
+### 5.25 `aip_stateful_lifecycle_probe_20260319`: lifecycle patch 이후 failure mode는 다시 `challenge_detected`, multi-tab path는 실제로 거의 안 탔다
+
+- 출처
+  - `experiment/results/aip_stateful_lifecycle_probe_20260319_bundle.tar.gz`
+
+- 이번 bundle이 보여준 것
+  - report summary:
+    - `classifier_counts.challenge_detected = 2`
+    - `outcome_counts.FAIL_CAPTCHA = 2`
+  - two DOI records 모두:
+    - `entry_strategy_variant=publisher_canonical_context_deferred_no_article_preflight`
+    - `entry_browser_kind=canonical_article`
+    - `entry_context_bootstrap_attempted=false`
+    - `entry_context_bootstrap_outcome=deferred_initial_bootstrap`
+    - `probe_page_mode_effective=fresh_tab`
+    - `controller_page_reused=false`
+    - `probe_open_succeeded=true`
+    - `page_disconnect_observed=false`
+    - `runtime_probe_installed=true`
+    - `network_listener_started=true`
+    - `tab_transition_count=0`
+  - final URLs:
+    - both canonical article URL에 바로 `__cf_chl_rt_tk=...`가 붙었다.
+  - fail HTML:
+    - `<title>Just a moment...</title>`
+    - `/cdn-cgi/challenge-platform`
+    - `window._cf_chl_opt`
+    - `<noscript>Enable JavaScript and cookies to continue</noscript>`
+
+- 최신 진단
+  - 이번 run은 `5.23`의 disconnect run과 달리,
+    - lifecycle/attach는 이번 attempt에서 **충분히 살아 있었다.**
+    - failure는 다시 **first-contact challenge/CAPTCHA**다.
+  - confirmed fact:
+    - browser/page survived long enough to finish navigation and runtime diagnostics
+    - challenge shell이 fully rendered 되었다
+  - inference:
+    - `5.24` lifecycle patch는 disconnect 가설을 분리하는 데는 유효했지만,
+      이번 run의 direct blocker는 challenge pressure였다.
+
+- actual runtime path reconstruction
+  - navigation chain:
+    - `pre_reset -> aip_resolve -> doi_get`
+  - browser-open path:
+    - `doi.org`는 browser에서 직접 열지 않고
+    - pre-resolve 후 canonical AIP article URL을 same-tab navigation으로 열었다
+  - bootstrap:
+    - journal-root bootstrap은 attempted되지 않았다
+  - recovery:
+    - challenge가 즉시 감지되어 no-retry
+    - tab recovery / fallback path는 사실상 타지 않았다
+
+- "8 tabs" 관련 판단
+  - latest bundle 기준으로는
+    - `8 tabs` 또는 유사한 multi-tab fallback path가 **실제로 exercised되지 않았다.**
+  - evidence:
+    - `tab_transition_count=0`
+    - `entry_context_bootstrap_attempted=false`
+    - `entry_navigation_route=same_tab`
+    - `probe_open_attempts=1`
+    - `probe_page_mode_effective=fresh_tab`
+  - 해석:
+    - 이번 run에서 실제 tab creation은
+      - fresh browser의 controller page
+      - plus one fresh probe tab
+      정도였을 가능성이 가장 높다.
+    - exact peak tab count는
+      - runtime diagnostics에서 `tab_ids=[]`, `total_tab_count=0`로 나와
+      - DrissionPage tab enumeration quirk 때문에 정확히는 `[blocked]`
+    - 그러나 적어도 이번 AIP challenge path는
+      - 8-tab strategy가 current bottleneck이 아니고
+      - challenge가 first-contact에서 이미 붙어서
+        그 이후 tab-heavy fallback이 발동할 기회조차 없었다.
+
+- memory/time inefficiency 판단
+  - 이번 run에서 observable cost:
+    - 각 DOI `attempt_elapsed_ms ~= 21.7s`
+    - second DOI는 pacing wait `~16.3s`
+  - `[blocked]`
+    - process RSS / browser memory / tab별 cost는 bundle에 없다
+  - 결론:
+    - exact memory inefficiency는 정량화 불가 `[blocked]`
+    - 하지만 latest run 기준으로는 "too many tabs"보다
+      "challenge를 유발하는 first-contact setup surface"가 더 직접적 문제다.
+
+- 이번 턴 patch hypothesis
+  - latest bundle은
+    - fresh tab creation
+    - pre-reset
+    - listener install
+    - runtime probe install
+    가 있어도 challenge를 피하지 못했다.
+  - 따라서 next patch는
+    - lifecycle보다
+    - **first-contact surface reduction**
+    를 우선해야 한다.
+
+- 적용한 변경
+  - `landing_access_repro.py`
+    - AIP stateful Linux/server 기본 probe page mode를
+      - `fresh_tab`
+        -> `reuse_page`
+      로 되돌림
+    - `PDF_BROWSER_AIP_LOW_PRESSURE_FIRST_CONTACT` 추가
+      - auto default:
+        - AIP + stateful + linux_cli_seeded + linux_server + first attempt에서 enabled
+    - low-pressure first-contact에서는
+      - `pre_reset` skip
+      - network listener skip
+      - runtime error probe install skip
+      - direct-PDF handoff capture skip
+      - 즉 first browser contact를 canonical article same-tab navigation 하나로 최대한 단순화
+    - new diagnostics:
+      - `aip_first_contact_policy`
+      - `aip_low_pressure_first_contact`
+      - `tab_lifecycle_sequence`
+      - `peak_tab_count_observed`
+      - `reduced_tab_path_used`
+  - `tools_exp.py`
+    - `PDF_BROWSER_AIP_CONTEXT_CHALLENGE_FRESH_TAB` auto default -> disabled
+    - `PDF_BROWSER_AIP_FRESH_TAB_RECOVERY` helper 추가
+    - AIP fresh-tab recovery auto default -> disabled on linux server/runtime
+    - rationale:
+      - challenge가 이미 발생한 뒤 tab을 더 여는 것은 current evidence상 도움이 없다
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary에 위 low-pressure / reduced-tab diagnostics 추가
+
+- patch verification
+  - `python -m py_compile landing_access_repro.py tools_exp.py experiment/summarize_linux_headless_suite.py`
+    - passed
+  - branch smoke:
+    - stateful AIP Linux condition에서
+      - `effective_mode_default=reuse_page`
+      - `low_pressure_first_contact=True`
+      - `context_challenge_fresh_tab_auto=False`
+      - `fresh_tab_recovery_auto=False`
+    - override:
+      - `PDF_BROWSER_LANDING_AIP_STATEFUL_FRESH_TAB=1` -> `fresh_tab`
+
+- 배운 점
+  - 이번 bundle은 "tab 최적화"보다 "first-contact challenge 억제"가 우선이라는 점을 더 강하게 보여준다.
+  - multi-tab recovery는 코드에 존재하지만,
+    latest AIP challenge path에서는 실제로 거의 타지 않았다.
+  - 따라서 다음 실험은
+    - lower-pressure first-contact가 challenge incidence를 줄이는지
+    - reduced-tab path가 실제 runtime에 탔는지
+    를 먼저 봐야 한다.
+
+- 다음 검증에서 꼭 볼 것
+  - `aip_first_contact_policy=aip_low_pressure_minimal_surface`
+  - `aip_low_pressure_first_contact=true`
+  - `probe_page_mode_effective=reuse_page`
+  - `reduced_tab_path_used=true`
+  - `peak_tab_count_observed`
+  - `challenge_detected`
+  - `entry_context_bootstrap_attempted`
+  - `tab_transition_count`
+
+- 아직 불확실한 것 `[blocked]`
+  - lower-pressure first-contact가 실제로 challenge incidence를 줄이는지 `[blocked]`
+  - this server/IP에서 compliant browser landing만으로 AIP challenge를 consistently 피할 수 있는지 `[blocked]`
+  - current AIP canonical article path 말고 더 나은 compliant first-contact URL ordering이 실제로 있는지 `[blocked]`
   - 따라서 현재 AIP 진단은 다시 challenge-only narrative로 단순화하면 안 된다.

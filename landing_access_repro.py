@@ -289,8 +289,50 @@ def _resolve_effective_probe_page_mode(
             return PROBE_PAGE_MODE_FRESH_TAB
         if raw in ("0", "false", "no", "off"):
             return PROBE_PAGE_MODE_REUSE
-        return PROBE_PAGE_MODE_FRESH_TAB
+        return PROBE_PAGE_MODE_REUSE
     return PROBE_PAGE_MODE_REUSE
+
+
+def _aip_low_pressure_first_contact_enabled() -> bool:
+    raw = os.getenv("PDF_BROWSER_AIP_LOW_PRESSURE_FIRST_CONTACT", "auto").strip().lower()
+    if raw in ("0", "false", "no", "off"):
+        return False
+    if raw in ("1", "true", "yes", "on"):
+        return True
+    return (
+        resolve_runtime_preset() == "linux_cli_seeded"
+        and resolve_browser_execution_env() == "linux_server"
+    )
+
+
+def _use_aip_low_pressure_first_contact(
+    record: Dict[str, Any],
+    probe_page_meta: Dict[str, Any],
+    *,
+    attempt_idx: int,
+) -> bool:
+    if attempt_idx != 0:
+        return False
+    doi = str(record.get("doi") or "").strip().lower()
+    if not doi.startswith(AIP_DOI_PREFIXES):
+        return False
+    if str(probe_page_meta.get("browser_session_mode") or "") != "stateful":
+        return False
+    return _aip_low_pressure_first_contact_enabled()
+
+
+def _compact_tab_snapshot(stage: str, snapshot: Dict[str, Any]) -> Dict[str, Any]:
+    payload = dict(snapshot or {})
+    return {
+        "stage": str(stage or ""),
+        "browser_process_alive": bool(payload.get("browser_process_alive")),
+        "page_access_ok": bool(payload.get("page_access_ok")),
+        "active_tab_id": str(payload.get("active_tab_id") or ""),
+        "total_tab_count": int(payload.get("total_tab_count", 0) or 0),
+        "current_url": str(payload.get("current_url") or "")[:240],
+        "page_title": str(payload.get("page_title") or "")[:160],
+        "page_error": str(payload.get("page_error") or "")[:200],
+    }
 
 
 def _run_chrome_smoke(chrome_path: str, profile_root: str) -> Dict[str, str]:
@@ -2792,6 +2834,9 @@ def _save_probe_artifacts(
             "controller_create_attempts": int(record.get("controller_create_attempts", 0) or 0),
             "controller_lifecycle_before_open": record.get("controller_lifecycle_before_open", {}),
             "probe_lifecycle_after_open": record.get("probe_lifecycle_after_open", {}),
+            "tab_lifecycle_sequence": record.get("tab_lifecycle_sequence", []),
+            "peak_tab_count_observed": int(record.get("peak_tab_count_observed", 0) or 0),
+            "reduced_tab_path_used": bool(record.get("reduced_tab_path_used")),
             "scheduled_start_ms": record.get("scheduled_start_ms", 0),
             "actual_start_ms": record.get("actual_start_ms", 0),
             "pacing_wait_ms": record.get("pacing_wait_ms", 0),
@@ -2811,6 +2856,8 @@ def _save_probe_artifacts(
             "dom_signature": record.get("dom_signature", ""),
             "html_len": int(record.get("html_len", 0) or 0),
             "challenge_detected": bool(record.get("challenge_detected")),
+            "aip_first_contact_policy": record.get("aip_first_contact_policy", ""),
+            "aip_low_pressure_first_contact": bool(record.get("aip_low_pressure_first_contact")),
             "page_disconnect_observed": bool(record.get("page_disconnect_observed")),
             "page_disconnect_stage": record.get("page_disconnect_stage", ""),
             "browser_process_id": int(record.get("browser_process_id", 0) or 0),
@@ -2970,6 +3017,8 @@ def _probe_one(
     page_disconnect_observed = False
     page_disconnect_stage = ""
     lifecycle_stage = "attempt_start"
+    aip_first_contact_policy = "default"
+    aip_low_pressure_first_contact = False
 
     for attempt_idx in range(max(1, int(max_nav_attempts))):
         attempt_started = time.perf_counter()
@@ -2986,30 +3035,50 @@ def _probe_one(
         try:
             initial_download_files: List[str] = []
             worker_download_dir = str(probe_page_meta.get("worker_download_dir") or "").strip()
-            if worker_download_dir:
+            aip_low_pressure_first_contact = _use_aip_low_pressure_first_contact(
+                record,
+                probe_page_meta,
+                attempt_idx=attempt_idx,
+            )
+            aip_first_contact_policy = (
+                "aip_low_pressure_minimal_surface"
+                if aip_low_pressure_first_contact
+                else "default"
+            )
+            attempt_timing["aip_first_contact_policy"] = aip_first_contact_policy
+            attempt_timing["aip_low_pressure_first_contact"] = bool(aip_low_pressure_first_contact)
+            if worker_download_dir and not aip_low_pressure_first_contact:
                 try:
                     initial_download_files = sorted(_get_current_files(worker_download_dir))
                 except Exception:
                     initial_download_files = []
             _prune_extra_tabs(page)
-            try:
-                lifecycle_stage = "pre_reset"
-                reset_started = time.perf_counter()
-                page.get("about:blank", retry=0, interval=0.2, timeout=5)
-                _append_nav_step(navigation_chain, "pre_reset", "about:blank", page.url or "about:blank")
-                attempt_timing["pre_reset_ms"] = int((time.perf_counter() - reset_started) * 1000)
-            except Exception:
-                attempt_timing["pre_reset_ms"] = int((time.perf_counter() - attempt_started) * 1000)
-                attempt_timing["pre_reset_error"] = "pre_reset_failed"
-            lifecycle_stage = "listener_install"
-            listener_started = _start_attempt_listener(page)
-            attempt_timing["network_listener"] = bool(listener_started)
-            if not listener_started:
-                attempt_timing["network_listener_error"] = "listener_start_failed"
-            lifecycle_stage = "runtime_probe_install"
-            attempt_timing["runtime_probe_installed"] = bool(_install_runtime_error_probe(page))
-            if not attempt_timing["runtime_probe_installed"]:
-                attempt_timing["runtime_probe_error"] = "runtime_probe_install_failed"
+            listener_started = False
+            if aip_low_pressure_first_contact:
+                attempt_timing["pre_reset_skipped"] = "low_pressure_first_contact"
+                attempt_timing["network_listener"] = False
+                attempt_timing["network_listener_error"] = "skipped_low_pressure_first_contact"
+                attempt_timing["runtime_probe_installed"] = False
+                attempt_timing["runtime_probe_error"] = "skipped_low_pressure_first_contact"
+            else:
+                try:
+                    lifecycle_stage = "pre_reset"
+                    reset_started = time.perf_counter()
+                    page.get("about:blank", retry=0, interval=0.2, timeout=5)
+                    _append_nav_step(navigation_chain, "pre_reset", "about:blank", page.url or "about:blank")
+                    attempt_timing["pre_reset_ms"] = int((time.perf_counter() - reset_started) * 1000)
+                except Exception:
+                    attempt_timing["pre_reset_ms"] = int((time.perf_counter() - attempt_started) * 1000)
+                    attempt_timing["pre_reset_error"] = "pre_reset_failed"
+                lifecycle_stage = "listener_install"
+                listener_started = _start_attempt_listener(page)
+                attempt_timing["network_listener"] = bool(listener_started)
+                if not listener_started:
+                    attempt_timing["network_listener_error"] = "listener_start_failed"
+                lifecycle_stage = "runtime_probe_install"
+                attempt_timing["runtime_probe_installed"] = bool(_install_runtime_error_probe(page))
+                if not attempt_timing["runtime_probe_installed"]:
+                    attempt_timing["runtime_probe_error"] = "runtime_probe_install_failed"
 
             step_timeout = _remaining_budget(deadline, timeout_sec, floor_sec=5.0)
             entry_url = ""
@@ -3277,15 +3346,16 @@ def _probe_one(
                         **immediate_eval,
                     }
                     attempt_timing["powdermat_early_success_url"] = immediate_url
-            direct_pdf_path, direct_pdf_event = _capture_direct_pdf_handoff(
-                record=record,
-                probe_page_meta=probe_page_meta,
-                artifact_dir=artifact_dir,
-                initial_download_files=initial_download_files,
-                timeout_s=0,
-                page=page,
-                listener_timeout_s=0.4,
-            )
+            if not aip_low_pressure_first_contact:
+                direct_pdf_path, direct_pdf_event = _capture_direct_pdf_handoff(
+                    record=record,
+                    probe_page_meta=probe_page_meta,
+                    artifact_dir=artifact_dir,
+                    initial_download_files=initial_download_files,
+                    timeout_s=0,
+                    page=page,
+                    listener_timeout_s=0.4,
+                )
             if direct_pdf_path or direct_pdf_event:
                 final_url = page.url or nav_url or doi_url
                 title = page.title or ""
@@ -3335,7 +3405,7 @@ def _probe_one(
                 final_url = page.url or final_url or nav_url or doi_url
                 title = page.title or title
                 html = page.html or html
-            if not direct_pdf_path and not direct_pdf_event:
+            if not aip_low_pressure_first_contact and not direct_pdf_path and not direct_pdf_event:
                 direct_pdf_path, direct_pdf_event = _capture_direct_pdf_handoff(
                     record=record,
                     probe_page_meta=probe_page_meta,
@@ -4017,6 +4087,26 @@ def _probe_one(
     entry_preflight_issue_overridden = bool(entry_preflight_issue) and classifier_state in SUCCESS_STATES
     last_attempt_timing = dict((timing_breakdown.get("attempts") or [])[-1] or {}) if timing_breakdown.get("attempts") else {}
     final_tab_state = dict(runtime_diagnostics.get("tab_state") or {})
+    tab_lifecycle_sequence = [
+        _compact_tab_snapshot("controller_before_open", dict(probe_page_meta.get("controller_lifecycle_before_open") or {})),
+        _compact_tab_snapshot("probe_after_open", dict(probe_page_meta.get("probe_lifecycle_after_open") or {})),
+        {
+            "stage": "final_runtime",
+            "browser_process_alive": bool(runtime_diagnostics.get("browser_process_alive")),
+            "page_access_ok": bool(runtime_diagnostics.get("page_access_ok")),
+            "active_tab_id": str(final_tab_state.get("active_tab_id") or ""),
+            "total_tab_count": int(final_tab_state.get("total_tab_count", 0) or 0),
+            "current_url": str(runtime_diagnostics.get("current_url") or "")[:240],
+            "page_title": str(runtime_diagnostics.get("page_title") or "")[:160],
+            "page_error": str(runtime_diagnostics.get("page_probe_error") or "")[:200],
+        },
+    ]
+    peak_tab_count_observed = max(int(item.get("total_tab_count", 0) or 0) for item in tab_lifecycle_sequence)
+    reduced_tab_path_used = bool(
+        str(probe_page_meta.get("probe_page_mode_effective") or probe_page_meta.get("probe_page_mode") or "") == PROBE_PAGE_MODE_REUSE
+        and not bool(entry_context_bootstrap_attempted)
+        and not len(tab_transition_events)
+    )
 
     result = {
         "doi": doi,
@@ -4057,7 +4147,12 @@ def _probe_one(
         "probe_page_fresh_tab": bool(probe_page_meta.get("fresh_tab")),
         "tab_transition_events": list(tab_transition_events),
         "tab_transition_count": len(tab_transition_events),
+        "tab_lifecycle_sequence": tab_lifecycle_sequence,
+        "peak_tab_count_observed": peak_tab_count_observed,
+        "reduced_tab_path_used": reduced_tab_path_used,
         "challenge_detected": bool(classifier_state == STATE_CHALLENGE_DETECTED or issue in (OUT_FAIL_BLOCK, OUT_FAIL_CAPTCHA)),
+        "aip_first_contact_policy": aip_first_contact_policy,
+        "aip_low_pressure_first_contact": bool(aip_low_pressure_first_contact),
         "entry_strategy": str(entry_plan.get("entry_strategy") or ""),
         "entry_strategy_variant": str(entry_plan.get("entry_strategy_variant") or ""),
         "entry_redirect_probe_mode": str(entry_plan.get("entry_redirect_probe_mode") or ""),
