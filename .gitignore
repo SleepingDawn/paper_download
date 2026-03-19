@@ -14,6 +14,7 @@ __pycache__/
 # 다운로드된 데이터 파일 제외 (필요시)
 downloaded_files/
 *.tar
+*.tar.gz
 *.zip
 *.pdf
 *.png
@@ -21,6 +22,9 @@ downloaded_files/
 # 로그 파일 제외
 logs/
 *.log
+
+# 실험 결과 bundle 제외
+experiment/results/*_bundle.tar.gz
 
 # 서버별 Linux 실험 환경값
 config/linux_server.env

@@ -198,19 +198,49 @@ def landing_bucket_from_record(record: Dict[str, Any]) -> str:
 def landing_record_from_download_row(row: Dict[str, Any]) -> Dict[str, Any]:
     if not row:
         return {}
+    landing_attempted = parse_bool(row.get("landing_attempted"))
+    landing_success = parse_bool(row.get("landing_success"))
+    landing_url = str(row.get("landing_url") or "")
+    landing_title = str(row.get("landing_title") or "")
+    screenshot_path = str(row.get("landing_final_screenshot_path") or "")
+    html_path = str(row.get("landing_final_html_path") or "")
+    failure_note_path = str(row.get("landing_failure_debug_note_path") or "")
     record = {
         "doi": row.get("doi", ""),
-        "landing_attempted": parse_bool(row.get("landing_attempted")),
-        "landing_success": parse_bool(row.get("landing_success")),
+        "landing_attempted": landing_attempted,
+        "landing_success": landing_success,
+        "landing_observed": (
+            parse_bool(row.get("landing_observed"))
+            or landing_attempted
+            or landing_success
+            or has_text(landing_url)
+            or has_text(landing_title)
+            or has_text(screenshot_path)
+            or has_text(html_path)
+        ),
         "classifier_state": str(row.get("landing_state") or ""),
         "outcome": str(row.get("landing_state") or ""),
         "reason_codes": parse_json_list(row.get("download_evidence")),
-        "resolved_url": str(row.get("landing_url") or ""),
-        "final_title": str(row.get("landing_title") or ""),
-        "final_screenshot_path": str(row.get("landing_final_screenshot_path") or ""),
-        "final_html_path": str(row.get("landing_final_html_path") or ""),
+        "resolved_url": landing_url,
+        "final_title": landing_title,
+        "final_screenshot_path": screenshot_path,
+        "final_html_path": html_path,
         "download_status": str(row.get("result") or ""),
         "download_method": str(row.get("download_method") or ""),
+        "download_attempted": parse_bool(row.get("download_attempted")),
+        "download_strategy_used": str(row.get("download_strategy_used") or ""),
+        "download_attempt_history": parse_json_list(row.get("download_attempt_history")),
+        "extracted_resource_url": str(row.get("download_extracted_resource_url") or ""),
+        "extracted_resource_source": str(row.get("download_extracted_resource_source") or ""),
+        "failure_stage": str(row.get("failure_stage") or ""),
+        "screenshot_written": parse_bool(row.get("screenshot_written")) or has_text(screenshot_path),
+        "html_written": parse_bool(row.get("html_written")) or has_text(html_path),
+        "failure_evidence_written": (
+            parse_bool(row.get("failure_evidence_written"))
+            or has_text(screenshot_path)
+            or has_text(html_path)
+            or has_text(failure_note_path)
+        ),
         "download_source_category": str(row.get("download_source_category") or ""),
         "download_result_stage": str(row.get("download_result_stage") or ""),
         "browser_session_source": str(row.get("browser_session_source") or ""),
@@ -534,6 +564,7 @@ def main() -> int:
                 "publication_year": sample.get("publication_year", ""),
                 "landing_probe_bucket": landing_bucket,
                 "landing_probe_attempted": landing.get("landing_attempted", ""),
+                "landing_observed": landing.get("landing_observed", ""),
                 "landing_probe_success_flag": landing.get("landing_success", ""),
                 "landing_probe_effective_success": landing.get("effective_success", ""),
                 "landing_probe_effective_success_reason": landing.get("effective_success_reason", ""),
@@ -644,6 +675,19 @@ def main() -> int:
                 "landing_reclassification_reason": landing.get("reclassification_reason", ""),
                 "download_status": download.get("download_status", ""),
                 "download_method": download.get("download_method", ""),
+                "download_attempted": download.get("download_attempted", ""),
+                "download_strategy_used": download.get("download_strategy_used", ""),
+                "download_attempt_history": json.dumps(
+                    list(download.get("download_attempt_history") or []), ensure_ascii=False
+                ),
+                "download_extracted_resource_url": download.get("download_extracted_resource_url", ""),
+                "download_extracted_resource_source": download.get("download_extracted_resource_source", ""),
+                "failure_stage": download.get("failure_stage", ""),
+                "screenshot_written": download.get("screenshot_written") or landing.get("screenshot_written", ""),
+                "html_written": download.get("html_written") or landing.get("html_written", ""),
+                "failure_evidence_written": (
+                    download.get("failure_evidence_written") or landing.get("failure_evidence_written", "")
+                ),
                 "download_source_category": download.get("download_source_category", ""),
                 "download_result_reason": download.get("download_result_reason", ""),
                 "download_result_stage": download.get("download_result_stage", ""),
@@ -797,6 +841,7 @@ def main() -> int:
         "publication_year",
         "landing_probe_bucket",
         "landing_probe_attempted",
+        "landing_observed",
         "landing_probe_success_flag",
         "landing_probe_effective_success",
         "landing_probe_effective_success_reason",
@@ -903,6 +948,15 @@ def main() -> int:
         "landing_reclassification_reason",
         "download_status",
         "download_method",
+        "download_attempted",
+        "download_strategy_used",
+        "download_attempt_history",
+        "download_extracted_resource_url",
+        "download_extracted_resource_source",
+        "failure_stage",
+        "screenshot_written",
+        "html_written",
+        "failure_evidence_written",
         "download_source_category",
         "download_result_reason",
         "download_result_stage",

@@ -68,6 +68,16 @@ def _is_ssrn_doi(doi: Any) -> bool:
     return str(doi or "").strip().lower().startswith("10.2139/ssrn.")
 
 
+def _is_arxiv_doi(doi: Any) -> bool:
+    low = str(doi or "").strip().lower()
+    return low.startswith("10.48550/arxiv.") or low.startswith("arxiv:")
+
+
+def _is_arxiv_like_url(url: Any) -> bool:
+    low = str(url or "").strip().lower()
+    return "arxiv.org/" in low or "doi.org/10.48550/arxiv." in low
+
+
 def _primary_source(work: Dict[str, Any]) -> Dict[str, Any]:
     return ((work.get("primary_location") or {}).get("source") or {})
 
@@ -82,6 +92,24 @@ def _is_repository_like_work(work: Dict[str, Any]) -> bool:
     if doi.startswith("10.5281/zenodo.") or doi.startswith("10.6084/m9.figshare."):
         return True
     return source_type == "repository" or "zenodo" in source_name or "figshare" in source_name
+
+
+def _is_arxiv_like_work(work: Dict[str, Any]) -> bool:
+    doi = str(_extract_work_doi(work) or "").strip().lower()
+    source = _primary_source(work)
+    source_name = str(source.get("display_name") or "").strip().lower()
+    if _is_arxiv_doi(doi):
+        return True
+    if "arxiv" in source_name:
+        return True
+    for loc in _location_candidates(work):
+        if _is_arxiv_like_url(loc.get("landing_page_url")) or _is_arxiv_like_url(loc.get("pdf_url")):
+            return True
+    return False
+
+
+def _is_special_resolution_candidate_work(work: Dict[str, Any]) -> bool:
+    return _is_repository_like_work(work) or _is_arxiv_like_work(work)
 
 
 def _extract_doi_from_url(url: Any) -> Optional[str]:
@@ -261,6 +289,8 @@ def _resolve_preferred_work(work: Dict[str, Any]) -> Tuple[Dict[str, Any], Dict[
     original_doi = _extract_work_doi(work)
     original_work_id = work.get("id")
     original_source_type = str(_primary_source(work).get("type") or "").strip().lower()
+    original_is_repository = _is_repository_like_work(work)
+    original_is_arxiv = _is_arxiv_like_work(work)
     resolution = {
         "original_doi": original_doi,
         "original_openalex_id": original_work_id,
@@ -269,9 +299,10 @@ def _resolve_preferred_work(work: Dict[str, Any]) -> Tuple[Dict[str, Any], Dict[
         "doi_resolution_confidence": 0.0,
         "resolved_from_ssrn": False,
         "resolved_from_repository": False,
+        "resolved_from_arxiv": False,
         "resolved_target_openalex_id": original_work_id,
     }
-    if not _is_repository_like_work(work):
+    if not _is_special_resolution_candidate_work(work):
         return work, resolution
 
     loc_work, loc_conf = _try_resolve_published_work_from_locations(work)
@@ -281,7 +312,8 @@ def _resolve_preferred_work(work: Dict[str, Any]) -> Tuple[Dict[str, Any], Dict[
                 "doi_resolution_method": "location",
                 "doi_resolution_confidence": loc_conf,
                 "resolved_from_ssrn": _is_ssrn_doi(original_doi),
-                "resolved_from_repository": True,
+                "resolved_from_repository": original_is_repository,
+                "resolved_from_arxiv": original_is_arxiv,
                 "resolved_target_openalex_id": loc_work.get("id"),
             }
         )
@@ -294,7 +326,8 @@ def _resolve_preferred_work(work: Dict[str, Any]) -> Tuple[Dict[str, Any], Dict[
                 "doi_resolution_method": "title_match",
                 "doi_resolution_confidence": search_conf,
                 "resolved_from_ssrn": _is_ssrn_doi(original_doi),
-                "resolved_from_repository": True,
+                "resolved_from_repository": original_is_repository,
+                "resolved_from_arxiv": original_is_arxiv,
                 "resolved_target_openalex_id": search_work.get("id"),
             }
         )
@@ -368,10 +401,165 @@ def extract_row(work: Dict[str, Any]) -> Dict[str, Any]:
         "doi_resolution_confidence": resolution.get("doi_resolution_confidence"),
         "resolved_from_ssrn": resolution.get("resolved_from_ssrn"),
         "resolved_from_repository": resolution.get("resolved_from_repository"),
+        "resolved_from_arxiv": resolution.get("resolved_from_arxiv"),
         "original_source_type": resolution.get("original_source_type"),
         "original_openalex_id": resolution.get("original_openalex_id"),
         "resolved_target_openalex_id": resolution.get("resolved_target_openalex_id"),
     }
+
+
+def resolve_download_target_record(input_row: Dict[str, Any]) -> Dict[str, Any]:
+    row = dict(input_row or {})
+    current_doi = str(row.get("doi") or "").strip()
+    publisher = str(row.get("publisher") or "").strip()
+    pdf_url = str(row.get("pdf_url") or "").strip()
+    original_doi = str(row.get("original_doi") or "").strip()
+    resolution_method = str(row.get("doi_resolution_method") or "").strip().lower()
+    resolved_from_ssrn = str(row.get("resolved_from_ssrn") or "").strip().lower() in ("1", "true", "yes", "on")
+    resolved_from_repository = str(row.get("resolved_from_repository") or "").strip().lower() in ("1", "true", "yes", "on")
+    resolved_from_arxiv = str(row.get("resolved_from_arxiv") or "").strip().lower() in ("1", "true", "yes", "on")
+    source_type = str(row.get("original_source_type") or row.get("journal_type") or "").strip().lower()
+    publisher_low = publisher.lower()
+    pdf_url_low = pdf_url.lower()
+    doi_low = current_doi.lower()
+
+    source_class = "standard"
+    if doi_low.startswith("10.1149/ma"):
+        source_class = "ecs_meeting_abstract"
+    elif publisher_low == "spie" and not doi_low and not pdf_url_low:
+        source_class = "spie_proceedings_abstract"
+    elif _is_ssrn_doi(current_doi) or "ssrn" in publisher_low or "ssrn.com" in pdf_url_low or "papers.ssrn.com" in pdf_url_low:
+        source_class = "preprint_ssrn"
+    elif _is_arxiv_doi(current_doi) or publisher_low == "arxiv" or _is_arxiv_like_url(pdf_url):
+        source_class = "preprint_arxiv"
+    elif (
+        doi_low.startswith("10.5281/zenodo.")
+        or doi_low.startswith("10.6084/m9.figshare.")
+        or "zenodo" in publisher_low
+        or "figshare" in publisher_low
+        or "zenodo.org/" in pdf_url_low
+        or "figshare.com/" in pdf_url_low
+        or source_type == "repository"
+    ):
+        source_class = "repository_file_store"
+
+    already_resolved = bool(
+        current_doi
+        and original_doi
+        and current_doi.lower() != original_doi.lower()
+        and resolution_method
+        and resolution_method != "none"
+    )
+
+    result = {
+        "routing_source_class": source_class,
+        "routing_action": "use_input_target",
+        "routing_reason": "",
+        "routing_original_doi": original_doi or current_doi,
+        "routing_effective_doi": current_doi,
+        "routing_resolution_attempted": False,
+        "routing_resolution_succeeded": already_resolved,
+        "routing_resolution_method": resolution_method if already_resolved else "none",
+        "routing_resolution_confidence": float(row.get("doi_resolution_confidence") or 0.0) if already_resolved else 0.0,
+        "routing_skip": False,
+        "routing_skip_reason": "",
+        "routing_effective_publisher": publisher,
+        "routing_effective_pdf_url": pdf_url,
+        "routing_effective_title": str(row.get("title") or "").strip(),
+        "routing_effective_open_access": row.get("open_access"),
+        "routing_original_source_type": source_type,
+        "routing_effective_source_type": str(row.get("journal_type") or source_type or "").strip().lower(),
+        "routing_resolved_from_ssrn": bool(resolved_from_ssrn),
+        "routing_resolved_from_repository": bool(resolved_from_repository),
+        "routing_resolved_from_arxiv": bool(resolved_from_arxiv),
+    }
+    if already_resolved:
+        result["routing_action"] = "reroute_published_doi"
+        result["routing_reason"] = "input_row_already_resolved"
+        return result
+
+    if source_class == "ecs_meeting_abstract":
+        result.update(
+            {
+                "routing_action": "skip_non_target",
+                "routing_skip": True,
+                "routing_skip_reason": "ecs_meeting_abstract_pattern",
+                "routing_reason": "doi_prefix_10.1149_ma",
+            }
+        )
+        return result
+
+    if source_class == "spie_proceedings_abstract":
+        result.update(
+            {
+                "routing_action": "skip_non_target",
+                "routing_skip": True,
+                "routing_skip_reason": "spie_proceedings_abstract_no_doi",
+                "routing_reason": "spie_without_doi_or_pdf_url",
+            }
+        )
+        return result
+
+    if source_class not in {"preprint_ssrn", "preprint_arxiv", "repository_file_store"}:
+        return result
+
+    result["routing_resolution_attempted"] = bool(current_doi)
+    if not current_doi:
+        result["routing_action"] = "fallback_original_target" if source_class.startswith("preprint_") else "skip_non_target"
+        if not source_class.startswith("preprint_"):
+            result["routing_skip"] = True
+            result["routing_skip_reason"] = "repository_non_target_no_doi"
+        result["routing_reason"] = "special_content_without_doi"
+        return result
+
+    work = _openalex_get_single_work_by_doi(current_doi)
+    if work is None:
+        result["routing_action"] = "fallback_original_target" if source_class.startswith("preprint_") else "skip_non_target"
+        if not source_class.startswith("preprint_"):
+            result["routing_skip"] = True
+            result["routing_skip_reason"] = "repository_non_target_unresolved"
+        result["routing_reason"] = "openalex_lookup_failed"
+        return result
+
+    preferred_work, resolution = _resolve_preferred_work(work)
+    resolved_row = extract_row(work)
+    effective_doi = str(resolved_row.get("doi") or current_doi).strip()
+    rerouted = bool(effective_doi and effective_doi.lower() != current_doi.lower())
+    result.update(
+        {
+            "routing_resolution_method": str(resolution.get("doi_resolution_method") or "none"),
+            "routing_resolution_confidence": float(resolution.get("doi_resolution_confidence") or 0.0),
+            "routing_resolved_from_ssrn": bool(resolution.get("resolved_from_ssrn")),
+            "routing_resolved_from_repository": bool(resolution.get("resolved_from_repository")),
+            "routing_resolved_from_arxiv": bool(resolution.get("resolved_from_arxiv")),
+        }
+    )
+    if rerouted:
+        preferred_primary = preferred_work.get("primary_location") or {}
+        preferred_source = preferred_primary.get("source") or {}
+        result.update(
+            {
+                "routing_action": "reroute_published_doi",
+                "routing_reason": "openalex_preferred_work_resolved",
+                "routing_resolution_succeeded": True,
+                "routing_effective_doi": effective_doi,
+                "routing_effective_publisher": str(resolved_row.get("publisher") or publisher).strip(),
+                "routing_effective_pdf_url": str(resolved_row.get("pdf_url") or pdf_url).strip(),
+                "routing_effective_title": str(resolved_row.get("title") or row.get("title") or "").strip(),
+                "routing_effective_open_access": resolved_row.get("open_access"),
+                "routing_effective_source_type": str(
+                    resolved_row.get("journal_type") or preferred_source.get("type") or result["routing_effective_source_type"]
+                ).strip().lower(),
+            }
+        )
+        return result
+
+    result["routing_action"] = "fallback_original_target" if source_class.startswith("preprint_") else "skip_non_target"
+    if not source_class.startswith("preprint_"):
+        result["routing_skip"] = True
+        result["routing_skip_reason"] = "repository_non_target_unresolved"
+    result["routing_reason"] = "published_version_not_found"
+    return result
 
 # 데이터를 모두 가져와서
 # 1. citation_normalized_percentile 기준 상위 1% 논문과 그 외 논문을 구분

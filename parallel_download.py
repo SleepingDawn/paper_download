@@ -286,6 +286,40 @@ def _normalize_reason(reason: Optional[str], http_status: Optional[int] = None) 
     return reason
 
 
+def _write_worker_failure_note(
+    artifact_dir: str,
+    doi: str,
+    *,
+    attempt: int,
+    reason: str,
+    stage: str,
+    evidence: List[str],
+) -> str:
+    root = os.path.join(str(artifact_dir or ""), "logs", "failure_state")
+    if not root:
+        return ""
+    try:
+        os.makedirs(root, exist_ok=True)
+        stem = _sanitize_doi_to_filename(doi or "unknown")
+        out_path = os.path.join(root, f"worker_fail_{stem}_{stage}.json")
+        payload = {
+            "timestamp": int(time.time()),
+            "doi": str(doi or ""),
+            "attempt": int(attempt or 0),
+            "reason": str(reason or ""),
+            "stage": str(stage or ""),
+            "evidence": list(evidence or []),
+            "page_context_available": False,
+            "screenshot_path": "",
+            "html_path": "",
+        }
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        return out_path
+    except Exception:
+        return ""
+
+
 def _append_failed_jsonl(path: str, record: Dict[str, Any], dedupe_keys: set) -> None:
     key = (
         str(record.get("doi")),
@@ -510,6 +544,84 @@ def _prepare_download_records(df: pd.DataFrame) -> List[Dict[str, Any]]:
     return reorder_inputs_for_pacing(records)
 
 
+def _resolve_special_content_routing(row_data: Dict[str, Any]) -> Dict[str, Any]:
+    try:
+        from openalex_search import resolve_download_target_record
+
+        routing = resolve_download_target_record(row_data)
+        if isinstance(routing, dict):
+            return routing
+    except Exception as exc:
+        return {
+            "routing_source_class": "standard",
+            "routing_action": "use_input_target",
+            "routing_reason": f"routing_resolution_error:{exc}",
+            "routing_original_doi": str(row_data.get("doi") or "").strip(),
+            "routing_effective_doi": str(row_data.get("doi") or "").strip(),
+            "routing_resolution_attempted": False,
+            "routing_resolution_succeeded": False,
+            "routing_resolution_method": "none",
+            "routing_resolution_confidence": 0.0,
+            "routing_skip": False,
+            "routing_skip_reason": "",
+            "routing_effective_publisher": str(row_data.get("publisher") or "").strip(),
+            "routing_effective_pdf_url": str(row_data.get("pdf_url") or "").strip(),
+            "routing_effective_title": str(row_data.get("title") or "").strip(),
+            "routing_effective_open_access": row_data.get("open_access"),
+            "routing_original_source_type": str(row_data.get("original_source_type") or "").strip(),
+            "routing_effective_source_type": str(row_data.get("journal_type") or "").strip(),
+            "routing_resolved_from_ssrn": False,
+            "routing_resolved_from_repository": False,
+            "routing_resolved_from_arxiv": False,
+        }
+    return {
+        "routing_source_class": "standard",
+        "routing_action": "use_input_target",
+        "routing_reason": "",
+        "routing_original_doi": str(row_data.get("doi") or "").strip(),
+        "routing_effective_doi": str(row_data.get("doi") or "").strip(),
+        "routing_resolution_attempted": False,
+        "routing_resolution_succeeded": False,
+        "routing_resolution_method": "none",
+        "routing_resolution_confidence": 0.0,
+        "routing_skip": False,
+        "routing_skip_reason": "",
+        "routing_effective_publisher": str(row_data.get("publisher") or "").strip(),
+        "routing_effective_pdf_url": str(row_data.get("pdf_url") or "").strip(),
+        "routing_effective_title": str(row_data.get("title") or "").strip(),
+        "routing_effective_open_access": row_data.get("open_access"),
+        "routing_original_source_type": str(row_data.get("original_source_type") or "").strip(),
+        "routing_effective_source_type": str(row_data.get("journal_type") or "").strip(),
+        "routing_resolved_from_ssrn": False,
+        "routing_resolved_from_repository": False,
+        "routing_resolved_from_arxiv": False,
+    }
+
+
+def _routing_result_fields(routing: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "routing_source_class": str(routing.get("routing_source_class") or "standard"),
+        "routing_action": str(routing.get("routing_action") or "use_input_target"),
+        "routing_reason": str(routing.get("routing_reason") or ""),
+        "routing_original_doi": str(routing.get("routing_original_doi") or ""),
+        "routing_effective_doi": str(routing.get("routing_effective_doi") or ""),
+        "routing_resolution_attempted": bool(routing.get("routing_resolution_attempted")),
+        "routing_resolution_succeeded": bool(routing.get("routing_resolution_succeeded")),
+        "routing_resolution_method": str(routing.get("routing_resolution_method") or "none"),
+        "routing_resolution_confidence": float(routing.get("routing_resolution_confidence") or 0.0),
+        "routing_skip": bool(routing.get("routing_skip")),
+        "routing_skip_reason": str(routing.get("routing_skip_reason") or ""),
+        "routing_effective_publisher": str(routing.get("routing_effective_publisher") or ""),
+        "routing_effective_pdf_url": str(routing.get("routing_effective_pdf_url") or ""),
+        "routing_effective_title": str(routing.get("routing_effective_title") or ""),
+        "routing_effective_source_type": str(routing.get("routing_effective_source_type") or ""),
+        "routing_original_source_type": str(routing.get("routing_original_source_type") or ""),
+        "routing_resolved_from_ssrn": bool(routing.get("routing_resolved_from_ssrn")),
+        "routing_resolved_from_repository": bool(routing.get("routing_resolved_from_repository")),
+        "routing_resolved_from_arxiv": bool(routing.get("routing_resolved_from_arxiv")),
+    }
+
+
 def _download_result_to_pacing_state(result: Dict[str, Any]) -> str:
     if bool(result.get("success")) and bool(result.get("landing_success")):
         return "success_landing"
@@ -536,26 +648,62 @@ def _single_download_attempt(
     headless: bool,
     abort_on_landing_block: bool,
 ) -> Dict[str, Any]:
-    doi = str(row_data.get("doi", "")).strip()
-    result = _result_template(doi=doi, attempt=attempt, mode=mode)
+    raw_doi = str(row_data.get("doi", "")).strip()
+    routing = _resolve_special_content_routing(row_data)
+    effective_row = dict(row_data)
+    if str(routing.get("routing_effective_doi") or "").strip():
+        effective_row["doi"] = str(routing.get("routing_effective_doi") or "").strip()
+    if str(routing.get("routing_effective_publisher") or "").strip():
+        effective_row["publisher"] = str(routing.get("routing_effective_publisher") or "").strip()
+    if str(routing.get("routing_effective_pdf_url") or "").strip():
+        effective_row["pdf_url"] = str(routing.get("routing_effective_pdf_url") or "").strip()
+    if str(routing.get("routing_effective_title") or "").strip():
+        effective_row["title"] = str(routing.get("routing_effective_title") or "").strip()
+    if routing.get("routing_effective_open_access") is not None:
+        effective_row["open_access"] = routing.get("routing_effective_open_access")
 
-    if not doi or doi.lower() == "none" or doi.lower() == "nan":
-        result["reason"] = REASON_FAIL_NO_CANDIDATE
-        result["stage"] = "input"
-        result["evidence"] = ["missing_doi"]
-        return result
+    doi = str(effective_row.get("doi", "")).strip()
+    publisher = normalize_publisher_label(str(effective_row.get("publisher", "")))
+    pdf_url_oa = str(effective_row.get("pdf_url", "")).strip()
+    title = str(effective_row.get("title", "")).strip()
+    result = {
+        **_result_template(doi=doi or raw_doi, attempt=attempt, mode=mode),
+        **_routing_result_fields(routing),
+    }
 
-    publisher = normalize_publisher_label(str(row_data.get("publisher", "")))
-    pdf_url_oa = str(row_data.get("pdf_url", "")).strip()
-    filename = _sanitize_doi_to_filename(doi)
+    filename = _sanitize_doi_to_filename(doi or raw_doi or title or pdf_url_oa or "unknown_target")
     full_path = os.path.join(pdf_save_dir, filename)
     is_ssrn_doi = doi.lower().startswith("10.2139/ssrn.")
 
-    if publisher == "arxiv" or "arxiv.org" in pdf_url_oa.lower() or doi.lower().startswith("10.1149/ma"):
+    if bool(routing.get("routing_skip")):
+        logger = setup_logger(artifact_dir, filename)
+        logger.info(
+            "[Routing] 다운로드 생략: "
+            f"source_class={routing.get('routing_source_class')}, "
+            f"action={routing.get('routing_action')}, "
+            f"reason={routing.get('routing_skip_reason') or routing.get('routing_reason')}, "
+            f"original_doi={routing.get('routing_original_doi')}, "
+            f"effective_doi={routing.get('routing_effective_doi')}"
+        )
+        return {
+            **result,
+            "status": "Skipped",
+            "reason": REASON_SUCCESS,
+            "method": "skip",
+            "success": True,
+            "stage": "routing",
+        }
+
+    if not doi or doi.lower() == "none" or doi.lower() == "nan":
+        if not pdf_url_oa or pdf_url_oa.lower() in ("none", "nan") or len(pdf_url_oa) <= 10:
+            result["reason"] = REASON_FAIL_NO_CANDIDATE
+            result["stage"] = "input"
+            result["evidence"] = ["missing_doi"]
+            return result
+
+    if doi.lower().startswith("10.1149/ma"):
         skip_reason = "policy_skip"
-        if publisher == "arxiv" or "arxiv.org" in pdf_url_oa.lower():
-            skip_reason = "arxiv_managed_outside_pipeline"
-        elif doi.lower().startswith("10.1149/ma"):
+        if doi.lower().startswith("10.1149/ma"):
             skip_reason = "ecs_meeting_abstract_pattern"
         logger = setup_logger(artifact_dir, filename)
         logger.info(f"[Skip] 다운로드 생략: doi={doi}, reason={skip_reason}")
@@ -570,11 +718,22 @@ def _single_download_attempt(
 
     logger = setup_logger(artifact_dir, filename)
     attempt_trace: List[Dict[str, Any]] = []
+    if str(routing.get("routing_action") or "") != "use_input_target":
+        logger.info(
+            "[Routing] "
+            f"source_class={routing.get('routing_source_class')}, "
+            f"action={routing.get('routing_action')}, "
+            f"reason={routing.get('routing_reason')}, "
+            f"original_doi={routing.get('routing_original_doi')}, "
+            f"effective_doi={routing.get('routing_effective_doi')}, "
+            f"resolution_method={routing.get('routing_resolution_method')}, "
+            f"confidence={routing.get('routing_resolution_confidence')}"
+        )
 
     # 사용자 요청: Sci-Hub를 항상 최우선(1순위)으로 시도.
     try:
         scihub_budget = int(os.getenv("SCIHUB_MAX_TOTAL_S", "20"))
-        if try_manual_scihub(doi, pdf_save_dir, logger, max_total_s=scihub_budget):
+        if doi and try_manual_scihub(doi, pdf_save_dir, logger, max_total_s=scihub_budget):
             return {
                 **result,
                 "status": "Success",
@@ -810,7 +969,7 @@ def _single_download_attempt(
 
     if not skip_api_reason:
         try:
-            if download_using_api(doi, pdf_save_dir, publisher, logger):
+            if doi and download_using_api(doi, pdf_save_dir, publisher, logger):
                 return {
                     **result,
                     "status": "Success",
@@ -824,6 +983,15 @@ def _single_download_attempt(
             attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_TIMEOUT_NETWORK, "evidence": [str(e)]})
     else:
         attempt_trace.append({"strategy": "api", "reason": REASON_FAIL_NO_CANDIDATE, "evidence": [skip_api_reason]})
+
+    if not doi:
+        return {
+            **result,
+            "reason": REASON_FAIL_NO_CANDIDATE,
+            "stage": "direct_oa",
+            "evidence": ["missing_doi_after_direct_oa_only_path"] + [json.dumps({"trace": attempt_trace}, ensure_ascii=False)],
+            "domain": _domain_from_url(pdf_url_oa),
+        }
 
     return _run_drission_result()
 
@@ -980,15 +1148,26 @@ def _first_pass(
                 results[idx] = future.result()
             except Exception as e:
                 doi = str(df.iloc[idx].get("doi", ""))
+                row = rows[idx]
+                artifact_dir = oa_artifact_dir if row["open_access"] else ca_artifact_dir
                 tb_text = "".join(traceback.format_exception(type(e), e, e.__traceback__))
                 evidence = [f"{type(e).__name__}: {e}"]
                 if tb_text:
                     evidence.append(f"traceback_tail={tb_text[-2000:]}")
+                failure_note_path = _write_worker_failure_note(
+                    artifact_dir,
+                    doi,
+                    attempt=1,
+                    reason=REASON_FAIL_UNKNOWN,
+                    stage="worker_exception",
+                    evidence=evidence,
+                )
                 results[idx] = {
                     **_result_template(doi=doi, attempt=1, mode="first"),
                     "reason": REASON_FAIL_UNKNOWN,
                     "stage": "worker_exception",
                     "evidence": evidence,
+                    "landing_failure_debug_note_path": failure_note_path,
                 }
 
     return results
@@ -1546,6 +1725,7 @@ def main(
     df["status"] = [str(r.get("status") or _status_text(r)) for r in final_results]
     df["landing_attempted"] = [bool(r.get("landing_attempted")) for r in final_results]
     df["landing_success"] = [bool(r.get("landing_success")) for r in final_results]
+    df["landing_observed"] = [bool(r.get("landing_observed")) for r in final_results]
     df["landing_state"] = [str(r.get("landing_state") or "not_attempted") for r in final_results]
     df["landing_url"] = [str(r.get("landing_url") or "") for r in final_results]
     df["landing_title"] = [str(r.get("landing_title") or "") for r in final_results]
@@ -1581,6 +1761,19 @@ def main(
     df["landing_final_screenshot_path"] = [str(r.get("landing_final_screenshot_path") or "") for r in final_results]
     df["landing_final_html_path"] = [str(r.get("landing_final_html_path") or "") for r in final_results]
     df["landing_failure_debug_note_path"] = [str(r.get("landing_failure_debug_note_path") or "") for r in final_results]
+    df["screenshot_written"] = [bool(r.get("screenshot_written")) for r in final_results]
+    df["html_written"] = [bool(r.get("html_written")) for r in final_results]
+    df["failure_screenshot_written"] = [bool(str(r.get("landing_final_screenshot_path") or "")) for r in final_results]
+    df["failure_html_written"] = [bool(str(r.get("landing_final_html_path") or "")) for r in final_results]
+    df["failure_note_written"] = [bool(str(r.get("landing_failure_debug_note_path") or "")) for r in final_results]
+    df["failure_evidence_written"] = [
+        bool(
+            str(r.get("landing_final_screenshot_path") or "")
+            or str(r.get("landing_final_html_path") or "")
+            or str(r.get("landing_failure_debug_note_path") or "")
+        )
+        for r in final_results
+    ]
     df["landing_page_disconnect_observed"] = [bool(r.get("landing_page_disconnect_observed")) for r in final_results]
     df["landing_page_disconnect_stage"] = [str(r.get("landing_page_disconnect_stage") or "") for r in final_results]
     df["landing_network_listener_started"] = [bool(r.get("landing_network_listener_started")) for r in final_results]
@@ -1686,9 +1879,36 @@ def main(
     df["landing_recovery_strategy"] = [str(r.get("landing_recovery_strategy") or "") for r in final_results]
     df["landing_recovery_outcome"] = [str(r.get("landing_recovery_outcome") or "") for r in final_results]
     df["download_method"] = [str(r.get("method") or "") for r in final_results]
+    df["download_attempted"] = [bool(r.get("download_attempted")) for r in final_results]
+    df["download_strategy_used"] = [str(r.get("download_strategy_used") or "") for r in final_results]
+    df["download_extracted_resource_url"] = [str(r.get("extracted_resource_url") or "") for r in final_results]
+    df["download_extracted_resource_source"] = [str(r.get("extracted_resource_source") or "") for r in final_results]
+    df["download_attempt_history"] = [
+        json.dumps(list(r.get("download_attempt_history") or []), ensure_ascii=False) for r in final_results
+    ]
+    df["routing_source_class"] = [str(r.get("routing_source_class") or "standard") for r in final_results]
+    df["routing_action"] = [str(r.get("routing_action") or "use_input_target") for r in final_results]
+    df["routing_reason"] = [str(r.get("routing_reason") or "") for r in final_results]
+    df["routing_original_doi"] = [str(r.get("routing_original_doi") or "") for r in final_results]
+    df["routing_effective_doi"] = [str(r.get("routing_effective_doi") or "") for r in final_results]
+    df["routing_resolution_attempted"] = [bool(r.get("routing_resolution_attempted")) for r in final_results]
+    df["routing_resolution_succeeded"] = [bool(r.get("routing_resolution_succeeded")) for r in final_results]
+    df["routing_resolution_method"] = [str(r.get("routing_resolution_method") or "none") for r in final_results]
+    df["routing_resolution_confidence"] = [float(r.get("routing_resolution_confidence") or 0.0) for r in final_results]
+    df["routing_skip"] = [bool(r.get("routing_skip")) for r in final_results]
+    df["routing_skip_reason"] = [str(r.get("routing_skip_reason") or "") for r in final_results]
+    df["routing_effective_publisher"] = [str(r.get("routing_effective_publisher") or "") for r in final_results]
+    df["routing_effective_pdf_url"] = [str(r.get("routing_effective_pdf_url") or "") for r in final_results]
+    df["routing_effective_title"] = [str(r.get("routing_effective_title") or "") for r in final_results]
+    df["routing_original_source_type"] = [str(r.get("routing_original_source_type") or "") for r in final_results]
+    df["routing_effective_source_type"] = [str(r.get("routing_effective_source_type") or "") for r in final_results]
+    df["routing_resolved_from_ssrn"] = [bool(r.get("routing_resolved_from_ssrn")) for r in final_results]
+    df["routing_resolved_from_repository"] = [bool(r.get("routing_resolved_from_repository")) for r in final_results]
+    df["routing_resolved_from_arxiv"] = [bool(r.get("routing_resolved_from_arxiv")) for r in final_results]
     df["download_source_category"] = [_classify_download_source_category(r) for r in final_results]
     df["download_result_reason"] = [str(r.get("reason") or "") for r in final_results]
     df["download_result_stage"] = [str(r.get("stage") or "") for r in final_results]
+    df["failure_stage"] = [str(r.get("failure_stage") or "") for r in final_results]
     df["download_result_domain"] = [str(r.get("domain") or "") for r in final_results]
     df["download_http_status"] = [str(r.get("http_status") or "") for r in final_results]
     df["download_evidence"] = [

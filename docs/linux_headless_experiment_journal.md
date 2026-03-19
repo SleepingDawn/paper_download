@@ -4422,3 +4422,588 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
     - confirm the new summary no longer reports false landing failures
     - inspect how many rows are `landing_success` vs `not_attempted`
     - confirm AIP / Elsevier success still survive summary aggregation cleanly
+
+## 5.44 random100 bundle (`random100_seed20260311_20260319_225624`) landed-but-no-download / evidence-accounting patch
+
+- analyzed bundle
+  - `experiment/results/random100_seed20260311_20260319_225624_bundle.tar.gz`
+  - extracted under `/private/tmp/random100_seed20260311_20260319_225624`
+
+- files that mattered
+  - bundle artifacts
+    - `outputs/linux_headless_suite_runs/random100_seed20260311_20260319_225624/download/run/openalex_search_results_parallel.csv`
+    - `outputs/linux_headless_suite_runs/random100_seed20260311_20260319_225624/download/run/failed_papers.jsonl`
+    - `outputs/linux_headless_suite_runs/random100_seed20260311_20260319_225624/download/run/download_attempts.jsonl`
+    - `outputs/linux_headless_suite_runs/random100_seed20260311_20260319_225624/logs/download.stderr.log`
+    - failure notes / screenshots / html under `download/run/*/logs/`
+  - code
+    - `tools_exp.py`
+    - `parallel_download.py`
+    - `local_mac:tools_exp.py`
+
+- confirmed landed-success-but-failed cases
+  - Elsevier
+    - `10.1016/j.ccr.2022.214428`
+    - `10.1016/j.matlet.2024.136570`
+  - evidence
+    - raw result row already had:
+      - `landing_success=True`
+      - `landing_state=success_landing`
+      - article landing URL/title
+      - screenshot/html/failure-note paths
+    - failure notes showed current browser URL had already advanced to signed ScienceDirect PDF URLs on `pdf.sciencedirectassets.com/.../main.pdf?...`
+    - `download_attempts.jsonl` showed real signed-viewer CFFI attempts for those exact URLs, but they ended as:
+      - `reason=FAIL_WRONG_MIME`
+      - `status_code=200`
+      - `content_type=text/html; charset=UTF-8`
+      - final redirect landed on `craft/capi/cfts/init?...`
+    - after that the unified flow logged:
+      - `[Elsevier] signed viewer CFFI가 뷰어 셸로 끝나 requests fallback 시도`
+      - `requests 실패: 서버가 PDF 대신 text/html; charset=utf-8을 보냈습니다.`
+      - `pdf 링크 미발견 : https://doi.org/...`
+    - final raw failure became `FAIL_NO_CANDIDATE`
+
+- confirmed root causes
+  - landed article page and signed-PDF state were real, but the flow still stopped too early because:
+    - `_download_elsevier_signed_pdf_from_viewer()` only tried:
+      - one signed-viewer CFFI request
+      - one requests fallback
+    - after that failure, the main unified flow did not reliably promote the current signed PDF URL back into the generic PDF download pipeline
+    - result: browser/button-driven follow-through stopped even though signed viewer state had been reached
+  - failure accounting mismatch had two separate causes:
+    - three `worker_exception` rows were caused by `NameError: name 'glob' is not defined` inside startup cleanup
+      - these rows had no page context, so no screenshot/html was possible
+    - page-backed failures wrote screenshot/html/note, but worker exceptions wrote nothing, so failure count and screenshot count diverged
+  - Springer misclassification root cause
+    - `_detect_browser_default_page_kind()` treated the generic phrase `for testing` as a browser default-page marker
+    - the Springer article HTML legitimately contained `for testing` in article body text, so a real article page was downgraded to `google_default_page_html`
+  - noisy tab cleanup root cause
+    - `_prune_extra_tabs()` and related helpers tried `activate_tab()` on `ChromiumTab` objects
+    - that produced misleading `activate_tab` errors and zero-tab summaries even when an active tab still existed
+
+- `local_mac` strategies inspected and reused
+  - the useful browser-driven strategies were already present in both branches:
+    - `download_pdf_via_navigation()`
+      - `navigation-viewer-open`
+      - `navigation-click-candidate`
+      - cookie-aware candidate replay via `_try_cookie_cffi_candidate_urls()`
+    - `_collect_pdf_candidate_urls_from_page()`
+    - `_try_cookie_cffi_candidate_urls()`
+    - `_attempt_elsevier_two_step_click_download()`
+  - the actual gap was not missing strategy code, but missing follow-through wiring after signed-viewer failure in the Linux unified flow
+  - patch therefore reused the proven `local_mac` navigation/candidate strategies by explicitly chaining them after Elsevier signed-viewer CFFI failure
+
+- files / functions changed
+  - `tools_exp.py`
+    - added missing `import glob`
+    - added `_canonicalize_download_reason()`
+      - keeps failure notes / raw result reason aligned with final `FAIL_NO_CANDIDATE`
+    - narrowed `_detect_browser_default_page_kind()`
+      - removed the generic `for testing` HTML marker
+    - hardened tab helpers
+      - `_prune_extra_tabs()`
+      - `_close_temporary_tab()`
+      - `_close_new_tabs_since()`
+      - `_current_tab_state()`
+      - `_wait_for_tab_state_quiet()`
+      - no longer treat `ChromiumTab` as if it always supports `activate_tab()`
+      - preserve `active_tab_id` as a 1-tab state when `tab_ids` is unavailable
+    - extended `download_with_cffi(return_detail=True)`
+      - now returns `final_url`, `content_type`, `content_disposition`, `content_length`, `strategy`, `phase`, `file_path`
+    - strengthened `_download_elsevier_signed_pdf_from_viewer()`
+      - after signed-viewer CFFI failure it now reuses:
+        - `download_pdf_via_navigation()`
+        - `_try_cookie_cffi_candidate_urls()`
+        - then requests fallback
+    - in `download_with_drission()`
+      - record explicit download stage progression:
+        - `download_attempted`
+        - `download_strategy_used`
+        - `download_attempt_history`
+      - mark Elsevier click flow itself as a real download attempt
+      - if click flow leaves the page on a signed ScienceDirect PDF URL, promote that current URL back into `pdf_url` for the generic download pipeline
+      - failure notes now include download attempt info and canonicalized reason
+  - `parallel_download.py`
+    - added `_write_worker_failure_note()`
+      - worker exceptions now emit JSON failure notes even without page context
+    - `_first_pass()` now stores `landing_failure_debug_note_path` for worker exceptions
+    - result CSV now exposes:
+      - `download_attempted`
+      - `download_strategy_used`
+      - `download_attempt_history`
+      - `failure_screenshot_written`
+      - `failure_html_written`
+      - `failure_note_written`
+      - `failure_evidence_written`
+
+- how the button-click / landed-page download flow works after the patch
+  - landed Elsevier article page
+    - run `_attempt_elsevier_two_step_click_download()`
+  - if click flow succeeds
+    - finalize browser download and return success
+  - if click flow ends on signed ScienceDirect PDF URL
+    - reuse signed-viewer follow-through:
+      - signed-viewer CFFI
+      - browser navigation download
+      - candidate URL replay with cookies
+      - requests fallback
+    - and also keep that signed current URL as `pdf_url` for the generic unified download stage
+  - this means a successfully landed article page no longer falls straight to `pdf_link_not_found_or_download_failed` without a real browser/PDF acquisition attempt being recorded
+
+- how failure counting / screenshot accounting works after the patch
+  - page-backed failures
+    - screenshot/html/note continue to be written
+  - worker exceptions before page context
+    - screenshot/html can still be absent
+    - but a JSON failure note is now written under `logs/failure_state/`
+  - result rows now explicitly say whether any failure evidence was written
+
+- lightweight verification
+  - `python3 -m py_compile tools_exp.py parallel_download.py experiment/summarize_linux_headless_suite.py experiment/run_linux_headless_suite.py config.py`
+    - pass
+  - detector replay against extracted Springer HTML
+    - `_detect_browser_default_page_kind(...) -> ''`
+  - smoke checks
+    - `_write_worker_failure_note()` creates JSON successfully
+    - `_current_tab_state()` now reports a 1-tab state when only `active_tab_id` is available
+    - source inspection confirms `_download_elsevier_signed_pdf_from_viewer()` now chains:
+      - `download_pdf_via_navigation()`
+      - `_try_cookie_cffi_candidate_urls()`
+      - `force_download_with_requests()`
+
+- reproduction / re-check
+  - targeted check of the patched source:
+    - `python3 -m py_compile tools_exp.py parallel_download.py`
+  - next server re-check should confirm:
+    - Elsevier landed rows no longer stop at `pdf 링크 미발견` immediately after signed-viewer failure
+    - worker exceptions now always leave at least a failure note JSON
+    - Springer article pages no longer get `google_default_page_html` just because article text contains `for testing`
+
+- remaining uncertainty
+  - the exact signed-viewer follow-through needs a fresh Linux rerun to prove that the new navigation/candidate replay path converts the two previously failed Elsevier rows into success
+  - this is still `[blocked]` until a new run is collected
+
+## 5.45 random100 landed-page generalization + latency trim (`random100_seed20260311_20260319_225624_bundle.tar.gz`)
+
+- analyzed artifacts
+  - bundle
+    - `experiment/results/random100_seed20260311_20260319_225624_bundle.tar.gz`
+  - extracted run
+    - `/private/tmp/random100_seed20260311_20260319_225624/outputs/linux_headless_suite_runs/random100_seed20260311_20260319_225624`
+  - decisive evidence
+    - `download/run/openalex_search_results_parallel.csv`
+    - `download/run/download_attempts.jsonl`
+    - `logs/download.stderr.log`
+    - Elsevier failure notes
+      - `landing_fail_10.1016_j.ccr.2022.214428_drission.json`
+      - `landing_fail_10.1016_j.matlet.2024.136570_drission.json`
+    - Springer failure note/html
+      - `landing_fail_10.1007_s00894-023-05806-y_landing.json`
+      - `landing_fail_10.1007_s00894-023-05806-y.html`
+
+- Elsevier failure pattern
+  - `10.1016/j.ccr.2022.214428`
+  - `10.1016/j.matlet.2024.136570`
+  - confirmed sequence
+    - landing succeeded on ScienceDirect article page
+    - 2-step click flow opened the signed ScienceDirect PDF viewer
+    - signed URL CFFI was attempted and returned `FAIL_WRONG_MIME` (`text/html`)
+    - the page was still on a signed `pdf.sciencedirectassets.com/.../main.pdf?...` URL
+    - final result still fell through to `pdf 링크 미발견`
+  - confirmed issue
+    - the flow was already deep in a valid post-landing download context, but after the click flow it still did extra tab-trim/context-refresh work before finalizing success
+    - if click flow had already succeeded, that extra work was wasted; if click flow had not finalized a file yet, the generic stage still started later than necessary
+
+- Springer Nature failure pattern
+  - `10.1007/s00894-023-05806-y`
+  - confirmed sequence
+    - landed on `https://link.springer.com/article/10.1007/s00894-023-05806-y`
+    - failure screenshot/title/html show a real Springer article page
+    - HTML contains:
+      - `meta[name="citation_pdf_url"] = https://link.springer.com/content/pdf/10.1007/s00894-023-05806-y.pdf`
+      - visible `Download PDF` anchors
+    - this proves the page had cheap, generic acquisition signals even before any publisher-specific fallback
+  - confirmed issue
+    - the older flow was too willing to fail in landing validation / heavy-analysis ordering before exploiting these already-available landed-page signals
+
+- generic download logic weakness
+  - the post-landing pipeline was still too publisher-shaped in practice
+  - cheap generic signals existed but were not always used early enough:
+    - `citation_pdf_url`
+    - visible PDF/download buttons
+    - iframe/embed/object `src`
+    - direct `/content/pdf/`, `/epdf/`, `/doi/pdf`, `articlepdf`, `download=true`
+  - `_collect_pdf_candidate_urls_from_page()` always called heavy HTML analysis internally, so repeated candidate collection also repeated the expensive parser/log path
+
+- successful-case latency evidence
+  - browser-driven success rows in the bundle showed landing times around 8-20s, with Elsevier often worst
+  - concrete waste in logs/code
+    - repeated fixed sleeps after Elsevier article/viewer readiness
+    - repeated heavy `HTML 구조 정밀 분석 중...`
+    - post-success Elsevier tab prune/context refresh even after the click flow had already succeeded
+    - generic domains with an obvious PDF button still waited for later stages instead of trying the button early
+
+- local_mac strategies reused / aligned
+  - kept the same proven browser-driven building blocks already present in `local_mac`
+    - `download_pdf_via_navigation()`
+    - `_collect_pdf_candidate_urls_from_page()`
+    - `_try_click_pdf_button_download()`
+    - `_attempt_elsevier_two_step_click_download()`
+  - the new work was to wire them into the Linux unified flow earlier and more consistently, not to fork a separate landing-only path
+
+- files changed
+  - `tools_exp.py`
+
+- implemented fixes
+  - generalized cheap landed-page acquisition
+    - `_looks_like_pdf_link()` now recognizes `/content/pdf/` and `/epdf/`
+    - `_find_generic_pdf_button()` added for broader landed-page PDF button discovery
+    - `_collect_pdf_candidate_urls_from_page(..., include_html_analysis=False)` added
+    - `_select_preferred_pdf_candidate_url()` added
+  - strengthened the unified post-landing flow
+    - main landed-page path now:
+      - scans cheap generic candidates first
+      - can try a generic browser button click earlier on non-Elsevier/non-ACS/non-RSC pages
+      - falls back to heavy HTML analysis only after the cheap layer is exhausted
+  - reduced wasted Elsevier work
+    - if `_attempt_elsevier_two_step_click_download()` already succeeded, finalize immediately and return
+    - do not run extra tab prune/context refresh on the success path first
+  - reduced latency
+    - shorter post-ready sleeps in Elsevier article/viewer stabilization
+    - shorter post-click wait in `_try_click_pdf_button_download()`
+    - navigation download path now uses cheap candidate collection before the heavy HTML analyzer
+  - hardened tab cleanup
+    - `_prune_extra_tabs()` now uses the controller page for `activate_tab()` / `close_tabs()` instead of assuming the stabilized `ChromiumTab` can drive tab control directly
+
+- how the landed-page generic acquisition now works
+  - after successful landing
+    - publisher-specific path may run first if it adds real value (for example Elsevier 2-step click)
+  - then the generic layer is explicit
+    - cheap candidate scan from current URL, `citation_pdf_url`, anchors, iframe/embed/object
+    - optional early browser button click on general domains
+    - heavy HTML analysis only if the cheap layer still found nothing
+    - then the existing download execution chain continues
+
+- reproduction / re-check
+  - syntax / source checks
+    - `python3 -m py_compile tools_exp.py parallel_download.py experiment/summarize_linux_headless_suite.py experiment/run_linux_headless_suite.py config.py`
+  - targeted smoke
+    - verify `_looks_like_pdf_link('https://example.com/article/epdf/12345')`
+    - verify `_select_preferred_pdf_candidate_url([...])` prefers Springer's article PDF over supplementary/static candidates
+    - verify `_prune_extra_tabs()` closes tabs through the controller page without `activate_tab` attribute errors
+
+- remaining uncertainty
+  - a fresh Linux + Xvfb headful rerun is still required to prove:
+    - the two Elsevier signed-viewer failures now convert
+    - the Springer DOI reaches generic PDF acquisition instead of stopping in landing
+    - the latency trim materially reduces elapsed time on successful Elsevier/browser-driven cases
+
+## 5.46 special-content routing parity check + Linux fallback alignment (2026-03-20)
+
+- inspected files / artifacts
+  - `openalex_search.py`
+  - `parallel_download.py`
+  - `README.md`
+  - `experiment/benchmark_random100_seed20260311.csv`
+  - `ready_to_download.csv`
+  - `git show local_mac:openalex_search.py`
+  - `git show local_mac:parallel_download.py`
+
+- confirmed current parity vs `local_mac`
+  - Linux and `local_mac` already shared the same OpenAlex-side published DOI resolution code for:
+    - SSRN
+    - Zenodo
+    - Figshare
+    - repository-like sources
+  - Linux and `local_mac` also shared the same download-stage shortcut policy for:
+    - `10.1149/ma...` ECS meeting abstracts
+    - `publisher=arxiv` / `pdf_url contains arxiv.org`
+    - SSRN fast-fail after Sci-Hub
+
+- confirmed divergence / gap in the current Linux default flow
+  - `parallel_download.py --doi_path <csv>` reads prebuilt CSVs directly, so search-stage routing metadata is often absent at execution time.
+  - `experiment/benchmark_random100_seed20260311.csv` only contains:
+    - `doi,publisher,pdf_url,open_access,title`
+  - that means:
+    - published-DOI routing decisions from `openalex_search.py` are not explicit in worker logs/results unless the CSV already preserved them
+    - arXiv could still be skipped before any published-version resolution attempt
+    - SPIE proceedings/no-DOI rows could surface as generic missing-DOI noise instead of explicit policy skip
+    - unresolved repository/file-store rows could still enter the main DOI downloader even when they are poor targets
+
+- concrete content-routing evidence
+  - `ready_to_download.csv` contained 5 SPIE rows with empty DOI
+    - 4 had no `pdf_url` either, so they are not valid DOI-download targets and match a conference/proceedings abstract-like skip policy
+  - `README.md` already documented:
+    - search-stage SSRN / Zenodo / Figshare published DOI replacement
+    - SSRN fast-fail if replacement did not happen
+  - `openalex_search.py` already emitted:
+    - `original_doi`
+    - `doi_resolution_method`
+    - `doi_resolution_confidence`
+    - `resolved_from_ssrn`
+    - `resolved_from_repository`
+    - `original_source_type`
+  - but prebuilt benchmark CSVs do not preserve those fields by default
+
+- changes implemented
+  - `openalex_search.py`
+    - added arXiv detection:
+      - `_is_arxiv_doi()`
+      - `_is_arxiv_like_url()`
+      - `_is_arxiv_like_work()`
+    - widened published-version resolution candidacy from repository-only to repository + arXiv
+    - added `resolved_from_arxiv`
+    - added `resolve_download_target_record()` so worker-side routing can reuse the same OpenAlex strategy on prebuilt CSV inputs
+  - `parallel_download.py`
+    - added worker-side special-content routing:
+      - `_resolve_special_content_routing()`
+      - `_routing_result_fields()`
+    - routing now makes explicit decisions before download attempts:
+      - `skip_non_target`
+      - `reroute_published_doi`
+      - `fallback_original_target`
+      - `use_input_target`
+    - ECS meeting abstracts:
+      - explicit `skip_non_target / ecs_meeting_abstract_pattern`
+    - SPIE proceedings-style rows with no DOI and no PDF URL:
+      - explicit `skip_non_target / spie_proceedings_abstract_no_doi`
+    - SSRN / arXiv:
+      - try published DOI resolution first
+      - if resolution succeeds, reroute to the published DOI
+      - if not:
+        - SSRN continues into the existing controlled fallback path
+        - arXiv no longer gets unconditional early skip
+    - repository/file-store sources such as Zenodo / Figshare:
+      - try published DOI resolution first
+      - if no published version is found, classify as `skip_non_target` instead of polluting the main DOI downloader
+    - DOI가 없더라도 valid direct `pdf_url`가 있는 row는 즉시 `missing_doi`로 실패시키지 않는다.
+      - direct OA fetch를 먼저 시도하고, 이후에만 no-DOI fallback을 판단한다.
+    - final results CSV now exports routing diagnostics:
+      - `routing_source_class`
+      - `routing_action`
+      - `routing_reason`
+      - `routing_original_doi`
+      - `routing_effective_doi`
+      - `routing_resolution_*`
+      - `routing_skip_reason`
+
+- strategies reused from `local_mac`
+  - reused the same published DOI resolution policy already proven in `local_mac`
+    - location DOI extraction first
+    - title-match fallback second
+  - the main Linux change was not a new policy fork
+    - it was to make the same routing logic survive the `--doi_path` execution path and become visible in logs/result rows
+
+- smoke verification
+  - `python3 -m py_compile openalex_search.py parallel_download.py tools_exp.py experiment/summarize_linux_headless_suite.py experiment/run_linux_headless_suite.py config.py`
+  - `resolve_download_target_record({'doi': '10.1149/ma2024-01', ...})`
+    - `skip_non_target / ecs_meeting_abstract_pattern`
+  - `resolve_download_target_record({'publisher': 'SPIE', 'doi': '', 'pdf_url': '' ...})`
+    - `skip_non_target / spie_proceedings_abstract_no_doi`
+  - `resolve_download_target_record({'publisher': 'arXiv', 'doi': '', 'pdf_url': 'https://arxiv.org/pdf/2401.01234.pdf' ...})`
+    - `fallback_original_target`
+  - `resolve_download_target_record({'doi': '10.5281/zenodo.17094734', ...})`
+    - actual reroute to published DOI `10.1002/advs.202521791`
+  - `parallel_download._single_download_attempt()` with:
+    - `doi=''`
+    - valid SPIE direct `pdf_url`
+    - mocked `download_with_cffi(ok=True)`
+    - returned `success=True, method='direct_oa'`
+
+- remaining uncertainty
+  - DOI도 `pdf_url`도 없는 preprint rows are still structurally weak targets after published-version resolution fails.
+
+## 5.47 AIP screenshot-backed failure verification + post-landing diagnostics alignment (2026-03-20)
+
+- inspected files / artifacts
+  - code
+    - `tools_exp.py`
+    - `parallel_download.py`
+    - `experiment/summarize_linux_headless_suite.py`
+    - `git show local_mac:tools_exp.py`
+  - latest random100 bundle
+    - `experiment/results/random100_seed20260311_20260319_225624_bundle.tar.gz`
+    - extracted run log:
+      - `/private/tmp/random100_seed20260311_20260319_225624/outputs/linux_headless_suite_runs/random100_seed20260311_20260319_225624/logs/download.stderr.log`
+    - extracted result CSV:
+      - `/private/tmp/random100_seed20260311_20260319_225624/outputs/linux_headless_suite_runs/random100_seed20260311_20260319_225624/download/run/openalex_search_results_parallel.csv`
+  - historical screenshot-backed AIP failure artifact
+    - `.tmp_bundle_extract/landing_fail_10.1116_6.0003847_1773505474473.png`
+    - `.tmp_bundle_extract/landing_fail_10.1116_6.0003847_1773505474473_delayed.png`
+    - `.tmp_bundle_extract/landing_fail_10.1116_6.0003847_1773505474473.html`
+    - `.tmp_bundle_extract/10.1116_6.0003847.json`
+
+- AIP screenshot-backed failures actually reviewed
+  - `10.1116/6.0003847`
+    - screenshot and HTML did **not** show a landed article page
+    - metadata / note indicated:
+      - `landing_state=challenge_or_block`
+      - title `Just a moment...`
+      - Cloudflare challenge URL markers
+    - HTML grep confirmed no article PDF signal:
+      - no `citation_pdf_url`
+      - no `/article-pdf/`
+      - no `/pdf/`
+      - no iframe/embed/object viewer
+      - no visible `Download PDF`
+    - conclusion
+      - this was not a successful landing with missed post-landing extraction
+      - it was an interstitial/challenge case, so the intended post-landing AIP acquisition sequence never had a valid page to run on
+
+- latest random100 AIP success evidence
+  - AIP rows that used browser landing in the latest bundle:
+    - `10.1116/6.0002044`
+    - `10.1116/6.0001076`
+    - `10.1116/6.0002860`
+    - `10.1116/6.0004868`
+  - log evidence showed the current Linux unified flow already reaches meaningful post-landing acquisition states:
+    - landing screenshot/html capture on stable article page
+    - high-friction button click path
+    - `Open/View` viewer action
+    - `citation_pdf_url` / `article-pdf` extraction
+    - candidate URL collection
+    - cookie-aware `download_with_cffi()` replay
+  - concrete examples from the run log
+    - `[Drission] 고차단 도메인(pubs.aip.org) 버튼 클릭 다운로드 우선 시도`
+    - `[ViewerGate] Open/View 버튼 클릭 시도`
+    - `[Meta Tag] 발견: https://pubs.aip.org/.../article-pdf/...pdf`
+    - `[button-click-candidate] 후보 직접 수집 시도: https://pubs.aip.org/.../article-pdf/...pdf`
+    - `[CFFI] 다운로드 성공!`
+
+- confirmed conclusion on AIP coverage before this patch
+  - the current Linux path already covered the major AIP post-landing acquisition paths:
+    - visible PDF/Open/View button clicks
+    - anchor/button text and attribute-based detection
+    - iframe/embed/object / viewer-state candidate extraction
+    - direct `citation_pdf_url` / `article-pdf` / `/doi/pdf` style extraction
+    - cookie-aware direct fetch once a valid resource URL was found
+  - the actual remaining gap was diagnostic visibility, not a clearly missing AIP acquisition branch
+  - before this patch, the final CSV / merged summary still made it hard to answer:
+    - whether landing was merely attempted or actually observed
+    - whether a resource URL had already been extracted
+    - which strategy last ran before failure
+    - whether screenshot/html evidence had been written
+
+- files changed
+  - `tools_exp.py`
+  - `parallel_download.py`
+  - `experiment/summarize_linux_headless_suite.py`
+
+- implemented diagnostic alignment
+  - `tools_exp.py`
+    - added per-attempt tracking fields:
+      - `landing_observed`
+      - `extracted_resource_url`
+      - `extracted_resource_source`
+      - `failure_stage`
+      - `screenshot_written`
+      - `html_written`
+      - `failure_evidence_written`
+    - added `_note_extracted_resource()`
+      - records which post-landing signal produced the current downloadable resource candidate
+      - emits explicit AIP logs when the extracted resource changes
+    - wired extraction tracking into:
+      - `citation_pdf_url` meta handling
+      - generic button `href`
+      - cheap candidate scan
+      - post-click candidate scan
+      - heavy HTML analysis
+      - iframe src
+      - DOI-specific recovery helpers
+      - current signed-viewer URL promotion
+    - when AIP still exhausts post-landing acquisition without a PDF target, the log now prints:
+      - `landing_observed`
+      - `download_attempted`
+      - `last_strategy`
+      - `extracted_resource_source`
+      - `extracted_resource_url`
+  - `parallel_download.py`
+    - result CSV now exports:
+      - `landing_observed`
+      - `download_extracted_resource_url`
+      - `download_extracted_resource_source`
+      - `failure_stage`
+      - `screenshot_written`
+      - `html_written`
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary now preserves the same fields so AIP post-landing outcomes remain readable after aggregation
+
+- how AIP post-landing acquisition is interpreted after the patch
+  - `landing_observed`
+    - true when the browser actually observed a landing page state, even if the final outcome later fails
+  - `download_attempted`
+    - true once any real browser/button/navigation/cookie-aware acquisition attempt runs
+  - `download_strategy_used`
+    - last strategy attempted
+  - `extracted_resource_url` / `extracted_resource_source`
+    - the most concrete downloadable resource candidate discovered so far and where it came from
+  - `failure_stage`
+    - the stage that finally returned failure
+  - `screenshot_written`
+    - whether visual evidence was actually persisted
+
+- remaining uncertainty
+  - no local bundle currently shows an AIP case that:
+    - clearly landed on a real article page
+    - still failed
+    - and demonstrably skipped one of the intended post-landing acquisition paths
+  - a fresh Linux + Xvfb headful rerun is still required to prove that these new diagnostics stay populated on future AIP failures and to catch any yet-unseen AIP page state.
+
+## 5.48 metadata sidecar parity with `local_mac` (2026-03-20)
+
+- inspected files
+  - current:
+    - `parallel_download.py::_write_metadata_sidecars()`
+  - reference:
+    - `git show local_mac:parallel_download.py`
+
+- confirmed parity result
+  - the metadata sidecar layout itself was already the same in current Linux and `local_mac`:
+    - top-level keys:
+      - `doi`
+      - `pdf_filename`
+      - `json_filename`
+      - `access_bucket`
+      - `pdf_path`
+      - `pdf_exists`
+      - `openalex`
+      - `record`
+  - therefore the missing piece was not a new sidecar format
+  - the real gap was that newer Linux-only runtime/result fields were not always exported into the DataFrame before sidecar writing, so they could disappear from `record` even though the runtime had observed them
+
+- files changed
+  - `parallel_download.py`
+  - `experiment/summarize_linux_headless_suite.py`
+  - `tools_exp.py`
+
+- implemented alignment
+  - `tools_exp.py`
+    - final per-attempt payload now carries:
+      - `landing_observed`
+      - `download_attempted`
+      - `download_strategy_used`
+      - `download_attempt_history`
+      - `download_extracted_resource_url`
+      - `download_extracted_resource_source`
+      - `failure_stage`
+      - `screenshot_written`
+      - `html_written`
+      - `failure_evidence_written`
+  - `parallel_download.py`
+    - final result CSV now exports the same fields so `_write_metadata_sidecars()` receives them and stores them under metadata sidecar `record`
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary now preserves the same fields
+    - for older bundles that predate these columns, summary derives only the evidence that can be proven from existing paths / notes and does not invent missing download-attempt fields
+
+- verification
+  - synthetic `_write_metadata_sidecars()` smoke confirmed that a sidecar written by the current Linux path now keeps:
+    - `landing_observed=True`
+    - `download_attempted=True`
+    - `download_strategy_used='cffi_download'`
+    - `download_extracted_resource_url=<article-pdf URL>`
+    - `download_extracted_resource_source='citation_pdf_url_meta'`
+    - `failure_evidence_written=True`
+
+- consequence
+  - current Linux metadata sidecars now follow the same `local_mac` storage scheme while retaining the newer Linux landing/download diagnostics
+  - landing success, download attempts, extracted resource URLs, screenshot evidence, and final failure stage should no longer be lost between runtime logs, raw CSV, metadata sidecars, and merged summaries
