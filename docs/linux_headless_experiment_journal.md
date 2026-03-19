@@ -1711,3 +1711,409 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
     - challenge-prone first-contact surface를 줄이고
     - 실제 JS/cookie/profile 상태를 명시적으로 기록하는 patch가 더 근거 있다.
   - 이번 patch는 runtime visibility를 높이고 Linux/server entry path를 더 단순한 canonical article 쪽으로 줄였지만, 아직 fresh DOI로 server micro-run을 다시 돌린 증거는 없다 `[blocked]`.
+
+## 5.20 Server operator transcript에서 확인된 환경 사실과 운영 제약
+
+- 출처
+  - 아래 항목은 repo file이 아니라 2026-03-19 operator shell transcript에서 직접 확인된 사실이다.
+  - 목적은 "디스크 설정"과 "실제 서버 런타임"을 구분하고, 이후 정보 수집 명령을 서버 기본 명령만으로 다시 설계하기 위함이다.
+
+- 서버 기본 환경
+  - host:
+    - `n137.hpc`
+  - OS:
+    - `Fedora Linux 36 (Workstation Edition)`
+  - kernel / arch:
+    - `Linux 6.6.13-200.fc36.x86_64`
+    - `x86_64`
+  - 세션:
+    - `DISPLAY=localhost:10.0`
+    - `XDG_SESSION_TYPE=tty`
+    - `SSH_CONNECTION` 존재
+    - `xdg-open` 존재
+    - `xvfb-run` 없음
+  - 해석:
+    - "완전한 no-GUI 서버"로 단정할 수는 없고, 적어도 X11 forwarding 환경은 있다.
+    - 다만 실제 GUI manual visit이 유효하게 수행됐는지는 아직 확인되지 않았다 `[blocked]`.
+
+- 실제 AIP run identity
+  - latest run:
+    - `RUN_NAME=aip_article_first_js_cookie_diag_20260319`
+  - branch / commit:
+    - `codex/linux_exp`
+    - `ecb48064`
+
+- 실제 runner와 런치 경로
+  - `logs/aip_article_first_js_cookie_diag_20260319.cmd.sh` 기준 환경:
+    - `SEED_PROFILE=/home/yongyong0206/paper_search/paper_download/outputs/linux_seed_profile_from_docs/linux_chromium_user_data_seed`
+    - `PROFILE_NAME=Default`
+    - `CHROME_PATH=/home/yongyong0206/chrome-linux/chrome-linux64/chrome`
+  - 같은 cmd.sh 기준 실행 명령:
+    - `experiment/run_linux_headless_suite.py`
+    - `--runtime-preset linux_cli_seeded`
+    - `--execution-env linux_server`
+    - `--headless 1`
+    - `--sample-csv outputs/_aip_structural_validation_20260315_input.csv`
+  - `outputs/linux_headless_suite_runs/aip_article_first_js_cookie_diag_20260319/run_suite.sh` 기준 stage:
+    - `landing_access_repro.py`
+    - `parallel_download.py`
+    - `experiment/summarize_linux_headless_suite.py`
+  - 해석:
+    - 실제 run path는 wrapper script를 통해 env를 주입하고 있었고, interactive shell의 현재 env와 동일하지 않았다.
+
+- interactive shell env의 함정
+  - operator shell에서 직접 확인된 값:
+    - `CHROME_PATH=`
+    - `SEED_PROFILE=`
+    - `PROFILE_NAME=`
+  - 즉 interactive shell은 run wrapper env를 자동 상속하지 않았다.
+  - 이 때문에 아래 점검들은 무효 또는 false negative였다.
+    - `scripts/check_linux_seed_profile.py --profile-root "$SEED_PROFILE" ...`
+      - 실제 seed가 아니라 repo root `/home/yongyong0206/paper_search/paper_download`를 검사
+    - manual GUI visit command
+      - `"$CHROME_PATH"`가 빈 값인 상태에서 실행돼 유효한 수동 방문 증거가 되지 못함
+    - JS/cookie smoke
+      - `KeyError: 'CHROME_PATH'`
+  - 배운 점:
+    - 이후 server fact-gathering은 항상
+      - wrapper cmd.sh에서 env를 읽거나
+      - 필요한 env를 명시적으로 export한 뒤
+      - 검증해야 한다.
+
+- 최신 live AIP JSONL에서 확인된 실제 runtime path
+  - `outputs/linux_headless_suite_runs/aip_article_first_js_cookie_diag_20260319/landing/landing_access_repro.jsonl`
+  - 두 DOI 모두:
+    - `browser_user_data_dir=/tmp/yongyong0206/landing_worker_profiles/stateful_worker_0`
+    - `browser_profile_name=Default`
+    - `browser_session_mode=stateful`
+    - `browser_session_source=linux_seed_clone`
+    - `title=Just a moment...`
+    - `challenge_detected=true`
+  - 중요:
+    - 이번 run은 이미 `article-abstract`가 아니라 canonical `article` URL을 first-contact로 사용했다.
+      - `10.1063/5.0207496`
+        - `entry_browser_url=https://pubs.aip.org/jcp/article/160/20/204701/3294391/...`
+      - `10.1116/6.0004298`
+        - `entry_browser_url=https://pubs.aip.org/jva/article/43/3/032401/3339646/...`
+    - 최종 URL은 둘 다 `__cf_chl_rt_tk`가 붙은 challenge URL이었다.
+  - 해석:
+    - latest patch는 실제 access path를 바꿨다.
+    - 그럼에도 identical outcome이 반복됐으므로, 문제는 이제 단순 entry path보다
+      - profile/session reuse
+      - cookie persistence
+      - manual reproducibility on same server/profile
+      - network/server-IP conditions
+      쪽으로 더 무게가 간다.
+
+- package / command 제약
+  - `rg` 미설치
+  - `chromedriver` 미설치
+  - 둘 다 package install prompt는 떴지만 auth 부족으로 설치 실패
+  - 해석:
+    - 이후 operator-facing checklist는
+      - `grep`
+      - `find`
+      - `sed`
+      - `ps`
+      - `stat`
+      - 이미 있는 `python`
+      - 이미 있는 Chrome binary
+      만으로 구성해야 한다.
+    - `rg`, `chromedriver`, 새 package 설치를 전제로 한 안내는 피해야 한다.
+
+- artifact 위치
+  - live outputs:
+    - `outputs/linux_headless_suite_runs/aip_article_first_js_cookie_diag_20260319/...`
+  - operator transcript에서 확인된 file들:
+    - `execution_manifest.json`
+    - `landing/landing_access_repro.jsonl`
+    - `landing/landing_access_repro_report.json`
+    - `logs/*.log`
+    - `summary/suite_summary.json`
+  - shallow listing 기준 `experiment/results`:
+    - `experiment/results/aip_first_contact_deferred_linux_20260319_bundle.tar.gz`
+  - 해석:
+    - 현재 server shell에서 즉시 분석 가능한 1차 evidence는 `outputs/linux_headless_suite_runs/...` 아래 live run dir이다.
+    - `experiment/results`는 curated bundle 저장소로 유지하되, live diagnosis 자체는 outputs를 기준으로 보는 편이 실용적이다.
+
+- 현재 남은 미확정 항목
+  - `CHROME_PATH` binary version은 아직 operator shell에서 실제 binary로 재확인되지 않았다 `[blocked]`.
+  - 같은 server / same profile / same browser에서 manual AIP visit이 실제로 어떤 화면이 되는지는 아직 유효하게 측정되지 않았다 `[blocked]`.
+  - generic JS execution / generic cookie persistence도 아직 유효한 env로 재측정되지 않았다 `[blocked]`.
+
+## 5.21 Server follow-up facts: live Chrome path, cookie persistence, manual GUI 실패
+
+- 출처
+  - 2026-03-19 operator shell follow-up transcript
+  - 목적:
+    - 이전 turn에서 비어 있던 env를 실제 run 값으로 다시 export한 뒤
+    - browser/profile/runtime behavior를 재측정
+
+- 재확인된 런타임 값
+  - `CHROME_PATH=/home/yongyong0206/chrome-linux/chrome-linux64/chrome`
+  - `SEED_PROFILE=/home/yongyong0206/paper_search/paper_download/outputs/linux_seed_profile_from_docs/linux_chromium_user_data_seed`
+  - `PROFILE_NAME=Default`
+  - `WORKER_DIR=/tmp/yongyong0206/landing_worker_profiles/stateful_worker_0`
+  - browser binary:
+    - `Google Chrome for Testing 146.0.7680.66`
+
+- seed / worker profile 상태
+  - `scripts/check_linux_seed_profile.py`
+    - seed profile: `ok=true`
+    - worker clone profile: `ok=true`
+  - both profiles had:
+    - `Local State`
+    - `Default/Preferences`
+    - `Default/Cookies`
+    - storage dirs
+  - 해석:
+    - seed profile 자체가 비어 있거나 손상된 것은 아니다.
+    - worker clone 디스크 구조도 정상이다.
+
+- generic cookie persistence test
+  - command:
+    - headless Chrome `--user-data-dir=$WORKER_DIR --profile-directory=Default --dump-dom https://httpbin.org/cookies/set?...`
+    - then `https://httpbin.org/cookies`
+  - 결과:
+    - `codex_cookie_probe=1`가 set/readback 모두 성공
+    - worker `Default/Cookies` file mtime도 증가
+  - stderr:
+    - `Failed global descriptor lookup: 7`
+    - `components/dbus/xdg/request.cc:169`
+  - 해석:
+    - generic cookie set/persist/reuse는 현재 server/browser/profile 조합에서 동작한다.
+    - 따라서 AIP fail HTML의 `Enable JavaScript and cookies to continue`를
+      - "cookies가 전혀 저장되지 않음"의 직접 증거로 해석하기는 더 어려워졌다.
+
+- generic JS smoke
+  - command:
+    - headless Chrome `--dump-dom data:text/html,...<script>...`
+  - 결과:
+    - DOM output 없이
+      - `ERROR:base/memory/shared_memory_switch.cc:289 Failed global descriptor lookup: 7`
+      만 출력
+  - 해석:
+    - 이 one-shot `--dump-dom data:` smoke는 실패했다.
+    - 하지만 이것만으로 "현재 AIP runtime에서 JS가 비활성화"라고 결론내리기는 어렵다.
+    - 이유:
+      - latest AIP worker JSONL에서는 runtime probe가 돌았고
+      - fail HTML에는 challenge orchestration script가 있었다.
+    - 따라서 이 smoke는 현재 시점에서
+      - "JS disabled 증거"가 아니라
+      - "이 환경의 `--dump-dom data:` smoke가 신뢰하기 어려움"으로 취급한다 `[blocked]`.
+
+- manual GUI path
+  - operator note:
+    - VS Code 접속 환경에서는 browser window가 보이지 않았고 종료함
+  - direct command:
+    - `"$CHROME_PATH" --user-data-dir="$SEED_PROFILE" --profile-directory="$PROFILE_NAME" ... "https://doi.org/10.1063/5.0207496"`
+  - 결과:
+    - visible window / final title / final URL을 확보하지 못한 채 `Ctrl+C`
+  - 해석:
+    - same-server manual GUI reproducibility는 아직 유효하게 확보되지 않았다 `[blocked]`.
+
+- 네트워크 기본 사실
+  - proxy env:
+    - empty
+  - DNS:
+    - `pubs.aip.org -> 104.18.12.179 / 104.18.13.179`
+    - `doi.org -> 172.67.69.3 / 104.26.4.132 ...`
+  - route:
+    - default via `192.168.100.1 dev eth0`
+  - 해석:
+    - transcript만으로는 별도 proxy/VPN 설정 증거는 없다.
+    - AIP/doi 모두 Cloudflare fronted host라는 점은 재확인됐다.
+
+- 가장 중요한 새 구조 단서
+  - `ps -ef` during live run (`aip_runtime_probe_20260319`)에서 확인된 실제 browser process:
+    - DrissionPage-launched live Chrome main process used
+      - `--user-data-dir=/tmp/DrissionPage/autoPortData/13084`
+      - `--profile-directory=Default`
+    - not
+      - `/tmp/yongyong0206/landing_worker_profiles/stateful_worker_0`
+  - 반면 landing JSONL record에는
+    - `browser_user_data_dir=/tmp/yongyong0206/landing_worker_profiles/stateful_worker_0`
+    - `browser_session_source=linux_seed_clone`
+    로 남았다.
+  - 해석:
+    - 현재 가장 강한 runtime mismatch hypothesis는
+      - "코드/JSONL은 worker clone profile을 쓴다고 기록하지만,
+         실제 Chrome process는 DrissionPage autoPortData temp user-data-dir에서 실행된다"
+      이다.
+    - 이것이 사실이면
+      - seed/worker profile warming
+      - cookie persistence
+      - session reuse
+      - entry-path patch
+      들이 실제 live AIP access path에 material effect를 거의 주지 못할 수 있다.
+
+- 현재 AIP diagnosis에 미치는 영향
+  - 기존 strongest cause:
+    - Linux server/IP first-contact challenge before stable landing
+  - 새 strongest structural suspicion:
+    - intended stateful profile path가 actual Chrome runtime에 직접 연결되지 않을 수 있음
+  - 즉 다음 patch prior question은
+    - "AIP entry path를 또 바꿀 것인가"
+      보다
+    - "DrissionPage autoPort launch가 왜 separate `autoPortData` root를 쓰는가, 그리고 worker clone state가 그 안으로 실제 복제되는가"
+      를 먼저 확인해야 한다.
+
+- 다음 확인 필요 항목
+  - live `autoPortData/<port>` dir의 존재와 profile files를 worker clone과 비교 `[blocked]`
+  - DrissionPage `auto_port()`가 user-data-dir을 override하는지, clone하는지, symlink하는지 `[blocked]`
+  - live challenge run의 actual cookie DB가 `autoPortData` 쪽인지 worker clone 쪽인지 `[blocked]`
+
+### 5.22 DrissionPage `auto_port()`가 stateful worker profile을 실 runtime에서 덮어쓴 구조 확인
+
+- 출처
+  - 2026-03-19 operator shell follow-up transcript (추가)
+  - 저장소 코드:
+    - `landing_access_repro.py`
+    - `tools_exp.py`
+  - 로컬 package source:
+    - `DrissionPage/_configs/chromium_options.py`
+    - `DrissionPage/_base/chromium.py`
+    - `DrissionPage/_functions/tools.py`
+
+- 추가 확보된 서버 evidence
+  - `AUTO_DIR=/tmp/DrissionPage/autoPortData/10368`
+  - live autoPort profile files:
+    - `Local State`
+    - `Default/Preferences`
+    - `Default/Cookies`
+  - worker vs autoPort 비교:
+    - `cookies_cmp=1`
+    - `prefs_cmp=1`
+  - file size도 달랐다.
+    - worker `Default/Cookies`: `86016`
+    - autoPort `Default/Cookies`: `28672`
+  - 해석:
+    - live Chrome가 worker clone을 그대로 쓰는 것이 아니라
+      별도 autoPortData root를 가진 독립 profile에서 돌고 있다는 근거가 더 강해졌다.
+
+- plain Chrome CLI AIP article direct probe
+  - command:
+    - `"$CHROME_PATH" --headless=new --disable-gpu --disable-dev-shm-usage --user-data-dir="$WORKER_DIR" --profile-directory="$PROFILE_NAME" --dump-dom "https://pubs.aip.org/jcp/article/..."`
+  - 결과:
+    - operator note: `1분간 반응이 없어 종료`
+  - 해석:
+    - same server / same worker profile / plain CLI article direct도
+      빠른 정상 landing 증거를 주지 못했다.
+    - 다만 final DOM/title/artifact가 남지 않았으므로
+      이것만으로 "plain Chrome CLI도 동일 challenge"라고 확정할 수는 없다 `[blocked]`.
+
+- landing stdout/stderr 재확인
+  - `landing.stdout.log`:
+    - `resolved_chrome_path=/home/yongyong0206/chrome-linux/chrome-linux64/chrome`
+    - `runtime_preset=linux_cli_seeded`
+    - `execution_env=linux_server`
+    - `worker_profile_root=/tmp/yongyong0206/landing_worker_profiles`
+    - `seed_profile_ok=true`
+    - `chrome_smoke=ok`
+    - final counts: `challenge_detected=2`
+  - `landing.stderr.log`:
+    - empty
+  - 해석:
+    - current smoke check는 "Chrome can launch"만 보장할 뿐
+      live AIP browser가 intended worker clone을 실제로 쓰는지는 보장하지 못한다.
+
+- 코드/패키지 근거로 확인된 직접 원인
+  - 저장소 코드의 기존 흐름:
+    - `landing_access_repro.py::_browser_for_worker()`
+      - `co.set_user_data_path(worker_user_data_dir)`
+      - `co.set_user(worker_profile_name)`
+      - `co.auto_port()`
+    - `tools_exp.py::download_with_drission()`
+      - `_apply_browser_session_plan(co, session_plan, ...)`
+      - `co.auto_port()`
+  - DrissionPage package behavior:
+    - `ChromiumOptions.set_user_data_path(path)`:
+      - `--user-data-dir=<path>` 설정
+      - `_auto_port = False`
+    - 이후 `ChromiumOptions.auto_port()`:
+      - `_auto_port`를 다시 켠다
+    - `DrissionPage._base.chromium.handle_options()`:
+      - `_auto_port`가 켜져 있으면 `PortFinder(...).get_port()`로
+        `/tmp/DrissionPage/autoPortData/<port>`를 생성하고
+        다시 `set_user_data_path(path)`를 호출한다
+  - 로컬 옵션 단위 재현:
+    - old sequence:
+      - `set_user_data_path('/tmp/worker_profile')`
+      - `auto_port()`
+      - `handle_options(...)`
+      -> `user_data_path=/.../DrissionPage/autoPortData/<port>`
+    - new sequence:
+      - `set_user_data_path('/tmp/worker_profile')`
+      - `set_local_port(12345)`
+      - `handle_options(...)`
+      -> `user_data_path=/tmp/worker_profile`
+  - 해석:
+    - 지금까지의 strongest structural suspicion은 `[blocked]`가 아니라
+      **코드/패키지 레벨에서 confirmed** 되었다.
+    - 기존 stateful seed/worker profile 전략은
+      actual live browser profile로 온전히 전달되지 않았을 가능성이 매우 높다.
+
+- 이번 패치
+  - 목적:
+    - stateful worker clone을 actual live Chrome `user-data-dir`로 유지하면서
+      port collision만 피한다.
+  - 적용 파일:
+    - `landing_access_repro.py`
+      - `co.auto_port()` 제거
+      - `co.set_local_port(_pick_free_local_port())` 사용
+      - JSONL result에
+        - `browser_effective_user_data_dir`
+        - `browser_debug_address`
+        추가
+    - `tools_exp.py`
+      - `co.auto_port()` 제거
+      - `co.set_local_port(_pick_free_local_port())` 사용
+      - detail payload에
+        - `browser_effective_user_data_dir`
+        - `browser_debug_address`
+        추가
+    - `experiment/summarize_linux_headless_suite.py`
+      - merged summary에
+        - `landing_probe_browser_user_data_dir`
+        - `landing_probe_browser_effective_user_data_dir`
+        - `landing_probe_browser_debug_address`
+        추가
+
+- 왜 이 패치가 지금 가장 우선인가
+  - 기존 AIP patch들은
+    - entry path
+    - context bootstrap ordering
+    - publisher direct article 선택
+    를 계속 조정해 왔다.
+  - 그러나 actual live browser가 intended worker profile을 안 쓰면
+    - cookie/session reuse
+    - warmed seed
+    - profile-based first-contact mitigation
+    자체가 실제 runtime path에 material effect를 주기 어렵다.
+  - 따라서 current weakest point는
+    - "AIP entry ordering"
+      이전에
+    - "stateful profile이 live browser launch에 실제 연결되는가"
+    이다.
+
+- 검증
+  - `python -m py_compile tools_exp.py landing_access_repro.py experiment/summarize_linux_headless_suite.py`
+    - passed
+  - options-level repro:
+    - old sequence -> `autoPortData/<port>`
+    - new sequence -> intended `/tmp/worker_profile`
+  - 아직 미검증:
+    - patched server run에서 실제 Chrome process가 이제
+      `--user-data-dir=/tmp/yongyong0206/landing_worker_profiles/stateful_worker_0`
+      로 뜨는지 `[blocked]`
+    - patched server run에서 AIP challenge incidence가 실제 줄어드는지 `[blocked]`
+
+- 배운 점
+  - 지금까지 AIP가 "같은 challenge outcome"을 반복한 이유 중 하나는
+    - entry path patch 자체보다
+    - live browser launch가 intended stateful profile과 분리되어 있었기 때문일 수 있다.
+  - 앞으로 AIP 실험은 결과 해석 전에 반드시
+    - recorded `browser_user_data_dir`
+    - actual Chrome `--user-data-dir`
+    - new `browser_effective_user_data_dir`
+    이 셋이 일치하는지 먼저 봐야 한다.

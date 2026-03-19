@@ -158,7 +158,7 @@ def _browser_for_worker(
         co.set_pref("download.prompt_for_download", False)
         co.set_pref("plugins.always_open_pdf_externally", True)
         co.set_pref("profile.default_content_settings.popups", 0)
-        co.auto_port()
+        co.set_local_port(_pick_free_local_port())
         _apply_best_browser_profile(co)
         try:
             return ChromiumPage(co)
@@ -183,6 +183,14 @@ def _pick_free_local_port() -> int:
     port = int(sock.getsockname()[1])
     sock.close()
     return port
+
+
+def _browser_runtime_meta(page: ChromiumPage) -> Dict[str, str]:
+    browser = getattr(page, "browser", None)
+    return {
+        "browser_debug_address": str(getattr(page, "address", "") or getattr(browser, "address", "") or ""),
+        "browser_effective_user_data_dir": str(getattr(browser, "user_data_path", "") or ""),
+    }
 
 
 def _run_chrome_smoke(chrome_path: str, profile_root: str) -> Dict[str, str]:
@@ -3757,6 +3765,8 @@ def _probe_one(
         "browser_session_decision_reason": str(probe_page_meta.get("browser_session_decision_reason") or ""),
         "browser_profile_name": str(probe_page_meta.get("browser_profile_name") or ""),
         "browser_user_data_dir": str(probe_page_meta.get("browser_user_data_dir") or ""),
+        "browser_effective_user_data_dir": str(probe_page_meta.get("browser_effective_user_data_dir") or ""),
+        "browser_debug_address": str(probe_page_meta.get("browser_debug_address") or ""),
         "probe_page_mode": str(probe_page_meta.get("probe_page_mode") or ""),
         "controller_tab_id": str(probe_page_meta.get("controller_tab_id") or ""),
         "probe_tab_id": str(probe_page_meta.get("probe_tab_id") or ""),
@@ -3944,6 +3954,7 @@ def _worker_run(
                 page_meta["browser_session_decision_reason"] = str(session_plan.get("session_decision_reason") or "")
                 page_meta["browser_profile_name"] = str(session_plan.get("profile_name") or "")
                 page_meta["browser_user_data_dir"] = str(session_plan.get("user_data_dir") or "")
+                page_meta.update(_browser_runtime_meta(controller_page))
                 probe_started_ms = _now_ms()
                 result: Dict[str, Any] = {}
                 try:

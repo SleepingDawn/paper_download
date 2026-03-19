@@ -1,6 +1,7 @@
 import os
 import re
 import signal
+import socket
 import sys
 import time
 import shutil
@@ -99,6 +100,22 @@ def _exc_message(exc) -> str:
         return str(exc)
     except Exception:
         return repr(exc)
+
+
+def _pick_free_local_port() -> int:
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.bind(("127.0.0.1", 0))
+    port = int(sock.getsockname()[1])
+    sock.close()
+    return port
+
+
+def _browser_runtime_meta(page) -> Dict[str, str]:
+    browser = getattr(page, "browser", None)
+    return {
+        "browser_debug_address": str(getattr(page, "address", "") or getattr(browser, "address", "") or ""),
+        "browser_effective_user_data_dir": str(getattr(browser, "user_data_path", "") or ""),
+    }
 
 
 def _maybe_import_psutil():
@@ -6004,6 +6021,8 @@ def download_with_drission(
             "browser_session_decision_reason": "",
             "browser_profile_name": "",
             "browser_user_data_dir": "",
+            "browser_effective_user_data_dir": "",
+            "browser_debug_address": "",
             "landing_recovery_attempted": False,
             "landing_recovery_strategy": "",
             "landing_recovery_outcome": "",
@@ -6031,6 +6050,8 @@ def download_with_drission(
                 "browser_session_decision_reason": str(session_plan.get("session_decision_reason") or ""),
                 "browser_profile_name": str(session_plan.get("profile_name") or ""),
                 "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
+                "browser_effective_user_data_dir": "",
+                "browser_debug_address": "",
                 "landing_recovery_attempted": False,
                 "landing_recovery_strategy": "",
                 "landing_recovery_outcome": "",
@@ -6043,7 +6064,7 @@ def download_with_drission(
     co = ChromiumOptions()
     co.set_browser_path(resolved_browser)
     _apply_browser_session_plan(co, session_plan, logger=logger)
-    co.auto_port()
+    co.set_local_port(_pick_free_local_port())
     _apply_best_browser_profile(co)
     if is_elsevier_preview:
         try:
@@ -6060,9 +6081,14 @@ def download_with_drission(
     co.set_pref('profile.default_content_settings.popups', 0) # 팝업 차단 해제
 
     page = None
+    browser_runtime_meta = {
+        "browser_effective_user_data_dir": "",
+        "browser_debug_address": "",
+    }
     for init_attempt in range(3): # 최대 3번 브라우저 실행 시도
         try:
             page = ChromiumPage(co)
+            browser_runtime_meta = _browser_runtime_meta(page)
             break # 성공하면 루프 탈출
         except Exception as e:
             if logger: logger.warning(f"     [Drission] 브라우저 실행 실패({init_attempt+1}/3): {e} -> 재시도 중...")
@@ -6083,6 +6109,8 @@ def download_with_drission(
                 "browser_session_decision_reason": str(session_plan.get("session_decision_reason") or ""),
                 "browser_profile_name": str(session_plan.get("profile_name") or ""),
                 "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
+                "browser_effective_user_data_dir": "",
+                "browser_debug_address": "",
                 "landing_recovery_attempted": False,
                 "landing_recovery_strategy": "",
                 "landing_recovery_outcome": "",
@@ -6212,6 +6240,8 @@ def download_with_drission(
             "browser_session_decision_reason": str(session_plan.get("session_decision_reason") or ""),
             "browser_profile_name": str(session_plan.get("profile_name") or ""),
             "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
+            "browser_effective_user_data_dir": str(browser_runtime_meta.get("browser_effective_user_data_dir") or ""),
+            "browser_debug_address": str(browser_runtime_meta.get("browser_debug_address") or ""),
             "landing_challenge_detected": bool(
                 landing_state == "challenge_or_block" or str(reason or "") in {"FAIL_BLOCK", "FAIL_CAPTCHA"}
             ),
