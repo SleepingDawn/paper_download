@@ -65,7 +65,13 @@ if [[ -f "$PID_FILE" ]]; then
   PID=$(cat "$PID_FILE" 2>/dev/null || true)
   echo "pid=$PID"
   if [[ -n "$PID" ]] && kill -0 "$PID" 2>/dev/null; then
-    echo "process_alive=true"
+    PROC_STATE=$(ps -o stat= -p "$PID" 2>/dev/null | awk '{print $1}')
+    echo "process_state=${PROC_STATE:-unknown}"
+    if [[ "${PROC_STATE:-}" == Z* ]]; then
+      echo "process_alive=false"
+    else
+      echo "process_alive=true"
+    fi
   else
     echo "process_alive=false"
   fi

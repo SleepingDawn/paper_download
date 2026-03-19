@@ -1881,6 +1881,15 @@ def main(
     df["download_method"] = [str(r.get("method") or "") for r in final_results]
     df["download_attempted"] = [bool(r.get("download_attempted")) for r in final_results]
     df["download_strategy_used"] = [str(r.get("download_strategy_used") or "") for r in final_results]
+    df["download_candidate_source"] = [str(r.get("download_candidate_source") or "") for r in final_results]
+    df["download_candidate_url"] = [str(r.get("download_candidate_url") or "") for r in final_results]
+    df["download_candidate_kind"] = [str(r.get("download_candidate_kind") or "") for r in final_results]
+    df["primary_pdf_ready"] = [bool(r.get("primary_pdf_ready")) for r in final_results]
+    df["target_match_signals"] = [
+        json.dumps(list(r.get("target_match_signals") or []), ensure_ascii=False) for r in final_results
+    ]
+    df["final_pdf_confidence"] = [str(r.get("final_pdf_confidence") or "") for r in final_results]
+    df["final_pdf_believed_primary"] = [bool(r.get("final_pdf_believed_primary")) for r in final_results]
     df["download_extracted_resource_url"] = [str(r.get("extracted_resource_url") or "") for r in final_results]
     df["download_extracted_resource_source"] = [str(r.get("extracted_resource_source") or "") for r in final_results]
     df["download_attempt_history"] = [

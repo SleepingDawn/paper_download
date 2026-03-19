@@ -5007,3 +5007,129 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - consequence
   - current Linux metadata sidecars now follow the same `local_mac` storage scheme while retaining the newer Linux landing/download diagnostics
   - landing success, download attempts, extracted resource URLs, screenshot evidence, and final failure stage should no longer be lost between runtime logs, raw CSV, metadata sidecars, and merged summaries
+
+## 5.49 ACS/RSC premature wrong-PDF prevention hardening (2026-03-20)
+
+- inspected inputs first
+  - docs:
+    - `docs/linux_headless_experiment_journal.md`
+  - current Linux unified flow:
+    - `tools_exp.py`
+    - `parallel_download.py`
+    - `experiment/summarize_linux_headless_suite.py`
+  - reference branch:
+    - `git show local_mac:tools_exp.py`
+    - `git show local_mac:parallel_download.py`
+  - concrete artifacts:
+    - `outputs/rsc_single_articlepdf_reprobe_20260313/Closed_Access/logs/download_log_10.1039_d2ee01390h.pdf.pdf.txt`
+    - `outputs/argyrodite_full_run_20260312/metadata/Closed_Access/10.1021_acsenergylett.5c00032.json`
+    - `outputs/argyrodite_full_run_20260312/metadata/Open_Access/10.1021_acsami.5c14903.s001.json`
+    - `experiment/results/random100_seed20260311_20260319_225624_bundle.tar.gz`
+
+- concrete diagnosis
+  - Linux already had partial recurrence-prevention:
+    - supporting/supplementary blob filter
+    - related/recommended blob filter
+    - RSC `articlepdf` readiness wait
+    - generic button early-click disabled on ACS/RSC
+  - `local_mac` was not materially stronger for this issue; it had the same partial protections and the same ACS gap
+  - confirmed remaining weakness:
+    - ACS had no explicit “primary article PDF ready” wait analogous to RSC
+    - PDF candidate selection was still mostly URL-score based and did not record or enforce DOI/article-identity match for ACS/RSC
+    - historical metadata did not preserve enough provenance to prove which PDF candidate/button produced the final file
+  - artifact evidence supporting the risk:
+    - RSC repro log already shows the good path: `articlepdf` readiness is detected before acquisition
+    - repository outputs include ACS supplementary DOI targets such as `10.1021/acsami.5c14903.s001`, proving that supplementary PDFs are present in the corpus and must not be mistaken for primary article PDFs
+
+- implemented mitigation
+  - `tools_exp.py`
+    - added ACS primary readiness helpers:
+      - `_extract_acs_primary_pdf_url()`
+      - `_wait_for_acs_primary_pdf_ready()`
+    - added reusable candidate classification / validation:
+      - `_classify_pdf_candidate_kind()`
+      - `_target_match_signals_for_pdf_candidate()`
+      - `_pdf_candidate_confidence()`
+      - `_describe_pdf_candidate()`
+      - `_describe_pdf_button_candidate()`
+      - `_is_primary_pdf_ready_detail()`
+    - strengthened clickable-element selection:
+      - supporting/recommended button candidates are explicitly rejected with log messages
+      - ACS/RSC button candidates now carry kind/confidence/signals
+    - strengthened candidate URL selection:
+      - supplementary / related candidates are rejected before final selection
+      - ACS/RSC candidates now require stronger primary-article signals
+      - DOI-mismatch candidates are explicitly penalized and can no longer win selection
+    - ACS hardening:
+      - do not click early generic PDF controls until a primary ACS PDF signal appears
+      - if a validated primary ACS button exists, allow a guarded browser click path
+    - final pre-download validation:
+      - a chosen ACS/RSC candidate is rejected if it looks supporting, related, or ambiguous relative to the target article identity
+  - `parallel_download.py`
+    - raw CSV now exports:
+      - `download_candidate_source`
+      - `download_candidate_url`
+      - `download_candidate_kind`
+      - `primary_pdf_ready`
+      - `target_match_signals`
+      - `final_pdf_confidence`
+      - `final_pdf_believed_primary`
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary preserves the same provenance/validation fields
+
+- how wrong-PDF prevention now works
+  - after landing on ACS/RSC:
+    - first wait for a primary-article PDF signal instead of grabbing the first visible PDF-like resource
+  - candidate types:
+    - `primary`
+    - `supporting`
+    - `related`
+    - `unknown`
+  - filtered or strongly deprioritized:
+    - supporting information / supplementary files / `.s001`-style ACS resources
+    - related/recommended/cited-by/reference-side PDF candidates
+    - ACS/RSC candidates whose embedded DOI does not match the target DOI
+  - primary article PDF readiness is now determined from:
+    - ACS `/doi/pdf/<target-doi>` signals
+    - RSC `/content/articlepdf/...` signals
+    - `citation_doi`/current-page DOI match plus publisher-primary PDF pattern
+  - success rationale is now diagnosable from:
+    - `download_candidate_source`
+    - `download_candidate_url`
+    - `download_candidate_kind`
+    - `primary_pdf_ready`
+    - `target_match_signals`
+    - `final_pdf_confidence`
+    - `final_pdf_believed_primary`
+
+- lightweight verification run
+  - `python3 -m py_compile tools_exp.py parallel_download.py experiment/summarize_linux_headless_suite.py`
+  - ACS smoke:
+    - target article PDF `/doi/pdf/<target-doi>` => `kind=primary`, `ready=True`
+    - ACS supplementary `/suppl/...` => `kind=supporting`, `ready=False` for primary-article target
+    - different DOI `.s001` candidate on ACS => `kind=supporting`, `confidence=blocked`, `ready=False`
+  - supporting-target smoke:
+    - target DOI `...s001` remains acceptable as `kind=supporting`
+  - candidate-selection smoke:
+    - mixed ACS candidate list now resolves to the real target article PDF instead of supplementary/other-DOI candidates
+
+- re-check commands
+  - compile:
+    - `python3 -m py_compile tools_exp.py parallel_download.py experiment/summarize_linux_headless_suite.py`
+  - focused rerun targets:
+    - ACS primary article DOI
+    - ACS supplementary DOI (`.s001`) control case
+    - RSC article DOI with `articlepdf` landing
+  - after rerun inspect:
+    - `download_candidate_source`
+    - `download_candidate_url`
+    - `download_candidate_kind`
+    - `primary_pdf_ready`
+    - `target_match_signals`
+    - `final_pdf_confidence`
+    - `final_pdf_believed_primary`
+
+- remaining risk
+  - no fresh Linux rerun has yet proven the new ACS guarded-click path on a live page
+  - no saved artifact in the repo conclusively proves a prior primary-DOI run actually downloaded the wrong PDF and then deleted/replaced it
+  - therefore the recurrence-prevention logic is now explicit and testable, but final live confirmation remains `[blocked]`

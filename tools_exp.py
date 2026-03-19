@@ -1832,6 +1832,251 @@ def _is_rsc_article_pdf_url(url: str) -> bool:
     return ("pubs.rsc.org" in low and "/content/articlepdf/" in low and not _is_supporting_info_blob(low))
 
 
+def _target_doi_is_supporting_material(target_doi: str) -> bool:
+    doi_norm = _doi_from_doi_url(target_doi)
+    if not doi_norm:
+        return False
+    return bool(re.search(r"\.s\d{3,}$", doi_norm))
+
+
+def _extract_doi_tokens_from_text(*parts) -> list[str]:
+    seen = set()
+    found = []
+    for part in parts:
+        text = str(part or "")
+        if not text:
+            continue
+        for match in re.findall(r"10\.\d{4,9}/[-._;()/:A-Z0-9]+", text, flags=re.I):
+            doi_norm = _doi_from_doi_url(match.rstrip(").,;]}>\"'"))
+            if not doi_norm or doi_norm in seen:
+                continue
+            seen.add(doi_norm)
+            found.append(doi_norm)
+    return found
+
+
+def _is_acs_primary_pdf_url(url: str, target_doi: str = "") -> bool:
+    low = str(url or "").strip().lower()
+    if not low:
+        return False
+    if "acs.org" not in low:
+        return False
+    if _is_supporting_info_blob(low):
+        return False
+    if "/doi/pdf/" not in low:
+        return False
+    doi_norm = _doi_from_doi_url(target_doi)
+    if doi_norm:
+        return doi_norm in low
+    return True
+
+
+def _classify_pdf_candidate_kind(url: str = "", label: str = "", context: str = "", target_doi: str = "") -> str:
+    url_low = str(url or "").strip().lower()
+    label_low = str(label or "").strip().lower()
+    context_low = str(context or "").strip().lower()
+    blob = " ".join(part for part in (url_low, label_low, context_low) if part).strip()
+    target_supporting = _target_doi_is_supporting_material(target_doi)
+    if any(tok in blob for tok in ("/suppl/", "/suppinfo/", "/suppinf", "/suppl_file/", ".s001", ".s002", ".s003", ".s004", "suppl_file", "supporting-info")):
+        return "supporting"
+    if _is_supporting_info_blob(blob):
+        return "supporting"
+    if _is_recommended_or_related_blob(blob):
+        return "related"
+    if any(tok in blob for tok in ("cited by", "references", "related content", "recommended articles")):
+        return "related"
+    if _is_rsc_article_pdf_url(url_low) or _is_acs_primary_pdf_url(url_low, target_doi):
+        return "primary"
+    if any(tok in url_low for tok in ("/content/articlepdf/", "/doi/pdf/", "/article-pdf", "/epdf/", "/content/pdf/", "/pdfft")):
+        return "primary"
+    if any(tok in label_low for tok in ("download pdf", "view pdf", "open pdf", "full text pdf", "article pdf", "download this article")):
+        return "primary"
+    return "unknown"
+
+
+def _target_match_signals_for_pdf_candidate(
+    page,
+    candidate_url: str = "",
+    *,
+    target_doi: str = "",
+    label: str = "",
+    context: str = "",
+) -> list[str]:
+    url = str(candidate_url or "").strip()
+    low = url.lower()
+    doi_norm = _doi_from_doi_url(target_doi)
+    signals = []
+    current_url = ""
+    current_domain = ""
+    citation_doi = ""
+    try:
+        current_url = str(getattr(page, "url", "") or "")
+        current_domain = _extract_domain(current_url)
+    except Exception:
+        pass
+    try:
+        citation_doi = _extract_meta_content(page, "citation_doi").lower()
+    except Exception:
+        citation_doi = ""
+    if doi_norm and low and doi_norm in low:
+        signals.append("candidate_url_contains_target_doi")
+    doi_tokens = _extract_doi_tokens_from_text(url, label, context)
+    if doi_norm and doi_norm in doi_tokens:
+        signals.append("candidate_url_doi_exact")
+    elif doi_norm and doi_tokens:
+        signals.append("candidate_url_doi_mismatch")
+    if doi_norm and citation_doi and citation_doi == doi_norm:
+        signals.append("citation_doi_match")
+    if doi_norm and current_url and doi_norm in current_url.lower():
+        signals.append("current_url_contains_target_doi")
+    if low and _is_rsc_article_pdf_url(low):
+        signals.append("rsc_article_pdf_pattern")
+    if low and _is_acs_primary_pdf_url(low, doi_norm):
+        signals.append("acs_primary_pdf_pattern")
+    candidate_domain = _extract_domain(url)
+    if current_domain and candidate_domain and candidate_domain.endswith(current_domain):
+        signals.append("same_host")
+    label_blob = " ".join(part for part in (label, context) if str(part or "").strip()).lower()
+    if any(tok in label_blob for tok in ("download pdf", "view pdf", "open pdf", "full text pdf", "download this article", "article pdf")):
+        signals.append("primary_button_label")
+    if _target_doi_is_supporting_material(doi_norm) and doi_norm and low and doi_norm in low:
+        signals.append("supporting_target_exact")
+    return list(dict.fromkeys(signals))
+
+
+def _pdf_candidate_confidence(kind: str, match_signals: list[str], *, target_doi: str = "") -> str:
+    score = 0
+    if kind == "primary":
+        score += 4
+    elif kind == "unknown":
+        score += 1
+    elif kind == "supporting":
+        score -= 4
+    elif kind == "related":
+        score -= 6
+    weights = {
+        "candidate_url_contains_target_doi": 4,
+        "candidate_url_doi_exact": 4,
+        "citation_doi_match": 3,
+        "rsc_article_pdf_pattern": 4,
+        "acs_primary_pdf_pattern": 4,
+        "candidate_url_doi_mismatch": -8,
+        "current_url_contains_target_doi": 1,
+        "same_host": 1,
+        "primary_button_label": 2,
+        "supporting_target_exact": 4,
+    }
+    for signal in match_signals or []:
+        score += int(weights.get(signal, 0))
+    if _target_doi_is_supporting_material(target_doi) and kind == "supporting":
+        score += 3
+    if score >= 8:
+        return "high"
+    if score >= 4:
+        return "medium"
+    if score >= 1:
+        return "low"
+    return "blocked"
+
+
+def _has_strong_pdf_target_match(detail: dict) -> bool:
+    signals = set(detail.get("match_signals") or [])
+    return bool(
+        signals
+        & {
+            "candidate_url_contains_target_doi",
+            "candidate_url_doi_exact",
+            "citation_doi_match",
+            "rsc_article_pdf_pattern",
+            "acs_primary_pdf_pattern",
+            "supporting_target_exact",
+        }
+    )
+
+
+def _describe_pdf_candidate(page, url: str, *, source: str = "", target_doi: str = "", label: str = "", context: str = "") -> dict:
+    clean_url = str(url or "").strip()
+    clean_source = str(source or "").strip()
+    kind = _classify_pdf_candidate_kind(clean_url, label=label, context=context, target_doi=target_doi)
+    match_signals = _target_match_signals_for_pdf_candidate(
+        page,
+        clean_url,
+        target_doi=target_doi,
+        label=label,
+        context=context,
+    )
+    confidence = _pdf_candidate_confidence(kind, match_signals, target_doi=target_doi)
+    target_supporting = _target_doi_is_supporting_material(target_doi)
+    believed_primary = (
+        kind == "primary"
+        and not target_supporting
+        and (_has_strong_pdf_target_match({"match_signals": match_signals}) or confidence in {"high", "medium"})
+    )
+    return {
+        "url": clean_url,
+        "source": clean_source,
+        "kind": kind,
+        "match_signals": list(match_signals),
+        "confidence": confidence,
+        "believed_primary": bool(believed_primary),
+        "target_is_supporting": bool(target_supporting),
+    }
+
+
+def _describe_pdf_button_candidate(page, el, *, target_doi: str = "") -> dict:
+    if el is None:
+        return {"url": "", "source": "", "kind": "unknown", "match_signals": [], "confidence": "blocked", "believed_primary": False, "target_is_supporting": _target_doi_is_supporting_material(target_doi), "label": "", "context_blob": ""}
+    try:
+        text = (el.text or "").strip()
+    except Exception:
+        text = ""
+    try:
+        title = (el.attr("title") or "").strip()
+    except Exception:
+        title = ""
+    try:
+        aria = (el.attr("aria-label") or "").strip()
+    except Exception:
+        aria = ""
+    try:
+        href = (el.attr("href") or "").strip()
+    except Exception:
+        href = ""
+    context_blob = _element_context_blob(el)
+    label_blob = " ".join(part for part in (text, title, aria) if str(part or "").strip()).strip()
+    detail = _describe_pdf_candidate(
+        page,
+        href,
+        source="button_candidate",
+        target_doi=target_doi,
+        label=label_blob,
+        context=context_blob,
+    )
+    detail.update(
+        {
+            "label": label_blob,
+            "href": href,
+            "context_blob": context_blob,
+        }
+    )
+    return detail
+
+
+def _is_primary_pdf_ready_detail(detail: dict) -> bool:
+    if not detail:
+        return False
+    signals = set(detail.get("match_signals") or [])
+    if "candidate_url_doi_mismatch" in signals:
+        return False
+    if detail.get("target_is_supporting"):
+        return detail.get("kind") == "supporting" and detail.get("confidence") in {"high", "medium"}
+    if detail.get("kind") != "primary":
+        return False
+    if _has_strong_pdf_target_match(detail):
+        return True
+    return detail.get("confidence") in {"high", "medium"}
+
+
 def _looks_like_pdf_link(url: str) -> bool:
     low = str(url or "").lower()
     if not low:
@@ -3547,7 +3792,7 @@ def _is_elsevier_aux_overlay_blob(blob: str) -> bool:
     return any(tok in low for tok in marker_tokens) or any(tok in low for tok in overlay_tokens)
 
 
-def _select_best_clickable_pdf_element(page, xpaths, logger=None, must_tokens=None, ban_tokens=None):
+def _select_best_clickable_pdf_element(page, xpaths, logger=None, must_tokens=None, ban_tokens=None, target_doi: str = ""):
     candidates = []
     must_tokens = [str(t).lower() for t in (must_tokens or []) if str(t).strip()]
     ban_tokens = [str(t).lower() for t in (ban_tokens or []) if str(t).strip()]
@@ -3558,29 +3803,21 @@ def _select_best_clickable_pdf_element(page, xpaths, logger=None, must_tokens=No
                     continue
             except Exception:
                 pass
-            text = (el.text or "").strip()
-            title = (el.attr("title") or "").strip()
-            aria = (el.attr("aria-label") or "").strip()
-            href = (el.attr("href") or "").strip()
-            context_blob = _element_context_blob(el)
-            blob = f"{text} {title} {aria} {href}".lower()
+            detail = _describe_pdf_button_candidate(page, el, target_doi=target_doi)
+            text = str(detail.get("label") or "").strip()
+            href = str(detail.get("href") or "").strip()
+            context_blob = str(detail.get("context_blob") or "").strip().lower()
+            blob = f"{text} {href}".lower()
             full_blob = f"{blob} {context_blob}".strip()
-            if _is_supporting_info_blob(full_blob) or any(
-                k in full_blob
-                for k in (
-                    "figure",
-                    "dataset",
-                    "graphical abstract",
-                    "citation",
-                    "export",
-                    "powerpoint",
-                    "ms-power",
-                    "ppt",
-                    "bibtex",
-                )
+            if detail.get("kind") == "supporting" or any(
+                k in full_blob for k in ("figure", "dataset", "graphical abstract", "citation", "export", "powerpoint", "ms-power", "ppt", "bibtex")
             ):
+                if logger and ("pdf" in full_blob or ".pdf" in full_blob):
+                    logger.info(f"        [ClickSelect] supporting/supplementary PDF 후보 제외: {text[:120]} {href[:180]}")
                 continue
-            if _is_recommended_or_related_blob(full_blob):
+            if detail.get("kind") == "related" or _is_recommended_or_related_blob(full_blob):
+                if logger and ("pdf" in full_blob or ".pdf" in full_blob):
+                    logger.info(f"        [ClickSelect] related/recommended PDF 후보 제외: {text[:120]} {href[:180]}")
                 continue
             if _is_elsevier_aux_overlay_blob(context_blob):
                 continue
@@ -3610,23 +3847,41 @@ def _select_best_clickable_pdf_element(page, xpaths, logger=None, must_tokens=No
             for k in ("open pdf", "view pdf", "download pdf", "/pdfft", ".pdf", "articlepdf", "pdf"):
                 if k in blob:
                     score += 2
+            if detail.get("kind") == "primary":
+                score += 6
+            elif detail.get("kind") == "unknown":
+                score += 1
+            confidence = str(detail.get("confidence") or "")
+            score += {"high": 6, "medium": 4, "low": 1}.get(confidence, 0)
+            if _has_strong_pdf_target_match(detail):
+                score += 5
             if "accessbar" in context_blob:
                 score += 8
             if "_blank" in blob or "opens in a new window" in full_blob:
                 score += 2
             if href:
                 score += 1
-            candidates.append((score, el, blob))
+            candidates.append((score, el, detail))
 
     if not candidates:
         return None
     candidates.sort(key=lambda x: x[0], reverse=True)
     if logger:
-        logger.info(f"        [ClickSelect] 후보 {len(candidates)}개 중 최고점={candidates[0][0]}")
+        best = candidates[0][2]
+        logger.info(
+            "        [ClickSelect] 후보 %s개 중 최고점=%s kind=%s confidence=%s signals=%s"
+            % (
+                len(candidates),
+                candidates[0][0],
+                best.get("kind") or "unknown",
+                best.get("confidence") or "blocked",
+                ",".join(best.get("match_signals") or []) or "-",
+            )
+        )
     return candidates[0][1]
 
 
-def _find_generic_pdf_button(page, logger=None):
+def _find_generic_pdf_button(page, logger=None, target_doi: str = ""):
     if page is None:
         return None
     quick_locators = [
@@ -3646,6 +3901,7 @@ def _find_generic_pdf_button(page, logger=None):
         'css:a[href*="/doi/pdf"]',
         'css:a[href*="articlepdf"]',
     ]
+    quick_candidates = []
     for loc in quick_locators:
         try:
             el = _ele_quick(page, loc, timeout=0.4)
@@ -3653,20 +3909,34 @@ def _find_generic_pdf_button(page, logger=None):
             el = None
         if el is None:
             continue
-        try:
-            blob = " ".join(
-                [
-                    str(el.text or ""),
-                    str(el.attr("title") or ""),
-                    str(el.attr("aria-label") or ""),
-                    str(el.attr("href") or ""),
-                ]
-            ).lower()
-        except Exception:
-            blob = ""
-        if _is_supporting_info_blob(blob):
+        detail = _describe_pdf_button_candidate(page, el, target_doi=target_doi)
+        if detail.get("kind") in {"supporting", "related"}:
+            if logger:
+                logger.info(
+                    f"        [ClickSelect] quick locator 후보 제외(kind={detail.get('kind')}): {str(detail.get('label') or '')[:120]}"
+                )
             continue
-        return el
+        score = 4
+        if detail.get("kind") == "primary":
+            score += 6
+        score += {"high": 6, "medium": 4, "low": 1}.get(str(detail.get("confidence") or ""), 0)
+        if _has_strong_pdf_target_match(detail):
+            score += 5
+        quick_candidates.append((score, el, detail))
+    if quick_candidates:
+        quick_candidates.sort(key=lambda x: x[0], reverse=True)
+        if logger:
+            best = quick_candidates[0][2]
+            logger.info(
+                "        [ClickSelect] quick locator 선택 score=%s kind=%s confidence=%s signals=%s"
+                % (
+                    quick_candidates[0][0],
+                    best.get("kind") or "unknown",
+                    best.get("confidence") or "blocked",
+                    ",".join(best.get("match_signals") or []) or "-",
+                )
+            )
+        return quick_candidates[0][1]
 
     generic_xpaths = [
         "//a[contains(@href,'.pdf') or contains(@href,'/content/pdf/') or contains(@href,'/epdf/') or contains(@href,'/doi/pdf') or contains(@href,'articlepdf') or contains(@href,'download=true')]",
@@ -3682,7 +3952,7 @@ def _find_generic_pdf_button(page, logger=None):
         "//button[contains(translate(normalize-space(string(.)),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'full text pdf')]",
         "//button[contains(translate(normalize-space(string(.)),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'download this article')]",
     ]
-    return _select_best_clickable_pdf_element(page, generic_xpaths, logger=logger)
+    return _select_best_clickable_pdf_element(page, generic_xpaths, logger=logger, target_doi=target_doi)
 
 
 def _adopt_latest_tab(page, logger=None):
@@ -5501,6 +5771,60 @@ def _extract_rsc_article_pdf_url(page) -> str:
     return ""
 
 
+def _extract_acs_primary_pdf_url(page, target_doi: str = "") -> str:
+    if page is None:
+        return ""
+    current_url = str(getattr(page, "url", "") or "").strip()
+
+    def normalize(url: str) -> str:
+        raw = str(url or "").strip()
+        if not raw:
+            return ""
+        if not raw.startswith("http"):
+            try:
+                raw = urljoin(current_url, raw)
+            except Exception:
+                return ""
+        return raw
+
+    current_norm = normalize(current_url)
+    if _is_acs_primary_pdf_url(current_norm, target_doi):
+        return current_norm
+
+    try:
+        meta_pdf = _ele_quick(page, 'css:meta[name="citation_pdf_url"]', timeout=0.2)
+        if meta_pdf:
+            content = normalize(meta_pdf.attr("content"))
+            if _is_acs_primary_pdf_url(content, target_doi):
+                return content
+    except Exception:
+        pass
+
+    try:
+        links = _eles_quick(
+            page,
+            "xpath://a[contains(translate(@href,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'/doi/pdf/')]"
+            " | //a[contains(translate(@title,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'download pdf')]"
+            " | //a[contains(translate(@aria-label,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'download pdf')]"
+            " | //a[contains(translate(normalize-space(string(.)),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'download pdf')]"
+            " | //a[contains(translate(normalize-space(string(.)),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'view pdf')]"
+            " | //button[contains(translate(normalize-space(string(.)),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'download pdf')]"
+            " | //button[contains(translate(normalize-space(string(.)),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'view pdf')]",
+            timeout=0.3,
+        )
+        for link in links:
+            detail = _describe_pdf_button_candidate(page, link, target_doi=target_doi)
+            href = normalize(detail.get("href") or detail.get("url") or "")
+            if detail.get("kind") in {"supporting", "related"}:
+                continue
+            if _is_acs_primary_pdf_url(href, target_doi):
+                return href
+    except Exception:
+        pass
+
+    return ""
+
+
 def _wait_for_rsc_article_pdf_ready(page, logger=None, timeout_s: int = 8) -> str:
     if page is None:
         return ""
@@ -5522,7 +5846,28 @@ def _wait_for_rsc_article_pdf_ready(page, logger=None, timeout_s: int = 8) -> st
     return ""
 
 
-def _collect_pdf_candidate_urls_from_page(page, logger=None, *, include_html_analysis: bool = True) -> list:
+def _wait_for_acs_primary_pdf_ready(page, target_doi: str = "", logger=None, timeout_s: int = 8) -> str:
+    if page is None:
+        return ""
+    deadline = time.time() + max(0.5, float(timeout_s))
+    while time.time() < deadline:
+        article_pdf_url = _extract_acs_primary_pdf_url(page, target_doi=target_doi)
+        if article_pdf_url:
+            if logger:
+                logger.info(f"        [ACS] primary PDF 신호 확보: {article_pdf_url}")
+            return article_pdf_url
+        try:
+            html_low = (page.html or "").lower()
+        except Exception:
+            html_low = ""
+        if "loading" in html_low and "pdf" in html_low:
+            time.sleep(0.5)
+            continue
+        time.sleep(0.35)
+    return ""
+
+
+def _collect_pdf_candidate_urls_from_page(page, logger=None, *, include_html_analysis: bool = True, target_doi: str = "") -> list:
     if page is None:
         return []
 
@@ -5530,7 +5875,7 @@ def _collect_pdf_candidate_urls_from_page(page, logger=None, *, include_html_ana
     seen = set()
     candidates = []
 
-    def add(raw_url):
+    def add(raw_url, source: str = ""):
         url = str(raw_url or "").strip()
         if not url or url.startswith("javascript:") or url.startswith("blob:"):
             return
@@ -5547,24 +5892,33 @@ def _collect_pdf_candidate_urls_from_page(page, logger=None, *, include_html_ana
             or "stamp.jsp" in low
         ):
             return
+        detail = _describe_pdf_candidate(page, url, source=source, target_doi=target_doi)
+        if detail.get("kind") == "supporting" and not detail.get("target_is_supporting"):
+            if logger:
+                logger.info(f"        [ViewerGate] supporting/supplementary 후보 제외(source={source or 'unknown'}): {url[:220]}")
+            return
+        if detail.get("kind") == "related":
+            if logger:
+                logger.info(f"        [ViewerGate] related/recommended 후보 제외(source={source or 'unknown'}): {url[:220]}")
+            return
         if url in seen:
             return
         seen.add(url)
         candidates.append(url)
 
-    add(current_url)
+    add(current_url, "current_url")
 
     try:
         meta_pdf = _ele_quick(page, 'css:meta[name="citation_pdf_url"]', timeout=0.2)
         if meta_pdf:
-            add(meta_pdf.attr("content"))
+            add(meta_pdf.attr("content"), "citation_pdf_url_meta")
     except Exception:
         pass
 
     if include_html_analysis:
         try:
             analyzed = _analyze_html_structure_drission(page, logger)
-            add(analyzed)
+            add(analyzed, "html_structure_analysis")
         except Exception:
             pass
 
@@ -5575,14 +5929,14 @@ def _collect_pdf_candidate_urls_from_page(page, logger=None, *, include_html_ana
             timeout=0.3,
         )
         for link in links[:12]:
-            add(link.attr("href"))
+            add(link.attr("href"), "anchor_href")
     except Exception:
         pass
 
     try:
         frames = _eles_quick(page, 'css:iframe, embed, object', timeout=0.3)
         for frame in frames[:8]:
-            add(frame.attr("src") or frame.attr("data"))
+            add(frame.attr("src") or frame.attr("data"), "embedded_resource")
     except Exception:
         pass
 
@@ -5591,13 +5945,24 @@ def _collect_pdf_candidate_urls_from_page(page, logger=None, *, include_html_ana
     return candidates
 
 
-def _select_preferred_pdf_candidate_url(candidate_urls, *, current_domain: str = "", logger=None) -> str:
+def _select_preferred_pdf_candidate_url(candidate_urls, *, current_domain: str = "", logger=None, page=None, target_doi: str = "") -> str:
     best_url = ""
     best_score = -10**9
     current_domain = str(current_domain or "").strip().lower()
+    high_identity_domain = any(tok in current_domain for tok in ("acs.org", "rsc.org"))
+    best_detail = {}
     for raw in candidate_urls or []:
         url = str(raw or "").strip()
         if not url or _is_supporting_info_blob(url):
+            continue
+        detail = _describe_pdf_candidate(page, url, source="candidate_url", target_doi=target_doi)
+        if detail.get("kind") == "supporting" and not detail.get("target_is_supporting"):
+            if logger:
+                logger.info(f"        [Acquire] supporting/supplementary 후보 폐기: {url[:220]}")
+            continue
+        if detail.get("kind") == "related":
+            if logger:
+                logger.info(f"        [Acquire] related/recommended 후보 폐기: {url[:220]}")
             continue
         low = url.lower()
         score = 0
@@ -5612,11 +5977,38 @@ def _select_preferred_pdf_candidate_url(candidate_urls, *, current_domain: str =
         domain = _extract_domain(low)
         if current_domain and domain and domain.endswith(current_domain):
             score += 2
+        if detail.get("kind") == "primary":
+            score += 8
+        elif detail.get("kind") == "unknown":
+            score += 1
+        score += {"high": 8, "medium": 5, "low": 1}.get(str(detail.get("confidence") or ""), 0)
+        if _has_strong_pdf_target_match(detail):
+            score += 5
+        if high_identity_domain and not detail.get("target_is_supporting") and not _is_primary_pdf_ready_detail(detail):
+            score -= 12
         if score > best_score:
             best_score = score
             best_url = url
+            best_detail = detail
+    if best_url and high_identity_domain and best_detail and not best_detail.get("target_is_supporting") and not _is_primary_pdf_ready_detail(best_detail):
+        if logger:
+            logger.warning(
+                "        [Acquire] primary article PDF로 보기 어려운 후보를 폐기: "
+                f"kind={best_detail.get('kind')} confidence={best_detail.get('confidence')} "
+                f"signals={','.join(best_detail.get('match_signals') or []) or '-'}"
+            )
+        return ""
     if logger and best_url:
-        logger.info(f"        [Acquire] 후보 URL 선택(score={best_score}): {best_url[:220]}")
+        logger.info(
+            "        [Acquire] 후보 URL 선택(score=%s kind=%s confidence=%s signals=%s): %s"
+            % (
+                best_score,
+                best_detail.get("kind") or "unknown",
+                best_detail.get("confidence") or "blocked",
+                ",".join(best_detail.get("match_signals") or []) or "-",
+                best_url[:220],
+            )
+        )
     return best_url
 
 
@@ -7113,6 +7505,13 @@ def download_with_drission(
     download_attempt_history = []
     extracted_resource_url = ""
     extracted_resource_source = ""
+    download_candidate_source = ""
+    download_candidate_url = ""
+    download_candidate_kind = ""
+    primary_pdf_ready = False
+    target_match_signals = []
+    final_pdf_confidence = ""
+    final_pdf_believed_primary = False
     startup_tab_cleanup_applied = False
     startup_tab_cleanup_before_count = 0
     startup_tab_cleanup_after_count = 0
@@ -7171,6 +7570,35 @@ def download_with_drission(
                 "url": str(target_url or "")[:500],
             }
         )
+
+    def _note_download_candidate(
+        url: str = "",
+        *,
+        source: str = "",
+        kind: str = "",
+        match_signals=None,
+        confidence: str = "",
+        believed_primary=None,
+        primary_ready=None,
+    ) -> str:
+        nonlocal download_candidate_source, download_candidate_url, download_candidate_kind
+        nonlocal target_match_signals, final_pdf_confidence, final_pdf_believed_primary, primary_pdf_ready
+        clean_url = str(url or "").strip()
+        if clean_url:
+            download_candidate_url = clean_url[:1000]
+        if source:
+            download_candidate_source = str(source or "").strip()
+        if kind:
+            download_candidate_kind = str(kind or "").strip()
+        if match_signals is not None:
+            target_match_signals = list(dict.fromkeys(str(sig or "").strip() for sig in (match_signals or []) if str(sig or "").strip()))
+        if confidence:
+            final_pdf_confidence = str(confidence or "").strip()
+        if believed_primary is not None:
+            final_pdf_believed_primary = bool(believed_primary)
+        if primary_ready is not None:
+            primary_pdf_ready = bool(primary_pdf_ready or primary_ready)
+        return clean_url
 
     def _note_extracted_resource(raw_url: str, source: str = "") -> str:
         nonlocal extracted_resource_url, extracted_resource_source
@@ -7233,6 +7661,13 @@ def download_with_drission(
             "download_attempted": bool(download_attempted),
             "download_strategy_used": str(download_strategy_used or ""),
             "download_attempt_history": list(download_attempt_history),
+            "download_candidate_source": str(download_candidate_source or ""),
+            "download_candidate_url": str(download_candidate_url or ""),
+            "download_candidate_kind": str(download_candidate_kind or ""),
+            "primary_pdf_ready": bool(primary_pdf_ready),
+            "target_match_signals": list(target_match_signals or []),
+            "final_pdf_confidence": str(final_pdf_confidence or ""),
+            "final_pdf_believed_primary": bool(final_pdf_believed_primary),
             "extracted_resource_url": str(extracted_resource_url or ""),
             "extracted_resource_source": str(extracted_resource_source or ""),
             "failure_stage": str(stage_label or ""),
@@ -7372,6 +7807,13 @@ def download_with_drission(
             "download_attempted": bool(download_attempted),
             "download_strategy_used": str(download_strategy_used or ""),
             "download_attempt_history": list(download_attempt_history),
+            "download_candidate_source": str(download_candidate_source or ""),
+            "download_candidate_url": str(download_candidate_url or ""),
+            "download_candidate_kind": str(download_candidate_kind or ""),
+            "primary_pdf_ready": bool(primary_pdf_ready),
+            "target_match_signals": list(target_match_signals or []),
+            "final_pdf_confidence": str(final_pdf_confidence or ""),
+            "final_pdf_believed_primary": bool(final_pdf_believed_primary),
             "extracted_resource_url": str(extracted_resource_url or ""),
             "extracted_resource_source": str(extracted_resource_source or ""),
             "failure_stage": str("" if ok else stage or ""),
@@ -7630,6 +8072,15 @@ def download_with_drission(
             download_attempted = False
             download_strategy_used = ""
             download_attempt_history = []
+            extracted_resource_url = ""
+            extracted_resource_source = ""
+            download_candidate_source = ""
+            download_candidate_url = ""
+            download_candidate_kind = ""
+            primary_pdf_ready = False
+            target_match_signals = []
+            final_pdf_confidence = ""
+            final_pdf_believed_primary = False
             startup_tab_cleanup_applied = False
             startup_tab_cleanup_before_count = 0
             startup_tab_cleanup_after_count = 0
@@ -8151,6 +8602,8 @@ def download_with_drission(
             is_acs = "acs.org" in current_domain
             is_rsc = "rsc.org" in current_domain
             generic_button_attempted = False
+            primary_ready_detail = {}
+            pdf_btn_detail = {}
 
             if is_elsevier_landing:
                 logger.info(f"        [Elsevier] 2단계 클릭 다운로드 우선 시도: {doi_norm}")
@@ -8196,10 +8649,24 @@ def download_with_drission(
                 )
             pdf_btn = None
             if is_rsc:
-                pdf_url = _note_extracted_resource(
-                    _wait_for_rsc_article_pdf_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 6),
-                    "rsc_article_pdf_ready",
-                )
+                primary_ready_url = _wait_for_rsc_article_pdf_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 6)
+                primary_ready_detail = _describe_pdf_candidate(
+                    page,
+                    primary_ready_url,
+                    source="rsc_article_pdf_ready",
+                    target_doi=doi_norm,
+                ) if primary_ready_url else {}
+                if primary_ready_detail:
+                    _note_download_candidate(
+                        primary_ready_detail.get("url") or "",
+                        source=primary_ready_detail.get("source") or "rsc_article_pdf_ready",
+                        kind=primary_ready_detail.get("kind") or "",
+                        match_signals=primary_ready_detail.get("match_signals") or [],
+                        confidence=primary_ready_detail.get("confidence") or "",
+                        believed_primary=primary_ready_detail.get("believed_primary"),
+                        primary_ready=_is_primary_pdf_ready_detail(primary_ready_detail),
+                    )
+                pdf_url = _note_extracted_resource(primary_ready_url, "rsc_article_pdf_ready")
                 pdf_btn = _select_best_clickable_pdf_element(
                     page,
                     [
@@ -8221,9 +8688,45 @@ def download_with_drission(
                         "electronic supplementary information",
                         "suppdata",
                     ],
+                    target_doi=doi_norm,
                 )
             else:
-                pdf_btn = _find_generic_pdf_button(page, logger=logger)
+                if is_acs:
+                    primary_ready_url = _wait_for_acs_primary_pdf_ready(
+                        page,
+                        target_doi=doi_norm,
+                        logger=logger,
+                        timeout_s=10 if mode == "deep" else 6,
+                    )
+                    primary_ready_detail = _describe_pdf_candidate(
+                        page,
+                        primary_ready_url,
+                        source="acs_primary_pdf_ready",
+                        target_doi=doi_norm,
+                    ) if primary_ready_url else {}
+                    if primary_ready_detail:
+                        _note_download_candidate(
+                            primary_ready_detail.get("url") or "",
+                            source=primary_ready_detail.get("source") or "acs_primary_pdf_ready",
+                            kind=primary_ready_detail.get("kind") or "",
+                            match_signals=primary_ready_detail.get("match_signals") or [],
+                            confidence=primary_ready_detail.get("confidence") or "",
+                            believed_primary=primary_ready_detail.get("believed_primary"),
+                            primary_ready=_is_primary_pdf_ready_detail(primary_ready_detail),
+                        )
+                    pdf_url = _note_extracted_resource(primary_ready_url, "acs_primary_pdf_ready") or pdf_url
+                pdf_btn = _find_generic_pdf_button(page, logger=logger, target_doi=doi_norm)
+            if pdf_btn is not None:
+                pdf_btn_detail = _describe_pdf_button_candidate(page, pdf_btn, target_doi=doi_norm)
+                _note_download_candidate(
+                    pdf_btn_detail.get("href") or pdf_btn_detail.get("url") or "",
+                    source="pdf_button_candidate",
+                    kind=pdf_btn_detail.get("kind") or "",
+                    match_signals=pdf_btn_detail.get("match_signals") or [],
+                    confidence=pdf_btn_detail.get("confidence") or "",
+                    believed_primary=pdf_btn_detail.get("believed_primary"),
+                    primary_ready=primary_pdf_ready,
+                )
             
             # 1. Meta 태그
             if not pdf_url:
@@ -8231,6 +8734,21 @@ def download_with_drission(
                 if meta:
                     meta_content = meta.attr('content')
                     if not _is_supporting_info_blob(meta_content):
+                        meta_detail = _describe_pdf_candidate(
+                            page,
+                            meta_content,
+                            source="citation_pdf_url_meta",
+                            target_doi=doi_norm,
+                        )
+                        _note_download_candidate(
+                            meta_detail.get("url") or "",
+                            source=meta_detail.get("source") or "citation_pdf_url_meta",
+                            kind=meta_detail.get("kind") or "",
+                            match_signals=meta_detail.get("match_signals") or [],
+                            confidence=meta_detail.get("confidence") or "",
+                            believed_primary=meta_detail.get("believed_primary"),
+                            primary_ready=primary_pdf_ready or _is_primary_pdf_ready_detail(meta_detail),
+                        )
                         pdf_url = _note_extracted_resource(meta_content, "citation_pdf_url_meta")
             
             # 2. 버튼/링크 패턴 매칭
@@ -8238,6 +8756,23 @@ def download_with_drission(
                 if pdf_btn:
                     btn_href = pdf_btn.attr('href')
                     if _looks_like_pdf_link(btn_href):
+                        btn_href_detail = _describe_pdf_candidate(
+                            page,
+                            btn_href,
+                            source="pdf_button_href",
+                            target_doi=doi_norm,
+                            label=str(pdf_btn_detail.get("label") or ""),
+                            context=str(pdf_btn_detail.get("context_blob") or ""),
+                        )
+                        _note_download_candidate(
+                            btn_href_detail.get("url") or "",
+                            source=btn_href_detail.get("source") or "pdf_button_href",
+                            kind=btn_href_detail.get("kind") or "",
+                            match_signals=btn_href_detail.get("match_signals") or [],
+                            confidence=btn_href_detail.get("confidence") or "",
+                            believed_primary=btn_href_detail.get("believed_primary"),
+                            primary_ready=primary_pdf_ready or _is_primary_pdf_ready_detail(btn_href_detail),
+                        )
                         pdf_url = _note_extracted_resource(btn_href, "pdf_button_href")
                     elif btn_href and logger:
                         logger.info(f"        [LinkFilter] PDF 링크 후보 제외(weak): {btn_href}")
@@ -8247,15 +8782,60 @@ def download_with_drission(
                     page,
                     logger=logger,
                     include_html_analysis=False,
+                    target_doi=doi_norm,
                 )
                 pdf_url = _note_extracted_resource(
                     _select_preferred_pdf_candidate_url(
                         cheap_candidates,
                         current_domain=current_domain,
                         logger=logger,
+                        page=page,
+                        target_doi=doi_norm,
                     ),
                     "cheap_candidate_scan",
                 )
+            if (not pdf_url) and is_acs and pdf_btn:
+                if _is_primary_pdf_ready_detail(pdf_btn_detail) or primary_pdf_ready:
+                    logger.info("        [ACS] primary PDF 버튼 확인 후 클릭 시도")
+                    _mark_download_attempt("acs_primary_button_click", str(pdf_btn_detail.get("href") or page.url or ""))
+                    generic_button_attempted = True
+                    click_ok, click_page = _try_click_pdf_button_download(
+                        page=page,
+                        pdf_btn=pdf_btn,
+                        save_dir=browser_tmp_dir,
+                        full_save_path=tmp_save_path,
+                        logger=logger,
+                        wait_timeout_s=8 if mode == "first" else 14,
+                        return_page=True,
+                    )
+                    if click_page is not None:
+                        page = click_page
+                        current_domain = _extract_domain(getattr(page, "url", "") or "") or current_domain
+                    if click_ok:
+                        if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
+                            return _ret(True, "SUCCESS", stage="acs-primary-button-click")
+                    if not pdf_url:
+                        post_click_candidates = _collect_pdf_candidate_urls_from_page(
+                            page,
+                            logger=logger,
+                            include_html_analysis=False,
+                            target_doi=doi_norm,
+                        )
+                        pdf_url = _note_extracted_resource(
+                            _select_preferred_pdf_candidate_url(
+                                post_click_candidates,
+                                current_domain=current_domain,
+                                logger=logger,
+                                page=page,
+                                target_doi=doi_norm,
+                            ),
+                            "acs_post_click_candidate_scan",
+                        )
+                elif logger:
+                    logger.info(
+                        "        [ACS] primary PDF 준비 미확인 -> 조기 버튼 클릭 보류 "
+                        f"(kind={str(pdf_btn_detail.get('kind') or '')}, confidence={str(pdf_btn_detail.get('confidence') or '')})"
+                    )
             if (not pdf_url) and pdf_btn and (not is_acs) and (not is_sciencedirect) and (not is_rsc):
                 logger.info(f"        [Acquire] 일반 도메인({current_domain}) 버튼 클릭 선시도")
                 _mark_download_attempt("button_click_download", str(page.url or ""))
@@ -8280,12 +8860,15 @@ def download_with_drission(
                         page,
                         logger=logger,
                         include_html_analysis=False,
+                        target_doi=doi_norm,
                     )
                     pdf_url = _note_extracted_resource(
                         _select_preferred_pdf_candidate_url(
                             post_click_candidates,
                             current_domain=current_domain,
                             logger=logger,
+                            page=page,
+                            target_doi=doi_norm,
                         ),
                         "post_click_candidate_scan",
                     )
@@ -8480,11 +9063,39 @@ def download_with_drission(
                 # 상대 경로를 절대 경로로 변환
                 if not pdf_url.startswith('http'):
                     pdf_url = urljoin(page.url, pdf_url)
-                if _is_supporting_info_blob(pdf_url):
+                candidate_detail = _describe_pdf_candidate(
+                    page,
+                    pdf_url,
+                    source=str(extracted_resource_source or "selected_pdf_url"),
+                    target_doi=doi_norm,
+                )
+                _note_download_candidate(
+                    candidate_detail.get("url") or "",
+                    source=candidate_detail.get("source") or str(extracted_resource_source or "selected_pdf_url"),
+                    kind=candidate_detail.get("kind") or "",
+                    match_signals=candidate_detail.get("match_signals") or [],
+                    confidence=candidate_detail.get("confidence") or "",
+                    believed_primary=candidate_detail.get("believed_primary"),
+                    primary_ready=primary_pdf_ready or _is_primary_pdf_ready_detail(candidate_detail),
+                )
+                if candidate_detail.get("kind") == "supporting" and not candidate_detail.get("target_is_supporting"):
                     if logger:
                         logger.warning(f"        [LinkFilter] supporting-information PDF 후보 폐기: {pdf_url}")
                     pdf_url = None
-                if is_sciencedirect:
+                if pdf_url and candidate_detail.get("kind") == "related":
+                    if logger:
+                        logger.warning(f"        [LinkFilter] related/recommended PDF 후보 폐기: {pdf_url}")
+                    pdf_url = None
+                if pdf_url and (is_acs or is_rsc) and (not candidate_detail.get("target_is_supporting")) and not _is_primary_pdf_ready_detail(candidate_detail):
+                    if logger:
+                        logger.warning(
+                            "        [LinkFilter] primary article PDF로 확인되지 않은 후보 폐기: "
+                            f"kind={candidate_detail.get('kind')} confidence={candidate_detail.get('confidence')} "
+                            f"signals={','.join(candidate_detail.get('match_signals') or []) or '-'} "
+                            f"url={pdf_url[:220]}"
+                        )
+                    pdf_url = None
+                if pdf_url and is_sciencedirect:
                     target_pii_now = _extract_elsevier_target_pii(page)
                     found_pii = _extract_sciencedirect_pii_from_text(pdf_url)
                     if target_pii_now and found_pii and (found_pii != target_pii_now):
