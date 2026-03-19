@@ -3657,3 +3657,103 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
     - this patch intentionally does not attempt challenge bypass.
   - exact low-level reason why the reused startup page detached for `10.1063/5.0257779` is still not fully proven.
     - current conclusion is an evidence-backed inference from logs and runtime symptoms.
+
+### 5.36 2026-03-19 Codex: Drission browser startup failure (`The browser connection fails`) 원인 확정 및 launch isolation 보완
+
+- observed symptom
+  - recent headful Linux/Xvfb runs emitted:
+    - `[Drission] 브라우저 실행 실패(1/3):`
+    - `The browser connection fails.`
+    - `Address: 127.0.0.1:<port>`
+    - `Tip:`
+      - `the user folder does not conflict with the open browser`
+      - `if no interface system, please add '--headless=new'`
+      - `if the system is Linux, try adding '--no-sandbox'`
+  - one concrete artifact:
+    - `publisher_download_benchmark_elsevier_aip_ieee_iop_xvfb_20260319_165013`
+    - `download/run/Open_Access/logs/download_log_10.1016_j.ccr.2024.215942.pdf.pdf.txt`
+
+- confirmed code-level causes
+  - retries reused the same launch configuration.
+    - `download_with_drission()` created `ChromiumOptions()` once
+    - `co.set_local_port(_pick_free_local_port())` ran once
+    - browser init retry loop then retried `ChromiumPage(co)` with the same port / same options
+    - therefore a bad first attach could repeat the same root cause
+  - cleanup matcher was stale.
+    - `_is_drission_browser_root_command()` only matched old `DrissionPage/autoPortData` style command lines
+    - current runtime uses cloned `user-data-dir` roots under `/tmp/.../download_runtime_profiles/...`
+    - so `_kill_browser_processes_by_user_data_dir()` could miss the actual runtime Chrome root process
+  - Linux `--no-sandbox` was still opt-in only.
+    - code added it only when `PDF_BROWSER_NO_SANDBOX=1`
+    - current Linux/Xvfb server path is rootless and the observed Drission error explicitly recommended `--no-sandbox`
+    - this did not prove sandbox was the only cause, but it was a confirmed missing stabilizer in the default Linux path
+  - diagnostics were insufficient.
+    - launch failure logs did not show which `port`, `DISPLAY`, `user_data_dir`, or `no_sandbox` setting was actually used
+
+- implemented fixes
+  - `tools_exp.py`
+    - `_linux_no_sandbox_enabled()`
+      - `linux_server` now defaults to `--no-sandbox --disable-setuid-sandbox`
+      - explicit `PDF_BROWSER_NO_SANDBOX=0` still disables it
+    - `_is_drission_browser_root_command()`
+      - broadened to match current Chrome/Chromium root processes with:
+        - `--remote-debugging-port=...`
+        - `--user-data-dir=...`
+      - excludes helper / crashpad / typed child processes
+    - `_kill_browser_processes_by_debug_port()`
+      - added targeted cleanup by remote debugging port
+    - `_cleanup_browser_startup_artifacts()`
+      - removes `Singleton*` and `DevToolsActivePort` only for owned runtime dirs (`temp` or `*_clone`)
+    - `download_with_drission()`
+      - browser init now rebuilds `ChromiumOptions()` per init attempt
+      - each init attempt gets a fresh local port
+      - failed init performs:
+        - kill by debug port
+        - kill by owned user-data-dir
+        - startup artifact cleanup
+      - logs now print the actual launch configuration:
+        - `port`
+        - `display`
+        - `headless`
+        - `no_sandbox`
+        - `user_data_dir`
+      - detail payload now records:
+        - `browser_launch_port`
+        - `browser_launch_display`
+        - `browser_launch_headless`
+        - `browser_launch_no_sandbox`
+        - `browser_init_attempts`
+
+- why this fits the current direction
+  - Linux + Xvfb headful remains the default runtime model
+  - no separate landing-only path was reintroduced
+  - startup recovery is now aligned with the unified download flow
+  - retries no longer blindly repeat the same broken attach state
+
+- lightweight verification
+  - `python -m py_compile tools_exp.py parallel_download.py experiment/run_linux_headless_suite.py config.py`
+    - pass
+  - smoke:
+    - `PDF_BROWSER_EXECUTION_ENV=linux_server`, `PDF_BROWSER_HEADLESS=0`, no explicit `PDF_BROWSER_NO_SANDBOX`
+    - `_linux_no_sandbox_enabled('linux_server') -> True`
+    - `_apply_best_browser_profile(ChromiumOptions())` now includes:
+      - `--no-sandbox`
+      - `--disable-setuid-sandbox`
+    - `_is_drission_browser_root_command('--remote-debugging-port=41349 --user-data-dir=/tmp/...') -> True`
+
+- re-check command
+  - `bash scripts/run_linux_suite_bg.sh --suite full --run-name drission_startup_recheck_20260319 --sample-csv outputs/benchmark_inputs/publisher_download_benchmark_elsevier_aip_ieee_spie_iop.csv --download-workers 3 --after-first-pass stop --runtime-preset linux_cli_seeded --execution-env linux_server --headless 0 --xvfb 1 --xvfb-bin "$HOME/.local/bin/Xvfb" --xvfb-display :99`
+  - inspect:
+    - `logs/<run>.log`
+    - `outputs/linux_headless_suite_runs/<run>/logs/download.stderr.log`
+    - `download/run/openalex_search_results_parallel.csv`
+    - especially:
+      - `browser_launch_port`
+      - `browser_launch_display`
+      - `browser_launch_no_sandbox`
+      - `browser_init_attempts`
+
+- remaining uncertainty
+  - this patch addresses confirmed launch-stability defects and missing diagnostics
+  - it does not prove that every future `browser connection fails` was caused by sandbox/port/profile issues alone
+  - a fresh server rerun is still required to measure how much startup determinism improved under real benchmark concurrency

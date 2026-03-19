@@ -112,6 +112,15 @@ def _pick_free_local_port() -> int:
     return port
 
 
+def _linux_no_sandbox_enabled(execution_env: str = "") -> bool:
+    raw = os.getenv("PDF_BROWSER_NO_SANDBOX", "auto").strip().lower()
+    if raw in ("0", "false", "no", "off"):
+        return False
+    if raw in ("1", "true", "yes", "on"):
+        return True
+    return resolve_browser_execution_env(execution_env) == EXECUTION_ENV_LINUX_SERVER
+
+
 def _browser_runtime_meta(page) -> Dict[str, str]:
     browser = getattr(page, "browser", None)
     return {
@@ -236,9 +245,95 @@ def _is_drission_browser_root_command(cmd: str) -> bool:
         return False
     if "--remote-debugging-port=" not in low:
         return False
-    if "drissionpage/autop" not in low and "drissionpage/autoportdata" not in low:
+    if "--user-data-dir=" not in low:
         return False
-    return "helper" not in low
+    if "chrome_crashpad_handler" in low:
+        return False
+    if "chromedriver" in low:
+        return False
+    if "--type=" in low:
+        return False
+    if " helper" in low or low.endswith(" helper"):
+        return False
+    return True
+
+
+def _kill_browser_processes_by_debug_port(port: Any, logger=None, only_orphans: bool = False) -> int:
+    try:
+        port_int = int(port)
+    except Exception:
+        return 0
+    if port_int <= 0:
+        return 0
+
+    psutil = _maybe_import_psutil()
+    if psutil is None:
+        return 0
+
+    target_token = f"--remote-debugging-port={port_int}"
+    killed = 0
+    for proc in psutil.process_iter(["pid", "ppid", "cmdline"]):
+        try:
+            cmdline = proc.info.get("cmdline") or []
+            cmd = " ".join(str(part) for part in cmdline if part)
+            if not cmd or target_token not in cmd:
+                continue
+            if not _is_drission_browser_root_command(cmd):
+                continue
+            if only_orphans and int(proc.info.get("ppid") or 0) != 1:
+                continue
+            killed += _kill_process_tree(proc.info.get("pid"), logger=logger, reason=f"debug-port={port_int}")
+        except Exception:
+            continue
+    return killed
+
+
+def _session_plan_has_owned_runtime_dir(session_plan: Dict[str, Any] = None) -> bool:
+    if not session_plan:
+        return False
+    if bool(session_plan.get("cleanup_on_close")):
+        return True
+    source = str(session_plan.get("session_source") or "").strip().lower()
+    mode = str(session_plan.get("session_mode") or "").strip().lower()
+    if source.endswith("_clone") or mode == "temp":
+        return True
+    return False
+
+
+def _cleanup_browser_startup_artifacts(session_plan: Dict[str, Any] = None, logger=None) -> int:
+    if not _session_plan_has_owned_runtime_dir(session_plan):
+        return 0
+    user_data_dir = os.path.abspath(str((session_plan or {}).get("user_data_dir") or "").strip())
+    profile_name = str((session_plan or {}).get("profile_name") or "Default").strip() or "Default"
+    if not user_data_dir or not os.path.isdir(user_data_dir):
+        return 0
+
+    removed = 0
+    candidate_paths: list[str] = []
+    for base in (user_data_dir, os.path.join(user_data_dir, profile_name)):
+        if not base or not os.path.isdir(base):
+            continue
+        candidate_paths.extend(glob.glob(os.path.join(base, "Singleton*")))
+        candidate_paths.append(os.path.join(base, "DevToolsActivePort"))
+
+    seen = set()
+    for path in candidate_paths:
+        target = os.path.abspath(path)
+        if target in seen or not os.path.exists(target):
+            continue
+        seen.add(target)
+        try:
+            if os.path.isdir(target) and not os.path.islink(target):
+                shutil.rmtree(target, ignore_errors=True)
+            else:
+                os.remove(target)
+            removed += 1
+        except Exception:
+            continue
+
+    if removed and logger:
+        logger.info(f"     [Drission] startup artifact 정리: removed={removed} root={user_data_dir}")
+    return removed
 
 
 def _kill_browser_processes_by_user_data_dir(user_data_dir: str, logger=None, only_orphans: bool = False) -> int:
@@ -1218,7 +1313,7 @@ def _apply_best_browser_profile(co: ChromiumOptions) -> None:
     co.set_argument(f"--lang={BEST_BROWSER_LANG}")
     if execution_env == EXECUTION_ENV_LINUX_SERVER:
         co.set_argument("--disable-dev-shm-usage")
-        if os.getenv("PDF_BROWSER_NO_SANDBOX", "").strip().lower() in ("1", "true", "yes", "on"):
+        if _linux_no_sandbox_enabled(execution_env):
             co.set_argument("--no-sandbox")
             co.set_argument("--disable-setuid-sandbox")
     co.set_pref("intl.accept_languages", BEST_BROWSER_LANG_PREF)
@@ -6327,42 +6422,122 @@ def download_with_drission(
             return payload
         return False
 
-    # --- 옵션 설정 ---
-    co = ChromiumOptions()
-    co.set_browser_path(resolved_browser)
-    _apply_browser_session_plan(co, session_plan, logger=logger)
-    co.set_local_port(_pick_free_local_port())
-    _apply_best_browser_profile(co)
-    if is_elsevier_preview:
-        try:
-            co.set_load_mode("normal")
-            if logger:
-                logger.info("     [Drission] Elsevier는 normal load mode 사용")
-        except Exception:
-            pass
-    
-    # 다운로드 설정
-    co.set_pref('download.default_directory', browser_tmp_dir) # 다운로드 경로 지정(doi 단위 임시 디렉터리)
-    co.set_pref('download.prompt_for_download', False)  # 저장 여부 묻지 않기
-    co.set_pref('plugins.always_open_pdf_externally', not is_elsevier_preview) # Elsevier는 viewer-first 경로 유지
-    co.set_pref('profile.default_content_settings.popups', 0) # 팝업 차단 해제
-
     page = None
     browser_runtime_meta = {
         "browser_effective_user_data_dir": "",
         "browser_debug_address": "",
     }
-    for init_attempt in range(3): # 최대 3번 브라우저 실행 시도
-        try:
-            page = ChromiumPage(co)
-            browser_runtime_meta = _browser_runtime_meta(page)
-            break # 성공하면 루프 탈출
-        except Exception as e:
-            if logger: logger.warning(f"     [Drission] 브라우저 실행 실패({init_attempt+1}/3): {e} -> 재시도 중...")
-            time.sleep(2) # 2초 대기 후 재시도
+    browser_launch_port = 0
+    browser_launch_display = str(os.getenv("DISPLAY") or "")
+    browser_launch_headless = False
+    browser_launch_no_sandbox = False
+    browser_init_attempts = []
+
+    def _make_browser_options():
+        nonlocal browser_launch_port, browser_launch_display, browser_launch_headless, browser_launch_no_sandbox
+        co = ChromiumOptions()
+        co.set_browser_path(resolved_browser)
+        _apply_browser_session_plan(co, session_plan, logger=logger)
+        browser_launch_port = _pick_free_local_port()
+        co.set_local_port(browser_launch_port)
+        _apply_best_browser_profile(co)
+        if is_elsevier_preview:
+            try:
+                co.set_load_mode("normal")
+                if logger:
+                    logger.info("     [Drission] Elsevier는 normal load mode 사용")
+            except Exception:
+                pass
+        co.set_pref('download.default_directory', browser_tmp_dir)
+        co.set_pref('download.prompt_for_download', False)
+        co.set_pref('plugins.always_open_pdf_externally', not is_elsevier_preview)
+        co.set_pref('profile.default_content_settings.popups', 0)
+        browser_launch_display = str(os.getenv("DISPLAY") or "")
+        browser_launch_headless = coerce_headless_for_execution_env(
+            bool(headless),
+            resolve_browser_execution_env(),
+            context="download_drission_init",
+        )
+        browser_launch_no_sandbox = _linux_no_sandbox_enabled(resolve_browser_execution_env())
+        return co
+
+    def _startup_failure_cleanup(port: int) -> Dict[str, Any]:
+        killed_by_port = _kill_browser_processes_by_debug_port(port, logger=logger, only_orphans=False)
+        killed_by_user_dir = 0
+        if _session_plan_has_owned_runtime_dir(session_plan):
+            killed_by_user_dir = _kill_browser_processes_by_user_data_dir(
+                str(session_plan.get("user_data_dir") or ""),
+                logger=logger,
+                only_orphans=False,
+            )
+        removed_startup_artifacts = _cleanup_browser_startup_artifacts(session_plan, logger=logger)
+        return {
+            "killed_by_port": int(killed_by_port),
+            "killed_by_user_dir": int(killed_by_user_dir),
+            "removed_startup_artifacts": int(removed_startup_artifacts),
+        }
+
+    def _init_browser_page(max_init_attempts: int = 3):
+        nonlocal browser_runtime_meta, page
+        last_error = None
+        for init_attempt in range(1, max_init_attempts + 1):
+            co = _make_browser_options()
+            launch_meta = {
+                "attempt": int(init_attempt),
+                "port": int(browser_launch_port or 0),
+                "display": str(browser_launch_display or ""),
+                "headless": bool(browser_launch_headless),
+                "no_sandbox": bool(browser_launch_no_sandbox),
+                "user_data_dir": str(session_plan.get("user_data_dir") or ""),
+                "profile_name": str(session_plan.get("profile_name") or ""),
+            }
+            if logger:
+                logger.info(
+                    "     [Drission] 브라우저 실행 설정: "
+                    f"attempt={launch_meta['attempt']} "
+                    f"port={launch_meta['port']} "
+                    f"display={launch_meta['display'] or '(unset)'} "
+                    f"headless={int(launch_meta['headless'])} "
+                    f"no_sandbox={int(launch_meta['no_sandbox'])} "
+                    f"user_data_dir={launch_meta['user_data_dir']}"
+                )
+            try:
+                page = ChromiumPage(co)
+                browser_runtime_meta = _browser_runtime_meta(page)
+                browser_init_attempts.append({**launch_meta, "ok": True, "error": "", "cleanup": {}})
+                return page
+            except Exception as exc:
+                last_error = exc
+                cleanup_meta = _startup_failure_cleanup(int(launch_meta["port"] or 0))
+                browser_init_attempts.append(
+                    {
+                        **launch_meta,
+                        "ok": False,
+                        "error": _safe_exception_text(exc),
+                        "cleanup": cleanup_meta,
+                    }
+                )
+                if logger:
+                    logger.warning(
+                        "     [Drission] 브라우저 실행 실패(%s/%s): %s "
+                        "-> cleanup(port=%s,user_dir=%s,artifacts=%s) 후 재시도"
+                        % (
+                            init_attempt,
+                            max_init_attempts,
+                            exc,
+                            cleanup_meta.get("killed_by_port", 0),
+                            cleanup_meta.get("killed_by_user_dir", 0),
+                            cleanup_meta.get("removed_startup_artifacts", 0),
+                        )
+                    )
+                time.sleep(min(2 + init_attempt, 5))
+        if logger and last_error is not None:
+            logger.error(f"     [Drission] 브라우저 초기화 최종 실패: {_safe_exception_text(last_error)}")
+        return None
+
+    page = _init_browser_page(max_init_attempts=3)
             
     if page is None:
-        if logger: logger.error(f"     [Drission] 브라우저 초기화 최종 실패. 이 논문은 스킵합니다.")
         if return_detail:
             payload = {
                 "ok": False,
@@ -6378,6 +6553,11 @@ def download_with_drission(
                 "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
                 "browser_effective_user_data_dir": "",
                 "browser_debug_address": "",
+                "browser_launch_port": int(browser_launch_port or 0),
+                "browser_launch_display": str(browser_launch_display or ""),
+                "browser_launch_headless": bool(browser_launch_headless),
+                "browser_launch_no_sandbox": bool(browser_launch_no_sandbox),
+                "browser_init_attempts": list(browser_init_attempts),
                 "landing_recovery_attempted": False,
                 "landing_recovery_strategy": "",
                 "landing_recovery_outcome": "",
@@ -6562,6 +6742,11 @@ def download_with_drission(
             "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
             "browser_effective_user_data_dir": str(browser_runtime_meta.get("browser_effective_user_data_dir") or ""),
             "browser_debug_address": str(browser_runtime_meta.get("browser_debug_address") or ""),
+            "browser_launch_port": int(browser_launch_port or 0),
+            "browser_launch_display": str(browser_launch_display or ""),
+            "browser_launch_headless": bool(browser_launch_headless),
+            "browser_launch_no_sandbox": bool(browser_launch_no_sandbox),
+            "browser_init_attempts": list(browser_init_attempts),
             "landing_challenge_detected": bool(
                 landing_state == "challenge_or_block" or str(reason or "") in {"FAIL_BLOCK", "FAIL_CAPTCHA"}
             ),
@@ -6641,13 +6826,7 @@ def download_with_drission(
                 return False
 
             if page is None:
-                for init_try in range(3):
-                    try:
-                        page = ChromiumPage(co)
-                        break
-                    except Exception as e:
-                        time.sleep(2)
-                
+                page = _init_browser_page(max_init_attempts=3)
                 if page is None:
                     if logger: logger.error(f"     [Drission] 브라우저 생성 실패 (재시도 {attempt}). 다음 시도로 넘어갑니다.")
                     continue
