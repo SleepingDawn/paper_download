@@ -32,8 +32,16 @@ SELECT_FIELDS = [
 ]
 
 
-def _build_filter(query: str, year: int) -> str:
-    return f"type:article,publication_year:{int(year)},title_and_abstract.search:({query})"
+def _build_filter(query: str, year: int | None = None, min_year: int | None = None, max_year: int | None = None) -> str:
+    filters = ["type:article", f"title_and_abstract.search:({query})"]
+    if year is not None:
+        filters.append(f"publication_year:{int(year)}")
+    else:
+        if min_year is not None:
+            filters.append(f"from_publication_date:{int(min_year)}-01-01")
+        if max_year is not None:
+            filters.append(f"to_publication_date:{int(max_year)}-12-31")
+    return ",".join(filters)
 
 
 def _ordered_columns(df: pd.DataFrame) -> List[str]:
@@ -49,6 +57,8 @@ def _ordered_columns(df: pd.DataFrame) -> List[str]:
         "openalex_id",
         "benchmark_query",
         "benchmark_year",
+        "benchmark_min_year",
+        "benchmark_max_year",
         "benchmark_rank",
         "benchmark_source",
         "doi_resolution_method",
@@ -65,24 +75,54 @@ def _ordered_columns(df: pd.DataFrame) -> List[str]:
     return existing + tail
 
 
-def build_query_benchmark(query: str, year: int, limit: int, output_csv: Path) -> Path:
-    filter_str = _build_filter(query=query, year=year)
+def _resolve_output_csv(output_csv: Path | None, benchmark_name: str | None) -> Path:
+    if output_csv is not None:
+        return output_csv
+    if benchmark_name:
+        return REPO_ROOT / "experiment" / f"{benchmark_name}.csv"
+    raise ValueError("either output_csv or benchmark_name is required")
+
+
+def _normalize_year_inputs(year: int | None, min_year: int | None, max_year: int | None) -> tuple[int | None, int | None, int | None]:
+    if year is not None and (min_year is not None or max_year is not None):
+        raise ValueError("--year cannot be combined with --min-year or --max-year")
+    if year is None and min_year is None and max_year is None:
+        raise ValueError("one of --year, --min-year, or --max-year is required")
+    if min_year is not None and max_year is not None and int(min_year) > int(max_year):
+        raise ValueError("--min-year cannot be greater than --max-year")
+    return year, min_year, max_year
+
+
+def build_query_benchmark(
+    query: str,
+    year: int | None,
+    min_year: int | None,
+    max_year: int | None,
+    limit: int,
+    output_csv: Path,
+    sort: str,
+) -> Path:
+    filter_str = _build_filter(query=query, year=year, min_year=min_year, max_year=max_year)
     rows: List[Dict[str, Any]] = []
     for work in iter_openalex_works(
         filter_str=filter_str,
-        sort="cited_by_count:desc",
+        sort=sort,
         select_fields=SELECT_FIELDS,
         mailto=OPENALEX_MAILTO,
         max_records=max(int(limit), 1) * 3,
     ):
         row = extract_row(work)
         row["benchmark_query"] = query
-        row["benchmark_year"] = int(year)
-        row["benchmark_source"] = "openalex_title_and_abstract_cited_by_count_desc"
+        row["benchmark_year"] = int(year) if year is not None else ""
+        row["benchmark_min_year"] = int(min_year) if min_year is not None else ""
+        row["benchmark_max_year"] = int(max_year) if max_year is not None else ""
+        row["benchmark_source"] = f"openalex_title_and_abstract_{sort.replace(':', '_')}"
         rows.append(row)
 
     if not rows:
-        raise RuntimeError(f"no OpenAlex results for query={query!r}, year={year}")
+        raise RuntimeError(
+            f"no OpenAlex results for query={query!r}, year={year}, min_year={min_year}, max_year={max_year}"
+        )
 
     df = pd.DataFrame(rows)
     if "doi" not in df.columns:
@@ -105,22 +145,47 @@ def build_query_benchmark(query: str, year: int, limit: int, output_csv: Path) -
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build an OpenAlex query benchmark CSV sorted by citation count.")
     parser.add_argument("--query", required=True, help="OpenAlex title_and_abstract query string")
-    parser.add_argument("--year", type=int, required=True, help="Publication year filter")
+    parser.add_argument("--year", type=int, default=None, help="Exact publication year filter")
+    parser.add_argument("--min-year", type=int, default=None, help="Minimum publication year (inclusive)")
+    parser.add_argument("--max-year", type=int, default=None, help="Maximum publication year (inclusive)")
     parser.add_argument("--limit", type=int, default=200, help="Maximum number of rows to keep")
-    parser.add_argument("--output-csv", type=Path, required=True, help="Output CSV path")
+    parser.add_argument("--top-k", type=int, default=None, help="Alias of --limit")
+    parser.add_argument("--sort", default="cited_by_count:desc", help="OpenAlex sort expression")
+    parser.add_argument("--benchmark-name", type=str, default=None, help="Benchmark basename; used when --output-csv is omitted")
+    parser.add_argument("--output-csv", type=Path, default=None, help="Output CSV path")
     args = parser.parse_args()
+
+    year, min_year, max_year = _normalize_year_inputs(
+        year=None if args.year is None else int(args.year),
+        min_year=None if args.min_year is None else int(args.min_year),
+        max_year=None if args.max_year is None else int(args.max_year),
+    )
+    limit = max(1, int(args.top_k if args.top_k is not None else args.limit))
+    output_csv = _resolve_output_csv(
+        output_csv=args.output_csv.resolve() if args.output_csv is not None else None,
+        benchmark_name=str(args.benchmark_name).strip() if args.benchmark_name else None,
+    )
 
     out = build_query_benchmark(
         query=str(args.query),
-        year=int(args.year),
-        limit=max(1, int(args.limit)),
-        output_csv=args.output_csv.resolve(),
+        year=year,
+        min_year=min_year,
+        max_year=max_year,
+        limit=limit,
+        output_csv=output_csv.resolve(),
+        sort=str(args.sort),
     )
     df = pd.read_csv(out)
     print(f"output_csv={out}")
     print(f"rows={len(df)}")
     print(f"query={args.query}")
-    print(f"year={args.year}")
+    if year is not None:
+        print(f"year={year}")
+    else:
+        print(f"min_year={'' if min_year is None else min_year}")
+        print(f"max_year={'' if max_year is None else max_year}")
+    print(f"top_k={limit}")
+    print(f"sort={args.sort}")
     if "cited_by_count" in df.columns and len(df):
         print(f"top_cited={int(df['cited_by_count'].fillna(0).max())}")
         print(f"bottom_cited={int(df['cited_by_count'].fillna(0).min())}")

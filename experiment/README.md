@@ -5,11 +5,15 @@
 현재 정리된 문서:
 
 - `build_query_benchmark.py`
-  - OpenAlex `title_and_abstract.search` + 연도 필터 + citation 정렬로 benchmark CSV를 만드는 재현용 빌더
+  - OpenAlex `title_and_abstract.search` + 연도/연도범위 필터 + citation 정렬로 benchmark CSV를 만드는 재현용 빌더
 - `benchmark_a_igzo_2025_top200_20260320.csv`
   - `a-igzo` query, `publication_year=2025`, citation 순 상위 200건 입력
 - `benchmark_a_igzo_2025_top200_20260320.md`
   - 위 입력 생성 방법, 통계, Linux + Xvfb headful 실험 준비 명령
+- `benchmark_oled_2025plus_top100_20260320.csv`
+  - `OLED` query, `publication_year>=2025`, citation 순 상위 100건 입력
+- `benchmark_oled_2025plus_top100_20260320.md`
+  - 위 입력 생성 방법, parser argument, Linux + Xvfb headful 실험 준비 명령
 - `benchmark_random100_seed20260311.csv`
   - `ready_to_download.csv`에서 seed `20260311`로 샘플링한 100건 입력
 - `benchmark_random100_seed20260311.md`
