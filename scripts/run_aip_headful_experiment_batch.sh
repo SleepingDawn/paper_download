@@ -66,7 +66,22 @@ rows = list(csv.DictReader(src.open(encoding="utf-8", newline="")))
 if not rows:
     raise SystemExit("source benchmark csv is empty")
 fieldnames = list(rows[0].keys())
-aip_rows = [row for row in rows if str(row.get("publisher") or "").strip().lower() == "aip"]
+def is_aip_row(row):
+    candidates = [
+        row.get("scheduler_publisher"),
+        row.get("benchmark_group"),
+        row.get("source_publisher"),
+        row.get("publisher"),
+    ]
+    normalized = [str(value or "").strip().lower() for value in candidates if str(value or "").strip()]
+    for value in normalized:
+        if value == "aip":
+            return True
+        if "american institute of physics" in value:
+            return True
+    return False
+
+aip_rows = [row for row in rows if is_aip_row(row)]
 if not aip_rows:
     raise SystemExit("no AIP rows found in source benchmark csv")
 with dst.open("w", encoding="utf-8", newline="") as f:
