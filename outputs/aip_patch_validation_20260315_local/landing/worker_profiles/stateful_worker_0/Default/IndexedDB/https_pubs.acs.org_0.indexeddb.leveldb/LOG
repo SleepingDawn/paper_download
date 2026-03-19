@@ -1,7 +1,0 @@
-2026/02/09-13:18:27.904 a136 Reusing MANIFEST /Users/seyong/Library/Application Support/Google/Chrome/Default/IndexedDB/https_pubs.acs.org_0.indexeddb.leveldb/MANIFEST-000001
-2026/02/09-13:18:27.905 a136 Recovering log #3
-2026/02/09-13:18:27.905 a136 Reusing old log /Users/seyong/Library/Application Support/Google/Chrome/Default/IndexedDB/https_pubs.acs.org_0.indexeddb.leveldb/000003.log 
-2026/02/09-13:37:13.535 a136 Level-0 table #5: started
-2026/02/09-13:37:13.539 a136 Level-0 table #5: 789 bytes OK
-2026/02/09-13:37:13.543 a136 Delete type=0 #3
-2026/02/09-13:37:13.543 a136 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

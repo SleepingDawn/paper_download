@@ -1,7 +1,0 @@
-2026/01/15-16:39:16.510 216bb Reusing MANIFEST /Users/seyong/Library/Application Support/Google/Chrome/Default/WebStorage/3/IndexedDB/indexeddb.leveldb/MANIFEST-000001
-2026/01/15-16:39:16.510 216bb Recovering log #3
-2026/01/15-16:39:16.511 216bb Reusing old log /Users/seyong/Library/Application Support/Google/Chrome/Default/WebStorage/3/IndexedDB/indexeddb.leveldb/000003.log 
-2026/01/15-16:39:20.723 216be Level-0 table #5: started
-2026/01/15-16:39:20.725 216be Level-0 table #5: 44571 bytes OK
-2026/01/15-16:39:20.729 216be Delete type=0 #3
-2026/01/15-16:39:20.729 216be Manual compaction at level-0 from (begin) .. (end); will stop at (end)

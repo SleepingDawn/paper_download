@@ -2553,3 +2553,196 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - this server/IP에서 compliant browser landing만으로 AIP challenge를 consistently 피할 수 있는지 `[blocked]`
   - current AIP canonical article path 말고 더 나은 compliant first-contact URL ordering이 실제로 있는지 `[blocked]`
   - 따라서 현재 AIP 진단은 다시 challenge-only narrative로 단순화하면 안 된다.
+
+5.26 `aip_low_pressure_probe_20260319_bundle`: "다른 논문을 방문했다가 원래 DOI로 복귀"는 실제 AIP strategy가 아니라 stale startup page contamination이었고, AIP landing path는 direct DOI로 단순화해야 한다
+
+- 출처
+  - `experiment/results/aip_low_pressure_probe_20260319_bundle.tar.gz`
+
+- 이번 bundle이 실제로 보여준 것
+  - report summary:
+    - `classifier_counts.network_error = 1`
+    - `classifier_counts.challenge_detected = 1`
+    - `outcome_counts.FAIL_NETWORK = 1`
+    - `outcome_counts.FAIL_CAPTCHA = 1`
+  - DOI `10.1063/5.0207496`
+    - `entry_strategy=aip_official_doi_resolve`
+    - `entry_strategy_variant=publisher_canonical_context_deferred_no_article_preflight`
+    - `aip_first_contact_policy=aip_low_pressure_minimal_surface`
+    - `probe_page_mode_effective=reuse_page`
+    - `navigation_chain=[aip_resolve]`
+    - fail reason:
+      - `navigation_network_error`
+      - `The connection to the page has been disconnected. Version: 4.1.1.2`
+    - `tab_lifecycle_sequence.controller_before_open.current_url`
+      - `https://pubs.rsc.org/en/content/articlepdf/2024/tc/d3tc03497f`
+    - `controller_before_open.total_tab_count = 10`
+  - DOI `10.1116/6.0004298`
+    - `entry_strategy=aip_official_doi_resolve`
+    - `probe_page_mode_effective=reuse_page`
+    - `navigation_chain=[aip_resolve, doi_get]`
+    - final:
+      - canonical AIP article URL + `__cf_chl_rt_tk=...`
+      - `title=Just a moment...`
+    - `tab_lifecycle_sequence.controller_before_open.current_url`
+      - `https://www.sciencedirect.com/science/article/pii/S0167931725000164`
+
+- user suspicion 검증
+  - suspicion:
+    - JSON artifact상 "여러 다른 article page를 들렀다가 원래 DOI로 돌아온다"
+  - confirmed fact:
+    - 이번 bundle에서 실제 navigation chain은
+      - `aip_resolve`
+      - 또는 `aip_resolve -> doi_get`
+      뿐이다.
+    - AIP runtime path가 여러 AIP article page를 intentionally 순회했다는 근거는 없다.
+  - confirmed fact:
+    - fail meta의 "다른 논문 페이지"는
+      - 현재 attempt가 새로 방문한 warm-up page가 아니라
+      - stateful browser가 시작할 때 이미 들고 있던 startup/controller page였다.
+  - conclusion:
+    - user suspicion은 **완전히는 맞지 않는다.**
+    - "다른 논문을 방문 후 복귀" methodology가 실제 exercised AIP path였던 것은 아니고,
+      stale controller/startup page contamination이 그렇게 보이게 만들었다.
+
+- methodology review
+  - `visit other pages then return` strategy:
+    - AIP landing current runtime path에서 실제 benefit evidence 없음
+    - latest bundle에서도 exercised되지 않음
+    - AIP landing 전용 alternate recovery (`_recover_aip_canonical_landing`)는
+      canonical/resolved candidate를 다시 순회하는 branch였지만,
+      journal 상 Linux server 성공 근거를 만들지 못했다.
+  - `DOI pre-analysis before browser launch` strategy:
+    - latest bundle에서 실제 exercised됨
+      - `entry_strategy=aip_official_doi_resolve`
+      - browser launch 전에 `requests` 기반 DOI resolve 수행
+      - browser는 canonical publisher article URL로 들어감
+    - confirmed fact:
+      - Linux server AIP 실패 run들 대부분이 이 strategy와 함께 발생했다.
+    - no confirmed evidence:
+      - AIP Linux server landing 성공률을 올렸다는 근거 없음
+    - conclusion:
+      - 최소한 AIP landing path에서는 evidence-backed strategy로 볼 수 없다.
+
+- patch decision
+  - AIP landing은 더 이상
+    - pre-resolve DOI
+    - canonical article preselection
+    - alternate candidate revisit
+    를 사용하지 않는다.
+  - 새 원칙:
+    - browser/session 준비
+    - clean controlled page 확보
+    - `https://doi.org/<doi>` direct navigation
+    - 결과 classification
+
+- 적용한 변경
+  - `landing_access_repro.py`
+    - AIP landing path에서 `build_aip_safe_entry_plan()` 호출 제거
+    - `_build_aip_direct_doi_entry_plan()` 추가
+      - `entry_strategy=aip_direct_browser_doi`
+      - `entry_strategy_variant=direct_doi_browser_start_no_preanalysis`
+      - `entry_browser_url=https://doi.org/<doi>`
+      - `entry_redirect_probe_mode=none`
+      - `entry_prebrowser_request_count=0`
+      - `entry_context_bootstrap_mode=disabled`
+    - AIP stateful Linux session 기본 probe page mode를 다시 `fresh_tab`으로 환원
+      - latest bundle에서 `reuse_page`가 stale startup page contamination과 결합했기 때문
+    - `probe_page_mode_effective != fresh_tab` fallback일 때만
+      - `about:blank` reset 후 direct DOI navigation
+    - AIP landing에서 삭제:
+      - `_recover_aip_canonical_landing()`
+      - `_looks_like_aip_blank_or_incomplete()` (AIP landing alternate recovery 전용 helper)
+    - AIP landing에서 bypass:
+      - context bootstrap path
+      - preferred handoff
+      - targeted recovery
+    - new diagnostics:
+      - `aip_direct_doi_path_used`
+      - `aip_alternate_pages_opened`
+      - `entry_preanalysis_ran`
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary에 위 direct-DOI / preanalysis / alternate-page diagnostics 추가
+
+- 왜 이 patch인가
+  - latest bundle은
+    - complexity가 실제로 도움이 되었다는 근거를 주지 못했다.
+    - 오히려
+      - stale startup page contamination
+      - browser 밖 DOI pre-analysis
+      - canonical preselection
+      이 current AIP path를 불필요하게 복잡하게 만들고 있었다.
+  - 따라서 next valid experiment는
+    - AIP path를 direct DOI single-path로 줄인 뒤
+    - challenge incidence와 landing outcome을 다시 보는 것이다.
+
+- patch verification
+  - `python -m py_compile landing_access_repro.py experiment/summarize_linux_headless_suite.py`
+    - passed
+  - helper smoke:
+    - `entry_strategy=aip_direct_browser_doi`
+    - `entry_strategy_variant=direct_doi_browser_start_no_preanalysis`
+    - `entry_browser_url=https://doi.org/...`
+    - `entry_prebrowser_request_count=0`
+    - `entry_redirect_probe_mode=none`
+    - `entry_preanalysis_ran_expected=False`
+  - server-condition probe mode smoke:
+    - `PDF_BROWSER_RUNTIME_PRESET=linux_cli_seeded`
+    - `PDF_BROWSER_EXECUTION_ENV=linux_server`
+    - `probe_page_mode_effective=fresh_tab`
+
+- 배운 점
+  - latest AIP bundle은 "other pages warm-up"보다
+    - stale stateful startup page contamination
+    - and unsupported pre-resolve complexity
+    를 더 직접적으로 보여줬다.
+  - AIP landing에 대해서는
+    - "publisher canonical preselection"
+    - "alternate candidate revisit"
+    가 evidence-backed라고 말할 수 없다.
+  - 따라서 AIP path는 direct DOI로 줄이는 편이
+    - behavior 설명 가능성
+    - runtime observability
+    - experiment interpretability
+    면에서 낫다.
+
+- 다음 검증에서 꼭 볼 것
+  - `entry_strategy=aip_direct_browser_doi`
+  - `entry_strategy_variant=direct_doi_browser_start_no_preanalysis`
+  - `entry_browser_url=https://doi.org/...`
+  - `entry_preanalysis_ran=false`
+  - `aip_direct_doi_path_used=true`
+  - `aip_alternate_pages_opened=false`
+  - `probe_page_mode_effective=fresh_tab`
+  - `navigation_chain`가 `doi_get` 중심으로 단순화됐는지
+
+- 아직 불확실한 것 `[blocked]`
+  - direct DOI path가 실제 Linux server/IP에서 challenge incidence를 낮추는지 `[blocked]`
+  - stale startup tabs가 stateful profile restore 때문인지, browser startup default 때문인지까지는 `[blocked]`
+  - AIP 이외 publisher까지 pre-analysis removal을 일반화할 근거는 아직 부족하다 `[blocked]`
+
+5.27 archived AIP output cleanup: bundle로 보존된 AIP 로컬 산출물과 empty-source validation output 정리
+
+- rationale
+  - 아래 산출물은
+    - journal에 이미 요약되었고
+    - 필요한 경우 `experiment/results/*.tar.gz` 또는 journal 기록으로 다시 참조 가능하므로
+    - workspace clutter를 줄이기 위해 삭제했다.
+  - seed profile / input CSV / `experiment/results` bundle은 유지했다.
+
+- deleted output dirs
+  - `outputs/aip_context_bootstrap_validation2_20260315_local`
+  - `outputs/aip_context_bootstrap_validation_20260315_local`
+  - `outputs/aip_first_contact_deferred_validation_20260319_local`
+  - `outputs/aip_patch_validation_20260315_local`
+  - `outputs/aip_profile_diag_20260315_local_linuxseeded`
+  - `outputs/aip_profile_diag_20260315_local_temp`
+  - `outputs/aip_publisher_direct_handoff_validation2_20260315_local`
+  - `outputs/aip_publisher_direct_handoff_validation_20260315_local`
+  - `outputs/aip_publisher_direct_validation_20260315_local`
+  - `outputs/aip_structural_validation_20260315_local`
+  - `outputs/linux_headless_suite_runs/empty_source_status_validation_20260315`
+
+- note
+  - git working tree에서는 위 output file들이 대량 `D`로 보이지만,
+    이건 user-requested cleanup에 따른 expected change다.
