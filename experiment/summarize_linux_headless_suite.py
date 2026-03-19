@@ -105,6 +105,33 @@ def parse_json_list(value: Any) -> List[Any]:
         return []
 
 
+def resolve_publisher_group(sample: Dict[str, Any]) -> str:
+    for key in ("experiment_publisher_group", "benchmark_group", "scheduler_publisher"):
+        value = str(sample.get(key) or "").strip().lower()
+        if value:
+            return value
+    publisher = str(sample.get("publisher") or "").strip().lower()
+    if "elsevier" in publisher:
+        return "elsevier"
+    if "american institute of physics" in publisher or publisher == "aip":
+        return "aip"
+    if "electrical and electronics engineers" in publisher or publisher == "ieee":
+        return "ieee"
+    if "iop" in publisher:
+        return "iop"
+    return "other"
+
+
+def resolve_publisher_display_name(sample: Dict[str, Any], group: str) -> str:
+    value = str(sample.get("publisher_display_name") or "").strip()
+    if value:
+        return value
+    publisher = str(sample.get("publisher") or "").strip()
+    if publisher:
+        return publisher
+    return GROUP_DISPLAY_NAMES.get(group, group)
+
+
 def contains_environment_marker(values: Iterable[Any]) -> bool:
     blob = " ".join(str(item or "") for item in values).lower()
     return any(
@@ -405,6 +432,8 @@ def main() -> int:
     for doi, sample in sample_by_doi.items():
         landing = landing_by_doi.get(doi, {})
         download = download_by_doi.get(doi, {})
+        experiment_publisher_group = resolve_publisher_group(sample)
+        publisher_display_name = resolve_publisher_display_name(sample, experiment_publisher_group)
         landing_bucket = landing_bucket_from_record(landing) if landing else "missing"
         download_bucket = download_bucket_from_record(download)
         combined = combined_bucket(landing_bucket, download_bucket)
@@ -421,8 +450,8 @@ def main() -> int:
         merged_rows.append(
             {
                 "suite_name": sample.get("suite_name", args.suite),
-                "experiment_publisher_group": sample.get("experiment_publisher_group", ""),
-                "publisher_display_name": sample.get("publisher_display_name", ""),
+                "experiment_publisher_group": experiment_publisher_group,
+                "publisher_display_name": publisher_display_name,
                 "selection_reason": sample.get("selection_reason", ""),
                 "selection_bucket": sample.get("selection_bucket", ""),
                 "suite_slot_bucket": sample.get("suite_slot_bucket", ""),

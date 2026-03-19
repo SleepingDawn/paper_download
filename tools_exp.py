@@ -2445,6 +2445,18 @@ def _aip_fresh_tab_recovery_enabled() -> bool:
     )
 
 
+def _aip_direct_entry_fresh_tab_enabled() -> bool:
+    raw = os.getenv("PDF_BROWSER_AIP_DIRECT_DOI_FRESH_TAB", "auto").strip().lower()
+    if raw in ("0", "false", "no", "off"):
+        return False
+    if raw in ("1", "true", "yes", "on"):
+        return True
+    return resolve_browser_execution_env() == EXECUTION_ENV_LINUX_SERVER and not coerce_headless_for_execution_env(
+        False,
+        resolve_browser_execution_env(),
+    )
+
+
 def _resolve_aip_browser_entry_mode(*, has_canonical_entry: bool, has_context_bootstrap: bool) -> str:
     raw = os.getenv("PDF_BROWSER_LANDING_AIP_BROWSER_ENTRY", "auto").strip().lower()
     if raw in ("doi", "doi_first", "official_doi_redirect", "1", "true", "yes", "on"):
@@ -2524,14 +2536,23 @@ def _prepare_aip_entry_navigation_page(
     route = "same_tab"
     if page is None:
         return page, route
+    browser_url = str(entry_plan.get("entry_browser_url") or "").strip()
+    browser_kind = str(entry_plan.get("entry_browser_kind") or "").strip()
+    browser_domain = _extract_domain(browser_url)
+    if (
+        _aip_direct_entry_fresh_tab_enabled()
+        and browser_domain in {"doi.org", "dx.doi.org"}
+        and browser_kind == "official_doi"
+    ):
+        temp_page = _open_temporary_tab(page)
+        if temp_page is not None:
+            if logger:
+                logger.info("        [AIP] direct DOI route=fresh_tab target=%s" % browser_url)
+            return temp_page, "fresh_tab_before_direct_doi"
     if str(context_bootstrap_outcome or "").strip() != "context_challenge":
         return page, route
     if not _aip_context_challenge_fresh_tab_enabled():
         return page, route
-
-    browser_url = str(entry_plan.get("entry_browser_url") or "").strip()
-    browser_kind = str(entry_plan.get("entry_browser_kind") or "").strip()
-    browser_domain = _extract_domain(browser_url)
     if not browser_url or browser_domain in {"doi.org", "dx.doi.org"}:
         return page, route
     if not _is_aip_article_url(browser_url):
@@ -3865,15 +3886,23 @@ def _download_elsevier_signed_pdf_from_viewer(page, tmp_path: str, referer_url: 
         cookies = {c.get("name"): c.get("value") for c in (page.cookies() or []) if c.get("name")}
     except Exception:
         cookies = None
-    if not download_with_cffi(
+    cffi_result = download_with_cffi(
         current_url,
         tmp_path,
         referer=referer_url or current_url,
         cookies=cookies,
         logger=logger,
-    ):
-        return False
-    return _is_valid_pdf(tmp_path)
+        return_detail=True,
+        timeout=20,
+    )
+    if cffi_result.get("ok") and _is_valid_pdf(tmp_path):
+        return True
+    if cffi_result.get("reason") == "FAIL_WRONG_MIME":
+        if logger:
+            logger.info("        [Elsevier] signed viewer CFFI가 뷰어 셸로 끝나 requests fallback 시도")
+        if force_download_with_requests(page, current_url, referer_url or current_url, tmp_path, logger):
+            return _is_valid_pdf(tmp_path)
+    return False
 
 
 def _tab_looks_like_elsevier_target(tab, doi_norm: str, target_pii: str) -> bool:
@@ -5439,8 +5468,18 @@ def force_download_with_requests(page, pdf_url, referer_url, save_path, logger):
     try:
         logger.info(f"requests 시도 (Referer: {referer_url})")
         
-        # DrissionPage에서 쿠키 가져오기 page.cookies -> [dict, list]
-        cookies = page.cookies()[0]
+        raw_cookies = page.cookies() or []
+        cookies = {}
+        if isinstance(raw_cookies, dict):
+            cookies = {str(k): v for k, v in raw_cookies.items() if str(k)}
+        else:
+            for item in raw_cookies:
+                if not isinstance(item, dict):
+                    continue
+                name = str(item.get("name") or "").strip()
+                if not name:
+                    continue
+                cookies[name] = item.get("value")
         
         session = requests.Session()
         session.cookies.update(cookies)
@@ -5479,6 +5518,23 @@ def force_download_with_requests(page, pdf_url, referer_url, save_path, logger):
         _raise_if_browser_disconnect(e, logger=logger, context="requests-force-download")
         logger.error(f"requests 오류: {e}")
         return False
+
+
+def _looks_like_browser_pdf_embedder_shell(page) -> bool:
+    if page is None:
+        return False
+    try:
+        current_url = str(getattr(page, "url", "") or "").strip().lower()
+    except Exception:
+        current_url = ""
+    try:
+        html = str(getattr(page, "html", "") or "")
+    except Exception:
+        html = ""
+    low_html = html.lower()
+    if current_url.startswith("chrome-extension://") and "pdf" in current_url:
+        return True
+    return "pdf_embedder.css" in low_html or "chrome-extension://" in low_html
 
 
 # =======================================================
@@ -6349,6 +6405,8 @@ def download_with_drission(
     landing_tab_transition_events = []
     landing_final_active_tab_id = ""
     landing_final_total_tab_count = 0
+    landing_peak_tab_count_observed = 0
+    landing_tab_lifecycle_sequence = []
     landing_final_screenshot_path = ""
     landing_final_html_path = ""
     landing_timestamp_ms = 0
@@ -6359,6 +6417,54 @@ def download_with_drission(
     entry_context_bootstrap_cache_hit = False
     entry_context_bootstrap_cache_state = ""
     entry_navigation_route = ""
+    landing_page_disconnect_observed = False
+    landing_page_disconnect_stage = ""
+    startup_tab_cleanup_applied = False
+    startup_tab_cleanup_before_count = 0
+    startup_tab_cleanup_after_count = 0
+    startup_tab_cleanup_closed_count = 0
+    startup_page_reset_to_blank = False
+
+    def _append_tab_lifecycle_event(target_page, label: str) -> None:
+        nonlocal landing_peak_tab_count_observed, landing_tab_lifecycle_sequence
+        tab_state = _current_tab_state(target_page)
+        total = int(tab_state.get("total_tab_count", 0) or 0)
+        landing_peak_tab_count_observed = max(int(landing_peak_tab_count_observed or 0), total)
+        if len(landing_tab_lifecycle_sequence) >= 20:
+            return
+        try:
+            current_url = str(getattr(target_page, "url", "") or "")
+        except Exception:
+            current_url = ""
+        try:
+            title = str(getattr(target_page, "title", "") or "")
+        except Exception:
+            title = ""
+        landing_tab_lifecycle_sequence.append(
+            {
+                "label": str(label or ""),
+                "active_tab_id": str(tab_state.get("active_tab_id") or ""),
+                "total_tab_count": total,
+                "url": current_url[:240],
+                "title": title[:160],
+            }
+        )
+
+    def _probe_page_runtime(target_page):
+        if target_page is None:
+            return False, False, "page_missing"
+        try:
+            _ = str(getattr(target_page, "url", "") or "")
+            _ = str(getattr(target_page, "title", "") or "")
+            return True, True, ""
+        except Exception as exc:
+            return True, False, _safe_exception_text(exc)
+
+    def _mark_page_disconnect(stage: str) -> None:
+        nonlocal landing_page_disconnect_observed, landing_page_disconnect_stage
+        landing_page_disconnect_observed = True
+        if stage and not landing_page_disconnect_stage:
+            landing_page_disconnect_stage = stage
 
     def _set_landing_state(state: str, success: bool, page_obj=None):
         nonlocal landing_attempted, landing_success, landing_state, landing_url, landing_title
@@ -6380,6 +6486,7 @@ def download_with_drission(
             tab_state = _current_tab_state(target_page)
             landing_final_active_tab_id = str(tab_state.get("active_tab_id") or landing_final_active_tab_id)
             landing_final_total_tab_count = int(tab_state.get("total_tab_count", landing_final_total_tab_count) or 0)
+            _append_tab_lifecycle_event(target_page, f"landing_state:{state}")
             if (
                 is_aip_preview
                 and state == "success_landing"
@@ -6426,6 +6533,7 @@ def download_with_drission(
         tab_state = _current_tab_state(target_page)
         landing_final_active_tab_id = str(tab_state.get("active_tab_id") or landing_final_active_tab_id)
         landing_final_total_tab_count = int(tab_state.get("total_tab_count", landing_final_total_tab_count) or 0)
+        _append_tab_lifecycle_event(target_page, step_label)
         current = _extract_domain(getattr(target_page, "url", "") or "")
         referer = str(getattr(target_page, "url", "") or "")
         title = str(getattr(target_page, "title", "") or "")
@@ -6434,6 +6542,7 @@ def download_with_drission(
         return target_page, current, referer, title, html
 
     def _detail(ok, reason, evidence=None, stage="drission", http_status=None):
+        browser_process_alive, page_access_ok, page_probe_error = _probe_page_runtime(page)
         payload = {
             "ok": ok,
             "reason": reason,
@@ -6467,8 +6576,22 @@ def download_with_drission(
             "landing_tab_transition_events": list(landing_tab_transition_events),
             "landing_final_active_tab_id": str(landing_final_active_tab_id or ""),
             "landing_final_total_tab_count": int(landing_final_total_tab_count or 0),
+            "peak_tab_count_observed": int(
+                max(int(landing_peak_tab_count_observed or 0), int(landing_final_total_tab_count or 0))
+            ),
+            "tab_lifecycle_sequence": list(landing_tab_lifecycle_sequence),
             "landing_final_screenshot_path": str(landing_final_screenshot_path or ""),
             "landing_final_html_path": str(landing_final_html_path or ""),
+            "browser_process_alive": bool(browser_process_alive),
+            "page_access_ok": bool(page_access_ok),
+            "page_probe_error": str(page_probe_error or ""),
+            "page_disconnect_observed": bool(landing_page_disconnect_observed),
+            "page_disconnect_stage": str(landing_page_disconnect_stage or ""),
+            "startup_tab_cleanup_applied": bool(startup_tab_cleanup_applied),
+            "startup_tab_cleanup_before_count": int(startup_tab_cleanup_before_count or 0),
+            "startup_tab_cleanup_after_count": int(startup_tab_cleanup_after_count or 0),
+            "startup_tab_cleanup_closed_count": int(startup_tab_cleanup_closed_count or 0),
+            "startup_page_reset_to_blank": bool(startup_page_reset_to_blank),
             "entry_context_bootstrap_attempted": bool(entry_context_bootstrap_attempted),
             "entry_context_bootstrap_outcome": str(entry_context_bootstrap_outcome or ""),
             "entry_context_bootstrap_final_url": str(entry_context_bootstrap_final_url or ""),
@@ -6537,6 +6660,8 @@ def download_with_drission(
             landing_tab_transition_events = []
             landing_final_active_tab_id = ""
             landing_final_total_tab_count = 0
+            landing_peak_tab_count_observed = 0
+            landing_tab_lifecycle_sequence = []
             landing_final_screenshot_path = ""
             landing_final_html_path = ""
             landing_timestamp_ms = int(time.time() * 1000)
@@ -6547,6 +6672,13 @@ def download_with_drission(
             entry_context_bootstrap_cache_hit = False
             entry_context_bootstrap_cache_state = ""
             entry_navigation_route = ""
+            landing_page_disconnect_observed = False
+            landing_page_disconnect_stage = ""
+            startup_tab_cleanup_applied = False
+            startup_tab_cleanup_before_count = 0
+            startup_tab_cleanup_after_count = 0
+            startup_tab_cleanup_closed_count = 0
+            startup_page_reset_to_blank = False
             
             nav_url = doi_url
             if publisher_entry_plan:
@@ -6581,6 +6713,25 @@ def download_with_drission(
             logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {nav_url}")
             
             # 페이지 접속
+            startup_tab_state = _current_tab_state(page)
+            startup_tab_cleanup_before_count = int(startup_tab_state.get("total_tab_count", 0) or 0)
+            if startup_tab_cleanup_before_count > 1:
+                startup_tab_cleanup_applied = True
+                _prune_extra_tabs(page, logger=logger)
+            current_start_url = str(getattr(page, "url", "") or "")
+            if current_start_url and not current_start_url.startswith("about:blank"):
+                try:
+                    page.get("about:blank", retry=0, interval=0.2, timeout=5)
+                    startup_page_reset_to_blank = True
+                except Exception:
+                    pass
+            startup_tab_state_after = _current_tab_state(page)
+            startup_tab_cleanup_after_count = int(startup_tab_state_after.get("total_tab_count", 0) or 0)
+            startup_tab_cleanup_closed_count = max(
+                int(startup_tab_cleanup_before_count or 0) - int(startup_tab_cleanup_after_count or 0),
+                0,
+            )
+            _append_tab_lifecycle_event(page, "startup_ready")
             landing_initial_files = _get_current_files(browser_tmp_dir)
             if is_aip_preview:
                 _prune_extra_tabs(page, logger=logger)
@@ -6642,7 +6793,12 @@ def download_with_drission(
                         original_page,
                         page,
                     )
-            page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
+            try:
+                page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
+            except Exception as exc:
+                _mark_page_disconnect("main_navigation")
+                _raise_if_browser_disconnect(exc, logger=logger, context="main-navigation")
+                raise
             page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
                 page,
                 step_label="post_nav",
@@ -6736,7 +6892,12 @@ def download_with_drission(
                     retry_initial_files = _get_current_files(browser_tmp_dir)
                     if is_aip_preview:
                         _prune_extra_tabs(page, logger=logger)
-                    page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
+                    try:
+                        page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
+                    except Exception as exc:
+                        _mark_page_disconnect("unexpected_retry_navigation")
+                        _raise_if_browser_disconnect(exc, logger=logger, context="unexpected-retry-navigation")
+                        raise
                     page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
                         page,
                         step_label="unexpected_retry_nav",
@@ -7070,6 +7231,13 @@ def download_with_drission(
                 referer_url = page.url
                 page_title = page.title or ""
                 page_html = page.html or ""
+                _append_tab_lifecycle_event(page, "post_elsevier_click_flow")
+                _prune_extra_tabs(page, logger=logger)
+                page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
+                    page,
+                    sync_tab=False,
+                    step_label="post_elsevier_tab_trim",
+                )
                 if elsevier_click_ok:
                     if _finalize_downloaded_file(tmp_save_path, full_save_path, logger=logger):
                         return _ret(True, "SUCCESS", stage="elsevier-two-step-click")
@@ -7536,6 +7704,11 @@ def download_with_drission(
                 logger.warning(f"        pdf 링크 미발견 : {doi_url}")
 
         except BrowserDisconnectedError as e:
+            _mark_page_disconnect(landing_page_disconnect_stage or "browser_disconnected")
+            if not landing_attempted:
+                landing_attempted = True
+                landing_success = False
+                landing_state = "runtime_disconnect"
             logger.warning(f"        시도 {attempt} 브라우저 연결 종료: {e}")
             if page:
                 _close_page_safely(page, logger, session_plan=session_plan)
@@ -7545,12 +7718,20 @@ def download_with_drission(
             time.sleep(min(2 + attempt, 5))
             continue
         except Exception as e:
+            if _is_browser_disconnect_error(e):
+                _mark_page_disconnect("generic_exception")
+                if not landing_attempted:
+                    landing_attempted = True
+                    landing_success = False
+                    landing_state = "runtime_disconnect"
             logger.warning(f"        시도 {attempt} 에러: {e}")
             # 에러 발생 시 브라우저 닫고 초기화 (다음 시도에서 재생성)
             if page:
                 _close_page_safely(page, logger, session_plan=session_plan)
                 page = None
             if attempt >= max_attempts:
+                if _is_browser_disconnect_error(e):
+                    return _ret(False, "FAIL_TIMEOUT/NETWORK", [str(e)], stage="drission")
                 return _ret(False, "FAIL_NETWORK", [str(e)], stage="drission")
         
         time.sleep(per_attempt_sleep) # 재시도 전 대기

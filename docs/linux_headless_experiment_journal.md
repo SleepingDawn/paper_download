@@ -3432,3 +3432,228 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
     - suite runner가 standalone landing 없이도 end-to-end 결과를 안정적으로 내는지
     - integrated landing summary가 실제 run artifact와 완전히 맞는지
     는 다음 server run으로 최종 확인이 필요하다.
+
+### 5.34 2026-03-19 Codex: benchmark bundle `publisher_download_benchmark_elsevier_aip_ieee_iop_xvfb_20260319_165013` 정밀 분석 및 보완
+
+- analyzed bundle
+  - `experiment/results/publisher_download_benchmark_elsevier_aip_ieee_iop_xvfb_20260319_165013_bundle.tar.gz`
+  - unpacked and inspected:
+    - root log / execution manifest
+    - `download/run/openalex_search_results_parallel.csv`
+    - `download/run/failed_papers.jsonl`
+    - `download/run/download_attempts_summary.json`
+    - per-DOI HTML / screenshots / metadata sidecars
+    - `summary/merged_results.csv`
+    - `summary/publisher_summary.csv`
+
+- confirmed runtime facts
+  - Linux + Xvfb headful runtime was actually used.
+    - root log contained:
+      - `headless=0`
+      - `xvfb_enabled=1`
+      - `Xvfb` start/stop lines
+  - suite path was the merged flow.
+    - `landing_cmd_present=False`
+    - `merged_into_download_present=True`
+    - only download + summarize executed
+
+- per-publisher outcome patterns from evidence
+  - Elsevier
+    - 4 samples
+    - 3 native download successes
+    - 1 landing success but no download: `10.1016/j.apcatb.2024.124297`
+    - failure evidence:
+      - article landing itself succeeded
+      - 2-step click opened/targeted signed viewer
+      - CFFI on signed viewer returned `FAIL_WRONG_MIME`
+      - saved fail HTML was browser PDF embedder shell, not real article HTML
+  - AIP
+    - 4 samples
+    - 1 direct DOI handoff success: `10.1116/6.0004298`
+    - 2 Cloudflare challenge failures: `10.1063/5.0246311`, `10.1116/6.0004868`
+    - 1 browser/page disconnect before stable landing: `10.1063/5.0257779`
+  - IOP
+    - 3 samples
+    - all succeeded (`direct_oa` or API)
+    - merged flow did not need separate landing-only behavior here
+  - IEEE
+    - 4 samples
+    - 3 native fastpath successes
+    - 1 Sci-Hub-assisted success
+
+- confirmed failure points
+  - Elsevier viewer fallback weakness
+    - after signed PDF viewer handoff, `FAIL_WRONG_MIME` fell through to generic parser path
+    - generic parser then continued without a viewer-aware recovery
+    - evidence: fail HTML was a Chrome PDF embedder shell and not a useful article page
+  - merged-flow diagnostics drift
+    - `landing_peak_tab_count_observed=0` for all rows even when `landing_final_total_tab_count` was `10~12`
+    - `landing_tab_lifecycle_sequence=[]` for all rows
+    - `landing_probe_browser_process_alive=False` / `landing_probe_page_access_ok=False` were not trustworthy as runtime diagnostics
+    - cause: standalone landing deletion left several fields exported by `parallel_download.py` but not populated by `download_with_drission()`
+  - publisher summary rollup bug
+    - benchmark CSV had `benchmark_group` / `scheduler_publisher`
+    - summary still rolled everything into `other`
+    - cause: summarizer only trusted `experiment_publisher_group`
+
+- non-confirmed / corrected interpretations
+  - metadata sidecar null-top-level problem was *not* reproduced in this bundle.
+    - sidecars did include `record` and `openalex` payloads with real values.
+    - previous suspicion was withdrawn after direct file inspection.
+  - cross-worker shared profile collision was not evidenced.
+    - worker runtime profile roots were per-process.
+    - concurrency/resource fragility remains a possible inference, but not a confirmed root cause from this bundle alone.
+
+- implemented fixes
+  - `tools_exp.py`
+    - fixed `force_download_with_requests()` cookie extraction.
+      - previous code used only the first `page.cookies()` item.
+      - now it builds a real cookie jar from all browser cookies.
+    - added `_looks_like_browser_pdf_embedder_shell()`.
+    - hardened `_download_elsevier_signed_pdf_from_viewer()`.
+      - if signed-viewer CFFI ends with `FAIL_WRONG_MIME`, retry once with `requests` + browser cookies + referer instead of immediately falling through.
+    - added merged-flow tab/runtime diagnostics directly inside `download_with_drission()`.
+      - `peak_tab_count_observed`
+      - `tab_lifecycle_sequence`
+      - `browser_process_alive`
+      - `page_access_ok`
+      - `page_probe_error`
+      - `startup_tab_cleanup_*`
+      - `startup_page_reset_to_blank`
+    - added startup tab cleanup and blank reset before navigation in the unified flow.
+      - goal: reduce restored-tab contamination and keep headful Linux startup closer to the successful local_mac-style clean browser start
+    - added post-Elsevier-click tab trim so extra tabs do not accumulate silently before generic fallback.
+  - `experiment/summarize_linux_headless_suite.py`
+    - added publisher rollup fallback order:
+      - `experiment_publisher_group`
+      - `benchmark_group`
+      - `scheduler_publisher`
+      - normalized `publisher`
+    - added display-name fallback from `publisher` when `publisher_display_name` is missing
+
+- verification
+  - `python -m py_compile tools_exp.py parallel_download.py experiment/summarize_linux_headless_suite.py experiment/run_linux_headless_suite.py config.py`
+    - pass
+  - reran summarizer against the analyzed bundle’s download outputs using the benchmark input CSV
+    - publisher rollup changed from a single `other` bucket to:
+      - `elsevier`: 4
+      - `aip`: 4
+      - `iop`: 3
+      - `ieee`: 4
+    - this confirmed the summary fix on real benchmark evidence
+
+- reproduction / re-check commands
+  - unpack bundle:
+    - `python - <<'PY'`
+    - `import tarfile`
+    - `bundle='experiment/results/publisher_download_benchmark_elsevier_aip_ieee_iop_xvfb_20260319_165013_bundle.tar.gz'`
+    - `out='/private/tmp/publisher_benchmark_bundle_inspect'`
+    - `with tarfile.open(bundle,'r:gz') as tf: tf.extractall(out)`
+    - `print(out)`
+    - `PY`
+  - re-run summarizer with current code:
+    - `python experiment/summarize_linux_headless_suite.py --suite full --sample-csv outputs/benchmark_inputs/publisher_download_benchmark_elsevier_aip_ieee_spie_iop.csv --download-results-csv /private/tmp/publisher_benchmark_bundle_inspect/outputs/linux_headless_suite_runs/publisher_download_benchmark_elsevier_aip_ieee_iop_xvfb_20260319_165013/download/run/openalex_search_results_parallel.csv --download-summary-json /private/tmp/publisher_benchmark_bundle_inspect/outputs/linux_headless_suite_runs/publisher_download_benchmark_elsevier_aip_ieee_iop_xvfb_20260319_165013/download/run/summary.json --merged-csv /private/tmp/codex_summary_recheck_20260319/merged_results.csv --publisher-summary-csv /private/tmp/codex_summary_recheck_20260319/publisher_summary.csv --summary-json /private/tmp/codex_summary_recheck_20260319/suite_summary.json --summary-md /private/tmp/codex_summary_recheck_20260319/suite_summary.md`
+
+- remaining uncertainty
+  - Elsevier signed-viewer fallback improvement is code-complete, but still needs a fresh server rerun to confirm it recovers `10.1016/j.apcatb.2024.124297`
+  - AIP challenge failures remain confirmed but not fixed here.
+    - this turn focused on artifact-evidenced logic defects, not speculative challenge workarounds
+  - AIP disconnect for `10.1063/5.0257779` remains only partially explained.
+    - evidence supports a browser/page runtime disconnect, but the exact low-level trigger is still `[blocked]`
+
+### 5.35 2026-03-19 Codex: AIP access path 정밀 진단 및 headful+profile 활용 보완
+
+- analyzed bundle again with AIP-only focus
+  - `experiment/results/publisher_download_benchmark_elsevier_aip_ieee_iop_xvfb_20260319_165013_bundle.tar.gz`
+  - inspected AIP-specific artifacts:
+    - `download/run/openalex_search_results_parallel.csv`
+    - `download/run/failed_papers.jsonl`
+    - `download/run/Closed_Access/logs/download_log_10.1063_5.0257779.pdf.pdf.txt`
+    - `download/run/Closed_Access/logs/html/landing_fail_10.1063_5.0246311.html`
+    - `download/run/Closed_Access/logs/html/landing_fail_10.1116_6.0004868.html`
+    - `download/run/Open_Access/logs/html/landing_success_10.1116_6.0004298.html`
+    - benchmark input rows in `outputs/benchmark_inputs/publisher_download_benchmark_elsevier_aip_ieee_spie_iop.csv`
+
+- confirmed AIP outcome split
+  - `10.1116/6.0004298`
+    - direct DOI route succeeded
+    - article page was reached and direct PDF handoff completed
+  - `10.1063/5.0246311`, `10.1116/6.0004868`
+    - direct DOI route reached canonical AIP article URL shape
+    - final page was Cloudflare challenge shell (`Just a moment...`, `__cf_chl_rt_tk`, `challenge-platform`)
+    - this is a real first-contact challenge outcome, not a classifier artifact
+  - `10.1063/5.0257779`
+    - did not reach a stable article/challenge landing state
+    - log showed repeated startup-tab pruning immediately after browser open
+    - then a long stall and finally `The connection to the page has been disconnected. Version: 4.1.1.2`
+    - this is best explained as runtime/page survivability failure on the initial controlled page
+
+- step-by-step understanding of the current AIP flow before this patch
+  - unified flow already used `aip_direct_browser_doi`
+    - `entry_strategy_variant=direct_doi_browser_start_no_preanalysis`
+    - `entry_browser_url=https://doi.org/<doi>`
+  - no separate landing-only path was involved
+  - in headful Linux runs the code still started from the current controller page, then:
+    - pruned restored tabs
+    - reset page to `about:blank`
+    - navigated the same page to DOI
+  - this worked for the successful AIP DOI, but the disconnect case showed that reusing the startup controller page was still not deterministic enough even after tab pruning
+
+- confirmed root cause that is fixable without speculative anti-bot work
+  - the meaningful defect was not “wrong entry ordering” anymore
+  - the meaningful defect was:
+    - headful + seeded-profile Linux run still reused the startup controller page for the AIP first-contact DOI navigation
+    - that page could already be contaminated by session-restore/runtime state even after extra tabs were closed
+    - when the page/runtime detached during the first DOI navigation, the result was recorded only as generic network failure and hid that landing never truly started
+
+- implemented AIP-specific fixes
+  - `tools_exp.py`
+    - added `_aip_direct_entry_fresh_tab_enabled()`
+      - default: enabled for `linux_server` when effective headless mode is false
+      - env override: `PDF_BROWSER_AIP_DIRECT_DOI_FRESH_TAB`
+    - updated `_prepare_aip_entry_navigation_page()`
+      - for AIP direct DOI first-contact on Linux headful, open a fresh temporary tab first
+      - navigate DOI from that fresh tab instead of reusing the startup controller page
+      - new route marker: `fresh_tab_before_direct_doi`
+    - strengthened disconnect diagnostics in `download_with_drission()`
+      - added:
+        - `page_disconnect_observed`
+        - `page_disconnect_stage`
+      - main DOI navigation disconnect is now tagged explicitly (`main_navigation` / `unexpected_retry_navigation`)
+      - if disconnect happens before stable landing, `landing_state` is set to `runtime_disconnect`
+      - terminal classification stays `FAIL_TIMEOUT/NETWORK`, but now the landing state explains that the failure happened before real landing validation or download trigger
+
+- why this is a meaningful patch
+  - it uses the newly available headful + seeded-profile runtime as an asset:
+    - keep cookies/session from the persistent profile
+    - avoid reusing a fragile startup page for first contact
+  - it does not reintroduce a separate landing-only path
+  - it keeps AIP behavior inside the unified download flow
+  - it makes the failure split explicit:
+    - `challenge_or_block`
+    - `runtime_disconnect`
+    - `direct_pdf_handoff`
+
+- verification
+  - `python -m py_compile tools_exp.py`
+    - pass
+  - smoke check:
+    - `build_aip_direct_doi_entry_plan('https://doi.org/10.1063/5.0257779')`
+      - still returns direct DOI browser entry
+    - `_aip_direct_entry_fresh_tab_enabled()`
+      - true under `PDF_BROWSER_EXECUTION_ENV=linux_server` and `PDF_BROWSER_HEADLESS=0`
+
+- re-check commands for next server run
+  - `bash scripts/run_linux_suite_bg.sh --suite full --run-name aip_focus_xvfb_headful_recheck --sample-csv outputs/benchmark_inputs/publisher_download_benchmark_elsevier_aip_ieee_spie_iop.csv --download-workers 3 --after-first-pass stop --runtime-preset linux_cli_seeded --execution-env linux_server --headless 0 --xvfb 1 --xvfb-bin "$HOME/.local/bin/Xvfb" --xvfb-display :99`
+  - inspect these fields in `download/run/openalex_search_results_parallel.csv`
+    - `landing_entry_navigation_route`
+    - `landing_page_disconnect_observed`
+    - `landing_page_disconnect_stage`
+    - `landing_state`
+    - `landing_final_url`
+
+- remaining uncertainty
+  - Cloudflare challenge outcomes for `10.1063/5.0246311` and `10.1116/6.0004868` remain unchanged by this patch.
+    - this patch intentionally does not attempt challenge bypass.
+  - exact low-level reason why the reused startup page detached for `10.1063/5.0257779` is still not fully proven.
+    - current conclusion is an evidence-backed inference from logs and runtime symptoms.
