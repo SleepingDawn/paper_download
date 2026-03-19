@@ -337,11 +337,10 @@ def _run_chrome_smoke(chrome_path: str, profile_root: str) -> Dict[str, str]:
     shutil.rmtree(smoke_dir, ignore_errors=True)
     os.makedirs(smoke_dir, exist_ok=True)
     port = _pick_free_local_port()
+    headless = _is_headless_browser()
 
     cmd = [
         chrome_path,
-        "--headless=new",
-        "--disable-gpu",
         "--disable-dev-shm-usage",
         "--no-first-run",
         "--no-default-browser-check",
@@ -357,6 +356,11 @@ def _run_chrome_smoke(chrome_path: str, profile_root: str) -> Dict[str, str]:
         "--remote-debugging-address=127.0.0.1",
         "about:blank",
     ]
+    if headless:
+        cmd.insert(1, "--headless=new")
+        cmd.insert(2, "--disable-gpu")
+    else:
+        cmd.insert(1, "--disable-gpu")
     proc = None
     try:
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -516,6 +520,76 @@ def _open_probe_page(controller_page: ChromiumPage, probe_page_mode: str) -> Tup
         return controller_page, meta
 
 
+def _trim_tabs_to_ids(page: ChromiumPage | None, keep_tab_ids: Sequence[str]) -> int:
+    if page is None:
+        return 0
+    keep = {str(tab_id or "").strip() for tab_id in keep_tab_ids if str(tab_id or "").strip()}
+    if not keep:
+        return 0
+    closed = 0
+    try:
+        tab_ids = [str(tab_id or "").strip() for tab_id in list(getattr(page, "tab_ids", []) or []) if str(tab_id or "").strip()]
+    except Exception:
+        return 0
+    for tab_id in tab_ids:
+        if tab_id in keep:
+            continue
+        try:
+            page.close_tabs(tab_id)
+            closed += 1
+        except Exception:
+            pass
+    active_target = next(iter(keep), "")
+    if active_target:
+        try:
+            page.activate_tab(active_target)
+        except Exception:
+            pass
+    return closed
+
+
+def _prepare_aip_controller_page(
+    page: ChromiumPage,
+    *,
+    record: Dict[str, Any],
+    session_plan: Dict[str, Any],
+) -> Dict[str, Any]:
+    meta: Dict[str, Any] = {
+        "controller_lifecycle_initial": {},
+        "startup_tab_cleanup_applied": False,
+        "startup_tab_cleanup_before_count": 0,
+        "startup_tab_cleanup_after_count": 0,
+        "startup_tab_cleanup_closed_count": 0,
+        "startup_page_reset_to_blank": False,
+        "startup_page_reset_error": "",
+    }
+    initial_snapshot = _page_lifecycle_snapshot(page)
+    meta["controller_lifecycle_initial"] = initial_snapshot
+    if not _is_aip_stateful_linux_session(record, session_plan):
+        return meta
+
+    meta["startup_tab_cleanup_applied"] = True
+    meta["startup_tab_cleanup_before_count"] = int(initial_snapshot.get("total_tab_count", 0) or 0)
+    keep_tab_id = str(getattr(page, "tab_id", "") or initial_snapshot.get("active_tab_id") or "")
+    meta["startup_tab_cleanup_closed_count"] = _trim_tabs_to_ids(page, [keep_tab_id])
+
+    try:
+        current_url = str(getattr(page, "url", "") or initial_snapshot.get("current_url") or "")
+    except Exception:
+        current_url = str(initial_snapshot.get("current_url") or "")
+    low_url = current_url.strip().lower()
+    if low_url and not low_url.startswith("about:blank") and not low_url.startswith("chrome://"):
+        try:
+            page.get("about:blank", retry=0, interval=0.2, timeout=5)
+            meta["startup_page_reset_to_blank"] = True
+        except Exception as exc:
+            meta["startup_page_reset_error"] = str(exc)[:240]
+
+    prepared_snapshot = _page_lifecycle_snapshot(page)
+    meta["startup_tab_cleanup_after_count"] = int(prepared_snapshot.get("total_tab_count", 0) or 0)
+    return meta
+
+
 def _ensure_controller_page_for_record(
     current_page: ChromiumPage | None,
     *,
@@ -533,10 +607,18 @@ def _ensure_controller_page_for_record(
         "controller_restart_reason": "",
         "controller_restart_count": 0,
         "controller_create_attempts": 0,
+        "controller_lifecycle_initial": {},
         "controller_lifecycle_before_open": {},
+        "startup_tab_cleanup_applied": False,
+        "startup_tab_cleanup_before_count": 0,
+        "startup_tab_cleanup_after_count": 0,
+        "startup_tab_cleanup_closed_count": 0,
+        "startup_page_reset_to_blank": False,
+        "startup_page_reset_error": "",
     }
     if current_page is not None:
         lifecycle_before = _page_lifecycle_snapshot(current_page)
+        meta["controller_lifecycle_initial"] = lifecycle_before
         meta["controller_lifecycle_before_open"] = lifecycle_before
         if not meta["controller_reuse_allowed"]:
             meta["controller_restart_reason"] = "per_doi_fresh_browser_for_aip_stateful"
@@ -560,6 +642,7 @@ def _ensure_controller_page_for_record(
             startup_retries=startup_retries,
         )
         lifecycle_before = _page_lifecycle_snapshot(candidate)
+        meta["controller_lifecycle_initial"] = lifecycle_before
         meta["controller_lifecycle_before_open"] = lifecycle_before
         if _page_lifecycle_survivable(lifecycle_before):
             current_page = candidate
@@ -571,6 +654,13 @@ def _ensure_controller_page_for_record(
     meta["controller_create_attempts"] = create_attempts
     if current_page is None:
         raise RuntimeError("controller_browser_unavailable_after_restart")
+    preparation_meta = _prepare_aip_controller_page(
+        current_page,
+        record=record,
+        session_plan=session_plan,
+    )
+    meta.update(preparation_meta)
+    meta["controller_lifecycle_before_open"] = _page_lifecycle_snapshot(current_page)
     return current_page, meta
 
 
@@ -602,11 +692,21 @@ def _ensure_probe_page_for_record(
             startup_retries=startup_retries,
         )
         probe_page, page_meta = _open_probe_page(controller_page, probe_page_mode=effective_mode)
+        post_open_trim_closed = 0
+        if _is_aip_stateful_linux_session(record, session_plan):
+            post_open_trim_closed = _trim_tabs_to_ids(
+                probe_page,
+                [
+                    str(page_meta.get("controller_tab_id") or ""),
+                    str(page_meta.get("probe_tab_id") or ""),
+                ],
+            )
         probe_lifecycle_after_open = _page_lifecycle_snapshot(probe_page)
         page_meta.update(controller_meta)
         page_meta["probe_page_mode_requested"] = requested_mode
         page_meta["probe_page_mode_effective"] = effective_mode
         page_meta["probe_open_attempts"] = probe_attempt + 1
+        page_meta["post_open_tab_trim_closed_count"] = int(post_open_trim_closed or 0)
         page_meta["probe_open_succeeded"] = bool(_page_lifecycle_survivable(probe_lifecycle_after_open))
         page_meta["probe_lifecycle_after_open"] = probe_lifecycle_after_open
         page_meta["probe_attach_restart_reason"] = ""
@@ -2735,8 +2835,16 @@ def _save_probe_artifacts(
             "controller_restart_reason": record.get("controller_restart_reason", ""),
             "controller_restart_count": int(record.get("controller_restart_count", 0) or 0),
             "controller_create_attempts": int(record.get("controller_create_attempts", 0) or 0),
+            "controller_lifecycle_initial": record.get("controller_lifecycle_initial", {}),
             "controller_lifecycle_before_open": record.get("controller_lifecycle_before_open", {}),
+            "startup_tab_cleanup_applied": bool(record.get("startup_tab_cleanup_applied")),
+            "startup_tab_cleanup_before_count": int(record.get("startup_tab_cleanup_before_count", 0) or 0),
+            "startup_tab_cleanup_after_count": int(record.get("startup_tab_cleanup_after_count", 0) or 0),
+            "startup_tab_cleanup_closed_count": int(record.get("startup_tab_cleanup_closed_count", 0) or 0),
+            "startup_page_reset_to_blank": bool(record.get("startup_page_reset_to_blank")),
+            "startup_page_reset_error": record.get("startup_page_reset_error", ""),
             "probe_lifecycle_after_open": record.get("probe_lifecycle_after_open", {}),
+            "post_open_tab_trim_closed_count": int(record.get("post_open_tab_trim_closed_count", 0) or 0),
             "tab_lifecycle_sequence": record.get("tab_lifecycle_sequence", []),
             "peak_tab_count_observed": int(record.get("peak_tab_count_observed", 0) or 0),
             "reduced_tab_path_used": bool(record.get("reduced_tab_path_used")),
@@ -3957,12 +4065,20 @@ def _probe_one(
         "probe_page_mode_requested": str(probe_page_meta.get("probe_page_mode_requested") or ""),
         "probe_page_mode_effective": str(probe_page_meta.get("probe_page_mode_effective") or probe_page_meta.get("probe_page_mode") or ""),
         "probe_open_attempts": int(probe_page_meta.get("probe_open_attempts", 0) or 0),
+        "post_open_tab_trim_closed_count": int(probe_page_meta.get("post_open_tab_trim_closed_count", 0) or 0),
         "controller_page_reused": bool(probe_page_meta.get("controller_page_reused")),
         "controller_reuse_allowed": bool(probe_page_meta.get("controller_reuse_allowed", True)),
         "controller_restart_reason": str(probe_page_meta.get("controller_restart_reason") or ""),
         "controller_restart_count": int(probe_page_meta.get("controller_restart_count", 0) or 0),
         "controller_create_attempts": int(probe_page_meta.get("controller_create_attempts", 0) or 0),
+        "controller_lifecycle_initial": dict(probe_page_meta.get("controller_lifecycle_initial") or {}),
         "controller_lifecycle_before_open": dict(probe_page_meta.get("controller_lifecycle_before_open") or {}),
+        "startup_tab_cleanup_applied": bool(probe_page_meta.get("startup_tab_cleanup_applied")),
+        "startup_tab_cleanup_before_count": int(probe_page_meta.get("startup_tab_cleanup_before_count", 0) or 0),
+        "startup_tab_cleanup_after_count": int(probe_page_meta.get("startup_tab_cleanup_after_count", 0) or 0),
+        "startup_tab_cleanup_closed_count": int(probe_page_meta.get("startup_tab_cleanup_closed_count", 0) or 0),
+        "startup_page_reset_to_blank": bool(probe_page_meta.get("startup_page_reset_to_blank")),
+        "startup_page_reset_error": str(probe_page_meta.get("startup_page_reset_error") or ""),
         "probe_lifecycle_after_open": dict(probe_page_meta.get("probe_lifecycle_after_open") or {}),
         "probe_open_succeeded": bool(probe_page_meta.get("probe_open_succeeded")),
         "probe_attach_restart_reason": str(probe_page_meta.get("probe_attach_restart_reason") or ""),

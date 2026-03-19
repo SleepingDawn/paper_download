@@ -21,6 +21,10 @@ options:
   --execution-env <value>       default: linux_server
   --chrome-path <path>          optional explicit browser binary (or config/linux_server.env)
   --no-sandbox <0|1>            export PDF_BROWSER_NO_SANDBOX (default: preserve current env/config)
+  --xvfb <auto|0|1>             auto-start Xvfb for headful linux_server runs (default: auto)
+  --xvfb-display <value>        Xvfb display (default: :99 or env PDF_BROWSER_XVFB_DISPLAY)
+  --xvfb-bin <path>             Xvfb binary (default: ~/.local/bin/Xvfb or env PDF_BROWSER_XVFB_BIN)
+  --xvfb-screen <WxHxD>         Xvfb screen geometry (default: 1280x1024x24)
 EOF
 }
 
@@ -48,6 +52,10 @@ EXECUTION_ENV="linux_server"
 PYTHON_BIN="${PYTHON_BIN:-$(command -v python3)}"
 CHROME_PATH_VALUE="${CHROME_PATH:-}"
 NO_SANDBOX_VALUE="${PDF_BROWSER_NO_SANDBOX:-}"
+XVFB_MODE="${PDF_BROWSER_XVFB_MODE:-auto}"
+XVFB_DISPLAY_VALUE="${PDF_BROWSER_XVFB_DISPLAY:-:99}"
+XVFB_BIN_VALUE="${PDF_BROWSER_XVFB_BIN:-$HOME/.local/bin/Xvfb}"
+XVFB_SCREEN_VALUE="${PDF_BROWSER_XVFB_SCREEN:-1280x1024x24}"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -66,6 +74,10 @@ while [[ $# -gt 0 ]]; do
     --execution-env) EXECUTION_ENV=${2:-}; shift 2 ;;
     --chrome-path) CHROME_PATH_VALUE=${2:-}; shift 2 ;;
     --no-sandbox) NO_SANDBOX_VALUE=${2:-}; shift 2 ;;
+    --xvfb) XVFB_MODE=${2:-}; shift 2 ;;
+    --xvfb-display) XVFB_DISPLAY_VALUE=${2:-}; shift 2 ;;
+    --xvfb-bin) XVFB_BIN_VALUE=${2:-}; shift 2 ;;
+    --xvfb-screen) XVFB_SCREEN_VALUE=${2:-}; shift 2 ;;
     -h|--help) usage; exit 0 ;;
     *) echo "unknown argument: $1" >&2; usage >&2; exit 1 ;;
   esac
@@ -102,6 +114,18 @@ if [[ -z "$RUN_DIR" ]]; then
   RUN_DIR="$RUNS_ROOT/$RUN_NAME"
 fi
 
+USE_XVFB=0
+if [[ "$HEADLESS" == "0" && "$EXECUTION_ENV" == "linux_server" ]]; then
+  case "$XVFB_MODE" in
+    auto|1|true|yes|on) USE_XVFB=1 ;;
+    0|false|no|off) USE_XVFB=0 ;;
+    *)
+      echo "--xvfb must be auto, 0, or 1" >&2
+      exit 1
+      ;;
+  esac
+fi
+
 mkdir -p "$LOGS_ROOT"
 RUN_DIR_ABS=$("$PYTHON_BIN" - <<PY
 from pathlib import Path
@@ -113,6 +137,7 @@ CMD_FILE="$LOGS_ROOT/${RUN_NAME}.cmd.sh"
 LOG_FILE="$LOGS_ROOT/${RUN_NAME}.log"
 PID_FILE="$LOGS_ROOT/${RUN_NAME}.pid"
 RUN_DIR_FILE="$LOGS_ROOT/${RUN_NAME}.run_dir"
+XVFB_LOG_FILE="$LOGS_ROOT/${RUN_NAME}.xvfb.log"
 
 if [[ -f "$PID_FILE" ]]; then
   OLD_PID=$(cat "$PID_FILE" 2>/dev/null || true)
@@ -143,9 +168,19 @@ fi
 if [[ -n "$NO_SANDBOX_VALUE" ]]; then
   printf 'export PDF_BROWSER_NO_SANDBOX=%q\n' "$NO_SANDBOX_VALUE" >>"$CMD_FILE"
 fi
+if [[ "$USE_XVFB" == "1" ]]; then
+  printf 'export XVFB_BIN=%q\n' "$XVFB_BIN_VALUE" >>"$CMD_FILE"
+  printf 'export XVFB_DISPLAY=%q\n' "$XVFB_DISPLAY_VALUE" >>"$CMD_FILE"
+  printf 'export XVFB_SCREEN=%q\n' "$XVFB_SCREEN_VALUE" >>"$CMD_FILE"
+  printf 'export XVFB_LOG_FILE=%q\n' "$XVFB_LOG_FILE" >>"$CMD_FILE"
+fi
 
 {
-  printf 'exec %q %q' "$PYTHON_BIN" "$REPO_ROOT/experiment/run_linux_headless_suite.py"
+  if [[ "$USE_XVFB" == "1" ]]; then
+    printf 'exec %q -- %q %q' "$REPO_ROOT/scripts/with_xvfb.sh" "$PYTHON_BIN" "$REPO_ROOT/experiment/run_linux_headless_suite.py"
+  else
+    printf 'exec %q %q' "$PYTHON_BIN" "$REPO_ROOT/experiment/run_linux_headless_suite.py"
+  fi
   printf ' --suite %q' "$SUITE"
   printf ' --run-dir %q' "$RUN_DIR_ABS"
   printf ' --persistent-profile-dir %q' "$SEED_PROFILE"
@@ -176,6 +211,14 @@ printf '%s\n' "$RUN_DIR_ABS" >"$RUN_DIR_FILE"
   echo "[launcher] profile_name=$PROFILE_NAME"
   if [[ -n "$CHROME_PATH_VALUE" ]]; then
     echo "[launcher] chrome_path=$CHROME_PATH_VALUE"
+  fi
+  echo "[launcher] headless=$HEADLESS"
+  echo "[launcher] xvfb_enabled=$USE_XVFB"
+  if [[ "$USE_XVFB" == "1" ]]; then
+    echo "[launcher] xvfb_bin=$XVFB_BIN_VALUE"
+    echo "[launcher] xvfb_display=$XVFB_DISPLAY_VALUE"
+    echo "[launcher] xvfb_screen=$XVFB_SCREEN_VALUE"
+    echo "[launcher] xvfb_log=$XVFB_LOG_FILE"
   fi
 } >>"$LOG_FILE"
 

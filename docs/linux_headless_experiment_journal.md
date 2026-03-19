@@ -2746,3 +2746,292 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - note
   - git working tree에서는 위 output file들이 대량 `D`로 보이지만,
     이건 user-requested cleanup에 따른 expected change다.
+
+5.28 stale startup tabs cleanup patch: AIP direct DOI path 전에 restore된 다른 저널 탭을 닫고 controller page를 blank로 초기화
+
+- 출발점
+  - latest bundle의 remaining issues는 user가 지적한 두 가지였다.
+    - `tab_lifecycle_sequence`에 다른 저널 page가 계속 보임
+    - `peak_tab_count_observed=10`
+  - latest fail JSON 재확인:
+    - `controller_page_reused=false`
+    - `controller_reuse_allowed=false`
+    - `controller_create_attempts=1`
+    - 그럼에도 `controller_before_open.current_url`이
+      - RSC PDF
+      - ScienceDirect article
+      로 남아 있었다.
+  - confirmed fact:
+    - 이건 current attempt가 warm-up으로 다른 저널을 방문했다기보다
+      **새 stateful browser startup 자체가 restore된 기존 tab state를 들고 시작한 것**이다.
+
+- root cause interpretation
+  - remaining alternate-journal visits의 직접 원인은
+    - AIP direct DOI branch 이전에
+    - startup controller page가 restore된 non-AIP tabs를 그대로 유지한 채 probe phase로 들어간 것
+    이다.
+  - `peak_tab_count_observed=10`도 같은 원인에서 나왔다.
+    - AIP strategy가 10개 tab을 intentionally 연 것이 아니라
+    - startup restore state를 정리하지 못해 peak가 inflated되었다.
+
+- 적용한 변경
+  - `landing_access_repro.py`
+    - `_trim_tabs_to_ids()` 추가
+      - 지정 tab만 남기고 나머지 tabs를 즉시 닫는 helper
+    - `_prepare_aip_controller_page()` 추가
+      - AIP + stateful + linux_cli_seeded + linux_server 조건이면
+        - controller startup snapshot 기록
+        - restore된 extra tabs close
+        - surviving controller page를 `about:blank`로 reset
+    - `_ensure_controller_page_for_record()`가
+      - browser 생성 직후 위 cleanup을 항상 통과하도록 변경
+    - `_ensure_probe_page_for_record()`가
+      - probe tab open 직후 다시 keep-set trim을 한 번 더 수행
+      - 의도는 controller + probe two-tab ceiling 유지
+    - new diagnostics:
+      - `controller_lifecycle_initial`
+      - `startup_tab_cleanup_applied`
+      - `startup_tab_cleanup_before_count`
+      - `startup_tab_cleanup_after_count`
+      - `startup_tab_cleanup_closed_count`
+      - `startup_page_reset_to_blank`
+      - `startup_page_reset_error`
+      - `post_open_tab_trim_closed_count`
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary에 위 startup-tab cleanup diagnostics 추가
+
+- intended runtime path proof
+  - `_probe_worker_records()`는 매 DOI마다 `_ensure_probe_page_for_record()`를 호출한다.
+  - `_ensure_probe_page_for_record()`는 항상 `_ensure_controller_page_for_record()`를 거친다.
+  - 따라서 AIP stateful Linux/server record는
+    - browser startup 직후 cleanup
+    - then fresh probe tab open
+    - then direct DOI navigation
+    순서를 **반드시** 탄다.
+  - 이건 단순히 code가 존재하는 수준이 아니라
+    intended exercised runtime path에 들어가 있는 patch다.
+
+- before / after expectation
+  - before:
+    - `controller_before_open.current_url`에 non-AIP journal page가 보일 수 있음
+    - `total_tab_count`가 restore state 때문에 10까지 커질 수 있음
+    - probe phase 진입 전에 이미 stale journal context가 섞임
+  - after:
+    - `controller_lifecycle_initial`에는 old restore state가 남을 수 있어도
+    - `controller_before_open`은 cleanup 후 snapshot이므로
+      - `about:blank` 또는 empty startup page
+      - `startup_tab_cleanup_after_count <= 1`
+      가 기대값이다.
+    - `probe_after_open.total_tab_count <= 2`
+      - controller blank tab 1
+      - probe tab 1
+    - direct DOI navigation 이전에 unrelated journal page가 runtime path에 남아 있지 않아야 한다.
+
+- patch verification
+  - `python -m py_compile landing_access_repro.py experiment/summarize_linux_headless_suite.py`
+    - passed
+  - branch smoke:
+    - server-condition AIP stateful record에서
+      - `probe_page_mode=fresh_tab`
+      - `entry_strategy_variant=direct_doi_browser_start_no_preanalysis`
+
+- 다음 검증에서 꼭 볼 것
+  - `controller_lifecycle_initial.current_url`
+    - stale restore 흔적이 있었는지
+  - `controller_before_open.current_url`
+    - blank로 정리됐는지
+  - `startup_tab_cleanup_before_count`
+  - `startup_tab_cleanup_after_count`
+  - `startup_tab_cleanup_closed_count`
+  - `probe_after_open.total_tab_count`
+  - `peak_tab_count_observed`
+  - `aip_direct_doi_path_used=true`
+  - `aip_alternate_pages_opened=false`
+
+- 아직 불확실한 것 `[blocked]`
+  - actual live server rerun 없이
+    - cleanup 후 observed peak tab count가 실제로 `<=2`였는지는 아직 `[blocked]`
+  - stale startup tabs의 원인이
+    - Chrome session restore pref인지
+    - stateful profile content 자체인지
+    는 아직 `[blocked]`
+
+5.29 Ubuntu VM에서 "필요한 publisher 탭을 모두 열어 둔 프로필"을 가져오는 전략의 의미 검증
+
+- 질문
+  - Ubuntu VM에서 profile을 seed로 가져올 때
+    - AIP, Elsevier, RSC 등 필요한 publisher를 전부 tab으로 열어 둔 상태로 profile을 저장해 오면
+    - Linux server landing에 도움이 되는가
+    를 검증했다.
+
+- 현재 evidence
+  - latest AIP bundle `aip_low_pressure_probe_20260319_bundle`에서는
+    - `tab_lifecycle_sequence`에 RSC PDF / ScienceDirect article 같은 non-AIP page가 보였고
+    - `peak_tab_count_observed=10`까지 올라갔다.
+  - 하지만 이건 "current attempt가 warm-up으로 다른 publisher를 방문했다"기보다
+    - stateful browser startup 시점에 restore된 old tabs가 controller page로 붙은 것에 가깝다.
+  - 이후 넣은 startup cleanup patch는
+    - `_prepare_aip_controller_page()`
+    - `_trim_tabs_to_ids()`
+    로 이 restore tabs를 닫고 controller page를 `about:blank`로 reset하도록 바꿨다.
+
+- code-grounded interpretation
+  - 현재 AIP stateful Linux/server path는
+    - `_ensure_controller_page_for_record()`
+    - `_prepare_aip_controller_page()`
+    - `_ensure_probe_page_for_record()`
+    순서로 들어간다.
+  - 즉 startup 시점에 이미 여러 publisher tab이 열려 있어도
+    - keep-set 밖 tab은 닫히고
+    - surviving controller page도 blank reset된다.
+  - 따라서 **현재 intended runtime path에서는 "미리 열어 둔 publisher tabs"는 적극적으로 제거되는 대상**이다.
+
+- 검증 결론
+  - 현재 코드 기준으로는
+    - Ubuntu VM에서 publisher tabs를 많이 열어 둔 profile을 seed로 가져오는 전략은
+    - AIP landing에 의미 있는 positive signal로 취급되지 않는다.
+  - 더 강하게 말하면
+    - latest evidence상 그 전략은 benefit가 확인된 적이 없고
+    - 오히려
+      - stale startup contamination
+      - peak tab inflation
+      - runtime interpretation 혼탁
+      을 만든 쪽에 가깝다.
+  - 따라서 지금 단계의 working conclusion은:
+    - **"publisher를 미리 tab으로 열어 두기"는 현재 AIP path에서 의미 있는 전략이 아니라, 피해야 할 confound**다.
+
+- 다만 남는 제한
+  - 이 결론은
+    - "현재 AIP landing 코드와 latest bundle evidence 기준"의 결론이다.
+  - 만약 향후 별도 가설로
+    - 특정 publisher homepage session cookie / consent state / institution banner state
+    만을 seed profile에 남겨 놓고
+    - startup restore tabs는 남기지 않는
+    통제된 profile comparison 실험을 한다면
+    - 그것은 다른 질문이다.
+  - 하지만 그 경우에도 검증 단위는
+    - "tabs를 열어 둔 상태"가 아니라
+    - "쿠키/세션 저장 상태"여야 한다.
+
+- 다음 기준
+  - 앞으로 profile seed 전략은
+    - restore tabs를 많이 보존하는 방향이 아니라
+    - clean startup + persisted cookies/storage + direct DOI nav
+    기준으로 평가한다.
+
+5.30 Linux CLI server headful experiment support via Xvfb
+
+- 목적
+  - Linux CLI server에서 terminal-only 상태를 유지하면서도
+    browser 자체는 non-headless로 띄우는 실험 경로를 추가했다.
+  - 전제:
+    - server에 `~/.local/bin/Xvfb`가 설치되어 있고
+    - `DISPLAY`, `PATH`, `LD_LIBRARY_PATH`만 맞추면
+      Xvfb 위에서 headful Chrome이 뜬다고 가정한다.
+
+- 확인한 현재 launch path
+  - suite launcher:
+    - `scripts/run_linux_suite_bg.sh`
+  - experiment entrypoint:
+    - `experiment/run_linux_headless_suite.py`
+  - browser launch:
+    - `landing_access_repro.py::_browser_for_worker()`
+    - `tools_exp.py::_apply_best_browser_profile()`
+  - Selenium/Playwright config:
+    - 별도 Playwright config file은 없었다.
+    - Selenium 계열은 `tools_exp.py`의 `seleniumbase.Driver` import만 확인했고,
+      current landing path의 primary browser control은 DrissionPage였다.
+
+- 문제
+  - 기존 `tools_exp.py::coerce_headless_for_execution_env()`는
+    - `execution_env=linux_server`면
+    - `headless=0` 요청도 무조건 `headless=true`로 강제했다.
+  - 따라서 server에서 Xvfb display를 준비해도
+    current runtime path는 headful 실험으로 내려갈 수 없었다.
+  - 또한 `landing_access_repro.py::_run_chrome_smoke()`도
+    - smoke probe를 무조건 `--headless=new`로 띄우고 있어
+    - headful/Xvfb 경로의 사전검증과 맞지 않았다.
+
+- 적용한 변경
+  - `scripts/with_xvfb.sh` 추가
+    - Xvfb start
+    - `DISPLAY`, `PATH`, `LD_LIBRARY_PATH` export
+    - `PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER=1`
+    - `PDF_BROWSER_XVFB_ACTIVE=1`
+    - child process 종료 시 Xvfb cleanup
+  - `scripts/run_linux_suite_bg.sh`
+    - new options:
+      - `--xvfb <auto|0|1>`
+      - `--xvfb-display`
+      - `--xvfb-bin`
+      - `--xvfb-screen`
+    - `headless=0` + `execution_env=linux_server` + `xvfb enabled`면
+      generated cmd가 `scripts/with_xvfb.sh -- python ...run_linux_headless_suite.py ...`를 실행하도록 변경
+    - launcher root log에
+      - `headless`
+      - `xvfb_enabled`
+      - `xvfb_bin`
+      - `xvfb_display`
+      - `xvfb_screen`
+      - `xvfb_log`
+      을 남기도록 추가
+  - `tools_exp.py`
+    - `_linux_server_headful_allowed()` 추가
+    - `DISPLAY`가 있고 `PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER=1`이면
+      `linux_server`에서도 headful 유지 허용
+    - 그 외에는 기존처럼 headless 강제 유지
+  - `landing_access_repro.py`
+    - `_run_chrome_smoke()`가 `PDF_BROWSER_HEADLESS`를 따라
+      - headless면 `--headless=new`
+      - headful이면 non-headless smoke
+      로 동작하도록 수정
+
+- why this integration point
+  - 가장 낮은 위험 지점은
+    - `scripts/run_linux_suite_bg.sh`
+    였다.
+  - 이유:
+    - suite 전체 프로세스(landing/download/summarize)를 한 번에 감쌀 수 있고
+    - 기존 CLI workflow를 유지하면서
+    - server headful only case에만 selective하게 적용할 수 있기 때문이다.
+  - `run_linux_headless_suite.py` 내부 subprocess마다 Xvfb를 따로 붙이는 방식은
+    - lifecycle과 cleanup이 더 복잡해져
+    - 현재 목적에 비해 invasive했다.
+
+- lightweight verification
+  - syntax / import
+    - `bash -n scripts/with_xvfb.sh scripts/run_linux_suite_bg.sh`
+    - `python -m py_compile tools_exp.py landing_access_repro.py experiment/run_linux_headless_suite.py`
+    - passed
+  - headless coercion smoke
+    - no display / no override:
+      - `coerce_headless_for_execution_env(False, "linux_server") -> True`
+    - `DISPLAY=:99` + `PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER=1`:
+      - `coerce_headless_for_execution_env(False, "linux_server") -> False`
+  - wrapper smoke
+    - current desktop env에는 real `~/.local/bin/Xvfb`가 없어서
+      fake Xvfb stub로 wrapper lifecycle을 검증했다.
+    - 확인된 것:
+      - child process가 `DISPLAY=:201`을 받음
+      - `PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER=1` 전달됨
+      - child exit 후 `[xvfb] stopped pid=...` cleanup 수행
+  - launcher integration smoke
+    - fake Xvfb + fake python shim으로
+      `scripts/run_linux_suite_bg.sh --headless 0 --execution-env linux_server --xvfb 1 ...`
+      경로를 검증했다.
+    - 확인된 것:
+      - generated cmd가 `scripts/with_xvfb.sh`를 감싸서 실행함
+      - root log에 `xvfb_enabled=1`, `xvfb_display=:202`
+      - child process가 `DISPLAY=:202`
+      - child args에 `--headless 0`
+      - wrapper cleanup 후 `[xvfb] stopped pid=...`
+
+- 아직 불확실한 것 `[blocked]`
+  - current desktop workspace에는 real `~/.local/bin/Xvfb`가 없어
+    - actual server binary로 browser를 띄운 live verification은 아직 `[blocked]`
+  - 따라서 남은 최종 검증은
+    - real Linux server에서
+    - `headless=0`
+    - `xvfb_enabled=1`
+    - landing/browser logs에서 `--headless=new`가 사라졌는지
+    를 확인하는 것이다.

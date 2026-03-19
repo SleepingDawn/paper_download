@@ -406,6 +406,11 @@ def _linux_display_available() -> bool:
     return bool(os.getenv("DISPLAY") or os.getenv("WAYLAND_DISPLAY"))
 
 
+def _linux_server_headful_allowed() -> bool:
+    raw = os.getenv("PDF_BROWSER_ALLOW_HEADFUL_LINUX_SERVER", "").strip().lower()
+    return raw in ("1", "true", "yes", "on") and _linux_display_available()
+
+
 def _browser_executable_candidates(preferred_path: str = "") -> list[str]:
     candidates: list[str] = []
     if preferred_path:
@@ -520,6 +525,13 @@ def coerce_headless_for_execution_env(headless: bool, execution_env: str = "", l
     requested = bool(headless)
     resolved_env = resolve_browser_execution_env(execution_env)
     if resolved_env == EXECUTION_ENV_LINUX_SERVER:
+        if not requested and _linux_server_headful_allowed():
+            if logger:
+                prefix = f"{context}: " if context else ""
+                logger.info(
+                    f"     [Drission] {prefix}linux_server 환경이지만 DISPLAY가 준비되어 있어 headful을 유지합니다."
+                )
+            return False
         if not requested and logger:
             prefix = f"{context}: " if context else ""
             logger.warning(f"     [Drission] {prefix}linux_server 환경에서는 headful을 허용하지 않아 headless로 강제합니다.")
