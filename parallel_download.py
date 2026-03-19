@@ -3,6 +3,7 @@ import inspect
 import os
 import sys
 import time
+import traceback
 from collections import Counter
 from contextlib import contextmanager
 from concurrent.futures import ProcessPoolExecutor, as_completed
@@ -674,6 +675,13 @@ def _single_download_attempt(
             "browser_user_data_dir": str(dr.get("browser_user_data_dir") or ""),
             "browser_effective_user_data_dir": str(dr.get("browser_effective_user_data_dir") or ""),
             "browser_debug_address": str(dr.get("browser_debug_address") or ""),
+            "browser_launch_binary_path": str(dr.get("browser_launch_binary_path") or ""),
+            "browser_launch_worker_label": str(dr.get("browser_launch_worker_label") or ""),
+            "browser_launch_port": int(dr.get("browser_launch_port", 0) or 0),
+            "browser_launch_display": str(dr.get("browser_launch_display") or ""),
+            "browser_launch_headless": bool(dr.get("browser_launch_headless")),
+            "browser_launch_no_sandbox": bool(dr.get("browser_launch_no_sandbox")),
+            "browser_init_attempts": list(dr.get("browser_init_attempts") or []),
             "landing_challenge_detected": bool(dr.get("landing_challenge_detected")),
             "landing_default_page_detected": bool(dr.get("landing_default_page_detected")),
             "landing_default_page_kind": str(dr.get("landing_default_page_kind") or ""),
@@ -968,11 +976,15 @@ def _first_pass(
                 results[idx] = future.result()
             except Exception as e:
                 doi = str(df.iloc[idx].get("doi", ""))
+                tb_text = "".join(traceback.format_exception(type(e), e, e.__traceback__))
+                evidence = [f"{type(e).__name__}: {e}"]
+                if tb_text:
+                    evidence.append(f"traceback_tail={tb_text[-2000:]}")
                 results[idx] = {
                     **_result_template(doi=doi, attempt=1, mode="first"),
-                    "reason": REASON_FAIL_TIMEOUT_NETWORK,
-                    "stage": "worker",
-                    "evidence": [str(e)],
+                    "reason": REASON_FAIL_UNKNOWN,
+                    "stage": "worker_exception",
+                    "evidence": evidence,
                 }
 
     return results
@@ -1539,6 +1551,15 @@ def main(
     df["browser_user_data_dir"] = [str(r.get("browser_user_data_dir") or "") for r in final_results]
     df["browser_effective_user_data_dir"] = [str(r.get("browser_effective_user_data_dir") or "") for r in final_results]
     df["browser_debug_address"] = [str(r.get("browser_debug_address") or "") for r in final_results]
+    df["browser_launch_binary_path"] = [str(r.get("browser_launch_binary_path") or "") for r in final_results]
+    df["browser_launch_worker_label"] = [str(r.get("browser_launch_worker_label") or "") for r in final_results]
+    df["browser_launch_port"] = [int(r.get("browser_launch_port", 0) or 0) for r in final_results]
+    df["browser_launch_display"] = [str(r.get("browser_launch_display") or "") for r in final_results]
+    df["browser_launch_headless"] = [bool(r.get("browser_launch_headless")) for r in final_results]
+    df["browser_launch_no_sandbox"] = [bool(r.get("browser_launch_no_sandbox")) for r in final_results]
+    df["browser_init_attempts"] = [
+        json.dumps(list(r.get("browser_init_attempts") or []), ensure_ascii=False) for r in final_results
+    ]
     df["landing_challenge_detected"] = [bool(r.get("landing_challenge_detected")) for r in final_results]
     df["landing_default_page_detected"] = [bool(r.get("landing_default_page_detected")) for r in final_results]
     df["landing_default_page_kind"] = [str(r.get("landing_default_page_kind") or "") for r in final_results]

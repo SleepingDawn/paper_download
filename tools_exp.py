@@ -6427,6 +6427,19 @@ def download_with_drission(
         "browser_effective_user_data_dir": "",
         "browser_debug_address": "",
     }
+    resolved_execution_env = resolve_browser_execution_env()
+    requested_browser_headless = str(os.getenv("PDF_BROWSER_HEADLESS", "0")).strip().lower() in (
+        "1",
+        "true",
+        "yes",
+        "on",
+    )
+    browser_launch_binary_path = str(resolved_browser or "")
+    browser_launch_worker_label = str(
+        session_plan.get("browser_identity")
+        or session_plan.get("worker_label")
+        or f"pid_{os.getpid()}"
+    )
     browser_launch_port = 0
     browser_launch_display = str(os.getenv("DISPLAY") or "")
     browser_launch_headless = False
@@ -6454,11 +6467,11 @@ def download_with_drission(
         co.set_pref('profile.default_content_settings.popups', 0)
         browser_launch_display = str(os.getenv("DISPLAY") or "")
         browser_launch_headless = coerce_headless_for_execution_env(
-            bool(headless),
-            resolve_browser_execution_env(),
+            requested_browser_headless,
+            resolved_execution_env,
             context="download_drission_init",
         )
-        browser_launch_no_sandbox = _linux_no_sandbox_enabled(resolve_browser_execution_env())
+        browser_launch_no_sandbox = _linux_no_sandbox_enabled(resolved_execution_env)
         return co
 
     def _startup_failure_cleanup(port: int) -> Dict[str, Any]:
@@ -6488,6 +6501,8 @@ def download_with_drission(
                 "display": str(browser_launch_display or ""),
                 "headless": bool(browser_launch_headless),
                 "no_sandbox": bool(browser_launch_no_sandbox),
+                "binary_path": str(browser_launch_binary_path or ""),
+                "worker_label": str(browser_launch_worker_label or ""),
                 "user_data_dir": str(session_plan.get("user_data_dir") or ""),
                 "profile_name": str(session_plan.get("profile_name") or ""),
             }
@@ -6499,6 +6514,8 @@ def download_with_drission(
                     f"display={launch_meta['display'] or '(unset)'} "
                     f"headless={int(launch_meta['headless'])} "
                     f"no_sandbox={int(launch_meta['no_sandbox'])} "
+                    f"worker={launch_meta['worker_label'] or '(unknown)'} "
+                    f"binary={launch_meta['binary_path'] or '(unset)'} "
                     f"user_data_dir={launch_meta['user_data_dir']}"
                 )
             try:
@@ -6553,6 +6570,8 @@ def download_with_drission(
                 "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
                 "browser_effective_user_data_dir": "",
                 "browser_debug_address": "",
+                "browser_launch_binary_path": str(browser_launch_binary_path or ""),
+                "browser_launch_worker_label": str(browser_launch_worker_label or ""),
                 "browser_launch_port": int(browser_launch_port or 0),
                 "browser_launch_display": str(browser_launch_display or ""),
                 "browser_launch_headless": bool(browser_launch_headless),
@@ -6742,6 +6761,8 @@ def download_with_drission(
             "browser_user_data_dir": str(session_plan.get("user_data_dir") or ""),
             "browser_effective_user_data_dir": str(browser_runtime_meta.get("browser_effective_user_data_dir") or ""),
             "browser_debug_address": str(browser_runtime_meta.get("browser_debug_address") or ""),
+            "browser_launch_binary_path": str(browser_launch_binary_path or ""),
+            "browser_launch_worker_label": str(browser_launch_worker_label or ""),
             "browser_launch_port": int(browser_launch_port or 0),
             "browser_launch_display": str(browser_launch_display or ""),
             "browser_launch_headless": bool(browser_launch_headless),

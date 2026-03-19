@@ -3757,3 +3757,105 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - this patch addresses confirmed launch-stability defects and missing diagnostics
   - it does not prove that every future `browser connection fails` was caused by sandbox/port/profile issues alone
   - a fresh server rerun is still required to measure how much startup determinism improved under real benchmark concurrency
+
+## 5.37 2026-03-19: `drission_startup_verify_20260319_210654` bundle re-analysis and launch regression fix
+
+- analyzed bundle
+  - `/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/experiment/results/drission_startup_verify_20260319_210654_bundle.tar.gz`
+  - unpacked under `/private/tmp/drission_startup_verify_20260319_210654`
+
+- files that mattered
+  - root run log
+    - `logs/drission_startup_verify_20260319_210654.log`
+  - execution manifest
+    - `outputs/linux_headless_suite_runs/drission_startup_verify_20260319_210654/execution_manifest.json`
+  - unified download outputs
+    - `.../download/run/openalex_search_results_parallel.csv`
+    - `.../download/run/failed_papers.jsonl`
+    - `.../download/run/summary.json`
+    - `.../logs/download.stderr.log`
+
+- confirmed observations
+  - Linux + Xvfb headful was actually used.
+    - root log showed `headless=0`, `xvfb_enabled=1`, and Xvfb start/stop
+  - unified landing+download flow was actually used.
+    - `execution_manifest.json` had `landing.skipped=true` with reason `merged_into_download`
+  - the dominant failure in this verification bundle was **not** a residual Drission attach error.
+    - 6 / 7 rows failed at `download_result_stage=worker`
+    - `download_evidence=["name 'headless' is not defined"]`
+    - affected publishers:
+      - Elsevier
+      - AIP
+      - IEEE
+      - one `other` row
+  - only 1 / 7 row succeeded, and it was a direct OA IOP path that bypassed the broken browser branch.
+
+- confirmed root cause
+  - the previous startup patch introduced a regression inside `tools_exp.py::download_with_drission()`
+  - nested helper `_make_browser_options()` called:
+    - `coerce_headless_for_execution_env(bool(headless), ...)`
+  - but `download_with_drission()` has no local `headless` variable
+  - therefore worker processes raised `NameError: name 'headless' is not defined` before the patched Drission startup loop could run
+  - this explains why:
+    - browser launch diagnostics were mostly missing
+    - `landing_state` stayed `not_attempted`
+    - `browser_launch_*` fields were empty in the bundle
+
+- implemented fixes
+  - `tools_exp.py`
+    - `download_with_drission()`
+      - now derives `requested_browser_headless` from `PDF_BROWSER_HEADLESS`
+      - reuses a single resolved execution env instead of recomputing it
+      - no longer references undefined `headless`
+      - launch diagnostics now also record:
+        - `browser_launch_binary_path`
+        - `browser_launch_worker_label`
+      - launch log line now prints:
+        - `attempt`
+        - `port`
+        - `display`
+        - `headless`
+        - `no_sandbox`
+        - `worker`
+        - `binary`
+        - `user_data_dir`
+  - `parallel_download.py`
+    - unified result export now persists:
+      - `browser_launch_binary_path`
+      - `browser_launch_worker_label`
+      - `browser_launch_port`
+      - `browser_launch_display`
+      - `browser_launch_headless`
+      - `browser_launch_no_sandbox`
+      - `browser_init_attempts`
+    - `future.result()` worker exception handling now stores:
+      - exception class
+      - tail of traceback
+      - `reason=FAIL_UNKNOWN`
+      - `stage=worker_exception`
+    - this avoids future opaque `stage=worker` / `FAIL_TIMEOUT/NETWORK` misclassification for pure Python regressions
+
+- why this matters
+  - the startup-fix verification bundle could not actually validate the intended Drission attach patch because the launch helper crashed first
+  - this regression fix is required before any publisher-level conclusions from that benchmark are meaningful
+  - Linux + Xvfb headful remains the default runtime model
+  - unified landing+download remains the only page-entry path
+
+- re-check command
+  - focused verification subset:
+    - `bash scripts/run_linux_suite_bg.sh --suite full --run-name drission_startup_verify_rerun_20260319 --seed-profile "$SEED_PROFILE" --profile-name "${PROFILE_NAME:-Default}" --sample-csv outputs/benchmark_inputs/publisher_download_benchmark_startup_verify_20260319.csv --download-workers 3 --after-first-pass stop --runtime-preset linux_cli_seeded --execution-env linux_server --headless 0 --chrome-path "$CHROME_PATH" --xvfb 1 --xvfb-bin "$HOME/.local/bin/Xvfb" --xvfb-display :99`
+  - inspect after rerun:
+    - `logs/<run>.log`
+    - `outputs/linux_headless_suite_runs/<run>/logs/download.stderr.log`
+    - `outputs/linux_headless_suite_runs/<run>/download/run/openalex_search_results_parallel.csv`
+    - check especially:
+      - `browser_launch_binary_path`
+      - `browser_launch_worker_label`
+      - `browser_launch_port`
+      - `browser_launch_display`
+      - `browser_launch_no_sandbox`
+      - `browser_init_attempts`
+
+- remaining uncertainty
+  - until the rerun is completed, this fix only proves that the worker-level regression was removed in code
+  - residual publisher-specific failures from the old bundle remain weak evidence because most rows never reached real browser startup
