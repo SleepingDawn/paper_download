@@ -717,6 +717,9 @@ def _single_download_attempt(
             "landing_startup_tab_cleanup_after_count": int(dr.get("startup_tab_cleanup_after_count", 0) or 0),
             "landing_startup_tab_cleanup_closed_count": int(dr.get("startup_tab_cleanup_closed_count", 0) or 0),
             "landing_startup_page_reset_to_blank": bool(dr.get("startup_page_reset_to_blank")),
+            "landing_startup_sanitize_strategy": str(dr.get("startup_sanitize_strategy") or ""),
+            "landing_startup_sanitize_fresh_tab_created": bool(dr.get("startup_sanitize_fresh_tab_created")),
+            "landing_startup_sanitize_error": str(dr.get("startup_sanitize_error") or ""),
             "landing_post_open_tab_trim_closed_count": int(dr.get("post_open_tab_trim_closed_count", 0) or 0),
             "landing_tab_lifecycle_sequence": list(dr.get("tab_lifecycle_sequence") or []),
             "landing_js_runtime_probe_ok": bool(dr.get("js_runtime_probe_ok")),
@@ -1597,6 +1600,9 @@ def main(
     df["landing_startup_tab_cleanup_after_count"] = [int(r.get("landing_startup_tab_cleanup_after_count", 0) or 0) for r in final_results]
     df["landing_startup_tab_cleanup_closed_count"] = [int(r.get("landing_startup_tab_cleanup_closed_count", 0) or 0) for r in final_results]
     df["landing_startup_page_reset_to_blank"] = [bool(r.get("landing_startup_page_reset_to_blank")) for r in final_results]
+    df["landing_startup_sanitize_strategy"] = [str(r.get("landing_startup_sanitize_strategy") or "") for r in final_results]
+    df["landing_startup_sanitize_fresh_tab_created"] = [bool(r.get("landing_startup_sanitize_fresh_tab_created")) for r in final_results]
+    df["landing_startup_sanitize_error"] = [str(r.get("landing_startup_sanitize_error") or "") for r in final_results]
     df["landing_post_open_tab_trim_closed_count"] = [int(r.get("landing_post_open_tab_trim_closed_count", 0) or 0) for r in final_results]
     df["landing_tab_lifecycle_sequence"] = [
         json.dumps(list(r.get("landing_tab_lifecycle_sequence") or []), ensure_ascii=False) for r in final_results

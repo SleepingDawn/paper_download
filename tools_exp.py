@@ -437,6 +437,7 @@ def _is_browser_disconnect_error(exc) -> bool:
         return False
     needles = (
         "与页面的连接已断开",
+        "connection to the page has been disconnected",
         "connection to the page has been lost",
         "page disconnected",
         "browser disconnected",
@@ -1196,7 +1197,7 @@ def build_download_browser_session_plan(
     actual_user_data_dir = stateful_source
     actual_source_kind = stateful_source_kind
     if _download_stateful_profile_isolation_enabled():
-        isolated_root = os.path.join(runtime_root, worker_key, f"stateful_{stateful_source_kind}")
+        isolated_root = os.path.join(runtime_root, worker_key, f"stateful_{stateful_source_kind}", doi_key)
         try:
             actual_user_data_dir = _seed_profile_root_for_runtime(
                 stateful_source,
@@ -1215,8 +1216,8 @@ def build_download_browser_session_plan(
         "profile_mode": profile_mode,
         "profile_name": profile_name,
         "user_data_dir": actual_user_data_dir,
-        "cache_key": f"stateful:{worker_key}:{stateful_source_kind}",
-        "browser_identity": f"{worker_key}:stateful:{stateful_source_kind}",
+        "cache_key": f"stateful:{worker_key}:{stateful_source_kind}:{doi_key}",
+        "browser_identity": f"{worker_key}:stateful:{stateful_source_kind}:{doi_key}",
         "cleanup_on_close": False,
         "cleanup_dir": "",
         "session_decision_reason": decision_reason,
@@ -2641,6 +2642,7 @@ def _prepare_aip_entry_navigation_page(
     ):
         temp_page = _open_temporary_tab(page)
         if temp_page is not None:
+            _prune_extra_tabs(temp_page, logger=logger)
             if logger:
                 logger.info("        [AIP] direct DOI route=fresh_tab target=%s" % browser_url)
             return temp_page, "fresh_tab_before_direct_doi"
@@ -2660,6 +2662,7 @@ def _prepare_aip_entry_navigation_page(
         if logger:
             logger.info("        [AIP] context challenge handoff fresh-tab open failed; fallback=same_tab")
         return page, "same_tab_fallback"
+    _prune_extra_tabs(temp_page, logger=logger)
     if logger:
         logger.info(
             "        [AIP] context challenge handoff route=fresh_tab target=%s"
@@ -6623,6 +6626,9 @@ def download_with_drission(
     startup_tab_cleanup_after_count = 0
     startup_tab_cleanup_closed_count = 0
     startup_page_reset_to_blank = False
+    startup_sanitize_strategy = ""
+    startup_sanitize_fresh_tab_created = False
+    startup_sanitize_error = ""
 
     def _append_tab_lifecycle_event(target_page, label: str) -> None:
         nonlocal landing_peak_tab_count_observed, landing_tab_lifecycle_sequence
@@ -6798,6 +6804,9 @@ def download_with_drission(
             "startup_tab_cleanup_after_count": int(startup_tab_cleanup_after_count or 0),
             "startup_tab_cleanup_closed_count": int(startup_tab_cleanup_closed_count or 0),
             "startup_page_reset_to_blank": bool(startup_page_reset_to_blank),
+            "startup_sanitize_strategy": str(startup_sanitize_strategy or ""),
+            "startup_sanitize_fresh_tab_created": bool(startup_sanitize_fresh_tab_created),
+            "startup_sanitize_error": str(startup_sanitize_error or ""),
             "entry_context_bootstrap_attempted": bool(entry_context_bootstrap_attempted),
             "entry_context_bootstrap_outcome": str(entry_context_bootstrap_outcome or ""),
             "entry_context_bootstrap_final_url": str(entry_context_bootstrap_final_url or ""),
@@ -6840,6 +6849,99 @@ def download_with_drission(
         _close_page_safely(page, logger, session_plan=session_plan)
         _cleanup_browser_session_plan(session_plan, logger=logger)
         return payload
+
+    def _sanitize_page_before_attempt(current_page):
+        nonlocal startup_tab_cleanup_applied, startup_tab_cleanup_before_count
+        nonlocal startup_tab_cleanup_after_count, startup_tab_cleanup_closed_count
+        nonlocal startup_page_reset_to_blank, startup_sanitize_strategy
+        nonlocal startup_sanitize_fresh_tab_created, startup_sanitize_error
+        if current_page is None:
+            startup_sanitize_error = "page_missing"
+            _mark_page_disconnect("startup_sanitize_missing")
+            raise BrowserDisconnectedError(startup_sanitize_error)
+
+        startup_tab_cleanup_applied = False
+        startup_tab_cleanup_before_count = 0
+        startup_tab_cleanup_after_count = 0
+        startup_tab_cleanup_closed_count = 0
+        startup_page_reset_to_blank = False
+        startup_sanitize_strategy = "same_tab_already_clean"
+        startup_sanitize_fresh_tab_created = False
+        startup_sanitize_error = ""
+
+        sanitized_page = current_page
+        initial_state = _current_tab_state(current_page)
+        startup_tab_cleanup_before_count = int(initial_state.get("total_tab_count", 0) or 0)
+        current_start_url = str(getattr(current_page, "url", "") or "")
+
+        if startup_tab_cleanup_before_count > 1 or (current_start_url and not current_start_url.startswith("about:blank")):
+            temp_page = _open_temporary_tab(current_page, start_url="about:blank")
+            if temp_page is not None:
+                startup_sanitize_strategy = "fresh_blank_tab_keep_one"
+                startup_sanitize_fresh_tab_created = True
+                _record_tab_transition(
+                    landing_tab_transition_events,
+                    "startup_sanitize_fresh_tab",
+                    current_page,
+                    temp_page,
+                )
+                sanitized_page = temp_page
+            else:
+                startup_sanitize_strategy = "same_tab_keep_one"
+
+        startup_tab_cleanup_applied = bool(startup_tab_cleanup_before_count > 1 or startup_sanitize_fresh_tab_created)
+        _prune_extra_tabs(sanitized_page, logger=logger)
+
+        after_prune_state = _current_tab_state(sanitized_page)
+        startup_tab_cleanup_after_count = int(after_prune_state.get("total_tab_count", 0) or 0)
+        startup_tab_cleanup_closed_count = max(
+            int(startup_tab_cleanup_before_count or 0) - int(startup_tab_cleanup_after_count or 0),
+            0,
+        )
+
+        _, page_access_ok, page_probe_error = _probe_page_runtime(sanitized_page)
+        if (not page_access_ok) or startup_tab_cleanup_after_count < 1:
+            startup_sanitize_error = str(page_probe_error or "startup_sanitize_no_live_tab")
+            _mark_page_disconnect("startup_sanitize")
+            raise BrowserDisconnectedError(startup_sanitize_error)
+
+        sanitized_url = str(getattr(sanitized_page, "url", "") or "")
+        if not sanitized_url.startswith("about:blank"):
+            try:
+                sanitized_page.get("about:blank", retry=0, interval=0.2, timeout=5)
+                startup_page_reset_to_blank = True
+            except Exception as exc:
+                startup_sanitize_error = _safe_exception_text(exc)
+                _mark_page_disconnect("startup_blank_reset")
+                _raise_if_browser_disconnect(exc, logger=logger, context="startup-blank-reset")
+                raise
+
+        final_state = _current_tab_state(sanitized_page)
+        startup_tab_cleanup_after_count = int(final_state.get("total_tab_count", 0) or 0)
+        startup_tab_cleanup_closed_count = max(
+            int(startup_tab_cleanup_before_count or 0) - int(startup_tab_cleanup_after_count or 0),
+            0,
+        )
+        _, page_access_ok, page_probe_error = _probe_page_runtime(sanitized_page)
+        if (not page_access_ok) or startup_tab_cleanup_after_count < 1:
+            startup_sanitize_error = str(page_probe_error or "startup_sanitize_post_reset")
+            _mark_page_disconnect("startup_sanitize_post_reset")
+            raise BrowserDisconnectedError(startup_sanitize_error)
+
+        if logger:
+            logger.info(
+                "        [Tab] startup sanitize: strategy=%s before=%s after=%s closed=%s fresh_tab=%s reset_blank=%s"
+                % (
+                    startup_sanitize_strategy or "",
+                    int(startup_tab_cleanup_before_count or 0),
+                    int(startup_tab_cleanup_after_count or 0),
+                    int(startup_tab_cleanup_closed_count or 0),
+                    int(bool(startup_sanitize_fresh_tab_created)),
+                    int(bool(startup_page_reset_to_blank)),
+                )
+            )
+        _append_tab_lifecycle_event(sanitized_page, "startup_ready")
+        return sanitized_page
     
     for attempt in range(1, max_attempts + 1):
         try:
@@ -6879,6 +6981,9 @@ def download_with_drission(
             startup_tab_cleanup_after_count = 0
             startup_tab_cleanup_closed_count = 0
             startup_page_reset_to_blank = False
+            startup_sanitize_strategy = ""
+            startup_sanitize_fresh_tab_created = False
+            startup_sanitize_error = ""
             
             nav_url = doi_url
             if publisher_entry_plan:
@@ -6910,35 +7015,9 @@ def download_with_drission(
                             )
                         )
             landing_initial_target_url = str(nav_url or "")
-            logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {nav_url}")
-            
-            # 페이지 접속
-            startup_tab_state = _current_tab_state(page)
-            startup_tab_cleanup_before_count = int(startup_tab_state.get("total_tab_count", 0) or 0)
-            if startup_tab_cleanup_before_count > 1:
-                startup_tab_cleanup_applied = True
-                _prune_extra_tabs(page, logger=logger)
-            current_start_url = str(getattr(page, "url", "") or "")
-            if current_start_url and not current_start_url.startswith("about:blank"):
-                try:
-                    page.get("about:blank", retry=0, interval=0.2, timeout=5)
-                    startup_page_reset_to_blank = True
-                except Exception:
-                    pass
-            startup_tab_state_after = _current_tab_state(page)
-            startup_tab_cleanup_after_count = int(startup_tab_state_after.get("total_tab_count", 0) or 0)
-            startup_tab_cleanup_closed_count = max(
-                int(startup_tab_cleanup_before_count or 0) - int(startup_tab_cleanup_after_count or 0),
-                0,
-            )
-            _append_tab_lifecycle_event(page, "startup_ready")
+            page = _sanitize_page_before_attempt(page)
             landing_initial_files = _get_current_files(browser_tmp_dir)
             if is_aip_preview:
-                _prune_extra_tabs(page, logger=logger)
-                try:
-                    page.get("about:blank", retry=0, interval=0.2, timeout=5)
-                except Exception:
-                    pass
                 page, _, _, _, _ = _refresh_page_context(page, sync_tab=False, step_label="aip_pre_reset")
                 if logger:
                     logger.info(
@@ -6993,6 +7072,8 @@ def download_with_drission(
                         original_page,
                         page,
                     )
+                page = _sanitize_page_before_attempt(page)
+            logger.info(f"     [Drission] 접속 시도 ({attempt}/{max_attempts}): {nav_url}")
             try:
                 page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
             except Exception as exc:

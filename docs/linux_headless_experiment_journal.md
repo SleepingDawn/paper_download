@@ -3859,3 +3859,144 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
 - remaining uncertainty
   - until the rerun is completed, this fix only proves that the worker-level regression was removed in code
   - residual publisher-specific failures from the old bundle remain weak evidence because most rows never reached real browser startup
+
+## 5.38 2026-03-19: `drission_startup_verify_20260319_212710` bundle analysis and proactive startup sanitation patch
+
+- analyzed bundle
+  - `/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/experiment/results/drission_startup_verify_20260319_212710_bundle.tar.gz`
+  - unpacked under `/private/tmp/drission_startup_verify_20260319_212710`
+
+- files that mattered
+  - root run log
+    - `logs/drission_startup_verify_20260319_212710.log`
+  - unified download stderr
+    - `outputs/linux_headless_suite_runs/drission_startup_verify_20260319_212710/logs/download.stderr.log`
+  - result CSV
+    - `.../download/run/openalex_search_results_parallel.csv`
+  - per-DOI attempt logs
+    - `.../download/run/*/logs/download_log_*.txt`
+  - metadata sidecars
+    - `.../download/run/metadata/**/*.json`
+
+- reconstructed sequence
+  - Linux + Xvfb headful was active.
+    - root log again showed `headless=0`, `xvfb_enabled=1`, Xvfb start/stop
+  - unified landing+download flow was active.
+    - no standalone landing stage
+  - browser ownership was **per download attempt**, not shared browser-process reuse.
+    - each DOI got its own Drission launch with its own port
+  - but stateful download profile ownership was still **per worker**
+    - same worker pid reused the same `stateful_linux_seed` clone across multiple DOI/publisher attempts
+    - confirmed by:
+      - `pid_3000765.pdf:stateful:linux_seed`
+        - `10.1016/j.apsusc.2024.160141`
+        - `10.1063/5.0257779`
+      - both pointed at the same `browser_user_data_dir`
+  - tab cleanup was happening before `page.get(...)` in code, but logs made it appear reactive because:
+    - `접속 시도 (...)` log was printed first
+    - then many `[Tab] 불필요 탭 정리` lines appeared
+  - for polluted stateful AIP sessions, startup cleanup itself could destabilize the current page.
+    - AIP rows showed:
+      - `landing_startup_tab_cleanup_before_count=10`
+      - `landing_startup_tab_cleanup_after_count=0`
+      - `landing_startup_page_reset_to_blank=False`
+      - `landing_tab_lifecycle_sequence=[]`
+      - `landing_probe_browser_process_alive=False`
+      - `landing_probe_page_access_ok=False`
+    - this means the current page died during or immediately after cleanup, before real landing/navigation state was established
+
+- confirmed root causes
+  - worker-scoped stateful profile reuse amplified cross-publisher contamination.
+    - browser process was per attempt
+    - but the cloned seeded profile was reused across tasks within the same worker
+  - startup sanitation was too implicit and too weakly validated.
+    - code pruned extra tabs and tried `about:blank`
+    - but did not require a surviving clean tab/page before starting real navigation
+  - AIP fresh-tab handoff still left an extra tab unless pruned immediately after handoff
+  - disconnect classification was incomplete.
+    - DrissionPage message
+      - `The connection to the page has been disconnected.`
+    - was not explicitly included in `_is_browser_disconnect_error()`
+    - this hid the failure as generic timeout/network instead of runtime disconnect
+
+- implemented fixes
+  - `tools_exp.py`
+    - `build_download_browser_session_plan()`
+      - stateful cloned download profiles are now isolated per worker **and per DOI/task**
+      - path changed from worker-scoped:
+        - `<runtime_root>/<worker>/stateful_<source>`
+      - to DOI-scoped:
+        - `<runtime_root>/<worker>/stateful_<source>/<doi_key>`
+      - `cache_key` / `browser_identity` now also include `doi_key`
+    - `_prepare_aip_entry_navigation_page()`
+      - after opening a fresh handoff tab, immediately prunes extra tabs
+      - avoids entering direct DOI navigation with two tabs already alive
+    - `download_with_drission()`
+      - added `_sanitize_page_before_attempt()`
+      - startup sanitation now does:
+        - inspect initial tab count
+        - open a fresh blank tab when session is polluted or current tab is not blank
+        - prune all other tabs
+        - require a surviving accessible page
+        - require a known blank page before navigation
+        - log the sanitation result before `접속 시도 (...)`
+      - if sanitation fails, it now raises a disconnect/runtime failure instead of continuing with a dead page
+      - AIP handoff is sanitized again before DOI navigation
+      - new diagnostics:
+        - `startup_sanitize_strategy`
+        - `startup_sanitize_fresh_tab_created`
+        - `startup_sanitize_error`
+    - `_is_browser_disconnect_error()`
+      - now explicitly matches:
+        - `The connection to the page has been disconnected.`
+  - `parallel_download.py`
+    - unified CSV/metadata export now persists:
+      - `landing_startup_sanitize_strategy`
+      - `landing_startup_sanitize_fresh_tab_created`
+      - `landing_startup_sanitize_error`
+
+- why this is a meaningful patch
+  - it does not merely relabel failures
+  - it changes the runtime behavior so that:
+    - polluted startup sessions are cleaned before navigation
+    - AIP fresh-tab direct DOI starts from a known single-tab blank state
+    - worker-level stateful contamination is reduced by DOI-scoped clone separation
+    - disconnects during sanitation are surfaced explicitly
+
+- lightweight verification
+  - `python -m py_compile tools_exp.py parallel_download.py experiment/run_linux_headless_suite.py config.py`
+    - pass
+  - smoke:
+    - `_is_browser_disconnect_error('The connection to the page has been disconnected.\\nVersion: 4.1.1.2') -> True`
+  - smoke:
+    - same worker label + different DOI now produce different stateful user-data-dir values
+    - example:
+      - `/tmp/codex_runtime_profile_root/pid_1111.pdf/stateful_linux_seed/10.1063_5.0257779.pdf`
+      - `/tmp/codex_runtime_profile_root/pid_1111.pdf/stateful_linux_seed/10.1016_j.apcatb.2024.124297.pdf`
+  - source-level check:
+    - startup sanitation now runs before `logger.info("접속 시도 ...")`
+    - AIP fresh-tab handoff path also re-sanitizes before navigation
+
+- re-check command
+  - focused rerun:
+    - `bash scripts/run_linux_suite_bg.sh --suite full --run-name drission_startup_verify_20260319_212710_rerun --seed-profile "$SEED_PROFILE" --profile-name "${PROFILE_NAME:-Default}" --sample-csv outputs/benchmark_inputs/publisher_download_benchmark_startup_verify_20260319.csv --download-workers 3 --after-first-pass stop --runtime-preset linux_cli_seeded --execution-env linux_server --headless 0 --chrome-path "$CHROME_PATH" --xvfb 1 --xvfb-bin "$HOME/.local/bin/Xvfb" --xvfb-display :99`
+  - inspect after rerun:
+    - `logs/<run>.log`
+    - `outputs/linux_headless_suite_runs/<run>/logs/download.stderr.log`
+    - `outputs/linux_headless_suite_runs/<run>/download/run/openalex_search_results_parallel.csv`
+    - especially:
+      - `browser_launch_worker_label`
+      - `browser_user_data_dir`
+      - `landing_startup_tab_cleanup_before_count`
+      - `landing_startup_tab_cleanup_after_count`
+      - `landing_startup_sanitize_strategy`
+      - `landing_startup_sanitize_error`
+      - `landing_page_disconnect_stage`
+      - `landing_state`
+
+- remaining uncertainty
+  - this patch should remove the exact AIP failure shape seen in the bundle:
+    - polluted startup tabs closed reactively while the page dies before landing state exists
+  - but a fresh rerun is still required to prove whether:
+    - AIP now reaches deterministic landing more often
+    - remaining AIP failures are true publisher-side challenge/landing defects rather than browser-state instability
