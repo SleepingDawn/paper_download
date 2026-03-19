@@ -1593,3 +1593,121 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - 현재 AIP 문제는 first-contact challenge 자체가 핵심인데, retry protection이 실험 관찰을 더 자주 막고 있었다.
   - attempt ledger는 진단용 metadata로는 유용하지만, row exclusion policy로 쓰면 AIP 원인 검증을 방해한다.
   - candidate selection에서 prior attempt를 정렬 키로 쓰는 부분은 남아 있다. 이건 차단이 아니라 우선순위 편향이므로 이번 변경 범위에서는 유지했다.
+
+## 5.19 Latest `experiment/results` AIP failure 재분석: JS/cookie 메시지 해석과 article-first 세부 조정
+
+- 새로 분석한 증거
+  - 기준 artifact:
+    - `experiment/results/aip_first_contact_deferred_linux_20260319_bundle`
+  - 대표 fail JSONL/HTML:
+    - `experiment/results/aip_first_contact_deferred_linux_20260319_bundle/outputs/linux_headless_suite_runs/aip_first_contact_deferred_linux_20260319/landing/landing_access_repro.jsonl.worker0.jsonl`
+    - `.../landing/artifacts/fail/landing_fail_10.1063_5.0207496_1773890191933.html`
+    - `.../landing/artifacts/fail/landing_fail_10.1116_6.0004298_1773890292536.html`
+- 확인된 사실
+  - 최신 server run에서 새 deferred branch는 실제 runtime에 탔다.
+    - `entry_strategy_variant=publisher_canonical_context_deferred_no_article_preflight`
+    - `entry_context_bootstrap_outcome=deferred_initial_bootstrap`
+    - 즉 "context bootstrap을 먼저 열지 않는" patch는 코드에만 있던 것이 아니라 실제로 실행되었다.
+  - 두 DOI 모두 first-contact 경로는
+    - `about:blank`
+    - `doi.org`
+    - `pubs.aip.org/.../article/...`
+    - `pubs.aip.org/.../article-abstract/...`
+    - `pubs.aip.org/.../article-abstract/...?...__cf_chl_rt_tk=...`
+    순으로 끝났다.
+  - challenge는 final landing classification 이전에 이미 article-direct first-contact에서 발생했다.
+    - `title=Just a moment...`
+    - `issue=FAIL_BLOCK`
+    - `landing_recovery_outcome=challenge_detected_no_retry`
+  - worker JSONL에 남은 runtime diagnostics 기준:
+    - `ready_state=complete`
+    - `console_runtime_errors.capture_available=true`
+    - `error_events=[]`
+    - 즉 JS runtime probe 자체는 실행됐다.
+  - fail HTML에는 공통으로
+    - `Enable JavaScript and cookies to continue`
+    - `window._cf_chl_opt`
+    - `/cdn-cgi/challenge-platform`
+    - `__cf_chl_rt_tk`
+    가 있었다.
+- 해석
+  - `Enable JavaScript and cookies to continue`는 현재 근거상 "브라우저에서 JS가 꺼져 있다"는 직접 증거가 아니다.
+  - 더 강한 해석은:
+    - Cloudflare challenge shell의 `<noscript>` 안내 문구가 저장된 것이고
+    - challenge 페이지가 그렇게 말하고 있을 뿐이다.
+  - 이 해석을 지지하는 근거:
+    - 현재 런치 코드에는 `disable-javascript`류 플래그가 없다.
+    - headless Chrome은 `--headless=new`로 뜬다.
+    - latest worker JSONL의 runtime probe가 정상 실행됐다.
+    - fail HTML 안에 challenge orchestration script와 `window._cf_chl_opt`가 같이 있다.
+  - 따라서 현재 AIP Linux/server 실패에서 JS/cookie는
+    - "완전히 비활성화된 직접 원인"보다는
+    - "first-contact challenge shell이 내는 표면 메시지"일 가능성이 더 높다.
+  - 다만 현재 JSONL/merged summary에는
+    - `navigator.cookieEnabled`
+    - cookie jar count
+    - profile cookie DB writable 여부
+    처럼 진단에 직접 필요한 값이 없어서, cookie/session이 실제로 기대대로 attach/reuse됐는지까지는 즉시 읽기 어려웠다.
+- 추가 가설
+  - latest fail 2건은 둘 다 `entry_browser_kind=canonical_article_abstract`였다.
+  - resolve 결과는 이미 canonical `/article/...` URL이었는데, browser first-contact 전에 `/article-abstract/...`로 다시 정규화됐다.
+  - Linux/server에선 이 synthetic abstract rewrite가 불필요한 redirect/variation surface를 늘려 challenge pressure를 키울 수 있다.
+  - 그래서 Linux/server 기본 AIP first-contact는 abstract보다 resolve된 canonical article URL을 우선하는 편이 더 낮은 압력의 legitimate entry일 수 있다.
+- 적용 패치
+  - `tools_exp.py`
+    - `_resolve_aip_prefer_abstract()` 추가
+    - `PDF_BROWSER_LANDING_AIP_PREFER_ABSTRACT=auto` 기본 의미를 변경
+      - local/non-server: `abstract`
+      - Linux/server: `article`
+    - 즉 Linux/server에서는 DOI resolve가 준 canonical `/article/...` URL을 기본 first-contact로 사용
+    - 새 진단 필드:
+      - `entry_url_preference`
+  - `landing_access_repro.py`
+    - runtime diagnostics에 아래를 추가
+      - `js_runtime_probe_ok`
+      - `js_probe_error`
+      - `navigator_cookie_enabled`
+      - `document_cookie_len`
+      - `challenge_script_present`
+      - `cf_chl_opt_present`
+      - `noscript_cookie_hint_present`
+      - `cookie_jar_probe_ok`
+      - `cookie_jar_count`
+      - `aip_cookie_count`
+      - `cloudflare_cookie_count`
+      - `profile_cookie_db_exists`
+      - `profile_cookie_db_writable`
+      - `profile_storage_exists`
+      - `profile_preferences_exists`
+    - 위 필드들을 top-level result에도 올려서 JSONL/artefact에서 바로 비교 가능하게 함
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary에 위 landing JS/cookie/profile fields와 `landing_entry_url_preference` 추가
+- 검증
+  - 문법 검증:
+    - `python -m py_compile tools_exp.py landing_access_repro.py experiment/summarize_linux_headless_suite.py`
+  - helper smoke:
+    - Linux/server env auto mode에서
+      - `server_auto_prefer_abstract=False`
+      - normalized entry URL이 `/article/...`
+    - 강제 override `PDF_BROWSER_LANDING_AIP_PREFER_ABSTRACT=1`에서는 `/article-abstract/...`
+  - latest artifact reinterpretation smoke:
+    - latest fail HTML 두 건 모두
+      - `Enable JavaScript and cookies to continue=True`
+      - `window._cf_chl_opt=True`
+    - latest worker JSONL 두 건 모두
+      - `ready_state=complete`
+      - `console_capture=True`
+      - JS runtime errors `[]`
+- before vs after
+  - before:
+    - Linux/server deferred-first-contact branch도 `entry_browser_kind=canonical_article_abstract`
+    - JS/cookie 진단은 artifact raw HTML을 직접 읽어야만 해석 가능
+  - after:
+    - Linux/server 기본 AIP first-contact는 canonical article 우선
+    - 다음 run부터 JS/cookie/profile 상태가 JSONL/summary에 직접 남는다
+- 배운 점
+  - latest fail evidence 기준으로 `Enable JavaScript and cookies to continue`는 root cause라기보다 challenge shell의 symptom에 가깝다.
+  - JS/cookie를 "켜는" patch보다
+    - challenge-prone first-contact surface를 줄이고
+    - 실제 JS/cookie/profile 상태를 명시적으로 기록하는 patch가 더 근거 있다.
+  - 이번 patch는 runtime visibility를 높이고 Linux/server entry path를 더 단순한 canonical article 쪽으로 줄였지만, 아직 fresh DOI로 server micro-run을 다시 돌린 증거는 없다 `[blocked]`.

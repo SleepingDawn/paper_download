@@ -1,0 +1,200 @@
+{
+  "doi": "10.1116/6.0004298",
+  "input_publisher": "American Institute of Physic",
+  "scheduler_publisher": "aip",
+  "captured_at_ms": 1773890292536,
+  "worker_idx": 0,
+  "browser_identity": "worker_0:stateful:linux_seed",
+  "probe_page_mode": "reuse_page",
+  "probe_tab_id": "5701059FA8B91007EAAEF43038F2DEC5",
+  "scheduled_start_ms": 1773890252892,
+  "actual_start_ms": 1773890270892,
+  "pacing_wait_ms": 18000,
+  "pacing_penalty_wait_ms": 0,
+  "classifier_state": "challenge_detected",
+  "outcome": "FAIL_CAPTCHA",
+  "final_url": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for?__cf_chl_rt_tk=tY4gdiXgJuUIXDGeiePmi65F49qn0row4uTR2RjiS9I-1773890271-1.0.1.1-4EUcWMGjK04r93a6FVmJUZ3ybt5iOMSDb1jhTc2rNEo",
+  "navigation_chain": [
+    {
+      "step": "pre_reset",
+      "requested_url": "about:blank",
+      "observed_url": "about:blank"
+    },
+    {
+      "step": "aip_resolve",
+      "requested_url": "https://doi.org/10.1116/6.0004298",
+      "observed_url": "https://pubs.aip.org/jva/article/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for"
+    },
+    {
+      "step": "doi_get",
+      "requested_url": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for",
+      "observed_url": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for?__cf_chl_rt_tk=tY4gdiXgJuUIXDGeiePmi65F49qn0row4uTR2RjiS9I-1773890271-1.0.1.1-4EUcWMGjK04r93a6FVmJUZ3ybt5iOMSDb1jhTc2rNEo"
+    }
+  ],
+  "title": "Just a moment...",
+  "reason_codes": [
+    "fail_block_bot_signal",
+    "url_marker=challenge_or_bot"
+  ],
+  "signal_summary": {
+    "body_text_len": 16,
+    "main_text_len": 0,
+    "meta_keys": []
+  },
+  "timing_breakdown": {
+    "scheduled_start_ms": 1773890252892,
+    "actual_start_ms": 1773890270892,
+    "pacing_wait_ms": 18000,
+    "pacing_penalty_wait_ms": 0,
+    "pacing_jitter_sec": 1.244,
+    "attempts": [
+      {
+        "attempt": 1,
+        "pre_reset_ms": 57,
+        "network_listener": true,
+        "runtime_probe_installed": true,
+        "entry_strategy": "aip_official_doi_resolve",
+        "entry_browser_url": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for",
+        "entry_url_candidate": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for",
+        "entry_redirect_chain_summary": [
+          "302:https://doi.org/10.1116/6.0004298",
+          "location:https://pubs.aip.org/jva/article/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for"
+        ],
+        "entry_fallback_reason": "prefer_article_abstract_queryless",
+        "entry_url_override": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for",
+        "entry_context_bootstrap_outcome": "deferred_initial_bootstrap",
+        "entry_navigation_route": "same_tab",
+        "doi_get_ms": 177,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 2468,
+        "attempt_elapsed_ms": 21643
+      }
+    ]
+  },
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "classifier_state": "challenge_detected",
+      "reason_codes": [
+        "fail_block_bot_signal",
+        "url_marker=challenge_or_bot"
+      ],
+      "final_url": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for?__cf_chl_rt_tk=tY4gdiXgJuUIXDGeiePmi65F49qn0row4uTR2RjiS9I-1773890271-1.0.1.1-4EUcWMGjK04r93a6FVmJUZ3ybt5iOMSDb1jhTc2rNEo",
+      "timing_ms": {
+        "attempt": 1,
+        "pre_reset_ms": 57,
+        "network_listener": true,
+        "runtime_probe_installed": true,
+        "entry_strategy": "aip_official_doi_resolve",
+        "entry_browser_url": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for",
+        "entry_url_candidate": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for",
+        "entry_redirect_chain_summary": [
+          "302:https://doi.org/10.1116/6.0004298",
+          "location:https://pubs.aip.org/jva/article/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for"
+        ],
+        "entry_fallback_reason": "prefer_article_abstract_queryless",
+        "entry_url_override": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for",
+        "entry_context_bootstrap_outcome": "deferred_initial_bootstrap",
+        "entry_navigation_route": "same_tab",
+        "doi_get_ms": 177,
+        "placeholder_wait_ms": 0,
+        "stabilize_ms": 2468,
+        "attempt_elapsed_ms": 21643
+      }
+    }
+  ],
+  "direct_pdf_path": "",
+  "direct_pdf_event": {},
+  "legacy_success_like": false,
+  "dom_signature": "Just a moment...",
+  "html_len": 11024,
+  "challenge_detected": true,
+  "entry_strategy": "aip_official_doi_resolve",
+  "entry_strategy_variant": "publisher_canonical_context_deferred_no_article_preflight",
+  "entry_redirect_probe_mode": "doi_location_only",
+  "entry_prebrowser_request_count": 1,
+  "entry_url": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for",
+  "entry_resolved_url": "https://pubs.aip.org/jva/article/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for",
+  "entry_browser_url": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for",
+  "entry_browser_kind": "canonical_article_abstract",
+  "entry_handoff_url": "",
+  "entry_handoff_used": false,
+  "entry_context_url": "https://pubs.aip.org/jva",
+  "entry_context_kind": "journal_root",
+  "entry_context_bootstrap_attempted": false,
+  "entry_context_bootstrap_outcome": "deferred_initial_bootstrap",
+  "entry_context_bootstrap_final_url": "",
+  "entry_context_bootstrap_final_title": "",
+  "entry_redirect_chain_summary": [
+    "302:https://doi.org/10.1116/6.0004298",
+    "location:https://pubs.aip.org/jva/article/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for"
+  ],
+  "entry_fallback_used": true,
+  "entry_fallback_reason": "prefer_article_abstract_queryless",
+  "entry_preflight_url": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for",
+  "entry_preflight_issue": "",
+  "entry_preflight_evidence": [],
+  "entry_preflight_http_status": null,
+  "entry_preflight_issue_overridden": false,
+  "entry_browser_open_skipped": false,
+  "initial_landing_type": "aip_challenge_interstitial",
+  "landing_recovery_attempted": false,
+  "landing_recovery_strategy": "",
+  "landing_recovery_outcome": "challenge_detected_no_retry",
+  "shell_recovery_attempted": false,
+  "shell_recovery_strategy": "",
+  "shell_recovery_outcome": "",
+  "tab_transition_count": 0,
+  "tab_transition_events": [],
+  "reclassified_after_detector_fix": false,
+  "reclassification_reason": "",
+  "runtime_diagnostics": {
+    "current_url": "https://pubs.aip.org/jva/article-abstract/43/3/032401/3339646/SiO2-atomic-layer-fluorination-passivation-for?__cf_chl_rt_tk=tY4gdiXgJuUIXDGeiePmi65F49qn0row4uTR2RjiS9I-1773890271-1.0.1.1-4EUcWMGjK04r93a6FVmJUZ3ybt5iOMSDb1jhTc2rNEo",
+    "page_title": "Just a moment...",
+    "ready_state": "complete",
+    "html_len": 11024,
+    "body_text_len": 16,
+    "main_text_len": 0,
+    "parsed_main_text_len": 0,
+    "iframe_count": 0,
+    "body_child_count": 2,
+    "tab_state": {
+      "active_tab_id": "5701059FA8B91007EAAEF43038F2DEC5",
+      "total_tab_count": 1,
+      "tab_ids": [
+        "5701059FA8B91007EAAEF43038F2DEC5"
+      ]
+    },
+    "viewport": {
+      "visibility_state": "visible",
+      "inner_width": 1728,
+      "inner_height": 1030,
+      "device_pixel_ratio": 1.0,
+      "scroll_x": 0,
+      "scroll_y": 0,
+      "body_client_height": 1030,
+      "body_scroll_height": 1030,
+      "doc_scroll_height": 1030
+    },
+    "iframe_summary": [],
+    "console_runtime_errors": {
+      "capture_available": true,
+      "error_events": [],
+      "rejection_events": []
+    },
+    "network_summary": {
+      "request_count": 0,
+      "status_counts": {},
+      "document_chain": [],
+      "failed_request_count": 0,
+      "failed_requests": []
+    },
+    "blank_screenshot_likely": true,
+    "blank_screenshot_reason": "challenge_shell_unrendered_or_minimally_rendered",
+    "body_text_len_runtime": 0,
+    "html_len_runtime": 11009
+  },
+  "screenshot_path": "",
+  "screenshot_delayed_path": "",
+  "html_path": "/home/yongyong0206/paper_search/paper_download/outputs/linux_headless_suite_runs/aip_first_contact_deferred_linux_20260319/landing/artifacts/fail/landing_fail_10.1116_6.0004298_1773890292536.html"
+}

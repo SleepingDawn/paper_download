@@ -78,6 +78,7 @@ from tools_exp import (
     coerce_headless_for_execution_env,
     detect_access_issue,
     ensure_runtime_profile_ready,
+    inspect_browser_profile_root,
     resolve_browser_executable,
     resolve_browser_execution_env,
     resolve_runtime_preset,
@@ -994,6 +995,8 @@ def _collect_runtime_page_diagnostics(
     packets: Sequence[Any],
     classifier_state: str,
     issue: str,
+    profile_root: str = "",
+    profile_name: str = "Default",
 ) -> Dict[str, Any]:
     diagnostics: Dict[str, Any] = {
         "current_url": str(final_url or ""),
@@ -1017,10 +1020,45 @@ def _collect_runtime_page_diagnostics(
             "error_events": [],
             "rejection_events": [],
         },
+        "js_runtime_probe_ok": False,
+        "js_probe_error": "",
+        "navigator_cookie_enabled": None,
+        "document_cookie_len": 0,
+        "challenge_script_present": False,
+        "cf_chl_opt_present": False,
+        "noscript_cookie_hint_present": False,
+        "cookie_jar_probe_ok": False,
+        "cookie_jar_probe_error": "",
+        "cookie_jar_count": 0,
+        "aip_cookie_count": 0,
+        "cloudflare_cookie_count": 0,
+        "cookie_names_sample": [],
+        "profile_cookie_db_exists": False,
+        "profile_cookie_db_writable": False,
+        "profile_storage_exists": False,
+        "profile_preferences_exists": False,
         "network_summary": _summarize_listener_packets(packets),
         "blank_screenshot_likely": False,
         "blank_screenshot_reason": "",
     }
+    if profile_root:
+        try:
+            profile_info = inspect_browser_profile_root(profile_root, profile_name=profile_name)
+        except Exception:
+            profile_info = {}
+        cookie_paths = [str(p or "") for p in list(profile_info.get("cookie_paths") or []) if str(p or "").strip()]
+        cookie_path = ""
+        for candidate in cookie_paths:
+            if os.path.isfile(candidate):
+                cookie_path = candidate
+                break
+        if not cookie_path and cookie_paths:
+            cookie_path = cookie_paths[0]
+        writable_target = cookie_path or (os.path.dirname(cookie_paths[0]) if cookie_paths else "")
+        diagnostics["profile_cookie_db_exists"] = bool(profile_info.get("cookie_exists"))
+        diagnostics["profile_storage_exists"] = bool(profile_info.get("storage_exists"))
+        diagnostics["profile_preferences_exists"] = bool(profile_info.get("preferences_exists"))
+        diagnostics["profile_cookie_db_writable"] = bool(writable_target and os.access(writable_target, os.W_OK))
     if page is not None:
         try:
             tab_ids = [str(x or "") for x in list(getattr(page, "tab_ids", []) or []) if str(x or "").strip()]
@@ -1048,6 +1086,11 @@ return (() => {
   return {
     ready_state: document.readyState || '',
     visibility_state: document.visibilityState || '',
+    navigator_cookie_enabled: Boolean(navigator.cookieEnabled),
+    document_cookie_len: String(document.cookie || '').length,
+    challenge_script_present: Boolean(document.querySelector('script[src*="/cdn-cgi/challenge-platform"]')),
+    cf_chl_opt_present: Boolean(window._cf_chl_opt),
+    noscript_cookie_hint_present: /Enable JavaScript and cookies to continue/i.test(String(docEl ? (docEl.innerText || docEl.textContent || '') : '')),
     inner_width: Number(window.innerWidth || 0),
     inner_height: Number(window.innerHeight || 0),
     device_pixel_ratio: Number(window.devicePixelRatio || 0),
@@ -1067,7 +1110,13 @@ return (() => {
         try:
             runtime = page.run_js(js) or {}
             if isinstance(runtime, dict):
+                diagnostics["js_runtime_probe_ok"] = True
                 diagnostics["ready_state"] = str(runtime.get("ready_state") or diagnostics["ready_state"])
+                diagnostics["navigator_cookie_enabled"] = bool(runtime.get("navigator_cookie_enabled"))
+                diagnostics["document_cookie_len"] = int(runtime.get("document_cookie_len", 0) or 0)
+                diagnostics["challenge_script_present"] = bool(runtime.get("challenge_script_present"))
+                diagnostics["cf_chl_opt_present"] = bool(runtime.get("cf_chl_opt_present"))
+                diagnostics["noscript_cookie_hint_present"] = bool(runtime.get("noscript_cookie_hint_present"))
                 diagnostics["viewport"] = {
                     "visibility_state": str(runtime.get("visibility_state") or ""),
                     "inner_width": int(runtime.get("inner_width", 0) or 0),
@@ -1116,12 +1165,36 @@ return (() => {
                 diagnostics["body_text_len_runtime"] = int(runtime.get("body_text_len_runtime", 0) or 0)
                 diagnostics["html_len_runtime"] = int(runtime.get("html_len_runtime", 0) or 0)
         except Exception as exc:
+            diagnostics["js_probe_error"] = str(exc)[:240]
             diagnostics["console_runtime_errors"] = {
                 "capture_available": False,
                 "error_events": [],
                 "rejection_events": [],
                 "probe_error": str(exc)[:240],
             }
+        try:
+            cookie_rows = list(page.cookies() or [])
+            diagnostics["cookie_jar_probe_ok"] = True
+            diagnostics["cookie_jar_count"] = len(cookie_rows)
+            cookie_names = []
+            aip_cookie_count = 0
+            cloudflare_cookie_count = 0
+            for item in cookie_rows:
+                if not isinstance(item, dict):
+                    continue
+                name = str(item.get("name") or "").strip()
+                domain = str(item.get("domain") or "").strip().lower()
+                if name:
+                    cookie_names.append(name)
+                if "aip.org" in domain:
+                    aip_cookie_count += 1
+                if name in {"__cf_bm", "cf_clearance"} or "cloudflare" in domain:
+                    cloudflare_cookie_count += 1
+            diagnostics["aip_cookie_count"] = aip_cookie_count
+            diagnostics["cloudflare_cookie_count"] = cloudflare_cookie_count
+            diagnostics["cookie_names_sample"] = sorted(dict.fromkeys(cookie_names))[:12]
+        except Exception as exc:
+            diagnostics["cookie_jar_probe_error"] = str(exc)[:240]
 
     body_text_len = int(diagnostics.get("body_text_len_runtime") or diagnostics.get("body_text_len") or 0)
     html_len = int(diagnostics.get("html_len_runtime") or diagnostics.get("html_len") or 0)
@@ -2503,6 +2576,7 @@ def _save_probe_artifacts(
             "entry_resolved_url": record.get("entry_resolved_url", ""),
             "entry_browser_url": record.get("entry_browser_url", ""),
             "entry_browser_kind": record.get("entry_browser_kind", ""),
+            "entry_url_preference": record.get("entry_url_preference", ""),
             "entry_handoff_url": record.get("entry_handoff_url", ""),
             "entry_handoff_used": bool(record.get("entry_handoff_used")),
             "entry_context_url": record.get("entry_context_url", ""),
@@ -2531,6 +2605,22 @@ def _save_probe_artifacts(
             "tab_transition_events": record.get("tab_transition_events", []),
             "reclassified_after_detector_fix": bool(record.get("reclassified_after_detector_fix")),
             "reclassification_reason": record.get("reclassification_reason", ""),
+            "js_runtime_probe_ok": bool(record.get("js_runtime_probe_ok")),
+            "js_probe_error": record.get("js_probe_error", ""),
+            "navigator_cookie_enabled": record.get("navigator_cookie_enabled", None),
+            "document_cookie_len": int(record.get("document_cookie_len", 0) or 0),
+            "challenge_script_present": bool(record.get("challenge_script_present")),
+            "cf_chl_opt_present": bool(record.get("cf_chl_opt_present")),
+            "noscript_cookie_hint_present": bool(record.get("noscript_cookie_hint_present")),
+            "cookie_jar_probe_ok": bool(record.get("cookie_jar_probe_ok")),
+            "cookie_jar_probe_error": record.get("cookie_jar_probe_error", ""),
+            "cookie_jar_count": int(record.get("cookie_jar_count", 0) or 0),
+            "aip_cookie_count": int(record.get("aip_cookie_count", 0) or 0),
+            "cloudflare_cookie_count": int(record.get("cloudflare_cookie_count", 0) or 0),
+            "profile_cookie_db_exists": bool(record.get("profile_cookie_db_exists")),
+            "profile_cookie_db_writable": bool(record.get("profile_cookie_db_writable")),
+            "profile_storage_exists": bool(record.get("profile_storage_exists")),
+            "profile_preferences_exists": bool(record.get("profile_preferences_exists")),
             "runtime_diagnostics": record.get("runtime_diagnostics", {}),
             "screenshot_path": out.get("screenshot", ""),
             "screenshot_delayed_path": out.get("screenshot_delayed", ""),
@@ -3508,6 +3598,8 @@ def _probe_one(
                 packets=attempt_packets,
                 classifier_state=classifier_state,
                 issue=issue or "",
+                profile_root=str(probe_page_meta.get("browser_user_data_dir") or ""),
+                profile_name=str(probe_page_meta.get("browser_profile_name") or "Default"),
             )
             try:
                 page.listen.stop()
@@ -3576,6 +3668,8 @@ def _probe_one(
                     packets=_drain_listener_packets(page, max_count=80, timeout=0.4),
                     classifier_state=classifier_state,
                     issue=exception_kind,
+                    profile_root=str(probe_page_meta.get("browser_user_data_dir") or ""),
+                    profile_name=str(probe_page_meta.get("browser_profile_name") or "Default"),
                 )
             try:
                 page.listen.stop()
@@ -3678,6 +3772,7 @@ def _probe_one(
         "entry_resolved_url": str(entry_plan.get("entry_resolved_url") or ""),
         "entry_browser_url": str(entry_plan.get("entry_browser_url") or ""),
         "entry_browser_kind": str(entry_plan.get("entry_browser_kind") or ""),
+        "entry_url_preference": str(entry_plan.get("entry_url_preference") or ""),
         "entry_handoff_url": str(entry_handoff_url or entry_plan.get("entry_handoff_url") or ""),
         "entry_handoff_used": bool(entry_handoff_used),
         "entry_context_url": str(entry_plan.get("entry_context_url") or ""),
@@ -3734,6 +3829,22 @@ def _probe_one(
         "retry_count": max(0, len(attempt_history) - 1),
         "timing_breakdown": timing_breakdown,
         "runtime_diagnostics": runtime_diagnostics,
+        "js_runtime_probe_ok": bool(runtime_diagnostics.get("js_runtime_probe_ok")),
+        "js_probe_error": str(runtime_diagnostics.get("js_probe_error") or ""),
+        "navigator_cookie_enabled": runtime_diagnostics.get("navigator_cookie_enabled"),
+        "document_cookie_len": int(runtime_diagnostics.get("document_cookie_len", 0) or 0),
+        "challenge_script_present": bool(runtime_diagnostics.get("challenge_script_present")),
+        "cf_chl_opt_present": bool(runtime_diagnostics.get("cf_chl_opt_present")),
+        "noscript_cookie_hint_present": bool(runtime_diagnostics.get("noscript_cookie_hint_present")),
+        "cookie_jar_probe_ok": bool(runtime_diagnostics.get("cookie_jar_probe_ok")),
+        "cookie_jar_probe_error": str(runtime_diagnostics.get("cookie_jar_probe_error") or ""),
+        "cookie_jar_count": int(runtime_diagnostics.get("cookie_jar_count", 0) or 0),
+        "aip_cookie_count": int(runtime_diagnostics.get("aip_cookie_count", 0) or 0),
+        "cloudflare_cookie_count": int(runtime_diagnostics.get("cloudflare_cookie_count", 0) or 0),
+        "profile_cookie_db_exists": bool(runtime_diagnostics.get("profile_cookie_db_exists")),
+        "profile_cookie_db_writable": bool(runtime_diagnostics.get("profile_cookie_db_writable")),
+        "profile_storage_exists": bool(runtime_diagnostics.get("profile_storage_exists")),
+        "profile_preferences_exists": bool(runtime_diagnostics.get("profile_preferences_exists")),
         "html_len": len(str(html or "")),
         "elapsed_ms": elapsed_ms,
         "timestamp_ms": _now_ms(),

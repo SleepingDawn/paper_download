@@ -2226,6 +2226,18 @@ def _normalize_aip_entry_url(url: str, prefer_abstract: bool = True) -> str:
     return urlunparse(parsed._replace(path=normalized_path, query="", fragment=""))
 
 
+def _resolve_aip_prefer_abstract() -> bool:
+    raw = os.getenv("PDF_BROWSER_LANDING_AIP_PREFER_ABSTRACT", "auto").strip().lower()
+    if raw in ("1", "true", "yes", "on", "abstract", "article_abstract"):
+        return True
+    if raw in ("0", "false", "no", "off", "article", "fulltext"):
+        return False
+    return not (
+        resolve_runtime_preset() == RUNTIME_PRESET_LINUX_CLI_SEEDED
+        or resolve_browser_execution_env() == EXECUTION_ENV_LINUX_SERVER
+    )
+
+
 def _aip_context_bootstrap_enabled() -> bool:
     raw = os.getenv("PDF_BROWSER_AIP_CONTEXT_BOOTSTRAP", "auto").strip().lower()
     if raw in ("0", "false", "no", "off"):
@@ -2368,6 +2380,7 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
         "entry_resolved_url": "",
         "entry_browser_url": "",
         "entry_browser_kind": "",
+        "entry_url_preference": "",
         "entry_handoff_url": "",
         "entry_context_url": "",
         "entry_context_kind": "",
@@ -2389,7 +2402,8 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
 
     plan["entry_strategy"] = "aip_official_doi_resolve"
     plan["entry_strategy_variant"] = "doi_redirect_only_no_article_preflight"
-    prefer_abstract = os.getenv("PDF_BROWSER_LANDING_AIP_PREFER_ABSTRACT", "1").strip().lower() in ("1", "true", "yes", "on")
+    prefer_abstract = _resolve_aip_prefer_abstract()
+    plan["entry_url_preference"] = "abstract" if prefer_abstract else "article"
     article_preflight_enabled = os.getenv("PDF_BROWSER_LANDING_AIP_ARTICLE_PREFLIGHT", "0").strip().lower() in (
         "1",
         "true",
@@ -2612,6 +2626,7 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
                 int(plan.get("entry_prebrowser_request_count", 0) or 0),
             )
         )
+        logger.info("        [AIP] entry_url_preference=%s" % (plan["entry_url_preference"] or ""))
         if plan["entry_redirect_chain_summary"]:
             logger.info(
                 "        [AIP] redirect_chain=%s"
@@ -5561,6 +5576,7 @@ def _entry_plan_detail(plan: Dict[str, Any]) -> Dict[str, Any]:
         "entry_url": str(entry_plan.get("entry_url") or ""),
         "entry_browser_url": str(entry_plan.get("entry_browser_url") or ""),
         "entry_browser_kind": str(entry_plan.get("entry_browser_kind") or ""),
+        "entry_url_preference": str(entry_plan.get("entry_url_preference") or ""),
         "entry_handoff_url": str(entry_plan.get("entry_handoff_url") or ""),
         "entry_resolved_url": str(entry_plan.get("entry_resolved_url") or ""),
         "entry_context_url": str(entry_plan.get("entry_context_url") or ""),
