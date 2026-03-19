@@ -24,6 +24,7 @@ LANDING_BUCKET_ORDER = [
     "environment_or_config_failure",
     "access_rights",
     "doi_not_found",
+    "not_attempted",
     "missing",
     "other_non_success",
 ]
@@ -105,6 +106,10 @@ def parse_json_list(value: Any) -> List[Any]:
         return []
 
 
+def has_text(value: Any) -> bool:
+    return bool(str(value or "").strip())
+
+
 def resolve_publisher_group(sample: Dict[str, Any]) -> str:
     for key in ("experiment_publisher_group", "benchmark_group", "scheduler_publisher"):
         value = str(sample.get(key) or "").strip().lower()
@@ -149,10 +154,29 @@ def contains_environment_marker(values: Iterable[Any]) -> bool:
     )
 
 
-def landing_bucket_from_record(record: Dict[str, Any]) -> str:
+def landing_effective_success(record: Dict[str, Any]) -> tuple[bool, str]:
     state = str(record.get("classifier_state") or "").strip().lower()
-    reason_codes = list(record.get("reason_codes") or [])
+    if parse_bool(record.get("landing_success")):
+        return True, "explicit_landing_success_flag"
     if state in {"success_landing", "direct_pdf_handoff"}:
+        return True, f"classifier_state:{state}"
+
+    download_ok = download_succeeded(record)
+    has_artifact = has_text(record.get("final_screenshot_path")) or has_text(record.get("final_html_path"))
+    has_content_signal = has_text(record.get("resolved_url")) or has_text(record.get("final_title"))
+    if download_ok and has_artifact and has_content_signal:
+        return True, "download_success_with_landing_artifacts"
+    return False, ""
+
+
+def landing_bucket_from_record(record: Dict[str, Any]) -> str:
+    if not record:
+        return "missing"
+    state = str(record.get("classifier_state") or "").strip().lower()
+    attempted = parse_bool(record.get("landing_attempted"))
+    reason_codes = list(record.get("reason_codes") or [])
+    effective_success, _ = landing_effective_success(record)
+    if effective_success:
         return "landing_success"
     if contains_environment_marker(reason_codes):
         return "environment_or_config_failure"
@@ -166,18 +190,29 @@ def landing_bucket_from_record(record: Dict[str, Any]) -> str:
         return "doi_not_found"
     if "institution" in " ".join(str(code or "") for code in reason_codes).lower():
         return "access_rights"
+    if state == "not_attempted" or not attempted:
+        return "not_attempted"
     return "other_non_success"
 
 
 def landing_record_from_download_row(row: Dict[str, Any]) -> Dict[str, Any]:
     if not row:
         return {}
-    return {
+    record = {
         "doi": row.get("doi", ""),
+        "landing_attempted": parse_bool(row.get("landing_attempted")),
+        "landing_success": parse_bool(row.get("landing_success")),
         "classifier_state": str(row.get("landing_state") or ""),
         "outcome": str(row.get("landing_state") or ""),
         "reason_codes": parse_json_list(row.get("download_evidence")),
         "resolved_url": str(row.get("landing_url") or ""),
+        "final_title": str(row.get("landing_title") or ""),
+        "final_screenshot_path": str(row.get("landing_final_screenshot_path") or ""),
+        "final_html_path": str(row.get("landing_final_html_path") or ""),
+        "download_status": str(row.get("result") or ""),
+        "download_method": str(row.get("download_method") or ""),
+        "download_source_category": str(row.get("download_source_category") or ""),
+        "download_result_stage": str(row.get("download_result_stage") or ""),
         "browser_session_source": str(row.get("browser_session_source") or ""),
         "browser_session_decision_reason": str(row.get("browser_session_decision_reason") or ""),
         "browser_user_data_dir": str(row.get("browser_user_data_dir") or ""),
@@ -268,6 +303,31 @@ def landing_record_from_download_row(row: Dict[str, Any]) -> Dict[str, Any]:
         "reclassified_after_detector_fix": parse_bool(row.get("landing_reclassified_after_detector_fix")),
         "reclassification_reason": str(row.get("landing_reclassification_reason") or ""),
     }
+    effective_success, effective_reason = landing_effective_success(record)
+    record["effective_success"] = effective_success
+    record["effective_success_reason"] = effective_reason
+    return record
+
+
+def merge_landing_and_download_record(landing: Dict[str, Any], download: Dict[str, Any]) -> Dict[str, Any]:
+    if not landing:
+        return landing_record_from_download_row(download) if download else {}
+    merged = dict(landing)
+    if not download:
+        effective_success, effective_reason = landing_effective_success(merged)
+        merged["effective_success"] = effective_success
+        merged["effective_success_reason"] = effective_reason
+        return merged
+
+    supplement = landing_record_from_download_row(download)
+    for key, value in supplement.items():
+        current = merged.get(key)
+        if current in (None, "", [], {}):
+            merged[key] = value
+    effective_success, effective_reason = landing_effective_success(merged)
+    merged["effective_success"] = effective_success
+    merged["effective_success_reason"] = effective_reason
+    return merged
 
 
 def download_succeeded(record: Dict[str, Any]) -> bool:
@@ -372,6 +432,7 @@ def markdown_report(summary: Dict[str, Any]) -> str:
             f"{row['publisher_display_name']} ({row['publisher_group']}): "
             f"sample={row['sample_total']}, "
             f"landing_success={row['landing_success']}, "
+            f"not_attempted={row['not_attempted']}, "
             f"publisher_native={row['publisher_native_download']}, "
             f"scihub={row['scihub_assisted_download']}, "
             f"unknown_success={row['download_success_unknown']}, "
@@ -432,6 +493,7 @@ def main() -> int:
     for doi, sample in sample_by_doi.items():
         landing = landing_by_doi.get(doi, {})
         download = download_by_doi.get(doi, {})
+        landing = merge_landing_and_download_record(landing, download)
         experiment_publisher_group = resolve_publisher_group(sample)
         publisher_display_name = resolve_publisher_display_name(sample, experiment_publisher_group)
         landing_bucket = landing_bucket_from_record(landing) if landing else "missing"
@@ -471,10 +533,17 @@ def main() -> int:
                 "publisher": sample.get("publisher", ""),
                 "publication_year": sample.get("publication_year", ""),
                 "landing_probe_bucket": landing_bucket,
+                "landing_probe_attempted": landing.get("landing_attempted", ""),
+                "landing_probe_success_flag": landing.get("landing_success", ""),
+                "landing_probe_effective_success": landing.get("effective_success", ""),
+                "landing_probe_effective_success_reason": landing.get("effective_success_reason", ""),
                 "landing_probe_state": landing.get("classifier_state", ""),
                 "landing_probe_outcome": landing.get("outcome", ""),
                 "landing_probe_reason_codes": json.dumps(list(landing.get("reason_codes") or []), ensure_ascii=False),
                 "landing_probe_url": landing.get("resolved_url", ""),
+                "landing_probe_title": landing.get("final_title", ""),
+                "landing_probe_final_screenshot_path": landing.get("final_screenshot_path", ""),
+                "landing_probe_final_html_path": landing.get("final_html_path", ""),
                 "landing_probe_session_source": landing.get("browser_session_source", ""),
                 "landing_probe_session_reason": landing.get("browser_session_decision_reason", ""),
                 "landing_probe_browser_user_data_dir": landing.get("browser_user_data_dir", ""),
@@ -631,6 +700,7 @@ def main() -> int:
             "blank_or_incomplete": 0,
             "timeout_or_error": 0,
             "environment_or_config_failure": 0,
+            "not_attempted": 0,
             "publisher_native_download": 0,
             "scihub_assisted_download": 0,
             "download_success_unknown": 0,
@@ -654,8 +724,11 @@ def main() -> int:
             bucket["missing_records"] += 1
         elif combined in FAILURE_BUCKETS:
             bucket[combined] += 1
-        if str(row.get("landing_probe_bucket") or "") == "landing_success":
+        landing_probe_bucket = str(row.get("landing_probe_bucket") or "")
+        if landing_probe_bucket == "landing_success":
             bucket["landing_success"] += 1
+        elif landing_probe_bucket == "not_attempted":
+            bucket["not_attempted"] += 1
 
     publisher_rows = sorted(
         publisher_rollup.values(),
@@ -723,10 +796,17 @@ def main() -> int:
         "publisher",
         "publication_year",
         "landing_probe_bucket",
+        "landing_probe_attempted",
+        "landing_probe_success_flag",
+        "landing_probe_effective_success",
+        "landing_probe_effective_success_reason",
         "landing_probe_state",
         "landing_probe_outcome",
         "landing_probe_reason_codes",
         "landing_probe_url",
+        "landing_probe_title",
+        "landing_probe_final_screenshot_path",
+        "landing_probe_final_html_path",
         "landing_probe_session_source",
         "landing_probe_session_reason",
         "landing_probe_browser_user_data_dir",
@@ -876,6 +956,7 @@ def main() -> int:
         "blank_or_incomplete",
         "timeout_or_error",
         "environment_or_config_failure",
+        "not_attempted",
         "publisher_native_download",
         "scihub_assisted_download",
         "download_success_unknown",

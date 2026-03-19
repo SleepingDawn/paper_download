@@ -4308,3 +4308,117 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - the specific background trace
     - `_onDomContentEventFired -> Page.stopLoading -> PageDisconnectedError`
     - should no longer recur immediately during startup sanitation
+
+### 5.43 Bundle `drission_startup_verify_20260319_223019`: landing misclassification lived in the suite summarizer, not the raw download rows
+
+- analyzed bundle
+  - `experiment/results/drission_startup_verify_20260319_223019_bundle.tar.gz`
+
+- key evidence inside the bundle
+  - raw download CSV:
+    - `outputs/linux_headless_suite_runs/drission_startup_verify_20260319_223019/download/run/openalex_search_results_parallel.csv`
+  - summary outputs:
+    - `outputs/linux_headless_suite_runs/drission_startup_verify_20260319_223019/summary/merged_results.csv`
+    - `outputs/linux_headless_suite_runs/drission_startup_verify_20260319_223019/summary/suite_summary.json`
+    - `outputs/linux_headless_suite_runs/drission_startup_verify_20260319_223019/summary/suite_summary.md`
+  - AIP metadata / evidence:
+    - `.../download/run/metadata/Closed_Access/10.1063_5.0257779.json`
+    - `.../download/run/metadata/Open_Access/10.1116_6.0004298.json`
+    - corresponding `landing_success_*.png` / `landing_success_*.html`
+
+- what the bundle proved
+  - all 7 downloads succeeded
+  - both AIP rows already carried correct raw landing evidence:
+    - `landing_success=True`
+    - `landing_state=success_landing`
+    - non-empty `landing_url`
+    - non-empty `landing_title`
+    - non-empty screenshot/html paths
+  - the misleading result was in the suite summary layer:
+    - the IOP direct-OA row had `landing_attempted=False`, `landing_state=not_attempted`, `result=Success (direct_oa)`
+    - but `experiment/summarize_linux_headless_suite.py` collapsed that into `other_non_success`
+    - this made the run look like it still had a landing failure bucket even though combined download outcome was 7/7 success
+
+- confirmed root cause
+  - the raw integrated download path was not the problem in this bundle
+  - the misclassification lived in `experiment/summarize_linux_headless_suite.py`
+  - `landing_bucket_from_record()` only trusted `classifier_state` / reason codes and had no explicit `not_attempted` bucket
+  - `landing_record_from_download_row()` dropped positive landing evidence that already existed in the download CSV:
+    - `landing_success`
+    - screenshot/html paths
+    - landing title
+    - download success context
+  - as a result:
+    - true AIP landing success was only preserved by luck because `landing_state=success_landing`
+    - successful direct-OA rows with no landing attempt were incorrectly shown as landing failure-like `other_non_success`
+
+- files / functions changed
+  - `experiment/summarize_linux_headless_suite.py`
+    - added `not_attempted` to `LANDING_BUCKET_ORDER`
+    - added `has_text()`
+    - added `landing_effective_success()`
+      - prefers explicit `landing_success`
+      - otherwise accepts successful landing state
+      - otherwise reconciles `download success + screenshot/html + url/title` as positive landing evidence
+    - updated `landing_bucket_from_record()`
+      - now returns `not_attempted` instead of collapsing it into `other_non_success`
+      - now honors effective landing success before failure buckets
+    - updated `landing_record_from_download_row()`
+      - now carries `landing_attempted`, `landing_success`, `landing_title`, screenshot/html paths, and download context
+    - added `merge_landing_and_download_record()`
+      - ensures even when a separate landing row exists, missing positive evidence is backfilled from the download row before bucketing
+    - extended merged/publisher outputs
+      - `landing_probe_attempted`
+      - `landing_probe_success_flag`
+      - `landing_probe_effective_success`
+      - `landing_probe_effective_success_reason`
+      - `landing_probe_title`
+      - `landing_probe_final_screenshot_path`
+      - `landing_probe_final_html_path`
+      - publisher breakdown now exposes `not_attempted`
+
+- how landing success is determined after the patch
+  - final landing bucket now follows this order:
+    - explicit `landing_success=True`
+    - successful landing classifier state (`success_landing`, `direct_pdf_handoff`)
+    - reconciled positive evidence (`download success + landing screenshot/html + landing url/title`)
+    - then true failure buckets
+    - then `not_attempted`
+  - this keeps AIP screenshot-backed landing success stable even if a future row carries stale intermediate state
+  - and it stops direct-OA / non-attempt rows from being misreported as generic landing failure
+
+- lightweight verification
+  - `python3 -m py_compile experiment/summarize_linux_headless_suite.py parallel_download.py experiment/run_linux_headless_suite.py config.py tools_exp.py`
+    - pass
+  - replayed the summarizer against the extracted bundle with the exact 7-DOI subset
+    - result:
+      - `landing_success: 6`
+      - `not_attempted: 1`
+      - `other_non_success: 0`
+      - `combined_bucket: publisher_native_download` for all 7 rows
+    - AIP merged rows now explicitly retain:
+      - `landing_probe_success_flag=True`
+      - `landing_probe_effective_success=True`
+      - `landing_probe_effective_success_reason=explicit_landing_success_flag`
+      - screenshot path
+      - landing title
+
+- reproduction / re-check commands
+  - summary replay against the extracted bundle:
+    - `python3 experiment/summarize_linux_headless_suite.py --suite full --sample-csv /private/tmp/drission223019_effective_sample.csv --download-results-csv /private/tmp/drission_startup_verify_20260319_223019/outputs/linux_headless_suite_runs/drission_startup_verify_20260319_223019/download/run/openalex_search_results_parallel.csv --download-summary-json /private/tmp/drission_startup_verify_20260319_223019/outputs/linux_headless_suite_runs/drission_startup_verify_20260319_223019/download/run/summary.json --merged-csv /private/tmp/drission223019_merged.csv --publisher-summary-csv /private/tmp/drission223019_publishers.csv --summary-json /private/tmp/drission223019_summary.json --summary-md /private/tmp/drission223019_summary.md`
+  - quick validation target:
+    - `landing_probe_bucket_counts.other_non_success == 0`
+    - AIP merged rows should show `landing_probe_effective_success=True`
+
+- next experiment plan
+  - use `experiment/benchmark_random100_seed20260311.csv` as the next sample input
+  - keep the current default runtime model:
+    - Linux server
+    - Xvfb headful
+    - unified landing + download flow
+  - exact run path:
+    - `bash scripts/run_linux_suite_bg.sh --suite full --sample-csv experiment/benchmark_random100_seed20260311.csv ...`
+  - goals of the next run:
+    - confirm the new summary no longer reports false landing failures
+    - inspect how many rows are `landing_success` vs `not_attempted`
+    - confirm AIP / Elsevier success still survive summary aggregation cleanly
