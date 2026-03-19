@@ -2823,6 +2823,12 @@ def _probe_one(
                         context_bootstrap_meta.get("entry_context_bootstrap_outcome") or ""
                     )
                     attempt_timing["entry_context_bootstrap_outcome"] = entry_context_bootstrap_outcome
+                if context_bootstrap_meta.get("entry_context_bootstrap_cache_hit"):
+                    attempt_timing["entry_context_bootstrap_cache_hit"] = True
+                if context_bootstrap_meta.get("entry_context_bootstrap_cache_state"):
+                    attempt_timing["entry_context_bootstrap_cache_state"] = str(
+                        context_bootstrap_meta.get("entry_context_bootstrap_cache_state") or ""
+                    )
                 if context_bootstrap_meta.get("entry_context_bootstrap_final_url"):
                     entry_context_bootstrap_final_url = str(
                         context_bootstrap_meta.get("entry_context_bootstrap_final_url") or ""
@@ -3676,10 +3682,17 @@ def _probe_one(
         "entry_handoff_used": bool(entry_handoff_used),
         "entry_context_url": str(entry_plan.get("entry_context_url") or ""),
         "entry_context_kind": str(entry_plan.get("entry_context_kind") or ""),
+        "entry_context_bootstrap_mode": str(entry_plan.get("entry_context_bootstrap_mode") or ""),
         "entry_context_bootstrap_attempted": bool(entry_context_bootstrap_attempted),
         "entry_context_bootstrap_outcome": str(entry_context_bootstrap_outcome or ""),
         "entry_context_bootstrap_final_url": str(entry_context_bootstrap_final_url or ""),
         "entry_context_bootstrap_final_title": str(entry_context_bootstrap_final_title or ""),
+        "entry_context_bootstrap_cache_hit": bool(
+            (attempt_timing.get("entry_context_bootstrap_cache_hit"))
+        ),
+        "entry_context_bootstrap_cache_state": str(
+            attempt_timing.get("entry_context_bootstrap_cache_state") or ""
+        ),
         "entry_navigation_route": str(entry_navigation_route or ""),
         "entry_redirect_chain_summary": list(entry_plan.get("entry_redirect_chain_summary") or []),
         "entry_fallback_used": bool(entry_plan.get("entry_fallback_used")),

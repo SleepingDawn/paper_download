@@ -1,0 +1,99 @@
+{
+  "generated_at": 1773887000,
+  "input_csv": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/_aip_first_contact_deferred_validation_20260319_input.csv",
+  "sample_size": 2,
+  "workers_requested": 1,
+  "workers_effective": 1,
+  "runtime_preset": "linux_cli_seeded",
+  "execution_env": "linux_server",
+  "headless": true,
+  "headless_requested": true,
+  "humanized_browser": "1",
+  "assume_institution_access": true,
+  "startup_retries": 3,
+  "timeout_sec": 15.0,
+  "per_doi_deadline_sec": 45.0,
+  "max_nav_attempts": 2,
+  "publisher_cooldown_sec": 7.0,
+  "global_start_spacing_sec": 1.5,
+  "jitter_sec": [
+    0.7,
+    1.8
+  ],
+  "profile_mode": "auto",
+  "profile_name": "Default",
+  "persistent_profile_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/linux_seed_profile_from_docs/linux_chromium_user_data_seed",
+  "seed_profile_checked": true,
+  "seed_profile_ok": true,
+  "worker_profile_root": "/tmp/seyong/landing_worker_profiles",
+  "probe_page_mode": "reuse_page",
+  "capture_fail_artifacts": true,
+  "capture_fail_screenshot": true,
+  "capture_success_artifacts": true,
+  "capture_success_html": true,
+  "criteria": "success_landing only when expected publisher/target is reached, visible content is populated, article metadata or stable article markers exist, and no challenge/interstitial/blank heuristics fire.",
+  "summary": {
+    "total_valid": 2,
+    "success_ratio": 1.0,
+    "classifier_counts": {
+      "success_landing": 2
+    },
+    "outcome_counts": {
+      "SUCCESS_ACCESS": 2
+    },
+    "top_reason_codes": [
+      [
+        "content_populated",
+        2
+      ],
+      [
+        "doi_match",
+        2
+      ],
+      [
+        "expected_domain_match",
+        2
+      ],
+      [
+        "publisher_marker_present",
+        2
+      ],
+      [
+        "strong_meta_present",
+        2
+      ]
+    ],
+    "publisher_breakdown": [
+      {
+        "publisher": "aip",
+        "sample_size": 2,
+        "counts": {
+          "success_landing": 2
+        }
+      }
+    ],
+    "legacy_success_like_count": 2,
+    "legacy_reclassified_non_success": [],
+    "p50_elapsed_ms": 25817.5,
+    "p90_elapsed_ms": 25980.3,
+    "domain_breakdown_top20": [
+      {
+        "domain": "pubs.aip.org",
+        "sample_size": 2,
+        "counts": {
+          "success_landing": 2
+        },
+        "p50_elapsed_ms": 25817.5,
+        "p90_elapsed_ms": 25614.0
+      }
+    ]
+  },
+  "publishers_covered": [
+    "American Institute of Physics"
+  ],
+  "remaining_weak_spots": [],
+  "output_jsonl": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/aip_first_contact_deferred_validation_20260319_local/landing_access_repro.jsonl",
+  "artifact_dir": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/aip_first_contact_deferred_validation_20260319_local/artifacts",
+  "failure_artifact_zip": "",
+  "success_artifact_zip": "/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/outputs/landing_access_successes.zip"
+}

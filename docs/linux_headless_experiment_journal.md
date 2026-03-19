@@ -1395,3 +1395,136 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - AIP publisher-direct entry는 local headless에서 계속 stable landing을 만들고 있다.
   - 다만 새 fresh-tab handoff branch는 이번 local 검증 2건에서 context page가 모두 `context_ready`여서 live `context_challenge` 케이스로는 아직 실제 실행되지 않았다 `[blocked]`.
   - empty-input 상태는 이제 retry-protection skip과 구분돼, 최신 `fresh2` 같은 bundle을 더 정확하게 해석할 수 있게 됐다.
+
+### 5.16 AIP repeated context-bootstrap 억제와 cache-state 진단 추가
+
+- 문제 재정의
+  - 최신 Linux server 실패 근거 `aip_context_bootstrap_linux_20260315_fresh`에서는 worker 1개가 같은 stateful clone 세션에서 DOI 2건을 순차 처리했고, 두 DOI 모두
+    - `entry_context_bootstrap_outcome=context_challenge`
+    - `entry_context_url=https://pubs.aip.org/<journal>`
+    - single-tab / no-transition
+    로 끝났다.
+  - 즉 당시 workflow는 첫 DOI에서 journal root first-contact challenge를 이미 본 뒤에도, 같은 세션의 다음 DOI에서 journal root context bootstrap을 다시 시도하고 있었다.
+  - local에서는 context bootstrap이 initialization에 도움이 될 수 있었지만, Linux server에서 이미 `context_challenge`가 난 세션에 같은 journal root를 다시 치는 것은 challenge pressure만 늘리고 이득이 적다.
+- 적용 패치
+  - `tools_exp.py`
+    - `_AIP_CONTEXT_BOOTSTRAP_CACHE`를 `Set[str]`에서 `Dict[str, str]`로 바꿨다.
+    - `_maybe_bootstrap_aip_entry_context()`가 session+context 단위로
+      - `context_ready`
+      - `context_challenge`
+      를 cache에 기록하도록 수정했다.
+    - 같은 세션에서 이미 `context_challenge`가 기록된 context URL이면 journal root를 다시 열지 않고
+      - `entry_context_bootstrap_outcome=skipped_after_prior_context_challenge`
+      - `entry_context_bootstrap_cache_hit=true`
+      - `entry_context_bootstrap_cache_state=context_challenge`
+      로 남긴 뒤 article navigation 단계로 바로 넘어가도록 했다.
+  - `landing_access_repro.py`
+    - attempt timing에 context-bootstrap cache hit/state를 추가 기록
+  - `parallel_download.py`
+    - download 결과/CSV에 context-bootstrap cache hit/state 전파 추가
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary에 landing/download context-bootstrap cache hit/state 추가
+- 왜 이 패치인가
+  - 이 수정은 challenge bypass가 아니라, 이미 "도움이 안 된다"고 관찰된 AIP journal-root context bootstrap을 같은 세션에서 반복하지 않게 만드는 것이다.
+  - 특히 `fresh DOI 2건 / worker 1 / same stateful clone` 구성의 micro-run에서, 첫 DOI가 session을 이미 `context_challenge` 상태로 만들었다면 둘째 DOI는 publisher-direct article landing만 평가하도록 분기시키는 효과가 있다.
+- 검증
+  - 정적 검증:
+    - `python -m py_compile tools_exp.py landing_access_repro.py parallel_download.py experiment/summarize_linux_headless_suite.py experiment/run_linux_headless_suite.py`
+  - lightweight cache-branch smoke:
+    - `PDF_BROWSER_AIP_CONTEXT_BOOTSTRAP=1 PDF_BROWSER_RUNTIME_PRESET=linux_cli_seeded PDF_BROWSER_EXECUTION_ENV=linux_server python - <<'PY' ...`
+    - cached `context_challenge` -> `skipped_after_prior_context_challenge`
+    - cached `context_ready` -> `reused_existing_session_context`
+  - 런타임 검증:
+    - 아직 fresh Linux server AIP DOI가 없어 미실행 `[blocked]`
+- 해석
+  - 이 patch는 "Linux server에서 AIP landing을 성공시켰다"는 증거가 아니다.
+  - 다만 최신 실패에서 확인된 구조적 약점
+    - same-session repeated context bootstrap after prior challenge
+    를 직접 겨냥한 저위험 수정이다.
+  - 다음 server micro-run에서는
+    - 첫 DOI: `entry_context_bootstrap_outcome=context_challenge`
+    - 같은 session의 다음 DOI: `entry_context_bootstrap_outcome=skipped_after_prior_context_challenge`
+      또는 cache hit/state가 artifact/summary에 남는지
+    를 우선 확인해야 한다.
+
+### 5.17 AIP first-contact article-first reorder (initial context bootstrap deferred)
+
+- 가설
+  - 최신 Linux server 실패에서 가장 일관된 earliest failure는 article landing 이전의 journal-root context bootstrap이었다.
+  - 따라서 Linux/server에서 `publisher_direct` canonical article entry가 가능할 때는
+    - journal-root bootstrap을 first-contact 기본 경로에서 제거하고
+    - canonical article/article-abstract entry를 먼저 시도하는 것이
+    - 더 낮은 압력의 legitimate landing path일 수 있다.
+- 왜 이 가설을 세웠나
+  - `aip_context_bootstrap_linux_20260315_fresh`
+    - `entry_context_bootstrap_outcome=context_challenge` 2/2
+    - `challenge_detected=true` 2/2
+    - `tab_transition_count=0`
+    - `total_tab_count=1`
+    - fail HTML에 `__cf_chl_rt_tk`
+  - 즉 당시 실패는 wrong-tab보다 "journal root first-contact가 너무 이르게 challenge로 평가됨" 쪽이 더 강했다.
+  - 반면 local `aip_publisher_direct_validation_20260315_local`에서는
+    - `publisher_canonical_with_context_bootstrap_no_article_preflight`
+    - `entry_context_bootstrap_attempted=true`
+    - `entry_context_bootstrap_outcome=context_challenge`
+    상태에서도 final article landing은 success였다.
+  - 이 차이는 "context bootstrap이 반드시 필요한가"보다 "Linux server에서 first-contact surface를 줄여야 하는가"를 먼저 보게 만들었다.
+- 적용 패치
+  - `tools_exp.py`
+    - `_resolve_aip_context_bootstrap_mode()` 추가
+    - Linux/server + `publisher_direct` canonical entry이면 기본 `entry_context_bootstrap_mode=deferred`
+    - 새 runtime variant:
+      - `publisher_canonical_context_deferred_no_article_preflight`
+    - `_maybe_bootstrap_aip_entry_context()`가 `deferred` mode에서는 journal-root를 열지 않고
+      - `entry_context_bootstrap_attempted=false`
+      - `entry_context_bootstrap_outcome=deferred_initial_bootstrap`
+      로 반환하도록 변경
+    - logger에 `context_mode` 추가
+  - `landing_access_repro.py`
+    - landing artifact JSONL에 `entry_context_bootstrap_mode` 추가
+  - `parallel_download.py`
+    - download 결과/CSV에 `landing_entry_context_bootstrap_mode` 추가
+  - `experiment/summarize_linux_headless_suite.py`
+    - merged summary에 landing/download context-bootstrap mode 추가
+- 통제 검증
+  - 입력 CSV:
+    - `outputs/_aip_first_contact_deferred_validation_20260319_input.csv`
+    - DOI
+      - `10.1063/5.0293851`
+      - `10.1063/5.0114275`
+  - 실행:
+    - `python landing_access_repro.py --input outputs/_aip_first_contact_deferred_validation_20260319_input.csv --workers 1 --headless 1 --runtime-preset linux_cli_seeded --execution-env linux_server --profile-mode auto --profile-name Default --persistent-profile-dir outputs/linux_seed_profile_from_docs/linux_chromium_user_data_seed --artifact-dir outputs/aip_first_contact_deferred_validation_20260319_local/artifacts --capture-fail-screenshot 1 --capture-success-artifacts 1 --capture-success-html 1 --output-jsonl outputs/aip_first_contact_deferred_validation_20260319_local/landing_access_repro.jsonl --report outputs/aip_first_contact_deferred_validation_20260319_local/landing_access_repro_report.json --report-md outputs/aip_first_contact_deferred_validation_20260319_local/landing_access_repro_report.md`
+  - 결과:
+    - `outputs/aip_first_contact_deferred_validation_20260319_local/landing_access_repro_report.json`
+    - `sample_size=2`
+    - `classifier_counts={"success_landing":2}`
+    - 두 DOI 모두
+      - `entry_strategy_variant=publisher_canonical_context_deferred_no_article_preflight`
+      - `entry_context_bootstrap_mode=deferred`
+      - `entry_context_bootstrap_attempted=false`
+      - `entry_context_bootstrap_outcome=deferred_initial_bootstrap`
+      - `challenge_detected=false`
+      - `tab_transition_count=0`
+      - stable article landing success
+- before vs after
+  - before local publisher-direct validation:
+    - `outputs/aip_publisher_direct_validation_20260315_local/landing_access_repro.jsonl`
+    - `entry_strategy_variant=publisher_canonical_with_context_bootstrap_no_article_preflight`
+    - `entry_context_bootstrap_attempted=true`
+    - `entry_context_bootstrap_outcome=context_challenge`
+    - landing success `1/1`
+  - after deferred-first-contact validation:
+    - `outputs/aip_first_contact_deferred_validation_20260319_local/landing_access_repro.jsonl`
+    - `entry_context_bootstrap_attempted=false` `2/2`
+    - `entry_context_bootstrap_outcome=deferred_initial_bootstrap` `2/2`
+    - landing success `2/2`
+  - server baseline:
+    - `aip_context_bootstrap_linux_20260315_fresh`
+    - `context_challenge` `2/2`
+    - landing success `0/2`
+- 배운 점
+  - AIP journal-root bootstrap은 local에선 도움이 될 수 있었지만, Linux server failure evidence 기준으로는 first-contact 기본 경로로 두기엔 너무 challenge-prone하다.
+  - publisher-direct canonical article entry는 legitimate하고 더 낮은 압력의 first-contact 후보로 유지할 가치가 있다.
+  - 이번 patch는 "context bootstrap을 제거"한 것이 아니라, "initial first-contact ordering에서 뒤로 미룬 것"이다.
+  - local 검증 기준으로는 strategy branch가 의도대로 바뀌었고, bootstrap challenge surface를 first-contact에서 제거할 수 있었다.
+  - 다만 Linux server/IP에서 실제 `context_challenge` 빈도가 줄어드는지는 아직 별도 fresh DOI 검증이 필요하다 `[blocked]`.

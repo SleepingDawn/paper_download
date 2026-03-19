@@ -694,10 +694,13 @@ def _single_download_attempt(
             "entry_resolved_url": str(dr.get("entry_resolved_url") or ""),
             "entry_context_url": str(dr.get("entry_context_url") or ""),
             "entry_context_kind": str(dr.get("entry_context_kind") or ""),
+            "entry_context_bootstrap_mode": str(dr.get("entry_context_bootstrap_mode") or ""),
             "entry_context_bootstrap_attempted": bool(dr.get("entry_context_bootstrap_attempted")),
             "entry_context_bootstrap_outcome": str(dr.get("entry_context_bootstrap_outcome") or ""),
             "entry_context_bootstrap_final_url": str(dr.get("entry_context_bootstrap_final_url") or ""),
             "entry_context_bootstrap_final_title": str(dr.get("entry_context_bootstrap_final_title") or ""),
+            "entry_context_bootstrap_cache_hit": bool(dr.get("entry_context_bootstrap_cache_hit")),
+            "entry_context_bootstrap_cache_state": str(dr.get("entry_context_bootstrap_cache_state") or ""),
             "entry_navigation_route": str(dr.get("entry_navigation_route") or ""),
             "entry_redirect_chain_summary": list(dr.get("entry_redirect_chain_summary") or []),
             "entry_fallback_used": bool(dr.get("entry_fallback_used")),
@@ -1664,6 +1667,9 @@ def main(
     df["landing_entry_resolved_url"] = [str(r.get("entry_resolved_url") or "") for r in final_results]
     df["landing_entry_context_url"] = [str(r.get("entry_context_url") or "") for r in final_results]
     df["landing_entry_context_kind"] = [str(r.get("entry_context_kind") or "") for r in final_results]
+    df["landing_entry_context_bootstrap_mode"] = [
+        str(r.get("entry_context_bootstrap_mode") or "") for r in final_results
+    ]
     df["landing_entry_context_bootstrap_attempted"] = [
         bool(r.get("entry_context_bootstrap_attempted")) for r in final_results
     ]
@@ -1675,6 +1681,12 @@ def main(
     ]
     df["landing_entry_context_bootstrap_final_title"] = [
         str(r.get("entry_context_bootstrap_final_title") or "") for r in final_results
+    ]
+    df["landing_entry_context_bootstrap_cache_hit"] = [
+        bool(r.get("entry_context_bootstrap_cache_hit")) for r in final_results
+    ]
+    df["landing_entry_context_bootstrap_cache_state"] = [
+        str(r.get("entry_context_bootstrap_cache_state") or "") for r in final_results
     ]
     df["landing_entry_navigation_route"] = [str(r.get("entry_navigation_route") or "") for r in final_results]
     df["landing_entry_preflight_url"] = [str(r.get("entry_preflight_url") or "") for r in final_results]

@@ -71,7 +71,7 @@ AIP_ARTICLE_HOST_MARKERS = (
     "aip.scitation.org",
     "avs.scitation.org",
 )
-_AIP_CONTEXT_BOOTSTRAP_CACHE: Set[str] = set()
+_AIP_CONTEXT_BOOTSTRAP_CACHE: Dict[str, str] = {}
 AUTO_PROFILE_DOI_PREFIXES = (
     "10.1016",  # Elsevier
     "10.1063",  # AIP
@@ -2268,6 +2268,27 @@ def _resolve_aip_browser_entry_mode(*, has_canonical_entry: bool, has_context_bo
     return "doi"
 
 
+def _resolve_aip_context_bootstrap_mode(*, has_context_bootstrap: bool, browser_entry_mode: str) -> str:
+    if not has_context_bootstrap:
+        return "not_configured"
+    raw = os.getenv("PDF_BROWSER_AIP_CONTEXT_BOOTSTRAP_MODE", "auto").strip().lower()
+    if raw in ("off", "0", "false", "no"):
+        return "disabled"
+    if raw in ("defer", "deferred", "later"):
+        return "deferred"
+    if raw in ("initial", "eager", "on", "1", "true", "yes"):
+        return "initial"
+    if (
+        browser_entry_mode == "publisher_direct"
+        and (
+            resolve_runtime_preset() == RUNTIME_PRESET_LINUX_CLI_SEEDED
+            or resolve_browser_execution_env() == EXECUTION_ENV_LINUX_SERVER
+        )
+    ):
+        return "deferred"
+    return "initial"
+
+
 def _derive_aip_context_target(url: str) -> tuple[str, str]:
     raw = str(url or "").strip()
     if not raw:
@@ -2350,6 +2371,7 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
         "entry_handoff_url": "",
         "entry_context_url": "",
         "entry_context_kind": "",
+        "entry_context_bootstrap_mode": "not_configured",
         "entry_redirect_chain_summary": [],
         "entry_fallback_used": False,
         "entry_fallback_reason": "",
@@ -2473,14 +2495,22 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
             plan["entry_context_url"] = context_url
             plan["entry_context_kind"] = context_kind
             context_bootstrap_configured = True
+            plan["entry_context_bootstrap_mode"] = "initial"
             plan["entry_strategy_variant"] = "doi_redirect_with_context_bootstrap_no_article_preflight"
     browser_entry_mode = _resolve_aip_browser_entry_mode(
         has_canonical_entry=bool(canonical_entry_url),
         has_context_bootstrap=context_bootstrap_configured,
     )
+    context_bootstrap_mode = _resolve_aip_context_bootstrap_mode(
+        has_context_bootstrap=context_bootstrap_configured,
+        browser_entry_mode=browser_entry_mode,
+    )
+    plan["entry_context_bootstrap_mode"] = context_bootstrap_mode
     if browser_entry_mode == "publisher_direct" and canonical_entry_url:
         plan["entry_browser_url"] = canonical_entry_url
-        if context_bootstrap_configured:
+        if context_bootstrap_configured and context_bootstrap_mode == "deferred":
+            plan["entry_strategy_variant"] = "publisher_canonical_context_deferred_no_article_preflight"
+        elif context_bootstrap_configured:
             plan["entry_strategy_variant"] = "publisher_canonical_with_context_bootstrap_no_article_preflight"
         else:
             plan["entry_strategy_variant"] = "publisher_canonical_no_context_no_article_preflight"
@@ -2567,13 +2597,14 @@ def build_aip_safe_entry_plan(doi_url: str, logger=None) -> Dict[str, Any]:
 
     if logger and plan["entry_strategy"]:
         logger.info(
-            "        [AIP] entry_strategy=%s, variant=%s, browser_kind=%s, browser_url=%s, context_url=%s, preflight_url=%s, safe_to_proceed=%s, browser_open_skipped=%s, redirect_probe_mode=%s, prebrowser_request_count=%s"
+            "        [AIP] entry_strategy=%s, variant=%s, browser_kind=%s, browser_url=%s, context_url=%s, context_mode=%s, preflight_url=%s, safe_to_proceed=%s, browser_open_skipped=%s, redirect_probe_mode=%s, prebrowser_request_count=%s"
             % (
                 plan["entry_strategy"],
                 plan["entry_strategy_variant"] or "",
                 plan["entry_browser_kind"] or "",
                 plan["entry_browser_url"] or doi_url,
                 plan["entry_context_url"] or "",
+                plan["entry_context_bootstrap_mode"] or "",
                 preflight_url,
                 bool(plan["entry_safe_to_proceed"]),
                 bool(plan["entry_browser_open_skipped"]),
@@ -5534,6 +5565,7 @@ def _entry_plan_detail(plan: Dict[str, Any]) -> Dict[str, Any]:
         "entry_resolved_url": str(entry_plan.get("entry_resolved_url") or ""),
         "entry_context_url": str(entry_plan.get("entry_context_url") or ""),
         "entry_context_kind": str(entry_plan.get("entry_context_kind") or ""),
+        "entry_context_bootstrap_mode": str(entry_plan.get("entry_context_bootstrap_mode") or ""),
         "entry_redirect_chain_summary": list(entry_plan.get("entry_redirect_chain_summary") or []),
         "entry_fallback_used": bool(entry_plan.get("entry_fallback_used")),
         "entry_fallback_reason": str(entry_plan.get("entry_fallback_reason") or ""),
@@ -5610,6 +5642,8 @@ def _maybe_bootstrap_aip_entry_context(
         "entry_context_bootstrap_outcome": "",
         "entry_context_bootstrap_final_url": "",
         "entry_context_bootstrap_final_title": "",
+        "entry_context_bootstrap_cache_hit": False,
+        "entry_context_bootstrap_cache_state": "",
     }
     if page is None:
         meta["entry_context_bootstrap_outcome"] = "page_missing"
@@ -5619,12 +5653,32 @@ def _maybe_bootstrap_aip_entry_context(
     if not context_url or not _aip_context_bootstrap_enabled():
         meta["entry_context_bootstrap_outcome"] = "not_configured"
         return page, meta
+    context_mode = str(entry_plan.get("entry_context_bootstrap_mode") or "").strip().lower()
+    if context_mode == "disabled":
+        meta["entry_context_bootstrap_outcome"] = "disabled_by_strategy"
+        return page, meta
+    if context_mode == "deferred":
+        meta["entry_context_bootstrap_outcome"] = "deferred_initial_bootstrap"
+        return page, meta
 
     cache_key = "::".join(
         part for part in (str(session_cache_key or "").strip(), str(context_url or "").strip()) if part
     )
-    if cache_key and cache_key in _AIP_CONTEXT_BOOTSTRAP_CACHE:
-        meta["entry_context_bootstrap_outcome"] = "reused_existing_session_context"
+    cached_state = str(_AIP_CONTEXT_BOOTSTRAP_CACHE.get(cache_key) or "") if cache_key else ""
+    if cached_state:
+        meta["entry_context_bootstrap_cache_hit"] = True
+        meta["entry_context_bootstrap_cache_state"] = cached_state
+        if cached_state == "context_ready":
+            meta["entry_context_bootstrap_outcome"] = "reused_existing_session_context"
+        elif cached_state == "context_challenge":
+            meta["entry_context_bootstrap_outcome"] = "skipped_after_prior_context_challenge"
+        else:
+            meta["entry_context_bootstrap_outcome"] = f"reused_cached_context:{cached_state}"
+        if logger:
+            logger.info(
+                "        [AIP] context bootstrap cache hit state=%s url=%s"
+                % (cached_state, context_url)
+            )
         return page, meta
 
     try:
@@ -5648,12 +5702,14 @@ def _maybe_bootstrap_aip_entry_context(
         meta["entry_context_bootstrap_final_title"] = title[:240]
         if issue in ("FAIL_BLOCK", "FAIL_CAPTCHA"):
             meta["entry_context_bootstrap_outcome"] = "context_challenge"
+            if cache_key:
+                _AIP_CONTEXT_BOOTSTRAP_CACHE[cache_key] = "context_challenge"
         elif _detect_browser_default_page_kind(current_url, title, html):
             meta["entry_context_bootstrap_outcome"] = "context_default_page"
         else:
             meta["entry_context_bootstrap_outcome"] = "context_ready"
             if cache_key:
-                _AIP_CONTEXT_BOOTSTRAP_CACHE.add(cache_key)
+                _AIP_CONTEXT_BOOTSTRAP_CACHE[cache_key] = "context_ready"
     except Exception as exc:
         _raise_if_browser_disconnect(exc, logger=logger, context="aip-context-bootstrap")
         meta["entry_context_bootstrap_attempted"] = True
@@ -6045,6 +6101,8 @@ def download_with_drission(
     entry_context_bootstrap_outcome = ""
     entry_context_bootstrap_final_url = ""
     entry_context_bootstrap_final_title = ""
+    entry_context_bootstrap_cache_hit = False
+    entry_context_bootstrap_cache_state = ""
     entry_navigation_route = ""
 
     def _set_landing_state(state: str, success: bool, page_obj=None):
@@ -6158,6 +6216,8 @@ def download_with_drission(
             "entry_context_bootstrap_outcome": str(entry_context_bootstrap_outcome or ""),
             "entry_context_bootstrap_final_url": str(entry_context_bootstrap_final_url or ""),
             "entry_context_bootstrap_final_title": str(entry_context_bootstrap_final_title or ""),
+            "entry_context_bootstrap_cache_hit": bool(entry_context_bootstrap_cache_hit),
+            "entry_context_bootstrap_cache_state": str(entry_context_bootstrap_cache_state or ""),
             "entry_navigation_route": str(entry_navigation_route or ""),
         }
         payload.update(entry_plan_detail)
@@ -6227,6 +6287,8 @@ def download_with_drission(
             entry_context_bootstrap_outcome = ""
             entry_context_bootstrap_final_url = ""
             entry_context_bootstrap_final_title = ""
+            entry_context_bootstrap_cache_hit = False
+            entry_context_bootstrap_cache_state = ""
             entry_navigation_route = ""
             
             nav_url = doi_url
@@ -6287,6 +6349,12 @@ def download_with_drission(
                 )
                 entry_context_bootstrap_outcome = str(
                     context_bootstrap_meta.get("entry_context_bootstrap_outcome") or ""
+                )
+                entry_context_bootstrap_cache_hit = bool(
+                    context_bootstrap_meta.get("entry_context_bootstrap_cache_hit")
+                )
+                entry_context_bootstrap_cache_state = str(
+                    context_bootstrap_meta.get("entry_context_bootstrap_cache_state") or ""
                 )
                 entry_context_bootstrap_final_url = str(
                     context_bootstrap_meta.get("entry_context_bootstrap_final_url") or ""
