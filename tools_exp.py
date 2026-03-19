@@ -951,6 +951,89 @@ def _resolve_stateful_profile_source(profile_name: str, profile_mode: str, sessi
     return persistent_dir, "persistent_fallback"
 
 
+def _sanitize_runtime_profile_clone(profile_root: str, profile_name: str, logger=None) -> Dict[str, Any]:
+    profile_root = os.path.abspath(str(profile_root or "").strip())
+    profile_name = str(profile_name or "Default").strip() or "Default"
+    profile_dir = os.path.join(profile_root, profile_name)
+    result = {
+        "removed_session_restore_paths": 0,
+        "preferences_updated": False,
+    }
+    if not profile_root or not os.path.isdir(profile_root):
+        return result
+
+    restore_targets = [
+        os.path.join(profile_root, "Last Session"),
+        os.path.join(profile_root, "Last Tabs"),
+        os.path.join(profile_root, "Current Session"),
+        os.path.join(profile_root, "Current Tabs"),
+        os.path.join(profile_dir, "Last Session"),
+        os.path.join(profile_dir, "Last Tabs"),
+        os.path.join(profile_dir, "Current Session"),
+        os.path.join(profile_dir, "Current Tabs"),
+        os.path.join(profile_dir, "Sessions"),
+    ]
+    seen = set()
+    for candidate in restore_targets:
+        target = os.path.abspath(candidate)
+        if target in seen or not os.path.exists(target):
+            continue
+        seen.add(target)
+        try:
+            if os.path.isdir(target) and not os.path.islink(target):
+                shutil.rmtree(target, ignore_errors=True)
+            else:
+                os.remove(target)
+            result["removed_session_restore_paths"] += 1
+        except Exception:
+            continue
+
+    preferences_path = os.path.join(profile_dir, "Preferences")
+    if os.path.isfile(preferences_path):
+        try:
+            with open(preferences_path, "r", encoding="utf-8") as f:
+                prefs = json.load(f)
+            mutated = False
+
+            profile_blob = prefs.setdefault("profile", {})
+            if profile_blob.get("exit_type") != "Normal":
+                profile_blob["exit_type"] = "Normal"
+                mutated = True
+            if profile_blob.get("exited_cleanly") is not True:
+                profile_blob["exited_cleanly"] = True
+                mutated = True
+
+            session_blob = prefs.setdefault("session", {})
+            if session_blob.get("restore_on_startup") != 0:
+                session_blob["restore_on_startup"] = 0
+                mutated = True
+            if session_blob.get("startup_urls"):
+                session_blob["startup_urls"] = []
+                mutated = True
+
+            if prefs.get("startup_urls"):
+                prefs["startup_urls"] = []
+                mutated = True
+
+            if mutated:
+                with open(preferences_path, "w", encoding="utf-8") as f:
+                    json.dump(prefs, f, ensure_ascii=False, separators=(",", ":"))
+                result["preferences_updated"] = True
+        except Exception:
+            pass
+
+    if logger and (result["removed_session_restore_paths"] or result["preferences_updated"]):
+        logger.info(
+            "     [Drission] 런타임 프로필 session-restore 정리: removed=%s prefs_updated=%s root=%s"
+            % (
+                int(result["removed_session_restore_paths"] or 0),
+                int(bool(result["preferences_updated"])),
+                profile_root,
+            )
+        )
+    return result
+
+
 def _seed_profile_root_for_runtime(source_root: str, target_root: str, profile_name: str, logger=None) -> str:
     source_root = os.path.abspath(str(source_root or "").strip())
     target_root = os.path.abspath(str(target_root or "").strip())
@@ -958,6 +1041,7 @@ def _seed_profile_root_for_runtime(source_root: str, target_root: str, profile_n
     marker_path = os.path.join(target_root, PROFILE_READY_MARKER)
     target_profile_dir = os.path.join(target_root, profile_name)
     if os.path.isfile(marker_path) and os.path.isdir(target_profile_dir):
+        _sanitize_runtime_profile_clone(target_root, profile_name, logger=logger)
         return target_root
 
     if os.path.isdir(target_root):
@@ -993,6 +1077,7 @@ def _seed_profile_root_for_runtime(source_root: str, target_root: str, profile_n
                 "segmentation_platform",
             ),
         )
+    _sanitize_runtime_profile_clone(target_root, profile_name, logger=logger)
     with open(marker_path, "w", encoding="utf-8") as f:
         f.write(json.dumps({"profile_name": profile_name, "source_root": source_root}, ensure_ascii=False))
     if logger:
@@ -2646,9 +2731,8 @@ def _prepare_aip_entry_navigation_page(
     ):
         temp_page = _open_temporary_tab(page, logger=logger)
         if temp_page is not None:
-            _prune_extra_tabs(temp_page, logger=logger)
             if logger:
-                logger.info("        [AIP] direct DOI route=fresh_tab target=%s" % browser_url)
+                logger.info("        [AIP] direct DOI route=fresh_tab target=%s sanitize=deferred" % browser_url)
             return temp_page, "fresh_tab_before_direct_doi"
     if str(context_bootstrap_outcome or "").strip() != "context_challenge":
         return page, route
@@ -2666,10 +2750,9 @@ def _prepare_aip_entry_navigation_page(
         if logger:
             logger.info("        [AIP] context challenge handoff fresh-tab open failed; fallback=same_tab")
         return page, "same_tab_fallback"
-    _prune_extra_tabs(temp_page, logger=logger)
     if logger:
         logger.info(
-            "        [AIP] context challenge handoff route=fresh_tab target=%s"
+            "        [AIP] context challenge handoff route=fresh_tab target=%s sanitize=deferred"
             % browser_url
     )
     return temp_page, "fresh_tab_after_context_challenge"
@@ -3545,39 +3628,87 @@ def _record_tab_transition(tab_transition_events, step_label: str, from_page, to
     )
 
 
-def _prune_extra_tabs(page, logger=None) -> None:
+def _prune_extra_tabs(page, logger=None, *, context: str = "", log_each: bool = False, log_summary: bool = True) -> Dict[str, Any]:
+    summary = {
+        "context": str(context or ""),
+        "before": 0,
+        "after": 0,
+        "closed": 0,
+        "kept_tab_id": "",
+        "skipped": "",
+        "error": "",
+    }
     if page is None:
-        return
+        summary["skipped"] = "page_missing"
+        return summary
     try:
         stable_page = _stabilize_live_tab(page, logger=logger, wait_s=0.8) or page
-        current_tab_id = str(getattr(stable_page, "tab_id", "") or "")
-        tab_ids = [str(tab_id or "") for tab_id in list(getattr(page, "tab_ids", []) or []) if str(tab_id or "").strip()]
+        tab_owner = stable_page or page
+        quiet_state = _wait_for_tab_state_quiet(tab_owner, logger=logger, timeout_s=1.6, poll_s=0.15)
+        current_tab_id = str(quiet_state.get("active_tab_id") or getattr(tab_owner, "tab_id", "") or "")
+        tab_ids = [str(tab_id or "") for tab_id in list(quiet_state.get("tab_ids") or []) if str(tab_id or "").strip()]
+        summary["before"] = len(tab_ids)
+        if quiet_state.get("error"):
+            summary["error"] = str(quiet_state.get("error") or "")
         if (not current_tab_id) and tab_ids:
             try:
                 current_tab_id = str(tab_ids[-1] or "")
-                stable_page = page.get_tab(current_tab_id) or stable_page
+                tab_owner = tab_owner.get_tab(current_tab_id) or tab_owner
             except Exception:
                 current_tab_id = ""
         if not current_tab_id:
-            if logger:
+            summary["skipped"] = "active_tab_unresolved"
+            if logger and log_summary:
                 logger.info("        [Tab] 불필요 탭 정리 스킵: 활성 탭 식별 실패")
-            return
+            return summary
+
+        summary["kept_tab_id"] = current_tab_id[:8]
+        if current_tab_id:
+            try:
+                tab_owner.activate_tab(current_tab_id)
+            except Exception as exc:
+                if not summary["error"]:
+                    summary["error"] = _safe_exception_text(exc)
         for tab_id in tab_ids:
             if not tab_id or tab_id == current_tab_id:
                 continue
             try:
-                page.close_tabs(tab_id)
-                if logger:
+                tab_owner.close_tabs(tab_id)
+                summary["closed"] += 1
+                if len(tab_ids) > 3:
+                    time.sleep(0.05)
+                if logger and log_each:
                     logger.info(f"        [Tab] 불필요 탭 정리: {tab_id[:8]}")
-            except Exception:
-                pass
-        if current_tab_id:
-            try:
-                page.activate_tab(current_tab_id)
-            except Exception:
-                pass
-    except Exception:
-        pass
+            except Exception as exc:
+                summary["error"] = _safe_exception_text(exc)
+                if _is_browser_disconnect_error(exc):
+                    break
+        try:
+            remaining_ids = [
+                str(tab_id or "")
+                for tab_id in list(getattr(tab_owner, "tab_ids", []) or [])
+                if str(tab_id or "").strip()
+            ]
+            summary["after"] = len(remaining_ids)
+        except Exception as exc:
+            if not summary["error"]:
+                summary["error"] = _safe_exception_text(exc)
+    except Exception as exc:
+        summary["error"] = _safe_exception_text(exc)
+
+    if logger and log_summary and (summary["closed"] or summary["error"]):
+        logger.info(
+            "        [Tab] 불필요 탭 정리: context=%s before=%s after=%s closed=%s kept=%s%s"
+            % (
+                summary["context"] or "default",
+                int(summary["before"] or 0),
+                int(summary["after"] or 0),
+                int(summary["closed"] or 0),
+                summary["kept_tab_id"] or "(unknown)",
+                f" error={summary['error']}" if summary["error"] else "",
+            )
+        )
+    return summary
 
 
 def _page_runtime_ok(page) -> tuple[bool, str]:
@@ -3733,6 +3864,49 @@ def _current_tab_state(page) -> Dict[str, Any]:
         "total_tab_count": len(tab_ids),
         "tab_ids": tab_ids[:12],
     }
+
+
+def _wait_for_tab_state_quiet(page, logger=None, *, timeout_s: float = 1.4, poll_s: float = 0.15) -> Dict[str, Any]:
+    state = {
+        "tab_ids": [],
+        "active_tab_id": "",
+        "settled": False,
+        "peak_count": 0,
+        "error": "",
+    }
+    if page is None:
+        state["error"] = "page_missing"
+        return state
+
+    deadline = time.time() + max(float(timeout_s or 0.0), 0.2)
+    last_ids: tuple[str, ...] = ()
+    stable_hits = 0
+    while time.time() <= deadline:
+        stable_page = _stabilize_live_tab(page, logger=logger, wait_s=min(0.4, max(deadline - time.time(), 0.2))) or page
+        try:
+            tab_ids = tuple(
+                str(tab_id or "").strip()
+                for tab_id in list(getattr(stable_page, "tab_ids", []) or [])
+                if str(tab_id or "").strip()
+            )
+            active_tab_id = str(getattr(stable_page, "tab_id", "") or "")
+        except Exception as exc:
+            state["error"] = _safe_exception_text(exc)
+            return state
+
+        state["tab_ids"] = list(tab_ids)
+        state["active_tab_id"] = active_tab_id
+        state["peak_count"] = max(int(state["peak_count"] or 0), len(tab_ids))
+        if tab_ids == last_ids:
+            stable_hits += 1
+            if stable_hits >= 2:
+                state["settled"] = True
+                return state
+        else:
+            last_ids = tab_ids
+            stable_hits = 0
+        time.sleep(max(float(poll_s or 0.0), 0.05))
+    return state
 
 
 def _detect_browser_default_page_kind(url: str = "", title: str = "", html: str = "") -> str:
@@ -6571,11 +6745,16 @@ def download_with_drission(
         browser_launch_port = _pick_free_local_port()
         co.set_local_port(browser_launch_port)
         _apply_best_browser_profile(co)
-        if is_elsevier_preview:
+        if is_elsevier_preview or is_aip_preview:
             try:
                 co.set_load_mode("normal")
                 if logger:
-                    logger.info("     [Drission] Elsevier는 normal load mode 사용")
+                    if is_elsevier_preview and is_aip_preview:
+                        logger.info("     [Drission] Elsevier/AIP는 normal load mode 사용")
+                    elif is_elsevier_preview:
+                        logger.info("     [Drission] Elsevier는 normal load mode 사용")
+                    else:
+                        logger.info("     [Drission] AIP는 normal load mode 사용")
             except Exception:
                 pass
         co.set_pref('download.default_directory', browser_tmp_dir)
@@ -7059,7 +7238,12 @@ def download_with_drission(
             startup_sanitize_strategy = "same_tab_already_clean"
 
         startup_tab_cleanup_applied = bool(startup_tab_cleanup_before_count > 1)
-        _prune_extra_tabs(sanitized_page, logger=logger)
+        _prune_extra_tabs(
+            sanitized_page,
+            logger=logger,
+            context="startup_sanitize",
+            log_summary=False,
+        )
 
         after_prune_state = _current_tab_state(sanitized_page)
         startup_tab_cleanup_after_count = int(after_prune_state.get("total_tab_count", 0) or 0)
@@ -7082,7 +7266,12 @@ def download_with_drission(
                     recovery_page,
                 )
                 sanitized_page = recovery_page
-                _prune_extra_tabs(sanitized_page, logger=logger)
+                _prune_extra_tabs(
+                    sanitized_page,
+                    logger=logger,
+                    context="startup_sanitize_recovery",
+                    log_summary=False,
+                )
                 after_prune_state = _current_tab_state(sanitized_page)
                 startup_tab_cleanup_after_count = int(after_prune_state.get("total_tab_count", 0) or 0)
                 startup_tab_cleanup_closed_count = max(
@@ -7363,7 +7552,7 @@ def download_with_drission(
                 try:
                     retry_initial_files = _get_current_files(browser_tmp_dir)
                     if is_aip_preview:
-                        _prune_extra_tabs(page, logger=logger)
+                        _prune_extra_tabs(page, logger=logger, context="unexpected_retry_navigation")
                     try:
                         page.get(nav_url, retry=0, interval=0.5, timeout=min(per_attempt_timeout, MAX_ACTION_WAIT_S))
                     except Exception as exc:
@@ -7704,7 +7893,7 @@ def download_with_drission(
                 page_title = page.title or ""
                 page_html = page.html or ""
                 _append_tab_lifecycle_event(page, "post_elsevier_click_flow")
-                _prune_extra_tabs(page, logger=logger)
+                _prune_extra_tabs(page, logger=logger, context="elsevier_post_click")
                 page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
                     page,
                     sync_tab=False,

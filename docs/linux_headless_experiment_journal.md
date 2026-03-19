@@ -4182,3 +4182,129 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - this rerun is still useful:
     - it strongly suggests the earlier sanitation self-kill was fixed
     - the next rerun should finally expose the remaining real publisher-side failures again, especially on AIP
+
+### 5.41 rerun after 5.40: late session-restore tabs were repolluting stateful clones, and AIP handoff pruned too early
+
+- observed from later server rerun logs
+  - `drission_startup_verify_20260319_221637`
+  - startup sanitize itself now often succeeded:
+    - `strategy=same_tab_keep_one before=1 after=1 closed=0 fresh_tab=0 reset_blank=1`
+  - but AIP still failed soon after with:
+    - repeated `[Tab] 불필요 탭 정리: ...`
+    - `The connection to the page has been disconnected.`
+  - Elsevier meanwhile recovered and reached signed viewer / direct PDF success, which implied the browser-launch layer was no longer the dominant blocker
+
+- confirmed root cause
+  - the Linux seed profile actually contains Chrome session-restore artifacts:
+    - `Default/Sessions/Session_*`
+    - `Default/Sessions/Tabs_*`
+  - this explains the new log shape:
+    - startup sanitize can see `before=1`
+    - then restored tabs appear later
+    - later publisher-specific code closes many tabs again
+    - DrissionPage loses page context during that reactive cleanup
+  - AIP direct DOI handoff amplified the problem because:
+    - `_prepare_aip_entry_navigation_page()` opened a fresh tab
+    - then immediately called `_prune_extra_tabs()`
+    - and only after that the central `_sanitize_page_before_attempt()` ran again
+    - this meant the same browser session could be destructively pruned twice before real DOI navigation
+
+- files / functions changed
+  - `tools_exp.py`
+    - new `_sanitize_runtime_profile_clone()`
+      - removes session-restore artifacts from runtime stateful clones:
+        - `Sessions/`
+        - `Last Session`
+        - `Last Tabs`
+        - `Current Session`
+        - `Current Tabs`
+      - normalizes clone `Preferences`:
+        - `profile.exit_type = Normal`
+        - `profile.exited_cleanly = true`
+        - `session.restore_on_startup = 0`
+        - clears startup URLs if present
+    - `_seed_profile_root_for_runtime()`
+      - now always sanitizes the cloned runtime profile, even when the marker file already exists
+    - `_prepare_aip_entry_navigation_page()`
+      - no longer prunes tabs immediately after opening the fresh handoff tab
+      - sanitation is explicitly deferred to the centralized startup sanitizer
+    - `_prune_extra_tabs()`
+      - now returns a summary and logs aggregate cleanup instead of one line per tab by default
+      - this reduces log noise and makes ordering easier to inspect
+      - still preserves the kept tab id and any cleanup error
+
+- why this is the right fix
+  - the repeated tab explosion was not just a “cleanup timing” bug
+  - it was caused by restored Chrome session state inside the cloned seeded profile
+  - as long as those `Sessions/*` files survived into runtime clones, startup sanitation could never remain stable
+  - removing session-restore data at clone time is safer than repeatedly reacting after navigation has already started
+
+- lightweight verification
+  - `python -m py_compile tools_exp.py parallel_download.py experiment/run_linux_headless_suite.py config.py`
+    - pass
+  - runtime clone smoke:
+    - cloning the Linux seed profile into a temporary runtime dir now results in:
+      - `Default/Sessions` removed
+      - `Last Session/Last Tabs/Current Session/Current Tabs` absent
+      - `session.restore_on_startup == 0`
+      - `profile.exited_cleanly == true`
+
+- re-check command
+  - rerun the same focused Linux + Xvfb headful verification:
+    - `bash scripts/run_linux_suite_bg.sh --suite full --run-name drission_startup_verify_20260319_rerun --seed-profile "$SEED_PROFILE" --profile-name "${PROFILE_NAME:-Default}" --sample-csv outputs/benchmark_inputs/publisher_download_benchmark_startup_verify_20260319.csv --download-workers 3 --after-first-pass stop --runtime-preset linux_cli_seeded --execution-env linux_server --headless 0 --chrome-path "$CHROME_PATH" --xvfb 1 --xvfb-bin "$HOME/.local/bin/Xvfb" --xvfb-display :99`
+  - key things to verify in the next rerun:
+    - startup sanitize should no longer be followed by a second wave of tab explosion on the same stateful clone
+    - AIP should not emit long runs of per-tab cleanup immediately before disconnect
+    - `failure_state/*.json` should still be produced if a disconnect remains
+
+- remaining uncertainty
+  - the final proof still requires a fresh server rerun
+  - if AIP still disconnects after session-restore cleanup is removed, the next suspect is true AIP-specific challenge / handoff behavior rather than generic browser tab pollution
+
+### 5.42 Drission background `Page.stopLoading` disconnect during tab pruning: wait for tab settle and force AIP normal load mode
+
+- observed symptom
+  - server stderr still showed a second failure shape around AIP startup:
+    - multiple `[Tab] 불필요 탭 정리: ...`
+    - then background thread exception:
+      - `DrissionPage.errors.PageDisconnectedError`
+      - stack included `_onDomContentEventFired -> Page.stopLoading`
+  - this happened while tab cleanup was still in progress, before meaningful AIP landing completed
+
+- confirmed interpretation
+  - this is not just a generic “tab close failed” message
+  - DrissionPage eager mode reacts to `DOMContentLoaded` by calling `Page.stopLoading`
+  - when a seeded/stateful session is still restoring tabs and the code simultaneously closes those tabs, the page driver can lose its target context mid-event
+  - Elsevier was already using `normal` load mode and tended to survive better
+  - AIP was still using default eager mode, which made the race more plausible on restored/multi-tab startup
+
+- implemented fixes
+  - `tools_exp.py`
+    - new `_wait_for_tab_state_quiet()`
+      - waits briefly until tab ids stop changing before destructive pruning starts
+      - this directly targets the “tabs are still being restored while we are closing them” race
+    - `_prune_extra_tabs()`
+      - now waits for a quiet snapshot first
+      - activates the keeper tab before closing extras
+      - uses a tiny pacing delay when many tabs are closed
+      - continues to stop early if a disconnect is detected
+    - `_make_browser_options()`
+      - AIP now also forces `normal` load mode, not only Elsevier
+      - purpose:
+        - reduce Drission eager-mode `Page.stopLoading` interference during startup sanitation / restored-tab cleanup
+
+- lightweight verification
+  - `python -m py_compile tools_exp.py parallel_download.py experiment/run_linux_headless_suite.py config.py`
+    - pass
+  - synthetic tab-settle smoke
+    - a fake page whose `tab_ids` grow over time is now observed as:
+      - quiet state settles on the final tab set
+      - pruning then uses the settled snapshot instead of the earliest unstable one
+
+- what to check in the next rerun
+  - AIP launch logs should now show:
+    - `AIP는 normal load mode 사용`
+  - repeated per-tab cleanup storms should be replaced by aggregate cleanup summaries
+  - the specific background trace
+    - `_onDomContentEventFired -> Page.stopLoading -> PageDisconnectedError`
+    - should no longer recur immediately during startup sanitation
