@@ -2117,3 +2117,276 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
     - actual Chrome `--user-data-dir`
     - new `browser_effective_user_data_dir`
     이 셋이 일치하는지 먼저 봐야 한다.
+
+### 5.23 `aip_profile_path_fix_probe_20260319`: profile path fix는 runtime에 적용됐지만 failure mode가 `challenge`에서 `page disconnected`로 이동
+
+- 출처
+  - `experiment/results/aip_profile_path_fix_probe_20260319_bundle.tar.gz`
+
+- 실험 목적
+  - `5.22` patch 이후 actual live browser가 이제 worker clone profile을 쓰는지 확인
+  - profile/session patch가 실제 access path에 material effect를 갖는지 검증
+
+- 실행 요약
+  - input:
+    - `outputs/_aip_structural_validation_20260315_input.csv`
+  - runtime:
+    - `linux_cli_seeded`
+    - `linux_server`
+    - `headless=1`
+    - `workers=1`
+  - artifact:
+    - `outputs/aip_profile_path_fix_probe_20260319/*`
+
+- 확인된 사실
+  - report summary:
+    - `classifier_counts.network_error = 2`
+    - `outcome_counts.FAIL_NETWORK = 2`
+  - two DOI records 모두:
+    - `entry_strategy_variant=publisher_canonical_context_deferred_no_article_preflight`
+    - `entry_browser_kind=canonical_article`
+    - `browser_user_data_dir=/tmp/yongyong0206/landing_worker_profiles/stateful_worker_0`
+    - `browser_effective_user_data_dir=/tmp/yongyong0206/landing_worker_profiles/stateful_worker_0`
+    - `browser_debug_address=127.0.0.1:46703`
+  - 해석:
+    - 이번 patch는 **실제 runtime에 적용되었다.**
+    - 즉 "recorded profile path와 live browser path mismatch"는 이번 run에서는 해소된 것으로 보인다.
+
+- failure mode 변화
+  - before (`aip_article_first_js_cookie_diag_20260319`):
+    - `challenge_detected=true`
+    - title `Just a moment...`
+    - fail HTML contained challenge shell / `__cf_chl_rt_tk`
+  - after (`aip_profile_path_fix_probe_20260319`):
+    - `challenge_detected=false`
+    - `classifier_state=network_error`
+    - `reason_codes`:
+      - `navigation_network_error`
+      - `The connection to the page has been disconnected. Version: 4.1.1.2`
+    - `runtime_probe_installed=false`
+    - `network_listener=false`
+    - `html_len=0`
+    - fail HTML files were zero-byte
+    - `current_url` remained DOI URL
+    - `tab_state.total_tab_count=0`
+  - 해석:
+    - challenge shell이 다시 잡힌 것이 아니라,
+      browser/page control channel이 final article landing 전에 먼저 끊겼다.
+    - 즉 현재 failure step은
+      - "AIP article reached but challenge"
+        가 아니라
+      - "**stateful live browser attached 상태에서 navigation 중 page/browser connection lost**"
+      로 이동했다.
+
+- 이 결과가 의미하는 것
+  - positive:
+    - previous profile mismatch patch는 cosmetic change가 아니라
+      actual runtime path를 바꿨다.
+    - 따라서 이후 실험부터는 seed/worker profile 기반 patch가
+      실제로 landing path에 영향을 줄 수 있게 되었다.
+  - negative:
+    - profile path를 바로잡는 것만으로 AIP landing success는 얻지 못했다.
+    - 오히려 challenge failure가 사라지고
+      browser disconnect failure가 드러났다.
+
+- 현재 strongest hypothesis
+  - AIP access failure는 이제 두 층으로 분리해서 봐야 한다.
+  - phase 1:
+    - 기존에는 live profile mismatch 때문에
+      intended stateful session reuse가 실제로 적용되지 않았다.
+  - phase 2:
+    - profile mismatch를 고치자
+      live stateful browser session 자체가 DrissionPage control path에서 불안정해졌다.
+  - 즉 current weakest point는 이제
+    - entry ordering
+      보다
+    - **stateful browser lifecycle / attached page survivability**
+    쪽이다.
+
+- 아직 말할 수 없는 것 `[blocked]`
+  - 이 disconnect가
+    - browser process crash인지
+    - tab target loss인지
+    - reused controller page corruption인지
+    - stateful profile + DrissionPage attach interaction인지
+    는 이번 bundle만으로 확정할 수 없다.
+  - `ps -ef` live process snapshot이 bundle에 포함되지 않아
+    actual process-level termination은 확인 불가 `[blocked]`.
+
+- 다음 patch priority
+  - 1순위:
+    - stateful session launch 이후 controller/probe page lifecycle을 더 강하게 진단
+      - browser pid
+      - initial tabs_count / tab_ids
+      - page alive 여부
+      - navigation 직전/직후 disconnect point
+  - 2순위:
+    - stateful session에서는 startup controller page를 그대로 재사용하지 말고
+      fresh controlled tab를 생성해 그 tab로 navigation
+      또는 zero-tab / disconnected page면 browser restart
+  - 3순위:
+    - challenge heuristics보다 먼저
+      `page disconnected`를 structural session error로 분류하고
+      별도 recovery path를 둔다
+
+- 배운 점
+  - "patch exists"와 "patch affected runtime"를 분리해야 한다는 교훈이 이번에도 반복됐다.
+  - 이번 patch는 실제 runtime에 먹었고,
+    그 결과 failure signature 자체가 바뀌었다.
+
+### 5.24 stateful browser lifecycle survivability patch: AIP Linux stateful session은 fresh browser + fresh controlled tab을 기본값으로 전환
+
+- 출발점
+  - `5.23` 이후 최신 strongest diagnosis:
+    - AIP landing bottleneck은 더 이상 주로 `challenge_detected`가 아니다.
+    - 현재 weakest point는 **stateful live browser attached page survivability**이다.
+  - supporting evidence:
+    - latest bundle:
+      - `classifier_state=network_error`
+      - `navigation_network_error`
+      - `The connection to the page has been disconnected. Version: 4.1.1.2`
+      - `runtime_probe_installed=false`
+      - `network_listener=false`
+      - zero-byte fail HTML
+    - `browser_user_data_dir == browser_effective_user_data_dir`
+      -> profile mismatch는 이미 해소되었음
+  - external reference:
+    - DrissionPage issue `#530`
+      - title: `The connection to the page has been disconnected. Version: 4.1.0.17`
+    - confirmed fact:
+      - disconnect message family가 동일하다.
+    - inference:
+      - 이번 patch direction은 AIP navigation tuning보다
+        browser/page attach lifecycle 안정화가 더 직접적이라고 판단했다.
+    - non-adopted:
+      - `auto_port()` 계열 복귀는 `5.22`에서 actual `user-data-dir` mismatch를 만든 근거가 있어 채택하지 않았다.
+
+- 변경 파일
+  - `landing_access_repro.py`
+  - `experiment/summarize_linux_headless_suite.py`
+
+- patch hypothesis
+  - AIP stateful Linux session에서 disconnect는
+    - stale startup/controller page reuse
+    - probe tab attach 직후 survivability 미검증
+    - disconnected page handle을 들고 navigation에 진입
+    중 하나일 가능성이 높다.
+  - 따라서 profile/session reuse는 **on-disk worker profile** 수준으로만 유지하고,
+    live browser/page object reuse는 약하게 가져가야 한다.
+
+- 적용한 변경
+  - AIP + `stateful` + `linux_cli_seeded` + `linux_server` 조합이면
+    - controller page reuse를 기본적으로 금지
+    - DOI마다 fresh browser를 다시 띄우도록 유지
+  - same condition에서 probe page mode 기본값을
+    - `reuse_page`
+      -> `fresh_tab`
+    로 변경
+    - env override:
+      - `PDF_BROWSER_LANDING_AIP_STATEFUL_FRESH_TAB=0` -> old reuse behavior
+      - `=1` -> explicit fresh tab
+      - unset/auto -> fresh tab
+  - `_ensure_probe_page_for_record()` 추가
+    - controller browser creation
+    - fresh controlled tab open
+    - immediate lifecycle snapshot
+    - survivability validation
+    - first probe page가 not survivable이면 browser/page를 한 번 더 재생성
+  - new diagnostics:
+    - `probe_page_mode_requested`
+    - `probe_page_mode_effective`
+    - `probe_open_attempts`
+    - `probe_open_succeeded`
+    - `probe_attach_restart_reason`
+    - `controller_page_reused`
+    - `controller_reuse_allowed`
+    - `controller_restart_reason`
+    - `controller_restart_count`
+    - `controller_create_attempts`
+    - `controller_lifecycle_before_open`
+    - `probe_lifecycle_after_open`
+    - `page_disconnect_observed`
+    - `page_disconnect_stage`
+    - `browser_process_alive`
+    - `page_access_ok`
+    - `page_probe_error`
+    - `final_active_tab_id`
+    - `final_total_tab_count`
+    - `network_listener_started`
+    - `network_listener_error`
+    - `runtime_probe_installed`
+    - `runtime_probe_error`
+  - artifact fail/success meta JSON과 merged summary CSV에도 위 필드를 전파
+
+- 추가 교정
+  - local helper smoke에서
+    - `active_tab_id`는 존재하지만
+    - `tab_ids=[]`, `total_tab_count=0`
+    인 경우가 재현되었다.
+  - 따라서 survivability 판정은
+    - `tab_ids > 0`
+      만으로 보지 않고,
+    - `browser_process_alive`
+    - `page_access_ok`
+    - `active_tab_id`
+    조합도 survive signal로 인정하도록 완화했다.
+  - 이건 latest fail meta의
+    - `active_tab_id`는 있었지만
+    - `total_tab_count=0`
+    인 패턴과도 맞는다.
+
+- 검증
+  - `python -m py_compile landing_access_repro.py experiment/summarize_linux_headless_suite.py`
+    - passed
+  - branch selection smoke:
+    - stateful AIP Linux condition에서
+      - `session_mode=stateful`
+      - `session_source=linux_seed_clone`
+      - `reuse_allowed=False`
+      - default `effective_mode=fresh_tab`
+    - override:
+      - `PDF_BROWSER_LANDING_AIP_STATEFUL_FRESH_TAB=0` -> `reuse_page`
+      - `=1` -> `fresh_tab`
+  - helper smoke (local, no DOI navigation):
+    - `probe_page_mode_requested=reuse_page`
+    - `probe_page_mode_effective=fresh_tab`
+    - `probe_open_attempts=1`
+    - `probe_open_succeeded=True`
+    - `controller_page_reused=False`
+    - `controller_reuse_allowed=False`
+    - `browser_effective_user_data_dir=/tmp/codex_probe_profiles/stateful_worker_0`
+    - note:
+      - `total_tab_count=0` even when `active_tab_id` and `page_access_ok` existed
+      - this directly motivated the survivability criterion correction above
+
+- 해석
+  - 이번 patch는 challenge 대응 patch가 아니라,
+    **live stateful browser attach lifecycle을 안정화하는 patch**다.
+  - 아직 server AIP DOI run으로 검증되지는 않았지만,
+    적어도 next run에서는 다음 둘을 분리해서 볼 수 있게 되었다.
+    - browser/process survived but page attach lost
+    - controller/probe creation 자체가 fragile
+
+- 다음 서버 검증에서 꼭 봐야 할 것
+  - `probe_page_mode_effective=fresh_tab`
+  - `controller_page_reused=false`
+  - `probe_open_succeeded`
+  - `probe_attach_restart_reason`
+  - `browser_effective_user_data_dir`
+  - `browser_process_alive`
+  - `final_active_tab_id`
+  - `final_total_tab_count`
+  - `page_disconnect_observed`
+  - `page_disconnect_stage`
+  - `runtime_probe_installed`
+  - `network_listener_started`
+
+- 아직 불확실한 것 `[blocked]`
+  - server에서 fresh browser + fresh controlled tab이 실제 disconnect incidence를 줄이는지 `[blocked]`
+  - disconnect가
+    - browser crash
+    - renderer/target loss
+    - attach race
+    중 무엇이 주원인인지는 아직 `[blocked]`
+  - `fresh_tab` default가 server에서 도움이 되는지, 아니면 `reuse_page` override가 더 나은지는 실제 micro-run 전까지 `[blocked]`
+  - 따라서 현재 AIP 진단은 다시 challenge-only narrative로 단순화하면 안 된다.

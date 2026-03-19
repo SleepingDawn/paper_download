@@ -72,6 +72,7 @@ from tools_exp import (
     _has_pdf_action_signal,
     _is_elsevier_retrieve_url,
     _sanitize_doi_to_filename,
+    _close_page_safely,
     build_aip_safe_entry_plan,
     build_elsevier_safe_entry_plan,
     build_landing_browser_session_plan,
@@ -191,6 +192,105 @@ def _browser_runtime_meta(page: ChromiumPage) -> Dict[str, str]:
         "browser_debug_address": str(getattr(page, "address", "") or getattr(browser, "address", "") or ""),
         "browser_effective_user_data_dir": str(getattr(browser, "user_data_path", "") or ""),
     }
+
+
+def _browser_process_alive(pid: Any) -> bool:
+    try:
+        pid_int = int(pid or 0)
+    except Exception:
+        return False
+    if pid_int <= 0:
+        return False
+    try:
+        os.kill(pid_int, 0)
+        return True
+    except Exception:
+        return False
+
+
+def _page_lifecycle_snapshot(page: ChromiumPage | None) -> Dict[str, Any]:
+    snapshot: Dict[str, Any] = {
+        "browser_process_id": 0,
+        "browser_process_alive": False,
+        "browser_debug_address": "",
+        "browser_effective_user_data_dir": "",
+        "active_tab_id": "",
+        "total_tab_count": 0,
+        "tab_ids": [],
+        "current_url": "",
+        "page_title": "",
+        "page_access_ok": False,
+        "page_error": "",
+    }
+    if page is None:
+        return snapshot
+    browser = getattr(page, "browser", None)
+    try:
+        pid = int(getattr(page, "process_id", 0) or getattr(browser, "process_id", 0) or 0)
+    except Exception:
+        pid = 0
+    snapshot["browser_process_id"] = pid
+    snapshot["browser_process_alive"] = _browser_process_alive(pid)
+    snapshot.update(_browser_runtime_meta(page))
+    try:
+        tab_ids = [str(x or "") for x in list(getattr(page, "tab_ids", []) or []) if str(x or "").strip()]
+        snapshot["active_tab_id"] = str(getattr(page, "tab_id", "") or "")
+        snapshot["total_tab_count"] = len(tab_ids)
+        snapshot["tab_ids"] = tab_ids[:12]
+        snapshot["current_url"] = str(getattr(page, "url", "") or "")
+        snapshot["page_title"] = str(getattr(page, "title", "") or "")[:200]
+        snapshot["page_access_ok"] = True
+    except Exception as exc:
+        snapshot["page_error"] = str(exc)[:240]
+    return snapshot
+
+
+def _page_lifecycle_survivable(snapshot: Dict[str, Any]) -> bool:
+    return bool(
+        snapshot
+        and snapshot.get("browser_process_alive")
+        and (
+            bool(snapshot.get("page_access_ok"))
+            or bool(str(snapshot.get("active_tab_id") or "").strip())
+            or int(snapshot.get("total_tab_count", 0) or 0) > 0
+        )
+        and not str(snapshot.get("page_error") or "").strip()
+    )
+
+
+def _is_aip_stateful_linux_session(record: Dict[str, Any], session_plan: Dict[str, Any]) -> bool:
+    doi = str(record.get("doi") or "").strip().lower()
+    return bool(
+        doi.startswith(AIP_DOI_PREFIXES)
+        and str(session_plan.get("session_mode") or "") == "stateful"
+        and resolve_runtime_preset() == "linux_cli_seeded"
+        and resolve_browser_execution_env() == "linux_server"
+    )
+
+
+def _controller_page_reuse_allowed(record: Dict[str, Any], session_plan: Dict[str, Any]) -> bool:
+    if not _is_aip_stateful_linux_session(record, session_plan):
+        return True
+    raw = os.getenv("PDF_BROWSER_LANDING_AIP_REUSE_CONTROLLER_PAGE", "0").strip().lower()
+    return raw in ("1", "true", "yes", "on")
+
+
+def _resolve_effective_probe_page_mode(
+    requested_mode: str,
+    record: Dict[str, Any],
+    session_plan: Dict[str, Any],
+) -> str:
+    mode = str(requested_mode or PROBE_PAGE_MODE_REUSE).strip().lower() or PROBE_PAGE_MODE_REUSE
+    if mode == PROBE_PAGE_MODE_FRESH_TAB:
+        return PROBE_PAGE_MODE_FRESH_TAB
+    if _is_aip_stateful_linux_session(record, session_plan):
+        raw = os.getenv("PDF_BROWSER_LANDING_AIP_STATEFUL_FRESH_TAB", "auto").strip().lower()
+        if raw in ("1", "true", "yes", "on"):
+            return PROBE_PAGE_MODE_FRESH_TAB
+        if raw in ("0", "false", "no", "off"):
+            return PROBE_PAGE_MODE_REUSE
+        return PROBE_PAGE_MODE_FRESH_TAB
+    return PROBE_PAGE_MODE_REUSE
 
 
 def _run_chrome_smoke(chrome_path: str, profile_root: str) -> Dict[str, str]:
@@ -375,6 +475,117 @@ def _open_probe_page(controller_page: ChromiumPage, probe_page_mode: str) -> Tup
             }
         )
         return controller_page, meta
+
+
+def _ensure_controller_page_for_record(
+    current_page: ChromiumPage | None,
+    *,
+    record: Dict[str, Any],
+    session_plan: Dict[str, Any],
+    chrome_path: str,
+    worker_idx: int,
+    worker_profile_root: str,
+    worker_download_root: str,
+    startup_retries: int,
+) -> Tuple[ChromiumPage, Dict[str, Any]]:
+    meta: Dict[str, Any] = {
+        "controller_page_reused": bool(current_page is not None),
+        "controller_reuse_allowed": _controller_page_reuse_allowed(record, session_plan),
+        "controller_restart_reason": "",
+        "controller_restart_count": 0,
+        "controller_create_attempts": 0,
+        "controller_lifecycle_before_open": {},
+    }
+    if current_page is not None:
+        lifecycle_before = _page_lifecycle_snapshot(current_page)
+        meta["controller_lifecycle_before_open"] = lifecycle_before
+        if not meta["controller_reuse_allowed"]:
+            meta["controller_restart_reason"] = "per_doi_fresh_browser_for_aip_stateful"
+        elif not _page_lifecycle_survivable(lifecycle_before):
+            meta["controller_restart_reason"] = "controller_page_not_survivable"
+        if meta["controller_restart_reason"]:
+            meta["controller_restart_count"] = int(meta.get("controller_restart_count", 0) or 0) + 1
+            _close_page_safely(current_page, session_plan=session_plan)
+            current_page = None
+            meta["controller_page_reused"] = False
+
+    create_attempts = 0
+    while current_page is None and create_attempts < 2:
+        create_attempts += 1
+        candidate = _browser_for_worker(
+            chrome_path=chrome_path,
+            worker_idx=worker_idx,
+            worker_profile_root=worker_profile_root,
+            worker_download_root=worker_download_root,
+            session_plan=session_plan,
+            startup_retries=startup_retries,
+        )
+        lifecycle_before = _page_lifecycle_snapshot(candidate)
+        meta["controller_lifecycle_before_open"] = lifecycle_before
+        if _page_lifecycle_survivable(lifecycle_before):
+            current_page = candidate
+            break
+        meta["controller_restart_reason"] = "new_controller_not_survivable"
+        meta["controller_restart_count"] = int(meta.get("controller_restart_count", 0) or 0) + 1
+        _close_page_safely(candidate, session_plan=session_plan)
+
+    meta["controller_create_attempts"] = create_attempts
+    if current_page is None:
+        raise RuntimeError("controller_browser_unavailable_after_restart")
+    return current_page, meta
+
+
+def _ensure_probe_page_for_record(
+    current_page: ChromiumPage | None,
+    *,
+    record: Dict[str, Any],
+    session_plan: Dict[str, Any],
+    chrome_path: str,
+    worker_idx: int,
+    worker_profile_root: str,
+    worker_download_root: str,
+    startup_retries: int,
+    probe_page_mode: str,
+) -> Tuple[ChromiumPage, ChromiumPage, Dict[str, Any]]:
+    requested_mode = str(probe_page_mode or PROBE_PAGE_MODE_REUSE).strip().lower() or PROBE_PAGE_MODE_REUSE
+    effective_mode = _resolve_effective_probe_page_mode(requested_mode, record, session_plan)
+    last_bundle: Tuple[ChromiumPage, ChromiumPage, Dict[str, Any]] | None = None
+
+    for probe_attempt in range(2):
+        controller_page, controller_meta = _ensure_controller_page_for_record(
+            current_page,
+            record=record,
+            session_plan=session_plan,
+            chrome_path=chrome_path,
+            worker_idx=worker_idx,
+            worker_profile_root=worker_profile_root,
+            worker_download_root=worker_download_root,
+            startup_retries=startup_retries,
+        )
+        probe_page, page_meta = _open_probe_page(controller_page, probe_page_mode=effective_mode)
+        probe_lifecycle_after_open = _page_lifecycle_snapshot(probe_page)
+        page_meta.update(controller_meta)
+        page_meta["probe_page_mode_requested"] = requested_mode
+        page_meta["probe_page_mode_effective"] = effective_mode
+        page_meta["probe_open_attempts"] = probe_attempt + 1
+        page_meta["probe_open_succeeded"] = bool(_page_lifecycle_survivable(probe_lifecycle_after_open))
+        page_meta["probe_lifecycle_after_open"] = probe_lifecycle_after_open
+        page_meta["probe_attach_restart_reason"] = ""
+        last_bundle = (controller_page, probe_page, page_meta)
+        if page_meta["probe_open_succeeded"]:
+            return last_bundle
+
+        page_meta["probe_attach_restart_reason"] = "probe_page_not_survivable_after_open"
+        if probe_attempt + 1 >= 2:
+            return last_bundle
+
+        _close_probe_page(controller_page, probe_page, page_meta)
+        _close_page_safely(controller_page, session_plan=session_plan)
+        current_page = None
+
+    if last_bundle is None:
+        raise RuntimeError("probe_page_unavailable_after_restart")
+    return last_bundle
 
 
 def _close_probe_page(controller_page: ChromiumPage, probe_page: ChromiumPage, page_meta: Dict[str, Any]) -> None:
@@ -1009,6 +1220,12 @@ def _collect_runtime_page_diagnostics(
     diagnostics: Dict[str, Any] = {
         "current_url": str(final_url or ""),
         "page_title": str(title or "")[:240],
+        "browser_process_id": 0,
+        "browser_process_alive": False,
+        "browser_debug_address": "",
+        "browser_effective_user_data_dir": "",
+        "page_access_ok": False,
+        "page_probe_error": "",
         "ready_state": str(snapshot.get("ready_state") or ""),
         "html_len": len(str(html or "")),
         "body_text_len": int(snapshot.get("body_text_len", 0) or 0),
@@ -1068,10 +1285,12 @@ def _collect_runtime_page_diagnostics(
         diagnostics["profile_preferences_exists"] = bool(profile_info.get("preferences_exists"))
         diagnostics["profile_cookie_db_writable"] = bool(writable_target and os.access(writable_target, os.W_OK))
     if page is not None:
+        diagnostics.update(_page_lifecycle_snapshot(page))
         try:
             tab_ids = [str(x or "") for x in list(getattr(page, "tab_ids", []) or []) if str(x or "").strip()]
         except Exception:
             tab_ids = []
+            diagnostics["page_probe_error"] = diagnostics.get("page_probe_error") or "tab_ids_unavailable"
         diagnostics["tab_state"] = {
             "active_tab_id": str(getattr(page, "tab_id", "") or ""),
             "total_tab_count": len(tab_ids),
@@ -2555,8 +2774,24 @@ def _save_probe_artifacts(
             "captured_at_ms": ts,
             "worker_idx": record.get("worker_idx", 0),
             "browser_identity": record.get("browser_identity", ""),
+            "browser_user_data_dir": record.get("browser_user_data_dir", ""),
+            "browser_effective_user_data_dir": record.get("browser_effective_user_data_dir", ""),
+            "browser_debug_address": record.get("browser_debug_address", ""),
             "probe_page_mode": record.get("probe_page_mode", ""),
+            "probe_page_mode_requested": record.get("probe_page_mode_requested", ""),
+            "probe_page_mode_effective": record.get("probe_page_mode_effective", ""),
+            "probe_open_attempts": int(record.get("probe_open_attempts", 0) or 0),
+            "probe_open_succeeded": bool(record.get("probe_open_succeeded")),
+            "probe_attach_restart_reason": record.get("probe_attach_restart_reason", ""),
             "probe_tab_id": record.get("probe_tab_id", ""),
+            "controller_tab_id": record.get("controller_tab_id", ""),
+            "controller_page_reused": bool(record.get("controller_page_reused")),
+            "controller_reuse_allowed": bool(record.get("controller_reuse_allowed")),
+            "controller_restart_reason": record.get("controller_restart_reason", ""),
+            "controller_restart_count": int(record.get("controller_restart_count", 0) or 0),
+            "controller_create_attempts": int(record.get("controller_create_attempts", 0) or 0),
+            "controller_lifecycle_before_open": record.get("controller_lifecycle_before_open", {}),
+            "probe_lifecycle_after_open": record.get("probe_lifecycle_after_open", {}),
             "scheduled_start_ms": record.get("scheduled_start_ms", 0),
             "actual_start_ms": record.get("actual_start_ms", 0),
             "pacing_wait_ms": record.get("pacing_wait_ms", 0),
@@ -2576,6 +2811,18 @@ def _save_probe_artifacts(
             "dom_signature": record.get("dom_signature", ""),
             "html_len": int(record.get("html_len", 0) or 0),
             "challenge_detected": bool(record.get("challenge_detected")),
+            "page_disconnect_observed": bool(record.get("page_disconnect_observed")),
+            "page_disconnect_stage": record.get("page_disconnect_stage", ""),
+            "browser_process_id": int(record.get("browser_process_id", 0) or 0),
+            "browser_process_alive": bool(record.get("browser_process_alive")),
+            "page_access_ok": bool(record.get("page_access_ok")),
+            "page_probe_error": record.get("page_probe_error", ""),
+            "final_active_tab_id": record.get("final_active_tab_id", ""),
+            "final_total_tab_count": int(record.get("final_total_tab_count", 0) or 0),
+            "network_listener_started": bool(record.get("network_listener_started")),
+            "network_listener_error": record.get("network_listener_error", ""),
+            "runtime_probe_installed": bool(record.get("runtime_probe_installed")),
+            "runtime_probe_error": record.get("runtime_probe_error", ""),
             "entry_strategy": record.get("entry_strategy", ""),
             "entry_strategy_variant": record.get("entry_strategy_variant", ""),
             "entry_redirect_probe_mode": record.get("entry_redirect_probe_mode", ""),
@@ -2720,6 +2967,9 @@ def _probe_one(
     artifact_page = page
     temp_artifact_page: ChromiumPage | None = None
     powdermat_success_candidate: Dict[str, Any] = {}
+    page_disconnect_observed = False
+    page_disconnect_stage = ""
+    lifecycle_stage = "attempt_start"
 
     for attempt_idx in range(max(1, int(max_nav_attempts))):
         attempt_started = time.perf_counter()
@@ -2743,15 +2993,23 @@ def _probe_one(
                     initial_download_files = []
             _prune_extra_tabs(page)
             try:
+                lifecycle_stage = "pre_reset"
                 reset_started = time.perf_counter()
                 page.get("about:blank", retry=0, interval=0.2, timeout=5)
                 _append_nav_step(navigation_chain, "pre_reset", "about:blank", page.url or "about:blank")
                 attempt_timing["pre_reset_ms"] = int((time.perf_counter() - reset_started) * 1000)
             except Exception:
                 attempt_timing["pre_reset_ms"] = int((time.perf_counter() - attempt_started) * 1000)
+                attempt_timing["pre_reset_error"] = "pre_reset_failed"
+            lifecycle_stage = "listener_install"
             listener_started = _start_attempt_listener(page)
             attempt_timing["network_listener"] = bool(listener_started)
+            if not listener_started:
+                attempt_timing["network_listener_error"] = "listener_start_failed"
+            lifecycle_stage = "runtime_probe_install"
             attempt_timing["runtime_probe_installed"] = bool(_install_runtime_error_probe(page))
+            if not attempt_timing["runtime_probe_installed"]:
+                attempt_timing["runtime_probe_error"] = "runtime_probe_install_failed"
 
             step_timeout = _remaining_budget(deadline, timeout_sec, floor_sec=5.0)
             entry_url = ""
@@ -2907,6 +3165,7 @@ def _probe_one(
             if entry_url and entry_url.lower() != doi_url.lower():
                 attempt_timing["entry_url_override"] = entry_url
             if _is_aip_doi(doi):
+                lifecycle_stage = "aip_context_bootstrap"
                 page, context_bootstrap_meta = _maybe_bootstrap_aip_entry_context(
                     page,
                     entry_plan=entry_plan,
@@ -2957,6 +3216,7 @@ def _probe_one(
                     )
                 if entry_navigation_route:
                     attempt_timing["entry_navigation_route"] = entry_navigation_route
+            lifecycle_stage = "main_navigation"
             nav_started = time.perf_counter()
             page.get(nav_url, retry=0, interval=0.5, timeout=step_timeout)
             attempt_timing["doi_get_ms"] = int((time.perf_counter() - nav_started) * 1000)
@@ -3596,6 +3856,7 @@ def _probe_one(
                 reason_codes = list(dict.fromkeys(list(powdermat_success_candidate.get("reason_codes") or reason_codes) + ["powdermat_post_article_redirect"]))
                 snapshot_signal_summary = dict(powdermat_success_candidate.get("signal_summary") or snapshot_signal_summary)
                 attempt_timing["powdermat_preserved_success"] = True
+            lifecycle_stage = "runtime_diagnostics"
             attempt_packets = _drain_listener_packets(page, max_count=120, timeout=0.8) if listener_started else []
             runtime_diagnostics = _collect_runtime_page_diagnostics(
                 page,
@@ -3653,6 +3914,11 @@ def _probe_one(
             exception_kind = "timeout" if _looks_like_timeout_error(e) else "network"
             classifier_state = STATE_TIMEOUT if exception_kind == "timeout" else STATE_NETWORK_ERROR
             reason_codes = ["navigation_timeout" if exception_kind == "timeout" else "navigation_network_error"]
+            low_exc = exception_message.lower()
+            if "connection to the page has been disconnected" in low_exc or "browser has been disconnected" in low_exc:
+                page_disconnect_observed = True
+                page_disconnect_stage = lifecycle_stage
+                attempt_timing["page_disconnect_stage"] = page_disconnect_stage
             if page is not None:
                 try:
                     current_title = page.title or title
@@ -3740,6 +4006,8 @@ def _probe_one(
 
     if exception_message:
         reason_codes = list(dict.fromkeys(list(reason_codes) + [exception_message]))
+    if page_disconnect_observed and page_disconnect_stage:
+        reason_codes = list(dict.fromkeys(list(reason_codes) + [f"page_disconnected_during_{page_disconnect_stage}"]))
 
     elapsed_ms = int((time.perf_counter() - started) * 1000)
     outcome = _compat_outcome_from_state(classifier_state, reason_codes)
@@ -3747,6 +4015,8 @@ def _probe_one(
     resolved_chain = _dedupe_url_chain(navigation_chain)
     entry_preflight_issue = str(entry_plan.get("entry_preflight_issue") or "")
     entry_preflight_issue_overridden = bool(entry_preflight_issue) and classifier_state in SUCCESS_STATES
+    last_attempt_timing = dict((timing_breakdown.get("attempts") or [])[-1] or {}) if timing_breakdown.get("attempts") else {}
+    final_tab_state = dict(runtime_diagnostics.get("tab_state") or {})
 
     result = {
         "doi": doi,
@@ -3767,6 +4037,20 @@ def _probe_one(
         "browser_user_data_dir": str(probe_page_meta.get("browser_user_data_dir") or ""),
         "browser_effective_user_data_dir": str(probe_page_meta.get("browser_effective_user_data_dir") or ""),
         "browser_debug_address": str(probe_page_meta.get("browser_debug_address") or ""),
+        "probe_page_mode_requested": str(probe_page_meta.get("probe_page_mode_requested") or ""),
+        "probe_page_mode_effective": str(probe_page_meta.get("probe_page_mode_effective") or probe_page_meta.get("probe_page_mode") or ""),
+        "probe_open_attempts": int(probe_page_meta.get("probe_open_attempts", 0) or 0),
+        "controller_page_reused": bool(probe_page_meta.get("controller_page_reused")),
+        "controller_reuse_allowed": bool(probe_page_meta.get("controller_reuse_allowed", True)),
+        "controller_restart_reason": str(probe_page_meta.get("controller_restart_reason") or ""),
+        "controller_restart_count": int(probe_page_meta.get("controller_restart_count", 0) or 0),
+        "controller_create_attempts": int(probe_page_meta.get("controller_create_attempts", 0) or 0),
+        "controller_lifecycle_before_open": dict(probe_page_meta.get("controller_lifecycle_before_open") or {}),
+        "probe_lifecycle_after_open": dict(probe_page_meta.get("probe_lifecycle_after_open") or {}),
+        "probe_open_succeeded": bool(probe_page_meta.get("probe_open_succeeded")),
+        "probe_attach_restart_reason": str(probe_page_meta.get("probe_attach_restart_reason") or ""),
+        "page_disconnect_observed": bool(page_disconnect_observed),
+        "page_disconnect_stage": str(page_disconnect_stage or ""),
         "probe_page_mode": str(probe_page_meta.get("probe_page_mode") or ""),
         "controller_tab_id": str(probe_page_meta.get("controller_tab_id") or ""),
         "probe_tab_id": str(probe_page_meta.get("probe_tab_id") or ""),
@@ -3839,6 +4123,16 @@ def _probe_one(
         "retry_count": max(0, len(attempt_history) - 1),
         "timing_breakdown": timing_breakdown,
         "runtime_diagnostics": runtime_diagnostics,
+        "browser_process_id": int(runtime_diagnostics.get("browser_process_id", 0) or 0),
+        "browser_process_alive": bool(runtime_diagnostics.get("browser_process_alive")),
+        "page_access_ok": bool(runtime_diagnostics.get("page_access_ok")),
+        "page_probe_error": str(runtime_diagnostics.get("page_probe_error") or ""),
+        "final_active_tab_id": str(final_tab_state.get("active_tab_id") or ""),
+        "final_total_tab_count": int(final_tab_state.get("total_tab_count", 0) or 0),
+        "network_listener_started": bool(last_attempt_timing.get("network_listener")),
+        "network_listener_error": str(last_attempt_timing.get("network_listener_error") or ""),
+        "runtime_probe_installed": bool(last_attempt_timing.get("runtime_probe_installed")),
+        "runtime_probe_error": str(last_attempt_timing.get("runtime_probe_error") or ""),
         "js_runtime_probe_ok": bool(runtime_diagnostics.get("js_runtime_probe_ok")),
         "js_probe_error": str(runtime_diagnostics.get("js_probe_error") or ""),
         "navigator_cookie_enabled": runtime_diagnostics.get("navigator_cookie_enabled"),
@@ -3925,16 +4219,18 @@ def _worker_run(
                 )
                 session_cache_key = str(session_plan.get("cache_key") or "temp")
                 controller_page = controller_pages.get(session_cache_key)
-                if controller_page is None:
-                    controller_page = _browser_for_worker(
-                        chrome_path=chrome_path,
-                        worker_idx=worker_idx,
-                        worker_profile_root=worker_profile_root,
-                        worker_download_root=worker_download_root,
-                        session_plan=session_plan,
-                        startup_retries=startup_retries,
-                    )
-                    controller_pages[session_cache_key] = controller_page
+                controller_page, probe_page, page_meta = _ensure_probe_page_for_record(
+                    controller_page,
+                    record=rec,
+                    session_plan=session_plan,
+                    chrome_path=chrome_path,
+                    worker_idx=worker_idx,
+                    worker_profile_root=worker_profile_root,
+                    worker_download_root=worker_download_root,
+                    startup_retries=startup_retries,
+                    probe_page_mode=probe_page_mode,
+                )
+                controller_pages[session_cache_key] = controller_page
                 browser_identity = str(session_plan.get("browser_identity") or f"worker_{int(worker_idx)}:{session_cache_key}")
                 publisher_key = str(rec.get("scheduler_publisher") or "")
                 pacing_info = reserve_pacing_slot(
@@ -3946,7 +4242,6 @@ def _worker_run(
                     jitter_min_sec=jitter_min_sec,
                     jitter_max_sec=jitter_max_sec,
                 )
-                probe_page, page_meta = _open_probe_page(controller_page, probe_page_mode=probe_page_mode)
                 download_key = _sanitize_doi_to_filename(session_cache_key) or f"worker_{int(worker_idx)}"
                 page_meta["worker_download_dir"] = os.path.join(os.path.abspath(worker_download_root), download_key)
                 page_meta["browser_session_mode"] = str(session_plan.get("session_mode") or "")
@@ -3980,6 +4275,9 @@ def _worker_run(
                     )
                 finally:
                     _close_probe_page(controller_page, probe_page, page_meta)
+                    if not bool(page_meta.get("controller_reuse_allowed", True)):
+                        _close_page_safely(controller_page, session_plan=session_plan)
+                        controller_pages.pop(session_cache_key, None)
                     release_pacing_slot(
                         pacing_state,
                         pacing_lock,
