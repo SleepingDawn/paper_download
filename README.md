@@ -260,6 +260,7 @@ test -d outputs/linux_seed_profile_from_docs/linux_chromium_user_data_seed && ec
 - `--max-year`
 - `--limit` / `--top-k`
 - `--sort`
+- `--citation-percentile-min`
 - `--benchmark-name`
 - `--output-csv`
 
@@ -271,6 +272,7 @@ test -d outputs/linux_seed_profile_from_docs/linux_chromium_user_data_seed && ec
 - `--year`와 `--min-year`/`--max-year`는 함께 쓸 수 없습니다.
 - `--top-k`는 `--limit`의 alias이고, 주어지면 `--limit`보다 우선합니다.
 - `--sort` 기본값은 `cited_by_count:desc`입니다.
+- `--citation-percentile-min`을 주면 OpenAlex의 `citation_normalized_percentile` 값이 threshold 이상인 논문을 먼저 배치하고, 그 안에서 `cited_by_count`로 정렬한 뒤 나머지를 overall citation 순으로 채웁니다.
 - `--output-csv`를 생략하면 `--benchmark-name`이 필요하고, 출력은 `experiment/<benchmark-name>.csv`가 됩니다.
 - `--limit` 기본값은 `200`입니다.
 
@@ -282,6 +284,17 @@ python3 experiment/build_query_benchmark.py \
   --min-year 2025 \
   --top-k 100 \
   --benchmark-name benchmark_oled_2025plus_top100_20260320
+```
+
+예시: `OLED`, `publication_year>=2025`, 상위 1%(`0.99`) yearly/subfield citation percentile 우선 + 최종 top 100
+
+```bash
+python3 experiment/build_query_benchmark.py \
+  --query OLED \
+  --min-year 2025 \
+  --top-k 100 \
+  --citation-percentile-min 0.99 \
+  --benchmark-name benchmark_oled_2025plus_top100_p99_20260320
 ```
 
 생성 결과:

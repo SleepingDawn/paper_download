@@ -101,6 +101,7 @@ def build_query_benchmark(
     limit: int,
     output_csv: Path,
     sort: str,
+    citation_percentile_min: float | None = None,
 ) -> Path:
     filter_str = _build_filter(query=query, year=year, min_year=min_year, max_year=max_year)
     rows: List[Dict[str, Any]] = []
@@ -117,6 +118,21 @@ def build_query_benchmark(
         row["benchmark_min_year"] = int(min_year) if min_year is not None else ""
         row["benchmark_max_year"] = int(max_year) if max_year is not None else ""
         row["benchmark_source"] = f"openalex_title_and_abstract_{sort.replace(':', '_')}"
+        percentile = row.get("citation_normalized_percentile")
+        prioritized = (
+            citation_percentile_min is not None
+            and percentile is not None
+            and float(percentile) >= float(citation_percentile_min)
+        )
+        row["benchmark_citation_percentile_min"] = (
+            float(citation_percentile_min) if citation_percentile_min is not None else ""
+        )
+        row["benchmark_priority"] = 1 if prioritized else 2
+        row["benchmark_priority_reason"] = (
+            f"citation_normalized_percentile>={float(citation_percentile_min):.4f}"
+            if prioritized
+            else "overall_top_citation"
+        )
         rows.append(row)
 
     if not rows:
@@ -132,7 +148,12 @@ def build_query_benchmark(
     df["doi"] = df["doi"].astype(str).str.strip().str.lower()
     df = df[df["doi"] != ""].copy()
     df = df.drop_duplicates(subset=["doi"], keep="first").copy()
-    df = df.sort_values(by=["cited_by_count", "doi"], ascending=[False, True], na_position="last").copy()
+    sort_columns = ["cited_by_count", "doi"]
+    sort_orders = [False, True]
+    if citation_percentile_min is not None:
+        sort_columns = ["benchmark_priority", "cited_by_count", "doi"]
+        sort_orders = [True, False, True]
+    df = df.sort_values(by=sort_columns, ascending=sort_orders, na_position="last").copy()
     df = df.head(int(limit)).copy()
     df["benchmark_rank"] = range(1, len(df) + 1)
     df = df[_ordered_columns(df)]
@@ -151,6 +172,15 @@ def main() -> int:
     parser.add_argument("--limit", type=int, default=200, help="Maximum number of rows to keep")
     parser.add_argument("--top-k", type=int, default=None, help="Alias of --limit")
     parser.add_argument("--sort", default="cited_by_count:desc", help="OpenAlex sort expression")
+    parser.add_argument(
+        "--citation-percentile-min",
+        type=float,
+        default=None,
+        help=(
+            "If set, prioritize works whose citation_normalized_percentile.value is at least this threshold "
+            "before falling back to overall cited_by_count ordering."
+        ),
+    )
     parser.add_argument("--benchmark-name", type=str, default=None, help="Benchmark basename; used when --output-csv is omitted")
     parser.add_argument("--output-csv", type=Path, default=None, help="Output CSV path")
     args = parser.parse_args()
@@ -174,6 +204,9 @@ def main() -> int:
         limit=limit,
         output_csv=output_csv.resolve(),
         sort=str(args.sort),
+        citation_percentile_min=(
+            None if args.citation_percentile_min is None else float(args.citation_percentile_min)
+        ),
     )
     df = pd.read_csv(out)
     print(f"output_csv={out}")
@@ -186,6 +219,10 @@ def main() -> int:
         print(f"max_year={'' if max_year is None else max_year}")
     print(f"top_k={limit}")
     print(f"sort={args.sort}")
+    print(
+        "citation_percentile_min="
+        f"{'' if args.citation_percentile_min is None else float(args.citation_percentile_min)}"
+    )
     if "cited_by_count" in df.columns and len(df):
         print(f"top_cited={int(df['cited_by_count'].fillna(0).max())}")
         print(f"bottom_cited={int(df['cited_by_count'].fillna(0).min())}")

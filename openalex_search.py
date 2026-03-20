@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import argparse
 import pandas as pd
 import time
 import requests
@@ -709,5 +710,30 @@ def main_search(pdf_save_dir = None, csv_name = None, query = None, max_num = 10
             print(f"연도별 그래프 생성을 건너뜁니다: {exc}")
     return CSV_PATH
 
+def _build_cli_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Run OpenAlex query collection with citation percentile prioritization.")
+    parser.add_argument("--pdf-save-dir", default=None, help="Directory to save the generated CSV and optional plot")
+    parser.add_argument("--csv-name", default=None, help="Output CSV filename")
+    parser.add_argument("--query", default=None, help="OpenAlex title_and_abstract query string")
+    parser.add_argument("--max-num", type=int, default=MAX_NUM, help="Maximum number of rows to keep")
+    parser.add_argument(
+        "--citation-percentile",
+        type=float,
+        default=CITATION_PERCENTILE_THRESHOLD,
+        help=(
+            "Prioritize works whose citation_normalized_percentile.value is at least this threshold "
+            "(OpenAlex by year/subfield percentile)."
+        ),
+    )
+    return parser
+
+
 if __name__ == "__main__":
-    main_search()
+    args = _build_cli_parser().parse_args()
+    main_search(
+        pdf_save_dir=args.pdf_save_dir,
+        csv_name=args.csv_name,
+        query=args.query,
+        max_num=max(1, int(args.max_num)),
+        citation_percentile=float(args.citation_percentile),
+    )
