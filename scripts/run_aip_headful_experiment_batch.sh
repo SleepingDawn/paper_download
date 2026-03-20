@@ -150,7 +150,7 @@ run_and_wait() {
 import csv, json
 from pathlib import Path
 run_name = r"$run_name"
-run_dir = Path(r"$REPO_ROOT/outputs/linux_headless_suite_runs") / run_name
+run_dir = Path(r"$REPO_ROOT/outputs") / run_name
 csv_path = run_dir / "download" / "run" / "openalex_search_results_parallel.csv"
 summary_path = run_dir / "download" / "run" / "summary.json"
 print(f"[run-summary] {run_name}")

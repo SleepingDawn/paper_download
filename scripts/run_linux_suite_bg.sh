@@ -10,7 +10,7 @@ options:
   --seed-profile <dir>          Linux seeded Chrome user-data-dir root (or config/linux_server.env)
   --profile-name <name>         Chrome profile name (default: Default or config/linux_server.env)
   --run-name <name>             run/log prefix (default: <suite>_YYYYmmdd_HHMMSS)
-  --run-dir <dir>               explicit run directory (default: outputs/linux_headless_suite_runs/<run-name>)
+  --run-dir <dir>               explicit run directory (default: outputs/<run-name>)
   --sample-csv <path>           override suite CSV
   --landing-workers <n>         landing workers (default: 2)
   --download-workers <n>        download workers (default: 1)

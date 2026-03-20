@@ -130,7 +130,7 @@ def main() -> int:
         raise FileNotFoundError(f"sample csv not found: {sample_csv}")
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    run_dir = (args.run_dir or (repo_root() / "outputs" / "linux_headless_suite_runs" / f"{args.suite}_{timestamp}")).resolve()
+    run_dir = (args.run_dir or (repo_root() / "outputs" / f"{args.suite}_{timestamp}")).resolve()
     landing_dir = run_dir / "landing"
     download_dir = run_dir / "download"
     summary_dir = run_dir / "summary"

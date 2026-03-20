@@ -453,7 +453,7 @@ bash scripts/run_linux_suite_bg.sh \
   - 지정하지 않으면 `suite_dir/<suite>_sample.csv`를 사용합니다.
   - benchmark CSV를 직접 넣고 싶을 때 가장 자주 쓰는 인자입니다.
 - `--run-dir`
-  - 기본값: `outputs/linux_headless_suite_runs/<suite>_<timestamp>`
+  - 기본값: `outputs/<suite>_<timestamp>`
   - run 디렉토리를 명시 고정하고 싶을 때 사용합니다.
 - `--execute`
   - 기본값: 꺼짐
@@ -495,7 +495,7 @@ source config/linux_server.env
 python3 experiment/run_linux_headless_suite.py \
   --suite full \
   --sample-csv /home/yongyong0206/paper_search/paper_download/experiment/benchmark_oled_2025plus_top100_20260320.csv \
-  --run-dir /home/yongyong0206/paper_search/paper_download/outputs/linux_headless_suite_runs/oled_manual_direct \
+  --run-dir /home/yongyong0206/paper_search/paper_download/outputs/oled_manual_direct \
   --execute \
   --runtime-preset linux_cli_seeded \
   --execution-env linux_server \
@@ -549,9 +549,9 @@ bash scripts/check_linux_suite_status.sh "$RUN_NAME" 60
 로그 파일 증가 여부까지 보고 싶으면:
 
 ```bash
-stat "outputs/linux_headless_suite_runs/${RUN_NAME}/logs/download.stderr.log"
+stat "outputs/${RUN_NAME}/logs/download.stderr.log"
 sleep 5
-stat "outputs/linux_headless_suite_runs/${RUN_NAME}/logs/download.stderr.log"
+stat "outputs/${RUN_NAME}/logs/download.stderr.log"
 ```
 
 ### 실행 중인 run 중단
@@ -596,7 +596,7 @@ bash scripts/collect_linux_suite_artifacts.sh \
 기본 run 산출물:
 
 ```text
-outputs/linux_headless_suite_runs/<run-name>/
+outputs/<run-name>/
 ```
 
 주요 파일:

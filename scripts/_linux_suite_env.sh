@@ -25,7 +25,7 @@ linux_suite_load_env() {
 
 linux_suite_runs_root() {
   local repo_root=$1
-  printf '%s\n' "${RUNS_ROOT:-$repo_root/outputs/linux_headless_suite_runs}"
+  printf '%s\n' "${RUNS_ROOT:-$repo_root/outputs}"
 }
 
 linux_suite_logs_root() {
