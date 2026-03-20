@@ -5283,3 +5283,198 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - no fresh Linux rerun has yet proven that the new Elsevier requests fallback converts `10.1016/j.ccr.2025.216433` into success
   - the OUP failure remains a genuine Cloudflare challenge in the analyzed bundle; no evidence-backed bypass was implemented
   - SPIE is now explicitly filtered at routing time for this Linux workflow, so future coverage of SPIE content would require a separate intentional policy decision
+
+## 5.51 cleanup/leak inspection on latest OLED bundle
+
+- analyzed artifacts
+  - `experiment/results/oled_2025plus_top100_20260320_023432_bundle.tar.gz`
+  - extracted run:
+    - `outputs/linux_headless_suite_runs/oled_2025plus_top100_20260320_023432/download/run/summary.json`
+    - `outputs/linux_headless_suite_runs/oled_2025plus_top100_20260320_023432/download/run/openalex_search_results_parallel.csv`
+    - `outputs/linux_headless_suite_runs/oled_2025plus_top100_20260320_023432/logs/download.stderr.log`
+  - code paths:
+    - `tools_exp.py`
+      - `_close_page_safely()`
+      - `_cleanup_browser_session_plan()`
+      - `_prune_extra_tabs()`
+      - `reap_stale_drission_orphan_browsers()`
+    - `parallel_download.py`
+      - startup/shutdown orphan reap
+      - result export
+
+- confirmed cleanup behavior before patch
+  - each browser attempt already had explicit startup tab sanitation:
+    - log count `28`
+    - all observed sanitize summaries in the latest OLED bundle were `before=1 after=1 closed=0`
+  - browser teardown was already being invoked on success/failure via the unified `_ret()` path
+  - late-run log still showed repeated `post-quit-pid` process-tree kills, especially on stateful Elsevier/RSC paths
+  - startup and shutdown stale-orphan reaping existed, but only at run boundaries
+
+- confirmed / unconfirmed leak findings
+  - no concrete evidence of an accumulating zombie-browser leak was found in the analyzed bundle
+    - kill counts were often `12` or `13` for Chrome process trees, but they did not show a monotonic growth pattern over time
+    - actual-start ordered browser-attempt latency did not drift upward meaningfully:
+      - first half median ≈ `12.6s`
+      - second half median ≈ `11.5s`
+  - no concrete evidence of tab accumulation across attempts was found
+    - latest bundle sanitize summaries repeatedly showed a single-tab state before navigation
+  - no concrete evidence of in-memory buffer growth was found from artifacts alone
+  - exact process-count / RSS / CPU drift across the live run remains unprovable from the bundle because it does not contain periodic `ps`/RSS snapshots `[blocked]`
+
+- confirmed slowdown source
+  - the latest bundle did confirm one deterministic overhead in the cleanup/sanitation path:
+    - `_prune_extra_tabs()` still paid the full stabilize + quiet-wait path even when the browser already had exactly one tab
+    - the latest OLED log showed this path on all `28` browser attempts despite `before=1 after=1`
+  - therefore at least part of the perceived late-run sluggishness came from repeated single-tab sanitation overhead, not from confirmed tab leaks
+
+- implemented fixes
+  - `tools_exp.py`
+    - `_prune_extra_tabs()`
+      - added `single_tab_fastpath`
+      - skips expensive stabilize/quiet-wait when the browser already exposes one live tab
+    - `_close_page_safely()`
+      - now returns/logs cleanup diagnostics:
+        - `browser_pid`
+        - `browser_debug_port`
+        - `initial_process_count`
+        - `killed_pid_tree_count`
+        - `remaining_process_count`
+        - `user_data_dir`
+        - `elapsed_ms`
+    - `_cleanup_browser_session_plan()`
+      - now verifies whether the owned runtime profile dir was actually removed
+      - logs success vs lingering cleanup dir explicitly
+      - retries once after removing startup lock artifacts if the first `rmtree()` leaves the dir behind
+    - added helper counters for browser roots by debug port / user-data-dir
+  - `parallel_download.py`
+    - exports cleanup/result fields into the per-run CSV
+  - `experiment/summarize_linux_headless_suite.py`
+    - preserves the new cleanup fields into merged summary rows
+
+- re-check commands
+  - compile:
+    - `python3 -m py_compile tools_exp.py parallel_download.py experiment/summarize_linux_headless_suite.py experiment/run_linux_headless_suite.py openalex_search.py`
+  - single-tab fastpath smoke:
+    - `python3 - <<'PY'`
+      `from tools_exp import _prune_extra_tabs`
+      `class P:`
+      `    tab_ids=['ABC12345']`
+      `    tab_id='ABC12345'`
+      `print(_prune_extra_tabs(P()))`
+      `PY`
+  - session-dir cleanup smoke:
+    - `python3 - <<'PY'`
+      `import tempfile, os`
+      `from tools_exp import _cleanup_browser_session_plan`
+      `root=tempfile.mkdtemp(prefix='codex_cleanup_')`
+      `open(os.path.join(root,'foo.txt'),'w').write('x')`
+      `print(_cleanup_browser_session_plan({'cleanup_on_close': True, 'cleanup_dir': root}))`
+      `PY`
+  - after next Linux rerun inspect:
+    - `browser_cleanup_pid_tree_killed_count`
+    - `browser_cleanup_remaining_process_count`
+    - `browser_session_cleanup_dir_removed`
+    - `browser_session_cleanup_dir_exists_after`
+    - log line prefix:
+      - `[Drission] cleanup summary: ...`
+      - `[Drission] 세션 디렉터리 정리 완료: ...`
+
+- remaining uncertainty
+  - active-run mid-flight orphan sweeping is still conservative:
+    - `reap_stale_drission_orphan_browsers()` intentionally skips when another `parallel_download.py` runner is active
+    - this avoids cross-run interference but means only per-attempt owned-session cleanup is guaranteed during a live multi-worker run
+  - process/RSS/CPU drift during a fresh long rerun still needs live measurement `[blocked]`
+
+## 5.52 OLED rerun bundle (`oled_2025plus_top100_rerun_20260320_091657_bundle.tar.gz`)
+
+- analyzed artifact
+  - `experiment/results/oled_2025plus_top100_rerun_20260320_091657_bundle.tar.gz`
+  - unpacked under `/private/tmp/oled_2025plus_top100_rerun_20260320_091657_bundle`
+  - inspected:
+    - root log
+    - `download.stderr.log`
+    - `summary.json`
+    - `openalex_search_results_parallel.csv`
+    - `failed_papers.csv`
+    - `download_attempts.jsonl`
+    - per-sample metadata JSON
+    - OUP failure note/html/png
+
+- success-case correctness check
+  - the bundle reported `99` successes in `summary.json`, but this count was overstated
+    - one SPIE row (`10.1117/1.ap.7.3.034001`) was routed to `skip_non_target`
+    - the row still ended up under `unknown_success` because skip rows were not excluded by the success/download-source classifiers
+  - sampled success metadata for Elsevier / Nature / AAAS confirmed that `pdf_path` and `pdf_exists=true` were saved
+  - however the bundle did not include the actual PDF files, so content-level PDF verification remained impossible from the bundle alone `[blocked]`
+  - a separate metadata gap was confirmed:
+    - browser-driven success rows still had blank `download_attempted`, `download_strategy_used`, `download_candidate_url`, `download_candidate_kind`, `target_match_signals`, `final_pdf_confidence`
+    - this meant the run could not prove from result CSV/metadata why a success was believed to be the correct primary PDF
+  - current branch fix:
+    - `parallel_download.py` now preserves the Drission/browser provenance fields returned by `download_with_drission()`
+
+- late-run slowdown diagnosis
+  - no bundle evidence showed a monotonic zombie/tab leak
+  - confirmed slowdown sources were:
+    - expensive publisher browser paths
+      - RSC `10.1039/d5tc01128k`: landing/browser path ≈ `57.9s`
+      - Elsevier `10.1016/j.ccr.2025.216433`: ≈ `46.6s`
+      - AAAS `10.1126/sciadv.adt7899`: ≈ `42.2s`
+    - scheduler pacing wait for repeated same-publisher jobs
+      - Elsevier `10.1016/j.cej.2025.161133` waited ≈ `76.4s` before the browser attempt even started
+  - current branch fix:
+    - `landing_classifier.py`
+      - pacing now tracks `next_ready::<publisher>`
+      - successful attempts use a shorter post-success cooldown than challenge/block cases
+    - this keeps challenge penalties while reducing needless serialized holdoff after clean successes
+
+- single failure case
+  - DOI: `10.1093/nsr/nwaf250`
+  - observed runtime:
+    - direct `pdf_url` existed: `https://academic.oup.com/nsr/advance-article-pdf/doi/10.1093/nsr/nwaf250/.../nwaf250.pdf`
+    - direct CFFI fetch failed quickly with `HTTP Error 403: Forbidden`
+    - browser fallback then used `temp` session mode and landed on a Cloudflare `Just a moment...` page
+  - root cause
+    - OUP (`10.1093/...`) was not in `AUTO_PROFILE_DOI_PREFIXES`
+    - the browser path therefore missed the Linux seeded/stateful profile that is used for high-friction publishers
+    - the direct OA path also lacked a plain direct URL fallback after CFFI failure
+  - implemented fix
+    - `tools_exp.py`
+      - added `10.1093` to `AUTO_PROFILE_DOI_PREFIXES`
+    - `parallel_download.py`
+      - after direct-URL CFFI failure, try `pdf_pipeline.download_pdf(..., strategy_name='direct_oa_urlfetch')`
+      - direct-URL attempts now save candidate provenance:
+        - `download_candidate_source=input_pdf_url`
+        - `download_candidate_url`
+        - `download_candidate_kind`
+        - `target_match_signals`
+        - `final_pdf_confidence`
+        - `final_pdf_believed_primary`
+
+- skip/result-classification fix
+  - confirmed bug:
+    - skip rows (`status=Skipped` / `routing_action=skip_non_target`) could still be summarized as success/unknown_success
+  - implemented fix
+    - `parallel_download.py`
+      - `_status_text()`, `_classify_experiment_download_bucket()`, `_classify_download_source_category()` now treat skip rows as non-download outcomes
+    - `experiment/summarize_linux_headless_suite.py`
+      - legacy/new rows both treat `Skipped` / `method=skip` / `routing_action=skip_non_target` as non-success
+      - `routing_action` / `routing_skip_reason` are preserved into merged records for diagnosis
+
+- re-check commands
+  - compile:
+    - `python3 -m py_compile tools_exp.py parallel_download.py landing_classifier.py experiment/summarize_linux_headless_suite.py experiment/run_linux_headless_suite.py openalex_search.py`
+  - inspect OUP stateful routing:
+    - `python3 - <<'PY'`
+      `from tools_exp import _stateful_profile_decision`
+      `print(_stateful_profile_decision('https://doi.org/10.1093/nsr/nwaf250', 'auto'))`
+      `PY`
+  - inspect direct-PDF candidate scoring:
+    - `python3 - <<'PY'`
+      `from parallel_download import _direct_pdf_candidate_signals`
+      `print(_direct_pdf_candidate_signals('https://academic.oup.com/nsr/advance-article-pdf/doi/10.1093/nsr/nwaf250/x/nwaf250.pdf','10.1093/nsr/nwaf250'))`
+      `print(_direct_pdf_candidate_signals('https://pubs.acs.org/doi/suppl/10.1021/acs.foo.5c00001/suppl_file/bar.pdf','10.1021/acs.foo.5c00001'))`
+      `PY`
+
+- remaining uncertainty
+  - the bundle did not contain the actual PDFs, so per-file content validation against the final article DOI/title remains `[blocked]`
+  - the pacing change and OUP fallback change still need confirmation in a fresh Linux + Xvfb rerun `[blocked]`

@@ -81,6 +81,7 @@ AUTO_PROFILE_DOI_PREFIXES = (
     "10.1063",  # AIP
     "10.1116",  # AVS(AIP platform)
     "10.1039",  # RSC
+    "10.1093",  # Oxford University Press
     "10.3390",  # MDPI
 )
 LINUX_AUTO_TEMP_DOI_PREFIXES = (
@@ -139,6 +140,25 @@ def _browser_runtime_meta(page) -> Dict[str, str]:
         "browser_debug_address": str(getattr(page, "address", "") or getattr(browser, "address", "") or ""),
         "browser_effective_user_data_dir": str(getattr(browser, "user_data_path", "") or ""),
     }
+
+
+def _extract_debug_port_from_address(address: Any) -> int:
+    raw = str(address or "").strip()
+    if not raw:
+        return 0
+    try:
+        parsed = urlparse(raw if "://" in raw else f"http://{raw}")
+        if parsed.port:
+            return int(parsed.port)
+    except Exception:
+        pass
+    tail = raw.rsplit(":", 1)
+    if len(tail) != 2:
+        return 0
+    try:
+        return int(tail[-1])
+    except Exception:
+        return 0
 
 
 def _maybe_import_psutil():
@@ -300,6 +320,36 @@ def _kill_browser_processes_by_debug_port(port: Any, logger=None, only_orphans: 
     return killed
 
 
+def _count_browser_processes_by_debug_port(port: Any, only_orphans: bool = False) -> int:
+    try:
+        port_int = int(port)
+    except Exception:
+        return 0
+    if port_int <= 0:
+        return 0
+
+    psutil = _maybe_import_psutil()
+    if psutil is None:
+        return 0
+
+    target_token = f"--remote-debugging-port={port_int}"
+    count = 0
+    for proc in psutil.process_iter(["ppid", "cmdline"]):
+        try:
+            cmdline = proc.info.get("cmdline") or []
+            cmd = " ".join(str(part) for part in cmdline if part)
+            if not cmd or target_token not in cmd:
+                continue
+            if not _is_drission_browser_root_command(cmd):
+                continue
+            if only_orphans and int(proc.info.get("ppid") or 0) != 1:
+                continue
+            count += 1
+        except Exception:
+            continue
+    return count
+
+
 def _session_plan_has_owned_runtime_dir(session_plan: Dict[str, Any] = None) -> bool:
     if not session_plan:
         return False
@@ -376,10 +426,37 @@ def _kill_browser_processes_by_user_data_dir(user_data_dir: str, logger=None, on
     return killed
 
 
+def _count_browser_processes_by_user_data_dir(user_data_dir: str, only_orphans: bool = False) -> int:
+    target_dir = os.path.abspath(str(user_data_dir or "").strip())
+    if not target_dir:
+        return 0
+
+    psutil = _maybe_import_psutil()
+    if psutil is None:
+        return 0
+
+    count = 0
+    for proc in psutil.process_iter(["ppid", "cmdline"]):
+        try:
+            cmdline = proc.info.get("cmdline") or []
+            cmd = " ".join(str(part) for part in cmdline if part)
+            if not cmd or target_dir not in cmd:
+                continue
+            if not _is_drission_browser_root_command(cmd):
+                continue
+            if only_orphans and int(proc.info.get("ppid") or 0) != 1:
+                continue
+            count += 1
+        except Exception:
+            continue
+    return count
+
+
 def _collect_browser_cleanup_hints(page, session_plan: Dict[str, Any] = None) -> Dict[str, Any]:
     hints = {
         "browser_pid": None,
         "user_data_dir": "",
+        "browser_debug_port": 0,
     }
     if session_plan:
         hints["user_data_dir"] = str(session_plan.get("user_data_dir") or "").strip()
@@ -402,6 +479,11 @@ def _collect_browser_cleanup_hints(page, session_plan: Dict[str, Any] = None) ->
             user_data_dir = getattr(options, "user_data_path", None) if options is not None else None
             if user_data_dir:
                 hints["user_data_dir"] = str(user_data_dir).strip()
+        except Exception:
+            pass
+        try:
+            address = getattr(browser, "address", None) or getattr(page, "address", None)
+            hints["browser_debug_port"] = _extract_debug_port_from_address(address)
         except Exception:
             pass
 
@@ -1342,17 +1424,47 @@ def _apply_browser_session_plan(co: ChromiumOptions, session_plan: Dict[str, Any
     return True
 
 
-def _cleanup_browser_session_plan(session_plan: Dict[str, Any], logger=None) -> None:
+def _cleanup_browser_session_plan(session_plan: Dict[str, Any], logger=None) -> Dict[str, Any]:
+    summary = {
+        "cleanup_dir": "",
+        "cleanup_requested": bool(session_plan and session_plan.get("cleanup_on_close")),
+        "cleanup_dir_removed": False,
+        "cleanup_dir_exists_after": False,
+        "startup_artifacts_removed": 0,
+        "elapsed_ms": 0,
+        "error": "",
+    }
     if not session_plan or not bool(session_plan.get("cleanup_on_close")):
-        return
+        return summary
     cleanup_dir = os.path.abspath(str(session_plan.get("cleanup_dir") or session_plan.get("user_data_dir") or "").strip())
+    summary["cleanup_dir"] = cleanup_dir
     if not cleanup_dir or not os.path.isdir(cleanup_dir):
-        return
+        return summary
+    start_ts = time.time()
     try:
         shutil.rmtree(cleanup_dir, ignore_errors=True)
+        if os.path.isdir(cleanup_dir):
+            summary["startup_artifacts_removed"] = int(_cleanup_browser_startup_artifacts(session_plan, logger=logger))
+            shutil.rmtree(cleanup_dir, ignore_errors=True)
     except Exception as exc:
-        if logger:
-            logger.warning(f"     [Drission] 세션 정리 실패(무시): {exc}")
+        summary["error"] = _safe_exception_text(exc)
+    summary["elapsed_ms"] = int((time.time() - start_ts) * 1000)
+    summary["cleanup_dir_exists_after"] = bool(os.path.isdir(cleanup_dir))
+    summary["cleanup_dir_removed"] = not summary["cleanup_dir_exists_after"]
+    if logger:
+        if summary["cleanup_dir_exists_after"]:
+            logger.warning(
+                "     [Drission] 세션 디렉터리 정리 미완료: "
+                f"root={cleanup_dir} elapsed_ms={summary['elapsed_ms']} "
+                f"artifacts_removed={summary['startup_artifacts_removed']} error={summary['error']}"
+            )
+        else:
+            logger.info(
+                "     [Drission] 세션 디렉터리 정리 완료: "
+                f"root={cleanup_dir} elapsed_ms={summary['elapsed_ms']} "
+                f"artifacts_removed={summary['startup_artifacts_removed']}"
+            )
+    return summary
 
 
 def _maybe_apply_system_chrome_profile(co: ChromiumOptions, doi_url: str, logger=None) -> bool:
@@ -1610,28 +1722,60 @@ def _extract_domain(url: str) -> str:
         return ""
 
 
-def _close_page_safely(page, logger=None, session_plan: Dict[str, Any] = None):
+def _close_page_safely(page, logger=None, session_plan: Dict[str, Any] = None) -> Dict[str, Any]:
+    summary = {
+        "browser_pid": 0,
+        "browser_debug_port": 0,
+        "user_data_dir": "",
+        "initial_process_count": 0,
+        "killed_pid_tree_count": 0,
+        "remaining_process_count": 0,
+        "page_quit_called": False,
+        "browser_quit_called": False,
+        "page_close_called": False,
+        "elapsed_ms": 0,
+        "error": "",
+    }
     if page is None:
         if session_plan:
-            _kill_browser_processes_by_user_data_dir(
-                str(session_plan.get("user_data_dir") or ""),
-                logger=logger,
-                only_orphans=False,
-            )
-        return
+            user_data_dir = str(session_plan.get("user_data_dir") or "").strip()
+            summary["user_data_dir"] = user_data_dir
+            if user_data_dir:
+                summary["killed_pid_tree_count"] = _kill_browser_processes_by_user_data_dir(
+                    user_data_dir,
+                    logger=logger,
+                    only_orphans=False,
+                )
+                summary["remaining_process_count"] = _count_browser_processes_by_user_data_dir(
+                    user_data_dir,
+                    only_orphans=False,
+                )
+        return summary
 
+    start_ts = time.time()
     hints = _collect_browser_cleanup_hints(page, session_plan=session_plan)
     browser_pid = hints.get("browser_pid")
     user_data_dir = str(hints.get("user_data_dir") or "").strip()
+    browser_debug_port = int(hints.get("browser_debug_port") or 0)
+    summary["browser_pid"] = int(browser_pid or 0)
+    summary["browser_debug_port"] = browser_debug_port
+    summary["user_data_dir"] = user_data_dir
+    if user_data_dir:
+        summary["initial_process_count"] = _count_browser_processes_by_user_data_dir(user_data_dir, only_orphans=False)
+    elif browser_debug_port > 0:
+        summary["initial_process_count"] = _count_browser_processes_by_debug_port(browser_debug_port, only_orphans=False)
+
     close_errors = []
 
     try:
         quit_fn = getattr(page, "quit", None)
         if callable(quit_fn):
             quit_fn(timeout=3, force=True)
+            summary["page_quit_called"] = True
     except TypeError:
         try:
             quit_fn()
+            summary["page_quit_called"] = True
         except Exception as exc:
             close_errors.append(exc)
     except Exception as exc:
@@ -1643,10 +1787,12 @@ def _close_page_safely(page, logger=None, session_plan: Dict[str, Any] = None):
             browser_quit = getattr(browser, "quit", None) if browser is not None else None
             if callable(browser_quit):
                 browser_quit(timeout=3, force=True)
+                summary["browser_quit_called"] = True
                 close_errors.clear()
         except TypeError:
             try:
                 browser_quit()
+                summary["browser_quit_called"] = True
                 close_errors.clear()
             except Exception as exc:
                 close_errors.append(exc)
@@ -1658,18 +1804,54 @@ def _close_page_safely(page, logger=None, session_plan: Dict[str, Any] = None):
             close_fn = getattr(page, "close", None)
             if callable(close_fn):
                 close_fn()
+                summary["page_close_called"] = True
         except Exception as exc:
             close_errors.append(exc)
 
-    time.sleep(0.2)
+    time.sleep(0.1)
     if browser_pid and _process_exists(browser_pid):
-        _kill_process_tree(browser_pid, logger=logger, reason="post-quit-pid")
+        summary["killed_pid_tree_count"] += _kill_process_tree(browser_pid, logger=logger, reason="post-quit-pid")
+    if browser_debug_port > 0:
+        summary["killed_pid_tree_count"] += _kill_browser_processes_by_debug_port(
+            browser_debug_port,
+            logger=logger,
+            only_orphans=False,
+        )
     if user_data_dir:
-        _kill_browser_processes_by_user_data_dir(user_data_dir, logger=logger, only_orphans=False)
+        summary["killed_pid_tree_count"] += _kill_browser_processes_by_user_data_dir(
+            user_data_dir,
+            logger=logger,
+            only_orphans=False,
+        )
+        summary["remaining_process_count"] = _count_browser_processes_by_user_data_dir(
+            user_data_dir,
+            only_orphans=False,
+        )
+    elif browser_debug_port > 0:
+        summary["remaining_process_count"] = _count_browser_processes_by_debug_port(
+            browser_debug_port,
+            only_orphans=False,
+        )
 
-    if close_errors and logger:
-        last_error = close_errors[-1]
-        logger.warning(f"     [Drission] 브라우저 종료 fallback 후 정리: {_exc_message(last_error)}")
+    if close_errors:
+        summary["error"] = " | ".join(_safe_exception_text(exc) for exc in close_errors[:3])
+        if logger:
+            last_error = close_errors[-1]
+            logger.warning(f"     [Drission] 브라우저 종료 fallback 후 정리: {_exc_message(last_error)}")
+
+    summary["elapsed_ms"] = int((time.time() - start_ts) * 1000)
+    if logger:
+        logger.info(
+            "     [Drission] cleanup summary: "
+            f"pid={summary['browser_pid'] or 0} "
+            f"port={summary['browser_debug_port'] or 0} "
+            f"initial={summary['initial_process_count']} "
+            f"killed={summary['killed_pid_tree_count']} "
+            f"remaining={summary['remaining_process_count']} "
+            f"user_dir={summary['user_data_dir'] or ''} "
+            f"elapsed_ms={summary['elapsed_ms']}"
+        )
+    return summary
 
 
 def _is_high_friction_domain(url_or_domain: str) -> bool:
@@ -4003,6 +4185,18 @@ def _prune_extra_tabs(page, logger=None, *, context: str = "", log_each: bool = 
         summary["skipped"] = "page_missing"
         return summary
     try:
+        fast_tab_ids = [
+            str(tab_id or "")
+            for tab_id in list(getattr(page, "tab_ids", []) or [])
+            if str(tab_id or "").strip()
+        ]
+        if len(fast_tab_ids) <= 1:
+            current_tab_id = str(getattr(page, "tab_id", "") or (fast_tab_ids[0] if fast_tab_ids else "") or "")
+            summary["before"] = len(fast_tab_ids)
+            summary["after"] = len(fast_tab_ids)
+            summary["kept_tab_id"] = current_tab_id[:8]
+            summary["skipped"] = "single_tab_fastpath"
+            return summary
         stable_page = _stabilize_live_tab(page, logger=logger, wait_s=0.8) or page
         probe_page = stable_page or page
         tab_controller = page
@@ -7335,6 +7529,28 @@ def download_with_drission(
     browser_launch_headless = False
     browser_launch_no_sandbox = False
     browser_init_attempts = []
+    browser_cleanup_summary = {
+        "browser_pid": 0,
+        "browser_debug_port": 0,
+        "user_data_dir": "",
+        "initial_process_count": 0,
+        "killed_pid_tree_count": 0,
+        "remaining_process_count": 0,
+        "page_quit_called": False,
+        "browser_quit_called": False,
+        "page_close_called": False,
+        "elapsed_ms": 0,
+        "error": "",
+    }
+    browser_session_cleanup_summary = {
+        "cleanup_dir": "",
+        "cleanup_requested": False,
+        "cleanup_dir_removed": False,
+        "cleanup_dir_exists_after": False,
+        "startup_artifacts_removed": 0,
+        "elapsed_ms": 0,
+        "error": "",
+    }
 
     def _make_browser_options():
         nonlocal browser_launch_port, browser_launch_display, browser_launch_headless, browser_launch_no_sandbox
@@ -7852,6 +8068,20 @@ def download_with_drission(
             "browser_launch_headless": bool(browser_launch_headless),
             "browser_launch_no_sandbox": bool(browser_launch_no_sandbox),
             "browser_init_attempts": list(browser_init_attempts),
+            "browser_cleanup_pid_tree_killed_count": int(browser_cleanup_summary.get("killed_pid_tree_count", 0) or 0),
+            "browser_cleanup_initial_process_count": int(browser_cleanup_summary.get("initial_process_count", 0) or 0),
+            "browser_cleanup_remaining_process_count": int(browser_cleanup_summary.get("remaining_process_count", 0) or 0),
+            "browser_cleanup_elapsed_ms": int(browser_cleanup_summary.get("elapsed_ms", 0) or 0),
+            "browser_cleanup_debug_port": int(browser_cleanup_summary.get("browser_debug_port", 0) or 0),
+            "browser_cleanup_user_data_dir": str(browser_cleanup_summary.get("user_data_dir") or ""),
+            "browser_cleanup_error": str(browser_cleanup_summary.get("error") or ""),
+            "browser_session_cleanup_requested": bool(browser_session_cleanup_summary.get("cleanup_requested")),
+            "browser_session_cleanup_dir": str(browser_session_cleanup_summary.get("cleanup_dir") or ""),
+            "browser_session_cleanup_dir_removed": bool(browser_session_cleanup_summary.get("cleanup_dir_removed")),
+            "browser_session_cleanup_dir_exists_after": bool(browser_session_cleanup_summary.get("cleanup_dir_exists_after")),
+            "browser_session_cleanup_artifacts_removed": int(browser_session_cleanup_summary.get("startup_artifacts_removed", 0) or 0),
+            "browser_session_cleanup_elapsed_ms": int(browser_session_cleanup_summary.get("elapsed_ms", 0) or 0),
+            "browser_session_cleanup_error": str(browser_session_cleanup_summary.get("error") or ""),
             "landing_challenge_detected": bool(
                 landing_state == "challenge_or_block" or canonical_reason in {"FAIL_BLOCK", "FAIL_CAPTCHA"}
             ),
@@ -7901,6 +8131,7 @@ def download_with_drission(
         return payload if return_detail else ok
 
     def _ret(ok, reason, evidence=None, stage="drission", http_status=None):
+        nonlocal browser_cleanup_summary, browser_session_cleanup_summary
         nonlocal landing_final_screenshot_path, landing_final_html_path
         canonical_reason = _canonicalize_download_reason(reason)
         if page and ((not ok) or is_aip_preview):
@@ -7933,8 +8164,8 @@ def download_with_drission(
                 os.rmdir(browser_tmp_root)
         except Exception:
             pass
-        _close_page_safely(page, logger, session_plan=session_plan)
-        _cleanup_browser_session_plan(session_plan, logger=logger)
+        browser_cleanup_summary = _close_page_safely(page, logger, session_plan=session_plan)
+        browser_session_cleanup_summary = _cleanup_browser_session_plan(session_plan, logger=logger)
         return payload
 
     def _sanitize_page_before_attempt(current_page):

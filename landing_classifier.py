@@ -50,6 +50,7 @@ DEFAULT_SETTLE_WAIT_SEC = float(os.getenv("LANDING_SETTLE_WAIT_SEC", "1.2"))
 DEFAULT_STABILIZE_POLLS = int(os.getenv("LANDING_STABILIZE_POLLS", "2"))
 DEFAULT_CHALLENGE_COOLDOWN_MULTIPLIER = float(os.getenv("LANDING_CHALLENGE_COOLDOWN_MULTIPLIER", "2.2"))
 DEFAULT_CHALLENGE_MIN_HOLDOFF_SEC = float(os.getenv("LANDING_CHALLENGE_MIN_HOLDOFF_SEC", "18"))
+DEFAULT_SUCCESS_COOLDOWN_MULTIPLIER = float(os.getenv("LANDING_SUCCESS_COOLDOWN_MULTIPLIER", "0.5"))
 PUBLISHER_CHALLENGE_COOLDOWN_MULTIPLIERS = {
     "spie": float(os.getenv("LANDING_SPIE_CHALLENGE_COOLDOWN_MULTIPLIER", "4.0")),
 }
@@ -449,12 +450,14 @@ def reserve_pacing_slot(
             now = time.monotonic()
             active_key = f"active::{pub}"
             last_finish_key = f"last_finish::{pub}"
+            next_ready_key = f"next_ready::{pub}"
             penalty_until_key = f"penalty_until::{pub}"
             active_count = int(shared_state.get(active_key, 0) or 0)
             last_finish = float(shared_state.get(last_finish_key, 0.0) or 0.0)
+            next_ready = float(shared_state.get(next_ready_key, last_finish) or last_finish or 0.0)
             penalty_until = float(shared_state.get(penalty_until_key, 0.0) or 0.0)
             last_global = float(shared_state.get("last_global_start", 0.0) or 0.0)
-            wait_pub = (last_finish + max(0.0, cooldown_sec) + jitter) - now
+            wait_pub = (next_ready + jitter) - now
             wait_penalty = penalty_until - now
             wait_global = (last_global + max(0.0, global_spacing_sec)) - now
             wait_sec = max(0.0, wait_pub, wait_penalty, wait_global)
@@ -479,6 +482,7 @@ def release_pacing_slot(
     publisher_key: str,
     classifier_state: str = "",
     reason_codes: Sequence[str] = (),
+    base_cooldown_sec: float = DEFAULT_PER_PUBLISHER_COOLDOWN_SEC,
 ) -> None:
     pub = str(publisher_key or "unknown")
     with shared_lock:
@@ -487,6 +491,12 @@ def release_pacing_slot(
         now = time.monotonic()
         shared_state[active_key] = max(0, current - 1)
         shared_state[f"last_finish::{pub}"] = now
+        next_ready = now + max(0.0, float(base_cooldown_sec or 0.0))
+        if str(classifier_state or "") in SUCCESS_STATES:
+            next_ready = now + (
+                max(0.0, float(base_cooldown_sec or 0.0))
+                * max(0.0, float(DEFAULT_SUCCESS_COOLDOWN_MULTIPLIER or 0.0))
+            )
         if str(classifier_state or "") == STATE_CHALLENGE_DETECTED:
             challenge_multiplier = float(
                 PUBLISHER_CHALLENGE_COOLDOWN_MULTIPLIERS.get(pub, DEFAULT_CHALLENGE_COOLDOWN_MULTIPLIER)
@@ -498,7 +508,10 @@ def release_pacing_slot(
                 challenge_min_holdoff,
                 max(0.0, DEFAULT_PER_PUBLISHER_COOLDOWN_SEC) * max(1.0, challenge_multiplier),
             )
-            shared_state[f"penalty_until::{pub}"] = now + float(challenge_holdoff)
+            penalty_until = now + float(challenge_holdoff)
+            shared_state[f"penalty_until::{pub}"] = penalty_until
+            next_ready = max(next_ready, penalty_until)
+        shared_state[f"next_ready::{pub}"] = next_ready
 
 
 def _strip_visible_text(html: str) -> str:

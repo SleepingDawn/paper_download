@@ -250,11 +250,27 @@ def landing_record_from_download_row(row: Dict[str, Any]) -> Dict[str, Any]:
         ),
         "download_source_category": str(row.get("download_source_category") or ""),
         "download_result_stage": str(row.get("download_result_stage") or ""),
+        "routing_action": str(row.get("routing_action") or ""),
+        "routing_skip_reason": str(row.get("routing_skip_reason") or ""),
         "browser_session_source": str(row.get("browser_session_source") or ""),
         "browser_session_decision_reason": str(row.get("browser_session_decision_reason") or ""),
         "browser_user_data_dir": str(row.get("browser_user_data_dir") or ""),
         "browser_effective_user_data_dir": str(row.get("browser_effective_user_data_dir") or ""),
         "browser_debug_address": str(row.get("browser_debug_address") or ""),
+        "browser_cleanup_pid_tree_killed_count": parse_int(row.get("browser_cleanup_pid_tree_killed_count")),
+        "browser_cleanup_initial_process_count": parse_int(row.get("browser_cleanup_initial_process_count")),
+        "browser_cleanup_remaining_process_count": parse_int(row.get("browser_cleanup_remaining_process_count")),
+        "browser_cleanup_elapsed_ms": parse_int(row.get("browser_cleanup_elapsed_ms")),
+        "browser_cleanup_debug_port": parse_int(row.get("browser_cleanup_debug_port")),
+        "browser_cleanup_user_data_dir": str(row.get("browser_cleanup_user_data_dir") or ""),
+        "browser_cleanup_error": str(row.get("browser_cleanup_error") or ""),
+        "browser_session_cleanup_requested": parse_bool(row.get("browser_session_cleanup_requested")),
+        "browser_session_cleanup_dir": str(row.get("browser_session_cleanup_dir") or ""),
+        "browser_session_cleanup_dir_removed": parse_bool(row.get("browser_session_cleanup_dir_removed")),
+        "browser_session_cleanup_dir_exists_after": parse_bool(row.get("browser_session_cleanup_dir_exists_after")),
+        "browser_session_cleanup_artifacts_removed": parse_int(row.get("browser_session_cleanup_artifacts_removed")),
+        "browser_session_cleanup_elapsed_ms": parse_int(row.get("browser_session_cleanup_elapsed_ms")),
+        "browser_session_cleanup_error": str(row.get("browser_session_cleanup_error") or ""),
         "aip_first_contact_policy": str(row.get("landing_aip_first_contact_policy") or ""),
         "aip_low_pressure_first_contact": parse_bool(row.get("landing_aip_low_pressure_first_contact")),
         "aip_direct_doi_path_used": parse_bool(row.get("landing_aip_direct_doi_path_used")),
@@ -369,6 +385,10 @@ def merge_landing_and_download_record(landing: Dict[str, Any], download: Dict[st
 
 def download_succeeded(record: Dict[str, Any]) -> bool:
     status = str(record.get("download_status") or "").strip().lower()
+    method = str(record.get("download_method") or "").strip().lower()
+    routing_action = str(record.get("routing_action") or "").strip().lower()
+    if status == "skipped" or method == "skip" or routing_action == "skip_non_target":
+        return False
     return status.startswith("success")
 
 
@@ -390,6 +410,11 @@ def download_source_bucket_from_record(record: Dict[str, Any]) -> str:
 def download_bucket_from_record(record: Dict[str, Any]) -> str:
     if not record:
         return "missing"
+    status = str(record.get("download_status") or "").strip().lower()
+    method = str(record.get("download_method") or "").strip().lower()
+    routing_action = str(record.get("routing_action") or "").strip().lower()
+    if status == "skipped" or method == "skip" or routing_action == "skip_non_target":
+        return "other_non_success"
     success_bucket = download_source_bucket_from_record(record)
     if success_bucket:
         return success_bucket
@@ -610,6 +635,20 @@ def main() -> int:
                 "landing_probe_browser_process_alive": landing.get("browser_process_alive", ""),
                 "landing_probe_page_access_ok": landing.get("page_access_ok", ""),
                 "landing_probe_page_probe_error": landing.get("page_probe_error", ""),
+                "browser_cleanup_pid_tree_killed_count": landing.get("browser_cleanup_pid_tree_killed_count", ""),
+                "browser_cleanup_initial_process_count": landing.get("browser_cleanup_initial_process_count", ""),
+                "browser_cleanup_remaining_process_count": landing.get("browser_cleanup_remaining_process_count", ""),
+                "browser_cleanup_elapsed_ms": landing.get("browser_cleanup_elapsed_ms", ""),
+                "browser_cleanup_debug_port": landing.get("browser_cleanup_debug_port", ""),
+                "browser_cleanup_user_data_dir": landing.get("browser_cleanup_user_data_dir", ""),
+                "browser_cleanup_error": landing.get("browser_cleanup_error", ""),
+                "browser_session_cleanup_requested": landing.get("browser_session_cleanup_requested", ""),
+                "browser_session_cleanup_dir": landing.get("browser_session_cleanup_dir", ""),
+                "browser_session_cleanup_dir_removed": landing.get("browser_session_cleanup_dir_removed", ""),
+                "browser_session_cleanup_dir_exists_after": landing.get("browser_session_cleanup_dir_exists_after", ""),
+                "browser_session_cleanup_artifacts_removed": landing.get("browser_session_cleanup_artifacts_removed", ""),
+                "browser_session_cleanup_elapsed_ms": landing.get("browser_session_cleanup_elapsed_ms", ""),
+                "browser_session_cleanup_error": landing.get("browser_session_cleanup_error", ""),
                 "landing_final_active_tab_id": landing.get("final_active_tab_id", ""),
                 "landing_final_total_tab_count": landing.get("final_total_tab_count", ""),
                 "landing_peak_tab_count_observed": landing.get("peak_tab_count_observed", ""),
@@ -871,6 +910,20 @@ def main() -> int:
         "landing_probe_browser_user_data_dir",
         "landing_probe_browser_effective_user_data_dir",
         "landing_probe_browser_debug_address",
+        "browser_cleanup_pid_tree_killed_count",
+        "browser_cleanup_initial_process_count",
+        "browser_cleanup_remaining_process_count",
+        "browser_cleanup_elapsed_ms",
+        "browser_cleanup_debug_port",
+        "browser_cleanup_user_data_dir",
+        "browser_cleanup_error",
+        "browser_session_cleanup_requested",
+        "browser_session_cleanup_dir",
+        "browser_session_cleanup_dir_removed",
+        "browser_session_cleanup_dir_exists_after",
+        "browser_session_cleanup_artifacts_removed",
+        "browser_session_cleanup_elapsed_ms",
+        "browser_session_cleanup_error",
         "landing_aip_first_contact_policy",
         "landing_aip_low_pressure_first_contact",
         "landing_aip_direct_doi_path_used",

@@ -14,6 +14,7 @@ import pandas as pd
 from tqdm import tqdm
 
 from config import get_config
+from pdf_pipeline import download_pdf as pipeline_download_pdf
 from landing_classifier import (
     STATE_BLANK_OR_INCOMPLETE,
     STATE_BROKEN_JS_SHELL,
@@ -75,6 +76,16 @@ FAILURE_REASON_ORDER = [
     REASON_FAIL_REDIRECT_LOOP,
     REASON_FAIL_UNKNOWN,
 ]
+
+DIRECT_SUPPORTING_MARKERS = (
+    "/suppl/",
+    "suppl_file",
+    "supporting",
+    "supplement",
+    "supplementary",
+    "_si_",
+    ".s001",
+)
 
 PACING_PROFILE_OVERRIDES = {
     "spie": {
@@ -262,6 +273,8 @@ def _result_template(doi: str, attempt: int, mode: str) -> Dict[str, Any]:
 
 
 def _status_text(result: Dict[str, Any]) -> str:
+    if _is_skip_result(result):
+        return "Skipped"
     if result.get("success"):
         method = result.get("method") or "unknown"
         return f"Success ({method})"
@@ -284,6 +297,88 @@ def _normalize_reason(reason: Optional[str], http_status: Optional[int] = None) 
     if reason == "FAIL_BLOCK":
         return REASON_FAIL_HTTP_STATUS if http_status else REASON_FAIL_BLOCK
     return reason
+
+
+def _direct_pdf_candidate_signals(pdf_url: str, doi: str) -> Dict[str, Any]:
+    clean_url = str(pdf_url or "").strip()
+    doi_norm = str(doi or "").strip().lower()
+    low_url = clean_url.lower()
+    signals: List[str] = []
+    kind = "unknown"
+    confidence = ""
+    believed_primary = False
+    if any(marker in low_url for marker in DIRECT_SUPPORTING_MARKERS):
+        kind = "supporting"
+        confidence = "low"
+        signals.append("candidate_url_supporting_marker")
+        return {
+            "download_candidate_source": "input_pdf_url",
+            "download_candidate_url": clean_url,
+            "download_candidate_kind": kind,
+            "primary_pdf_ready": False,
+            "target_match_signals": signals,
+            "final_pdf_confidence": confidence,
+            "final_pdf_believed_primary": believed_primary,
+        }
+    if doi_norm and doi_norm in low_url:
+        signals.append("candidate_url_contains_target_doi")
+        kind = "primary"
+        confidence = "high"
+        believed_primary = True
+    elif low_url.endswith(".pdf"):
+        signals.append("candidate_url_pdf_suffix")
+        confidence = "medium"
+    return {
+        "download_candidate_source": "input_pdf_url",
+        "download_candidate_url": clean_url,
+        "download_candidate_kind": kind,
+        "primary_pdf_ready": kind == "primary",
+        "target_match_signals": signals,
+        "final_pdf_confidence": confidence,
+        "final_pdf_believed_primary": believed_primary,
+    }
+
+
+def _attempt_direct_pdf_requests_fallback(
+    pdf_url: str,
+    save_path: str,
+    doi: str,
+) -> Dict[str, Any]:
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        ),
+        "Referer": f"https://doi.org/{doi}" if str(doi or "").strip() else "https://doi.org/",
+        "Accept": "application/pdf,application/x-pdf,*/*",
+    }
+    attempt = pipeline_download_pdf(
+        pdf_url,
+        save_path,
+        strategy_mode="baseline",
+        timeout=15,
+        min_size=1024,
+        headers=headers,
+        strategy_name="direct_oa_urlfetch",
+        phase="direct_oa",
+    )
+    evidence = [
+        f"status_code={attempt.status_code}",
+        f"content_type={attempt.content_type}",
+        f"content_disposition={attempt.content_disposition}",
+        f"content_length={attempt.content_length}",
+        f"redirect_chain={' -> '.join(attempt.redirect_chain)}",
+        f"first_bytes={attempt.first_bytes}",
+        f"elapsed_ms={attempt.elapsed_ms}",
+        f"strategy={attempt.strategy}",
+        f"phase={attempt.phase}",
+    ]
+    return {
+        "ok": bool(attempt.success),
+        "reason": str(attempt.reason if not attempt.success else REASON_SUCCESS),
+        "http_status": attempt.status_code,
+        "evidence": evidence,
+    }
 
 
 def _write_worker_failure_note(
@@ -424,6 +519,13 @@ def _has_environment_or_config_failure(result: Dict[str, Any]) -> bool:
     return bool(reason == REASON_FAIL_UNKNOWN and stage in {"init", "drission-init"})
 
 
+def _is_skip_result(result: Dict[str, Any]) -> bool:
+    status = str(result.get("status") or "").strip().lower()
+    method = str(result.get("method") or "").strip().lower()
+    routing_action = str(result.get("routing_action") or "").strip().lower()
+    return status == "skipped" or method == "skip" or routing_action == "skip_non_target"
+
+
 def _classify_experiment_landing_bucket(result: Dict[str, Any]) -> str:
     if bool(result.get("landing_success")):
         return "landing_success"
@@ -461,6 +563,8 @@ def _classify_experiment_landing_bucket(result: Dict[str, Any]) -> str:
 
 
 def _classify_experiment_download_bucket(result: Dict[str, Any]) -> str:
+    if _is_skip_result(result):
+        return "other_non_success"
     if bool(result.get("success")):
         return "download_success"
     if _has_environment_or_config_failure(result):
@@ -497,7 +601,7 @@ def _classify_experiment_download_bucket(result: Dict[str, Any]) -> str:
 
 
 def _classify_download_source_category(result: Dict[str, Any]) -> str:
-    if not bool(result.get("success")):
+    if _is_skip_result(result) or not bool(result.get("success")):
         return "not_downloaded"
     method = str(result.get("method") or "").strip().lower()
     stage = str(result.get("stage") or "").strip().lower()
@@ -674,6 +778,7 @@ def _single_download_attempt(
     filename = _sanitize_doi_to_filename(doi or raw_doi or title or pdf_url_oa or "unknown_target")
     full_path = os.path.join(pdf_save_dir, filename)
     is_ssrn_doi = doi.lower().startswith("10.2139/ssrn.")
+    direct_pdf_signals = _direct_pdf_candidate_signals(pdf_url_oa, doi or raw_doi)
 
     if bool(routing.get("routing_skip")):
         logger = setup_logger(artifact_dir, filename)
@@ -780,6 +885,10 @@ def _single_download_attempt(
             if cffi.get("ok"):
                 return {
                     **result,
+                    **direct_pdf_signals,
+                    "download_attempted": True,
+                    "download_strategy_used": "direct_oa_cffi",
+                    "download_attempt_history": [json.dumps({"strategy": "direct_oa_cffi", "reason": REASON_SUCCESS}, ensure_ascii=False)],
                     "status": "Success",
                     "reason": REASON_SUCCESS,
                     "method": "direct_oa",
@@ -798,11 +907,38 @@ def _single_download_attempt(
             if cffi.get("reason") in (REASON_FAIL_CAPTCHA, REASON_FAIL_BLOCK, REASON_FAIL_ACCESS_RIGHTS):
                 return {
                     **result,
+                    **direct_pdf_signals,
+                    "download_attempted": True,
+                    "download_strategy_used": "direct_oa_cffi",
+                    "download_attempt_history": [json.dumps(item, ensure_ascii=False) for item in attempt_trace],
                     "reason": _normalize_reason(cffi.get("reason"), cffi.get("http_status")),
                     "stage": "direct_oa",
                     "evidence": cffi.get("evidence", []) + [json.dumps({"trace": attempt_trace}, ensure_ascii=False)],
                     "domain": _domain_from_url(pdf_url_oa),
                     "http_status": cffi.get("http_status"),
+                }
+            direct_requests = _attempt_direct_pdf_requests_fallback(pdf_url_oa, full_path, doi or raw_doi)
+            attempt_trace.append(
+                {
+                    "strategy": "direct_oa_urlfetch",
+                    "reason": _normalize_reason(direct_requests.get("reason"), direct_requests.get("http_status")),
+                    "http_status": direct_requests.get("http_status"),
+                    "evidence": direct_requests.get("evidence", []),
+                }
+            )
+            if direct_requests.get("ok"):
+                return {
+                    **result,
+                    **direct_pdf_signals,
+                    "download_attempted": True,
+                    "download_strategy_used": "direct_oa_urlfetch",
+                    "download_attempt_history": [json.dumps(item, ensure_ascii=False) for item in attempt_trace],
+                    "status": "Success",
+                    "reason": REASON_SUCCESS,
+                    "method": "direct_oa",
+                    "success": True,
+                    "stage": "direct_oa_urlfetch",
+                    "domain": _domain_from_url(pdf_url_oa),
                 }
 
     def _run_drission_result() -> Dict[str, Any]:
@@ -822,11 +958,25 @@ def _single_download_attempt(
         dr_common = {
             "landing_attempted": bool(dr.get("landing_attempted")),
             "landing_success": bool(dr.get("landing_success")),
+            "landing_observed": bool(dr.get("landing_observed")),
             "landing_state": str(dr.get("landing_state") or "not_attempted"),
             "landing_url": str(dr.get("landing_url") or ""),
             "landing_title": str(dr.get("landing_title") or ""),
             "landing_timestamp_ms": int(dr.get("landing_timestamp_ms", 0) or 0),
             "landing_initial_target_url": str(dr.get("landing_initial_target_url") or ""),
+            "download_attempted": bool(dr.get("download_attempted")),
+            "download_strategy_used": str(dr.get("download_strategy_used") or ""),
+            "download_attempt_history": list(dr.get("download_attempt_history") or []),
+            "download_candidate_source": str(dr.get("download_candidate_source") or ""),
+            "download_candidate_url": str(dr.get("download_candidate_url") or ""),
+            "download_candidate_kind": str(dr.get("download_candidate_kind") or ""),
+            "primary_pdf_ready": bool(dr.get("primary_pdf_ready")),
+            "target_match_signals": list(dr.get("target_match_signals") or []),
+            "final_pdf_confidence": str(dr.get("final_pdf_confidence") or ""),
+            "final_pdf_believed_primary": bool(dr.get("final_pdf_believed_primary")),
+            "extracted_resource_url": str(dr.get("extracted_resource_url") or ""),
+            "extracted_resource_source": str(dr.get("extracted_resource_source") or ""),
+            "failure_stage": str(dr.get("failure_stage") or ""),
             "browser_session_mode": str(dr.get("browser_session_mode") or ""),
             "browser_session_source": str(dr.get("browser_session_source") or ""),
             "browser_session_decision_reason": str(dr.get("browser_session_decision_reason") or ""),
@@ -841,6 +991,20 @@ def _single_download_attempt(
             "browser_launch_headless": bool(dr.get("browser_launch_headless")),
             "browser_launch_no_sandbox": bool(dr.get("browser_launch_no_sandbox")),
             "browser_init_attempts": list(dr.get("browser_init_attempts") or []),
+            "browser_cleanup_pid_tree_killed_count": int(dr.get("browser_cleanup_pid_tree_killed_count", 0) or 0),
+            "browser_cleanup_initial_process_count": int(dr.get("browser_cleanup_initial_process_count", 0) or 0),
+            "browser_cleanup_remaining_process_count": int(dr.get("browser_cleanup_remaining_process_count", 0) or 0),
+            "browser_cleanup_elapsed_ms": int(dr.get("browser_cleanup_elapsed_ms", 0) or 0),
+            "browser_cleanup_debug_port": int(dr.get("browser_cleanup_debug_port", 0) or 0),
+            "browser_cleanup_user_data_dir": str(dr.get("browser_cleanup_user_data_dir") or ""),
+            "browser_cleanup_error": str(dr.get("browser_cleanup_error") or ""),
+            "browser_session_cleanup_requested": bool(dr.get("browser_session_cleanup_requested")),
+            "browser_session_cleanup_dir": str(dr.get("browser_session_cleanup_dir") or ""),
+            "browser_session_cleanup_dir_removed": bool(dr.get("browser_session_cleanup_dir_removed")),
+            "browser_session_cleanup_dir_exists_after": bool(dr.get("browser_session_cleanup_dir_exists_after")),
+            "browser_session_cleanup_artifacts_removed": int(dr.get("browser_session_cleanup_artifacts_removed", 0) or 0),
+            "browser_session_cleanup_elapsed_ms": int(dr.get("browser_session_cleanup_elapsed_ms", 0) or 0),
+            "browser_session_cleanup_error": str(dr.get("browser_session_cleanup_error") or ""),
             "landing_challenge_detected": bool(dr.get("landing_challenge_detected")),
             "landing_default_page_detected": bool(dr.get("landing_default_page_detected")),
             "landing_default_page_kind": str(dr.get("landing_default_page_kind") or ""),
@@ -1089,6 +1253,7 @@ def download_process_worker(
                 publisher_key=publisher_key,
                 classifier_state=_download_result_to_pacing_state(last_result or {}),
                 reason_codes=[],
+                base_cooldown_sec=effective_publisher_cooldown_sec,
             )
 
 
@@ -1849,6 +2014,20 @@ def main(
     df["landing_probe_browser_process_alive"] = [bool(r.get("landing_probe_browser_process_alive")) for r in final_results]
     df["landing_probe_page_access_ok"] = [bool(r.get("landing_probe_page_access_ok")) for r in final_results]
     df["landing_probe_page_probe_error"] = [str(r.get("landing_probe_page_probe_error") or "") for r in final_results]
+    df["browser_cleanup_pid_tree_killed_count"] = [int(r.get("browser_cleanup_pid_tree_killed_count", 0) or 0) for r in final_results]
+    df["browser_cleanup_initial_process_count"] = [int(r.get("browser_cleanup_initial_process_count", 0) or 0) for r in final_results]
+    df["browser_cleanup_remaining_process_count"] = [int(r.get("browser_cleanup_remaining_process_count", 0) or 0) for r in final_results]
+    df["browser_cleanup_elapsed_ms"] = [int(r.get("browser_cleanup_elapsed_ms", 0) or 0) for r in final_results]
+    df["browser_cleanup_debug_port"] = [int(r.get("browser_cleanup_debug_port", 0) or 0) for r in final_results]
+    df["browser_cleanup_user_data_dir"] = [str(r.get("browser_cleanup_user_data_dir") or "") for r in final_results]
+    df["browser_cleanup_error"] = [str(r.get("browser_cleanup_error") or "") for r in final_results]
+    df["browser_session_cleanup_requested"] = [bool(r.get("browser_session_cleanup_requested")) for r in final_results]
+    df["browser_session_cleanup_dir"] = [str(r.get("browser_session_cleanup_dir") or "") for r in final_results]
+    df["browser_session_cleanup_dir_removed"] = [bool(r.get("browser_session_cleanup_dir_removed")) for r in final_results]
+    df["browser_session_cleanup_dir_exists_after"] = [bool(r.get("browser_session_cleanup_dir_exists_after")) for r in final_results]
+    df["browser_session_cleanup_artifacts_removed"] = [int(r.get("browser_session_cleanup_artifacts_removed", 0) or 0) for r in final_results]
+    df["browser_session_cleanup_elapsed_ms"] = [int(r.get("browser_session_cleanup_elapsed_ms", 0) or 0) for r in final_results]
+    df["browser_session_cleanup_error"] = [str(r.get("browser_session_cleanup_error") or "") for r in final_results]
     df["landing_controller_page_reused"] = [bool(r.get("landing_controller_page_reused")) for r in final_results]
     df["landing_controller_reuse_allowed"] = [bool(r.get("landing_controller_reuse_allowed")) for r in final_results]
     df["landing_controller_restart_reason"] = [str(r.get("landing_controller_restart_reason") or "") for r in final_results]
