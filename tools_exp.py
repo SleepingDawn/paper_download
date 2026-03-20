@@ -22,7 +22,13 @@ from bs4 import BeautifulSoup
 from curl_cffi import requests as cffi_requests # 이름 충돌 방지
 from DrissionPage import ChromiumPage, ChromiumOptions
 from DrissionPage.common import Keys
-from config import WILEY_API_KEY
+from config import (
+    ELSEVIER_API_KEY,
+    IEEE_API_KEY,
+    SPRINGER_META_API_KEY,
+    SPRINGER_OPEN_ACCESS_API_KEY,
+    WILEY_API_KEY,
+)
 from pdf_pipeline import (
     REASON_FAIL_HTTP_STATUS,
     REASON_FAIL_REDIRECT_LOOP,
@@ -9969,6 +9975,7 @@ PREFIX_EXACT_MAP: Dict[str, str] = {
     "10.1016": "ELSEVIER",
     "10.1002": "WILEY",
     "10.1111": "WILEY",
+    "10.1371": "PLOS",
     # CELL은 DOI prefix만으로 ELSEVIER(10.1016)와 분리가 어려움
 }
 
@@ -10016,6 +10023,10 @@ def normalize_publisher_label(raw_name: str, prefix: Optional[str] = None) -> Op
     # WILEY
     if ("wiley" in n) or ("advanced materials" in n):
         return "WILEY"
+
+    # PLOS
+    if ("public library of science" in n) or re.search(r"\bplos\b", n):
+        return "PLOS"
 
     # CELL (Cell Press 등)
     if ("cell press" in n) or re.search(r"\bcell\b", n):
@@ -10154,19 +10165,174 @@ def download_via_wiley(doi: str, output_path: str, logger = None):
         # Provide a more specific hint on failure
         raise Exception(
             f"Wiley API download failed: {e}. Ensure your API key is correct and you have access rights.")
-        
-def download_via_springerpdf(doi: str, output_path: str, logger = None):
-    """
-    Download the PDF of a Springer article (including Nature) by constructing the direct PDF URL.
-    Note: This method mimics a browser and may not work for bulk or for closed-access content.
-    """
-    pdf_url = f"https://nature.com/articles/{doi}.pdf"
+
+def _download_pdf_via_validated_request(
+    url: str,
+    output_path: str,
+    headers: Optional[Dict[str, str]] = None,
+    logger=None,
+    strategy_name: str = "publisher_api",
+) -> bool:
+    attempt = download_pdf(
+        url,
+        output_path,
+        strategy_mode="baseline",
+        timeout=30,
+        min_size=1024,
+        headers=headers,
+        strategy_name=strategy_name,
+        phase="api",
+    )
+    if attempt.success:
+        return True
+    if logger:
+        logger.warning(
+            f"[{strategy_name}] PDF download failed: reason={attempt.reason}, "
+            f"status={attempt.status_code}, final_url={attempt.final_url}"
+        )
+    return False
+
+
+def download_via_elsevier_api(doi: str, output_path: str, logger=None) -> bool:
+    api_key = ELSEVIER_API_KEY
+    if not api_key:
+        raise Exception("ELSEVIER_API_KEY is not set. Please configure your Elsevier API key.")
+    quoted_doi = quote(str(doi or "").strip(), safe="")
+    url = f"https://api.elsevier.com/content/article/doi/{quoted_doi}"
     headers = {
-        "User-Agent": "Mozilla/5.0",
-        "Referer": f"https://nature.com/articles/{doi}"
+        "X-ELS-APIKey": api_key,
+        "Accept": "application/pdf",
+        "User-Agent": "python-requests/doi-pdf-downloader",
     }
-    referer = headers["Referer"]
-    return bool(download_with_cffi(pdf_url, output_path, referer, logger=logger))
+    return _download_pdf_via_validated_request(url, output_path, headers=headers, logger=logger, strategy_name="elsevier_api")
+
+
+def resolve_ieee_article_number_and_pdf_url(doi: str) -> tuple[str, str, str]:
+    api_key = IEEE_API_KEY
+    if not api_key:
+        raise Exception("IEEE_API_KEY is not set. Please configure your IEEE API key.")
+    response = requests.get(
+        "https://ieeexploreapi.ieee.org/api/v1/search/articles",
+        params={"apikey": api_key, "format": "json", "doi": str(doi or "").strip()},
+        timeout=30,
+    )
+    response.raise_for_status()
+    payload = response.json() or {}
+    records = payload.get("articles") or payload.get("records") or payload.get("article") or []
+    if isinstance(records, dict):
+        records = [records]
+    if not records:
+        raise Exception(f"IEEE metadata lookup returned no records for doi={doi}")
+    first_record = records[0] or {}
+    article_number = str(first_record.get("article_number") or "").strip()
+    if not article_number:
+        raise Exception(f"IEEE metadata record did not contain article_number for doi={doi}")
+    pdf_url = f"https://ieeexplore.ieee.org/stampPDF/getPDF.jsp?tp=&arnumber={quote(article_number, safe='')}&ref="
+    referer = str(first_record.get("html_url") or f"https://ieeexplore.ieee.org/document/{article_number}/").strip()
+    return article_number, pdf_url, referer
+
+
+def download_via_ieee_api(doi: str, output_path: str, logger=None) -> bool:
+    resolve_ieee_article_number_and_pdf_url(doi)
+    return False
+    
+
+
+def _springer_pdf_url_from_records(records: Any) -> str:
+    if isinstance(records, dict):
+        records = [records]
+    for record in records or []:
+        for entry in record.get("url") or []:
+            if str((entry or {}).get("format") or "").strip().lower() == "pdf":
+                value = str((entry or {}).get("value") or "").strip()
+                if value:
+                    return value
+    return ""
+
+
+def _springer_find_pdf_url_via_api(doi: str, endpoint: str, api_key: str, timeout: int = 30) -> str:
+    if not api_key:
+        return ""
+    queries = (f'doi:"{doi}"', f"doi:{doi}")
+    for query in queries:
+        response = requests.get(endpoint, params={"q": query, "api_key": api_key}, timeout=timeout)
+        response.raise_for_status()
+        payload = response.json() or {}
+        records = payload.get("records") or []
+        pdf_url = _springer_pdf_url_from_records(records)
+        if pdf_url:
+            return pdf_url
+    return ""
+
+
+def download_via_springer_nature_api(doi: str, output_path: str, logger=None) -> bool:
+    openaccess_key = SPRINGER_OPEN_ACCESS_API_KEY
+    meta_key = SPRINGER_META_API_KEY
+    if not openaccess_key and not meta_key:
+        raise Exception(
+            "SPRINGER_OPEN_ACCESS_API_KEY or SPRINGER_META_API_KEY is not set. "
+            "Please configure your Springer Nature API keys."
+        )
+
+    pdf_url = ""
+    if openaccess_key:
+        pdf_url = _springer_find_pdf_url_via_api(
+            doi,
+            "https://api.springernature.com/openaccess/json",
+            openaccess_key,
+        )
+    if not pdf_url and meta_key:
+        for endpoint in (
+            "https://api.springernature.com/metadata/json",
+            "https://api.springernature.com/meta/v2/json",
+        ):
+            try:
+                pdf_url = _springer_find_pdf_url_via_api(doi, endpoint, meta_key)
+            except Exception:
+                pdf_url = ""
+            if pdf_url:
+                break
+
+    if pdf_url:
+        return _download_pdf_via_validated_request(
+            pdf_url,
+            output_path,
+            logger=logger,
+            strategy_name="springer_nature_api_pdf",
+        )
+
+    raise Exception(f"Springer Nature metadata lookup returned no PDF URL for doi={doi}")
+
+
+def _plos_pdf_url_from_article_html(article_html: str) -> str:
+    soup = BeautifulSoup(str(article_html or ""), "html.parser")
+    meta = soup.find("meta", attrs={"name": "citation_pdf_url"})
+    if not meta:
+        return ""
+    return str(meta.get("content") or "").strip()
+
+
+def download_via_plos(doi: str, output_path: str, logger=None) -> bool:
+    plos_search_url = "https://api.plos.org/search"
+    requests.get(
+        plos_search_url,
+        params={"q": f'id:"{doi}"', "fl": "id,journal", "wt": "json", "rows": 1},
+        timeout=20,
+    )
+    article_response = requests.get(
+        f"https://doi.org/{quote(str(doi or '').strip(), safe='')}",
+        headers={"Accept": "text/html", "User-Agent": "python-requests/doi-pdf-downloader"},
+        timeout=30,
+    )
+    article_response.raise_for_status()
+    pdf_url = _plos_pdf_url_from_article_html(article_response.text)
+    if not pdf_url:
+        pdf_url = f"https://journals.plos.org/plosone/article/file?id={quote(str(doi or '').strip(), safe='')}&type=printable"
+    headers = {
+        "User-Agent": "python-requests/doi-pdf-downloader",
+        "Referer": article_response.url,
+    }
+    return _download_pdf_via_validated_request(pdf_url, output_path, headers=headers, logger=logger, strategy_name="plos_pdf")
     
 def download_using_api(doi: str, output_path: str, publisher: str, logger = None):
     """
@@ -10175,7 +10341,11 @@ def download_using_api(doi: str, output_path: str, publisher: str, logger = None
     """
     TOOL_FUNCTIONS = {
         "wiley": download_via_wiley,
-        "nature": download_via_springerpdf,
+        "nature": download_via_springer_nature_api,
+        "springer": download_via_springer_nature_api,
+        "elsevier": download_via_elsevier_api,
+        "ieee": download_via_ieee_api,
+        "plos": download_via_plos,
         "acs": download_via_acspdf,
         "aip": download_via_aippdf,
         "iop": download_via_ioppdf,

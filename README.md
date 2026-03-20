@@ -113,7 +113,29 @@ python3 scripts/check_linux_seed_profile.py \
   --profile-name Default
 ```
 
-### 5. 서버 전용 env 파일 생성
+### 5. API key / mailto 로컬 비밀값 설정
+
+API key와 mailto는 tracked Python/config 파일에 직접 넣지 말고, repo root의 `.env`에서 관리합니다.
+
+```bash
+cd /home/yongyong0206/paper_search/paper_download
+cp .env.example .env
+```
+
+`.env` 예시:
+
+```dotenv
+WILEY_API_KEY=...
+OPENALEX_MAILTO=your_email@example.com
+```
+
+동작 방식:
+
+- [config.py](/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/config.py)와 [openalex_search.py](/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/openalex_search.py)는 시작 시 repo root의 `.env`를 자동 로드합니다.
+- 실제 `.env`는 [`.gitignore`](/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/.gitignore)에 의해 추적되지 않습니다.
+- 커밋 대상은 [`.env.example`](/Users/seyong/Desktop/SNU/26W_MDIL_Intern/paper_search/paper_download/.env.example)만 유지합니다.
+
+### 6. 서버 전용 env 파일 생성
 
 `config/linux_server.env`는 커밋 대상이 아니라, 서버에서 생성하는 machine-local 설정 파일입니다.
 

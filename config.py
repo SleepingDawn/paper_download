@@ -1,9 +1,17 @@
 import argparse
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 CHROME_PATH = os.environ.get("CHROME_PATH", "")
 
-WILEY_API_KEY = "b4b01dd9-bf66-4a57-a791-0e7f3ff95a39"
+WILEY_API_KEY = os.environ.get("WILEY_API_KEY", "").strip()
+ELSEVIER_API_KEY = os.environ.get("ELSEVIER_API_KEY", "").strip()
+IEEE_API_KEY = os.environ.get("IEEE_API_KEY", "").strip()
+SPRINGER_OPEN_ACCESS_API_KEY = os.environ.get("SPRINGER_OPEN_ACCESS_API_KEY", "").strip()
+SPRINGER_META_API_KEY = os.environ.get("SPRINGER_META_API_KEY", "").strip()
 
 DEFAULT_DOWNLOAD_DIR = "./downloaded_files"
 DEFAULT_OUTPUT_DIR = "outputs/paper_download_run"

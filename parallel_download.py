@@ -36,6 +36,7 @@ from tools_exp import (
     ensure_runtime_profile_ready,
     normalize_publisher_label,
     reap_stale_drission_orphan_browsers,
+    resolve_ieee_article_number_and_pdf_url,
     resolve_browser_execution_env,
     resolve_browser_executable,
     resolve_runtime_preset,
@@ -94,7 +95,7 @@ PACING_PROFILE_OVERRIDES = {
         "global_spacing_multiplier": 2.0,
     },
 }
-API_SUPPORTED_PUBLISHERS = {"wiley", "nature", "acs", "aip", "iop"}
+API_SUPPORTED_PUBLISHERS = {"wiley", "nature", "springer", "elsevier", "ieee", "plos", "acs", "aip", "iop"}
 
 
 def _resolve_worker_max_tasks_per_child() -> Optional[int]:
@@ -943,18 +944,40 @@ def _single_download_attempt(
 
     def _run_drission_result() -> Dict[str, Any]:
         chrome_path = resolve_browser_executable(os.environ.get("CHROME_PATH", ""), logger=logger)
-        with _temporary_browser_env(headless=headless, abort_on_landing_block=abort_on_landing_block):
-            dr = download_with_drission(
-                f"https://doi.org/{doi}",
-                pdf_save_dir,
-                filename,
-                chrome_path,
-                max_attempts=2 if mode == "deep" else 1,
-                logger=logger,
-                mode=mode,
-                return_detail=True,
-                artifact_root=artifact_dir,
-            )
+        dr = None
+        if publisher_key == "ieee":
+            try:
+                _, ieee_pdf_url, _ = resolve_ieee_article_number_and_pdf_url(doi)
+            except Exception:
+                ieee_pdf_url = ""
+            if ieee_pdf_url:
+                with _temporary_browser_env(headless=headless, abort_on_landing_block=abort_on_landing_block):
+                    dr = download_with_drission(
+                        ieee_pdf_url,
+                        pdf_save_dir,
+                        filename,
+                        chrome_path,
+                        max_attempts=2 if mode == "deep" else 1,
+                        logger=logger,
+                        mode=mode,
+                        return_detail=True,
+                        artifact_root=artifact_dir,
+                    )
+                if not dr.get("ok"):
+                    dr = None
+        if dr is None:
+            with _temporary_browser_env(headless=headless, abort_on_landing_block=abort_on_landing_block):
+                dr = download_with_drission(
+                    f"https://doi.org/{doi}",
+                    pdf_save_dir,
+                    filename,
+                    chrome_path,
+                    max_attempts=2 if mode == "deep" else 1,
+                    logger=logger,
+                    mode=mode,
+                    return_detail=True,
+                    artifact_root=artifact_dir,
+                )
         dr_common = {
             "landing_attempted": bool(dr.get("landing_attempted")),
             "landing_success": bool(dr.get("landing_success")),

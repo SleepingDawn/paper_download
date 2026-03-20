@@ -5,9 +5,12 @@ import argparse
 import pandas as pd
 import time
 import requests
+from dotenv import load_dotenv
 from difflib import SequenceMatcher
 from typing import Dict, List, Optional, Iterable, Any, Tuple
 from urllib.parse import urlparse, unquote
+
+load_dotenv()
 
 OPENALEX_ENDPOINT = "https://api.openalex.org/works"
 OPENALEX_MAILTO = os.environ.get("OPENALEX_MAILTO", "yongyong0206@snu.ac.kr").strip() or "yongyong0206@snu.ac.kr"
