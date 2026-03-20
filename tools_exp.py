@@ -5262,7 +5262,13 @@ def _has_article_signal(title: str = "", html: str = "") -> bool:
         "/doi/pdf/",
         "/pdfft?",
     )
-    if len(t) >= 35 and not any(k in t for k in hard_block_title):
+    title_urlish = (
+        t.startswith("http")
+        or ".org/" in t
+        or ".com/" in t
+        or ("/" in t and t.count(" ") <= 4)
+    )
+    if len(t) >= 35 and not any(k in t for k in hard_block_title) and not title_urlish:
         return True
     return any(m in h for m in markers)
 
@@ -5369,6 +5375,10 @@ def _has_bot_wall_text_signal(title: str = "", html: str = "") -> bool:
         "making sure you're not a bot",
         "making sure you are not a bot",
         "anubis",
+        "incapsula",
+        "_incapsula_resource",
+        "request unsuccessful. incapsula incident id",
+        "imperva",
     )
     return any(m in blob for m in other_bot_markers)
 
@@ -6250,6 +6260,10 @@ def detect_access_issue(title: str = "", html: str = "", http_status: int = None
         "cloudflare_error_1000",
         "/cdn-cgi/challenge",
         "unusual traffic",
+        "incapsula",
+        "_incapsula_resource",
+        "request unsuccessful. incapsula incident id",
+        "imperva",
     ]
 
     if http_status in (403, 429):
@@ -8190,12 +8204,24 @@ def download_with_drission(
                 step_label="post_nav",
             )
             if "spiedigitallibrary.org" in current_domain:
-                _wait_for_spie_article_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 7)
+                spie_ready = _wait_for_spie_article_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 7)
                 page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
                     page,
                     sync_tab=False,
                     step_label="post_spie_wait",
                 )
+                if not spie_ready:
+                    issue, evidence = detect_access_issue(
+                        title=page_title,
+                        html=page_html,
+                        url=page.url or "",
+                        domain=current_domain,
+                    )
+                    if issue in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
+                        _set_landing_state("challenge_or_block", False)
+                        return _ret(False, issue, list(evidence or []) + ["spie_article_ready_failed"], stage="landing")
+                    _set_landing_state("blank_or_incomplete", False)
+                    return _ret(False, "FAIL_BLOCK", ["spie_article_ready_failed"], stage="landing")
             if is_aip_preview:
                 page, page_title, page_html, aip_recovery_meta = _recover_aip_download_landing(
                     page,
@@ -8289,12 +8315,24 @@ def download_with_drission(
                         step_label="unexpected_retry_nav",
                     )
                     if "spiedigitallibrary.org" in current_domain:
-                        _wait_for_spie_article_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 7)
+                        spie_ready = _wait_for_spie_article_ready(page, logger=logger, timeout_s=10 if mode == "deep" else 7)
                         page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
                             page,
                             sync_tab=False,
                             step_label="unexpected_retry_spie_wait",
                         )
+                        if not spie_ready:
+                            issue, evidence = detect_access_issue(
+                                title=page_title,
+                                html=page_html,
+                                url=page.url or "",
+                                domain=current_domain,
+                            )
+                            if issue in ("FAIL_CAPTCHA", "FAIL_BLOCK"):
+                                _set_landing_state("challenge_or_block", False)
+                                return _ret(False, issue, list(evidence or []) + ["spie_article_ready_failed"], stage="landing")
+                            _set_landing_state("blank_or_incomplete", False)
+                            return _ret(False, "FAIL_BLOCK", ["spie_article_ready_failed"], stage="landing")
                     if is_aip_preview:
                         page, page_title, page_html, aip_recovery_meta = _recover_aip_download_landing(
                             page,
@@ -8630,7 +8668,9 @@ def download_with_drission(
                     page_title = page.title or ""
                     page_html = page.html or ""
                     _append_tab_lifecycle_event(page, "post_elsevier_click_flow")
-                    _prune_extra_tabs(page, logger=logger, context="elsevier_post_click")
+                    post_click_tab_state = _current_tab_state(page)
+                    if int(post_click_tab_state.get("total_tab_count", 0) or 0) > 1:
+                        _prune_extra_tabs(page, logger=logger, context="elsevier_post_click")
                     page, current_domain, referer_url, page_title, page_html = _refresh_page_context(
                         page,
                         sync_tab=False,
@@ -9266,6 +9306,12 @@ def download_with_drission(
                     )
                     if cffi_result.get("ok"):
                         return _ret(True, "SUCCESS", stage="cffi-download")
+                    try:
+                        _mark_download_attempt("requests_download", str(pdf_url or ""))
+                        if force_download_with_requests(page, pdf_url, referer_url or page.url, full_save_path, logger):
+                            return _ret(True, "SUCCESS", stage="requests-download")
+                    except Exception as e:
+                        _raise_if_browser_disconnect(e, logger=logger, context="requests-download")
                     return _ret(False, "FAIL_PARSE", ["sciencedirect_pdf_not_downloadable"], stage="drission")
 
                 if mode == "first":

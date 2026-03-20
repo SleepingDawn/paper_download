@@ -1374,6 +1374,66 @@ def _coerce_boolish(value: Any) -> bool:
     return bool(value)
 
 
+def _backfill_result_from_failure_note(result: Dict[str, Any]) -> Dict[str, Any]:
+    payload = dict(result or {})
+    note_path = str(payload.get("landing_failure_debug_note_path") or "").strip()
+    if not note_path or not os.path.exists(note_path):
+        return payload
+    try:
+        with open(note_path, "r", encoding="utf-8") as f:
+            note = json.load(f)
+    except Exception:
+        return payload
+
+    def _fill_bool(key: str) -> None:
+        if not _coerce_boolish(payload.get(key)) and _coerce_boolish(note.get(key)):
+            payload[key] = True
+
+    def _fill_str(key: str) -> None:
+        if not str(payload.get(key) or "").strip() and str(note.get(key) or "").strip():
+            payload[key] = note.get(key)
+
+    def _fill_list(key: str) -> None:
+        current = payload.get(key)
+        if isinstance(current, list) and current:
+            return
+        incoming = note.get(key)
+        if isinstance(incoming, list) and incoming:
+            payload[key] = incoming
+
+    for key in (
+        "landing_observed",
+        "download_attempted",
+        "primary_pdf_ready",
+        "final_pdf_believed_primary",
+        "screenshot_written",
+        "html_written",
+        "failure_evidence_written",
+    ):
+        _fill_bool(key)
+    for key in (
+        "download_strategy_used",
+        "download_candidate_source",
+        "download_candidate_url",
+        "download_candidate_kind",
+        "final_pdf_confidence",
+        "extracted_resource_url",
+        "extracted_resource_source",
+        "failure_stage",
+        "landing_state",
+        "landing_url",
+        "landing_title",
+        "landing_final_screenshot_path",
+        "landing_final_html_path",
+    ):
+        _fill_str(key)
+    for key in ("download_attempt_history", "target_match_signals", "evidence"):
+        _fill_list(key)
+    if not str(payload.get("reason") or "").strip() and str(note.get("reason") or "").strip():
+        payload["reason"] = note.get("reason")
+    return payload
+
+
 def _write_metadata_sidecars(df: pd.DataFrame, metadata_root_dir: str, pdf_root_dir: str) -> Dict[str, Any]:
     os.makedirs(metadata_root_dir, exist_ok=True)
     written = 0
@@ -1720,6 +1780,7 @@ def main(
     for item in deep_results:
         idx = item["index"]
         final_results[idx] = item
+    final_results = [_backfill_result_from_failure_note(r) for r in final_results]
     df["result"] = [_status_text(r) for r in final_results]
     df["source"] = [str(r.get("method") or "") for r in final_results]
     df["status"] = [str(r.get("status") or _status_text(r)) for r in final_results]

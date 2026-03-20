@@ -413,6 +413,18 @@ def resolve_download_target_record(input_row: Dict[str, Any]) -> Dict[str, Any]:
     current_doi = str(row.get("doi") or "").strip()
     publisher = str(row.get("publisher") or "").strip()
     pdf_url = str(row.get("pdf_url") or "").strip()
+    landing_url = str(
+        row.get("landing_page_url")
+        or row.get("best_oa_location_url")
+        or row.get("url")
+        or ""
+    ).strip()
+    source_display_name = str(
+        row.get("source_display_name")
+        or row.get("host_venue_display_name")
+        or row.get("journal")
+        or ""
+    ).strip()
     original_doi = str(row.get("original_doi") or "").strip()
     resolution_method = str(row.get("doi_resolution_method") or "").strip().lower()
     resolved_from_ssrn = str(row.get("resolved_from_ssrn") or "").strip().lower() in ("1", "true", "yes", "on")
@@ -421,11 +433,22 @@ def resolve_download_target_record(input_row: Dict[str, Any]) -> Dict[str, Any]:
     source_type = str(row.get("original_source_type") or row.get("journal_type") or "").strip().lower()
     publisher_low = publisher.lower()
     pdf_url_low = pdf_url.lower()
+    landing_url_low = landing_url.lower()
+    source_display_low = source_display_name.lower()
     doi_low = current_doi.lower()
 
     source_class = "standard"
     if doi_low.startswith("10.1149/ma"):
         source_class = "ecs_meeting_abstract"
+    elif (
+        doi_low.startswith("10.1117/")
+        or "spiedigitallibrary.org/" in pdf_url_low
+        or "spiedigitallibrary.org/" in landing_url_low
+        or publisher_low == "spie"
+        or source_display_low.startswith("spie ")
+        or source_display_low.endswith(" spie")
+    ):
+        source_class = "spie_digital_library"
     elif publisher_low == "spie" and not doi_low and not pdf_url_low:
         source_class = "spie_proceedings_abstract"
     elif _is_ssrn_doi(current_doi) or "ssrn" in publisher_low or "ssrn.com" in pdf_url_low or "papers.ssrn.com" in pdf_url_low:
@@ -496,6 +519,17 @@ def resolve_download_target_record(input_row: Dict[str, Any]) -> Dict[str, Any]:
                 "routing_skip": True,
                 "routing_skip_reason": "spie_proceedings_abstract_no_doi",
                 "routing_reason": "spie_without_doi_or_pdf_url",
+            }
+        )
+        return result
+
+    if source_class == "spie_digital_library":
+        result.update(
+            {
+                "routing_action": "skip_non_target",
+                "routing_skip": True,
+                "routing_skip_reason": "spie_digital_library_filtered",
+                "routing_reason": "spie_digital_library_runtime_skip",
             }
         )
         return result

@@ -5133,3 +5133,153 @@ bash scripts/collect_linux_suite_artifacts.sh <run-name>
   - no fresh Linux rerun has yet proven the new ACS guarded-click path on a live page
   - no saved artifact in the repo conclusively proves a prior primary-DOI run actually downloaded the wrong PDF and then deleted/replaced it
   - therefore the recurrence-prevention logic is now explicit and testable, but final live confirmation remains `[blocked]`
+
+## 5.50 OLED latest bundle triage: failed-3 root causes, SPIE skip fix, and targeted speed trims (2026-03-20)
+
+- analyzed artifact
+  - bundle:
+    - `experiment/results/oled_2025plus_top100_20260320_023432_bundle.tar.gz`
+  - extracted run root:
+    - `/private/tmp/oled_2025plus_top100_20260320_023432_bundle/outputs/linux_headless_suite_runs/oled_2025plus_top100_20260320_023432`
+  - primary evidence inspected:
+    - `download/run/openalex_search_results_parallel.csv`
+    - `download/run/failed_papers.csv`
+    - `download/run/download_attempts.jsonl`
+    - `download/run/summary.json`
+    - `summary/suite_summary.json`
+    - `logs/download.stderr.log`
+    - per-case failure note/html/screenshot artifacts
+
+- failed 3 cases
+  - `10.1016/j.ccr.2025.216433`
+    - publisher: Elsevier BV
+    - final state in bundle:
+      - `landing_state=success_landing`
+      - failure note showed `download_attempted=True`, primary `pdfft` candidate, `final_pdf_confidence=high`
+    - confirmed root cause:
+      - landed article page and extracted the correct ScienceDirect primary `pdfft` URL
+      - `drission_downloadkit` timed out and `cffi_download` returned viewer/html failure
+      - bundle note retained the real attempt history, but final CSV/result row lost those diagnostics
+    - implemented fix:
+      - after first-mode ScienceDirect CFFI failure, run a single `requests` cookie-aware fallback before final failure
+      - skip wasteful `elsevier_post_click` tab pruning when there is no actual multi-tab state
+      - backfill sparse final result rows from failure-note JSON so CSV/summary keep the same attempt/candidate evidence
+  - `10.1117/1.ap.7.3.034001`
+    - publisher: Advanced Photonics
+    - final state in bundle:
+      - `landing_state=success_landing`
+      - saved HTML was actually an Incapsula block page
+    - confirmed root cause:
+      - SPIE readiness logic treated a long URL-like title and weak page markers as article success
+      - current routing logic only skipped SPIE when `publisher=="spie"` and both DOI/PDF URL were missing
+      - this row had DOI `10.1117/...` and a `spiedigitallibrary.org` PDF URL, so it bypassed the intended skip path
+    - implemented fix:
+      - broadened SPIE classification to catch `10.1117/` and `spiedigitallibrary.org` sources even when publisher is a journal name
+      - route those rows to explicit `skip_non_target` with `routing_skip_reason=spie_digital_library_filtered`
+      - hardened bot-wall detection for Incapsula/Imperva markers
+      - made SPIE landing wait fail fast if article readiness is not actually reached
+      - prevented URL-like titles from counting as article success
+  - `10.1093/nsr/nwaf250`
+    - publisher: Oxford University Press
+    - final state in bundle:
+      - `landing_state=challenge_or_block`
+      - screenshot/html showed a real Cloudflare challenge page
+    - confirmed root cause:
+      - this was a genuine landing-time anti-bot challenge, not a misclassification
+      - no concrete evidence in the bundle showed a safe post-landing acquisition path that the current flow missed
+    - implemented effect:
+      - no speculative bypass was added
+      - failure remains classified as a real challenge/block and is now easier to contrast with false-success cases like SPIE
+
+- why SPIE was not skipped before
+  - Linux worker-side routing had only:
+    - `ecs_meeting_abstract` via DOI prefix `10.1149/ma`
+    - `spie_proceedings_abstract` only when `publisher=="spie"` and DOI/PDF URL were both absent
+  - the failing SPIE row had:
+    - DOI prefix `10.1117/`
+    - `pdf_url` on `spiedigitallibrary.org`
+    - publisher string `Advanced Photonics`
+  - therefore it never matched the old SPIE rule and entered the full browser workflow
+
+- timing bottlenecks found in the latest run
+  - bundle summary:
+    - elapsed seconds: about `1516s`
+    - integrated landing attempted: `28`
+    - failed: `3`
+  - per-attempt metrics from `download_attempts.jsonl`:
+    - `onlinelibrary.wiley.com`: 45 attempts, median `880ms`, zero successes on direct live attempt path
+    - `www.nature.com`: 12 attempts, median `2595ms`, zero direct live successes
+    - `pdf.sciencedirectassets.com`: 8 attempts, median `766ms`
+    - `pubs.rsc.org`: 3 attempts, median `3000ms`
+  - landing latency outliers from `openalex_search_results_parallel.csv`:
+    - AAAS / RSC around `42s`
+    - Elsevier median among multi-sample publishers was about `13s`
+  - concrete waste observed in logs:
+    - SPIE block page still waited and entered generic acquisition / heavy HTML analysis
+    - Elsevier click-failure path still ran post-click tab cleanup even when there was no real multi-tab cleanup to do
+
+- exact files/functions changed
+  - `openalex_search.py`
+    - `resolve_download_target_record()`
+      - broadened SPIE detection/skip to DOI prefix and SPIE domain markers
+  - `tools_exp.py`
+    - `_has_article_signal()`
+      - stop treating URL-like titles as article success
+    - `_has_bot_wall_text_signal()`
+      - added Incapsula / Imperva markers
+    - `detect_access_issue()`
+      - added Incapsula / Imperva block markers
+    - SPIE landing path in `download_pdf_with_drission()`
+      - now honors failed SPIE readiness and aborts as landing block instead of drifting into generic acquisition
+    - Elsevier click-failure path
+      - skip redundant `elsevier_post_click` tab pruning unless multiple tabs are actually present
+    - Elsevier first-mode download path
+      - add one `requests` fallback after failed CFFI on primary ScienceDirect candidate
+  - `parallel_download.py`
+    - `_backfill_result_from_failure_note()`
+      - merge missing download-attempt/candidate/evidence fields from failure-note JSON before CSV/summary writing
+
+- how the latest fixes change behavior
+  - SPIE Digital Library rows are now explicitly skipped earlier instead of wasting browser time
+  - SPIE/Incapsula block pages no longer become `success_landing`
+  - Elsevier primary `pdfft` failures now get one extra low-risk cookie-aware fallback
+  - failed final rows no longer lose attempt provenance that is already present in the failure note
+
+- lightweight verification
+  - `python3 -m py_compile openalex_search.py tools_exp.py parallel_download.py experiment/summarize_linux_headless_suite.py experiment/run_linux_headless_suite.py`
+  - SPIE routing smoke:
+    - `10.1117/...` + `spiedigitallibrary.org` PDF URL now resolves to:
+      - `routing_action=skip_non_target`
+      - `routing_skip_reason=spie_digital_library_filtered`
+  - SPIE saved block HTML smoke:
+    - `_has_article_signal(...) -> False`
+    - `_has_bot_wall_text_signal(...) -> True`
+    - `detect_access_issue(...) -> FAIL_BLOCK`
+  - Elsevier failure-note backfill smoke:
+    - sparse result row recovered:
+      - `download_attempted=True`
+      - `download_strategy_used=cffi_download`
+      - primary candidate URL/source/kind/confidence
+
+- re-check commands
+  - compile:
+    - `python3 -m py_compile openalex_search.py tools_exp.py parallel_download.py experiment/summarize_linux_headless_suite.py experiment/run_linux_headless_suite.py`
+  - focused rerun targets:
+    - `10.1016/j.ccr.2025.216433`
+    - `10.1093/nsr/nwaf250`
+    - any `10.1117/...` row that would previously have entered SPIE browser flow
+  - after rerun inspect:
+    - `routing_source_class`
+    - `routing_action`
+    - `routing_skip_reason`
+    - `download_attempted`
+    - `download_strategy_used`
+    - `download_candidate_source`
+    - `download_candidate_url`
+    - `failure_stage`
+    - `landing_failure_debug_note_path`
+
+- remaining risk
+  - no fresh Linux rerun has yet proven that the new Elsevier requests fallback converts `10.1016/j.ccr.2025.216433` into success
+  - the OUP failure remains a genuine Cloudflare challenge in the analyzed bundle; no evidence-backed bypass was implemented
+  - SPIE is now explicitly filtered at routing time for this Linux workflow, so future coverage of SPIE content would require a separate intentional policy decision
