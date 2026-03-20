@@ -19,6 +19,9 @@ downloaded_files/
 *.pdf
 *.png
 
+# 공유 가능한 Linux seed profile archive 예외
+!docs/linux_chromium_user_data_seed.tar.gz
+
 # 로그 파일 제외
 logs/
 *.log

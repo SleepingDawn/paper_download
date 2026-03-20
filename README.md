@@ -163,6 +163,12 @@ source config/linux_server.env
 - `--python`
   - `/home/yongyong0206/paper_search/paper_download/.venv/bin/python3`
 
+또한 이 저장소에는 **공유 가능한 Linux seed profile archive**가 하나 포함되어 있습니다.
+
+- `docs/linux_chromium_user_data_seed.tar.gz`
+
+이 파일은 `scripts/prepare_linux_server_env.sh`가 seed profile directory가 없을 때 자동으로 풀어 쓰는 공식 입력 경로입니다.
+
 이 값들은 다음 근거에서 확인됩니다.
 
 - `scripts/prepare_linux_server_env.sh` 기본값
@@ -209,6 +215,19 @@ bash scripts/prepare_linux_server_env.sh \
 source config/linux_server.env
 printf 'SEED_PROFILE=%s\nCHROME_PATH=%s\nPYTHON_BIN=%s\n' "$SEED_PROFILE" "$CHROME_PATH" "$PYTHON_BIN"
 ```
+
+`docs/linux_chromium_user_data_seed.tar.gz`를 직접 써서 seed profile을 준비하고 싶으면:
+
+```bash
+cd /home/yongyong0206/paper_search/paper_download
+
+mkdir -p outputs/linux_seed_profile_from_docs
+tar -xzf docs/linux_chromium_user_data_seed.tar.gz -C outputs/linux_seed_profile_from_docs
+
+test -d outputs/linux_seed_profile_from_docs/linux_chromium_user_data_seed && echo "seed-profile extracted"
+```
+
+이후에는 같은 경로를 `--seed-profile` 또는 `SEED_PROFILE`로 사용하면 됩니다.
 
 ## 기본 런타임 가정
 
@@ -614,6 +633,7 @@ python3 -u parallel_download.py \
 ### 2. `seed profile directory not found`
 
 - `scripts/prepare_linux_server_env.sh`는 seed profile이 없으면 docs tar를 자동 추출하려 시도합니다.
+- 기본 archive 경로는 `docs/linux_chromium_user_data_seed.tar.gz`입니다.
 - 그래도 실패하면 `docs/linux_seed_profile_setup.md` 기준으로 seed를 다시 준비해야 합니다.
 - `scripts/check_linux_seed_profile.py`로 구조를 먼저 확인하세요.
 
