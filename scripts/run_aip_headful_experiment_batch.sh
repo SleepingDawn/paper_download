@@ -3,9 +3,9 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-usage: bash scripts/run_aip_headful_experiment_batch.sh [--date-tag <YYYYmmdd>] [--mixed-workers <n>] [--poll-seconds <n>]
+usage: bash scripts/run_aip_headful_experiment_batch.sh [--date-tag <YYYYmmdd>] [--mixed-workers <n>] [--poll-seconds <n>] [--slurm-time <time>] [--max-wait-seconds <n>] [--wait-buffer-seconds <n>]
 
-Runs the current Linux+Xvfb headful AIP verification batch sequentially:
+Submits the current Linux+Xvfb headful AIP verification runs through Slurm and waits for completion sequentially:
   1) AIP-only baseline (fresh-tab direct DOI default)
   2) AIP-only control (same-tab direct DOI)
   3) mixed-publisher benchmark recheck
@@ -18,20 +18,67 @@ EOF
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+# shellcheck source=scripts/_linux_suite_env.sh
+source "$REPO_ROOT/scripts/_linux_suite_env.sh"
 
 DATE_TAG=$(date +%Y%m%d)
 MIXED_WORKERS=3
 POLL_SECONDS=20
+SLURM_TIME_VALUE=$(linux_suite_slurm_time_limit)
+SLURM_SIGNAL_VALUE=$(linux_suite_slurm_signal)
+SLURM_PARTITION_VALUE=$(linux_suite_slurm_partition)
+SLURM_ACCOUNT_VALUE=$(linux_suite_slurm_account)
+SLURM_MEM_VALUE=$(linux_suite_slurm_mem)
+SLURM_CPUS_VALUE=$(linux_suite_slurm_cpus)
+WAIT_BUFFER_SECONDS=$(linux_suite_job_timeout_buffer_seconds)
+MAX_WAIT_SECONDS=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --date-tag) DATE_TAG=${2:-}; shift 2 ;;
     --mixed-workers) MIXED_WORKERS=${2:-}; shift 2 ;;
     --poll-seconds) POLL_SECONDS=${2:-}; shift 2 ;;
+    --slurm-time) SLURM_TIME_VALUE=${2:-}; shift 2 ;;
+    --slurm-signal) SLURM_SIGNAL_VALUE=${2:-}; shift 2 ;;
+    --slurm-partition) SLURM_PARTITION_VALUE=${2:-}; shift 2 ;;
+    --slurm-account) SLURM_ACCOUNT_VALUE=${2:-}; shift 2 ;;
+    --slurm-mem) SLURM_MEM_VALUE=${2:-}; shift 2 ;;
+    --slurm-cpus) SLURM_CPUS_VALUE=${2:-}; shift 2 ;;
+    --wait-buffer-seconds) WAIT_BUFFER_SECONDS=${2:-}; shift 2 ;;
+    --max-wait-seconds) MAX_WAIT_SECONDS=${2:-}; shift 2 ;;
     -h|--help) usage; exit 0 ;;
     *) echo "unknown argument: $1" >&2; usage >&2; exit 1 ;;
   esac
 done
+
+if ! [[ "$MIXED_WORKERS" =~ ^[0-9]+$ && "$POLL_SECONDS" =~ ^[0-9]+$ && "$WAIT_BUFFER_SECONDS" =~ ^[0-9]+$ ]]; then
+  echo "mixed-workers, poll-seconds, wait-buffer-seconds must be integers" >&2
+  exit 1
+fi
+if [[ -n "$MAX_WAIT_SECONDS" && ! "$MAX_WAIT_SECONDS" =~ ^[0-9]+$ ]]; then
+  echo "max-wait-seconds must be an integer" >&2
+  exit 1
+fi
+if [[ -n "$SLURM_CPUS_VALUE" && ! "$SLURM_CPUS_VALUE" =~ ^[0-9]+$ ]]; then
+  echo "slurm-cpus must be an integer" >&2
+  exit 1
+fi
+if ! command -v sbatch >/dev/null 2>&1; then
+  echo "sbatch not found; this batch launcher requires Slurm" >&2
+  exit 1
+fi
+if ! command -v scancel >/dev/null 2>&1; then
+  echo "scancel not found; this batch launcher requires Slurm" >&2
+  exit 1
+fi
+if [[ -z "$MAX_WAIT_SECONDS" ]]; then
+  BASE_WAIT_SECONDS=$(linux_suite_duration_to_seconds "$SLURM_TIME_VALUE") || BASE_WAIT_SECONDS=0
+  if (( BASE_WAIT_SECONDS <= 0 )); then
+    echo "unable to derive max wait from --slurm-time=$SLURM_TIME_VALUE" >&2
+    exit 1
+  fi
+  MAX_WAIT_SECONDS=$((BASE_WAIT_SECONDS + WAIT_BUFFER_SECONDS))
+fi
 
 cd "$REPO_ROOT"
 
@@ -99,12 +146,25 @@ mkdir -p "$REPO_ROOT/experiment/results"
 BATCH_PREFIX="aip_headful_batch_${DATE_TAG}_$(date +%H%M%S)"
 SUMMARY_FILE="$REPO_ROOT/experiment/results/${BATCH_PREFIX}_summary.txt"
 : > "$SUMMARY_FILE"
+{
+  echo "batch_prefix=$BATCH_PREFIX"
+  echo "slurm_time=$SLURM_TIME_VALUE"
+  echo "slurm_signal=$SLURM_SIGNAL_VALUE"
+  echo "max_wait_seconds=$MAX_WAIT_SECONDS"
+} >>"$SUMMARY_FILE"
 
 run_and_wait() {
   local run_name=$1
   local sample_csv=$2
   local workers=$3
   local fresh_tab_mode=$4
+  local launch_output
+  local job_id
+  local started_at
+  local status_output
+  local now
+  local elapsed
+  local launch_cmd=()
 
   echo "=== START ${run_name} ===" | tee -a "$SUMMARY_FILE"
   if [[ "$fresh_tab_mode" == "auto" ]]; then
@@ -115,28 +175,64 @@ run_and_wait() {
     echo "fresh_tab_mode=$fresh_tab_mode" | tee -a "$SUMMARY_FILE"
   fi
 
-  bash "$REPO_ROOT/scripts/run_linux_suite_bg.sh" \
-    --suite full \
-    --run-name "$run_name" \
-    --seed-profile "$SEED_PROFILE" \
-    --profile-name "${PROFILE_NAME:-Default}" \
-    --sample-csv "$sample_csv" \
-    --download-workers "$workers" \
-    --after-first-pass stop \
-    --runtime-preset linux_cli_seeded \
-    --execution-env linux_server \
-    --headless 0 \
-    --chrome-path "$CHROME_PATH" \
-    --xvfb 1 \
-    --xvfb-bin "$HOME/.local/bin/Xvfb" \
-    --xvfb-display :99 | tee -a "$SUMMARY_FILE"
+  launch_cmd=(
+    bash "$REPO_ROOT/scripts/run_linux_suite_bg.sh"
+    --suite full
+    --run-name "$run_name"
+    --seed-profile "$SEED_PROFILE"
+    --profile-name "${PROFILE_NAME:-Default}"
+    --sample-csv "$sample_csv"
+    --download-workers "$workers"
+    --after-first-pass stop
+    --runtime-preset linux_cli_seeded
+    --execution-env linux_server
+    --headless 0
+    --chrome-path "$CHROME_PATH"
+    --submit-mode slurm
+    --slurm-time "$SLURM_TIME_VALUE"
+    --slurm-signal "$SLURM_SIGNAL_VALUE"
+    --xvfb 1
+    --xvfb-bin "$HOME/.local/bin/Xvfb"
+    --xvfb-display :99
+  )
+  if [[ -n "$SLURM_PARTITION_VALUE" ]]; then
+    launch_cmd+=(--slurm-partition "$SLURM_PARTITION_VALUE")
+  fi
+  if [[ -n "$SLURM_ACCOUNT_VALUE" ]]; then
+    launch_cmd+=(--slurm-account "$SLURM_ACCOUNT_VALUE")
+  fi
+  if [[ -n "$SLURM_MEM_VALUE" ]]; then
+    launch_cmd+=(--slurm-mem "$SLURM_MEM_VALUE")
+  fi
+  if [[ -n "$SLURM_CPUS_VALUE" ]]; then
+    launch_cmd+=(--slurm-cpus "$SLURM_CPUS_VALUE")
+  fi
+  launch_output=$("${launch_cmd[@]}")
+  printf '%s\n' "$launch_output" | tee -a "$SUMMARY_FILE"
+  job_id=$(printf '%s\n' "$launch_output" | awk -F= '/^job_id=/{print $2; exit}')
+  if [[ -z "$job_id" ]]; then
+    echo "failed_to_extract_job_id_for_run=$run_name" | tee -a "$SUMMARY_FILE"
+    return 1
+  fi
+  echo "submitted_job_id=$job_id" | tee -a "$SUMMARY_FILE"
+  started_at=$(date +%s)
 
   while true; do
-    local status_output
     status_output=$(bash "$REPO_ROOT/scripts/check_linux_suite_status.sh" "$run_name" 20)
     printf '%s\n' "$status_output" >> "$SUMMARY_FILE"
     if printf '%s\n' "$status_output" | grep -q 'process_alive=false'; then
       break
+    fi
+    now=$(date +%s)
+    elapsed=$((now - started_at))
+    if (( elapsed >= MAX_WAIT_SECONDS )); then
+      echo "max_wait_exceeded_seconds=$MAX_WAIT_SECONDS run_name=$run_name job_id=$job_id" | tee -a "$SUMMARY_FILE"
+      scancel "$job_id" || true
+      sleep 5
+      status_output=$(bash "$REPO_ROOT/scripts/check_linux_suite_status.sh" "$run_name" 20)
+      printf '%s\n' "$status_output" >> "$SUMMARY_FILE"
+      echo "job_cancelled_due_to_timeout=$job_id" | tee -a "$SUMMARY_FILE"
+      return 1
     fi
     sleep "$POLL_SECONDS"
   done

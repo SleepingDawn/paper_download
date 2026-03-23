@@ -25,6 +25,14 @@ options:
   --xvfb-display <value>        Xvfb display (default: :99 or env PDF_BROWSER_XVFB_DISPLAY)
   --xvfb-bin <path>             Xvfb binary (default: ~/.local/bin/Xvfb or env PDF_BROWSER_XVFB_BIN)
   --xvfb-screen <WxHxD>         Xvfb screen geometry (default: 1280x1024x24)
+  --submit-mode <auto|slurm|local>
+                                default: slurm outside Slurm jobs, local inside Slurm jobs
+  --slurm-time <time>           Slurm walltime limit (default: 12:00:00 or env LINUX_SUITE_SLURM_TIME_LIMIT)
+  --slurm-signal <signal@secs>  pre-timeout signal (default: TERM@120)
+  --slurm-partition <name>      optional Slurm partition
+  --slurm-account <name>        optional Slurm account
+  --slurm-mem <value>           optional Slurm --mem value
+  --slurm-cpus <n>              optional Slurm cpus-per-task (default: max(download,landing,1)+1)
 EOF
 }
 
@@ -56,6 +64,13 @@ XVFB_MODE="${PDF_BROWSER_XVFB_MODE:-auto}"
 XVFB_DISPLAY_VALUE="${PDF_BROWSER_XVFB_DISPLAY:-:99}"
 XVFB_BIN_VALUE="${PDF_BROWSER_XVFB_BIN:-$HOME/.local/bin/Xvfb}"
 XVFB_SCREEN_VALUE="${PDF_BROWSER_XVFB_SCREEN:-1280x1024x24}"
+SUBMIT_MODE="auto"
+SLURM_TIME_VALUE="$(linux_suite_slurm_time_limit)"
+SLURM_SIGNAL_VALUE="$(linux_suite_slurm_signal)"
+SLURM_PARTITION_VALUE="$(linux_suite_slurm_partition)"
+SLURM_ACCOUNT_VALUE="$(linux_suite_slurm_account)"
+SLURM_MEM_VALUE="$(linux_suite_slurm_mem)"
+SLURM_CPUS_VALUE="$(linux_suite_slurm_cpus)"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -78,10 +93,25 @@ while [[ $# -gt 0 ]]; do
     --xvfb-display) XVFB_DISPLAY_VALUE=${2:-}; shift 2 ;;
     --xvfb-bin) XVFB_BIN_VALUE=${2:-}; shift 2 ;;
     --xvfb-screen) XVFB_SCREEN_VALUE=${2:-}; shift 2 ;;
+    --submit-mode) SUBMIT_MODE=${2:-}; shift 2 ;;
+    --slurm-time) SLURM_TIME_VALUE=${2:-}; shift 2 ;;
+    --slurm-signal) SLURM_SIGNAL_VALUE=${2:-}; shift 2 ;;
+    --slurm-partition) SLURM_PARTITION_VALUE=${2:-}; shift 2 ;;
+    --slurm-account) SLURM_ACCOUNT_VALUE=${2:-}; shift 2 ;;
+    --slurm-mem) SLURM_MEM_VALUE=${2:-}; shift 2 ;;
+    --slurm-cpus) SLURM_CPUS_VALUE=${2:-}; shift 2 ;;
     -h|--help) usage; exit 0 ;;
     *) echo "unknown argument: $1" >&2; usage >&2; exit 1 ;;
   esac
 done
+
+if [[ "$SUBMIT_MODE" == "auto" ]]; then
+  SUBMIT_MODE=$(linux_suite_default_submit_mode)
+fi
+if [[ "$SUBMIT_MODE" != "slurm" && "$SUBMIT_MODE" != "local" ]]; then
+  echo "--submit-mode must be auto, slurm, or local" >&2
+  exit 1
+fi
 
 if [[ -z "$SUITE" ]]; then
   echo "--suite is required" >&2
@@ -113,6 +143,35 @@ fi
 if [[ -z "$RUN_DIR" ]]; then
   RUN_DIR="$RUNS_ROOT/$RUN_NAME"
 fi
+if [[ -z "$SLURM_CPUS_VALUE" ]]; then
+  if [[ "$LANDING_WORKERS" =~ ^[0-9]+$ && "$DOWNLOAD_WORKERS" =~ ^[0-9]+$ ]]; then
+    if (( DOWNLOAD_WORKERS > LANDING_WORKERS )); then
+      SLURM_CPUS_VALUE=$((DOWNLOAD_WORKERS + 1))
+    else
+      SLURM_CPUS_VALUE=$((LANDING_WORKERS + 1))
+    fi
+  else
+    SLURM_CPUS_VALUE=2
+  fi
+fi
+if [[ -n "$SLURM_CPUS_VALUE" && ! "$SLURM_CPUS_VALUE" =~ ^[0-9]+$ ]]; then
+  echo "--slurm-cpus must be an integer" >&2
+  exit 1
+fi
+if [[ "$SLURM_CPUS_VALUE" =~ ^[0-9]+$ ]] && (( SLURM_CPUS_VALUE < 1 )); then
+  echo "--slurm-cpus must be >= 1" >&2
+  exit 1
+fi
+if [[ "$SUBMIT_MODE" == "slurm" ]]; then
+  if [[ -z "$SLURM_TIME_VALUE" ]]; then
+    echo "--slurm-time is required in slurm mode" >&2
+    exit 1
+  fi
+  if ! command -v sbatch >/dev/null 2>&1; then
+    echo "sbatch not found; Slurm submit mode requires sbatch" >&2
+    exit 1
+  fi
+fi
 
 USE_XVFB=0
 if [[ "$HEADLESS" == "0" && "$EXECUTION_ENV" == "linux_server" ]]; then
@@ -136,14 +195,26 @@ RUN_NAME=$(basename "$RUN_DIR_ABS")
 CMD_FILE="$LOGS_ROOT/${RUN_NAME}.cmd.sh"
 LOG_FILE="$LOGS_ROOT/${RUN_NAME}.log"
 PID_FILE="$LOGS_ROOT/${RUN_NAME}.pid"
+JOB_ID_FILE="$LOGS_ROOT/${RUN_NAME}.job_id"
+SCHEDULER_FILE="$LOGS_ROOT/${RUN_NAME}.scheduler"
+SUBMIT_MODE_FILE="$LOGS_ROOT/${RUN_NAME}.submit_mode"
 RUN_DIR_FILE="$LOGS_ROOT/${RUN_NAME}.run_dir"
 XVFB_LOG_FILE="$LOGS_ROOT/${RUN_NAME}.xvfb.log"
 
-if [[ -f "$PID_FILE" ]]; then
+if [[ "$SUBMIT_MODE" == "local" && -f "$PID_FILE" ]]; then
   OLD_PID=$(cat "$PID_FILE" 2>/dev/null || true)
   if [[ -n "$OLD_PID" ]] && kill -0 "$OLD_PID" 2>/dev/null; then
     echo "run already active: run_name=$RUN_NAME pid=$OLD_PID" >&2
     exit 1
+  fi
+fi
+if [[ "$SUBMIT_MODE" == "slurm" && -f "$JOB_ID_FILE" ]]; then
+  OLD_JOB_ID=$(cat "$JOB_ID_FILE" 2>/dev/null || true)
+  if [[ -n "$OLD_JOB_ID" ]] && squeue -h -j "$OLD_JOB_ID" >/dev/null 2>&1; then
+    if [[ -n "$(squeue -h -j "$OLD_JOB_ID" -o '%A' 2>/dev/null)" ]]; then
+      echo "run already active: run_name=$RUN_NAME job_id=$OLD_JOB_ID" >&2
+      exit 1
+    fi
   fi
 fi
 
@@ -160,6 +231,14 @@ set -euo pipefail
 cd $(printf '%q' "$REPO_ROOT")
 export SEED_PROFILE=$(printf '%q' "$SEED_PROFILE")
 export PROFILE_NAME=$(printf '%q' "$PROFILE_NAME")
+echo "[launcher] started_at=\$(date -Is)"
+echo "[launcher] run_name=$(printf '%q' "$RUN_NAME")"
+echo "[launcher] run_dir=$(printf '%q' "$RUN_DIR_ABS")"
+echo "[launcher] python=$(printf '%q' "$PYTHON_BIN")"
+echo "[launcher] suite=$(printf '%q' "$SUITE")"
+echo "[launcher] seed_profile=$(printf '%q' "$SEED_PROFILE")"
+echo "[launcher] profile_name=$(printf '%q' "$PROFILE_NAME")"
+echo "[launcher] submit_mode=$(printf '%q' "$SUBMIT_MODE")"
 EOF
 
 if [[ -n "$CHROME_PATH_VALUE" ]]; then
@@ -174,6 +253,19 @@ if [[ "$USE_XVFB" == "1" ]]; then
   printf 'export XVFB_SCREEN=%q\n' "$XVFB_SCREEN_VALUE" >>"$CMD_FILE"
   printf 'export XVFB_LOG_FILE=%q\n' "$XVFB_LOG_FILE" >>"$CMD_FILE"
 fi
+{
+  if [[ -n "$CHROME_PATH_VALUE" ]]; then
+    echo "echo \"[launcher] chrome_path=$(printf '%q' "$CHROME_PATH_VALUE")\""
+  fi
+  echo "echo \"[launcher] headless=$(printf '%q' "$HEADLESS")\""
+  echo "echo \"[launcher] xvfb_enabled=$(printf '%q' "$USE_XVFB")\""
+  if [[ "$USE_XVFB" == "1" ]]; then
+    echo "echo \"[launcher] xvfb_bin=$(printf '%q' "$XVFB_BIN_VALUE")\""
+    echo "echo \"[launcher] xvfb_display=$(printf '%q' "$XVFB_DISPLAY_VALUE")\""
+    echo "echo \"[launcher] xvfb_screen=$(printf '%q' "$XVFB_SCREEN_VALUE")\""
+    echo "echo \"[launcher] xvfb_log=$(printf '%q' "$XVFB_LOG_FILE")\""
+  fi
+} >>"$CMD_FILE"
 
 {
   if [[ "$USE_XVFB" == "1" ]]; then
@@ -200,26 +292,85 @@ chmod +x "$CMD_FILE"
 
 printf '%s\n' "$RUN_DIR_ABS" >"$RUN_DIR_FILE"
 : >"$LOG_FILE"
+rm -f "$PID_FILE" "$JOB_ID_FILE" "$SCHEDULER_FILE"
+printf '%s\n' "$SUBMIT_MODE" >"$SUBMIT_MODE_FILE"
+: >"$LOG_FILE"
 {
-  echo "[launcher] started_at=$(date -Is)"
-  echo "[launcher] run_name=$RUN_NAME"
-  echo "[launcher] run_dir=$RUN_DIR_ABS"
-  echo "[launcher] python=$PYTHON_BIN"
-  echo "[launcher] suite=$SUITE"
-  echo "[launcher] env_file=$ENV_FILE"
-  echo "[launcher] seed_profile=$SEED_PROFILE"
-  echo "[launcher] profile_name=$PROFILE_NAME"
-  if [[ -n "$CHROME_PATH_VALUE" ]]; then
-    echo "[launcher] chrome_path=$CHROME_PATH_VALUE"
+  echo "[submit] requested_at=$(date -Is)"
+  echo "[submit] run_name=$RUN_NAME"
+  echo "[submit] run_dir=$RUN_DIR_ABS"
+  echo "[submit] submit_mode=$SUBMIT_MODE"
+} >>"$LOG_FILE"
+
+if [[ "$SUBMIT_MODE" == "slurm" ]]; then
+  SBATCH_CMD=(
+    sbatch
+    --parsable
+    --job-name "$RUN_NAME"
+    --chdir "$REPO_ROOT"
+    --output "$LOG_FILE"
+    --error "$LOG_FILE"
+    --open-mode append
+    --signal "$SLURM_SIGNAL_VALUE"
+    --time "$SLURM_TIME_VALUE"
+  )
+  if [[ -n "$SLURM_PARTITION_VALUE" ]]; then
+    SBATCH_CMD+=(--partition "$SLURM_PARTITION_VALUE")
   fi
-  echo "[launcher] headless=$HEADLESS"
-  echo "[launcher] xvfb_enabled=$USE_XVFB"
-  if [[ "$USE_XVFB" == "1" ]]; then
-    echo "[launcher] xvfb_bin=$XVFB_BIN_VALUE"
-    echo "[launcher] xvfb_display=$XVFB_DISPLAY_VALUE"
-    echo "[launcher] xvfb_screen=$XVFB_SCREEN_VALUE"
-    echo "[launcher] xvfb_log=$XVFB_LOG_FILE"
+  if [[ -n "$SLURM_ACCOUNT_VALUE" ]]; then
+    SBATCH_CMD+=(--account "$SLURM_ACCOUNT_VALUE")
   fi
+  if [[ -n "$SLURM_MEM_VALUE" ]]; then
+    SBATCH_CMD+=(--mem "$SLURM_MEM_VALUE")
+  fi
+  if [[ -n "$SLURM_CPUS_VALUE" ]]; then
+    SBATCH_CMD+=(--cpus-per-task "$SLURM_CPUS_VALUE")
+  fi
+  SBATCH_CMD+=("$CMD_FILE")
+
+  RAW_JOB_ID=$("${SBATCH_CMD[@]}")
+  JOB_ID=${RAW_JOB_ID%%;*}
+  printf '%s\n' "$JOB_ID" >"$JOB_ID_FILE"
+  printf '%s\n' "slurm" >"$SCHEDULER_FILE"
+  {
+    echo "[submit] scheduler=slurm"
+    echo "[submit] job_id=$JOB_ID"
+    echo "[submit] slurm_time=$SLURM_TIME_VALUE"
+    echo "[submit] slurm_signal=$SLURM_SIGNAL_VALUE"
+    if [[ -n "$SLURM_PARTITION_VALUE" ]]; then
+      echo "[submit] slurm_partition=$SLURM_PARTITION_VALUE"
+    fi
+    if [[ -n "$SLURM_ACCOUNT_VALUE" ]]; then
+      echo "[submit] slurm_account=$SLURM_ACCOUNT_VALUE"
+    fi
+    if [[ -n "$SLURM_MEM_VALUE" ]]; then
+      echo "[submit] slurm_mem=$SLURM_MEM_VALUE"
+    fi
+    if [[ -n "$SLURM_CPUS_VALUE" ]]; then
+      echo "[submit] slurm_cpus=$SLURM_CPUS_VALUE"
+    fi
+  } >>"$LOG_FILE"
+
+  echo "run_name=$RUN_NAME"
+  echo "run_dir=$RUN_DIR_ABS"
+  echo "submit_mode=$SUBMIT_MODE"
+  echo "scheduler=slurm"
+  echo "job_id=$JOB_ID"
+  echo "cmd_file=$CMD_FILE"
+  echo "log_file=$LOG_FILE"
+  echo "job_id_file=$JOB_ID_FILE"
+  echo "run_dir_file=$RUN_DIR_FILE"
+  echo "export_run_name=RUN_NAME=$RUN_NAME"
+  echo "status_hint=bash scripts/check_linux_suite_status.sh $RUN_NAME"
+  echo "tail_hint=bash scripts/tail_linux_suite_logs.sh $RUN_NAME all"
+  echo "collect_hint=bash scripts/collect_linux_suite_artifacts.sh $RUN_NAME"
+  exit 0
+fi
+
+printf '%s\n' "local" >"$SCHEDULER_FILE"
+{
+  echo "[submit] scheduler=local"
+  echo "[submit] env_file=$ENV_FILE"
 } >>"$LOG_FILE"
 
 nohup bash "$CMD_FILE" >>"$LOG_FILE" 2>&1 < /dev/null &
@@ -228,6 +379,8 @@ printf '%s\n' "$PID" >"$PID_FILE"
 
 echo "run_name=$RUN_NAME"
 echo "run_dir=$RUN_DIR_ABS"
+echo "submit_mode=$SUBMIT_MODE"
+echo "scheduler=local"
 echo "pid=$PID"
 echo "cmd_file=$CMD_FILE"
 echo "log_file=$LOG_FILE"

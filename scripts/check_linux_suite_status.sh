@@ -52,16 +52,62 @@ RUN_DIR=$(resolve_run_dir "$RUN_REF") || {
 RUN_NAME=$(basename "$RUN_DIR")
 ROOT_LOG="$LOGS_ROOT/${RUN_NAME}.log"
 PID_FILE="$LOGS_ROOT/${RUN_NAME}.pid"
+JOB_ID_FILE="$LOGS_ROOT/${RUN_NAME}.job_id"
+SCHEDULER_FILE="$LOGS_ROOT/${RUN_NAME}.scheduler"
+SUBMIT_MODE_FILE="$LOGS_ROOT/${RUN_NAME}.submit_mode"
 CMD_FILE="$LOGS_ROOT/${RUN_NAME}.cmd.sh"
 MANIFEST="$RUN_DIR/execution_manifest.json"
+SUBMIT_MODE=$(cat "$SUBMIT_MODE_FILE" 2>/dev/null || true)
+SCHEDULER=$(cat "$SCHEDULER_FILE" 2>/dev/null || true)
+JOB_ID=$(cat "$JOB_ID_FILE" 2>/dev/null || true)
 
 echo "run_name=$RUN_NAME"
 echo "run_dir=$RUN_DIR"
 echo "root_log=$ROOT_LOG"
 echo "pid_file=$PID_FILE"
+echo "job_id_file=$JOB_ID_FILE"
 echo "cmd_file=$CMD_FILE"
+echo "submit_mode=${SUBMIT_MODE:-unknown}"
+echo "scheduler=${SCHEDULER:-unknown}"
 
-if [[ -f "$PID_FILE" ]]; then
+if [[ "$SCHEDULER" == "slurm" && -n "$JOB_ID" ]]; then
+  echo "job_id=$JOB_ID"
+  if command -v squeue >/dev/null 2>&1; then
+    SQUEUE_LINE=$(squeue -h -j "$JOB_ID" -o '%T|%M|%L|%R' 2>/dev/null | head -n 1 || true)
+  else
+    SQUEUE_LINE=""
+  fi
+  if [[ -n "$SQUEUE_LINE" ]]; then
+    IFS='|' read -r JOB_STATE JOB_RUNTIME JOB_TIME_LEFT JOB_REASON <<<"$SQUEUE_LINE"
+    echo "scheduler_state=$JOB_STATE"
+    echo "scheduler_runtime=$JOB_RUNTIME"
+    echo "scheduler_time_left=$JOB_TIME_LEFT"
+    echo "scheduler_reason=$JOB_REASON"
+    echo "process_alive=true"
+  elif command -v sacct >/dev/null 2>&1; then
+    SACCT_LINE=$(sacct -X -j "$JOB_ID" --format=JobIDRaw,State,ExitCode,Elapsed -P -n 2>/dev/null | awk -F'|' -v job="$JOB_ID" '$1==job {print; exit}')
+    if [[ -n "$SACCT_LINE" ]]; then
+      IFS='|' read -r SACCT_JOB_ID SACCT_STATE SACCT_EXIT SACCT_ELAPSED <<<"$SACCT_LINE"
+      echo "scheduler_state=$SACCT_STATE"
+      echo "scheduler_elapsed=$SACCT_ELAPSED"
+      echo "scheduler_exit_code=$SACCT_EXIT"
+      case "$SACCT_STATE" in
+        PENDING|RUNNING|CONFIGURING|COMPLETING|SUSPENDED|RESIZING|REQUEUED)
+          echo "process_alive=true"
+          ;;
+        *)
+          echo "process_alive=false"
+          ;;
+      esac
+    else
+      echo "scheduler_state=unknown"
+      echo "process_alive=unknown"
+    fi
+  else
+    echo "scheduler_state=unknown"
+    echo "process_alive=unknown"
+  fi
+elif [[ -f "$PID_FILE" ]]; then
   PID=$(cat "$PID_FILE" 2>/dev/null || true)
   echo "pid=$PID"
   if [[ -n "$PID" ]] && kill -0 "$PID" 2>/dev/null; then

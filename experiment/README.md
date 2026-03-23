@@ -30,11 +30,11 @@
 - `summarize_linux_headless_suite.py`
   - 통합 download 결과를 publisher별 진단 표로 요약하는 요약기
 - `../scripts/run_linux_suite_bg.sh`
-  - SSH가 끊겨도 유지되는 `nohup` 기반 background launcher
+  - Slurm `sbatch`로 suite job을 제출하는 launcher
 - `../scripts/prepare_linux_server_env.sh`
   - 서버별 `SEED_PROFILE`, `CHROME_PATH`, `PYTHON_BIN`, output root를 `config/linux_server.env`로 기록하는 env 준비 스크립트
 - `../scripts/check_linux_suite_status.sh`
-  - PID, stage 상태, 최근 로그를 확인하는 상태 점검 스크립트
+  - Slurm job id, stage 상태, 최근 로그를 확인하는 상태 점검 스크립트
 - `../scripts/tail_linux_suite_logs.sh`
   - root/stage 로그를 `tail -F`로 보는 보조 스크립트
 - `../scripts/collect_linux_suite_artifacts.sh`

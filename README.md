@@ -19,7 +19,7 @@ DOI/benchmark CSV를 입력으로 받아, Linux 서버에서 브라우저 랜딩
 - `experiment/run_linux_headless_suite.py`
   - benchmark CSV를 받아 실험 run 디렉토리를 만들고, `parallel_download.py` 실행과 요약 산출물을 연결합니다.
 - `scripts/run_linux_suite_bg.sh`
-  - Linux 서버에서 `nohup` 기반 background run을 시작하는 표준 launcher입니다.
+  - Linux 서버에서 `sbatch`로 suite job을 제출하는 표준 launcher입니다.
 - `scripts/check_linux_suite_status.sh`
   - run 상태와 최근 로그를 확인합니다.
 - `scripts/tail_linux_suite_logs.sh`
@@ -409,6 +409,7 @@ bash scripts/run_linux_suite_bg.sh \
   --execution-env linux_server \
   --headless 0 \
   --chrome-path "$CHROME_PATH" \
+  --slurm-time 12:00:00 \
   --xvfb 1 \
   --xvfb-bin "$HOME/.local/bin/Xvfb" \
   --xvfb-display :99
@@ -438,7 +439,7 @@ bash scripts/run_linux_suite_bg.sh \
 - `--download-workers`
 - `--after-first-pass`
 
-직접 실행도 가능하지만, 서버에서는 background launcher를 권장합니다.
+직접 실행도 가능하지만, 서버에서는 Slurm launcher를 권장합니다.
 
 ## entrypoint 인자 설명
 
@@ -517,7 +518,7 @@ bash scripts/check_linux_suite_status.sh "$RUN_NAME" 40
 확인 항목:
 
 - `run_dir`
-- `pid_file`
+- `job_id_file`
 - `process_alive`
 - `execution_manifest`
 - stage outputs
@@ -556,10 +557,10 @@ stat "outputs/${RUN_NAME}/logs/download.stderr.log"
 
 ### 실행 중인 run 중단
 
-현재 branch에서는 `logs/<run>.pid`의 wrapper PID에 `TERM`을 보내면 child process group까지 같이 내려가도록 맞춰져 있습니다.
+현재 branch에서는 Slurm job으로 제출되므로, 중단은 job id 기준 `scancel`이 기준입니다.
 
 ```bash
-kill -TERM "$(cat "logs/${RUN_NAME}.pid")"
+scancel "$(cat "logs/${RUN_NAME}.job_id")"
 sleep 3
 bash scripts/check_linux_suite_status.sh "$RUN_NAME" 20
 ```
@@ -567,7 +568,7 @@ bash scripts/check_linux_suite_status.sh "$RUN_NAME" 20
 정상 종료가 안 되면:
 
 ```bash
-kill -KILL "$(cat "logs/${RUN_NAME}.pid")"
+scancel -s KILL "$(cat "logs/${RUN_NAME}.job_id")"
 ```
 
 ## 결과 수집과 bundle 생성
